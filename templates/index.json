@@ -46,6 +46,7 @@
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "accent-1",
+        "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": false
@@ -150,6 +151,7 @@
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "accent-2",
+        "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
@@ -169,6 +171,7 @@
       "settings": {
         "heading": "PROTECT WITH EXTENDED TIME REAR-FACING",
         "heading_size": "h2",
+        "enable_video_looping": false,
         "video_url": "https:\/\/vimeo.com\/793099213",
         "description": "",
         "full_width": false,
@@ -268,12 +271,19 @@
           "type": "email_form",
           "settings": {
           }
+        },
+        "3c837d43-e206-461c-8153-13551a8049a3": {
+          "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/form-embed-block\/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "T3X7Yv"
+          }
         }
       },
       "block_order": [
         "template--15732944830620__b865ed93-9d63-4d27-a9e0-90de8dc557ec-1677879241073cf687-0",
         "template--15732944830620__b865ed93-9d63-4d27-a9e0-90de8dc557ec-1677879241073cf687-1",
-        "template--15732944830620__b865ed93-9d63-4d27-a9e0-90de8dc557ec-1677879241073cf687-2"
+        "template--15732944830620__b865ed93-9d63-4d27-a9e0-90de8dc557ec-1677879241073cf687-2",
+        "3c837d43-e206-461c-8153-13551a8049a3"
       ],
       "settings": {
         "color_scheme": "accent-2",
