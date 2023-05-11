@@ -310,7 +310,7 @@
     "6bb9b068-77a4-4c73-be1f-f85ba689e5d2": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "",
+        "custom_liquid": "{% assign faqs = product.metafields.custom.pdp_faq.value %}\n{% if faqs %}\n\n<script type=\"application\/ld+json\">\n    {\n      \"@context\": \"https:\/\/schema.org\",\n      \"@type\": \"FAQPage\",\n      \"mainEntity\": [\n        {% for faq in faqs %}\n          {\n            \"@type\": \"Question\",\n            \"name\": \"{{ faq.question }}\",\n            \"acceptedAnswer\": {\n              \"@type\": \"Answer\",\n              \"text\": \"{{ faq.answer }}\"\n            }\n          }{% unless forloop.last %}, {% endunless %}\n        {%- endfor -%}\n      ]\n    }\n<\/script>\n\n<script>console.log({{ product.metafields.custom | json }});<\/script>\n\n\n<h2 class=\"title center\">FAQ's<\/h2>\n  <div class=\"pdp-questions-wrapper pdp-questions-wrapper\" id=\"questions\">\n    <div class=\"left-column-data pdp-child-info\">\n    {% for faq in faqs %}\n      <button class='accordion'>\n      <h3>{{ faq.question }}<\/h3>\n      <\/button>\n      <div class=\"panel\"><p>{{ faq.answer }}<\/p><\/div>\n    \n    {%- endfor -%}\n    <\/div>\n    {% assign support_page_link = product.metafields.custom.support_page_link %}\n    {% if support_page_link %}\n      <a href=\"{{ support_page_link }}\">See All<\/a>\n    {% endif %}\n  <\/div>\n{% endif %}",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
