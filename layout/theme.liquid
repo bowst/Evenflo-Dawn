@@ -9,30 +9,36 @@
     <link
       rel="preconnect"
       href="https://cdn.shopify.com"
-      crossorigin>
+      crossorigin
+    >
 
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
         type="image/png"
-        href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
+      >
     {%- endif -%}
-    <link rel="stylesheet" href="https://use.typekit.net/ati5bia.css">
+
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link
         rel="preconnect"
         href="https://fonts.shopifycdn.com"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
 
     <title>
       {{ page_title }}
       {%- if current_tags %}
-        &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+        &ndash; tagged "{{ current_tags | join: ', ' }}"
+      {%- endif -%}
       {%- if current_page != 1 %}
-        &ndash; Page {{ current_page }}{% endif -%}
+        &ndash; Page {{ current_page -}}
+      {%- endif -%}
       {%- unless page_title contains shop.name %}
-        &ndash; {{ shop.name }}{% endunless -%}
+        &ndash; {{ shop.name -}}
+      {%- endunless -%}
     </title>
 
     {% if page_description %}
@@ -40,7 +46,7 @@
     {% endif %}
 
     {% render 'meta-tags' %}
-    <link rel="stylesheet" href="https://use.typekit.net/ati5bia.css">
+
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
@@ -404,7 +410,8 @@
         as="font"
         href="{{ settings.type_body_font | font_url }}"
         type="font/woff2"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
       <link
@@ -412,7 +419,8 @@
         as="font"
         href="{{ settings.type_header_font | font_url }}"
         type="font/woff2"
-        crossorigin>
+        crossorigin
+      >
     {%- endunless -%}
 
     {%- if settings.predictive_search_enabled -%}
@@ -420,7 +428,8 @@
         rel="stylesheet"
         href="{{ 'component-predictive-search.css' | asset_url }}"
         media="print"
-        onload="this.media='all'">
+        onload="this.media='all'"
+      >
     {%- endif -%}
 
     <script>
@@ -446,7 +455,8 @@
       id="MainContent"
       class="content-for-layout focus-none"
       role="main"
-      tabindex="-1">
+      tabindex="-1"
+    >
       {{ content_for_layout }}
     </main>
 
@@ -458,6 +468,7 @@
     </ul>
 
     <script>
+      
 
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
@@ -486,6 +497,7 @@
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`
       }
+
     </script>
 
     {%- if settings.predictive_search_enabled -%}
