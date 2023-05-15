@@ -1,7 +1,17 @@
 {
   "sections": {
+    "a9b2cf01-80f9-4b78-9fca-f5e799faab06": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"hero reverse container-fluid\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"image-evenflo col-md-6 col-lg-7 col-xl-8\" style=\"background-image: url('https:\/\/cdn.shopify.com\/s\/files\/1\/0512\/2359\/3116\/files\/hero_image.jpg?v=1684189862');\"> <\/div>\n\n\t\t\t\t<div class=\"content col-md-6 col-lg-5 col-xl-4\">\n\t\t\t\t\t<div class=\"content-inner\">\n\t\t\t\t\t\t<img width=\"165\" height=\"203\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0512\/2359\/3116\/files\/revolve_product.png?v=1684191159\" alt=\"\">\n\t\t\t\t\t\t<h1>REVOLVE360&trade; <span>EXTEND<\/span><\/h1>\n\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t<span>THE REVOLUTION<\/span><br>\n\t\t\t\t\t\t\tJUST GOT<br>\n\t\t\t\t\t\t\tEXTENDED.\n\t\t\t\t\t\t<\/p>\n\t\t\t\t\t\t<a href=\"#\" class=\"btn btn-light\">CHECK IT OUT<\/a>\n\t\t\t\t\t<\/div>\n\t\t\t\t<\/div>\n\t\t\t<\/div>\n\t\t<\/section>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "image_banner": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -305,6 +315,7 @@
     }
   },
   "order": [
+    "a9b2cf01-80f9-4b78-9fca-f5e799faab06",
     "image_banner",
     "rich_text",
     "featured_collection",
