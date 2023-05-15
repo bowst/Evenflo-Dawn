@@ -1,0 +1,28 @@
+{% schema %}
+{
+  "name": "My custom section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Custom text",
+      "settings": [
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Your text",
+          "default": "Hello, world!"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+{% render 'my-template' %}
