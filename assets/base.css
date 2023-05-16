@@ -3316,3 +3316,8 @@ details-disclosure > details {
     --sparkle: url('./sparkle.gif');
   }
 }
+
+@font-face {
+    font-family: "Bryant";
+    src: url({{ "Bryant-Regular.otf" | asset_url }}) format("opentype");
+}
