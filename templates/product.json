@@ -11,26 +11,17 @@
           }
         },
         "title": {
-          "type": "title",
+          "type": "title"
+        },
+        "caption": {
+          "type": "text",
           "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
           }
         },
         "price": {
-          "type": "price",
-          "settings": {
-          }
-        },
-        "35c54b26-eabe-4a4a-93f5-239bcad37e4c": {
-          "type": "rating",
-          "disabled": true,
-          "settings": {
-          }
-        },
-        "48fa1049-84ea-4435-94e8-53b7babc133d": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
+          "type": "price"
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -38,38 +29,81 @@
             "picker_type": "button"
           }
         },
+        "quantity_selector": {
+          "type": "quantity_selector"
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": false
+            "show_dynamic_checkout": true
           }
         },
-        "df9000d2-ff33-42e0-ab2f-88defb81572e": {
-          "type": "description",
-          "disabled": true,
+        "description": {
+          "type": "description"
+        },
+        "collapsible-row-0": {
+          "type": "collapsible_tab",
           "settings": {
+            "heading": "Materials",
+            "icon": "leather",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "icon": "truck",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Dimensions",
+            "icon": "ruler",
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Care Instructions",
+            "icon": "heart",
+            "content": "",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
           }
         }
       },
       "block_order": [
         "vendor",
         "title",
+        "caption",
         "price",
-        "35c54b26-eabe-4a4a-93f5-239bcad37e4c",
-        "48fa1049-84ea-4435-94e8-53b7babc133d",
         "variant_picker",
+        "quantity_selector",
         "buy_buttons",
-        "df9000d2-ff33-42e0-ab2f-88defb81572e"
+        "description",
+        "collapsible-row-0",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible-row-3",
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
-        "media_size": "small",
+        "gallery_layout": "stacked",
+        "media_size": "large",
         "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "thumbnail_slider",
-        "media_position": "left",
-        "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
@@ -77,108 +111,82 @@
         "padding_bottom": 12
       }
     },
-    "1b33a808-de06-416f-aebb-6257a30adcae": {
-      "type": "rich-text",
+    "image-with-text": {
+      "type": "image-with-text",
       "blocks": {
-        "template--15762056773788__1b33a808-de06-416f-aebb-6257a30adcae-16811780612623358a-0": {
+        "image-with-text-0": {
           "type": "heading",
           "settings": {
-            "heading": "Why You'll Love It",
+            "heading": "Image with text",
             "heading_size": "h1"
           }
         },
-        "template--15762056773788__1b33a808-de06-416f-aebb-6257a30adcae-16811780612623358a-1": {
+        "image-with-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ product.metafields.sf_products.why_youll_love_it | metafield_tag }}<\/p>"
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15762056773788__1b33a808-de06-416f-aebb-6257a30adcae-16811780612623358a-0",
-        "template--15762056773788__1b33a808-de06-416f-aebb-6257a30adcae-16811780612623358a-1"
+        "image-with-text-0",
+        "image-with-text-1"
       ],
       "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "b5cc88fa-641e-4957-b603-c46ccdeed265": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15732944797852__b5cc88fa-641e-4957-b603-c46ccdeed265-1679333498ea21de91-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "{{ product.metafields.sf_products.short_description_header.value }}",
-            "heading_size": "h1"
-          }
-        },
-        "template--15732944797852__b5cc88fa-641e-4957-b603-c46ccdeed265-1679333498ea21de91-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ product.metafields.sf_products.short_description | metafield_tag }}<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "template--15732944797852__b5cc88fa-641e-4957-b603-c46ccdeed265-1679333498ea21de91-0",
-        "template--15732944797852__b5cc88fa-641e-4957-b603-c46ccdeed265-1679333498ea21de91-1"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "left",
-        "color_scheme": "background-1",
-        "full_width": false,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "ea558b5c-92a0-47fe-9b53-12e48baeda9c": {
-      "type": "video",
-      "settings": {
-        "heading": "Free Video Chat Support",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video": "{{ product.metafields.custom.overview_video.value }}",
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "description": "{{ product.title }} Video",
-        "full_width": false,
-        "color_scheme": "accent-2",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-2",
+        "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "1467ce3a-214e-4895-a12c-b0cd1c015e75": {
-      "type": "faq",
+    "multicolumn": {
+      "type": "multicolumn",
       "blocks": {
-        "b6f03866-8c9d-45d6-8663-6ccf0ad2ecf0": {
-          "type": "faq",
+        "column-0": {
+          "type": "column",
           "settings": {
-            "checkbox_expanded": true,
-            "title": "Question One{{ product.metafields.custom.pixlee_gallery.value }}",
-            "content": "<p>Answer Two<\/p>"
+            "title": "Free Shipping",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-1": {
+          "type": "column",
+          "settings": {
+            "title": "Hassle-Free Exchanges",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "b6f03866-8c9d-45d6-8663-6ccf0ad2ecf0"
+        "column-0",
+        "column-1"
       ],
       "settings": {
-        "enable_rich_schema": true,
-        "max_width": "64rem",
-        "margin_top": 1,
-        "margin_bottom": 1,
-        "background_color": "#ffffff",
-        "border_color": "#eeeeee",
-        "panel_color": "#fdfdfd",
-        "q_size_small": 1,
-        "q_size_large": 1.4,
-        "q_color": "",
-        "a_color": ""
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "related-products": {
@@ -186,7 +194,6 @@
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
-        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "background-1",
         "image_ratio": "square",
@@ -197,135 +204,12 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
-    },
-    "f29dcc16-9a5b-42b0-9d3b-8c9699b64cc1": {
-      "type": "multicolumn",
-      "blocks": {
-        "template--15779855335580__f29dcc16-9a5b-42b0-9d3b-8c9699b64cc1-1683769737b0ec6d1d-0": {
-          "type": "column",
-          "settings": {
-            "title": "PEACE OF MIND",
-            "text": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need. <\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15779855335580__f29dcc16-9a5b-42b0-9d3b-8c9699b64cc1-1683769737b0ec6d1d-1": {
-          "type": "column",
-          "settings": {
-            "title": "Supported by ParentLink Consumer Care via phone, email, chat and video",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15779855335580__f29dcc16-9a5b-42b0-9d3b-8c9699b64cc1-1683769737b0ec6d1d-0",
-        "template--15779855335580__f29dcc16-9a5b-42b0-9d3b-8c9699b64cc1-1683769737b0ec6d1d-1"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h0",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "b33e08e5-f926-425d-a411-e58f0c4d1437": {
-      "type": "multicolumn",
-      "blocks": {
-        "template--15779855335580__b33e08e5-f926-425d-a411-e58f0c4d1437-1683769737b0ec6d1d-0": {
-          "type": "column",
-          "settings": {
-            "title": "HERITAGE",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15779855335580__b33e08e5-f926-425d-a411-e58f0c4d1437-1683769737b0ec6d1d-1": {
-          "type": "column",
-          "settings": {
-            "title": "CONSUMER LED",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15779855335580__b33e08e5-f926-425d-a411-e58f0c4d1437-1683769737b0ec6d1d-2": {
-          "type": "column",
-          "settings": {
-            "title": "SAFETY",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "3d6d5b72-e476-46de-aa62-7126acb05550": {
-          "type": "column",
-          "settings": {
-            "title": "INNOVATION",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15779855335580__b33e08e5-f926-425d-a411-e58f0c4d1437-1683769737b0ec6d1d-0",
-        "template--15779855335580__b33e08e5-f926-425d-a411-e58f0c4d1437-1683769737b0ec6d1d-1",
-        "template--15779855335580__b33e08e5-f926-425d-a411-e58f0c4d1437-1683769737b0ec6d1d-2",
-        "3d6d5b72-e476-46de-aa62-7126acb05550"
-      ],
-      "custom_css": [
-        "h2.inline-richtext {color: white; text-transform: uppercase; font-size: 2em; text-decoration: none; border-bottom: 3px solid #3399cc; padding-bottom: 10px;}"
-      ],
-      "settings": {
-        "title": "Why Evenflo",
-        "heading_size": "h0",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-2",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "6bb9b068-77a4-4c73-be1f-f85ba689e5d2": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{% assign faqs = product.metafields.custom.pdp_faq.value %}\n{% if faqs %}\n\n<script type=\"application\/ld+json\">\n    {\n      \"@context\": \"https:\/\/schema.org\",\n      \"@type\": \"FAQPage\",\n      \"mainEntity\": [\n        {% for faq in faqs %}\n          {\n            \"@type\": \"Question\",\n            \"name\": \"{{ faq.question }}\",\n            \"acceptedAnswer\": {\n              \"@type\": \"Answer\",\n              \"text\": \"{{ faq.answer }}\"\n            }\n          }{% unless forloop.last %}, {% endunless %}\n        {%- endfor -%}\n      ]\n    }\n<\/script>\n\n<script>console.log({{ product.metafields.custom | json }});<\/script>\n\n\n<h2 class=\"title center\">FAQ's<\/h2>\n  <div class=\"pdp-questions-wrapper pdp-questions-wrapper\" id=\"questions\">\n    <div class=\"left-column-data pdp-child-info\">\n    {% for faq in faqs %}\n      <button class='accordion'>\n      <h3>{{ faq.question }}<\/h3>\n      <\/button>\n      <div class=\"panel\"><p>{{ faq.answer }}<\/p><\/div>\n    \n    {%- endfor -%}\n    <\/div>\n    {% assign support_page_link = product.metafields.custom.support_page_link %}\n    {% if support_page_link %}\n      <a href=\"{{ support_page_link }}\">See All<\/a>\n    {% endif %}\n  <\/div>\n{% endif %}",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
     "main",
-    "1b33a808-de06-416f-aebb-6257a30adcae",
-    "b5cc88fa-641e-4957-b603-c46ccdeed265",
-    "ea558b5c-92a0-47fe-9b53-12e48baeda9c",
-    "1467ce3a-214e-4895-a12c-b0cd1c015e75",
-    "related-products",
-    "f29dcc16-9a5b-42b0-9d3b-8c9699b64cc1",
-    "b33e08e5-f926-425d-a411-e58f0c4d1437",
-    "6bb9b068-77a4-4c73-be1f-f85ba689e5d2"
+    "image-with-text",
+    "multicolumn",
+    "related-products"
   ]
 }

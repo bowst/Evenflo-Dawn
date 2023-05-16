@@ -8,30 +8,28 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Check out the new Revolve360 Extend",
+            "text": "Welcome to our store",
             "text_alignment": "center",
-            "color_scheme": "accent-1",
-            "link": "shopify:\/\/products\/revolve360-extend-swivel-convertible-car-seat-sensorsafe-green"
+            "color_scheme": "background-1",
+            "link": ""
           }
         }
       },
       "block_order": [
         "announcement-bar-0"
-      ],
-      "settings": {
-      }
+      ]
     },
     "header": {
       "type": "header",
       "settings": {
-        "logo_position": "top-left",
-        "menu": "2023-main",
-        "menu_type_desktop": "mega",
+        "color_scheme": "background-1",
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
-        "show_line_separator": false,
-        "color_scheme": "inverse",
-        "enable_country_selector": false,
-        "enable_language_selector": false,
+        "show_line_separator": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
         "padding_top": 20,
