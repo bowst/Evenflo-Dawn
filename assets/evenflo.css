@@ -1,7 +1,23 @@
 h1 {
     text-transform: uppercase;
+    font-family: mr-eaves-sans, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 4em;
 }
 
+h2 {
+    text-transform: uppercase;
+    font-style: normal;
+    font-size: 3em;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-family: mr-eaves-sans, sans-serif;
+    font-style: normal;
+    font-size: 2em;
+}
 
 /* Evenflo Menu */
 .header__menu-item {
@@ -36,4 +52,8 @@ h3.card__information {
     height: 3px;
     background-color: #2595c4;
     margin-top: 10px;
+}
+
+.collection-hero.collection-hero--with-image {
+    padding: 0px !important
 }
