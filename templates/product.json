@@ -10,6 +10,13 @@
             "text_style": "uppercase"
           }
         },
+        "527ae205-9ecd-4597-a0cd-6dd9c1280d8a": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.platform_name.value }}",
+            "text_style": "body"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -108,6 +115,7 @@
       },
       "block_order": [
         "vendor",
+        "527ae205-9ecd-4597-a0cd-6dd9c1280d8a",
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "caption",
