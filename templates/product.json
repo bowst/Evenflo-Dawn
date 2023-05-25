@@ -17,6 +17,13 @@
             "text_style": "subtitle"
           }
         },
+        "67e090b4-7503-458f-ad8e-096216c49977": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.platform_sub_name.value }}",
+            "text_style": "subtitle"
+          }
+        },
         "title": {
           "type": "title",
           "disabled": true,
@@ -117,6 +124,7 @@
       "block_order": [
         "vendor",
         "527ae205-9ecd-4597-a0cd-6dd9c1280d8a",
+        "67e090b4-7503-458f-ad8e-096216c49977",
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "caption",
