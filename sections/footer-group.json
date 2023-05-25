@@ -2,41 +2,75 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "1684973213eb987277": {
+      "type": "apps",
+      "blocks": {
+        "94b49b9a-a227-44c8-93c3-6820d97f9925": {
+          "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/form-embed-block\/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": ""
+          }
+        }
+      },
+      "block_order": [
+        "94b49b9a-a227-44c8-93c3-6820d97f9925"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
         "7bdea8fe-920e-40e8-8fb6-106ed582c22f": {
           "type": "brand_information",
+          "disabled": true,
           "settings": {
             "show_social": true
           }
         },
-        "footer-2": {
-          "type": "text",
+        "91178a9f-eac3-43ed-8712-6a98982acf28": {
+          "type": "link_list",
           "settings": {
-            "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "heading": "Company",
+            "menu": "about"
           }
         },
         "footer-0": {
           "type": "link_list",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "heading": "Shop",
+            "menu": "shop"
+          }
+        },
+        "1c0bce4b-b646-4702-abea-b68d23102ef8": {
+          "type": "link_list",
+          "settings": {
+            "heading": "My Evenflo",
+            "menu": "my-evenflo"
+          }
+        },
+        "c52e66b4-3f1f-4e73-b241-046ca342b2a2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "consumer-care"
           }
         }
       },
       "block_order": [
         "7bdea8fe-920e-40e8-8fb6-106ed582c22f",
-        "footer-2",
-        "footer-0"
+        "91178a9f-eac3-43ed-8712-6a98982acf28",
+        "footer-0",
+        "1c0bce4b-b646-4702-abea-b68d23102ef8",
+        "c52e66b4-3f1f-4e73-b241-046ca342b2a2"
       ],
       "settings": {
         "color_scheme": "background-2",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
-        "show_social": false,
+        "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": false,
@@ -48,6 +82,7 @@
     }
   },
   "order": [
+    "1684973213eb987277",
     "footer"
   ]
 }
