@@ -49,7 +49,7 @@
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
           }
         },
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-2": {
