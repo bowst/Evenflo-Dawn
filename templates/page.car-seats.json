@@ -1,5 +1,33 @@
 {
   "sections": {
+    "c5c0d082-c845-4a6f-bfef-6794dfacd1e6": {
+      "type": "image-banner",
+      "blocks": {
+        "template--15781023842460__c5c0d082-c845-4a6f-bfef-6794dfacd1e6-16862544866cbdc191-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--15781023842460__c5c0d082-c845-4a6f-bfef-6794dfacd1e6-16862544866cbdc191-0"
+      ],
+      "settings": {
+        "image": "{{ page.metafields.custom.header_image.value }}",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -215,6 +243,7 @@
     }
   },
   "order": [
+    "c5c0d082-c845-4a6f-bfef-6794dfacd1e6",
     "main",
     "24526522-9d8c-4b10-9aa8-0c31e8b483d0",
     "b999fa67-5d2a-452e-ab0c-283cc9d9df92",
