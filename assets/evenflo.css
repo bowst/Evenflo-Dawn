@@ -98,3 +98,17 @@ h3.card__information {
 .div:empty {
     display: block !important;
 }
+
+.image-with-text__heading {
+    display: inline-block;
+    position: relative;}
+
+.image-with-text__heading::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background-color: blue !important;
+}
