@@ -84,3 +84,21 @@
 .rich-text__blocks.right .rich-text__buttons {
   justify-content: flex-end;
 }
+
+
+/* Evenflo */
+
+.rich-text__heading.rte.inline-richtext.evenflo.h1 {
+  position: relative;
+}
+
+.rich-text__heading.rte.inline-richtext.evenflo.h1::after {
+  content: "";
+  position: absolute;
+  /* bottom: 10px; */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 6px;
+  background: #2996C5;
+}
