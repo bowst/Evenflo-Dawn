@@ -1,59 +1,7 @@
 {
   "sections": {
-    "b318a6f7-1ba6-4b11-a15e-247cea8474ec": {
-      "type": "evenflo_image-banner",
-      "blocks": {
-        "template--15781023842460__b318a6f7-1ba6-4b11-a15e-247cea8474ec-168709797415f8bfa0-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "{{ page.title }}",
-            "heading_size": "h1",
-            "heading_color": "white"
-          }
-        },
-        "template--15781023842460__b318a6f7-1ba6-4b11-a15e-247cea8474ec-168709797415f8bfa0-1": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "template--15781023842460__b318a6f7-1ba6-4b11-a15e-247cea8474ec-168709797415f8bfa0-2": {
-          "type": "buttons",
-          "disabled": true,
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "template--15781023842460__b318a6f7-1ba6-4b11-a15e-247cea8474ec-168709797415f8bfa0-0",
-        "template--15781023842460__b318a6f7-1ba6-4b11-a15e-247cea8474ec-168709797415f8bfa0-1",
-        "template--15781023842460__b318a6f7-1ba6-4b11-a15e-247cea8474ec-168709797415f8bfa0-2"
-      ],
-      "settings": {
-        "image": "{{ page.metafields.custom.header_image.value }}",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
     "c5c0d082-c845-4a6f-bfef-6794dfacd1e6": {
       "type": "image-banner",
-      "disabled": true,
       "blocks": {
         "template--15781023842460__c5c0d082-c845-4a6f-bfef-6794dfacd1e6-16862544866cbdc191-0": {
           "type": "heading",
@@ -480,7 +428,6 @@
     }
   },
   "order": [
-    "b318a6f7-1ba6-4b11-a15e-247cea8474ec",
     "c5c0d082-c845-4a6f-bfef-6794dfacd1e6",
     "main",
     "24526522-9d8c-4b10-9aa8-0c31e8b483d0",
