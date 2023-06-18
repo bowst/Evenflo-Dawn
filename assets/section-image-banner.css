@@ -453,4 +453,21 @@
   }
 }
 
+/* Evenflo  */
+.banner__heading.inline-richtext.h1.white {
+  color: white;
+}
 
+.banner__heading.inline-richtext.h1.black {
+  color: black;
+}
+
+.banner__content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;
+  height: 10px;
+  background: linear-gradient(to right, #41c4bc, #c1db94);
+}
