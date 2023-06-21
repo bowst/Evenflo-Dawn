@@ -9,6 +9,20 @@
         "padding_bottom": 52
       }
     },
+    "video": {
+      "type": "video",
+      "settings": {
+        "heading": "Shyft into life with a newborn",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https:\/\/player.vimeo.com\/video\/809093687",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "disabled": true,
@@ -18,7 +32,8 @@
           "disabled": true,
           "settings": {
             "heading": "Image banner",
-            "heading_size": "h0"
+            "heading_size": "h0",
+            "heading_color": "black"
           }
         },
         "text": {
@@ -159,21 +174,6 @@
         "padding_bottom": 36
       }
     },
-    "video": {
-      "type": "video",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "multicolumn": {
       "type": "multicolumn",
       "disabled": true,
@@ -231,11 +231,11 @@
   },
   "order": [
     "d1dc77c8-5d06-406a-9c6a-b75c616a891e",
+    "video",
     "image_banner",
     "rich_text",
     "featured_collection",
     "collage",
-    "video",
     "multicolumn"
   ]
 }
