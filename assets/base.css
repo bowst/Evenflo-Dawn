@@ -31,6 +31,7 @@
   --gradient-background: var(--gradient-base-accent-2);
 }
 
+
 .color-foreground-outline-button {
   --color-foreground: var(--color-base-outline-button-labels);
 }
@@ -704,6 +705,7 @@ hr {
   background-color: rgba(var(--color-foreground), 0.2);
   display: block;
   margin: 5rem 0;
+  border-color:#2996C5;
 }
 
 @media screen and (min-width: 750px) {
@@ -2890,6 +2892,8 @@ details-disclosure>details {
   background-attachment: fixed;
 }
 
+
+
 @media screen and (forced-colors: active) {
   .icon {
     color: CanvasText;
@@ -3162,4 +3166,12 @@ details-disclosure>details {
       transform: rotate(360deg) translateX(1em) rotate(-360deg) scale(1.2);
     }
   }
+}
+
+/* Evenflo */
+
+.gradient .color-light-green {
+  background: rgb(var(--color-background));
+  background: #E3F2F3;
+  background-attachment: fixed;
 }
