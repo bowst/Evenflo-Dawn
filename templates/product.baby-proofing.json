@@ -27,7 +27,6 @@
         },
         "35c54b26-eabe-4a4a-93f5-239bcad37e4c": {
           "type": "rating",
-          "disabled": true,
           "settings": {
           }
         },
@@ -90,7 +89,7 @@
         "template--15762056773788__1b33a808-de06-416f-aebb-6257a30adcae-16811780612623358a-0": {
           "type": "heading",
           "settings": {
-            "heading": "Why You'll Love It",
+            "heading": "{{ product.metafields.sf_products.description_header.value }}",
             "heading_size": "h1"
           }
         },
