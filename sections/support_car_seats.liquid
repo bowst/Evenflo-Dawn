@@ -45,6 +45,10 @@
               {% endif %}
             </div>
           {% endif %}
+          {% for product in collections.all.products %}
+               {% assign this_product = product %}
+                  <h1 class="product_name">{{ product.title }}</h1>
+          {% endfor %}
         </div>
       </div>
 
