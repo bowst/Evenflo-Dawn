@@ -1,0 +1,76 @@
+
+{{ section.settings.support_heading }} 
+
+<!-- child weight height and age section under the product images that will be here for every type of product -->
+{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+{% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
+{% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+
+{% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
+
+  {% if child_weight_min_value == blank and child_weight_max_value == blank  %}
+    {% assign hide_child_weight = true %}
+  {% endif %}
+
+  {% if child_height_min_value == blank and child_height_max_value == blank %}
+    {% assign hide_child_height = true %}
+  {% endif %}
+
+
+
+
+   
+      <div class="left-column-data pdp-default-child-info">
+        <h3>Child Fit</h3>
+        <div class="feature_divider"></div>
+        <div class="row">
+          <div class="five columns">
+            <h5>Weight</h5>
+            {% if child_weight_min_value %}
+              {{ child_weight_min_value }} -
+            {% endif %}
+            {% if child_weight_max_value %}
+              {{ child_weight_max_value }} lbs
+            {% endif %}
+          </div>
+          {% if hide_child_height != true  %}
+            <div class="five columns">
+              <h5>Height</h5>
+              {% if child_height_min_value %}
+                {{ child_height_min_value }} -
+              {% endif %}
+              {% if child_height_max_value %}
+                {{ child_height_max_value }} in
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+
+{% schema %}
+  {
+  "name": "Support Car Seats",
+  "class": "support",
+  "settings": [
+    {
+      "type": "text",
+      "id": "support_heading",
+      "label": "Support Heading",
+      "default": "Support"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Support Car Seats"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
