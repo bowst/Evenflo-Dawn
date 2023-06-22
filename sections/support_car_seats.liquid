@@ -9,7 +9,7 @@
 {%- liquid
   paginate collections.all.products by 1000
     for product in collections.all.products
-      if product.id == 7221822455964
+      if product.id == 6707720716444
          assign this_product = product
       endif 
     endfor 
@@ -53,10 +53,7 @@
               {% endif %}
             </div>
           {% endif %}
-          {% for product in collections.all.products %}
-               {% assign this_product = product %}
-                  <h1 class="product_name">{{ this_product.id }}</h1>
-          {% endfor %}
+            <h1 class="product_name">{{ this_product.id }}</h1>
 
         </div>
       </div>
