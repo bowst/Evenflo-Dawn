@@ -6,7 +6,15 @@
 {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
-
+{%- liquid
+  paginate collections.all.products by 1000
+    for product in collections.all.products
+      if product.id == 7221822455964
+         assign this_product = product
+      endif 
+    endfor 
+ endpaginate
+-%}
 {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
 
   {% if child_weight_min_value == blank and child_weight_max_value == blank  %}
@@ -45,10 +53,7 @@
               {% endif %}
             </div>
           {% endif %}
-          {% for product in collections.all.products %}
-               {% assign this_product = product %}
-                  <h1 class="product_name">{{ product.title }}</h1>
-          {% endfor %}
+          <h1 class="product_name">{{ this_product.title }}</h1>
 
         </div>
       </div>
