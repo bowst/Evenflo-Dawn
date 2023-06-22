@@ -8,9 +8,9 @@
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
 {%- liquid
   paginate collections.all.products by 1000
-    for product in collections.all.products
-      if product.id == 6707720716444
-         assign this_product = product
+    for this_product in collections.all.products
+      if this_product.id == 6707720716444
+         assign product = this_product
       endif 
     endfor 
  endpaginate
@@ -53,7 +53,7 @@
               {% endif %}
             </div>
           {% endif %}
-            <h1 class="product_name">{{ this_product.title }}</h1>
+            <h3 class="product_name">{{ this_product.title }}</h3>
 
         </div>
       </div>
