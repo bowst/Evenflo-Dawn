@@ -2,9 +2,59 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "f1cbabd5-92d6-4fb9-822e-155b59cd3d43": {
+      "type": "image-banner",
+      "blocks": {
+        "template--15799923507356__f1cbabd5-92d6-4fb9-822e-155b59cd3d43-16874971572bc3a8ce-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "template--15799923507356__f1cbabd5-92d6-4fb9-822e-155b59cd3d43-16874971572bc3a8ce-1": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "template--15799923507356__f1cbabd5-92d6-4fb9-822e-155b59cd3d43-16874971572bc3a8ce-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15799923507356__f1cbabd5-92d6-4fb9-822e-155b59cd3d43-16874971572bc3a8ce-0",
+        "template--15799923507356__f1cbabd5-92d6-4fb9-822e-155b59cd3d43-16874971572bc3a8ce-1",
+        "template--15799923507356__f1cbabd5-92d6-4fb9-822e-155b59cd3d43-16874971572bc3a8ce-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/All4One_DLX__Rear_Facing_146-e3_update_22c9c8ca-2cda-4d3b-a176-84367988b3c8.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
       }
     },
     "b44c8197-4385-4350-ad0f-238c04013fa1": {
@@ -189,6 +239,7 @@
   },
   "order": [
     "main",
+    "f1cbabd5-92d6-4fb9-822e-155b59cd3d43",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
     "013f6ab7-3595-492c-8062-a12326290142",
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
