@@ -2,10 +2,7 @@
 {{ section.settings.support_heading }} 
 
 <!-- child weight height and age section under the product images that will be here for every type of product -->
-{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
-{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
-{% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
-{% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+
 {% liquid
   assign this_product = null
   for product in collections.all.products
@@ -15,6 +12,11 @@
     endif
   endfor
 -%}
+
+{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+{% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
+{% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
 {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
 
   {% if child_weight_min_value == blank and child_weight_max_value == blank  %}
