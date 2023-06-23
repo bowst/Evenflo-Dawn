@@ -10,8 +10,8 @@
 
 @media screen and (min-width: 750px) {
   .collection-hero.collection-hero--with-image {
-    padding: calc(4rem + var(--page-width-margin)) 0
-      calc(4rem + var(--page-width-margin));
+    /* padding: calc(4rem + var(--page-width-margin)) 0
+      calc(4rem + var(--page-width-margin)); */
     overflow: hidden;
   }
 
@@ -99,3 +99,5 @@
     min-height: 20rem;
   }
 }
+
+.color-accent-4 {background: linear-gradient(#00B1B0, #CBDC82);}

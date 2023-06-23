@@ -1,0 +1,72 @@
+{{ 'section-category-anchors.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+
+<section>
+<div class="category-anchor">
+  <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
+      <div class="category-anchor center">
+        <h2>{{ section.settings.category_anchor }}</h2>
+        <div class="rich-text__text rte">
+          {{ section.settings.html }} 
+          {{ section.settings.liquid }} 
+        </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+{% schema %}
+  {
+  "name": "Category Anchors",
+  "class": "product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "category_anchor",
+      "label": "Category Anchor",
+      "default": "Category",
+      "placeholder": "Shop"
+    },
+    {
+      "type": "html",
+      "id": "html",
+      "label": "HTML"
+    },
+    {
+      "type": "liquid",
+      "id": "liquid",
+      "label": "Liquid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Anchors"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
