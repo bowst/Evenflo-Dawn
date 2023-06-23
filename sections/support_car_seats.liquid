@@ -12,7 +12,7 @@
     endif
   endfor
 -%}
-
+{{ product.metafields.custom.platform_name }}
 {% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
 {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
@@ -34,7 +34,7 @@
       <div class="left-column-data pdp-default-child-info">
         <h3>{{ this_product.title }}</h3>
        {{ product.metafields.sf_products.child_weight_min  }} 
-        {{ product.metafields.custom.platform_name }}
+        
         <div class="feature_divider"></div>
         <div class="row">
           <div class="five columns">
