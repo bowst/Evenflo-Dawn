@@ -9,7 +9,7 @@
 {%- liquid
   paginate collections.all.products by 1000
     for product in collections.all.products
-      if product.id == page.metafields.custom.associated_product_id
+      if product.id == 6707720716444
          assign this_product = product
       endif 
     endfor 
