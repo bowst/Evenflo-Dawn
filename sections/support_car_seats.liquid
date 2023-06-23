@@ -2,21 +2,19 @@
 {{ section.settings.support_heading }} 
 
 <!-- child weight height and age section under the product images that will be here for every type of product -->
-
-{% liquid
-  assign this_product = null
-  for product in collections.all.products
-    if product.id == page.metafields.custom.associated_product_id
-      assign this_product = product
-      break
-    endif
-  endfor
--%}
-{{ product.metafields.custom.platform_name }}
 {% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
 {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+{%- liquid
+  paginate collections.all.products by 1000
+    for product in collections.all.products
+      if product.id == 6707720716444
+         assign this_product = product
+      endif 
+    endfor 
+ endpaginate
+-%}
 {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
 
   {% if child_weight_min_value == blank and child_weight_max_value == blank  %}
@@ -26,11 +24,6 @@
   {% if child_height_min_value == blank and child_height_max_value == blank %}
     {% assign hide_child_height = true %}
   {% endif %}
-
-
-
-
-   
       <div class="left-column-data pdp-default-child-info">
         <h3>{{ this_product.title }}</h3>
        {{ product.metafields.sf_products.child_weight_min  }} 
