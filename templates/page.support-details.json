@@ -215,14 +215,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "f45890f7-2410-4ceb-bff2-39b937e45b93": {
-      "type": "custom-html",
-      "settings": {
-        "custom_html": "<!--  ----------------------------------------------------------------------  -->\n<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->\n<!--  If necessary, please modify the charset parameter to specify the        -->\n<!--  character set of your HTML page.                                        -->\n<!--  ----------------------------------------------------------------------  -->\n\n \n\n<meta http-equiv=\"Content-type\" content=\"text\/html; charset=UTF-8\">\n<script src=\"https:\/\/www.google.com\/recaptcha\/api.js\"><\/script>\n<script>\nfunction timestamp() { var response = document.getElementById(\"g-recaptcha-response\"); if (response == null || response.value.trim() == \"\") {var elems = JSON.parse(document.getElementsByName(\"captcha_settings\")[0].value);elems[\"ts\"] = JSON.stringify(new Date().getTime());document.getElementsByName(\"captcha_settings\")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); \n<\/script>\n\n \n\n<!--  ----------------------------------------------------------------------  -->\n<!--  NOTE: Please add the following <FORM> element to your page.             -->\n<!--  ----------------------------------------------------------------------  -->\n\n \n\n<form action=\"https:\/\/webto.salesforce.com\/servlet\/servlet.WebToCase?encoding=UTF-8\" method=\"POST\">\n\n \n\n<input type=\"hidden\" name=\"captcha_settings\" value='{\"keyname\":\"EvenfloDomainreCAPTCHA\",\"fallback\":\"true\",\"orgId\":\"00Df4000002dTF0\",\"ts\":\"\"}'>\n<input type=\"hidden\" name=\"orgid\" value=\"00Df4000002dTF0\">\n<input type=\"hidden\" name=\"retURL\" value=\"https:\/\/www.evenflo.com\/thankyou\">\n\n \n\n<!--  ----------------------------------------------------------------------  -->\n<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->\n<!--  these lines if you wish to test in debug mode.                          -->\n<!--  <input type=\"hidden\" name=\"debug\" value=1>                              -->\n<!--  <input type=\"hidden\" name=\"debugEmail\"                                  -->\n<!--  value=\"russell.griffith@goodbabyint.com\">                               -->\n<!--  ----------------------------------------------------------------------  -->\n\n \n\nFirst Name:<input id=\"00N5G00000WigJE\" maxlength=\"255\" name=\"00N5G00000WigJE\" size=\"20\" type=\"text\"><br>\n\n \n\nLast Name:<input id=\"00N5G00000WigJJ\" maxlength=\"255\" name=\"00N5G00000WigJJ\" size=\"20\" type=\"text\"><br>\n\n \n\n<label for=\"name\">Contact Name<\/label><input id=\"name\" maxlength=\"80\" name=\"name\" size=\"20\" type=\"text\"><br>\n\n \n\n<label for=\"email\">Email<\/label><input id=\"email\" maxlength=\"80\" name=\"email\" size=\"20\" type=\"text\"><br>\n\n \n\n<label for=\"phone\">Phone<\/label><input id=\"phone\" maxlength=\"40\" name=\"phone\" size=\"20\" type=\"text\"><br>\n\n \n\n<label for=\"subject\">Subject<\/label><input id=\"subject\" maxlength=\"80\" name=\"subject\" size=\"20\" type=\"text\"><br>\n\n \n\n<label for=\"description\">Description<\/label><textarea name=\"description\"><\/textarea><br>\n\n \n\n<div class=\"g-recaptcha\" data-sitekey=\"6LdhHrQmAAAAAIzG4KNd6VH3BABBMqlX451RVTZ3\" required=\"yes\"><\/div>\n<br>\n<input type=\"submit\" name=\"submit\">\n\n \n\n<\/form>",
-        "css_class": "",
-        "custom_css": ""
-      }
     }
   },
   "order": [
@@ -233,7 +225,6 @@
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
     "6bb51026-ccbd-4604-8669-add5ff4b5ad5",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e",
-    "f45890f7-2410-4ceb-bff2-39b937e45b93"
+    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e"
   ]
 }
