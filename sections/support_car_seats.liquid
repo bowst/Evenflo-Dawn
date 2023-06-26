@@ -1,14 +1,5 @@
+{{ 'section-support.css' | asset_url | stylesheet_tag }}
 
-{{ section.settings.support_heading }} 
-
-
-
-
-<!-- child weight height and age section under the product images that will be here for every type of product -->
-{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
-{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
-{% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
-{% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
 
 
 {%- liquid
@@ -22,44 +13,85 @@
     endfor 
  endpaginate
 -%}
-{% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
 
-  {% if child_weight_min_value == blank and child_weight_max_value == blank  %}
-    {% assign hide_child_weight = true %}
-  {% endif %}
+<section>
 
-  {% if child_height_min_value == blank and child_height_max_value == blank %}
-    {% assign hide_child_height = true %}
-  {% endif %}
-      <div class="left-column-data pdp-default-child-info">
-        <h3>{{ this_product.title }}</h3>
-        {{ this_product.description }}
-       {{ this_product.metafields.sf_products.child_weight_min  }} 
-        
-        <div class="feature_divider"></div>
-        <div class="row">
-          <div class="five columns">
-            <h5>Weight</h5>
-            {% if child_weight_min_value %}
-              {{ child_weight_min_value }} -
-            {% endif %}
-            {% if child_weight_max_value %}
-              {{ child_weight_max_value }} lbs
-            {% endif %}
+  <div class="content-container rich-text--full-width content-container--full-width">
+    <h2>{{ section.settings.support_heading }} </h2>
+    Child Fit
+    <div class="flex-row">
+          {% if this_product.metafields.sf_products.child_weight_min %}
+          <div class="flex-item">
+            <h3>Weight</h3>
+            {{ this_product.metafields.sf_products.child_weight_min }}  -
+            {{ this_product.metafields.sf_products.child_weight_max }}  lbs
           </div>
-          {% if hide_child_height != true  %}
-            <div class="five columns">
-              <h5>Height</h5>
-              {% if child_height_min_value %}
-                {{ child_height_min_value }} -
-              {% endif %}
-              {% if child_height_max_value %}
-                {{ child_height_max_value }} in
-              {% endif %}
-            </div>
           {% endif %}
+
+          {% if this_product.metafields.sf_products.child_height_min %}
+          <div class="flex-item">
+          <h3>Height</h3>
+          {{ this_product.metafields.sf_products.child_height_min }} -
+          {{ this_product.metafields.sf_products.child_height_max }} in
+          </div>
+          {% endif %}
+
+  </div>
+Car Seat Specificications
+<div class="flex-row">
+        <div class="flex-item">
+          <h3>Steel Reinforced</h3>
+          {{ this_product.metafields.sf_car_seat.steel_reinforced }} 
         </div>
-      </div>
+</div>
+What's in the box
+<div class="flex-row">
+        <div class="flex-item">
+        <h3>Contents</h3>
+        {{ this_product.metafields.sf_products.retail_package_contents }}
+        </div>
+
+        <div class="flex-item">
+        <h3>Product Dimensions</h3>
+            <p>
+                {{ this_product.metafields.sf_products.assembled_width }} x
+                {{ this_product.metafields.sf_products.assembled_height }} x
+                {{ this_product.metafields.sf_products.assembled_depth }} in
+            </p>
+        </div>
+
+        <div class="flex-item">
+        <h3>Folded Dimensions</h3>
+        {{ product.metafields.sf_products.folded_dimensions }}
+</div>
+<div class="flex-item">
+        <h3>Package Dimensions</h3>
+        <p>
+          {{ this_product.metafields.sf_shipping.package_width }} x
+          {{ this_product.metafields.sf_shipping.package_height }} x
+          {{ this_product.metafields.sf_shipping.package_depth }} in
+        </p>
+        </div>
+        <div class="flex-item">
+        <h3>Product Weight</h3>
+            <p>{{ this_product.metafields.sf_products.assembled_weight }} lbs.</p>
+</div>
+<div class="flex-item">
+        <h3>Package Weight</h3>
+        <p>{{ this_product.metafields.sf_products.assembled_weight }} lbs. </p>
+        </div>
+        <div class="flex-item">
+        <h3>Weight w/o Base</h3>
+            <p>{{ this_product.metafields.sf_car_seat.carrier_weight_without_base }} lbs.</p>
+            </div>
+</div>
+
+<h3>Harness Type</h3>
+                <p>
+                  {{ this_product.metafields.sf_products.harness_type }}
+                </p>
+
+</section>
 
 
 {% schema %}
