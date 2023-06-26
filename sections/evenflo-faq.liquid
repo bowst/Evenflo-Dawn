@@ -8,7 +8,7 @@
 {% if faqData %}
 
   <ul>
-    {% for faqItem in faqData %}
+    {% for faqItem in page.metafields.custom.support_page_faq.value %}
         <script>console.log({{ page.metafields.custom.support_page_faq.value[0] | json }});</script>
 
       <li>
