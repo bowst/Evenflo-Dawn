@@ -1,0 +1,50 @@
+{%- # Label: Number of FAQ -%}
+{{ section.settings.number_of_faq }} 
+
+
+
+{% assign faqData = page.metafields.custom.support_page_faq | json %}
+
+{% if faqData %}
+  <ul>
+    {% for faqItem in faqData %}
+      <li>
+        <h3>{{ faqItem.question }}</h3>
+        <p>{{ faqItem.answer }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No FAQ data found.</p>
+{% endif %}
+
+
+
+
+
+{% schema %}
+  {
+  "name": "Evenflo FAQs",
+  "class": "faq",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "number",
+      "id": "number_of_faq",
+      "label": "Number of FAQ",
+      "default": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo FAQs"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
