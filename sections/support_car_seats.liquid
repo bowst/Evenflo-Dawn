@@ -9,10 +9,14 @@
 {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+
+
 {%- liquid
   paginate collections.all.products by 1000
     for product in collections.all.products
-      if "6802102747292" == page.metafields.custom.associated_product_id
+      assign product_id = product.id | append: "" 
+
+      if product_id == page.metafields.custom.associated_product_id
          assign this_product = product
       endif 
     endfor 
