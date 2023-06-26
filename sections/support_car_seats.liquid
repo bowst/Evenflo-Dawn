@@ -12,7 +12,7 @@
 {%- liquid
   paginate collections.all.products by 1000
     for product in collections.all.products
-      if product.id == 6802102747292
+      if product.id == "6802102747292"
          assign this_product = product
       endif 
     endfor 
