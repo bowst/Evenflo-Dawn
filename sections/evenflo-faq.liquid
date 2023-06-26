@@ -6,7 +6,7 @@
 {% assign faqData = page.metafields.custom.support_page_faq | json %}
 <script>console.log({{ faqData | json }});</script>
 
-{% if faqData %}
+<!-- {% if faqData %} -->
   <ul>
     {% for faqItem in faqData %}
       <li>
@@ -15,9 +15,9 @@
       </li>
     {% endfor %}
   </ul>
-{% else %}
+<!-- {% else %} -->
   <p>No FAQ data found.</p>
-{% endif %}
+<!-- {% endif %} -->
 
 
 
