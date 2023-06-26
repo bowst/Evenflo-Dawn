@@ -9,7 +9,7 @@
 
   <ul>
     {% for faqItem in faqData %}
-        <script>console.log({{ faqItem | json }});</script>
+        <script>console.log({{ faqData | json }});</script>
 
       <li>
         <h3>{{ faqItem.question }}</h3>
