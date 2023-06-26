@@ -3,7 +3,7 @@
 
 
 
-{% assign faqData = page.metafields.custom.support_page_faq | json %}
+{% assign faqData = page.metafields.custom.support_page_faq.value | json %}
 <script>console.log({{ page.metafields.custom.support_page_faq.value[0] | json }});</script>
 
 {% if faqData %}
