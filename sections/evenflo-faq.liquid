@@ -4,6 +4,7 @@
 
 
 {% assign faqData = page.metafields.custom.support_page_faq | json %}
+<script>console.log({{ faqData | json }});</script>
 
 {% if faqData %}
   <ul>
