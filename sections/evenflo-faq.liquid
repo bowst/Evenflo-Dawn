@@ -9,7 +9,7 @@
 
   <ul>
     {% for faqItem in faqData %}
-        <script>console.log({{ faqData[0] | json }});</script>
+        <script>console.log({{ page.metafields.custom.support_page_faq.value[0] | json }});</script>
 
       <li>
         <h3>{{ faqItem.question }}</h3>
