@@ -12,7 +12,7 @@
 {%- liquid
   paginate collections.all.products by 1000
     for product in collections.all.products
-      if product.id == 6802102747292
+      if product.id == page.metafields.custom.associated_product_id
          assign this_product = product
       endif 
     endfor 
@@ -29,7 +29,6 @@
   {% endif %}
       <div class="left-column-data pdp-default-child-info">
         <h3>{{ this_product.title }}</h3>
-        <h3>{{ page.metafields.custom.associated_product_id }}</h3>
         {{ this_product.description }}
        {{ this_product.metafields.sf_products.child_weight_min  }} 
         
