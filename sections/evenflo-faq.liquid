@@ -4,11 +4,13 @@
 
 
 {% assign faqData = page.metafields.custom.support_page_faq.value | json %}
-<script>console.log({{ page.metafields.custom.support_page_faq.value[0].question | json }});</script>
 
 {% if faqData %}
+
   <ul>
     {% for faqItem in faqData %}
+        <script>console.log({{ faqItem | json }});</script>
+
       <li>
         <h3>{{ faqItem.question }}</h3>
         <p>{{ faqItem.answer }}</p>
