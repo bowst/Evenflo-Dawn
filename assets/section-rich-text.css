@@ -85,20 +85,32 @@
   justify-content: flex-end;
 }
 
-
 /* Evenflo */
 
 .rich-text__heading.rte.inline-richtext.evenflo.h1 {
+  margin-bottom: 40px;
   position: relative;
 }
 
 .rich-text__heading.rte.inline-richtext.evenflo.h1::after {
-  content: "";
+  content: '';
   position: absolute;
-  /* bottom: 10px; */
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   width: 150px;
   height: 6px;
-  background: #2996C5;
+  background: #2996c5;
+}
+
+@media screen and (min-width: 990px) {
+  .rich-text__blocks {
+    max-width: 98rem;
+  }
+
+  .rich-text__text {
+    max-width: 78rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
