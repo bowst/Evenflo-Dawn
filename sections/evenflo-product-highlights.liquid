@@ -18,6 +18,25 @@
 <section>
 <div class="category-anchor">
   <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
+        Child Fit
+    <div class="flex-row">
+          {% if product.metafields.sf_products.child_weight_min %}
+          <div class="flex-item">
+            <h3>Weight</h3>
+            {{ product.metafields.sf_products.child_weight_min }}  -
+            {{ product.metafields.sf_products.child_weight_max }}  lbs
+          </div>
+          {% endif %}
+
+          {% if this_product.metafields.sf_products.child_height_min %}
+          <div class="flex-item">
+          <h3>Height</h3>
+          {{ this_product.metafields.sf_products.child_height_min }} -
+          {{ this_product.metafields.sf_products.child_height_max }} in
+          </div>
+          {% endif %}
+
+  </div>
   <div class="category-anchor center">
   </div>
 </div>
