@@ -1,8 +1,44 @@
+{%- # Label: Heading -%}
+{{ section.settings.heading }} 
+
+{%- # Label: Description -%}
+{{ section.settings.description }} 
+
+{%- # Label: URL -%}
+{{ section.settings.url }} 
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
-  }
+  "name": "Evenflo Video",
+  "class": "video",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "video_url",
+      "id": "url",
+      "label": "URL",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Video"
+    }
+  ]
+}  
 {% endschema %}
 
 {% stylesheet %}
