@@ -23,36 +23,16 @@
           {{ section.settings.description }} 
           
         </div>
+        <div>
+          <video class="pdp-main-video" type='video/mp4' controls>
+        {{ product.metafields.sf_products.product_video }}
+         </video>
+        </div>
     </div>
   </div>
 </section>
 
 
-
-
-
-
-
-
-
-
-
-{% assign product_video_value = product.metafields.sf_products.product_video %}
-
-  <div class="pdp-features-wrapper pdp-video-wrapper" id='videos'>
-    <div class="pdp-main-video-wrapper">
-      <video class="pdp-main-video" type='video/mp4' controls>
-        <source src="{{ product_video_value }}">
-      </video>
-    </div>
-
-    {% assign header_text = product.metafields.sf_products.video_header %}
-   
-    <div>
-      <h3 class="pdp-video-header">{{ header_text }}</h3>
-    </div>
-
-  </div>
 
 {% schema %}
   {
