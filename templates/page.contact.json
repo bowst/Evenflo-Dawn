@@ -2,17 +2,51 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "form": {
-      "type": "contact-form",
+    "bd43ea70-be18-4c69-8faf-0c6b96c14757": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--15779855138972__bd43ea70-be18-4c69-8faf-0c6b96c14757-168804221395e8f87f-0": {
+          "type": "column",
+          "settings": {
+            "title": "Looking for help?",
+            "text": "<p>You're welcome to contact Evenflo directly <strong>Monday through Friday between 8am and 5pm ET<\/strong>. We provide support for both US and Canada, and cover Evenflo, Evenflo GOLD, ExerSaucer, Snugi, and Urbini branded products.<\/p><p><strong>Evenflo & Exersaucer United States<\/strong>: <br\/><a href=\"tel:1-800-233-5921\" title=\"tel:1-800-233-5921\">1-800-233-5921<\/a><\/p><p><strong>Evenflo & Exersaucer Canada<\/strong>: <br\/><a href=\"tel:1-937-773-3971\" title=\"tel:1-937-773-3971\">1-937-773-3971<\/a><\/p><p><strong>Evenflo GOLD (US & Canada)<\/strong>: <br\/><a href=\"tel:1-800-233-2229\" title=\"tel:1-800-233-2229\">1-800-233-2229<\/a><\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15779855138972__bd43ea70-be18-4c69-8faf-0c6b96c14757-168804221395e8f87f-1": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15779855138972__bd43ea70-be18-4c69-8faf-0c6b96c14757-168804221395e8f87f-0",
+        "template--15779855138972__bd43ea70-be18-4c69-8faf-0c6b96c14757-168804221395e8f87f-1"
+      ],
       "settings": {
-        "heading": "",
+        "title": "Multicolumn",
         "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
         "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -20,6 +54,6 @@
   },
   "order": [
     "main",
-    "form"
+    "bd43ea70-be18-4c69-8faf-0c6b96c14757"
   ]
 }
