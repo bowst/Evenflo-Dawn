@@ -1,8 +1,36 @@
+
+{{ section.settings.heading }} 
+{{ section.settings.message }} 
+{{ section.settings.support_content }} 
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
-  }
+  "name": "Peace Of Mind",
+  "class": "text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "message",
+      "label": "Message"
+    },
+    {
+      "type": "html",
+      "id": "support_content",
+      "label": "Support Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Peace Of Mind"
+    }
+  ]
+}  
 {% endschema %}
 
 {% stylesheet %}
