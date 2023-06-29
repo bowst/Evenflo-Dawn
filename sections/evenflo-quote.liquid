@@ -1,8 +1,30 @@
+
+{{ section.settings.quote }} 
+{{ section.settings.name }} 
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
-  }
+  "name": "Customer Quote",
+  "class": "text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Quote"
+    }
+  ]
+}  
 {% endschema %}
 
 {% stylesheet %}
