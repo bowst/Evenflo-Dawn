@@ -1,4 +1,4 @@
-{{ 'section-category-anchors.css' | asset_url | stylesheet_tag }}
+{{ 'section-video.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -15,14 +15,11 @@
 {%- endstyle -%}
 
 
-<section class="category-anchors">
-  <div class="category-anchor">
-    <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
-        <div class="category-anchor center">
+<section class="video">
+  <div class="video">
+    <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">  
           <h2 class="h1">{{ section.settings.heading }} </h2>
           {{ section.settings.description }} 
-          
-        </div>
         <div>
           <video class="pdp-main-video" type='video/mp4' controls>
         {{ product.metafields.sf_products.product_video }}
