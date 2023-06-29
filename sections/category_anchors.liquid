@@ -15,17 +15,18 @@
 {%- endstyle -%}
 
 
-<section>
-<div class="category-anchor">
-  <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
-      <div class="category-anchor center">
-        <h2>{{ section.settings.category_anchor }}</h2>
-        <div class="rich-text__text rte">
-          {{ section.settings.html }} 
-          {{ section.settings.liquid }} 
+<section class="category-anchors">
+  <div class="category-anchor">
+    <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
+        <div class="category-anchor center">
+          <h2 class="h1">{{ section.settings.category_anchor }}</h2>
+          <div class="rich-text__text rte">
+            {{ section.settings.html }}
+            {{ section.settings.liquid }}
+          </div>
         </div>
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
 
@@ -62,7 +63,7 @@
       "name": "Category Anchors"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}
