@@ -8,7 +8,7 @@
 {{ section.settings.url }} 
 
 {% assign product_video_value = product.metafields.sf_products.product_video %}
-{% if product_video_value %}
+
   <div class="pdp-features-wrapper pdp-video-wrapper" id='videos'>
     <div class="pdp-main-video-wrapper">
       <video class="pdp-main-video" type='video/mp4' controls>
@@ -21,7 +21,7 @@
     <div>
       <h3 class="pdp-video-header">{{ header_text }}</h3>
     </div>
-    {% endif %}
+
   </div>
 {% endif %}
 
