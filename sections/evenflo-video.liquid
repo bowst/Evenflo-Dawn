@@ -1,11 +1,41 @@
+{{ 'section-category-anchors.css' | asset_url | stylesheet_tag }}
 
-{{ section.settings.heading }} 
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
 
 
-{{ section.settings.description }} 
+<section class="category-anchors">
+  <div class="category-anchor">
+    <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
+        <div class="category-anchor center">
+          <h2 class="h1">{{ section.settings.heading }} </h2>
+          {{ section.settings.description }} 
+          
+        </div>
+    </div>
+  </div>
+</section>
 
 
-{{ section.settings.url }} 
+
+
+
+
+
+
+
+
 
 {% assign product_video_value = product.metafields.sf_products.product_video %}
 
@@ -39,15 +69,6 @@
       "type": "textarea",
       "id": "description",
       "label": "Description"
-    },
-    {
-      "type": "video_url",
-      "id": "url",
-      "label": "URL",
-      "accept": [
-        "youtube",
-        "vimeo"
-      ]
     }
   ],
   "presets": [
