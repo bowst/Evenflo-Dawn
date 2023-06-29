@@ -134,8 +134,16 @@
       "settings": {
       }
     },
+    "4600ac99-da69-454a-a56c-0fae1b682f2e": {
+      "type": "evenflo-video",
+      "settings": {
+        "heading": "{{ product.metafields.custom.video_title.value }}",
+        "description": ""
+      }
+    },
     "multicolumn": {
       "type": "multicolumn",
+      "disabled": true,
       "blocks": {
         "column-0": {
           "type": "column",
@@ -209,6 +217,7 @@
   "order": [
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
+    "4600ac99-da69-454a-a56c-0fae1b682f2e",
     "multicolumn",
     "related-products"
   ]
