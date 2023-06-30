@@ -1,13 +1,17 @@
 {{ 'section-product-highlights.css' | asset_url | stylesheet_tag }}
 
-<section class="product-highlights">
-  <div class="category-anchor">
-    <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
-      <div class="flex-row">
-        <div class="flex-item">
-          <h3>Child Fit</h3>
-          <p><strong>Weight :</strong> {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs</p>
-          <p><strong>Height :</strong> {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs</p>
+<section class="product-highlights anchor-gradient">
+  <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
+    <div class="flex-row">
+      <div class="flex-item">
+        <h3>Child Fit</h3>
+        <div><strong>Weight:</strong> {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs</div>
+        <div><strong>Height:</strong> {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs</div>
+      </div>
+      <div class="flex-item">
+        <h3>Product Dimensions</h3>
+        <div><strong>Folded:</strong> {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs</div>
+        <div><strong>Unfolded:</strong> {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs</div>
       </div>
     </div>
   </div>

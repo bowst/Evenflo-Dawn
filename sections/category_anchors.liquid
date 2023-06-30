@@ -1,16 +1,14 @@
 {{ 'section-category-anchors.css' | asset_url | stylesheet_tag }}
 
-<section class="category-anchors">
-  <div class="category-anchor">
-    <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
-        <div class="category-anchor center">
-          <h2 class="h1">{{ section.settings.category_anchor }}</h2>
-          <div class="rich-text__text rte">
-            {{ section.settings.html }}
-            {{ section.settings.liquid }}
-          </div>
+<section class="category-anchors anchor-gradient">
+  <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
+      <div class="category-anchor center">
+        <h2 class="h1">{{ section.settings.category_anchor }}</h2>
+        <div class="rich-text__text rte">
+          {{ section.settings.html }}
+          {{ section.settings.liquid }}
         </div>
-    </div>
+      </div>
   </div>
 </section>
 
