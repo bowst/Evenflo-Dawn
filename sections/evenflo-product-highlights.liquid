@@ -1,39 +1,16 @@
 {{ 'section-product-highlights.css' | asset_url | stylesheet_tag }}
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-
-<section>
-<div class="category-anchor">
-  <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
-        
-    <div class="flex-row">
-      <div class="flex-item">
-      <h3>Child Fit</h3>
-      <p><strong>Weight :</strong>  {{ product.metafields.sf_products.child_weight_min }}  - {{ product.metafields.sf_products.child_weight_max }}  lbs </p>
-      <p><strong>Height :</strong>  {{ product.metafields.sf_products.child_height_min }}  - {{ product.metafields.sf_products.child_weight_max }}  lbs </p>
+<section class="product-highlights">
+  <div class="category-anchor">
+    <div class="content-container color-accent-4 anchor-gradient rich-text--full-width content-container--full-width">
+      <div class="flex-row">
+        <div class="flex-item">
+          <h3>Child Fit</h3>
+          <p><strong>Weight :</strong> {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs</p>
+          <p><strong>Height :</strong> {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs</p>
+      </div>
+    </div>
   </div>
-
-
-
-
-  </div>
-  <div class="category-anchor center">
-  </div>
-</div>
-</div>
 </section>
 
 
@@ -49,7 +26,7 @@
       "name": "PDP Highlights"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}
