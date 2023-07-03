@@ -1,7 +1,19 @@
+{{ 'section-peace-of-mind.css' | asset_url | stylesheet_tag }}
 
-{{ section.settings.heading }} 
-{{ section.settings.message }} 
-{{ section.settings.support_content }} 
+<section class="peace-of-mind">
+  <div class="peace-of-mind__container">
+    <div class="peace-of-mind__column">
+      {{ section.settings.heading }} 
+
+      {{ section.settings.message }} 
+    </div>
+    <div class="peace-of-mind__column">
+      {{ section.settings.support_content }} 
+    </div>
+  </div>
+</section>
+
+
 
 {% schema %}
   {

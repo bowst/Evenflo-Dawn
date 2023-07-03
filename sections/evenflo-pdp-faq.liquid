@@ -23,15 +23,21 @@
   <div class="content-container page-width rich-text--full-width content-container--full-width flex-container">
 
   <div class="column-1">
-    <h3>All your Questions Answered</h3>
-    <p>Content</p>
+    <h2 class="h1">All your Questions Answered</h2>
+    <p>Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor. </p>
     <a href="#">View the product Support Guide</a>
   </div>
 <div class="column-2">
   <div class="pdp-questions-wrapper pdp-questions-wrapper" id="questions">
     {% for faq in faqs %}
-      {{ faq.question }}
+      <div class="accordion">
+        <h3>
+      Q. {{ faq.question }}
+      </h3>
+      <div class="accordion__content rte">
       {{ faq.answer }}
+      </div>
+    </div>
     {%- endfor -%}
   </div>
 </div>
@@ -39,7 +45,7 @@
 </div>
 {% endif %}
 
-    
+
 
 </section>
 
@@ -57,8 +63,3 @@
 }  
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
