@@ -16,20 +16,15 @@
 
 
 <section class="video">
-  <div class="video">
-    <div class="content-container color-accent-3 anchor-gradient rich-text--full-width content-container--full-width">  
-      <div class="flex-row">
-        <div class="flex-item">
+
+    <div class="content-container color-accent-3 anchor-gradient flex-container">  
+        <div class="video-content-section">
           <h2 class="h1">{{ section.settings.heading }} </h2>
           {{ section.settings.description }} 
         </div>
-        <div class="flex-item">  
-          <video class="pdp-main-video" type='video/mp4' controls>{{ product.metafields.sf_products.product_video }}
-         </video>
+        <div class="video-section">  
+          <video class="pdp-main-video" type='video/mp4' controls>{{ product.metafields.sf_products.product_video }}</video>
         </div>
-        
-      </div>
-  </div>
   </div>
 </section>
 
