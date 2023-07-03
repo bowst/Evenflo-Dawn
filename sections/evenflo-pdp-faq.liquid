@@ -1,12 +1,4 @@
 {{ 'section-product-faq.css' | asset_url | stylesheet_tag }}
-
-<section class="product-highlights">
-  <div class="content-container page-width color-accent-3 rich-text--full-width content-container--full-width">
-    <div class="flex-row">
-      <div class="flex-item">
-        {% assign faqs = product.metafields.custom.pdp_faq.value %}
-        {% if faqs %}
-
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,12 +17,17 @@
       ]
     }
 </script>
-<div class="flex-container">
+{% assign faqs = product.metafields.custom.pdp_faq.value %}
+{% if faqs %}
+<section class="product-faq">
+  <div class="content-container page-width rich-text--full-width content-container--full-width flex-container">
+
   <div class="column-1">
-    Overview
+    <h3>All your Questions Answered</h3>
+    <p>Content</p>
+    <a href="#">View the product Support Guide</a>
   </div>
 <div class="column-2">
-<h2 class="title center">FAQ's</h2>
   <div class="pdp-questions-wrapper pdp-questions-wrapper" id="questions">
     {% for faq in faqs %}
       {{ faq.question }}
@@ -38,12 +35,12 @@
     {%- endfor -%}
   </div>
 </div>
+
 </div>
 {% endif %}
-      </div>
-    </div>
-    <a href="">See More</a>
-  </div>
+
+    
+
 </section>
 
 {% schema %}
