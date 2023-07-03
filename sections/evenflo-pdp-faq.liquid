@@ -1,6 +1,54 @@
+{{ 'section-product-faq.css' | asset_url | stylesheet_tag }}
+
+<section class="product-highlights">
+  <div class="content-container page-width color-accent-3 rich-text--full-width content-container--full-width">
+    <div class="flex-row">
+      <div class="flex-item">
+        {% assign faqs = product.metafields.custom.pdp_faq.value %}
+        {% if faqs %}
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for faq in faqs %}
+          {
+            "@type": "Question",
+            "name": "{{ faq.question }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ faq.answer }}"
+            }
+          }{% unless forloop.last %}, {% endunless %}
+        {%- endfor -%}
+      ]
+    }
+</script>
+<div class="flex-container">
+  <div class="column-1">
+    Overview
+  </div>
+<div class="column-2">
+<h2 class="title center">FAQ's</h2>
+  <div class="pdp-questions-wrapper pdp-questions-wrapper" id="questions">
+    {% for faq in faqs %}
+      {{ faq.question }}
+      {{ faq.answer }}
+    {%- endfor -%}
+  </div>
+</div>
+</div>
+{% endif %}
+      </div>
+    </div>
+    <a href="">See More</a>
+  </div>
+</section>
+
 {% schema %}
   {
-  "name": "PDP Faq",
+  "name": "PDP FAQ",
   "class": "text",
   "tag": "section",
   "settings": [],
