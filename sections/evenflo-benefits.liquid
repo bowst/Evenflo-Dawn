@@ -3,49 +3,61 @@
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
     <div class="flex-row">
-      <h2>Why Evenflo?</h2>
-
+      <h2>{{ section.settings.section_title }} </h2>
     </div>
-      <div class="flex-row">
-          <div class="flex-item">
-            <h3>Heritage</h3>
-            Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.  Lorem dolorius ibid droti.
-          </div>
-          <div class="flex-item">
-            <h3>Consumer Led</h3>
-            Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.  Lorem dolorius ibid droti.
-          </div>
-          <div class="flex-item">
-            <h3>Safety</h3>
-            Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.  Lorem dolorius ibid droti.
-          </div>
-          <div class="flex-item">
-            <h3>Innovation</h3>
-            Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.  Lorem dolorius ibid droti.
-          </div>
-          
-    </div>
+    <div class="flex-row">
+      
+{%- for block in section.blocks -%}
+  <div class="flex-item">
+  {%- case block.type -%}
+  
+    {%- when 'benefit' -%}
+      <h3>{{ block.settings.benefit_name }} </h3>
+      <p>{{ block.settings.benefit_description }} </p>
+  
+  {%- endcase -%}
   </div>
+{%- endfor -%}
+</div>
 </section>
 
 
 
 {% schema %}
   {
-  "name": "Benefits",
-  "class": "text",
-  "tag": "section",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Benefits"
-    }
-  ]
-}  
+    "name": "Benefits",
+    "class": "text",
+    "max_blocks": 4,
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Section Title",
+        "default": "Why Evenflo"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Benefit",
+        "type": "benefit",
+        "settings": [
+          {
+            "type": "text",
+            "id": "benefit_name",
+            "label": "Benefit Name"
+          }, {
+            "type": "textarea",
+            "id": "benefit_description",
+            "label": "Benefit Description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Benefits"
+      }
+    ]
+  }
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
