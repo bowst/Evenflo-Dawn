@@ -1,14 +1,29 @@
 .peace-of-mind {
-   padding-top: 80px;
-   padding-bottom: 80px;
-  }
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
 
-  .peace-of-mind__container {
-    display: flex;
-    flex-wrap: wrap;
-  }
+.peace-of-mind h3 {
+  margin-bottom: 30px;
+  font-weight: normal;
+}
 
-  .peace-of-mind__column {
-    flex: 1;
-    padding: 20px;
-    /* Add any 
+.peace-of-mind h3 strong {
+  font-weight: bold;
+}
+
+.peace-of-mind h4 {
+  margin-bottom: 8px;
+}
+
+.peace-of-mind__container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -40px;
+  margin-right: -40px;
+}
+
+.peace-of-mind__column {
+  flex: 1;
+  padding: 0 40px;
+}

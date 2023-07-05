@@ -1,18 +1,15 @@
 {{ 'section-peace-of-mind.css' | asset_url | stylesheet_tag }}
 
-<section class="peace-of-mind">
-  
-  <div class="peace-of-mind__container page-width">
+<section class="peace-of-mind page-width">
+  <div class="peace-of-mind__container">
     <div class="peace-of-mind__column">
-      <h2 class="h1">{{ section.settings.heading }} </h2>
-
-      {{ section.settings.message }} 
+      <h2 class="h1 heading-underline">{{ section.settings.heading }} </h2>
+      {{ section.settings.message }}
     </div>
     <div class="peace-of-mind__column">
-      {{ section.settings.support_content }} 
+      {{ section.settings.support_content }}
     </div>
   </div>
-  
 </section>
 
 
@@ -44,7 +41,7 @@
       "name": "Peace Of Mind"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}
