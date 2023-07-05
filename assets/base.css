@@ -3167,3 +3167,17 @@ details-disclosure > details {
   background: #e3f2f3;
   background-attachment: fixed;
 }
+
+.heading-underline {
+  position: relative;
+}
+
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: rgba(var(--color-base-accent-2), 1);
+}
