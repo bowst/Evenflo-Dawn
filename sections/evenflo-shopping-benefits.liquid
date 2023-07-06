@@ -1,10 +1,13 @@
-
+{%- # Label: Heading -%}
 {{ section.settings.heading }} 
 
 {%- for block in section.blocks -%}
   {%- case block.type -%}
 
     {%- when 'benefit_list' -%}
+      {%- # Label: Description -%}
+      {{ block.settings.description }} 
+
       {%- # Label: Background Image -%}
       {%- assign background_image = block.settings.background_image -%}
       {{ background_image | image_url: width: background_image.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
@@ -12,9 +15,6 @@
       {%- # Label: Icon Image -%}
       {%- assign icon_image = block.settings.icon_image -%}
       {{ icon_image | image_url: width: icon_image.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
-
-      {%- # Label: Description -%}
-      {{ block.settings.description }} 
 
   {%- endcase -%}
 {%- endfor -%}
@@ -37,6 +37,11 @@
       "type": "benefit_list",
       "settings": [
         {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
           "type": "image_picker",
           "id": "background_image",
           "label": "Background Image"
@@ -45,11 +50,6 @@
           "type": "image_picker",
           "id": "icon_image",
           "label": "Icon Image"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description"
         }
       ]
     }
