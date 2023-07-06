@@ -1,0 +1,38 @@
+{%- # Label: Heading -%}
+{{ section.settings.heading }} 
+
+{%- # Label: Content -%}
+{{ section.settings.content }} 
+
+{% schema %}
+  {
+  "name": "Evenflo Full Width",
+  "class": "text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Evenflo"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Default Content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Full Width"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
