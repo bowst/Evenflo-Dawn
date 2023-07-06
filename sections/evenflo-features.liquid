@@ -1,24 +1,19 @@
-<div class="custom-text-section">
-  <h2>{{ section.settings.custom_text_title }}</h2>
-  <div>{{ section.settings.custom_text_body }}</div>
-</div>
-
 {% schema %}
-{
-  "name": "Evenflo Text Box",
-  "settings": [
+  {
+  "name": "Evenflo Features",
+  "class": "text",
+  "tag": "section",
+  "settings": [],
+  "presets": [
     {
-      "id": "custom_text_title",
-      "type": "text",
-      "label": "Text box heading",
-      "default": "Title"
-    },
-    {
-      "id": "custom_text_body",
-      "type": "richtext",
-      "label": "Add custom text below",
-      "default": "<p>Add your text here</p>"
+      "name": "Evenflo Features"
     }
   ]
-}
+}  
 {% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
