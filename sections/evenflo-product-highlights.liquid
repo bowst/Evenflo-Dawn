@@ -31,6 +31,7 @@
 {% if collection.handle == 'booster-car-seats' %}
   <div class="flex-item">
     <h3>Child Fit</h3>
+    
       <strong>Weight:</strong>
       {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
       <strong>Height:</strong>
@@ -43,7 +44,7 @@
   </div>
   <div class="flex-item">
     <h3>Modes of Use</h3>
-    
+    {{ product.metafields.custom.modes_of_use }}
   </div>
   <div class="flex-item">
     <h3>Specs</h3>
@@ -61,7 +62,8 @@
         No
       {% endif %}
       <br>
-      <strong>Dual Integrated Cup Holders:</strong> 
+      <strong>Number of Cupholders:</strong> 
+      {{ product.metafields.sf_products.number_of_cup_holders }}
       <br>
       <strong>Converts to No Back Booster:</strong>
       {% if converts_to_no_back_booster == 1 %}
@@ -98,7 +100,7 @@
           </div>
           <div class="flex-item">
             <h3>Modes of Use</h3>
-            
+            {{ product.metafields.custom.modes_of_use }}
           </div>
           <div class="flex-item">
             <h3>Specs</h3>
@@ -144,6 +146,7 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
+          {{ product.metafields.custom.modes_of_use }}
           
         </div>
         <div class="flex-item">
@@ -377,6 +380,7 @@
             {% endif %}
       <br>
       <strong>Main product benefit:</strong> 
+      {{ product.metafields.custom.main_product_benefit }}<br>
       <br>
 
       <strong>Hardware Included:</strong>
@@ -386,15 +390,6 @@
       {% else %}
       No
       {% endif %}
-
-      <br>
-      <strong>Made in the USA:</strong>
-      {% assign my_switch = product.metafields.sf_products.made_in_usa %}
-        {% if my_switch == 1 %}
-        Yes 
-        {% else %}  
-        No
-        {% endif %}
 
       <br>
       
@@ -440,19 +435,22 @@
   </div>
   <div class="flex-item">
     <h3>Modes of Use</h3>
-    
+    {{ product.metafields.custom.modes_of_use }}}
   </div>
 
   <div class="flex-item">
     <h3>Specs</h3>
       <strong>Sustainability/Eco-Friendly:</strong>
-      
+      {{ product.metafields.custom.eco_friendly }}<br>
       <br>
       <strong>Certifications:</strong> 
+      {{ product.metafields.custom.certifications }}
       <br>
       <strong>Breathable:</strong> 
+      {{ product.metafields.custom.breathable }}
       <br>
       <strong>Dual-Sided:</strong> 
+      {{ product.metafields.custom.dual_sided }}
       <br>
 
       
@@ -475,11 +473,13 @@
   <div class="flex-item">
     <h3>Specs</h3>
       <strong>Accuracy:</strong>
-      
+      {{ product.metafields.custom.accuracy }}<br>
       <br>
       <strong>Response Time:</strong> 
+      {{ product.metafields.custom.response_time }}
       <br>
       <strong>Body Application:</strong> 
+      {{ product.metafields.custom.body_application }}
       <br>
       <strong>Battery Type:</strong> 
       {{ battery_cell_type }}
@@ -501,13 +501,16 @@
   <div class="flex-item">
     <h3>Specs</h3>
       <strong>Suction Range:</strong>
+      {{ product.metafields.custom.suction_range }}<br>
       
       <br>
       <strong>Features:</strong> 
       <br>
       <strong>Tip Styles:</strong> 
+      {{ product.metafields.custom.tip_styles }}<br>
       <br>
       <strong>Material Composition:</strong> 
+      {{ product.metafields.custom.material_composition }}<br>
 
       <br>
 
@@ -523,7 +526,7 @@
       <strong>Weight:</strong>
       {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
       <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+      {{ product.metafields.sf_products.child_height_max }} 
   </div>
   <div class="flex-item">
     <h3>Product Dimensions</h3>
@@ -532,9 +535,8 @@
   </div>
   <div class="flex-item">
     <h3>Modes of Use</h3>
-    
+    {{ product.metafields.custom.modes_of_use }}
   </div>
-
   <div class="flex-item">
     <h3>Specs</h3>
       <strong>Position:</strong>
@@ -562,9 +564,9 @@
   <div class="flex-item">
     <h3>Child Fit</h3>
       <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+      {{ product.metafields.sf_products.child_weight_max }} lbs <br>
       <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+      {{ product.metafields.sf_products.child_height_max }} 
   </div>
   <div class="flex-item">
     <h3>Product Dimensions</h3>
@@ -602,6 +604,7 @@
   </div>
   <div class="flex-item">
     <h3>Use Cases</h3>
+    {{ product.metafields.custom.use_cases }}
     
     
   </div>
@@ -648,7 +651,7 @@
   </div>
   <div class="flex-item">
     <h3>Modes of Use</h3>
-    
+    {{ product.metafields.custom.modes_of_use }}
   </div>
   <div class="flex-item">
     <h3>Specs</h3>
@@ -694,7 +697,7 @@
   </div>
   <div class="flex-item">
     <h3>Modes of Use</h3>
-    
+    {{ product.metafields.custom.modes_of_use }}
   </div>
   <div class="flex-item">
     <h3>Specs</h3>
@@ -735,7 +738,7 @@
   </div>
   <div class="flex-item">
     <h3>Modes of Use</h3>
-    
+    {{ product.metafields.custom.modes_of_use }}
   </div>
   <div class="flex-item">
     <h3>Specs</h3>
