@@ -1,0 +1,28 @@
+.features .content-container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.features .flex-row {
+  display: flex;
+  margin-left: -40px;
+  margin-right: -40px;
+}
+
+.features .flex-item {
+  margin: 0 40px;
+  flex: 1;
+}
+
+.features .flex-row .flex-row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.features .flex-item .flex-item {
+  margin: 40px 10px;
+}
+
+.features p {
+  margin-top: 0;
+}
