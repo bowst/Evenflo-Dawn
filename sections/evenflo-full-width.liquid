@@ -1,8 +1,13 @@
-{%- # Label: Heading -%}
-{{ section.settings.heading }} 
+{{ 'section-full-width.css' | asset_url | stylesheet_tag }}
 
-{%- # Label: Content -%}
-{{ section.settings.content }} 
+<section class="full-width">
+  <div class="content-container page-width rich-text--full-width content-container--full-width">
+    <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.content }}</p>
+  </div>
+</section>
+
+
 
 {% schema %}
   {
@@ -28,7 +33,7 @@
       "name": "Evenflo Full Width"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}
