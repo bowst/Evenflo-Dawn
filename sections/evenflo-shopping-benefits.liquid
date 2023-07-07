@@ -23,11 +23,10 @@
                   {%- # Label: Icon Image -%}
                   {%- assign icon_image = block.settings.icon_image -%}
                   {{ icon_image | image_url: width: icon_image.width | image_tag: class: 'icon', loading: 'lazy' }}
-
-                  {%- if block.settings.link != blank -%}
-                    <a href="{{ block.settings.link }}" class="stretched-link"></a>
-                  {%- endif -%}
                 </div>
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="stretched-link"> </a>
+                {%- endif -%}
               </div>
             </div>
 
