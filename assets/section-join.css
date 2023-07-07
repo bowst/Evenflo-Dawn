@@ -10,17 +10,22 @@
 }
 
 .join .content {
-  max-width: 40%;
   padding: 46px 30px;
   background: rgba(0, 0, 0, 0.3);
 }
 
+@media screen and (min-width: 990px) {
+  .join .content {
+    max-width: 425px;
+  }
+}
+
 .join .content p {
-  max-width: 70%;
+  max-width: 90%;
   margin-top: 0;
   color: #fff;
 }
 
 .join .content .button + .button {
-  margin-left: 40px;
+  margin-left: 50px;
 }
