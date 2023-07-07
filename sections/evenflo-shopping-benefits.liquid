@@ -1,23 +1,41 @@
-{%- # Label: Heading -%}
-{{ section.settings.heading }} 
+{{ 'section-shopping-benefits.css' | asset_url | stylesheet_tag }}
 
-{%- for block in section.blocks -%}
-  {%- case block.type -%}
+<section class="shopping-benefits">
+  <div class="content-container page-width rich-text--full-width content-container--full-width">
+    <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
 
-    {%- when 'benefit_list' -%}
-      {%- # Label: Description -%}
-      {{ block.settings.description }} 
+    <div class="flex-row">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
 
-      {%- # Label: Background Image -%}
-      {%- assign background_image = block.settings.background_image -%}
-      {{ background_image | image_url: width: background_image.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+            {%- when 'benefit_list' -%}
+            <div class="flex-item">
+              <div class="inner">
+                {%- # Label: Background Image -%}
+                {%- assign background_image = block.settings.background_image -%}
+                {{ background_image | image_url: width: background_image.width | image_tag: class: 'background-image', loading: 'lazy' }}
 
-      {%- # Label: Icon Image -%}
-      {%- assign icon_image = block.settings.icon_image -%}
-      {{ icon_image | image_url: width: icon_image.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+                <div class="content">
+                  <div>
+                    {{ block.settings.description }}
+                  </div>
 
-  {%- endcase -%}
-{%- endfor -%}
+                  {%- # Label: Icon Image -%}
+                  {%- assign icon_image = block.settings.icon_image -%}
+                  {{ icon_image | image_url: width: icon_image.width | image_tag: class: 'icon', loading: 'lazy' }}
+
+                  {%- if block.settings.link != blank -%}
+                    <a href="{{ block.settings.link }}" class="stretched-link"></a>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
 
 {% schema %}
   {
@@ -50,6 +68,11 @@
           "type": "image_picker",
           "id": "icon_image",
           "label": "Icon Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
         }
       ]
     }
@@ -59,7 +82,7 @@
       "name": "Evenflo Benefits Shopping"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}
