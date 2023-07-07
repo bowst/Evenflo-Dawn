@@ -1,3 +1,24 @@
+{{ 'section-join.css' | asset_url | stylesheet_tag }}
+
+<section class="join">
+  <div class="content-container page-width rich-text--full-width content-container--full-width">
+    <h2 class="h1 heading-underline">Join the Club</h2>
+
+    <div class="background-image">
+      <div class="content">
+        <p>Become a member and earn points & exclusive rewards every time you shop.</p>
+        <a href="#" class="button button--primary">
+          Join Now
+        </a>
+        <a href="#" class="button button--primary">
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 {% schema %}
   {
   "name": "Evenflo Join",
@@ -8,7 +29,7 @@
       "name": "Evenflo Join"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}
