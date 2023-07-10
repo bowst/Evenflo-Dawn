@@ -51,10 +51,10 @@
       assign only_empty_brand = true
     endif
   -%}
-  {%- if section.blocks.size > 0 
- or section.settings.newsletter_enable 
- or section.settings.show_social 
- or section.settings.enable_follow_on_shop 
+  {%- if section.blocks.size > 0
+ or section.settings.newsletter_enable
+ or section.settings.show_social
+ or section.settings.enable_follow_on_shop
  -%}
     {%- unless only_empty_brand -%}
       <div class="footer__content-top page-width">
@@ -65,7 +65,7 @@
             elsif section.blocks.size > 6
               assign footer_grid_class = 'grid--5-col-desktop'
             elsif section.blocks.size > 4
-              assign footer_grid_class = 'grid--3-col-tablet'
+              assign footer_grid_class = 'grid--5-col-desktop'
             endif
           -%}
           <div class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}">
@@ -97,17 +97,17 @@
                   {%- when 'brand_information' -%}
                   <div class="footer-block__brand-info">
                     {%- if settings.brand_image != blank -%}
-                      {%- assign brand_image_height = settings.brand_image_width 
+                      {%- assign brand_image_height = settings.brand_image_width
                         | divided_by: settings.brand_image.aspect_ratio -%}
                       <div class="footer-block__image-wrapper global-media-settings" style="max-width: min(100%, {{ settings.brand_image_width }}px);">
                         {{
                            settings.brand_image
-                           | image_url: width: 1100
-                           | image_tag:
-                           loading: 'lazy',
-                           widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100',
-                           height: brand_image_height,
-                           width: settings.brand_image_width }}
+                         | image_url: width: 1100
+                         | image_tag:
+                         loading: 'lazy',
+                         widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100',
+                         height: brand_image_height,
+                         width: settings.brand_image_width }}
                       </div>
                     {%- endif -%}
                     {%- if settings.brand_headline != blank -%}
