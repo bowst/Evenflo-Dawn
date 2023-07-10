@@ -5,16 +5,16 @@
 {%- liquid
   paginate collections.all.products by 1000
     for product in collections.all.products
-      assign product_id = product.id | append: "" 
+      assign product_id = product.id | append: ""
 
       if product_id == page.metafields.custom.associated_product_id
          assign this_product = product
-      endif 
-    endfor 
+      endif
+    endfor
  endpaginate
 -%}
 
-<section>
+<section class="support">
 
   <div class="content-container rich-text--full-width content-container--full-width">
     <h2>{{ section.settings.support_heading }} </h2>
@@ -41,7 +41,7 @@ Car Seat Specificications
 <div class="flex-row">
         <div class="flex-item">
           <h3>Steel Reinforced</h3>
-          {{ this_product.metafields.sf_car_seat.steel_reinforced }} 
+          {{ this_product.metafields.sf_car_seat.steel_reinforced }}
         </div>
 </div>
 What's in the box
@@ -110,7 +110,7 @@ What's in the box
       "name": "Support Car Seats"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}

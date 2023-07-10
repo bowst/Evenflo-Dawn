@@ -1,15 +1,11 @@
-.strong {font-weight: bold;}
+.support .flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 
-.flex-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  .flex-item {
-    flex-basis: 20%;
-    padding: 5px;
-    margin: 5px;
-  }
-
-
+.support .flex-item {
+  flex-basis: 20%;
+  padding: 5px;
+  margin: 5px;
+}

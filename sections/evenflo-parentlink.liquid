@@ -1,11 +1,20 @@
+{{ 'section-parentlink.css' | asset_url | stylesheet_tag }}
 
-{{ section.settings.heading }} 
+<section class="parentlink">
+  <div class="content-container page-width rich-text--full-width content-container--full-width">
+    <h2 class="h1">{{ section.settings.heading }}</h2>
 
+    <div class="flex-row">
+      <div class="flex-item">
+        {{ section.settings.left_content }}
+      </div>
+      <div class="flex-item">
+        {{ section.settings.right_content }}
+      </div>
+    </div>
+  </div>
+</section>
 
-{{ section.settings.left_content }} 
-
-
-{{ section.settings.right_content }} 
 
 {% schema %}
   {
@@ -37,7 +46,7 @@
       "name": "Parentlink"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}
