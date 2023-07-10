@@ -27,56 +27,56 @@
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
     <div class="flex-row">
       {% for collection in product.collections %}
-{% comment %} Start booster-car-seats {% endcomment %}
-{% if collection.handle == 'booster-car-seats' %}
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-    
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    {{ product.metafields.custom.modes_of_use }}
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Lightweight:</strong>
-      {% if lightweight == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}
-      <br>
-      <strong>Has Harness Booster Mode:</strong> 
-      {% if has_harness_booster_mode == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}
-      <br>
-      <strong>Number of Cupholders:</strong> 
-      {{ product.metafields.sf_products.number_of_cup_holders }}
-      <br>
-      <strong>Converts to No Back Booster:</strong>
-      {% if converts_to_no_back_booster == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}
-      <br>
-      
-    </div>
-  {% endif %}
-{% comment %} End booster {% endcomment %}
-{% comment %} car-seat-stroller-combos {% endcomment %}
+        {% comment %} Start booster-car-seats {% endcomment %}
+        {% if collection.handle == 'booster-car-seats' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+            {{ product.metafields.custom.modes_of_use }}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Lightweight:</strong>
+            {% if lightweight == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
+            <strong>Has Harness Booster Mode:</strong>
+            {% if has_harness_booster_mode == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
+            <strong>Number of Cupholders:</strong>
+            {{ product.metafields.sf_products.number_of_cup_holders }}
+            <br>
+            <strong>Converts to No Back Booster:</strong>
+            {% if converts_to_no_back_booster == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
+
+          </div>
+        {% endif %}
+        {% comment %} End booster {% endcomment %}
+        {% comment %} car-seat-stroller-combos {% endcomment %}
         {% if collection.handle == 'car-seat-stroller-combos' %}
           <div class="flex-item">
             <h3>Child Fit</h3>
@@ -89,14 +89,13 @@
           </div>
           <div class="flex-item">
             <h3>Product Dimensions</h3>
-            
             <div>
               <strong>Folded:</strong>
               {{ product.metafields.sf_products.folded_dimensions }}</div>
             <div>
               <strong>Unfolded:</strong>
               {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-              </div>
+            </div>
           </div>
           <div class="flex-item">
             <h3>Modes of Use</h3>
@@ -107,13 +106,14 @@
             <div>
               <strong>SensorSafe:</strong>
               {% assign my_switch = product.metafields.sf_car_seat.sensorsafe %}
-              {% if my_switch == 1 %} Premium Safety with SensorSafe™{% endif %}
+              {% if my_switch == 1 %}
+                Premium Safety with SensorSafe™{% endif %}
             </div>
             <div>
               <strong>Installation:</strong>
             </div>
             <div>
-              <strong>Anti-Rebound Bar:</strong> 
+              <strong>Anti-Rebound Bar:</strong>
               {% if anti_rebound_bar == 1 %}
                 Yes
               {% else %}
@@ -128,640 +128,647 @@
                 No
               {% endif %}
             </div>
-          {% endif %}
-{% comment %} End car-seat-stroller-combos {% endcomment %}
-{% comment %} convertible-car-seats {% endcomment %}
+          </div>
+        {% endif %}
+        {% comment %} End car-seat-stroller-combos {% endcomment %}
+        {% comment %} convertible-car-seats {% endcomment %}
         {% if collection.handle == 'convertible-car-seats' %}
-        <div class="flex-item">
-          <h3>Child Fit</h3>
+          <div class="flex-item">
+            <h3>Child Fit</h3>
             <strong>Weight:</strong>
             {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
             <strong>Height:</strong>
             {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-        </div>
-        <div class="flex-item">
-          <h3>Product Dimensions</h3>
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
             <strong>Dimensions:</strong>
             {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-        </div>
-        <div class="flex-item">
-          <h3>Modes of Use</h3>
-          {{ product.metafields.custom.modes_of_use }}
-          
-        </div>
-        <div class="flex-item">
-          <h3>Specs</h3>
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+            {{ product.metafields.custom.modes_of_use }}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
             <strong>Installation:</strong>
             {{ product.metafields.sf_car_seat.installation }}<br>
             <strong>SensorSafe:</strong>
             {% assign my_switch = product.metafields.sf_car_seat.sensorsafe %}
-            {% if my_switch == 1 %} Premium Safety with SensorSafe™{% endif %}<br>
+            {% if my_switch == 1 %}
+              Premium Safety with SensorSafe™{% endif %}<br>
             <strong>Rotation:</strong>
             {{ product.metafields.sf_car_seat.rotation }}<br>
-            <strong>Slim Design:</strong> 
+            <strong>Slim Design:</strong>
+
+            <div>
+              <a href="#" class="see-more">SEE MORE >></a>
+            </div>
           </div>
         {% endif %}
-{% comment %} End convertible-car-seats {% endcomment %}
-{% comment %} Start infant-car-seats {% endcomment %}
-{% if collection.handle == 'infant-car-seats' %}
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Lightweight:</strong>
-      <br>
+        {% comment %} End convertible-car-seats {% endcomment %}
+        {% comment %} Start infant-car-seats {% endcomment %}
+        {% if collection.handle == 'infant-car-seats' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
 
-      <strong>Anti-Rebound Bar:</strong> 
-              {% if anti_rebound_bar == 1 %}
-                Yes
-              {% else %}
-                No
-              {% endif %}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Lightweight:</strong>
             <br>
-      <strong>SensorSafe:</strong>
-      {% assign my_switch = product.metafields.sf_car_seat.sensorsafe %}
-      {% if my_switch == 1 %} Premium Safety with SensorSafe™{% endif %}<br>
-      <strong>Installation:</strong> 
-    </div>
-  {% endif %}
-{% comment %} End infant-car-seats {% endcomment %}
-{% comment %} Start car-seat-accessories {% endcomment %}
-{% if collection.handle == 'car-seat-accessories' %}
 
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
+            <strong>Anti-Rebound Bar:</strong>
+            {% if anti_rebound_bar == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
+            <strong>SensorSafe:</strong>
+            {% assign my_switch = product.metafields.sf_car_seat.sensorsafe %}
+            {% if my_switch == 1 %}
+              Premium Safety with SensorSafe™{% endif %}<br>
+            <strong>Installation:</strong>
+          </div>
+        {% endif %}
+        {% comment %} End infant-car-seats {% endcomment %}
+        {% comment %} Start car-seat-accessories {% endcomment %}
+        {% if collection.handle == 'car-seat-accessories' %}
 
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Assembly Required:</strong>
-      {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Assembly Required:</strong>
+            {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
             {% if assembly_switch_spec == 1 %}
               Yes
             {% else %}
               No
             {% endif %}
-      <br>
-      <strong>Warranty Type:</strong> 
-      {{ product.metafields.sf_products.warranty_type }}<br>
+            <br>
+            <strong>Warranty Type:</strong>
+            {{ product.metafields.sf_products.warranty_type }}<br>
 
-      <strong>Machine Washable:</strong>
-      {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
-      {% if my_switch == 1 %}
-      Yes 
-      {% else %}
-      No
-      {% endif %}
+            <strong>Machine Washable:</strong>
+            {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
+            {% if my_switch == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
 
-      <br>
-      <strong>Made in the USA:</strong>
-      {% assign my_switch = product.metafields.sf_products.made_in_usa %}
-        {% if my_switch == 1 %}
-        Yes 
-        {% else %}  
-        No
+            <br>
+            <strong>Made in the USA:</strong>
+            {% assign my_switch = product.metafields.sf_products.made_in_usa %}
+            {% if my_switch == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+
+            <br>
+
+          </div>
         {% endif %}
+        {% comment %} End car-seat-accessories {% endcomment %}
+        {% comment %} Start Strollers {% endcomment %}
+        {% if collection.handle == 'strollers' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
 
-      <br>
-      
-    </div>
-  {% endif %}
-{% comment %} End car-seat-accessories {% endcomment %}
-{% comment %} Start Strollers {% endcomment %}
-{% if collection.handle == 'strollers' %}
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Accepts Infant Car Seat:</strong>
-      {% if accepts_infant_car_seat == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}
-      <br>
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Accepts Infant Car Seat:</strong>
+            {% if accepts_infant_car_seat == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
 
-      <strong>Wheel Material:</strong> 
-      {{ wheel_material }}<br>
-      <strong>Stroller Type:</strong>
-      {{ stroller_type }}<br>
-      <strong>Accepts Rider Board:</strong> 
-      {% if accepts_rider_board == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}<br>
-    </div>
-  {% endif %}
-{% comment %} End strollers {% endcomment %}
-{% comment %} Start stroller-wagon {% endcomment %}
-{% if collection.handle == 'stroller-wagon' %}
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Accepts Infant Car Seat:</strong>
-      {% if accepts_infant_car_seat == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}
-      <br>
+            <strong>Wheel Material:</strong>
+            {{ wheel_material }}<br>
+            <strong>Stroller Type:</strong>
+            {{ stroller_type }}<br>
+            <strong>Accepts Rider Board:</strong>
+            {% if accepts_rider_board == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
+          </div>
+        {% endif %}
+        {% comment %} End strollers {% endcomment %}
+        {% comment %} Start stroller-wagon {% endcomment %}
+        {% if collection.handle == 'stroller-wagon' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
 
-      <strong>Wheel Material:</strong> 
-      {{ wheel_material }}<br>
-      <strong>Stroller Type:</strong>
-      {{ stroller_type }}<br>
-      <strong>Accepts Rider Board:</strong> 
-      {% if accepts_rider_board == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}<br>
-    </div>
-  {% endif %}
-{% comment %} End stroller-wagon {% endcomment %}
-{% comment %} Start Travel Systems {% endcomment %}
-{% if collection.handle == 'travel-systems' %}
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Wheel Material:</strong>
-      {{ wheel_material }}<br>
-      <strong>Stroller Type:</strong>
-      {{ stroller_type }}<br>
-      <strong>Included Car Seat:</strong>
-      <br>
-      <strong>Accepts Rider Board:</strong> 
-      {% if accepts_rider_board == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}
-    </div>
-  {% endif %}
-{% comment %} End travel-systems {% endcomment %}
-{% comment %} Start stroller-accessories {% endcomment %}
-{% if collection.handle == 'stroller-accessories' %}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Accepts Infant Car Seat:</strong>
+            {% if accepts_infant_car_seat == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
 
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
+            <strong>Wheel Material:</strong>
+            {{ wheel_material }}<br>
+            <strong>Stroller Type:</strong>
+            {{ stroller_type }}<br>
+            <strong>Accepts Rider Board:</strong>
+            {% if accepts_rider_board == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
+          </div>
+        {% endif %}
+        {% comment %} End stroller-wagon {% endcomment %}
+        {% comment %} Start Travel Systems {% endcomment %}
+        {% if collection.handle == 'travel-systems' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
 
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Assembly Required:</strong>
-      {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Wheel Material:</strong>
+            {{ wheel_material }}<br>
+            <strong>Stroller Type:</strong>
+            {{ stroller_type }}<br>
+            <strong>Included Car Seat:</strong>
+            <br>
+            <strong>Accepts Rider Board:</strong>
+            {% if accepts_rider_board == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+          </div>
+        {% endif %}
+        {% comment %} End travel-systems {% endcomment %}
+        {% comment %} Start stroller-accessories {% endcomment %}
+        {% if collection.handle == 'stroller-accessories' %}
+
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Assembly Required:</strong>
+            {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
             {% if assembly_switch_spec == 1 %}
               Yes
             {% else %}
               No
             {% endif %}
-      <br>
-      <strong>Main product benefit:</strong> 
-      {{ product.metafields.custom.main_product_benefit }}<br>
-      <br>
+            <br>
+            <strong>Main product benefit:</strong>
+            {{ product.metafields.custom.main_product_benefit }}<br>
+            <br>
 
-      <strong>Hardware Included:</strong>
-      {% assign my_switch = product.metafields.sf_gates.hardware_included %}
-      {% if my_switch == 1 %}
-      Yes 
-      {% else %}
-      No
-      {% endif %}
+            <strong>Hardware Included:</strong>
+            {% assign my_switch = product.metafields.sf_gates.hardware_included %}
+            {% if my_switch == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
 
-      <br>
-      
-    </div>
-  {% endif %}
-{% comment %} End stroller-accessories {% endcomment %}
-{% comment %} Start baby-proofing {% endcomment %}
-{% if collection.handle == 'baby-proofing' %}
-  <div class="flex-item">
-    <h3>Package Includes</h3>
-      {{ product.metafields.sf_products.retail_package_contents }}<br>
-  </div>
-  <div class="flex-item">
-    <h3>Warranty Type</h3>
-    {{ product.metafields.sf_products.warranty_type }}<br>
-    
-  </div>
-  <div class="flex-item">
-    <h3>Mount Type</h3>
-    {{ product.metafields.sf_products.mount_type }}<br>
-    
-  </div>
-  <div class="flex-item">
-    <h3>Tested to</h3>
+            <br>
 
-
-  {% endif %}
-{% comment %} End baby-proofing {% endcomment %}
-{% comment %} Start mattress {% endcomment %}
-{% if collection.handle == 'mattress' %}
-
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    {{ product.metafields.custom.modes_of_use }}}
-  </div>
-
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Sustainability/Eco-Friendly:</strong>
-      {{ product.metafields.custom.eco_friendly }}<br>
-      <br>
-      <strong>Certifications:</strong> 
-      {{ product.metafields.custom.certifications }}
-      <br>
-      <strong>Breathable:</strong> 
-      {{ product.metafields.custom.breathable }}
-      <br>
-      <strong>Dual-Sided:</strong> 
-      {{ product.metafields.custom.dual_sided }}
-      <br>
-
-      
-    </div>
-  {% endif %}
-{% comment %} End mattress {% endcomment %}
-{% comment %} Start thermometer {% endcomment %}
-{% if collection.handle == 'baby-health' %}
-
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    
-  </div>
-
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Accuracy:</strong>
-      {{ product.metafields.custom.accuracy }}<br>
-      <br>
-      <strong>Response Time:</strong> 
-      {{ product.metafields.custom.response_time }}
-      <br>
-      <strong>Body Application:</strong> 
-      {{ product.metafields.custom.body_application }}
-      <br>
-      <strong>Battery Type:</strong> 
-      {{ battery_cell_type }}
-      <br>
-
-      
-    </div>
-  {% endif %}
-{% comment %} End thermometer {% endcomment %}
-{% comment %} Start Nasal {% endcomment %}
-{% if collection.handle == 'baby-essentials' %}
-
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Suction Range:</strong>
-      {{ product.metafields.custom.suction_range }}<br>
-      
-      <br>
-      <strong>Features:</strong> 
-      <br>
-      <strong>Tip Styles:</strong> 
-      {{ product.metafields.custom.tip_styles }}<br>
-      <br>
-      <strong>Material Composition:</strong> 
-      {{ product.metafields.custom.material_composition }}<br>
-
-      <br>
-
-      
-    </div>
-  {% endif %}
-{% comment %} End thermometer {% endcomment %}
-{% comment %} Start baby-carriers {% endcomment %}
-{% if collection.handle == 'baby-carriers' %}
-
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_max }} 
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    {{ product.metafields.custom.modes_of_use }}
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Position:</strong>
-      {{ product.metafields.sf_carrier.position }}
-      
-      <br>
-      <strong>Child Facing Direction:</strong> 
-      <br>
-      <strong>Includes Pacifier/Toy Clip:</strong> 
-      <br>
-      <strong>Machine Washable:</strong> 
-      {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
-        {% if my_switch == 1 %}
-        Yes 
-        {% else %}  
-        No
+          </div>
         {% endif %}
-      <br>
-    </div>
-  {% endif %}
-{% comment %} End carrier {% endcomment %}
-{% comment %} Start High-Chairs {% endcomment %}
-{% if collection.handle == 'high-chairs' %}
+        {% comment %} End stroller-accessories {% endcomment %}
+        {% comment %} Start baby-proofing {% endcomment %}
+        {% if collection.handle == 'baby-proofing' %}
+          <div class="flex-item">
+            <h3>Package Includes</h3>
+            {{ product.metafields.sf_products.retail_package_contents }}<br>
+          </div>
+          <div class="flex-item">
+            <h3>Warranty Type</h3>
+            {{ product.metafields.sf_products.warranty_type }}<br>
 
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_max }} 
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    
-  </div>
+          </div>
+          <div class="flex-item">
+            <h3>Mount Type</h3>
+            {{ product.metafields.sf_products.mount_type }}<br>
 
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Harness Type:</strong>
-      <br>
-      <strong>Wipeable Cushion:</strong> 
-      <br>
-      <strong>Dishwasher Safe Tray:</strong> 
-      <br>
-      <strong>Height Adjustable:</strong> 
+          </div>
+          <div class="flex-item">
+            <h3>Tested to</h3>
+          </div>
+        {% endif %}
+        {% comment %} End baby-proofing {% endcomment %}
+        {% comment %} Start mattress {% endcomment %}
+        {% if collection.handle == 'mattress' %}
 
-      <br>
-    </div>
-  {% endif %}
-{% comment %} End High-Chairs {% endcomment %}
-{% comment %} Start Baby-gates {% endcomment %}
-{% if collection.handle == 'baby-gates' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+            {{ product.metafields.custom.modes_of_use }}}
+          </div>
 
- 
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Sustainability/Eco-Friendly:</strong>
+            {{ product.metafields.custom.eco_friendly }}<br>
+            <br>
+            <strong>Certifications:</strong>
+            {{ product.metafields.custom.certifications }}
+            <br>
+            <strong>Breathable:</strong>
+            {{ product.metafields.custom.breathable }}
+            <br>
+            <strong>Dual-Sided:</strong>
+            {{ product.metafields.custom.dual_sided }}
+            <br>
 
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Use Cases</h3>
-    {{ product.metafields.custom.use_cases }}
-    
-    
-  </div>
 
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Opening Size Minimum:</strong>
-      {{ min_opening_size }} inches
-      <br>
-      <strong>Opening Size Maximum:</strong> 
-      {{ max_opening_size }} inches
-      <br>
-      <strong>Mount Type:</strong> 
-      
-      <br>
-      <strong>Opening Type:</strong> 
-      
-      <br>
-      
-      <strong>Hardware Included:</strong> 
-      {% assign my_switch = product.metafields.sf_gates.hardware_included %}
-      {% if my_switch == 1 %}
-      Yes 
-      {% else %}
-      No
-      {% endif %}
-      <br>
-    </div>
-  {% endif %}
-{% comment %} End baby-gates {% endcomment %}
-{% comment %} Start activity-centers {% endcomment %}
-{% if collection.handle == 'exersaucer' %}
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    {{ product.metafields.custom.modes_of_use }}
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      <strong>Number of Height Modes:</strong>
-      
-      <br>
-      <strong>Toys:</strong>
-      {{ product.metafields.sf_activity.electronic_toys_features }}
-      
-      <br>
-      <strong>Batteries Required:</strong>
-      {{ product.metafields.sf_activity.batteries_required }}
-      {% if product.metafields.sf_activity.batteries_required == 1 %}
-        Yes
-      {% else %}
-        No
-      {% endif %}
-      
-      <br>
-      <strong>Warranty Type:</strong>
-      {{ product.metafields.sf_products.warranty_type }}
-      
-      <br>
-      
-      
-    </div>
-  {% endif %}
-{% comment %} End activity centers {% endcomment %}
+          </div>
+        {% endif %}
+        {% comment %} End mattress {% endcomment %}
+        {% comment %} Start thermometer {% endcomment %}
+        {% if collection.handle == 'baby-health' %}
 
-{% comment %} Start doorway-jumpers {% endcomment %}
-{% if collection.handle == 'doorway-jumpers' %}
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    {{ product.metafields.custom.modes_of_use }}
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      
-      <strong>Toys:</strong>
-      {{ product.metafields.sf_activity.electronic_toys_features }}
-      
-      <br>
-      <strong>Machine Washable:</strong>
-      
-      <br>
-      <strong>Height Adjustable:</strong>
-      
-      <br>
-      <strong>Warranty Type:</strong>
-      {{ product.metafields.sf_products.warranty_type }}
-      
-      <br>
-      
-      
-    </div>
-  {% endif %}
-{% comment %} End doorway-jumpers {% endcomment %}
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
 
-{% comment %} Start rollplay {% endcomment %}
-{% if collection.handle == 'rollplay' %}
-  <div class="flex-item">
-    <h3>Child Fit</h3>
-      <strong>Weight:</strong>
-      {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
-      <strong>Height:</strong>
-      {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
-  </div>
-  <div class="flex-item">
-    <h3>Product Dimensions</h3>
-      <strong>Dimensions:</strong>
-      {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-  </div>
-  <div class="flex-item">
-    <h3>Modes of Use</h3>
-    {{ product.metafields.custom.modes_of_use }}
-  </div>
-  <div class="flex-item">
-    <h3>Specs</h3>
-      
-      <strong>Max Speed:</strong>
-      {{ product.metafields.custom.rollplay_max_speed }} mph
-      
-      <br>
-      <strong>Run Time:</strong>
-      {{ product.metafields.custom.rollplay_run_time }}
-      <br>
-      <strong>Battery Voltage:</strong>
-      {{ product.metafields.custom.rollplay_battery_voltage }}
-      <br>
-      <strong>Battery Replaceable:</strong>
-      {{ product.metafields.custom.rollplay_battery_replaceable }}
-      <br>
-      
-      
-    </div>
-  {% endif %}
-{% comment %} End rollplay {% endcomment %}
-          
+          </div>
+
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Accuracy:</strong>
+            {{ product.metafields.custom.accuracy }}<br>
+            <br>
+            <strong>Response Time:</strong>
+            {{ product.metafields.custom.response_time }}
+            <br>
+            <strong>Body Application:</strong>
+            {{ product.metafields.custom.body_application }}
+            <br>
+            <strong>Battery Type:</strong>
+            {{ battery_cell_type }}
+            <br>
+
+
+          </div>
+        {% endif %}
+        {% comment %} End thermometer {% endcomment %}
+        {% comment %} Start Nasal {% endcomment %}
+        {% if collection.handle == 'baby-essentials' %}
+
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Suction Range:</strong>
+            {{ product.metafields.custom.suction_range }}<br>
+
+            <br>
+            <strong>Features:</strong>
+            <br>
+            <strong>Tip Styles:</strong>
+            {{ product.metafields.custom.tip_styles }}<br>
+            <br>
+            <strong>Material Composition:</strong>
+            {{ product.metafields.custom.material_composition }}<br>
+
+            <br>
+
+
+          </div>
+        {% endif %}
+        {% comment %} End thermometer {% endcomment %}
+        {% comment %} Start baby-carriers {% endcomment %}
+        {% if collection.handle == 'baby-carriers' %}
+
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_max }}
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+            {{ product.metafields.custom.modes_of_use }}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Position:</strong>
+            {{ product.metafields.sf_carrier.position }}
+
+            <br>
+            <strong>Child Facing Direction:</strong>
+            <br>
+            <strong>Includes Pacifier/Toy Clip:</strong>
+            <br>
+            <strong>Machine Washable:</strong>
+            {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
+            {% if my_switch == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
+          </div>
+        {% endif %}
+        {% comment %} End carrier {% endcomment %}
+        {% comment %} Start High-Chairs {% endcomment %}
+        {% if collection.handle == 'high-chairs' %}
+
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_max }}
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+
+          </div>
+
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Harness Type:</strong>
+            <br>
+            <strong>Wipeable Cushion:</strong>
+            <br>
+            <strong>Dishwasher Safe Tray:</strong>
+            <br>
+            <strong>Height Adjustable:</strong>
+
+            <br>
+          </div>
+        {% endif %}
+        {% comment %} End High-Chairs {% endcomment %}
+        {% comment %} Start Baby-gates {% endcomment %}
+        {% if collection.handle == 'baby-gates' %}
+
+
+
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Use Cases</h3>
+            {{ product.metafields.custom.use_cases }}
+
+
+          </div>
+
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Opening Size Minimum:</strong>
+            {{ min_opening_size }} inches
+            <br>
+            <strong>Opening Size Maximum:</strong>
+            {{ max_opening_size }} inches
+            <br>
+            <strong>Mount Type:</strong>
+
+            <br>
+            <strong>Opening Type:</strong>
+
+            <br>
+
+            <strong>Hardware Included:</strong>
+            {% assign my_switch = product.metafields.sf_gates.hardware_included %}
+            {% if my_switch == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+            <br>
+          </div>
+        {% endif %}
+        {% comment %} End baby-gates {% endcomment %}
+        {% comment %} Start activity-centers {% endcomment %}
+        {% if collection.handle == 'exersaucer' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+            {{ product.metafields.custom.modes_of_use }}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+            <strong>Number of Height Modes:</strong>
+
+            <br>
+            <strong>Toys:</strong>
+            {{ product.metafields.sf_activity.electronic_toys_features }}
+
+            <br>
+            <strong>Batteries Required:</strong>
+            {{ product.metafields.sf_activity.batteries_required }}
+            {% if product.metafields.sf_activity.batteries_required == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+
+            <br>
+            <strong>Warranty Type:</strong>
+            {{ product.metafields.sf_products.warranty_type }}
+
+            <br>
+
+
+          </div>
+        {% endif %}
+        {% comment %} End activity centers {% endcomment %}
+
+        {% comment %} Start doorway-jumpers {% endcomment %}
+        {% if collection.handle == 'doorway-jumpers' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+            {{ product.metafields.custom.modes_of_use }}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+
+            <strong>Toys:</strong>
+            {{ product.metafields.sf_activity.electronic_toys_features }}
+
+            <br>
+            <strong>Machine Washable:</strong>
+
+            <br>
+            <strong>Height Adjustable:</strong>
+
+            <br>
+            <strong>Warranty Type:</strong>
+            {{ product.metafields.sf_products.warranty_type }}
+
+            <br>
+
+
+          </div>
+        {% endif %}
+        {% comment %} End doorway-jumpers {% endcomment %}
+
+        {% comment %} Start rollplay {% endcomment %}
+        {% if collection.handle == 'rollplay' %}
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ product.metafields.sf_products.child_weight_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+            <strong>Height:</strong>
+            {{ product.metafields.sf_products.child_height_min }} - {{ product.metafields.sf_products.child_weight_max }} lbs
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Dimensions:</strong>
+            {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+            {{ product.metafields.custom.modes_of_use }}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+
+            <strong>Max Speed:</strong>
+            {{ product.metafields.custom.rollplay_max_speed }} mph
+
+            <br>
+            <strong>Run Time:</strong>
+            {{ product.metafields.custom.rollplay_run_time }}
+            <br>
+            <strong>Battery Voltage:</strong>
+            {{ product.metafields.custom.rollplay_battery_voltage }}
+            <br>
+            <strong>Battery Replaceable:</strong>
+            {{ product.metafields.custom.rollplay_battery_replaceable }}
+            <br>
+
+
+          </div>
+        {% endif %}
+        {% comment %} End rollplay {% endcomment %}
+
       {% endfor %}
     </div>
   </div>
