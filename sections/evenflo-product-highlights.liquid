@@ -26,9 +26,9 @@
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
     <div class="flex-row">
-      {% for collection in product.collections %}
+      
         {% comment %} Start booster-car-seats {% endcomment %}
-        {% if collection.handle == 'booster-car-seats' %}
+        {% if product.type == 'Booster Seat' %}
           <div class="flex-item">
             <h3>Child Fit</h3>
 
@@ -526,7 +526,7 @@
         {% endif %}
         {% comment %} End thermometer {% endcomment %}
         {% comment %} Start baby-carriers {% endcomment %}
-        {% if collection.handle == 'baby-carriers' %}
+        {% if product.type == 'Baby Carriers' %}
 
           <div class="flex-item">
             <h3>Child Fit</h3>
