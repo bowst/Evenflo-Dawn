@@ -1,0 +1,47 @@
+{%- # Label: Heading -%}
+{{ section.settings.heading }} 
+
+{%- # Label: Left Content -%}
+{{ section.settings.left_content }} 
+
+{%- # Label: Right Content -%}
+{{ section.settings.right_content }} 
+
+{% schema %}
+  {
+  "name": "Parentlink",
+  "class": "text",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Supported By"
+    },
+    {
+      "type": "html",
+      "id": "left_content",
+      "label": "Left Content",
+      "default": "Phone"
+    },
+    {
+      "type": "html",
+      "id": "right_content",
+      "label": "Right Content",
+      "default": "Email"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Parentlink"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
