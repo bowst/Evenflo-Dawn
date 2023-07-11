@@ -522,3 +522,26 @@
     padding-top: 3rem;
   }
 }
+
+.footer__content-bottom {
+  border-color: rgba(var(--color-base-accent-2), 1);
+}
+
+.footer__copyright-wrapper {
+  background: rgba(var(--color-base-accent-2), 1);
+  color: #fff;
+}
+
+.footer__copyright-wrapper a {
+  color: #fff;
+}
+
+.footer__copyright-wrapper .footer__copyright {
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .footer__copyright-wrapper .copyright__content {
+    font-size: 1.2rem;
+  }
+}
