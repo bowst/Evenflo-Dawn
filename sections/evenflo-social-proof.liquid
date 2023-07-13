@@ -1,25 +1,35 @@
+{%- # Label: Share your journey with us -%}
+{{ section.settings.share_your_journey_with_us }} 
+
+{%- # Label: Pixlee -%}
+{{ section.settings.pixlee }} 
+
 {% schema %}
-{
-  "name": "Evenflo Social Proof",
-  "tag": "section",
+  {
+  "name": "Social Proof",
   "class": "content",
+  "tag": "section",
   "settings": [
     {
       "type": "text",
-      "label": "Heading",
-      "id": "heading",
+      "id": "share_your_journey_with_us",
+      "label": "Share your journey with us",
       "default": "Share your journey with us",
-      "info": "Social Proof Embed",
-      "placeholder": "Share your journey with us"
+      "placeholder": "Share your journey with us",
+      "info": "Social Proof"
+    },
+    {
+      "type": "html",
+      "id": "pixlee",
+      "label": "Pixlee"
     }
   ],
-  "blocks": [],
   "presets": [
     {
-      "name": "Evenflo Social Proof"
+      "name": "Social Proof"
     }
   ]
-}
+}  
 {% endschema %}
 
 {% stylesheet %}
