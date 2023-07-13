@@ -3,14 +3,13 @@
 <section class="full-width">
   <div class="content-container page-width rich-text--full-width content-container--full-width">
     <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
-    <p>{{ section.settings.content }}</p>
+    {{ product.description | newline_to_br | strip_html }}
+    {% comment %} <p>{{ section.settings.content }}</p> {% endcomment %}
   </div>
 </section>
 
-
-
 {% schema %}
-  {
+{
   "name": "Evenflo Full Width",
   "class": "text",
   "tag": "section",
