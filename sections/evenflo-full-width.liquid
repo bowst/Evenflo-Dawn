@@ -3,7 +3,9 @@
 <section class="full-width">
   <div class="content-container page-width rich-text--full-width content-container--full-width">
     <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
-    {{ product.description | newline_to_br | strip_html }}
+    <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+      {{ product.content }}
+    </div>
     {% comment %} <p>{{ section.settings.content }}</p> {% endcomment %}
   </div>
 </section>
