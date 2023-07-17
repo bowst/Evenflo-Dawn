@@ -1623,3 +1623,13 @@ a.product__text {
   top: 0;
   left: 0;
 }
+
+.product__info-container .product__text.heading-underline {
+  font-weight: 900;
+  font-size: 32px;
+  color: #000;
+}
+
+.product__info-container .product__text.heading-underline::after {
+  bottom: 0;
+}
