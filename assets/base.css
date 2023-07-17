@@ -3196,3 +3196,12 @@ a {
   height: 4px;
   background-color: rgba(var(--color-base-accent-2), 1);
 }
+
+.heading-underline-center {
+  text-align: center;
+}
+
+.heading-underline-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}

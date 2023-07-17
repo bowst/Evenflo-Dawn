@@ -1,5 +1,7 @@
-<div class="content-container page-width rich-text--full-width content-container--full-width">
-  <h2 class="h1 heading-underline">{{ section.settings.share_your_journey_with_us }}</h2>
+{{ 'section-social-proof.css' | asset_url | stylesheet_tag }}
+
+<div class="social-proof content-container page-width rich-text--full-width content-container--full-width">
+  <h2 class="h1 heading-underline heading-underline-center">{{ section.settings.share_your_journey_with_us }}</h2>
 
   {%- # Label: Pixlee -%}
   {{ section.settings.pixlee }}
