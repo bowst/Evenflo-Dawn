@@ -2,19 +2,26 @@
   "sections": {
     "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
       "type": "image-banner",
-      "disabled": true,
       "blocks": {
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.title }}",
+            "heading": "Join The Club",
             "heading_size": "h1",
             "heading_color": "black"
+          }
+        },
+        "cf964d42-92f3-4fda-a284-ff43a86d9312": {
+          "type": "text",
+          "settings": {
+            "text": "Become a member and earn points & exclusive rewards every time you shop.",
+            "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
+        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0",
+        "cf964d42-92f3-4fda-a284-ff43a86d9312"
       ],
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
