@@ -9,110 +9,6 @@
         "padding_bottom": 52
       }
     },
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
-      "type": "image-banner",
-      "disabled": true,
-      "blocks": {
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Join The Club",
-            "heading_size": "h1",
-            "heading_color": "black"
-          }
-        },
-        "cf964d42-92f3-4fda-a284-ff43a86d9312": {
-          "type": "text",
-          "settings": {
-            "text": "Become a member and earn points & exclusive rewards every time you shop.",
-            "text_style": "body"
-          }
-        },
-        "870f4d7a-95f4-4e42-90d7-0820a18066c0": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Join Now",
-            "button_link_1": "\/account\/register",
-            "button_style_secondary_1": false,
-            "button_label_2": "Login",
-            "button_link_2": "\/account\/login",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0",
-        "cf964d42-92f3-4fda-a284-ff43a86d9312",
-        "870f4d7a-95f4-4e42-90d7-0820a18066c0"
-      ],
-      "settings": {
-        "image": "{{ page.metafields.custom.header_image.value }}",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "47773554-33b5-463b-b8a3-1b28c98f49ee": {
-      "type": "multicolumn",
-      "disabled": true,
-      "blocks": {
-        "template--15815876509852__47773554-33b5-463b-b8a3-1b28c98f49ee-1689612646333fe55b-0": {
-          "type": "column",
-          "settings": {
-            "title": "SIGN UP",
-            "text": "<p>Create an account and<br\/>get 25 points.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15815876509852__47773554-33b5-463b-b8a3-1b28c98f49ee-1689612646333fe55b-1": {
-          "type": "column",
-          "settings": {
-            "title": "EARN POINTS",
-            "text": "<p>Earn points every time<br\/>you shop.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15815876509852__47773554-33b5-463b-b8a3-1b28c98f49ee-1689612646333fe55b-2": {
-          "type": "column",
-          "settings": {
-            "title": "REDEEM POINTS",
-            "text": "<p>Redeem points for<br\/>exclusive discounts.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15815876509852__47773554-33b5-463b-b8a3-1b28c98f49ee-1689612646333fe55b-0",
-        "template--15815876509852__47773554-33b5-463b-b8a3-1b28c98f49ee-1689612646333fe55b-1",
-        "template--15815876509852__47773554-33b5-463b-b8a3-1b28c98f49ee-1689612646333fe55b-2"
-      ],
-      "settings": {
-        "title": "How It Works",
-        "heading_size": "h0",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -133,8 +29,6 @@
   },
   "order": [
     "e926af89-44a9-4408-998b-39e54f29b69b",
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea",
-    "47773554-33b5-463b-b8a3-1b28c98f49ee",
     "main",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb"
   ]
