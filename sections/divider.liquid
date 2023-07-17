@@ -1,4 +1,18 @@
-<section class="section {{ section.settings.css_class }}">
+{%- style -%}
+  .section-{{ section.id }}-margin hr {
+    margin-top: {{ section.settings.divider_spacing | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ section.settings.divider_spacing | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-margin hr {
+      margin-top: {{ section.settings.divider_spacing }}px;
+      margin-bottom: {{ section.settings.divider_spacing }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="section {{ section.settings.css_class }} section-{{ section.id }}-margin">
   <div class="container">
     <div class="one-whole column">
       <hr class="divider divider--{{ section.settings.divider_border }}">
@@ -19,7 +33,7 @@
         "type": "range",
         "id": "divider_spacing",
         "min": 0,
-        "max": 30,
+        "max": 100,
         "step": 5,
         "unit": "px",
         "label": "Space",
