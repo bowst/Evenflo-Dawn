@@ -1,0 +1,66 @@
+.quote {
+  padding-top: 260px;
+  padding-bottom: 200px;
+}
+
+.quote .quote__inner {
+  padding-left: 126px;
+  position: relative;
+}
+
+.quote .quote__inner_quote::before,
+.quote .quote__inner_quote::after {
+  content: '‘‘';
+  font-family: 'mr-eaves-sans', sans-serif;
+  font-size: 320px;
+  line-height: 240px;
+  letter-spacing: -30px;
+  font-weight: 700;
+  opacity: 0.1;
+  position: absolute;
+}
+
+.quote .quote__inner_quote::before {
+  top: -50px;
+  left: 0;
+}
+
+.quote .quote__inner_quote::after {
+  transform: rotate(180deg);
+  bottom: -50px;
+  right: 0;
+}
+
+.quote .quote__inner_quote h3 {
+  font-size: calc(var(--font-heading-scale) * 2.4rem);
+}
+
+@media only screen and (min-width: 750px) {
+  .quote .quote__inner {
+    padding-left: 286px;
+  }
+
+  .quote .quote__inner_quote::before,
+  .quote .quote__inner_quote::after {
+    content: '‘‘';
+    font-family: 'mr-eaves-sans', sans-serif;
+    font-size: 640px;
+    letter-spacing: -60px;
+  }
+
+  .quote .quote__inner_quote::before {
+    top: 0;
+  }
+
+  .quote .quote__inner_quote::after {
+    bottom: 0;
+  }
+
+  .quote .quote__inner_quote h3 {
+    font-size: calc(var(--font-heading-scale) * 4rem);
+  }
+}
+
+.quote .quote__inner_name {
+  text-transform: uppercase;
+}

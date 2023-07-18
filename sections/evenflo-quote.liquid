@@ -1,3 +1,16 @@
+{{ 'section-quote.css' | asset_url | stylesheet_tag }}
+
+<section class="quote content-container page-width content-container--full-width">
+  <div class="quote__inner">
+    <div class="quote__inner_quote">
+      <h3>{{ section.settings.quote }}</h3>
+    </div>
+    <div class="quote__inner_name">
+      <p>–{{ section.settings.name }}</p>
+    </div>
+  </div>
+</section>
+
 {% schema %}
   {
     "name": "Section Quote",
@@ -22,22 +35,3 @@
 {% javascript %}
 {% endjavascript %}
 
-{{ 'section-quote.css' | asset_url | stylesheet_tag }}
-<section class="peace-of-mind">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="peace-of-mind__inner">
-          <div class="peace-of-mind__inner__quote">
-            <p>{{ section.settings.quote }}</p>
-          </div>
-          <div class="peace-of-mind__inner__name">
-            <p>{{ section.settings.name }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  
