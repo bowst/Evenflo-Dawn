@@ -6,7 +6,7 @@
     <div class="product__description rte quick-add-hidden" >
     {{ section.settings.content }} 
     </div>
-
+<div class="flex-container">
 {%- for block in section.blocks -%}
   {%- case block.type -%}
 
@@ -16,6 +16,7 @@
 
   {%- endcase -%}
 {%- endfor -%}
+</div>
   </div>
 </section>
 {% schema %}
