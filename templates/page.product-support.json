@@ -11,6 +11,14 @@
     "1654626309b577be9f": {
       "type": "image-with-text",
       "blocks": {
+        "fac92442-75b6-48aa-9162-4e2f33770c65": {
+          "type": "caption",
+          "settings": {
+            "caption": "Product Support",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
         "16546263096365e54f-0": {
           "type": "heading",
           "settings": {
@@ -34,6 +42,7 @@
         }
       },
       "block_order": [
+        "fac92442-75b6-48aa-9162-4e2f33770c65",
         "16546263096365e54f-0",
         "16546263096365e54f-1",
         "16546263096365e54f-2"
@@ -42,7 +51,7 @@
         "image": "{{ page.metafields.custom.support_product_image.value }}",
         "height": "adapt",
         "desktop_image_width": "medium",
-        "layout": "image_first",
+        "layout": "text_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
@@ -64,6 +73,14 @@
         "padding_bottom": 36
       }
     },
+    "2a297c94-fd8b-4df7-a706-2063ca492430": {
+      "type": "evenflo-parentlink",
+      "settings": {
+        "heading": "Supported By ParentLink Consumer Care Via Phone, Email, Chat and Video",
+        "left_content": "<h3>Phone<\/h3>\n\n<a href=\"tel:1-800-223-5921\">1-800-223-5921 (US)<\/a><br>\n<a href=\"tel:1-973-773-3971\">1-973-773-3971 (Canada)<\/a>",
+        "right_content": "<h3>Email<\/h3>\n\nNo time to chat?<br>\n<a href=\"mailto:\">Email us<\/a> your inquiry"
+      }
+    },
     "1562353d-9c05-4679-b94d-30e5b02582b8": {
       "type": "support_car_seats",
       "settings": {
@@ -75,13 +92,22 @@
       "settings": {
         "number_of_faq": 5
       }
+    },
+    "6fba658b-8bc9-47f4-87e7-17bec5ca5fb8": {
+      "type": "evenflo-install",
+      "settings": {
+        "heading": "Install\/Setup",
+        "content": ""
+      }
     }
   },
   "order": [
     "main",
     "1654626309b577be9f",
     "1654626339e398ddf4",
+    "2a297c94-fd8b-4df7-a706-2063ca492430",
     "1562353d-9c05-4679-b94d-30e5b02582b8",
-    "3d41287b-9f76-4374-a5c1-9a09431f33b6"
+    "3d41287b-9f76-4374-a5c1-9a09431f33b6",
+    "6fba658b-8bc9-47f4-87e7-17bec5ca5fb8"
   ]
 }
