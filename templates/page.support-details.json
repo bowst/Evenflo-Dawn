@@ -17,7 +17,7 @@
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
       ],
       "settings": {
-        "image": "{{ page.metafields.custom.header_image.value }}",
+        "image": "shopify:\/\/shop_images\/Zoo_Friends_Activity_Center.png",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "middle-right",
@@ -40,12 +40,19 @@
     },
     "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e": {
       "type": "evenflo-image-with-text",
-      "disabled": true,
       "blocks": {
+        "76f8ead9-aab0-4cf4-a728-56ea2a4df541": {
+          "type": "caption",
+          "settings": {
+            "caption": "Product Support",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
         "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
+            "heading": "{{ page.title }}",
             "heading_size": "h1"
           }
         },
@@ -65,13 +72,15 @@
         }
       },
       "block_order": [
+        "76f8ead9-aab0-4cf4-a728-56ea2a4df541",
         "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0",
         "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1",
         "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-2"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/Zoo_Friends_Activity_Center.png",
         "height": "adapt",
-        "layout": "image_first",
+        "layout": "text_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
