@@ -50,17 +50,16 @@
         </div>
         <div class="flex-item">
           <h3>Mount Type</h3>
-          <strong></strong>
+          <strong>{{ product.metafields.custom.mount_type }}</strong>
         </div>
         <div class="flex-item">
           <h3>Tested To</h3>
-          <strong></strong>
+          <strong>{{ product.metafields.custom.tested_to }} lbs</strong>
         </div>
-        
       </div>
-    <div>
-            <a href="{{ product.metafields.custom.support_page_link }}" class="see-more">SEE MORE >></a>
-            </div>
+      <div>
+        <a href="{{ product.metafields.custom.support_page_link }}" class="see-more">SEE MORE >></a>
+      </div>
     {% endif %}
     {% if product.type == 'Car Seat' %}
       <div class="flex-row">
