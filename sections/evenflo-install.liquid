@@ -1,13 +1,11 @@
 {{ 'section-full-width.css' | asset_url | stylesheet_tag }}
 <section class="full-width">
   <div class="content-container page-width rich-text--full-width content-container--full-width">
-<h2 class="h1 heading-underline"></h2>{{ section.settings.heading }} </h2>
+    <h2 class="h1 heading-underline"></h2>{{ section.settings.heading }} </h2>
+    <div class="product__description rte quick-add-hidden" >
+    {{ section.settings.content }} 
+    </div>
 
-<div class="product__description rte quick-add-hidden" >
-{{ section.settings.content }} 
-</div>
-  </div>
-</section>
 {%- for block in section.blocks -%}
   {%- case block.type -%}
 
@@ -17,7 +15,8 @@
 
   {%- endcase -%}
 {%- endfor -%}
-
+  </div>
+</section>
 {% schema %}
   {
   "name": "Evenflo Install",
