@@ -5,22 +5,49 @@
 
 .features .flex-row {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.features .content-container > .flex-row {
   margin-left: -40px;
   margin-right: -40px;
 }
 
 .features .flex-item {
-  margin: 0 40px;
-  flex: 1;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
-.features .flex-row .flex-row {
-  margin-left: -10px;
-  margin-right: -10px;
+.features .content-container > .flex-row > .flex-item {
+  padding: 0 40px;
 }
 
-.features .flex-item .flex-item {
-  margin: 40px 10px;
+@media screen and (min-width: 560px) {
+  .features .content-container > .flex-row > .flex-item > .flex-row > .flex-item {
+    width: 50%;
+    flex: 0 0 auto;
+  }
+
+  .features .flex-row .flex-row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .features .flex-item .flex-item {
+    padding: 40px 10px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .features .content-container > .flex-row > .flex-item {
+    width: 50%;
+    flex: 0 0 auto;
+  }
+
+  .features .flex-row.reverse {
+    flex-direction: row-reverse !important;
+  }
 }
 
 .features p {
