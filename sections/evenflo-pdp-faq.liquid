@@ -28,7 +28,8 @@
       <div class="column column-1">
         <h2 class="h1 heading-underline">All your Questions Answered</h2>
         <p>Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor. </p>
-        <a href="#">View the product Support Guide</a>
+        {% assign supportPage = product.metafields.custom.link_support_page %}
+        <a href="{{ supportPage }}">View the product Support Guide</a>
       </div>
       <div class="column column-2">
         <div class="collapsible-content isolate" id="questions">
