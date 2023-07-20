@@ -11,6 +11,14 @@
     "1654626309b577be9f": {
       "type": "image-with-text",
       "blocks": {
+        "fac92442-75b6-48aa-9162-4e2f33770c65": {
+          "type": "caption",
+          "settings": {
+            "caption": "Product Support",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
         "16546263096365e54f-0": {
           "type": "heading",
           "settings": {
@@ -34,6 +42,7 @@
         }
       },
       "block_order": [
+        "fac92442-75b6-48aa-9162-4e2f33770c65",
         "16546263096365e54f-0",
         "16546263096365e54f-1",
         "16546263096365e54f-2"
@@ -42,7 +51,7 @@
         "image": "{{ page.metafields.custom.support_product_image.value }}",
         "height": "adapt",
         "desktop_image_width": "medium",
-        "layout": "image_first",
+        "layout": "text_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
