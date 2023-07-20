@@ -1,33 +1,34 @@
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
 
-
-<section class="video">
-  <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width flex-row">
-    <div class="video-content-section">
-      <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.description }}</p>
-      {%- if section.settings.button_label != blank -%}
-        <a
-          {% if section.settings.button_link == blank %}
-          role="link"
-          aria-disabled="true"
-          {% else %}
-          href="{{ section.settings.button_link }}"
-          {% endif %}
-          class="button button--primary">
-          {{ section.settings.button_label | escape }}
-        </a>
-      {%- endif -%}
-    </div>
-    <div class="video-section">
-      <div style="padding:56.25% 0 0 0;position:relative;">
-        <iframe
-          src="https://player.vimeo.com/video/800550341?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          style="position:absolute;top:0;left:0;width:100%;height:100%;"
-          title="Evenflo Shyft DualRide Infant Car Seat Stroller Combo"></iframe>
+<section class="evenflo-video">
+  <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
+    <div class="flex-row">
+      <div class="flex-item video-content-section">
+        <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.description }}</p>
+        {%- if section.settings.button_label != blank -%}
+          <a
+            {% if section.settings.button_link == blank %}
+            role="link"
+            aria-disabled="true"
+            {% else %}
+            href="{{ section.settings.button_link }}"
+            {% endif %}
+            class="button button--primary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+      <div class=flex-item "video-section">
+        <div style="padding:56.25% 0 0 0;position:relative;">
+          <iframe
+            src="https://player.vimeo.com/video/800550341?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            style="position:absolute;top:0;left:0;width:100%;height:100%;"
+            title="Evenflo Shyft DualRide Infant Car Seat Stroller Combo"></iframe>
+        </div>
       </div>
     </div>
   </div>

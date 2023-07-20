@@ -1,6 +1,6 @@
 .quote {
-  padding-top: 260px;
-  padding-bottom: 200px;
+  padding-top: 100px;
+  padding-bottom: 60px;
 }
 
 .quote .quote__inner {
@@ -36,6 +36,11 @@
 }
 
 @media only screen and (min-width: 990px) {
+  .quote {
+    padding-top: 260px;
+    padding-bottom: 200px;
+  }
+
   .quote .quote__inner {
     padding-left: 286px;
   }
