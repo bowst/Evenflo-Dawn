@@ -1,17 +1,21 @@
-{{ 'section-full-width.css' | asset_url | stylesheet_tag }}
+{%- # Label: Heading -%}
+{{ section.settings.heading }} 
 
-<section class="full-width">
-  <div class="content-container page-width rich-text--full-width content-container--full-width">
-    <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
-    <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-      {{ product.content }}
-    </div>
-    {% comment %} <p>{{ section.settings.content }}</p> {% endcomment %}
-  </div>
-</section>
+{%- # Label: Content -%}
+{{ section.settings.content }} 
+
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+
+    {%- when 'videos' -%}
+      {%- # Label: Html 0 -%}
+      {{ block.settings.html_0 }} 
+
+  {%- endcase -%}
+{%- endfor -%}
 
 {% schema %}
-{
+  {
   "name": "Evenflo Install",
   "class": "text",
   "tag": "section",
@@ -20,13 +24,26 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Install/setup"
+      "default": "Install/Setup",
+      "placeholder": "Install/Setup"
     },
     {
       "type": "textarea",
       "id": "content",
-      "label": "Content",
-      "default": "Default Content"
+      "label": "Content"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Videos",
+      "type": "videos",
+      "settings": [
+        {
+          "type": "html",
+          "label": "Html 0",
+          "id": "html_0"
+        }
+      ]
     }
   ],
   "presets": [
@@ -34,7 +51,7 @@
       "name": "Evenflo Install"
     }
   ]
-}
+}  
 {% endschema %}
 
 {% stylesheet %}
