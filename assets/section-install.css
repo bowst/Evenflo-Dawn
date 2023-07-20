@@ -1,0 +1,14 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Optional: Adds some space around items */
+}
+
+.flex-item {
+    flex: 1 0 25%; /* grow | shrink | basis */
+    max-width: 25%;
+    margin: 0.5em; /* Optional: Adds some margin */
+    box-sizing: border-box; /* Optional: Includes padding and border in element's total width and height */
+    height: 100px; /* Set any height you want */
+    text-align: center; /* Optional: Centers text */
+}
