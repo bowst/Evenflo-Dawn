@@ -1,5 +1,23 @@
 
-{{ section.settings.heading }} 
+
+<div class="row cc-three-columns">
+          <div class="one-third column alpha">
+            {% if newsletter_title != blank %}
+              <h2 class="title">{{ section.settings.heading }} </h2>
+            {% endif %}
+            {% if newsletter_text != blank %}
+              <div class="newsletter-text">
+                {{ section.settings.heading }} 
+              </div>
+            {% endif %}
+          </div>
+          <div class="one-third column">
+            <div class="klaviyo-form-XwHciS"></div>
+          </div>
+          <div class="one-third column omega">
+            <div class="klaviyo-form-T3X7Yv"></div>
+          </div>
+        </div>
 
 {% schema %}
   {
