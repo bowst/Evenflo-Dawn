@@ -468,3 +468,40 @@
   z-index: 2;
   background: linear-gradient(to right, #41c4bc, #c1db94);
 }
+
+.evenflo-collection-banner .banner__box .banner__text {
+  color: #000;
+}
+
+.evenflo-collection-banner .banner__box .banner__heading {
+  margin-bottom: 40px;
+}
+
+.evenflo-collection-banner.banner::before {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .evenflo-collection-banner .banner__box .banner__heading.heading-underline::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .evenflo-collection-banner .banner__content {
+    padding: 0;
+  }
+
+  .evenflo-collection-banner .banner__box {
+    height: 100%;
+    max-width: 40rem;
+    min-width: 40rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .evenflo-collection-banner .banner__box {
+    max-width: 40rem;
+  }
+}
