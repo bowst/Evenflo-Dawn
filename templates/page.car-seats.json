@@ -2,6 +2,7 @@
   "sections": {
     "c5c0d082-c845-4a6f-bfef-6794dfacd1e6": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "template--15781023842460__c5c0d082-c845-4a6f-bfef-6794dfacd1e6-16862544866cbdc191-0": {
           "type": "heading",
@@ -27,6 +28,43 @@
         "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
         "show_text_below": false
+      }
+    },
+    "401ce55f-8dc2-47f6-8040-67332fcb9a11": {
+      "type": "evenflo-collection-image-banner",
+      "blocks": {
+        "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Car Seats",
+            "heading_size": "h1",
+            "heading_color": "white"
+          }
+        },
+        "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Safety is our #1 priority. \u0003We build car seats that we trus and use for our own children. We rigorously test all of our car seats at 2x the energy levels of the Federal Crash Test Standard.",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": [
+        "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-heading-1",
+        "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-text-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/38412464_Core_Plus_Revolve360_Extend_Rotational_All_In_One_Car_Seat_Revere_Single_1847.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
       }
     },
     "main": {
@@ -438,6 +476,7 @@
   },
   "order": [
     "c5c0d082-c845-4a6f-bfef-6794dfacd1e6",
+    "401ce55f-8dc2-47f6-8040-67332fcb9a11",
     "main",
     "24526522-9d8c-4b10-9aa8-0c31e8b483d0",
     "4cacfa3a-8f0d-47df-b959-1d6d44c29828",
