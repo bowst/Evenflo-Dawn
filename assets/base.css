@@ -3206,6 +3206,42 @@ a {
   transform: translateX(-50%);
 }
 
+.header__menu-item {
+  padding-left: 2rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.header__menu-item:hover span {
+  text-decoration: none;
+}
+
+details[open] > .header__menu-item {
+  text-decoration: none;
+}
+
+details[open] > .header__menu-item::after {
+  content: '';
+  display: block;
+  width: calc(100% - 2.7rem);
+  height: 2px;
+  background: rgba(var(--color-base-accent-2), 1);
+  position: absolute;
+  bottom: 12px;
+}
+
+.header .mega-menu__link {
+  padding-top: 0;
+}
+
+.header .mega-menu__link--level-2 {
+  font-weight: 700;
+}
+
+.header .mega-menu__link--level-2:not(:only-child) {
+  margin-bottom: 0;
+}
+
 #shopify-section-template--15779855106204__369648eb-eb5b-42a1-b24e-d1fa01d0d60b .gradient,
 #shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb,
 #shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb .gradient,
