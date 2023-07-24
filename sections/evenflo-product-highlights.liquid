@@ -355,6 +355,9 @@
     {% endif %}
 
     {% if product.type == 'Baby Gate' %}
+      {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
+      {% assign max_opening_size = product.metafields.sf_gates.max_opening_size %}
+      {% assign opening_type = product.metafields.sf_gates.opening_type_s_ %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -362,12 +365,18 @@
           <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
-          <h3>Modes of Use</h3>
-          <strong></strong>
+          <h3>Opening Type</h3>
+          <strong>{{ opening_type }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>Opening Size Minimum</strong> {{ min_opening_size }} inches<br>
+          <strong>Opening Size Maximum</strong> {{ min_opening_size }} inches <br>
+          <strong>Mount Type</strong> <br>
+          <strong>Hardware Included</strong>
+          {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
+          {% if gate_hardware == 1 %} Yes {% else %} No {% endif %}
+          <br>
         </div>
       </div>
     {% endif %}
