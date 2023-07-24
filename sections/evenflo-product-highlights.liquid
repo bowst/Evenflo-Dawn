@@ -357,23 +357,6 @@
     {% if product.type == 'Baby Gate' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit</h3>
-          <strong>Weight</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
-          {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs <br>
-          {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
-        </div>
-        <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
           <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
