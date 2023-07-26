@@ -95,14 +95,14 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          {{ product.metafields.custom.modes_of_use }}
+          {{ product.metafields.custom.modes_of_use | split: ',' }}
         </div>
       </div>
     {% endif %}
     {% if template == 'product.stroller-wagon' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit</h3>
+          <h3>Child Fit - Stroller wagon</h3>
           <strong>Weight:</strong>
           {{ product.metafields.sf_products.child_weight_min }} -
           {{ product.metafields.sf_products.child_weight_max }} lbs <br>
@@ -112,9 +112,8 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Dimensions:</strong>
-          <p>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</p>
-          <p>Folded: {{ folded_dimensions }}</p>
+          <strong>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</strong><br>
+          <strong>Folded: {{ folded_dimensions }}</strong><br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
