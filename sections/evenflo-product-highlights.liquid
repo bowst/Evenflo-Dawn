@@ -16,9 +16,19 @@
 {% assign package_width = product.metafields.sf_shipping.package_width %}
 {% assign package_height = product.metafields.sf_shipping.package_height %}
 {% assign package_depth = product.metafields.sf_shipping.package_depth %}
+{% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
+{% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
+{% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
 
 {% assign modes_of_use = product.metafields.custom.modes_of_use %}
 {% assign installation = product.metafields.custom.installation %}
+
+{% assign number_of_cup_holders = product.metafields.sf_products.number_of_cup_holders %}
+{% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
+
+{% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
+{% assign machine_washable = product.metafields.sf_products.machine_washable_seating_surface %}
+{% assign made_usa = product.metafields.sf_products.made_in_usa %}
 
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
@@ -88,6 +98,37 @@
           {{ product.metafields.custom.modes_of_use }}
         </div>
       </div>
+    {% endif %}
+    {% if template == 'product.stroller-wagon' %}
+      <div class="flex-row">
+        <div class="flex-item">
+          <h3>Child Fit</h3>
+          <strong>Weight:</strong>
+          {{ product.metafields.sf_products.child_weight_min }} -
+          {{ product.metafields.sf_products.child_weight_max }} lbs <br>
+          <strong>Height:</strong>
+          {{ product.metafields.sf_products.child_height_min }} -
+          {{ product.metafields.sf_products.child_height_max }} lbs
+        </div>
+        <div class="flex-item">
+          <h3>Product Dimensions</h3>
+          <strong>Dimensions:</strong>
+          <p>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</p>
+          <p>Folded: {{ folded_dimensions }}</p>
+        </div>
+        <div class="flex-item">
+          <h3>Modes of Use</h3>
+          {{ product.metafields.custom.modes_of_use }}
+        </div>
+      </div>
+      <div class="flex-item">
+        <h3>Specs</h3>
+        {{ product.metafields.custom.modes_of_use }} <br>
+        {{ product.metafields.sf_stroller.accepts_infant_car_seat }}<br>
+        {{ wheel_material }}<br>
+        {{ product.metafields.custom.stroller_type }}
+      </div>
+    </div>
     {% endif %}
     {% if product.template == 'infant-car-seat' %}
       <div class="flex-row">
@@ -198,15 +239,25 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>Lightweight</strong>
+          <strong>Has Harness Booster Mode</strong>
+          <strong>Cupholders : {{ number_of_cup_holders }}</strong><br>
+          <strong
+            >Converts to No Back Booser :
+            {% if converts_to_no_back_booster == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+          </strong>
         </div>
       </div>
     {% endif %}
-    {% if product.type == 'Car Seat Accessories' %}
+    {% if template == 'product.car-seat-accessories' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -216,7 +267,16 @@
 
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong
+            >Assembly Required :
+            {% if assembly_switch_spec == 1 %}
+              <p>Yes</p>
+            {% else %}
+              <p>No</p>
+            {% endif %} </strong
+          ><br>
+          <strong>Machine Washable Seating Surface </strong>
+          <strong>Made in USA </strong>
         </div>
       </div>
     {% endif %}
