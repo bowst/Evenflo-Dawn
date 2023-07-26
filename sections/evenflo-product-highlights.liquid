@@ -22,11 +22,19 @@
 
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
-    {% if product.type == 'Baby Proofing' %}
+    {% if template == 'product.baby-proofing' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Package Includes</h3>
-          <strong>{{ product.metafields.sf_products.retail_package_contents }}</strong>
+          <h3>Product Dimensions</h3>
+          <p>
+            <strong>{{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</strong>
+          </p>
+        </div>
+        <div class="flex-item">
+          <h3>Specs</h3>
+          <strong>{{ product.metafields.sf_products.retail_package_contents }}</strong><br>
+          <strong>{{ product.metafields.custom.mount_type }}</strong><br>
+          <strong>Tested To {{ product.metafields.custom.tested_to }} lbs</strong>
         </div>
         <div class="flex-item">
           <h3>Warranty Type</h3>
@@ -54,20 +62,12 @@
             </p>
           {% endif %}
         </div>
-        <div class="flex-item">
-          <h3>Mount Type</h3>
-          <strong>{{ product.metafields.custom.mount_type }}</strong>
-        </div>
-        <div class="flex-item">
-          <h3>Tested To</h3>
-          <strong>{{ product.metafields.custom.tested_to }} lbs</strong>
-        </div>
       </div>
       <div>
         <a href="{{ product.metafields.custom.support_page_link }}" class="see-more">SEE MORE >></a>
       </div>
     {% endif %}
-    {% if product.type == 'Car Seat' %}
+    {% if template == 'product.car-seat' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
@@ -89,7 +89,7 @@
         </div>
       </div>
     {% endif %}
-    {% if product.type == 'Infant Car Seat' %}
+    {% if product.template == 'infant-car-seat' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
@@ -172,7 +172,7 @@
         </div>
       </div>
     {% endif %}
-    {% if product.type == 'Booster Seat' %}
+    {% if template == 'product.booster-car-seat' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
@@ -312,7 +312,7 @@
         </div>
       </div>
     {% endif %}
-    {% if product.type == 'High Chair' %}
+    {% if template == 'product.high-chairs' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
@@ -379,7 +379,7 @@
       </div>
     {% endif %}
 
-    {% if product.type == 'Baby Gate' %}
+    {% if template == 'product.gates' %}
       {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
       {% assign max_opening_size = product.metafields.sf_gates.max_opening_size %}
       {% assign opening_type = product.metafields.sf_gates.opening_type_s_ %}
@@ -423,7 +423,7 @@
       </div>
     {% endif %}
 
-    {% if product.type == 'Baby Carrier' %}
+    {% if template == 'product.baby-carriers' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
