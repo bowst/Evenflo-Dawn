@@ -7,12 +7,18 @@
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
 {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
 
+{% assign lightweight = product.metafields.sf_car_seat.lightweight %}
+{% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+
 {% assign assembled_width = product.metafields.sf_products.assembled_width %}
 {% assign assembled_height = product.metafields.sf_products.assembled_height %}
 {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
 {% assign package_width = product.metafields.sf_shipping.package_width %}
 {% assign package_height = product.metafields.sf_shipping.package_height %}
 {% assign package_depth = product.metafields.sf_shipping.package_depth %}
+
+{% assign modes_of_use = product.metafields.custom.modes_of_use %}
+{% assign installation = product.metafields.custom.installation %}
 
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
@@ -107,11 +113,28 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong
+            >Lightweight :
+            {%- if lightweight == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif -%}</strong
+          ><br>
+
+          <strong>
+            Anti-Rebound Bar :
+            {%- if anti_rebound_bar == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif -%}</strong
+          ><br>
+          Installation : {{  }}
         </div>
       </div>
     {% endif %}
@@ -136,10 +159,12 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
+          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
