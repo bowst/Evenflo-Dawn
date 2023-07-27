@@ -19,8 +19,8 @@
 {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
 {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
 {% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
+{% assign modes_of_use = product.metafields.custom.modes_of_use | split: '|' %}
 
-{% assign modes_of_use = product.metafields.custom.modes_of_use %}
 {% assign installation = product.metafields.custom.installation %}
 
 {% assign number_of_cup_holders = product.metafields.sf_products.number_of_cup_holders %}
@@ -29,6 +29,18 @@
 {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
 {% assign machine_washable = product.metafields.sf_products.machine_washable_seating_surface %}
 {% assign made_usa = product.metafields.sf_products.made_in_usa %}
+
+{% assign harness_type = product.metafields.sf_products.harness_type %}
+{% assign height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
+
+{% assign suction_range = product.metafields.custom.suction_range %}
+{% assign tip_styles = product.metafields.custom.tip_styles %}
+{% assign features = product.metafields.product.features %}
+{% assign material = product.metafields.sf_products.material %}
+
+
+
+
 
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
@@ -174,7 +186,7 @@
               No
             {% endif -%}</strong
           ><br>
-          Installation : {{  }}
+          Installation : {{ installation }}
         </div>
       </div>
     {% endif %}
@@ -274,8 +286,11 @@
               <p>No</p>
             {% endif %} </strong
           ><br>
-          <strong>Machine Washable Seating Surface </strong>
-          <strong>Made in USA </strong>
+          <strong>Machine Washable Seating Surface </strong><br>
+          {% assign my_switch = product.metafields.sf_products.made_in_usa %}
+          {% if my_switch == 1 %}
+          <strong>Made in the USA</strong>
+          {% endif %}
         </div>
       </div>
     {% endif %}
@@ -351,10 +366,8 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
-          <strong>Weight</strong>
-          {{ child_weight_min_value }} - {{ child_weight_max_value }} lbs <br>
-          <strong>Height</strong>
-          {{ child_height_min_value }} - {{ child_height_max_value }} in
+          <strong>Up to</strong>
+          {{ child_weight_max_value }} lbs <br>
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -373,6 +386,7 @@
     {% endif %}
     {% if template == 'product.high-chairs' %}
       <div class="flex-row">
+
         <div class="flex-item">
           <h3>Child Fit</h3>
           <strong>Weight</strong>
@@ -382,13 +396,7 @@
           {% if child_weight_max_value %}
             {{ child_weight_max_value }} lbs <br>
           {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
+
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -397,46 +405,50 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>
+              {{ modes_of_use }}
+          </strong>
+        
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>{{ harness_type }}</strong><br>
+          <strong>Wipeable Cushion</strong><br>
+          <strong>Dishwasher Safe Tray</strong><br>
+          <strong>Height Adjustable</strong>
+          {%if height_adjustable == 1 %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
         </div>
       </div>
     {% endif %}
 
-    {% if product.type == 'High Chair' %}
+    {% if template == 'product.nasal-aspirator' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit3</h3>
-          <strong>Weight</strong>
-
-          {{ child_weight_min_value }} -
-
-          {{ child_weight_max_value }} lbs <br>
-
-          <strong>Height</strong>
-
-          {{ child_height_min_value }} -
-
-          {{ child_height_max_value }} in
-        </div>
-        <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
           <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
-          <h3>Modes of Use</h3>
-          <strong></strong>
+          <h3>Features</h3>
+          {{ features }}<br>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>Suction Range</strong> {{ suction_range }}<br>
+          <strong>Tip Styles</strong>
+          {{ tip_styles }}<br>
+          <strong>Material Composition</strong> 
+          
+          {% if material %}
+            {{ material }}
+          {% endif %}<br>
         </div>
       </div>
-    {% endif %}
+    {% endif %} 
 
     {% if template == 'product.gates' %}
       {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
@@ -451,10 +463,7 @@
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
           <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
-        <div class="flex-item">
-          <h3>Opening Type</h3>
-          <strong>{{ opening_type }}</strong>
-        </div>
+
         <div class="flex-item">
           <h3>Use Cases</h3>
           <strong>
@@ -466,8 +475,8 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Opening Size Minimum</strong> {{ min_opening_size }} inches<br>
-          <strong>Opening Size Maximum</strong> {{ max_opening_size }} inches <br>
+          <strong>Opening Size Min</strong> {{ min_opening_size }} in<br>
+          <strong>Opening Size Max</strong> {{ max_opening_size }} in <br>
           <strong>Mount Type</strong>
           {% for tag in my_tags %}
             {{ tag -}}
@@ -493,13 +502,7 @@
           {% if child_weight_max_value %}
             {{ child_weight_max_value }} lbs <br>
           {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
+          
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -508,11 +511,27 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>Carrier Position</strong>
+          {% assign my_tags = product.metafields.sf_carrier.position | split: ',' %}
+          {% if my_tags.size > 0 %}
+            {% for tag in my_tags %}
+              {{ tag }}{% if tag != my_tags.last %},{% endif %}<br>
+              {% endfor %}
+            {% endif %}
+
+            {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
+            {% if my_switch == 1 %}
+            <strong>Machine Washable</strong><br>
+            {% assign my_switch = product.metafields.sf_carrier.pacifier_toy_clip %}
+          {% if my_switch == 1 %}
+            <strong>Pacifier / Toy Clip</strong><br>    
+        {% endif %}
+            
+            {% endif %}
         </div>
       </div>
     {% endif %}
