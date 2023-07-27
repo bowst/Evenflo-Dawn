@@ -14,7 +14,7 @@
         "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-text-1": {
           "type": "text",
           "settings": {
-            "text": "Get ready for a whole slew of exciting developmental milestones. As your baby starts sitting up, crawling and eventually taking their first steps, Evenflo gear is designed to keep them safe on-the-go and adapt as they grow. Choose from convertible car seats to modular strollers and portable playaways. ",
+            "text": "",
             "text_style": "body"
           }
         },
@@ -37,7 +37,7 @@
         "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-buttons-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/6-to-18-Months-Header.jpg",
+        "image": "{{ collection.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "top-left",
