@@ -21,7 +21,7 @@
 {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
 {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
 {% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
-{% assign modes_of_use = product.metafields.custom.modes_of_use | split: '|' %}
+{% assign modes_of_use = product.metafields.custom.modes_of_use | split: '<br>' %}
 
 {% assign installation = product.metafields.custom.installation %}
 
@@ -76,7 +76,7 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          {{ product.metafields.custom.modes_of_use | split: '|' }}
+          {{ product.metafields.custom.modes_of_use | split: '<br>' }}
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
