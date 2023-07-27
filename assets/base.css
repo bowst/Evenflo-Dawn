@@ -3249,3 +3249,34 @@ details[open] > .header__menu-item::after {
 #shopify-section-template--15779855106204__c381a814-fe0f-472f-aa35-34ec00dc633b .gradient {
   background: #e3f2f3;
 }
+
+
+.product-form__input input[type="radio"] + .color-swatch {
+  border: 3px solid #f4f5ff; /* Change this hex code to change the color of the non-active/non-selected variant */
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.product-form__input input[type="radio"]:checked + .color-swatch,
+.product-form__input input[type="radio"]:hover + .color-swatch {
+  border: 3px solid #ccd1d1; /* Change this hex code to change the color of the active/selected variant */
+}
+
+.product-form__input input[type="radio"] + .swatch {
+  border: 3px solid #f4f5ff; /* Change this hex code to change the color of the non-active/non-selected variant */
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #000;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.product-form__input input[type="radio"]:checked + .swatch,
+.product-form__input input[type="radio"]:hover + .swatch {
+  border: 3px solid #ccd1d1; /* Change this hex code to change the color of the active/selected variant */
+  background: none;
+}
