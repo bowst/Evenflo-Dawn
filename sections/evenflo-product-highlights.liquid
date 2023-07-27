@@ -84,7 +84,6 @@
           {% if my_switch == true %}
             <strong>360 Rotation</strong>
           {% endif %}
-
           <br>
           {{ product.metafields.custom.installation }}
           <br>
@@ -98,6 +97,7 @@
           {% if my_switch == 1 %}
             <strong>Steel Reinforced</strong>
           {% endif %}
+          q
         </div>
       </div>
     {% endif %}
@@ -351,11 +351,16 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>Sensorsafe</strong>
+          <br>
+          {{ product.metafields.custom.installation }}
+          <br>
+          <strong>Anti Reboun Bar</strong><br>
+          <strong>Steel Reinforced</strong><br>
         </div>
       </div>
     {% endif %}
