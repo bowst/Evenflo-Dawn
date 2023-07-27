@@ -59,26 +59,36 @@
         class="disabled"
       {% endif %}
     >
-{% assign variant_needed = null %}
-                        {% for variant in product.variants %}
-                        {% if variant.options contains value %}
-                        {% assign variant_needed = variant %}
-                        {% endif %}
-                        {% endfor %}  
+    {% assign variant_needed = null %}
+    {% for variant in product.variants %}
+      {% if variant.options contains value %}
+        {% assign variant_needed = variant %}
+      {% endif %}
+    {% endfor %}
 
-                        {% if variant_needed.metafields.color.swatch and option.name == "Color" %}
-                        <label class="color-swatch" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" data-option="{{ value }}" style="background-color: {{variant_needed.metafields.color.swatch}}">
-                          &nbsp
-                        </label>
-                        {% elsif variant_needed.metafields.image.swatch and option.name == "Color" %}
-                        <label class="color-swatch" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" data-option="{{ value }}" style="background-size: cover; background-image: url('{{variant_needed.metafields.image.swatch}}')">
-                          &nbsp
-                        </label>
-                        {% else %}
-                        <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                          {{ value }}
-                        </label>
-                        {% endif %}
+    {% if variant_needed.metafields.color.swatch and option.name == 'Color' %}
+      <label
+        class="color-swatch"
+        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+        data-option="{{ value }}"
+        style="background-color: {{ variant_needed.metafields.color.swatch }}"
+      >
+        &nbsp
+      </label>
+    {% elsif variant_needed.metafields.image.swatch and option.name == 'Color' %}
+      <label
+        class="color-swatch"
+        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+        data-option="{{ value }}"
+        style="background-size: cover; background-image: url('{{ variant_needed.metafields.image.swatch }}')"
+      >
+        &nbsp
+      </label>
+    {% else %}
+      <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+        {{ value }}
+      </label>
+    {% endif %}
   {%- elsif block.settings.picker_type == 'dropdown' -%}
     <option
       value="{{ value | escape }}"
