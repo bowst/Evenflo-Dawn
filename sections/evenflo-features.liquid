@@ -102,7 +102,9 @@
     {% endif %}
 
     <div class="right">
-      <a href="#">Learn More</a>
+      {% if product.metafields.custom.link_support_page %}
+        <a href="{{product.metafields.custom.link_support_page}}">Learn More</a>
+      {% endif %}
     </div>
   </div>
 </section>
