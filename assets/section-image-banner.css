@@ -495,8 +495,24 @@
 
   .evenflo-collection-banner .banner__box {
     height: 100%;
+    max-width: 30rem;
+    min-width: 30rem;
+    padding: 7rem;
+  }
+
+  .evenflo-collection-banner .banner__media > img {
+    padding-left: 30rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .evenflo-collection-banner .banner__box {
     max-width: 40rem;
     min-width: 40rem;
+  }
+
+  .evenflo-collection-banner .banner__media > img {
+    padding-left: 40rem;
   }
 }
 
