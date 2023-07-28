@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8": {
+      "type": "evenflo-collection-image-banner",
+      "blocks": {
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_size": "h1",
+            "heading_color": "white"
+          }
+        },
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-text-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-buttons-1": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-heading-1",
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-text-1",
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-buttons-1"
+      ],
+      "settings": {
+        "image": "{{ collection.metafields.custom.header_image.value }}",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "top-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "6d693240-4367-4eac-b84b-3172c35c46bc": {
+      "type": "evenflo-full-width",
+      "settings": {
+        "heading": "Sometimes we make too much of a good thing",
+        "content": "So, we’re giving you the ability to snag functional, safe, fashionable baby gear at a lower price than you can find anywhere else.\n\nBrowse all our car seat, travel system and baby stroller sale items. Our outlet item selection changes frequently – on sale items may include convertible car seats, booster car seats, infant car seats, umbrella strollers, lightweight strollers, double strollers, jogging strollers, travel systems, baby carriers and more.\n\nThe best part of these discounts? There’s no coupon required! These baby gear deals won’t last – don’t miss out on these incredible travel system, car seat and stroller overstock and closeout savings!\n\nNOTE: On these deals, you pay the shipping.  We'll keep the cost as reasonable as we can, no mark ups for you.  We update our selection regularly  so, check back whenever you like and, by all means, tell others."
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "color_scheme": "accent-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8",
+    "6d693240-4367-4eac-b84b-3172c35c46bc",
+    "banner",
+    "product-grid"
+  ]
+}
