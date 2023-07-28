@@ -31,6 +31,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -38,19 +39,18 @@
     },
     "b44c8197-4385-4350-ad0f-238c04013fa1": {
       "type": "rich-text",
-      "disabled": true,
       "blocks": {
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-0": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.metafields.custom.page_heading.value }}",
+            "heading": "We're Here for You",
             "heading_size": "h1"
           }
         },
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
+            "text": "<p>The ParentLink Consumer Care team is a dedicated team of US Based Evenflo employees who sit close to our Ohio Factory in order to keep trained and in touch with all our products and provide shopping consumers as well as owners with any support they might need 1:1 via chat, phone or email.<\/p>"
           }
         }
       },
