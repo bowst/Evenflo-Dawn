@@ -4,7 +4,11 @@
   <div class="content-container page-width rich-text--full-width content-container--full-width">
     <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
     <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-      {{ product.content }}
+      {% if product.content != blank %}
+        {{ product.content }}
+      {% else %}
+        {{ section.settings.content }}
+      {% endif %}
     </div>
     {% comment %} <p>{{ section.settings.content }}</p> {% endcomment %}
   </div>
