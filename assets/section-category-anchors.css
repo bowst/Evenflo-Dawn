@@ -9,15 +9,21 @@
   color: #000;
 }
 
-.category-anchors .flex-container {
-  display: flex;
-  justify-content: space-between;
-}
-
 .category-anchors .flex-item {
-  flex: 1;
+  display: block;
   text-align: center;
   margin: 0 10px;
+}
+
+@media screen and (min-width: 990px) {
+  .category-anchors .flex-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .category-anchors .flex-item {
+    flex: 1;
+  }
 }
 
 .category-anchors .rich-text__text {
