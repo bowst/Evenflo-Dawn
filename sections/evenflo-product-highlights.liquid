@@ -779,16 +779,6 @@
     {% if template == 'product.thermometer' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit</h3>
-          <strong>Weight</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
-          {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs <br>
-          {% endif %}
-        </div>
-        <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
           <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
