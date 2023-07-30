@@ -21,7 +21,7 @@
 {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
 {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
 {% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
-{% assign modes_of_use = product.metafields.custom.modes_of_use | replace: "|", "<br>"  %}
+{% assign modes_of_use = product.metafields.custom.modes_of_use | replace: '|', '<br>' %}
 
 {% assign installation = product.metafields.custom.installation %}
 
@@ -46,21 +46,28 @@
     {% if template == 'product.all-in-one-car-seat' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit</h3>
-          Rear Facing<br>
+          <h3>Child Fit - Rear Facing</h3>
+
           <strong>Weight:</strong>
           {{ product.metafields.sf_car_seat.rear_facing_weight_min }} -
           {{ product.metafields.sf_car_seat.rear_facing_weight_max }} lbs <br>
           <strong>Height:</strong>
           {{ product.metafields.sf_car_seat.rear_facing_height_min }} -
           {{ product.metafields.sf_car_seat.rear_facing_height_max }} lbs <br>
-          Forward Facing<br>
+        </div>
+        <div class="flex-item">
+          <h3>Child Fit - Forward Facing</h3>
           <strong>Weight:</strong>
           {{ product.metafields.sf_car_seat.forward_facing_weight_min }} -
           {{ product.metafields.sf_car_seat.forward_facing_weight_max }} lbs <br>
           <strong>Height:</strong>
           {{ product.metafields.sf_car_seat.forward_facing_height_min }} -
           {{ product.metafields.sf_car_seat.forward_facing_height_max }} lbs <br>
+        </div>
+
+        <div class="flex-item">
+          <h3>Child Fit - Booster</h3>
+
           Booster<br>
           <strong>Weight:</strong>
           {{ product.metafields.sf_car_seat.belt_pos_booster_weight_min }} -
@@ -76,16 +83,15 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          {{ product.metafields.custom.modes_of_use | split: '<br>' }}
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
           {% assign my_switch = product.metafields.custom.rotation %}
           {% if my_switch == true %}
-            <strong>360 Rotation</strong>
+            <strong>360 Rotation</strong><br>
           {% endif %}
-          <br>
-          {{ product.metafields.custom.installation }}
+          <strong> {{ product.metafields.custom.installation }} Installation</strong>
           <br>
           {% assign my_switch = product.metafields.sf_car_seat.steel_reinforced %}
           {% if my_switch == 1 %}
@@ -97,7 +103,6 @@
           {% if my_switch == 1 %}
             <strong>Steel Reinforced</strong>
           {% endif %}
-          q
         </div>
       </div>
     {% endif %}
@@ -158,7 +163,7 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          {{ product.metafields.custom.modes_of_use }}
+          {{ modes_of_use }}
         </div>
       </div>
       <div class="flex-item">
@@ -390,7 +395,7 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
@@ -412,7 +417,7 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
