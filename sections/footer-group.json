@@ -87,10 +87,24 @@
         "padding_top": 100,
         "padding_bottom": 36
       }
+    },
+    "c6ff28c5-1b5a-479a-ad36-c40fa2e6a860": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".footer-link-bar ul {list-style: none; \/* Remove default bullet points *\/ padding: 0; \/* Remove default padding *\/ margin: 0; \/* Remove default margin *\/}",
+        ".footer-link-bar li {display: inline; \/* Display list items inline *\/ margin-right: 10px; \/* Add some spacing between list items *\/}"
+      ],
+      "settings": {
+        "custom_liquid": "<div class=\"footer-link-bar center\">  \n    <ul> <li><strong>The Goodbaby Family<\/strong><li><a href=\"https:\/\/www.evenflo.com\/\">Evenflo<\/a><\/li> \n        <li><a href=\"\/pages\/evenflo-gold\">Evenflo GOLD<\/a><\/li> \n        <li><a href=\"\/collections\/exersaucer\">ExerSaucer<\/a><\/li> \n        <li><a href=\"https:\/\/rollplay.com\/\">Rollplay<\/a><\/li> \n        <li><a href=\"https:\/\/www.cybex-online.com\/en\/us\">Cybex<\/a><\/li> \n        <li><a href=\"http:\/\/gb-online.com\/\">GB<\/a><\/li><\/ul>\n    <\/div>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "1684973213eb987277",
-    "footer"
+    "footer",
+    "c6ff28c5-1b5a-479a-ad36-c40fa2e6a860"
   ]
 }
