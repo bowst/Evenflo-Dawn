@@ -31,6 +31,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -38,19 +39,18 @@
     },
     "b44c8197-4385-4350-ad0f-238c04013fa1": {
       "type": "rich-text",
-      "disabled": true,
       "blocks": {
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-0": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.metafields.custom.page_heading.value }}",
+            "heading": "Evenflo Promotions & Discounts",
             "heading_size": "h1"
           }
         },
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
+            "text": "<p>Explore the latest discounts and promos.<\/p>"
           }
         }
       },
@@ -100,7 +100,6 @@
     },
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376": {
       "type": "evenflo-image-with-text",
-      "disabled": true,
       "blocks": {
         "template--15779834593436__81ccdd0b-70ea-4e2e-aff0-a92138c7e376-16855813912b1a6790-0": {
           "type": "heading",
@@ -122,9 +121,10 @@
         "template--15779834593436__81ccdd0b-70ea-4e2e-aff0-a92138c7e376-16855813912b1a6790-1"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/Summer_Sale_Promo_2023_Homepage_Header_1920X600_624cfd7b-c165-45b5-a4e7-5b368eeccb40.jpg",
         "height": "adapt",
         "layout": "image_first",
-        "desktop_content_position": "top",
+        "desktop_content_position": "bottom",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "color_scheme": "background-1",
@@ -214,6 +214,94 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "00d6e400-cb27-4e7b-a328-c3cdbc57577c": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--15824513532060__00d6e400-cb27-4e7b-a328-c3cdbc57577c-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "template--15824513532060__00d6e400-cb27-4e7b-a328-c3cdbc57577c-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "template--15824513532060__00d6e400-cb27-4e7b-a328-c3cdbc57577c-button-1": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15824513532060__00d6e400-cb27-4e7b-a328-c3cdbc57577c-heading-1",
+        "template--15824513532060__00d6e400-cb27-4e7b-a328-c3cdbc57577c-text-1",
+        "template--15824513532060__00d6e400-cb27-4e7b-a328-c3cdbc57577c-button-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Summer_Sale_Promo_2023_Homepage_Header_1920X600_624cfd7b-c165-45b5-a4e7-5b368eeccb40.jpg",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ed0f4807-bc59-4965-b00e-359c217f1376": {
+      "type": "rich-text",
+      "disabled": true,
+      "blocks": {
+        "template--15824513532060__ed0f4807-bc59-4965-b00e-359c217f1376-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "template--15824513532060__ed0f4807-bc59-4965-b00e-359c217f1376-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "template--15824513532060__ed0f4807-bc59-4965-b00e-359c217f1376-button-1": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15824513532060__ed0f4807-bc59-4965-b00e-359c217f1376-heading-1",
+        "template--15824513532060__ed0f4807-bc59-4965-b00e-359c217f1376-text-1",
+        "template--15824513532060__ed0f4807-bc59-4965-b00e-359c217f1376-button-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -224,6 +312,8 @@
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
     "6bb51026-ccbd-4604-8669-add5ff4b5ad5",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e"
+    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e",
+    "00d6e400-cb27-4e7b-a328-c3cdbc57577c",
+    "ed0f4807-bc59-4965-b00e-359c217f1376"
   ]
 }
