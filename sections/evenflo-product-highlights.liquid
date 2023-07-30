@@ -40,6 +40,8 @@
 {% assign features = product.metafields.product.features %}
 {% assign material = product.metafields.sf_products.material %}
 
+{% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
+
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
     {% comment %} All in One {% endcomment %}
@@ -101,7 +103,7 @@
           <br>
           {% assign my_switch = product.metafields.sf_car_seat.anti_rebound_bar %}
           {% if my_switch == 1 %}
-            <strong>Steel Reinforced</strong>
+            <strong>Anti Rebound Bar</strong>
           {% endif %}
         </div>
       </div>
@@ -150,8 +152,7 @@
         <div class="flex-item">
           <h3>Child Fit - Stroller Wagon</h3>
           <strong>Weight:</strong>
-          {{ product.metafields.sf_products.child_weight_min }} -
-          {{ product.metafields.sf_products.child_weight_max }} lbs<br>
+          {{ child_weight_min_value }} - {{ child_weight_max_value }} lbs<br>
           <strong>Height:</strong>
           {{ product.metafields.sf_products.child_height_min }} -
           {{ product.metafields.sf_products.child_height_max }} in
@@ -177,27 +178,21 @@
         {{ product.metafields.custom.stroller_type }}
       </div>
     {% endif %}
-    {% if product.template == 'infant-car-seats' %}
+    {% if template == 'product.infant-car-seats' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
-          <strong>Weight</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
-          {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs
-          {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
+          <strong>Weight:</strong>
+          {{ product.metafields.sf_products.child_weight_min }} -
+          {{ product.metafields.sf_products.child_weight_max }} lbs<br>
+          <strong>Height:</strong>
+          {{ product.metafields.sf_products.child_height_min }} -
+          {{ product.metafields.sf_products.child_height_max }} in
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
+          <strong>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</strong><br>
+          <strong>Folded: {{ folded_dimensions }}</strong><br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -222,29 +217,32 @@
               No
             {% endif -%}</strong
           ><br>
-          Installation : {{ installation }}
+          <strong>{{ installation }} Installation</strong>
         </div>
       </div>
     {% endif %}
-    {% if template == 'product.convertible-car-seat' %}
+    {% if template == 'product.convertible-car-seats' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit</h3>
-          <strong>Weight</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
-          {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs <br>
-          {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
+          <h3>Child Fit - Rear Facing</h3>
+
+          <strong>Weight:</strong>
+          {{ product.metafields.sf_car_seat.rear_facing_weight_min }} -
+          {{ product.metafields.sf_car_seat.rear_facing_weight_max }} lbs <br>
+          <strong>Height:</strong>
+          {{ product.metafields.sf_car_seat.rear_facing_height_min }} -
+          {{ product.metafields.sf_car_seat.rear_facing_height_max }} lbs <br>
         </div>
+        <div class="flex-item">
+          <h3>Child Fit - Forward Facing</h3>
+          <strong>Weight:</strong>
+          {{ product.metafields.sf_car_seat.forward_facing_weight_min }} -
+          {{ product.metafields.sf_car_seat.forward_facing_weight_max }} lbs <br>
+          <strong>Height:</strong>
+          {{ product.metafields.sf_car_seat.forward_facing_height_min }} -
+          {{ product.metafields.sf_car_seat.forward_facing_height_max }} lbs <br>
+        </div>
+
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
@@ -256,7 +254,14 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          {% assign my_switch = product.metafields.custom.rotation %}
+
+          {% if my_switch == true %}
+            <strong>360 Rotation</strong><br>
+          {% endif %}
+          <strong> {{ product.metafields.custom.installation }} Installation</strong> <br>
+
+          <strong>Slim Design</strong>
         </div>
       </div>
     {% endif %}
@@ -333,26 +338,28 @@
     {% if template == 'product.travel-systems' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit</h3>
-          <strong>Weight</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
-          {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs <br>
-          {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
+          <h3>Child Fit - Rear-Facing Infant Car Seat</h3>
+          <strong>Weight:</strong>
+          {{ product.metafields.sf_car_seat.rear_facing_weight_min }} -
+          {{ product.metafields.sf_car_seat.rear_facing_weight_max }} lbs <br>
+          <strong>Height:</strong>
+          {{ product.metafields.sf_car_seat.rear_facing_height_min }} -
+          {{ product.metafields.sf_car_seat.rear_facing_height_max }} lbs <br>
+        </div>
+        <div class="flex-item">
+          <h3>Child Fit - Toddler Seat</h3>
+          <strong>Weight:</strong>
+          Up To
+          {{ product.metafields.sf_products.child_weight_max }} lbs<br>
+          <strong>Height:</strong>
+          Up To
+          {{ product.metafields.sf_products.child_height_max }} inax_value }} in
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Folded:</strong> {{ folded_dimensions -}}
+          <br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -361,11 +368,18 @@
         <div class="flex-item">
           <h3>Specs</h3>
           <strong>Sensorsafe</strong>
+
           <br>
-          {{ product.metafields.custom.installation }}
+          <strong>{{ product.metafields.custom.installation }} Installation </strong>
           <br>
-          <strong>Anti Reboun Bar</strong><br>
-          <strong>Steel Reinforced</strong><br>
+          {% assign rebound = product.metafields.sf_car_seat.anti_rebound_bar %}
+          {% if rebound == 1 %}
+            <strong>Anti Rebound Bar</strong><br>
+          {% endif %}
+          {% assign steel = product.metafields.sf_car_seat.steel_reinforced %}
+          {% if steel == 1 %}
+            <strong>Steel Reinforced</strong><br>
+          {% endif %}
         </div>
       </div>
     {% endif %}
@@ -373,25 +387,15 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
-          <strong>Weight</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
-          {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs <br>
-          {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
+          <strong>Weight :</strong>
+          Up To {{ child_weight_max_value }} lbs <br>
+          <strong>Height :</strong> Up To {{ child_height_max_value }} in <br>
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Folded: </strong> {{ folded_dimensions -}}
+          <br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -399,7 +403,24 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>Accepts Infant Car Seat :</strong>
+          {%- if accepts_infant_car_seat == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif -%}
+          <br>
+          <strong>Wheel Material :</strong>{{ product.metafields.sf_stroller.wheel_material -}}
+          <br>
+          <strong>Stroller Type :</strong> {{ product.metafields.custom.stroller_type -}}
+          <br>
+          <strong>Accepts Rider Board</strong>
+          {% if accepts_rider_board == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+          <br>
         </div>
       </div>
     {% endif %}
