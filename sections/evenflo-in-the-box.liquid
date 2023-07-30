@@ -3,6 +3,14 @@
 <section class="product-highlights">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
   <h3>{{ section.settings.whats_in_the_box }} </h3>
+
+     {% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}
+                {% if retail_package_contents_value %}
+                <div>
+                  <h3>Contents</h3>
+                  <p>{{ retail_package_contents_value }}</p>
+                </div>
+                {% endif %}
   </div>
 </section>
 
