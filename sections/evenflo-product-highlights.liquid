@@ -41,6 +41,10 @@
 {% assign material = product.metafields.sf_products.material %}
 
 {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
+{% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
+
+{% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
+{% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
 
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
@@ -150,34 +154,45 @@
     {% if template == 'product.stroller-wagon' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit - Stroller Wagon</h3>
-          <strong>Weight:</strong>
-          {{ child_weight_min_value }} - {{ child_weight_max_value }} lbs<br>
-          <strong>Height:</strong>
-          {{ product.metafields.sf_products.child_height_min }} -
-          {{ product.metafields.sf_products.child_height_max }} in
+          <h3>Child Fit</h3>
+          <strong>Weight :</strong>
+          Up To {{ child_weight_max_value }} lbs <br>
+          <strong>Height :</strong> Up To {{ child_height_max_value }} in <br>
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</strong><br>
-          <strong>Folded: {{ folded_dimensions }}</strong><br>
+          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Folded: </strong> {{ folded_dimensions -}}
+          <br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          {{ modes_of_use }}
+          <strong>{{ modes_of_use }}</strong>
+        </div>
+        <div class="flex-item">
+          <h3>Specs</h3>
+          <strong>Accepts Infant Car Seat :</strong>
+          {%- if accepts_infant_car_seat == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif -%}
+          <br>
+          <strong>Wheel Material :</strong>{{ product.metafields.sf_stroller.wheel_material -}}
+          <br>
+          <strong>Stroller Type :</strong> {{ product.metafields.custom.stroller_type -}}
+          <br>
+          <strong>Accepts Rider Board</strong>
+          {% if accepts_rider_board == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+          <br>
         </div>
       </div>
-      <div class="flex-item">
-        <h3>Specs</h3>
-        {{ product.metafields.custom.specs -}}
-        <br>
-        {{ product.metafields.sf_stroller.accepts_infant_car_seat -}}
-        <br>
-        {{ product.metafields.sf_stroller.wheel_material -}}
-        <br>
-        {{ product.metafields.custom.stroller_type }}
-      </div>
     {% endif %}
+
     {% if template == 'product.infant-car-seats' %}
       <div class="flex-row">
         <div class="flex-item">
@@ -269,21 +284,14 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
-          <strong>Weight</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
-          {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs <br>
-          {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
+          <strong>Weight:</strong>
+          {{ product.metafields.sf_car_seat.belt_pos_booster_weight_min }} -
+          {{ product.metafields.sf_car_seat.belt_pos_booster_weight_max }} lbs <br>
+          <strong>Height:</strong>
+          {{ product.metafields.sf_car_seat.belt_pos_booster_height_min }} -
+          {{ product.metafields.sf_car_seat.belt_pos_booster_height_max }} lbs <br>
         </div>
+
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
@@ -295,17 +303,22 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Lightweight</strong>
-          <strong>Has Harness Booster Mode</strong>
-          <strong>Cupholders : {{ number_of_cup_holders }}</strong><br>
-          <strong
-            >Converts to No Back Booser :
-            {% if converts_to_no_back_booster == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif %}
-          </strong>
+          <strong>{{ product.metafields.custom.installation }} Installation</strong> <br>
+          <strong>Number Of Cupholders</strong>: {{ number_of_cup_holders }}
+          <br>
+          <strong>Harness Booser Mode :</strong>
+          {% if has_harness_booster_mode == 1 %}
+            Yes <br>
+          {% else %}
+            No <br>
+          {% endif %}
+
+          <strong>Converts to No Back Booster</strong> :
+          {% if converts_to_no_back_booster == 1 %}
+            Yes <br>
+          {% else %}
+            No <br>
+          {% endif %}
         </div>
       </div>
     {% endif %}
@@ -314,23 +327,42 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
+        <div class="flex-item">
+          <h3>Warranty Type</h3>
 
+          {% assign product_warranty_link = product.metafields.custom.product_warranty_link %}
+          {% if product_warranty_link %}
+            {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
+              <a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a><br>
+            {% endif %}
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == 'lifetime-limited' %}
+            <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
+            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a> <br>
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == '90-day-limited' %}
+            <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
+          {% endif %}
+        </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong
-            >Assembly Required :
-            {% if assembly_switch_spec == 1 %}
-              <p>Yes</p>
-            {% else %}
-              <p>No</p>
-            {% endif %} </strong
-          ><br>
-          <strong>Machine Washable Seating Surface </strong><br>
+          <strong>Assembly Required :</strong>
+          {% if assembly_switch_spec == 1 %}
+            Yes <br>
+          {% else %}
+            No<br>
+          {% endif %}
           {% assign my_switch = product.metafields.sf_products.made_in_usa %}
           {% if my_switch == 1 %}
             <strong>Made in the USA</strong>
+          {% endif %}
+
+          {% assign machine_washable = product.metafields.sf_carrier.machine_washable %}
+          {% if machine_washable == 1 %}
+            Machine Washable
           {% endif %}
         </div>
       </div>
@@ -427,22 +459,42 @@
     {% if template == 'product.stroller-accessories' %}
       <div class="flex-row">
         <div class="flex-item">
-          <h3>Child Fit</h3>
-          <strong>Up to</strong>
-          {{ child_weight_max_value }} lbs <br>
-        </div>
-        <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
-          <h3>Modes of Use</h3>
-          <strong>{{ modes_of_use }}</strong>
+          <h3>Warranty Type</h3>
+
+          {% assign product_warranty_link = product.metafields.custom.product_warranty_link %}
+          {% if product_warranty_link %}
+            {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
+              <a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a><br>
+            {% endif %}
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == 'lifetime-limited' %}
+            <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
+            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a> <br>
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == '90-day-limited' %}
+            <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
+          {% endif %}
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>Hardware Included</strong>
+          {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
+          {% if gate_hardware == 1 %} Yes {% else %} No {% endif %}
+          {% assign my_switch = product.metafields.sf_products.made_in_usa %}
+          {% if my_switch == 1 %}
+            <strong>Made in the USA</strong>
+          {% endif %}
+
+          {% assign machine_washable = product.metafields.sf_carrier.machine_washable %}
+          {% if machine_washable == 1 %}
+            Hardware Included
+          {% endif %}
         </div>
       </div>
     {% endif %}
@@ -715,13 +767,6 @@
           {% if child_weight_max_value %}
             {{ child_weight_max_value }} lbs <br>
           {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -730,11 +775,54 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong
+            >Eco-Friendly<br>
+            Certifications<br>
+            Breathable<br>
+            Dual-Sided</strong
+          >
+        </div>
+      </div>
+    {% endif %}
+    {% if template == 'product.thermometer' %}
+      <div class="flex-row">
+        <div class="flex-item">
+          <h3>Child Fit</h3>
+          <strong>Weight</strong>
+          {% if child_weight_min_value %}
+            {{ child_weight_min_value }} -
+          {% endif %}
+          {% if child_weight_max_value %}
+            {{ child_weight_max_value }} lbs <br>
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          <h3>Product Dimensions</h3>
+          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+        </div>
+        <div class="flex-item">
+          <h3>Modes of Use</h3>
+          <strong>{{ modes_of_use }}</strong>
+        </div>
+        <div class="flex-item">
+          <h3>Specs</h3>
+          <strong
+            >Accuracy<br>
+            Response Time<br>
+            Body Application<br>
+            {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+            {% if battery_cell_type %}
+              <div class="five columns">
+                <h5>Battery Type</h5>
+                {{ toy_battery_cell_type }}
+              </div>
+            {% endif %}
+          </strong>
         </div>
       </div>
     {% endif %}
