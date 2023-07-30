@@ -5,13 +5,9 @@
 {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
-{% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
-
 {% assign lightweight = product.metafields.sf_car_seat.lightweight %}
 {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
-
 {% assign package_contents = product.metafields.sf_products.retail_package_contents %}
-
 {% assign assembled_width = product.metafields.sf_products.assembled_width %}
 {% assign assembled_height = product.metafields.sf_products.assembled_height %}
 {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
@@ -22,19 +18,14 @@
 {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
 {% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
 {% assign modes_of_use = product.metafields.custom.modes_of_use | replace: '|', '<br>' %}
-
 {% assign installation = product.metafields.custom.installation %}
-
 {% assign number_of_cup_holders = product.metafields.sf_products.number_of_cup_holders %}
 {% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
-
 {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
 {% assign machine_washable = product.metafields.sf_products.machine_washable_seating_surface %}
 {% assign made_usa = product.metafields.sf_products.made_in_usa %}
-
 {% assign harness_type = product.metafields.sf_products.harness_type %}
 {% assign height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
-
 {% assign suction_range = product.metafields.custom.suction_range %}
 {% assign tip_styles = product.metafields.custom.tip_styles %}
 {% assign features = product.metafields.product.features %}
@@ -43,8 +34,7 @@
 {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
 {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
 
-{% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
-{% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
+{% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
 
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
@@ -178,9 +168,9 @@
             No
           {% endif -%}
           <br>
-          <strong>Wheel Material :</strong>{{ product.metafields.sf_stroller.wheel_material -}}
+          <strong>Wheel Material :</strong>{{ wheel_material -}}
           <br>
-          <strong>Stroller Type :</strong> {{ product.metafields.custom.stroller_type -}}
+          <strong>Stroller Type :</strong> {{ stroller_type -}}
           <br>
           <strong>Accepts Rider Board</strong>
           {% if accepts_rider_board == 1 %}
@@ -198,11 +188,9 @@
         <div class="flex-item">
           <h3>Child Fit</h3>
           <strong>Weight:</strong>
-          {{ product.metafields.sf_products.child_weight_min }} -
-          {{ product.metafields.sf_products.child_weight_max }} lbs<br>
+          {{ child_weight_min_value }} - {{ child_weight_max_value }} lbs<br>
           <strong>Height:</strong>
-          {{ product.metafields.sf_products.child_height_min }} -
-          {{ product.metafields.sf_products.child_height_max }} in
+          {{ child_height_min_value }} - {{ child_height_max_value }} in
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -355,8 +343,8 @@
           {% else %}
             No<br>
           {% endif %}
-          {% assign my_switch = product.metafields.sf_products.made_in_usa %}
-          {% if my_switch == 1 %}
+          {% assign made_usa = product.metafields.sf_products.made_in_usa %}
+          {% if made_usa == 1 %}
             <strong>Made in the USA</strong>
           {% endif %}
 
@@ -442,9 +430,9 @@
             No
           {% endif -%}
           <br>
-          <strong>Wheel Material :</strong>{{ product.metafields.sf_stroller.wheel_material -}}
+          <strong>Wheel Material :</strong>{{ wheel_material -}}
           <br>
-          <strong>Stroller Type :</strong> {{ product.metafields.custom.stroller_type -}}
+          <strong>Stroller Type :</strong> {{ stroller_type -}}
           <br>
           <strong>Accepts Rider Board</strong>
           {% if accepts_rider_board == 1 %}
@@ -486,8 +474,8 @@
           <strong>Hardware Included</strong>
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
           {% if gate_hardware == 1 %} Yes {% else %} No {% endif %}
-          {% assign my_switch = product.metafields.sf_products.made_in_usa %}
-          {% if my_switch == 1 %}
+          {% assign made_usa = product.metafields.sf_products.made_in_usa %}
+          {% if made_usa == 1 %}
             <strong>Made in the USA</strong>
           {% endif %}
 
@@ -815,13 +803,7 @@
             >Accuracy<br>
             Response Time<br>
             Body Application<br>
-            {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
-            {% if battery_cell_type %}
-              <div class="five columns">
-                <h5>Battery Type</h5>
-                {{ toy_battery_cell_type }}
-              </div>
-            {% endif %}
+            {{ battery_cell_type }}
           </strong>
         </div>
       </div>
