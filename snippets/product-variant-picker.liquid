@@ -24,10 +24,12 @@
       {%- for option in product.options_with_values -%}
         <fieldset class="js product-form__input">
           <legend class="form__label">
-              {{ option.name }} 
-              <span id="product-name-and-barcode">
-                <strong>{{ product.selected_or_first_available_variant.title }}</strong> (#{{ product.selected_or_first_available_variant.barcode }})
-              </span>
+            {{ option.name }}
+            <span id="product-name-and-barcode">
+              <strong>{{ product.selected_or_first_available_variant.title }}</strong> (#
+              {{- product.selected_or_first_available_variant.sku -}}
+              )
+            </span>
           </legend>
 
           {% render 'product-variant-options', product: product, option: option, block: block %}
@@ -118,7 +120,6 @@
               if cart_quantity > 0
                 echo 'products.product.quantity.in_cart_html' | t: quantity: cart_quantity | prepend: ' - '
               endif
-          
             -%}
           </option>
         {%- endfor -%}
