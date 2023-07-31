@@ -101,7 +101,7 @@
                   price_class: 'price--large'
                 -%}
               </div>
-              {% liquid
+              <!-- {% liquid
                 assign trims = product.metafields.custom.trims.value | split: "," 
               %}
               {% if trims.size > 0 %}
@@ -126,7 +126,7 @@
                     {% endfor %}
                   {% endpaginate %}
                 </div>
-              {% endif %}
+              {% endif %} -->
               {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
                 <div class="product__tax caption rte">
                   {%- if shop.taxes_included -%}

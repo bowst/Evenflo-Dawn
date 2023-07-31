@@ -84,8 +84,14 @@
       >
         &nbsp
       </label>
+      {% elsif option.name == 'Trim' %}
+      <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+        {{ value }}
+        <span>{{variant_needed.metafields.custom.trim_description}}</span>
+      </label>
     {% else %}
       <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+        
         {{ value }}
       </label>
     {% endif %}
