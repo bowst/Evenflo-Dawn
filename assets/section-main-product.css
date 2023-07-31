@@ -185,7 +185,9 @@ fieldset.product-form__input .form__label {
   margin-bottom: 0.2rem;
 }
 
-.form__label.color {font-size: 2rem}
+.form__label.color {
+  font-size: 2rem;
+}
 
 .product-form__input input[type='radio'] {
   clip: rect(0, 0, 0, 0);
@@ -1639,4 +1641,23 @@ a.product__text {
 .product__title h1,
 .product__title h2 {
   font-family: 'Roboto', sans-serif;
+}
+
+.product-form__buttons .shopify-payment-button {
+  margin-left: 6px;
+  max-width: calc(50% - 6px);
+  height: inherit;
+}
+
+@media only screen and (min-width: 1401px) {
+  .product-form__buttons .shopify-payment-button {
+    flex: 1 0 calc(50% - 4px);
+    max-width: calc(50% - 4px);
+  }
+}
+
+.baby-list-button {
+  width: 50%;
+  max-width: calc(50% - 2px);
+  height: 44px !important;
 }
