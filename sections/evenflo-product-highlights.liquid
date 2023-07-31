@@ -629,6 +629,11 @@
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
           {% if gate_hardware == 1 %} Yes {% else %} No {% endif %}
           <br>
+          <p>
+            {% if product.metafields.custom.link_support_page %}
+              <a href="{{product.metafields.custom.link_support_page.value.url}}">Product Support </a>
+            {% endif %}
+          </p>
         </div>
       </div>
     {% endif %}
