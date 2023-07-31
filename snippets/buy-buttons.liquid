@@ -100,7 +100,7 @@
             </button>
           </div>
           <a id="add-to-babylist" class="button button--secondary gold-branding-true on-dark-bg-false navigable baby-list-button" href="javascript: bl.addToRegistry({
-            images: '{{ product.selected_or_first_available_variant.featured_media }}',
+            images: '{{ product.selected_or_first_available_variant.featured_image | image_url }}',
             price: '{{ product.selected_or_first_available_variant.price | money }}',
             title: '{{ product.title }}',
             url: window.location.href
