@@ -12,20 +12,25 @@
       <div class="collapsible-content isolate" id="questions">
         <div class="collapsible-content__wrapper">
           {% for faqItem in page.metafields.custom.support_page_faq.value %}
-            <div class="accordion">
-              <details>
-                <summary>
-                  <h3 class="accordion__title">
-                    {{ faqItem.question }}
-                  </h3>
-                  {% render 'icon-caret' %}
-                </summary>
+            <h3 class="accordion__title">
+              {{ faqItem.tag }}
+            </h3> 
+            {% for faq in faqItem.faqs%}
+              <div class="accordion">
+                <details>
+                  <summary>
+                    <h3 class="accordion__title">
+                      {{ faq.question }}
+                    </h3>
+                    {% render 'icon-caret' %}
+                  </summary>
 
-                <div class="accordion__content rtl">
-                  {{ faqItem.answer }}
-                </div>
-              </details>
-            </div>
+                  <div class="accordion__content rtl">
+                    {{ faq.answer }}
+                  </div>
+                </details>
+              </div>
+            {% endfor %}
           {% endfor %}
         </div>
       </div>
