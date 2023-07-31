@@ -3,22 +3,22 @@
 {{ 'section-product-faq.css' | asset_url | stylesheet_tag }}
 
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {% for faq in faqs %}
-          {
-            "@type": "Question",
-            "name": "{{ faq.question }}",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "{{ faq.answer }}"
-            }
-          }{% unless forloop.last %}, {% endunless %}
-        {%- endfor -%}
-      ]
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {% for faq in faqs %}
+        {
+          "@type": "Question",
+          "name": "{{ faq.question }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ faq.answer }}"
+          }
+        }{% unless forloop.last %}, {% endunless %}
+      {%- endfor -%}
+    ]
+  }
 </script>
 
 {% assign faqs = product.metafields.custom.pdp_faq.value %}
@@ -27,9 +27,12 @@
     <div class="content-container page-width content-container--full-width flex-container">
       <div class="column column-1">
         <h2 class="h1 heading-underline">All your Questions Answered</h2>
-        <p>Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor. </p>
+        <p>Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.</p>
         {% assign supportPage = product.metafields.custom.link_support_page %}
-        <a href="{{ supportPage }}">View the product Support Guide</a>
+
+        {% if product.metafields.custom.link_support_page %}
+          <a href="{{product.metafields.custom.link_support_page.value.url}}">View the product Support Guide</a>
+        {% endif %}
       </div>
       <div class="column column-2">
         <div class="collapsible-content isolate" id="questions">
@@ -38,9 +41,7 @@
               <div class="accordion">
                 <details>
                   <summary>
-                    <h3 class="accordion__title">
-                      Q. {{ faq.question }}
-                    </h3>
+                    <h3 class="accordion__title">Q. {{ faq.question }}</h3>
                     {% render 'icon-caret' %}
                   </summary>
 
@@ -58,7 +59,7 @@
 {% endif %}
 
 {% schema %}
-  {
+{
   "name": "PDP FAQ",
   "class": "text",
   "tag": "section",
@@ -70,4 +71,3 @@
   ]
 }
 {% endschema %}
-
