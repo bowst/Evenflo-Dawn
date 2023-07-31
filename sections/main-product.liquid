@@ -101,6 +101,26 @@
                   price_class: 'price--large'
                 -%}
               </div>
+              {% if product.metafields.custom.trims.value.size > 0 %}
+                <div>
+                  <h4>
+                    <h3>Try these products</h3>
+                    {% paginate collections.all.products by 1000 %}
+                      {% for collection_product in collections.all.products %}
+                        {% if product.metafields.custom.trims.value contains collection_product.id  %}
+                          <a href={{collection_product.url}}>
+                            <span>
+                              {{
+                                collection_product.title
+                              }}
+                            </span>
+                          </a>
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  </h4>
+                </div>
+              {% endif %}
               {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
                 <div class="product__tax caption rte">
                   {%- if shop.taxes_included -%}
