@@ -23,7 +23,7 @@
     >
       {%- for option in product.options_with_values -%}
         <fieldset class="js product-form__input">
-          <legend class="form__label">
+          <legend class="form__label color">
             {{ option.name }}
             <span id="product-name-and-barcode">
               <strong>{{ product.selected_or_first_available_variant.title }}</strong> (#
