@@ -9,6 +9,7 @@
   Usage:
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
+
 {%- unless product.has_only_default_variant -%}
   {%- if block.settings.picker_type == 'button' -%}
     <variant-radios
@@ -22,14 +23,22 @@
       {{ block.shopify_attributes }}
     >
       {%- for option in product.options_with_values -%}
+        {% if option.name == 'Trim' %}
+          <p class="product__text inline-richtext subtitle heading-underline">Styles. Which is best for you</p>
+        {% else%}
+          <p class="product__text inline-richtext subtitle heading-underline">Color. Pick your favorite.</p>
+        {% endif %}
         <fieldset class="js product-form__input">
           <legend class="form__label color">
-            {{ option.name }}
-            <span id="product-name-and-barcode">
-              <strong>{{ product.selected_or_first_available_variant.title }}</strong> (#
-              {{- product.selected_or_first_available_variant.sku -}}
-              )
-            </span>
+            {% if option.name == 'Color' %}
+              {{ option.name }}
+              <span id="product-name-and-barcode">
+
+                  <strong>{{ product.selected_or_first_available_variant.title }}</strong> (#
+                  {{- product.selected_or_first_available_variant.sku -}}
+                  )
+              </span>
+            {% endif %} 
           </legend>
 
           {% render 'product-variant-options', product: product, option: option, block: block %}
