@@ -1669,6 +1669,7 @@ a.product__text {
   --shadow-opacity: var(--buttons-shadow-opacity);
   --shadow-visible: var(--buttons-shadow-visible);
   --border-offset: var(--buttons-border-offset);
+  /* reduce radius edge artifacts */
   --border-opacity: calc(1 - var(--buttons-border-opacity));
   --color-button-text: var(--color-base-outline-button-labels);
   --color-button: var(--color-background);
@@ -1692,6 +1693,7 @@ a.product__text {
   background-color: transparent;
   border-radius: var(--buttons-radius-outset);
   position: relative;
+  margin-top: 10px;
 }
 
 .klaviyo-bis-trigger::before {
@@ -1708,6 +1710,7 @@ a.product__text {
 }
 
 .klaviyo-bis-trigger::after {
+  --border-opacity: var(--buttons-border-opacity);
   content: '';
   position: absolute;
   top: var(--buttons-border-width);
