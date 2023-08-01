@@ -823,6 +823,51 @@
         </div>
       </div>
     {% endif %}
+    {% if template == 'product.dead-stock' %}
+      <div class="flex-row">
+        <div class="flex-item">
+          <h3>Product Dimensions</h3>
+          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+        </div>
+        <div class="flex-item">
+          <h3>Warranty Type</h3>
+
+          {% assign product_warranty_link = product.metafields.custom.product_warranty_link %}
+          {% if product_warranty_link %}
+            {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
+              <a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a><br>
+            {% endif %}
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == 'lifetime-limited' %}
+            <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
+            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a> <br>
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == '90-day-limited' %}
+            <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          <h3>Specs</h3>
+          <strong>Assembly Required :</strong>
+          {% if assembly_switch_spec == 1 %}
+            Yes <br>
+          {% else %}
+            No<br>
+          {% endif %}
+          {% assign made_usa = product.metafields.sf_products.made_in_usa %}
+          {% if made_usa == 1 %}
+            <strong>Made in the USA</strong>
+          {% endif %}
+
+          {% assign machine_washable = product.metafields.sf_carrier.machine_washable %}
+          {% if machine_washable == 1 %}
+            Machine Washable
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
     {% if template == 'product.thermometer' %}
       <div class="flex-row">
         <div class="flex-item">
