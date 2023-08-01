@@ -1680,6 +1680,15 @@ a.product__text {
   -webkit-appearance: none;
   appearance: none;
   background-color: rgba(var(--color-button), var(--alpha-button-background));
+  --shadow-horizontal-offset: var(--buttons-shadow-horizontal-offset);
+  --shadow-vertical-offset: var(--buttons-shadow-vertical-offset);
+  --shadow-blur-radius: var(--buttons-shadow-blur-radius);
+  --shadow-opacity: var(--buttons-shadow-opacity);
+  --shadow-visible: var(--buttons-shadow-visible);
+  --border-offset: var(--buttons-border-offset);
+  --border-opacity: calc(1 - var(--buttons-border-opacity));
+  border-radius: var(--buttons-radius-outset);
+  position: relative;
   --color-button-text: var(--color-base-outline-button-labels);
   --color-button: var(--color-background);
   --alpha-button-background: 1;
