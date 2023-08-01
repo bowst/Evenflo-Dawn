@@ -29,28 +29,20 @@
         "show_text_below": true
       }
     },
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
     "b44c8197-4385-4350-ad0f-238c04013fa1": {
       "type": "rich-text",
-      "disabled": true,
       "blocks": {
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-0": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.metafields.custom.page_heading.value }}",
+            "heading": "BABY PROOFING MADE EASY!",
             "heading_size": "h1"
           }
         },
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
+            "text": "<p>From the kitchen to the living room to the stairs, Evenflo® is proud to introduce baby proofing essentials to help make your home landscape safer for your little explorer. Our Baby Proofing Virtual Kit Builder (below) will help you identify potential troublespots room by room, so you can customize a baby proofing kit with just the items you need. You can do this!<br\/><\/p>"
           }
         }
       },
@@ -65,6 +57,13 @@
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     },
     "013f6ab7-3595-492c-8062-a12326290142": {
@@ -218,8 +217,8 @@
   },
   "order": [
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
-    "main",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
+    "main",
     "013f6ab7-3595-492c-8062-a12326290142",
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
     "6bb51026-ccbd-4604-8669-add5ff4b5ad5",
