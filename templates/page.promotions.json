@@ -394,6 +394,93 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "ceb69993-8724-4d55-ab17-a442ee17b956": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Evenflo-First-Responder.jpg",
+            "title": "First Responders",
+            "text": "",
+            "link_label": "Verify Status",
+            "link": ""
+          }
+        },
+        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/evenflo-Healthcare-Worker.jpg",
+            "title": "Healthcare Heroes",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Evenflo-Military_2.jpg",
+            "title": "Military Heroes",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "fefade77-2cab-4ec3-ae10-3f2a2944129c": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Evenflo-Teacher.jpg",
+            "title": "Teachers",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "affbf238-f5bd-44d3-b1b1-986fd8b8b137": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Evenflo-Students.jpg",
+            "title": "Students",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-1",
+        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-2",
+        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-3",
+        "fefade77-2cab-4ec3-ae10-3f2a2944129c",
+        "affbf238-f5bd-44d3-b1b1-986fd8b8b137"
+      ],
+      "settings": {
+        "title": "Discounts",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 5,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "b6dbb248-1d20-409a-a55a-58a735e2455f": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.css\" type=\"text\/css\">\n  <script src=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.js\"><\/script>\n\n  <script>\n    function getCustomerId() {\n    try {\n        let curr = window.ShopifyAnalytics.meta.page.customerId;\n        if (curr !== undefined && curr !== null && curr !== \"\") {\n        return curr;\n        }\n    } catch(e) { }\n    try {\n        let curr = window.meta.page.customerId;\n        if (curr !== undefined && curr !== null && curr !== \"\") {\n        return curr;\n        }\n    } catch (e) { }    \n    try {\n        let curr = _st.cid;\n        if (curr !== undefined && curr !== null && curr !== \"\") {\n        return curr;\n        }\n    } catch (e) { }\n    try {\n        let curr = ShopifyAnalytics.lib.user().traits().uniqToken;\n        if (curr !== undefined && curr !== null && curr !== \"\") {\n        return curr;\n        }\n    } catch (e) { }\n        return null;\n    }\n    function displayVerification(id) {\n      const customerId = getCustomerId()\n      console.log('customerId: ', customerId);\n      const verificationUrl = 'https:\/\/services.sheerid.com\/verify\/' + id + '\/?customer_id=' + customerId;\n      sheerId.loadInModal(\n          verificationUrl, {\n          mobileRedirect: true\n        });\n    };\n  <\/script>\n  \n  <a onclick=\"displayVerification('6449874c98ea13502a40e99e')\" class=\"action_button cc-button\">Verify Status<\/a>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -407,6 +494,8 @@
     "6245d473-e03b-4572-83e4-3394bba55b8c",
     "2f4a2320-13cc-4675-a158-6b065937606d",
     "00ce5690-75d4-4c35-ba90-8b75fff9dadf",
-    "d1fb280d-6f65-4d41-ac48-620e33d32e81"
+    "d1fb280d-6f65-4d41-ac48-620e33d32e81",
+    "ceb69993-8724-4d55-ab17-a442ee17b956",
+    "b6dbb248-1d20-409a-a55a-58a735e2455f"
   ]
 }
