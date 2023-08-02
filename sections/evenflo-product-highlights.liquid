@@ -43,7 +43,6 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit - Rear Facing</h3>
-
           <strong>Weight:</strong>
           {{ product.metafields.sf_car_seat.rear_facing_weight_min }} -
           {{ product.metafields.sf_car_seat.rear_facing_weight_max }} lbs <br>
@@ -413,6 +412,8 @@
           Up To
           {{ product.metafields.sf_products.child_height_max }} inax_value }} in
         </div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
@@ -914,7 +915,7 @@
           <strong>Max Speed:<strong>{{ rollplay_max_speed }}<br>
           <strong>Run Time:<strong>{{ rollplay_run_time }}<br>
           <strong>Battery Voltage:<strong>{{ rollplay_battery_voltage }}<br>
-          <strong>Replaceable Battery:<strong>{{ rollplay_battery_replaceable }}<br> 
+          <strong>Replaceable Battery:<strong>{{ rollplay_battery_replaceable }}<br>
         </div>
       </div>
     {% endif %}
