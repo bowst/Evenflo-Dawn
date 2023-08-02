@@ -30,7 +30,7 @@
 {% assign tip_styles = product.metafields.custom.tip_styles %}
 {% assign features = product.metafields.product.features %}
 {% assign material = product.metafields.sf_products.material %}
-
+{% assign stroller_type = product.metafields.sf_stroller.stroller_type %}
 {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
 {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
 
@@ -472,13 +472,14 @@
           <br>
           <strong>Stroller Type:</strong> {{ stroller_type -}}
           <br>
-          <strong>Accepts Rider Board</strong>
+          <strong>Accepts Rider Board:</strong>
           {% if accepts_rider_board == 1 %}
             Yes
           {% else %}
             No
           {% endif %}
           <br>
+          <strong>Stroller Type:</strong> {{ stroller_type -}}
         </div>
       </div>
     {% endif %}
