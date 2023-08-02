@@ -631,7 +631,7 @@
           <br>
           <p>
             {% if product.metafields.custom.link_support_page %}
-              <a href="{{product.metafields.custom.link_support_page.value.url}}">Product Support </a>
+              <a href="{{ product.metafields.custom.link_support_page.value.url }}">Product Support </a>
             {% endif %}
           </p>
         </div>
@@ -887,6 +887,35 @@
             Body Application<br>
             {{ battery_cell_type }}
           </strong>
+        </div>
+      </div>
+    {% endif %}
+    {% if template == 'product.rollplay' %}
+      {% assign rollplay_max_speed = product.metafields.custom.rollplay_max_speed %}
+
+      
+
+
+      <div class="flex-row">
+        <div class="flex-item">
+          <h3>Child Fit</h3>
+          <strong>Weight:</strong>
+          {{ child_weight_min_value }} - {{ child_weight_max_value }} lbs<br>
+          <strong>Height:</strong>
+          {{ child_height_min_value }} - {{ child_height_max_value }} in
+        </div>
+        <div class="flex-item">
+          <h3>Product Dimensions</h3>
+          <strong>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</strong><br>
+          <strong>Folded: {{ folded_dimensions }}</strong><br>
+        </div>
+
+        <div class="flex-item">
+          <h3>Specs</h3>
+          <strong>Max Speed :<strong>{{ rollplay_max_speed }}<br>
+          <strong>Run Time :<strong><br>
+          <strong>Battery Voltage :<strong><br>
+          <strong>Replaceable Battery :<strong><br> 
         </div>
       </div>
     {% endif %}
