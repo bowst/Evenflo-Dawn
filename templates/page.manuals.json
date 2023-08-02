@@ -40,17 +40,24 @@
     },
     "09ac8203-3fb9-475a-ada7-d0fc13f0fb5c": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "<script defer type=\"module\" src=\"{{ \"manuals-app.bundle.js\" | asset_url }}\"><\/script>\n<div id=\"manuals-app\"><\/div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "e80d3c99-982c-41f3-844d-574e63ba8fb3": {
+      "type": "manuals",
+      "settings": {
+      }
     }
   },
   "order": [
     "main",
     "1a0948ac-7c15-471c-9f93-b2cb00767d68",
-    "09ac8203-3fb9-475a-ada7-d0fc13f0fb5c"
+    "09ac8203-3fb9-475a-ada7-d0fc13f0fb5c",
+    "e80d3c99-982c-41f3-844d-574e63ba8fb3"
   ]
 }
