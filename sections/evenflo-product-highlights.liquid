@@ -892,6 +892,9 @@
     {% endif %}
     {% if product.vendor == 'Rollplay' %}
       {% assign rollplay_max_speed = product.metafields.custom.rollplay_max_speed %}
+      {% assign rollplay_run_time = product.metafields.custom.rollplay_run_time %}
+      {% assign rollplay_battery_voltage = product.metafields.custom.rollplay_battery_voltage %}
+      {% assign rollplay_battery_replaceable = product.metafields.custom.rollplay_battery_replaceable %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
@@ -909,9 +912,9 @@
         <div class="flex-item">
           <h3>Specs</h3>
           <strong>Max Speed :<strong>{{ rollplay_max_speed }}<br>
-          <strong>Run Time :<strong><br>
-          <strong>Battery Voltage :<strong><br>
-          <strong>Replaceable Battery :<strong><br> 
+          <strong>Run Time :<strong>{{ rollplay_run_time }}<br>
+          <strong>Battery Voltage :<strong>{{ rollplay_battery_voltage }}<br>
+          <strong>Replaceable Battery :<strong>{{ rollplay_battery_replaceable }}<br> 
         </div>
       </div>
     {% endif %}
