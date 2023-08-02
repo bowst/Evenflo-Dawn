@@ -143,9 +143,9 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
-          <strong>Weight :</strong>
+          <strong>Weight:</strong>
           Up To {{ child_weight_max_value }} lbs <br>
-          <strong>Height :</strong> Up To {{ child_height_max_value }} in <br>
+          <strong>Height:</strong> Up To {{ child_height_max_value }} in <br>
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -159,16 +159,16 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Accepts Infant Car Seat :</strong>
+          <strong>Accepts Infant Car Seat:</strong>
           {%- if accepts_infant_car_seat == 1 %}
             Yes
           {% else %}
             No
           {% endif -%}
           <br>
-          <strong>Wheel Material :</strong>{{ wheel_material -}}
+          <strong>Wheel Material:</strong>{{ wheel_material -}}
           <br>
-          <strong>Stroller Type :</strong> {{ stroller_type -}}
+          <strong>Stroller Type:</strong> {{ stroller_type -}}
           <br>
           <strong>Accepts Rider Board</strong>
           {% if accepts_rider_board == 1 %}
@@ -201,7 +201,7 @@
         <div class="flex-item">
           <h3>Specs</h3>
           <strong
-            >Lightweight :
+            >Lightweight:
             {%- if lightweight == 1 %}
               Yes
             {% else %}
@@ -210,7 +210,7 @@
           ><br>
 
           <strong>
-            Anti-Rebound Bar :
+            Anti-Rebound Bar:
             {%- if anti_rebound_bar == 1 %}
               Yes
             {% else %}
@@ -242,7 +242,7 @@
         <div class="flex-item">
           <h3>Specs</h3>
           <strong
-            >Lightweight :
+            >Lightweight:
             {%- if lightweight == 1 %}
               Yes
             {% else %}
@@ -251,7 +251,7 @@
           ><br>
 
           <strong>
-            Anti-Rebound Bar :
+            Anti-Rebound Bar:
             {%- if anti_rebound_bar == 1 %}
               Yes
             {% else %}
@@ -332,14 +332,14 @@
           <strong>{{ product.metafields.custom.installation }} Installation</strong> <br>
           <strong>Number Of Cupholders</strong>: {{ number_of_cup_holders }}
           <br>
-          <strong>Harness Booser Mode :</strong>
+          <strong>Harness Booser Mode:</strong>
           {% if has_harness_booster_mode == 1 %}
             Yes <br>
           {% else %}
             No <br>
           {% endif %}
 
-          <strong>Converts to No Back Booster</strong> :
+          <strong>Converts to No Back Booster</strong>:
           {% if converts_to_no_back_booster == 1 %}
             Yes <br>
           {% else %}
@@ -375,7 +375,7 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Assembly Required :</strong>
+          <strong>Assembly Required:</strong>
           {% if assembly_switch_spec == 1 %}
             Yes <br>
           {% else %}
@@ -445,9 +445,9 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
-          <strong>Weight :</strong>
+          <strong>Weight:</strong>
           Up To {{ child_weight_max_value }} lbs <br>
-          <strong>Height :</strong> Up To {{ child_height_max_value }} in <br>
+          <strong>Height:</strong> Up To {{ child_height_max_value }} in <br>
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -461,16 +461,16 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Accepts Infant Car Seat :</strong>
+          <strong>Accepts Infant Car Seat:</strong>
           {%- if accepts_infant_car_seat == 1 %}
             Yes
           {% else %}
             No
           {% endif -%}
           <br>
-          <strong>Wheel Material :</strong>{{ wheel_material -}}
+          <strong>Wheel Material:</strong>{{ wheel_material -}}
           <br>
-          <strong>Stroller Type :</strong> {{ stroller_type -}}
+          <strong>Stroller Type:</strong> {{ stroller_type -}}
           <br>
           <strong>Accepts Rider Board</strong>
           {% if accepts_rider_board == 1 %}
@@ -784,7 +784,7 @@
           <h3>Specs</h3>
           <strong>Number of Height Modes</strong> {{ number_of_height_modes -}}
           <br>
-          <strong>Batteries Required :</strong> <br>
+          <strong>Batteries Required:</strong> <br>
           <strong>Warranty</strong> <br>
         </div>
       </div>
@@ -849,7 +849,7 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Assembly Required :</strong>
+          <strong>Assembly Required:</strong>
           {% if assembly_switch_spec == 1 %}
             Yes <br>
           {% else %}
@@ -910,10 +910,10 @@
 
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Max Speed :<strong>{{ rollplay_max_speed }}<br>
-          <strong>Run Time :<strong>{{ rollplay_run_time }}<br>
-          <strong>Battery Voltage :<strong>{{ rollplay_battery_voltage }}<br>
-          <strong>Replaceable Battery :<strong>{{ rollplay_battery_replaceable }}<br> 
+          <strong>Max Speed:<strong>{{ rollplay_max_speed }}<br>
+          <strong>Run Time:<strong>{{ rollplay_run_time }}<br>
+          <strong>Battery Voltage:<strong>{{ rollplay_battery_voltage }}<br>
+          <strong>Replaceable Battery:<strong>{{ rollplay_battery_replaceable }}<br> 
         </div>
       </div>
     {% endif %}
