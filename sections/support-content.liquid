@@ -341,7 +341,155 @@
         </div>
       </li>
 
-      
+      <h2>Support</h2>
+
+      <!-- support tab -->
+      <li class="" id="tab10" >
+        <div class="pdp-support-tab">
+    
+          <div class="container">
+            {% assign my_switch = this_product.metafields.sf_products.video_support %}
+            {% if my_switch == 1 %}
+            <div class="one-third columns">
+              <h2>Free Video Support</h2>
+              <p class="pom">Need some real-time help? Schedule a live video call with us and we'll walk you through
+                everything.
+              </p>
+              <a class="action_button button" href="https://evenflo.appointlet.com/" target="_blank">Book Now</a>
+            </div>
+            {% endif %}
+            <div class="one-third columns">
+              <div class="pom-div">
+                <h2>Peace of<br>Mind</h2>
+    <!--             <a href="{{ this_product.metafields.custom.product_warranty_link }}">Download Warranty</a> -->
+                <p class="pom">Being a parent has enough stress as it is, that's why we can assure you that we can give you as
+                  much time as
+                  you need.</p>
+    
+                <p class="support-links"><a href="https://www.evenflo.com/policies/refund-policy">30 days for
+                    Returns</a></p>
+                
+                    
+                      {% if this_product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
+                        <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 1 Year, 6-Month Battery Warranty</a></p>{% endif %}
+                      {% if this_product.metafields.sf_products.warranty == 'lifetime-limited' %}
+                        <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a></p>{% endif %}
+                        {% if this_product.metafields.sf_products.warranty == '1 Year, Limited' %}
+                          <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a></p>{% endif %}
+                        {% if this_product.metafields.sf_products.warranty == '90-day-limited' %}
+                          <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 90-Day Warranty</a></p>
+                      {% endif %}
+    
+              </div>
+            </div>
+            {% assign my_switch = this_product.metafields.sf_products.replacement_parts %}
+            {% if my_switch == 1 %}
+            <div class="one-third columns">
+              <h2>Replacement Parts</h2>
+              <p class="pom">Life is rough, and it can also be rough on your car seat. Find the replacement parts you need for your
+                product easily.
+              </p>
+              <a class="action_button button" href="https://parts.evenflo.com/">Find Parts</a>
+            </div>
+            {% endif %}
+          </div>
+          <div class="loveit container parentlink-block">
+            <div class="one-half columns">
+              <p>Supported by <b>ParentLink Consumer Care</b> via phone, email, chat and video</p>
+            </div>
+            <div class="one-fourth columns">
+              <h3>Phone</h3>
+              <h4><a href="tel:1-800-233-5921">1-800-233-5921 (US)</a></h4>
+              <h4><a href="tel:1-937-773-3971">1-937-773-3971 (Canada)</a></h4>
+            </div>
+            <div class="one-fourth columns">
+              <h3>Email</h3>
+              <p class="email">No time to chat?</p>
+              <p class="email"><a href="https://www.evenflo.com/pages/contact-us">Email us</a> your inquiry</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+
+
+
+
+    <h2>{{ section.settings.support_heading }}</h2>
+
+    <div class="flex-row">
+      {% if this_product.metafields.sf_products.child_weight_min %}
+        <div class="flex-item">
+          <h3>Weight</h3>
+          {{ this_product.metafields.sf_products.child_weight_min }} -
+          {{ this_product.metafields.sf_products.child_weight_max }} lbs
+        </div>
+      {% endif %}
+
+      {% if this_product.metafields.sf_products.child_height_min %}
+        <div class="flex-item">
+          <h3>Height</h3>
+          {{ this_product.metafields.sf_products.child_height_min }} -
+          {{ this_product.metafields.sf_products.child_height_max }} in
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  Car Seat Specificications
+  <div class="flex-row">
+    <div class="flex-item">
+      <h3>Steel Reinforced</h3>
+      {{ this_product.metafields.sf_car_seat.steel_reinforced }}
+    </div>
+  </div>
+  What's in the box
+  <div class="flex-row">
+    <div class="flex-item">
+      <h3>Contents</h3>
+      {{ this_product.metafields.sf_products.retail_package_contents }}
+    </div>
+
+    <div class="flex-item">
+      <h3>Product Dimensions</h3>
+      <p>
+        {{ this_product.metafields.sf_products.assembled_width }} x
+        {{ this_product.metafields.sf_products.assembled_height }} x
+        {{ this_product.metafields.sf_products.assembled_depth }} in
+      </p>
+    </div>
+
+    <div class="flex-item">
+      <h3>Folded Dimensions</h3>
+      {{ product.metafields.sf_products.folded_dimensions }}
+    </div>
+    <div class="flex-item">
+      <h3>Package Dimensions</h3>
+      <p>
+        {{ this_product.metafields.sf_shipping.package_width }} x
+        {{ this_product.metafields.sf_shipping.package_height }} x
+        {{ this_product.metafields.sf_shipping.package_depth }} in
+      </p>
+    </div>
+    <div class="flex-item">
+      <h3>Product Weight</h3>
+      <p>{{ this_product.metafields.sf_products.assembled_weight }} lbs.</p>
+    </div>
+    <div class="flex-item">
+      <h3>Package Weight</h3>
+      <p>{{ this_product.metafields.sf_products.assembled_weight }} lbs.</p>
+    </div>
+    <div class="flex-item">
+      <h3>Weight w/o Base</h3>
+      <p>{{ this_product.metafields.sf_car_seat.carrier_weight_without_base }} lbs.</p>
+    </div>
+  </div>
+
+  <h3>Harness Type</h3>
+  <p>
+    {{ this_product.metafields.sf_products.harness_type }}
+  </p>
 </section>
 
 {% schema %}
