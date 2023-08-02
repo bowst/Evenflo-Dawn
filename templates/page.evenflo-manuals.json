@@ -41,7 +41,7 @@
     "09ac8203-3fb9-475a-ada7-d0fc13f0fb5c": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<script defer type=\"module\" src=\"{{ \"manuals-app.bundle.js\" | asset_url }}\"><\/script>",
+        "custom_liquid": "<script defer type=\"module\" src=\"{{ \"manuals-app.bundle.js\" | asset_url }}\"><\/script>\n<div id=\"manuals-app\"><\/div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
