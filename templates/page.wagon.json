@@ -252,6 +252,7 @@
     },
     "528f2c7a-254d-41ed-a35c-a7bf1f233eca": {
       "type": "image-banner",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Evenflo_Revolve360_Slim_Launch_Campaign_Landing_Page_5_3000x1815_24739166-89d5-4b0c-a0a9-3002e787a647.jpg",
         "image_overlay_opacity": 0,
@@ -265,6 +266,45 @@
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
+    },
+    "f0b95f46-5fa4-4253-9851-3530f0ffc7ab": {
+      "type": "collage",
+      "blocks": {
+        "template--15826408177820__f0b95f46-5fa4-4253-9851-3530f0ffc7ab-image-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/square-collections-pivot-xplore-lifestyle-1-gallery.jpg"
+          }
+        },
+        "72100bc2-457c-4299-8be5-264be1ecdc84": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collections-pivot-xplore-features-tip-down.jpg"
+          }
+        },
+        "template--15826408177820__f0b95f46-5fa4-4253-9851-3530f0ffc7ab-product-1": {
+          "type": "product",
+          "settings": {
+            "product": "pivot-xplore-stroller-wagon",
+            "second_image": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15826408177820__f0b95f46-5fa4-4253-9851-3530f0ffc7ab-image-1",
+        "72100bc2-457c-4299-8be5-264be1ecdc84",
+        "template--15826408177820__f0b95f46-5fa4-4253-9851-3530f0ffc7ab-product-1"
+      ],
+      "settings": {
+        "heading": "Multimedia collage",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -277,6 +317,7 @@
     "main",
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "528f2c7a-254d-41ed-a35c-a7bf1f233eca"
+    "528f2c7a-254d-41ed-a35c-a7bf1f233eca",
+    "f0b95f46-5fa4-4253-9851-3530f0ffc7ab"
   ]
 }
