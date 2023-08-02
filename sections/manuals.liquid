@@ -1,7 +1,9 @@
 {{ 'manuals.css' | asset_url | stylesheet_tag }}
 <div class="content">
+  <div class="section-{{ section.id }}-padding">
 <script defer type="module" src="{{ "manuals-app.bundle.js" | asset_url }}"></script>
 <div id="manuals-app"></div>
+  </div>
 </div>
 {% schema %}
 {
