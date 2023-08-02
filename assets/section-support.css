@@ -28,3 +28,14 @@
   text-transform: none;
   margin-bottom: 0;
 }
+
+.pdp-specification-bullet-row {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.pdp-specification-bullet-row > div {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
