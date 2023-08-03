@@ -121,7 +121,7 @@
             {%- if card_product.available == false -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }} color-gray"
               >
                 {{- 'products.product.sold_out' | t -}}
               </span>
@@ -135,7 +135,7 @@
             {%- elsif collection_handles contains 'new' -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-accent-2"
+                class="badge badge--bottom-left color-inverse"
               >
                 New
               </span>
@@ -325,7 +325,7 @@
           {%- if card_product.available == false -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+              class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }} color-gray"
             >
               {{- 'products.product.sold_out' | t -}}
             </span>
@@ -339,7 +339,7 @@
           {%- elsif collection_handles contains 'new' -%}
             <span
               id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-accent-2"
+              class="badge badge--bottom-left color-inverse"
             >
               New
             </span>
