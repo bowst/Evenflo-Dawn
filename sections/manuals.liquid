@@ -1,8 +1,10 @@
 {{ 'manuals.css' | asset_url | stylesheet_tag }}
-<div class="content">
-  <div class="section-{{ section.id }}-padding">
-<script defer type="module" src="{{ "manuals-app.bundle.js" | asset_url }}"></script>
-<div id="manuals-app"></div>
+<div class="manuals">
+  <div class="page-width rich-text--full-width content-container--full-width">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
+    <script defer type="module" src="{{ "manuals-app.bundle.js" | asset_url }}"></script>
+    <div id="manuals-app"></div>
   </div>
 </div>
 {% schema %}
