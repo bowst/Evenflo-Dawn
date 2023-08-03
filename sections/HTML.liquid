@@ -1,8 +1,23 @@
+
+{{ section.settings.html }} 
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
-  }
+  "name": "HTML",
+  "class": "section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "html",
+      "label": "HTML"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HTML"
+    }
+  ]
+}  
 {% endschema %}
 
 {% stylesheet %}
