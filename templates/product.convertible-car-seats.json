@@ -44,6 +44,12 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
+        },
+        "d7a61a11-e43b-43da-a919-531ad56466ac": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a class=\"klaviyo-bis-trigger\" href=\"#\">Notify Me When Available<\/a>"
+          }
         }
       },
       "block_order": [
@@ -53,7 +59,8 @@
         "price",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "d7a61a11-e43b-43da-a919-531ad56466ac"
       ],
       "settings": {
         "enable_sticky_info": false,
