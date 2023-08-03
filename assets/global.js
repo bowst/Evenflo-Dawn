@@ -835,7 +835,7 @@ class VariantSelects extends HTMLElement {
   updateNameAndBarcode() {
     const nameAndBarcode = document.getElementById(`product-name-and-barcode`);
     console.log(this.currentVariant.title)
-    nameAndBarcode.innerHTML = `<strong>${this.currentVariant.title}</strong> (#${this.currentVariant.barcode})`
+    nameAndBarcode.innerHTML = `<strong>${this.currentVariant.title}</strong> (#${this.currentVariant.sku})`
   }
 
   updateOptions() {
