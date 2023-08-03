@@ -545,3 +545,23 @@
     font-size: 1.2rem;
   }
 }
+
+@media screen and (max-width: 1319px) {
+  .footer-block__brand-info .footer__list-social.list-social {
+    justify-content: center;
+  }
+
+  .footer-block__brand-info .footer__list-social.list-social .list-social__item {
+    width: 33.3333%;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .footer-block__brand-info .footer__list-social.list-social {
+    justify-content: flex-start;
+  }
+
+  .footer-block__brand-info .footer__list-social.list-social .list-social__item {
+    width: unset;
+  }
+}
