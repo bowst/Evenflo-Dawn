@@ -72,8 +72,10 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -120,7 +122,8 @@
             <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
           {% endif %}
           {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
-            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a> <br>
+            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a>
+            <br>
           {% endif %}
           {% if product.metafields.sf_products.warranty == '90-day-limited' %}
             <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
@@ -144,12 +147,16 @@
           <h3>Child Fit</h3>
           <strong>Weight:</strong>
           Up To {{ child_weight_max_value }} lbs <br>
-          <strong>Height:</strong> Up To {{ child_height_max_value }} in <br>
+          <strong>Height:</strong>
+          Up To {{ child_height_max_value }} in <br>
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Folded: </strong> {{ folded_dimensions -}}
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Folded:
+          </strong>
+          {{ folded_dimensions -}}
           <br>
         </div>
         <div class="flex-item">
@@ -165,9 +172,11 @@
             No
           {% endif -%}
           <br>
-          <strong>Wheel Material:</strong>{{ wheel_material -}}
+          <strong>Wheel Material:</strong>
+          {{ wheel_material -}}
           <br>
-          <strong>Stroller Type:</strong> {{ stroller_type -}}
+          <strong>Stroller Type:</strong>
+          {{ stroller_type -}}
           <br>
           <strong>Accepts Rider Board</strong>
           {% if accepts_rider_board == 1 %}
@@ -279,8 +288,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -293,7 +304,9 @@
           {% if my_switch == true %}
             <strong>360 Rotation</strong><br>
           {% endif %}
-          <strong> {{ product.metafields.custom.installation }} Installation</strong> <br>
+          <strong>
+            {{ product.metafields.custom.installation }} Installation</strong>
+          <br>
 
           <strong>Slim Design</strong>
         </div>
@@ -312,8 +325,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -321,8 +336,10 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>{{ product.metafields.custom.installation }} Installation</strong> <br>
-          <strong>Number Of Cupholders:</strong> {{ number_of_cup_holders }}
+          <strong>{{ product.metafields.custom.installation }} Installation</strong>
+          <br>
+          <strong>Number Of Cupholders:</strong>
+          {{ number_of_cup_holders }}
           <br>
           <strong>Harness Booser Mode:</strong>
           {% if has_harness_booster_mode == 1 %}
@@ -344,7 +361,8 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Warranty Type</h3>
@@ -359,7 +377,8 @@
             <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
           {% endif %}
           {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
-            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a> <br>
+            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a>
+            <br>
           {% endif %}
           {% if product.metafields.sf_products.warranty == '90-day-limited' %}
             <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
@@ -409,8 +428,10 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Folded:</strong> {{ folded_dimensions -}}
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Folded:</strong>
+          {{ folded_dimensions -}}
           <br>
         </div>
         <div class="flex-item">
@@ -422,7 +443,8 @@
           <strong>Sensorsafe</strong>
 
           <br>
-          <strong>{{ product.metafields.custom.installation }} Installation </strong>
+          <strong>{{ product.metafields.custom.installation }} Installation
+          </strong>
           <br>
           {% assign rebound = product.metafields.sf_car_seat.anti_rebound_bar %}
           {% if rebound == 1 %}
@@ -441,12 +463,15 @@
           <h3>Child Fit</h3>
           <strong>Weight:</strong>
           Up To {{ child_weight_max_value }} lbs <br>
-          <strong>Height:</strong> Up To {{ child_height_max_value }} in <br>
+          <strong>Height:</strong>
+          Up To {{ child_height_max_value }} in <br>
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Folded:</strong> {{ folded_dimensions -}}
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Folded:</strong>
+          {{ folded_dimensions -}}
           <br>
         </div>
         <div class="flex-item">
@@ -462,9 +487,11 @@
             No
           {% endif -%}
           <br>
-          <strong>Wheel Material:</strong>{{ wheel_material -}}
+          <strong>Wheel Material:</strong>
+          {{ wheel_material -}}
           <br>
-          <strong>Stroller Type:</strong> {{ stroller_type -}}
+          <strong>Stroller Type:</strong>
+          {{ stroller_type -}}
           <br>
           <strong>Accepts Rider Board:</strong>
           {% if accepts_rider_board == 1 %}
@@ -473,7 +500,8 @@
             No
           {% endif %}
           <br>
-          <strong>Stroller Type:</strong> {{ stroller_type -}}
+          <strong>Stroller Type:</strong>
+          {{ stroller_type -}}
         </div>
       </div>
     {% endif %}
@@ -481,7 +509,8 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Warranty Type</h3>
@@ -496,7 +525,8 @@
             <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
           {% endif %}
           {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
-            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a> <br>
+            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a>
+            <br>
           {% endif %}
           {% if product.metafields.sf_products.warranty == '90-day-limited' %}
             <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
@@ -506,7 +536,11 @@
           <h3>Specs</h3>
           <strong>Hardware Included</strong>
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
-          {% if gate_hardware == 1 %} Yes {% else %} No {% endif %}
+          {% if gate_hardware == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
           {% assign made_usa = product.metafields.sf_products.made_in_usa %}
           {% if made_usa == 1 %}
             <strong>Made in the USA</strong>
@@ -533,8 +567,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -561,8 +597,10 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Features</h3>
@@ -571,7 +609,8 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Suction Range</strong> {{ suction_range -}}
+          <strong>Suction Range</strong>
+          {{ suction_range -}}
           <br>
           <strong>Tip Styles</strong>
           {{ tip_styles -}}
@@ -596,8 +635,10 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
 
         <div class="flex-item">
@@ -611,8 +652,10 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Opening Size Min</strong> {{ min_opening_size }} in<br>
-          <strong>Opening Size Max</strong> {{ max_opening_size }} in <br>
+          <strong>Opening Size Min</strong>
+          {{ min_opening_size }} in<br>
+          <strong>Opening Size Max</strong>
+          {{ max_opening_size }} in <br>
           <strong>Mount Type</strong>
           {% for tag in my_tags %}
             {{ tag -}}
@@ -621,11 +664,16 @@
           <br>
           <strong>Hardware Included</strong>
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
-          {% if gate_hardware == 1 %} Yes {% else %} No {% endif %}
+          {% if gate_hardware == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
           <br>
           <p>
             {% if product.metafields.custom.link_support_page %}
-              <a href="{{ product.metafields.custom.link_support_page.value.url }}">Product Support </a>
+              <a href="{{ product.metafields.custom.link_support_page.value.url }}">Product Support
+              </a>
             {% endif %}
           </p>
         </div>
@@ -646,8 +694,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -695,8 +745,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -733,8 +785,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -768,8 +822,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -777,10 +833,13 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Number of Height Modes</strong> {{ number_of_height_modes -}}
+          <strong>Number of Height Modes</strong>
+          {{ number_of_height_modes -}}
           <br>
-          <strong>Batteries Required:</strong> <br>
-          <strong>Warranty</strong> <br>
+          <strong>Batteries Required:</strong>
+          <br>
+          <strong>Warranty</strong>
+          <br>
         </div>
       </div>
     {% endif %}
@@ -799,8 +858,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -808,12 +869,10 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong
-            >Eco-Friendly<br>
+          <strong>Eco-Friendly<br>
             Certifications<br>
             Breathable<br>
-            Dual-Sided</strong
-          >
+            Dual-Sided</strong>
         </div>
       </div>
     {% endif %}
@@ -821,7 +880,8 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Warranty Type</h3>
@@ -836,7 +896,8 @@
             <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
           {% endif %}
           {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
-            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a> <br>
+            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a>
+            <br>
           {% endif %}
           {% if product.metafields.sf_products.warranty == '90-day-limited' %}
             <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
@@ -866,8 +927,10 @@
       <div class="flex-row">
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Package:</strong> {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Package:</strong>
+          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -875,8 +938,7 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong
-            >Accuracy<br>
+          <strong>Accuracy<br>
             Response Time<br>
             Body Application<br>
             {{ battery_cell_type }}
@@ -899,16 +961,23 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</strong><br>
-          <strong>Folded: {{ folded_dimensions }}</strong><br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          <br>
+          <strong>Folded:</strong><br>
+          {{ folded_dimensions }}
         </div>
 
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Max Speed:<strong>{{ rollplay_max_speed }}<br>
-          <strong>Run Time:<strong>{{ rollplay_run_time }}<br>
-          <strong>Battery Voltage:<strong>{{ rollplay_battery_voltage }}<br>
-          <strong>Replaceable Battery:<strong>{{ rollplay_battery_replaceable }}<br>
+          <strong>Max Speed:</strong>
+          {{ rollplay_max_speed }}<br>
+          <strong>Run Time:</strong>
+          {{ rollplay_run_time }}<br>
+          <strong>Battery Voltage:</strong>
+          {{ rollplay_battery_voltage }}<br>
+          <strong>Replaceable Battery:</strong>
+          {{ rollplay_battery_replaceable }}<br>
         </div>
       </div>
     {% endif %}
@@ -916,15 +985,15 @@
 </section>
 
 {% schema %}
-{
-  "name": "PDP Highlights",
-  "class": "text",
-  "tag": "section",
-  "settings": [],
-  "presets": [
-    {
-      "name": "PDP Highlights"
-    }
-  ]
-}
+  {
+    "name": "PDP Highlights",
+    "class": "text",
+    "tag": "section",
+    "settings": [],
+    "presets": [
+      {
+        "name": "PDP Highlights"
+      }
+    ]
+  }
 {% endschema %}
