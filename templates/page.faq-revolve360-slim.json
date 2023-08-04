@@ -429,7 +429,7 @@
         "template--15823756918940__f67e9919-60df-48af-8f85-9726d3974d49-heading-1": {
           "type": "heading",
           "settings": {
-            "heading": "Care",
+            "heading": "Care & Storage",
             "heading_size": "h1"
           }
         },
@@ -500,12 +500,14 @@
         },
         "template--15823756918940__7692c611-4f45-4a60-8185-f5b505b9bb4b-text-1": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
           }
         },
         "template--15823756918940__7692c611-4f45-4a60-8185-f5b505b9bb4b-button-1": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Button label",
             "button_link": "",
@@ -529,6 +531,108 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "e156063a-3e2a-42ba-8f55-d76f3d416338": {
+      "type": "faq",
+      "blocks": {
+        "18ac8ae5-445f-4dcb-8cc0-e3730c1cd365": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "FAQ title",
+            "content": "<p>FAQ content<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "18ac8ae5-445f-4dcb-8cc0-e3730c1cd365"
+      ],
+      "settings": {
+        "enable_rich_schema": true,
+        "max_width": "64rem",
+        "margin_top": 1,
+        "margin_bottom": 1,
+        "background_color": "#ffffff",
+        "border_color": "#eeeeee",
+        "panel_color": "#fdfdfd",
+        "q_size_small": 1,
+        "q_size_large": 1.4,
+        "q_color": "",
+        "a_color": ""
+      }
+    },
+    "32f64788-8a14-4903-9eeb-4b807479bd56": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15823756918940__32f64788-8a14-4903-9eeb-4b807479bd56-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Warranty",
+            "heading_size": "h1"
+          }
+        },
+        "template--15823756918940__32f64788-8a14-4903-9eeb-4b807479bd56-text-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "template--15823756918940__32f64788-8a14-4903-9eeb-4b807479bd56-button-1": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15823756918940__32f64788-8a14-4903-9eeb-4b807479bd56-heading-1",
+        "template--15823756918940__32f64788-8a14-4903-9eeb-4b807479bd56-text-1",
+        "template--15823756918940__32f64788-8a14-4903-9eeb-4b807479bd56-button-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "22176b36-2f65-4166-bd8e-e1c86ed33518": {
+      "type": "faq",
+      "blocks": {
+        "ee128321-1e38-4da4-97f9-d44bd21935a1": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "FAQ title",
+            "content": "<p>FAQ content<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "ee128321-1e38-4da4-97f9-d44bd21935a1"
+      ],
+      "settings": {
+        "enable_rich_schema": true,
+        "max_width": "64rem",
+        "margin_top": 1,
+        "margin_bottom": 1,
+        "background_color": "#ffffff",
+        "border_color": "#eeeeee",
+        "panel_color": "#fdfdfd",
+        "q_size_small": 1,
+        "q_size_large": 1.4,
+        "q_color": "",
+        "a_color": ""
+      }
     }
   },
   "order": [
@@ -540,6 +644,9 @@
     "32219bba-7216-4ef9-b2dc-b46b58cd1503",
     "f67e9919-60df-48af-8f85-9726d3974d49",
     "bc38aca8-feb2-4e7b-89a4-a086b2e5d243",
-    "7692c611-4f45-4a60-8185-f5b505b9bb4b"
+    "7692c611-4f45-4a60-8185-f5b505b9bb4b",
+    "e156063a-3e2a-42ba-8f55-d76f3d416338",
+    "32f64788-8a14-4903-9eeb-4b807479bd56",
+    "22176b36-2f65-4166-bd8e-e1c86ed33518"
   ]
 }
