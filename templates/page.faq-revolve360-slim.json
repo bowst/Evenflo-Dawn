@@ -23,7 +23,7 @@
         "template--15823756198044__69e1f2ab-09d5-4118-845b-0ff80654302b-heading-1": {
           "type": "heading",
           "settings": {
-            "heading": "PRODUCT USE",
+            "heading": "Product Details",
             "heading_size": "h1"
           }
         }
@@ -348,12 +348,88 @@
         "q_color": "",
         "a_color": ""
       }
+    },
+    "5ad82363-9d51-48e7-9dc4-ab9de139640d": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15823756918940__5ad82363-9d51-48e7-9dc4-ab9de139640d-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "PRODUCT USE",
+            "heading_size": "h1"
+          }
+        },
+        "template--15823756918940__5ad82363-9d51-48e7-9dc4-ab9de139640d-button-1": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15823756918940__5ad82363-9d51-48e7-9dc4-ab9de139640d-heading-1",
+        "template--15823756918940__5ad82363-9d51-48e7-9dc4-ab9de139640d-button-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "32219bba-7216-4ef9-b2dc-b46b58cd1503": {
+      "type": "faq",
+      "blocks": {
+        "45fd60f7-ea4e-475c-bd6f-f37df7071b8c": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "FAQ title",
+            "content": "<p>FAQ content<\/p>"
+          }
+        },
+        "bee0e32c-4fea-4f7c-8713-a59edfd2e527": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "FAQ title",
+            "content": "<p>FAQ content<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "45fd60f7-ea4e-475c-bd6f-f37df7071b8c",
+        "bee0e32c-4fea-4f7c-8713-a59edfd2e527"
+      ],
+      "settings": {
+        "enable_rich_schema": true,
+        "max_width": "64rem",
+        "margin_top": 1,
+        "margin_bottom": 1,
+        "background_color": "#ffffff",
+        "border_color": "#eeeeee",
+        "panel_color": "#fdfdfd",
+        "q_size_small": 1,
+        "q_size_large": 1.4,
+        "q_color": "",
+        "a_color": ""
+      }
     }
   },
   "order": [
     "main",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
     "69e1f2ab-09d5-4118-845b-0ff80654302b",
-    "827dd7fd-904a-4ba9-8d73-dc85fffac508"
+    "827dd7fd-904a-4ba9-8d73-dc85fffac508",
+    "5ad82363-9d51-48e7-9dc4-ab9de139640d",
+    "32219bba-7216-4ef9-b2dc-b46b58cd1503"
   ]
 }
