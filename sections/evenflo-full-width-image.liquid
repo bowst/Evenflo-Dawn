@@ -1,0 +1,36 @@
+<section class="full-width-image">
+  <div class="content-container--full-width">
+    {% if section.settings.image != blank %}
+      {{
+        section.settings.image
+      | image_url: width: 1800
+      | image_tag: loading: 'lazy', sizes: sizes, widths: widths, class: 'img-full' }}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evenflo Full Width Image",
+  "class": "image",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Full Width Image"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
