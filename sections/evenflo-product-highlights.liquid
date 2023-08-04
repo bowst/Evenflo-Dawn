@@ -85,13 +85,12 @@
           {% if my_switch == true %}
             <strong>360 Rotation</strong><br>
           {% endif %}
-          <strong> {{ product.metafields.custom.installation }} Installation</strong>
+          <strong>{{ product.metafields.custom.installation }} Installation</strong>
           <br>
           {% assign my_switch = product.metafields.sf_car_seat.steel_reinforced %}
           {% if my_switch == 1 %}
             <strong>Steel Reinforced</strong>
           {% endif %}
-
           <br>
           {% assign my_switch = product.metafields.sf_car_seat.anti_rebound_bar %}
           {% if my_switch == 1 %}
@@ -176,7 +175,6 @@
           {% else %}
             No
           {% endif %}
-          <br>
         </div>
       </div>
     {% endif %}
@@ -192,7 +190,8 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</strong><br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -200,23 +199,20 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong
-            >Lightweight:
-            {%- if lightweight == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif -%}</strong
-          ><br>
-
-          <strong>
-            Anti-Rebound Bar:
-            {%- if anti_rebound_bar == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif -%}</strong
-          ><br>
+          <strong>Lightweight:</strong>
+          {%- if lightweight == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif -%}
+          <br>
+          <strong>Anti-Rebound Bar:</strong>
+          {%- if anti_rebound_bar == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif -%}
+          <br>
           <strong>{{ installation }} Installation</strong>
         </div>
       </div>
@@ -232,8 +228,10 @@
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
-          <strong>Assembled: {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</strong><br>
-          <strong>Folded: {{ folded_dimensions }}</strong><br>
+          <strong>Assembled:</strong>
+          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          <strong>Folded:</strong>
+          {{ folded_dimensions }}
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -241,23 +239,20 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong
-            >Lightweight:
-            {%- if lightweight == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif -%}</strong
-          ><br>
-
-          <strong>
-            Anti-Rebound Bar:
-            {%- if anti_rebound_bar == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif -%}</strong
-          ><br>
+          <strong>Lightweight:</strong>
+          {%- if lightweight == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif -%}
+          <br>
+          <strong>Anti-Rebound Bar:</strong>
+          {%- if anti_rebound_bar == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif -%}
+          <br>
           <strong>{{ installation }} Installation</strong>
         </div>
       </div>
@@ -315,7 +310,6 @@
           {{ product.metafields.sf_car_seat.belt_pos_booster_height_min }} -
           {{ product.metafields.sf_car_seat.belt_pos_booster_height_max }} in <br>
         </div>
-
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
@@ -328,7 +322,7 @@
         <div class="flex-item">
           <h3>Specs</h3>
           <strong>{{ product.metafields.custom.installation }} Installation</strong> <br>
-          <strong>Number Of Cupholders</strong>: {{ number_of_cup_holders }}
+          <strong>Number Of Cupholders:</strong> {{ number_of_cup_holders }}
           <br>
           <strong>Harness Booser Mode:</strong>
           {% if has_harness_booster_mode == 1 %}
@@ -337,7 +331,7 @@
             No <br>
           {% endif %}
 
-          <strong>Converts to No Back Booster</strong>:
+          <strong>Converts to No Back Booster:</strong>
           {% if converts_to_no_back_booster == 1 %}
             Yes <br>
           {% else %}
@@ -452,7 +446,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong> {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Folded: </strong> {{ folded_dimensions -}}
+          <strong>Folded:</strong> {{ folded_dimensions -}}
           <br>
         </div>
         <div class="flex-item">
