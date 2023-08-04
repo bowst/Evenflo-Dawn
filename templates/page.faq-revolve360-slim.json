@@ -433,14 +433,9 @@
             "heading_size": "h1"
           }
         },
-        "template--15823756918940__f67e9919-60df-48af-8f85-9726d3974d49-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        },
         "template--15823756918940__f67e9919-60df-48af-8f85-9726d3974d49-button-1": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Button label",
             "button_link": "",
@@ -453,7 +448,6 @@
       },
       "block_order": [
         "template--15823756918940__f67e9919-60df-48af-8f85-9726d3974d49-heading-1",
-        "template--15823756918940__f67e9919-60df-48af-8f85-9726d3974d49-text-1",
         "template--15823756918940__f67e9919-60df-48af-8f85-9726d3974d49-button-1"
       ],
       "settings": {
@@ -464,6 +458,35 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "bc38aca8-feb2-4e7b-89a4-a086b2e5d243": {
+      "type": "faq",
+      "blocks": {
+        "c16457cb-7028-4423-a305-7b54c2ccaddc": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "FAQ title",
+            "content": "<p>FAQ content<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c16457cb-7028-4423-a305-7b54c2ccaddc"
+      ],
+      "settings": {
+        "enable_rich_schema": true,
+        "max_width": "64rem",
+        "margin_top": 1,
+        "margin_bottom": 1,
+        "background_color": "#ffffff",
+        "border_color": "#eeeeee",
+        "panel_color": "#fdfdfd",
+        "q_size_small": 1,
+        "q_size_large": 1.4,
+        "q_color": "",
+        "a_color": ""
+      }
     }
   },
   "order": [
@@ -473,6 +496,7 @@
     "827dd7fd-904a-4ba9-8d73-dc85fffac508",
     "5ad82363-9d51-48e7-9dc4-ab9de139640d",
     "32219bba-7216-4ef9-b2dc-b46b58cd1503",
-    "f67e9919-60df-48af-8f85-9726d3974d49"
+    "f67e9919-60df-48af-8f85-9726d3974d49",
+    "bc38aca8-feb2-4e7b-89a4-a086b2e5d243"
   ]
 }
