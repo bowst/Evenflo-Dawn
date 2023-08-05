@@ -804,6 +804,26 @@
           {% if my_switch == 1 %}
             <strong>Machine Washable</strong>
           {% endif %}
+          {% assign my_switch = product.metafields.sf_high_chair.height_adjustable %}
+          {% if my_switch == 1 %}
+            <strong> Height Adjustable</strong>
+          {% endif %}
+          {% assign product_warranty_link = product.metafields.custom.product_warranty_link %}
+          {% if product_warranty_link %}
+            {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
+              <a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a><br>
+            {% endif %}
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == 'lifetime-limited' %}
+            <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
+            <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a>
+            <br>
+          {% endif %}
+          {% if product.metafields.sf_products.warranty == '90-day-limited' %}
+            <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
+          {% endif %}
         </div>
       </div>
     {% endif %}
