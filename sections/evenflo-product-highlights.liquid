@@ -703,7 +703,7 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Carrier Position</strong>
+          <strong>Carrier Position:</strong>
           {% assign my_tags = product.metafields.sf_carrier.position | split: ',' %}
           {% if my_tags.size > 0 %}
             {% for tag in my_tags %}
@@ -715,7 +715,7 @@
 
           {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
           {% if my_switch == 1 %}
-            <strong>Machine Washable</strong><br>
+            <strong>Machine Washable:</strong><br>
             {% assign my_switch = product.metafields.sf_carrier.pacifier_toy_clip %}
             {% if my_switch == 1 %}
               <strong>Pacifier / Toy Clip</strong><br>
