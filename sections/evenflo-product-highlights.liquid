@@ -36,6 +36,8 @@
 
 {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
 
+{% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
+
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
     {% comment %} All in One {% endcomment %}
@@ -154,8 +156,7 @@
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
           {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
-          <strong>Folded:
-          </strong>
+          <strong>Folded: </strong>
           {{ folded_dimensions -}}
           <br>
         </div>
@@ -304,8 +305,7 @@
           {% if my_switch == true %}
             <strong>360 Rotation</strong><br>
           {% endif %}
-          <strong>
-            {{ product.metafields.custom.installation }} Installation</strong>
+          <strong> {{ product.metafields.custom.installation }} Installation</strong>
           <br>
 
           <strong>Slim Design</strong>
@@ -443,8 +443,7 @@
           <strong>Sensorsafe</strong>
 
           <br>
-          <strong>{{ product.metafields.custom.installation }} Installation
-          </strong>
+          <strong>{{ product.metafields.custom.installation }} Installation </strong>
           <br>
           {% assign rebound = product.metafields.sf_car_seat.anti_rebound_bar %}
           {% if rebound == 1 %}
@@ -672,8 +671,7 @@
           <br>
           <p>
             {% if product.metafields.custom.link_support_page %}
-              <a href="{{ product.metafields.custom.link_support_page.value.url }}">Product Support
-              </a>
+              <a href="{{ product.metafields.custom.link_support_page.value.url }}">Product Support </a>
             {% endif %}
           </p>
         </div>
@@ -792,11 +790,20 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong></strong>
+          <strong>{{ modes_of_use }}</strong>
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong></strong>
+          <strong>
+            {% for tag in electronic_toys_features %}
+              {{ tag -}}
+              {%- if tag != electronic_toys_features.last %},{% endif %}
+            {% endfor -%}
+          </strong>
+          {% assign my_switch = product.metafields.sf_products.machine_washable_seating_surfa %}
+          {% if my_switch == 1 %}
+            <strong>Machine Washable</strong>
+          {% endif %}
         </div>
       </div>
     {% endif %}
@@ -869,10 +876,12 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Eco-Friendly<br>
+          <strong
+            >Eco-Friendly<br>
             Certifications<br>
             Breathable<br>
-            Dual-Sided</strong>
+            Dual-Sided</strong
+          >
         </div>
       </div>
     {% endif %}
@@ -938,7 +947,8 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Accuracy<br>
+          <strong
+            >Accuracy<br>
             Response Time<br>
             Body Application<br>
             {{ battery_cell_type }}
@@ -971,13 +981,17 @@
         <div class="flex-item">
           <h3>Specs</h3>
           <strong>Max Speed:</strong>
-          {{ rollplay_max_speed }}<br>
+          {{ rollplay_max_speed -}}
+          <br>
           <strong>Run Time:</strong>
-          {{ rollplay_run_time }}<br>
+          {{ rollplay_run_time -}}
+          <br>
           <strong>Battery Voltage:</strong>
-          {{ rollplay_battery_voltage }}<br>
+          {{ rollplay_battery_voltage -}}
+          <br>
           <strong>Replaceable Battery:</strong>
-          {{ rollplay_battery_replaceable }}<br>
+          {{ rollplay_battery_replaceable -}}
+          <br>
         </div>
       </div>
     {% endif %}
@@ -985,15 +999,15 @@
 </section>
 
 {% schema %}
-  {
-    "name": "PDP Highlights",
-    "class": "text",
-    "tag": "section",
-    "settings": [],
-    "presets": [
-      {
-        "name": "PDP Highlights"
-      }
-    ]
-  }
+{
+  "name": "PDP Highlights",
+  "class": "text",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "PDP Highlights"
+    }
+  ]
+}
 {% endschema %}
