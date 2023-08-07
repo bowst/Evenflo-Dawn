@@ -35,6 +35,14 @@
             {{- section.settings.button_label | escape -}}
           </a>
         {%- endif -%}
+        {%- if section.settings.discount_verification != blank -%}
+          <a
+            class="button button--primary"
+            onclick="displayVerification({{ section.settings.discount_verification }})"
+          >
+            Verify Status
+          </a>
+        {%- endif -%}
       </div>
     {%- endunless -%}
     <slider-component class="slider-mobile-gutter">
