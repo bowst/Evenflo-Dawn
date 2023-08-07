@@ -141,7 +141,7 @@
                 {%- if block.settings.discount_verification != blank -%}
                   <a
                     class="link animate-arrow"
-                    onclick="displayVerification({{ block.settings.discount_verification | escape }})"
+                    onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
                   >
                     Verify Status
                   </a>
