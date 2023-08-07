@@ -1,6 +1,45 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
+<script>
+  function getCustomerId() {
+  try {
+      let curr = window.ShopifyAnalytics.meta.page.customerId;
+      if (curr !== undefined && curr !== null && curr !== "") {
+      return curr;
+      }
+  } catch(e) { }
+  try {
+      let curr = window.meta.page.customerId;
+      if (curr !== undefined && curr !== null && curr !== "") {
+      return curr;
+      }
+  } catch (e) { }    
+  try {
+      let curr = _st.cid;
+      if (curr !== undefined && curr !== null && curr !== "") {
+      return curr;
+      }
+  } catch (e) { }
+  try {
+      let curr = ShopifyAnalytics.lib.user().traits().uniqToken;
+      if (curr !== undefined && curr !== null && curr !== "") {
+      return curr;
+      }
+  } catch (e) { }
+      return null;
+  }
+  function displayVerification(id) {
+    const customerId = getCustomerId()
+    console.log('customerId: ', customerId);
+    const verificationUrl = 'https://services.sheerid.com/verify/' + id + '/?customer_id=' + customerId;
+    sheerId.loadInModal(
+        verificationUrl, {
+        mobileRedirect: true
+      });
+  };
+</script>
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
