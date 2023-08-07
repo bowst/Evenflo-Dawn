@@ -1,6 +1,7 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
+{%- if block.settings.discount_verification != blank -%}
 <script>
   function getCustomerId() {
   try {
@@ -39,6 +40,7 @@
       });
   };
 </script>
+{%- endif -%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -74,10 +76,10 @@
             {{- section.settings.button_label | escape -}}
           </a>
         {%- endif -%}
-        {%- if section.settings.discount_verification != blank -%}
+        {%- if block.settings.discount_verification != blank -%}
           <a
-            class="button button--primary"
-            onclick="displayVerification({{ section.settings.discount_verification }})"
+            class="link animate-arrow"
+            onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
           >
             Verify Status
           </a>
@@ -231,10 +233,10 @@
           {{ section.settings.button_label | escape }}
         </a>
       {%- endif -%}
-      {%- if section.settings.discount_verification != blank -%}
+      {%- if block.settings.discount_verification != blank -%}
         <a
-          class="button button--primary"
-          onclick="displayVerification({{ section.settings.discount_verification }})"
+          class="link animate-arrow"
+          onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
         >
           Verify Status
         </a>
