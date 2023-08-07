@@ -1,16 +1,5 @@
 {{ 'section-support.css' | asset_url | stylesheet_tag }}
 
-{%- liquid
-  paginate collections.all.products by 1000
-    for product in collections.all.products
-      assign product_id = product.id | append: ''
-
-      if product_id == page.metafields.custom.associated_product_id
-        assign this_product = product
-      endif
-    endfor
-  endpaginate
--%}
 
 <section class="support">
   <div class="content-container rich-text--full-width content-container--full-width">
@@ -22,7 +11,7 @@
         <div class="row pdp-in-the-box">
           <div class="eight columns alpha">
                 <div class="pdp-specification-bullet-row">
-                    {% assign retail_package_contents_value = this_product.metafields.sf_products.retail_package_contents %}
+                    {% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}
                     {% if retail_package_contents_value %}
                     <div>
                       <h3>Contents</h3>
@@ -35,13 +24,13 @@
                       SKU:
                     </h3>
                     <p>
-                      {{ this_product.selected_or_first_available_variant.sku }}
+                      {{ product.selected_or_first_available_variant.sku }}
                     </p>
                   </div>
     
-              {% assign assembled_width = this_product.metafields.sf_products.assembled_width %}
-              {% assign assembled_height = this_product.metafields.sf_products.assembled_height %}
-              {% assign assembled_depth = this_product.metafields.sf_products.assembled_depth %}
+              {% assign assembled_width = product.metafields.sf_products.assembled_width %}
+              {% assign assembled_height = product.metafields.sf_products.assembled_height %}
+              {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
               {% if assembled_width and assembled_height and assembled_depth %}
                 <div>
                 <h3>Product Dimensions</h3>
@@ -52,7 +41,7 @@
                 </p>
                 </div>
                 {% endif %}
-                {% assign folded_dimensions = this_product.metafields.sf_products.folded_dimensions %}
+                {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
                 {% if folded_dimensions %}
                 <div>
                 <h3>Folded Dimensions</h3>
@@ -61,9 +50,9 @@
                 </p>
                 </div>
                 {% endif %}
-              {% assign package_width = this_product.metafields.sf_shipping.package_width %}
-              {% assign package_height = this_product.metafields.sf_shipping.package_height %}
-              {% assign package_depth = this_product.metafields.sf_shipping.package_depth %}
+              {% assign package_width = product.metafields.sf_shipping.package_width %}
+              {% assign package_height = product.metafields.sf_shipping.package_height %}
+              {% assign package_depth = product.metafields.sf_shipping.package_depth %}
               {% if package_width and package_height and package_depth %}
               <div>
                 <h3>Package Dimensions</h3>
@@ -75,7 +64,7 @@
               </div>
                 {% endif %}
     
-              {% assign assembled_weight = this_product.metafields.sf_products.assembled_weight %}
+              {% assign assembled_weight = product.metafields.sf_products.assembled_weight %}
               {% if assembled_weight %}
               <div>
                 <h3>Product Weight</h3>
@@ -84,7 +73,7 @@
                 </p>
               </div>
               {% endif %}
-              {% assign package_weight = this_product.metafields.sf_shipping.package_weight %}
+              {% assign package_weight = product.metafields.sf_shipping.package_weight %}
               {% if package_weight %}
               <div>
                 <h3>Package Weight</h3>
@@ -94,7 +83,7 @@
               </div>
               {% endif %}
     
-              {% assign carrier_weight_without_base = this_product.metafields.sf_car_seat.carrier_weight_without_base %}
+              {% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}
               {% if carrier_weight_without_base %}
               <div>
                 <h3>Weight w/o Base</h3>
@@ -106,12 +95,12 @@
     
     
             <!-- optional section -->
-            {% assign harness_rethread_method = this_product.metafields.sf_products.harness_rethread_method %}
-            {% assign harness_type = this_product.metafields.sf_products.harness_type %}
-            {% assign bubble_level = this_product.metafields.sf_car_seat.bubble_level %}
-            {% assign harness_covers = this_product.metafields.sf_car_seat.harness_covers %}
-            {% assign latch_install = this_product.metafields.sf_car_seat.latch_install %}
-            {% assign maturity = this_product.metafields.sf_products.maturity %}
+            {% assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method %}
+            {% assign harness_type = product.metafields.sf_products.harness_type %}
+            {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
+            {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
+            {% assign latch_install = product.metafields.sf_car_seat.latch_install %}
+            {% assign maturity = product.metafields.sf_products.maturity %}
     
             {% if harness_rethread_method or harness_type %}
     
@@ -165,7 +154,7 @@
     
               <div>
                 <h3>Assembly Required</h3>
-                {% assign assembly_switch_spec = this_product.metafields.sf_products.assembly_required %}
+                {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
                 {% if assembly_switch_spec == 1 %}
                 <p>
                   Yes
@@ -177,7 +166,7 @@
                 {% endif %}
               </div>
               <div>
-                {% assign my_switch = this_product.metafields.sf_gates.hardware_included %}
+                {% assign my_switch = product.metafields.sf_gates.hardware_included %}
                 <h3>Hardware Included</h3>
                 {% if my_switch == 1 %}
                 <p>
@@ -190,7 +179,7 @@
                 {% endif %}
               </div>
     
-            {% assign shipping_restrictions = this_product.metafields.sf_shipping.shipping_restrictions %}
+            {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
     
             {% if shipping_restrictions %}
             <div>
@@ -204,9 +193,9 @@
     
         </div>
         <div class="eight columns omega">
-          {% assign specifications_image = this_product.metafields.sf_products.specifications_image %}
+          {% assign specifications_image = product.metafields.sf_products.specifications_image %}
           {% if specifications_image %}
-            <image loading="lazy" alt="{{ this_product.title }} Specifications" src='{{ specifications_image }}'>
+            <image loading="lazy" alt="{{ product.title }} Specifications" src='{{ specifications_image }}'>
           {% endif %}
         </div>
         </div>
@@ -220,7 +209,7 @@
               <h2>Care</h2>
     
     
-              {% assign care_copy = this_product.metafields.sf_products.care_copy | split: '|' %}
+              {% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}
               {% if care_copy %}
                 <ul>
                   {% for li in care_copy %}
@@ -229,21 +218,21 @@
                 </ul>
               {% endif %}
               <h3>Materials</h3>
-              {% assign material = this_product.metafields.sf_products.material %}
+              {% assign material = product.metafields.sf_products.material %}
               {% if material %}
                 {{ material }}
               {% endif %}
             </div>
             <div class="one-half columns">
               <h2>Use</h2>
-              {% assign use_copy = this_product.metafields.sf_products.use_copy %}
+              {% assign use_copy = product.metafields.sf_products.use_copy %}
               {% if use_copy %}
                 <p>{{ use_copy }}</p>
               {% endif %}
     
-              {% assign user_manual_value = this_product.metafields.sf_products.manual %}
-              {% assign user_manual_french_value = this_product.metafields.sf_products.manual_french %}
-              {% assign user_manual_spanish_value = this_product.metafields.sf_products.manual_spanish %}
+              {% assign user_manual_value = product.metafields.sf_products.manual %}
+              {% assign user_manual_french_value = product.metafields.sf_products.manual_french %}
+              {% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}
     
               {% if user_manual_value %}
                 <a class="action_button button download_manual" href="{{ user_manual_value }}">Download Manual (en)</a>
@@ -268,14 +257,14 @@
         <div class='pdp-safety'>
           <div class="container">
             <div class="one-half columns">
-              {% assign safety_image = this_product.metafields.sf_products.safety_image %}
+              {% assign safety_image = product.metafields.sf_products.safety_image %}
               {% if safety_image %}
-              <image src='{{ safety_image }}' loading="lazy" alt="{{ this_product.title }} Safety" >
+              <image src='{{ safety_image }}' loading="lazy" alt="{{ product.title }} Safety" >
               {% endif %}
             </div>
             <div class="one-half columns">
               <h2>Safe and Convenient</h2>
-              {% assign safety_testing_copy = this_product.metafields.sf_products.safety_testing_copy | split: '|' %}
+              {% assign safety_testing_copy = product.metafields.sf_products.safety_testing_copy | split: '|' %}
               {% if safety_testing_copy %}
                 {% for para in safety_testing_copy %}
                   <p>{{ para }}</p>
@@ -293,7 +282,7 @@
         <div class="pdp-support-tab">
     
           <div class="container">
-            {% assign my_switch = this_product.metafields.sf_products.video_support %}
+            {% assign my_switch = product.metafields.sf_products.video_support %}
             {% if my_switch == 1 %}
             <div class="one-third columns">
               <h2>Free Video Support</h2>
@@ -306,7 +295,7 @@
             <div class="one-third columns">
               <div class="pom-div">
                 <h2>Peace of<br>Mind</h2>
-    <!--             <a href="{{ this_product.metafields.custom.product_warranty_link }}">Download Warranty</a> -->
+    <!--             <a href="{{ product.metafields.custom.product_warranty_link }}">Download Warranty</a> -->
                 <p class="pom">Being a parent has enough stress as it is, that's why we can assure you that we can give you as
                   much time as
                   you need.</p>
@@ -315,19 +304,19 @@
                     Returns</a></p>
                 
                     
-                      {% if this_product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
+                      {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
                         <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 1 Year, 6-Month Battery Warranty</a></p>{% endif %}
-                      {% if this_product.metafields.sf_products.warranty == 'lifetime-limited' %}
+                      {% if product.metafields.sf_products.warranty == 'lifetime-limited' %}
                         <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a></p>{% endif %}
-                        {% if this_product.metafields.sf_products.warranty == '1 Year, Limited' %}
+                        {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
                           <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a></p>{% endif %}
-                        {% if this_product.metafields.sf_products.warranty == '90-day-limited' %}
+                        {% if product.metafields.sf_products.warranty == '90-day-limited' %}
                           <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 90-Day Warranty</a></p>
                       {% endif %}
     
               </div>
             </div>
-            {% assign my_switch = this_product.metafields.sf_products.replacement_parts %}
+            {% assign my_switch = product.metafields.sf_products.replacement_parts %}
             {% if my_switch == 1 %}
             <div class="one-third columns">
               <h2>Replacement Parts</h2>
@@ -365,19 +354,19 @@
     <h2>{{ section.settings.support_heading }}</h2>
 
     <div class="flex-row">
-      {% if this_product.metafields.sf_products.child_weight_min %}
+      {% if product.metafields.sf_products.child_weight_min %}
         <div class="flex-item">
           <h3>Weight</h3>
-          {{ this_product.metafields.sf_products.child_weight_min }} -
-          {{ this_product.metafields.sf_products.child_weight_max }} lbs
+          {{ product.metafields.sf_products.child_weight_min }} -
+          {{ product.metafields.sf_products.child_weight_max }} lbs
         </div>
       {% endif %}
 
-      {% if this_product.metafields.sf_products.child_height_min %}
+      {% if product.metafields.sf_products.child_height_min %}
         <div class="flex-item">
           <h3>Height</h3>
-          {{ this_product.metafields.sf_products.child_height_min }} -
-          {{ this_product.metafields.sf_products.child_height_max }} in
+          {{ product.metafields.sf_products.child_height_min }} -
+          {{ product.metafields.sf_products.child_height_max }} in
         </div>
       {% endif %}
     </div>
@@ -386,22 +375,22 @@
   <div class="flex-row">
     <div class="flex-item">
       <h3>Steel Reinforced</h3>
-      {{ this_product.metafields.sf_car_seat.steel_reinforced }}
+      {{ product.metafields.sf_car_seat.steel_reinforced }}
     </div>
   </div>
   What's in the box
   <div class="flex-row">
     <div class="flex-item">
       <h3>Contents</h3>
-      {{ this_product.metafields.sf_products.retail_package_contents }}
+      {{ product.metafields.sf_products.retail_package_contents }}
     </div>
 
     <div class="flex-item">
       <h3>Product Dimensions</h3>
       <p>
-        {{ this_product.metafields.sf_products.assembled_width }} x
-        {{ this_product.metafields.sf_products.assembled_height }} x
-        {{ this_product.metafields.sf_products.assembled_depth }} in
+        {{ product.metafields.sf_products.assembled_width }} x
+        {{ product.metafields.sf_products.assembled_height }} x
+        {{ product.metafields.sf_products.assembled_depth }} in
       </p>
     </div>
 
@@ -412,28 +401,28 @@
     <div class="flex-item">
       <h3>Package Dimensions</h3>
       <p>
-        {{ this_product.metafields.sf_shipping.package_width }} x
-        {{ this_product.metafields.sf_shipping.package_height }} x
-        {{ this_product.metafields.sf_shipping.package_depth }} in
+        {{ product.metafields.sf_shipping.package_width }} x
+        {{ product.metafields.sf_shipping.package_height }} x
+        {{ product.metafields.sf_shipping.package_depth }} in
       </p>
     </div>
     <div class="flex-item">
       <h3>Product Weight</h3>
-      <p>{{ this_product.metafields.sf_products.assembled_weight }} lbs.</p>
+      <p>{{ product.metafields.sf_products.assembled_weight }} lbs.</p>
     </div>
     <div class="flex-item">
       <h3>Package Weight</h3>
-      <p>{{ this_product.metafields.sf_products.assembled_weight }} lbs.</p>
+      <p>{{ product.metafields.sf_products.assembled_weight }} lbs.</p>
     </div>
     <div class="flex-item">
       <h3>Weight w/o Base</h3>
-      <p>{{ this_product.metafields.sf_car_seat.carrier_weight_without_base }} lbs.</p>
+      <p>{{ product.metafields.sf_car_seat.carrier_weight_without_base }} lbs.</p>
     </div>
   </div>
 
   <h3>Harness Type</h3>
   <p>
-    {{ this_product.metafields.sf_products.harness_type }}
+    {{ product.metafields.sf_products.harness_type }}
   </p>
 </section>
 
