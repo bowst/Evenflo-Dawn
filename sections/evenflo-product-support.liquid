@@ -397,6 +397,272 @@
         </div>
         {% endif %}
         {% endif %}
+
+      <!-- car seat specifications -->
+         {% if product.type contains 'Car Seat' %}
+         {% assign steel_reinforced = product.metafields.sf_car_seat.steel_reinforced %}
+         {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
+         {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
+         {% assign latch_install = product.metafields.sf_car_seat.latch_install %}
+         {% assign lightweight = product.metafields.sf_car_seat.lightweight %}
+         {% assign no_rethread_harness = product.metafields.sf_car_seat.no_rethread_harness %}
+         {% assign side_impact_protection = product.metafields.sf_car_seat.side_impact_protection %}
+         {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+         {% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
+         {% assign high_back = product.metafields.sf_car_seat.high_back %}
+         {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
+         <div class="left-column-data pdp-child-info">
+           <button class='accordion'>
+             <h3>
+               Car Seat Specifications
+             </h3>
+           </button>
+           <!-- <div class="feature_divider"></div> -->
+           <div class="panel">
+              <div class="row">
+                <div class="five columns">
+                  <h5>Steel Reinforced</h5>
+                  {% if steel_reinforced == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+                <div class="five columns">
+                  <h5>Bubble Level</h5>
+                  {% if bubble_level == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+                <div class="five columns">
+                  <h5>Harness Covers</h5>
+                  {% if harness_covers == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="five columns">
+                  <h5>Latch Install</h5>
+                  {% if latch_install == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+                <div class="five columns">
+                  <h5>Lightweight</h5>
+                  {% if lightweight == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+                <div class="five columns">
+                  <h5>No Rethread Harness</h5>
+                  {% if no_rethread_harness == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="five columns">
+                  <h5>Side Impact Protection</h5>
+                  {% if side_impact_protection == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+                <div class="five columns">
+                  <h5>Anti-Rebound Bar</h5>
+                  {% if anti_rebound_bar == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+                <div class="five columns">
+                  <h5>Converts to No Back Booster</h5>
+                  {% if converts_to_no_back_booster == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="five columns">
+                  <h5>High Back</h5>
+                  {% if high_back == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+                <div class="five columns">
+                  <h5>Has Harness Booster Mode</h5>
+                  {% if has_harness_booster_mode == 1 %}
+                    Yes
+                  {% else %}
+                    No
+                  {% endif %}
+                </div>
+              </div>
+           </div>
+         </div>
+         {% endif %}
+
+        <!-- rear facing mode for car seat -->
+        {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
+        {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
+        {% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
+        {% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
+        {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
+        {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
+        {% if rear_facing_weight_min and rear_facing_weight_max and rear_facing_height_min and rear_facing_height_max and rear_facing_fit_statement%}
+        <div class="left-column-data pdp-child-info">
+          <button class='accordion'>
+            <h3>
+              Rear-Facing Mode
+            </h3>
+          </button>
+          <!-- <div class="feature_divider"></div> -->
+          <div class="panel">
+            <div class="row">
+              <div class="five columns">
+                <h5>Weight</h5>
+                {{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs
+              </div>
+              <div class="five columns">
+                <h5>Height</h5>
+                {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="sixteen columns">
+                {{ rear_facing_fit_statement }}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- forward facing mode for car seat -->
+        {% assign forward_facing_weight_min = product.metafields.sf_car_seat.forward_facing_weight_min %}
+        {% assign forward_facing_weight_max = product.metafields.sf_car_seat.forward_facing_weight_max %}
+        {% assign forward_facing_height_min = product.metafields.sf_car_seat.forward_facing_height_min %}
+        {% assign forward_facing_height_max = product.metafields.sf_car_seat.forward_facing_height_max %}
+        {% assign forward_facing_age_limit = product.metafields.sf_car_seat.forward_facing_age_limit %}
+        {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
+        {% if forward_facing_weight_min and forward_facing_weight_max and forward_facing_height_min and forward_facing_height_max and forward_facing_fit_statement%}
+        <div class="left-column-data pdp-child-info">
+          <button class='accordion'>
+            <h3>
+              Forward-Facing Mode
+            </h3>
+          </button>
+          <!-- <div class="feature_divider"></div> -->
+          <div class="panel">
+            <div class="row">
+              <div class="five columns">
+                <h5>Weight</h5>
+                {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
+              </div>
+              <div class="five columns">
+                <h5>Height</h5>
+                {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
+              </div>
+            </div>
+            <div class="row">
+              <div class="sixteen columns">
+                {{ forward_facing_fit_statement }}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- high back mode for car seat -->
+        {% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
+        {% assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max %}
+        {% assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min %}
+        {% assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max %}
+        {% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
+        {% if high_back_weight_min or high_back_weight_max or high_back_height_min or high_back_height_max
+        and high_back_fit_statement%}
+        <div class="left-column-data pdp-child-info">
+          <button class='accordion'>
+            <h3>
+              High Back Booster Mode
+            </h3>
+          </button>
+          <!-- <div class="feature_divider"></div> -->
+          <div class="panel">
+            <div class="row">
+              <div class="five columns">
+                <h5>Weight</h5>
+                {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
+              </div>
+              <div class="five columns">
+                <h5>Height</h5>
+                {{ high_back_height_min }} - {{ high_back_height_max }} in
+              </div>
+              <div class="five columns">
+              </div>
+            </div>
+            <div class="row">
+              <div class="sixteen columns">
+                {{ high_back_fit_statement }}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- no back mode for car seat -->
+        {% assign no_back_weight_min = product.metafields.sf_car_seat.no_back_weight_min %}
+        {% assign no_back_weight_max = product.metafields.sf_car_seat.no_back_weight_max %}
+        {% assign no_back_height_min = product.metafields.sf_car_seat.no_back_height_min %}
+        {% assign no_back_height_max = product.metafields.sf_car_seat.no_back_height_max %}
+        {% assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement %}
+        {% if no_back_weight_min or no_back_weight_max or no_back_height_min or no_back_height_max and no_back_fit_statement%}
+        <div class="left-column-data pdp-child-info">
+          <button class='accordion'>
+            <h3>
+              No Back Booster Mode
+            </h3>
+          </button>
+          <!-- <div class="feature_divider"></div> -->
+          <div class="panel">
+            <div class="row">
+              <div class="five columns">
+                <h5>Weight</h5>
+                {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
+              </div>
+              <div class="five columns">
+                <h5>Height</h5>
+                {{ no_back_height_min }} - {{ no_back_height_max }} in
+              </div>
+              <div class="five columns">
+              </div>
+            </div>
+            <div class="row">
+              <div class="sixteen columns">
+                {{ no_back_fit_statement }}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        
       
     </div>
 
