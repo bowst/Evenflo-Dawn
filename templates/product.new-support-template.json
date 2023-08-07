@@ -15,44 +15,6 @@
           "settings": {
           }
         },
-        "fd1e2a8c-875f-4803-bd6a-2d06ca2d7883": {
-          "type": "rating",
-          "settings": {
-          }
-        },
-        "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "871f4efb-6ecb-4446-8846-c3ade027901c": {
-          "type": "text",
-          "settings": {
-            "text": "Styles. Which is best for you?",
-            "text_style": "subtitle"
-          }
-        },
-        "b87377e7-35ff-4278-bc4d-68448fba7095": {
-          "type": "popup",
-          "settings": {
-            "text": "Need Help Choosing a Style?",
-            "page": ""
-          }
-        },
-        "1c14461b-715c-4cc7-ba90-b2336333e531": {
-          "type": "pdp_popup",
-          "settings": {
-            "text": "Need Help Choosing a Style?",
-            "content": "<p>Explore the differences in features and finishes.<\/p>",
-            "page": "active-infant-carrier-support"
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-          }
-        },
         "333ce9dc-b67c-488e-9229-c10a4d8f0955": {
           "type": "sku",
           "disabled": true,
@@ -60,39 +22,18 @@
             "text_style": "body"
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button"
-          }
-        },
         "quantity_selector": {
           "type": "quantity_selector",
           "disabled": true,
           "settings": {
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": false
           }
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "fd1e2a8c-875f-4803-bd6a-2d06ca2d7883",
-        "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
-        "871f4efb-6ecb-4446-8846-c3ade027901c",
-        "b87377e7-35ff-4278-bc4d-68448fba7095",
-        "1c14461b-715c-4cc7-ba90-b2336333e531",
-        "price",
         "333ce9dc-b67c-488e-9229-c10a4d8f0955",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons"
+        "quantity_selector"
       ],
       "settings": {
         "enable_sticky_info": false,
