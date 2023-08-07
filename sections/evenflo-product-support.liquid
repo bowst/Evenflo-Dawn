@@ -750,7 +750,183 @@
         </div>
       {% endif %}
           {% endif %}
-        
+       <!-- High Chair Specifications -->
+
+  {% if product.type == 'High Chair' %}
+  {% assign cleaning = product.metafields.sf_high_chair.cleaning %}
+  {% assign fold_flat_capable = product.metafields.sf_high_chair.fold_flat_capable %}
+  {% assign height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
+  {% assign one_hand_tray = product.metafields.sf_high_chair.one_hand_tray %}
+  {% if cleaning %}
+  <div class="left-column-data pdp-child-info">
+    <button class='accordion'>
+      <h3>
+        {{ collection.title }} Specifications
+      </h3>
+    </button>
+    <!-- <div class="feature_divider"></div> -->
+    <div class="panel">
+      <div class="row">
+        <div class="five columns">
+          <h5>Fold Flat</h5>
+          {%if fold_flat_capable == 1 %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </div>
+        <div class="five columns">
+          <h5>Height Adjustable</h5>
+          {%if height_adjustable == 1 %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </div>
+        <div class="five columns">
+          <h5> One hand Tray</h5>
+          {%if one_hand_tray == 1 %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="sixteen columns">
+          <h5>Cleaning</h5>
+          {{ cleaning }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% endif %}
+
+  {% if product.vendor == 'Exersaucer' %}
+      <!-- electronics and toys for activity centers-->
+          {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
+          {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
+          {% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
+          {% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
+          {% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+          {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
+          {% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
+
+        {% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+        {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+        {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
+        {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+        {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
+
+        {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
+          <div class="left-column-data pdp-default-child-info">
+            <h3>Child Fit</h3>
+            <div class="feature_divider"></div>
+            <div class="row">
+              <div class="five columns">
+                <h5>Weight</h5>
+                {% if child_weight_min_value %}
+                {{ child_weight_min_value }} -
+                {% endif %}
+                {% if child_weight_max_value %}
+                  {{ child_weight_max_value }} lbs
+                {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>Height</h5>
+                {% if child_height_min_value %}
+                  {{ child_height_min_value }} -
+                {% endif %}
+                {% if child_height_max_value %}
+                  {{ child_height_max_value }} in
+                {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>Minimum Age</h5>
+                {% if child_age_min_value %}
+                  {{ child_age_min_value }}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+    <div class="left-column-data pdp-child-info">
+            <button class='accordion'>
+              <h3>
+                {{ collection.title }} Specifications
+              </h3>
+            </button>
+            <div class="panel">
+              <div class="row">
+                <div class="five columns">
+                  <h5>Battery Required</h5>
+                  {%if batteries_required_bassinet == 1 %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+                </div>
+                {% if batteries_required_bassinet == 1 %}
+                {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+                {% if battery_cell_type %}
+                  <div class="five columns">
+                    <h5>Battery Type</h5>
+                    {{ toy_battery_cell_type }}
+                  </div>
+                {% endif %}
+                {% endif %}
+
+
+                  <div class="five columns">
+                    <h5>Number of Height Modes</h5>
+                    {% if number_of_height_modes != null and number_of_height_modes != "" %}
+                    {{ number_of_height_modes }}
+                    {% else %}
+                    1
+                    {% endif %}
+                  </div>
+
+                <div class="row">
+                  <div class="sixteen columns">
+                    <h5>Toys</h5>
+                    {% for tag in electronic_toys_features %}
+                    {{ tag }}{% if tag != electronic_toys_features.last %},{% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                </div>
+            </div>
+
+          <div class="panel">
+              <div class="row">
+                {% if tablet_holder == 1 %}
+                  <div class="five columns">
+                    <h5>Tablet Holder</h5>
+                    Yes
+                  </div>
+                {% endif %}
+              </div>
+              {% if toys_entertainment %}
+                <div class="row">
+                  <div class="sixteen columns">
+                    <h5>Toys</h5>
+                    {{ toys_entertainment }}
+                  </div>
+                </div>
+              {% endif %}
+
+                <div class="row">
+                  <div class="sixteen columns">
+                    <h5>Number of Height Modes</h5>
+                    {{ number_of_height_modes }}
+                  </div>
+                </div>
+
+            </div>
+          </div>
+
+  {% endif %} 
       
     </div>
 
