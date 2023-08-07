@@ -1,6 +1,7 @@
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
 
 {% assign instructional_videos = product.metafields.sf_products.instructional_videos %}
+{% if instructional_videos != blank %}
 <section class="evenflo-video">
   <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
     <div class="flex-row">
@@ -28,7 +29,7 @@
     </div>
   </div>
 </section>
-
+{% endif %}
 
 
 {% schema %}
