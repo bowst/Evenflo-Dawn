@@ -339,6 +339,63 @@
         </div>
         {% endif %}
         {% endif %}
+
+<!-- opening for gate -->
+        {% assign my_switch = product.metafields.sf_gates.walk_thru_door %}
+        {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
+        {% assign max_opening_size = product.metafields.sf_gates.max_opening_size %}
+        {% assign opening_type = product.metafields.sf_gates.opening_type_s_ %}
+        {% assign use_case = product.metafields.sf_gates.use_case | split: ',' %}
+        {% assign my_tags = product.metafields.sf_gates.mount_type | split: ',' %}
+        {% if min_opening_size and max_opening_size and my_tags.size > 0 %}
+        <div class="left-column-data pdp-child-info">
+          <button class='accordion'>
+            <h3 class="h1 heading-underline">
+            Gate Specifications
+            </h3>
+          </button>
+          <!-- <div class="feature_divider"></div> -->
+          <div class="panel">
+            <div class="row">
+              <div class="five columns">
+                <h5>Opening Size Min</h5>
+                {{ min_opening_size }} inches
+              </div>
+              <div class="five columns">
+                <h5>Opening Size Max</h5>
+                {{ max_opening_size }} inches
+              </div>
+              <div class="five columns">
+                <h5>Mount Type</h5>
+                {% for tag in my_tags %}
+                {{ tag }}{% if tag != my_tags.last %},{% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="row">
+              <div class="five columns">
+                <h5>Opening Type</h5>
+                {{ opening_type }}
+              </div>
+              <div class="five columns">
+                <h5>Use Cases</h5>
+                {% for tag in use_case %}
+                {{ tag }}{% if tag != use_case.last %},{% endif %}
+                {% endfor %}
+              </div>
+              <div class="five columns">
+                <h5>Walk-Thru Door</h5>
+                {%if my_switch == 1%}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      
     </div>
 
   </div>
