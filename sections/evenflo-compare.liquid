@@ -1,3 +1,368 @@
+<style>
+  div.block__57d50fde-bb3d-4e8e-9ffa-4a83f4340ecf { background-color: #E3F2F3 }
+  .featured-link--half .button, a.continue-button, a.highlight-false--dark, input[type=button].highlight-false--dark, a.action_button {
+    background-color: black;
+    border-color: black;
+    color: white;
+  }
+
+  a.button:hover, a.action_button:hover {
+    background-color: #333333;
+    border-color: #333333
+  }
+
+  h2.rich-text__heading.title, a.collection_title, h2.title, h1.title {
+    color: black !important;
+    text-transform: none;
+    font-family: 'Kumbh Sans', sans-serif !important;
+  }
+
+  
+    /*************** Pricing Comparison Table CSS ***************/
+    /* Customize the font family and table height below */
+     .comparisonTableContainer {
+      font-family: "mr-eaves-modern", sans-serif;
+       max-width: /*1280px !important*/;
+       margin: auto;
+       position: relative;
+       overflow-anchor: none;
+    }
+    .h6 {font-weight:light; font-size: 14px !important}
+    /* Start: Generated CSS */
+    .horizontal-scroller {
+      position: fixed;
+      bottom: 0;
+      height: 30px;
+      overflow: auto;
+      overflow-y: hidden;
+    }
+    .horizontal-scroller-content {
+      height: 30px;
+    }
+    .comp-table__tableHead.stickyHeader {
+      position: fixed;
+      z-index: 999;
+      overflow-x: scroll;
+      top: 0px;
+    }
+    .comp-table__tableHead.stickyHeader.atBottom {
+      position: absolute;
+      z-index: 999;
+      bottom: 0px;
+      left: 0px !important;
+      top: initial;
+      width: initial !important;
+      overflow-x: clip;
+    }
+    .comparisonTableContainer use:nth-child(2) {
+      transform: translate(20px);
+    }
+    .comparisonTableContainer use:nth-child(3) {
+      transform: translate(40px);
+    }
+    .comparisonTableContainer use:nth-child(4) {
+      transform: translate(60px);
+    }
+    .comparisonTableContainer use:nth-child(5) {
+      transform: translate(80px);
+    }
+    .comparisonTableContainer .rating {
+      height: 20px;
+      width: 100px;
+    }
+    .comparisonTableContainer #stars-empty-star {
+      fill: #f1e8ca;
+    }
+    .comparisonTableContainer #stars-full-star, .comparisonTableContainer #stars-half-star {
+      fill: #fdcc0d;
+    }
+     @media (max-width:769px){
+        .comp-table__columnGroup .comp-table__tableData,.comp-table__columnGroupSection .comp-table__tableData,.comp-table__columnHeader:nth-child(2),.comp-table__tableBodyRow .comp-table__tableData:nth-child(2){
+            
+        }
+        .comp-table__emptyCell,.comp-table__rowheader{
+            display:none
+        }
+        .comp-table__productImage{
+            height:auto;
+            max-width:100%
+        }
+        .comp-table__columnGroupSection .comp-table__tableData{
+            text-align:center;
+            font-size:1rem!important
+        }
+        .comp-table__recommendedText{
+            /*font-size:.8rem!important*/
+        }
+        .comparisonTableContainer .comp-table .comp-table__tableData:not([scope="colgroup"]){
+            min-width:80px;
+            max-width:80px
+        }
+        .comparisonTableContainer.moreThan4 .comp-table .comp-table__tableData:not([scope="colgroup"]){
+            min-width:90px;
+            max-width:90px
+        }
+        .comparisonTableContainer.moreThan4 .comp-table__tableData[scope="colgroup"]{
+            text-align:left
+        }
+        .comp-table__productImageContainer{
+            width:80px;
+            height:80px
+        }
+        .comparisonTableContainer use:nth-child(2) {
+          transform: translate(15px);
+        }
+        .comparisonTableContainer use:nth-child(3) {
+          transform: translate(30px);
+        }
+        .comparisonTableContainer use:nth-child(4) {
+          transform: translate(45px);
+        }
+        .comparisonTableContainer use:nth-child(5) {
+          transform: translate(60px);
+        }
+        .comparisonTableContainer .rating {
+          height: 13px;
+        }
+    }
+    .comparisonTableContainer.moreThan4 .comp-table__tableData[scope="colgroup"] span {
+        padding-left: 10px;
+    }
+    .comparisonTableContainer.moreThan4 .comp-table__tableData[scope="colgroup"]{
+        padding-left: 0
+    }
+    @media (max-width:769px) and (min-width:400px){
+        .comp-table__price,.comp-table__productLink,.comp-table__productName,.comp-table__tableData,.comp-table__recurrence{
+            font-size:1rem!important
+        }
+    }
+    @media (max-width:400px){
+        .comp-table__price,.comp-table__productLink,.comp-table__productName,.comp-table__tableData,.comp-table__recurrence{
+            font-size:.9rem!important
+        }
+    }
+    .comp-table{
+        width:100%;
+        margin:auto;
+        border-bottom:1px solid #bdbdbd;
+        table-layout:auto;
+        border-collapse:separate;
+        border-spacing:0
+    }
+    .comparisonTableContainer{
+        overflow:auto
+    }
+    .comparisonTableContainer .comp-table__tableData:not([scope="colgroup"]){
+        min-width:150px;
+        max-width:150px
+    }
+    .comparisonTableContainer .comp-table__rowheader{
+        width:200px!important;
+        min-width:200px!important;
+        max-width:200px!important;
+        font-size:1.2rem;
+        border-left: 0px solid #fff;
+    }
+    .comparisonTableContainer .checkmark{
+        fill:#4ac263;
+    }
+    .comparisonTableContainer .xmark{
+        fill:#808080;
+    }
+    .comp-table__tableData{
+        {% comment %} border-right:1px solid #bdbdbd;
+        border-top:1px solid #bdbdbd {% endcomment %}
+    }
+    .comp-table caption{
+        position:absolute;
+        opacity:0;
+        top:auto;
+        width:1px;
+        height:1px;
+        overflow:hidden
+    }
+    .comp-table__rowheader{
+        /*width:20%;*/
+        text-align:left;
+        padding:10px;
+        font-weight:700;
+        color:#000000;
+        left:0;
+        position:sticky;
+        position: -webkit-sticky
+    }
+    .comp-table__tableData{
+        padding:12px 5px;
+        background:#ffffff;
+        border-color:#E3F2F3;
+        line-height:1.4
+    }
+    [scope="colgroup"] span{
+        position:sticky;
+        position: -webkit-sticky;
+        top:0;
+        left:0
+    }
+    .comp-table__columnGroup,.comp-table__columnHeader,.comp-table__tableDataCell{
+        text-align:center;
+        background-clip:padding-box!important
+    }
+    .comp-table__columnHeader{
+        font-weight:700;
+        background:#ffffff;
+/*         padding-top:55px; */
+        padding-bottom:10px;
+        position:relative;
+    }
+    .comp-table__emptyCell{
+        border-top:1px solid #ffffff;
+        border-left:1px solid #ffffff;
+        background:#ffffff;
+        position: sticky;
+        left: 0;
+        z-index: 99;
+        padding-left: 20px;
+    }
+    .comp-table__tableDataCell{
+        color:#000000;
+        font-size:1.2rem;
+        padding:12px 5px
+    }
+    .comp-table__tableDataCell svg {
+    	margin: auto;
+        display: block;
+    }
+    .comp-table__tableDataCell > * {
+        min-height: 28px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .comp-table__columnHeader:not(.comp-table__recommended) .comp-table__recommendedText{
+        display:none
+    }
+    .comp-table__recommendedText{
+        background:#4ac263;
+        color:#ffffff;
+        position:absolute;
+        top:0;
+        left:0;
+        font-size:1rem;
+        font-weight:600;
+        width:100%;
+        margin:0;
+        padding:4px 0
+    }
+    @media (min-width:769px){
+        .comp-table__tableBodyRow:nth-child(2n),.comp-table__tableBodyRow:nth-child(2n) .comp-table__tableData{
+            background:#ffffff
+        }
+        .comp-table__tableBodyRow:nth-child(4n),.comp-table__tableBodyRow:nth-child(4n) .comp-table__tableData{
+            background:#E3F2F3
+        }
+        .comp-table__columnGroup{
+            display:none
+        }
+        .comp-table__productImage{
+            max-width:120px!important;
+            height:auto
+        }
+        .comp-table__rowheader{
+            padding-left:20px!important
+        }
+        .comp-table__columnGroupSection .comp-table__tableData{
+            text-align:left
+        }
+        .comp-table__productImageContainer{
+            width:140px;
+            height:140px
+        }
+    }
+    .comp-table__columnGroup .comp-table__tableData{
+        background:#E3F2F3;
+        color:#000000;
+        font-weight:700;
+        border-top:4px solid #2996C5;
+    }
+    .comp-table__buyProduct{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:end;
+        grid-gap:10px;
+        height:auto;
+        position:relative
+    }
+    .comp-table__productLink:hover{
+        filter:brightness(.9)
+    }
+    .comp-table__productLink{
+        border:2px solid #000000;
+        background:#ffffff;
+        color:#000000;
+        padding:12px 2px;
+        border-radius:5px;
+        width:95%;
+        font-size:1.1rem;
+        line-height:1.2;
+        pointer-events:all !important
+    }
+    .comp-table__recommended .comp-table__productLink{
+        border:2px solid transparent;
+        background:#f27e3d;
+        color:#ffffff;
+    }
+    .comp-table__price{
+        font-size:1.8rem;
+        margin-top:10px;
+        margin-bottom:10px;
+        color:#000000;
+        word-break:break-word;
+        line-height:1.2;
+        text-transform: uppercase;
+    }
+    .comp-table__productName{
+        line-height:1.2;
+        color:#000000;
+        /*height:23px;*/
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:1.3rem
+    }
+    .comp-table__recurrence{
+        font-weight:600;
+        font-size:1.2rem;
+        margin-top:-10px;
+        margin-bottom:20px;
+        color:#000000;
+        line-height:1rem
+    }
+    .comp-table__columnGroupSection .comp-table__tableData{
+        font-size:.9rem;
+        text-transform:uppercase;
+        color:#000000;
+        background:#9fd0d1;
+        padding:15px 5px;
+        border-left:1px solid #bdbdbd
+    }
+    .comp-table__recommended{
+        /* background:#eafbed!important */
+    }
+    .comp-table__productImageContainer{
+        background-position:center;
+        background-size:cover;
+        background-repeat:no-repeat;
+        margin-bottom:10px
+    }
+    .comp-table__tableHead::-webkit-scrollbar {
+        height: 0px;
+    }
+    /*************** Pricing Comparison Table CSS ***************/
+.product-name {font-size: 18px; text-transform: uppercase}
+</style>
+
 <div class="comparisonTableContainer " data-default-presets='{"optionalSettings":{"includeImageOrNot":false,"includePriceOrNot":true,"includeRecurrenceOrNot":false,"includePriceToggleOrNot":false,"data_price_1":"Annual (save 30%)","data_price_2":"Monthly","includeButtonOrNot":true,"includeRecOrNot":true,"recommendedText":"Best Value","includeGroupsOrNot":false,"featureMinWidth":"200","tableBorderWidth":"1"},"tableCaption":"Test Table","fontAwesomeVersion":"6","thead":[{"imagePlaceholder":{"imgSrc":"https://images.squarespace-cdn.com/content/v1/5ec321c2af33de48734cc929/1607694583486-2PQT0LQ193RL7MCB6DX4/20140228_Trade+151_0046.jpg","imgAlt":"A description of your image"},"productName":"Revolve360","price":"Easy Ins and Outs","data_price_2":"$500","recurrence":"monthly","productLink":{"linkName":"Link","linkURL":"/link-from-your-site"},"isRec":false},{"imagePlaceholder":{"imgSrc":"https://images.squarespace-cdn.com/content/v1/5ec321c2af33de48734cc929/1607694583486-2PQT0LQ193RL7MCB6DX4/20140228_Trade+151_0046.jpg","imgAlt":"A description of your image"},"productName":"Revolve360 Extend","price":"Extended rear-facing to 50 LB","data_price_2":"$500","recurrence":"monthly","productLink":{"linkName":"Link","linkURL":"/link-from-your-site"},"isRec":true},{"imagePlaceholder":{"imgSrc":"https://images.squarespace-cdn.com/content/v1/5ec321c2af33de48734cc929/1607694583486-2PQT0LQ193RL7MCB6DX4/20140228_Trade+151_0046.jpg","imgAlt":"A description of your image"},"productName":"Revolve360 Slim","price":"Backseat Space Saving","data_price_2":"$500","recurrence":"monthly","productLink":{"linkName":"Link","linkURL":"/link-from-your-site"},"isRec":false}],"tbody":[{"featureName":"One-Hand, 360 Spin","dataCells":["Rear-facing mode Forward-facing mode Booster mode","Rear-facing mode Forward-facing mode Booster mode","Rear-facing mode Forward-facing mode"]},{"featureName":"Smart Safety Technology","dataCells":["No","SensorSafe™ on select models","SensorSafe™ on select models"]},{"featureName":"Rear-Facing Max Weight","dataCells":["40 lb","50 lb","50 lb"]},{"featureName":"Zip-On Ergonomic Leg Rest","dataCells":["No","Extra comfort for growing legs","No"]},{"featureName":"Profile / Width","dataCells":["Standard 19.5 in.","Standard 19.5 in.","Only 16.7 in."]},{"featureName":"Why Buy a Revolve360 ","dataCells":["Easy in and out in all modes, 360° spin","Easy in and out all modes — with the added protection of rear-facing up to 50 lb.","The slimmest rotational car seat on the market — with cupholders and extended rear-facing protection up to 50 lb."]}],"colors":{"colorCheckboxOptions":{"includeAltOrNot":true,"includeRecBorderOrNot":false,"includeBorderOrNot":true,"includeEmptyCellBorder":false},"primary_row_background":"#ffffff","alt_row_background":"#ededed","table_border_color":"#bdbdbd","feature_text_color":"#000000","check_color":"#4ac263","x_color":"#808080","included_text_color":"#000000","mobile_group_background":"#f0f0f0","mobile_group_text_color":"#000000","group_name_color":"#000000","group_background":"#9fd0d1","rec_background":"#4ac263","rec_color":"#ffffff","rec_cell_background":"#eafbed","rec_button_background":"#f27e3d","rec_button_color":"#ffffff","rec_button_border":"#000000","column_header_background":"#ffffff","product_color":"#000000","price_color":"#000000","recurrence_color":"#000000","reg_button_background":"#ffffff","reg_button_color":"#000000","reg_button_border":"#000000","empty_cell_background":"#ffffff","empty_fill_color":"#f1e8ca","solid_fill_color":"#fdcc0d","table_data_width":"100% / 3"}}'>
     <div class="rich-text__content center"> <h2 class="rich-text__heading title">
               FIND THE BEST SPINNY FOR YOUR MINI</h2>
