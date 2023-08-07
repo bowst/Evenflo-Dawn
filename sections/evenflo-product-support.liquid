@@ -26,7 +26,22 @@
     <div class="pdp-support__column">
       <h3 class="h1 heading-underline">Use & Care</h3>
       
-
+<h2>Care</h2>
+    
+    
+              {% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}
+              {% if care_copy %}
+                <ul>
+                  {% for li in care_copy %}
+                    <li>{{ li }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+              <h3>Materials</h3>
+              {% assign material = product.metafields.sf_products.material %}
+              {% if material %}
+                {{ material }}
+              {% endif %}
 
 
       
