@@ -13,15 +13,6 @@
                     </div>
                   {% endif %}
     
-                  <div>
-                    <h3>
-                      SKU:
-                    </h3>
-                    <p>
-                      {{ product.selected_or_first_available_variant.sku }}
-                    </p>
-                  </div>
-    
               {% assign assembled_width = product.metafields.sf_products.assembled_width %}
               {% assign assembled_height = product.metafields.sf_products.assembled_height %}
               {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
