@@ -130,6 +130,14 @@
                     <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a
                   >
                 {%- endif -%}
+                {%- if section.settings.discount_verification != blank -%}
+                  <a
+                    class="button button--primary"
+                    onclick="displayVerification({{ section.settings.discount_verification }})"
+                  >
+                    Verify Status
+                  </a>
+                {%- endif -%}
               </div>
             </div>
           </li>
