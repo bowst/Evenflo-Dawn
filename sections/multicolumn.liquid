@@ -74,10 +74,10 @@
             {{- section.settings.button_label | escape -}}
           </a>
         {%- endif -%}
-        {%- if block.settings.discount_verification != blank -%}
+        {%- if section.settings.discount_verification != blank -%}
           <a
-            class="link animate-arrow"
-            onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
+            class="button button--primary"
+            onclick="displayVerification({{ section.settings.discount_verification }})"
           >
             Verify Status
           </a>
@@ -231,10 +231,10 @@
           {{ section.settings.button_label | escape }}
         </a>
       {%- endif -%}
-      {%- if block.settings.discount_verification != blank -%}
+      {%- if section.settings.discount_verification != blank -%}
         <a
-          class="link animate-arrow"
-          onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
+          class="button button--primary"
+          onclick="displayVerification({{ section.settings.discount_verification }})"
         >
           Verify Status
         </a>
