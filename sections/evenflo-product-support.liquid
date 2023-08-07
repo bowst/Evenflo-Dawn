@@ -1,5 +1,15 @@
 {{ 'section-pdp-support.css' | asset_url | stylesheet_tag }}
 
+    {% if product.vendor == 'Evenflo' %}
+        {% assign product_vendor = 'vendor-evenflo' %}
+        {% elsif product.vendor == 'Exersaucer' %}
+        {% assign product_vendor = 'vendor-exersaucer' %}
+        {% elsif product.vendor == 'Evenflo Gold' %}
+        {% assign product_vendor = 'vendor-gold' %}
+        {% elsif product.vendor == 'Rollplay' %}
+      {% assign product_vendor = 'vendor-rollplay' %}
+    {% endif %}
+
 <section class="pdp-support page-width">
   <div class="pdp-support__container">
     <div class="pdp-support__column">
@@ -193,12 +203,9 @@
 <section class="pdp-support page-width">
   <div class="pdp-support__container">
     <div class="pdp-support__column">
-      <h3 class="h1 heading-underline">Use & Care</h3>
-      
-  <h2>Care</h2>
-    
-    
-              {% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}
+      <h3 class="h1 heading-underline">Use & Care</h3>   
+      <h2>Care</h2>
+        {% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}
               {% if care_copy %}
                 <ul>
                   {% for li in care_copy %}
@@ -212,21 +219,14 @@
                 {{ material }}
               {% endif %}
 
-
-      
     </div>
     <div class="pdp-support__column">
           <div class="eight columns omega">
-
             <h2>Use</h2>
               {% assign use_copy = product.metafields.sf_products.use_copy %}
               {% if use_copy %}
                 <p>{{ use_copy }}</p>
-              {% endif %}
-    
-              
-
-            
+              {% endif %} 
         </div>
     </div>
   </div>
