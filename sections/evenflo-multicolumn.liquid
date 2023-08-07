@@ -22,7 +22,49 @@
     assign show_mobile_slider = true
   endif
 -%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.css" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
 
+  <script>
+    function getCustomerId() {
+    try {
+        let curr = window.ShopifyAnalytics.meta.page.customerId;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch(e) { }
+    try {
+        let curr = window.meta.page.customerId;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }    
+    try {
+        let curr = _st.cid;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }
+    try {
+        let curr = ShopifyAnalytics.lib.user().traits().uniqToken;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }
+        return null;
+    }
+    function displayVerification(id) {
+      const customerId = getCustomerId()
+      console.log('customerId: ', customerId);
+      const verificationUrl = 'https://services.sheerid.com/verify/' + id + '/?customer_id=' + customerId;
+      sheerId.loadInModal(
+          verificationUrl, {
+          mobileRedirect: true
+        });
+    };
+  </script>
+  
+  <a onclick="displayVerification('6449874c98ea13502a40e99e')" class="action_button cc-button">Verify Status</a>
 <div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div class="page-width section-{{ section.id }}-padding isolate">
     {%- unless section.settings.title == blank -%}
