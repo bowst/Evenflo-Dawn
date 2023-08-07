@@ -1,48 +1,6 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.css" type="text/css">
-<script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
-
-<script>
-  function getCustomerId() {
-  try {
-      let curr = window.ShopifyAnalytics.meta.page.customerId;
-      if (curr !== undefined && curr !== null && curr !== "") {
-      return curr;
-      }
-  } catch(e) { }
-  try {
-      let curr = window.meta.page.customerId;
-      if (curr !== undefined && curr !== null && curr !== "") {
-      return curr;
-      }
-  } catch (e) { }    
-  try {
-      let curr = _st.cid;
-      if (curr !== undefined && curr !== null && curr !== "") {
-      return curr;
-      }
-  } catch (e) { }
-  try {
-      let curr = ShopifyAnalytics.lib.user().traits().uniqToken;
-      if (curr !== undefined && curr !== null && curr !== "") {
-      return curr;
-      }
-  } catch (e) { }
-      return null;
-  }
-  function displayVerification(id) {
-    const customerId = getCustomerId()
-    console.log('customerId: ', customerId);
-    const verificationUrl = 'https://services.sheerid.com/verify/' + id + '/?customer_id=' + customerId;
-    sheerId.loadInModal(
-        verificationUrl, {
-        mobileRedirect: true
-      });
-  };
-</script>
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -64,7 +22,126 @@
     assign show_mobile_slider = true
   endif
 -%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.css" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
 
+  <script>
+    function getCustomerId() {
+    try {
+        let curr = window.ShopifyAnalytics.meta.page.customerId;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch(e) { }
+    try {
+        let curr = window.meta.page.customerId;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }    
+    try {
+        let curr = _st.cid;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }
+    try {
+        let curr = ShopifyAnalytics.lib.user().traits().uniqToken;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }
+        return null;
+    }
+    function displayVerification(id) {
+      const customerId = getCustomerId()
+      console.log('customerId: ', customerId);
+      const verificationUrl = 'https://services.sheerid.com/verify/' + id + '/?customer_id=' + customerId;
+      sheerId.loadInModal(
+          verificationUrl, {
+          mobileRedirect: true
+        });
+    };
+  </script>
+  
+  <a onclick="displayVerification('6449874c98ea13502a40e99e')" class="action_button cc-button">Verify Status</a>
+
+
+  <div class="row cc-four-columns">
+  <div class="four columns alpha">
+  <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo-First-Responder.jpg?v=1677240638"><h3>First Responders<h3>
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.css" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
+
+  <script>
+    function getCustomerId() {
+    try {
+        let curr = window.ShopifyAnalytics.meta.page.customerId;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch(e) { }
+    try {
+        let curr = window.meta.page.customerId;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }    
+    try {
+        let curr = _st.cid;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }
+    try {
+        let curr = ShopifyAnalytics.lib.user().traits().uniqToken;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }
+        return null;
+    }
+    function displayVerification(id) {
+      const customerId = getCustomerId()
+      console.log('customerId: ', customerId);
+      const verificationUrl = 'https://services.sheerid.com/verify/' + id + '/?customer_id=' + customerId;
+      sheerId.loadInModal(
+          verificationUrl, {
+          mobileRedirect: true
+        });
+    };
+  </script>
+  
+
+  
+  
+  </h3>
+  </h3>
+  </div>
+  <div class="four columns">
+  <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/evenflo-Healthcare-Worker.jpg?v=1677241062">
+  <h3>Healthcare Heroes</h3>
+  <a onclick="displayVerification('64495b0a98ea13502a3f0ca2')" class="action_button cc-button">Verify Status</a>
+  </div>
+  <div class="four columns">
+  <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo-Military_2.jpg?v=1677241062"><h3> Military Heroes</h3>
+  <a onclick="displayVerification('63e2b61981e61c1fb230c1b1')" class="action_button cc-button">Verify Status</a>
+  </div>
+  <div class="four columns omega">
+  <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo-Teacher.jpg?v=1677241062">
+  <h3>Students & Teachers</h3>
+  <a onclick="displayVerification('64498884aac9742da2829ad3')" class="action_button cc-button">Teacher Status</a>
+<br><br>
+<a onclick="displayVerification('63e2b3d5b9bbc51838196fff')" class="action_button cc-button">Student Status</a>
+  
+  </div>
+  </div>
+
+
+
+  
 <div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div class="page-width section-{{ section.id }}-padding isolate">
     {%- unless section.settings.title == blank -%}
@@ -75,14 +152,6 @@
         {%- if section.settings.button_label != blank and show_mobile_slider -%}
           <a href="{{ section.settings.button_link }}" class="link underlined-link large-up-hide">
             {{- section.settings.button_label | escape -}}
-          </a>
-        {%- endif -%}
-        {%- if block.settings.discount_verification != blank -%}
-          <a
-            class="link animate-arrow"
-            onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
-          >
-            Verify Status
           </a>
         {%- endif -%}
       </div>
@@ -180,14 +249,6 @@
                     <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a
                   >
                 {%- endif -%}
-                {%- if block.settings.discount_verification != blank -%}
-                  <a
-                    class="link animate-arrow"
-                    onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
-                  >
-                    Verify Status
-                  </a>
-                {%- endif -%}
               </div>
             </div>
           </li>
@@ -234,21 +295,13 @@
           {{ section.settings.button_label | escape }}
         </a>
       {%- endif -%}
-      {%- if block.settings.discount_verification != blank -%}
-        <a
-          class="link animate-arrow"
-          onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
-        >
-          Verify Status
-        </a>
-      {%- endif -%}
     </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "t:sections.multicolumn.name",
+  "name": "Evenflo Multicolumn",
   "class": "section",
   "tag": "section",
   "disabled_on": {
@@ -373,12 +426,6 @@
       "label": "t:sections.multicolumn.settings.button_label.label"
     },
     {
-      "type": "text",
-      "id": "discount_verification",
-      "label": "Discount Verification",
-      "info": "Sheer ID Verification Code"
-    },
-    {
       "type": "url",
       "id": "button_link",
       "label": "t:sections.multicolumn.settings.button_link.label"
@@ -493,19 +540,13 @@
           "type": "url",
           "id": "link",
           "label": "t:sections.multicolumn.blocks.column.settings.link.label"
-        },
-        {
-          "type": "text",
-          "id": "discount_verification",
-          "label": "Discount Verification",
-          "info": "Sheer ID Verification Code"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "t:sections.multicolumn.presets.name",
+      "name": "Evenflo Multicolumn",
       "blocks": [
         {
           "type": "column"
