@@ -237,83 +237,111 @@
   <div class="pdp-support__container">
     <div class="pdp-support__column">
       <h3 class="h1 heading-underline">{{ section.settings.support_heading }}</h3>
-      
-      <div class="flex-row">
-      {% if product.metafields.sf_products.child_weight_min %}
-        <div class="flex-item">
-          <h3>Weight</h3>
-          {{ product.metafields.sf_products.child_weight_min }} -
-          {{ product.metafields.sf_products.child_weight_max }} lbs
+{% if product.type == 'Stroller' or product.type == 'Travel System' %}
+        <!-- stroller and travel systems -->
+        {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
+        {% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
+        {% assign stroller_type = product.metafields.sf_stroller.stroller_type %}
+        {% assign number_of_cup_holders = product.metafields.sf_products.number_of_cup_holders %}
+        {% assign self_standing_fold = product.metafields.sf_stroller.self_standing_fold %}
+        {% assign upf_50_sun_protection_canopy = product.metafields.sf_stroller.upf_50_sun_protection_canopy %}
+        {% assign lockable_front_wheels = product.metafields.sf_stroller.lockable_front_wheels %}
+        {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
+        {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
+        {% assign single_to_double_capable = product.metafields.sf_stroller.single_to_double_capable %}
+        {% if number_of_height_modes or wheel_material or stroller_type or number_of_cup_holders %}
+        <div class="left-column-data pdp-child-info">
+          <button class='accordion'>
+            <h3>
+              Stroller Specifications
+            </h3>
+          </button>
+          <!-- <div class="feature_divider"></div> -->
+          <div class="panel">
+            <div class="row">
+              <div class="five columns">
+                <h5>Self Standing</h5>
+                {% if self_standing_fold == 1 %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>UPF 50+ Sun Protection Canopy</h5>
+                {% if upf_50_sun_protection_canopy == 1 %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>Accepts Rider Board</h5>
+                {% if accepts_rider_board == 1 %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </div>
+            </div>
+            <div class="row">
+              {% if number_of_cup_holders %}
+              <div class="five columns">
+                <h5>Number of Cup Holders</h5>
+                {{ number_of_cup_holders }}
+              </div>
+              {% endif %}
+              <div class="five columns">
+                <h5>Single to Double Capable</h5>
+                {% if single_to_double_capable == 1 %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </div>
+            </div>
+            <div class="row">
+              <div class="five columns">
+                <h5>Lockable Front Wheels</h5>
+                {% if lockable_front_wheels == 1 %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>Accepts Infant Car Seat</h5>
+                {% if accepts_infant_car_seat == 1 %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </div>
+            </div>
+            <div class="row">
+              {% if number_of_height_modes %}
+              <div class="five columns">
+                <h5>Number of Height Modes</h5>
+                {{ number_of_height_modes }}
+              </div>
+              {% endif %}
+              {% if wheel_material %}
+              <div class="five columns">
+                <h5>Wheel Material</h5>
+                {{ wheel_material }}
+              </div>
+              {% endif %}
+              {% if stroller_type %}
+              <div class="five columns">
+                <h5>Stroller Type</h5>
+                {{ stroller_type }}
+              </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
-      {% endif %}
-
-      {% if product.metafields.sf_products.child_height_min %}
-        <div class="flex-item">
-          <h3>Height</h3>
-          {{ product.metafields.sf_products.child_height_min }} -
-          {{ product.metafields.sf_products.child_height_max }} in
-        </div>
-      {% endif %}
-
-    {% if product.metafields.sf_car_seat.steel_reinforced %}
-    <div class="flex-item">
-      <h3>Steel Reinforced</h3>
-      {{ product.metafields.sf_car_seat.steel_reinforced }}
-    </div>
-    {% endif %}
-
-
-    <div class="flex-item">
-      <h3>Contents</h3>
-      {{ product.metafields.sf_products.retail_package_contents }}
-    </div>
-
-    <div class="flex-item">
-      <h3>Product Dimensions</h3>
-      
-        {{ product.metafields.sf_products.assembled_width }} x
-        {{ product.metafields.sf_products.assembled_height }} x
-        {{ product.metafields.sf_products.assembled_depth }} in
-      
-    </div>
-
-    <div class="flex-item">
-      <h3>Folded Dimensions</h3>
-      {{ product.metafields.sf_products.folded_dimensions }}
-    </div>
-        
-    <div class="flex-item">
-      <h3>Package Dimensions</h3>
-      
-        {{ product.metafields.sf_shipping.package_width }} x
-        {{ product.metafields.sf_shipping.package_height }} x
-        {{ product.metafields.sf_shipping.package_depth }} in
-      
-    </div>
-        
-    <div class="flex-item">
-      <h3>Product Weight</h3>
-      {{ product.metafields.sf_products.assembled_weight }} lbs.
-    </div>
-        
-    <div class="flex-item">
-      <h3>Package Weight</h3>
-      {{ product.metafields.sf_products.assembled_weight }} lbs.
-    </div>
-        
-    <div class="flex-item">
-      <h3>Weight w/o Base</h3>
-      <p>{{ product.metafields.sf_car_seat.carrier_weight_without_base }} lbs.</p>
-    </div>
-  </div>
-
-  <h3>Harness Type</h3>
-  <p>
-    {{ product.metafields.sf_products.harness_type }}
-  </p>  
-
-
-      
+        {% endif %}
+        {% endif %}
     </div>
 
   </div>
