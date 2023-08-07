@@ -1,8 +1,508 @@
+{{ 'section-pdp-support.css' | asset_url | stylesheet_tag }}
+
+<section class="pdp-support page-width">
+  <div class="pdp-support__container">
+    <div class="pdp-support__column">
+      <h3 class="h1 heading-underline">What's in the box?</h3>
+      
+
+
+
+      
+    </div>
+    <div class="pdp-support__column">
+          <div class="eight columns omega">
+          {% assign specifications_image = product.metafields.sf_products.specifications_image %}
+          {% if specifications_image %}
+            <image loading="lazy" alt="{{ product.title }} Specifications" src='{{ specifications_image }}'>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="pdp-support page-width">
+  <div class="pdp-support__container">
+    <div class="pdp-support__column">
+      <h3 class="h1 heading-underline">Use & Care</h3>
+      
+    <h2>Care</h2>
+    
+    
+              {% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}
+              {% if care_copy %}
+                <ul>
+                  {% for li in care_copy %}
+                    <li>{{ li }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+              <h3>Materials</h3>
+              {% assign material = product.metafields.sf_products.material %}
+              {% if material %}
+                {{ material }}
+              {% endif %}
+
+
+      
+    </div>
+    <div class="pdp-support__column">
+          <div class="eight columns omega">
+
+            <h2>Use</h2>
+              {% assign use_copy = product.metafields.sf_products.use_copy %}
+              {% if use_copy %}
+                <p>{{ use_copy }}</p>
+              {% endif %}
+    
+              
+
+            
+        </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="support">
+  <div class="content-container rich-text--full-width content-container--full-width">
+   
+    <ul class="tabs-content">
+      <!-- specifications tab -->
+      <li id="tab7" style="display: block;" class="">
+        <h2 class="eight columns alpha" style="font-size: 36px;">What's in the box?</h2>
+        <div class="row pdp-in-the-box">
+          <div class="eight columns alpha">
+                <div class="pdp-specification-bullet-row">
+                    {% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}
+                    {% if retail_package_contents_value %}
+                    <div>
+                      <h3>Contents</h3>
+                      <p>{{ retail_package_contents_value }}</p>
+                    </div>
+                  {% endif %}
+    
+                  <div>
+                    <h3>
+                      SKU:
+                    </h3>
+                    <p>
+                      {{ product.selected_or_first_available_variant.sku }}
+                    </p>
+                  </div>
+    
+              {% assign assembled_width = product.metafields.sf_products.assembled_width %}
+              {% assign assembled_height = product.metafields.sf_products.assembled_height %}
+              {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
+              {% if assembled_width and assembled_height and assembled_depth %}
+                <div>
+                <h3>Product Dimensions</h3>
+                <p>
+                  {{ assembled_width }} x
+                  {{ assembled_height }} x
+                  {{ assembled_depth }} in
+                </p>
+                </div>
+                {% endif %}
+                {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
+                {% if folded_dimensions %}
+                <div>
+                <h3>Folded Dimensions</h3>
+                <p>
+                  {{ folded_dimensions }}
+                </p>
+                </div>
+                {% endif %}
+              {% assign package_width = product.metafields.sf_shipping.package_width %}
+              {% assign package_height = product.metafields.sf_shipping.package_height %}
+              {% assign package_depth = product.metafields.sf_shipping.package_depth %}
+              {% if package_width and package_height and package_depth %}
+              <div>
+                <h3>Package Dimensions</h3>
+                <p>
+                  {{ package_width }} x
+                  {{ package_height }} x
+                  {{ package_depth }} in
+                </p>
+              </div>
+                {% endif %}
+    
+              {% assign assembled_weight = product.metafields.sf_products.assembled_weight %}
+              {% if assembled_weight %}
+              <div>
+                <h3>Product Weight</h3>
+                <p>
+                  {{ assembled_weight }} lbs.
+                </p>
+              </div>
+              {% endif %}
+              {% assign package_weight = product.metafields.sf_shipping.package_weight %}
+              {% if package_weight %}
+              <div>
+                <h3>Package Weight</h3>
+                <p>
+                  {{ package_weight }} lbs.
+                </p>
+              </div>
+              {% endif %}
+    
+              {% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}
+              {% if carrier_weight_without_base %}
+              <div>
+                <h3>Weight w/o Base</h3>
+                <p>
+                  {{ carrier_weight_without_base }} lbs.
+                </p>
+              </div>
+              {% endif %}
+    
+    
+            <!-- optional section -->
+            {% assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method %}
+            {% assign harness_type = product.metafields.sf_products.harness_type %}
+            {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
+            {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
+            {% assign latch_install = product.metafields.sf_car_seat.latch_install %}
+            {% assign maturity = product.metafields.sf_products.maturity %}
+    
+            {% if harness_rethread_method or harness_type %}
+    
+                {% if harness_type %}
+                    <div>
+                    <h3>Harness Type</h3>
+                    <p>
+                      {{ harness_type }}
+                    </p>
+                  </div>
+                  {% endif %}
+                  {% if harness_rethread_method %}
+                  <div>
+                    <h3>Harness Rethread</h3>
+                    <p>
+                      {{ harness_rethread_method }}
+                    </p>
+                  </div>
+                  {% endif %}
+    
+            {% endif %}
+            {% if bubble_level or harness_covers or latch_install %}
+    
+              {% if bubble_level == 1 %}
+              <div>
+                  <h3>Bubble Level</h3>
+                    <p>
+                      Yes
+                    </p>
+              </div>
+              {% endif %}
+              {% if harness_covers == 1 %}
+                <div>
+                  <h3>Harness Covers</h3>
+                    <p>
+                      Yes
+                    </p>
+                </div>
+              {% endif %}
+              {% if latch_installs == 1 %}
+                <div>
+                  <h3>Latch Install</h3>
+                    <p>
+                      Yes
+                    </p>
+                </div>
+              {% endif %}
+    
+            {% endif %}
+    
+    
+              <div>
+                <h3>Assembly Required</h3>
+                {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
+                {% if assembly_switch_spec == 1 %}
+                <p>
+                  Yes
+                </p>
+                {% else %}
+                <p>
+                  No
+                </p>
+                {% endif %}
+              </div>
+              <div>
+                {% assign my_switch = product.metafields.sf_gates.hardware_included %}
+                <h3>Hardware Included</h3>
+                {% if my_switch == 1 %}
+                <p>
+                  Yes
+                </p>
+                {% else %}
+                <p>
+                  No
+                </p>
+                {% endif %}
+              </div>
+    
+            {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
+    
+            {% if shipping_restrictions %}
+            <div>
+            <h3>Shipping Restrictions</h3>
+            <p>
+              {{ shipping_restrictions }}
+            </p>
+            </div>
+            {% endif %}
+          </div>
+    
+        </div>
+
+        </div>
+      </li>
+      <!-- use & care tab -->
+      <h2>Use & Care</h2>
+      <li id="tab8" class="" >
+        <div class="pdp-use-and-care">
+          <div class="container">
+            <div class="one-half columns">
+              <h2>Care</h2>
+    
+    
+              {% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}
+              {% if care_copy %}
+                <ul>
+                  {% for li in care_copy %}
+                    <li>{{ li }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+              <h3>Materials</h3>
+              {% assign material = product.metafields.sf_products.material %}
+              {% if material %}
+                {{ material }}
+              {% endif %}
+            </div>
+            <div class="one-half columns">
+              <h2>Use</h2>
+              {% assign use_copy = product.metafields.sf_products.use_copy %}
+              {% if use_copy %}
+                <p>{{ use_copy }}</p>
+              {% endif %}
+    
+              {% assign user_manual_value = product.metafields.sf_products.manual %}
+              {% assign user_manual_french_value = product.metafields.sf_products.manual_french %}
+              {% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}
+    
+              {% if user_manual_value %}
+                <a class="action_button button download_manual" href="{{ user_manual_value }}">Download Manual (en)</a>
+              {% endif %}
+    
+              {% if user_manual_french_value %}
+                <a class="action_button button download_manual" href="{{ user_manual_french_value }}">Download Manual (fr)</a>
+              {% endif %}
+    
+              {% if user_manual_spanish_value %}
+                <a class="action_button button download_manual" href="{{ user_manual_spanish_value }}">Download Manual (es)</a>
+              {% endif %}
+            </div>
+          </div>
+    
+        </div>
+      </li>
+      <!-- safety tab -->
+      <h2>Safety</h2>
+
+      <li id="tab9"  class="">
+        <div class='pdp-safety'>
+          <div class="container">
+            <div class="one-half columns">
+              {% assign safety_image = product.metafields.sf_products.safety_image %}
+              {% if safety_image %}
+              <image src='{{ safety_image }}' loading="lazy" alt="{{ product.title }} Safety" >
+              {% endif %}
+            </div>
+            <div class="one-half columns">
+              <h2>Safe and Convenient</h2>
+              {% assign safety_testing_copy = product.metafields.sf_products.safety_testing_copy | split: '|' %}
+              {% if safety_testing_copy %}
+                {% for para in safety_testing_copy %}
+                  <p>{{ para }}</p>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <h2>Support</h2>
+
+      <!-- support tab -->
+      <li class="" id="tab10" >
+        <div class="pdp-support-tab">
+    
+          <div class="container">
+            {% assign my_switch = product.metafields.sf_products.video_support %}
+            {% if my_switch == 1 %}
+            <div class="one-third columns">
+              <h2>Free Video Support</h2>
+              <p class="pom">Need some real-time help? Schedule a live video call with us and we'll walk you through
+                everything.
+              </p>
+              <a class="action_button button" href="https://evenflo.appointlet.com/" target="_blank">Book Now</a>
+            </div>
+            {% endif %}
+            <div class="one-third columns">
+              <div class="pom-div">
+                <h2>Peace of<br>Mind</h2>
+    <!--             <a href="{{ product.metafields.custom.product_warranty_link }}">Download Warranty</a> -->
+                <p class="pom">Being a parent has enough stress as it is, that's why we can assure you that we can give you as
+                  much time as
+                  you need.</p>
+    
+                <p class="support-links"><a href="https://www.evenflo.com/policies/refund-policy">30 days for
+                    Returns</a></p>
+                
+                    
+                      {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
+                        <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 1 Year, 6-Month Battery Warranty</a></p>{% endif %}
+                      {% if product.metafields.sf_products.warranty == 'lifetime-limited' %}
+                        <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a></p>{% endif %}
+                        {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
+                          <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a></p>{% endif %}
+                        {% if product.metafields.sf_products.warranty == '90-day-limited' %}
+                          <p class="support-links"><a href="https://www.evenflo.com/pages/warranty">Limited 90-Day Warranty</a></p>
+                      {% endif %}
+    
+              </div>
+            </div>
+            {% assign my_switch = product.metafields.sf_products.replacement_parts %}
+            {% if my_switch == 1 %}
+            <div class="one-third columns">
+              <h2>Replacement Parts</h2>
+              <p class="pom">Life is rough, and it can also be rough on your car seat. Find the replacement parts you need for your
+                product easily.
+              </p>
+              <a class="action_button button" href="https://parts.evenflo.com/">Find Parts</a>
+            </div>
+            {% endif %}
+          </div>
+          <div class="loveit container parentlink-block">
+            <div class="one-half columns">
+              <p>Supported by <b>ParentLink Consumer Care</b> via phone, email, chat and video</p>
+            </div>
+            <div class="one-fourth columns">
+              <h3>Phone</h3>
+              <h4><a href="tel:1-800-233-5921">1-800-233-5921 (US)</a></h4>
+              <h4><a href="tel:1-937-773-3971">1-937-773-3971 (Canada)</a></h4>
+            </div>
+            <div class="one-fourth columns">
+              <h3>Email</h3>
+              <p class="email">No time to chat?</p>
+              <p class="email"><a href="https://www.evenflo.com/pages/contact-us">Email us</a> your inquiry</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+
+
+
+
+    <h2>{{ section.settings.support_heading }}</h2>
+
+    <div class="flex-row">
+      {% if product.metafields.sf_products.child_weight_min %}
+        <div class="flex-item">
+          <h3>Weight</h3>
+          {{ product.metafields.sf_products.child_weight_min }} -
+          {{ product.metafields.sf_products.child_weight_max }} lbs
+        </div>
+      {% endif %}
+
+      {% if product.metafields.sf_products.child_height_min %}
+        <div class="flex-item">
+          <h3>Height</h3>
+          {{ product.metafields.sf_products.child_height_min }} -
+          {{ product.metafields.sf_products.child_height_max }} in
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  Car Seat Specificications
+  <div class="flex-row">
+    <div class="flex-item">
+      <h3>Steel Reinforced</h3>
+      {{ product.metafields.sf_car_seat.steel_reinforced }}
+    </div>
+  </div>
+  What's in the box
+  <div class="flex-row">
+    <div class="flex-item">
+      <h3>Contents</h3>
+      {{ product.metafields.sf_products.retail_package_contents }}
+    </div>
+
+    <div class="flex-item">
+      <h3>Product Dimensions</h3>
+      <p>
+        {{ product.metafields.sf_products.assembled_width }} x
+        {{ product.metafields.sf_products.assembled_height }} x
+        {{ product.metafields.sf_products.assembled_depth }} in
+      </p>
+    </div>
+
+    <div class="flex-item">
+      <h3>Folded Dimensions</h3>
+      {{ product.metafields.sf_products.folded_dimensions }}
+    </div>
+    <div class="flex-item">
+      <h3>Package Dimensions</h3>
+      <p>
+        {{ product.metafields.sf_shipping.package_width }} x
+        {{ product.metafields.sf_shipping.package_height }} x
+        {{ product.metafields.sf_shipping.package_depth }} in
+      </p>
+    </div>
+    <div class="flex-item">
+      <h3>Product Weight</h3>
+      <p>{{ product.metafields.sf_products.assembled_weight }} lbs.</p>
+    </div>
+    <div class="flex-item">
+      <h3>Package Weight</h3>
+      <p>{{ product.metafields.sf_products.assembled_weight }} lbs.</p>
+    </div>
+    <div class="flex-item">
+      <h3>Weight w/o Base</h3>
+      <p>{{ product.metafields.sf_car_seat.carrier_weight_without_base }} lbs.</p>
+    </div>
+  </div>
+
+  <h3>Harness Type</h3>
+  <p>
+    {{ product.metafields.sf_products.harness_type }}
+  </p>
+</section>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Evenflo Product Support",
+  "class": "support",
+  "settings": [
+    {
+      "type": "text",
+      "id": "support_heading",
+      "label": "Support Heading",
+      "default": "Support"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Product Support"
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}
