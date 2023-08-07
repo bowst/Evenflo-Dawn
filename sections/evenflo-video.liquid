@@ -1,5 +1,7 @@
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
+{% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 
+{% if vimeo_product_video_value == blank %}
 <section class="evenflo-video">
   <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
     <div class="flex-row">
@@ -8,7 +10,7 @@
         {{ product.metafields.sf_products.short_description }}
       </div>
       <div class="flex-item video-section">
-        {% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
+        
         <div style="padding:56.25% 0 0 0;position:relative;">
           <iframe
             src="https://player.vimeo.com/video/{{ vimeo_product_video_value }}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
@@ -22,6 +24,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 
 
