@@ -255,16 +255,14 @@
         </div>
       {% endif %}
 
-  </div>
-  Car Seat Specificications
-  <div class="flex-row">
+    {% if product.metafields.sf_car_seat.steel_reinforced %}
     <div class="flex-item">
       <h3>Steel Reinforced</h3>
       {{ product.metafields.sf_car_seat.steel_reinforced }}
     </div>
-  </div>
-  What's in the box
-  <div class="flex-row">
+    {% endif %}
+
+
     <div class="flex-item">
       <h3>Contents</h3>
       {{ product.metafields.sf_products.retail_package_contents }}
@@ -283,6 +281,7 @@
       <h3>Folded Dimensions</h3>
       {{ product.metafields.sf_products.folded_dimensions }}
     </div>
+        
     <div class="flex-item">
       <h3>Package Dimensions</h3>
       <p>
@@ -291,14 +290,17 @@
         {{ product.metafields.sf_shipping.package_depth }} in
       </p>
     </div>
+        
     <div class="flex-item">
       <h3>Product Weight</h3>
       <p>{{ product.metafields.sf_products.assembled_weight }} lbs.</p>
     </div>
+        
     <div class="flex-item">
       <h3>Package Weight</h3>
       <p>{{ product.metafields.sf_products.assembled_weight }} lbs.</p>
     </div>
+        
     <div class="flex-item">
       <h3>Weight w/o Base</h3>
       <p>{{ product.metafields.sf_car_seat.carrier_weight_without_base }} lbs.</p>
