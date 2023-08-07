@@ -1,7 +1,6 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
-{%- if block.settings.discount_verification != blank -%}
 <script>
   function getCustomerId() {
   try {
@@ -40,7 +39,6 @@
       });
   };
 </script>
-{%- endif -%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
