@@ -341,6 +341,7 @@
         {% endif %}
 
 <!-- opening for gate -->
+      {% if product.type == 'Gates' %}
         {% assign my_switch = product.metafields.sf_gates.walk_thru_door %}
         {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
         {% assign max_opening_size = product.metafields.sf_gates.max_opening_size %}
@@ -394,6 +395,7 @@
             </div>
           </div>
         </div>
+        {% endif %}
         {% endif %}
       
     </div>
