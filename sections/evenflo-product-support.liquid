@@ -17,7 +17,7 @@
         <div class="flex-row">
                     {% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}
                     {% if retail_package_contents_value %}
-                    <div>
+                    <div class="flex-item">
                       <h3>Contents</h3>
                       <p>{{ retail_package_contents_value }}</p>
                     </div>
@@ -27,7 +27,7 @@
               {% assign assembled_height = product.metafields.sf_products.assembled_height %}
               {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
               {% if assembled_width and assembled_height and assembled_depth %}
-                <div>
+                <div class="flex-item">
                 <h3>Product Dimensions</h3>        
                  <p>{{ assembled_width }} x
                   {{ assembled_height }} x
@@ -37,7 +37,7 @@
                 {% endif %}
                 {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
                 {% if folded_dimensions %}
-                <div>
+                <div class="flex-item">
                 <h3>Folded Dimensions</h3>
                 <p>
                   {{ folded_dimensions }}
@@ -48,7 +48,7 @@
               {% assign package_height = product.metafields.sf_shipping.package_height %}
               {% assign package_depth = product.metafields.sf_shipping.package_depth %}
               {% if package_width and package_height and package_depth %}
-              <div>
+              <div class="flex-item">
                 <h3>Package Dimensions</h3>
                 <p>
                   {{ package_width }} x
@@ -60,7 +60,7 @@
     
               {% assign assembled_weight = product.metafields.sf_products.assembled_weight %}
               {% if assembled_weight %}
-              <div>
+              <div class="flex-item">
                 <h3>Product Weight</h3>
                 <p>
                   {{ assembled_weight }} lbs.
@@ -69,7 +69,7 @@
               {% endif %}
               {% assign package_weight = product.metafields.sf_shipping.package_weight %}
               {% if package_weight %}
-              <div>
+              <div class="flex-item">
                 <h3>Package Weight</h3>
                 <p>
                   {{ package_weight }} lbs.
@@ -79,7 +79,7 @@
     
               {% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}
               {% if carrier_weight_without_base %}
-              <div>
+              <div class="flex-item">
                 <h3>Weight w/o Base</h3>
                 <p>
                   {{ carrier_weight_without_base }} lbs.
