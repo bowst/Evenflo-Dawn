@@ -18,12 +18,12 @@
               {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
               {% if assembled_width and assembled_height and assembled_depth %}
                 <div>
-                <h3>Product Dimensions</h3>
-                <p>
+                <h3>Product Dimensions</h3><br>
+                
                   {{ assembled_width }} x
                   {{ assembled_height }} x
                   {{ assembled_depth }} in
-                </p>
+
                 </div>
                 {% endif %}
                 {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
@@ -251,11 +251,9 @@
         {% assign single_to_double_capable = product.metafields.sf_stroller.single_to_double_capable %}
         {% if number_of_height_modes or wheel_material or stroller_type or number_of_cup_holders %}
         <div class="left-column-data pdp-child-info">
-          
             <h3 class="h1 heading-underline">
               Stroller Specifications
             </h3>
-
           <!-- <div class="feature_divider"></div> -->
           <div class="panel">
             <div class="row">
