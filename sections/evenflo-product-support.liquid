@@ -21,6 +21,27 @@
   </div>
 </section>
 
+<section class="pdp-support page-width">
+  <div class="pdp-support__container">
+    <div class="pdp-support__column">
+      <h3 class="h1 heading-underline">Use & Care</h3>
+      
+
+
+
+      
+    </div>
+    <div class="pdp-support__column">
+          <div class="eight columns omega">
+          {% assign specifications_image = product.metafields.sf_products.specifications_image %}
+          {% if specifications_image %}
+            <image loading="lazy" alt="{{ product.title }} Specifications" src='{{ specifications_image }}'>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</section>
+
 
 
 <section class="support">
