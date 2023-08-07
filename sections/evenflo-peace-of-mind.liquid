@@ -5,10 +5,6 @@
     <div class="peace-of-mind__column">
       <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
       {{ section.settings.message }}
-      <a href="#"><strong>30 DAYS FOR RETURNS</strong></a><br>
-      <a href="#"><strong>LIMITED 90 DAY WARRANTY</strong></a>
-      <div class="flex-item">
-        <h3>Warranty Type</h3>
         {% assign product_warranty_link = product.metafields.custom.product_warranty_link %}
         {% if product_warranty_link %}
           {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
@@ -25,7 +21,6 @@
         {% if product.metafields.sf_products.warranty == '90-day-limited' %}
           <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
         {% endif %}
-      </div>
     </div>
     <div class="peace-of-mind__column">
       {{ section.settings.support_content }}
