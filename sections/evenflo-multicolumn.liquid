@@ -23,7 +23,7 @@
   endif
 -%}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.css" type="text/css">
-  <script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
 
   <script>
     function getCustomerId() {
@@ -65,6 +65,83 @@
   </script>
   
   <a onclick="displayVerification('6449874c98ea13502a40e99e')" class="action_button cc-button">Verify Status</a>
+
+
+  <div class="row cc-four-columns">
+  <div class="four columns alpha">
+  <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo-First-Responder.jpg?v=1677240638"><h3>First Responders<h3>
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.css" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
+
+  <script>
+    function getCustomerId() {
+    try {
+        let curr = window.ShopifyAnalytics.meta.page.customerId;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch(e) { }
+    try {
+        let curr = window.meta.page.customerId;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }    
+    try {
+        let curr = _st.cid;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }
+    try {
+        let curr = ShopifyAnalytics.lib.user().traits().uniqToken;
+        if (curr !== undefined && curr !== null && curr !== "") {
+        return curr;
+        }
+    } catch (e) { }
+        return null;
+    }
+    function displayVerification(id) {
+      const customerId = getCustomerId()
+      console.log('customerId: ', customerId);
+      const verificationUrl = 'https://services.sheerid.com/verify/' + id + '/?customer_id=' + customerId;
+      sheerId.loadInModal(
+          verificationUrl, {
+          mobileRedirect: true
+        });
+    };
+  </script>
+  
+
+  
+  
+  </h3>
+  </h3>
+  </div>
+  <div class="four columns">
+  <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/evenflo-Healthcare-Worker.jpg?v=1677241062">
+  <h3>Healthcare Heroes</h3>
+  <a onclick="displayVerification('64495b0a98ea13502a3f0ca2')" class="action_button cc-button">Verify Status</a>
+  </div>
+  <div class="four columns">
+  <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo-Military_2.jpg?v=1677241062"><h3> Military Heroes</h3>
+  <a onclick="displayVerification('63e2b61981e61c1fb230c1b1')" class="action_button cc-button">Verify Status</a>
+  </div>
+  <div class="four columns omega">
+  <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo-Teacher.jpg?v=1677241062">
+  <h3>Students & Teachers</h3>
+  <a onclick="displayVerification('64498884aac9742da2829ad3')" class="action_button cc-button">Teacher Status</a>
+<br><br>
+<a onclick="displayVerification('63e2b3d5b9bbc51838196fff')" class="action_button cc-button">Student Status</a>
+  
+  </div>
+  </div>
+
+
+
+  
 <div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
   <div class="page-width section-{{ section.id }}-padding isolate">
     {%- unless section.settings.title == blank -%}
