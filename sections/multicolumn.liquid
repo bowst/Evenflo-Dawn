@@ -138,10 +138,10 @@
                     <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a
                   >
                 {%- endif -%}
-                {%- if section.settings.discount_verification != blank -%}
+                {%- if block.settings.discount_verification != blank -%}
                   <a
-                    class="button button--primary"
-                    onclick="displayVerification({{ section.settings.discount_verification }})"
+                    class="link animate-arrow"
+                    onclick="displayVerification({{ block.settings.discount_verification | escape }})"
                   >
                     Verify Status
                   </a>
