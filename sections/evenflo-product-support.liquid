@@ -237,7 +237,7 @@
   <div class="pdp-support__container">
     <div class="pdp-support__column">
       <h3 class="h1 heading-underline">{{ section.settings.support_heading }}</h3>
-{% if product.type == 'Stroller' or product.type == 'Travel System' %}
+`{% if product.type == 'Stroller' or product.type == 'Travel System' %}
         <!-- stroller and travel systems -->
         {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
         {% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
@@ -252,7 +252,7 @@
         {% if number_of_height_modes or wheel_material or stroller_type or number_of_cup_holders %}
         <div class="left-column-data pdp-child-info">
           <button class='accordion'>
-            <h3>
+            <h3 class="h1 heading-underline">
               Stroller Specifications
             </h3>
           </button>
