@@ -350,11 +350,11 @@
         {% assign my_tags = product.metafields.sf_gates.mount_type | split: ',' %}
         {% if min_opening_size and max_opening_size and my_tags.size > 0 %}
         <div class="left-column-data pdp-child-info">
-          <button class='accordion'>
+          
             <h3 class="h1 heading-underline">
             Gate Specifications
             </h3>
-          </button>
+          
           <!-- <div class="feature_divider"></div> -->
           <div class="panel">
             <div class="row">
@@ -412,11 +412,11 @@
          {% assign high_back = product.metafields.sf_car_seat.high_back %}
          {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
          <div class="left-column-data pdp-child-info">
-           <button class='accordion'>
+           
              <h3>
                Car Seat Specifications
              </h3>
-           </button>
+
            <!-- <div class="feature_divider"></div> -->
            <div class="panel">
               <div class="row">
@@ -528,11 +528,11 @@
         {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
         {% if rear_facing_weight_min and rear_facing_weight_max and rear_facing_height_min and rear_facing_height_max and rear_facing_fit_statement%}
         <div class="left-column-data pdp-child-info">
-          <button class='accordion'>
+          
             <h3>
               Rear-Facing Mode
             </h3>
-          </button>
+      
           <!-- <div class="feature_divider"></div> -->
           <div class="panel">
             <div class="row">
@@ -564,11 +564,11 @@
         {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
         {% if forward_facing_weight_min and forward_facing_weight_max and forward_facing_height_min and forward_facing_height_max and forward_facing_fit_statement%}
         <div class="left-column-data pdp-child-info">
-          <button class='accordion'>
+          
             <h3>
               Forward-Facing Mode
             </h3>
-          </button>
+         
           <!-- <div class="feature_divider"></div> -->
           <div class="panel">
             <div class="row">
@@ -599,11 +599,11 @@
         {% if high_back_weight_min or high_back_weight_max or high_back_height_min or high_back_height_max
         and high_back_fit_statement%}
         <div class="left-column-data pdp-child-info">
-          <button class='accordion'>
+          
             <h3>
               High Back Booster Mode
             </h3>
-          </button>
+         
           <!-- <div class="feature_divider"></div> -->
           <div class="panel">
             <div class="row">
@@ -635,11 +635,11 @@
         {% assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement %}
         {% if no_back_weight_min or no_back_weight_max or no_back_height_min or no_back_height_max and no_back_fit_statement%}
         <div class="left-column-data pdp-child-info">
-          <button class='accordion'>
+          
             <h3>
               No Back Booster Mode
             </h3>
-          </button>
+          
           <!-- <div class="feature_divider"></div> -->
           <div class="panel">
             <div class="row">
@@ -674,11 +674,11 @@
         {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
         {% if bassinet_insert %}
         <div class="left-column-data pdp-child-info">
-          <button class='accordion'>
+          
             <h3>
               {{ collection.title }} Specifications
             </h3>
-          </button>
+         
           <!-- <div class="feature_divider"></div> -->
           <div class="panel">
             <div class="row">
@@ -759,11 +759,11 @@
   {% assign one_hand_tray = product.metafields.sf_high_chair.one_hand_tray %}
   {% if cleaning %}
   <div class="left-column-data pdp-child-info">
-    <button class='accordion'>
+    
       <h3>
         {{ collection.title }} Specifications
       </h3>
-    </button>
+ 
     <!-- <div class="feature_divider"></div> -->
     <div class="panel">
       <div class="row">
@@ -852,11 +852,11 @@
           </div>
 
     <div class="left-column-data pdp-child-info">
-            <button class='accordion'>
+            
               <h3>
                 {{ collection.title }} Specifications
               </h3>
-            </button>
+            
             <div class="panel">
               <div class="row">
                 <div class="five columns">
