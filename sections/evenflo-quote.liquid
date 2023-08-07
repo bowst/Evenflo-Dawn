@@ -1,5 +1,6 @@
 {{ 'section-quote.css' | asset_url | stylesheet_tag }}
 
+{% if section.settings.quote != blank %}
 <section class="quote content-container page-width content-container--full-width">
   <div class="quote__inner">
     <div class="quote__inner_quote">
@@ -10,6 +11,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% schema %}
   {
