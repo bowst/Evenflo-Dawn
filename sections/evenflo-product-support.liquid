@@ -662,6 +662,94 @@
           </div>
         </div>
         {% endif %}
+        <!-- Playard Specifications -->
+
+        {% if product.type == 'Play Yards' %}
+        {% assign bassinet_insert = product.metafields.sf_playard.bassinet_insert %}
+        {% assign built_for_travel = product.metafields.sf_playard.built_for_travel %}
+        {% assign canopy_overview = product.metafields.sf_playard.canopy | split: ',' %}
+        {% assign changing_station = product.metafields.sf_playard.diaper_changing_station %}
+        {% assign extra_storage = product.metafields.sf_playard.extra_storage %}
+        {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
+        {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
+        {% if bassinet_insert %}
+        <div class="left-column-data pdp-child-info">
+          <button class='accordion'>
+            <h3>
+              {{ collection.title }} Specifications
+            </h3>
+          </button>
+          <!-- <div class="feature_divider"></div> -->
+          <div class="panel">
+            <div class="row">
+              <div class="five columns">
+                <h5>Bassinet Insert</h5>
+                {%if bassinet_insert == 1 %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>Built for Travel</h5>
+                {%if built_for_travel == 1 %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>Canopy </h5>
+                  {% for tag in canopy_overview %}
+                    {{ tag }}{% if tag != canopy_overview.last %},{% endif %}
+                  {% endfor %}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="five columns">
+                <h5>Diaper Changing Station</h5>
+                {%if changing_station == 1 %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>Extra Storage</h5>
+                {%if extra_storage == 1 %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+              </div>
+              <div class="five columns">
+                <h5>Tablet Holder </h5>
+                {%if tablet_holder == 1 %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+              </div>
+            </div>
+            <div class="row">
+              <div class="five columns">
+                <h5>Toys/Entertainment</h5>
+                {% for tag in toys_entertainment %}
+                    {{ tag }}{% if tag != toys_entertainment.last %},{% endif %}
+                    {% endfor %}
+              </div>
+            </div>
+            <div class="row">
+              <div class="sixteen columns">
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      {% endif %}
+          {% endif %}
         
       
     </div>
