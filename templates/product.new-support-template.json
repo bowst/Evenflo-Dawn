@@ -27,13 +27,20 @@
           "disabled": true,
           "settings": {
           }
+        },
+        "7d3fc713-88b9-40d6-9efb-49d04063c8f2": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"pdp-support__column\">\n          {% assign user_manual_value = product.metafields.sf_products.manual %}\n              {% assign user_manual_french_value = product.metafields.sf_products.manual_french %}\n              {% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}\n    \n              {% if user_manual_value %}\n                <a class=\"button\" href=\"{{ user_manual_value }}\">Download Manual (en)<\/a>\n              {% endif %}\n    \n              {% if user_manual_french_value %}\n                <a class=\"button\" href=\"{{ user_manual_french_value }}\">Download Manual (fr)<\/a>\n              {% endif %}\n    \n              {% if user_manual_spanish_value %}\n                <a class=\"button\" href=\"{{ user_manual_spanish_value }}\">Download Manual (es)<\/a>\n              {% endif %}\n    <\/div>"
+          }
         }
       },
       "block_order": [
         "vendor",
         "title",
         "333ce9dc-b67c-488e-9229-c10a4d8f0955",
-        "quantity_selector"
+        "quantity_selector",
+        "7d3fc713-88b9-40d6-9efb-49d04063c8f2"
       ],
       "settings": {
         "enable_sticky_info": false,
