@@ -281,8 +281,9 @@
       {% assign use_case = product.metafields.sf_gates.use_case | split: ',' %}
       {% assign my_tags = product.metafields.sf_gates.mount_type | split: ',' %}
       {% if min_opening_size and max_opening_size and my_tags.size > 0 %}
-        <h3 class="h1 heading-underline">Gate Specifications</h3>
-
+        <div class="flex-row">
+          <h3 class="h1 heading-underline">Gate Specifications</h3>
+        </div>
         <!-- <div class="feature_divider"></div> -->
 
         <div class="flex-item-small">
@@ -336,9 +337,9 @@
       {% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
       {% assign high_back = product.metafields.sf_car_seat.high_back %}
       {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
-
-      <h3 class="h1 heading-underline">Car Seat Specifications</h3>
-
+      <div class="flex-row">
+        <h3 class="h1 heading-underline">Car Seat Specifications</h3>
+      </div>
       <!-- <div class="feature_divider"></div> -->
       <div class="flex-row pdp-support">
         <div class="flex-item-small">
