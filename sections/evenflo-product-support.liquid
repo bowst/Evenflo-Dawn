@@ -162,8 +162,6 @@
     </div>
   </div>
 </section>
-
-            
 {% if product.type == 'Gates' %}
       {% assign my_switch = product.metafields.sf_gates.walk_thru_door %}
       {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
@@ -175,6 +173,8 @@
 <section class="pdp-support page-width">
   <div class="pdp-support__container pdp-support">            
     <!-- opening for gate -->
+    
+    
         <div class="row-title">
           <h3 class="h1 heading-underline">Gate Specifications</h3>
         </div>
@@ -217,10 +217,9 @@
           </div>
         </div>
       {% endif %}
-    
+    {% endif %}
   </div>  
 </section>
-{% endif %}
 
             
 
