@@ -15,7 +15,6 @@
 
     {% if feature_text_1 or feature_text_2 %}
       <div class="flex-row">
-
         {% if feature_text_1 %}
           <div class="flex-item">
             <div class="flex-row">
@@ -53,13 +52,11 @@
             </div>
           </div>
         {% endif %}
-
       </div>
     {% endif %}
 
     {% if feature_text_3 or feature_text_4 %}
       <div class="flex-row">
-
         {% if feature_text_3 %}
           <div class="flex-item">
             <div class="flex-row reverse">
@@ -97,12 +94,11 @@
             </div>
           </div>
         {% endif %}
-
       </div>
     {% endif %}
 
     <div class="right">
-      {% if product.metafields.custom.link_support_page %}
+      {% if product.metafields.custom.product_support_link %}
         <a href="{{ product.metafields.custom.product_support_link.value.url }}">Learn More</a>
       {% endif %}
     </div>
