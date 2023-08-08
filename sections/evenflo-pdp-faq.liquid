@@ -27,11 +27,8 @@
     <div class="content-container page-width content-container--full-width flex-container">
       <div class="column column-1">
         <h2 class="h1 heading-underline">All your Questions Answered</h2>
-        <p>Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.</p>
-        {% assign supportPage = product.metafields.custom.link_support_page %}
-
-        {% if product.metafields.custom.link_support_page %}
-          <a href="{{product.metafields.custom.link_support_page.value.url}}">View the product Support Guide</a>
+        {% if product.metafields.custom.product_support_link %}
+          <a href="{{product.metafields.custom.product_support_link.value.url}}">View the product Support Guide</a>
         {% endif %}
       </div>
       <div class="column column-2">
