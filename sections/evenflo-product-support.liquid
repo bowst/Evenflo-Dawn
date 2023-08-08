@@ -99,7 +99,7 @@
             {% if harness_rethread_method or harness_type %}
     
                 {% if harness_type %}
-                    <div>
+                    <div class="flex-item">
                     <h3>Harness Type</h3>
                     <p>
                       {{ harness_type }}
@@ -107,7 +107,7 @@
                   </div>
                   {% endif %}
                   {% if harness_rethread_method %}
-                  <div>
+                  <div class="flex-item">
                     <h3>Harness Rethread</h3>
                     <p>
                       {{ harness_rethread_method }}
@@ -119,7 +119,7 @@
             {% if bubble_level or harness_covers or latch_install %}
     
               {% if bubble_level == 1 %}
-              <div>
+              <div class="flex-item">
                   <h3>Bubble Level</h3>
                     <p>
                       Yes
@@ -127,7 +127,7 @@
               </div>
               {% endif %}
               {% if harness_covers == 1 %}
-                <div>
+               <div class="flex-item">
                   <h3>Harness Covers</h3>
                     <p>
                       Yes
@@ -135,7 +135,7 @@
                 </div>
               {% endif %}
               {% if latch_installs == 1 %}
-                <div>
+                <div class="flex-item">
                   <h3>Latch Install</h3>
                     <p>
                       Yes
@@ -146,7 +146,7 @@
             {% endif %}
     
     
-              <div>
+              <div class="flex-item">
                 <h3>Assembly Required</h3>
                 {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
                 {% if assembly_switch_spec == 1 %}
@@ -159,7 +159,7 @@
                 </p>
                 {% endif %}
               </div>
-              <div>
+              <div class="flex-item">
                 {% assign my_switch = product.metafields.sf_gates.hardware_included %}
                 <h3>Hardware Included</h3>
                 {% if my_switch == 1 %}
@@ -176,7 +176,7 @@
             {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
     
             {% if shipping_restrictions %}
-            <div>
+            <div class="flex-item">
             <h3>Shipping Restrictions</h3>
             <p>
               {{ shipping_restrictions }}
