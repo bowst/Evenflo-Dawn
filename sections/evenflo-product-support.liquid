@@ -267,7 +267,11 @@
         
       {% endif %}
     {% endif %}
+  </div>  
+</section>
     
+ <section class="pdp-support page-width">
+  <div class="pdp-support__container pdp-support">   
 <!-- car seat specifications -->
     
     {% if product.type contains 'Car Seat' %}
@@ -378,9 +382,16 @@
           {% else %}
             No
           {% endif %}
+      
         </div>
+      
       </div>
-
+      {% endif %}
+  </div>  
+</section>
+      
+<section class="pdp-support page-width">
+  <div class="pdp-support__container pdp-support">
     <!-- rear facing mode for car seat -->
     {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
     {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
@@ -411,9 +422,6 @@
           {{ rear_facing_fit_statement }}
         </div>
       </div>
-
-    {% endif %}
-
 
     <!-- high back mode for car seat -->
     {% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
@@ -452,7 +460,8 @@
     </div>
     {% endif %}
     {% endif %}
-
+  </div>  
+</section>
     <!-- opening for gate -->
     
     {% if product.type == 'Gates' %}
