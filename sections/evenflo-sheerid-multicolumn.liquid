@@ -183,8 +183,8 @@
                 {%- endif -%}
                 {%- if block.settings.discount_verification != blank -%}
                   <a
-                    class="link animate-arrow test"
-                    onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
+                    class="link animate-arrow"
+                    onclick="(e) => e.preventDefault(); displayVerification('{{ block.settings.discount_verification | escape }}')"
                     href="#"
                   >
                     Verify Status
