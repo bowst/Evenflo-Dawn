@@ -105,6 +105,11 @@
             <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
           {% endif %}
           </p>
+              <div class="right">
+      {% if product.metafields.custom.link_support_page %}
+        <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
+      {% endif %}
+    </div>
         </div>
       </div>
     {% endif %}
