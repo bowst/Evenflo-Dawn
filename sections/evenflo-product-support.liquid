@@ -464,9 +464,9 @@
       {% assign use_case = product.metafields.sf_gates.use_case | split: ',' %}
       {% assign my_tags = product.metafields.sf_gates.mount_type | split: ',' %}
       {% if min_opening_size and max_opening_size and my_tags.size > 0 %}
-        <div class="flex-row">
+        
           <h3 class="h1 heading-underline">Gate Specifications</h3>
-        </div>
+        
         <!-- <div class="feature_divider"></div> -->
         <div class="flex-row">
           <div class="flex-item-small">
