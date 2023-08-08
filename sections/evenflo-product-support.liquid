@@ -417,39 +417,7 @@
 
     {% endif %}
 
-    <!-- rear facing mode for car seat -->
-    {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
-    {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
-    {% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
-    {% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
-    {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
-    {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
-    {% if rear_facing_weight_min
-      and rear_facing_weight_max
-      and rear_facing_height_min
-      and rear_facing_height_max
-      and rear_facing_fit_statement
-    %}
-      <div class="flex-row">
-        <h3 class="h1 heading-underline">Rear-Facing Mode</h3>
-      </div>
-
-      <div class="flex-row pdp-support">
-        <div class="flex-item-small">
-          <h3>Weight</h3>
-          <p>{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs</p>
-        </div>
-        <div class="flex-item">
-          <h3>Height</h3>
-          {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
-        </div>
-        <div class="flex-item">
-          {{ rear_facing_fit_statement }}
-        </div>
-      </div>
-
-    {% endif %}
-
+    
     
     {% endif %}
     
