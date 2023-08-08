@@ -388,9 +388,9 @@
              </h3>
 
            <!-- <div class="feature_divider"></div> -->
-           <div class="panel">
-              <div class="row">
-                <div class="five columns">
+           <div class="flex-row">
+              
+                <div class="flex-item">
                   <h5>Steel Reinforced</h5>
                   {% if steel_reinforced == 1 %}
                     Yes
@@ -398,7 +398,7 @@
                     No
                   {% endif %}
                 </div>
-                <div class="five columns">
+               <div class="flex-item">
                   <h5>Bubble Level</h5>
                   {% if bubble_level == 1 %}
                     Yes
@@ -406,7 +406,7 @@
                     No
                   {% endif %}
                 </div>
-                <div class="five columns">
+                <div class="flex-item">
                   <h5>Harness Covers</h5>
                   {% if harness_covers == 1 %}
                     Yes
@@ -414,9 +414,9 @@
                     No
                   {% endif %}
                 </div>
-              </div>
-              <div class="row">
-                <div class="five columns">
+             
+              
+                <div class="flex-item">
                   <h5>Latch Install</h5>
                   {% if latch_install == 1 %}
                     Yes
@@ -424,7 +424,7 @@
                     No
                   {% endif %}
                 </div>
-                <div class="five columns">
+                <div class="flex-item">
                   <h5>Lightweight</h5>
                   {% if lightweight == 1 %}
                     Yes
@@ -432,7 +432,7 @@
                     No
                   {% endif %}
                 </div>
-                <div class="five columns">
+                <div class="flex-item">
                   <h5>No Rethread Harness</h5>
                   {% if no_rethread_harness == 1 %}
                     Yes
@@ -440,9 +440,7 @@
                     No
                   {% endif %}
                 </div>
-              </div>
-              <div class="row">
-                <div class="five columns">
+              <div class="flex-item">
                   <h5>Side Impact Protection</h5>
                   {% if side_impact_protection == 1 %}
                     Yes
@@ -450,7 +448,7 @@
                     No
                   {% endif %}
                 </div>
-                <div class="five columns">
+                <div class="flex-item">
                   <h5>Anti-Rebound Bar</h5>
                   {% if anti_rebound_bar == 1 %}
                     Yes
@@ -458,7 +456,7 @@
                     No
                   {% endif %}
                 </div>
-                <div class="five columns">
+                <div class="flex-item">
                   <h5>Converts to No Back Booster</h5>
                   {% if converts_to_no_back_booster == 1 %}
                     Yes
@@ -466,9 +464,8 @@
                     No
                   {% endif %}
                 </div>
-              </div>
-              <div class="row">
-                <div class="five columns">
+              <div class="flex-item">
+                
                   <h5>High Back</h5>
                   {% if high_back == 1 %}
                     Yes
@@ -476,7 +473,7 @@
                     No
                   {% endif %}
                 </div>
-                <div class="five columns">
+                <div class="flex-item">
                   <h5>Has Harness Booster Mode</h5>
                   {% if has_harness_booster_mode == 1 %}
                     Yes
@@ -484,7 +481,7 @@
                     No
                   {% endif %}
                 </div>
-              </div>
+              
            </div>
          </div>
          {% endif %}
