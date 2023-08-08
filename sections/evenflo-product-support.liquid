@@ -498,36 +498,7 @@
       </div>
     {% endif %}
 
-    <!-- high back mode for car seat -->
-    {% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
-    {% assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max %}
-    {% assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min %}
-    {% assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max %}
-    {% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
-    {% if high_back_weight_min
-      or high_back_weight_max
-      or high_back_height_min
-      or high_back_height_max
-      and high_back_fit_statement
-    %}
-      <div class="flex-row">
-        <h3 class="h1 heading-underline">High Back Booster Mode</h3>
-      </div>
-      <div class="flex-row pdp-support">
-        <div class="flex-item-small">
-          <h3>Weight</h3>
-          {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
-        </div>
-        <div class="flex-item-small">
-          <h3>Height</h3>
-          {{ high_back_height_min }} - {{ high_back_height_max }} in
-        </div>
 
-        <div class="flex-item">
-          {{ high_back_fit_statement }}
-        </div>
-      </div>
-    {% endif %}
 
     <!-- no back mode for car seat -->
     {% assign no_back_weight_min = product.metafields.sf_car_seat.no_back_weight_min %}
