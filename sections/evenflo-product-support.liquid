@@ -471,33 +471,34 @@
       </div>
     {% endif %}
 
-<!-- forward facing mode for car seat -->
-    {% assign forward_facing_weight_min = product.metafields.sf_car_seat.forward_facing_weight_min %}
-    {% assign forward_facing_weight_max = product.metafields.sf_car_seat.forward_facing_weight_max %}
-    {% assign forward_facing_height_min = product.metafields.sf_car_seat.forward_facing_height_min %}
-    {% assign forward_facing_height_max = product.metafields.sf_car_seat.forward_facing_height_max %}
-    {% assign forward_facing_age_limit = product.metafields.sf_car_seat.forward_facing_age_limit %}
-    {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
-    {% if forward_facing_weight_min
-      and forward_facing_weight_max
-      and forward_facing_height_min
-      and forward_facing_height_max
-      and forward_facing_fit_statement
+<!-- rear facing mode for car seat -->
+    {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
+    {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
+    {% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
+    {% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
+    {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
+    {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
+    {% if rear_facing_weight_min
+      and rear_facing_weight_max
+      and rear_facing_height_min
+      and rear_facing_height_max
+      and rear_facing_fit_statement
     %}
       <div class="flex-row">
-        <h3 class="h1 heading-underline">Forward-Facing Modes!</h3>
+        <h3 class="h1 heading-underline">Rear-Facing Mode</h3>
       </div>
-
       <div class="flex-row pdp-support">
         <div class="flex-item-small">
           <h3>Weight</h3>
-          {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
+          {{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs
         </div>
         <div class="flex-item-small">
           <h3>Height</h3>
-          {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
+          {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
         </div>
-
+        <div class="flex-item-small">
+          {{ rear_facing_fit_statement }}
+        </div>
       </div>
     {% endif %}
     
