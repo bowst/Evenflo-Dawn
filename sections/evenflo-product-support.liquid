@@ -620,13 +620,13 @@
               No
             {% endif %}
           </div>
-        </div>
         <div class="flex-item-small">
           <h3>Toys/Entertainment</h3>
           {% for tag in toys_entertainment %}
             {{ tag -}}
             {%- if tag != toys_entertainment.last %},{% endif %}
           {% endfor %}
+        </div>
         </div>
       {% endif %}
     {% endif %}
