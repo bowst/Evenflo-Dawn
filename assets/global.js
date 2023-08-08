@@ -18,6 +18,24 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
     event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
   });
 
+  // Add this code make menu appears on hover
+  summary.addEventListener('mouseover', (event) => {
+    const menuDetails = event.currentTarget.closest('details');
+    const menuListContainer = menuDetails.closest('ul');
+    event.currentTarget.setAttribute('aria-expanded', 'true');
+    menuDetails.setAttribute('open', 'true');
+
+    menuListContainer.addEventListener('mouseleave', () => {
+      menuDetails.removeAttribute('open');
+      summary.setAttribute('aria-expanded', 'false');
+    });
+
+    menuDetails.addEventListener('mouseleave', () => {
+      menuDetails.removeAttribute('open');
+      summary.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   if (summary.closest('header-drawer')) return;
   summary.parentElement.addEventListener('keyup', onKeyUpEscape);
 });
