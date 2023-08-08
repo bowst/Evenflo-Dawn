@@ -464,11 +464,13 @@
           <h3>Height</h3>
           {{ high_back_height_min }} - {{ high_back_height_max }} in
         </div>
-
+        {% if high_back_fit_statement %}
         <div class="flex-item">
           {{ high_back_fit_statement }}
         </div>
+        {% endif %}
       </div>
+  
     {% endif %}
 
 <!-- rear facing mode for car seat -->
