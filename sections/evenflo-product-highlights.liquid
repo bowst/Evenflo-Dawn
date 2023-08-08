@@ -100,11 +100,6 @@
           {% if my_switch == 1 %}
             <strong>Anti Rebound Bar</strong>
           {% endif %}
-          <div class="right">
-            {% if product.metafields.custom.product_support_link %}
-              <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
-            {% endif %}
-          </div>
         </div>
       </div>
     {% endif %}
@@ -673,11 +668,6 @@
             No
           {% endif %}
           <br>
-          <p>
-            {% if product.metafields.custom.product_support_link %}
-              <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
-            {% endif %}
-          </p>
         </div>
       </div>
     {% endif %}
@@ -1019,6 +1009,11 @@
         </div>
       </div>
     {% endif %}
+    <div class="right">
+      {% if product.metafields.custom.product_support_link %}
+        <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
+      {% endif %}
+    </div>
   </div>
 </section>
 
