@@ -164,6 +164,66 @@
 </section>
 
 <section class="pdp-support page-width">
+  <div class="pdp-support__container pdp-support">            
+    <!-- opening for gate -->
+    
+    {% if product.type == 'Gates' %}
+      {% assign my_switch = product.metafields.sf_gates.walk_thru_door %}
+      {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
+      {% assign max_opening_size = product.metafields.sf_gates.max_opening_size %}
+      {% assign opening_type = product.metafields.sf_gates.opening_type_s_ %}
+      {% assign use_case = product.metafields.sf_gates.use_case | split: ',' %}
+      {% assign my_tags = product.metafields.sf_gates.mount_type | split: ',' %}
+      {% if min_opening_size and max_opening_size and my_tags.size > 0 %}
+        <div class="row">
+          <h3 class="h1 heading-underline">Gate Specifications</h3>
+        </div>
+        <!-- <div class="feature_divider"></div> -->
+        <div class="flex-row">
+          <div class="flex-item-small">
+            <h3>Opening Size Min</h3>
+            {{ min_opening_size }} inches
+          </div>
+          <div class="flex-item-small">
+            <h3>Opening Size Max</h3>
+            {{ max_opening_size }} inches
+          </div>
+          <div class="flex-item-small">
+            <h3>Mount Type</h3>
+            {% for tag in my_tags %}
+              {{ tag -}}
+              {%- if tag != my_tags.last %},{% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="flex-item-small">
+            <h3>Opening Type</h3>
+            {{ opening_type }}
+          </div>
+          <div class="flex-item-small">
+            <h3>Use Cases</h3>
+            {% for tag in use_case %}
+              {{ tag -}}
+              {%- if tag != use_case.last %},{% endif %}
+            {% endfor %}
+          </div>
+          <div class="flex-item-small">
+            <h3>Walk-Thru Door</h3>
+            {% if my_switch == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>  
+</section>
+
+            
+
+<section class="pdp-support page-width">
   <div class="pdp-support__container pdp-support">
     `{%- if product.type == 'Stroller' or product.type == 'Travel System' %}
       <!-- stroller and travel systems -->
@@ -464,63 +524,7 @@
 </section>
 
 
-<section class="pdp-support page-width">
-  <div class="pdp-support__container pdp-support">            
-    <!-- opening for gate -->
-    
-    {% if product.type == 'Gates' %}
-      {% assign my_switch = product.metafields.sf_gates.walk_thru_door %}
-      {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
-      {% assign max_opening_size = product.metafields.sf_gates.max_opening_size %}
-      {% assign opening_type = product.metafields.sf_gates.opening_type_s_ %}
-      {% assign use_case = product.metafields.sf_gates.use_case | split: ',' %}
-      {% assign my_tags = product.metafields.sf_gates.mount_type | split: ',' %}
-      {% if min_opening_size and max_opening_size and my_tags.size > 0 %}
-        <div class="row">
-          <h3 class="h1 heading-underline">Gate Specifications</h3>
-        </div>
-        <!-- <div class="feature_divider"></div> -->
-        <div class="flex-row">
-          <div class="flex-item-small">
-            <h3>Opening Size Min</h3>
-            {{ min_opening_size }} inches
-          </div>
-          <div class="flex-item-small">
-            <h3>Opening Size Max</h3>
-            {{ max_opening_size }} inches
-          </div>
-          <div class="flex-item-small">
-            <h3>Mount Type</h3>
-            {% for tag in my_tags %}
-              {{ tag -}}
-              {%- if tag != my_tags.last %},{% endif %}
-            {% endfor %}
-          </div>
 
-          <div class="flex-item-small">
-            <h3>Opening Type</h3>
-            {{ opening_type }}
-          </div>
-          <div class="flex-item-small">
-            <h3>Use Cases</h3>
-            {% for tag in use_case %}
-              {{ tag -}}
-              {%- if tag != use_case.last %},{% endif %}
-            {% endfor %}
-          </div>
-          <div class="flex-item-small">
-            <h3>Walk-Thru Door</h3>
-            {% if my_switch == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif %}
-          </div>
-        </div>
-      {% endif %}
-    {% endif %}
-  </div>  
-</section>
 
 <section class="pdp-support page-width">
   <div>
