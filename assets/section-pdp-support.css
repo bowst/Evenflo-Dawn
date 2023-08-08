@@ -10,7 +10,7 @@
 
 .pdp-support .flex-item {
   flex-shrink: 0;
-  width: 50%;
+  width: 100%;
   max-width: 100%;
 }
 
@@ -23,6 +23,26 @@
 
 .pdp-support h3 strong {
   font-weight: bold;
+}
+
+.pdp-support h4 {
+  margin-bottom: 8px;
+}
+
+.pdp-support .pdp-support__container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+
+.pdp-support .pdp-support__column {
+  padding: 0 30px;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 @media screen and (min-width: 560px) {
