@@ -271,7 +271,118 @@
       {% endif %}
     {% endif %}
     
+<!-- car seat specifications -->
+    {% if product.type contains 'Car Seat' %}
+      {% assign steel_reinforced = product.metafields.sf_car_seat.steel_reinforced %}
+      {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
+      {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
+      {% assign latch_install = product.metafields.sf_car_seat.latch_install %}
+      {% assign lightweight = product.metafields.sf_car_seat.lightweight %}
+      {% assign no_rethread_harness = product.metafields.sf_car_seat.no_rethread_harness %}
+      {% assign side_impact_protection = product.metafields.sf_car_seat.side_impact_protection %}
+      {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+      {% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
+      {% assign high_back = product.metafields.sf_car_seat.high_back %}
+      {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
+      <div class="flex-row">
+        <h3 class="h1 heading-underline">Car Seat Specifications</h3>
+      </div>
+      <!-- <div class="feature_divider"></div> -->
+      <div class="flex-row pdp-support">
+        <div class="flex-item-small">
+          <h3>Steel Reinforced</h3>
+          <p>
+            {% if steel_reinforced == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+          </p>
+        </div>
+        <div class="flex-item-small">
+          <h3>Bubble Level</h3>
+          {% if bubble_level == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>Harness Covers</h3>
+          {% if harness_covers == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
 
+        <div class="flex-item-small">
+          <h3>Latch Install</h3>
+          {% if latch_install == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>Lightweight</h3>
+          {% if lightweight == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>No Rethread Harness</h3>
+          {% if no_rethread_harness == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>Side Impact Protection</h3>
+          {% if side_impact_protection == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>Anti-Rebound Bar</h3>
+          {% if anti_rebound_bar == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        
+        <div class="flex-item-small">
+          <h3>Converts to No Back Booster</h3>
+          {% if converts_to_no_back_booster == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>High Back</h3>
+          {% if high_back == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>Has Harness Booster Mode</h3>
+          {% if has_harness_booster_mode == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
     
   </div>  
 </section>
