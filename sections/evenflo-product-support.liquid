@@ -163,11 +163,10 @@
   </div>
 </section>
 {% if product.type == 'Gates' %}
-<section class="pdp-support page-width">
-  <div class="pdp-support__container pdp-support">            
-    <!-- opening for gate -->
-    
-    
+  <section class="pdp-support page-width">
+    <div class="pdp-support__container pdp-support">
+      <!-- opening for gate -->
+
       {% assign my_switch = product.metafields.sf_gates.walk_thru_door %}
       {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
       {% assign max_opening_size = product.metafields.sf_gates.max_opening_size %}
@@ -217,15 +216,14 @@
           </div>
         </div>
       {% endif %}
-    
-  </div>  
-</section>
+    </div>
+  </section>
 {% endif %}
-            
+
 {%- if product.type == 'Stroller' or product.type == 'Travel System' %}
-<section class="pdp-support page-width">
-  <div class="pdp-support__container pdp-support">
-    `
+  <section class="pdp-support page-width">
+    <div class="pdp-support__container pdp-support">
+      `
       <!-- stroller and travel systems -->
       {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
       {% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
@@ -241,102 +239,95 @@
         <div class="left-column-data pdp-child-info">
           <h3 class="h1 heading-underline">Stroller Specifications</h3>
           <div class="flex-row pdp-support">
-              <div class="flex-item-small">
-                <h4>Self Standing</h4>
-                {% if self_standing_fold == 1 %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
-              </div>
-              <div class="flex-item-small">
-                <h3>UPF 50+ Sun Protection Canopy</h3>
-                {% if upf_50_sun_protection_canopy == 1 %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
-              </div>
-              <div class="flex-item-small">
-                <h3>Accepts Rider Board</h3>
-                {% if accepts_rider_board == 1 %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
-              </div>
-            
-            
-              {% if number_of_cup_holders %}
-                <div class="flex-item-small">
-                  <h3>Number of Cup Holders</h3>
-                  {{ number_of_cup_holders }}
-                </div>
+            <div class="flex-item-small">
+              <h4>Self Standing</h4>
+              {% if self_standing_fold == 1 %}
+                Yes
+              {% else %}
+                No
               {% endif %}
-              <div class="flex-item-small">
-                <h3>Single to Double Capable</h3>
-                {% if single_to_double_capable == 1 %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
-              </div>
-              <div class="flex-item-small">
-                <h3>Lockable Front Wheels</h3>
-                {% if lockable_front_wheels == 1 %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
-              </div>
-              
-              <div class="flex-item-small">
-                <h3>Accepts Infant Car Seat</h3>
-                {% if accepts_infant_car_seat == 1 %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
-              </div>
-
-
-              {% if number_of_height_modes %}
-                <div class="flex-item-small">
-                  <h3>Number of Height Modes</h3>
-                  {{ number_of_height_modes }}
-                </div>
-              {% endif %}
-        
-              {% if wheel_material %}
-                <div class="flex-item-small">
-                  <h3>Wheel Material</h3>
-                  {{ wheel_material }}
-                </div>
-              {% endif %}
-        
-              {% if stroller_type %}
-                <div class="flex-item-small">
-                  <h3>Stroller Type</h3>
-                  {{ stroller_type }}
-                </div>
-              {% endif %}
-
-
             </div>
-          </div>
-        
-      {% endif %}
+            <div class="flex-item-small">
+              <h3>UPF 50+ Sun Protection Canopy</h3>
+              {% if upf_50_sun_protection_canopy == 1 %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </div>
+            <div class="flex-item-small">
+              <h3>Accepts Rider Board</h3>
+              {% if accepts_rider_board == 1 %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </div>
 
-  </div>  
-</section>
-  {% endif %} 
+            {% if number_of_cup_holders %}
+              <div class="flex-item-small">
+                <h3>Number of Cup Holders</h3>
+                {{ number_of_cup_holders }}
+              </div>
+            {% endif %}
+            <div class="flex-item-small">
+              <h3>Single to Double Capable</h3>
+              {% if single_to_double_capable == 1 %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </div>
+            <div class="flex-item-small">
+              <h3>Lockable Front Wheels</h3>
+              {% if lockable_front_wheels == 1 %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </div>
+
+            <div class="flex-item-small">
+              <h3>Accepts Infant Car Seat</h3>
+              {% if accepts_infant_car_seat == 1 %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </div>
+
+            {% if number_of_height_modes %}
+              <div class="flex-item-small">
+                <h3>Number of Height Modes</h3>
+                {{ number_of_height_modes }}
+              </div>
+            {% endif %}
+
+            {% if wheel_material %}
+              <div class="flex-item-small">
+                <h3>Wheel Material</h3>
+                {{ wheel_material }}
+              </div>
+            {% endif %}
+
+            {% if stroller_type %}
+              <div class="flex-item-small">
+                <h3>Stroller Type</h3>
+                {{ stroller_type }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
 
 {% if product.type contains 'Car Seat' %}
- <section class="pdp-support page-width">
-  <div class="pdp-support__container pdp-support">   
-<!-- car seat specifications -->
-    
-    
+  <section class="pdp-support page-width">
+    <div class="pdp-support__container pdp-support">
+      <!-- car seat specifications -->
+
       {% assign steel_reinforced = product.metafields.sf_car_seat.steel_reinforced %}
       {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
       {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
@@ -420,7 +411,7 @@
             No
           {% endif %}
         </div>
-        
+
         <div class="flex-item-small">
           <h3>Converts to No Back Booster</h3>
           {% if converts_to_no_back_booster == 1 %}
@@ -444,122 +435,115 @@
           {% else %}
             No
           {% endif %}
-      
         </div>
-      
       </div>
-      
-  </div>  
-</section>
-            <section class="pdp-support page-width">
-  <div class="pdp-support__container pdp-support">
-    <!-- rear facing mode for car seat -->
-    {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
-    {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
-    {% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
-    {% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
-    {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
-    {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
-    {% if rear_facing_weight_min
-      and rear_facing_weight_max
-      and rear_facing_height_min
-      and rear_facing_height_max
-      and rear_facing_fit_statement
-    %}
-      <div class="flex-row">
-        <h3 class="h1 heading-underline">Rear-Facing Mode</h3>
-      </div>
+    </div>
+  </section>
+  <section class="pdp-support page-width">
+    <div class="pdp-support__container pdp-support">
+      <!-- rear facing mode for car seat -->
+      {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
+      {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
+      {% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
+      {% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
+      {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
+      {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
+      {% if rear_facing_weight_min
+        and rear_facing_weight_max
+        and rear_facing_height_min
+        and rear_facing_height_max
+        and rear_facing_fit_statement
+      %}
+        <div class="flex-row">
+          <h3 class="h1 heading-underline">Rear-Facing Mode</h3>
+        </div>
 
-      <div class="flex-row pdp-support">
-        <div class="flex-item-small">
-          <h3>Weight</h3>
-          <p>{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs</p>
+        <div class="flex-row pdp-support">
+          <div class="flex-item-small">
+            <h3>Weight</h3>
+            <p>{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs</p>
+          </div>
+          <div class="flex-item-small">
+            <h3>Height</h3>
+            {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
+          </div>
+          <div class="flex-item">
+            {{ rear_facing_fit_statement }}
+          </div>
         </div>
-        <div class="flex-item-small">
-          <h3>Height</h3>
-          {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
-        </div>
-        <div class="flex-item">
-          {{ rear_facing_fit_statement }}
-        </div>
-      </div>
+      {% endif %}
 
       <!-- forward facing mode for car seat -->
-        {% assign forward_facing_weight_min = product.metafields.sf_car_seat.forward_facing_weight_min %}
-        {% assign forward_facing_weight_max = product.metafields.sf_car_seat.forward_facing_weight_max %}
-        {% assign forward_facing_height_min = product.metafields.sf_car_seat.forward_facing_height_min %}
-        {% assign forward_facing_height_max = product.metafields.sf_car_seat.forward_facing_height_max %}
-        {% assign forward_facing_age_limit = product.metafields.sf_car_seat.forward_facing_age_limit %}
-        {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
-        {% if forward_facing_weight_min and forward_facing_weight_max and forward_facing_height_min and forward_facing_height_max and forward_facing_fit_statement%}
+      {% assign forward_facing_weight_min = product.metafields.sf_car_seat.forward_facing_weight_min %}
+      {% assign forward_facing_weight_max = product.metafields.sf_car_seat.forward_facing_weight_max %}
+      {% assign forward_facing_height_min = product.metafields.sf_car_seat.forward_facing_height_min %}
+      {% assign forward_facing_height_max = product.metafields.sf_car_seat.forward_facing_height_max %}
+      {% assign forward_facing_age_limit = product.metafields.sf_car_seat.forward_facing_age_limit %}
+      {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
+      {% if forward_facing_weight_min
+        and forward_facing_weight_max
+        and forward_facing_height_min
+        and forward_facing_height_max
+        and forward_facing_fit_statement
+      %}
         <div class="left-column-data pdp-child-info">
-         
-            <h3>
-              Forward-Facing Mode
-            </h3>
+          <h3>Forward-Facing Mode</h3>
 
           <!-- <div class="feature_divider"></div> -->
           <div class="flex-row pdp-support">
-              <div class="flex-item-small">
-                <h5>Weight</h5>
-                {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
-              </div>
-              <div class="flex-item-small">
-                <h5>Height</h5>
-                {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
-              </div>
+            <div class="flex-item-small">
+              <h5>Weight</h5>
+              {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
             </div>
             <div class="flex-item-small">
-                {{ forward_facing_fit_statement }}
-              </div>
+              <h5>Height</h5>
+              {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
             </div>
+          </div>
+          <div class="flex-item-small">
+            {{ forward_facing_fit_statement }}
+          </div>
+        </div>
+      {% endif %}
 
-        {% endif %}
-
-    <!-- high back mode for car seat -->
-    {% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
-    {% assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max %}
-    {% assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min %}
-    {% assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max %}
-    {% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
-    {% if high_back_weight_min
-      or high_back_weight_max
-      or high_back_height_min
-      or high_back_height_max
-      and high_back_fit_statement
-    %}
-      <div class="flex-row">
-        <h3 class="h1 heading-underline">High Back Booster Mode</h3>
-      </div>
-      <div class="flex-row pdp-support">
-      {% if high_back_fit_statement %}
-        <div class="flex-item-small">
-          <h3>Weight</h3>
-          {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
+      <!-- high back mode for car seat -->
+      {% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
+      {% assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max %}
+      {% assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min %}
+      {% assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max %}
+      {% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
+      {% if high_back_weight_min
+        or high_back_weight_max
+        or high_back_height_min
+        or high_back_height_max
+        and high_back_fit_statement
+      %}
+        <div class="flex-row">
+          <h3 class="h1 heading-underline">High Back Booster Mode</h3>
         </div>
-       {% endif %}
-        {% if high_back_fit_statement %}
-        <div class="flex-item-small">
-          <h3>Height</h3>
-          {{ high_back_height_min }} - {{ high_back_height_max }} in
+        <div class="flex-row pdp-support">
+          {% if high_back_fit_statement %}
+            <div class="flex-item-small">
+              <h3>Weight</h3>
+              {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
+            </div>
+          {% endif %}
+          {% if high_back_fit_statement %}
+            <div class="flex-item-small">
+              <h3>Height</h3>
+              {{ high_back_height_min }} - {{ high_back_height_max }} in
+            </div>
+          {% endif %}
+          {% if high_back_fit_statement %}
+            <div class="flex-item">
+              {{ high_back_fit_statement }}
+            </div>
+          {% endif %}
         </div>
-       {% endif %}
-        {% if high_back_fit_statement %}
-        <div class="flex-item">
-          {{ high_back_fit_statement }}
-        </div>
-        {% endif %}
-      </div>
-    {% endif %}
-    {% endif %}
-  </div>  
-</section>
+      {% endif %}
+    </div>
+  </section>
 {% endif %}
-      
-
-
-
-
 
 <section class="pdp-support page-width">
   <div>
