@@ -100,16 +100,16 @@
           {% if my_switch == 1 %}
             <strong>Anti Rebound Bar</strong>
           {% endif %}
-      <p>
-            {% if product.metafields.custom.link_support_page %}
-            <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
-          {% endif %}
+          <p>
+            {% if product.metafields.custom.product_support_link %}
+              <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
+            {% endif %}
           </p>
-              <div class="right">
-      {% if product.metafields.custom.link_support_page %}
-        <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
-      {% endif %}
-    </div>
+          <div class="right">
+            {% if product.metafields.custom.product_support_link %}
+              <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
+            {% endif %}
+          </div>
         </div>
       </div>
     {% endif %}
@@ -652,12 +652,11 @@
 
         <div class="flex-item">
           <h3>Use Cases</h3>
-          
-            {%- for tag in use_case %}
-              {{ tag -}}
-              {%- if tag != use_case.last %},{% endif %}
-            {% endfor -%}
-          
+
+          {%- for tag in use_case %}
+            {{ tag -}}
+            {%- if tag != use_case.last %},{% endif %}
+          {% endfor -%}
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
@@ -681,8 +680,8 @@
           <br>
           <p>
             {% if product.metafields.custom.link_support_page %}
-            <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
-          {% endif %}
+              <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
+            {% endif %}
           </p>
         </div>
       </div>
