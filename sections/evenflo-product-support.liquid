@@ -477,17 +477,18 @@
 
     {% endif %}
 
-    <!-- high back mode for car seat -->
-    {% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
-    {% assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max %}
-    {% assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min %}
-    {% assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max %}
-    {% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
-    {% if high_back_weight_min
-      or high_back_weight_max
-      or high_back_height_min
-      or high_back_height_max
-      and high_back_fit_statement
+    <!-- rear facing mode for car seat -->
+    {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
+    {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
+    {% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
+    {% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
+    {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
+    {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
+    {% if rear_facing_weight_min
+      and rear_facing_weight_max
+      and rear_facing_height_min
+      and rear_facing_height_max
+      and rear_facing_fit_statement
     %}
       <div class="flex-row">
         <h3 class="h1 heading-underline">High Back Booster Mode</h3>
