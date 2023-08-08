@@ -10,8 +10,8 @@
     {% endif %}
 
 <section class="pdp-support page-width">
-  
-    
+  <div class="pdp-support__container">
+    <div class="pdp-support__column">
       <h3 class="h1 heading-underline">What's in the box?</h3>
       <div class="pdp-specification-bullet-row">
         <div class="flex-row">
@@ -188,8 +188,8 @@
 
 
       
-    
-
+    </div>
+    </div>
     <div class="flex-row">
           <div class="image">
           {% assign specifications_image = product.metafields.sf_products.specifications_image %}
@@ -204,7 +204,7 @@
 
 <section class="pdp-support page-width">
   <div class="pdp-support__container">
-
+    <div class="pdp-support__column">
 
 `{% if product.type == 'Stroller' or product.type == 'Travel System' %}
         <!-- stroller and travel systems -->
