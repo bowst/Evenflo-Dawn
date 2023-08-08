@@ -164,7 +164,7 @@
 </section>
 
 <section class="pdp-support page-width">
-  
+  <div class="pdp-support__container pdp-support">
     `
     {%- if product.type == 'Stroller' or product.type == 'Travel System' %}
       <!-- stroller and travel systems -->
@@ -476,7 +476,7 @@
       </div>
   </div>
     {% endif %}
-
+</div>
 <!-- rear facing mode for car seat -->
     {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
     {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
