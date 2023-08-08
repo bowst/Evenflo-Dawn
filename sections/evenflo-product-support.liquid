@@ -10,7 +10,7 @@
     {% endif %}
 
 <section class="pdp-support page-width">
-  
+  <div class="pdp-support__container">
     <div class="pdp-support__column">
       <h3 class="h1 heading-underline">What's in the box?</h3>
       <div class="pdp-specification-bullet-row">
@@ -188,7 +188,7 @@
 
 
       
-    
+    </div>
     </div>
     <div class="flex-row">
           <div class="image">
@@ -204,7 +204,7 @@
 
 <section class="pdp-support page-width">
   <div class="pdp-support__container">
-
+    <div class="pdp-support__column">
 
 `{% if product.type == 'Stroller' or product.type == 'Travel System' %}
         <!-- stroller and travel systems -->
@@ -381,9 +381,9 @@
          {% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
          {% assign high_back = product.metafields.sf_car_seat.high_back %}
          {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
-
+         <div class="left-column-data pdp-child-info">
            
-             <h3 class="h1 heading-underline">
+             <h3>
                Car Seat Specifications
              </h3>
 
@@ -483,7 +483,7 @@
                 </div>
               
            </div>
-
+         </div>
          {% endif %}
 
         <!-- rear facing mode for car seat -->
@@ -895,7 +895,7 @@
 
   {% endif %} 
       
-  
+    </div>
 
   </div>
 </section>
