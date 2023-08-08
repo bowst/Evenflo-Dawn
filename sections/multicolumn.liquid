@@ -1,48 +1,6 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.css" type="text/css">
-  <script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
-
-<script>
-  function getCustomerId() {
-  try {
-      let curr = window.ShopifyAnalytics.meta.page.customerId;
-      if (curr !== undefined && curr !== null && curr !== "") {
-      return curr;
-      }
-  } catch(e) { }
-  try {
-      let curr = window.meta.page.customerId;
-      if (curr !== undefined && curr !== null && curr !== "") {
-      return curr;
-      }
-  } catch (e) { }    
-  try {
-      let curr = _st.cid;
-      if (curr !== undefined && curr !== null && curr !== "") {
-      return curr;
-      }
-  } catch (e) { }
-  try {
-      let curr = ShopifyAnalytics.lib.user().traits().uniqToken;
-      if (curr !== undefined && curr !== null && curr !== "") {
-      return curr;
-      }
-  } catch (e) { }
-      return null;
-  }
-  function displayVerification(id) {
-    const customerId = getCustomerId()
-    console.log('customerId: ', customerId);
-    const verificationUrl = 'https://services.sheerid.com/verify/' + id + '/?customer_id=' + customerId;
-    sheerId.loadInModal(
-        verificationUrl, {
-        mobileRedirect: true
-      });
-  };
-</script>
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -75,14 +33,6 @@
         {%- if section.settings.button_label != blank and show_mobile_slider -%}
           <a href="{{ section.settings.button_link }}" class="link underlined-link large-up-hide">
             {{- section.settings.button_label | escape -}}
-          </a>
-        {%- endif -%}
-        {%- if block.settings.discount_verification != blank -%}
-          <a
-            class="link animate-arrow"
-            onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
-          >
-            Verify Status
           </a>
         {%- endif -%}
       </div>
@@ -180,14 +130,6 @@
                     <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a
                   >
                 {%- endif -%}
-                {%- if block.settings.discount_verification != blank -%}
-                  <a
-                    class="link animate-arrow"
-                    onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
-                  >
-                    Verify Status
-                  </a>
-                {%- endif -%}
               </div>
             </div>
           </li>
@@ -232,14 +174,6 @@
           {% endif %}
         >
           {{ section.settings.button_label | escape }}
-        </a>
-      {%- endif -%}
-      {%- if block.settings.discount_verification != blank -%}
-        <a
-          class="link animate-arrow"
-          onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
-        >
-          Verify Status
         </a>
       {%- endif -%}
     </div>
@@ -371,12 +305,6 @@
       "id": "button_label",
       "default": "Button label",
       "label": "t:sections.multicolumn.settings.button_label.label"
-    },
-    {
-      "type": "text",
-      "id": "discount_verification",
-      "label": "Discount Verification",
-      "info": "Sheer ID Verification Code"
     },
     {
       "type": "url",
