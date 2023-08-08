@@ -491,26 +491,20 @@
       and rear_facing_fit_statement
     %}
       <div class="flex-row">
-        <h3 class="h1 heading-underline">High Back Booster Mode</h3>
+        <h3 class="h1 heading-underline">Rear-Facing Mode</h3>
       </div>
       <div class="flex-row pdp-support">
-      {% if high_back_fit_statement %}
-        <div class="flex-item-small">
+        <div class="flex-item-">
           <h3>Weight</h3>
-          {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
+          <p>{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs</p>
         </div>
-       {% endif %}
-        {% if high_back_fit_statement %}
-        <div class="flex-item-small">
-          <h3>Height</h3>
-          {{ high_back_height_min }} - {{ high_back_height_max }} in
-        </div>
-       {% endif %}
-        {% if high_back_fit_statement %}
         <div class="flex-item">
-          {{ high_back_fit_statement }}
+          <h3>Height</h3>
+          {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
         </div>
-        {% endif %}
+        <div class="flex-item">
+          {{ rear_facing_fit_statement }}
+        </div>
       </div>
 
     {% endif %}
