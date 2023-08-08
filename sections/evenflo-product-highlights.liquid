@@ -100,6 +100,11 @@
           {% if my_switch == 1 %}
             <strong>Anti Rebound Bar</strong>
           {% endif %}
+      <p>
+            {% if product.metafields.custom.link_support_page %}
+            <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
+          {% endif %}
+          </p>
         </div>
       </div>
     {% endif %}
@@ -642,26 +647,26 @@
 
         <div class="flex-item">
           <h3>Use Cases</h3>
-          <strong>
+          
             {%- for tag in use_case %}
               {{ tag -}}
               {%- if tag != use_case.last %},{% endif %}
             {% endfor -%}
-          </strong>
+          
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Opening Size Min</strong>
+          <strong>Opening Size Min:</strong>
           {{ min_opening_size }} in<br>
-          <strong>Opening Size Max</strong>
+          <strong>Opening Size Max:</strong>
           {{ max_opening_size }} in <br>
-          <strong>Mount Type</strong>
+          <strong>Mount Type:</strong>
           {% for tag in my_tags %}
             {{ tag -}}
             {%- if tag != my_tags.last %},{% endif %}
           {% endfor %}
           <br>
-          <strong>Hardware Included</strong>
+          <strong>Hardware Included:</strong>
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
           {% if gate_hardware == 1 %}
             Yes
@@ -671,8 +676,8 @@
           <br>
           <p>
             {% if product.metafields.custom.link_support_page %}
-        <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
-      {% endif %}
+            <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
+          {% endif %}
           </p>
         </div>
       </div>
