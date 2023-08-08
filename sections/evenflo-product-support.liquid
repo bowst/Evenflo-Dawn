@@ -227,7 +227,7 @@
           <div class="panel">
             <div class="row">
               <div class="five columns">
-                <h5>Self Standing</h5>
+                <h3>Self Standing</h3>
                 {% if self_standing_fold == 1 %}
                   Yes
                 {% else %}
@@ -235,7 +235,7 @@
                 {% endif %}
               </div>
               <div class="five columns">
-                <h5>UPF 50+ Sun Protection Canopy</h5>
+                <h3>UPF 50+ Sun Protection Canopy</h3>
                 {% if upf_50_sun_protection_canopy == 1 %}
                   Yes
                 {% else %}
@@ -243,7 +243,7 @@
                 {% endif %}
               </div>
               <div class="five columns">
-                <h5>Accepts Rider Board</h5>
+                <h3>Accepts Rider Board</h3>
                 {% if accepts_rider_board == 1 %}
                   Yes
                 {% else %}
@@ -254,12 +254,12 @@
             <div class="row">
               {% if number_of_cup_holders %}
               <div class="five columns">
-                <h5>Number of Cup Holders</h5>
+                <h3>Number of Cup Holders</h3>
                 {{ number_of_cup_holders }}
               </div>
               {% endif %}
               <div class="five columns">
-                <h5>Single to Double Capable</h5>
+                <h3>Single to Double Capable</h3>
                 {% if single_to_double_capable == 1 %}
                   Yes
                 {% else %}
@@ -269,7 +269,7 @@
             </div>
             <div class="row">
               <div class="five columns">
-                <h5>Lockable Front Wheels</h5>
+                <h3>Lockable Front Wheels</h3>
                 {% if lockable_front_wheels == 1 %}
                   Yes
                 {% else %}
@@ -277,7 +277,7 @@
                 {% endif %}
               </div>
               <div class="five columns">
-                <h5>Accepts Infant Car Seat</h5>
+                <h3>Accepts Infant Car Seat</h3>
                 {% if accepts_infant_car_seat == 1 %}
                   Yes
                 {% else %}
@@ -288,19 +288,19 @@
             <div class="row">
               {% if number_of_height_modes %}
               <div class="five columns">
-                <h5>Number of Height Modes</h5>
+                <h3>Number of Height Modes</h3>
                 {{ number_of_height_modes }}
               </div>
               {% endif %}
               {% if wheel_material %}
               <div class="five columns">
-                <h5>Wheel Material</h5>
+                <h3>Wheel Material</h3>
                 {{ wheel_material }}
               </div>
               {% endif %}
               {% if stroller_type %}
               <div class="five columns">
-                <h5>Stroller Type</h5>
+                <h3>Stroller Type</h3>
                 {{ stroller_type }}
               </div>
               {% endif %}
@@ -329,15 +329,15 @@
           <div class="panel">
             <div class="row">
               <div class="five columns">
-                <h5>Opening Size Min</h5>
+                <h3>Opening Size Min</h3>
                 {{ min_opening_size }} inches
               </div>
               <div class="five columns">
-                <h5>Opening Size Max</h5>
+                <h3>Opening Size Max</h3>
                 {{ max_opening_size }} inches
               </div>
               <div class="five columns">
-                <h5>Mount Type</h5>
+                <h3>Mount Type</h3>
                 {% for tag in my_tags %}
                 {{ tag }}{% if tag != my_tags.last %},{% endif %}
                 {% endfor %}
@@ -345,17 +345,17 @@
             </div>
             <div class="row">
               <div class="five columns">
-                <h5>Opening Type</h5>
+                <h3>Opening Type</h3>
                 {{ opening_type }}
               </div>
               <div class="five columns">
-                <h5>Use Cases</h5>
+                <h3>Use Cases</h3>
                 {% for tag in use_case %}
                 {{ tag }}{% if tag != use_case.last %},{% endif %}
                 {% endfor %}
               </div>
               <div class="five columns">
-                <h5>Walk-Thru Door</h5>
+                <h3>Walk-Thru Door</h3>
                 {%if my_switch == 1%}
                   Yes
                   {% else %}
@@ -391,7 +391,7 @@
            <div class="flex-row">
               
                 <div class="flex-item-small">
-                  <h5>Steel Reinforced</h5>
+                  <h3>Steel Reinforced</h3>
                   {% if steel_reinforced == 1 %}
                     Yes
                   {% else %}
@@ -399,7 +399,7 @@
                   {% endif %}
                 </div>
                <div class="flex-item-small">
-                  <h5>Bubble Level</h5>
+                  <h3>Bubble Level</h3>
                   {% if bubble_level == 1 %}
                     Yes
                   {% else %}
@@ -407,7 +407,7 @@
                   {% endif %}
                 </div>
                 <div class="flex-item-small">
-                  <h5>Harness Covers</h5>
+                  <h3>Harness Covers</h3>
                   {% if harness_covers == 1 %}
                     Yes
                   {% else %}
@@ -417,7 +417,7 @@
              
               
                 <div class="flex-item-small">
-                  <h5>Latch Install</h5>
+                  <h3>Latch Install</h3>
                   {% if latch_install == 1 %}
                     Yes
                   {% else %}
@@ -425,7 +425,7 @@
                   {% endif %}
                 </div>
                 <div class="flex-item-small">
-                  <h5>Lightweight</h5>
+                  <h3>Lightweight</h3>
                   {% if lightweight == 1 %}
                     Yes
                   {% else %}
@@ -433,7 +433,7 @@
                   {% endif %}
                 </div>
                 <div class="flex-item-small">
-                  <h5>No Rethread Harness</h5>
+                  <h3>No Rethread Harness</h3>
                   {% if no_rethread_harness == 1 %}
                     Yes
                   {% else %}
@@ -441,7 +441,7 @@
                   {% endif %}
                 </div>
               <div class="flex-item-small">
-                  <h5>Side Impact Protection</h5>
+                  <h3>Side Impact Protection</h3>
                   {% if side_impact_protection == 1 %}
                     Yes
                   {% else %}
@@ -449,7 +449,7 @@
                   {% endif %}
                 </div>
                 <div class="flex-item-small">
-                  <h5>Anti-Rebound Bar</h5>
+                  <h3>Anti-Rebound Bar</h3>
                   {% if anti_rebound_bar == 1 %}
                     Yes
                   {% else %}
@@ -457,7 +457,7 @@
                   {% endif %}
                 </div>
                 <div class="flex-item-small">
-                  <h5>Converts to No Back Booster</h5>
+                  <h3>Converts to No Back Booster</h3>
                   {% if converts_to_no_back_booster == 1 %}
                     Yes
                   {% else %}
@@ -466,7 +466,7 @@
                 </div>
               <div class="flex-item-small">
                 
-                  <h5>High Back</h5>
+                  <h3>High Back</h3>
                   {% if high_back == 1 %}
                     Yes
                   {% else %}
@@ -474,7 +474,7 @@
                   {% endif %}
                 </div>
                 <div class="flex-item-small">
-                  <h5>Has Harness Booster Mode</h5>
+                  <h3>Has Harness Booster Mode</h3>
                   {% if has_harness_booster_mode == 1 %}
                     Yes
                   {% else %}
@@ -504,11 +504,11 @@
           <div class="panel">
             <div class="row">
               <div class="five columns">
-                <h5>Weight</h5>
+                <h3>Weight</h3>
                 {{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs
               </div>
               <div class="five columns">
-                <h5>Height</h5>
+                <h3>Height</h3>
                 {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
               </div>
 
@@ -540,11 +540,11 @@
           <div class="panel">
             <div class="row">
               <div class="five columns">
-                <h5>Weight</h5>
+                <h3>Weight</h3>
                 {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
               </div>
               <div class="five columns">
-                <h5>Height</h5>
+                <h3>Height</h3>
                 {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
               </div>
             </div>
@@ -575,11 +575,11 @@
           <div class="panel">
             <div class="row">
               <div class="five columns">
-                <h5>Weight</h5>
+                <h3>Weight</h3>
                 {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
               </div>
               <div class="five columns">
-                <h5>Height</h5>
+                <h3>Height</h3>
                 {{ high_back_height_min }} - {{ high_back_height_max }} in
               </div>
               <div class="five columns">
@@ -611,11 +611,11 @@
           <div class="panel">
             <div class="row">
               <div class="five columns">
-                <h5>Weight</h5>
+                <h3>Weight</h3>
                 {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
               </div>
               <div class="five columns">
-                <h5>Height</h5>
+                <h3>Height</h3>
                 {{ no_back_height_min }} - {{ no_back_height_max }} in
               </div>
               <div class="five columns">
@@ -650,7 +650,7 @@
           <div class="panel">
             <div class="row">
               <div class="five columns">
-                <h5>Bassinet Insert</h5>
+                <h3>Bassinet Insert</h3>
                 {%if bassinet_insert == 1 %}
                   Yes
                   {% else %}
@@ -658,7 +658,7 @@
                   {% endif %}
               </div>
               <div class="five columns">
-                <h5>Built for Travel</h5>
+                <h3>Built for Travel</h3>
                 {%if built_for_travel == 1 %}
                   Yes
                   {% else %}
@@ -666,7 +666,7 @@
                   {% endif %}
               </div>
               <div class="five columns">
-                <h5>Canopy </h5>
+                <h3>Canopy </h3>
                   {% for tag in canopy_overview %}
                     {{ tag }}{% if tag != canopy_overview.last %},{% endif %}
                   {% endfor %}
@@ -675,7 +675,7 @@
 
             <div class="row">
               <div class="five columns">
-                <h5>Diaper Changing Station</h5>
+                <h3>Diaper Changing Station</h3>
                 {%if changing_station == 1 %}
                   Yes
                   {% else %}
@@ -683,7 +683,7 @@
                   {% endif %}
               </div>
               <div class="five columns">
-                <h5>Extra Storage</h5>
+                <h3>Extra Storage</h3>
                 {%if extra_storage == 1 %}
                   Yes
                   {% else %}
@@ -691,7 +691,7 @@
                   {% endif %}
               </div>
               <div class="five columns">
-                <h5>Tablet Holder </h5>
+                <h3>Tablet Holder </h3>
                 {%if tablet_holder == 1 %}
                   Yes
                   {% else %}
@@ -701,7 +701,7 @@
             </div>
             <div class="row">
               <div class="five columns">
-                <h5>Toys/Entertainment</h5>
+                <h3>Toys/Entertainment</h3>
                 {% for tag in toys_entertainment %}
                     {{ tag }}{% if tag != toys_entertainment.last %},{% endif %}
                     {% endfor %}
@@ -735,7 +735,7 @@
     <div class="panel">
       <div class="row">
         <div class="five columns">
-          <h5>Fold Flat</h5>
+          <h3>Fold Flat</h3>
           {%if fold_flat_capable == 1 %}
             Yes
             {% else %}
@@ -743,7 +743,7 @@
             {% endif %}
         </div>
         <div class="five columns">
-          <h5>Height Adjustable</h5>
+          <h3>Height Adjustable</h3>
           {%if height_adjustable == 1 %}
             Yes
             {% else %}
@@ -751,7 +751,7 @@
             {% endif %}
         </div>
         <div class="five columns">
-          <h5> One hand Tray</h5>
+          <h3> One hand Tray</h3>
           {%if one_hand_tray == 1 %}
             Yes
             {% else %}
@@ -761,7 +761,7 @@
       </div>
       <div class="row">
         <div class="sixteen columns">
-          <h5>Cleaning</h5>
+          <h3>Cleaning</h3>
           {{ cleaning }}
         </div>
       </div>
@@ -792,7 +792,7 @@
             <div class="feature_divider"></div>
             <div class="row">
               <div class="five columns">
-                <h5>Weight</h5>
+                <h3>Weight</h3>
                 {% if child_weight_min_value %}
                 {{ child_weight_min_value }} -
                 {% endif %}
@@ -801,7 +801,7 @@
                 {% endif %}
               </div>
               <div class="five columns">
-                <h5>Height</h5>
+                <h3>Height</h3>
                 {% if child_height_min_value %}
                   {{ child_height_min_value }} -
                 {% endif %}
@@ -810,7 +810,7 @@
                 {% endif %}
               </div>
               <div class="five columns">
-                <h5>Minimum Age</h5>
+                <h3>Minimum Age</h3>
                 {% if child_age_min_value %}
                   {{ child_age_min_value }}
                 {% endif %}
@@ -827,7 +827,7 @@
             <div class="panel">
               <div class="row">
                 <div class="five columns">
-                  <h5>Battery Required</h5>
+                  <h3>Battery Required</h3>
                   {%if batteries_required_bassinet == 1 %}
                   Yes
                   {% else %}
@@ -838,7 +838,7 @@
                 {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
                 {% if battery_cell_type %}
                   <div class="five columns">
-                    <h5>Battery Type</h5>
+                    <h3>Battery Type</h3>
                     {{ toy_battery_cell_type }}
                   </div>
                 {% endif %}
@@ -846,7 +846,7 @@
 
 
                   <div class="five columns">
-                    <h5>Number of Height Modes</h5>
+                    <h3>Number of Height Modes</h3>
                     {% if number_of_height_modes != null and number_of_height_modes != "" %}
                     {{ number_of_height_modes }}
                     {% else %}
@@ -856,7 +856,7 @@
 
                 <div class="row">
                   <div class="sixteen columns">
-                    <h5>Toys</h5>
+                    <h3>Toys</h3>
                     {% for tag in electronic_toys_features %}
                     {{ tag }}{% if tag != electronic_toys_features.last %},{% endif %}
                     {% endfor %}
@@ -869,7 +869,7 @@
               <div class="row">
                 {% if tablet_holder == 1 %}
                   <div class="five columns">
-                    <h5>Tablet Holder</h5>
+                    <h3>Tablet Holder</h3>
                     Yes
                   </div>
                 {% endif %}
@@ -877,7 +877,7 @@
               {% if toys_entertainment %}
                 <div class="row">
                   <div class="sixteen columns">
-                    <h5>Toys</h5>
+                    <h3>Toys</h3>
                     {{ toys_entertainment }}
                   </div>
                 </div>
@@ -885,7 +885,7 @@
 
                 <div class="row">
                   <div class="sixteen columns">
-                    <h5>Number of Height Modes</h5>
+                    <h3>Number of Height Modes</h3>
                     {{ number_of_height_modes }}
                   </div>
                 </div>
