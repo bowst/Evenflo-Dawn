@@ -173,46 +173,50 @@
         "custom_css": ""
       }
     },
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e": {
-      "type": "evenflo-image-with-text",
-      "disabled": true,
+    "b44cb27a-3c79-4c8d-bd92-5da11075a609": {
+      "type": "multicolumn",
       "blocks": {
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0": {
-          "type": "heading",
+        "template--15826397069468__b44cb27a-3c79-4c8d-bd92-5da11075a609-column-1": {
+          "type": "column",
           "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
+            "image": "shopify:\/\/shop_images\/Extend-CleanCover.png",
+            "title": "",
+            "text": "",
+            "link_label": "Shop Now",
+            "link": "shopify:\/\/products\/revolve360-slim-swivel-convertible-car-seat-quick-clean-cover",
+            "discount_verification": ""
           }
         },
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1": {
-          "type": "text",
+        "template--15826397069468__b44cb27a-3c79-4c8d-bd92-5da11075a609-column-2": {
+          "type": "column",
           "settings": {
+            "image": "shopify:\/\/shop_images\/360-extend-Sensorsafe.png",
+            "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
-          }
-        },
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-2": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": ""
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
           }
         }
       },
       "block_order": [
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0",
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1",
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-2"
+        "template--15826397069468__b44cb27a-3c79-4c8d-bd92-5da11075a609-column-1",
+        "template--15826397069468__b44cb27a-3c79-4c8d-bd92-5da11075a609-column-2"
       ],
       "settings": {
-        "height": "adapt",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
+        "title": "Choose Your Extend",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "Button label",
+        "discount_verification": "",
+        "button_link": "",
         "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -226,6 +230,6 @@
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
     "6bb51026-ccbd-4604-8669-add5ff4b5ad5",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e"
+    "b44cb27a-3c79-4c8d-bd92-5da11075a609"
   ]
 }
