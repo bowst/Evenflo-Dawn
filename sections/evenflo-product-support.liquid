@@ -493,30 +493,27 @@
         {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
         {% if forward_facing_weight_min and forward_facing_weight_max and forward_facing_height_min and forward_facing_height_max and forward_facing_fit_statement%}
         <div class="left-column-data pdp-child-info">
-          <button class='accordion'>
+         
             <h3>
               Forward-Facing Mode
             </h3>
-          </button>
+
           <!-- <div class="feature_divider"></div> -->
-          <div class="panel">
-            <div class="row">
-              <div class="five columns">
+          <div class="flex-row pdp-support">
+              <div class="flex-item-small">
                 <h5>Weight</h5>
                 {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
               </div>
-              <div class="five columns">
+              <div class="flex-item-small">
                 <h5>Height</h5>
                 {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
               </div>
             </div>
-            <div class="row">
-              <div class="sixteen columns">
+            <div class="flex-item-small">
                 {{ forward_facing_fit_statement }}
               </div>
             </div>
-          </div>
-        </div>
+
         {% endif %}
 
     <!-- high back mode for car seat -->
