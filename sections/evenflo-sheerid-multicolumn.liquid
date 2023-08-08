@@ -184,8 +184,8 @@
                 {%- if block.settings.discount_verification != blank -%}
                   <a
                     class="link animate-arrow"
-                    onclick="(e) => e.preventDefault(); displayVerification('{{ block.settings.discount_verification | escape }}')"
-                    href="#"
+                    onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
+                    style="cursor: pointer;"
                   >
                     Verify Status
                   </a>
