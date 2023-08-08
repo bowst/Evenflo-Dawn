@@ -331,11 +331,12 @@
 </section>
   {% endif %} 
 
+{% if product.type contains 'Car Seat' %}
  <section class="pdp-support page-width">
   <div class="pdp-support__container pdp-support">   
 <!-- car seat specifications -->
     
-    {% if product.type contains 'Car Seat' %}
+    
       {% assign steel_reinforced = product.metafields.sf_car_seat.steel_reinforced %}
       {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
       {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
@@ -447,9 +448,10 @@
         </div>
       
       </div>
-      {% endif %}
+      
   </div>  
 </section>
+{% endif %}
       
 <section class="pdp-support page-width">
   <div class="pdp-support__container pdp-support">
