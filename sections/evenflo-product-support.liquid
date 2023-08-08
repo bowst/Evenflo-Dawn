@@ -222,10 +222,10 @@
 </section>
 {% endif %}
             
-
+{%- if product.type == 'Stroller' or product.type == 'Travel System' %}
 <section class="pdp-support page-width">
   <div class="pdp-support__container pdp-support">
-    `{%- if product.type == 'Stroller' or product.type == 'Travel System' %}
+    `
       <!-- stroller and travel systems -->
       {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
       {% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
@@ -326,10 +326,10 @@
           </div>
         
       {% endif %}
-    {% endif %}
+
   </div>  
 </section>
-    
+  {% endif %}  
  <section class="pdp-support page-width">
   <div class="pdp-support__container pdp-support">   
 <!-- car seat specifications -->
