@@ -269,6 +269,7 @@
     {% endif %}
     
 <!-- car seat specifications -->
+    <div class="pdp-support__container pdp-support">
     {% if product.type contains 'Car Seat' %}
       {% assign steel_reinforced = product.metafields.sf_car_seat.steel_reinforced %}
       {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
@@ -448,7 +449,7 @@
         </div>
         {% endif %}
       </div>
-
+    </div>
     {% endif %}
     {% endif %}
 
