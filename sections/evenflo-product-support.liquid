@@ -184,7 +184,7 @@
           <!-- <div class="feature_divider"></div> -->
           <div class="panel">
             <div class="row">
-              <div class="five columns">
+              <div class="flex-item-small">
                 <h4>Self Standing</h4>
                 {% if self_standing_fold == 1 %}
                   Yes
@@ -192,7 +192,7 @@
                   No
                 {% endif %}
               </div>
-              <div class="five columns">
+              <div class="flex-item-small">
                 <h3>UPF 50+ Sun Protection Canopy</h3>
                 {% if upf_50_sun_protection_canopy == 1 %}
                   Yes
@@ -200,7 +200,7 @@
                   No
                 {% endif %}
               </div>
-              <div class="five columns">
+              <div class="flex-item-small">
                 <h3>Accepts Rider Board</h3>
                 {% if accepts_rider_board == 1 %}
                   Yes
@@ -211,12 +211,12 @@
             </div>
             <div class="row">
               {% if number_of_cup_holders %}
-                <div class="five columns">
+                <div class="flex-item-small">
                   <h3>Number of Cup Holders</h3>
                   {{ number_of_cup_holders }}
                 </div>
               {% endif %}
-              <div class="five columns">
+              <div class="flex-item-small">
                 <h3>Single to Double Capable</h3>
                 {% if single_to_double_capable == 1 %}
                   Yes
@@ -226,7 +226,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="five columns">
+              <div class="flex-item-small">
                 <h3>Lockable Front Wheels</h3>
                 {% if lockable_front_wheels == 1 %}
                   Yes
@@ -234,7 +234,7 @@
                   No
                 {% endif %}
               </div>
-              <div class="five columns">
+              <div class="flex-item-small">
                 <h3>Accepts Infant Car Seat</h3>
                 {% if accepts_infant_car_seat == 1 %}
                   Yes
@@ -245,19 +245,19 @@
             </div>
             <div class="row">
               {% if number_of_height_modes %}
-                <div class="five columns">
+                <div class="flex-item-small">
                   <h3>Number of Height Modes</h3>
                   {{ number_of_height_modes }}
                 </div>
               {% endif %}
               {% if wheel_material %}
-                <div class="five columns">
+                <div class="flex-item-small">
                   <h3>Wheel Material</h3>
                   {{ wheel_material }}
                 </div>
               {% endif %}
               {% if stroller_type %}
-                <div class="five columns">
+                <div class="flex-item-small">
                   <h3>Stroller Type</h3>
                   {{ stroller_type }}
                 </div>
@@ -450,24 +450,22 @@
       and rear_facing_height_max
       and rear_facing_fit_statement
     %}
-      <h3 class="h1 heading-underline">Rear-Facing Mode</h3>
+      <div class="flex-row">
+        <h3 class="h1 heading-underline">Rear-Facing Mode</h3>
+      </div>
 
       <!-- <div class="feature_divider"></div> -->
-      <div class="panel">
-        <div class="row">
-          <div class="five columns">
-            <h3>Weight</h3>
-            {{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs
-          </div>
-          <div class="five columns">
-            <h3>Height</h3>
-            {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
-          </div>
+      <div class="flex-row pdp-support">
+        <div class="flex-item-small">
+          <h3>Weight</h3>
+          {{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs
         </div>
-        <div class="row">
-          <div class="sixteen columns">
-            {{ rear_facing_fit_statement }}
-          </div>
+        <div class="flex-item-small">
+          <h3>Height</h3>
+          {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
+        </div>
+        <div class="flex-item-small">
+          {{ rear_facing_fit_statement }}
         </div>
       </div>
     {% endif %}
@@ -485,24 +483,23 @@
       and forward_facing_height_max
       and forward_facing_fit_statement
     %}
-      <h3 class="h1 heading-underline">Forward-Facing Mode</h3>
+      <div class="flex-row">
+        <h3 class="h1 heading-underline">Forward-Facing Mode</h3>
+      </div>
 
       <!-- <div class="feature_divider"></div> -->
-      <div class="panel">
-        <div class="row">
-          <div class="five columns">
-            <h3>Weight</h3>
-            {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
-          </div>
-          <div class="five columns">
-            <h3>Height</h3>
-            {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
-          </div>
+
+      <div class="flex-row pdp-support">
+        <div class="flex-item-small">
+          <h3>Weight</h3>
+          {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
         </div>
-        <div class="row">
-          <div class="sixteen columns">
-            {{ forward_facing_fit_statement }}
-          </div>
+        <div class="flex-item-small">
+          <h3>Height</h3>
+          {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
+        </div>
+        <div class="flex-item-small">
+          {{ forward_facing_fit_statement }}
         </div>
       </div>
     {% endif %}
@@ -522,22 +519,18 @@
       <h3 class="h1 heading-underline">High Back Booster Mode</h3>
 
       <!-- <div class="feature_divider"></div> -->
-      <div class="panel">
-        <div class="row">
-          <div class="five columns">
-            <h3>Weight</h3>
-            {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
-          </div>
-          <div class="five columns">
-            <h3>Height</h3>
-            {{ high_back_height_min }} - {{ high_back_height_max }} in
-          </div>
-          <div class="five columns"></div>
+      <div class="flex-row">
+        <div class="flex-item-small">
+          <h3>Weight</h3>
+          {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
         </div>
-        <div class="row">
-          <div class="sixteen columns">
-            {{ high_back_fit_statement }}
-          </div>
+        <div class="flex-item-small">
+          <h3>Height</h3>
+          {{ high_back_height_min }} - {{ high_back_height_max }} in
+        </div>
+
+        <div class="flex-item-small">
+          {{ high_back_fit_statement }}
         </div>
       </div>
     {% endif %}
@@ -557,23 +550,17 @@
       <h3 class="h1 heading-underline">No Back Booster Mode</h3>
 
       <!-- <div class="feature_divider"></div> -->
-      <div class="panel">
-        <div class="row">
-          <div class="five columns">
-            <h3>Weight</h3>
-            {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
-          </div>
-          <div class="five columns">
-            <h3>Height</h3>
-            {{ no_back_height_min }} - {{ no_back_height_max }} in
-          </div>
-          <div class="five columns"></div>
-        </div>
-        <div class="row">
-          <div class="sixteen columns">
-            {{ no_back_fit_statement }}
-          </div>
-        </div>
+
+      <div class="flex-item-small">
+        <h3>Weight</h3>
+        {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
+      </div>
+      <div class="flex-item-small">
+        <h3>Height</h3>
+        {{ no_back_height_min }} - {{ no_back_height_max }} in
+      </div>
+      <div class="flex-item-small">
+        {{ no_back_fit_statement }}
       </div>
     {% endif %}
     <!-- Playard Specifications -->
@@ -592,7 +579,7 @@
         <!-- <div class="feature_divider"></div> -->
         <div class="panel">
           <div class="row">
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Bassinet Insert</h3>
               {% if bassinet_insert == 1 %}
                 Yes
@@ -600,7 +587,7 @@
                 No
               {% endif %}
             </div>
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Built for Travel</h3>
               {% if built_for_travel == 1 %}
                 Yes
@@ -608,7 +595,7 @@
                 No
               {% endif %}
             </div>
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Canopy</h3>
               {% for tag in canopy_overview %}
                 {{ tag -}}
@@ -618,7 +605,7 @@
           </div>
 
           <div class="row">
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Diaper Changing Station</h3>
               {% if changing_station == 1 %}
                 Yes
@@ -626,7 +613,7 @@
                 No
               {% endif %}
             </div>
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Extra Storage</h3>
               {% if extra_storage == 1 %}
                 Yes
@@ -634,7 +621,7 @@
                 No
               {% endif %}
             </div>
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Tablet Holder</h3>
               {% if tablet_holder == 1 %}
                 Yes
@@ -644,7 +631,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Toys/Entertainment</h3>
               {% for tag in toys_entertainment %}
                 {{ tag -}}
@@ -671,7 +658,7 @@
         <!-- <div class="feature_divider"></div> -->
         <div class="panel">
           <div class="row">
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Fold Flat</h3>
               {% if fold_flat_capable == 1 %}
                 Yes
@@ -679,7 +666,7 @@
                 No
               {% endif %}
             </div>
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Height Adjustable</h3>
               {% if height_adjustable == 1 %}
                 Yes
@@ -687,7 +674,7 @@
                 No
               {% endif %}
             </div>
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>One hand Tray</h3>
               {% if one_hand_tray == 1 %}
                 Yes
@@ -727,7 +714,7 @@
         <h3>Child Fit</h3>
         <div class="feature_divider"></div>
         <div class="row">
-          <div class="five columns">
+          <div class="flex-item-small">
             <h3>Weight</h3>
             {% if child_weight_min_value %}
               {{ child_weight_min_value }} -
@@ -736,7 +723,7 @@
               {{ child_weight_max_value }} lbs
             {% endif %}
           </div>
-          <div class="five columns">
+          <div class="flex-item-small">
             <h3>Height</h3>
             {% if child_height_min_value %}
               {{ child_height_min_value }} -
@@ -745,7 +732,7 @@
               {{ child_height_max_value }} in
             {% endif %}
           </div>
-          <div class="five columns">
+          <div class="flex-item-small">
             <h3>Minimum Age</h3>
             {% if child_age_min_value %}
               {{ child_age_min_value }}
@@ -759,7 +746,7 @@
 
         <div class="panel">
           <div class="row">
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Battery Required</h3>
               {% if batteries_required_bassinet == 1 %}
                 Yes
@@ -770,14 +757,14 @@
             {% if batteries_required_bassinet == 1 %}
               {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
               {% if battery_cell_type %}
-                <div class="five columns">
+                <div class="flex-item-small">
                   <h3>Battery Type</h3>
                   {{ toy_battery_cell_type }}
                 </div>
               {% endif %}
             {% endif %}
 
-            <div class="five columns">
+            <div class="flex-item-small">
               <h3>Number of Height Modes</h3>
               {% if number_of_height_modes != null and number_of_height_modes != '' %}
                 {{ number_of_height_modes }}
@@ -801,7 +788,7 @@
         <div class="panel">
           <div class="row">
             {% if tablet_holder == 1 %}
-              <div class="five columns">
+              <div class="flex-item-small">
                 <h3>Tablet Holder</h3>
                 Yes
               </div>
