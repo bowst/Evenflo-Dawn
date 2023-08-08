@@ -523,27 +523,29 @@
           or high_back_height_max
           and high_back_fit_statement
         %}
-          <div class="flex-row">
-            <h3 class="h1 heading-underline">High Back Booster Mode</h3>
-          </div>
-          <div class="flex-row pdp-support">
-            {% if high_back_fit_statement %}
-              <div class="flex-item-small">
-                <h3>Weight</h3>
-                {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
-              </div>
-            {% endif %}
-            {% if high_back_fit_statement %}
-              <div class="flex-item-small">
-                <h3>Height</h3>
-                {{ high_back_height_min }} - {{ high_back_height_max }} in
-              </div>
-            {% endif %}
-            {% if high_back_fit_statement %}
-              <div class="flex-item">
-                {{ high_back_fit_statement }}
-              </div>
-            {% endif %}
+          <div class="flex-item">
+            <div class="flex-row">
+              <h3 class="h1 heading-underline">High Back Booster Mode</h3>
+            </div>
+            <div class="flex-row pdp-support">
+              {% if high_back_fit_statement %}
+                <div class="flex-item-small">
+                  <h3>Weight</h3>
+                  {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
+                </div>
+              {% endif %}
+              {% if high_back_fit_statement %}
+                <div class="flex-item-small">
+                  <h3>Height</h3>
+                  {{ high_back_height_min }} - {{ high_back_height_max }} in
+                </div>
+              {% endif %}
+              {% if high_back_fit_statement %}
+                <div class="flex-item">
+                  {{ high_back_fit_statement }}
+                </div>
+              {% endif %}
+            </div>
           </div>
         {% endif %}
       </div>
