@@ -28,10 +28,15 @@
           "settings": {
           }
         },
+        "17db0a17-b1eb-40e8-8c1e-ebb5ce651290": {
+          "type": "description",
+          "settings": {
+          }
+        },
         "7d3fc713-88b9-40d6-9efb-49d04063c8f2": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign user_manual_value = product.metafields.sf_products.manual %}\n              {% assign user_manual_french_value = product.metafields.sf_products.manual_french %}\n              {% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}\n    \n              {% if user_manual_value %}\n                <a class=\"button\" href=\"{{ user_manual_value }}\">Download Manual (en)<\/a>\n              {% endif %}\n    \n              {% if user_manual_french_value %}\n                <a class=\"button\" href=\"{{ user_manual_french_value }}\">Download Manual (fr)<\/a>\n              {% endif %}\n    \n              {% if user_manual_spanish_value %}\n                <a class=\"button\" href=\"{{ user_manual_spanish_value }}\">Download Manual (es)<\/a>\n              {% endif %}"
+            "custom_liquid": "{% assign user_manual_value = product.metafields.sf_products.manual %}\n              {% assign user_manual_french_value = product.metafields.sf_products.manual_french %}\n              {% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}\n    \n              {% if user_manual_value %}\n                <a class=\"\" href=\"{{ user_manual_value }}\">Download Manual (en)<\/a><br>\n              {% endif %}\n    \n              {% if user_manual_french_value %}\n                <a class=\"\" href=\"{{ user_manual_french_value }}\">Download Manual (fr)<\/a><br>\n              {% endif %}\n    \n              {% if user_manual_spanish_value %}\n                <a class=\"\" href=\"{{ user_manual_spanish_value }}\">Download Manual (es)<\/a>\n              {% endif %}"
           }
         }
       },
@@ -40,6 +45,7 @@
         "title",
         "333ce9dc-b67c-488e-9229-c10a4d8f0955",
         "quantity_selector",
+        "17db0a17-b1eb-40e8-8c1e-ebb5ce651290",
         "7d3fc713-88b9-40d6-9efb-49d04063c8f2"
       ],
       "settings": {
@@ -55,6 +61,24 @@
         "enable_video_looping": false,
         "padding_top": 44,
         "padding_bottom": 0
+      }
+    },
+    "0a42f2ea-4e18-47d4-8b84-0fe650baeb9b": {
+      "type": "divider",
+      "settings": {
+        "divider_spacing": 20,
+        "divider_border": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "87437c95-0f2b-44b6-b729-adef33a4c10b": {
+      "type": "evenflo-parentlink",
+      "disabled": true,
+      "settings": {
+        "heading": "Supported By",
+        "left_content": "Phone",
+        "right_content": "Email"
       }
     },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
@@ -129,6 +153,7 @@
     },
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
       "type": "evenflo-quote",
+      "disabled": true,
       "settings": {
         "quote": "",
         "name": ""
@@ -136,13 +161,23 @@
     },
     "9adb2758-2d5c-4139-9b64-f467fa96e825": {
       "type": "evenflo-faq",
+      "disabled": true,
       "settings": {
         "number_of_faq": 5
+      }
+    },
+    "41906093-eee6-46f4-9a23-468b17fd3615": {
+      "type": "evenflo-full-width",
+      "settings": {
+        "heading": "{{ product.title }}",
+        "content": ""
       }
     }
   },
   "order": [
     "main",
+    "0a42f2ea-4e18-47d4-8b84-0fe650baeb9b",
+    "87437c95-0f2b-44b6-b729-adef33a4c10b",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "4600ac99-da69-454a-a56c-0fae1b682f2e",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
@@ -152,6 +187,7 @@
     "45849377-4cee-48de-b8f8-52fd115e29b4",
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
-    "9adb2758-2d5c-4139-9b64-f467fa96e825"
+    "9adb2758-2d5c-4139-9b64-f467fa96e825",
+    "41906093-eee6-46f4-9a23-468b17fd3615"
   ]
 }
