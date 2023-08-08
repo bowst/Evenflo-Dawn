@@ -37,7 +37,7 @@
         "76143d3c-48ec-4288-9eb7-b75885b0c83d": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign pdp_url = product.metafields.custom.pdp_page_link_from_support.url %}\n\n<a href=\"{{ pdp_url }}\" class=\"button\">Return to Product<\/a><br>"
+            "custom_liquid": "{% assign pdp_url = product.metafields.custom.pdp_page_link_from_support.value.url %}\n<a href=\"{{ pdp_url }}\" class=\"button\">Return to Product<\/a><br>"
           }
         },
         "7d3fc713-88b9-40d6-9efb-49d04063c8f2": {
