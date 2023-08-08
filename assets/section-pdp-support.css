@@ -15,11 +15,6 @@
   max-width: 100%;
 }
 
-.flex-row-wide .flex-item {
-  flex-shrink: 0;
-  width: 25%;
-  max-width: 100%;
-}
 
 
 .pdp-support h3 {
@@ -42,6 +37,13 @@
   flex-wrap: wrap;
   margin-left: -1.5rem;
   margin-right: -1.5rem;
+}
+
+.pdp-support__container .flex-item {
+
+  flex-shrink: 0;
+  width: 25%;
+  max-width: 100%;
 }
 
 .pdp-support .pdp-support__column {
