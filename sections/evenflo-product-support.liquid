@@ -493,8 +493,7 @@
         {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
         {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
         {% if rear_facing_weight_min and rear_facing_weight_max and rear_facing_height_min and rear_facing_height_max and rear_facing_fit_statement%}
-        
-          
+
             <h3 class="h1 heading-underline">
               Rear-Facing Mode
             </h3>
@@ -529,9 +528,9 @@
         {% assign forward_facing_age_limit = product.metafields.sf_car_seat.forward_facing_age_limit %}
         {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
         {% if forward_facing_weight_min and forward_facing_weight_max and forward_facing_height_min and forward_facing_height_max and forward_facing_fit_statement%}
-        <div class="left-column-data pdp-child-info">
+        
           
-            <h3>
+            <h3 class="h1 heading-underline">
               Forward-Facing Mode
             </h3>
          
@@ -553,7 +552,7 @@
               </div>
             </div>
           </div>
-        </div>
+        
         {% endif %}
 
         <!-- high back mode for car seat -->
@@ -564,9 +563,9 @@
         {% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
         {% if high_back_weight_min or high_back_weight_max or high_back_height_min or high_back_height_max
         and high_back_fit_statement%}
-        <div class="left-column-data pdp-child-info">
+        
           
-            <h3>
+            <h3 class="h1 heading-underline">
               High Back Booster Mode
             </h3>
          
@@ -590,7 +589,7 @@
               </div>
             </div>
           </div>
-        </div>
+
         {% endif %}
 
         <!-- no back mode for car seat -->
@@ -600,9 +599,8 @@
         {% assign no_back_height_max = product.metafields.sf_car_seat.no_back_height_max %}
         {% assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement %}
         {% if no_back_weight_min or no_back_weight_max or no_back_height_min or no_back_height_max and no_back_fit_statement%}
-        <div class="left-column-data pdp-child-info">
-          
-            <h3>
+
+           <h3 class="h1 heading-underline">
               No Back Booster Mode
             </h3>
           
@@ -626,7 +624,7 @@
               </div>
             </div>
           </div>
-        </div>
+ 
         {% endif %}
         <!-- Playard Specifications -->
 
