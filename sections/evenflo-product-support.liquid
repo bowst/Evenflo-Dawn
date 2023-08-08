@@ -489,22 +489,24 @@
           and forward_facing_height_max
           and forward_facing_fit_statement
         %}
-          <div class="left-column-data pdp-child-info">
-            <h3>Forward-Facing Mode</h3>
+          <div class="flex-item">
+            <div class="left-column-data pdp-child-info">
+              <h3>Forward-Facing Mode</h3>
 
-            <!-- <div class="feature_divider"></div> -->
-            <div class="flex-row pdp-support">
-              <div class="flex-item-small">
-                <h5>Weight</h5>
-                {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
+              <!-- <div class="feature_divider"></div> -->
+              <div class="flex-row pdp-support">
+                <div class="flex-item-small">
+                  <h5>Weight</h5>
+                  {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
+                </div>
+                <div class="flex-item-small">
+                  <h5>Height</h5>
+                  {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
+                </div>
               </div>
               <div class="flex-item-small">
-                <h5>Height</h5>
-                {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
+                {{ forward_facing_fit_statement }}
               </div>
-            </div>
-            <div class="flex-item-small">
-              {{ forward_facing_fit_statement }}
             </div>
           </div>
         {% endif %}
