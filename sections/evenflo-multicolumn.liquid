@@ -118,7 +118,7 @@
                   <div class="rte">{{ block.settings.text }}</div>
                 {%- endif -%}
                 {%- if block.settings.liquid_content != blank -%}
-                  {{ liquid_content }}
+                  {{ block.settings.liquid_content }}
                 {%- endif -%}
                 {%- if block.settings.link_label != blank -%}
                   <a
