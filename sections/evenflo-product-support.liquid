@@ -163,11 +163,8 @@
   </div>
 </section>
 
-<section class="pdp-support page-width">
-  <div class="pdp-support__container pdp-support">            
-    <!-- opening for gate -->
-    
-    {% if product.type == 'Gates' %}
+            
+{% if product.type == 'Gates' %}
       {% assign my_switch = product.metafields.sf_gates.walk_thru_door %}
       {% assign min_opening_size = product.metafields.sf_gates.min_opening_size %}
       {% assign max_opening_size = product.metafields.sf_gates.max_opening_size %}
@@ -175,6 +172,11 @@
       {% assign use_case = product.metafields.sf_gates.use_case | split: ',' %}
       {% assign my_tags = product.metafields.sf_gates.mount_type | split: ',' %}
       {% if min_opening_size and max_opening_size and my_tags.size > 0 %}
+<section class="pdp-support page-width">
+  <div class="pdp-support__container pdp-support">            
+    <!-- opening for gate -->
+    
+    
         <div class="row-title">
           <h3 class="h1 heading-underline">Gate Specifications</h3>
         </div>
@@ -217,9 +219,10 @@
           </div>
         </div>
       {% endif %}
-    {% endif %}
+    
   </div>  
 </section>
+{% endif %}
 
             
 
