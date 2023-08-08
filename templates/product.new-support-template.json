@@ -188,7 +188,7 @@
           "type": "column",
           "settings": {
             "liquid_content": "{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}\n      {% if care_copy %}\n        <ul>\n          {% for li in care_copy %}\n            <li>{{ li }}<\/li>\n          {% endfor %}\n        <\/ul>\n      {% endif %}\n      <h3>Materials<\/h3>\n      {% assign material = product.metafields.sf_products.material %}\n      {% if material %}\n        {{ material }}\n      {% endif %}",
-            "title": "Use",
+            "title": "Care",
             "text": "",
             "link_label": "",
             "link": ""
@@ -198,7 +198,7 @@
           "type": "column",
           "settings": {
             "liquid_content": "{% assign use_copy = product.metafields.sf_products.use_copy %}\n        {% if use_copy %}\n          <p>{{ use_copy }}<\/p>\n        {% endif %}",
-            "title": "Column",
+            "title": "Use",
             "text": "",
             "link_label": "",
             "link": ""
