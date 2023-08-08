@@ -233,6 +233,7 @@
                   No
                 {% endif %}
               </div>
+              
               <div class="flex-item-small">
                 <h3>Accepts Infant Car Seat</h3>
                 {% if accepts_infant_car_seat == 1 %}
@@ -249,12 +250,14 @@
                   {{ number_of_height_modes }}
                 </div>
               {% endif %}
+        
               {% if wheel_material %}
                 <div class="flex-item-small">
                   <h3>Wheel Material</h3>
                   {{ wheel_material }}
                 </div>
               {% endif %}
+        
               {% if stroller_type %}
                 <div class="flex-item-small">
                   <h3>Stroller Type</h3>
