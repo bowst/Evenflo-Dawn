@@ -9,26 +9,30 @@
 
 .pdp-support .row-title {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
 }
 
 .pdp-support .flex-item {
-  flex-basis: 100%;
+  flex-shrink: 0;
+  width: 50%;
   max-width: 100%;
 }
 
-.pdp-support h3,
+
+
+.pdp-support h3 {
+  font-weight: normal;
+  padding-bottom { 0px !important }
+}
+
 .flex-item-small h3 {
   font-weight: normal;
-  padding-bottom: 0px !important;
+  padding-bottom { 0px !important }
 }
 
-.pdp-support p,
-.flex-item-small p {
-  padding-top: 0px !important;
-}
-
+.pdp-support p { padding-top: 0px !important}
+.flex-item-small p { padding-top: 0px !important}
 .pdp-support h3 strong {
   font-weight: bold;
 }
@@ -40,21 +44,34 @@
 .pdp-support .pdp-support__container {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -15px;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
 }
 
-.pdp-support__container .flex-item-small,
-.pdp-support__container .flex-item-third,
-.pdp-support__container .statement {
-  flex-basis: 100%;
+.pdp-support__container .flex-item-small {
+  flex-shrink: 0;
+  width: 25%;
   max-width: 100%;
+}
+
+.pdp-support__container .flex-item-third {
+  flex-shrink: 0;
+  width: 33%;
+  max-width: 100%;
+}
+
+.pdp-support__container .statement {
+  flex-shrink: 0;
+  width: 100%;
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
+
 .pdp-support .pdp-support__column {
-  padding: 0 15px;
-  flex-basis: 100%;
+  padding: 0 30px;
+  flex-shrink: 0;
+  width: 100%;
   max-width: 100%;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -63,8 +80,6 @@
 @media screen and (min-width: 560px) {
   .pdp-support .pdp-support__column {
     width: 50%;
-    flex-basis: 0;
-    flex-grow: 1;
-    flex-shrink: 1;
+    flex: 0 0 auto;
   }
 }
