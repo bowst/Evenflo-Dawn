@@ -15,11 +15,6 @@
           "settings": {
           }
         },
-        "fd1e2a8c-875f-4803-bd6a-2d06ca2d7883": {
-          "type": "rating",
-          "settings": {
-          }
-        },
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
           "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
@@ -31,23 +26,10 @@
           "settings": {
           }
         },
-        "333ce9dc-b67c-488e-9229-c10a4d8f0955": {
-          "type": "sku",
-          "disabled": true,
-          "settings": {
-            "text_style": "body"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {
           }
         },
         "buy_buttons": {
@@ -64,26 +46,16 @@
             "content": "<p>Explore the differences in features and finishes.<\/p>",
             "page": "active-infant-carrier-support"
           }
-        },
-        "0264a3bb-7971-4bfa-9320-c34688f7906f": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div class=\"right\">\n      {% if product.metafields.custom.link_support_page %}\n        <a href=\"{{product.metafields.custom.product_support_link.value.url}}\">Learn More<\/a>\n      {% endif %}\n    <\/div>"
-          }
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "fd1e2a8c-875f-4803-bd6a-2d06ca2d7883",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
-        "333ce9dc-b67c-488e-9229-c10a4d8f0955",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
-        "1c14461b-715c-4cc7-ba90-b2336333e531",
-        "0264a3bb-7971-4bfa-9320-c34688f7906f"
+        "1c14461b-715c-4cc7-ba90-b2336333e531"
       ],
       "settings": {
         "enable_sticky_info": false,
