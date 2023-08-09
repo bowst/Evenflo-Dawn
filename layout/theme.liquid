@@ -391,3 +391,23 @@
     </script>
   </body>
 </html>
+
+  <script>
+    /*ezfyignore*/
+    /* EZFY Slideshow PRO by ezfycode.com
+    ========================================== */
+    document.addEventListener("shopify:section:load", function(e){
+      if (Shopify.designMode){
+        const $slideshow = e.target;
+
+        if (!$slideshow.classList.contains("ezfy-slideshow-section")){
+          return;
+        }
+
+        const $script = $slideshow.querySelector(`script`);
+        const script = $script.innerHTML
+
+        eval(script);
+	  }
+    });
+  </script>
