@@ -72,7 +72,7 @@
           "type": "popup",
           "settings": {
             "text": "Compare",
-            "page": "pivot-xpand-configuration-chart"
+            "page": "{{ product.metafields.custom.link_support_page.value }}"
           }
         }
       },
