@@ -51,12 +51,6 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
-        },
-        "8964a41b-fa66-4ba9-9503-4a7fe3295458": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div class=\"yotpo bottomLine\"\n    data-appkey=\"B0qJeONB1n5uLg0RiKMrl58AdoGwnftUWBiOC4S6\"\n    data-domain=\"{{shop.permanent_domain | escape }}\"\n    data-product-id=\"{{ product.id }}\"\n    data-product-models=\"{{ product.id }}\"\n    data-name=\"{{ product.title | escape }}\"\n    data-url=\"{{ shop.url }}{{ product.url }}\"\n    data-image-url=\"{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}\"\n    data-description=\"{{ product.description | escape }}\"\n    data-bread-crumbs=\"{% for tag in product.tags %}{{ tag | escape }};{% endfor %}\">\n<\/div>"
-          }
         }
       },
       "block_order": [
@@ -67,8 +61,7 @@
         "333ce9dc-b67c-488e-9229-c10a4d8f0955",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons",
-        "8964a41b-fa66-4ba9-9503-4a7fe3295458"
+        "buy_buttons"
       ],
       "settings": {
         "enable_sticky_info": false,
