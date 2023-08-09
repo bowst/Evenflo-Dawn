@@ -172,7 +172,7 @@
   </section>
 {% endif %}
 
-{% if product.type contains 'Car Seat' %}
+{% if product.type contains 'Car Seat' or product.type == 'Booster Seat' %} 
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
       <!-- car seat specifications -->
