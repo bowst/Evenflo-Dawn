@@ -151,6 +151,23 @@
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
       }
     },
+    "16915425431a6443f2": {
+      "type": "apps",
+      "blocks": {
+        "44ca0d9d-d1d9-4d11-8a20-a0789f4e4e9d": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "44ca0d9d-d1d9-4d11-8a20-a0789f4e4e9d"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
       "type": "evenflo-join",
       "settings": {
@@ -217,6 +234,7 @@
     "45849377-4cee-48de-b8f8-52fd115e29b4",
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
+    "16915425431a6443f2",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
     "e87086c3-8bc1-4ebd-af1f-5d31612858d1"
   ]
