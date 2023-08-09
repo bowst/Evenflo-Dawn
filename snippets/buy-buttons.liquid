@@ -167,7 +167,7 @@
               >
                 <span>
                   {% if collection_handles contains 'pre-order' %}
-                    {{ 'collections.general.pre_order' | t }}
+                    {{ 'Pre-Order' }}
                   {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                     {{ 'products.product.sold_out' | t }}
                   {%- else -%}
