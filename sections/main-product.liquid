@@ -361,8 +361,8 @@
                   aria-haspopup="dialog"
                 >
                   <div>
-                    <h3 class="h2">{{ block.settings.page.title | default: block.settings.page.title }}</h3>
-                    <div>{{ block.settings.page.content }}</div>
+                    <h3 class="h2">{{ block.settings.text | default: block.settings.page.title }}</h3>
+                    <div>{{ block.settings.content }}</div>
                   </div>
                   {% render 'icon-plus' %}
                 </button>
