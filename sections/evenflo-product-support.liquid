@@ -71,21 +71,20 @@
 {% if product.vendor == 'Exersaucer' %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
+      {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
+      {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
+      {% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
+      {% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
+      {% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+      {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
+      {% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
+      {% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+      {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+      {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
+      {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+      {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
 
-          {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
-          {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
-          {% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
-          {% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
-          {% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
-          {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
-          {% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
-        {% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
-        {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
-        {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
-        {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
-        {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
-
-        {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
+      {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
 
             <h3>Child Fit</h3>
             
@@ -109,6 +108,12 @@
                 {% if child_age_min_value %}
                   {{ child_age_min_value }}
                 {% endif %}
+
+       <h3 class="h1 heading-underline">{{ collection.title }} Specifications</h3>
+          <div class="flex-row pdp-support">
+            <div class="flex-item-small">
+
+            </div>
           </div>
     </div>
   </section>
