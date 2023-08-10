@@ -90,8 +90,9 @@
           <h3 class="h1 heading-underline">{{ collection.title }}  Specifications</h3>
         </div>
           <div class="flex-row pdp-support">
+            <h3>Child Fit</h3>
             <div class="flex-item-small">
-              <h3>Child Fit</h3>
+              
                <h5>Weight</h5>
                 {% if child_weight_min_value %}
                 {{ child_weight_min_value }} -
@@ -99,6 +100,8 @@
                 {% if child_weight_max_value %}
                   {{ child_weight_max_value }} lbs
                 {% endif %}
+            </div>
+            <div class="flex-item-small">
   <h5>Height</h5>
                 {% if child_height_min_value %}
                   {{ child_height_min_value }} -
@@ -106,6 +109,7 @@
                 {% if child_height_max_value %}
                   {{ child_height_max_value }} in
                 {% endif %}
+  <div class="flex-item-small">
                   <h5>Minimum Age</h5>
                 {% if child_age_min_value %}
                   {{ child_age_min_value }}
