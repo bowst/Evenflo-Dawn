@@ -322,17 +322,7 @@
         "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-2": {
           "type": "column",
           "settings": {
-            "liquid_content": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-3": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "",
+            "liquid_content": "{% assign safety_image = product.metafields.sf_products.safety_image %}\n          {% if safety_image %}\n          <image src='{{ safety_image }}' loading=\"lazy\" alt=\"{{ product.title }} Safety\" >\n          {% endif %}",
             "title": "",
             "text": "",
             "link_label": "",
@@ -342,8 +332,7 @@
       },
       "block_order": [
         "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-1",
-        "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-2",
-        "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-3"
+        "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-2"
       ],
       "settings": {
         "title": "",
