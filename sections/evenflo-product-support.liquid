@@ -112,7 +112,12 @@
        <h3 class="h1 heading-underline">{{ collection.title }} Specifications</h3>
           <div class="flex-row pdp-support">
             <div class="flex-item-small">
-
+              <h3>Battery Required</h3>
+                  {%if batteries_required_bassinet == 1 %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
             </div>
           </div>
     </div>
