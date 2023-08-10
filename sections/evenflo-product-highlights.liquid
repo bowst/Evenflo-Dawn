@@ -987,9 +987,6 @@
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
           {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
-          <br>
-          <strong>Folded:</strong><br>
-          {{ folded_dimensions }}
         </div>
 
         <div class="flex-item">
@@ -1009,7 +1006,7 @@
         </div>
       </div>
     {% endif %}
-    <div class="right" style="color: black;">
+    <div class="right">
       {% if product.metafields.custom.product_support_link %}
         <a href="{{product.metafields.custom.product_support_link.value.url}}">Learn More</a>
       {% endif %}
