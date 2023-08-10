@@ -347,11 +347,11 @@
             <!-- <div class="feature_divider"></div> -->
             <div class="flex-row pdp-support">
               <div class="flex-item-small">
-                <h5>Weight</h5>
+                <h3>Weight</h3>
                 {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
               </div>
               <div class="flex-item-small">
-                <h5>Height</h5>
+                <h3>Height</h3>
                 {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
               </div>
             </div>
@@ -426,7 +426,7 @@
             
             <div class="flex-item">
               <h3>Child Fit</h3>
-               <h5>Weight</h5>
+               <h3>Weight</h3>
                 {% if child_weight_min_value %}
                 {{ child_weight_min_value }} -
                 {% endif %}
@@ -435,7 +435,7 @@
                 {% endif %}
             </div>
             <div class="flex-item">
-  <h5>Height</h5>
+  <h3>Height</h3>
                 {% if child_height_min_value %}
                   {{ child_height_min_value }} -
                 {% endif %}
@@ -444,7 +444,7 @@
                 {% endif %}
             </div>
   <div class="flex-item">
-                  <h5>Minimum Age</h5>
+                  <h3>Minimum Age</h3>
                 {% if child_age_min_value %}
                   {{ child_age_min_value }}
                 {% endif %}
@@ -464,14 +464,14 @@
                 {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
                 {% if battery_cell_type %}
                   <div class="five columns">
-                    <h5>Battery Type</h5>
+                    <h3>Battery Type</h3>
                     {{ toy_battery_cell_type }}
                   </div>
                 {% endif %}
                 {% endif %}
       </div>
       <div class="flex-item">
- <h5>Number of Height Modes</h5>
+ <h3>Number of Height Modes</h3>
                     {% if number_of_height_modes != null and number_of_height_modes != "" %}
                     {{ number_of_height_modes }}
                     {% else %}
@@ -479,7 +479,7 @@
                     {% endif %}
       </div>
       <div class="flex-item">
- <h5>Toys</h5>
+ <h3>Toys</h3>
                     {% for tag in electronic_toys_features %}
                     {{ tag }}{% if tag != electronic_toys_features.last %},{% endif %}
                     {% endfor %}
@@ -487,7 +487,7 @@
       <div class="flex-item">
 {% if tablet_holder == 1 %}
                   <div class="five columns">
-                    <h5>Tablet Holder</h5>
+                    <h3>Tablet Holder</h3>
                     Yes
                   </div>
                 {% endif %}
@@ -496,14 +496,14 @@
  {% if toys_entertainment %}
                 <div class="row">
                   <div class="sixteen columns">
-                    <h5>Toys</h5>
+                    <h3>Toys</h3>
                     {{ toys_entertainment }}
                   </div>
                 </div>
               {% endif %}
       </div>
       <div class="flex-item">
-<h5>Number of Height Modes</h5>
+<h3>Number of Height Modes</h3>
                     {{ number_of_height_modes }}
       </div>
     </div>
