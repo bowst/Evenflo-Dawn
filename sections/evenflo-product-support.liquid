@@ -450,8 +450,7 @@
                 {% endif %}
             </div>
           </div>
-    <div class="flex-row pdp-support">
-            
+    <div class="flex-row pdp-support"> 
             <div class="flex-item">
               <h3>Battery Required</h3>
                   {%if batteries_required_bassinet == 1 %}
@@ -460,8 +459,54 @@
                   No
                   {% endif %}
             </div>
-      
-          </div>
+      <div class="flex-item">
+{% if batteries_required_bassinet == 1 %}
+                {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+                {% if battery_cell_type %}
+                  <div class="five columns">
+                    <h5>Battery Type</h5>
+                    {{ toy_battery_cell_type }}
+                  </div>
+                {% endif %}
+                {% endif %}
+      </div>
+      <div class="flex-item">
+ <h5>Number of Height Modes</h5>
+                    {% if number_of_height_modes != null and number_of_height_modes != "" %}
+                    {{ number_of_height_modes }}
+                    {% else %}
+                    1
+                    {% endif %}
+      </div>
+      <div class="flex-item">
+ <h5>Toys</h5>
+                    {% for tag in electronic_toys_features %}
+                    {{ tag }}{% if tag != electronic_toys_features.last %},{% endif %}
+                    {% endfor %}
+      </div>
+      <div class="flex-item">
+{% if tablet_holder == 1 %}
+                  <div class="five columns">
+                    <h5>Tablet Holder</h5>
+                    Yes
+                  </div>
+                {% endif %}
+      </div>
+      <div class="flex-item">
+ {% if toys_entertainment %}
+                <div class="row">
+                  <div class="sixteen columns">
+                    <h5>Toys</h5>
+                    {{ toys_entertainment }}
+                  </div>
+                </div>
+              {% endif %}
+      </div>
+      <div class="flex-item">
+<h5>Number of Height Modes</h5>
+                    {{ number_of_height_modes }}
+      </div>
+    </div>
 </div>
 
   </section>
