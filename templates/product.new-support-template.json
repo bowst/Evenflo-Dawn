@@ -148,7 +148,7 @@
         "eb9dc3ba-9e48-40d8-9b65-ed98afa2919d": {
           "type": "column",
           "settings": {
-            "liquid_content": "",
+            "liquid_content": "{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}\n      {% if care_copy %}\n<h3>Care<\/h3>\n        <ul>\n          {% for li in care_copy %}\n            <li>{{ li }}<\/li>\n          {% endfor %}\n        <\/ul>\n      {% endif %}\n<br>\n      <h3>Materials<\/h3>\n      {% assign material = product.metafields.sf_products.material %}\n      {% if material %}\n        {{ material }}\n      {% endif %}\n<br>\n<h3>Safe & Convenient<\/h3>\n{% assign safety_testing_copy = product.metafields.sf_products.safety_testing_copy | split: '|' %}\n          {% if safety_testing_copy %}\n            {% for para in safety_testing_copy %}\n              <p>{{ para }}<\/p>\n            {% endfor %}\n          {% endif %}",
             "title": "",
             "text": "",
             "link_label": "",
@@ -200,7 +200,7 @@
         "template--15827801309340__82760bb6-6fc5-41a6-9c2f-8085415b0ed9-column-2": {
           "type": "column",
           "settings": {
-            "liquid_content": "{% assign use_copy = product.metafields.sf_products.use_copy %}\n        {% if use_copy %}\n          <p>{{ use_copy }}<\/p>\n        {% endif %}",
+            "liquid_content": "",
             "title": "Use",
             "text": "",
             "link_label": "",
@@ -210,7 +210,7 @@
         "f0490a82-6f30-4eae-a522-58daa8c28dd3": {
           "type": "column",
           "settings": {
-            "liquid_content": "{% assign safety_testing_copy = product.metafields.sf_products.safety_testing_copy | split: '|' %}\n          {% if safety_testing_copy %}\n            {% for para in safety_testing_copy %}\n              <p>{{ para }}<\/p>\n            {% endfor %}\n          {% endif %}",
+            "liquid_content": "",
             "title": "Safe and Convenient",
             "text": "",
             "link_label": "",
