@@ -206,11 +206,22 @@
             "link_label": "",
             "link": ""
           }
+        },
+        "f0490a82-6f30-4eae-a522-58daa8c28dd3": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "{% assign safety_testing_copy = product.metafields.sf_products.safety_testing_copy | split: '|' %}\n          {% if safety_testing_copy %}\n            {% for para in safety_testing_copy %}\n              <p>{{ para }}<\/p>\n            {% endfor %}\n          {% endif %}",
+            "title": "Safe and Convenient",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "template--15827801309340__82760bb6-6fc5-41a6-9c2f-8085415b0ed9-column-1",
-        "template--15827801309340__82760bb6-6fc5-41a6-9c2f-8085415b0ed9-column-2"
+        "template--15827801309340__82760bb6-6fc5-41a6-9c2f-8085415b0ed9-column-2",
+        "f0490a82-6f30-4eae-a522-58daa8c28dd3"
       ],
       "settings": {
         "title": "Use & Care",
@@ -281,51 +292,6 @@
       "settings": {
         "number_of_faq": 0
       }
-    },
-    "08343d6a-6d62-4c8e-9862-483fa24103d9": {
-      "type": "evenflo-multicolumn",
-      "blocks": {
-        "template--15827801309340__08343d6a-6d62-4c8e-9862-483fa24103d9-column-1": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "{% assign safety_image = product.metafields.sf_products.safety_image %}\n          {% if safety_image %}\n          <image src='{{ safety_image }}' loading=\"lazy\" alt=\"{{ product.title }} Safety\" >\n          {% endif %}",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15827801309340__08343d6a-6d62-4c8e-9862-483fa24103d9-column-2": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "{% assign safety_testing_copy = product.metafields.sf_products.safety_testing_copy | split: '|' %}\n          {% if safety_testing_copy %}\n            {% for para in safety_testing_copy %}\n              <p>{{ para }}<\/p>\n            {% endfor %}\n          {% endif %}",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15827801309340__08343d6a-6d62-4c8e-9862-483fa24103d9-column-1",
-        "template--15827801309340__08343d6a-6d62-4c8e-9862-483fa24103d9-column-2"
-      ],
-      "settings": {
-        "title": "Safe and Convenient",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "Button label",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
@@ -344,7 +310,6 @@
     "45849377-4cee-48de-b8f8-52fd115e29b4",
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
-    "9adb2758-2d5c-4139-9b64-f467fa96e825",
-    "08343d6a-6d62-4c8e-9862-483fa24103d9"
+    "9adb2758-2d5c-4139-9b64-f467fa96e825"
   ]
 }
