@@ -91,12 +91,25 @@
         </div>
           <div class="flex-row pdp-support">
             <div class="flex-item-small">
-              <h3>Battery Required</h3>
-                  {%if batteries_required_bassinet == 1 %}
-                  Yes
-                  {% else %}
-                  No
-                  {% endif %}
+              <h3>Child Fit</h3>
+               <h5>Weight</h5>
+                {% if child_weight_min_value %}
+                {{ child_weight_min_value }} -
+                {% endif %}
+                {% if child_weight_max_value %}
+                  {{ child_weight_max_value }} lbs
+                {% endif %}
+  <h5>Height</h5>
+                {% if child_height_min_value %}
+                  {{ child_height_min_value }} -
+                {% endif %}
+                {% if child_height_max_value %}
+                  {{ child_height_max_value }} in
+                {% endif %}
+                  <h5>Minimum Age</h5>
+                {% if child_age_min_value %}
+                  {{ child_age_min_value }}
+                {% endif %}
             </div>
             <div class="flex-item-small">
               <h3>Battery Required</h3>
