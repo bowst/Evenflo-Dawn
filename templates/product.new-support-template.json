@@ -138,7 +138,7 @@
         "eb9dc3ba-9e48-40d8-9b65-ed98afa2919d": {
           "type": "column",
           "settings": {
-            "liquid_content": "{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}\n      {% if care_copy %}\n<h3>Care<\/h3>\n        <ul>\n          {% for li in care_copy %}\n            <li>{{ li }}<\/li>\n          {% endfor %}\n        <\/ul>\n      {% endif %}\n<br>\n      <h3>Materials<\/h3>\n      {% assign material = product.metafields.sf_products.material %}\n      {% if material %}\n        <p>{{ material }}<\/p>\n      {% endif %}\n<br>\n<h3>Safe & Convenient<\/h3>\n{% assign safety_testing_copy = product.metafields.sf_products.safety_testing_copy | split: '|' %}\n          {% if safety_testing_copy %}\n            {% for para in safety_testing_copy %}\n              <p>{{ para }}<\/p>\n            {% endfor %}\n          {% endif %}",
+            "liquid_content": "{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}\n      {% if care_copy %}\n<h3>Care<\/h3>\n        <ul>\n          {% for li in care_copy %}\n            <li>{{ li }}<\/li>\n          {% endfor %}\n        <\/ul>\n      {% endif %}\n<br>\n      <h3>Materials<\/h3>\n      {% assign material = product.metafields.sf_products.material %}\n      {% if material %}\n        <p>{{ material }}<\/p>\n      {% endif %}\n<br>",
             "title": "",
             "text": "",
             "link_label": "",
