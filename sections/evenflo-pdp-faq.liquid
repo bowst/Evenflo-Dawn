@@ -1,27 +1,29 @@
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 {{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
 {{ 'section-product-faq.css' | asset_url | stylesheet_tag }}
-
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {% for faq in faqs %}
-        {
-          "@type": "Question",
-          "name": "{{ faq.question }}",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{{ faq.answer }}"
-          }
-        }{% unless forloop.last %}, {% endunless %}
-      {%- endfor -%}
-    ]
-  }
-</script>
-
 {% assign faqs = product.metafields.custom.pdp_faq.value %}
+
+{% if faqs.first %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for faq in faqs %}
+          {
+            "@type": "Question",
+            "name": "{{ faq.question }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ faq.answer }}"
+            }
+          }{% unless forloop.last %}, {% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{% endif %}
+
 {% if faqs %}
   <section class="product-faq">
     <div class="content-container page-width content-container--full-width flex-container">
