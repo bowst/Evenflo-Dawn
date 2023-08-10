@@ -68,8 +68,6 @@
   </section>
 {% endif %}
 
-
-
 {%- if product.type == 'Stroller' or product.type == 'Travel System' %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
@@ -421,94 +419,100 @@
 
       {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
 
-
-          <div class="flex-row pdp-support">
-            
-            <div class="flex-item">
-              <h3>Child Fit</h3>
-               <h3>Weight</h3>
-                {% if child_weight_min_value %}
-                {{ child_weight_min_value }} -
-                {% endif %}
-                {% if child_weight_max_value %}
-                  {{ child_weight_max_value }} lbs
-                {% endif %}
+      <div class="flex-row pdp-support">
+        <div class="flex-item">
+          <h3>Child Fit</h3>
+          <h3>Weight</h3>
+          {% if child_weight_min_value %}
+            {{ child_weight_min_value }} -
+          {% endif %}
+          {% if child_weight_max_value %}
+            {{ child_weight_max_value }} lbs
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          <h3>Height</h3>
+          {% if child_height_min_value %}
+            {{ child_height_min_value }} -
+          {% endif %}
+          {% if child_height_max_value %}
+            {{ child_height_max_value }} in
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          <h3>Minimum Age</h3>
+          {% if child_age_min_value %}
+            {{ child_age_min_value }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="flex-row pdp-support">
+        <div class="flex-item">
+          <h3>Battery Required</h3>
+          {% if batteries_required_bassinet == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          {% if batteries_required_bassinet == 1 %}
+            {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+            {% if battery_cell_type %}
+              <div class="five columns">
+                <h3>Battery Type</h3>
+                {{ toy_battery_cell_type }}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          <h3>Number of Height Modes</h3>
+          {% if number_of_height_modes != null and number_of_height_modes != '' %}
+            {{ number_of_height_modes }}
+          {% else %}
+            1
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          <h3>Toys</h3>
+          {% for tag in electronic_toys_features %}
+            {{ tag -}}
+            {%- if tag != electronic_toys_features.last %},{% endif %}
+          {% endfor %}
+        </div>
+        <div class="flex-item">
+          {% if tablet_holder == 1 %}
+            <div class="five columns">
+              <h3>Tablet Holder</h3>
+              Yes
             </div>
-            <div class="flex-item">
-  <h3>Height</h3>
-                {% if child_height_min_value %}
-                  {{ child_height_min_value }} -
-                {% endif %}
-                {% if child_height_max_value %}
-                  {{ child_height_max_value }} in
-                {% endif %}
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          {% if toys_entertainment %}
+            <div class="row">
+              <div class="sixteen columns">
+                <h3>Toys</h3>
+                {{ toys_entertainment }}
+              </div>
             </div>
-  <div class="flex-item">
-                  <h3>Minimum Age</h3>
-                {% if child_age_min_value %}
-                  {{ child_age_min_value }}
-                {% endif %}
-            </div>
+          {% endif %}
+        </div>
+        <div class="flex-item">
+          <h3>Number of Height Modes</h3>
+          {{ number_of_height_modes }}
+        </div>
+        <!-- harness for door jumper -->
+        {% assign harness_type = product.metafields.sf_door_jumper.harness_type %}
+        {% if harness_type %}
+          <div class="flex-item">
+            <h3>Harness Type</h3>
+            {{ harness_type }}
           </div>
-    <div class="flex-row pdp-support"> 
-            <div class="flex-item">
-              <h3>Battery Required</h3>
-                  {%if batteries_required_bassinet == 1 %}
-                  Yes
-                  {% else %}
-                  No
-                  {% endif %}
-            </div>
-      <div class="flex-item">
-{% if batteries_required_bassinet == 1 %}
-                {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
-                {% if battery_cell_type %}
-                  <div class="five columns">
-                    <h3>Battery Type</h3>
-                    {{ toy_battery_cell_type }}
-                  </div>
-                {% endif %}
-                {% endif %}
-      </div>
-      <div class="flex-item">
- <h3>Number of Height Modes</h3>
-                    {% if number_of_height_modes != null and number_of_height_modes != "" %}
-                    {{ number_of_height_modes }}
-                    {% else %}
-                    1
-                    {% endif %}
-      </div>
-      <div class="flex-item">
- <h3>Toys</h3>
-                    {% for tag in electronic_toys_features %}
-                    {{ tag }}{% if tag != electronic_toys_features.last %},{% endif %}
-                    {% endfor %}
-      </div>
-      <div class="flex-item">
-{% if tablet_holder == 1 %}
-                  <div class="five columns">
-                    <h3>Tablet Holder</h3>
-                    Yes
-                  </div>
-                {% endif %}
-      </div>
-      <div class="flex-item">
- {% if toys_entertainment %}
-                <div class="row">
-                  <div class="sixteen columns">
-                    <h3>Toys</h3>
-                    {{ toys_entertainment }}
-                  </div>
-                </div>
-              {% endif %}
-      </div>
-      <div class="flex-item">
-<h3>Number of Height Modes</h3>
-                    {{ number_of_height_modes }}
+        {% endif %}
       </div>
     </div>
-</div>
-
   </section>
 {% endif %}
 
