@@ -119,7 +119,7 @@
           </div>
           <div class="card__badge {{ settings.badge_position }}">
             {%- if card_product.available == false -%}
-              {% unless card_product.tags contains 'support' %}
+              {% unless card_product.tags contains 'Support' %}
                 <span
                   id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
                   class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }} color-gray"
