@@ -45,6 +45,19 @@
           "settings": {
             "custom_liquid": "{% assign user_manual_value = product.metafields.sf_products.manual %}\n              {% assign user_manual_french_value = product.metafields.sf_products.manual_french %}\n              {% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}\n    \n              {% if user_manual_value %}\n                <a class=\"\" href=\"{{ user_manual_value }}\" target=\"new\">Download Manual (en)<\/a><br>\n              {% endif %}\n    \n              {% if user_manual_french_value %}\n                <a class=\"\" href=\"{{ user_manual_french_value }}\" target=\"new\">Download Manual (fr)<\/a><br>\n              {% endif %}\n    \n              {% if user_manual_spanish_value %}\n                <a class=\"\" href=\"{{ user_manual_spanish_value }}\" target=\"new\">Download Manual (es)<\/a>\n              {% endif %}"
           }
+        },
+        "0b337d61-49ad-42e6-8250-94f5d6b61af5": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "",
+            "make_collapsible_row": true,
+            "icon": "none",
+            "product_list_limit": 5,
+            "products_per_page": 1,
+            "pagination_style": "dots",
+            "image_ratio": "portrait",
+            "enable_quick_add": true
+          }
         }
       },
       "block_order": [
@@ -54,7 +67,8 @@
         "quantity_selector",
         "17db0a17-b1eb-40e8-8c1e-ebb5ce651290",
         "76143d3c-48ec-4288-9eb7-b75885b0c83d",
-        "7d3fc713-88b9-40d6-9efb-49d04063c8f2"
+        "7d3fc713-88b9-40d6-9efb-49d04063c8f2",
+        "0b337d61-49ad-42e6-8250-94f5d6b61af5"
       ],
       "settings": {
         "enable_sticky_info": false,
