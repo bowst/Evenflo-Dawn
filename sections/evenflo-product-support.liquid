@@ -68,69 +68,7 @@
   </section>
 {% endif %}
 
-{% if product.vendor == 'Exersaucer' %}
-  <section class="pdp-support page-width">
 
-      {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
-      {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
-      {% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
-      {% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
-      {% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
-      {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
-      {% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
-      {% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
-      {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
-      {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
-      {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
-      {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
-
-      {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
-
-        <div class="flex-row">
-          <h3 class="h1 heading-underline">{{ collection.title }}  Specifications</h3>
-        </div>
-          <div class="flex-row pdp-support">
-            
-            <div class="flex-item">
-              <h3>Child Fit</h3>
-               <h5>Weight</h5>
-                {% if child_weight_min_value %}
-                {{ child_weight_min_value }} -
-                {% endif %}
-                {% if child_weight_max_value %}
-                  {{ child_weight_max_value }} lbs
-                {% endif %}
-            </div>
-            <div class="flex-item">
-  <h5>Height</h5>
-                {% if child_height_min_value %}
-                  {{ child_height_min_value }} -
-                {% endif %}
-                {% if child_height_max_value %}
-                  {{ child_height_max_value }} in
-                {% endif %}
-            </div>
-  <div class="flex-item">
-                  <h5>Minimum Age</h5>
-                {% if child_age_min_value %}
-                  {{ child_age_min_value }}
-                {% endif %}
-            </div>
-          </div>
-    <div class="flex-row pdp-support">
-            
-            <div class="flex-item">
-              <h3>Battery Required</h3>
-                  {%if batteries_required_bassinet == 1 %}
-                  Yes
-                  {% else %}
-                  No
-                  {% endif %}
-            </div>
-          </div>
-</div>
-  </section>
-{% endif %}
 
 {%- if product.type == 'Stroller' or product.type == 'Travel System' %}
   <section class="pdp-support page-width">
@@ -462,6 +400,71 @@
         {% endif %}
       </div>
     </div>
+  </section>
+{% endif %}
+
+{% if product.vendor == 'Exersaucer' %}
+  <section class="pdp-support page-width">
+
+      {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
+      {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
+      {% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
+      {% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
+      {% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+      {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
+      {% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
+      {% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+      {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+      {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
+      {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+      {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
+
+      {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
+
+        <div class="flex-row">
+          <h3 class="h1 heading-underline">{{ collection.title }}  Specifications</h3>
+        </div>
+          <div class="flex-row pdp-support">
+            
+            <div class="flex-item">
+              <h3>Child Fit</h3>
+               <h5>Weight</h5>
+                {% if child_weight_min_value %}
+                {{ child_weight_min_value }} -
+                {% endif %}
+                {% if child_weight_max_value %}
+                  {{ child_weight_max_value }} lbs
+                {% endif %}
+            </div>
+            <div class="flex-item">
+  <h5>Height</h5>
+                {% if child_height_min_value %}
+                  {{ child_height_min_value }} -
+                {% endif %}
+                {% if child_height_max_value %}
+                  {{ child_height_max_value }} in
+                {% endif %}
+            </div>
+  <div class="flex-item">
+                  <h5>Minimum Age</h5>
+                {% if child_age_min_value %}
+                  {{ child_age_min_value }}
+                {% endif %}
+            </div>
+          </div>
+    <div class="flex-row pdp-support">
+            
+            <div class="flex-item">
+              <h3>Battery Required</h3>
+                  {%if batteries_required_bassinet == 1 %}
+                  Yes
+                  {% else %}
+                  No
+                  {% endif %}
+            </div>
+      
+          </div>
+</div>
   </section>
 {% endif %}
 
