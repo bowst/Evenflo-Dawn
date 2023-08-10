@@ -180,10 +180,10 @@
                   assign rating_decimal = 1
                 endif
               %}
-              <div style="text-align: center">
-    <div class="yotpo bottomLine" style="display:inline-block" data-product-id="{{ card_product.id }}">
-    </div>
-</div>
+              <div
+                class="yotpo bottomLine"
+                data-product-id="{{ card_product.id }}"
+              ></div>
               <div
                 class="rating"
                 role="img"
@@ -210,7 +210,9 @@
               </p>
             {%- endif -%}
 
-            {% render 'price', product: card_product, price_class: '' %}
+            {% unless card_product.tags contains 'Support' %}
+              {% render 'price', product: card_product, price_class: '' %}
+            {% endunless %}
           </div>
         </div>
         {%- if show_quick_add -%}
