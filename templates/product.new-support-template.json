@@ -135,16 +135,6 @@
             "link": ""
           }
         },
-        "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-2": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "{% assign specifications_image = product.metafields.sf_products.specifications_image %}\n        {% if specifications_image %}\n          <image loading=\"lazy\" alt=\"{{ product.title }} Specifications\" src=\"{{ specifications_image }}\">\n        {% endif %}",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
         "eb9dc3ba-9e48-40d8-9b65-ed98afa2919d": {
           "type": "column",
           "settings": {
@@ -154,12 +144,22 @@
             "link_label": "",
             "link": ""
           }
+        },
+        "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-2": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "{% assign specifications_image = product.metafields.sf_products.specifications_image %}\n        {% if specifications_image %}\n          <image loading=\"lazy\" alt=\"{{ product.title }} Specifications\" src=\"{{ specifications_image }}\">\n        {% endif %}",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-1",
-        "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-2",
-        "eb9dc3ba-9e48-40d8-9b65-ed98afa2919d"
+        "eb9dc3ba-9e48-40d8-9b65-ed98afa2919d",
+        "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-2"
       ],
       "settings": {
         "title": "What's in the box?",
