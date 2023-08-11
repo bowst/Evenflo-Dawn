@@ -1,7 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
-    <script type="text/javascript">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/B0qJeONB1n5uLg0RiKMrl58AdoGwnftUWBiOC4S6/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>
+    <script type="text/javascript">
+      (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/B0qJeONB1n5uLg0RiKMrl58AdoGwnftUWBiOC4S6/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -321,6 +323,7 @@
     </ul>
 
     <script>
+      
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
@@ -348,6 +351,7 @@
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
       };
+
     </script>
 
     {%- if settings.predictive_search_enabled -%}
@@ -356,7 +360,7 @@
     <!-- CRITEO START -->
     {% render 'criteo-tracking' %}
     <!-- CRITEO END -->
-    
+
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js" async></script>
     <script>
       var klaviyo = klaviyo || [];
@@ -376,7 +380,7 @@
           headline: '{product_name}',
           body_content: 'Register to receive a notification when this item comes back in stock.',
           email_field_label: 'Email',
-          button_label: 'Notify me when available',
+          button_label: 'Notify Me When Available',
           subscription_success_label: "You're in! We'll let you know when it's back.",
           footer_content: '',
           additional_styles: "@import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');",
@@ -396,7 +400,8 @@
   </body>
 </html>
 
-  <script>
+<script>
+  
     /*ezfyignore*/
     /* EZFY Slideshow PRO by ezfycode.com
     ========================================== */
@@ -414,4 +419,5 @@
         eval(script);
 	  }
     });
-  </script>
+
+</script>
