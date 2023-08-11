@@ -325,6 +325,7 @@
     <script>
       
       
+      
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
@@ -354,6 +355,7 @@
       };
 
 
+
     </script>
 
     {%- if settings.predictive_search_enabled -%}
@@ -363,7 +365,7 @@
     {% render 'criteo-tracking' %}
     <!-- CRITEO END -->
 
-    <script src="https://a.klaviyo.com/media/js/onsite/onsite.js" async></script>
+    <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
     <script>
       var klaviyo = klaviyo || [];
       klaviyo.init({
@@ -406,6 +408,7 @@
 <script>
   
   
+  
     /*ezfyignore*/
     /* EZFY Slideshow PRO by ezfycode.com
     ========================================== */
@@ -423,6 +426,7 @@
         eval(script);
 	  }
     });
+
 
 
 </script>
