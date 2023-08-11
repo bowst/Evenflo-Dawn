@@ -281,6 +281,33 @@ html.no-js .no-js-hidden {
   }
 }
 
+.collection_swatches {
+  margin: 10px 0 5px 0;
+}
+.collection_swatches .swatch {
+  display: inline-block;
+  padding: 3px;
+  line-height: 0;
+}
+.collection_swatches .swatch:hover {
+  border-color: black;
+}
+.collection_swatches .swatch span {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  float: none;
+  display: inline-block;
+  border: #e2e2e2 1px solid;
+  background-clip: padding-box;
+  background-position: center;
+  background-size: cover;
+}
+
+.collection_swatches .swatch span {
+  border-radius: 50%;
+}
+
 @media screen and (min-width: 990px) {
   .header:not(.drawer-menu).page-width {
     padding-left: 5rem;
