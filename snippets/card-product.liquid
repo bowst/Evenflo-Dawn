@@ -212,6 +212,10 @@
             {% render 'collection-swatch',
               product: card_product,
             %}
+            <div
+              class="yotpo bottomLine"
+              data-product-id="{{ card_product.id }}"
+            ></div>
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
             {% endunless %}
