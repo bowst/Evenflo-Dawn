@@ -5,38 +5,47 @@
 {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
-{% assign lightweight = product.metafields.sf_car_seat.lightweight %}
-{% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
 {% assign package_contents = product.metafields.sf_products.retail_package_contents %}
 {% assign assembled_width = product.metafields.sf_products.assembled_width %}
 {% assign assembled_height = product.metafields.sf_products.assembled_height %}
 {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
-{% assign package_width = product.metafields.sf_shipping.package_width %}
-{% assign package_height = product.metafields.sf_shipping.package_height %}
-{% assign package_depth = product.metafields.sf_shipping.package_depth %}
 {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
-{% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
-{% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
-{% assign modes_of_use = product.metafields.custom.modes_of_use | replace: '|', '<br>' %}
-{% assign installation = product.metafields.custom.installation %}
-{% assign number_of_cup_holders = product.metafields.sf_products.number_of_cup_holders %}
-{% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
 {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
+{% assign number_of_cup_holders = product.metafields.sf_products.number_of_cup_holders %}
 {% assign machine_washable = product.metafields.sf_products.machine_washable_seating_surface %}
 {% assign made_usa = product.metafields.sf_products.made_in_usa %}
 {% assign harness_type = product.metafields.sf_products.harness_type %}
-{% assign height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
+
+{% assign lightweight = product.metafields.sf_car_seat.lightweight %}
+{% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+{% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
+{% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
+
+{% assign package_width = product.metafields.sf_shipping.package_width %}
+{% assign package_height = product.metafields.sf_shipping.package_height %}
+{% assign package_depth = product.metafields.sf_shipping.package_depth %}
+
+{% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
+{% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
+{% assign stroller_type = product.metafields.sf_stroller.stroller_type %}
+{% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
+
+{% assign modes_of_use = product.metafields.custom.modes_of_use | replace: '|', '<br>' %}
+{% assign installation = product.metafields.custom.installation %}
+
+{% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+{% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
+
 {% assign suction_range = product.metafields.custom.suction_range %}
 {% assign tip_styles = product.metafields.custom.tip_styles %}
 {% assign features = product.metafields.product.features %}
 {% assign material = product.metafields.sf_products.material %}
-{% assign stroller_type = product.metafields.sf_stroller.stroller_type %}
-{% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
-{% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
 
-{% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
-
-{% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
+{% assign height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
+{% assign cleaning = product.metafields.sf_high_chair.cleaning %}
+{% assign fold_flat_capable = product.metafields.sf_high_chair.fold_flat_capable %}
+{% assign height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
+{% assign one_hand_tray = product.metafields.sf_high_chair.one_hand_tray %}
 
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
@@ -709,7 +718,7 @@
 
           {% assign machine_wash = product.metafields.sf_carrier.machine_washable %}
           {% if machine_wash == 1 %}
-            <strong>Machine Washable:</strong><br>
+            <strong>Machine Washable</strong><br>
           {% endif %}
 
           {% assign pacifier_toy_clip = product.metafields.sf_carrier.pacifier_toy_clip %}

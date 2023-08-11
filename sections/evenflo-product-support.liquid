@@ -10,7 +10,7 @@
 
 {% endif %}
 
-{% if product.type == 'Gates' %}
+{% if product.type == 'Gates' or product.type == 'Baby Gate' %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
       <!-- opening for gate -->
@@ -21,49 +21,88 @@
       {% assign opening_type = product.metafields.sf_gates.opening_type_s_ %}
       {% assign use_case = product.metafields.sf_gates.use_case | split: ',' %}
       {% assign my_tags = product.metafields.sf_gates.mount_type | split: ',' %}
-      {% if min_opening_size and max_opening_size and my_tags.size > 0 %}
-        <div class="row-title">
-          <h3 class="h1 heading-underline">Gate Specifications</h3>
-        </div>
-        <!-- <div class="feature_divider"></div> -->
-        <div class="flex-row">
-          <div class="flex-item-small">
-            <h3>Opening Size Min</h3>
-            {{ min_opening_size }} inches
-          </div>
-          <div class="flex-item-small">
-            <h3>Opening Size Max</h3>
-            {{ max_opening_size }} inches
-          </div>
-          <div class="flex-item-small">
-            <h3>Mount Type</h3>
-            {% for tag in my_tags %}
-              {{ tag -}}
-              {%- if tag != my_tags.last %},{% endif %}
-            {% endfor %}
-          </div>
 
-          <div class="flex-item-small">
-            <h3>Opening Type</h3>
-            {{ opening_type }}
-          </div>
-          <div class="flex-item-small">
-            <h3>Use Cases</h3>
-            {% for tag in use_case %}
-              {{ tag -}}
-              {%- if tag != use_case.last %},{% endif %}
-            {% endfor %}
-          </div>
-          <div class="flex-item-small">
-            <h3>Walk-Thru Door</h3>
-            {% if my_switch == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif %}
-          </div>
+      <div class="row-title">
+        <h3 class="h1 heading-underline">Gate Specifications</h3>
+      </div>
+      <!-- <div class="feature_divider"></div> -->
+      <div class="flex-row">
+        <div class="flex-item-small">
+          <h3>Opening Size Min</h3>
+          {{ min_opening_size }} inches
         </div>
-      {% endif %}
+        <div class="flex-item-small">
+          <h3>Opening Size Max</h3>
+          {{ max_opening_size }} inches
+        </div>
+        <div class="flex-item-small">
+          <h3>Mount Type</h3>
+          {% for tag in my_tags %}
+            {{ tag -}}
+            {%- if tag != my_tags.last %},{% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="flex-item-small">
+          <h3>Opening Type</h3>
+          {{ opening_type }}
+        </div>
+        <div class="flex-item-small">
+          <h3>Use Cases</h3>
+          {% for tag in use_case %}
+            {{ tag -}}
+            {%- if tag != use_case.last %},{% endif %}
+          {% endfor %}
+        </div>
+        <div class="flex-item-small">
+          <h3>Walk-Thru Door</h3>
+          {% if my_switch == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% if product.type == 'High Chair' %}
+  <section class="pdp-support page-width">
+    <div class="pdp-support__container pdp-support">
+      {% assign cleaning = product.metafields.sf_high_chair.cleaning %}
+      {% assign fold_flat_capable = product.metafields.sf_high_chair.fold_flat_capable %}
+      {% assign height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
+      {% assign one_hand_tray = product.metafields.sf_high_chair.one_hand_tray %}
+      <div class="row-title">
+        <h3 class="h1 heading-underline">Specifications</h3>
+      </div>
+      <div class="flex-row">
+        <div class="flex-item-small">
+          <h3>Fold Flat</h3>
+          {% if fold_flat_capable == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>Height Adjustable</h3>
+          {% if height_adjustable == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>One hand Tray</h3>
+          {% if one_hand_tray == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+      </div>
     </div>
   </section>
 {% endif %}
@@ -289,114 +328,112 @@
   </section>
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
-      <div class="flex-row">
-        <!-- rear facing mode for car seat -->
-        {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
-        {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
-        {% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
-        {% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
-        {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
-        {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
-        {% if rear_facing_weight_min
-          and rear_facing_weight_max
-          and rear_facing_height_min
-          and rear_facing_height_max
-          and rear_facing_fit_statement
-        %}
-          <div class="flex-item-third">
-            <div class="flex-row">
-              <h3>Rear-Facing Mode</h3>
-            </div>
+      <!-- rear facing mode for car seat -->
+      {% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
+      {% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
+      {% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
+      {% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
+      {% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
+      {% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
+      {% if rear_facing_weight_min
+        and rear_facing_weight_max
+        and rear_facing_height_min
+        and rear_facing_height_max
+        and rear_facing_fit_statement
+      %}
+        <div class="flex-item-third">
+          <div class="flex-row">
+            <h3>Rear-Facing Mode</h3>
+          </div>
 
-            <div class="flex-row pdp-support">
-              <div class="flex-item-small">
-                <h3>Weight</h3>
-                <p>{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs</p>
-              </div>
-              <div class="flex-item-small">
-                <h3>Height</h3>
-                {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
-              </div>
+          <div class="flex-row">
+            <div class="flex-item-small">
+              <h3>Weight</h3>
+              <p>{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs</p>
             </div>
-            <div class="statement">
-              {{ rear_facing_fit_statement }}
+            <div class="flex-item-small">
+              <h3>Height</h3>
+              {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
             </div>
           </div>
-        {% endif %}
+          <div class="statement">
+            {{ rear_facing_fit_statement }}
+          </div>
+        </div>
+      {% endif %}
 
-        <!-- forward facing mode for car seat -->
-        {% assign forward_facing_weight_min = product.metafields.sf_car_seat.forward_facing_weight_min %}
-        {% assign forward_facing_weight_max = product.metafields.sf_car_seat.forward_facing_weight_max %}
-        {% assign forward_facing_height_min = product.metafields.sf_car_seat.forward_facing_height_min %}
-        {% assign forward_facing_height_max = product.metafields.sf_car_seat.forward_facing_height_max %}
-        {% assign forward_facing_age_limit = product.metafields.sf_car_seat.forward_facing_age_limit %}
-        {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
-        {% if forward_facing_weight_min
-          and forward_facing_weight_max
-          and forward_facing_height_min
-          and forward_facing_height_max
-          and forward_facing_fit_statement
-        %}
-          <div class="flex-item-third">
-            <div class="flex-row">
-              <h3>Forward-Facing Mode</h3>
-            </div>
+      <!-- forward facing mode for car seat -->
+      {% assign forward_facing_weight_min = product.metafields.sf_car_seat.forward_facing_weight_min %}
+      {% assign forward_facing_weight_max = product.metafields.sf_car_seat.forward_facing_weight_max %}
+      {% assign forward_facing_height_min = product.metafields.sf_car_seat.forward_facing_height_min %}
+      {% assign forward_facing_height_max = product.metafields.sf_car_seat.forward_facing_height_max %}
+      {% assign forward_facing_age_limit = product.metafields.sf_car_seat.forward_facing_age_limit %}
+      {% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
+      {% if forward_facing_weight_min
+        and forward_facing_weight_max
+        and forward_facing_height_min
+        and forward_facing_height_max
+        and forward_facing_fit_statement
+      %}
+        <div class="flex-item-third">
+          <div class="flex-row">
+            <h3>Forward-Facing Mode</h3>
+          </div>
 
-            <!-- <div class="feature_divider"></div> -->
-            <div class="flex-row pdp-support">
-              <div class="flex-item-small">
-                <h3>Weight</h3>
-                {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
-              </div>
-              <div class="flex-item-small">
-                <h3>Height</h3>
-                {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
-              </div>
+          <!-- <div class="feature_divider"></div> -->
+          <div class="flex-row">
+            <div class="flex-item-small">
+              <h3>Weight</h3>
+              {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
             </div>
-            <div class="statement">
-              {{ forward_facing_fit_statement }}
+            <div class="flex-item-small">
+              <h3>Height</h3>
+              {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
             </div>
           </div>
-        {% endif %}
+          <div class="statement">
+            {{ forward_facing_fit_statement }}
+          </div>
+        </div>
+      {% endif %}
 
-        <!-- high back mode for car seat -->
-        {% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
-        {% assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max %}
-        {% assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min %}
-        {% assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max %}
-        {% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
-        {% if high_back_weight_min
-          or high_back_weight_max
-          or high_back_height_min
-          or high_back_height_max
-          and high_back_fit_statement
-        %}
-          <div class="flex-item-third">
-            <div class="flex-row">
-              <h3>High Back Booster Mode</h3>
-            </div>
-            <div class="flex-row pdp-support">
-              {% if high_back_fit_statement %}
-                <div class="flex-item-small">
-                  <h3>Weight</h3>
-                  {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
-                </div>
-              {% endif %}
-              {% if high_back_fit_statement %}
-                <div class="flex-item-small">
-                  <h3>Height</h3>
-                  {{ high_back_height_min }} - {{ high_back_height_max }} in
-                </div>
-              {% endif %}
-            </div>
+      <!-- high back mode for car seat -->
+      {% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
+      {% assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max %}
+      {% assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min %}
+      {% assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max %}
+      {% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
+      {% if high_back_weight_min
+        or high_back_weight_max
+        or high_back_height_min
+        or high_back_height_max
+        and high_back_fit_statement
+      %}
+        <div class="flex-item-third">
+          <div class="flex-row">
+            <h3>High Back Booster Mode</h3>
+          </div>
+          <div class="flex-row">
             {% if high_back_fit_statement %}
-              <div class="statement">
-                {{ high_back_fit_statement }}
+              <div class="flex-item-small">
+                <h3>Weight</h3>
+                {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
+              </div>
+            {% endif %}
+            {% if high_back_fit_statement %}
+              <div class="flex-item-small">
+                <h3>Height</h3>
+                {{ high_back_height_min }} - {{ high_back_height_max }} in
               </div>
             {% endif %}
           </div>
-        {% endif %}
-      </div>
+          {% if high_back_fit_statement %}
+            <div class="statement">
+              {{ high_back_fit_statement }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
   </section>
 {% endif %}
