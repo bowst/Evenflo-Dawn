@@ -324,6 +324,7 @@
 
     <script>
       
+      
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
@@ -352,6 +353,7 @@
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
       };
 
+
     </script>
 
     {%- if settings.predictive_search_enabled -%}
@@ -371,9 +373,10 @@
       klaviyo.enable('backinstock', {
         trigger: {
           product_page_text: 'Notify Me When Available',
-          product_page_class: 'button button--secondary',
+          product_page_class: 'button',
           product_page_text_align: 'center',
           product_page_margin: '0px',
+
           replace_anchor: false,
         },
         modal: {
@@ -402,6 +405,7 @@
 
 <script>
   
+  
     /*ezfyignore*/
     /* EZFY Slideshow PRO by ezfycode.com
     ========================================== */
@@ -419,5 +423,6 @@
         eval(script);
 	  }
     });
+
 
 </script>
