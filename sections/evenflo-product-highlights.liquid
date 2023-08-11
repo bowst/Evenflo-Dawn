@@ -707,13 +707,14 @@
             {% endfor %}
           {% endif %}
 
-          {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
-          {% if my_switch == 1 %}
+          {% assign machine_wash = product.metafields.sf_carrier.machine_washable %}
+          {% if machine_wash == 1 %}
             <strong>Machine Washable:</strong><br>
-            {% assign my_switch = product.metafields.sf_carrier.pacifier_toy_clip %}
-            {% if my_switch == 1 %}
-              <strong>Pacifier / Toy Clip</strong><br>
-            {% endif %}
+          {% endif %}
+
+          {% assign pacifier_toy_clip = product.metafields.sf_carrier.pacifier_toy_clip %}
+          {% if pacifier_toy_clip == 1 %}
+            <strong>Pacifier / Toy Clip</strong><br>
           {% endif %}
         </div>
       </div>
