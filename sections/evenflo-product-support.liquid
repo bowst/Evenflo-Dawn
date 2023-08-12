@@ -432,6 +432,7 @@
       <!-- car seat specifications -->
 
       {% assign steel_reinforced = product.metafields.sf_car_seat.steel_reinforced %}
+   {% assign washable = product.metafields.sf_products.machine_washable_seating_surfa %}
       {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
       {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
       {% assign latch_install = product.metafields.sf_car_seat.latch_install %}
@@ -450,7 +451,7 @@
         <div class="flex-item-small">
         <h3>Machine Washable Surface</h3>
           <p>
-            {% if sf_products.machine_washable_seating_surfa == 0 %}
+            {% if washable == 0 %}
               Yes
             {% else %}
               No
