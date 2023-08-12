@@ -448,6 +448,14 @@
       <!-- <div class="feature_divider"></div> -->
       <div class="flex-row pdp-support">
         <div class="flex-item-small">
+        <h3>Machine Washable Surface</h3>
+          <p>
+            {% if sf_products.machine_washable_seating_surfa == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+          </p>
           <h3>Steel Reinforced</h3>
           <p>
             {% if steel_reinforced == 1 %}
