@@ -90,25 +90,26 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong>{{ modes_of_use }}</strong>
+          {{ modes_of_use }}
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
           {% assign my_switch = product.metafields.custom.rotation %}
           {% if my_switch == true %}
-            <strong>360 Rotation</strong><br>
+            360 Rotation<br>
           {% endif %}
-          <strong>{{ product.metafields.custom.installation }} Installation</strong>
+          {{ product.metafields.custom.installation }} Installation
           <br>
           {% assign my_switch = product.metafields.sf_car_seat.steel_reinforced %}
           {% if my_switch == 1 %}
-            <strong>Steel Reinforced</strong>
+            Steel Reinforced
           {% endif %}
           <br>
           {% assign my_switch = product.metafields.sf_car_seat.anti_rebound_bar %}
           {% if my_switch == 1 %}
-            <strong>Anti Rebound Bar</strong>
+            Anti Rebound Bar
           {% endif %}
+          Sensorsafe<br>
         </div>
       </div>
     {% endif %}
@@ -973,9 +974,9 @@
           <h3>Specs</h3>
           <strong
             >Accuracy<br>
-            <stong>Response Time</stong><br>
-            <stong>Body Application</stong><br>
-            <stong>Battery Cell Type:</stong>{{ battery_cell_type }}
+            <strong>Response Time</strong><br>
+            <strong>Body Application</strong><br>
+            <strong>Battery Cell Type:</strong>{{ battery_cell_type }}
           </strong>
         </div>
       </div>
@@ -989,9 +990,20 @@
         <div class="flex-item">
           <h3>Child Fit</h3>
           <strong>Weight:</strong>
-          {{ child_weight_min_value }} - {{ child_weight_max_value }} lbs<br>
-          <strong>Height:</strong>
-          {{ child_height_min_value }} - {{ child_height_max_value }} in
+          {% if child_weight_min_value %}
+            {{ child_weight_min_value }} -
+          {% endif %}
+          {% if child_weight_max_value %}
+            {{ child_weight_max_value }} lbs <br>
+          {% endif %}
+          {% if child_height_min_value %}
+            <strong>Height:</strong>
+
+            {{ child_height_min_value }} -
+          {% endif %}
+          {% if child_height_max_value %}
+            {{ child_height_max_value }} in
+          {% endif %}
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
