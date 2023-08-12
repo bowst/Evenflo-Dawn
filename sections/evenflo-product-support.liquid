@@ -6,7 +6,7 @@
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
 {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
 
-{% if product.vendor == 'Rollplay' %}
+{% if product.vendor == 'Exersaucer' %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
       <!-- carrier positions for carrier -->
@@ -423,7 +423,10 @@
   </section>
 {% endif %}
 
-{% if product.type contains 'Car Seat' or product.type contains 'Travel System' %}
+{% if product.type contains 'Car Seat'
+  or product.type contains 'Travel System'
+  or product.type contains 'Booster Seat'
+%}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
       <!-- car seat specifications -->
@@ -643,6 +646,45 @@
           {% if high_back_fit_statement %}
             <div class="statement">
               {{ high_back_fit_statement }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <!-- no back mode for car seat -->
+      <!-- no back mode for car seat -->
+      {% assign no_back_weight_min = product.metafields.sf_car_seat.no_back_weight_min %}
+      {% assign no_back_weight_max = product.metafields.sf_car_seat.no_back_weight_max %}
+      {% assign no_back_height_min = product.metafields.sf_car_seat.no_back_height_min %}
+      {% assign no_back_height_max = product.metafields.sf_car_seat.no_back_height_max %}
+      {% assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement %}
+      {% if no_back_weight_min
+        or no_back_weight_max
+        or no_back_height_min
+        or no_back_height_max
+        and no_back_fit_statement
+      %}
+        <div class="flex-item-third">
+          <div class="flex-row">
+            <h3>No Back Booster Mode</h3>
+          </div>
+          <div class="flex-row">
+            {% if no_back_weight_max %}
+              <div class="flex-item-small">
+                <h3>Weight</h3>
+                {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
+              </div>
+            {% endif %}
+            {% if no_back_height_max %}
+              <div class="flex-item-small">
+                <h3>Height</h3>
+                {{ no_back_height_min }} - {{ no_back_height_max }} in
+              </div>
+            {% endif %}
+          </div>
+          {% if no_back_fit_statement %}
+            <div class="statement">
+              {{ no_back_fit_statement }}
             </div>
           {% endif %}
         </div>
