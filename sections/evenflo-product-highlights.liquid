@@ -324,7 +324,10 @@
 
           {% assign slim_design = product.metafields.custom.slim_design %}
           {% if slim_design == true %}
-            Slim Design
+            Slim Design<br>
+          {% endif %}
+          {% if product.metafields.sf_car_seat.sensorsafe == 1 %}
+            Sensorsafe<br>
           {% endif %}
         </div>
       </div>
@@ -776,9 +779,12 @@
           {% if product.metafields.sf_car_seat.sensorsafe == 1 %}
             Sensorsafe<br>
           {% endif %}
-          <strong>Installation</strong><br>
+          {{ product.metafields.custom.installation }} Installation<br>
 
-          <strong>Steel Reinforced</strong><br>
+          {% assign steel = product.metafields.sf_car_seat.steel_reinforced %}
+          {% if steel == 1 %}
+            Steel Reinforced<br>
+          {% endif %}
         </div>
       </div>
     {% endif %}
