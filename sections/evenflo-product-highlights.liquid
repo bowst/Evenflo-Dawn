@@ -794,13 +794,13 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>
-            {% for tag in electronic_toys_features %}
-              {{ tag -}}
-              {%- if tag != electronic_toys_features.last %},{% endif -%}
-              <br>
-            {% endfor -%}
-          </strong>
+          <strong>Toy Features</strong>
+          {% for tag in electronic_toys_features %}
+            {{ tag -}}
+            {%- if tag != electronic_toys_features.last %},{% endif -%}
+            <br>
+          {% endfor -%}
+
           {% assign my_switch = product.metafields.sf_products.machine_washable_seating_surfa %}
           {% if my_switch == 1 %}
             Machine Washable
