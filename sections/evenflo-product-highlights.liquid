@@ -112,7 +112,10 @@
           {% if my_switch == 1 %}
             Anti-Rebound Bar
           {% endif %}
-          Sensorsafe<br>
+          {% if product.metafields.sf_car_seat.sensorsafe == 1 %}
+            Sensorsafe<br>
+          {% endif %}
+          <br>
         </div>
       </div>
     {% endif %}
@@ -229,12 +232,10 @@
             No
           {% endif -%}
           <br>
-          <strong>Anti-Rebound Bar:</strong>
-          {%- if anti_rebound_bar == 1 %}
-            Yes
-          {% else %}
-            No
-          {% endif -%}
+          {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+          {% if anti_rebound_bar == 1 %}
+            Anti-Rebound Bar
+          {% endif %}
           <br>
           <strong>{{ installation }} Installation</strong>
         </div>
@@ -269,12 +270,10 @@
             No
           {% endif -%}
           <br>
-          <strong>Anti-Rebound Bar:</strong>
-          {%- if anti_rebound_bar == 1 %}
-            Yes
-          {% else %}
-            No
-          {% endif -%}
+          {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+          {% if anti_rebound_bar == 1 %}
+            Anti-Rebound Bar
+          {% endif %}
           <br>
           <strong>{{ installation }} Installation</strong>
         </div>
@@ -318,7 +317,7 @@
           {% if my_switch == true %}
             <strong>360 Rotation</strong><br>
           {% endif %}
-          <strong> {{ product.metafields.custom.installation }} Installation</strong>
+          {{ product.metafields.custom.installation }} Installation
           <br>
 
           <strong>Slim Design</strong>
@@ -349,19 +348,19 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>{{ product.metafields.custom.installation }} Installation</strong>
+          {{ product.metafields.custom.installation }} Installation
           <br>
-          <strong>Number Of Cupholders:</strong>
+          Number Of Cupholders:
           {{ number_of_cup_holders }}
           <br>
-          <strong>Harness Booser Mode:</strong>
+          Harness Booser Mode:
           {% if has_harness_booster_mode == 1 %}
             Yes <br>
           {% else %}
             No <br>
           {% endif %}
 
-          <strong>Converts to No Back Booster:</strong>
+          Converts to No Back Booster:
           {% if converts_to_no_back_booster == 1 %}
             Yes <br>
           {% else %}
@@ -453,17 +452,17 @@
         <div class="flex-item">
           <h3>Specs</h3>
           {% if product.metafields.sf_car_seat.sensorsafe == 1 %}
-            <strong>Sensorsafe</strong><br>
+            Sensorsafe<br>
           {% endif %}
-          <strong>{{ product.metafields.custom.installation }} Installation </strong>
+          {{ product.metafields.custom.installation }} Installation
           <br>
           {% assign rebound = product.metafields.sf_car_seat.anti_rebound_bar %}
           {% if rebound == 1 %}
-            <strong>Anti-Rebound Bar</strong><br>
+            Anti-Rebound Bar<br>
           {% endif %}
           {% assign steel = product.metafields.sf_car_seat.steel_reinforced %}
           {% if steel == 1 %}
-            <strong>Steel Reinforced</strong><br>
+            Steel Reinforced<br>
           {% endif %}
         </div>
       </div>
@@ -491,27 +490,27 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Accepts Infant Car Seat:</strong>
+          Accepts Infant Car Seat:
           {%- if accepts_infant_car_seat == 1 %}
             Yes
           {% else %}
             No
           {% endif -%}
           <br>
-          <strong>Wheel Material:</strong>
+          Wheel Material:
           {{ wheel_material -}}
           <br>
-          <strong>Stroller Type:</strong>
+          Stroller Type:
           {{ stroller_type -}}
           <br>
-          <strong>Accepts Rider Board:</strong>
+          Accepts Rider Board:
           {% if accepts_rider_board == 1 %}
             Yes
           {% else %}
             No
           {% endif %}
           <br>
-          <strong>Stroller Type:</strong>
+          Stroller Type:
           {{ stroller_type -}}
         </div>
       </div>
@@ -545,17 +544,19 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Hardware Included</strong>
+          Hardware Included
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
           {% if gate_hardware == 1 %}
             Yes
           {% else %}
             No
           {% endif %}
-          {% assign made_usa = product.metafields.sf_products.made_in_usa %}
-          {% if made_usa == 1 %}
-            <strong>Made in the USA</strong>
-          {% endif %}
+          {% comment %}
+            {% assign made_usa = product.metafields.sf_products.made_in_usa %}
+            {% if made_usa == 1 %}
+              <strong>Made in the USA</strong>
+            {% endif %}
+          {% endcomment %}
 
           {% if machine_washable == 1 %}
             Hardware Included
@@ -759,9 +760,15 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Sensorsafe</strong><br>
+          {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+          {% if anti_rebound_bar == 1 %}
+            Anti-Rebound Bar
+          {% endif %}
+          {% if product.metafields.sf_car_seat.sensorsafe == 1 %}
+            Sensorsafe<br>
+          {% endif %}
           <strong>Installation</strong><br>
-          <strong>Anti-Reboun Bar</strong><br>
+
           <strong>Steel Reinforced</strong><br>
         </div>
       </div>
