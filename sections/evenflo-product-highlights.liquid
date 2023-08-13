@@ -312,15 +312,18 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          {% assign my_switch = product.metafields.custom.rotation %}
+          {% assign rotation = product.metafields.custom.rotation %}
 
-          {% if my_switch == true %}
-            <strong>360 Rotation</strong><br>
+          {% if rotation == true %}
+            360 Rotation<br>
           {% endif %}
           {{ product.metafields.custom.installation }} Installation
           <br>
 
-          <strong>Slim Design</strong>
+          {% assign slim_design = product.metafields.custom.slim_design %}
+          {% if slim_design == true %}
+            Slim Design
+          {% endif %}
         </div>
       </div>
     {% endif %}
