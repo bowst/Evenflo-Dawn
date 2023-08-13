@@ -15,7 +15,6 @@
 
 {% assign activity_batteries_required = product.metafields.sf_activity.batteries_required %}
 {% assign activity_height_adjustable = product.metafields.sf_activity.height_adjustable %}
-{% assign activity_foldable = product.metafields.sf_activity.foldable_collapsable %}
 
 {% comment %}
   {% if product.vendor == 'Exersaucer' %}
@@ -731,11 +730,12 @@
       {% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
       {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
       {% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
+      {% assign type = product.metafields.sf_activity.type %}
+      {% assign batteries_included = product.metafields.sf_activity.batteries_included %}
 
-      {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
-      {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+      {% assign height_adjustable = product.metafields.product.metafields.sf_activity.height_adjustable %}
       {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
-
+      {% assign activity_foldable = product.metafields.sf_activity.foldable_collapsable %}
       {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
       <div class="left-column-data pdp-child-info">
         <h3 class="h1 heading-underline">Specifications</h3>
@@ -750,7 +750,7 @@
             {% endif %}
           </div>
           <div class="flex-item-small">
-            <h3>Height</h3>
+            <h3>Child Height</h3>
             {% if child_height_min_value %}
               {{ child_height_min_value }} -
             {% endif %}
@@ -766,21 +766,17 @@
           </div>
           <div class="flex-item-small">
             <h3>Battery Required</h3>
-            {% if batteries_required_bassinet == 1 %}
-              Yes
+            {% if activity_batteries_required == 1 %}
+              Yes <br>
             {% else %}
-              No
+              No<br>
             {% endif %}
-          </div>
-          <div class="flex-item-small">
-            {% if batteries_required_bassinet == 1 %}
-              {% assign battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
-              {% if battery_cell_type %}
-                <div class="five columns">
-                  <h3>Battery Type</h3>
-                  {{ toy_battery_cell_type }}
-                </div>
-              {% endif %}
+            Type {{ product.metafields.sf_activity.battery_cell_type -}}
+            <br>
+            {% if batteries_included == 1 %}
+              Batteries Included
+            {% else %}
+              Batteries Not Inlcuded
             {% endif %}
           </div>
           <div class="flex-item-small">
@@ -798,23 +794,32 @@
               {%- if tag != electronic_toys_features.last %},{% endif %}
             {% endfor %}
           </div>
+
           <div class="flex-item-small">
-            {% if tablet_holder == 1 %}
-              <div class="five columns">
-                <h3>Tablet Holder</h3>
-                Yes
-              </div>
+            {% if toys_entertainment %}
+              <h3>Toys</h3>
+              {{ toys_entertainment }}
             {% endif %}
           </div>
           <div class="flex-item-small">
-            {% if toys_entertainment %}
-              <div class="row">
-                <div class="sixteen columns">
-                  <h3>Toys</h3>
-                  {{ toys_entertainment }}
-                </div>
-              </div>
+            <h3>Foldable</h3>
+            {% if activity_foldable == 1 %}
+              Yes
+            {% else %}
+              No
             {% endif %}
+          </div>
+          <div class="flex-item-small">
+            <h3>Height Adjustable</h3>
+            {% if height_adjustable == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+          </div>
+          <div class="flex-item-small">
+            <h3>Activity Type</h3>
+            {{ type }}
           </div>
           <!-- harness for door jumper -->
           {% assign harness_type = product.metafields.sf_door_jumper.harness_type %}
