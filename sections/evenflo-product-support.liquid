@@ -389,6 +389,8 @@
 {% endif %}
 
 {%- if product.type == 'Carrier' or product.type == 'Baby Carrier' %}
+  {% assign toy_clip = product.metafields.sf_carrier.pacifier_toy_clip %}
+  {% assign machine_wash = product.metafields.sf_carrier.machine_washable %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
       <!-- carrier positions for carrier -->
@@ -410,8 +412,17 @@
           </div>
           <div class="flex-item-small">
             <h4>Machine Washable</h4>
-            {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
-            {% if my_switch == 1 %}
+
+            {% if machine_wash == 1 %}
+              <p>Yes</p>
+            {% else %}
+              <p>No</p>
+            {% endif %}
+          </div>
+          <div class="flex-item-small">
+            <h4>Toy Clip</h4>
+
+            {% if toy_clip == 1 %}
               <p>Yes</p>
             {% endif %}
           </div>
@@ -771,7 +782,7 @@
             {% else %}
               No<br>
             {% endif %}
-            Type {{ product.metafields.sf_activity.battery_cell_type -}}
+            {{ product.metafields.sf_activity.battery_cell_type -}}
             <br>
             {% if batteries_included == 1 %}
               Batteries Included
