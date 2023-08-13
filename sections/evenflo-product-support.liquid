@@ -115,6 +115,7 @@
   {% assign changing_station = product.metafields.sf_playard.diaper_changing_station %}
   {% assign extra_storage = product.metafields.sf_playard.extra_storage %}
   {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
+  {% assign built_for_travel = product.metafields.sf_playard.built_for_travel %}
   {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
@@ -194,6 +195,18 @@
             {% else %}
               No
             {% endif %}
+          </div>
+          <div class="flex-item-small">
+            <h4>Built For Travel</h4>
+            {% if tablet_holder == 1 %}
+              Yes
+            {% else %}
+              No
+            {% endif %}
+          </div>
+          <div class="flex-item-small">
+            <h4>Canopy</h4>
+            {{ product.metafields.sf_playard.canopy }}
           </div>
         </div>
         {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}

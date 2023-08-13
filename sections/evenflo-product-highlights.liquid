@@ -544,9 +544,16 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          Hardware Included:
+          <strong>Hardware Included:</strong>
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
           {% if gate_hardware == 1 %}
+            Yes<br>
+          {% else %}
+            No<br>
+          {% endif %}
+          <strong>Assembly Required:</strong>
+
+          {% if assembly_switch_spec == 1 %}
             Yes<br>
           {% else %}
             No<br>
@@ -803,7 +810,7 @@
 
           {% assign my_switch = product.metafields.sf_products.machine_washable_seating_surfa %}
           {% if my_switch == 1 %}
-            Machine Washable
+            Machine Washable<br>
           {% endif %}
           {% assign my_switch = product.metafields.sf_high_chair.height_adjustable %}
           {% if my_switch == 1 %}
