@@ -21,6 +21,9 @@
 {% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
 {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
 
+{% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
+{% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
+
 {% comment %} Bassinets & Cradles {% endcomment %}
 
 {% if product.vendor == 'Rollplay' %}
@@ -343,13 +346,23 @@
       {% assign lockable_front_wheels = product.metafields.sf_stroller.lockable_front_wheels %}
       {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
       {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
+      {% assign compact_fold = product.metafields.sf_stroller.compact_fold %}
+      {% assign self_standing_fold = product.metafields.sf_stroller.self_standing_fold %}
+
+      {% assign lockable_front = product.metafields.sf_stroller.lockable_front_wheels %}
       {% assign single_to_double_capable = product.metafields.sf_stroller.single_to_double_capable %}
       {% if number_of_height_modes or wheel_material or stroller_type or number_of_cup_holders %}
         <div class="left-column-data pdp-child-info">
           <h3 class="h1 heading-underline">Stroller Specifications</h3>
           <div class="flex-row pdp-support">
+            {% comment %}
+              <div class="flex-item-small">
+                <h3>Stroller Max Age</h3>
+                {{ product.metafields.sf_stroller.max_age | strip }}
+              </div>
+            {% endcomment %}
             <div class="flex-item-small">
-              <h4>Self Standing</h4>
+              <h3>Self Standing</h3>
               {% if self_standing_fold == 1 %}
                 Yes
               {% else %}
@@ -359,6 +372,30 @@
             <div class="flex-item-small">
               <h3>UPF 50+ Sun Protection Canopy</h3>
               {% if upf_50_sun_protection_canopy == 1 %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </div>
+            <div class="flex-item-small">
+              <h3>Compact Fold</h3>
+              {% if compact_fold == 1 %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </div>
+            <div class="flex-item-small">
+              <h3>Self Standing Fold</h3>
+              {% if self_standing_fold == 1 %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </div>
+            <div class="flex-item-small">
+              <h3>Lockable Front Wheels</h3>
+              {% if lockable_front == 1 %}
                 Yes
               {% else %}
                 No
@@ -379,6 +416,7 @@
                 {{ number_of_cup_holders }}
               </div>
             {% endif %}
+
             <div class="flex-item-small">
               <h3>Single to Double Capable</h3>
               {% if single_to_double_capable == 1 %}
@@ -780,11 +818,10 @@
     <div class="pdp-support__container pdp-support">
       {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
       {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
-      {% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
-      {% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
 
       {% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
       {% assign type = product.metafields.sf_activity.type %}
+      {% assign max_ceiling_height = product.metafields.sf_door_jumper.max_ceiling_height %}
 
       {% assign height_adjustable = product.metafields.product.metafields.sf_activity.height_adjustable %}
       {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
@@ -859,6 +896,10 @@
           <div class="flex-item-small">
             <h3>Activity Type</h3>
             {{ type }}
+          </div>
+          <div class="flex-item-small">
+            <h3>Max Ceiling Height</h3>
+            {{ max_ceiling_height }}
           </div>
           <div class="flex-item">
             <h3>Battery Required</h3>

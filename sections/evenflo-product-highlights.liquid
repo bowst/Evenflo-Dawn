@@ -16,6 +16,8 @@
 {% assign made_usa = product.metafields.sf_products.made_in_usa %}
 {% assign harness_type = product.metafields.sf_products.harness_type %}
 
+{% assign machine_washable = product.metafields.sf_carrier.machine_washable %}
+
 {% assign lightweight = product.metafields.sf_car_seat.lightweight %}
 {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
 {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
@@ -408,7 +410,6 @@
             <strong>Made in the USA</strong>
           {% endif %}
 
-          {% assign machine_washable = product.metafields.sf_carrier.machine_washable %}
           {% if machine_washable == 1 %}
             Machine Washable
           {% endif %}
@@ -556,7 +557,6 @@
             <strong>Made in the USA</strong>
           {% endif %}
 
-          {% assign machine_washable = product.metafields.sf_carrier.machine_washable %}
           {% if machine_washable == 1 %}
             Hardware Included
           {% endif %}
@@ -698,13 +698,13 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} D x {{ package_depth }} H in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          <strong>{{ modes_of_use }}</strong>
+          {{ modes_of_use }}
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
@@ -718,7 +718,6 @@
             {% endfor %}
           {% endif %}
 
-          {% assign machine_wash = product.metafields.sf_carrier.machine_washable %}
           {% if machine_wash == 1 %}
             <strong>Machine Washable</strong><br>
           {% endif %}
@@ -951,7 +950,6 @@
             <strong>Made in the USA</strong>
           {% endif %}
 
-          {% assign machine_washable = product.metafields.sf_carrier.machine_washable %}
           {% if machine_washable == 1 %}
             Machine Washable
           {% endif %}
