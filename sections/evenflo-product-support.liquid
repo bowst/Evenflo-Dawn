@@ -41,10 +41,6 @@
           </div>
 
           <div class="flex-item-small">
-            <h4>Battery Voltage</h4>
-            {{ product.metafields.custom.rollplay_battery_voltage }}
-          </div>
-          <div class="flex-item-small">
             <h4>Run Time</h4>
             {{ product.metafields.custom.rollplay_run_time }}
           </div>
@@ -52,17 +48,15 @@
             <h4>Max Speed</h4>
             {{ product.metafields.custom.rollplay_max_speed }}
           </div>
-          <div class="flex-item-small">
-            <h4>Warranty</h4>
-            {{ product_warranty }}
-          </div>
+        </div>
+        <div class="flex-row pdp-support">
           <div class="flex-item">
-            <h3>Battery Required</h3>
+            <h3>Battery</h3>
             {% if activity_batteries_required == 1 %}
-              Yes <br>
+              Required <br>
 
             {% else %}
-              No<br>
+              Not Required<br>
             {% endif %}
 
             {% if batteries_included == 1 %}
@@ -71,17 +65,20 @@
               Batteries Not Inlcuded<br>
             {% endif %}
 
-            Battery Cell Type<br>
+            Battery Cell Type
             {{ product.metafields.sf_activity.battery_cell_type -}}
-          </div>
-
-          <div class="flex-item-small">
-            <h4>Battery Replaceable</h4>
+            <br>
             {% if product.metafields.custom.battery_replaceable == true %}
-              Yes <br>
+              Replaceable <br>
             {% else %}
-              No<br>
+              Not replaceable<br>
             {% endif %}
+          </div>
+        </div>
+        <div class="flex-row pdp-support">
+          <div class="flex-item">
+            <h3>Warranty</h3>
+            {{ product_warranty }}
           </div>
           {% comment %}
             <div class="flex-item-small">
