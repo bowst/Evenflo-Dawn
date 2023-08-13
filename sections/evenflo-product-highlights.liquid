@@ -16,7 +16,7 @@
 {% assign made_usa = product.metafields.sf_products.made_in_usa %}
 {% assign harness_type = product.metafields.sf_products.harness_type %}
 
-{% assign machine_washable = product.metafields.sf_carrier.machine_washable %}
+{% assign carrier_machine_washable = product.metafields.sf_carrier.machine_washable %}
 
 {% assign lightweight = product.metafields.sf_car_seat.lightweight %}
 {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
@@ -718,8 +718,8 @@
             {% endfor %}
           {% endif %}
 
-          {% if machine_wash == 1 %}
-            <strong>Machine Washable</strong><br>
+          {% if carrier_machine_washable == 1 %}
+            Machine Washable<br>
           {% endif %}
 
           {% assign pacifier_toy_clip = product.metafields.sf_carrier.pacifier_toy_clip %}
