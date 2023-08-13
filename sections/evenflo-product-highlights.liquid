@@ -87,9 +87,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -171,7 +171,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Folded: </strong>
           {{ folded_dimensions -}}
           <br>
@@ -217,7 +217,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -225,18 +225,15 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Lightweight:</strong>
+
           {%- if lightweight == 1 %}
-            Yes
-          {% else %}
-            No
+            Lightweight<br>
           {% endif -%}
-          <br>
           {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
           {% if anti_rebound_bar == 1 %}
-            Anti-Rebound Bar
+            Anti-Rebound Bar<br>
           {% endif %}
-          <br>
+
           {{ installation }} Installation
         </div>
       </div>
@@ -253,7 +250,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Folded:</strong>
           {{ folded_dimensions }}
         </div>
@@ -263,13 +260,9 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Lightweight:</strong>
           {%- if lightweight == 1 %}
-            Yes
-          {% else %}
-            No
+            Lightweight<br>
           {% endif -%}
-          <br>
           {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
           {% if anti_rebound_bar == 1 %}
             Anti-Rebound Bar
@@ -304,9 +297,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -346,9 +339,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -382,7 +375,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Warranty Type</h3>
@@ -448,7 +441,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Folded:</strong>
           {{ folded_dimensions -}}
           <br>
@@ -487,7 +480,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Folded:</strong>
           {{ folded_dimensions -}}
           <br>
@@ -528,7 +521,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Warranty Type</h3>
@@ -594,9 +587,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -622,9 +615,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Features</h3>
@@ -660,9 +653,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
 
         <div class="flex-item">
@@ -762,9 +755,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -869,9 +862,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -905,9 +898,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -929,7 +922,7 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Warranty Type</h3>
@@ -975,9 +968,9 @@
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} H x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
