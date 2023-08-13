@@ -6,50 +6,61 @@
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
 {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
 
-{% if product.vendor == 'Exersaucer' %}
-  <section class="pdp-support page-width">
-    <div class="pdp-support__container pdp-support">
-      <!-- carrier positions for carrier -->
-      <div class="left-column-data pdp-child-info">
-        <h3 class="h1 heading-underline">Carrier Specifications</h3>
-        <div class="flex-row pdp-support">
-          <div class="flex-item-small">
-            <h4>Child Weight</h4>
-            {% if child_weight_min_value %}
-              {{ child_weight_min_value }} -
-            {% endif %}
-            {% if child_weight_max_value %}
-              {{ child_weight_max_value }} lbs
-            {% endif %}
-          </div>
-          <div class="flex-item-small">
-            <h4>Positions</h4>
-            {{ product.metafields.sf_carrier.position | split: ',' }}
-          </div>
-          <div class="flex-item-small">
-            <h4>Machine Washable</h4>
-            {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
-            {% if my_switch == 1 %}
-              <p>Yes</p>
-            {% endif %}
-          </div>
-          <div>
-            {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
+{% assign rethread_method = product.metafields.sf_products.harness_rethread_method %}
 
-            {% if shipping_restrictions %}
-              <div>
-                <h3>Shipping Restrictions</h3>
-                <p>
-                  {{ shipping_restrictions }}
-                </p>
-              </div>
-            {% endif %}
+{% assign sensorsafe = product.metafields.sf_car_seat.sensorsafe %}
+{% assign easy_install = product.metafields.sf_car_seat.easy_install %}
+{% assign rollover_tested = product.metafields.sf_car_seat.rollover_tested %}
+{% assign converts_to_belt = product.metafields.sf_car_seat.converts_to_belt_position_boos %}
+
+{% assign activity_batteries_required = product.metafields.sf_activity.batteries_required %}
+{% assign activity_height_adjustable = product.metafields.sf_activity.height_adjustable %}
+{% assign activity_foldable = product.metafields.sf_activity.foldable_collapsable %}
+
+{% comment %}
+  {% if product.vendor == 'Exersaucer' %}
+    <section class="pdp-support page-width">
+      <div class="pdp-support__container pdp-support">
+        <!-- carrier positions for carrier -->
+        <div class="left-column-data pdp-child-info">
+          <h3 class="h1 heading-underline">Carrier Specifications</h3>
+          <div class="flex-row pdp-support">
+            <div class="flex-item-small">
+              <h4>Child Weight</h4>
+              {% if child_weight_min_value %}
+                {{ child_weight_min_value }} -
+              {% endif %}
+              {% if child_weight_max_value %}
+                {{ child_weight_max_value }} lbs
+              {% endif %}
+            </div>
+            <div class="flex-item-small">
+              <h4>Positions</h4>
+              {{ product.metafields.sf_carrier.position | split: ',' }}
+            </div>
+            <div class="flex-item-small">
+              <h4>Machine Washable</h4>
+              {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
+              {% if my_switch == 1 %}
+                <p>Yes</p>
+              {% endif %}
+            </div>
+            <div>
+              {% if shipping_restrictions %}
+                <div>
+                  <h3>Shipping Restrictions</h3>
+                  <p>
+                    {{ shipping_restrictions }}
+                  </p>
+                </div>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-{% endif %}
+    </section>
+  {% endif %}
+{% endcomment %}
 
 {%- if product.type == 'Play Yards' %}
   {% assign bassinet_insert = product.metafields.sf_playard.bassinet_insert %}
@@ -219,8 +230,9 @@
     <div class="pdp-support__container pdp-support">
       {% assign cleaning = product.metafields.sf_high_chair.cleaning %}
       {% assign fold_flat_capable = product.metafields.sf_high_chair.fold_flat_capable %}
-      {% assign height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
+      {% assign hc_height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
       {% assign one_hand_tray = product.metafields.sf_high_chair.one_hand_tray %}
+
       <div class="left-column-data pdp-child-info">
         <h3 class="h1 heading-underline">High Chair Specifications</h3>
       </div>
@@ -244,7 +256,7 @@
         </div>
         <div class="flex-item-small">
           <h3>Height Adjustable</h3>
-          {% if height_adjustable == 1 %}
+          {% if hc_height_adjustable == 1 %}
             Yes
           {% else %}
             No
@@ -258,10 +270,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item">
-          <h3>Cleaning</h3>
-          {{ cleaning }}
-        </div>
+
         {% if shipping_restrictions %}
           <div class="flex-item">
             <h3>Shipping Restrictions</h3>
@@ -270,6 +279,8 @@
             </p>
           </div>
         {% endif %}
+
+        {% comment %} High Chair Cleaning {{ product.metafields.sf_high_chair.cleaning }} {% endcomment %}
       </div>
     </div>
   </section>
@@ -432,7 +443,7 @@
       <!-- car seat specifications -->
 
       {% assign steel_reinforced = product.metafields.sf_car_seat.steel_reinforced %}
-       {% assign washable = product.metafields.sf_products.machine_washable_seating_surfa %}
+      {% assign washable = product.metafields.sf_products.machine_washable_seating_surfa %}
       {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
       {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
       {% assign latch_install = product.metafields.sf_car_seat.latch_install %}
@@ -449,7 +460,7 @@
       <!-- <div class="feature_divider"></div> -->
       <div class="flex-row pdp-support">
         <div class="flex-item-small">
-        <h3>Machine Washable Surface</h3>
+          <h3>Machine Washable Surface</h3>
           <p>
             {% if washable == 1 %}
               Yes
@@ -518,6 +529,14 @@
         <div class="flex-item-small">
           <h3>Anti-Rebound Bar</h3>
           {% if anti_rebound_bar == 1 %}
+            Yes
+          {% else %}
+            No
+          {% endif %}
+        </div>
+        <div class="flex-item-small">
+          <h3>Sensorsafe</h3>
+          {% if sensorsafe == 1 %}
             Yes
           {% else %}
             No
