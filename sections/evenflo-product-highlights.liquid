@@ -544,12 +544,12 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          Hardware Included
+          Hardware Included:
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
           {% if gate_hardware == 1 %}
-            Yes
+            Yes<br>
           {% else %}
-            No
+            No<br>
           {% endif %}
           {% comment %}
             {% assign made_usa = product.metafields.sf_products.made_in_usa %}
@@ -559,7 +559,7 @@
           {% endcomment %}
 
           {% if machine_washable == 1 %}
-            Hardware Included
+            Machine Washable
           {% endif %}
         </div>
       </div>
@@ -670,14 +670,13 @@
             {%- if tag != my_tags.last %},{% endif %}
           {% endfor %}
           <br>
-          <strong>Hardware Included:</strong>
+          Hardware Included:
           {% assign gate_hardware = product.metafields.sf_gates.hardware_included %}
           {% if gate_hardware == 1 %}
-            Yes
+            Yes<br>
           {% else %}
-            No
+            No<br>
           {% endif %}
-          <br>
         </div>
       </div>
     {% endif %}
@@ -944,7 +943,7 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Assembly Required:</strong>
+          Assembly Required:
           {% if assembly_switch_spec == 1 %}
             Yes <br>
           {% else %}
@@ -1027,8 +1026,11 @@
           {{ rollplay_battery_voltage -}}
           <br>
           <strong>Replaceable Battery:</strong>
-          {{ rollplay_battery_replaceable -}}
-          <br>
+          {% if product.metafields.custom.battery_replaceable == true %}
+            Yes <br>
+          {% else %}
+            No<br>
+          {% endif %}
         </div>
       </div>
     {% endif %}
