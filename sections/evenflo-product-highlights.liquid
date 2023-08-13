@@ -20,6 +20,7 @@
 {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
 {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
 {% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
+{% assign sensorsafe = product.metafields.sf_car_seat.sensorsafe %}
 
 {% assign package_width = product.metafields.sf_shipping.package_width %}
 {% assign package_height = product.metafields.sf_shipping.package_height %}
@@ -450,9 +451,9 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Sensorsafe</strong>
-
-          <br>
+          {% if product.metafields.sf_car_seat.sensorsafe == 1 %}
+            <strong>Sensorsafe</strong><br>
+          {% endif %}
           <strong>{{ product.metafields.custom.installation }} Installation </strong>
           <br>
           {% assign rebound = product.metafields.sf_car_seat.anti_rebound_bar %}
