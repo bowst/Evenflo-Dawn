@@ -776,26 +776,17 @@
         <div class="flex-item">
           <h3>Child Fit</h3>
           <strong>Weight</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
+
           {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs <br>
+            Up to {{ child_weight_max_value }} lbs <br>
           {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<br>
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in<br>
           <strong>Package:</strong>
-          {{ package_width }} x {{ package_height }} x {{ package_depth }} in<br>
+          {{ package_width }} W x {{ package_height }} D x {{ package_depth }} D in<br>
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
@@ -806,16 +797,17 @@
           <strong>
             {% for tag in electronic_toys_features %}
               {{ tag -}}
-              {%- if tag != electronic_toys_features.last %},{% endif %}
+              {%- if tag != electronic_toys_features.last %},{% endif -%}
+              <br>
             {% endfor -%}
           </strong>
           {% assign my_switch = product.metafields.sf_products.machine_washable_seating_surfa %}
           {% if my_switch == 1 %}
-            <strong>Machine Washable</strong>
+            Machine Washable
           {% endif %}
           {% assign my_switch = product.metafields.sf_high_chair.height_adjustable %}
           {% if my_switch == 1 %}
-            <strong>Height Adjustable:</strong><br>
+            Height Adjustable:<br>
           {% endif %}
           {% assign product_warranty_link = product.metafields.custom.product_warranty_link %}
           {% if product_warranty_link %}
@@ -993,25 +985,15 @@
         <div class="flex-item">
           <h3>Child Fit</h3>
           <strong>Weight:</strong>
-          {% if child_weight_min_value %}
-            {{ child_weight_min_value }} -
-          {% endif %}
-          {% if child_weight_max_value %}
-            {{ child_weight_max_value }} lbs <br>
-          {% endif %}
-          {% if child_height_min_value %}
-            <strong>Height:</strong>
 
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
+          {% if child_weight_max_value %}
+            Up to {{ child_weight_max_value }} lbs <br>
           {% endif %}
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
           <strong>Assembled:</strong>
-          {{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in
+          {{ assembled_width }} W x {{ assembled_height }} H x {{ assembled_depth }} D in
         </div>
 
         <div class="flex-item">
