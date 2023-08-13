@@ -5,6 +5,7 @@
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
 {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
+{% assign product_warranty = product.metafields.sf_products.warranty_type %}
 
 {% assign rethread_method = product.metafields.sf_products.harness_rethread_method %}
 
@@ -15,28 +16,74 @@
 
 {% assign activity_batteries_required = product.metafields.sf_activity.batteries_required %}
 {% assign activity_height_adjustable = product.metafields.sf_activity.height_adjustable %}
+{% assign batteries_included = product.metafields.sf_activity.batteries_included %}
 
-{% comment %}
-  {% if product.vendor == 'Exersaucer' %}
-    <section class="pdp-support page-width">
-      <div class="pdp-support__container pdp-support">
-        <!-- carrier positions for carrier -->
-        <div class="left-column-data pdp-child-info">
-          <h3 class="h1 heading-underline">Carrier Specifications</h3>
-          <div class="flex-row pdp-support">
-            <div class="flex-item-small">
-              <h4>Child Weight</h4>
-              {% if child_weight_min_value %}
-                {{ child_weight_min_value }} -
-              {% endif %}
-              {% if child_weight_max_value %}
-                {{ child_weight_max_value }} lbs
-              {% endif %}
-            </div>
-            <div class="flex-item-small">
-              <h4>Positions</h4>
-              {{ product.metafields.sf_carrier.position | split: ',' }}
-            </div>
+{% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
+{% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
+
+{% comment %} Bassinets & Cradles {% endcomment %}
+
+{% if product.vendor == 'Rollplay' %}
+  <section class="pdp-support page-width">
+    <div class="pdp-support__container pdp-support">
+      <!-- carrier positions for carrier -->
+      <div class="left-column-data pdp-child-info">
+        <h3 class="h1 heading-underline">Rollplay Specifications</h3>
+        <div class="flex-row pdp-support">
+          <div class="flex-item-small">
+            <h4>Child Weight</h4>
+            {% if child_weight_min_value %}
+              {{ child_weight_min_value }} -
+            {% endif %}
+            {% if child_weight_max_value %}
+              {{ child_weight_max_value }} lbs
+            {% endif %}
+          </div>
+
+          <div class="flex-item-small">
+            <h4>Battery Voltage</h4>
+            {{ product.metafields.custom.rollplay_battery_voltage }}
+          </div>
+          <div class="flex-item-small">
+            <h4>Run Time</h4>
+            {{ product.metafields.custom.rollplay_run_time }}
+          </div>
+          <div class="flex-item-small">
+            <h4>Max Speed</h4>
+            {{ product.metafields.custom.rollplay_max_speed }}
+          </div>
+          <div class="flex-item-small">
+            <h4>Warranty</h4>
+            {{ product_warranty }}
+          </div>
+          <div class="flex-item">
+            <h3>Battery Required</h3>
+            {% if activity_batteries_required == 1 %}
+              Yes <br>
+
+            {% else %}
+              No<br>
+            {% endif %}
+
+            {% if batteries_included == 1 %}
+              Batteries Included<br>
+            {% else %}
+              Batteries Not Inlcuded<br>
+            {% endif %}
+
+            Battery Cell Type<br>
+            {{ product.metafields.sf_activity.battery_cell_type -}}
+          </div>
+
+          <div class="flex-item-small">
+            <h4>Battery Replaceable</h4>
+            {% if product.metafields.custom.battery_replaceable == true %}
+              Yes <br>
+            {% else %}
+              No<br>
+            {% endif %}
+          </div>
+          {% comment %}
             <div class="flex-item-small">
               <h4>Machine Washable</h4>
               {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
@@ -54,12 +101,12 @@
                 </div>
               {% endif %}
             </div>
-          </div>
+          {% endcomment %}
         </div>
       </div>
-    </section>
-  {% endif %}
-{% endcomment %}
+    </div>
+  </section>
+{% endif %}
 
 {%- if product.type == 'Play Yards' %}
   {% assign bassinet_insert = product.metafields.sf_playard.bassinet_insert %}
@@ -738,11 +785,9 @@
       {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
       {% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
       {% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
-      {% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
-      {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
+
       {% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
       {% assign type = product.metafields.sf_activity.type %}
-      {% assign batteries_included = product.metafields.sf_activity.batteries_included %}
 
       {% assign height_adjustable = product.metafields.product.metafields.sf_activity.height_adjustable %}
       {% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
@@ -775,21 +820,7 @@
               {{ child_age_min_value }}
             {% endif %}
           </div>
-          <div class="flex-item-small">
-            <h3>Battery Required</h3>
-            {% if activity_batteries_required == 1 %}
-              Yes <br>
-            {% else %}
-              No<br>
-            {% endif %}
-            {{ product.metafields.sf_activity.battery_cell_type -}}
-            <br>
-            {% if batteries_included == 1 %}
-              Batteries Included
-            {% else %}
-              Batteries Not Inlcuded
-            {% endif %}
-          </div>
+
           <div class="flex-item-small">
             <h3>Number of Height Modes</h3>
             {% if number_of_height_modes != null and number_of_height_modes != '' %}
@@ -831,6 +862,20 @@
           <div class="flex-item-small">
             <h3>Activity Type</h3>
             {{ type }}
+          </div>
+          <div class="flex-item">
+            <h3>Battery Required</h3>
+            {% if activity_batteries_required == 1 %}
+              Yes <br>
+              {{ product.metafields.sf_activity.battery_cell_type -}}
+            {% else %}
+              No<br>
+            {% endif %}
+            {% if batteries_included == 1 %}
+              Batteries Included
+            {% else %}
+              Batteries Not Inlcuded
+            {% endif %}
           </div>
           <!-- harness for door jumper -->
           {% assign harness_type = product.metafields.sf_door_jumper.harness_type %}
