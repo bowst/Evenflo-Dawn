@@ -29,6 +29,93 @@
         "show_text_below": true
       }
     },
+    "2a5a213b-f4e0-4d14-8492-12bda656a9dd": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-button-1": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-heading-1",
+        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-text-1",
+        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-button-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "1434ece1-72ba-4d7c-a77b-f626c868669a": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-1": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "",
+            "title": "Instructions",
+            "text": "<p>1. Verify your teacher status with SheerID by filling in the above verification form. Offer available to teachers, faculty, and staff currently working in the education field and anyone who has an active teaching credential<\/p><p>2. After successful verification, you'll receive a single-use promo code<\/p><p>3. Use the promo code during checkout to redeem the offer<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-2": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "<link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.css\" type=\"text\/css\"\/>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.js\"><\/script>\n\n<div id=\"my-container\"><\/div>\n\n<script>\n    const verificationUrl = \"https:\/\/services.sheerid.com\/verify\/64498884aac9742da2829ad3\/\";\n\n    sheerId.loadInlineIframe(\n        document.getElementById('my-container'),\n        verificationUrl,\n    );\n<\/script>",
+            "title": "Column",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-1",
+        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-2"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -215,62 +302,18 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "1434ece1-72ba-4d7c-a77b-f626c868669a": {
-      "type": "evenflo-multicolumn",
-      "blocks": {
-        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-1": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "",
-            "title": "Instructions",
-            "text": "<p>1. Verify your teacher status with SheerID by filling in the above verification form. Offer available to teachers, faculty, and staff currently working in the education field and anyone who has an active teaching credential<\/p><p>2. After successful verification, you'll receive a single-use promo code<\/p><p>3. Use the promo code during checkout to redeem the offer<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-2": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "<link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.css\" type=\"text\/css\"\/>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.js\"><\/script>\n\n<div id=\"my-container\"><\/div>\n\n<script>\n    const verificationUrl = \"https:\/\/services.sheerid.com\/verify\/64498884aac9742da2829ad3\/\";\n\n    sheerId.loadInlineIframe(\n        document.getElementById('my-container'),\n        verificationUrl,\n    );\n<\/script>",
-            "title": "Column",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-1",
-        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-2"
-      ],
-      "settings": {
-        "title": "Teachers are our heroes! That's why we're giving you {offerAmount} off.",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "Button label",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
+    "2a5a213b-f4e0-4d14-8492-12bda656a9dd",
+    "1434ece1-72ba-4d7c-a77b-f626c868669a",
     "main",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
     "013f6ab7-3595-492c-8062-a12326290142",
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
     "6bb51026-ccbd-4604-8669-add5ff4b5ad5",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e",
-    "1434ece1-72ba-4d7c-a77b-f626c868669a"
+    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e"
   ]
 }
