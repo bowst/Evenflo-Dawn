@@ -1,4 +1,5 @@
 {{ 'section-pdp-support.css' | asset_url | stylesheet_tag }}
+{{ 'section-pdp-support.css' | asset_url | stylesheet_tag }}
 
 {% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
 {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
@@ -32,8 +33,8 @@
       <!-- carrier positions for carrier -->
       <div class="left-column-data pdp-child-info">
         <h3 class="h1 heading-underline">Rollplay Specifications</h3>
-        <div class="flex-row pdp-support">
-          <div class="flex-item-small">
+        <div class="flex-row">
+          <div class="col">
             <h4>Child Weight</h4>
             {% if child_weight_min_value %}
               {{ child_weight_min_value }} -
@@ -43,17 +44,17 @@
             {% endif %}
           </div>
 
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Run Time</h4>
             {{ product.metafields.custom.rollplay_run_time }}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Max Speed</h4>
             {{ product.metafields.custom.rollplay_max_speed }}
           </div>
         </div>
-        <div class="flex-row pdp-support">
-          <div class="flex-item">
+        <div class="flex-row ">
+          <div class="col">
             <h3>Battery</h3>
             {% if activity_batteries_required == 1 %}
               Required <br>
@@ -78,13 +79,13 @@
             {% endif %}
           </div>
         </div>
-        <div class="flex-row pdp-support">
-          <div class="flex-item">
+        <div class="flex-row ">
+          <div class="col">
             <h3>Warranty</h3>
             {{ product_warranty }}
           </div>
           {% comment %}
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Machine Washable</h4>
               {% assign my_switch = product.metafields.sf_carrier.machine_washable %}
               {% if my_switch == 1 %}
@@ -122,8 +123,8 @@
       <!-- carrier positions for carrier -->
       <div class="left-column-data pdp-child-info">
         <h3 class="h1 heading-underline">Specifications</h3>
-        <div class="flex-row pdp-support">
-          <div class="flex-item-small">
+        <div class="flex-row">
+          <div class="col">
             <h4>Child Weight</h4>
             {% if child_weight_min_value %}
               {{ child_weight_min_value }} -
@@ -132,7 +133,7 @@
               {{ child_weight_max_value }} lbs
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Child Height</h4>
             {% if child_height_min_value %}
               {{ child_height_min_value }} -
@@ -141,7 +142,7 @@
               {{ child_height_max_value }} in
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Bassinet Insert</h4>
             {% if bassinet_insert == 1 %}
               Yes
@@ -149,7 +150,7 @@
               No
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Built for Travel</h4>
             {% if built_for_travel == 1 %}
               Yes
@@ -157,14 +158,14 @@
               No
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Canopy</h4>
             {% for tag in canopy_overview %}
               {{ tag -}}
               {%- if tag != canopy_overview.last %},{% endif %}
             {% endfor %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Diaper Changing Station</h4>
             {% if changing_station == 1 %}
               Yes
@@ -172,7 +173,7 @@
               No
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Extra Storage</h4>
             {% if extra_storage == 1 %}
               Yes
@@ -180,7 +181,7 @@
               No
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Toys/Entertainment</h4>
             {% for tag in toys_entertainment %}
               {{ tag -}}
@@ -188,7 +189,7 @@
             {% endfor %}
           </div>
 
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Tablet Holder</h4>
             {% if tablet_holder == 1 %}
               Yes
@@ -196,7 +197,7 @@
               No
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Built For Travel</h4>
             {% if tablet_holder == 1 %}
               Yes
@@ -204,13 +205,13 @@
               No
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Canopy</h4>
             {{ product.metafields.sf_playard.canopy }}
           </div>
         </div>
         {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
-        <div class="flex-row pdp-support">
+        <div class="flex-row">
           <div class="flex-item">
             {% if shipping_restrictions %}
               <div>
@@ -234,8 +235,8 @@
         <!-- carrier positions for carrier -->
         <div class="left-column-data pdp-child-info">
           <h3 class="h1 heading-underline">Specifications</h3>
-          <div class="flex-row pdp-support">
-            <div class="flex-item-small">
+          <div class="flex-row">
+            <div class="col">
               <h4>Child Weight</h4>
               {% if child_weight_min_value %}
                 {{ child_weight_min_value }} -
@@ -244,7 +245,7 @@
                 {{ child_weight_max_value }} lbs
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Child Height</h4>
               {% if child_height_min_value %}
                 {{ child_height_min_value }} -
@@ -253,7 +254,7 @@
                 {{ child_height_max_value }} in
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Bassinet Insert</h4>
               {% if bassinet_insert == 1 %}
                 Yes
@@ -261,7 +262,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Built for Travel</h4>
               {% if built_for_travel == 1 %}
                 Yes
@@ -269,14 +270,14 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Canopy</h4>
               {% for tag in canopy_overview %}
                 {{ tag -}}
                 {%- if tag != canopy_overview.last %},{% endif %}
               {% endfor %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Diaper Changing Station</h4>
               {% if changing_station == 1 %}
                 Yes
@@ -284,7 +285,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Extra Storage</h4>
               {% if extra_storage == 1 %}
                 Yes
@@ -292,7 +293,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Toys/Entertainment</h4>
               {% for tag in toys_entertainment %}
                 {{ tag -}}
@@ -300,7 +301,7 @@
               {% endfor %}
             </div>
 
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Tablet Holder</h4>
               {% if tablet_holder == 1 %}
                 Yes
@@ -308,7 +309,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Built For Travel</h4>
               {% if tablet_holder == 1 %}
                 Yes
@@ -316,13 +317,13 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h4>Canopy</h4>
               {{ product.metafields.sf_playard.canopy }}
             </div>
           </div>
           {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
-          <div class="flex-row pdp-support">
+          <div class="flex-row">
             <div class="flex-item">
               {% if shipping_restrictions %}
                 <div>
@@ -357,15 +358,15 @@
       </div>
       <!-- <div class="feature_divider"></div> -->
       <div class="flex-row">
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Opening Size Min</h3>
           {{ min_opening_size }} inches
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Opening Size Max</h3>
           {{ max_opening_size }} inches
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Mount Type</h3>
           {% for tag in my_tags %}
             {{ tag -}}
@@ -373,18 +374,18 @@
           {% endfor %}
         </div>
 
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Opening Type</h3>
           {{ opening_type }}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Use Cases</h3>
           {% for tag in use_case %}
             {{ tag -}}
             {%- if tag != use_case.last %},{% endif %}
           {% endfor %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Walk-Thru Door</h3>
           {% if my_switch == 1 %}
             Yes
@@ -408,8 +409,8 @@
       <div class="left-column-data pdp-child-info">
         <h3 class="h1 heading-underline">High Chair Specifications</h3>
       </div>
-      <div class="flex-row pdp-support">
-        <div class="flex-item-small">
+      <div class="flex-row">
+        <div class="col">
           <h3>Child Weight</h3>
           {% if child_weight_min_value %}
             {{ child_weight_min_value }} -
@@ -418,7 +419,7 @@
             {{ child_weight_max_value }} lbs
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Fold Flat</h3>
           {% if fold_flat_capable == 1 %}
             Yes
@@ -426,7 +427,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Height Adjustable</h3>
           {% if hc_height_adjustable == 1 %}
             Yes
@@ -434,7 +435,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>One hand Tray</h3>
           {% if one_hand_tray == 1 %}
             Yes
@@ -480,14 +481,14 @@
       {% if number_of_height_modes or wheel_material or stroller_type or number_of_cup_holders %}
         <div class="left-column-data pdp-child-info">
           <h3 class="h1 heading-underline">Stroller Specifications</h3>
-          <div class="flex-row pdp-support">
+          <div class="flex-row">
             {% comment %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Stroller Max Age</h3>
                 {{ product.metafields.sf_stroller.max_age | strip }}
               </div>
             {% endcomment %}
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Self Standing</h3>
               {% if self_standing_fold == 1 %}
                 Yes
@@ -495,7 +496,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h3>UPF 50+ Sun Protection Canopy</h3>
               {% if upf_50_sun_protection_canopy == 1 %}
                 Yes
@@ -503,7 +504,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Compact Fold</h3>
               {% if compact_fold == 1 %}
                 Yes
@@ -511,7 +512,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Self Standing Fold</h3>
               {% if self_standing_fold == 1 %}
                 Yes
@@ -519,7 +520,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Lockable Front Wheels</h3>
               {% if lockable_front == 1 %}
                 Yes
@@ -527,7 +528,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Accepts Rider Board</h3>
               {% if accepts_rider_board == 1 %}
                 Yes
@@ -537,13 +538,13 @@
             </div>
 
             {% if number_of_cup_holders %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Number of Cup Holders</h3>
                 {{ number_of_cup_holders }}
               </div>
             {% endif %}
 
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Single to Double Capable</h3>
               {% if single_to_double_capable == 1 %}
                 Yes
@@ -551,7 +552,7 @@
                 No
               {% endif %}
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Lockable Front Wheels</h3>
               {% if lockable_front_wheels == 1 %}
                 Yes
@@ -560,7 +561,7 @@
               {% endif %}
             </div>
 
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Accepts Infant Car Seat</h3>
               {% if accepts_infant_car_seat == 1 %}
                 Yes
@@ -570,21 +571,21 @@
             </div>
 
             {% if number_of_height_modes %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Number of Height Modes</h3>
                 {{ number_of_height_modes }}
               </div>
             {% endif %}
 
             {% if wheel_material %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Wheel Material</h3>
                 {{ wheel_material }}
               </div>
             {% endif %}
 
             {% if stroller_type %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Stroller Type</h3>
                 {{ stroller_type }}
               </div>
@@ -604,8 +605,8 @@
       <!-- carrier positions for carrier -->
       <div class="left-column-data pdp-child-info">
         <h3 class="h1 heading-underline">Carrier Specifications</h3>
-        <div class="flex-row pdp-support">
-          <div class="flex-item-small">
+        <div class="flex-row">
+          <div class="col">
             <h4>Child Weight</h4>
             {% if child_weight_min_value %}
               {{ child_weight_min_value }} -
@@ -614,11 +615,11 @@
               {{ child_weight_max_value }} lbs
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Positions</h4>
             {{ product.metafields.sf_carrier.position | split: ',' }}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Machine Washable</h4>
 
             {% if machine_wash == 1 %}
@@ -627,7 +628,7 @@
               <p>No</p>
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h4>Toy Clip</h4>
 
             {% if toy_clip == 1 %}
@@ -676,8 +677,8 @@
         <h3 class="h1 heading-underline">Car Seat Specifications</h3>
       </div>
       <!-- <div class="feature_divider"></div> -->
-      <div class="flex-row pdp-support">
-        <div class="flex-item-small">
+      <div class="flex-row">
+        <div class="col">
           <h3>Machine Washable Surface</h3>
           <p>
             {% if washable == 1 %}
@@ -686,6 +687,8 @@
               No
             {% endif %}
           </p>
+        </div>
+        <div class="col">
           <h3>Steel Reinforced</h3>
           <p>
             {% if steel_reinforced == 1 %}
@@ -695,7 +698,7 @@
             {% endif %}
           </p>
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Bubble Level</h3>
           {% if bubble_level == 1 %}
             Yes
@@ -703,7 +706,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Harness Covers</h3>
           {% if harness_covers == 1 %}
             Yes
@@ -712,7 +715,7 @@
           {% endif %}
         </div>
 
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Latch Install</h3>
           {% if latch_install == 1 %}
             Yes
@@ -720,7 +723,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Lightweight</h3>
           {% if lightweight == 1 %}
             Yes
@@ -728,7 +731,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>No Rethread Harness</h3>
           {% if no_rethread_harness == 1 %}
             Yes
@@ -736,7 +739,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Side Impact Protection</h3>
           {% if side_impact_protection == 1 %}
             Yes
@@ -744,7 +747,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Anti-Rebound Bar</h3>
           {% if anti_rebound_bar == 1 %}
             Yes
@@ -752,7 +755,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Sensorsafe</h3>
           {% if sensorsafe == 1 %}
             Yes
@@ -761,7 +764,7 @@
           {% endif %}
         </div>
 
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Converts to No Back Booster</h3>
           {% if converts_to_no_back_booster == 1 %}
             Yes
@@ -769,7 +772,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>High Back</h3>
           {% if high_back == 1 %}
             Yes
@@ -777,7 +780,7 @@
             No
           {% endif %}
         </div>
-        <div class="flex-item-small">
+        <div class="col">
           <h3>Has Harness Booster Mode</h3>
           {% if has_harness_booster_mode == 1 %}
             Yes
@@ -809,11 +812,11 @@
           </div>
 
           <div class="flex-row">
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Weight</h3>
               <p>{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs</p>
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Height</h3>
               {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
             </div>
@@ -844,11 +847,11 @@
 
           <!-- <div class="feature_divider"></div> -->
           <div class="flex-row">
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Weight</h3>
               {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
             </div>
-            <div class="flex-item-small">
+            <div class="col">
               <h3>Height</h3>
               {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
             </div>
@@ -877,13 +880,13 @@
           </div>
           <div class="flex-row">
             {% if high_back_fit_statement %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Weight</h3>
                 {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
               </div>
             {% endif %}
             {% if high_back_fit_statement %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Height</h3>
                 {{ high_back_height_min }} - {{ high_back_height_max }} in
               </div>
@@ -916,13 +919,13 @@
           </div>
           <div class="flex-row">
             {% if no_back_weight_max %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Weight</h3>
                 {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
               </div>
             {% endif %}
             {% if no_back_height_max %}
-              <div class="flex-item-small">
+              <div class="col">
                 <h3>Height</h3>
                 {{ no_back_height_min }} - {{ no_back_height_max }} in
               </div>
@@ -955,8 +958,8 @@
       {% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
       <div class="left-column-data pdp-child-info">
         <h3 class="h1 heading-underline">Specifications</h3>
-        <div class="flex-row pdp-support">
-          <div class="flex-item-small">
+        <div class="flex-row">
+          <div class="col">
             <h3>Child Weight</h3>
             {% if child_weight_min_value %}
               {{ child_weight_min_value }} -
@@ -965,7 +968,7 @@
               {{ child_weight_max_value }} lbs
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h3>Child Height</h3>
             {% if child_height_min_value %}
               {{ child_height_min_value }} -
@@ -974,14 +977,14 @@
               {{ child_height_max_value }} in
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h3>Minimum Age</h3>
             {% if child_age_min_value %}
               {{ child_age_min_value }}
             {% endif %}
           </div>
 
-          <div class="flex-item-small">
+          <div class="col">
             <h3>Number of Height Modes</h3>
             {% if number_of_height_modes != null and number_of_height_modes != '' %}
               {{ number_of_height_modes }}
@@ -989,7 +992,7 @@
               1
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h3>Toys</h3>
             {% for tag in electronic_toys_features %}
               {{ tag -}}
@@ -997,13 +1000,13 @@
             {% endfor %}
           </div>
 
-          <div class="flex-item-small">
+          <div class="col">
             {% if toys_entertainment %}
               <h3>Toys</h3>
               {{ toys_entertainment }}
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h3>Foldable</h3>
             {% if activity_foldable == 1 %}
               Yes
@@ -1011,7 +1014,7 @@
               No
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h3>Height Adjustable</h3>
             {% if height_adjustable == 1 %}
               Yes
@@ -1019,11 +1022,11 @@
               No
             {% endif %}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h3>Activity Type</h3>
             {{ type }}
           </div>
-          <div class="flex-item-small">
+          <div class="col">
             <h3>Max Ceiling Height</h3>
             {{ max_ceiling_height }}
           </div>
@@ -1050,7 +1053,7 @@
             </div>
           {% endif %}
         </div>
-        <div class="flex-row pdp-support">
+        <div class="flex-row">
           <div class="flex-item">
             {% if shipping_restrictions %}
               <div>
