@@ -215,6 +215,51 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "1434ece1-72ba-4d7c-a77b-f626c868669a": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-1": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-2": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "<link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.css\" type=\"text\/css\"\/>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.js\"><\/script>\n\n<div id=\"my-container\"><\/div>\n\n<script>\n    const verificationUrl = \"https:\/\/services.sheerid.com\/verify\/64498884aac9742da2829ad3\/\";\n\n    sheerId.loadInlineIframe(\n        document.getElementById('my-container'),\n        verificationUrl,\n    );\n<\/script>",
+            "title": "Column",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-1",
+        "template--15832998674588__1434ece1-72ba-4d7c-a77b-f626c868669a-column-2"
+      ],
+      "settings": {
+        "title": "Multicolumn",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -225,6 +270,7 @@
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
     "6bb51026-ccbd-4604-8669-add5ff4b5ad5",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e"
+    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e",
+    "1434ece1-72ba-4d7c-a77b-f626c868669a"
   ]
 }
