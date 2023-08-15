@@ -384,6 +384,7 @@
                     aria-haspopup="dialog"
                   >
                     <div>
+                      {{ product.metafields.custom.configuration_chart | json }}
                       <h3 class="h2">{{ product.metafields.custom.configuration_chart.page.value.title }}</h3>
                       <div>{{ product.metafields.custom.configuration_chart.page.value.content }}</div>
                     </div>
