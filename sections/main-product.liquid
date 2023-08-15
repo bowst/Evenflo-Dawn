@@ -384,9 +384,7 @@
                     aria-haspopup="dialog"
                   >
                     <div>
-                      {{ product.metafields.custom.configuration_chart | json }}
-                      <h3 class="h2">{{ product.metafields.custom.configuration_chart.page.value.title }}</h3>
-                      <div>{{ product.metafields.custom.configuration_chart.page.value.content }}</div>
+                      {{- block.settings.text -}}
                     </div>
                     {% render 'icon-plus' %}
                   </button>
@@ -683,7 +681,10 @@
             {% render 'icon-close' %}
           </button>
           <div class="product-popup-modal__content-info">
-            <h1 class="h2">{{ product.metafields.custom.configuration_chart.page.value.title }}</h1>
+            <h1 class="h2">
+              {{ product.metafields.custom.configuration_chart | json }}
+              {{ product.metafields.custom.configuration_chart.page.value.title }}
+            </h1>
             {{ product.metafields.custom.configuration_chart.page.value.content }}
           </div>
         </div>
