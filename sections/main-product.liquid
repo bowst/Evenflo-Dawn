@@ -370,6 +370,30 @@
               <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">
                 {{- block.settings.text -}}
               </a>
+            {%- when 'compare' -%}
+              {% if product.metafields.custom.configuration_chart %}
+                <modal-opener
+                  class="product-popup-modal__opener no-js-hidden quick-add-hidden"
+                  data-modal="#PopupModal-{{ block.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <button
+                    id="ProductPopup-{{ block.id }}"
+                    class="product-popup-modal__button pdp-popup-modal__button"
+                    type="button"
+                    aria-haspopup="dialog"
+                  >
+                    <div>
+                      <h3 class="h2">{{ product.metafields.custom.configuration_chart.page.title }}</h3>
+                      <div>{{ product.metafields.custom.configuration_chart.page.content }}</div>
+                    </div>
+                    {% render 'icon-plus' %}
+                  </button>
+                </modal-opener>
+                <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">
+                  {{- block.settings.text -}}
+                </a>
+              {% endif %}
             {%- when 'share' -%}
               {% assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin %}
               {% render 'share-button', block: block, share_link: share_url %}
