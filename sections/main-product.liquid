@@ -662,6 +662,34 @@
     </modal-dialog>
   {%- endfor -%}
 
+  {% assign compare_popups = section.blocks | where: 'type', 'compare_popup' %}
+  {%- for block in compare_popups -%}
+    {% if product.metafields.custom.configuration_chart %}
+      <modal-dialog id="PopupModal-{{ block.id }}" class="product-popup-modal" {{ block.shopify_attributes }}>
+        <div
+          role="dialog"
+          aria-label="{{ block.settings.text }}"
+          aria-modal="true"
+          class="product-popup-modal__content"
+          tabindex="-1"
+        >
+          <button
+            id="ModalClose-{{ block.id }}"
+            type="button"
+            class="product-popup-modal__toggle"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            {% render 'icon-close' %}
+          </button>
+          <div class="product-popup-modal__content-info">
+            <h1 class="h2">{{ product.metafields.custom.configuration_chart.page.title }}</h1>
+            {{ product.metafields.custom.configuration_chart.page.content }}
+          </div>
+        </div>
+      </modal-dialog>
+    {% endif %}
+  {%- endfor -%}
+
   {%- if product.media.size > 0 -%}
     <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
