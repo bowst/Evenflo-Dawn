@@ -91,7 +91,7 @@
           "settings": {
             "liquid_content": "",
             "title": "",
-            "text": "<p>{{ page.metafields.custom.pixlee_gallery | metafield_tag }}<\/p>",
+            "text": "{{ page.metafields.custom.sheerid_page_embed.value.sheer_id_embed | metafield_tag }}",
             "link_label": "",
             "link": ""
           }
