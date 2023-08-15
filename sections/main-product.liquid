@@ -385,6 +385,9 @@
                   >
                     <div>
                       <h3 class="h2">{{- block.settings.text -}}</h3>
+                      {% if block.settings.subtext %}
+                        <div>{{ block.settings.subtext }}</div>
+                      {% endif %}
                     </div>
                     {% render 'icon-plus' %}
                   </button>
