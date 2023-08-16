@@ -180,17 +180,16 @@
                   assign rating_decimal = 1
                 endif
               %}
-            
+            <div style="text-align: center">
+    <div class="yotpo bottomLine" style="display:inline-block"
+       data-product-id="{{ product.id }}">
+    </div>
+</div>
               <div
                 class="rating"
                 role="img"
                 aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
               >
-              <div style="text-align: center">
-    <div class="yotpo bottomLine" style="display:inline-block"
-       data-product-id="{{ product.id }}">
-    </div>
-</div>
                 <span
                   aria-hidden="true"
                   class="rating-star color-icon-{{ settings.accent_icons }}"
