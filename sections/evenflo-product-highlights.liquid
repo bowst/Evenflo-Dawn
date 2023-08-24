@@ -15,6 +15,8 @@
 {% assign machine_washable = product.metafields.sf_products.machine_washable_seating_surface %}
 {% assign made_usa = product.metafields.sf_products.made_in_usa %}
 {% assign harness_type = product.metafields.sf_products.harness_type %}
+{% assign modes_of_use_link = product.metafields.custom.modes_of_use_link %}
+
 
 {% assign carrier_machine_washable = product.metafields.sf_carrier.machine_washable %}
 
@@ -94,6 +96,13 @@
         <div class="flex-item">
           <h3>Modes of Use</h3>
           {{ modes_of_use }}
+      
+          {% if modes_of_use_link %}
+            <a href="{{ modes_of_use_link }}" target="new">Learn More</a><br>
+          {% endif %}
+          {% if product.metafields.sf_car_seat.sensorsafe == 1 %}
+            Sensorsafe<br>
+          {% endif %}
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
