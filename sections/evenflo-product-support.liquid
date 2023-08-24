@@ -474,7 +474,7 @@
       {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
       {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
       {% assign compact_fold = product.metafields.sf_stroller.compact_fold %}
-      {% assign self_standing_fold = product.metafields.sf_stroller.self_standing_fold %}
+      
 
       {% assign lockable_front = product.metafields.sf_stroller.lockable_front_wheels %}
       {% assign single_to_double_capable = product.metafields.sf_stroller.single_to_double_capable %}
@@ -512,14 +512,7 @@
                 No
               {% endif %}
             </div>
-            <div class="col">
-              <h3>Self Standing Fold</h3>
-              {% if self_standing_fold == 1 %}
-                Yes
-              {% else %}
-                No
-              {% endif %}
-            </div>
+
             <div class="col">
               <h3>Lockable Front Wheels</h3>
               {% if lockable_front == 1 %}
