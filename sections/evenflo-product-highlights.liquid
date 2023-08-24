@@ -456,9 +456,11 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          {{ modes_of_use }}
-      {% if modes_of_use_link %}
-            <a href="{{ modes_of_use_link }}" target="new">Learn More</a><br>
+          
+          {% if modes_of_use_link %}
+            <a href="{{ modes_of_use_link }}" target="new">View All Modes</a><br>
+          {% else %}
+            {{ modes_of_use }}
           {% endif %}
         </div>
         <div class="flex-item">
