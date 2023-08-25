@@ -245,6 +245,7 @@
         onload="this.media='all'"
       >
     {%- endif -%}
+{% render 'analyzify-gtm-body' %}
 
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -291,6 +292,7 @@
         !n.__lc.asyncInit && e.init(), (n.LiveChatWidget = n.LiveChatWidget || e);
       })(window, document, [].slice);
     </script>
+    
     <noscript
       ><a href="https://www.livechat.com/chat-with/3753191/" rel="nofollow">Chat with us</a>, powered by
       <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript
