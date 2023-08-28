@@ -367,9 +367,7 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    <!-- CRITEO START -->
-    {% render 'criteo-tracking' %}
-    <!-- CRITEO END -->
+
 
 
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
@@ -409,12 +407,8 @@
         },
       });
     </script>
-  </body>
-</html>
+    <script>
 
-<script>
-  
-  
   
     /*ezfyignore*/
     /* EZFY Slideshow PRO by ezfycode.com
@@ -434,6 +428,8 @@
 	  }
     });
 
-
-
 </script>
+  </body>
+</html>
+
+
