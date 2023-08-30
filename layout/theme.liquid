@@ -1,7 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
-    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -246,67 +245,26 @@
       >
     {%- endif -%}
 
-
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-    <!-- Start of LiveChat (www.livechat.com) code -->
-    <script>
-      window.__lc = window.__lc || {};
-      window.__lc.license = 3753191;
-      (function (n, t, c) {
-        function i(n) {
-          return e._h ? e._h.apply(null, n) : e._q.push(n);
-        }
-        var e = {
-          _q: [],
-          _h: null,
-          _v: '2.0',
-          on: function () {
-            i(['on', c.call(arguments)]);
-          },
-          once: function () {
-            i(['once', c.call(arguments)]);
-          },
-          off: function () {
-            i(['off', c.call(arguments)]);
-          },
-          get: function () {
-            if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load.");
-            return i(['get', c.call(arguments)]);
-          },
-          call: function () {
-            i(['call', c.call(arguments)]);
-          },
-          init: function () {
-            var n = t.createElement('script');
-            (n.async = !0),
-              (n.type = 'text/javascript'),
-              (n.src = 'https://cdn.livechatinc.com/tracking.js'),
-              t.head.appendChild(n);
-          },
-        };
-        !n.__lc.asyncInit && e.init(), (n.LiveChatWidget = n.LiveChatWidget || e);
-      })(window, document, [].slice);
-    </script>
-    
-    <noscript
-      ><a href="https://www.livechat.com/chat-with/3753191/" rel="nofollow">Chat with us</a>, powered by
-      <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript
-    >
-    <!-- End of LiveChat code -->
 
-<script type="text/javascript">
-      (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/B0qJeONB1n5uLg0RiKMrl58AdoGwnftUWBiOC4S6/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+    <script type="text/javascript">
+      (function e() {
+        var e = document.createElement('script');
+        (e.type = 'text/javascript'),
+          (e.async = true),
+          (e.src = '//staticw2.yotpo.com/B0qJeONB1n5uLg0RiKMrl58AdoGwnftUWBiOC4S6/widget.js');
+        var t = document.getElementsByTagName('script')[0];
+        t.parentNode.insertBefore(e, t);
+      })();
     </script>
-    
   </head>
 
   <body class="gradient">
-  
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -329,9 +287,6 @@
     </ul>
 
     <script>
-      
-      
-      
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
@@ -359,16 +314,11 @@
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
       };
-
-
-
     </script>
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-
-
 
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
     <script>
@@ -408,30 +358,26 @@
       });
     </script>
     <script>
-
-    /* EZFY Slideshow PRO by ezfycode.com
+      /* EZFY Slideshow PRO by ezfycode.com
     ========================================== */
-    document.addEventListener("shopify:section:load", function(e){
-      if (Shopify.designMode){
-        const $slideshow = e.target;
+      document.addEventListener('shopify:section:load', function (e) {
+        if (Shopify.designMode) {
+          const $slideshow = e.target;
 
-        if (!$slideshow.classList.contains("ezfy-slideshow-section")){
-          return;
+          if (!$slideshow.classList.contains('ezfy-slideshow-section')) {
+            return;
+          }
+
+          const $script = $slideshow.querySelector(`script`);
+          const script = $script.innerHTML;
+
+          eval(script);
         }
+      });
+    </script>
 
-        const $script = $slideshow.querySelector(`script`);
-        const script = $script.innerHTML
-
-        eval(script);
-	  }
-    });
-
-</script>
-
-<!-- CRITEO START -->
-{% render 'criteo-tracking' %}
-<!-- CRITEO END -->
-</body>
+    <!-- CRITEO START -->
+    {% render 'criteo-tracking' %}
+    <!-- CRITEO END -->
+  </body>
 </html>
-
-
