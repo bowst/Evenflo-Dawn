@@ -327,7 +327,9 @@
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
-
+    <!-- CRITEO START -->
+    {% render 'criteo-tracking' %}
+    <!-- CRITEO END -->
     <script>
       
       
@@ -429,9 +431,6 @@
     });
 
 </script>
-  <!-- CRITEO START -->
-{% render 'criteo-tracking' %}
-<!-- CRITEO END -->
 
 </body>
 </html>
