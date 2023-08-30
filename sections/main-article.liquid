@@ -77,6 +77,17 @@
       {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
     </a>
   </div>
+
+  {% if article.author contains "Sarah Haverstick" %}
+              <div class="blog_author" style="width: 100% !important;">
+                <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Sarah_Havestick_Headshot_2020.jpg?v=1649264201" alt="{{ article.author }}" />
+                <div class="author_bio">
+                  <h6>{{ article.author }}</h6>
+                  <p>Sarah Haverstick is the Safety Advocate for Evenflo. She is a certified Child Passenger Safety Technician Instructor and an instructor in the safe transportation of children with special health care needs. Sarah is a former chair of the National Child Passenger Safety Board and current vice chair of the Manufacturers Alliance for Child Passenger Safety. In 2021, she was inducted into the Child Passenger Safety Hall of Fame. Sarah has been educating kids and adults on child passenger safety topics for 15 years. She is a mom to two awesome kiddos (3 year old and 10 year old) – and a few fur babies (four cats and two dogs). Rounding out her family is a husband who might not love all the car seats that live in the garage.</p>
+                </div>
+              </div>
+              {% endif %}
+  
   {%- if blog.comments_enabled? -%}
     <div class="article-template__comment-wrapper background-secondary">
       <div id="comments" class="page-width page-width--narrow">
