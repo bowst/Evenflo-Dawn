@@ -15,7 +15,6 @@
       "block_order": [
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
       ],
-      "disabled": true,
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
@@ -32,6 +31,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -215,6 +215,23 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "169342186322b89842": {
+      "type": "apps",
+      "blocks": {
+        "127e0422-a5c2-4f40-ad27-3cc76a15ab76": {
+          "type": "shopify:\/\/apps\/zoorix-bundles-cross-sell\/blocks\/zrx-bundles\/51fffd07-f9df-4d6a-b901-6d14b243dcad",
+          "settings": {
+            "offer_id": "e292ea62-b468-4d8f-af4c-978a95995a12"
+          }
+        }
+      },
+      "block_order": [
+        "127e0422-a5c2-4f40-ad27-3cc76a15ab76"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -225,6 +242,7 @@
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
     "6bb51026-ccbd-4604-8669-add5ff4b5ad5",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e"
+    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e",
+    "169342186322b89842"
   ]
 }
