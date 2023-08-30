@@ -71,15 +71,8 @@
     {%- endcase -%}
   {%- endfor -%}
 
-  <div class="article-template__back element-margin-top center">
-    <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
-      <span class="icon-wrap">{% render 'icon-arrow' %}</span>
-      {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
-    </a>
-  </div>
-
   {% if article.author contains "Sarah Haverstick" %}
-              <div class="blog_author" style="width: 100% !important;">
+              <<div class="article-template__back element-margin-top center">
                 <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Sarah_Havestick_Headshot_2020.jpg?v=1649264201" alt="{{ article.author }}" />
                 <div class="author_bio">
                   <h6>{{ article.author }}</h6>
@@ -87,6 +80,15 @@
                 </div>
               </div>
               {% endif %}
+
+  <div class="article-template__back element-margin-top center">
+    <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
+      <span class="icon-wrap">{% render 'icon-arrow' %}</span>
+      {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
+    </a>
+  </div>
+
+  
   
   {%- if blog.comments_enabled? -%}
     <div class="article-template__comment-wrapper background-secondary">
