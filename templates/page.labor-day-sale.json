@@ -58,6 +58,7 @@
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-0",
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -69,6 +70,7 @@
     },
     "6bb51026-ccbd-4604-8669-add5ff4b5ad5": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -76,7 +78,7 @@
         "show_description": false,
         "description_style": "body",
         "collection": "car-seat-stroller-combos",
-        "products_to_show": 4,
+        "products_to_show": 12,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
@@ -87,15 +89,16 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "enable_quick_add": true,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb": {
       "type": "divider",
+      "disabled": true,
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -182,6 +185,7 @@
         "template--15841196966044__f735e317-c616-4746-9df3-2a3f7ce81631-text-1",
         "template--15841196966044__f735e317-c616-4746-9df3-2a3f7ce81631-button-1"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -193,6 +197,7 @@
     },
     "e9c29d66-507c-44c4-977f-c98f7c6c4291": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -226,10 +231,18 @@
           "settings": {
             "offer_id": "fa360bc1-d758-4611-a373-88925347a11a"
           }
+        },
+        "cf301a7d-8d76-4aaa-8a4b-fb50ccdd9236": {
+          "type": "shopify:\/\/apps\/zoorix-bundles-cross-sell\/blocks\/zrx-bundles\/51fffd07-f9df-4d6a-b901-6d14b243dcad",
+          "disabled": true,
+          "settings": {
+            "offer_id": ""
+          }
         }
       },
       "block_order": [
-        "f33de5a6-be62-4018-b9bc-091968c5850a"
+        "f33de5a6-be62-4018-b9bc-091968c5850a",
+        "cf301a7d-8d76-4aaa-8a4b-fb50ccdd9236"
       ],
       "settings": {
         "include_margins": true
