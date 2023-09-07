@@ -100,7 +100,7 @@
           "settings": {
             "liquid_content": "",
             "title": "To Get the Discount",
-            "text": "<p>1. Verify your eligibility through SheerID by filling in the above verification form. Offer available to medical professionals in the healthcare field, and those who have an active medical license or certification.<\/p><p>2. After successful verification, you'll receive a single-use promo code<\/p><p>3. Use the promo code during checkout to redeem the offer{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>",
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>",
             "link_label": "",
             "link": ""
           }
