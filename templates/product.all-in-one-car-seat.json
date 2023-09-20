@@ -41,7 +41,7 @@
         "186af034-c686-428f-82fc-e61cf13f5e65": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by end of August\n{% endif %}"
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by end of September\n{% endif %}"
           }
         },
         "buy_buttons": {
