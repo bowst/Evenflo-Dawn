@@ -26,16 +26,16 @@
           "settings": {
           }
         },
-        "21a10421-a44c-41d2-8239-39abc04c19f8": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by the end of October\n{% endif %}"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button"
+          }
+        },
+        "21a10421-a44c-41d2-8239-39abc04c19f8": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by the end of October\n{% endif %}"
           }
         },
         "quantity_selector": {
@@ -66,8 +66,8 @@
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
-        "21a10421-a44c-41d2-8239-39abc04c19f8",
         "variant_picker",
+        "21a10421-a44c-41d2-8239-39abc04c19f8",
         "quantity_selector",
         "buy_buttons",
         "d9d2c076-9766-40ff-889c-585ff04060cb"
