@@ -996,13 +996,22 @@ class VariantSelects extends HTMLElement {
     const addButtonText = productForm.querySelector('[name="add"] > span');
     if (!addButton) return;
 
+    const isPreorder = document.getElementById('is_preorder').value
+    console.log('isPreorder: ', isPreorder);
+
     if (disable) {
       addButton.setAttribute('disabled', 'disabled');
       if (text) addButtonText.textContent = text;
     } else {
       addButton.removeAttribute('disabled');
       console.log('window.variantStrings: ', window.variantStrings);
-      // addButtonText.textContent = window.variantStrings.addToCart;
+      if (isPreorder) {
+        addButtonText.textContent = 'Pre-Order';
+      } else if (this.currentVariant.available) {
+        addButtonText.textContent = window.variantStrings.addToCart;
+      } else {
+        addButtonText.textContent = window.variantStrings.soldOut;
+      }
     }
 
     if (!modifyClass) return;
