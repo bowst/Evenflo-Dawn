@@ -53,7 +53,7 @@
     {% endfor %}
 
     {% if variant_needed.metafields.custom.pre_order %}
-      <input type="hidden" name="is_preorder" value={{ variant_needed.metafields.custom.pre_order }} />
+      <input type="hidden" name="is_preorder" id="is_preorder" value={{ variant_needed.metafields.custom.pre_order }} />
     {% endif %}
 
   {%- if block.settings.picker_type == 'button' -%}
