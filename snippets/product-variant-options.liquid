@@ -66,6 +66,10 @@
       {% endif %}
     {% endfor %}
 
+    {% if variant_needed.metafields.custom.pre_order %}
+      <input type="hidden" name="is_preorder" value={{ variant_needed.metafields.custom.pre_order }} />
+    {% endif %}
+
     {% if variant_needed.metafields.custom.new_swatch_image and option.name == 'Color' and variant_needed.inventory_quantity <= 0 %}
       <label
         class="color-swatch"
