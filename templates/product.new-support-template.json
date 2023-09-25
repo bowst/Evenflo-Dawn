@@ -101,41 +101,6 @@
         "content": ""
       }
     },
-    "87437c95-0f2b-44b6-b729-adef33a4c10b": {
-      "type": "evenflo-parentlink",
-      "disabled": true,
-      "settings": {
-        "heading": "Supported By",
-        "left_content": "Phone",
-        "right_content": "Email"
-      }
-    },
-    "de262cc2-cd7a-45ad-abd0-474f06e53224": {
-      "type": "evenflo-product-highlights",
-      "disabled": true,
-      "settings": {
-      }
-    },
-    "4600ac99-da69-454a-a56c-0fae1b682f2e": {
-      "type": "evenflo-video",
-      "disabled": true,
-      "settings": {
-        "heading": "Video Title",
-        "description": "Video Description"
-      }
-    },
-    "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
-      "type": "evenflo-features",
-      "disabled": true,
-      "settings": {
-      }
-    },
-    "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
-      "type": "evenflo-pdp-faq",
-      "disabled": true,
-      "settings": {
-      }
-    },
     "fd9aba4d-92f4-481e-8997-c69a78b2cf01": {
       "type": "evenflo-multicolumn",
       "blocks": {
@@ -198,75 +163,6 @@
         "support_heading": "Support"
       }
     },
-    "82760bb6-6fc5-41a6-9c2f-8085415b0ed9": {
-      "type": "evenflo-multicolumn",
-      "blocks": {
-        "template--15827801309340__82760bb6-6fc5-41a6-9c2f-8085415b0ed9-column-1": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}\n      {% if care_copy %}\n        <ul>\n          {% for li in care_copy %}\n            <li>{{ li }}<\/li>\n          {% endfor %}\n        <\/ul>\n      {% endif %}\n      <h3>Materials<\/h3>\n      {% assign material = product.metafields.sf_products.material %}\n      {% if material %}\n        {{ material }}\n      {% endif %}",
-            "title": "Care",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15827801309340__82760bb6-6fc5-41a6-9c2f-8085415b0ed9-column-2": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "",
-            "title": "Use",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "f0490a82-6f30-4eae-a522-58daa8c28dd3": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "",
-            "title": "Safe and Convenient",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "e2798fec-191e-411a-a4e7-2cbb3f4b4e25": {
-          "type": "column",
-          "disabled": true,
-          "settings": {
-            "liquid_content": "{% assign safety_image = product.metafields.sf_products.safety_image %}\n          {% if safety_image %}\n          <image src='{{ safety_image }}' loading=\"lazy\" alt=\"{{ product.title }} Safety\" >\n          {% endif %}",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15827801309340__82760bb6-6fc5-41a6-9c2f-8085415b0ed9-column-1",
-        "template--15827801309340__82760bb6-6fc5-41a6-9c2f-8085415b0ed9-column-2",
-        "f0490a82-6f30-4eae-a522-58daa8c28dd3",
-        "e2798fec-191e-411a-a4e7-2cbb3f4b4e25"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "Use & Care",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -283,52 +179,6 @@
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 28
-      }
-    },
-    "a7fbd8bf-476c-49cf-a541-37b63825be44": {
-      "type": "evenflo-multicolumn",
-      "blocks": {
-        "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-1": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "<h3>Safe & Convenient<\/h3>\n{% assign safety_testing_copy = product.metafields.sf_products.safety_testing_copy | split: '|' %}\n          {% if safety_testing_copy %}\n            {% for para in safety_testing_copy %}\n              <p>{{ para }}<\/p>\n            {% endfor %}\n          {% endif %}",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-2": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "{% assign safety_image = product.metafields.sf_products.safety_image %}\n          {% if safety_image %}\n          <image src='{{ safety_image }}' loading=\"lazy\" alt=\"{{ product.title }} Safety\" >\n          {% endif %}",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-1",
-        "template--15827801309340__a7fbd8bf-476c-49cf-a541-37b63825be44-column-2"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "7ce8e4f0-1a1e-401a-b824-7823e960cf0d": {
@@ -354,12 +204,6 @@
         "name": ""
       }
     },
-    "9adb2758-2d5c-4139-9b64-f467fa96e825": {
-      "type": "evenflo-faq",
-      "settings": {
-        "number_of_faq": 20
-      }
-    },
     "e099350c-2fd2-4f22-9c2f-cbafa04f15bb": {
       "type": "evenflo-parentlink",
       "settings": {
@@ -373,20 +217,12 @@
     "main",
     "0a42f2ea-4e18-47d4-8b84-0fe650baeb9b",
     "41906093-eee6-46f4-9a23-468b17fd3615",
-    "87437c95-0f2b-44b6-b729-adef33a4c10b",
-    "de262cc2-cd7a-45ad-abd0-474f06e53224",
-    "4600ac99-da69-454a-a56c-0fae1b682f2e",
-    "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
-    "46391549-e9d3-4404-8c19-b08b5eab6ca7",
     "fd9aba4d-92f4-481e-8997-c69a78b2cf01",
     "1c5fa1be-a19b-426c-bff9-ee3a54765a5e",
-    "82760bb6-6fc5-41a6-9c2f-8085415b0ed9",
     "related-products",
-    "a7fbd8bf-476c-49cf-a541-37b63825be44",
     "7ce8e4f0-1a1e-401a-b824-7823e960cf0d",
     "45849377-4cee-48de-b8f8-52fd115e29b4",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
-    "9adb2758-2d5c-4139-9b64-f467fa96e825",
     "e099350c-2fd2-4f22-9c2f-cbafa04f15bb"
   ]
 }
