@@ -837,8 +837,6 @@ class VariantSelects extends HTMLElement {
     this.removeErrorMessage();
     this.updateVariantStatuses();
 
-    console.log('this.currentVariant: ', this.currentVariant);
-
     if (!this.currentVariant) {
       this.toggleAddButton(true, '', true);
       this.setUnavailable();
@@ -1001,6 +999,7 @@ class VariantSelects extends HTMLElement {
       if (text) addButtonText.textContent = text;
     } else {
       addButton.removeAttribute('disabled');
+      console.log('window.variantStrings: ', window.variantStrings);
       // addButtonText.textContent = window.variantStrings.addToCart;
     }
 
