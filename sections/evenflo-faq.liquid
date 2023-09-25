@@ -1,15 +1,16 @@
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 {{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
 {{ 'section-product-faq.css' | asset_url | stylesheet_tag }}
+{% assign faqs = product.metafields.custom.support_page_faq.value %}
 
 {%- # Label: Number of FAQ -%}
 
-{% if page.metafields.custom.support_page_faq.value %}
+{% if faqs %}
   <section class="product-faq">
     <div class="content-container page-width content-container--full-width">
       <div class="collapsible-content isolate" id="questions">
         <div class="collapsible-content__wrapper">
-          {% for faqItem in page.metafields.custom.support_page_faq.value %}
+          {% for faqItem in faqs %}
             <h3 class="accordion__title">
               {{ faqItem.tag }}
             </h3> 
