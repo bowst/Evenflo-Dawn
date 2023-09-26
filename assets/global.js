@@ -996,7 +996,7 @@ class VariantSelects extends HTMLElement {
     const addButtonText = productForm.querySelector('[name="add"] > span');
     if (!addButton) return;
 
-    const isPreorder = document.getElementById('is_preorder').value
+    const isPreorder = document.getElementById('is_preorder') ? document.getElementById('is_preorder').value : false
     console.log('isPreorder: ', isPreorder);
 
     if (disable) {
