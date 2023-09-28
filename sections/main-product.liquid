@@ -419,8 +419,10 @@
                   assign quantity_rule_soldout = true
                 endif
               -%}
-              {% if product.id != 7593052143772 and product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+              {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+                {% unless product.tags contains 'hide-notify-me' %}
                 <a class="button button--secondary klaviyo-bis-trigger" href="#">Notify Me When Available</a>
+                {% endunless %}
               {% endif %}
             {%- when 'rating' -%}
               {%- if product.metafields.reviews.rating.value != blank -%}
