@@ -115,6 +115,7 @@
   .multicolumn-list.slider,
   .multicolumn-list.grid--4-col-desktop {
     padding: 0;
+    display: flex;
   }
 
   .multicolumn-list__item,
@@ -198,6 +199,7 @@
 .multicolumn-card {
   position: relative;
   box-sizing: border-box;
+  height: 100%;
 }
 
 .multicolumn-card > .multicolumn-card__image-wrapper--full-width:not(.multicolumn-card-spacing) {
