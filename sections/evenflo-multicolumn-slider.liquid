@@ -1,12 +1,142 @@
+<div class="row cc-three-columns">
+  <div class="one-third column alpha">
+    <div class="swiper-container swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <a href="https://www.evenflo.com/products/shyft-dualride-car-seat-stroller-combo-carryall-storage"
+            ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Shop-Now-SHIFT_DUALRIDE_SWIPE_walmart_IMAGE.jpg?v=1684160567"
+          ></a>
+        </div>
+        <div class="swiper-slide">
+          <a href="https://www.evenflo.com/products/shyft-dualride-car-seat-stroller-combo"
+            ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/SHIFT_DUALRIDE_SWIPE_OVER_IMAGE_1.jpg?v=1679415749"
+          ></a>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+  <div class="one-third column">
+    <div class="swiper-container swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <a href="https://www.evenflo.com/products/shyft-dualride-car-seat-stroller-combo-carryall-storage"
+            ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/2_Dualride_Core_ON_Boone_basket.jpg?v=1680609285"
+          ></a>
+        </div>
+        <div class="swiper-slide">
+          <a href="https://www.evenflo.com/products/shyft-dualride-car-seat-stroller-combo-carryall-storage"
+            ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/SHIFT_DUALRIDE_SWIPE_OVER_IMAGE_2.jpg?v=1679415750"
+          ></a>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+  <div class="one-third column omega">
+    <div class="swiper-container swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <a href="https://www.evenflo.com/products/gold-shyft-dualride-car-seat-stroller-combo-carryall-storage"
+            ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/3_Dualride_Gold_Moonstone.jpg?v=1684161524"
+          ></a>
+        </div>
+        <div class="swiper-slide">
+          <a href="https://www.evenflo.com/products/gold-shyft-dualride-car-seat-stroller-combo-carryall-storage"
+            ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/SHIFT_DUALRIDE_SWIPE_OVER_IMAGE_3.jpg?v=1679415749"
+          ></a>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</div>
+
+{%- if request.design_mode -%}
+  <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Evenflo Multi Slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.slideshow.settings.mobile.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_below",
+      "label": "t:sections.slideshow.settings.show_text_below.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.slideshow.settings.accessibility.content"
+    },
+    {
+      "type": "text",
+      "id": "accessibility_info",
+      "label": "t:sections.slideshow.settings.accessibility.label",
+      "info": "t:sections.slideshow.settings.accessibility.info",
+      "default": "Slideshow about our brand"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "Slider",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_0",
+          "label": "Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 4"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Multicolumn Slider",
+      "blocks": [
+        {
+          "type": "slider"
+        },
+        {
+          "type": "slider"
+        },
+        {
+          "type": "slider"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
