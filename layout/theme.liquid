@@ -33,10 +33,16 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+
     <script type="text/javascript">
       window._bl = { partner: 'evenflo.com' };
     </script>
-    <script async type="text/javascript" src="https://www.babylist.com/add.js"></script>
+    <script
+      async
+      type="text/javascript"
+      src="https://www.babylist.com/add.js"
+    ></script>
 
     {{ content_for_header }}
 
@@ -229,12 +235,25 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}
+    {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+      <link
+        rel="preload"
+        as="font"
+        href="{{ settings.type_body_font | font_url }}"
+        type="font/woff2"
+        crossorigin
+      >
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+      <link
+        rel="preload"
+        as="font"
+        href="{{ settings.type_header_font | font_url }}"
+        type="font/woff2"
+        crossorigin
+      >
     {%- endunless -%}
 
     {%- if settings.predictive_search_enabled -%}
