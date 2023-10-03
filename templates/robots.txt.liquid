@@ -9,6 +9,10 @@
     {{- rule -}}
   {% endfor %}
 
+  {%- if group.user_agent.value == '*' -%}
+    {{ 'Disallow: */wpm@' }}
+  {%- endif -%}
+
   {%- if group.sitemap != blank -%}
     {{ group.sitemap }}
   {%- endif -%}
