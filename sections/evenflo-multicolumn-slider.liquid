@@ -1,33 +1,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-{% javascript %}
-  console.log('looking for Swiper');
-  if (typeof Swiper !== 'undefined') {
-    console.log('typeof Swiper: ', typeof Swiper);
-    const swiper = new Swiper('.swiper', {
-      // Optional parameters
-      direction: 'vertical',
-      loop: true,
-
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
-
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-
-      // And if we need scrollbar
-      // scrollbar: {
-      //   el: '.swiper-scrollbar',
-      // },
-    });
-  }
-{% endjavascript %}
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> {% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 
 {% stylesheet %}
   .evenflo-multicolumn-slider .page-width {
@@ -49,63 +22,16 @@
 <section class="evenflo-multicolumn-slider color-background-1 gradient">
   <div class="page-width page-width--narrow section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
     <div class="row cc-three-columns">
-      <div class="one-third column alpha">
-        <div class="swiper-container swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="https://www.evenflo.com/products/shyft-dualride-car-seat-stroller-combo-carryall-storage"
-                ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Shop-Now-SHIFT_DUALRIDE_SWIPE_walmart_IMAGE.jpg?v=1684160567"
-              ></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="https://www.evenflo.com/products/shyft-dualride-car-seat-stroller-combo"
-                ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/SHIFT_DUALRIDE_SWIPE_OVER_IMAGE_1.jpg?v=1679415749"
-              ></a>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+      {% for block in section.blocks %}
+        {% assign blockClass = "swiper-{{block.index}}" %}
+        <div class="one-third column alpha">
+          <swiper-container class="{{ blockClass }}" navigation="true">
+            {% for image in block.settings %}
+              <swiper-slide><img src="{{ image.src }}"></swiper-slide>
+            {% endfor %}
+          </swiper-container>
         </div>
-      </div>
-      <div class="one-third column">
-        <div class="swiper-container swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="https://www.evenflo.com/products/shyft-dualride-car-seat-stroller-combo-carryall-storage"
-                ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/2_Dualride_Core_ON_Boone_basket.jpg?v=1680609285"
-              ></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="https://www.evenflo.com/products/shyft-dualride-car-seat-stroller-combo-carryall-storage"
-                ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/SHIFT_DUALRIDE_SWIPE_OVER_IMAGE_2.jpg?v=1679415750"
-              ></a>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </div>
-      <div class="one-third column omega">
-        <div class="swiper-container swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="https://www.evenflo.com/products/gold-shyft-dualride-car-seat-stroller-combo-carryall-storage"
-                ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/3_Dualride_Gold_Moonstone.jpg?v=1684161524"
-              ></a>
-            </div>
-            <div class="swiper-slide">
-              <a href="https://www.evenflo.com/products/gold-shyft-dualride-car-seat-stroller-combo-carryall-storage"
-                ><img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/SHIFT_DUALRIDE_SWIPE_OVER_IMAGE_3.jpg?v=1679415749"
-              ></a>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
