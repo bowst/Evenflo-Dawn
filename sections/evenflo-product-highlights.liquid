@@ -17,7 +17,6 @@
 {% assign harness_type = product.metafields.sf_products.harness_type %}
 {% assign modes_of_use_link = product.metafields.custom.modes_of_use_link %}
 
-
 {% assign carrier_machine_washable = product.metafields.sf_carrier.machine_washable %}
 
 {% assign lightweight = product.metafields.sf_car_seat.lightweight %}
@@ -55,7 +54,7 @@
 <section class="product-highlights anchor-gradient">
   <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
     {% comment %} All in One {% endcomment %}
-    {% if template == 'product.all-in-one-car-seat' %}
+    {% if template == 'product.all-in-one-car-seat' or template == 'default' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit - Rear Facing</h3>
@@ -96,8 +95,7 @@
         <div class="flex-item">
           <h3>Modes of Use</h3>
           {{ modes_of_use }}
-      
-          
+
           {% if product.metafields.sf_car_seat.sensorsafe == 1 %}
             Sensorsafe<br>
           {% endif %}
@@ -456,7 +454,7 @@
         </div>
         <div class="flex-item">
           <h3>Modes of Use</h3>
-          
+
           {% if modes_of_use_link %}
             <a href="{{ modes_of_use_link }}" target="new">View All Modes</a><br>
           {% else %}
