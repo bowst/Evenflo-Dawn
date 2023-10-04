@@ -25,24 +25,26 @@
       {% for block in section.blocks %}
         {% assign blockClass = "swiper-{{block.index}}" %}
         <div class="one-third column alpha">
-          <swiper-container class="{{ blockClass }}" navigation="true">
-            {% if block.settings.image_0 %}
-              {% assign image = block.settings.image_0 %}
-              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
-            {% endif %}
-            {% if block.settings.image_1 %}
-              {% assign image = block.settings.image_1 %}
-              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
-            {% endif %}
-            {% if block.settings.image_2 %}
-              {% assign image = block.settings.image_2 %}
-              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
-            {% endif %}
-            {% if block.settings.image_3 %}
-              {% assign image = block.settings.image_3 %}
-              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
-            {% endif %}
-          </swiper-container>
+          <a href="{{block.settings.product.url}}">
+            <swiper-container class="{{ blockClass }}" navigation="true">
+              {% if block.settings.image_0 %}
+                {% assign image = block.settings.image_0 %}
+                <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+              {% endif %}
+              {% if block.settings.image_1 %}
+                {% assign image = block.settings.image_1 %}
+                <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+              {% endif %}
+              {% if block.settings.image_2 %}
+                {% assign image = block.settings.image_2 %}
+                <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+              {% endif %}
+              {% if block.settings.image_3 %}
+                {% assign image = block.settings.image_3 %}
+                <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+              {% endif %}
+            </swiper-container>
+          </a>
         </div>
       {% endfor %}
     </div>
@@ -90,6 +92,11 @@
       "name": "Slider",
       "limit": 3,
       "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product Association"
+        },
         {
           "type": "image_picker",
           "id": "image_0",
