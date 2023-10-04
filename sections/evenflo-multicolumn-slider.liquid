@@ -1,24 +1,8 @@
-
+{{ 'section-multicolumn-slider.css' | asset_url | stylesheet_tag }}
 {% comment %} <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> {% endcomment %}
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 
-{% stylesheet %}
-  .evenflo-multicolumn-slider .page-width {
-    padding-top: 36px;
-    padding-bottom: 36px;
-  }
-  .row.cc-three-columns {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-  }
-  .row > .one-third {
-    width: 33.3333%;
-    flex: 0 0 auto;
-  }
-  .swiper-button-next {color:#00aea9 !important}
-{% endstylesheet %}
+
 
 <section class="evenflo-multicolumn-slider color-background-1 gradient">
   <div class="page-width page-width--narrow section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
