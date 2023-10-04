@@ -11,7 +11,7 @@
     {% endif %}
     <div class="row cc-three-columns">
       {% for block in section.blocks %}
-        {% assign blockClass = "swiper-{{block.index}}" %}
+        {% assign blockClass = "swiper-{{ block.index }}" %}
         <div class="one-third column alpha">
           <a href="{{block.settings.product.url}}">
             <swiper-container class="{{ blockClass }}" navigation="true">
