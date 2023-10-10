@@ -9,7 +9,7 @@
         {%- when 'article' -%}
         {%- for link in linklists.main-menu.links -%}
             {%- if link.url == blog.url -%}
-                <span class = "breadcrumb-delimeter" aria-hidden="true"> > </span> <!--Breadcrumb Delimeter -->
+                <span class = "breadcrumb-delimeter" aria-hidden="true"> </span> <!--Breadcrumb Delimeter -->
                 {{ link.title | link_to: link.url }}
                 {% break %}
             {%- endif -%}
