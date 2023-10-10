@@ -1,5 +1,14 @@
 {
   "sections": {
+    "c9f079ba-1331-4d9e-9628-267b6c5a0fe5": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -241,9 +250,19 @@
       "settings": {
         "heading": "Benefits of shopping evenflo.com"
       }
+    },
+    "e328d5b4-57d5-4b83-84fa-8563c2f3a28b": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
+    "c9f079ba-1331-4d9e-9628-267b6c5a0fe5",
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "49c36a4c-d12e-4b40-99dc-d0893ec62107",
@@ -256,6 +275,7 @@
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
     "16915424125e66a5e8",
     "03b1373c-b461-4f2f-8ecf-dc6d1135bb7f",
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1"
+    "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
+    "e328d5b4-57d5-4b83-84fa-8563c2f3a28b"
   ]
 }
