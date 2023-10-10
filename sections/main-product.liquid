@@ -104,34 +104,6 @@
                   price_class: 'price--large'
                 -%}
               </div>
-              <!--
-                {% liquid
-                  assign trims = product.metafields.custom.trims.value | split: ","
-                %}
-                {% if trims.size > 0 %}
-                  <div>
-                    <h3>Try these products</h3>
-                    {% paginate collections.all.products by 1000 %}
-                      {% for collection_product in collections.all.products %}
-                        {% liquid
-                          assign product_id = collection_product.id | append: ''
-                        %}
-                        {% for trim in trims %}
-                          {% if trim == product_id %}
-                            <h4>
-                              <a href={{collection_product.url}}>
-                                  {{
-                                    collection_product.title
-                                  }}
-                              </a>
-                            </h4>
-                          {% endif %}
-                        {% endfor %}
-                      {% endfor %}
-                    {% endpaginate %}
-                  </div>
-                {% endif %}
-              -->
               {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
                 <div class="product__tax caption rte">
                   {%- if shop.taxes_included -%}
@@ -421,7 +393,7 @@
               -%}
               {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
                 {% unless product.tags contains 'hide-notify-me' %}
-                <a class="button button--secondary klaviyo-bis-trigger" href="#">Notify Me When Available</a>
+                  <a class="button button--secondary klaviyo-bis-trigger" href="#">Notify Me When Available</a>
                 {% endunless %}
               {% endif %}
             {%- when 'rating' -%}
