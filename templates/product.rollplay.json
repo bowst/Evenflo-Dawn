@@ -1,5 +1,14 @@
 {
   "sections": {
+    "c9f079ba-1331-4d9e-9628-267b6c5a0fe5": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -129,7 +138,6 @@
     },
     "fa7a70bb-89f0-4104-8b00-7d3da11d3222": {
       "type": "evenflo-benefits",
-      "disabled": true,
       "blocks": {
         "9ee7f0e3-827c-4c7e-8e83-7b16af4f5926": {
           "type": "benefit",
@@ -158,6 +166,7 @@
         "579d1423-1bef-45d3-a0a6-477e6f46c802",
         "053ee43d-5a53-4978-9e66-5f150e099cd3"
       ],
+      "disabled": true,
       "settings": {
         "section_title": "Why Evenflo"
       }
@@ -244,6 +253,7 @@
     }
   },
   "order": [
+    "c9f079ba-1331-4d9e-9628-267b6c5a0fe5",
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "49c36a4c-d12e-4b40-99dc-d0893ec62107",
