@@ -1,0 +1,36 @@
+    
+.breadcrumbs {
+        padding: 1rem 2rem;
+        color: {{ settings.breadcrumb_text_color }};
+    }
+
+    .breadcrumbs li {
+        display: inline-block;
+    }
+
+    .breadcrumbs a {
+        text-decoration: none;
+        /*Will put liquid customization here*/
+        font-size: 15px;
+        color: inherit;
+    }
+
+    .breadcrumb-delimeter:not(:last-child):after {
+        {%- if settings.breadcrumb_delimeter == "angle_right" -%}
+            content: "›";
+            font-size: 18px;
+        {%- elsif settings.breadcrumb_delimeter == "slash" -%}
+            content: "/";
+            font-size: 16px;
+        {%- endif -%}
+        display: inline-block;
+        margin-left: .75rem;
+        margin-right: 0.50rem;
+        speak: none;
+    }
+
+    .breadcrumbs [aria-current="page"] {
+        color: inherit;
+        font-weight: normal;
+        text-decoration: none;
+    }
