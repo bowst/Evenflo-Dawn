@@ -1,5 +1,14 @@
 {
   "sections": {
+    "ade0198e-e493-4715-af0e-d37aecc64ddd": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -200,6 +209,7 @@
     }
   },
   "order": [
+    "ade0198e-e493-4715-af0e-d37aecc64ddd",
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "4600ac99-da69-454a-a56c-0fae1b682f2e",
