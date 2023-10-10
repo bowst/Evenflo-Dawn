@@ -4,11 +4,11 @@
 
 <div
   class="carousel-container"
-  id="carousel-{{section.id}}"
+  id="carousel-{{ section.id }}"
   data-ken-burns="{{section.settings.enable_ken_burns}}"
   data-slide-timeout="{{slide_timeout_ms}}"
 >
-  <div class="carousel-slides {% if section.settings.color_overlay_opacity != '0' %}with-overlay{%endif%}">
+  <div class="carousel-slides {% if section.settings.color_overlay_opacity != '0' %}with-overlay{% endif %}">
     {% if section.blocks.size > 0 %}
       {% for slide in section.blocks limit: section.blocks.size %}
         <div
@@ -69,27 +69,27 @@
                   <h1 class="bigHeader placeholder-text"></h1>
                 {% else %}
                   {% if slide.settings.page_text == blank %}
-                    <h1 class="bigHeader {% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">
+                    <h1 class="bigHeader {% if section.settings.enable_dropshadow %}drop-shadow{% endif %}">
                       {{ slide.settings.heading_text }}
                     </h1>
                   {% elsif slide.settings.heading_text == blank %}
-                    <p class="{% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">
+                    <p class="{% if section.settings.enable_dropshadow %}drop-shadow{% endif %}">
                       {{ slide.settings.page_text }}
                     </p>
                   {% else %}
                     {% if slide.settings.page_text == blank %}
-                      <h1 class="bigHeader {% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">
+                      <h1 class="bigHeader {% if section.settings.enable_dropshadow %}drop-shadow{% endif %}">
                         {{ slide.settings.heading_text | escape }}
                       </h1>
                     {% elsif slide.settings.heading_text == blank %}
-                      <p class="{% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">
+                      <p class="{% if section.settings.enable_dropshadow %}drop-shadow{% endif %}">
                         {{ slide.settings.page_text | escape }}
                       </p>
                     {% else %}
-                      <h1 class="{% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">
+                      <h1 class="{% if section.settings.enable_dropshadow %}drop-shadow{% endif %}">
                         {{ slide.settings.heading_text | escape }}
                       </h1>
-                      <p class="{% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">
+                      <p class="{% if section.settings.enable_dropshadow %}drop-shadow{% endif %}">
                         {{ slide.settings.page_text | escape }}
                       </p>
                     {% endif %}
@@ -103,13 +103,13 @@
                 {% if slide.settings.button_cta != blank %}
                   {% if slide.settings.button_link != blank %}
                     <a href="{{slide.settings.button_link}}" class="block button-container" tabindex="0">
-                      <button class="btn btn--large {% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">
+                      <button class="btn btn--large {% if section.settings.enable_dropshadow %}drop-shadow{% endif %}">
                         {{ slide.settings.button_cta | escape }}
                       </button>
                     </a>
                   {% elsif isDefault %}
                     <a href="/admin/themes/{{theme.id}}/editor" class="block button-container" tabindex="0">
-                      <button class="btn btn--large {% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">
+                      <button class="btn btn--large {% if section.settings.enable_dropshadow %}drop-shadow{% endif %}">
                         {{ slide.settings.button_cta | escape }}
                       </button>
                     </a>
@@ -134,36 +134,36 @@
 
 <style>
   @media screen and (max-width: 699px) {
-    #carousel-{{section.id}} .carousel-slides {
+    #carousel-{{ section.id }} .carousel-slides {
       background-color: {{ settings.color_primary }};
     }
 
-    #carousel-{{section.id}} .carousel-slide-text .btn {
-      background-color: {{section.settings.controls_color}};
+    #carousel-{{ section.id }} .carousel-slide-text .btn {
+      background-color: {{ section.settings.controls_color }};
       color: {{ settings.color_primary }};
     }
   }
 
-  #carousel-{{section.id}} .carousel-slide-image:before {
-    background-color: {{section.settings.color_overlay_color}};
-    opacity: {{section.settings.color_overlay_opacity}};
+  #carousel-{{ section.id }} .carousel-slide-image:before {
+    background-color: {{ section.settings.color_overlay_color }};
+    opacity: {{ section.settings.color_overlay_opacity }};
   }
 
-  #carousel-{{section.id}} .carousel-slide-text,
-  #carousel-{{section.id}} .carousel-slide-text h1,
-  #carousel-{{section.id}} .carousel-slide-text p {
-    color: {{section.settings.controls_color}};
+  #carousel-{{ section.id }} .carousel-slide-text,
+  #carousel-{{ section.id }} .carousel-slide-text h1,
+  #carousel-{{ section.id }} .carousel-slide-text p {
+    color: {{ section.settings.controls_color }};
   }
 
-  #carousel-{{section.id}} .carousel-slide-progress-bar {
-    background-color: {{section.settings.progress_bar_color}};
+  #carousel-{{ section.id }} .carousel-slide-progress-bar {
+    background-color: {{ section.settings.progress_bar_color }};
   }
 
-  #carousel-{{section.id}} .slick-active .carousel-slide-progress-bar {
-    -webkit-animation: progress-expand {{slide_timeout_ms}}ms linear;
-    -moz-animation: progress-expand {{slide_timeout_ms}}ms linear;
-    -o-animation: progress-expand {{slide_timeout_ms}}ms linear;
-    animation: progress-expand {{slide_timeout_ms}}ms linear;
+  #carousel-{{ section.id }} .slick-active .carousel-slide-progress-bar {
+    -webkit-animation: progress-expand {{ slide_timeout_ms }}ms linear;
+    -moz-animation: progress-expand {{ slide_timeout_ms }}ms linear;
+    -o-animation: progress-expand {{ slide_timeout_ms }}ms linear;
+    animation: progress-expand {{ slide_timeout_ms }}ms linear;
   }
 
   #carousel-{{section.id}} .slick-dots button:before {

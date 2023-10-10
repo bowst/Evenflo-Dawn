@@ -1,11 +1,11 @@
 {% if section.settings['enable_custom-font'] %}
   <style>
         @font-face {
-        font-family: '{{section.settings.name-font}}';
+        font-family: '{{ section.settings.name-font }}';
         src: url({{ section.settings.custom-font }}) format('woff2');
     }
     h1, h2, h3, h4, h5, h6,p,a,span,body,ul,li,small,div{
-    font-family: '{{section.settings.name-font}}' !important;
+    font-family: '{{ section.settings.name-font }}' !important;
     }
   </style>
 {% endif %}

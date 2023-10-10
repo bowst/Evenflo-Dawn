@@ -13,7 +13,7 @@
       {% for block in section.blocks %}
         {% assign blockClass = "swiper-{{ forloop.index }}" %}
         <div class="one-third column alpha">
-          <a href="{{block.settings.product.url}}">
+          <a href="{{ block.settings.product.url }}">
             <swiper-container class="{{ blockClass }}" navigation="true">
               {% if block.settings.image_0 %}
                 {% assign image = block.settings.image_0 %}

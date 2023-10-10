@@ -33,7 +33,6 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    
 
     <script type="text/javascript">
       window._bl = { partner: 'evenflo.com' };
@@ -234,8 +233,7 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %}
-    {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}
-    
+    {% comment %} {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }} {% endcomment %}
 
     {%- unless settings.type_body_font.system? -%}
       <link
@@ -391,7 +389,7 @@
       klaviyo.init({
         account: 'VWGYvg',
         platform: 'shopify',
-        exclude_on_tags: 'hide-notify-me'
+        exclude_on_tags: 'hide-notify-me',
       });
       klaviyo.enable('backinstock', {
         trigger: {
@@ -441,8 +439,7 @@
     </script>
 
     <!-- CRITEO START -->
-{% render 'criteo-tracking' %}
-<!-- CRITEO END -->
-
+    {% render 'criteo-tracking' %}
+    <!-- CRITEO END -->
   </body>
 </html>

@@ -16,7 +16,7 @@
           <swiper-slide>
             <div class="row">
               <div class="col-4">
-                {{ image.src | img_url: '650x' | img_tag }}
+                {{ image.src | image_url: width: 650 | image_tag }}
               </div>
 
               <div class="col-7">{{ blockHtml }}</div>

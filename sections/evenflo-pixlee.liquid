@@ -1,21 +1,17 @@
-
 <section class="join">
-          {% assign product_pixlee_gallery = product.metafields.custom.pixlee_gallery %}
-          <div id="pixlee_container"></div>
-          <script type="text/javascript">
-            window.PixleeAsyncInit = function() {
-              Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});
-              Pixlee.addProductWidget({accountId:1999, widgetId:{{ section.settings.pixlee_id }} , ecomm_platform:"shopify", setMetaTags:true});
-            };
-          </script>
-          <script src="//assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
-
-
+  {% assign product_pixlee_gallery = product.metafields.custom.pixlee_gallery %}
+  <div id="pixlee_container"></div>
+  <script type="text/javascript">
+    window.PixleeAsyncInit = function() {
+      Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});
+      Pixlee.addProductWidget({accountId:1999, widgetId:{{ section.settings.pixlee_id }} , ecomm_platform:"shopify", setMetaTags:true});
+    };
+  </script>
+  <script src="//assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
 </section>
 
-
 {% schema %}
-  {
+{
   "name": "Evenflo Pixlee",
   "class": "content",
   "settings": [
@@ -31,7 +27,7 @@
       "name": "Evenflo Pixlee"
     }
   ]
-}  
+}
 {% endschema %}
 
 {% stylesheet %}

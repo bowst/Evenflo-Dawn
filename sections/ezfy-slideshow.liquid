@@ -233,7 +233,7 @@ If an image has a height of 200px and the other one of 800px, the slider adapts 
   {% assign image_link = block.settings.image_link %}
   {% assign image_link_size = image_link | size %}
   
-    <div  class="EzfySlideshow-cell EzfySlideshow-cell--{{block.id}}">
+    <div  class="EzfySlideshow-cell EzfySlideshow-cell--{{ block.id }}">
 
             
 	  {% assign is_empty = true %}
@@ -284,24 +284,20 @@ If an image has a height of 200px and the other one of 800px, the slider adapts 
               
             >
       {% endif %}
-   
-
-
-   
-      
+  
       <img class="EzfySlideshow-image--lazy EzfySlideshow-image EzfySlideshow-image--desktop "
-                 src="{{ image_desktop | img_url: '300x' }}"
+                 src="{{ image_desktop | image_url: width: 300 }}"
       
                   data-srcset="
-                               {{ image_desktop | img_url: '900x' }} 900w
-                               {{ image_desktop | img_url: '1080x' }} 1080w,
-                               {{ image_desktop | img_url: '1296x' }} 1296w,
-                               {{ image_desktop | img_url: '1512x' }} 1512w,
-                               {{ image_desktop | img_url: '1728x' }} 1728w,
-                               {{ image_desktop | img_url: '2048x' }} 2048w,
-                               {{ image_desktop | img_url: '2450x' }} 2450w,
-                               {{ image_desktop | img_url: '2700x' }} 2700w,
-                               {{ image_desktop | img_url: '3000x' }} 3000w"
+                               {{ image_desktop | image_url: width: 900 }} 900w
+                               {{ image_desktop | image_url: width: 1080 }} 1080w,
+                               {{ image_desktop | image_url: width: 1296 }} 1296w,
+                               {{ image_desktop | image_url: width: 1512 }} 1512w,
+                               {{ image_desktop | image_url: width: 1728 }} 1728w,
+                               {{ image_desktop | image_url: width: 2048 }} 2048w,
+                               {{ image_desktop | image_url: width: 2450 }} 2450w,
+                               {{ image_desktop | image_url: width: 2700 }} 2700w,
+                               {{ image_desktop | image_url: width: 3000 }} 3000w"
          
             
                         
@@ -331,8 +327,8 @@ If an image has a height of 200px and the other one of 800px, the slider adapts 
       
       <img class="EzfySlideshow-image--lazy EzfySlideshow-image EzfySlideshow-image--mobile"
            loading="lazy"
-           src="{{ image_mobile | img_url: '300x' }}"
-           data-src="{{ image_mobile | img_url: '800x' }}"
+           src="{{ image_mobile | image_url: width: 300 }}"
+           data-src="{{ image_mobile | image_url: width: 800 }}"
            data-aspectratio="{{ image_mobile.image.aspect_ratio }}"
            data-sizes="auto"
            alt="{{ image_mobile.image.alt | escape }}"
@@ -370,13 +366,13 @@ If an image has a height of 200px and the other one of 800px, the slider adapts 
                 {% if button_text != "" %} 
         		<a 
                     class="EzfySlideshow-button EzfySlideshow-button--1"
-                   href="{%if button_link != blank %}{{ button_link }}{% else %}{{ shop.url }}{% endif %}">{{ button_text }}</a>				
+                   href="{% if button_link != blank %}{{ button_link }}{% else %}{{ shop.url }}{% endif %}">{{ button_text }}</a>				
                
 {% endif %}
                 {% if button_text_2 != "" %}
         		<a 
                     class="EzfySlideshow-button EzfySlideshow-button--2"
-                   href="{%if button_link_2 != blank %}{{ button_link_2}}{% else %}{{ shop.url }}{% endif %}">{{ button_text_2 }}</a>
+                   href="{% if button_link_2 != blank %}{{ button_link_2}}{% else %}{{ shop.url }}{% endif %}">{{ button_text_2 }}</a>
 				{% endif %}
               </div>
             </div>
@@ -404,7 +400,7 @@ If an image has a height of 200px and the other one of 800px, the slider adapts 
 
         }
         
-        .EzfySlideshow-cell--{{block.id}} .EzfySlideshow-image{
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-image{
           
           {% if block.settings.focal_point == 'full_width' %}
             {% if parallax %}
@@ -522,30 +518,30 @@ If an image has a height of 200px and the other one of 800px, the slider adapts 
         {% comment %} Button {% endcomment %}
         
         
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-button--1,
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-button--1:active,
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-button--1:hover,
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-button--1:focus{
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-button--1,
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-button--1:active,
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-button--1:hover,
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-button--1:focus{
           background-color: {{ button_background_color }};
           color: {{ button_text_color }};
           border-color: {{ button_border_color }};
         }
         
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-button--2,
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-button--2:active,
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-button--2:hover,
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-button--2:focus{
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-button--2,
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-button--2:active,
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-button--2:hover,
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-button--2:focus{
           background-color: {{ button_background_color_2 }};
           color: {{ button_text_color_2 }};
           border-color: {{ button_border_color_2 }};
         }
         
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-title{
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-title{
           color: {{ block.settings.title_color }} !important;
         }
         
-        .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-top-text,
-                .EzfySlideshow-cell--{{ block.id}} .EzfySlideshow-subtitle{
+        .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-top-text,
+                .EzfySlideshow-cell--{{ block.id }} .EzfySlideshow-subtitle{
           color: {{ block.settings.subtitle_color }} !important;
         }
         
@@ -626,7 +622,7 @@ If an image has a height of 200px and the other one of 800px, the slider adapts 
     
 	[data-ezfy-slideshow-section-id="{{ section.id }}"] .EzfySlideshow-parallax{
              height: 0 !important; 
-     	padding-bottom: calc(100% / {{ natural_height_ratio  }}); 
+     	padding-bottom: calc(100% / {{ natural_height_ratio }}); 
     }
 
     
