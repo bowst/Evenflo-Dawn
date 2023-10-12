@@ -15,14 +15,10 @@
         color: inherit;
     }
 
-    .breadcrumb-delimeter:not(:last-child):after {
-        {%- if settings.breadcrumb_delimeter == "angle_right" -%}
+    .breadcrumb-delimeter:not(:last-child):after {  
             content: "|";
             font-size: 18px;
-        {%- elsif settings.breadcrumb_delimeter == "slash" -%}
-            content: "/";
-            font-size: 16px;
-        {%- endif -%}
+
         display: inline-block;
         margin-left: .75rem;
         margin-right: 0.50rem;
