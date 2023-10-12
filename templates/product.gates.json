@@ -162,6 +162,29 @@
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
       }
     },
+    "1691542311a4bd549e": {
+      "type": "apps",
+      "blocks": {
+        "b7c4865e-622d-4f2f-8e1a-f4baea71495f": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "b7c4865e-622d-4f2f-8e1a-f4baea71495f"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "173e15b8-f167-47a7-b731-7520b0da4709": {
+      "type": "evenflo-pixlee",
+      "settings": {
+        "pixlee_id": "Pixlee ID"
+      }
+    },
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
       "type": "evenflo-join",
       "settings": {
@@ -216,23 +239,6 @@
       "settings": {
         "heading": "Benefits of shopping evenflo.com"
       }
-    },
-    "1691542311a4bd549e": {
-      "type": "apps",
-      "blocks": {
-        "b7c4865e-622d-4f2f-8e1a-f4baea71495f": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "b7c4865e-622d-4f2f-8e1a-f4baea71495f"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
@@ -247,8 +253,9 @@
     "45849377-4cee-48de-b8f8-52fd115e29b4",
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
+    "1691542311a4bd549e",
+    "173e15b8-f167-47a7-b731-7520b0da4709",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
-    "1691542311a4bd549e"
+    "e87086c3-8bc1-4ebd-af1f-5d31612858d1"
   ]
 }
