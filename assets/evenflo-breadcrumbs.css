@@ -17,7 +17,7 @@
 
     .breadcrumb-delimeter:not(:last-child):after {
         {%- if settings.breadcrumb_delimeter == "angle_right" -%}
-            content: "›";
+            content: "|";
             font-size: 18px;
         {%- elsif settings.breadcrumb_delimeter == "slash" -%}
             content: "/";
