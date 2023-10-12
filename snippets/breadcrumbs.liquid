@@ -14,7 +14,7 @@
                 {% break %}
             {%- endif -%}
         {%- endfor -%}
-            <span class = "breadcrumb-delimeter" aria-hidden="true"></span>
+            <span class = "breadcrumb-delimeter" aria-hidden="true"> </span>
             <a href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
         {%- when "product" -%}
             {%- capture product_url_string -%}
