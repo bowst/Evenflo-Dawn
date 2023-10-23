@@ -166,7 +166,7 @@
   animation: spinsub 20s linear infinite !important;
 }
 
-@media (min-width: 750px) {
+@media (min-width: 1200px) {
   #LT--{{ section.id }} .LT-IVB-text-container {
     height: 500px;
   min-height: auto;	
@@ -174,7 +174,7 @@
   }
 }
 
-@media (max-width: 749px) {
+@media (max-width: 1199px) {
   #LT--{{ section.id }} .luna-templates__button {
     font-size: {{ section.settings.font_size_btn_mobile }}px;
   }
@@ -210,7 +210,7 @@
   #LT--{{ section.id }} .LT-IVB-media {
     flex-wrap: wrap;
     flex-direction: row-reverse;
-    padding: 8px;
+    /* padding: 8px; */
   }
 
   #LT--{{ section.id }} .LT-IVB-img, #LT--{{ section.id }} .LT-IVB-video {
@@ -228,8 +228,8 @@
   }
 
   #LT--{{ section.id }} .LT-IVB-img, #LT--{{ section.id }} .LT-IVB-video {
-    height: 235px;
-    min-height: 235px;	
+    height: 500px;
+    min-height: 500px;	
   }
 
   #LT--{{ section.id }} .LT-IVB-text-container {
@@ -298,7 +298,7 @@
                 #LT--{{ block.id }} .LT-IVB-img {
                   border-radius: 50px;
                 }
-                @media (max-width: 749px) {
+                @media (max-width: 1199px) {
                   #LT--{{ block.id }} .LT-IVB-img {
                     border-radius: 35px;
                   }
@@ -331,7 +331,7 @@
                 #LT--{{ block.id }} .LT-IVB-video video {
                   border-radius: 48px;
                 }
-                  @media (max-width: 749px) {
+                  @media (max-width: 1199px) {
                     #LT--{{ block.id }} .LT-IVB-video, #LT--{{ block.id }} .LT-IVB-video video {
                       border-radius: 35px;
                     }
