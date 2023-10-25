@@ -233,7 +233,7 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %}
-    {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }} 
+    {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link
@@ -325,6 +325,32 @@
         t.parentNode.insertBefore(e, t);
       })();
     </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    <style>
+      @media (max-width: 767px) {
+        footer .footer-block__details-content {
+          display: none;
+        }
+        .footer__blocks-wrapper h2.footer-block__heading {
+          position: relative;
+        }
+        .footer__blocks-wrapper h2.footer-block__heading.inline-richtext:after {
+          content: '\f078';
+          font-family: FONTAWESOME;
+          font-size: 12px;
+          right: 0;
+          position: absolute;
+          transition: 0.5s;
+        }
+      }
+    </style>
   </head>
 
   <body class="gradient">
@@ -441,5 +467,22 @@
     <!-- CRITEO START -->
     {% render 'criteo-tracking' %}
     <!-- CRITEO END -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      if ($(window).width() < 767) {
+        $('footer .footer-block__heading').each(function () {
+          $(this).click(function () {
+            $(this).siblings('.footer-block__details-content').slideToggle();
+          });
+        });
+      }
+    </script>
   </body>
 </html>
