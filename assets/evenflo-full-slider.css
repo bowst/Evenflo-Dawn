@@ -17,3 +17,11 @@ swiper-container.color-background-1 {
 .col-7 {
     padding-top: 4%;
 }
+
+@media screen and (max-width: 768px) {
+
+    .col-4,
+    .col-7 {
+        width: 90%;
+    }
+}
