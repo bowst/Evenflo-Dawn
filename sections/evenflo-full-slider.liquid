@@ -6,7 +6,15 @@
     {% if section.settings.header %}
       <hl class="main-page-title page-title h0">{{ section.settings.header }}</hl>
     {% endif %}
-    <swiper-container class="color-background-1" navigation="true">
+    <swiper-container
+      class="color-background-1"
+      navigation="true"
+      pagination="true"
+      pagination-clickable="true"
+      centered-slides="true"
+      autoplay-delay="5000"
+      autoplay-disable-on-interaction="false"
+    >
       {% for block in section.blocks %}
         {% assign blockClass = "swiper-{{ forloop.index | string }}" %}
 
