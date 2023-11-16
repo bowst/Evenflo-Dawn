@@ -50,6 +50,12 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
+        },
+        "f4d04dba-4bd2-49fb-9ca2-fc5c7f4f612d": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"two-fifths columns medium-down--one-whole\">\n        <div class=\"loveit\">\n            <h3>STANDARD SHIPPING, CONTINENTAL US<\/h3>\n            <table rollplay border=\"none\" style=\"width:100% !important;\">\n              <tr>\n                <th>Subtotal<\/th>\n                <th>Shipping<\/th>\n              <\/tr>\n              <tr border=\"none\">\n                <td>$0.00-$19.99<\/td>\n                <td>$5.00<\/td>\n              <\/tr>\n              <tr border=\"none\">\n                <td>$20.00-$69.99<\/td>\n                <td>$7.50<\/td>\n              <\/tr>\n              <tr border=\"none\">\n                <td>$70.00-$99.99<\/td>\n                <td> $15.00<\/td>\n              <\/tr>\n              <tr border=\"none\">\n                <td>$100.00-$149.99<\/td>\n                <td> $22.50<\/td>\n              <\/tr>\n              <tr border=\"none\">\n                <td>$150.00-$199.99<\/td>\n                <td> $30.00<\/td>\n              <\/tr>\n              <tr>\n                <td>$200.00 and up<\/td>\n                <td>$37.50<\/td>\n              <\/tr>\n          <\/table>\n        <\/p>\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>"
+          }
         }
       },
       "block_order": [
@@ -60,7 +66,8 @@
         "63520d9f-5ae5-4698-94ee-cd81af7dbafd",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "f4d04dba-4bd2-49fb-9ca2-fc5c7f4f612d"
       ],
       "settings": {
         "enable_sticky_info": false,
