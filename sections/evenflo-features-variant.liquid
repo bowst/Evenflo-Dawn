@@ -1,0 +1,126 @@
+{{ 'section-features.css' | asset_url | stylesheet_tag }}
+
+{% assign feature_image_1 = product.metafields.custom.variant_feature_image_1 %}
+{% assign feature_image_2 = product.metafields.custom.variant_feature_image_2 %}
+{% assign feature_image_3 = product.metafields.custom.variant_feature_image_3 %}
+{% assign feature_image_4 = product.metafields.custom.variant_feature_image_4 %}
+{% assign feature_text_1 = product.metafields.custom.variant_feature_text_1 %}
+{% assign feature_text_2 = product.metafields.custom.variant_feature_text_2 %}
+{% assign feature_text_3 = product.metafields.custom.variant_feature_text_3 %}
+{% assign feature_text_4 = product.metafields.custom.variant_feature_text_4 %}
+
+<section class="features">
+  <div class="content-container page-width rich-text--full-width content-container--full-width">
+    <h2 class="h1 heading-underline">Features</h2>
+
+    {% if feature_text_1 or feature_text_2 %}
+      <div class="flex-row">
+        {% if feature_text_1 %}
+          <div class="flex-item">
+            <div class="flex-row">
+              <div class="flex-item">
+                {% if feature_image_1 %}
+                  <img
+                    src="{{ feature_image_1 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="flex-item">
+                {{ feature_text_1 }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if feature_text_2 %}
+          <div class="flex-item">
+            <div class="flex-row">
+              <div class="flex-item">
+                {% if feature_image_2 %}
+                  <img
+                    src="{{ feature_image_2 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="flex-item">
+                {{ feature_text_2 }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if feature_text_3 or feature_text_4 %}
+      <div class="flex-row">
+        {% if feature_text_3 %}
+          <div class="flex-item">
+            <div class="flex-row reverse">
+              <div class="flex-item">
+                {% if feature_image_3 %}
+                  <img
+                    src="{{ feature_image_3 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="flex-item">
+                {{ feature_text_3 }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if feature_text_4 %}
+          <div class="flex-item">
+            <div class="flex-row reverse">
+              <div class="flex-item">
+                {% if feature_image_4 %}
+                  <img
+                    src="{{ feature_image_4 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="flex-item">
+                {{ feature_text_4 }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="right">
+      {% if product.metafields.custom.product_support_link %}
+        <a href="{{ product.metafields.custom.product_support_link.value.url }}">Learn More</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Evenflo Features Variant",
+  "class": "text",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Evenflo Features Variant"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
