@@ -1,28 +1,101 @@
 {{ 'section-features.css' | asset_url | stylesheet_tag }}
 
-{% assign features = '1,2,3,4' | split: ',' %}
+{% assign feature_image_1 = product.metafields.custom.feature_image_1 %}
+{% assign feature_image_2 = product.metafields.custom.feature_image_2 %}
+{% assign feature_image_3 = product.metafields.custom.feature_image_3 %}
+{% assign feature_image_4 = product.metafields.custom.feature_image_4 %}
+{% assign feature_text_1 = product.metafields.custom.feature_text_1 %}
+{% assign feature_text_2 = product.metafields.custom.feature_text_2 %}
+{% assign feature_text_3 = product.metafields.custom.feature_text_3 %}
+{% assign feature_text_4 = product.metafields.custom.feature_text_4 %}
 
 <section class="features">
   <div class="content-container page-width rich-text--full-width content-container--full-width">
     <h2 class="h1 heading-underline">Features</h2>
 
-    {% for feature in features %}
-      {% assign feature_image = product.metafields.custom[ 'feature_image_' | append: feature ] %}
-      {% assign feature_text = product.metafields.custom[ 'feature_text_' | append: feature ] %}
+    {% if feature_text_1 or feature_text_2 %}
+      <div class="flex-row">
+        {% if feature_text_1 %}
+          <div class="flex-item">
+            <div class="flex-row">
+              <div class="flex-item">
+                {% if feature_image_1 %}
+                  <img
+                    src="{{ feature_image_1 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="flex-item">
+                {{ feature_text_1 }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
 
-      {% if feature_text %}
-        <div class="flex-row {% if forloop.index > 2 %}reverse{% endif %}">
+        {% if feature_text_2 %}
           <div class="flex-item">
-            {% if feature_image %}
-              <img src="{{ feature_image }}" alt="Feature {{ feature }} - {{ product.title }}" loading="lazy">
-            {% endif %}
+            <div class="flex-row">
+              <div class="flex-item">
+                {% if feature_image_2 %}
+                  <img
+                    src="{{ feature_image_2 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="flex-item">
+                {{ feature_text_2 }}
+              </div>
+            </div>
           </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if feature_text_3 or feature_text_4 %}
+      <div class="flex-row">
+        {% if feature_text_3 %}
           <div class="flex-item">
-            {{ feature_text }}
+            <div class="flex-row reverse">
+              <div class="flex-item">
+                {% if feature_image_3 %}
+                  <img
+                    src="{{ feature_image_3 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="flex-item">
+                {{ feature_text_3 }}
+              </div>
+            </div>
           </div>
-        </div>
-      {% endif %}
-    {% endfor %}
+        {% endif %}
+
+        {% if feature_text_4 %}
+          <div class="flex-item">
+            <div class="flex-row reverse">
+              <div class="flex-item">
+                {% if feature_image_4 %}
+                  <img
+                    src="{{ feature_image_4 }}"
+                    alt="{{ product.title }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </div>
+              <div class="flex-item">
+                {{ feature_text_4 }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
 
     <div class="right">
       {% if product.metafields.custom.product_support_link %}
@@ -45,3 +118,9 @@
   ]
 }
 {% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
