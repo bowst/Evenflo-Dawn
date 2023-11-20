@@ -9,12 +9,10 @@
   
 </script>
 
-{{ product | json }}
-
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {% for variant in product.variants %}
-  {{ variant }}
+  {{ variant.metafields }}
   {%- if current_variant.id == variant.id -%}
     <section class="evenflo-video">
       <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
