@@ -1,4 +1,18 @@
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
+{% for variant in product.variants %}
+{% if product.selected_or_first_available_variant.id == variant.id %}
+<strong>Only {{ variant.metafields.my_fields.quantity_by_color }} {{ variant.metafields.custom.short_description_header }} PCS are available in {{variant.title}}!</strong>
+{% endif %}
+{% endfor %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+$(".no-js-hidden").on("click", function(){
+var refreshint = setInterval(function(){
+location.reload();
+}, 1000);    });   });
+</script>
+
 {% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 
 {% if vimeo_product_video_value != blank %}
