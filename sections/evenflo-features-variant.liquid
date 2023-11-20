@@ -1,21 +1,22 @@
 {{ 'section-features.css' | asset_url | stylesheet_tag }}
 
-{% assign feature_image_1 = product.metafields.custom.variant_feature_image_1 %}
-{% assign feature_image_2 = product.metafields.custom.variant_feature_image_2 %}
-{% assign feature_image_3 = product.metafields.custom.variant_feature_image_3 %}
-{% assign feature_image_4 = product.metafields.custom.variant_feature_image_4 %}
-{% assign feature_text_1 = product.metafields.custom.variant_feature_text_1 %}
-{% assign feature_text_2 = product.metafields.custom.variant_feature_text_2 %}
-{% assign feature_text_3 = product.metafields.custom.variant_feature_text_3 %}
-{% assign feature_text_4 = product.metafields.custom.variant_feature_text_4 %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+
 
 <section class="features">
   <div class="content-container page-width rich-text--full-width content-container--full-width">
     <h2 class="h1 heading-underline">Features</h2>
 
-    {%- assign current_variant = product.selected_or_first_available_variant -%}
-
 {% for variant in product.variants %}
+  {% assign feature_image_1 = variant.metafields.custom.variant_feature_image_1 %}
+{% assign feature_image_2 = variant.metafields.custom.variant_feature_image_2 %}
+{% assign feature_image_3 = variant.metafields.custom.variant_feature_image_3 %}
+{% assign feature_image_4 = variant.metafields.custom.variant_feature_image_4 %}
+{% assign feature_text_1 = variant.metafields.custom.variant_feature_text_1 %}
+{% assign feature_text_2 = variant.metafields.custom.variant_feature_text_2 %}
+{% assign feature_text_3 = variant.metafields.custom.variant_feature_text_3 %}
+{% assign feature_text_4 = variant.metafields.custom.variant_feature_text_4 %}
   {%- if current_variant.id == variant.id -%}
 
     {% if feature_text_1 or feature_text_2 %}
