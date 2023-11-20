@@ -1,6 +1,5 @@
 {{ 'section-features.css' | asset_url | stylesheet_tag }}
-{% for variant in product.variants %}
-{% if product.selected_or_first_available_variant.id == variant.id %}
+
 {% assign feature_image_1 = product.metafields.custom.variant_feature_image_1 %}
 {% assign feature_image_2 = product.metafields.custom.variant_feature_image_2 %}
 {% assign feature_image_3 = product.metafields.custom.variant_feature_image_3 %}
@@ -105,16 +104,6 @@
     </div>
   </div>
 </section>
-{% endif %}
-{% endfor %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($){
-$(".no-js-hidden").on("click", function(){
-var refreshint = setInterval(function(){
-location.reload();
-}, 1000);    });   });
-</script>
 
 {% schema %}
 {
