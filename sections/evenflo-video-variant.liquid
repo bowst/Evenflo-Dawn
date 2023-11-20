@@ -9,6 +9,8 @@
   
 </script>
 
+{{ product.variants }}
+
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {% for variant in product.variants %}
