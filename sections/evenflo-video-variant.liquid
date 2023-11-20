@@ -1,17 +1,8 @@
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
 {% for variant in product.variants %}
 {% if product.selected_or_first_available_variant.id == variant.id %}
-<strong>Only {{ variant.metafields.my_fields.quantity_by_color }} {{ variant.metafields.custom.short_description_header }} PCS are available in {{variant.title}}!</strong>
-{% endif %}
-{% endfor %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function($){
-$(".no-js-hidden").on("click", function(){
-var refreshint = setInterval(function(){
-location.reload();
-}, 1000);    });   });
-</script>
+
+
 
 {% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 
@@ -21,7 +12,7 @@ location.reload();
     <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
       <div class="flex-row">
         <div class="flex-item video-content-section">
-          <h2 class="h1 heading-underline">Header {{ product.metafields.variant.metafields.custom.short_description_header }}</h2>
+          <h2 class="h1 heading-underline">Header {{ variant.metafields.custom.short_description_header }}</h2>
           {{ product.metafields.sf_products.short_description }}
         </div>
         <div class="flex-item video-section">
@@ -40,7 +31,16 @@ location.reload();
     </div>
   </section>
 {% endif %}
-
+{% endif %}
+{% endfor %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+$(".no-js-hidden").on("click", function(){
+var refreshint = setInterval(function(){
+location.reload();
+}, 1000);    });   });
+</script>
 {% schema %}
 {
   "name": "Evenflo Video Variant",
