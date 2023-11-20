@@ -2,6 +2,7 @@
 {% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 
 {% for variant in product.variants %}
+  console.log({{ variant | json }});
   <section class="evenflo-video">
     <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
       <div class="flex-row">
