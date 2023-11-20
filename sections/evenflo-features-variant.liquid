@@ -9,7 +9,7 @@
     <h2 class="h1 heading-underline">Features</h2>
 
 {% for variant in product.variants %}
-  {% assign feature_image_1 = variant.metafields.custom.variant_feature_image_1 %}
+{% assign feature_image_1 = variant.metafields.custom.variant_feature_image_1 %}
 {% assign feature_image_2 = variant.metafields.custom.variant_feature_image_2 %}
 {% assign feature_image_3 = variant.metafields.custom.variant_feature_image_3 %}
 {% assign feature_image_4 = variant.metafields.custom.variant_feature_image_4 %}
@@ -17,7 +17,7 @@
 {% assign feature_text_2 = variant.metafields.custom.variant_feature_text_2 %}
 {% assign feature_text_3 = variant.metafields.custom.variant_feature_text_3 %}
 {% assign feature_text_4 = variant.metafields.custom.variant_feature_text_4 %}
-  {%- if current_variant.id == variant.id -%}
+{%- if current_variant.id == variant.id -%}
 
     {% if feature_text_1 or feature_text_2 %}
       <div class="flex-row">
