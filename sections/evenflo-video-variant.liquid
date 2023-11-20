@@ -1,7 +1,7 @@
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
 {% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 
-console.log('hello')
+<script>console.log('hello');</script>
 
 {% for variant in product.variants %}
   {%- if product.selected_or_first_available_variant.id == variant.id -%}
