@@ -3,8 +3,6 @@
 
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
-{{ product | json }}
-
 {% for variant in product.variants %}
   {%- if current_variant.id == variant.id -%}
     <section class="evenflo-video">
