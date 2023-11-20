@@ -1,7 +1,7 @@
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
 {% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 
-console.log({{ product | json }});
+console.log({{ product.option | json }});
 
 {% for variant in product.variants %}
   <section class="evenflo-video">
