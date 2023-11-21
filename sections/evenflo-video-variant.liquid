@@ -2,7 +2,7 @@
 {% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 
 <script>
-  console.log({{product_variant | json}})
+  console.log({{product | json}})
 </script>
 
 {%- assign current_variant = product.selected_or_first_available_variant -%}
