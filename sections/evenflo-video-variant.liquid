@@ -1,6 +1,10 @@
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
 {% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 
+<script>
+  console.log({{product_variant | json}})
+</script>
+
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {% for variant in product.variants %}
