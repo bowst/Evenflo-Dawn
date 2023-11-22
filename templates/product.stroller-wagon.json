@@ -47,6 +47,12 @@
             "picker_type": "button"
           }
         },
+        "ae2b090a-c8c0-410e-ae8a-b81555a2e14e": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by mid-December\n{% endif %}"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -62,6 +68,7 @@
         "price",
         "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd",
         "variant_picker",
+        "ae2b090a-c8c0-410e-ae8a-b81555a2e14e",
         "buy_buttons"
       ],
       "settings": {
