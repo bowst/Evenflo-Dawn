@@ -135,7 +135,9 @@
                             {{- item.product.title | escape -}}
                           </a>
 
-                          {%- if item.original_price != item.final_price -%}
+                          {%- if item.original_price != item.final_price and item.final_price == 0 -%}
+                            <div class="product-option">Free</div>
+                          {%- elsif item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
                               <span class="visually-hidden">
                                 {{ 'products.product.price.regular_price' | t }}
@@ -230,7 +232,9 @@
                           </div>
 
                           <div class="cart-item__price-wrapper">
-                            {%- if item.original_line_price != item.final_line_price -%}
+                            {%- if item.original_price != item.final_price and item.final_price == 0 -%}
+                              <div class="product-option">Free</div>
+                            {%- elsif item.original_line_price != item.final_line_price -%}
                               <div class="cart-item__discounted-prices">
                                 <span class="visually-hidden">
                                   {{ 'products.product.price.regular_price' | t }}
