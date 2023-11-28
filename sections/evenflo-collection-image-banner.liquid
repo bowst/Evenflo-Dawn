@@ -112,7 +112,7 @@
           <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
             <p>{{ collection.description }}</p>
             {%- if block.settings.text != blank -%}
-              {{ block.settings.text }}
+              {{ block.settings.text | newline_to_br}}
             {%- endif -%}
           </div>
           {%- when 'buttons' -%}
