@@ -13,21 +13,21 @@
 {%- endstyle -%}
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="section-{{ section.id }}-padding">
-    {{ section.settings.custom_liquid }}
+    {{ section.settings.twelvedays }}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "t:sections.12-days.name",
+  "name": "t:sections.twelvedays.name",
   "tag": "section",
   "class": "section",
   "settings": [
     {
       "type": "liquid",
-      "id": "custom_liquid",
-      "label": "t:sections.12-days.settings.custom_liquid.label",
-      "info": "t:sections.12-days.settings.custom_liquid.info"
+      "id": "twelvedays",
+      "label": "t:sections.twelvedays.settings.twelvedays.label",
+      "info": "t:sections.twelvedays.settings.twelvedays.info"
     },
     {
       "type": "select",
@@ -84,7 +84,7 @@
   ],
   "presets": [
     {
-      "name": "t:sections.12-days.presets.name"
+      "name": "t:sections.twelvedays.presets.name"
     }
   ]
 }
