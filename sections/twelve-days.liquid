@@ -1,4 +1,210 @@
-<h1>Twelve Days</h1>
+<style>
+  /* entire container, keeps perspective */
+  .flip-container {
+    perspective: 1000px;
+  }
+  /* flip the pane when hovered */
+  .flip-container:hover .flipper,
+  .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+  .flip-container,
+  .front,
+  .back {
+  }
+
+  /* flip speed goes here */
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+  }
+
+  /* hide back of pane during swap */
+  .front,
+  .back {
+    backface-visibility: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* front pane, placed above back */
+  .front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+
+  /* back, initially hidden pane */
+  .back {
+    transform: rotateY(180deg);
+  }
+</style>
+<style>
+  /* styles.css */
+  .FlexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+    height: 80vh;
+    overflow: auto;
+    flex-direction: row;
+  }
+
+  .FlexContainer div {
+    width: 180px;
+    height: 180px;
+    margin: 8px;
+  }
+</style>
+
+<section class="section is-width-standard">
+  <section class="FlexContainer">
+    <!-- Day One -->
+    <a href="https://www.evenflo.com/products/revolve360-swivel-car-seat-convertible-car-seat">
+      <div class="flip-container joy-one" ontouchstart="this.classList.toggle('hover');">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_1_Icon_Active.jpg?v=1701189701">
+          </div>
+          <div class="back">
+            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_1_Icon_Active_Hover.jpg?v=1701189724">
+          </div>
+        </div>
+      </div>
+    </a>
+    <!-- Day Two -->
+    <div class="joy-two" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_2_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_2_Icon_Active_Hover.jpg?v=1701189724">
+        </div>
+      </div>
+    </div>
+    <!-- Day Three -->
+    <div class="joy-three" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_3_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_3_Icon_Active_Hover.jpg?v=1701189725">
+        </div>
+      </div>
+    </div>
+    <!-- Day Four -->
+    <div class="joy-four" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_4_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_4_Icon_Active_Hover.jpg?v=1701189725">
+        </div>
+      </div>
+    </div>
+    <!-- Day Five -->
+    <div class="joy-five" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_5_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_5_Icon_Active_Hover.jpg?v=1701189726">
+        </div>
+      </div>
+    </div>
+    <!-- Day Six -->
+    <div class="joy-six" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_6_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_6_Icon_Active_Hover.jpg?v=1701189725">
+        </div>
+      </div>
+    </div>
+    <!-- Day Seven -->
+    <div class="joy-seven" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_7_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_7_Icon_Active_Hover.jpg?v=1701189724">
+        </div>
+      </div>
+    </div>
+    <!-- Day Eight -->
+    <div class="joy-eight" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_8_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_8_Icon_Active_Hover.jpg?v=1701189725">
+        </div>
+      </div>
+    </div>
+
+    <!-- Day Nine -->
+    <div class="joy-nine" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_9_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_9_Icon_Active_Hover.jpg?v=1701189726">
+        </div>
+      </div>
+    </div>
+    <!-- Day Ten -->
+    <div class="joy-ten" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_10_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_10_Icon_Active_Hover.jpg?v=1701189726">
+        </div>
+      </div>
+    </div>
+
+    <!-- Day Eleven -->
+    <div class="joy-eleven" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_11_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_11_Icon_Active_Hover.jpg?v=1701189726">
+        </div>
+      </div>
+    </div>
+    <!-- Day Twelve -->
+    <div class="joy-eleven" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Day_12_Icon_Inactive.jpg?v=1701189785">
+        </div>
+        <div class="back">
+          <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/12_Days_of_Deals_2023_Landing_Page_Components_Day_12_Icon_Active_Hover.jpg?v=1701189726">
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
 {% schema %}
 {
   "name": "Twelve Days",
