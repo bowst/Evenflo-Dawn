@@ -26,7 +26,6 @@
   .front,
   .back {
     backface-visibility: hidden;
-
     position: absolute;
     top: 0;
     left: 0;
@@ -52,10 +51,17 @@
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
-    width: 100%;
+    width: 72%;
     height: 80vh;
     overflow: auto;
     flex-direction: row;
+    margin: auto;
+  }
+
+  @media (max-width: 992px) {
+    .FlexContainer {
+      width: 100%;
+    }
   }
 
   .FlexContainer div {
