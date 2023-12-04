@@ -316,14 +316,14 @@
           "settings": {
             "heading": "Image banner",
             "heading_size": "h1",
-            "heading_color": "black"
+            "heading_color": "white"
           }
         },
         "template--16088198873244__6606c2f7-7be9-4c8b-b6a4-6ce95ae2cd8d-text-1": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "text": "Larger UPF 50+ canopies expand from 2 to 3 panels",
+            "text_style": "subtitle"
           }
         }
       },
@@ -331,7 +331,10 @@
         "template--16088198873244__6606c2f7-7be9-4c8b-b6a4-6ce95ae2cd8d-heading-1",
         "template--16088198873244__6606c2f7-7be9-4c8b-b6a4-6ce95ae2cd8d-text-1"
       ],
-      "disabled": true,
+      "custom_css": [
+        "img {padding-left: 0;}",
+        ".banner__text {color: white;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/Dreamz-18912482_JetSetter_566.jpg",
         "image_overlay_opacity": 0,
@@ -369,6 +372,7 @@
         "template--16088198873244__3e5abcff-9952-40ec-bc17-6ee58797ea12-heading-1",
         "template--16088198873244__3e5abcff-9952-40ec-bc17-6ee58797ea12-text-1"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Dreamz-18912482_JetSetter_566.jpg",
         "image_overlay_opacity": 0,
