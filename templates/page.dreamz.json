@@ -197,6 +197,7 @@
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
+        "underline": false,
         "button_label": "",
         "button_link": "",
         "color_scheme": "background-1",
@@ -508,7 +509,8 @@
         "template--16088198873244__50646745-9645-4d47-90fe-725d19d3cb46-column-2"
       ],
       "custom_css": [
-        ".inline-richtext {font-size: 36px;}"
+        ".inline-richtext {font-size: 36px;}",
+        ".heading-underline::after {bottom: -5px}"
       ],
       "settings": {
         "title": "",
@@ -518,6 +520,7 @@
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "none",
+        "underline": true,
         "button_label": "Shop Now",
         "button_link": "shopify:\/\/products\/pivot-xplore-dreamz-stroller-wagon",
         "color_scheme": "background-1",
@@ -568,6 +571,7 @@
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "none",
+        "underline": false,
         "button_label": "Shop Now",
         "button_link": "shopify:\/\/products\/pivot-xplore-dreamz-stroller-wagon",
         "color_scheme": "background-1",
