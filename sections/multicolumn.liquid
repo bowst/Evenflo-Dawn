@@ -112,7 +112,9 @@
               {%- endif -%}
               <div class="multicolumn-card__info">
                 {%- if block.settings.title != blank -%}
-                  <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+                  <h3 class="inline-richtext {% if section.settings.underline %} heading-underline heading-underline-center{% endif %}">
+                    {{ block.settings.title }}
+                  </h3>
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
                   <div class="rte">{{ block.settings.text }}</div>
@@ -299,6 +301,12 @@
       ],
       "default": "primary",
       "label": "t:sections.multicolumn.settings.background_style.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "underline",
+      "default": false,
+      "label": "t:sections.multicolumn.settings.underline.label"
     },
     {
       "type": "text",
