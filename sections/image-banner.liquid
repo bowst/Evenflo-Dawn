@@ -111,6 +111,9 @@
           {%- when 'text' -%}
           <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
             <p>{{ block.settings.text }}</p>
+          {%- if block.settings.text == "INTRODUCING PIVOT XPLORE™ DREAMZ" -%}
+            <p class="custom-pivot-text">All-Terrain Stroller Wagon With Bassinet Insert</p>
+          {%- endif -%}
           </div>
           {%- when 'buttons' -%}
           <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
