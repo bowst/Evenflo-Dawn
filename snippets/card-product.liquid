@@ -181,7 +181,9 @@
                 endif
               %}
             <div style="text-align: center">
-
+    <div class="yotpo bottomLine" style="display:inline-block"
+       data-product-id="{{ card_product.id }}">
+    </div>
 </div>
               <div
                 class="rating"
@@ -212,9 +214,7 @@
               product: card_product,
             %}
            <div style="text-align: center">
-    <div class="yotpo bottomLine" style="display:inline-block"
-       data-product-id="{{ card_product.id }}">
-    </div>
+
 </div>
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
