@@ -1,5 +1,59 @@
 {
   "sections": {
+    "a2871d33-5aab-4343-afe0-8cc8f1a669ef": {
+      "type": "image-banner",
+      "blocks": {
+        "template--15815876509852__a2871d33-5aab-4343-afe0-8cc8f1a669ef-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "JOIN THE CLUB",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "template--15815876509852__a2871d33-5aab-4343-afe0-8cc8f1a669ef-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Become a member and earn points & exclusive rewards every time you shop.",
+            "text_style": "body"
+          }
+        },
+        "template--15815876509852__a2871d33-5aab-4343-afe0-8cc8f1a669ef-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "JOIN NOW",
+            "button_link_1": "https:\/\/www.evenflo.com\/account\/register",
+            "button_style_secondary_1": false,
+            "button_label_2": "LOGIN",
+            "button_link_2": "https:\/\/www.evenflo.com\/account\/login?checkout_url=https:\/\/www.evenflo.com\/pages\/rewards",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15815876509852__a2871d33-5aab-4343-afe0-8cc8f1a669ef-heading-1",
+        "template--15815876509852__a2871d33-5aab-4343-afe0-8cc8f1a669ef-text-1",
+        "template--15815876509852__a2871d33-5aab-4343-afe0-8cc8f1a669ef-buttons-1"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "p {color: black;}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/image_2023_10_17_20_02_43_180.png",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-right",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "e926af89-44a9-4408-998b-39e54f29b69b": {
       "type": "custom-liquid",
       "settings": {
@@ -28,6 +82,7 @@
     }
   },
   "order": [
+    "a2871d33-5aab-4343-afe0-8cc8f1a669ef",
     "e926af89-44a9-4408-998b-39e54f29b69b",
     "main",
     "138f8f4b-4cfe-4df3-b5c3-535b265230eb"
