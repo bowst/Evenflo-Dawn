@@ -1,5 +1,50 @@
 {
   "sections": {
+    "ede85774-896c-4101-a841-d5cc9762851c": {
+      "type": "evenflo-collection-image-banner",
+      "blocks": {
+        "template--15824509206684__ede85774-896c-4101-a841-d5cc9762851c-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "PARENTLINK CONSUMER RESOURCE CENTER",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "template--15824509206684__ede85774-896c-4101-a841-d5cc9762851c-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "FIND A MANUAL",
+            "button_link_1": "https:\/\/www.evenflo.com\/pages\/instruction-manuals",
+            "button_style_secondary_1": false,
+            "button_label_2": "CONTACT US",
+            "button_link_2": "https:\/\/www.evenflo.com\/pages\/contact-us",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15824509206684__ede85774-896c-4101-a841-d5cc9762851c-heading-1",
+        "template--15824509206684__ede85774-896c-4101-a841-d5cc9762851c-buttons-1"
+      ],
+      "custom_css": [
+        "a {color: #2697c2;}",
+        "a:hover {background-color: white;}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Evenflo.com_ParentLink_Header.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "b0370e72-a2ba-4900-8b34-45ec7a0c0faa": {
       "type": "image-banner",
       "blocks": {
@@ -27,6 +72,7 @@
         "fb1f27de-df92-46c9-8446-1a08796a4032",
         "60d1f9af-9160-4c6e-8cc2-ce375471fd9a"
       ],
+      "disabled": true,
       "custom_css": [
         "a {color: #2697c2;}",
         "a:hover {background-color: white;}"
@@ -897,6 +943,7 @@
     }
   },
   "order": [
+    "ede85774-896c-4101-a841-d5cc9762851c",
     "b0370e72-a2ba-4900-8b34-45ec7a0c0faa",
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "main",
