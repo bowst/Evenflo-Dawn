@@ -382,15 +382,15 @@
                   assign quantity_rule_soldout = true
                 endif
               -%}
-              {% if product.selected_or_first_available_variant.available == false
+              {% if quantity_rule_soldout
                 and product.selected_or_first_available_variant.metafields.custom.walmart_id == blank
               %}
-              <script>
-                const notifyButton = document.querySelector('.button klaviyo-bis-trigger');
-                {% if product.selected_or_first_available_variant.metafields.custom.walmart_id != blank %}
-                  notifyButton.style.cssText += 'display: none;'
-                {% endif %}
-              </script>
+                <script>
+                  const notifyButton = document.querySelector('.button klaviyo-bis-trigger');
+                  {% if product.selected_or_first_available_variant.metafields.custom.walmart_id != blank %}
+                    notifyButton.style.cssText += 'display: none;'
+                  {% endif %}
+                </script>
                 <a
                   class="button klaviyo-bis-trigger"
                   href="#"
