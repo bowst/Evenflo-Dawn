@@ -382,8 +382,15 @@
                   assign quantity_rule_soldout = true
                 endif
               -%}
-              {% if product.selected_or_first_available_variant.available == false and product.selected_or_first_available_variant.metafields.custom.walmart_id == blank %}
-                  <a class="button klaviyo-bis-trigger" href="#">Notify Me When Available</a>
+              {% if product.selected_or_first_available_variant.available == false
+                and product.selected_or_first_available_variant.metafields.custom.walmart_id == blank
+              %}
+                <a
+                  class="button klaviyo-bis-trigger"
+                  style="{% if product.selected_or_first_available_variant.metafields.custom.walmart_id != blank %}display: none;{% endif %}"
+                  href="#"
+                  >Notify Me When Available</a
+                >
               {% endif %}
               {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
             {%- when 'buy_buttons' -%}
@@ -446,7 +453,7 @@
                     <div class="complementary-products__container">
                       {%- if block.settings.make_collapsible_row -%}
                         <details id="Details-{{ block.id }}-{{ section.id }}" open>
-                        <summary>
+                          <summary>
                       {%- endif %}
                       <div class="summary__title">
                         {%- if block.settings.make_collapsible_row -%}
