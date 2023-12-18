@@ -385,6 +385,12 @@
               {% if product.selected_or_first_available_variant.available == false
                 and product.selected_or_first_available_variant.metafields.custom.walmart_id == blank
               %}
+              <script>
+                const notifyButton = document.querySelector('.klaviyo-bis-trigger');
+                {% if variant.metafields.custom.walmart_id != blank %}
+                  notifyButton.style.cssText += 'display: none;'
+                {% endif %}
+              </script>
                 <a
                   class="button klaviyo-bis-trigger"
                   style="{% if variant.metafields.custom.walmart_id != blank %}display: none;{% endif %}"
