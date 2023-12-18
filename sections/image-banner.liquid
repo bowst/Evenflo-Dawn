@@ -117,6 +117,14 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
+            {%- if block.settings.heading == 'THE ONE PIECE OF BABY GEAR THAT DOES IT ALL' -%}
+              <img
+                loading="eager"
+                width=""
+                height=""
+                src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Shyft_DualRide_Gold_Infant_Car_Seat_and_Stroller_Combo_with_Carryall_Storage_Bag_Homepage_Header_GIF_6a7e4b9d-5c94-4a73-8ba1-455df93d84c7.gif?v=1701288993"
+              >
+            {%- endif -%}
             <h1
               class="{% if section.settings.underline %} heading-underline {% endif %} banner__heading inline-richtext {{ block.settings.heading_size }} {{ block.settings.heading_color }}"
               {{ block.shopify_attributes }}
