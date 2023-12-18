@@ -351,7 +351,7 @@
         "3ef8967e-1b55-436a-bce8-06bbd2e5d269"
       ],
       "custom_css": [
-        "div.rich-text {background: rgb(0, 180, 177); background: linear-gradient( 90deg, rgba(0, 180, 177, 1) 0%, rgba(184, 218, 121, 1) 100% );}"
+        "div.rich-text {background: rgb(0, 180, 177); background: linear-gradient( 90deg, rgba(0, 180, 177, 1) 0%, rgba(184, 218, 121, 1) 100% ); width: 90%; margin: auto;}"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -364,6 +364,9 @@
     },
     "a6fc2ff3-9369-480f-94c5-280d596454e7": {
       "type": "image-banner",
+      "custom_css": [
+        ".banner {width: 90%; margin: auto;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/Screenshot_2023-12-18_at_4.49.15_PM.png",
         "image_overlay_opacity": 0,
@@ -376,8 +379,8 @@
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
     "67950236-28ff-4b08-8348-df1122711376": {
