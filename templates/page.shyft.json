@@ -60,17 +60,25 @@
             "text": "<p>The Evenflo® Shyft™ DualRide™ Infant Car Seat and Stroller Combo is a single piece of baby gear that shyfts from infant car seat to stroller in one step. For infants from 3 to 35 lb, it fits even the tiniest riders. Streamline life on the go!<\/p>",
             "text_style": "body"
           }
+        },
+        "9d0c26b4-d10e-4ff1-a1f4-7580c4b8328e": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify:\/\/products\/shyft-dualride-infant-car-seat-stroller-combo-support"
+          }
         }
       },
       "block_order": [
         "template--15826380030108__18d4d9dd-156f-4845-9d4f-932d4df1aaae-heading-1",
-        "template--15826380030108__18d4d9dd-156f-4845-9d4f-932d4df1aaae-text-1"
+        "template--15826380030108__18d4d9dd-156f-4845-9d4f-932d4df1aaae-text-1",
+        "9d0c26b4-d10e-4ff1-a1f4-7580c4b8328e"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/single-dualride.png",
         "height": "adapt",
         "layout": "image_first",
-        "desktop_content_position": "top",
+        "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "color_scheme": "background-1",
@@ -138,7 +146,7 @@
       ],
       "custom_css": [
         ".evenflo-multicolumn-slider > div {max-width: 100%;}",
-        ".swiper-slide-active, .swiper-slide-next {display: flex;}",
+        ".swiper-slide-active,.swiper-slide-next {display: flex;}",
         "img {margin: auto;}"
       ],
       "settings": {
@@ -359,6 +367,8 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/makeitbabys_copy.jpg",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "large",
         "desktop_content_position": "middle-center",
         "show_text_box": false,
@@ -445,6 +455,8 @@
         "image": "shopify:\/\/shop_images\/Group_697.png",
         "image_2": "shopify:\/\/shop_images\/Group_458.png",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
         "show_text_box": false,
