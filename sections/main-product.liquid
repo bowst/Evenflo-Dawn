@@ -386,7 +386,7 @@
                 and product.selected_or_first_available_variant.metafields.custom.walmart_id == blank
               %}
               <script>
-                const notifyButton = document.querySelector('.klaviyo-bis-trigger');
+                const notifyButton = document.querySelector('.button klaviyo-bis-trigger');
                 {% if product.selected_or_first_available_variant.metafields.custom.walmart_id != blank %}
                   notifyButton.style.cssText += 'display: none;'
                 {% endif %}
