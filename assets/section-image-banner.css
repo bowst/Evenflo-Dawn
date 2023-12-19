@@ -458,7 +458,7 @@
   color: #000;
 }
 
-.banner::before {
+.banner::before, .banner__content::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -477,8 +477,14 @@
   margin-bottom: 40px;
 }
 
-.evenflo-collection-banner.banner::before {
+/* .evenflo-collection-banner.banner::before {
   display: none;
+} */
+
+@media screen and (max-width: 1300px) {
+  .banner__content::before {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1299px) {
