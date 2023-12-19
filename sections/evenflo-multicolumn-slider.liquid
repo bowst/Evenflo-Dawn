@@ -10,26 +10,24 @@
       {% for block in section.blocks %}
         {% assign blockClass = "swiper-{{ forloop.index }}" %}
         <div class="one-third column alpha">
-          <a href="{{ block.settings.product.url }}">
-            <swiper-container class="{{ blockClass }}" navigation="true">
-              {% if block.settings.image_0 %}
-                {% assign image = block.settings.image_0 %}
-                <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
-              {% endif %}
-              {% if block.settings.image_1 %}
-                {% assign image = block.settings.image_1 %}
-                <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
-              {% endif %}
-              {% if block.settings.image_2 %}
-                {% assign image = block.settings.image_2 %}
-                <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
-              {% endif %}
-              {% if block.settings.image_3 %}
-                {% assign image = block.settings.image_3 %}
-                <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
-              {% endif %}
-            </swiper-container>
-          </a>
+          <swiper-container class="{{ blockClass }}" navigation="true">
+            {% if block.settings.image_0 %}
+              {% assign image = block.settings.image_0 %}
+              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+            {% endif %}
+            {% if block.settings.image_1 %}
+              {% assign image = block.settings.image_1 %}
+              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+            {% endif %}
+            {% if block.settings.image_2 %}
+              {% assign image = block.settings.image_2 %}
+              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+            {% endif %}
+            {% if block.settings.image_3 %}
+              {% assign image = block.settings.image_3 %}
+              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+            {% endif %}
+          </swiper-container>
           <a class="button button--primary" href="{{ block.settings.product.url }}">SHOP NOW</a>
         </div>
       {% endfor %}
