@@ -1,8 +1,14 @@
 {{ 'section-multicolumn-slider.css' | asset_url | stylesheet_tag }}
-{% comment %} <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> {% endcomment %}
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 
-
+<style>
+  .button {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 50%;
+  }
+</style>
 
 <section class="evenflo-multicolumn-slider color-background-1">
   <div class="page-width page-width--narrow section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
@@ -33,6 +39,7 @@
               {% endif %}
             </swiper-container>
           </a>
+          <a class="button button--primary" href="{{ block.settings.product.url }}">SHOP NOW</a>
         </div>
       {% endfor %}
     </div>
