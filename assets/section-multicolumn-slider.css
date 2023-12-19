@@ -13,6 +13,13 @@
     flex: 0 0 auto;
   }
 
+  .button {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 50%;
+  }
+
   @media screen and (max-width: 1300px) {
     .row > .one-third {
       width: 50%;
@@ -25,5 +32,5 @@
       flex: 0 0 auto;
     }
   }
-  
+
 .swiper-button-next svg {color:#00aea9 !important}
