@@ -46,15 +46,15 @@
   -%}
 
   {% assign variant_needed = null %}
-    {% for variant in product.variants %}
-      {% if variant.options contains value %}
-        {% assign variant_needed = variant %}
-      {% endif %}
-    {% endfor %}
-
-    {% if variant_needed.metafields.custom.pre_order %}
-      <input type="hidden" name="is_preorder" id="is_preorder" value={{ variant_needed.metafields.custom.pre_order }} />
+  {% for variant in product.variants %}
+    {% if variant.options contains value %}
+      {% assign variant_needed = variant %}
     {% endif %}
+  {% endfor %}
+
+  {% if variant_needed.metafields.custom.pre_order %}
+    <input type="hidden" name="is_preorder" id="is_preorder" value="{{ variant_needed.metafields.custom.pre_order }}">
+  {% endif %}
 
   {%- if block.settings.picker_type == 'button' -%}
     <input
@@ -71,28 +71,36 @@
       {% endif %}
     >
 
-    {% if variant_needed.metafields.custom.new_swatch_image and option.name == 'Color' and variant_needed.inventory_quantity <= 0 %}
+    {% if variant_needed.metafields.custom.new_swatch_image
+      and option.name == 'Color'
+      and variant_needed.inventory_quantity <= 0
+      and variant_needed.metafields.custom.walmart_id == blank
+    %}
       <label
         class="color-swatch"
         for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
         data-option="{{ value }}"
         style="
-          opacity: 0.3; 
-          background-size: cover; 
+          opacity: 0.3;
+          background-size: cover;
           background-image: url('{{ variant_needed.metafields.custom.new_swatch_image | image_url }}');
           text-decoration-line:none;
         "
       >
         &nbsp
       </label>
-    {% elsif variant_needed.metafields.image.swatch and option.name == 'Color' and variant_needed.inventory_quantity <= 0 %}
+    {% elsif variant_needed.metafields.image.swatch
+      and option.name == 'Color'
+      and variant_needed.inventory_quantity <= 0
+      and variant_needed.metafields.custom.walmart_id == blank
+    %}
       <label
         class="color-swatch"
         for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
         data-option="{{ value }}"
         style="
-          opacity: 0.3; 
-          background-size: cover; 
+          opacity: 0.3;
+          background-size: cover;
           background-image: url('{{ variant_needed.metafields.image.swatch }}');
           text-decoration-line:none;
         "
@@ -114,7 +122,7 @@
         for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
         data-option="{{ value }}"
         style="
-          background-size: cover; 
+          background-size: cover;
           background-image: url('{{ variant_needed.metafields.custom.new_swatch_image | image_url }}');
           text-decoration-line:none;
         "
@@ -127,7 +135,7 @@
         for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
         data-option="{{ value }}"
         style="
-          background-size: cover; 
+          background-size: cover;
           background-image: url('{{ variant_needed.metafields.image.swatch }}');
           text-decoration-line:none;
         "
@@ -137,7 +145,7 @@
     {% elsif option.name == 'Trim' %}
       <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
         {{ value }}
-        <span>{{variant_needed.metafields.custom.trim_description}}</span>
+        <span>{{ variant_needed.metafields.custom.trim_description }}</span>
       </label>
     {% else %}
       <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
