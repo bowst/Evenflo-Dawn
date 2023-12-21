@@ -10,6 +10,12 @@
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
 
+{% if product.selected_or_first_available_variant.metafields.custom.pre_order == true
+  and product.selected_or_first_available_variant.metafields.custom.pre_order_message != blank
+%}
+  {{ product.selected_or_first_available_variant.metafields.custom.pre_order_message }}
+{% endif %}
+
 {%- unless product.has_only_default_variant -%}
   {%- if block.settings.picker_type == 'button' -%}
     <variant-radios
@@ -25,19 +31,18 @@
       {%- for option in product.options_with_values -%}
         {% if option.name == 'Trim' %}
           <p class="product__text inline-richtext subtitle heading-underline">Styles. Which is best for you</p>
-        {% else%}
+        {% else %}
           <p class="product__text inline-richtext subtitle heading-underline">Color</p>
         {% endif %}
         <fieldset class="js product-form__input">
           <legend class="form__label color">
             {% if option.name == 'Color' %}
               <span id="product-name-and-barcode">
-
-                  <strong>{{ product.selected_or_first_available_variant.title }}</strong> (#
-                  {{- product.selected_or_first_available_variant.sku -}}
-                  )
+                <strong>{{ product.selected_or_first_available_variant.title }}</strong> (#
+                {{- product.selected_or_first_available_variant.sku -}}
+                )
               </span>
-            {% endif %} 
+            {% endif %}
           </legend>
 
           {% render 'product-variant-options', product: product, option: option, block: block %}
