@@ -426,7 +426,7 @@
           "type": "heading",
           "settings": {
             "heading": "TAKE IT WITH OR WITHOUT WHEELS",
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         }
       },
@@ -434,7 +434,9 @@
         "template--15826380030108__68636c1d-500e-4a8c-b8b8-d9b87fc4f964-heading-1"
       ],
       "custom_css": [
-        "div.rich-text {background: rgb(0, 180, 177); background: linear-gradient( 90deg, rgba(0, 180, 177, 1) 0%, rgba(184, 218, 121, 1) 100% ); width: 90%; margin: auto;}"
+        "div.rich-text {background: rgb(0, 180, 177); background: linear-gradient( 90deg, rgba(0, 180, 177, 1) 0%, rgba(184, 218, 121, 1) 100% ); width: 90%; margin: auto;}",
+        "h2::after {display: none;}",
+        "h2 {margin-bottom: 0px;}"
       ],
       "settings": {
         "desktop_content_position": "center",
