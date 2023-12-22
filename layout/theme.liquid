@@ -510,6 +510,14 @@
         };
       })();
 
+      if ($(window).width() < 767) {
+        $('footer .footer-block__heading').each(function () {
+          $(this).click(function () {
+            $(this).siblings('.footer-block__details-content').slideToggle();
+          });
+        });
+      }
+
       $(window).on('resize', function () {
         waitForFinalEvent(
           function () {
