@@ -18,6 +18,8 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/about-header.jpg",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
@@ -92,6 +94,7 @@
       "block_order": [
         "template--15824509272220__28b18e51-469e-4ba2-9e50-71193e2e2974-slide-1"
       ],
+      "disabled": true,
       "settings": {
         "layout": "full_bleed",
         "slide_height": "medium",
@@ -101,6 +104,24 @@
         "image_behavior": "ambient",
         "show_text_below": false,
         "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "180d938d-9cb1-4b63-8050-668fdd6d3c29": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/about-100-years_3b25308d-123d-4afc-bf2c-cfa47cb67b7f.jpg",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
     "013f6ab7-3595-492c-8062-a12326290142": {
@@ -329,7 +350,8 @@
             "title": "",
             "text": "<p>Our trusted line of car seats, strollers, travel systems and home essentials for parents who value safety innovation, convenience, and comfort. <\/p>",
             "link_label": "Shop Now",
-            "link": "shopify:\/\/collections"
+            "link": "shopify:\/\/collections",
+            "discount_verification": ""
           }
         },
         "template--15824509272220__00afe4e8-b979-462f-a9af-ad7e7c04dea3-column-2": {
@@ -339,7 +361,8 @@
             "title": "",
             "text": "<p>Our playful collection of activity centers, stationary jumpers and door jumpers are designed to engage your child’s growing imagination and keep them safely contained.<\/p>",
             "link_label": "Shop Now",
-            "link": ""
+            "link": "",
+            "discount_verification": ""
           }
         },
         "template--15824509272220__00afe4e8-b979-462f-a9af-ad7e7c04dea3-column-3": {
@@ -349,7 +372,8 @@
             "title": "",
             "text": "<p>Our high-quality, innovative ride-on toys are designed to let active kids safely experience the excitement of riding on wheels. <\/p>",
             "link_label": "Shop Now",
-            "link": "shopify:\/\/collections\/rollplay"
+            "link": "shopify:\/\/collections\/rollplay",
+            "discount_verification": ""
           }
         }
       },
@@ -366,6 +390,7 @@
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
+        "underline": false,
         "button_label": "",
         "button_link": "",
         "color_scheme": "background-1",
@@ -381,6 +406,7 @@
     "main",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
     "28b18e51-469e-4ba2-9e50-71193e2e2974",
+    "180d938d-9cb1-4b63-8050-668fdd6d3c29",
     "013f6ab7-3595-492c-8062-a12326290142",
     "6c4f8caa-89f2-41aa-8633-389920f7dd4e",
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
