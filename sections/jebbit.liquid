@@ -1,4 +1,39 @@
-<h1>jebbit quiz section</h1>
+<style>
+  @media screen and (max-width: 989px) {
+    .desktop-jebbit {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .mobile-jebbit {
+      display: none;
+    }
+  }
+
+  .mobile-jebbit,
+  .desktop-jebbit {
+    min-width: 100%;
+  }
+</style>
+
+<a href="{{ section.settings.url }}">
+  <img
+    class="desktop-jebbit"
+    height="90"
+    width=""
+    loading="lazy"
+    src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Baby_Proofing_Google_Affiliate_Banners_5_728x90_8bd858f9-d2bf-417f-bb73-147517fda164.jpg?v=1704303041"
+  >
+
+  <img
+    class="mobile-jebbit"
+    height=""
+    width="300"
+    loading="lazy"
+    src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Baby_Proofing_Google_Affiliate_Banners_4_300x250_e1c4f690-c022-40ed-8753-3003cd60a9e6.jpg?v=1704304605"
+  >
+</a>
 
 {% schema %}
 {
@@ -8,6 +43,13 @@
   "presets": [
     {
       "name": "Jebbit"
+    }
+  ],
+  "settings": [
+    {
+      "type": "url",
+      "id": "url",
+      "label": "t:sections.jebbit.settings.url.label"
     }
   ]
 }
