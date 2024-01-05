@@ -997,8 +997,6 @@ class VariantSelects extends HTMLElement {
     const addButtonText = productForm.querySelector('[name="add"] > span');
     if (!addButton) return;
 
-    const isPreorder = document.getElementById('is_preorder') ? document.getElementById('is_preorder').value : false
-    console.log('isPreorder: ', isPreorder);
 
     if (disable) {
       addButton.setAttribute('disabled', 'disabled');
@@ -1006,11 +1004,9 @@ class VariantSelects extends HTMLElement {
     } else {
       addButton.removeAttribute('disabled');
       console.log('window.variantStrings: ', window.variantStrings);
-      if (isPreorder) {
-        addButtonText.textContent = 'Pre-Order';
-      } else if (this.currentVariant.available) {
+      if (this.currentVariant.available) {      
         addButtonText.textContent = window.variantStrings.addToCart;
-      } else {
+      } else {     
         addButtonText.textContent = window.variantStrings.soldOut;
       }
     }
