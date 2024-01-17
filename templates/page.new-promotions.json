@@ -19,6 +19,8 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/Rectangle_59cb3537-c6a3-487d-a832-b6a4171da5df.png",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "bottom-left",
         "show_text_box": false,
@@ -268,6 +270,18 @@
     "bd8466a5-5044-45aa-89dc-ed149e420bc0": {
       "type": "evenflo-multicolumn",
       "blocks": {
+        "column_DmHC74": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Car_Seat_Promo_2024_Homepage_Header_Promo-Page.png",
+            "liquid_content": "",
+            "title": "20% off all car seats",
+            "text": "<p>20% discount is only applicable to items found within the Car Seat Collection on Evenflo.com. Cannot be combined with other offers. <\/p>",
+            "link_label": "Save Now",
+            "link": "https:\/\/www.evenflo.com\/discount\/CARSEAT24?redirect=%2Fcollections%2Fcar-seats"
+          }
+        },
         "template--15851171971228__bd8466a5-5044-45aa-89dc-ed149e420bc0-column-2": {
           "type": "column",
           "settings": {
@@ -303,6 +317,7 @@
         }
       },
       "block_order": [
+        "column_DmHC74",
         "template--15851171971228__bd8466a5-5044-45aa-89dc-ed149e420bc0-column-2",
         "template--15851171971228__bd8466a5-5044-45aa-89dc-ed149e420bc0-column-3",
         "afe957c0-150d-4ffa-8d34-8daa4180d839"
@@ -404,6 +419,7 @@
         "columns_desktop": 5,
         "column_alignment": "center",
         "background_style": "none",
+        "underline": false,
         "button_label": "",
         "button_link": "",
         "color_scheme": "background-1",
