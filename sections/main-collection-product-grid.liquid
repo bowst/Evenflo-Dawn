@@ -21,7 +21,28 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .collection-ad-section {
+    width: 49%;
+  }
+
+  .collection-ad-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 989px) {
+    .collection-ad-section {
+      float: none !important;
+      width: 100% !important;
+    }
+  }
 {%- endstyle -%}
+
+{% assign collection_name = collection.handle %}
+{% assign ad_config = shop.metaobjects.ad_config[collection_name] %}
 
 <div class="section-{{ section.id }}-padding">
   {%- paginate collection.products by section.settings.products_per_page -%}
@@ -144,7 +165,87 @@
                 grid--{{ section.settings.columns_desktop }}-col-desktop
               "
             >
-              {%- for product in collection.products -%}
+              {%- for product in collection.products limit: 4 -%}
+                {% assign lazy_load = false %}
+                {%- if forloop.index > 2 -%}
+                  {%- assign lazy_load = true -%}
+                {%- endif -%}
+                <li class="grid__item">
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating,
+                    lazy_load: lazy_load,
+                    show_quick_add: section.settings.enable_quick_add,
+                    section_id: section.id
+                  %}
+                </li>
+              {%- endfor -%}
+
+              {% if ad_config %}
+                <div style="width: 100%;">
+                  <div class="collection-ad-section" style="width: 50%; float: left; ">
+                    <div
+                      class="collection-ad-content"
+                    >
+                      <img
+                        style="position: relative; padding: 4%;"
+                        loading="eager"
+                        height=""
+                        width=""
+                        src="{{ ad_config.image }}"
+                      >
+                      <div
+                        class="collection-ad-content"
+                        style="
+                          max-width: 440px;
+                          position: absolute;
+                        "
+                      >
+                        <h1 style="text-align: center !important; padding-bottom: 5%;">
+                          {{ ad_config.header }}
+                        </h1>
+                        <a href="{{ ad_config.link }}">
+                          <button class="button">{{ ad_config.button }}</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="collection-ad-section" style="float: right;">
+                    <ul
+                      id="product-grid"
+                      data-id="{{ section.id }}"
+                      class="
+                        grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                        grid--2-col-desktop
+                      "
+                    >
+                      {%- for product in collection.products limit: 2 offset: continue -%}
+                        {% assign lazy_load = false %}
+                        {%- if forloop.index > 2 -%}
+                          {%- assign lazy_load = true -%}
+                        {%- endif -%}
+                        <li class="grid__item">
+                          {% render 'card-product',
+                            card_product: product,
+                            media_aspect_ratio: section.settings.image_ratio,
+                            show_secondary_image: section.settings.show_secondary_image,
+                            show_vendor: section.settings.show_vendor,
+                            show_rating: section.settings.show_rating,
+                            lazy_load: lazy_load,
+                            show_quick_add: section.settings.enable_quick_add,
+                            section_id: section.id
+                          %}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              {%- endif -%}
+
+              {%- for product in collection.products offset: continue -%}
                 {% assign lazy_load = false %}
                 {%- if forloop.index > 2 -%}
                   {%- assign lazy_load = true -%}
