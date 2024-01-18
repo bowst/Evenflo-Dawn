@@ -5,49 +5,66 @@
     <div class="peace-of-mind__column">
       <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
       {{ section.settings.message }}
-        {% assign product_warranty_link = product.metafields.custom.product_warranty_link %}
-        {% if product_warranty_link %}
-          {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
-            <a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a><br>
-          {% endif %}
+      {% assign product_warranty_link = product.metafields.custom.product_warranty_link %}
+      {% if product_warranty_link %}
+        {% if product.metafields.sf_products.warranty == '1 Year, 6 Month Battery' %}
+          <a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a><br>
         {% endif %}
-        {% if product.metafields.sf_products.warranty == 'lifetime-limited' %}
-          <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
-        {% endif %}
-        {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
-          <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a>
-          <br>
-        {% endif %}
-        {% if product.metafields.sf_products.warranty == '90-day-limited' %}
-          <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
-        {% endif %}
+      {% endif %}
+      {% if product.metafields.sf_products.warranty == 'lifetime-limited' %}
+        <a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a><br>
+      {% endif %}
+      {% if product.metafields.sf_products.warranty == '1 Year, Limited' %}
+        <a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a>
+        <br>
+      {% endif %}
+      {% if product.metafields.sf_products.warranty == '90-day-limited' %}
+        <a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a><br>
+      {% endif %}
+      {% assign user_manual_value = product.metafields.sf_products.manual %}
+      {% assign user_manual_french_value = product.metafields.sf_products.manual_french %}
+      {% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}
+
+      {% if user_manual_value %}
+        <a class="" href="{{ user_manual_value }}" target="new">Download Manual (en)</a><br>
+      {% endif %}
+
+      {% if user_manual_french_value %}
+        <a class="" href="{{ user_manual_french_value }}" target="new">Download Manual (fr)</a><br>
+      {% endif %}
+
+      {% if user_manual_spanish_value %}
+        <a class="" href="{{ user_manual_spanish_value }}" target="new">Download Manual (es)</a>
+      {% endif %}
+
+      {% if product.metafields.custom.lawtag %}
+        <a class="" href="{{ product.metafields.custom.lawtag }}" target="new">Law Label</a>
+      {% endif %}
     </div>
     <div class="peace-of-mind__column">
       <h3 class="h1">Supported by <strong>ParentLink Consumer Care</strong> via chat and email</h3>
 
-        <div class="peace-of-mind__container">
-          <div class="peace-of-mind__column">
-            <h4 class="h3">Chat</h4>
-            <div data-id="14e749b8fb" class="livechat_button action_button cc-button">
-          <a href="https://www.livechat.com/?utm_source=chat_button&amp;utm_medium=referral&amp;utm_campaign=lc_3753191"
-            >Chat Now</a
-          >
+      <div class="peace-of-mind__container">
+        <div class="peace-of-mind__column">
+          <h4 class="h3">Chat</h4>
+          <div data-id="14e749b8fb" class="livechat_button action_button cc-button">
+            <a href="https://www.livechat.com/?utm_source=chat_button&amp;utm_medium=referral&amp;utm_campaign=lc_3753191"
+              >Chat Now</a
+            >
+          </div>
         </div>
-            </div>
-            <div class="peace-of-mind__column">
-            <h4 class="h3">EMAIL</h4>
-            No time to chat?<br>
-            <a href="mailto:parentlink@evenflo.com">Email us</a> your inquiry
-            </div>
+        <div class="peace-of-mind__column">
+          <h4 class="h3">EMAIL</h4>
+          No time to chat?<br>
+          <a href="mailto:parentlink@evenflo.com">Email us</a> your inquiry
         </div>
+      </div>
     </div>
   </div>
 </section>
 
-
-
 {% schema %}
-  {
+{
   "name": "Peace Of Mind",
   "class": "text",
   "tag": "section",
