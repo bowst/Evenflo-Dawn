@@ -27,10 +27,23 @@
   }
 
   .collection-ad-content {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+
+  .collection-ad-header {
+    background:rgba(255,255,255, 0.5);
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .collection-ad-header h1 {
+    max-width: 450px;
+    text-align: center;
+    margin: 30px 0px;
   }
 
   @media screen and (max-width: 989px) {
@@ -199,14 +212,13 @@
                       >
                       <div
                         class="collection-ad-content"
-                        style="
-                          max-width: 440px;
-                          position: absolute;
-                        "
+                        style="position: absolute;"
                       >
-                        <h1 style="text-align: center !important; padding-bottom: 5%;">
-                          {{ ad_config.header }}
-                        </h1>
+                        <div class="collection-ad-header collection-ad-content">
+                          <h1>
+                            {{ ad_config.header }}
+                          </h1>
+                        </div>
                         <a href="{{ ad_config.link }}">
                           <button class="button">{{ ad_config.button }}</button>
                         </a>
