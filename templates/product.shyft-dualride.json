@@ -1,0 +1,246 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "4fc26c25-fc9f-47fe-8fcc-c06feab6ef19": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"affirm-info-container\"><\/div>"
+          }
+        },
+        "d6702130-cd8d-4a27-b9bc-b9c2828044dc": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Color. Pick your favorite.",
+            "text_style": "subtitle"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
+        "price",
+        "4fc26c25-fc9f-47fe-8fcc-c06feab6ef19",
+        "d6702130-cd8d-4a27-b9bc-b9c2828044dc",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "de262cc2-cd7a-45ad-abd0-474f06e53224": {
+      "type": "evenflo-product-highlights",
+      "settings": {
+      }
+    },
+    "4600ac99-da69-454a-a56c-0fae1b682f2e": {
+      "type": "evenflo-video",
+      "settings": {
+        "heading": "Video Title",
+        "description": "Video Description"
+      }
+    },
+    "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
+      "type": "evenflo-features",
+      "settings": {
+      }
+    },
+    "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
+      "type": "evenflo-pdp-faq",
+      "settings": {
+      }
+    },
+    "45849377-4cee-48de-b8f8-52fd115e29b4": {
+      "type": "evenflo-video-support",
+      "settings": {
+        "heading": "Free Video Chat Support",
+        "description": "Need some real-time help? Schedule a live video call with us and we'll walk you through.",
+        "button_label": "Book Now",
+        "button_link": "shopify:\/\/pages\/about-evenflo"
+      }
+    },
+    "e53d8931-4a73-4183-8cff-9bd760de70c3": {
+      "type": "evenflo-peace-of-mind",
+      "settings": {
+        "heading": "Peace Of Mind",
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.<\/p>",
+        "support_content": ""
+      }
+    },
+    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
+      "type": "evenflo-quote",
+      "settings": {
+        "quote": "{{ product.metafields.custom.customer_quote.value }}",
+        "name": "{{ product.metafields.custom.customer_quote_name.value }}"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You May Also Like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "1691542184c8d24987": {
+      "type": "apps",
+      "blocks": {
+        "ff8fbda8-275c-4b78-a626-1396af706d70": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "ff8fbda8-275c-4b78-a626-1396af706d70"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "932a7bd1-78d6-41d3-895a-200e09134f47": {
+      "type": "evenflo-pixlee",
+      "settings": {
+        "pixlee_id": "{{ product.metafields.custom.pixlee_gallery.value }}"
+      }
+    },
+    "94dde192-35b0-4467-904b-69ef073615d6": {
+      "type": "evenflo-join",
+      "settings": {
+      }
+    },
+    "e87086c3-8bc1-4ebd-af1f-5d31612858d1": {
+      "type": "evenflo-shopping-benefits",
+      "blocks": {
+        "b076e55c-e236-4a35-a75a-85cf3402446b": {
+          "type": "benefit_list",
+          "settings": {
+            "description": "<h3>Give 20,<br> Get 20<\/h3>\nRefer a friendand earn points.",
+            "background_image": "shopify:\/\/shop_images\/Evenflo-Benefit-1.png",
+            "icon_image": "shopify:\/\/shop_images\/icon-give20.png",
+            "link": "shopify:\/\/pages\/refer"
+          }
+        },
+        "d2ac9250-ec80-4eca-93cb-a5886833aa00": {
+          "type": "benefit_list",
+          "settings": {
+            "description": "<h3>Pay With Affirm<\/h3>\nPay over time.",
+            "background_image": "shopify:\/\/shop_images\/Benefit_2.png",
+            "icon_image": "shopify:\/\/shop_images\/icon-pay.png",
+            "link": "shopify:\/\/pages\/affirm-overview"
+          }
+        },
+        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239": {
+          "type": "benefit_list",
+          "settings": {
+            "description": "<h3>Community Heroes Discount<\/h3>\nSave on baby gear.",
+            "background_image": "shopify:\/\/shop_images\/Benefit_3.png",
+            "icon_image": "shopify:\/\/shop_images\/icon-heroes.png",
+            "link": "shopify:\/\/pages\/evenflo-promotions"
+          }
+        },
+        "09af9779-83cf-4821-bb96-4341c4f3063b": {
+          "type": "benefit_list",
+          "settings": {
+            "description": "<h3>Evenflo Blog<\/h3>\nCheck out the latest.",
+            "background_image": "shopify:\/\/shop_images\/Car-Seats-Square.jpg",
+            "icon_image": "shopify:\/\/shop_images\/icon-blog.png",
+            "link": "shopify:\/\/blogs\/evenflo-blog"
+          }
+        }
+      },
+      "block_order": [
+        "b076e55c-e236-4a35-a75a-85cf3402446b",
+        "d2ac9250-ec80-4eca-93cb-a5886833aa00",
+        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239",
+        "09af9779-83cf-4821-bb96-4341c4f3063b"
+      ],
+      "settings": {
+        "heading": "Benefits of shopping evenflo.com"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "de262cc2-cd7a-45ad-abd0-474f06e53224",
+    "4600ac99-da69-454a-a56c-0fae1b682f2e",
+    "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
+    "46391549-e9d3-4404-8c19-b08b5eab6ca7",
+    "45849377-4cee-48de-b8f8-52fd115e29b4",
+    "e53d8931-4a73-4183-8cff-9bd760de70c3",
+    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
+    "related-products",
+    "1691542184c8d24987",
+    "932a7bd1-78d6-41d3-895a-200e09134f47",
+    "94dde192-35b0-4467-904b-69ef073615d6",
+    "e87086c3-8bc1-4ebd-af1f-5d31612858d1"
+  ]
+}
