@@ -1,5 +1,47 @@
 {
   "sections": {
+    "video_with_text_YTKmk6": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_Kkycbx": {
+          "type": "heading",
+          "settings": {
+            "heading": "RUGGED MEETS REFINED",
+            "heading_size": "h1"
+          }
+        },
+        "text_ej8V6g": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Forge your own path without leaving any of the comforts behind with the <strong>Shyft™ Rideshare™ All-Terrain Performance Stroller Wagon<\/strong>. Mastering challenging terrain with children from 6 months to 5 years is just the beginning of its versatility.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Kkycbx",
+        "text_ej8V6g"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "background-1",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
       "type": "image-banner",
       "blocks": {
@@ -19,6 +61,8 @@
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
@@ -218,6 +262,7 @@
     }
   },
   "order": [
+    "video_with_text_YTKmk6",
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "main",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
