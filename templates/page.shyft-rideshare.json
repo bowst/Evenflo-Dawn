@@ -30,10 +30,10 @@
         "description": "",
         "full_width": false,
         "color_scheme": "background-1",
-        "height": "adapt",
+        "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "desktop_content_position": "top",
+        "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "image_behavior": "none",
@@ -50,13 +50,13 @@
           "settings": {
             "heading": "HAUL UP TO 110 LB OF CARGO",
             "heading_size": "h1",
-            "heading_color": "black"
+            "heading_color": "white"
           }
         },
         "text_awRXLE": {
           "type": "text",
           "settings": {
-            "text": "Sides lower for cargo mode* — handy for hauling gear to the beach long after little adventurers have outgrown this ride.   *Cargo mode not to be used for transporting children",
+            "text": "Sides lower for cargo mode* — handy for hauling gear to the beach long after little adventurers have outgrown this ride. *Cargo mode not to be used for transporting children",
             "text_style": "body"
           }
         }
@@ -65,15 +65,18 @@
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0",
         "text_awRXLE"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 1315px) {.banner__heading {color: black; }}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/19012483_Rideshare_ICS_Install_2141.png",
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
-        "image_height": "small",
-        "desktop_content_position": "middle-right",
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
