@@ -176,6 +176,14 @@
         {%- for block in section.blocks -%}
           {% case block.type %}
             {%- when 'heading' -%}
+              {% if block.settings.heading == 'RUGGED MEETS REFINED' %}
+                <img
+                  style="max-width: 450px;"
+                  width=""
+                  height=""
+                  src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Screenshot_2024-01-31_at_6.07.17_PM.png?v=1706744953"
+                >
+              {% endif %}
               <h2
                 class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                 {{ block.shopify_attributes }}
