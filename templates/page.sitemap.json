@@ -19,6 +19,8 @@
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
@@ -35,6 +37,15 @@
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "custom_liquid_fQxxNe": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<ul>\n  {%- paginate pages by 50 -%}\n      {%- for p in pages -%}\n          <li>{{p.title}}<\/li>\n      {%- endfor -%}\n      {{ paginate | default_pagination: next: 'Older', previous: 'Newer' }}\n  {%- endpaginate -%}\n<\/ul>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "b44c8197-4385-4350-ad0f-238c04013fa1": {
@@ -220,6 +231,7 @@
   "order": [
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "main",
+    "custom_liquid_fQxxNe",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
     "013f6ab7-3595-492c-8062-a12326290142",
     "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
