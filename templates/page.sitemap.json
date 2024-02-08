@@ -43,7 +43,7 @@
     "custom_liquid_fQxxNe": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<ul>\n  {%- paginate pages by 50 -%}\n      {%- for p in pages -%}\n          <li>{{p.title}}<\/li>\n      {%- endfor -%}\n      {{ paginate | default_pagination: next: 'Older', previous: 'Newer' }}\n  {%- endpaginate -%}\n<\/ul>",
+        "custom_liquid": "<div class=\"row\">\n    <div class=\"col-md-6\">\n    <h2>Collections<\/h2>\n    <ul>\n    {% for c in collections %}\n    <li>\n    <a href=\"{{ c.url }}\">{{ c.title }}<\/a>\n    <\/li>\n    {% endfor %}\n    <\/ul>\n    <\/div>\n    <div class=\"col-md-6\">\n    <h2>Products<\/h2>\n    <ul>\n    {% for product in collections.all.products %}\n    <li>\n    <a href=\"{{ product.url }}\">{{ product.title }}<\/a>\n    <\/li>\n    {% endfor %}\n    <\/ul>\n    <\/div>\n    <\/div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
