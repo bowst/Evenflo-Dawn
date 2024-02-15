@@ -6,7 +6,9 @@
 	let _affirm_locale;
 	let _affirm_country;
 	let _region_public_key;
-	
+
+	let parsedRegionPublicKeys = JSON.parse('{"US":"1NJO8E8SWCS6TKQR","CA":null}');
+
 	if (_shopify_country === 'US') {
 		_affirm_country = 'USA';
 		_affirm_locale = 'en_US';
@@ -15,24 +17,25 @@
 		_affirm_country = 'CAN';
 		_affirm_locale = (_shopify_locale === 'fr' ?  'fr' : 'en') + '_' + _shopify_country;
 		_region_public_key = '1NJO8E8SWCS6TKQR'
-	} else {
-		_affirm_country = 'USA';
-		_affirm_locale = 'en_US'
-		_region_public_key = '1NJO8E8SWCS6TKQR'
 	}
 
+	if(_region_public_key && parsedRegionPublicKeys[_shopify_country]){
 	_affirm_config = {
 	   public_api_key: _region_public_key,
 	   script:          "https://cdn1.affirm.com/js/v2/affirm.js",
 	   locale: _affirm_locale,
 	   country_code: _affirm_country,
 	};
-
 	(function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
 	// Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
-<!-- End Affirm -->;
+	
+	initializePromos();
+}
 
-let promosJSON = '[{"promoStatus":true,"saleSelector":"","dataElement":"","comparePrices":false,"logoColor":"blue","logoType":"logo","addCents":false,"selector":"","fontSize":"12","position":"afterbegin","pageType":"product","onChange":"ProductSection-product-template","alaElement":"#affirm-info-container"},{"promoStatus":false,"saleSelector":"","comparePrices":false,"logoColor":"blue","logoType":"logo","addCents":false,"selector":".price-item--regular","fontSize":"12","position":"beforeend","pageType":"category","onChange":""},{"promoStatus":false,"saleSelector":"","comparePrices":false,"logoColor":"blue","logoType":"logo","addCents":false,"selector":".cart__subtotal","fontSize":"12","position":"afterend","pageType":"cart","onChange":""}]';
+<!-- End Affirm -->;
+function initializePromos() { 
+
+let promosJSON = '[{"promoStatus":false,"saleSelector":"","dataElement":"","comparePrices":false,"logoColor":"blue","logoType":"logo","addCents":false,"selector":"","fontSize":"12","position":"afterbegin","pageType":"product","onChange":"ProductSection-product-template","alaElement":"#affirm-info-container"},{"promoStatus":false,"saleSelector":"","comparePrices":false,"logoColor":"blue","logoType":"logo","addCents":false,"selector":".price-item--regular","fontSize":"12","position":"beforeend","pageType":"category","onChange":""},{"promoStatus":false,"saleSelector":"","comparePrices":false,"logoColor":"blue","logoType":"logo","addCents":false,"selector":".cart__subtotal","fontSize":"12","position":"afterend","pageType":"cart","onChange":""}]';
 
 let promos = JSON.parse(promosJSON);
 
@@ -370,4 +373,5 @@ function upsertVariantALA(promo, currentProduct, callback=null){
 			upsertAla(promo, currentProduct.variants[0].price.toString(), thisElement, callback);
 		}
 	}
+}
 }
