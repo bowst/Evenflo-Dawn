@@ -112,6 +112,9 @@
                   {%- if shop.shipping_policy.body != blank -%}
                     {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
                   {%- endif -%}
+                            <!-- Yotpo Points Display -->
+                {% include 'Yotpo-points-display' %}
+            <!-- End Yotpo Points Display -->
                 </div>
               {%- endif -%}
               <div {{ block.shopify_attributes }}>
