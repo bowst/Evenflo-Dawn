@@ -19,11 +19,31 @@
           "type": "buttons",
           "settings": {
           }
+        },
+        "shoppinggives_roundup_pR3J7p": {
+          "type": "shopify:\/\/apps\/shoppinggives\/blocks\/roundup\/7b6c2cd4-8962-4dc6-975b-870e1f567789",
+          "settings": {
+            "full_width": false,
+            "availableStateTitle": "Round Up Your Purchase",
+            "unavailableStateTitle": "Start Shopping to Start Giving",
+            "activeStateTitle": "Thanks for Making an Impact",
+            "title_color": "",
+            "main_text_color": "",
+            "link_color": "",
+            "background_color": "transparent",
+            "border_color": "#000000",
+            "border_radius": 0,
+            "checkbox_label_color": "",
+            "checkbox_border_color": "#009581",
+            "widget_font": "roboto_n4",
+            "font_size": 12
+          }
         }
       },
       "block_order": [
         "subtotal",
-        "buttons"
+        "buttons",
+        "shoppinggives_roundup_pR3J7p"
       ],
       "settings": {
       }
