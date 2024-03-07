@@ -391,7 +391,8 @@
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "discount_verification": ""
           }
         },
         "template--15827801309340__9aa6733b-5155-4e4b-b4ce-5d5f61273dd2-column-2": {
@@ -400,7 +401,8 @@
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "discount_verification": ""
           }
         },
         "template--15827801309340__9aa6733b-5155-4e4b-b4ce-5d5f61273dd2-column-3": {
@@ -409,7 +411,8 @@
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "discount_verification": ""
           }
         }
       },
@@ -427,6 +430,7 @@
         "columns_desktop": 3,
         "column_alignment": "left",
         "background_style": "primary",
+        "underline": false,
         "button_label": "Button label",
         "button_link": "",
         "color_scheme": "background-1",
@@ -499,6 +503,15 @@
       "settings": {
         "title": ""
       }
+    },
+    "custom_liquid_AwxiQG": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}\/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}\/cart\/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='\/cart\/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n<\/script>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -523,6 +536,7 @@
     "e099350c-2fd2-4f22-9c2f-cbafa04f15bb",
     "9aa6733b-5155-4e4b-b4ce-5d5f61273dd2",
     "ba4b6bca-64bb-44a3-9178-c54270ff19f2",
-    "df3ec49a-e62d-49c6-a880-45624ced913c"
+    "df3ec49a-e62d-49c6-a880-45624ced913c",
+    "custom_liquid_AwxiQG"
   ]
 }
