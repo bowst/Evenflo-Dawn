@@ -15,7 +15,7 @@ URL Parameters:
   add_to_cart : add to cart, with option selection, default to true
 
 Required Snippets: 
-  card-product-variant.liquid (digioh provided)
+  card-product.liquid (included in default theme)
 ************************************
 {%- endcomment -%}
 
@@ -31,7 +31,7 @@ SECTION: Template Variables
 ************************************
 {%- endcomment -%}
 {% assign queryString = '' %}
-{% assign variants = "" | split: ',' %} {% comment %} variant ids to display, in order {% endcomment %}
+{% assign product_handles = "" | split: ',' %} {% comment %} product_handles the products to display, in order {% endcomment %}
 {% assign show_hero = false %} {% comment %} show_hero Show the first recommended product on a single line {% endcomment %}
 {% assign rowlen = 3 %} {% comment %} rowlen sets default number of products to display per row, aliased to rowlen {% endcomment %}
 {% assign max_products = 12 %} {% comment %} max_products maximum  number of products to render {% endcomment %}
@@ -100,48 +100,11 @@ SECTION: Url Parsing
       {%- if keyAndValue[0] == 'max_products' -%}
         {%- assign max_products = keyAndValue[1] | plus: 0 -%}
       {%- endif -%}
+      {% if keyAndValue[0] == 'products' %}
+        {% assign product_handles = keyAndValue[1] | url_decode | split: ',' %}
+      {%- endif -%}
       {% if keyAndValue[0] == 'debug' %}
         {% assign debug = true %}
-      {%- endif -%}
-        {% comment %}
-        process variant ids, end result is a variants array and a products array index aligned
-        and in the order of recommendation
-        {% endcomment %}
-        {% if keyAndValue[0] == 'variants' %}
-          {% assign url_variant_ids = keyAndValue[1] | url_decode | split: ',' %}
-          {% comment %} {% assign variant_ids = '' %}build variant_ids as found ids {% endcomment %}
-          {% assign found_variants = null | sort %}
-
-          {% comment %} Look through products for matching variants {% endcomment %}
-          {% paginate collections.all.products by 250 -%}
-              {% for product in collections.all.products %}
-
-                  {% for variant in product.variants %}
-                      {% assign variant_id = variant.id | append: '' %}
-                      {% if url_variant_ids contains variant_id %}
-                          {% assign var_item = variant | sort %}
-                          {% assign found_variants = found_variants | concat: var_item %}
-                      {% endif %}
-                  {% endfor %}
-
-              {% endfor %}
-          {%- endpaginate %}
-
-          {% comment %}Variants are found, now we need to put them in the correct order {% endcomment %}
-          {% assign variants = null | sort %}
-          {% for var_id in url_variant_ids %}
-              {% assign var_id_int = var_id | plus: 0 %}
-
-              {% for variant in found_variants %}
-                  {% if variant.id == var_id_int %}
-                      {% assign variant_item = variant | sort %}
-                      {% assign prod_item = product | sort %}
-                      {% assign variants = variants | concat: variant_item %}
-                      {% break %}
-                  {% endif %}
-              {% endfor %}
-
-          {% endfor %}
       {%- endif -%}
 
       {%- comment -%}
@@ -151,7 +114,7 @@ SECTION: Url Parsing
       {%- endcomment -%}
 
       {%- if keyAndValue[0] == 'my_custom_param' -%}
-        {%- assign my_custom_param = keyAndValue[1] | strip_html -%}
+        {%- assign my_custom_param = keyAndValue[1] | url_decode | strip_html -%}
       {%- endif -%}
 
       {%- comment -%}
@@ -176,6 +139,8 @@ END SECTION: Url Parsing
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
+
+
 
 {%- comment -%} Render Title {%- endcomment -%}
 <div class="collection-hero"  style="justify-content: center;">
@@ -204,20 +169,41 @@ SECTION: Display Recommended Products
   <ul id="product-grid" class="grid product-grid grid--2-col-tablet-down grid--3-col-desktop" style="justify-content: center;" >
 
   {% comment %} Loop over the passed in products {% endcomment %}
-  {%- for variant in variants -%}
-    {% comment %} get product {% endcomment %}
-    {% assign product = variant.product %}
-  
+  {%- for product_handle in product_handles -%}
+
+    {% assign product = all_products[product_handle] %}
+
     {% comment %} Check if we should skip this product because it is out of stock {% endcomment %}
-    {% if hide_oos == true and (product.available == false or variant.available == false or variant.inventory_quantity < 1 ) %}
-      {% continue %}
+    {% if hide_oos == true %}
+      {% if product.available == false %}
+        {% continue %}
+      {% endif %}
+      {% comment %} loop over variants to see if any have quantity > 0 {% endcomment %}
+      {% assign quantityFound = false %}
+      {% for variant in product.variants %}
+        {% if variant.available and variant.inventory_quantity > 0 %}
+            {% assign quantityFound = true %}
+        {% endif %}
+      {% endfor %}
+      {% if quantityFound == false %}
+        {% continue %}
+      {% endif %}
     {% endif %}
  
     {% comment %} Render an individual product {% endcomment %}
+
+    <li>
+
     {%- comment -%}DIGIOH-OPTION: change to a different snippet to render item if desired {%- endcomment -%}
 
-    <li class="grid__item">
-    {% render 'card-product-variant', card_product: product, variant: variant, show_quick_add: add_to_cart %}
+    {% comment %}    To render the hero product differently than other products uncomment this section {% endcomment %}
+    {% comment %} {% if current_row == 1 and show_hero == true %}
+      {% render 'hero-product', product: product%}
+    {%  else %}
+      {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
+    {% endif %}  {% endcomment %}
+
+    {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
     </li>
 
     {%- comment -%}
