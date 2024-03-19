@@ -1,5 +1,15 @@
 {
   "sections": {
+    "custom_liquid_qybWqd": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<a href=\"https:\/\/www.evenflo.com\/pages\/spring-into-savings\">\n<div class=\"desktop\">\n<img \nclass=\"desktop\"\nsrc=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0512\/2359\/3116\/files\/Evenflo_DTC_Spring-Promo_2024_Desktop_efb61426-f602-4166-b32b-e0b5f22c0cec.jpg?v=1710856617\" \/>\n<\/div>\n\n<div class=\"mobile\">\n<img \nclass=\"mobile\"\nsrc=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0512\/2359\/3116\/files\/Evenflo_DTC_Spring-Promo_2024_Mobile_df6461ac-8a60-4203-a8dc-99e0cbe03a6c.jpg?v=1710856983\" \/>\n<\/div>\n<\/a>\n\n<style>\n.mobile, .desktop {\nmin-width: 100%;\n}\n\n@media screen and (min-width: 800px) {\n .mobile {\n display: none;\n}\n}\n\n@media screen and (max-width: 800px) {\n .desktop {\n display: none;\n}\n}\n<\/style>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "4b4d3128-45aa-4315-877e-aae2e4b306a4": {
       "type": "ezfy-slideshow",
       "blocks": {
@@ -732,6 +742,7 @@
     }
   },
   "order": [
+    "custom_liquid_qybWqd",
     "4b4d3128-45aa-4315-877e-aae2e4b306a4",
     "53a5a568-93eb-4443-9549-de4d2aeebadb",
     "image_with_text_gYnTE7",
