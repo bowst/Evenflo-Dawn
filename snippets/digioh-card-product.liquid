@@ -261,7 +261,6 @@
                             {%- assign values = values | join: ',' -%}
                             {%- assign values = values | append: ',' | append: value -%}
                             {%- assign values = values | split: ',' -%}
-                            <option value="{{ variant.id }}">{{ variant.title }}</option>
                             <option
             value="{{ variant.id }}"
           >{{ variant.title }} - ${{ variant.price }}</option>
