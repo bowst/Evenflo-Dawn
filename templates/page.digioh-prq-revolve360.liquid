@@ -24,7 +24,12 @@ Required Snippets:
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
-
+<style>
+  .product-form__input .select {
+    border: 1px solid;
+    margin-bottom: 10px;
+}
+</style>
 {%- comment -%}
 ************************************
 SECTION: Template Variables 
