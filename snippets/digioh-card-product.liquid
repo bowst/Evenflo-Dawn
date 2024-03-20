@@ -246,13 +246,13 @@
                       {%- assign option_index = forloop.index0 -%}
                       {%- assign values = '' -%}
                       <div class="product-form__input">
-    <label class="form__label" for="Variants-template--15822332395676__main">Product variants</label>
+    <label class="form__label" for="Variants-template--{{ card_product.id }}__main">Color</label>
     <div class="select">
       <select
         name="id"
-        id="Variants-template--15822332395676__main"
+        id="Variants-template--{{ card_product.id }}__main"
         class="select__select"
-        form="product-form-template--15822332395676__main"
+        form="product-form-template--{{ card_product.id }}__main"
       >
                         {% for variant in card_product.variants %}
                           {%- assign value = variant.options[option_index] -%}
