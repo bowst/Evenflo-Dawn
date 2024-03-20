@@ -238,6 +238,52 @@
                   novalidate: 'novalidate',
                   data-type: 'add-to-cart-form'
                 -%}
+                  {%- assign file_extension = 'png' -%}
+                  {% for option in product.options %}
+                    {%- assign downcased_option = option | downcase -%}
+                  
+                    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+                      {%- assign option_index = forloop.index0 -%}
+                      {%- assign values = '' -%}
+                      <select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+                      <div class="collection_swatches">
+                        {% for variant in product.variants %}
+                          {%- assign value = variant.options[option_index] -%}
+                  
+                          {% unless values contains value %}
+                            {%- assign values = values | join: ',' -%}
+                            {%- assign values = values | append: ',' | append: value -%}
+                            {%- assign values = values | split: ',' -%}
+                  
+                            <a
+                              href="{{ variant.url | within: collection }}"
+                              class="swatch"
+                              data-swatch-name="meta-{{ downcased_option }}_{{ value | replace: ' ', '_' | downcase }}"
+                            >
+                              {% if variant.metafields.custom.new_swatch_image %}
+                                <span
+                                  data-image="{{ variant.metafields.image.swatch | product_img_url: '400x' }}"
+                                  style="background-image:  url('{{ variant.metafields.custom.new_swatch_image | image_url }}'); background-color: {{ value | split: ' ' | last | handle }};"
+                                >
+                                </span>
+                              {% else %}
+                                <span
+                                  data-image="{{ variant.metafields.image.swatch | product_img_url: '400x' }}"
+                                  style="background-image:  url('{{variant.metafields.image.swatch}}'); background-color: {{ value | split: ' ' | last | handle }};"
+                                >
+                                </span>
+                              {% endif %}
+                            </a>
+                          {% endunless %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  {% endfor %}
                   <input
                     type="hidden"
                     name="id"
