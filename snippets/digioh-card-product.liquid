@@ -239,7 +239,7 @@
                   data-type: 'add-to-cart-form'
                 -%}
                   {%- assign file_extension = 'png' -%}
-                  {% for option in product.options %}
+                  {% for option in card_product.options %}
                     {%- assign downcased_option = option | downcase -%}
                   
                     {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
@@ -252,7 +252,7 @@
   <option value="audi">Audi</option>
 </select>
                       <div class="collection_swatches">
-                        {% for variant in product.variants %}
+                        {% for variant in card_product.variants %}
                           {%- assign value = variant.options[option_index] -%}
                   
                           {% unless values contains value %}
