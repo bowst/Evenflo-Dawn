@@ -253,24 +253,7 @@
         id="Variants-template--15822332395676__main"
         class="select__select"
         form="product-form-template--15822332395676__main"
-      ><option
-            
-              selected="selected"
-            
-            
-            value="42749332029596"
-          >Jetsetter Black - $399.99</option><option
-            
-            
-            value="42749332062364"
-          >Voyager Gray - $399.99</option></select>
-      <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-</svg>
-
-    </div>
-  </div>
-                      <select name="cars" id="cars">
+      >
                         {% for variant in card_product.variants %}
                           {%- assign value = variant.options[option_index] -%}
                   
@@ -279,10 +262,18 @@
                             {%- assign values = values | append: ',' | append: value -%}
                             {%- assign values = values | split: ',' -%}
                             <option value="{{ variant.id }}">{{ variant.title }}</option>
-                            
+                            <option
+            value="{{ variant.id }}"
+          >{{ variant.title }} - ${{ variant.price }}</option>
                           {% endunless %}
                         {% endfor %}
-                      </select>
+      </select>
+      <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+</svg>
+
+    </div>
+  </div>
                     {% endif %}
                   {% endfor %}
                   <input
