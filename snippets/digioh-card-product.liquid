@@ -246,9 +246,7 @@
                         <div class="select">
                           <select
                             name="id"
-                            id="Variants-template--{{ card_product.id }}__main"
                             class="select__select"
-                            form="product-form-template--{{ card_product.id }}__main"
                           >
                                             {% for variant in card_product.variants %}
                                               {%- assign value = variant.options[option_index] -%}
