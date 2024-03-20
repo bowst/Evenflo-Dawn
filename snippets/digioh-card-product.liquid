@@ -257,7 +257,7 @@
                                                 {%- assign values = values | join: ',' -%}
                                                 {%- assign values = values | append: ',' | append: value -%}
                                                 {%- assign values = values | split: ',' -%}
-                                                <option
+                                                <option {% unless variant.available %} disabled {% endunless %}
                                 value="{{ variant.id }}"
                               >{{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}</option>
                                               {% endunless %}
