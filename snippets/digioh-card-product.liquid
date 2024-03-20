@@ -235,7 +235,6 @@
                   novalidate: 'novalidate',
                   data-type: 'add-to-cart-form'
                 -%}
-                  {%- assign file_extension = 'png' -%}
                   {% for option in card_product.options %}
                     {%- assign downcased_option = option | downcase -%}
                   
@@ -243,41 +242,43 @@
                       {%- assign option_index = forloop.index0 -%}
                       {%- assign values = '' -%}
                       <div class="product-form__input">
-    <label class="form__label" for="Variants-template--{{ card_product.id }}__main">Color</label>
-    <div class="select">
-      <select
-        name="id"
-        id="Variants-template--{{ card_product.id }}__main"
-        class="select__select"
-        form="product-form-template--{{ card_product.id }}__main"
-      >
-                        {% for variant in card_product.variants %}
-                          {%- assign value = variant.options[option_index] -%}
-                  
-                          {% unless values contains value %}
-                            {%- assign values = values | join: ',' -%}
-                            {%- assign values = values | append: ',' | append: value -%}
-                            {%- assign values = values | split: ',' -%}
-                            <option
-            value="{{ variant.id }}"
-          >{{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}</option>
-                          {% endunless %}
-                        {% endfor %}
-      </select>
-      <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-</svg>
-
-    </div>
-  </div>
+                        <label class="form__label" for="Variants-template--{{ card_product.id }}__main">Color</label>
+                        <div class="select">
+                          <select
+                            name="id"
+                            id="Variants-template--{{ card_product.id }}__main"
+                            class="select__select"
+                            form="product-form-template--{{ card_product.id }}__main"
+                          >
+                                            {% for variant in card_product.variants %}
+                                              {%- assign value = variant.options[option_index] -%}
+                                      
+                                              {% unless values contains value %}
+                                                {%- assign values = values | join: ',' -%}
+                                                {%- assign values = values | append: ',' | append: value -%}
+                                                {%- assign values = values | split: ',' -%}
+                                                <option
+                                value="{{ variant.id }}"
+                              >{{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}</option>
+                                              {% endunless %}
+                                            {% endfor %}
+                          </select>
+                          <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                          </svg>
+                    
+                        </div>
+                      </div>
                     {% endif %}
                   {% endfor %}
+                              {% unless card_product.options %}
                   <input
                     type="hidden"
                     name="id"
                     value="{{ card_product.selected_or_first_available_variant.id }}"
                     disabled
                   >
+                                {% endunless %}
                   <button
                     id="{{ product_form_id }}-submit"
                     type="submit"
