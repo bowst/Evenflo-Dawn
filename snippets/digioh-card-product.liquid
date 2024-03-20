@@ -263,7 +263,7 @@
                             {%- assign values = values | split: ',' -%}
                             <option
             value="{{ variant.id }}"
-          >{{ variant.title }} - ${{ variant.price }}</option>
+          >{{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}</option>
                           {% endunless %}
                         {% endfor %}
       </select>
