@@ -246,12 +246,6 @@
                       {%- assign option_index = forloop.index0 -%}
                       {%- assign values = '' -%}
                       <select name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
-                      <div class="collection_swatches">
                         {% for variant in card_product.variants %}
                           {%- assign value = variant.options[option_index] -%}
                   
@@ -259,29 +253,11 @@
                             {%- assign values = values | join: ',' -%}
                             {%- assign values = values | append: ',' | append: value -%}
                             {%- assign values = values | split: ',' -%}
-                  
-                            <a
-                              href="{{ variant.url | within: collection }}"
-                              class="swatch"
-                              data-swatch-name="meta-{{ downcased_option }}_{{ value | replace: ' ', '_' | downcase }}"
-                            >
-                              {% if variant.metafields.custom.new_swatch_image %}
-                                <span
-                                  data-image="{{ variant.metafields.image.swatch | product_img_url: '400x' }}"
-                                  style="background-image:  url('{{ variant.metafields.custom.new_swatch_image | image_url }}'); background-color: {{ value | split: ' ' | last | handle }};"
-                                >
-                                </span>
-                              {% else %}
-                                <span
-                                  data-image="{{ variant.metafields.image.swatch | product_img_url: '400x' }}"
-                                  style="background-image:  url('{{variant.metafields.image.swatch}}'); background-color: {{ value | split: ' ' | last | handle }};"
-                                >
-                                </span>
-                              {% endif %}
-                            </a>
+                            <option value="{{ variant.id }}">{{ variant.title }}</option>
+                            
                           {% endunless %}
                         {% endfor %}
-                      </div>
+                      </select>
                     {% endif %}
                   {% endfor %}
                   <input
