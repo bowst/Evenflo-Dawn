@@ -189,7 +189,7 @@ SECTION: Display Recommended Products
       {% comment %} loop over variants to see if any have quantity > 0 {% endcomment %}
       {% assign quantityFound = false %}
       {% for variant in product.variants %}
-        {% if variant.selected_or_first_available_variant.available %}
+        {% if variant.available %}
             {% assign quantityFound = true %}
         {% endif %}
       {% endfor %}
