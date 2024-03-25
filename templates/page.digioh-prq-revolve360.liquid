@@ -182,14 +182,14 @@ SECTION: Display Recommended Products
     {% assign product = all_products[product_handle] %}
 
     {% comment %} Check if we should skip this product because it is out of stock {% endcomment %}
-    {% if hide_oos == true %}
-      {% if product.available == false %}
+     {% if hide_oos == true %}
+      {% if product.selected_or_first_available_variant.available == false %}
         {% continue %}
       {% endif %}
       {% comment %} loop over variants to see if any have quantity > 0 {% endcomment %}
       {% assign quantityFound = false %}
       {% for variant in product.variants %}
-        {% if variant.available and variant.inventory_quantity > 0 %}
+        {% if variant.available %}
             {% assign quantityFound = true %}
         {% endif %}
       {% endfor %}
