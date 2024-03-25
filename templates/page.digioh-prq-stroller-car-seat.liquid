@@ -183,13 +183,13 @@ SECTION: Display Recommended Products
 
     {% comment %} Check if we should skip this product because it is out of stock {% endcomment %}
     {% if hide_oos == true %}
-      {% if product.available == false %}
+      {% if product.selected_or_first_available_variant.available == false %}
         {% continue %}
       {% endif %}
       {% comment %} loop over variants to see if any have quantity > 0 {% endcomment %}
       {% assign quantityFound = false %}
       {% for variant in product.variants %}
-        {% if variant.available and variant.inventory_quantity > 0 %}
+        {% if variant.selected_or_first_available_variant.available and variant.selected_or_first_available_variant.inventory_quantity > 0 %}
             {% assign quantityFound = true %}
         {% endif %}
       {% endfor %}
