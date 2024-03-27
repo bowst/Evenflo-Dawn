@@ -20,6 +20,13 @@
 
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
+<style>
+.quick-add__submit button button--full-width button--primary {
+background: #2996c5 !important;
+}
+  
+</style>
+
 {%- if card_product and card_product != empty -%}
   {%- liquid
     assign ratio = 1
