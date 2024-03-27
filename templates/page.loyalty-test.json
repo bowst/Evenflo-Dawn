@@ -1,5 +1,10 @@
 {
   "sections": {
+    "evenflo_loyalty_banner_CMeRdd": {
+      "type": "evenflo-loyalty-banner",
+      "settings": {
+      }
+    },
     "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
       "type": "image-banner",
       "blocks": {
@@ -19,6 +24,8 @@
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
@@ -218,6 +225,7 @@
     }
   },
   "order": [
+    "evenflo_loyalty_banner_CMeRdd",
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "main",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
