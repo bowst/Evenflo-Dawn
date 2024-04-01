@@ -233,10 +233,14 @@
         "heading_PiMGbA",
         "text_GDWdzm"
       ],
+      "custom_css": [
+        ".banner__heading:after {bottom: -20px; left: 50%; transform: translate(-50%); width: 150px; height: 6px; background: white !important;}",
+        "h2 {padding-top: 30px;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/image_a74feced-e359-4286-9bee-cdea65ea75c4.png",
         "image_overlay_opacity": 0,
-        "underline": false,
+        "underline": true,
         "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-center",
