@@ -32,6 +32,18 @@
       display: none;
     }
   }
+
+  @media screen and (min-width: 900px) {
+    .custom-mobile-banner-image-mobile {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .custom-mobile-banner-image-desktop {
+      display: none;
+    }
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -63,7 +75,7 @@
   {%- endfor -%}
 >
   {%- if section.settings.image != blank -%}
-    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %} custom-mobile-banner-image-desktop">
       {%- liquid
         assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
         if section.settings.image_2 != blank
@@ -89,6 +101,12 @@
           widths: widths
       }}
     </div>
+    <img
+      class="custom-mobile-banner-image-mobile"
+      src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Screenshot_2024-04-01_at_9.46.18_PM.png?v=1712022425"
+      height=""
+      width=""
+    >
   {%- elsif section.settings.image_2 == blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
       {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -149,6 +167,14 @@
             >
               {{ block.settings.heading }}
             </h1>
+            {%- if block.settings.heading == 'It’s time to make' -%}
+              <h1
+                class="{% if section.settings.underline %} heading-underline {% endif %} banner__heading inline-richtext {{ block.settings.heading_size }} {{ block.settings.heading_color }}"
+                {{ block.shopify_attributes }}
+              >
+                A CHANGE.
+              </h1>
+            {%- endif -%}
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
               <h2>{{ block.settings.text }}</h2>
