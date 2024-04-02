@@ -6,7 +6,7 @@
         "image": "shopify:\/\/shop_images\/368127470_Core_Revolve360_Slim_2_in_1_Rotational_Convertible_Car_Seat_Canton_Triple_0088.png",
         "image_overlay_opacity": 30,
         "underline": false,
-        "hide_image_on_mobile": false,
+        "hide_image_on_mobile": true,
         "image_height": "small",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
@@ -14,8 +14,8 @@
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": false
+        "stack_images_on_mobile": false,
+        "show_text_below": true
       }
     },
     "divider_7njMcJ": {
@@ -193,7 +193,7 @@
         "button_FWgJ7H"
       ],
       "custom_css": [
-        ".image-with-text {max-width: 70%;}"
+        "@media screen and (min-width: 990px) {.image-with-text {max-width: 70%;} }"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/ibolrhn7rqbrhdbek3r2.png",
