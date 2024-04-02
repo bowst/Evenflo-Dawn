@@ -1,39 +1,44 @@
 {{ 'section-quote.css' | asset_url | stylesheet_tag }}
 
 {% if section.settings.quote != blank %}
-<section class="quote content-container page-width content-container--full-width">
-  <div class="quote__inner">
-    <div class="quote__inner_quote">
-      <h3>{{ section.settings.quote }}</h3>
+  <section class="quote content-container page-width content-container--full-width">
+    <div class="quote__inner">
+      <div class="quote__inner_quote">
+        <h3>{{ section.settings.quote }}</h3>
+      </div>
+      <div class="quote__inner_name">
+        <p>–{{ section.settings.name }}</p>
+      </div>
     </div>
-    <div class="quote__inner_name">
-      <p>–{{ section.settings.name }}</p>
-    </div>
-  </div>
-</section>
+  </section>
 {% endif %}
 
 {% schema %}
-  {
-    "name": "Section Quote",
-      "tag": "section",
-      "class": "section",
-      "disabled_on": {
+{
+  "name": "Section Quote",
+  "tag": "section",
+  "class": "section",
+  "presets": [
+    {
+      "name": "Section Quote"
+    }
+  ],
+  "disabled_on": {
     "groups": ["header", "footer"]
   },
-    "settings": [
-      {
-        "type": "text",
-        "id": "quote",
-        "label": "Quote"
-      },
-      {
-        "type": "text",
-        "id": "name",
-        "label": "Name"
-      }
-    ]
-  }
+  "settings": [
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name"
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}
@@ -41,4 +46,3 @@
 
 {% javascript %}
 {% endjavascript %}
-
