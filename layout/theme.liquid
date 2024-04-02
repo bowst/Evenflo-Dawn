@@ -493,15 +493,16 @@
     <!-- CRITEO START -->
     {% render 'criteo-tracking' %}
     <!-- CRITEO END -->
-
-    <script id="sg-js-global-vars">
- sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] }};
- if(sgGlobalVars) {
- sgGlobalVars.cart = {{ cart | json }};
- sgGlobalVars.currentProduct = {{ product | json }};
- sgGlobalVars.isAdmin = {% if content_for_header contains 'adminBarInjector' or content_for_header contains 'previewBarInjector' %}true{% else %}false{% endif %};
- }
- </script>
+<!-- ShoppingGives START -->
+        <script id="sg-js-global-vars">
+     sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] }};
+     if(sgGlobalVars) {
+     sgGlobalVars.cart = {{ cart | json }};
+     sgGlobalVars.currentProduct = {{ product | json }};
+     sgGlobalVars.isAdmin = {% if content_for_header contains 'adminBarInjector' or content_for_header contains 'previewBarInjector' %}true{% else %}false{% endif %};
+     }
+     </script>
+    <!-- ShoppingGives End -->
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
