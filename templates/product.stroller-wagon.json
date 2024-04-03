@@ -44,7 +44,7 @@
         "custom_liquid_MijrXC": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% for variant in product.variants %}\n  {% if variant.inventory_quantity > 0 %}\n    <!-- Variant is in stock, you can customize messages or actions here -->\n  {% else %}\n    <p>{{ variant.title }} is currently out of stock.<\/p>\n  {% endif %}\n{% endfor %}"
+            "custom_liquid": "{% for variant in product.variants %}\n  {% if variant.inventory_quantity > 0 %}\n    <!-- Variant is in stock, you can customize messages or actions here -->\n  {% else %}\n    <p>So sorry, the Shyft Rideshare All-Terrain Performance Stroller Wagon in {{ variant.title }} is currently out of stock! Another great option is our extremely popular Pivot XploreTM All-Terrain Stroller Wagon for your next family adventure. Take a look >>> is currently out of stock.<\/p>\n  {% endif %}\n{% endfor %}"
           }
         },
         "variant_picker": {
