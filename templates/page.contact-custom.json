@@ -1,5 +1,11 @@
 {
   "sections": {
+    "evenflo_rich_text_9titdR": {
+      "type": "evenflo-rich-text",
+      "settings": {
+        "page_title": "{{ page.title }}"
+      }
+    },
     "94000f54-3969-4ee6-a915-e78863cb7546": {
       "type": "rich-text",
       "blocks": {
@@ -98,21 +104,14 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
-    },
-    "evenflo_rich_text_9titdR": {
-      "type": "evenflo-rich-text",
-      "disabled": true,
-      "settings": {
-        "page_title": "Contact Us"
-      }
     }
   },
   "order": [
+    "evenflo_rich_text_9titdR",
     "94000f54-3969-4ee6-a915-e78863cb7546",
     "877222ca-2c41-49d3-b116-acb35ab52e59",
     "7b692cc5-e995-49a7-8ba0-a33a1a138a48",
     "main",
-    "ddf5ba73-8830-4100-964a-d7d8fc252a5b",
-    "evenflo_rich_text_9titdR"
+    "ddf5ba73-8830-4100-964a-d7d8fc252a5b"
   ]
 }
