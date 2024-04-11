@@ -1,3 +1,19 @@
+{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
 <div class="rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--15815875330204__94000f54-3969-4ee6-a915-e78863cb7546-padding">
   <div class="rich-text__wrapper rich-text__wrapper--center page-width">
     <div class="rich-text__blocks center"><h1 class="rich-text__heading rte inline-richtext evenflo h1" >{{ section.settings.page_title }} </h1></div>
@@ -26,8 +42,3 @@
   }  
   {% endschema %}
   
-  {% stylesheet %}
-  {% endstylesheet %}
-  
-  {% javascript %}
-  {% endjavascript %}
