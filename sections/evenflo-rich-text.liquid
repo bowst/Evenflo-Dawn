@@ -1,6 +1,30 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
-{% endschema %}
+
+  {{ section.settings.page_title }} 
+  
+  {% schema %}
+    {
+    "name": "Evenflo Page Title",
+    "class": "content",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "page_title",
+        "label": "Page Title",
+        "default": "Page Title",
+        "placeholder": "Page Title"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Evenflo Page Title"
+      }
+    ]
+  }  
+  {% endschema %}
+  
+  {% stylesheet %}
+  {% endstylesheet %}
+  
+  {% javascript %}
+  {% endjavascript %}
