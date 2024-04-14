@@ -3,18 +3,18 @@
     "image_with_text_WaXdPG": {
       "type": "image-with-text",
       "blocks": {
-        "text_APj4p8": {
-          "type": "text",
-          "settings": {
-            "text": "<p>INTRODUCING REVOLVE360™<br\/>WITH GREEN & GENTLE™ FABRIC<\/p>",
-            "text_style": "body"
-          }
-        },
         "heading_pChFet": {
           "type": "heading",
           "settings": {
             "heading": "Built for a greener future",
             "heading_size": "h1"
+          }
+        },
+        "text_APj4p8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>INTRODUCING REVOLVE360™<br\/>WITH GREEN & GENTLE™ FABRIC<\/p>",
+            "text_style": "body"
           }
         },
         "button_8cYACD": {
@@ -26,15 +26,16 @@
         }
       },
       "block_order": [
-        "text_APj4p8",
         "heading_pChFet",
+        "text_APj4p8",
         "button_8cYACD"
       ],
       "custom_css": [
         ".image-with-text {padding: 0; margin: 0;}",
         ".image-with-text__heading:after {display: none;}",
         "a {background-color: black; border-color: black; border: 0;}",
-        "a:after {display: none;}"
+        "a:after {display: none;}",
+        ".button {background-color:#0A514B}"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/green-and-gentle-banner.png",
