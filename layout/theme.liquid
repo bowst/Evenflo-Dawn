@@ -49,14 +49,12 @@
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 
-    <script type="text/javascript">
-      window._bl = { partner: 'evenflo.com' };
-    </script>
-    <script
-      async
-      type="text/javascript"
-      src="https://www.babylist.com/add.js"
-    ></script>
+  {% if template contains 'product' %}
+      <script type="text/javascript">
+        window._bl = { partner: 'evenflo.com' };
+      </script>
+      <script src="{{ 'add.js' | asset_url }}" defer></script>
+  {% endif %}
 
     {{ content_for_header }}
 
