@@ -108,50 +108,6 @@
         "padding_bottom": 28
       }
     },
-    "video_with_text_Wh3YLm": {
-      "type": "video-with-text",
-      "blocks": {
-        "heading_Kz8b39": {
-          "type": "heading",
-          "settings": {
-            "heading": "KIDDO, DOGGO, LET'S GO",
-            "heading_size": "h1"
-          }
-        },
-        "text_CyNYzj": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pack up your very good peanut and your very good pup, and head out on a very good adventure together in America’s first modular travel system designed for child and pet: Pivot Troop™ Child and Pet Modular Travel System! For kids 4 to 55 lb and pets up to 35 lb.<\/p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "heading_Kz8b39",
-        "text_CyNYzj"
-      ],
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video": "shopify:\/\/files\/videos\/pivot_troop_child_and_pet_travel_system (720p).mp4",
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "cover_image": "shopify:\/\/shop_images\/image_7b13d78f-a87d-4c4f-9543-73cdcdc148c9.jpg",
-        "description": "",
-        "full_width": true,
-        "color_scheme": "background-1",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
-    },
     "image_with_text_NaBrd3": {
       "type": "image-with-text",
       "blocks": {
@@ -189,110 +145,54 @@
         "padding_bottom": 48
       }
     },
-    "image_banner_dmftNj": {
-      "type": "image-banner",
+    "evenflo_image_with_text_ydirMk": {
+      "type": "evenflo-image-with-text",
       "blocks": {
-        "heading_4BDFQK": {
+        "heading_VQCCqk": {
           "type": "heading",
           "settings": {
-            "heading": "DON'T LEAVE ANYONE BEHIND!",
-            "heading_size": "h1",
-            "heading_color": "white"
+            "heading": "Evenflo Image with text",
+            "heading_size": "h1"
           }
         },
-        "text_qtXVRL": {
+        "text_PgUJth": {
           "type": "text",
           "settings": {
-            "text": "With the Pivot Troop, your little one's best friend can come along for the ride.",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "text_style": "body"
           }
+        },
+        "button_tqJXT8": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
         }
       },
       "block_order": [
-        "heading_4BDFQK",
-        "text_qtXVRL"
-      ],
-      "custom_css": [
-        "@media screen and (max-width: 1315px) {.banner__heading {color: black; }}"
+        "heading_VQCCqk",
+        "text_PgUJth",
+        "button_tqJXT8"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/57412487_Troop_ICS_FF_CanopyDown_3666_2.jpg",
-        "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
-        "image_height": "small",
-        "desktop_content_position": "middle-right",
-        "show_text_box": false,
-        "desktop_content_alignment": "right",
+        "height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
         "color_scheme": "background-1",
         "image_behavior": "none",
-        "mobile_content_alignment": "right",
-        "stack_images_on_mobile": false,
-        "show_text_below": true
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "multicolumn_jVUB9j": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_QXtLGw": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Rectangle-2.jpg",
-            "title": "TIMELY CLEANUPS",
-            "text": "<p>Parent cup holder features an integrated waste bag* holder<\/p><p><\/p><p>*load your own<\/p>",
-            "link_label": "",
-            "link": "",
-            "discount_verification": ""
-          }
-        },
-        "column_YDBN8w": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Rectangle.jpg",
-            "title": "NIBBLES ON THE GO",
-            "text": "<p>Includes a BPA-free child snack tray<\/p>",
-            "link_label": "",
-            "link": "",
-            "discount_verification": ""
-          }
-        },
-        "column_ydNeiD": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Rectangle-1.jpg",
-            "title": "PET PERKS",
-            "text": "<p>Includes a pet water bowl and treat container<\/p>",
-            "link_label": "",
-            "link": "",
-            "discount_verification": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_QXtLGw",
-        "column_YDBN8w",
-        "column_ydNeiD"
-      ],
-      "custom_css": [
-        "h3 {font-size: calc(var(--font-heading-scale) * 3.6rem);}",
-        ".heading-underline:after {bottom: 0px;}"
-      ],
+    "evenflo_custom_quote_8P4YtX": {
+      "type": "evenflo-custom-quote",
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "underline": true,
-        "button_label": "SHOP NOW",
-        "button_link": "shopify:\/\/products\/pivot-troop-child-and-pet-car-seat-and-stroller-travel-system",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "quote": "Our family is really passionate about sustainability and tries to avoid toxins where we can. I love that this seat used clean fabric, made free from added chemicals, made with recycled plastic bottles.",
+        "name": "- GRACE M."
       }
     }
   },
@@ -301,9 +201,8 @@
     "divider_7njMcJ",
     "evenflo_image_with_text_C3ajx3",
     "main",
-    "video_with_text_Wh3YLm",
     "image_with_text_NaBrd3",
-    "image_banner_dmftNj",
-    "multicolumn_jVUB9j"
+    "evenflo_image_with_text_ydirMk",
+    "evenflo_custom_quote_8P4YtX"
   ]
 }
