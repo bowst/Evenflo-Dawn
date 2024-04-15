@@ -187,7 +187,7 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/help-make_924d37b0-8745-4136-b9c5-20fdf064add1.png",
-        "height": "adapt",
+        "height": "small",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
@@ -230,11 +230,12 @@
         "text_wrbFy6"
       ],
       "custom_css": [
-        "h2::after {background-color: #edf1f3;}"
+        "h2::after {background-color: #edf1f3;}",
+        ".image-with-text__media,img {max-height: 500px;}"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/stitch.png",
-        "height": "medium",
+        "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
