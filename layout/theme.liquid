@@ -250,7 +250,7 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %}
-    {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}
+    {% comment %}{{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}{% endcomment %}
 
     {%- unless settings.type_body_font.system? -%}
       <link
