@@ -6,21 +6,21 @@
         "heading_6cx6hp": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text",
+            "heading": "Built for a greener future",
             "heading_size": "h1"
           }
         },
         "text_cnXPRJ": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>INTRODUCING REVOLVE360™<br\/>WITH GREEN & GENTLE™ FABRIC<\/p>",
             "text_style": "body"
           }
         },
         "button_qYNU4L": {
           "type": "button",
           "settings": {
-            "button_label": "Button label",
+            "button_label": "Shop Now",
             "button_link": ""
           }
         }
@@ -29,6 +29,15 @@
         "heading_6cx6hp",
         "text_cnXPRJ",
         "button_qYNU4L"
+      ],
+      "custom_css": [
+        ".image-with-text {padding: 0; margin: 0; min-width: 100%;}",
+        ".image-with-text__heading:after {display: none;}",
+        ".image-with-text__media {min-height: 500px;}",
+        "a {background-color: black; border-color: black; border: 0;}",
+        "a:after {display: none;}",
+        ".button {background-color: #0a514b;}",
+        "@media screen and (max-width: 749px) {.image-with-text__media {min-height: unset; }}"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/green-and-gentle-banner.png",
