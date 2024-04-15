@@ -236,6 +236,21 @@
 </noscript>
 
 {%- comment -%} ---------------- THE MARKUP ------------------ {%- endcomment -%}
+{%- assign display_section = false -%}
+{%- if section.settings.product_handles != blank -%}
+  {%- assign product_handle_list = section.settings.product_handles | split: ',' -%}
+  {%- for handle in product_handle_list -%}
+    {%- if product.handle == handle -%}
+      {%- assign display_section = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if display_section -%}
+  <!-- Section Markup -->
+  <div class="tooltips-section" data-tooltips="{{ section.id }}">
+    ...
+
 
 <div class="tooltips-section" data-tooltips="{{ section.id }}">
   <figure class="tooltips-figure">
@@ -388,6 +403,8 @@
     })(window.SectionsDesign = window.SectionsDesign || {ThemeEditor: []});
   </script>
 {%- endif -%}
+      </div>
+{%- endif -%}
 
 {%- comment -%} ---------------- THE SETTINGS ---------------- {%- endcomment -%}
 
@@ -421,12 +438,6 @@
     {
       "type": "color",
       "id": "tooltip_focus_color",
-      "label": "Tooltip focus color",
-      "default": "#ff0000"
-    },
-    {
-      "type": "color",
-      "id": "tooltip_focus_color2",
       "label": "Tooltip focus color",
       "default": "#ff0000"
     },
