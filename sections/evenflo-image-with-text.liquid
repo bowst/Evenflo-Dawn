@@ -68,10 +68,7 @@
               {%- elsif block.settings.heading == 'FOR FAMILY ADVENTURE' -%}
                 <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/19132343_Pivot_Xplore_Stroller_Wagon_Adventurer_HandleFlip.png?v=1701885755">
               {%- endif -%}
-            {% case block.type %}
-          {% when 'image' %}
-            <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.alt_text }}" height="246" width="226">
-        {% endcase %}
+            
               <h2
                 class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                 {{ block.shopify_attributes }}
