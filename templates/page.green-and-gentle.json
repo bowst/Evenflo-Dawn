@@ -209,7 +209,8 @@
       "custom_css": [
         "h2::after {background-color: #edf1f3;}",
         ".image-with-text__media-item,img {max-height: 400px; min-width: 60%;}",
-        ".image-with-text__grid {align-items: center;}"
+        ".image-with-text__grid {align-items: center;}",
+        "@media screen and (max-width: 749px) {.image-with-text__media-item, img {height: 150px; }}"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/Screenshot_2024-04-15_at_4.25.14_PM.png",
