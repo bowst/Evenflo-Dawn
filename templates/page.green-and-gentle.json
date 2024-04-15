@@ -40,10 +40,9 @@
       ],
       "custom_css": [
         ".image-with-text {padding: 0; margin: 0; min-width: 100%;}",
-        ".image-with-text__heading:after {display: none;}",
-        ".image-with-text__media {min-height: 500px;}",
-        "a {background-color: black; border-color: black; border: 0;}",
-        "a:after {display: none;}",
+        ".image-with-text__heading:after,.image-with-text__media-item a:after {display: none;}",
+        ".image-with-text__media-item {min-height: 500px; min-width: 60%;}",
+        "a {background-color: black; border: none;}",
         ".button {background-color: #0a514b;}",
         "@media screen and (max-width: 749px) {.image-with-text__media {min-height: unset; } .image-with-text__content img {display: none; }}",
         ".image-with-text__text-item div {padding-top: 0; padding-bottom: 0;}",
