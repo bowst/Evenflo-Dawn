@@ -3,6 +3,13 @@
     "evenflo_image_with_text_xCTDK3": {
       "type": "evenflo-image-with-text",
       "blocks": {
+        "image_EYggmY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Product.png",
+            "alt_text": "Green and Gentle"
+          }
+        },
         "heading_WnFXDe": {
           "type": "heading",
           "settings": {
@@ -23,20 +30,13 @@
             "button_label": "Shop now",
             "button_link": ""
           }
-        },
-        "image_EYggmY": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Product.png",
-            "alt_text": "Green and Gentle"
-          }
         }
       },
       "block_order": [
+        "image_EYggmY",
         "heading_WnFXDe",
         "text_MFY96B",
-        "button_Tfbk6n",
-        "image_EYggmY"
+        "button_Tfbk6n"
       ],
       "custom_css": [
         ".image-with-text {padding: 0; margin: 0; min-width: 100%;}",
