@@ -92,7 +92,7 @@
           "settings": {
             "liquid_content": "<link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.css\" type=\"text\/css\"\/>\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/@sheerid\/jslib@1\/sheerid.js\"><\/script>\n<div id=\"my-container\"><\/div>\n<script>\n    const verificationUrl = \"https:\/\/services.sheerid.com\/verify\/{{ page.metafields.custom.sheer_id }}\/\";\n    sheerId.loadInlineIframe(\n        document.getElementById('my-container'),\n        verificationUrl,\n    );\n<\/script>",
             "title": "",
-            "text": "{{ page.metafields.custom.sheerid_page_embed.value.sheer_id_embed | metafield_tag }}",
+            "text": "",
             "link_label": "",
             "link": ""
           }
