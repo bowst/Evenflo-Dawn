@@ -1,5 +1,14 @@
 {
   "sections": {
+    "custom_liquid_BkcTXQ": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n#ImageWithText--template--16644243783836__evenflo_image_with_text_xCTDK3 > .image-with-text__heading:after {\nbackground-color: #edf1f3 !important;\nleft: unset;\nright: 0px;\n}\n<\/style>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "evenflo_image_with_text_xCTDK3": {
       "type": "evenflo-image-with-text",
       "blocks": {
@@ -40,7 +49,7 @@
       ],
       "custom_css": [
         ".image-with-text {padding: 0; margin: 0; min-width: 100%;}",
-        ".image-with-text__heading:after,.image-with-text__media-item a:after {display: none;}",
+        ".image-with-text__media-item a:after {display: none;}",
         ".image-with-text__media-item {min-height: 500px; min-width: 60%;}",
         "a {background-color: black; border: none;}",
         ".button {background-color: #0a514b;}",
@@ -390,6 +399,7 @@
     }
   },
   "order": [
+    "custom_liquid_BkcTXQ",
     "evenflo_image_with_text_xCTDK3",
     "image_with_text_WaXdPG",
     "divider_7njMcJ",
