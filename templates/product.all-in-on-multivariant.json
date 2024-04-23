@@ -80,6 +80,15 @@
           "settings": {
             "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}\/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}\/cart\/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='\/cart\/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n<\/script>"
           }
+        },
+        "related_products_ppDHje": {
+          "type": "related_products",
+          "settings": {
+            "heading": "Related Products asdf",
+            "heading_font_size": 18,
+            "heading_color": "#121212",
+            "hover_border_color": "#121212"
+          }
         }
       },
       "block_order": [
@@ -93,7 +102,8 @@
         "186af034-c686-428f-82fc-e61cf13f5e65",
         "buy_buttons",
         "54a22163-98d5-4c04-a87e-34b5dc61852e",
-        "custom_liquid_trF49X"
+        "custom_liquid_trF49X",
+        "related_products_ppDHje"
       ],
       "settings": {
         "enable_sticky_info": false,
@@ -125,6 +135,7 @@
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
       "settings": {
+        "product_handles": ""
       }
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
