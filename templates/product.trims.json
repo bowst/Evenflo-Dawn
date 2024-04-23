@@ -10,13 +10,22 @@
             "text_style": "uppercase"
           }
         },
+        "related_products_3RkQ7Y": {
+          "type": "related_products",
+          "settings": {
+            "heading": "Related Products",
+            "heading_font_size": 18,
+            "heading_color": "#121212",
+            "hover_border_color": "#121212"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
           }
         },
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -78,6 +87,7 @@
       },
       "block_order": [
         "vendor",
+        "related_products_3RkQ7Y",
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
@@ -207,6 +217,7 @@
         "tooltip_color": "#ffffff",
         "tooltip_background_color": "#64cbdf",
         "tooltip_focus_color": "#ff0000",
+        "product_handles": "",
         "breakpoint": "768"
       }
     },
