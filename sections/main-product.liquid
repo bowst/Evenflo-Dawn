@@ -72,6 +72,92 @@
 
         {%- for block in section.blocks -%}
           {%- case block.type -%}
+            {%- when 'related_products' -%}
+              {% if product.metafields.product_info.related_products %}
+                {% assign relatedProducts = product.metafields.product_info.related_products.value %}
+                <!-- check at least one recommended product is available -->
+
+                <p class="product__text inline-richtext subtitle heading-underline">
+                  {{ block.settings.heading }}
+                </p>
+
+                <div class="related-products">
+                  {% for prod in relatedProducts %}
+                    {% if prod.available == true %}
+                      <a
+                        href="{{ prod.url }}"
+
+                        aria-label="{{prod.title}}"
+                        title="{{ prod.title }}"
+                      >
+                        <div class="product-card">
+                          <div class="product-header">
+                            <span class="product-name ">{{ prod.title }}</span>
+                            {% if prod.metafields.product_info.related_price %}
+                              <span class="product-price">
+                                {{- prod.metafields.product_info.related_price | money -}}
+                              </span>
+                            {% endif %}
+                          </div>
+                          {% if prod.metafields.product_info.related_sub_title %}
+                            <span class="product-type">
+                              {{ prod.metafields.product_info.related_sub_title }}
+                            </span>
+                          {% endif %}
+                        </div>
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <style>
+                  .product-card {
+                    border: 1px solid #000;
+                    border-radius: 8px;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    min-width: 100px;
+                  }
+                  .product-name {
+                    text-decoration: none;
+                    color: rgba(var(--color-foreground), 0.75);
+                  }
+
+                  .product-header {
+                    display: flex; /* Apply flex container to the header */
+                    justify-content: space-between; /* Space between the name and price */
+                    align-items: center; /* Align items vertically */
+                    margin-bottom: 15px; /* Add some margin to the bottom */
+                    text-decoration: none;
+                  }
+
+                  .product-name {
+                    font-size: 16px;
+                    margin: 0;
+                    flex: 3; /* 3/4 of the space */
+                    font-family: var(--font-body-family);
+                    text-decoration: none !important;
+                  }
+                  a.product-name {
+                    text-decoration: none !important;
+                  }
+
+                  .product-price {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin: 0;
+                    flex: 1; /* 1/4 of the space */
+                  }
+
+                  .product-type {
+                    font-size: 12px;
+                    color: #555;
+                    margin: 0;
+                  }
+                  a {
+                    text-decoration: none;
+                  }
+                </style>
+              {% endif %}
             {%- when '@app' -%}
               {% render block %}
             {%- when 'text' -%}
