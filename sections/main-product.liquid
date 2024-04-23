@@ -76,90 +76,82 @@
               {% if product.metafields.product_info.related_products %}
                 {% assign relatedProducts = product.metafields.product_info.related_products.value %}
                 <!-- check at least one recommended product is available -->
-                {%- liquid
-                  assign has1product = false
-                  for prod in relatedProducts
-                    if prod.available == true
-                      assign has1product = true
-                    endif
-                  endfor
-                -%}
-                {% if has1product %}
-                  <p
-                    class="related-products-heading"
-                    style="font-size: {{block.settings.heading_font_size}}px; color: {{block.settings.heading_color}};"
-                  >
-                    {{ block.settings.heading }}
-                  </p>
 
-                  <div class="related-products">
-                    {% for prod in relatedProducts %}
-                      {% if prod.available == true %}
-                        <a
-                          href="{{ prod.url }}"
-                          class="related-product"
-                          aria-label="{{prod.title}}"
-                          title="{{ prod.title }}"
-                        >
-                          <div class="product-card" style="padding-top: 30px">
-                            <div class="product-header">
-                              <span class="product_name">{{ prod.title }}</span>
-                              {% if prod.metafields.product_info.related_price %}
-                                <span class="product-price">
-                                  {{- prod.metafields.product_info.related_price | money -}}
-                                </span>
-                              {% endif %}
-                            </div>
-                            {% if prod.metafields.product_info.related_sub_title %}
-                              <span class="product-type">
-                                {{ prod.metafields.product_info.related_sub_title }}
+                <p
+                  class="related-products-heading"
+                  style="font-size: {{block.settings.heading_font_size}}px; color: {{block.settings.heading_color}};"
+                >
+                  {{ block.settings.heading }}
+                </p>
+
+                <div class="related-products">
+                  {% for prod in relatedProducts %}
+                    {% if prod.available == true %}
+                      <a
+                        href="{{ prod.url }}"
+                        class="related-product"
+                        aria-label="{{prod.title}}"
+                        title="{{ prod.title }}"
+                      >
+                        <div class="product-card" style="padding-top: 30px">
+                          <div class="product-header">
+                            <span class="product_name">{{ prod.title }}</span>
+                            {% if prod.metafields.product_info.related_price %}
+                              <span class="product-price">
+                                {{- prod.metafields.product_info.related_price | money -}}
                               </span>
                             {% endif %}
                           </div>
-                        </a>
-                      {% endif %}
-                    {% endfor %}
-                  </div>
-                  <style>
-                    .product-card {
-                      border: 1px solid #000;
-                      border-radius: 4px;
-                      padding: 20px;
-                      box-sizing: border-box;
-                      min-width: 100px;
-                    }
+                          {% if prod.metafields.product_info.related_sub_title %}
+                            <span class="product-type">
+                              {{ prod.metafields.product_info.related_sub_title }}
+                            </span>
+                          {% endif %}
+                        </div>
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <style>
+                  .product-card {
+                    border: 1px solid #000;
+                    border-radius: 4px;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    min-width: 100px;
+                  }
 
-                    .product-header {
-                      display: flex; /* Apply flex container to the header */
-                      justify-content: space-between; /* Space between the name and price */
-                      align-items: center; /* Align items vertically */
-                      margin-bottom: 15px; /* Add some margin to the bottom */
-                      text-decoration: none;
-                    }
+                  .product-header {
+                    display: flex; /* Apply flex container to the header */
+                    justify-content: space-between; /* Space between the name and price */
+                    align-items: center; /* Align items vertically */
+                    margin-bottom: 15px; /* Add some margin to the bottom */
+                    text-decoration: none;
+                  }
 
-                    .product-name {
-                      font-size: 16px;
-                      margin: 0;
-                      flex: 3; /* 3/4 of the space */
-                      text-decoration: none !important;
-                    }
-                    a.product-name {text-decoration: none;}
+                  .product-name {
+                    font-size: 16px;
+                    margin: 0;
+                    flex: 3; /* 3/4 of the space */
+                    text-decoration: none !important;
+                  }
+                  a.product-name {text-decoration: none;}
 
-                    .product-price {
-                      font-size: 18px;
-                      font-weight: bold;
-                      margin: 0;
-                      flex: 1; /* 1/4 of the space */
-                    }
+                  .product-price {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin: 0;
+                    flex: 1; /* 1/4 of the space */
+                  }
 
-                    .product-type {
-                      font-size: 12px;
-                      color: #555;
-                      margin: 0;
-                    }
-                  </style>
-                {% endif %}
+                  .product-type {
+                    font-size: 12px;
+                    color: #555;
+                    margin: 0;
+                  }
+                </style>
               {% endif %}
+
             {%- when '@app' -%}
               {% render block %}
             {%- when 'text' -%}
