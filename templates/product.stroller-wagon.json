@@ -35,12 +35,6 @@
           "settings": {
           }
         },
-        "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div id=\"affirm-info-container\"><\/div>"
-          }
-        },
         "custom_liquid_MijrXC": {
           "type": "custom_liquid",
           "disabled": true,
@@ -66,6 +60,12 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
+        },
+        "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"affirm-info-container\"><\/div>"
+          }
         }
       },
       "block_order": [
@@ -73,11 +73,11 @@
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
-        "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd",
         "custom_liquid_MijrXC",
         "variant_picker",
         "ae2b090a-c8c0-410e-ae8a-b81555a2e14e",
-        "buy_buttons"
+        "buy_buttons",
+        "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd"
       ],
       "settings": {
         "enable_sticky_info": false,
