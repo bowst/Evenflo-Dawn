@@ -13,7 +13,7 @@
 {% endstylesheet %}
 
 <div class="{% if section.settings.include_margins %}page-width{% endif %}">
-<div class="flex-container">
+<div class="multicolumn-card content-container">
     <div class="flex-item">
           {%- for block in section.blocks -%}
     {% render block %}
