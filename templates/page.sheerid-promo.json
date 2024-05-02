@@ -351,7 +351,7 @@
         "sheerid_community_verification_verification_qzkFXp": {
           "type": "shopify:\/\/apps\/sheerid-community-verification\/blocks\/verification\/5d89573c-f987-420b-a60c-72549bb3e6d5",
           "settings": {
-            "program_id": "",
+            "program_id": "{{ page.metafields.custom.sheer_id.value }}",
             "display_style": "embedded",
             "background_color": "",
             "extended_background": true,
@@ -372,7 +372,6 @@
         "sheerid_community_verification_verification_qzkFXp",
         "text_ERNHcE"
       ],
-      "disabled": true,
       "settings": {
         "include_margins": true
       }
