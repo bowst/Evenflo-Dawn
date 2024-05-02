@@ -1,4 +1,4 @@
-<style>
+{%- style -%}
 
   .page-width.two-columns {
   display: flex;
@@ -25,7 +25,7 @@
   line-height: 1.6;
 }
 
-</style>
+{%- endstyle -%}
 
 <div class="{% if section.settings.include_margins %}page-width{% endif %} two-columns">
   {%- for block in section.blocks -%}
