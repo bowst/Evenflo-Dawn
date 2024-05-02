@@ -32,10 +32,9 @@
       {%- when 'text' -%}
         <div class="column text-block">
           <!-- Render the text block -->
-          <div class="custom-text-block">
             {{ block.settings.text }}
 
-            <div class="multicolumn-card__info">
+            
               <h3 class="inline-richtext">To Get the Discount</h3>
               <div class="rte">
                 <p>{{ page.metafields.custom.page_intro_content | newline_to_br }}</p>
