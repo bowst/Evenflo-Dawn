@@ -1,17 +1,22 @@
-<div class="{% if section.settings.include_margins %}page-width{% endif %}">
+<div class="{% if section.settings.include_margins %}page-width{% endif %} two-columns">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when '@app' -%}
-        <!-- Render the app block -->
-        {% render block %}
+        <div class="column app-block">
+          <!-- Render the app block -->
+          {% render block %}
+        </div>
       {%- when 'text' -%}
-        <!-- Render the text block -->
-        <div class="custom-text-block">
-          {{ block.settings.text | newline_to_br }}
+        <div class="column text-block">
+          <!-- Render the text block -->
+          <div class="custom-text-block">
+            {{ block.settings.text | newline_to_br }}
+          </div>
         </div>
     {%- endcase -%}
   {%- endfor -%}
 </div>
+
 
 {% schema %}
 {
