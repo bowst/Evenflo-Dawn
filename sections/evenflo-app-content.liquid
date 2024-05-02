@@ -33,18 +33,20 @@
       {%- when '@app' -%}
         <div class="column app-block">
           <!-- Render the app block -->
-          {% render block %}
+          <!-- Make sure this rendering is handled according to your theme's logic -->
+          {{ block.settings | json }}
         </div>
       {%- when 'text' -%}
         <div class="column text-block">
           <!-- Render the text block -->
           <div class="custom-text-block">
-            {{ block.settings.text | newline_to_br }}
+            {{ block.settings.text }}
           </div>
         </div>
     {%- endcase -%}
   {%- endfor -%}
 </div>
+
 
 
 {% schema %}
@@ -69,10 +71,10 @@
       "name": "Text Block",
       "settings": [
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "text",
           "label": "Text Content",
-          "default": "Enter your text here"
+          "default": "<p>Enter your text here</p>"
         }
       ]
     }
@@ -83,4 +85,5 @@
     }
   ]
 }
+
 {% endschema %}
