@@ -41,7 +41,7 @@
           <!-- Render the text block -->
           <div class="custom-text-block">
             {{ block.settings.text }}
-            {{ page.metafields.custom.page_intro_content | richtext }}
+            {{ page.metafields.custom.page_intro_content | newline_to_br }}
 
             
           </div>
