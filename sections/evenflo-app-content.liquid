@@ -1,28 +1,21 @@
 {%- style -%}
-  .page-width.two-columns {
-    display: flex;
-    justify-content: space-between; /* This spreads the two columns to use up the available space */
-    align-items: start; /* This aligns items to the top of the container */
-  }
+  .two-columns {
+  display: flex;
+  flex-wrap: wrap; /* Allows the columns to wrap on smaller screens */
+  gap: 20px; /* Adjust the gap between columns */
+}
 
-  .page-width.two-columns .column {
-    flex: 1; /* Makes each column take up equal space */
-    padding: 20px; /* Adds spacing inside each column */
-  }
+.column {
+  flex: 1; /* Ensures that each column takes up equal space */
+  min-width: 300px; /* Minimum width of each column, adjust as needed */
+}
 
-  /* You might want to add responsiveness */
-  @media (max-width: 768px) {
-    .page-width.two-columns {
-      flex-direction: column;
-    }
-  }
+.page-width {
+  max-width: 1200px; /* Adjust the maximum width of the container */
+  margin: auto; /* Centers the container on the page */
+  padding: 20px; /* Padding around the content inside the container */
+}
 
-  .custom-text-block {
-    border: 1px solid #ccc;
-    padding: 15px;
-    font-size: 16px;
-    line-height: 1.6;
-  }
 {%- endstyle -%}
 
 <div class="{% if section.settings.include_margins %}page-width{% endif %} two-columns">
