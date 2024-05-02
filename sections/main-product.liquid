@@ -116,44 +116,52 @@
                   {% endfor %}
                 </div>
                 <style>
-                  product-card {
-                      border: 1px solid #ccc;
-                      padding: 10px;
-                      margin-bottom: 10px;
-                      display: flex;
-                      align-items: center;
+                  .product-card {
+                    border: 1px solid #000;
+                    border-radius: 8px;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    min-width: 100px;
+                    margin-bottom: 10px;
                   }
-                  .product-header .product-name{
-                      font-size: 2rem;
-                  }
-
-                  .product-name {
-                      font-weight: bold;
+                  .product-name {
+                    text-decoration: none;
+                    color: rgba(var(--color-foreground), 0.75);
                   }
 
-                  .product-type {
-                      font-style: italic;
+                  .product-header {
+                    display: flex; /* Apply flex container to the header */
+                    justify-content: space-between; /* Space between the name and price */
+                    align-items: center; /* Align items vertically */
+                    margin-bottom: 15px; /* Add some margin to the bottom */
+                    text-decoration: none;
                   }
 
-                  .product-footer {
-                      width: 40%;
-                      display: flex;
-                      flex-direction: column;
-                      gap: 34px;
-                      height: 100%;
-                      justify-content: space-between;
+                  .product-name {
+                    font-size: 16px;
+                    margin: 0;
+                    flex: 3; /* 3/4 of the space */
+                    font-family: var(--font-body-family);
+                    text-decoration: none !important;
+                  }
+                  a.product-name {
+                    text-decoration: none !important;
                   }
 
-                  .installment-info {
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: center;
+                  .product-price {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin: 0;
+                    flex: 1; /* 1/4 of the space */
                   }
 
-                  .product-header {
-                      display: block;
-                      margin-bottom: 0;
-                      width: 60%;
+                  .product-type {
+                    font-size: 12px;
+                    color: #555;
+                    margin: 0;
+                  }
+                  a {
+                    text-decoration: none;
                   }
                 </style>
               {% endif %}
