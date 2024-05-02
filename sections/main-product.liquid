@@ -93,9 +93,9 @@
                         <div class="product-card">
                           <div class="product-header">
                             <span class="product-name ">{{ prod.title }}</span>
-                            {% if prod.metafields.product_info.related_price %}
+                            {% if prod.metafields.product_info.price %}
                               <span class="product-price">
-                                {{- prod.metafields.product_info.related_price | money -}}
+                                {{- prod.metafields.product_info.price | money -}}
                               </span>
                             {% endif %}
                           </div>
