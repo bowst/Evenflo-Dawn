@@ -57,7 +57,7 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "dropdown"
           }
         },
         "32e4b384-d4a8-436b-b209-3452571a9bee": {
@@ -95,6 +95,10 @@
         "32e4b384-d4a8-436b-b209-3452571a9bee",
         "quantity_selector",
         "buy_buttons"
+      ],
+      "custom_css": [
+        ".related-products .product-name {font-weight: bold; font-size: 24px; color: black;}",
+        ".related-products .product-type {font-size: 18px; color: black;}"
       ],
       "settings": {
         "enable_sticky_info": false,
