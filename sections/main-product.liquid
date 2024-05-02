@@ -99,22 +99,65 @@
                               </span>
                             {% endif %}
                           </div>
-                          <div class="product-footer">
-                            {% if prod.metafields.product_info.related_sub_title %}
-                              <span class="product-type">
-                                {{ prod.metafields.product_info.related_sub_title }}
-                              </span>
-                              <div class="installment-info">
-                                <span>Starting at $50/mo with affirm</span>
-                                <a href="#" style="text-align: center;">Learn More</a>
-                              </div>
-                            {% endif %}
-                          </div>
+                          {% if prod.metafields.product_info.related_sub_title %}
+                            <span class="product-type">
+                              {{ prod.metafields.product_info.related_sub_title }}
+                            </span>
+                          {% endif %}
                         </div>
                       </a>
                     {% endif %}
                   {% endfor %}
                 </div>
+                <style>
+                  .product-card {
+                    border: 1px solid #000;
+                    border-radius: 8px;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    min-width: 100px;
+                    margin-bottom: 10px;
+                  }
+                  .product-name {
+                    text-decoration: none;
+                    color: rgba(var(--color-foreground), 0.75);
+                  }
+
+                  .product-header {
+                    display: flex; /* Apply flex container to the header */
+                    justify-content: space-between; /* Space between the name and price */
+                    align-items: center; /* Align items vertically */
+                    margin-bottom: 15px; /* Add some margin to the bottom */
+                    text-decoration: none;
+                  }
+
+                  .product-name {
+                    font-size: 16px;
+                    margin: 0;
+                    flex: 3; /* 3/4 of the space */
+                    font-family: var(--font-body-family);
+                    text-decoration: none !important;
+                  }
+                  a.product-name {
+                    text-decoration: none !important;
+                  }
+
+                  .product-price {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin: 0;
+                    flex: 1; /* 1/4 of the space */
+                  }
+
+                  .product-type {
+                    font-size: 12px;
+                    color: #555;
+                    margin: 0;
+                  }
+                  a {
+                    text-decoration: none;
+                  }
+                </style>
               {% endif %}
             {%- when '@app' -%}
               {% render block %}
