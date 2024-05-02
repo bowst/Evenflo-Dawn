@@ -389,8 +389,8 @@
           "type": "column",
           "settings": {
             "liquid_content": "",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "title": "To Get the Discount",
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>",
             "link_label": "",
             "link": ""
           }
