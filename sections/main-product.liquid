@@ -107,7 +107,7 @@
                             {% endif %}
                             <div class="installment-info">
                               <span>Starting at $50/mo with affirm</span>
-                              <a href="#" style="text-align: center;">Learn More</a>
+                              <a href="#" class="learn-more">Learn More</a>
                             </div>
                           </div>
                         </div>
@@ -155,6 +155,7 @@
                     font-size: 18px;
                     font-weight: bold;
                     margin: 0;
+                    color: black;
                     flex: 1; /* 1/4 of the space */
                   }
 
@@ -166,6 +167,13 @@
                   a {
                     text-decoration: none;
                   }
+                  .product-footer .installment-info span {
+                        font-size: 14px;
+                  }
+                  .product-footer .installment-info .learn-more{
+                      display: block;
+                      font-size: 14px;
+                    }
                 </style>
               {% endif %}
             {%- when '@app' -%}
