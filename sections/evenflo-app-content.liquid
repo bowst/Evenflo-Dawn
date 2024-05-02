@@ -1,23 +1,4 @@
-{%- style -%}
-  .two-columns {
-    display: flex;
-    flex-wrap: nowrap; /* Changes here to prevent wrapping */
-    gap: 20px; /* Adjust the gap between columns */
-    align-items: flex-start; /* Ensures that items align at their top edge */
-  }
 
-  .column {
-    flex: 1; /* Ensures that each column takes up equal space */
-    min-width: 300px; /* Ensures that columns don't shrink below 300px */
-    max-width: 50%; /* Ensures each column does not grow beyond 50% of the container */
-  }
-
-  .page-width {
-    max-width: 1200px; /* Adjust the maximum width of the container */
-    margin: auto; /* Centers the container on the page */
-    padding: 20px; /* Padding around the content inside the container */
-  }
-{%- endstyle -%}
 
 
 <div class="{% if section.settings.include_margins %}page-width{% endif %} two-columns">
