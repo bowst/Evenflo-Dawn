@@ -1,8 +1,32 @@
+{% stylesheet %}
+
+  .flex-container {
+    display: flex; /* Use flexbox to layout children */
+    width: 100%; /* Set the width of the flex container */
+}
+
+.flex-item {
+    flex: 1; /* Flex-grow property, allows each item to grow equally */
+    padding: 10px; /* Padding inside each flex item */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+{% endstylesheet %}
+
 <div class="{% if section.settings.include_margins %}page-width{% endif %}">
-  {%- for block in section.blocks -%}
+<div class="flex-container">
+    <div class="flex-item">
+          {%- for block in section.blocks -%}
     {% render block %}
   {%- endfor -%}
+    </div>
+    <div class="flex-item">
+        <!-- Content for the second column -->
+        Column 2 Content
+    </div>
 </div>
+</div>
+
+
 
 {% schema %}
 {
