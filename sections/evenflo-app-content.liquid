@@ -1,31 +1,12 @@
-
-
-
-<div class="{% if section.settings.include_margins %}page-width{% endif %} two-columns">
+<div class="{% if section.settings.include_margins %}page-width{% endif %}">
   {%- for block in section.blocks -%}
-    {%- case block.type -%}
-      {%- when '@app' -%}
-        <div class="column app-block">
-          <!-- Render the app block -->
-          <!-- Make sure this rendering is handled according to your theme's logic -->
-          {{ block.settings | json }}
-        </div>
-      {%- when 'text' -%}
-        <div class="column text-block">
-          <!-- Render the text block -->
-            {{ block.settings.text }}
-
-            
-              <h3 class="inline-richtext">To Get the Discount</h3>
-                <p>{{ page.metafields.custom.page_intro_content | newline_to_br }}</p>
-      </div>
-    {%- endcase -%}
+    {% render block %}
   {%- endfor -%}
 </div>
 
 {% schema %}
 {
-  "name": "Evenflo Apps",
+  "name": "t:sections.apps.name",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -39,24 +20,13 @@
   "blocks": [
     {
       "type": "@app"
-    },
-    {
-      "type": "text",
-      "name": "Text Block",
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text Content",
-          "default": "<p>Enter your text here</p>"
-        }
-      ]
     }
   ],
   "presets": [
     {
-      "name": "Evenflo Apps"
+      "name": "t:sections.apps.presets.name"
     }
   ]
 }
 {% endschema %}
+
