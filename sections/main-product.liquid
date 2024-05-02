@@ -84,8 +84,6 @@
                 <div class="related-products">
                   {% for prod in relatedProducts %}
                     {% if prod.available == true %}
-                      {% assign prod = prod.first_available_variant %}
-
                       <a
                         href="{{ prod.url }}"
 
