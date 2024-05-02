@@ -99,11 +99,17 @@
                               </span>
                             {% endif %}
                           </div>
-                          {% if prod.metafields.product_info.related_sub_title %}
-                            <span class="product-type">
-                              {{ prod.metafields.product_info.related_sub_title }}
-                            </span>
-                          {% endif %}
+                          <div class="product-footer">
+                            {% if prod.metafields.product_info.related_sub_title %}
+                              <span class="product-type">
+                                {{ prod.metafields.product_info.related_sub_title }}
+                              </span>
+                              <div class="installment-info">
+                                <span>Starting at $50/mo with affirm</span>
+                                <a href="#" style="text-align: center;">Learn More</a>
+                              </div>
+                            {% endif %}
+                          </div>
                         </div>
                       </a>
                     {% endif %}
