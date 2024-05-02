@@ -174,6 +174,45 @@
                       display: block;
                       font-size: 14px;
                     }
+                  .product-footer {
+                      width: 36%;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: space-between;
+                  }
+
+                  a:has(.product-header) {
+                      width: 65%;
+                  }
+
+                  .product-price {
+                      justify-content: flex-end;
+                      padding-right: 15px;
+                  }
+
+                  .installment-info {
+                      display: flex;
+                      flex-direction: column;
+                  }
+
+                  .installment-info a {
+                      text-align: center;
+                      color: #000;
+                  }
+
+                  .product-header {
+                      margin: 0;
+                      height: 100%;
+                  }
+
+                  .product-footer .installment-info .learn-more {
+                      color: #2996c5;
+                      font-weight: 700;
+                  }
+
+                  .product-card {
+                      max-width: 530px;
+                  }
                 </style>
               {% endif %}
             {%- when '@app' -%}
