@@ -324,22 +324,22 @@
     "1714612496c423d407": {
       "type": "apps",
       "blocks": {
-        "sheerid_community_verification_verification_DGKfHm": {
+        "sheerid_community_verification_verification_CEPQPp": {
           "type": "shopify:\/\/apps\/sheerid-community-verification\/blocks\/verification\/5d89573c-f987-420b-a60c-72549bb3e6d5",
           "settings": {
-            "program_id": "6449874c98ea13502a40e99e",
+            "program_id": "{{ page.metafields.custom.sheer_id.value }}",
             "display_style": "embedded",
             "background_color": "",
-            "extended_background": false,
+            "extended_background": true,
             "button_text": "Unlock discount",
-            "button_color": "#2996c5",
+            "button_color": "",
             "padding_top": 36,
             "padding_bottom": 36
           }
         }
       },
       "block_order": [
-        "sheerid_community_verification_verification_DGKfHm"
+        "sheerid_community_verification_verification_CEPQPp"
       ],
       "settings": {
         "include_margins": true
