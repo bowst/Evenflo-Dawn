@@ -145,11 +145,19 @@
                 </div>
               </li>
             {% when '@app' %}
-              <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
-                <div class="multicolumn-card__info">
-                  {% render block %}
+              <li
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                class="multicolumn-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %}{{ empty_column }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="multicolumn-card content-container">
+                  <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
+                    <div class="multicolumn-card__info">
+                      {% render block %}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </li>
           {% endcase %}
         {%- endfor -%}
       </ul>
