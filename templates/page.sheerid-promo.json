@@ -394,11 +394,25 @@
             "link_label": "",
             "link": ""
           }
+        },
+        "sheerid_community_verification_verification_KirBjY": {
+          "type": "shopify:\/\/apps\/sheerid-community-verification\/blocks\/verification\/5d89573c-f987-420b-a60c-72549bb3e6d5",
+          "settings": {
+            "program_id": "{{ page.metafields.custom.sheer_id.value }}",
+            "display_style": "embedded",
+            "background_color": "",
+            "extended_background": true,
+            "button_text": "Unlock discount",
+            "button_color": "",
+            "padding_top": 36,
+            "padding_bottom": 36
+          }
         }
       },
       "block_order": [
         "column_VcW7KX",
-        "column_UKdUwB"
+        "column_UKdUwB",
+        "sheerid_community_verification_verification_KirBjY"
       ],
       "custom_css": [
         ".multicolumn {max-width: 1400px; margin: auto;}"
