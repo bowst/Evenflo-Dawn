@@ -125,6 +125,16 @@
             "link": ""
           }
         },
+        "column_UKdUwB": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "",
+            "title": "To Get the Discount",
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "sheerid_community_verification_verification_KirBjY": {
           "type": "shopify:\/\/apps\/sheerid-community-verification\/blocks\/verification\/5d89573c-f987-420b-a60c-72549bb3e6d5",
           "settings": {
@@ -137,25 +147,15 @@
             "padding_top": 36,
             "padding_bottom": 36
           }
-        },
-        "column_UKdUwB": {
-          "type": "column",
-          "settings": {
-            "liquid_content": "",
-            "title": "To Get the Discount",
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>",
-            "link_label": "",
-            "link": ""
-          }
         }
       },
       "block_order": [
         "column_VcW7KX",
-        "sheerid_community_verification_verification_KirBjY",
-        "column_UKdUwB"
+        "column_UKdUwB",
+        "sheerid_community_verification_verification_KirBjY"
       ],
       "custom_css": [
-        ".multicolumn {max-width: 1200px; margin: auto;}"
+        ".multicolumn {max-width: 1000px; margin: auto;}"
       ],
       "settings": {
         "title": "",
