@@ -2,7 +2,7 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-evenflo-multicolumn.css' | asset_url | stylesheet_tag }}
 
-{%- style -%}
+{% style %}
   #section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}
     px;
@@ -18,7 +18,7 @@
       px;
     }
   }
-{%- endstyle -%}
+{% endstyle %}
 
 {%- liquid
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
