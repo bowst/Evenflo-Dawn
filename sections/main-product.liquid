@@ -592,15 +592,6 @@
           {% render 'icon-arrow' %}
         </a>
 
-        {% if product.tags contains 'Support' %}
-          <!-- Do not display the content if the product has the 'Support' tag -->
-        {% else %}
-          <!-- Content to display if the product does not have the 'Support' tag -->
-          <div class="visible-content">
-            <!-- Visible content goes here -->
-          </div>
-        {% endif %}
-
         {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
           <div class="product__tax caption rte">
             {%- if shop.taxes_included -%}
