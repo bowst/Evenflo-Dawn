@@ -115,105 +115,6 @@
                     {% endif %}
                   {% endfor %}
                 </div>
-                <style>
-                  .product-card {
-                    border: 1px solid #000;
-                    border-radius: 8px;
-                    padding: 10px;
-                    box-sizing: border-box;
-                    min-width: 100px;
-                    margin-bottom: 10px;
-                    display: flex;
-                    justify-content: space-between;
-                  }
-                  .product-name {
-                    text-decoration: none;
-                    color: rgba(var(--color-foreground), 0.75);
-                  }
-
-                  .product-header {
-                    display: flex; /* Apply flex container to the header */
-                    justify-content: space-between; /* Space between the name and price */
-                     /* Align items vertically */
-                    margin-bottom: 15px; /* Add some margin to the bottom */
-                    text-decoration: none;
-                    flex-direction: column;
-                  }
-
-                  .product-name {
-                    font-size: 16px;
-                    margin: 0;
-                    flex: 3; /* 3/4 of the space */
-                    font-family: var(--font-body-family);
-                    text-decoration: none !important;
-                  }
-                  a.product-name {
-                    text-decoration: none !important;
-                  }
-
-                  .product-price {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin: 0;
-                    color: black;
-                    flex: 1; /* 1/4 of the space */
-                  }
-
-                  .product-type {
-                    font-size: 12px;
-                    color: #555;
-                    margin: 0;
-                  }
-                  a {
-                    text-decoration: none;
-                  }
-                  .product-footer .installment-info span {
-                        font-size: 14px;
-                  }
-                  .product-footer .installment-info .learn-more{
-                      display: block;
-                      font-size: 14px;
-                    }
-                  .product-footer {
-                      width: 36%;
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: space-between;
-                  }
-
-                  a:has(.product-header) {
-                      width: 65%;
-                  }
-
-                  .product-price {
-                      justify-content: flex-end;
-                      padding-right: 15px;
-                  }
-
-                  .installment-info {
-                      display: flex;
-                      flex-direction: column;
-                  }
-
-                  .installment-info a {
-                      text-align: center;
-                      color: #000;
-                  }
-
-                  .product-header {
-                      margin: 0;
-                      height: 100%;
-                  }
-
-                  .product-footer .installment-info .learn-more {
-                      color: #2996c5;
-                      font-weight: 700;
-                  }
-
-                  .product-card {
-                      max-width: 530px;
-                  }
-                </style>
               {% endif %}
             {%- when '@app' -%}
               {% render block %}
@@ -690,26 +591,6 @@
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>
-        {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-          <div class="product__tax caption rte">
-            {%- if shop.taxes_included -%}
-              {{ 'products.product.include_taxes' | t }}
-            {%- endif -%}
-            {%- if shop.shipping_policy.body != blank -%}
-              {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-        <!-- Yotpo Points Display -->
-        {% include 'Yotpo-points-display' %}
-        <!-- End Yotpo Points Display -->
-        <div {{ block.shopify_attributes }}>
-          {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-          {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-            {{ form | payment_terms }}
-          {%- endform -%}
-        </div>
       </product-info>
     </div>
     {%- if section.settings.media_position == 'right' -%}
