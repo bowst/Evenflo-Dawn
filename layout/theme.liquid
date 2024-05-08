@@ -48,18 +48,18 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    
+
     {% if template contains 'product' %}
-        <script type="text/javascript">
-          window._bl = { partner: 'evenflo.com' };
-        </script>
-        <script
-          async
-          type="text/javascript"
-          src="https://www.babylist.com/add.js"
-        ></script>
+      <script type="text/javascript">
+        window._bl = { partner: 'evenflo.com' };
+      </script>
+      <script
+        async
+        type="text/javascript"
+        src="https://www.babylist.com/add.js"
+      ></script>
     {% endif %}
-    
+
     {{ content_for_header }}
 
     {% comment %} <link rel="stylesheet" href="https://use.typekit.net/ati5bia.css"> {% endcomment %}
@@ -250,7 +250,7 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %}
-    {% comment %}  {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }} {% endcomment %}
+    {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link
@@ -363,11 +363,14 @@
         }
       }
     </style>
-    
-    <!--START Digioh Low Impact Javascript-->
-    <script async type='text/javascript' src='https://www.lightboxcdn.com/vendor/e07b6cf2-e433-4ace-afa4-2755fc915356/lightbox_speed.js'></script>
-    <!--END Digioh Low Impact Javascript-->
-    
+
+    <!-- START Digioh Low Impact Javascript -->
+    <script
+      async
+      type="text/javascript"
+      src="https://www.lightboxcdn.com/vendor/e07b6cf2-e433-4ace-afa4-2755fc915356/lightbox_speed.js"
+    ></script>
+    <!-- END Digioh Low Impact Javascript -->
   </head>
 
   <body class="gradient">
@@ -495,15 +498,15 @@
     <!-- CRITEO START -->
     {% render 'criteo-tracking' %}
     <!-- CRITEO END -->
-<!-- ShoppingGives START -->
-        <script id="sg-js-global-vars">
-     sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] }};
-     if(sgGlobalVars) {
-     sgGlobalVars.cart = {{ cart | json }};
-     sgGlobalVars.currentProduct = {{ product | json }};
-     sgGlobalVars.isAdmin = {% if content_for_header contains 'adminBarInjector' or content_for_header contains 'previewBarInjector' %}true{% else %}false{% endif %};
-     }
-     </script>
+    <!-- ShoppingGives START -->
+    <script id="sg-js-global-vars">
+      sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] }};
+      if(sgGlobalVars) {
+      sgGlobalVars.cart = {{ cart | json }};
+      sgGlobalVars.currentProduct = {{ product | json }};
+      sgGlobalVars.isAdmin = {% if content_for_header contains 'adminBarInjector' or content_for_header contains 'previewBarInjector' %}true{% else %}false{% endif %};
+      }
+    </script>
     <!-- ShoppingGives End -->
 
     <script
