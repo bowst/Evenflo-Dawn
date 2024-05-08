@@ -608,6 +608,9 @@
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>
+                            <!-- Yotpo Points Display -->
+                {% include 'Yotpo-points-display' %}
+                <!-- End Yotpo Points Display -->
       </product-info>
     </div>
     {%- if section.settings.media_position == 'right' -%}
