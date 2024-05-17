@@ -1,7 +1,3 @@
-h2.title.inline-richtext.h2 {
-  margin: auto;
-}
-
 .multicolumn .title {
   margin: 0;
 }
@@ -18,7 +14,16 @@ h2.title.inline-richtext.h2 {
   .multicolumn .title-wrapper-with-link {
     margin-bottom: 3rem;
   }
+}
 
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .multicolumn__title {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media screen and (max-width: 989px) {
   .multicolumn .page-width {
     padding-left: 0;
     padding-right: 0;
@@ -37,11 +42,6 @@ h2.title.inline-richtext.h2 {
 .multicolumn-list__item:only-child {
   margin-left: auto;
   margin-right: auto;
-}
-
-a.button.button--primary:hover {
-  background-color: #00aea9;
-  border-color: #00aea9;
 }
 
 .multicolumn .button {
@@ -74,7 +74,8 @@ a.button.button--primary:hover {
 }
 
 .multicolumn.background-primary .multicolumn-card {
-  background: rgb(var(--color-background)) linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));
+  background: rgb(var(--color-background))
+    linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));
 }
 
 .multicolumn-list h3 {
@@ -92,7 +93,7 @@ a.button.button--primary:hover {
   margin-right: 2.5rem;
 }
 
-.multicolumn-card__info> :nth-child(2) {
+.multicolumn-card__info > :nth-child(2) {
   margin-top: 1rem;
 }
 
@@ -118,13 +119,16 @@ a.button.button--primary:hover {
   }
 }
 
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .multicolumn-list:not(.slider) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
 
 @media screen and (min-width: 750px) {
-
-  .multicolumn-list.slider,
-  .multicolumn-list.grid--4-col-desktop {
+  .multicolumn-list.slider {
     padding: 0;
-    display: flex;
   }
 
   .multicolumn-list__item,
@@ -156,7 +160,7 @@ a.button.button--primary:hover {
   padding-bottom: 0;
 }
 
-.background-none .multicolumn-card__image-wrapper+.multicolumn-card__info {
+.background-none .multicolumn-card__image-wrapper + .multicolumn-card__info {
   padding-top: 2.5rem;
 }
 
@@ -164,7 +168,7 @@ a.button.button--primary:hover {
   padding-left: 0.5rem;
 }
 
-.background-none .slider .multicolumn-card__image-wrapper+.multicolumn-card__info {
+.background-none .slider .multicolumn-card__image-wrapper + .multicolumn-card__info {
   padding-left: 1.5rem;
 }
 
@@ -199,10 +203,9 @@ a.button.button--primary:hover {
 .multicolumn-card {
   position: relative;
   box-sizing: border-box;
-  height: 100%;
 }
 
-.multicolumn-card>.multicolumn-card__image-wrapper--full-width:not(.multicolumn-card-spacing) {
+.multicolumn-card > .multicolumn-card__image-wrapper--full-width:not(.multicolumn-card-spacing) {
   border-top-left-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
   border-top-right-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
   overflow: hidden;

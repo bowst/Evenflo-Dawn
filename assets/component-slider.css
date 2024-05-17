@@ -23,12 +23,6 @@ slider-component.slider-component-full-width {
   }
 }
 
-@media screen and (max-width: 989px) {
-  .no-js slider-component .slider {
-    padding-bottom: 3rem;
-  }
-}
-
 .slider__slide {
   --focus-outline-padding: 0.5rem;
   --shadow-padding-top: calc((var(--shadow-vertical-offset) * -1 + var(--shadow-blur-radius)) * var(--shadow-visible));
@@ -236,15 +230,6 @@ slider-component.slider-component-full-width {
   display: none;
 }
 
-.no-js .slider {
-  -ms-overflow-style: auto;
-  scrollbar-width: auto;
-}
-
-.no-js .slider::-webkit-scrollbar {
-  display: initial;
-}
-
 .slider::-webkit-scrollbar-thumb {
   background-color: rgb(var(--color-foreground));
   border-radius: 0.4rem;
@@ -390,6 +375,7 @@ slider-component.slider-component-full-width {
 .slider-button--prev:not([disabled]):hover .icon {
   transform: rotate(90deg) scale(1.1);
 }
+
 
 /* Evenflo */
 
