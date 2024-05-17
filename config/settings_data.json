@@ -1,6 +1,6 @@
 {
   "current": {
-    "logo": "{{ shop.brand.logo }}",
+    "logo": "shopify:\/\/shop_images\/evenflo-logo.svg",
     "logo_width": 200,
     "favicon": "{{ shop.brand.square_logo }}",
     "type_header_font": "roboto_n4",
@@ -344,11 +344,11 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#121212",
+          "background": "{{ shop.brand.colors.primary[0].foreground }}",
           "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#ffffff",
-          "button_label": "#121212",
+          "text": "#000000",
+          "button": "#2996c5",
+          "button_label": "#ffffff",
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
