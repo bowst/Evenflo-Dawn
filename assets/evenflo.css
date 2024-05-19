@@ -43,6 +43,10 @@ h3 {
   text-decoration: none;
 }
 
+details[open] > .header__menu-item {
+  text-decoration: none;
+}
+
 /* Product Fonts */
 h3.card__information {
   font-family: 'mr-eaves-modern', sans-serif;
