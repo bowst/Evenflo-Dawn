@@ -9,7 +9,10 @@
         </div>
       {%- when 'featured_image' -%}
         {%- if article.image -%}
-          <div class="article-template__hero-container" {{ block.shopify_attributes }}>
+          <div
+            class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            {{ block.shopify_attributes }}
+          >
             <div
               class="article-template__hero-{{ block.settings.image_height }} media"
               itemprop="image"
@@ -40,8 +43,16 @@
         {%- endif -%}
 
       {%- when 'title' -%}
-        <header class="page-width page-width--narrow" {{ block.shopify_attributes }}>
-          <h1 class="article-template__title" itemprop="headline">{{ article.title | escape }}</h1>
+        <header
+          class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <h1
+            class="article-template__title"
+            itemprop="headline"
+          >
+            {{ article.title | escape }}
+          </h1>
           {%- if block.settings.blog_show_date -%}
             <span class="circle-divider caption-with-letter-spacing" itemprop="dateCreated pubdate datePublished">
               {{- article.published_at | time_tag: format: 'date' -}}
@@ -56,7 +67,7 @@
 
       {%- when 'content' -%}
         <div
-          class="article-template__content page-width page-width--narrow rte"
+          class="article-template__content page-width page-width--narrow rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           itemprop="articleBody"
           {{ block.shopify_attributes }}
         >
@@ -64,22 +75,36 @@
         </div>
 
       {%- when 'share' -%}
-        <div class="article-template__social-sharing page-width page-width--narrow" {{ block.shopify_attributes }}>
+        <div
+          class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {{ block.shopify_attributes }}
+        >
           {% assign share_url = request.origin | append: article.url %}
           {% render 'share-button', block: block, share_link: share_url %}
         </div>
     {%- endcase -%}
   {%- endfor -%}
 
-  {% if article.author contains "Sarah Haverstick" %}
-              <div class="article-template__content page-width page-width--narrow rte blog_author">
-                <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Sarah_Havestick_Headshot_2020.jpg?v=1649264201" alt="{{ article.author }}" />
-                <div class="author_bio">
-                  <h4>{{ article.author }}</h4>
-                  <p>Sarah Haverstick is the Safety Advocate for Evenflo. She is a certified Child Passenger Safety Technician Instructor and an instructor in the safe transportation of children with special health care needs. Sarah is a former chair of the National Child Passenger Safety Board and current vice chair of the Manufacturers Alliance for Child Passenger Safety. In 2021, she was inducted into the Child Passenger Safety Hall of Fame. Sarah has been educating kids and adults on child passenger safety topics for 15 years. She is a mom to two awesome kiddos (3 year old and 10 year old) – and a few fur babies (four cats and two dogs). Rounding out her family is a husband who might not love all the car seats that live in the garage.</p>
-                </div>
-              </div>
-              {% endif %}
+  {% if article.author contains 'Sarah Haverstick' %}
+    <div class="article-template__content page-width page-width--narrow rte blog_author">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Sarah_Havestick_Headshot_2020.jpg?v=1649264201"
+        alt="{{ article.author }}"
+      >
+      <div class="author_bio">
+        <h4>{{ article.author }}</h4>
+        <p>
+          Sarah Haverstick is the Safety Advocate for Evenflo. She is a certified Child Passenger Safety Technician
+          Instructor and an instructor in the safe transportation of children with special health care needs. Sarah is a
+          former chair of the National Child Passenger Safety Board and current vice chair of the Manufacturers Alliance
+          for Child Passenger Safety. In 2021, she was inducted into the Child Passenger Safety Hall of Fame. Sarah has
+          been educating kids and adults on child passenger safety topics for 15 years. She is a mom to two awesome
+          kiddos (3 year old and 10 year old) – and a few fur babies (four cats and two dogs). Rounding out her family
+          is a husband who might not love all the car seats that live in the garage.
+        </p>
+      </div>
+    </div>
+  {% endif %}
 
   <div class="article-template__back element-margin-top center">
     <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
@@ -87,12 +112,12 @@
       {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
     </a>
   </div>
-
-  
-  
   {%- if blog.comments_enabled? -%}
     <div class="article-template__comment-wrapper background-secondary">
-      <div id="comments" class="page-width page-width--narrow">
+      <div
+        id="comments"
+        class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      >
         {%- if article.comments_count > 0 -%}
           {%- assign anchorId = '#Comments-' | append: article.id -%}
 
