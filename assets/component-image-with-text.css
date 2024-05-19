@@ -416,3 +416,20 @@
     row-gap: var(--grid-desktop-vertical-spacing);
   }
 }
+
+
+.image-with-text__heading {
+  display: inline-block;
+  position: relative;
+}
+
+.image-with-text__heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: #2996c5;
+}
+
