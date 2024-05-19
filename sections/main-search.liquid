@@ -8,6 +8,10 @@
   <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
 <script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
 
 <style>
@@ -33,7 +37,6 @@
       margin-bottom: 5rem;
     }
   }
-
   @media screen and (max-width: 576px) {
     .grid__item {
       min-width: 100%;
@@ -67,7 +70,7 @@
 
 {% paginate search.results by 24 %}
   <div class="template-search{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding">
-    <div class="template-search__header page-width">
+    <div class="template-search__header page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       <h1 class="h2 center">
         {%- if search.performed -%}
           {{- 'templates.search.title' | t -}}
@@ -107,17 +110,7 @@
 
               {%- if settings.predictive_search_enabled -%}
                 <div class="predictive-search predictive-search--search-template" tabindex="-1" data-predictive-search>
-                  <div class="predictive-search__loading-state">
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      class="spinner"
-                      viewBox="0 0 66 66"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                    </svg>
-                  </div>
+                  {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
                 </div>
 
                 <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
@@ -162,7 +155,7 @@
         and section.settings.filter_type == 'vertical'
         and search.filters != empty
       -%}
-        <facet-filters-form class="facets facets-vertical-sort page-width small-hide no-js-hidden">
+        <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
           <form class="facets-vertical-form" id="FacetSortForm">
             <div class="facet-filters sorting caption">
               <div class="facet-filters__field">
@@ -191,11 +184,6 @@
                   {% render 'icon-caret' %}
                 </div>
               </div>
-              <noscript>
-                <button type="submit" class="facets__button-no-js button button--secondary">
-                  {{ 'products.facets.sort_button' | t }}
-                </button>
-              </noscript>
             </div>
 
             <div class="product-count-vertical light" role="status">
@@ -213,17 +201,7 @@
                   {%- endif -%}
                 </span>
               </h2>
-              <div class="loading-overlay__spinner">
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  class="spinner"
-                  viewBox="0 0 66 66"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                </svg>
-              </div>
+              {%- render 'loading-spinner' -%}
             </div>
           </form>
         </facet-filters-form>
@@ -287,13 +265,19 @@
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
 
-                  <li class="grid__item">
+                  <li
+                    class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                    {% if settings.animations_reveal_on_scroll %}
+                      data-cascade
+                    {% endif %}
+                  >
                     {%- case item.object_type -%}
                       {%- when 'product' -%}
                         {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
                         {% render 'card-product',
                           card_product: item,
                           media_aspect_ratio: section.settings.image_ratio,
+                          image_shape: section.settings.image_shape,
                           show_secondary_image: section.settings.show_secondary_image,
                           show_vendor: section.settings.show_vendor,
                           show_rating: section.settings.show_rating,
@@ -391,6 +375,9 @@
     {%- endif -%}
   </div>
 {% endpaginate %}
+{% if section.settings.image_shape == 'arch' %}
+  {% render 'mask-arch' %}
+{%- endif -%}
 
 {% schema %}
 {
@@ -402,7 +389,7 @@
       "type": "range",
       "id": "columns_desktop",
       "min": 1,
-      "max": 5,
+      "max": 6,
       "step": 1,
       "default": 4,
       "label": "t:sections.main-search.settings.columns_desktop.label"
@@ -430,6 +417,47 @@
       ],
       "default": "adapt",
       "label": "t:sections.main-search.settings.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.all.image_shape.options__1.label"
+        },
+        {
+          "value": "arch",
+          "label": "t:sections.all.image_shape.options__2.label"
+        },
+        {
+          "value": "blob",
+          "label": "t:sections.all.image_shape.options__3.label"
+        },
+        {
+          "value": "chevronleft",
+          "label": "t:sections.all.image_shape.options__4.label"
+        },
+        {
+          "value": "chevronright",
+          "label": "t:sections.all.image_shape.options__5.label"
+        },
+        {
+          "value": "diamond",
+          "label": "t:sections.all.image_shape.options__6.label"
+        },
+        {
+          "value": "parallelogram",
+          "label": "t:sections.all.image_shape.options__7.label"
+        },
+        {
+          "value": "round",
+          "label": "t:sections.all.image_shape.options__8.label"
+        }
+      ],
+      "default": "default",
+      "label": "t:sections.all.image_shape.label",
+      "info": "t:sections.all.image_shape.info"
     },
     {
       "type": "checkbox",
