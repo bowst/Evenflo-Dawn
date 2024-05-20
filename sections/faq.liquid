@@ -123,7 +123,9 @@
 {%- if section.settings.enable_rich_schema -%}
   <script type="application/ld+json">
     {
-       [
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
       {%- for block in section.blocks -%}
       {%- if block.settings.title != blank and block.settings.content != blank  -%}
       {
