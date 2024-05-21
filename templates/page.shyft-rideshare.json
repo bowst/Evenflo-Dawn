@@ -37,10 +37,10 @@
       ],
       "custom_css": [
         ".banner__text.rte.subtitle h2 {color: #fff;}",
-        ".banner__buttons a {background: #fff; color: #000; box-shadow: 0 0 0 #fff; transition: all .1s ease;}",
-        ".banner__buttons a:after {box-shadow: 0 0 0 #fff!important; transition: box-shadow .1s ease;}",
+        ".banner__buttons a {background: #fff; color: #000; box-shadow: 0 0 0 #fff; transition: all 0.1s ease;}",
+        ".banner__buttons a:after {box-shadow: 0 0 0 #fff !important; transition: box-shadow 0.1s ease;}",
         ".banner__buttons a:hover {background: #00aea9;}",
-        ".banner__buttons a:hover:after{box-shadow: 0px 0px 0px 1px #fff!important;}",
+        ".banner__buttons a:hover:after {box-shadow: 0px 0px 0px 1px #fff !important;}",
         "@media screen and (max-width: 1315px) {.banner__heading {color: black; } .banner__text.rte.subtitle h2 {color: black; }}"
       ],
       "settings": {
@@ -165,6 +165,7 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
+        "underline": true,
         "color_scheme": "background-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
@@ -276,6 +277,7 @@
         "background_style": "none",
         "button_label": "Shop Now",
         "button_link": "shopify:\/\/products\/shyft-rideshare-all-terrain-stroller-wagon",
+        "underline": false,
         "color_scheme": "background-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
