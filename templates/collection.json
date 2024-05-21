@@ -1,5 +1,14 @@
 {
   "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "color_scheme": "scheme-3"
+      }
+    },
     "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8": {
       "type": "evenflo-collection-image-banner",
       "blocks": {
@@ -43,7 +52,7 @@
         "desktop_content_position": "top-left",
         "show_text_box": true,
         "desktop_content_alignment": "left",
-        "color_scheme": "accent-1",
+        "color_scheme": "scheme-3",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -59,25 +68,18 @@
         "padding_bottom": 0
       }
     },
-    "banner": {
-      "type": "main-collection-banner",
-      "disabled": true,
-      "settings": {
-        "show_collection_description": true,
-        "show_collection_image": true,
-        "color_scheme": "accent-1"
-      }
-    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 24,
         "columns_desktop": 4,
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "enable_filtering": true,
         "filter_type": "drawer",
         "enable_sorting": false,
@@ -88,9 +90,9 @@
     }
   },
   "order": [
+    "banner",
     "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8",
     "97cbd0cb-c9eb-4958-bc6e-0303f1a3a4aa",
-    "banner",
     "product-grid"
   ]
 }

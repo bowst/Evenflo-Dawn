@@ -5,6 +5,7 @@
   - product: {Object} product object.
   - option: {Object} current product_option object.
   - block: {Object} block object.
+  - picker_type: {String} type of picker to dispay
 
 
   Usage:
@@ -12,9 +13,9 @@
     product: product,
     option: option,
     block: block
+    picker_type: picker_type
   %}
 {% endcomment %}
-
 <style>
   .strikediag {
     display: inline-block;
@@ -38,7 +39,6 @@
     pointer-events: none;
   }
 </style>
-
 {%- liquid
   assign variants_available_arr = product.variants | map: 'available'
   assign variants_option1_arr = product.variants | map: 'option1'
@@ -68,19 +68,56 @@
           endif
       endcase
     endfor
+
+    assign swatch_focal_point = null
+    if value.swatch.image
+      assign image_url = value.swatch.image | image_url: width: 50
+      assign swatch_value = 'url(' | append: image_url | append: ')'
+      assign swatch_focal_point = value.swatch.image.presentation.focal_point
+    elsif value.swatch.color
+      assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+    else
+      assign swatch_value = null
+    endif
   -%}
 
-  {% assign variant_needed = null %}
-  {% for variant in product.variants %}
-    {% if variant.options contains value %}
-      {% assign variant_needed = variant %}
-    {% endif %}
-  {% endfor %}
+  {%- capture input_id -%}
+    {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
+  {%- endcapture -%}
 
-  {%- if block.settings.picker_type == 'button' -%}
+  {%- capture label_unavailable -%}
+    <span class="visually-hidden label-unavailable">
+      {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
+    </span>
+  {%- endcapture -%}
+
+  {%- if picker_type == 'swatch' -%}
+    {% liquid
+      assign checked = false
+      if option.selected_value == value
+        assign checked = true
+      endif
+    %}
+    {%- capture help_text -%}
+      <span class="visually-hidden">{{ value | escape }}</span>
+      {{ label_unavailable }}
+    {%- endcapture -%}
+    {%
+      render 'swatch-input',
+      id: input_id,
+      name: option.name,
+      value: value | escape,
+      swatch: value.swatch,
+      product_form_id: product_form_id,
+      checked: checked,
+      visually_disabled: option_disabled,
+      shape: block.settings.swatch_shape,
+      help_text: help_text
+    %}
+  {%- elsif picker_type == 'button' -%}
     <input
       type="radio"
-      id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+      id="{{ input_id }}"
       name="{{ option.name }}"
       value="{{ value | escape }}"
       form="{{ product_form_id }}"
@@ -91,93 +128,21 @@
         class="disabled"
       {% endif %}
     >
-
-    {% if variant_needed.metafields.custom.new_swatch_image
-      and option.name == 'Color'
-      and variant_needed.inventory_quantity <= 0
-      and variant_needed.metafields.custom.walmart_id == blank
-    %}
-      <label
-        class="color-swatch strikediag"
-        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-        data-option="{{ value }}"
-        style="
-          opacity: 0.3;
-          background-size: cover;
-          background-image: url('{{ variant_needed.metafields.custom.new_swatch_image | image_url }}');
-          text-decoration-line:none;
-        "
-      >
-        &nbsp
-      </label>
-    {% elsif variant_needed.metafields.image.swatch
-      and option.name == 'Color'
-      and variant_needed.inventory_quantity <= 0
-      and variant_needed.metafields.custom.walmart_id == blank
-    %}
-      <label
-        class="color-swatch strikediag"
-        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-        data-option="{{ value }}"
-        style="
-          opacity: 0.3;
-          background-size: cover;
-          background-image: url('{{ variant_needed.metafields.image.swatch }}');
-          text-decoration-line:none;
-        "
-      >
-        &nbsp
-      </label>
-    {% elsif variant_needed.metafields.color.swatch and option.name == 'Color' %}
-      <label
-        class="color-swatch"
-        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-        data-option="{{ value }}"
-        style="background-color: {{ variant_needed.metafields.color.swatch }}"
-      >
-        &nbsp
-      </label>
-    {% elsif variant_needed.metafields.custom.new_swatch_image and option.name == 'Color' %}
-      <label
-        class="color-swatch"
-        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-        data-option="{{ value }}"
-        style="
-          background-size: cover;
-          background-image: url('{{ variant_needed.metafields.custom.new_swatch_image | image_url }}');
-          text-decoration-line:none;
-        "
-      >
-        &nbsp
-      </label>
-    {% elsif variant_needed.metafields.image.swatch and option.name == 'Color' %}
-      <label
-        class="color-swatch"
-        for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-        data-option="{{ value }}"
-        style="
-          background-size: cover;
-          background-image: url('{{ variant_needed.metafields.image.swatch }}');
-          text-decoration-line:none;
-        "
-      >
-        &nbsp
-      </label>
-    {% elsif option.name == 'Trim' %}
-      <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-        {{ value }}
-        <span>{{ variant_needed.metafields.custom.trim_description }}</span>
-      </label>
-    {% else %}
-      <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-        {{ value }}
-      </label>
-    {% endif %}
-  {%- elsif block.settings.picker_type == 'dropdown' -%}
+    <label for="{{ input_id }}">
+      {{ value -}}
+      {{ label_unavailable }}
+    </label>
+  {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option
       value="{{ value | escape }}"
       {% if option.selected_value == value %}
         selected="selected"
+      {% endif %}
+      {% if swatch_value and picker_type == 'swatch_dropdown' %}
+        data-option-swatch-value="{{ swatch_value }}"
+        {% if swatch_focal_point %}
+          data-option-swatch-focal-point="{{ swatch_focal_point }}"
+        {% endif %}
       {% endif %}
     >
       {% if option_disabled -%}

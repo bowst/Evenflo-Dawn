@@ -3,71 +3,6 @@
     "logo": "shopify:\/\/shop_images\/evenflo-logo.svg",
     "logo_width": 200,
     "favicon": "{{ shop.brand.square_logo }}",
-    "color_schemes": {
-      "scheme-1": {
-        "settings": {
-          "background": "#FFFFFF",
-          "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
-        }
-      },
-      "scheme-2": {
-        "settings": {
-          "background": "#F3F3F3",
-          "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
-          "button_label": "#F3F3F3",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
-        }
-      },
-      "scheme-3": {
-        "settings": {
-          "background": "#242833",
-          "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
-          "button_label": "#000000",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#121212"
-        }
-      },
-      "scheme-4": {
-        "settings": {
-          "background": "#121212",
-          "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
-          "button_label": "#121212",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#121212"
-        }
-      },
-      "scheme-5": {
-        "settings": {
-          "background": "#334FB4",
-          "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
-          "button_label": "#334FB4",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#121212"
-        }
-      }
-    },
-    "colors_solid_button_labels": "#FFFFFF",
-    "colors_accent_1": "{{ shop.brand.colors.primary[0].background }}",
-    "gradient_accent_1": "linear-gradient(180deg, rgba(0, 177, 176, 1), rgba(203, 220, 130, 1) 100%)",
-    "colors_accent_2": "#2996c5",
-    "colors_background_1": "#ffffff",
-    "gradient_background_1": "",
-    "colors_background_2": "{{ shop.brand.colors.primary[0].background }}",
-    "gradient_background_2": "",
     "type_header_font": "roboto_n4",
     "heading_scale": 100,
     "type_body_font": "sans-serif",
@@ -76,6 +11,8 @@
     "spacing_sections": 0,
     "spacing_grid_horizontal": 8,
     "spacing_grid_vertical": 8,
+    "animations_reveal_on_scroll": false,
+    "animations_hover_elements": "default",
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
     "buttons_radius": 0,
@@ -100,7 +37,7 @@
     "card_style": "standard",
     "card_image_padding": 0,
     "card_text_alignment": "center",
-    "card_color_scheme": "background-1",
+    "card_color_scheme": "scheme-1",
     "card_border_thickness": 20,
     "card_border_opacity": 0,
     "card_corner_radius": 0,
@@ -159,7 +96,7 @@
     "drawer_shadow_blur": 5,
     "badge_position": "top left",
     "badge_corner_radius": 0,
-    "sale_badge_color_scheme": "accent-1",
+    "sale_badge_color_scheme": "scheme-5",
     "sold_out_badge_color_scheme": "inverse",
     "brand_image": "shopify:\/\/shop_images\/evenflo-logo.png",
     "brand_image_width": 220,
@@ -180,6 +117,14 @@
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "car-seat-stroller-combos",
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "{{ shop.brand.colors.primary[0].background }}",
+    "gradient_accent_1": "linear-gradient(180deg, rgba(0, 177, 176, 1), rgba(203, 220, 130, 1) 100%)",
+    "colors_accent_2": "#2996C5",
+    "colors_background_1": "#ffffff",
+    "gradient_background_1": "",
+    "colors_background_2": "{{ shop.brand.colors.primary[0].background }}",
+    "gradient_background_2": "",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -188,7 +133,6 @@
             "type": "announcement",
             "settings": {
               "text": "Check out our new Stroller! It's awesome!",
-              "color_scheme": "accent-2",
               "link": "shopify:\/\/products\/shyft-dualride-car-seat-stroller-combo"
             }
           }
@@ -362,16 +306,84 @@
         "settings": {
         }
       }
+    },
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "{{ shop.brand.colors.primary[0].background }}",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#e3f2f3",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
+          "button_label": "#f3f3f3",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#242833",
+          "background_gradient": "linear-gradient(180deg, rgba(0, 177, 176, 1), rgba(203, 220, 130, 1) 100%)",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#000000",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "{{ shop.brand.colors.primary[0].foreground }}",
+          "background_gradient": "",
+          "text": "#000000",
+          "button": "#2996c5",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#334fb4",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#334fb4",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-cd361ad8-5c7e-46ae-b7d3-65ce0fd73663": {
+        "settings": {
+          "background": "#e3f2f3",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "{{ shop.brand.colors.primary[0].background }}",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      }
     }
   },
   "presets": {
     "Default": {
       "logo_width": 90,
-      "type_header_font": "assistant_n4",
+      "type_header_font": "roboto_n4",
       "heading_scale": 100,
-      "type_body_font": "assistant_n4",
+      "type_body_font": "sans-serif",
       "body_scale": 100,
-      "page_width": 1200,
+      "page_width": 1400,
       "spacing_sections": 0,
       "spacing_grid_horizontal": 8,
       "spacing_grid_vertical": 8,

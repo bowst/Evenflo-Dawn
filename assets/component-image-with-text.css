@@ -90,6 +90,7 @@
   padding: 4rem calc(4rem / var(--font-body-scale)) 5rem;
   position: relative;
   z-index: 1;
+  font-family: 'mr-eaves-modern', sans-serif;
 }
 
 .image-with-text .grid__item::after {
@@ -415,3 +416,20 @@
     row-gap: var(--grid-desktop-vertical-spacing);
   }
 }
+
+
+.image-with-text__heading {
+  display: inline-block;
+  position: relative;
+}
+
+.image-with-text__heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background-color: #2996c5;
+}
+

@@ -449,7 +449,8 @@
           "type": "button",
           "settings": {
             "button_label": "Shop Now",
-            "button_link": "shopify:\/\/products\/eat-and-go-folding-booster-chair"
+            "button_link": "shopify:\/\/products\/eat-and-go-folding-booster-chair",
+            "button_style_secondary": false
           }
         }
       },
@@ -466,6 +467,7 @@
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
+        "section_color_scheme": "",
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -494,7 +496,8 @@
           "type": "button",
           "settings": {
             "button_label": "Shop Now",
-            "button_link": "shopify:\/\/products\/eat-and-go-folding-booster-chair"
+            "button_link": "shopify:\/\/products\/eat-and-go-folding-booster-chair",
+            "button_style_secondary": false
           }
         }
       },
@@ -512,6 +515,7 @@
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
+        "section_color_scheme": "",
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -536,10 +540,11 @@
         "enable_desktop_slider": false,
         "color_scheme": "background-1",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 28,
@@ -611,7 +616,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "scheme-2",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
@@ -638,7 +643,8 @@
           "type": "button",
           "settings": {
             "button_label": "Get Started",
-            "button_link": "https:\/\/www.evenflo.com\/pages\/stroller-car-seat-finder-quiz"
+            "button_link": "https:\/\/www.evenflo.com\/pages\/stroller-car-seat-finder-quiz",
+            "button_style_secondary": false
           }
         }
       },
@@ -655,7 +661,8 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-cd361ad8-5c7e-46ae-b7d3-65ce0fd73663",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
@@ -683,7 +690,8 @@
           "type": "button",
           "settings": {
             "button_label": "Take the Quiz",
-            "button_link": "https:\/\/www.evenflo.com\/pages\/revolve360-quiz"
+            "button_link": "https:\/\/www.evenflo.com\/pages\/revolve360-quiz",
+            "button_style_secondary": false
           }
         }
       },
@@ -700,7 +708,8 @@
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-cd361ad8-5c7e-46ae-b7d3-65ce0fd73663",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
@@ -709,6 +718,10 @@
     },
     "0933046c-3c3f-4724-a91c-8387bd4bad36": {
       "type": "evenflo-social-proof",
+      "custom_css": [
+        ".heading-underline-center {text-align: center;}",
+        ".heading-underline-center:after {width: 50px; left: 50%; transform: translate(-50%);}"
+      ],
       "settings": {
         "share_your_journey_with_us": "Share your journey with us",
         "pixlee": "<center><h2 class=\"headline\">EVENFLO GEAR IN THE WILD<\/h2><\/center>\n<div id=\"pixlee_container\"><\/div><script type=\"text\/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:6563292});};<\/script><script src=\"https:\/\/assets.pxlecdn.com\/assets\/pixlee_widget_1_0_0.js\"><\/script>"
