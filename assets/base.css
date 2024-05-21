@@ -260,8 +260,9 @@ h5,
   font-weight: var(--font-heading-weight);
   letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
   color: rgb(var(--color-foreground));
-  line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
+  line-height: calc(1 / max(1, var(--font-heading-scale)));
   word-break: break-word;
+  text-transform: uppercase;
 }
 
 .hxl {
@@ -292,7 +293,7 @@ h1,
 @media only screen and (min-width: 750px) {
   h1,
   .h1 {
-    font-size: calc(var(--font-heading-scale) * 4rem);
+    font-size: calc(var(--font-heading-scale) * 4.5rem);
   }
 }
 
@@ -3453,4 +3454,147 @@ details-disclosure > details {
   .animate--hover-vertical-lift .button:not([disabled]).button--secondary:hover:after {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
+}
+
+/* Evenflo */
+
+a {
+  color: rgba(var(--color-base-accent-2), 1);
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.button,
+.shopify-challenge__button,
+.customer button {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.button:disabled,
+.button[aria-disabled='true'],
+.button.disabled,
+.customer button:disabled,
+.customer button[aria-disabled='true'],
+.customer button.disabled,
+.quantity__button.disabled {
+  background-color: gray;
+}
+
+.gradient.color-accent-1 {
+  background-attachment: unset;
+}
+
+.gradient .color-light-green {
+  background: #e3f2f3;
+  /* background-attachment: fixed; */
+}
+
+.gradient .color-accent-3 {
+  background: #e3f2f3;
+  /* background-attachment: fixed; */
+}
+
+.heading-underline {
+  position: relative;
+}
+
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background-color: rgba(var(--color-base-accent-2), 1);
+}
+
+.heading-underline-center {
+  text-align: center;
+}
+
+.heading-underline-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header__menu-item {
+  padding-left: 2rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.header__menu-item:hover span,
+.header__active-menu-item {
+  text-decoration: none;
+}
+
+details[open] > .header__menu-item {
+  text-decoration: none;
+}
+
+details[open] > .header__menu-item::after {
+  content: '';
+  display: block;
+  width: calc(100% - 2.7rem);
+  height: 2px;
+  background: rgba(var(--color-base-accent-2), 1);
+  position: absolute;
+  bottom: 12px;
+}
+
+.header .mega-menu__link {
+  padding-top: 0;
+}
+
+.header .mega-menu__link--level-2 {
+  font-weight: 700;
+}
+
+.header .mega-menu__link--level-2:not(:only-child) {
+  margin-bottom: 0;
+}
+
+#shopify-section-template--15779855106204__369648eb-eb5b-42a1-b24e-d1fa01d0d60b .gradient,
+#shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb,
+#shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb .gradient,
+#shopify-section-template--15779855106204__c381a814-fe0f-472f-aa35-34ec00dc633b,
+#shopify-section-template--15779855106204__c381a814-fe0f-472f-aa35-34ec00dc633b .gradient {
+  background: #e3f2f3;
+}
+
+.product-form__input input[type='radio'] + .color-swatch {
+  border: 3px solid #f4f5ff; /* Change this hex code to change the color of the non-active/non-selected variant */
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.product-form__input input[type='radio']:checked + .color-swatch,
+.product-form__input input[type='radio']:hover + .color-swatch {
+  border: 3px solid #ccd1d1; /* Change this hex code to change the color of the active/selected variant */
+}
+
+.product-form__input input[type='radio'] + .swatch {
+  border: 3px solid #f4f5ff; /* Change this hex code to change the color of the non-active/non-selected variant */
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #000;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-form__input input[type='radio']:checked + .swatch,
+.product-form__input input[type='radio']:hover + .swatch {
+  border: 3px solid #ccd1d1; /* Change this hex code to change the color of the active/selected variant */
+  background: none;
+}
+
+.shopify-policy__container {
+  padding-top: 28px;
+  padding-bottom: 28px;
 }
