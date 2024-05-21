@@ -3458,7 +3458,7 @@ details-disclosure > details {
 
 /* Evenflo */
 
-a {
+/* a {
   color: rgba(var(--color-base-accent-2), 1);
 }
 
@@ -3489,12 +3489,12 @@ a {
 
 .gradient .color-light-green {
   background: #e3f2f3;
-  /* background-attachment: fixed; */
+ 
 }
 
 .gradient .color-accent-3 {
   background: #e3f2f3;
-  /* background-attachment: fixed; */
+  
 }
 
 .heading-underline {
@@ -3566,7 +3566,7 @@ details[open] > .header__menu-item::after {
 }
 
 .product-form__input input[type='radio'] + .color-swatch {
-  border: 3px solid #f4f5ff; /* Change this hex code to change the color of the non-active/non-selected variant */
+  border: 3px solid #f4f5ff; 
   width: 40px;
   height: 40px;
   padding: 0;
@@ -3574,12 +3574,10 @@ details[open] > .header__menu-item::after {
 
 .product-form__input input[type='radio']:checked + .color-swatch,
 .product-form__input input[type='radio']:hover + .color-swatch {
-  border: 3px solid #ccd1d1; /* Change this hex code to change the color of the active/selected variant */
-}
+  border: 3px solid #ccd1d1;
 
 .product-form__input input[type='radio'] + .swatch {
-  border: 3px solid #f4f5ff; /* Change this hex code to change the color of the non-active/non-selected variant */
-  width: 40px;
+  border: 3px solid #f4f5ff; 
   height: 40px;
   padding: 0;
   color: #000;
@@ -3590,11 +3588,11 @@ details[open] > .header__menu-item::after {
 
 .product-form__input input[type='radio']:checked + .swatch,
 .product-form__input input[type='radio']:hover + .swatch {
-  border: 3px solid #ccd1d1; /* Change this hex code to change the color of the active/selected variant */
+  border: 3px solid #ccd1d1;
   background: none;
 }
 
 .shopify-policy__container {
   padding-top: 28px;
   padding-bottom: 28px;
-}
+} */
