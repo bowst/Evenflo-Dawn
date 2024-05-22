@@ -36,7 +36,10 @@
         "template--15815876509852__a2871d33-5aab-4343-afe0-8cc8f1a669ef-buttons-1"
       ],
       "custom_css": [
-        "p,a {color: black;}"
+        "p,a {color: black;}",
+        ".banner__buttons a {background: white;}",
+        ".banner__buttons a:after {box-shadow: 1px 0 1px #fff;}",
+        ".banner__buttons a:hover::after {box-shadow: 1px 1.3px 0 #fff!important;}"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/image-left.png",
