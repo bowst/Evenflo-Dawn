@@ -2,7 +2,14 @@
   "sections": {
     "main": {
       "type": "main-login",
+      "custom_css": [
+        ".customer .field input {border: 1px solid #000;}",
+        ".customer .field:after {box-shadow: 0 0 0 .1px #000!important;}"
+      ],
       "settings": {
+        "enable_shop_login_button": true,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
