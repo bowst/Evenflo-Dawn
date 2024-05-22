@@ -1473,7 +1473,6 @@ a.product__text {
   }
 }
 
-
 /* Evenflo */
 
 .product__text.caption-with-letter-spacing {
@@ -1481,18 +1480,18 @@ a.product__text {
   margin-bottom: 20px;
   padding-top: 16px;
   text-transform: none;
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 19.2px;
+  font-weight: 400;
   color: #000;
   position: relative;
-  border-top: 1px solid rgba(var(--color-base-accent-1), 1);
+  border-top: 1px solid #00aea9;
 }
 
 .product__text.caption-with-letter-spacing::before {
-  content: "";
+  content: '';
   width: 75px;
   height: 4px;
-  background: rgba(var(--color-base-accent-1), 1);
+  background: #00aea9;
   position: absolute;
   top: 0;
   left: 0;
@@ -1500,7 +1499,7 @@ a.product__text {
 
 .product__info-container .subtitle.heading-underline {
   font-weight: 900;
-  font-size: 32px;
+  font-size: 21px;
   color: #000;
   margin-top: 0px;
 }
@@ -1511,7 +1510,7 @@ a.product__text {
 
 .product__title h1,
 .product__title h2 {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .product-form__buttons .shopify-payment-button {
