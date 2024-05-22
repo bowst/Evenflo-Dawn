@@ -21,7 +21,8 @@
           "type": "button",
           "settings": {
             "button_label": "SHOP NOW",
-            "button_link": "shopify:\/\/products\/pivot-troop-child-and-pet-car-seat-and-stroller-travel-system"
+            "button_link": "shopify:\/\/products\/pivot-troop-child-and-pet-car-seat-and-stroller-travel-system",
+            "button_style_secondary": false
           }
         }
       },
@@ -44,6 +45,7 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "right",
         "content_layout": "no-overlap",
+        "section_color_scheme": "",
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
@@ -330,6 +332,7 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
+        "section_color_scheme": "",
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -361,7 +364,8 @@
         "text_qtXVRL"
       ],
       "custom_css": [
-        "@media screen and (max-width: 1315px) {.banner__heading {color: black; }}"
+        ".banner__box h2{color: white;}",
+        "@media screen and (max-width: 1315px) {.banner__heading {color: black; }.banner__box h2{color: ;}}"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/57412487_Troop_ICS_FF_CanopyDown_3666_2.jpg",
@@ -433,9 +437,9 @@
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
-        "underline": true,
         "button_label": "SHOP NOW",
         "button_link": "shopify:\/\/products\/pivot-troop-child-and-pet-car-seat-and-stroller-travel-system",
+        "underline": true,
         "color_scheme": "background-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
