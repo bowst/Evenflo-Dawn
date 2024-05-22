@@ -120,7 +120,7 @@
               {%- endif -%}
               <div class="multicolumn-card__info">
                 {%- if block.settings.title != blank -%}
-                  <h3 class="inline-richtext {% if section.settings.underline %} heading-underline heading-underline-center{% endif %}">
+                  <h3 class="inline-richtext heading-underline heading-underline-center{% if section.settings.underline %}{% endif %}">
                     {%- if block.settings.title == 'REVOLVE360™ EXTEND' -%}
                       REVOLVE360™ <span>EXTEND</span>
                     {%- elsif block.settings.title == 'REVOLVE360™ SLIM' -%}
