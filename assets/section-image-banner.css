@@ -352,6 +352,9 @@
 .banner--mobile-bottom .banner__box {
   padding: 4rem 3.5rem;
 }
+.banner__box h2 {
+  color: white;
+}
 
 @media screen and (min-width: 750px) {
   .banner__box {
@@ -359,7 +362,6 @@
   }
 
   .banner--desktop-transparent .banner__box {
-    padding: 4rem 0;
     background: transparent;
     max-width: 89rem;
     border: none;
@@ -491,7 +493,6 @@
   }
 }
 
-
 /* Evenflo  */
 
 .banner__heading.inline-richtext.h1.white {
@@ -502,7 +503,8 @@
   color: #000;
 }
 
-.banner::before, .banner__content::before {
+.banner::before,
+.banner__content::before {
   content: '';
   position: absolute;
   bottom: 0;
