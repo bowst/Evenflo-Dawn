@@ -96,8 +96,8 @@
     "drawer_shadow_blur": 5,
     "badge_position": "top left",
     "badge_corner_radius": 0,
-    "sale_badge_color_scheme": "scheme-5",
-    "sold_out_badge_color_scheme": "inverse",
+    "sale_badge_color_scheme": "scheme-b7e37afe-b667-4511-8880-fc8cd39d3bfa",
+    "sold_out_badge_color_scheme": "scheme-48ca5b53-3abe-430c-802c-714f26bea4ff",
     "brand_image": "shopify:\/\/shop_images\/evenflo-logo.png",
     "brand_image_width": 220,
     "social_facebook_link": "https:\/\/www.facebook.com\/EvenfloBaby",
@@ -354,11 +354,11 @@
       },
       "scheme-5": {
         "settings": {
-          "background": "#334fb4",
+          "background": "#2996c5",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#ffffff",
-          "button_label": "#334fb4",
+          "button_label": "#2996c5",
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
@@ -368,6 +368,28 @@
           "background": "#e3f2f3",
           "background_gradient": "",
           "text": "#121212",
+          "button": "{{ shop.brand.colors.primary[0].background }}",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-b7e37afe-b667-4511-8880-fc8cd39d3bfa": {
+        "settings": {
+          "background": "#00aea9",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "{{ shop.brand.colors.primary[0].background }}",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-48ca5b53-3abe-430c-802c-714f26bea4ff": {
+        "settings": {
+          "background": "#999999",
+          "background_gradient": "",
+          "text": "#ffffff",
           "button": "{{ shop.brand.colors.primary[0].background }}",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
