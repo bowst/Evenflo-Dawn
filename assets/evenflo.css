@@ -164,3 +164,17 @@ details[open] > .header__menu-item {
 #Slider-template--16778003120284__bd8466a5-5044-45aa-89dc-ed149e420bc0 .multicolumn-card {
   height: 100%;
 }
+.facet-checkbox input[type='checkbox'] {
+  position: absolute;
+  opacity: 1;
+  width: 1.6rem;
+  height: 1.6rem;
+  top: 0.7rem;
+  left: -0.4rem;
+  z-index: -1;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.facet-checkbox--disabled {
+  color: #12121266;
+}
