@@ -68,14 +68,17 @@
               assign footer_grid_class = 'grid--5-col-desktop'
             endif
           -%}
-          <div class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}">
+          <div
+            class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}"
+            role="navigation"
+          >
             {%- for block in section.blocks -%}
               <div
                 class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}"
                 {{ block.shopify_attributes }}
               >
                 {%- if block.settings.heading != blank -%}
-                  <h2 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h2>
+                  <h3 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h3>
                 {%- endif -%}
 
                 {%- case block.type -%}
@@ -382,7 +385,7 @@
       cursor: pointer;
     }
     .grid .footer-block__heading::after {
-      content: "+";
+      content: '+';
       position: absolute;
       right: 0;
       top: 50%;
@@ -391,7 +394,7 @@
       text-align: center;
     }
     .grid .footer-block__heading:not(.block-collapsed)::after {
-      content: "-";
+      content: '-';
     }
     .grid .footer-block__heading.block-collapsed + .footer-block__details-content {
       visibility: hidden;
@@ -399,54 +402,55 @@
       height: 0;
       margin: 0;
       padding: 0;
-      transition: all .2s ease-out;
+      transition: all 0.2s ease-out;
       overflow: hidden;
     }
     .grid .footer-block__heading + .footer-block__details-content {
       visibility: visible;
       opacity: 1;
       height: auto;
-      transition: all .2s ease-out;
+      transition: all 0.2s ease-out;
       overflow: hidden;
       margin-bottom: 3rem;
     }
-
   }
 </style>
 
-{% comment %} <script>
-  
-window.addEventListener('DOMContentLoaded', () => {
-  if (window.matchMedia('(min-width: 750px)').matches) {
-    return
-  }
+{% comment %}
+  <script>
 
-  const handleCollapse = (heading) => {
-    if (heading.classList.contains('block-collapsed')) {
-      heading.classList.remove('block-collapsed')
-      heading.setAttribute('aria-expanded', 'true')
-    } else {
-      heading.classList.add('block-collapsed')
-      heading.setAttribute('aria-expanded', 'false')
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.matchMedia('(min-width: 750px)').matches) {
+      return
     }
-  }
-  
-  document.querySelectorAll('.grid .footer-block__heading').forEach((heading, index) => {
-    heading.classList.add('block-collapsed_new')
-    heading.setAttribute('role', 'button')
-    heading.setAttribute('aria-expanded', 'false')
-    heading.setAttribute('tabindex', '1')
 
-    heading.nextElementSibling.setAttribute('id', `footer-block-index-${index}`)
-    heading.setAttribute('aria-controls', `footer-block-index-${index}`)
+    const handleCollapse = (heading) => {
+      if (heading.classList.contains('block-collapsed')) {
+        heading.classList.remove('block-collapsed')
+        heading.setAttribute('aria-expanded', 'true')
+      } else {
+        heading.classList.add('block-collapsed')
+        heading.setAttribute('aria-expanded', 'false')
+      }
+    }
 
-    heading.addEventListener('click', () => { handleCollapse(heading) })
-    heading.addEventListener('keypress',  () => { handleCollapse(heading) })
+    document.querySelectorAll('.grid .footer-block__heading').forEach((heading, index) => {
+      heading.classList.add('block-collapsed_new')
+      heading.setAttribute('role', 'button')
+      heading.setAttribute('aria-expanded', 'false')
+      heading.setAttribute('tabindex', '1')
+
+      heading.nextElementSibling.setAttribute('id', `footer-block-index-${index}`)
+      heading.setAttribute('aria-controls', `footer-block-index-${index}`)
+
+      heading.addEventListener('click', () => { handleCollapse(heading) })
+      heading.addEventListener('keypress',  () => { handleCollapse(heading) })
+    })
+
   })
 
-})
-
-</script> {% endcomment %}
+  </script>
+{% endcomment %}
 
 {% schema %}
 {
@@ -464,7 +468,8 @@ window.addEventListener('DOMContentLoaded', () => {
           "id": "heading",
           "default": "Quick links",
           "label": "t:sections.footer.blocks.link_list.settings.heading.label"
-        }, {
+        },
+        {
           "type": "link_list",
           "id": "menu",
           "default": "footer",
@@ -480,10 +485,12 @@ window.addEventListener('DOMContentLoaded', () => {
         {
           "type": "paragraph",
           "content": "t:sections.footer.blocks.brand_information.settings.paragraph.content"
-        }, {
+        },
+        {
           "type": "header",
           "content": "t:sections.footer.blocks.brand_information.settings.header__1.content"
-        }, {
+        },
+        {
           "type": "checkbox",
           "id": "show_social",
           "default": true,
@@ -501,14 +508,16 @@ window.addEventListener('DOMContentLoaded', () => {
           "id": "heading",
           "default": "Heading",
           "label": "t:sections.footer.blocks.text.settings.heading.label"
-        }, {
+        },
+        {
           "type": "richtext",
           "id": "subtext",
           "default": "<p>Share contact information, store details, and brand content with your customers.</p>",
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
         }
       ]
-    }, {
+    },
+    {
       "type": "image",
       "name": "Image",
       "settings": [
@@ -516,7 +525,8 @@ window.addEventListener('DOMContentLoaded', () => {
           "type": "image_picker",
           "id": "image",
           "label": "Image"
-        }, {
+        },
+        {
           "type": "range",
           "id": "image_width",
           "min": 50,
@@ -525,7 +535,8 @@ window.addEventListener('DOMContentLoaded', () => {
           "unit": "px",
           "label": "Image width",
           "default": 100
-        }, {
+        },
+        {
           "type": "select",
           "id": "alignment",
           "label": "Image alignment on large screen",
@@ -533,10 +544,12 @@ window.addEventListener('DOMContentLoaded', () => {
             {
               "value": "",
               "label": "Left"
-            }, {
+            },
+            {
               "value": "center",
               "label": "Center"
-            }, {
+            },
+            {
               "value": "right",
               "label": "Right"
             }
@@ -566,7 +579,8 @@ window.addEventListener('DOMContentLoaded', () => {
         {
           "value": "background-2",
           "label": "t:sections.all.colors.background_2.label"
-        }, {
+        },
+        {
           "value": "inverse",
           "label": "t:sections.all.colors.inverse.label"
         }
@@ -590,63 +604,77 @@ window.addEventListener('DOMContentLoaded', () => {
       "id": "newsletter_heading",
       "default": "Subscribe to our emails",
       "label": "t:sections.footer.settings.newsletter_heading.label"
-    }, {
+    },
+    {
       "type": "header",
       "content": "t:sections.footer.settings.header__9.content",
       "info": "t:sections.footer.settings.header__9.info"
-    }, {
+    },
+    {
       "type": "checkbox",
       "id": "enable_follow_on_shop",
       "default": true,
       "label": "t:sections.footer.settings.enable_follow_on_shop.label"
-    }, {
+    },
+    {
       "type": "header",
       "content": "t:sections.footer.settings.header__2.content",
       "info": "t:sections.footer.settings.header__2.info"
-    }, {
+    },
+    {
       "type": "checkbox",
       "id": "show_social",
       "default": true,
       "label": "t:sections.footer.settings.show_social.label"
-    }, {
+    },
+    {
       "type": "header",
       "content": "t:sections.footer.settings.header__3.content",
       "info": "t:sections.footer.settings.header__4.info"
-    }, {
+    },
+    {
       "type": "checkbox",
       "id": "enable_country_selector",
       "default": true,
       "label": "t:sections.footer.settings.enable_country_selector.label"
-    }, {
+    },
+    {
       "type": "header",
       "content": "t:sections.footer.settings.header__5.content",
       "info": "t:sections.footer.settings.header__6.info"
-    }, {
+    },
+    {
       "type": "checkbox",
       "id": "enable_language_selector",
       "default": true,
       "label": "t:sections.footer.settings.enable_language_selector.label"
-    }, {
+    },
+    {
       "type": "header",
       "content": "t:sections.footer.settings.header__7.content"
-    }, {
+    },
+    {
       "type": "checkbox",
       "id": "payment_enable",
       "default": true,
       "label": "t:sections.footer.settings.payment_enable.label"
-    }, {
+    },
+    {
       "type": "header",
       "content": "t:sections.footer.settings.header__8.content",
       "info": "t:sections.footer.settings.header__8.info"
-    }, {
+    },
+    {
       "type": "checkbox",
       "id": "show_policy",
       "default": false,
       "label": "t:sections.footer.settings.show_policy.label"
-    }, {
+    },
+    {
       "type": "header",
       "content": "t:sections.all.spacing"
-    }, {
+    },
+    {
       "type": "range",
       "id": "margin_top",
       "min": 0,
@@ -655,10 +683,12 @@ window.addEventListener('DOMContentLoaded', () => {
       "unit": "px",
       "label": "t:sections.footer.settings.margin_top.label",
       "default": 0
-    }, {
+    },
+    {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
-    }, {
+    },
+    {
       "type": "range",
       "id": "padding_top",
       "min": 0,
@@ -667,7 +697,8 @@ window.addEventListener('DOMContentLoaded', () => {
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 36
-    }, {
+    },
+    {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
@@ -682,7 +713,8 @@ window.addEventListener('DOMContentLoaded', () => {
     "blocks": [
       {
         "type": "link_list"
-      }, {
+      },
+      {
         "type": "text"
       }
     ]
