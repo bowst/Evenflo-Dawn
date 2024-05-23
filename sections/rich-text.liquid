@@ -21,12 +21,12 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
-              <h1
+              <h2
                 class="rich-text__heading rte inline-richtext evenflo {{ block.settings.heading_size }}"
                 {{ block.shopify_attributes }}
               >
                 {{ block.settings.heading }}
-              </h1>
+              </h2>
             {%- when 'caption' -%}
               <p
                 class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}"

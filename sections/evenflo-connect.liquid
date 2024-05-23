@@ -7,7 +7,7 @@
   <div class="row">
     <div class="one-third column alpha">
       {% if newsletter_heading != blank %}
-        <h2 class="h1 heading-underline">{{ newsletter_heading }}</h2>
+        <h3 class="h1 heading-underline">{{ newsletter_heading }}</h3>
       {% endif %}
       {% if newsletter_text != blank %}
         <div class="newsletter-text">
@@ -25,25 +25,26 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Evenflo Email Subscribe",
-    "class": "section",
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Heading",
-        "default": "Connect with us"
-      }, {
-        "type": "html",
-        "id": "text",
-        "label": "Text"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Evenflo Email Subscribe"
-      }
-    ]
-  }
+{
+  "name": "Evenflo Email Subscribe",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Connect with us"
+    },
+    {
+      "type": "html",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Email Subscribe"
+    }
+  ]
+}
 {% endschema %}
