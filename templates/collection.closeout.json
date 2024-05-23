@@ -15,7 +15,7 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "<strong>NOTE: On these deals, you pay the shipping. <\/strong> We'll keep the cost as reasonable as we can, no mark ups for you.  We update our selection regularly  so, check back whenever you like and, by all means, tell others.",
+            "text": "<strong>NOTE: On these deals, you pay the shipping. <\/strong> We'll keep the cost as reasonable as we can, no mark ups for you.  We update our selection regularly \u2028so, check back whenever you like and, by all means, tell others.",
             "text_style": "body"
           }
         },
@@ -44,7 +44,7 @@
         "desktop_content_position": "top-left",
         "show_text_box": true,
         "desktop_content_alignment": "left",
-        "color_scheme": "accent-1",
+        "color_scheme": "scheme-3",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -55,7 +55,7 @@
       "type": "evenflo-full-width",
       "settings": {
         "heading": "Sometimes we make too much of a good thing",
-        "content": "<p><strong>NOTE: On these deals, you pay the shipping.  We'll keep the cost as reasonable as we can, no mark ups for you.  We update our selection regularly  so, check back whenever you like and, by all means, tell others.<\/strong><\/p>"
+        "content": "<p><strong>NOTE: On these deals, you pay the shipping.  We'll keep the cost as reasonable as we can, no mark ups for you.  We update our selection regularly \u2028so, check back whenever you like and, by all means, tell others.<\/strong><\/p>"
       }
     },
     "banner": {
@@ -72,11 +72,13 @@
       "settings": {
         "products_per_page": 24,
         "columns_desktop": 4,
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": true,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "enable_filtering": true,
         "filter_type": "vertical",
         "enable_sorting": true,
