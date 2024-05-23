@@ -353,29 +353,10 @@
             "heading": "Car Seat Kick Mat",
             "heading_size": "h2"
           }
-        },
-        "text_xELhMh": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        },
-        "button_k8PxDR": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
         }
       },
       "block_order": [
-        "heading_gCDxez",
-        "text_xELhMh",
-        "button_k8PxDR"
+        "heading_gCDxez"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -384,6 +365,35 @@
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "faq_JiJbWk": {
+      "type": "faq",
+      "blocks": {
+        "faq_LqQJxD": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "Can the kick mat be placed on a seat to use rear facing?",
+            "content": "<p>Yes, the kick mat can be used with either a rear or forward facing seat.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_LqQJxD"
+      ],
+      "settings": {
+        "enable_rich_schema": true,
+        "max_width": "64rem",
+        "margin_top": 1,
+        "margin_bottom": 1,
+        "background_color": "#ffffff",
+        "border_color": "#eeeeee",
+        "panel_color": "#fdfdfd",
+        "q_size_small": 1,
+        "q_size_large": 1.4,
+        "q_color": "",
+        "a_color": ""
       }
     }
   },
@@ -396,6 +406,7 @@
     "faq_HBfTDz",
     "rich_text_xUe7eT",
     "faq_qPCgwP",
-    "rich_text_P3dyBe"
+    "rich_text_P3dyBe",
+    "faq_JiJbWk"
   ]
 }
