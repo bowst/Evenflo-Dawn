@@ -257,7 +257,7 @@
       </div>
     {% endif %}
 
-    {% if template == 'product.infant-car-seats'  %}
+    {% if template == 'product.infant-car-seats' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
@@ -809,6 +809,9 @@
           {% if child_height_min_value %}
             {{ child_height_min_value }} -
           {% endif %}
+          {% if child_height_max_value %}
+            {{ child_height_max_value }} lbs <br>
+          {% endif %}
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
@@ -1087,7 +1090,7 @@
         </div>
       </div>
     {% endif %}
-    {% if template == 'product.infant-car-seats'  %}
+    {% if template == 'product.infant-car-seats' %}
       <div class="flex-row">
         <div class="flex-item">
           <h3>Child Fit</h3>
