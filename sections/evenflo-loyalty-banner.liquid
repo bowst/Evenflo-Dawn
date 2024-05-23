@@ -1,4 +1,14 @@
-<a href="https://www.evenflo.com/pages/rewards">
+<a
+  href="
+    {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+      {{ section.settings.bronze_and_silver }}
+    {% elsif customer.tags contains "swell_vip_gold" %}
+      {{ section.settings.gold }}
+    {% else %}
+      {{ section.settings.non_member }}
+    {% endif %}
+  "
+>
   <div style="position: relative;">
     <div class="desktop">
       <img
@@ -82,6 +92,26 @@
   "name": "Evenflo Loyalty Banner",
   "tag": "section",
   "class": "text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bronze_and_silver",
+      "label": "Bronze and Silver Loyalty Banner Link",
+      "default": "Add url here"
+    },
+    {
+      "type": "text",
+      "id": "gold",
+      "label": "Gold Loyalty Banner Link",
+      "default": "Add url here"
+    },
+    {
+      "type": "text",
+      "id": "non_member",
+      "label": "No Loyalty Banner Link",
+      "default": "Add url here"
+    }
+  ],
   "presets": [
     {
       "name": "Evenflo Loyalty Banner"
