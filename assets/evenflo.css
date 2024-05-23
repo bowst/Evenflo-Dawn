@@ -29,7 +29,7 @@ h5,
   left: 0;
   width: 80px;
   height: 4px;
-  background-color: #2996C5;
+  background-color: #2996c5;
 }
 
 .product__title h1 {
@@ -135,7 +135,6 @@ h3.card__information {
   position: relative;
 }
 
-
 /* .image-with-text__heading::after {
   content: '';
   position: absolute;
@@ -146,4 +145,19 @@ h3.card__information {
   background-color: blue !important;
 } */
 
-.button, .shopify-challenge__button, .customer button {text-transform: uppercase}
+.button,
+.shopify-challenge__button,
+.customer button {
+  text-transform: uppercase;
+}
+
+/* EvenFlo Custom CSS */
+#Slide-template--16778004136092__d45dc6d8-bad2-45d5-998a-7fec4800d3ad-1
+  h3.inline-richtext.heading-underline.heading-underline-center {
+  text-align: left !important;
+}
+
+#Slide-template--16778004136092__d45dc6d8-bad2-45d5-998a-7fec4800d3ad-1
+  h3.inline-richtext.heading-underline.heading-underline-center:after {
+  display: none;
+}
