@@ -2483,7 +2483,6 @@ product-info .loading__spinner:not(.hidden) ~ *,
   display: flex;
   grid-area: icons;
   justify-self: end;
-  padding-right: 0.8rem;
 }
 
 .header__icons .shopify-app-block {
@@ -2799,9 +2798,9 @@ details[open] > .header__menu-item .icon-caret {
 .global-settings-popup,
 .header__submenu.global-settings-popup {
   border-radius: var(--popup-corner-radius);
-  border-color: rgba(var(--color-foreground), var(--popup-border-opacity));
+  border-color: rgba(18, 18, 18, 0.1);
   border-style: solid;
-  border-width: var(--popup-border-width);
+  border-width: 1px;
   box-shadow: var(--popup-shadow-horizontal-offset) var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius)
     rgba(var(--color-shadow), var(--popup-shadow-opacity));
   z-index: -1;
@@ -3540,7 +3539,7 @@ details[open] > .header__menu-item::after {
   display: block;
   width: calc(100% - 2.7rem);
   height: 2px;
-  background: rgba(var(--color-base-accent-2), 1);
+  background: #2996c5;
   position: absolute;
   bottom: 12px;
 }
