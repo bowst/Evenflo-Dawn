@@ -1,5 +1,36 @@
 {
   "sections": {
+    "image_banner_EhB8Xm": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_MKjBFd": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MKjBFd"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/stroller-accessories-Header.jpg",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "401ce55f-8dc2-47f6-8040-67332fcb9a11": {
       "type": "evenflo-collection-image-banner",
       "blocks": {
@@ -23,6 +54,7 @@
         "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-heading-1",
         "text_QxTBmR"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/nwbpytaa90ibinraunjm_61a5c043-f252-45ed-a40a-37b12854e9e6.jpg",
         "image_overlay_opacity": 0,
@@ -293,6 +325,7 @@
     }
   },
   "order": [
+    "image_banner_EhB8Xm",
     "401ce55f-8dc2-47f6-8040-67332fcb9a11",
     "61932dcb-05d1-4cd5-9238-cb4b1f4cba58",
     "main",
