@@ -966,7 +966,7 @@ class VariantSelects extends HTMLElement {
   onVariantChange(event) {
     this.updateOptions();
     this.updateMasterId();
-    this.updateSelectedSwatchValue(event);
+    //this.updateSelectedSwatchValue(event);
     this.toggleAddButton(true, '', false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
@@ -980,7 +980,14 @@ class VariantSelects extends HTMLElement {
       this.updateVariantInput();
       this.renderProductInfo();
       this.updateShareUrl();
+      this.updateNameAndBarcode();
     }
+  }
+
+  updateNameAndBarcode() {
+    const nameAndBarcode = document.getElementById(`product-name-and-barcode`);
+    console.log(this.currentVariant.title);
+    nameAndBarcode.innerHTML = `<strong>${this.currentVariant.title}</strong> (#${this.currentVariant.sku})`;
   }
 
   updateOptions() {
@@ -1264,7 +1271,12 @@ class VariantSelects extends HTMLElement {
       if (text) addButtonText.textContent = text;
     } else {
       addButton.removeAttribute('disabled');
-      addButtonText.textContent = window.variantStrings.addToCart;
+      console.log('window.variantStrings: ', window.variantStrings);
+      if (this.currentVariant.available) {
+        addButtonText.textContent = window.variantStrings.addToCart;
+      } else {
+        addButtonText.textContent = window.variantStrings.soldOut;
+      }
     }
 
     if (!modifyClass) return;
