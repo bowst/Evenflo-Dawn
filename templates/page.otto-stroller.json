@@ -39,7 +39,7 @@
         "@media screen and (max-width: 1315px) {.banner__heading {color: black; }}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/rideshare-hero.png",
+        "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 50,
         "underline": false,
         "hide_image_on_mobile": false,
