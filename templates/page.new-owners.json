@@ -3,6 +3,13 @@
     "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
       "type": "image-banner",
       "blocks": {
+        "text_MdmFwf": {
+          "type": "text",
+          "settings": {
+            "text": "WELCOME TO THE FAMILY!",
+            "text_style": "subtitle"
+          }
+        },
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
           "type": "heading",
           "settings": {
@@ -13,6 +20,7 @@
         }
       },
       "block_order": [
+        "text_MdmFwf",
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
       ],
       "settings": {
@@ -22,8 +30,8 @@
         "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "desktop_content_alignment": "right",
         "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
