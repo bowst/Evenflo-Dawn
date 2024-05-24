@@ -178,3 +178,22 @@ details[open] > .header__menu-item {
 .facet-checkbox--disabled {
   color: #12121266;
 }
+
+.collection_swatches .swatch span {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  float: none;
+  display: inline-block;
+  border: #e2e2e2 1px solid;
+  background-clip: padding-box;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.collection_swatches .swatch {
+  display: inline-block;
+  padding: 3px;
+  line-height: 0;
+}
