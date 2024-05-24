@@ -197,3 +197,15 @@ details[open] > .header__menu-item {
   padding: 3px;
   line-height: 0;
 }
+
+.product__info-container input[type='radio'] {
+  position: absolute;
+  opacity: 1;
+  width: 1.6rem;
+  height: 1.6rem;
+  top: 0.7rem;
+  left: -0.4rem;
+  z-index: -1;
+  appearance: none;
+  -webkit-appearance: none;
+}
