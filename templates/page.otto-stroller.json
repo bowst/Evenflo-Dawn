@@ -2,39 +2,6 @@
   "sections": {
     "image_banner_XYae3z": {
       "type": "image-banner",
-      "blocks": {
-        "heading_8rKk9B": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h1",
-            "heading_color": "white"
-          }
-        },
-        "text_iNLJfC": {
-          "type": "text",
-          "settings": {
-            "text": "FROM VISION TO REALITY ENGINEERED FOR PERFORMANCE",
-            "text_style": "subtitle"
-          }
-        },
-        "buttons_eFkzB8": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "SHOP NOW",
-            "button_link_1": "shopify:\/\/products\/shyft-rideshare-all-terrain-stroller-wagon",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_8rKk9B",
-        "text_iNLJfC",
-        "buttons_eFkzB8"
-      ],
       "custom_css": [
         "@media screen and (max-width: 1315px) {.banner__heading {color: black; }}"
       ],
@@ -52,6 +19,48 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
+      }
+    },
+    "rich_text_TT6t9g": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_zy9GtP": {
+          "type": "heading",
+          "settings": {
+            "heading": "THE NEW OTTO™ SELF-FOLDING STROLLER. EXTRAORDINARY.",
+            "heading_size": "h1"
+          }
+        },
+        "text_kULQ4c": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "button_n6fUjC": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zy9GtP",
+        "text_kULQ4c",
+        "button_n6fUjC"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "video_with_text_YTKmk6": {
@@ -283,6 +292,7 @@
   },
   "order": [
     "image_banner_XYae3z",
+    "rich_text_TT6t9g",
     "video_with_text_YTKmk6",
     "main",
     "multicolumn_gEVQyb",
