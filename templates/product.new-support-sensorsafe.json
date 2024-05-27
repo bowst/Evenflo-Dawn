@@ -1,0 +1,253 @@
+{
+  "sections": {
+    "2feff113-6913-4882-9954-94bc812affee": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "main": {
+      "type": "support-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "Product Support",
+            "text_style": "subtitle"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "333ce9dc-b67c-488e-9229-c10a4d8f0955": {
+          "type": "sku",
+          "disabled": true,
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "17db0a17-b1eb-40e8-8c1e-ebb5ce651290": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "76143d3c-48ec-4288-9eb7-b75885b0c83d": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% assign pdp_url = product.metafields.custom.pdp_page_link_from_support.value.url %}\n<a href=\"{{ pdp_url }}\" class=\"button\">Return to Product<\/a><br>"
+          }
+        },
+        "7d3fc713-88b9-40d6-9efb-49d04063c8f2": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% assign user_manual_value = product.metafields.sf_products.manual %}\n              {% assign user_manual_french_value = product.metafields.sf_products.manual_french %}\n              {% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}\n    \n              {% if user_manual_value %}\n                <a class=\"\" href=\"{{ user_manual_value }}\" target=\"new\">Download Manual (en)<\/a><br>\n              {% endif %}\n    \n              {% if user_manual_french_value %}\n                <a class=\"\" href=\"{{ user_manual_french_value }}\" target=\"new\">Download Manual (fr)<\/a><br>\n              {% endif %}\n    \n              {% if user_manual_spanish_value %}\n                <a class=\"\" href=\"{{ user_manual_spanish_value }}\" target=\"new\">Download Manual (es)<\/a>\n              {% endif %}"
+          }
+        },
+        "0b337d61-49ad-42e6-8250-94f5d6b61af5": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "",
+            "make_collapsible_row": true,
+            "icon": "none",
+            "product_list_limit": 5,
+            "products_per_page": 1,
+            "pagination_style": "dots",
+            "image_ratio": "portrait",
+            "enable_quick_add": true
+          }
+        },
+        "custom_liquid_RDWG7y": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "333ce9dc-b67c-488e-9229-c10a4d8f0955",
+        "quantity_selector",
+        "17db0a17-b1eb-40e8-8c1e-ebb5ce651290",
+        "76143d3c-48ec-4288-9eb7-b75885b0c83d",
+        "7d3fc713-88b9-40d6-9efb-49d04063c8f2",
+        "0b337d61-49ad-42e6-8250-94f5d6b61af5",
+        "custom_liquid_RDWG7y"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "columns",
+        "media_position": "right",
+        "image_zoom": "none",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 44,
+        "padding_bottom": 0
+      }
+    },
+    "0a42f2ea-4e18-47d4-8b84-0fe650baeb9b": {
+      "type": "divider",
+      "settings": {
+        "divider_spacing": 20,
+        "divider_border": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "41906093-eee6-46f4-9a23-468b17fd3615": {
+      "type": "evenflo-full-width",
+      "settings": {
+        "heading": "{{ product.title }}",
+        "content": ""
+      }
+    },
+    "fd9aba4d-92f4-481e-8997-c69a78b2cf01": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-1": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "{% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}\n          {% if retail_package_contents_value %}\n<h3>Contents<\/h3>\n             {{ retail_package_contents_value }}\n\n          {% endif %}\n\n          {% assign assembled_width = product.metafields.sf_products.assembled_width %}\n          {% assign assembled_height = product.metafields.sf_products.assembled_height %}\n          {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}\n          {% if assembled_width and assembled_height and assembled_depth %}\n            <div class=\"flex-item\">\n              <h3>Product Dimensions<\/h3>\n              <p>{{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in<\/p>\n            <\/div>\n          {% endif %}\n          {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}\n          {% if folded_dimensions %}\n            <div class=\"flex-item\">\n              <h3>Folded Dimensions<\/h3>\n              <p>{{ folded_dimensions }}<\/p>\n            <\/div>\n          {% endif %}\n          {% assign package_width = product.metafields.sf_shipping.package_width %}\n          {% assign package_height = product.metafields.sf_shipping.package_height %}\n          {% assign package_depth = product.metafields.sf_shipping.package_depth %}\n          {% if package_width and package_height and package_depth %}\n            <div class=\"flex-item\">\n              <h3>Package Dimensions<\/h3>\n              <p>{{ package_width }} x {{ package_height }} x {{ package_depth }} in<\/p>\n            <\/div>\n          {% endif %}\n\n          {% assign assembled_weight = product.metafields.sf_products.assembled_weight %}\n          {% if assembled_weight %}\n            <div class=\"flex-item\">\n              <h3>Product Weight<\/h3>\n              <p>{{ assembled_weight }} lbs.<\/p>\n            <\/div>\n          {% endif %}\n          {% assign package_weight = product.metafields.sf_shipping.package_weight %}\n          {% if package_weight %}\n            <div class=\"flex-item\">\n              <h3>Package Weight<\/h3>\n              <p>{{ package_weight }} lbs.<\/p>\n            <\/div>\n          {% endif %}\n\n          {% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}\n          {% if carrier_weight_without_base %}\n            <div class=\"flex-item\">\n              <h3>Weight w\/o Base<\/h3>\n              <p>{{ carrier_weight_without_base }} lbs.<\/p>\n            <\/div>\n          {% endif %}\n\n          <!-- optional section -->\n          {% assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method %}\n          {% assign harness_type = product.metafields.sf_products.harness_type %}\n          {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}\n          {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}\n          {% assign latch_install = product.metafields.sf_car_seat.latch_install %}\n          {% assign maturity = product.metafields.sf_products.maturity %}\n\n          {% if harness_rethread_method or harness_type %}\n            {% if harness_type %}\n              <div class=\"flex-item\">\n                <h3>Harness Type<\/h3>\n                <p>\n                  {{ harness_type }}\n                <\/p>\n              <\/div>\n            {% endif %}\n            {% if harness_rethread_method %}\n              <div class=\"flex-item\">\n                <h3>Harness Rethread<\/h3>\n                <p>\n                  {{ harness_rethread_method }}\n                <\/p>\n              <\/div>\n            {% endif %}\n          {% endif %}\n          {% if bubble_level or harness_covers or latch_install %}\n            {% if bubble_level == 1 %}\n              <div class=\"flex-item\">\n                <h3>Bubble Level<\/h3>\n                <p>Yes<\/p>\n              <\/div>\n            {% endif %}\n            {% if harness_covers == 1 %}\n              <div class=\"flex-item\">\n                <h3>Harness Covers<\/h3>\n                <p>Yes<\/p>\n              <\/div>\n            {% endif %}\n            {% if latch_installs == 1 %}\n              <div class=\"flex-item\">\n                <h3>Latch Install<\/h3>\n                <p>Yes<\/p>\n              <\/div>\n            {% endif %}\n          {% endif %}\n\n          <div class=\"flex-item\">\n            <h3>Assembly Required<\/h3>\n            {% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}\n            {% if assembly_switch_spec == 1 %}\n              <p>Yes<\/p>\n            {% else %}\n              <p>No<\/p>\n            {% endif %}\n          <\/div>\n          <div class=\"flex-item\">\n            {% assign my_switch = product.metafields.sf_gates.hardware_included %}\n            <h3>Hardware Included<\/h3>\n            {% if my_switch == 1 %}\n              <p>Yes<\/p>\n            {% else %}\n              <p>No<\/p>\n            {% endif %}\n          <\/div>",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "eb9dc3ba-9e48-40d8-9b65-ed98afa2919d": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}\n      {% if care_copy %}\n<h3>Care<\/h3>\n        <ul>\n          {% for li in care_copy %}\n            <li>{{ li }}<\/li>\n          {% endfor %}\n        <\/ul>\n      {% endif %}\n<br>\n      <h3>Materials<\/h3>\n      {% assign material = product.metafields.sf_products.material %}\n      {% if material %}\n        <p>{{ material }}<\/p>\n      {% endif %}\n<br>",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-2": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "{% assign specifications_image = product.metafields.sf_products.specifications_image %}\n        {% if specifications_image %}\n          <image loading=\"lazy\" alt=\"{{ product.title }} Specifications\" src=\"{{ specifications_image }}\">\n        {% endif %}",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-1",
+        "eb9dc3ba-9e48-40d8-9b65-ed98afa2919d",
+        "template--15827801309340__fd9aba4d-92f4-481e-8997-c69a78b2cf01-column-2"
+      ],
+      "settings": {
+        "title": "What's in the box?",
+        "heading_size": "h1 heading-underline",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "1c5fa1be-a19b-426c-bff9-ee3a54765a5e": {
+      "type": "evenflo-product-support",
+      "settings": {
+        "support_heading": "Support"
+      }
+    },
+    "b02c1d00-95cb-4bed-804e-91e6f50a14a8": {
+      "type": "evenflo-faq",
+      "settings": {
+        "number_of_faq": 5
+      }
+    },
+    "7ce8e4f0-1a1e-401a-b824-7823e960cf0d": {
+      "type": "HTML",
+      "settings": {
+        "html": ""
+      }
+    },
+    "45849377-4cee-48de-b8f8-52fd115e29b4": {
+      "type": "evenflo-video-support",
+      "settings": {
+        "heading": "Free Video Chat Support",
+        "description": "Need some real-time help? Schedule a live video call with us and we'll walk you through.",
+        "button_label": "Book Now",
+        "button_link": "shopify:\/\/pages\/about-evenflo"
+      }
+    },
+    "e099350c-2fd2-4f22-9c2f-cbafa04f15bb": {
+      "type": "evenflo-parentlink",
+      "settings": {
+        "heading": "Supported By",
+        "left_content": "<h3>Email<\/h3>\n\nNo time to chat?<br>\n<a href=\"mailto:parentlink@evenflo.com\">Email us<\/a> your inquiry",
+        "right_content": "<h3>Phone<\/h3>\n\n1-800-233-5921 (US)<br>\n1-937-773-3971 (Canada)"
+      }
+    },
+    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
+      "type": "evenflo-quote",
+      "disabled": true,
+      "settings": {
+        "quote": "Qupte",
+        "name": "Name"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You May Also Like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "2feff113-6913-4882-9954-94bc812affee",
+    "main",
+    "0a42f2ea-4e18-47d4-8b84-0fe650baeb9b",
+    "41906093-eee6-46f4-9a23-468b17fd3615",
+    "fd9aba4d-92f4-481e-8997-c69a78b2cf01",
+    "1c5fa1be-a19b-426c-bff9-ee3a54765a5e",
+    "b02c1d00-95cb-4bed-804e-91e6f50a14a8",
+    "7ce8e4f0-1a1e-401a-b824-7823e960cf0d",
+    "45849377-4cee-48de-b8f8-52fd115e29b4",
+    "e099350c-2fd2-4f22-9c2f-cbafa04f15bb",
+    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
+    "related-products"
+  ]
+}
