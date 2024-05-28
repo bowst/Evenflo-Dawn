@@ -1,6 +1,28 @@
+<section class="join">
+  <div id="pixlee_container"></div><script type="text/javascript">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:{{ product.handle }},setMetaTags:true});};</script><script src="https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>xlee_widget_1_0_0.js"></script></section>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Evenflo Pixlee",
+  "class": "content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "pixlee_id",
+      "label": "Pixlee ID",
+      "default": "Pixlee ID"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Emplifi"
+    }
+  ]
+}
 {% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
