@@ -1,5 +1,14 @@
 {
   "sections": {
+    "custom_liquid_D6FFir": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -106,6 +115,7 @@
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
       "settings": {
+        "product_handles": ""
       }
     },
     "related-products": {
@@ -275,6 +285,7 @@
     }
   },
   "order": [
+    "custom_liquid_D6FFir",
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "49c36a4c-d12e-4b40-99dc-d0893ec62107",
