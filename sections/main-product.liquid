@@ -105,8 +105,10 @@
                               </div>
                             {% endif %}
                             <div class="installment-info">
-                              <span>Starting at $50/mo with affirm</span>
-                              <a href="#" class="learn-more">Learn More</a>
+                              {% comment %}
+                                <span>Starting at $50/mo with affirm</span>
+                                <a href="#" class="learn-more">Learn More</a>
+                              {% endcomment %}
                             </div>
                           </div>
                         </div>
@@ -146,7 +148,6 @@
                   show_badges: true,
                   price_class: 'price--large'
                 -%}
-                
               </div>
 
             {%- when 'inventory' -%}
@@ -588,26 +589,26 @@
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>
-{%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-                  <div class="product__tax caption rte">
-                    {%- if shop.taxes_included -%}
-                      {{ 'products.product.include_taxes' | t }}
-                    {%- endif -%}
-                    {%- if shop.shipping_policy.body != blank -%}
-                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
-                <!-- Yotpo Points Display -->
-                {% include 'Yotpo-points-display' %}
-                <!-- End Yotpo Points Display -->
-                <div {{ block.shopify_attributes }}>
-                  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-                  {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                    {{ form | payment_terms }}
-                  {%- endform -%}
-                </div>
+        {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+          <div class="product__tax caption rte">
+            {%- if shop.taxes_included -%}
+              {{ 'products.product.include_taxes' | t }}
+            {%- endif -%}
+            {%- if shop.shipping_policy.body != blank -%}
+              {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        <!-- Yotpo Points Display -->
+        {% include 'Yotpo-points-display' %}
+        <!-- End Yotpo Points Display -->
+        <div {{ block.shopify_attributes }}>
+          {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+          {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {{ form | payment_terms }}
+          {%- endform -%}
+        </div>
       </product-info>
     </div>
     {%- if section.settings.media_position == 'right' -%}
