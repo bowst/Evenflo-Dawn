@@ -1,0 +1,219 @@
+{{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
+
+  <section class="container">
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+    <!-- Block 1: Heading -->
+    <div class="block heading">
+        <h1>Our Products</h1>
+    </div>
+
+    {%- when 'search' -%}
+    <!-- Block 2: Search Box -->
+    <div class="block search">
+        <input type="text" id="searchBox" placeholder="Search products...">
+        <button onclick="searchProducts()">Search</button>
+    </div>
+    
+    {%- when 'links' -%}
+    <!-- Block 3: Button Links -->
+    <div class="block links">
+        <button onclick="alert('Link 1 clicked')">Link 1</button>
+        <button onclick="alert('Link 2 clicked')">Link 2</button>
+    </div>
+
+
+    {%- when 'products' -%}
+    <!-- Block 4: Products -->
+    <div id="products-container" class="block products">
+        <div class="product">
+            <h2>Product 1</h2>
+            <p>Price: $10</p>
+        </div>
+        
+    </div>
+
+  {%- endcase -%}
+{%- endfor -%}
+</section>
+
+
+
+
+
+
+
+  <script>
+    var hostURL="127.0.0.1:8000/api/"
+
+    function searchProducts() {
+      const searchValue = document.getElementById('searchBox').value;
+      alert(`Searching for: ${searchValue}`);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    fetch(hostURL+'get_products')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('products-container');
+            data.products.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product');
+                
+                const productTitle = document.createElement('h2');
+                productTitle.textContent = product.name;
+                productDiv.appendChild(productTitle);
+                
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `Price: $${product.price}`;
+                productDiv.appendChild(productPrice);
+                
+                container.appendChild(productDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching products:', error));
+});
+    </script>
+
+
+{% schema %}
+{
+  "name": "evenflo-faq-hero",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+      ]
+    },
+    {
+      "type": "search",
+      "name": "Search",
+      "limit": 1,
+      "settings": [
+    
+      ]
+    },
+    {
+      "type": "links",
+      "name": "Links",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        }
+      ]
+    },
+    {
+      "type": "products",
+      "name": "Products",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "range",
+          "id": "number_of_products",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "unit": "s",
+          "label": "Range of products",
+          "default": 3
+        }
+        
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.rich-text.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "search"
+        },
+        {
+          "type": "links"
+        },
+        {
+          "type": "products"
+        }
+      ]
+    }
+  ]
+  
+}
+{% endschema %}
