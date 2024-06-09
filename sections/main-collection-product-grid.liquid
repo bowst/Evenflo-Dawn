@@ -245,6 +245,7 @@
                           {%- assign lazy_load = true -%}
                         {%- endif -%}
                         <li class="grid__item">
+                          {{ product.template_suffix }}
                           {% render 'card-product',
                             card_product: product,
                             media_aspect_ratio: section.settings.image_ratio,
@@ -268,6 +269,7 @@
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
                 <li class="grid__item">
+                  {{ product.template_suffix }}
                   {% render 'card-product',
                     card_product: product,
                     media_aspect_ratio: section.settings.image_ratio,
