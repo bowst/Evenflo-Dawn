@@ -29,7 +29,7 @@
 
     {%- when 'products' -%}
     <!-- Block 4: Products -->
-    <div id="products-container" class="block products">
+    <div id="products-container" class="block products-container" data-products-to-show="{{ block.settings.products_to_show }}">
         <div class="product">
             <h2>Product 1</h2>
             <p>Price: $10</p>
@@ -60,6 +60,15 @@
         .then(response => response.json())
         .then(data => {
             const container = document.getElementById('products-container');
+
+            const productListBlock = document.querySelector('.products-container');
+            if (productListBlock) {
+              const productsToShow = productListBlock.getAttribute('data-products-to-show');
+              alert('Number of products to show:', productsToShow);
+          
+              // Use the productsToShow value in your JavaScript logic
+              // For example, you might fetch and display the products here
+            }
             data.products.forEach(product => {
                 const productDiv = document.createElement('div');
                 productDiv.classList.add('product');
@@ -181,11 +190,11 @@
     {
       "type": "products",
       "name": "Products",
-      "limit": 2,
+      //"limit": 3,
       "settings": [
         {
           "type": "range",
-          "id": "number_of_products",
+          "id": "products_to_show",
           "min": 1,
           "max": 3,
           "step": 1,
