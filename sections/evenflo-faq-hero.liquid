@@ -28,11 +28,11 @@
 
 
     {%- when 'products' -%}
-      <script>
-        var productsToShow = {{ block.settings.products_to_show }};
-      </script>
+      {% assign productsToShow=block.settings.products_to_show %}
+      
     <!-- Block 4: Products -->
     <div id="products-container" class="block products-container" data-products-to-show="{{ block.settings.products_to_show }}">
+      {{ productsToShow }}
         <div class="product">
             <h2>Product 1</h2>
             <p>Price: $10</p>
