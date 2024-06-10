@@ -54,10 +54,10 @@
 
     function searchProducts() {
       const searchValue = document.getElementById('searchBox').value;
-      var productsContainer = document.getElementById('productsContainer');
-      console.log('productsContainer',productsContainer.dataset.productsToShow)
-      if (productsContainer) {
-        var productsToShow = productsContainer.dataset.productsToShow;
+      let productsContainer = document.getElementById('productsContainer');
+      let productsToShow=productsContainer.dataset.productsToShow ;
+      alert(productsToShow)
+      if (productsToShow > 1) {
         alert('Number of products to show:', productsToShow);
     
         // Use the productsToShow value in your JavaScript logic
