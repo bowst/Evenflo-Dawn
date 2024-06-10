@@ -54,18 +54,23 @@
 
     function searchProducts() {
       const searchValue = document.getElementById('searchBox').value;
-      let productsContainer = document.getElementById('productsContainer');
-      let productsToShow=productsContainer.dataset.productsToShow ;
-      alert(productsToShow)
+      let productsToShow=getNumberOfProducts();
+      alert("33"+productsToShow)
+     
       if (productsToShow > 1) {
-        alert('Number of products to show:', productsToShow);
+        alert('Number of products to show:'+productsToShow);
     
         // Use the productsToShow value in your JavaScript logic
         // For example, you might fetch and display the products here
       } else {
         alert('Element with id "products-container" not found');
       }
-      alert(`Searching for: ${searchValue}`);
+  }
+
+  function getNumberOfProducts(){
+    let productsContainer = document.getElementById('productsContainer');
+    let productsToShow=productsContainer.dataset.productsToShow;
+    return productsToShow
   }
 
   document.addEventListener('DOMContentLoaded', function() {
