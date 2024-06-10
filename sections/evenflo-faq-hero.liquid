@@ -55,11 +55,15 @@
 
     function searchProducts() {
       const searchValue = document.getElementById('searchBox').value;
-      if (productsToShow) {
+      var productsContainer = document.getElementById('products-container');
+      if (productsContainer) {
+        var productsToShow = productsContainer.dataset.productsToShow;
         alert('Number of products to show:', productsToShow);
     
         // Use the productsToShow value in your JavaScript logic
         // For example, you might fetch and display the products here
+      } else {
+        alert('Element with id "products-container" not found');
       }
       alert(`Searching for: ${searchValue}`);
   }
