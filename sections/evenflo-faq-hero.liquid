@@ -6,8 +6,10 @@
       {%- case block.type -%}
         {%- when 'heading' -%}
     <!-- Block 1: Heading -->
-    <div class="block heading">
-        <h1>Our Products</h1>
+    <div class="block heading {{ block.settings.heading_size }}">
+     
+     {{ block.settings.heading }}
+     
     </div>
 
     {%- when 'search' -%}
@@ -114,7 +116,7 @@
       "name": "Heading",
       "settings": [
         {
-          "type": "inline_richtext",
+          "type": "text",
           "id": "heading",
           "default": "Talk about your brand",
           "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
@@ -140,7 +142,7 @@
               "label": "t:sections.all.heading_size.options__4.label"
             }
           ],
-          "default": "h1",
+          "default": "h2",
           "label": "t:sections.all.heading_size.label"
         }
       ]
@@ -197,7 +199,7 @@
   ],
   "presets": [
     {
-      "name": "EvenFlo FAQ Hero",
+      "name": "t:sections.rich-text.presets.name",
       "blocks": [
         {
           "type": "heading"
