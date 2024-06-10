@@ -55,7 +55,7 @@
     function searchProducts() {
       const searchValue = document.getElementById('searchBox').value;
       var productsContainer = document.getElementById('productsContainer');
-      console.log('productsContainer',productsContainer)
+      console.log('productsContainer',productsContainer.dataset.productsToShow)
       if (productsContainer) {
         var productsToShow = productsContainer.dataset.productsToShow;
         alert('Number of products to show:', productsToShow);
