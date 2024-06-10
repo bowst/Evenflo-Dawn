@@ -52,23 +52,32 @@
 
     function searchProducts() {
       const searchValue = document.getElementById('searchBox').value;
+      const productListBlock = document.querySelector('.products-container');
+      if (productListBlock) {
+        const productsToShow = productListBlock.getAttribute('data-products-to-show');
+        alert('Number of products to show:', productsToShow);
+    
+        // Use the productsToShow value in your JavaScript logic
+        // For example, you might fetch and display the products here
+      }
       alert(`Searching for: ${searchValue}`);
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+    const productListBlock = document.querySelector('.products-container');
+    if (productListBlock) {
+      const productsToShow = productListBlock.getAttribute('data-products-to-show');
+      alert('Number of products to show:', productsToShow);
+  
+      // Use the productsToShow value in your JavaScript logic
+      // For example, you might fetch and display the products here
+    }
     fetch(hostURL+'get_products')
         .then(response => response.json())
         .then(data => {
             const container = document.getElementById('products-container');
 
-            const productListBlock = document.querySelector('.products-container');
-            if (productListBlock) {
-              const productsToShow = productListBlock.getAttribute('data-products-to-show');
-              alert('Number of products to show:', productsToShow);
-          
-              // Use the productsToShow value in your JavaScript logic
-              // For example, you might fetch and display the products here
-            }
+    
             data.products.forEach(product => {
                 const productDiv = document.createElement('div');
                 productDiv.classList.add('product');
