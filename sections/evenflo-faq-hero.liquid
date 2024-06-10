@@ -28,11 +28,10 @@
 
 
     {%- when 'products' -%}
-      {% assign productsToShow=block.settings.products_to_show %}
       
     <!-- Block 4: Products -->
-    <div id="products-container" class="block products-container" data-products-to-show="{{ block.settings.products_to_show }}">
-      {{ productsToShow }}
+    <div id="productsContainer" class="block products-container" data-products-to-show="{{ block.settings.products_to_show }}">
+      {{ block.settings.products_to_show}}
         <div class="product">
             <h2>Product 1</h2>
             <p>Price: $10</p>
@@ -55,7 +54,7 @@
 
     function searchProducts() {
       const searchValue = document.getElementById('searchBox').value;
-      var productsContainer = document.getElementById('products-container');
+      var productsContainer = document.getElementById('productsContainer');
       console.log('productsContainer',productsContainer)
       if (productsContainer) {
         var productsToShow = productsContainer.dataset.productsToShow;
