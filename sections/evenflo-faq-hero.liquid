@@ -28,6 +28,9 @@
 
 
     {%- when 'products' -%}
+      <script>
+        var productsToShow = {{ block.settings.products_to_show }};
+      </script>
     <!-- Block 4: Products -->
     <div id="products-container" class="block products-container" data-products-to-show="{{ block.settings.products_to_show }}">
         <div class="product">
@@ -52,9 +55,7 @@
 
     function searchProducts() {
       const searchValue = document.getElementById('searchBox').value;
-      const productListBlock = document.querySelector('.products-container');
-      if (productListBlock) {
-        const productsToShow = productListBlock.getAttribute('data-products-to-show');
+      if (productsToShow) {
         alert('Number of products to show:', productsToShow);
     
         // Use the productsToShow value in your JavaScript logic
@@ -64,9 +65,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    const productListBlock = document.querySelector('.products-container');
-    if (productListBlock) {
-      const productsToShow = productListBlock.getAttribute('data-products-to-show');
+    if (productsToShow) {
       alert('Number of products to show:', productsToShow);
   
       // Use the productsToShow value in your JavaScript logic
