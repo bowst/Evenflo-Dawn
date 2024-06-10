@@ -28,10 +28,11 @@
 
 
     {%- when 'products' -%}
+      {% assign productsToShow= block.settings.products_to_show %}
       
     <!-- Block 4: Products -->
-    <div id="productsContainer" class="block products-container" data-products-to-show="{{ block.settings.products_to_show }}">
-      {{ block.settings.products_to_show}}
+    <div id="productsContainer" class="block products-container" data-products-to-show="{{ productsToShow }}">
+      {{ productsToShow}}
         <div class="product">
             <h2>Product 1</h2>
             <p>Price: $10</p>
@@ -55,7 +56,6 @@
     function searchProducts() {
       const searchValue = document.getElementById('searchBox').value;
       let productsToShow=getNumberOfProducts();
-      alert("33"+productsToShow)
      
       if (productsToShow > 1) {
         alert('Number of products to show:'+productsToShow);
