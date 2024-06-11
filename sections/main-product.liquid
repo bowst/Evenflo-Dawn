@@ -72,26 +72,41 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'related_products' -%}
-              {% if product.metafields.product_info.related_products %}
-                {% assign relatedProducts = product.metafields.product_info.related_products.value %}
-                <!-- check at least one recommended product is available -->
+              {% if product.metafields.product_info.show_variants_button %}
+                {% if product.metafields.product_info.related_products %}
+                  {% assign relatedProducts = product.metafields.product_info.related_products.value %}
+                  <!-- check at least one recommended product is available -->
 
-                <p class="product__text inline-richtext subtitle heading-underline">
-                  {{ block.settings.heading }}
-                </p>
+                  <p class="product__text inline-richtext subtitle heading-underline">
+                    {{ block.settings.heading }}
+                  </p>
 
-                <div class="related-products">
-                  {% for prod in relatedProducts %}
-                    {% if prod.available == true %}
-                      <a
-                        href="{{ prod.url }}"
+                  <div class="related-products">
+                    {% for prod in relatedProducts %}
+                      {% if prod.available == true %}
+                        <div class="product-card {% if product.title == prod.title %} active {% endif %}">
+                          {% if product.title != prod.title %}
+                            <a
+                              class="product-card-wrapper-link"
+                              href="{{ prod.url }}"
+                              href="{{ prod.url }}"
 
-                        aria-label="{{prod.title}}"
-                        title="{{ prod.title }}"
-                      >
-                        <div class="product-card">
+                              href="{{ prod.url }}"
+
+                              aria-label="{{prod.title}}"
+                              title="{{ prod.title }}"
+                            >
+                            </a>
+                          {% endif %}
+
                           <div class="product-header">
-                            <div class="product-name ">{{ prod.title }}</div>
+                            <div class="product-name ">
+                              {% if prod.metafields.product_info.related_product_title %}
+                                {{ prod.metafields.product_info.related_product_title }}
+                              {% else %}
+                                {{ prod.title }}
+                              {% endif %}
+                            </div>
                             {% if prod.metafields.product_info.related_sub_title %}
                               <div class="product-type">
                                 {{ prod.metafields.product_info.related_sub_title }}
@@ -104,18 +119,12 @@
                                 {{- prod.price | money -}}
                               </div>
                             {% endif %}
-                            <div class="installment-info">
-                              {% comment %}
-                                <span>Starting at $50/mo with affirm</span>
-                                <a href="#" class="learn-more">Learn More</a>
-                              {% endcomment %}
-                            </div>
                           </div>
                         </div>
-                      </a>
-                    {% endif %}
-                  {% endfor %}
-                </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
               {% endif %}
             {%- when '@app' -%}
               {% render block %}
