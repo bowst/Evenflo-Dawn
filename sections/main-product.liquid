@@ -60,7 +60,7 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
-    
+
   <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper{% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %}">
       {% render 'product-media-gallery', variant_images: variant_images %}
@@ -77,26 +77,41 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'related_products' -%}
-              {% if product.metafields.product_info.related_products %}
-                {% assign relatedProducts = product.metafields.product_info.related_products.value %}
-                <!-- check at least one recommended product is available -->
+              {% if product.metafields.product_info.show_variants_button %}
+                {% if product.metafields.product_info.related_products %}
+                  {% assign relatedProducts = product.metafields.product_info.related_products.value %}
+                  <!-- check at least one recommended product is available -->
 
-                <p class="product__text inline-richtext subtitle heading-underline">
-                  {{ block.settings.heading }}
-                </p>
+                  <p class="product__text inline-richtext subtitle heading-underline">
+                    {{ block.settings.heading }}
+                  </p>
 
-                <div class="related-products">
-                  {% for prod in relatedProducts %}
-                    {% if prod.available == true %}
-                      <a
-                        href="{{ prod.url }}"
+                  <div class="related-products">
+                    {% for prod in relatedProducts %}
+                      {% if prod.available == true %}
+                        <div class="product-card {% if product.title == prod.title %} active {% endif %}">
+                          {% if product.title != prod.title %}
+                            <a
+                              class="product-card-wrapper-link"
+                              href="{{ prod.url }}"
+                              href="{{ prod.url }}"
 
-                        aria-label="{{prod.title}}"
-                        title="{{ prod.title }}"
-                      >
-                        <div class="product-card">
+                              href="{{ prod.url }}"
+
+                              aria-label="{{prod.title}}"
+                              title="{{ prod.title }}"
+                            >
+                            </a>
+                          {% endif %}
+
                           <div class="product-header">
-                            <div class="product-name ">{{ prod.title }}</div>
+                            <div class="product-name ">
+                              {% if prod.metafields.product_info.related_product_title %}
+                                {{ prod.metafields.product_info.related_product_title }}
+                              {% else %}
+                                {{ prod.title }}
+                              {% endif %}
+                            </div>
                             {% if prod.metafields.product_info.related_sub_title %}
                               <div class="product-type">
                                 {{ prod.metafields.product_info.related_sub_title }}
@@ -109,16 +124,12 @@
                                 {{- prod.price | money -}}
                               </div>
                             {% endif %}
-                            <div class="installment-info">
-                              <span>Starting at $50/mo with affirm</span>
-                              <a href="#" class="learn-more">Learn More</a>
-                            </div>
                           </div>
                         </div>
-                      </a>
-                    {% endif %}
-                  {% endfor %}
-                </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
               {% endif %}
             {%- when '@app' -%}
               {% render block %}
@@ -151,7 +162,6 @@
                   show_badges: true,
                   price_class: 'price--large'
                 -%}
-                
               </div>
 
             {%- when 'inventory' -%}
@@ -593,26 +603,26 @@
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
         </a>
-{%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-                  <div class="product__tax caption rte">
-                    {%- if shop.taxes_included -%}
-                      {{ 'products.product.include_taxes' | t }}
-                    {%- endif -%}
-                    {%- if shop.shipping_policy.body != blank -%}
-                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
-                <!-- Yotpo Points Display -->
-                {% include 'Yotpo-points-display' %}
-                <!-- End Yotpo Points Display -->
-                <div {{ block.shopify_attributes }}>
-                  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-                  {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                    {{ form | payment_terms }}
-                  {%- endform -%}
-                </div>
+        {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+          <div class="product__tax caption rte">
+            {%- if shop.taxes_included -%}
+              {{ 'products.product.include_taxes' | t }}
+            {%- endif -%}
+            {%- if shop.shipping_policy.body != blank -%}
+              {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        <!-- Yotpo Points Display -->
+        {% include 'Yotpo-points-display' %}
+        <!-- End Yotpo Points Display -->
+        <div {{ block.shopify_attributes }}>
+          {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+          {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {{ form | payment_terms }}
+          {%- endform -%}
+        </div>
       </product-info>
     </div>
     {%- if section.settings.media_position == 'right' -%}
