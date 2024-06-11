@@ -1862,4 +1862,21 @@ a.product__text {
 
 .related-products .product-card {
   max-width: 530px;
+  gap: 10px;
+}
+
+.related-products .product-card .product-card-wrapper-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.related-products .product-card.active {
+  border: 1px solid #00aea9;
+}
+
+.related-products .product-card:hover {
+  background: #e3f2f3;
 }
