@@ -3,7 +3,7 @@
   <section class="container">
     <h1>{{ section.settings.popularQuestionTitle }}</h1>
 
-      {% assign productsToShow= section.settings.popularQuestionTitle%}
+      {% assign productsToShow= section.settings.popularQuestionRange%}
       
     <!-- Block 4: Products -->
     <div id="productsContainer" class="block products-container" data-products-to-show="{{ productsToShow }}">
@@ -20,6 +20,7 @@
 
 
 <script>
+    var hostURL="127.0.0.1:8000/api/";
     document.addEventListener('DOMContentLoaded', function() {
         if (productsToShow) {
           alert('Number of products to show:', productsToShow);
