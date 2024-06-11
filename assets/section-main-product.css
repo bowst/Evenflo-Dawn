@@ -1775,28 +1775,36 @@ a.product__text {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
+
 .related-products .product-name {
   text-decoration: none;
   color: rgba(var(--color-foreground), 0.75);
 }
 
 .related-products .product-header {
-  display: flex; /* Apply flex container to the header */
-  justify-content: space-between; /* Space between the name and price */
+  display: flex;
+  /* Apply flex container to the header */
+  justify-content: space-between;
+  /* Space between the name and price */
   /* Align items vertically */
-  margin-bottom: 15px; /* Add some margin to the bottom */
+  margin-bottom: 15px;
+  /* Add some margin to the bottom */
   text-decoration: none;
   flex-direction: column;
+  flex: 3;
 }
 
 .related-products .product-name {
-  font-size: 16px;
+  font-size: 14px !important;
   margin: 0;
-  flex: 3; /* 3/4 of the space */
+  flex: 3;
+  /* 3/4 of the space */
   font-family: var(--font-body-family);
   text-decoration: none !important;
 }
+
 .related-products a.product-name {
   text-decoration: none !important;
 }
@@ -1806,24 +1814,30 @@ a.product__text {
   font-weight: bold;
   margin: 0;
   color: black;
-  flex: 1; /* 1/4 of the space */
+  flex: 1;
+  /* 1/4 of the space */
 }
 
 .related-products .product-type {
-  font-size: 12px;
+  font-size: 12px !important;
+  line-height: 1.3;
   color: #555;
   margin: 0;
 }
+
 .related-products a {
   text-decoration: none;
 }
+
 .related-products .product-footer .installment-info span {
   font-size: 14px;
 }
+
 .related-products .product-footer .installment-info .learn-more {
   display: block;
   font-size: 14px;
 }
+
 .related-products .product-footer {
   /* width: 36%; */
   display: flex;
