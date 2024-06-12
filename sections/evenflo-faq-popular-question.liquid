@@ -21,13 +21,10 @@
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
-        if (productsToShow) {
-          alert('Number of products to show:', productsToShow);
-      
-          // Use the productsToShow value in your JavaScript logic
-          // For example, you might fetch and display the products here
-        }
-        fetch(hostURL+'get_products')
+      alert(65444);
+      console.log('evenFloFAQURL: '+ evenFloFAQURL)
+ 
+        fetch(evenFloFAQURL+'get_products')
             .then(response => response.json())
             .then(data => {
                 const container = document.getElementById('products-container');
