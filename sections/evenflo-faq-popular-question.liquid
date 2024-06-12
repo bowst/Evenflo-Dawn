@@ -29,7 +29,7 @@ function fetchProductssData(){
           return response.json();
         })
         .then(data => {
-          alert("Data processed");
+        
           const container = document.getElementById('productsContainer');
           if (container) {
             container.innerHTML = "";
@@ -68,39 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchProductssData();
 });
 
-
-  //   function fetchProductsData(){
-  //   alert('from fetch data')
-  //   //evenFloFAQURL is URL which we defined in evenflo-faq-common-script.js
-  //   fetch(evenFloFAQURL+'faqs/popular')
-  //           .then(response => response.json())
-  //           .then(data => {
-         
-  //               const container = document.getElementById('productsContainer');
-  //               container.innerHTML="";
-    
-        
-  //               data.forEach(product => {
-         
-  //                   const productDiv = document.createElement('div');
-  //                   productDiv.classList.add('product');
-                    
-  //                   const productTitle = document.createElement('h2');
-  //                   productTitle.textContent = product.question;
-  //                   productDiv.appendChild(productTitle);
-                    
-  //                   const productPrice = document.createElement('p');
-  //                   productPrice.textContent = `${product.answer}`;
-  //                   productDiv.appendChild(productPrice);
-                    
-  //                   container.appendChild(productDiv);
-  //               });
-  //           })
-  //           .catch(error =>{
-  //             alert("error")
-  //             console.error('Error fetching products:', error)
-  //           }
-  // }
 
  
     </script>
