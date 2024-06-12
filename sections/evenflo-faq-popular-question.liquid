@@ -27,20 +27,22 @@
         fetch(evenFloFAQURL+'faqs/popular')
             .then(response => response.json())
             .then(data => {
-              console.log('data1111',data)
-                const container = document.getElementById('products-container');
+              console.log('data111112',data)
+                const container = document.getElementById('productsContainer');
+                container.innerHTML="";
     
         
-                data.products.forEach(product => {
+                data.forEach(product => {
+                  alert(212);
                     const productDiv = document.createElement('div');
                     productDiv.classList.add('product');
                     
                     const productTitle = document.createElement('h2');
-                    productTitle.textContent = product.name;
+                    productTitle.textContent = product.question;
                     productDiv.appendChild(productTitle);
                     
                     const productPrice = document.createElement('p');
-                    productPrice.textContent = `Price: $${product.price}`;
+                    productPrice.textContent = `${product.answer}`;
                     productDiv.appendChild(productPrice);
                     
                     container.appendChild(productDiv);
