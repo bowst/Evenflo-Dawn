@@ -28,17 +28,13 @@
                 const container = document.getElementById('categoriesContainer');
     
         
-                data.forEach(category => {
+                data.results.forEach(category => {
                     const categoryDiv = document.createElement('div');
                     categoryDiv.classList.add('category');
                     
                     const categoryTitle = document.createElement('h2');
-                    categoryTitle.textContent = category.name;
+                    categoryTitle.textContent = category.category_name;
                     categoryDiv.appendChild(categoryTitle);
-                    
-                    const categoryPrice = document.createElement('p');
-                    categoryPrice.textContent = `Price: $${category.price}`;
-                    categoryDiv.appendChild(categoryPrice);
                     
                     container.appendChild(categoryDiv);
                 });
