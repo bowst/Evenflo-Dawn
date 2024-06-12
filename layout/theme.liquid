@@ -23,6 +23,7 @@
         <!-- Conditionally include JavaScript file on specific JSON template pages -->
   {% if template contains 'evenflo-faq' %}
     <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
+    {{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
   {% endif %}
     <!-- End Google Tag Manager -->
 

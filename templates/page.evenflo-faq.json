@@ -10,12 +10,24 @@
 {
   "sections": {
     "main": {
+      "type": "evenflo-faq-hero",
+      "settings": {
+      }
+    },
+    "products": {
       "type": "evenflo-faq-popular-question",
+      "settings": {
+      }
+    },
+    "categories": {
+      "type": "evenflo-faq-category",
       "settings": {
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "products",
+    "categories"
   ]
 }

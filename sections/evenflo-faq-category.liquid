@@ -1,55 +1,49 @@
-{{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
+
 
   <section class="container">
-    <h1>{{ section.settings.popularQuestionTitle }}</h1>
+    <h1>{{ section.settings.faqCategoryTitle }}</h1>
 
-      {% assign productsToShow= section.settings.popularQuestionRange%}
+      {% assign categories_to_show= section.settings.faqCategoriesRange%}
       
-    <!-- Block 4: Products -->
-    <div id="productsContainer" class="block products-container" data-products-to-show="{{ productsToShow }}">
-      {{ productsToShow}}
-        <div class="product">
-            <h2>Product 1</h2>
+    <div id="categoriesContainer" class="block category-container" data-categories-to-show="{{ categories_to_show }}">
+      {{ categories_to_show}}
+        <div class="categories">
+            <h2>category 1</h2>
             <p>Price: $10</p>
         </div>
         
     </div>
 
-
 </section>
 
 
 <script>
-    alert(evenFloFAQURL)
+
     document.addEventListener('DOMContentLoaded', function() {
-        if (productsToShow) {
-          alert('Number of products to show:', productsToShow);
-      
-          // Use the productsToShow value in your JavaScript logic
-          // For example, you might fetch and display the products here
-        }
-        fetch(hostURL+'get_products')
+ 
+        fetch(hostURL+'products/getPaginatedCategories?page_size=10&page=1')
             .then(response => response.json())
             .then(data => {
-                const container = document.getElementById('products-container');
+                alert(1111)
+                const container = document.getElementById('categoriesContainer');
     
         
-                data.products.forEach(product => {
-                    const productDiv = document.createElement('div');
-                    productDiv.classList.add('product');
+                data.forEach(category => {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.classList.add('category');
                     
-                    const productTitle = document.createElement('h2');
-                    productTitle.textContent = product.name;
-                    productDiv.appendChild(productTitle);
+                    const categoryTitle = document.createElement('h2');
+                    categoryTitle.textContent = category.name;
+                    categoryDiv.appendChild(categoryTitle);
                     
-                    const productPrice = document.createElement('p');
-                    productPrice.textContent = `Price: $${product.price}`;
-                    productDiv.appendChild(productPrice);
+                    const categoryPrice = document.createElement('p');
+                    categoryPrice.textContent = `Price: $${category.price}`;
+                    categoryDiv.appendChild(categoryPrice);
                     
-                    container.appendChild(productDiv);
+                    container.appendChild(categoryDiv);
                 });
             })
-            .catch(error => console.error('Error fetching products:', error));
+            .catch(error => console.error('Error fetching categories:', error));
     });</script>
 
 
@@ -69,22 +63,23 @@
   "settings": [
     {
       "type": "text",
-      "id": "popularQuestionTitle",
-      "label": "Popular Question Title",
-      "default":"Popular Questions"
+      "id": "faqCategoryTitle",
+      "label": "FAQ Categories Title",
+      "default":"Categories"
     },
     {
         "type": "range",
-        "id": "popularQuestionRange",
-        "label": "Number of questions to show",
+        "id": "faqCategoriesRange",
+        "label": "Number of categories to show",
         "default":1,
         "min": 1,
-        "max": 3
+        "max": 3,
+        "step": 1
       }
   ],
   "presets": [
     {
-      "name": "EvenFlo FAQ Categoryss",
+      "name": "EvenFlo FAQ Categories",
       "blocks": [
         
       ]

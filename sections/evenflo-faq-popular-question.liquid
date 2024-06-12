@@ -3,11 +3,11 @@
   <section class="container">
     <h1>{{ section.settings.popularQuestionTitle }}</h1>
 
-      {% assign productsToShow= section.settings.popularQuestionRange%}
+      {% assign products_to_show= section.settings.popularQuestionRange%}
       
     <!-- Block 4: Products -->
-    <div id="productsContainer" class="block products-container" data-products-to-show="{{ productsToShow }}">
-      {{ productsToShow}}
+    <div id="productsContainer" class="block products-container" data-products-to-show="{{ products_to_show }}">
+      {{ products_to_show}}
         <div class="product">
             <h2>Product 1</h2>
             <p>Price: $10</p>
@@ -23,7 +23,7 @@
     document.addEventListener('DOMContentLoaded', function() {
     
       console.log('evenFloFAQURL: '+ evenFloFAQURL)
- 
+ //evenFloFAQURL is URL which we defined in evenflo-faq-common-script.js
         fetch(evenFloFAQURL+'faqs/popular')
             .then(response => response.json())
             .then(data => {
