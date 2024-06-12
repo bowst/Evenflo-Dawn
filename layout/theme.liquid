@@ -19,6 +19,11 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-THSHFKC');
     </script>
+
+        <!-- Conditionally include JavaScript file on specific JSON template pages -->
+  {% if template contains 'evenflo-faq' %}
+    <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
+  {% endif %}
     <!-- End Google Tag Manager -->
 
     <link rel="canonical" href="{{ canonical_url }}">
@@ -57,10 +62,7 @@
       ></script>
     {% endif %}
 
-      <!-- Conditionally include JavaScript file on specific JSON template pages -->
-  {% if template contains 'evenflo-faq' %}
-    <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
-  {% endif %}
+  
 
     {{ content_for_header }}
 
