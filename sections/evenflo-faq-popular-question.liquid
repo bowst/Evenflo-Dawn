@@ -20,7 +20,27 @@
 
 <script>
 
-  function fetchProductsData(){
+
+
+    document.addEventListener('shopify:section:load', () => {
+      alert('section load');
+      // const container = document.getElementById('productsContainer');
+      // if(container){
+      //   alert(2);
+      //   fetchProductsData()
+      // }
+      
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      alert(33)
+      });
+
+    document.addEventListener('DOMContentLoaded', () =>{
+      alert(777);         
+    });
+
+    function fetchProductsData(){
     alert('from fetch data')
     //evenFloFAQURL is URL which we defined in evenflo-faq-common-script.js
     fetch(evenFloFAQURL+'faqs/popular')
@@ -52,21 +72,6 @@
               console.error('Error fetching products:', error)
             }
   }
-
-    document.addEventListener('shopify:section:load', () => {
-      alert('section load');
-      // const container = document.getElementById('productsContainer');
-      // if(container){
-      //   alert(2);
-      //   fetchProductsData()
-      // }
-      
-    });
-
-
-    document.addEventListener('DOMContentLoaded', () =>{
-      alert(777);         
-    });
 
  
     </script>
