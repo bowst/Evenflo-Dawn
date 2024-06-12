@@ -20,9 +20,10 @@
 
 <script>
 
-    document.addEventListener('DOMContentLoaded', function() {
-        //evenFloFAQURL is URL which we defined in evenflo-faq-common-script.js
-        fetch(evenFloFAQURL+'faqs/popular')
+  function fetchProductsData(){
+    alert('from fetch data')
+    //evenFloFAQURL is URL which we defined in evenflo-faq-common-script.js
+    fetch(evenFloFAQURL+'faqs/popular')
             .then(response => response.json())
             .then(data => {
          
@@ -50,8 +51,23 @@
               alert("error")
               console.error('Error fetching products:', error)
             }
-               );
-    });</script>
+  }
+
+    document.addEventListener('shopify:section:load', () => {
+      alert('section load');
+      const container = document.getElementById('productsContainer');
+      if(container){
+        alert(2);
+        fetchProductsData()
+      }
+      
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      fetchProductsData()           
+    });
+    </script>
 
 
 
