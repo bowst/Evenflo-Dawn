@@ -53,25 +53,22 @@
             }
   }
 
-    // document.addEventListener('shopify:section:load', () => {
-    //   alert('section load');
-    //   const container = document.getElementById('productsContainer');
-    //   if(container){
-    //     alert(2);
-    //     fetchProductsData()
-    //   }
+    document.addEventListener('shopify:section:load', () => {
+      alert('section load');
+      // const container = document.getElementById('productsContainer');
+      // if(container){
+      //   alert(2);
+      //   fetchProductsData()
+      // }
       
-    // });
+    });
 
 
-    // document.addEventListener('DOMContentLoaded', function() {
-    //   fetchProductsData()           
-    // });
+    document.addEventListener('DOMContentLoaded', () =>{
+      alert(777);         
+    });
 
-    window.addEventListener('DOMContentLoaded', () => {
-      alert(1)
-      fetchProductsData();
-});
+ 
     </script>
 
 
