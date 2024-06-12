@@ -1,2 +1,1 @@
-var evenFloFAQURL = "127.0.0.1:8000/api/";
-alert(143);
+var evenFloFAQURL = "http://127.0.0.1:7000/api/";
