@@ -21,7 +21,36 @@
 
 
 function fetchProductssData(){
-  alert(2222);
+  alert(1234);
+
+      fetch(evenFloFAQURL+'faqs/popular')
+            .then(response => response.json())
+            .then(data => {
+         alert(901);
+                const container = document.getElementById('productsContainer');
+                container.innerHTML="";
+    
+        
+                data.forEach(product => {
+         
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+                    
+                    const productTitle = document.createElement('h2');
+                    productTitle.textContent = product.question;
+                    productDiv.appendChild(productTitle);
+                    
+                    const productPrice = document.createElement('p');
+                    productPrice.textContent = `${product.answer}`;
+                    productDiv.appendChild(productPrice);
+                    
+                    container.appendChild(productDiv);
+                });
+            })
+            .catch(error =>{
+              alert("error")
+              console.error('Error fetching products:', error)
+            }
 }
 
 
