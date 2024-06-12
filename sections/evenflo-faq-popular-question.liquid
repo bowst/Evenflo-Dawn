@@ -21,13 +21,11 @@
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
-    
-      console.log('evenFloFAQURL: '+ evenFloFAQURL)
- //evenFloFAQURL is URL which we defined in evenflo-faq-common-script.js
+        //evenFloFAQURL is URL which we defined in evenflo-faq-common-script.js
         fetch(evenFloFAQURL+'faqs/popular')
             .then(response => response.json())
             .then(data => {
-              console.log('data111112',data)
+         
                 const container = document.getElementById('productsContainer');
                 container.innerHTML="";
     

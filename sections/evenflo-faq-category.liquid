@@ -21,7 +21,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
  
-        fetch(hostURL+'products/getPaginatedCategories?page_size=10&page=1')
+        fetch(evenFloFAQURL+'products/getPaginatedCategories?page_size=10&page=1')
             .then(response => response.json())
             .then(data => {
                 alert(1111)
@@ -67,9 +67,9 @@
         "type": "range",
         "id": "faqCategoriesRange",
         "label": "Number of categories to show",
-        "default":1,
+        "default":5,
         "min": 1,
-        "max": 3,
+        "max": 6,
         "step": 1
       }
   ],
