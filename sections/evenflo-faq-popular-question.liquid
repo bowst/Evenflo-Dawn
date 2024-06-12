@@ -21,48 +21,53 @@
 
 
 function fetchProductssData(){
-  alert(1234);
+  alert("Starting fetchProductssData");
 
-      fetch(evenFloFAQURL+'faqs/popular')
-            .then(response => response.json())
-            .then(data => {
-         alert(901);
-                const container = document.getElementById('productsContainer');
-                container.innerHTML="";
-    
-        
-                data.forEach(product => {
-         
-                    const productDiv = document.createElement('div');
-                    productDiv.classList.add('product');
-                    
-                    const productTitle = document.createElement('h2');
-                    productTitle.textContent = product.question;
-                    productDiv.appendChild(productTitle);
-                    
-                    const productPrice = document.createElement('p');
-                    productPrice.textContent = `${product.answer}`;
-                    productDiv.appendChild(productPrice);
-                    
-                    container.appendChild(productDiv);
-                });
-            })
-            .catch(error =>{
-              alert("error")
-              console.error('Error fetching products:', error)
-            }
+  fetch(evenFloFAQURL + 'faqs/popular')
+        .then(response => {
+          alert("Response received");
+          return response.json();
+        })
+        .then(data => {
+          alert("Data processed");
+          const container = document.getElementById('productsContainer');
+          if (container) {
+            container.innerHTML = "";
+            
+            data.forEach(product => {
+              const productDiv = document.createElement('div');
+              productDiv.classList.add('product');
+              
+              const productTitle = document.createElement('h2');
+              productTitle.textContent = product.question;
+              productDiv.appendChild(productTitle);
+              
+              const productPrice = document.createElement('p');
+              productPrice.textContent = `${product.answer}`;
+              productDiv.appendChild(productPrice);
+              
+              container.appendChild(productDiv);
+            });
+          } else {
+            alert("Container not found");
+          }
+        })
+        .catch(error =>{
+          alert("Error fetching products");
+          console.error('Error fetching products:', error);
+        });
 }
 
+document.addEventListener('shopify:section:load', () => {
+  alert("shopify:section:load event triggered");
+  fetchProductssData();
+});
 
-    document.addEventListener('shopify:section:load', () => {
-      fetchProductssData();
-      
-    });
+document.addEventListener('DOMContentLoaded', () => {
+  alert("DOMContentLoaded event triggered");
+  fetchProductssData();
+});
 
-
-    document.addEventListener('DOMContentLoaded', () =>{
-      fetchProductssData();  
-    });
 
   //   function fetchProductsData(){
   //   alert('from fetch data')
