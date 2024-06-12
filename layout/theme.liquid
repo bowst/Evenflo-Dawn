@@ -58,7 +58,7 @@
     {% endif %}
 
       <!-- Conditionally include JavaScript file on specific JSON template pages -->
-  {% if template.name == 'pages.evenflo-faq' %}
+  {% if template contains 'evenflo-faq' %}
     <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
   {% endif %}
 
