@@ -20,15 +20,19 @@
 <script>
 
 
+function fetchProductssData(){
+  alert(2222);
+}
+
 
     document.addEventListener('shopify:section:load', () => {
-      alert('section load');
+      fetchProductssData();
       
     });
 
 
     document.addEventListener('DOMContentLoaded', () =>{
-      alert(888);         
+      fetchProductssData();  
     });
 
   //   function fetchProductsData(){
