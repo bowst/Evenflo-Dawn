@@ -1,22 +1,65 @@
 {{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
 
 <style>
-  .faqHeroBackGround{
-    background-color: {{section.settings.backGroundColor_pop  }}
-  }
+  .help-articles-block {
+	background: var(--background);
+}
 </style>
 
-  <section class="container faqHeroBackGround">
+
+<div class="help-articles-block">
+  <div class="help-articles-content page-width center">
+
+    {% assign search_or_links = false %}
+    
+    {%- for block in section.blocks -%}
+      
+      {% if block.type == 'search' or block.type == 'links' %}
+        {% unless search_or_links %}
+          <div class="help-article-search-wrapper">
+            {% assign search_or_links = true %}
+        {% endunless %}
+      {% endif %}
+      
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <!-- Block 1: Heading -->
+          <h1 class="{{ block.settings.heading_size }}"> {{ block.settings.heading }}</h1>
+
+        {%- when 'search' -%}
+          <!-- Block 2: Search Box -->
+          <input id="email_84369887" class="needsclick go648205600 kl-private-reset-css-Xuajs1" type="email"
+              autocomplete="email" name="email" tabindex="0" placeholder="Enter your email"
+              aria-labelledby="label-email_84369887" aria-invalid="false" options="[object Object]"
+              style="box-sizing: border-box;border-radius: 0px;padding: 0px 0px 0px 16px;height: 50px;text-align: left;color: rgb(0, 0, 0);font-size: 24px;font-weight: 400;letter-spacing: 0px;background-color: rgb(255, 255, 255);border: 1px solid rgb(180, 187, 195);width: 100%;">
+          
+        {%- when 'links' -%}
+          <!-- Block 3: Button Links -->
+          <div class="help-article-link-wrapper">
+              <a href="{{ block.settings.linkone }}">{{ block.settings.linkoneName }}</a>
+              <a href="{{ block.settings.linktwo }}">{{ block.settings.linktwoName }}</a>
+          </div>
+
+      {%- endcase -%}
+    {%- endfor -%}
+    
+    {% if search_or_links %}
+      </div> <!-- Closing the help-article-search-wrapper div -->
+    {% endif %}
+    
+  </div>
+</div>
+
+
+ {% comment %} <div class="help-articles-block">
+  <div class="help-articles-content page-width center">
 
     {%- for block in section.blocks -%}
+
       {%- case block.type -%}
         {%- when 'heading' -%}
     <!-- Block 1: Heading -->
-    <div class="block heading {{ block.settings.heading_size }}">
-     
-     {{ block.settings.heading }}
-     
-    </div>
+    <h1 class="{{ block.settings.heading_size }}"> {{ block.settings.heading }}</h1>
 
     {%- when 'search' -%}
     <!-- Block 2: Search Box -->
@@ -35,7 +78,10 @@
 
   {%- endcase -%}
 {%- endfor -%}
-</section>
+
+
+</div>
+</div> {% endcomment %}
 
 
 
@@ -136,25 +182,19 @@
           "limit": 1,
           "settings": [
             {
-              "type": "select",
-              "id": "heading_size",
-              "options": [
-                {
-                  "value": "h2",
-                  "label": "t:sections.all.heading_size.options__1.label"
-                },
-                {
-                  "value": "h1",
-                  "label": "t:sections.all.heading_size.options__2.label"
-                }
-              ],
-              "default": "h1",
-              "label": "t:sections.all.heading_size.label"
+              "type": "text",
+              "id": "linkoneName",
+              "label": "Find"
             },
             {
               "type": "url",
               "id": "linkone",
               "label": "Link1"
+            },
+            {
+              "type": "text",
+              "id": "linktwoName",
+              "label": "Register"
             },
             {
               "type": "url",
