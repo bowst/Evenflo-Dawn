@@ -21,11 +21,11 @@
 
 
 function fetchProductssData(){
-  alert("Starting fetchProductssData");
+ 
 
   fetch(evenFloFAQURL + 'faqs/popular')
         .then(response => {
-          alert("Response received");
+         
           return response.json();
         })
         .then(data => {
@@ -49,22 +49,20 @@ function fetchProductssData(){
               container.appendChild(productDiv);
             });
           } else {
-            alert("Container not found");
+           
           }
         })
         .catch(error =>{
-          alert("Error fetching products");
+        
           console.error('Error fetching products:', error);
         });
 }
 
-document.addEventListener('shopify:section:load', () => {
-  alert("shopify:section:load event triggered");
+document.addEventListener('shopify:section:load', () => { 
   fetchProductssData();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  alert("DOMContentLoaded event triggered");
   fetchProductssData();
 });
 
