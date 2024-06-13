@@ -7,21 +7,28 @@
 </style>
 
 
+{% assign has_search_or_links = false %}
+
+{%- for block in section.blocks -%}
+  {% if block.type == 'search' or block.type == 'links' %}
+    {% assign has_search_or_links = true %}
+  {% endif %}
+{%- endfor -%}
+
+{% if section.blocks.size > 0 %}
 <div class="help-articles-block">
   <div class="help-articles-content page-width center">
 
-    {% assign search_or_links = false %}
-    
+    {% if has_search_or_links %}
+      <div class="help-article-search-wrapper">
+    {% endif %}
+
     {%- for block in section.blocks -%}
-      
-      {% if block.type == 'search' or block.type == 'links' %}
-        {% unless search_or_links %}
-          <div class="help-article-search-wrapper">
-            {% assign search_or_links = true %}
-        {% endunless %}
-      {% endif %}
-      
+
+
       {%- case block.type -%}
+
+
         {%- when 'heading' -%}
           <!-- Block 1: Heading -->
           <h1 class="{{ block.settings.heading_size }}"> {{ block.settings.heading }}</h1>
@@ -40,48 +47,20 @@
               <a href="{{ block.settings.linktwo }}">{{ block.settings.linktwoName }}</a>
           </div>
 
+
       {%- endcase -%}
+
+
     {%- endfor -%}
-    
-    {% if search_or_links %}
+
+
+    {% if has_search_or_links %}
       </div> <!-- Closing the help-article-search-wrapper div -->
     {% endif %}
     
   </div>
 </div>
-
-
- {% comment %} <div class="help-articles-block">
-  <div class="help-articles-content page-width center">
-
-    {%- for block in section.blocks -%}
-
-      {%- case block.type -%}
-        {%- when 'heading' -%}
-    <!-- Block 1: Heading -->
-    <h1 class="{{ block.settings.heading_size }}"> {{ block.settings.heading }}</h1>
-
-    {%- when 'search' -%}
-    <!-- Block 2: Search Box -->
-    <div class="block search">
-        <input type="text" id="searchBox" placeholder="Search products...">
-        <button onclick="searchProducts()">Search</button>
-    </div>
-    
-    {%- when 'links' -%}
-    <!-- Block 3: Button Links -->
-    <div class="block links">
-        <button onclick="alert('Link 1 clicked')">{{ block.settings.linkone }}</button>
-        <button onclick="alert('Link 2 clicked')">{{ block.settings.linktwo }}</button>
-    </div>
-
-
-  {%- endcase -%}
-{%- endfor -%}
-
-
-</div>
-</div> {% endcomment %}
+{% endif %}
 
 
 
@@ -184,7 +163,8 @@
             {
               "type": "text",
               "id": "linkoneName",
-              "label": "Find"
+              "label": "Link One",
+              "default":"Find"
             },
             {
               "type": "url",
@@ -194,7 +174,9 @@
             {
               "type": "text",
               "id": "linktwoName",
-              "label": "Register"
+              "label": "Link Two",
+              "default":"Register"
+
             },
             {
               "type": "url",
