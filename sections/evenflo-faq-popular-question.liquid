@@ -17,8 +17,9 @@
 
 </section> {% endcomment %}
 
+{% assign products_to_show= section.settings.popularQuestionRange%}
 
-<div class="popular-question-block">
+<div class="popular-question-block" id="popularQuestionBlock" data-products-to-show="{{ products_to_show }}">
 			<div class="popular-content-wrapper page-width">
 				<div class="heading center">
 					<h2>{{ section.settings.popularQuestionTitle }}</h2>
@@ -81,6 +82,11 @@ function fetchProductsData(){
     .then(response => response.json())
     .then(data => {
       const container = document.querySelector('.popular-card-wrapper');
+      
+      const popularQuestionBlock = document.getElementById('popularQuestionBlock');
+      let blocksToShow=popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
+
+      alert(blocksToShow);
      
       if (container) {
         container.innerHTML = "";  // Clear existing content
@@ -117,7 +123,7 @@ function fetchProductsData(){
               </div>
             </div>
           `;
-   // Set the HTML content for the answer
+          // Set the HTML content for the answer
           const answerParagraph = popularCard.querySelector('.card-detail-wrapper p');
           if (answerParagraph) {
             answerParagraph.innerHTML = product.answer;
@@ -136,11 +142,8 @@ function fetchProductsData(){
 document.addEventListener('shopify:section:load', (event) => { 
   const sectionId = event?.detail?.sectionId;
   if (sectionId.includes('evenflo_faq_popular_question')) {
-    console.log('The section ID contains "evenflo_faq_popular_question".');
-    fetchProductssData();
-  } else {
-    console.log('The section ID does not contain "evenflo_faq_popular_question".');
-  }
+    fetchProductsData();
+  } 
 
 });
 
@@ -149,43 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchProductsData();
 });
 
-// function fetchProductssData(){
- 
 
-//   fetch(evenFloFAQURL + 'faqs/popularss')
-//         .then(response => {
-         
-//           return response.json();
-//         })
-//         .then(data => {
-        
-//           const container = document.getElementById('productsContainer');
-//           if (container) {
-//             container.innerHTML = "";
-            
-//             data.forEach(product => {
-//               const productDiv = document.createElement('div');
-//               productDiv.classList.add('product');
-              
-//               const productTitle = document.createElement('h2');
-//               productTitle.textContent = product.question;
-//               productDiv.appendChild(productTitle);
-              
-//               const productPrice = document.createElement('p');
-//               productPrice.textContent = `${product.answer}`;
-//               productDiv.appendChild(productPrice);
-              
-//               container.appendChild(productDiv);
-//             });
-//           } else {
-           
-//           }
-//         })
-//         .catch(error =>{
-        
-//           console.error('Error fetching products:', error);
-//         });
-// }
 
 
 
