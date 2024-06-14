@@ -94,11 +94,17 @@ function fetchProductsData(){
           popularCard.classList.add('popular-card');
 
           let productsContent="";
-          let categories="";
+          let categories=[];
+          let categoriesHtml=[];
           product?.products.forEach((nestedProduct) => { 
             productsContent+=`<span>${nestedProduct?.name}</span>`;
-            categories+=`<a href="abc.com/${nestedProduct?.category?.category_name}">${nestedProduct?.category?.category_name}</a>`
           })
+          const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
+
+          uniqueCategoriesArray?.forEach((category)=>{
+            categoriesHtml+=`<a href="abc.com/${nestedProduct?.category?.category_name}">${nestedProduct?.category?.category_name}</a>`
+            
+            })
           
           // <a href="">Shyft DualRide</a>
           //       <a href="">Car Seats</a>
@@ -126,7 +132,7 @@ function fetchProductsData(){
                 </div>
               </div>
               <div class="card-link-wrapper">
-                ${categories}
+                ${categoriesHtml}
               </div>
             </div>
           `;
@@ -135,7 +141,7 @@ function fetchProductsData(){
           if (answerParagraph) {
             answerParagraph.innerHTML = product.answer;
           }
-          
+
           container.appendChild(popularCard);
         });
       } else {
