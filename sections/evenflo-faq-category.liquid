@@ -17,14 +17,14 @@
 </section> {% endcomment %}
 {% assign categories_to_show= section.settings.faqCategoriesRange%}
 
-<div class="category-block" data-categories-to-show="{{ categories_to_show }}">
+<div class="category-block">
   <div class="category-content-wrapper page-width">
     <div class="heading center">
       <h1>{{ section.settings.faqCategoryTitle }}</h1>
     </div>
     <div class="category-tab-wrapper">
-      <div class="tab-header">
-        {% comment %} <button class="active">Car Seats</button>
+      <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
+         {% comment %} <button class="active">Car Seats</button>
         <button>Strollers</button>
         <button>Travel Systems</button>
         <button>High Chairs</button>
@@ -33,7 +33,7 @@
         <button>Rollplay</button>
         <button>Baby Proofing</button>
         <button>Baby Gates</button>
-        <button>Baby Health</button> {% endcomment %}
+        <button>Baby Health</button>  {% endcomment %}
       </div>
       <div class="tab-body">
         <div class="tab-content-wrapper">
@@ -115,7 +115,7 @@
     fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
       .then(response => response.json())
       .then(data => {
-        const container = document.querySelector('.category-tab-wrapper');
+        const container = document.querySelector('.tab-header');
         const categoriesBlock = document.getElementById('categoriesContainer');
         const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
 
@@ -124,11 +124,13 @@
         container.innerHTML = ""; // Clear the container once before the loop
 
         data.results.slice(0, blocksToShow).forEach((category, index) => {
-          const categoryDiv = document.createElement('div');
-          categoryDiv.classList.add('tab-header');
+         // const categoryDiv = document.createElement('div');
+         const categoryDiv = "";
+
+          // categoryDiv.classList.add('tab-header');
           const isActive = index === 0 ? "active" : "";
 
-          categoryDiv.innerHTML = `<button class="${isActive}">${category?.category_name}</button>`;
+          categoryDiv. = `<button class="${isActive}">${category?.category_name}</button>`;
           container.appendChild(categoryDiv);
         });
       })
