@@ -1,53 +1,53 @@
-var evenFloFAQURL = "http://127.0.0.1:7000/api/";
+var evenFloFAQURL = "http://django.evenflo-cms.orb.local/api/";
 
 document
-	.querySelectorAll(".description-wrapper button")
-	.forEach((descBtn, index) => {
-		let description = document.querySelectorAll(".description-wrapper p")[
-			index
-		];
+  .querySelectorAll(".description-wrapper button")
+  .forEach((descBtn, index) => {
+    let description = document.querySelectorAll(".description-wrapper p")[
+      index
+    ];
 
-		description.setAttribute("data-full-text", description.textContent);
+    description.setAttribute("data-full-text", description.textContent);
 
-		if (description.textContent.length > 50) {
-			description.textContent =
-				description.textContent.substring(0, 50) + "...";
-		}
+    if (description.textContent.length > 50) {
+      description.textContent =
+        description.textContent.substring(0, 50) + "...";
+    }
 
-		descBtn.addEventListener("click", () => {
-			document.querySelectorAll(".description-wrapper p").forEach((desc) => {
-				let fullText = desc.getAttribute("data-full-text");
-				if (fullText && fullText.length > 50) {
-					desc.textContent = fullText.substring(0, 50) + "...";
-				}
-			});
+    descBtn.addEventListener("click", () => {
+      document.querySelectorAll(".description-wrapper p").forEach((desc) => {
+        let fullText = desc.getAttribute("data-full-text");
+        if (fullText && fullText.length > 50) {
+          desc.textContent = fullText.substring(0, 50) + "...";
+        }
+      });
 
-			document
-				.querySelectorAll(".description-wrapper button.active")
-				.forEach((activeBtn) => {
-					activeBtn.classList.remove("active");
-				});
+      document
+        .querySelectorAll(".description-wrapper button.active")
+        .forEach((activeBtn) => {
+          activeBtn.classList.remove("active");
+        });
 
-			descBtn.classList.add("active");
+      descBtn.classList.add("active");
 
-			description.textContent = description.getAttribute("data-full-text");
-		});
-	});
+      description.textContent = description.getAttribute("data-full-text");
+    });
+  });
 
 document.querySelectorAll(".tab-header button").forEach((tabBtn, index) => {
-	let tabContentWrapper = document.querySelectorAll(".tab-content-wrapper")[
-		index
-	];
-	tabBtn.addEventListener("click", () => {
-		document
-			.querySelectorAll(
-				".tab-header button.active, .tab-content-wrapper.active"
-			)
-			.forEach((activeElement) => {
-				activeElement.classList.remove("active");
-			});
+  let tabContentWrapper = document.querySelectorAll(".tab-content-wrapper")[
+    index
+  ];
+  tabBtn.addEventListener("click", () => {
+    document
+      .querySelectorAll(
+        ".tab-header button.active, .tab-content-wrapper.active"
+      )
+      .forEach((activeElement) => {
+        activeElement.classList.remove("active");
+      });
 
-		tabBtn.classList.add("active");
-		tabContentWrapper.classList.add("active");
-	});
+    tabBtn.classList.add("active");
+    tabContentWrapper.classList.add("active");
+  });
 });
