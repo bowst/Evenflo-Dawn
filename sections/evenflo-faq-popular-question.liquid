@@ -76,12 +76,12 @@
 <script>
 
 
-function fetchProductssData(){
+function fetchProductsData(){
   fetch(evenFloFAQURL + 'faqs/popular')
     .then(response => response.json())
     .then(data => {
       const container = document.querySelector('.popular-card-wrapper');
-      alert(33232);
+     
       if (container) {
         container.innerHTML = "";  // Clear existing content
 
@@ -134,11 +134,12 @@ function fetchProductssData(){
 }
 
 document.addEventListener('shopify:section:load', () => { 
-  fetchProductssData();
+  fetchProductsData();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetchProductssData();
+document.addEventListener('DOMContentLoaded', (event) => {
+  console.log('eventtttt',event)
+  fetchProductsData();
 });
 
 // function fetchProductssData(){
