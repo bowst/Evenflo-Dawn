@@ -1,5 +1,5 @@
 
-  <section class="container">
+  {% comment %} <section class="container">
     <h1>{{ section.settings.popularQuestionTitle }}</h1>
 
       {% assign products_to_show= section.settings.popularQuestionRange%}
@@ -15,7 +15,63 @@
     </div>
 
 
-</section>
+</section> {% endcomment %}
+
+
+<div class="popular-question-block">
+			<div class="popular-content-wrapper page-width">
+				<div class="heading center">
+					<h2>{{ section.settings.popularQuestionTitle }}</h2>
+				</div>
+				<div class="popular-card-wrapper">
+					<div class="popular-card">
+						<div class="heading">
+							<h3>Products</h3>
+							<h2>Can you use this car seat without the base?</h2>
+							<div class="description-wrapper">
+								<p>
+									Revolve360 Extend All-in-One Rotational Car Seat with Green
+									&amp; Gentle Fabric
+								</p>
+								<button>
+									<span>Show more</span>
+									<svg
+										aria-hidden="true"
+										focusable="false"
+										class="icon icon-caret"
+										viewBox="0 0 10 6"
+									>
+										<path
+											fill-rule="evenodd"
+											clip-rule="evenodd"
+											d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
+											fill="currentColor"
+										></path>
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div class="card-content">
+							<div class="card-detail-wrapper">
+								<p>
+									The Shyft DualRide can be used with or without the stroller
+									frame when installing without the base.
+								</p>
+								<div class="card-content-link">
+									<a href="">Read Answer</a>
+								</div>
+							</div>
+							<div class="card-link-wrapper">
+								<a href="">Shyft DualRide</a>
+								<a href="">Car Seats</a>
+								<a href="">Category</a>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</div>
 
 <script>
 
@@ -23,7 +79,7 @@
 function fetchProductssData(){
  
 
-  fetch(evenFloFAQURL + 'faqs/popular')
+  fetch(evenFloFAQURL + 'faqs/popularss')
         .then(response => {
          
           return response.json();
