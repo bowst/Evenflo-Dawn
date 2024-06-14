@@ -114,7 +114,6 @@
 
   function getPaginatedCategories(){
    
- alert(222222222);
     fetch(evenFloFAQURL+'products/getPaginatedCategories?page_size=10&page=1')
         .then(response => response.json())
         .then(data => {
@@ -140,9 +139,9 @@
    
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-
-     getPaginatedCategories();
+    document.addEventListener('DOMContentLoaded', () => {
+    alert(1);
+    getPaginatedCategories();
     });
   </script>
 
