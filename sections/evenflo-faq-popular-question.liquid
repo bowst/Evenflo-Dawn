@@ -133,12 +133,13 @@ function fetchProductsData(){
     });
 }
 
-document.addEventListener('shopify:section:load', () => { 
+document.addEventListener('shopify:section:load', (event) => { 
+  console.log('eventtttt',event)
   fetchProductsData();
 });
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  console.log('eventtttt',event)
+document.addEventListener('DOMContentLoaded', () => {
+ 
   fetchProductsData();
 });
 
