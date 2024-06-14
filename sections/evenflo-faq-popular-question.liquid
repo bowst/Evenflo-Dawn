@@ -95,12 +95,13 @@ function fetchProductsData(){
 
           let productsContent="";
           let categories=[];
-          let categoriesHtml=[];
+          let categoriesHtml="";
+
           product?.products.forEach((nestedProduct) => { 
             productsContent+=`<span>${nestedProduct?.name}</span>`;
           })
+          
           const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
-
           uniqueCategoriesArray?.forEach((category)=>{
             categoriesHtml+=`<a href="abc.com/${nestedProduct?.category?.category_name}">${nestedProduct?.category?.category_name}</a>`
             
