@@ -99,11 +99,12 @@ function fetchProductsData(){
 
           product?.products.forEach((nestedProduct) => { 
             productsContent+=`<span>${nestedProduct?.name}</span>`;
+            categories[nestedProduct?.category?.id]=nestedProduct?.category?.category_name
           })
-          
+
           const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
-          uniqueCategoriesArray?.forEach((category)=>{
-            categoriesHtml+=`<a href="abc.com/${nestedProduct?.category?.category_name}">${nestedProduct?.category?.category_name}</a>`
+          uniqueCategoriesArray?.forEach((category,id)=>{
+            categoriesHtml+=`<a href="https://abc.com/${category}">${category}</a>`
             
             })
           
