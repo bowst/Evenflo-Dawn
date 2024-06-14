@@ -5,6 +5,14 @@
 }
 </style>
 
+{% assign dynamic_background = section.settings.backGroundColor_pop %}
+
+<style>
+  :root {
+    --background: {{ dynamic_background }};
+  }
+</style>
+
 
 {% assign has_search_or_links = false %}
 
@@ -105,7 +113,7 @@
       },
       "settings": [
         {
-          "type": "color_background",
+          "type": "color",
           "id": "backGroundColor_pop",
           "label": "BackGround Color"
         }
