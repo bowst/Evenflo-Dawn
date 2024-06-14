@@ -79,8 +79,15 @@
           if (isActive) {
             categoryTag.classList.add(isActive);
           }
-
+          
           categoryTag.innerHTML = category?.category_name;
+
+          categoryTag.onclick = function() {
+            alert('Category ID: ' + category.id);
+            // You can add more actions here, like fetching products for the selected category
+            getProductsByCategory(category.id);
+          };
+
           container.appendChild(categoryTag);
         });
       })
