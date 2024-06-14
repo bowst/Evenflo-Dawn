@@ -1,17 +1,12 @@
 
-<style>
-  .help-articles-block {
-	background: var(--background);
-}
-</style>
 
-{% assign dynamic_background = section.settings.backGroundColor_pop %}
 
+{% assign dynamic_background = section.settings.backGroundColor_hero %}
 <style>
   :root {
     --background: {{ dynamic_background }};
   }
-</style>
+</style> 
 
 
 {% assign has_search_or_links = false %}
@@ -114,8 +109,9 @@
       "settings": [
         {
           "type": "color",
-          "id": "backGroundColor_pop",
-          "label": "BackGround Color"
+          "id": "backGroundColor_hero",
+          "label": "BackGround Color",
+          "default": "#121212"
         }
       ],
       "blocks": [
