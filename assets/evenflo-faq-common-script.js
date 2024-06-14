@@ -34,20 +34,20 @@ document
 		});
 	});
 
-document.querySelectorAll(".tab-header button").forEach((tabBtn, index) => {
-	let tabContentWrapper = document.querySelectorAll(".tab-content-wrapper")[
-		index
-	];
-	tabBtn.addEventListener("click", () => {
-		document
-			.querySelectorAll(
-				".tab-header button.active, .tab-content-wrapper.active"
-			)
-			.forEach((activeElement) => {
-				activeElement.classList.remove("active");
-			});
+// document.querySelectorAll(".tab-header button").forEach((tabBtn, index) => {
+// 	let tabContentWrapper = document.querySelectorAll(".tab-content-wrapper")[
+// 		index
+// 	];
+// 	tabBtn.addEventListener("click", () => {
+// 		document
+// 			.querySelectorAll(
+// 				".tab-header button.active, .tab-content-wrapper.active"
+// 			)
+// 			.forEach((activeElement) => {
+// 				activeElement.classList.remove("active");
+// 			});
 
-		tabBtn.classList.add("active");
-		tabContentWrapper.classList.add("active");
-	});
-});
+// 		tabBtn.classList.add("active");
+// 		tabContentWrapper.classList.add("active");
+// 	});
+// });

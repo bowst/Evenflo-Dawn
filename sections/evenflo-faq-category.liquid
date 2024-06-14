@@ -66,8 +66,6 @@
 
         const categoriesBlock = document.getElementById('categoriesContainer');
         const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
-
-        alert('Number of blocks to show: ' + blocksToShow);
         
         const container = document.querySelector('.tab-header'); 
         container.innerHTML = ""; // 
@@ -83,10 +81,16 @@
           categoryTag.innerHTML = category?.category_name;
 
           categoryTag.onclick = function() {
-            alert('Category ID: ' + category.id);
-            // You can add more actions here, like fetching products for the selected category
-            getProductsByCategory(category.id);
-          };
+         // Appending an on click function to all the buttons
+          categoryTag.onclick = function() {
+          // Removing "active" class from all buttons inside the .tab-header container
+          const allButtons = container.querySelectorAll('button');
+          allButtons.forEach(button => button.classList.remove("active"));
+
+          // Adding "active" class to the clicked tag
+          categoryTag.classList.add("active");
+          getProductsByCategory(category.id);
+        };
 
           container.appendChild(categoryTag);
         });
@@ -98,7 +102,7 @@
     fetch(evenFloFAQURL + `products/by/category/${category_id}`)
     .then(response => response.json())
     .then(data => {
-      alert('Category ID: ' + category_id);
+
       const container = document.querySelector('.tab-content-wrapper');
 
       const productsBlock = document.getElementById('productsByCategory');
