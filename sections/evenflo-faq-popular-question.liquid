@@ -134,7 +134,7 @@ function fetchProductsData(){
 }
 
 document.addEventListener('shopify:section:load', (event) => { 
-  console.log('eventtttt',event)
+  console.log('Section ID:', event.detail.sectionId);
   fetchProductsData();
 });
 
