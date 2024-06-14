@@ -77,41 +77,60 @@
 
 
 function fetchProductssData(){
- 
+  fetch(evenFloFAQURL + 'faqs/popular')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.querySelector('.popular-card-wrapper');
+      alert(33232);
+      if (container) {
+        container.innerHTML = "";  // Clear existing content
 
-  fetch(evenFloFAQURL + 'faqs/popularss')
-        .then(response => {
-         
-          return response.json();
-        })
-        .then(data => {
-        
-          const container = document.getElementById('productsContainer');
-          if (container) {
-            container.innerHTML = "";
-            
-            data.forEach(product => {
-              const productDiv = document.createElement('div');
-              productDiv.classList.add('product');
-              
-              const productTitle = document.createElement('h2');
-              productTitle.textContent = product.question;
-              productDiv.appendChild(productTitle);
-              
-              const productPrice = document.createElement('p');
-              productPrice.textContent = `${product.answer}`;
-              productDiv.appendChild(productPrice);
-              
-              container.appendChild(productDiv);
-            });
-          } else {
-           
+        data.slice(0, 3).forEach(product => {  // Limit to 3 products
+          const popularCard = document.createElement('div');
+          popularCard.classList.add('popular-card');
+          
+          popularCard.innerHTML = `
+            <div class="heading">
+              <h3>Products</h3>
+              <h2>${product.question}</h2>
+              <div class="description-wrapper">
+                <p>fjjjjjjjjjjjjdkjfjfjjjjjjdk</p>
+                <button>
+                  <span>Show more</span>
+                  <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-detail-wrapper">
+                <p>${product.answer}</p>
+                <div class="card-content-link">
+                  <a href="">Read Answer</a>
+                </div>
+              </div>
+              <div class="card-link-wrapper">
+                <a href="">Shyft DualRide</a>
+                <a href="">Car Seats</a>
+                <a href="">Category</a>
+              </div>
+            </div>
+          `;
+   // Set the HTML content for the answer
+          const answerParagraph = popularCard.querySelector('.card-detail-wrapper p');
+          if (answerParagraph) {
+            answerParagraph.innerHTML = product.answer;
           }
-        })
-        .catch(error =>{
-        
-          console.error('Error fetching products:', error);
+          container.appendChild(popularCard);
         });
+      } else {
+        console.error('Popular card wrapper container not found');
+      }
+    })
+    .catch(error =>{
+      console.error('Error fetching products:', error);
+    });
 }
 
 document.addEventListener('shopify:section:load', () => { 
@@ -121,6 +140,45 @@ document.addEventListener('shopify:section:load', () => {
 document.addEventListener('DOMContentLoaded', () => {
   fetchProductssData();
 });
+
+// function fetchProductssData(){
+ 
+
+//   fetch(evenFloFAQURL + 'faqs/popularss')
+//         .then(response => {
+         
+//           return response.json();
+//         })
+//         .then(data => {
+        
+//           const container = document.getElementById('productsContainer');
+//           if (container) {
+//             container.innerHTML = "";
+            
+//             data.forEach(product => {
+//               const productDiv = document.createElement('div');
+//               productDiv.classList.add('product');
+              
+//               const productTitle = document.createElement('h2');
+//               productTitle.textContent = product.question;
+//               productDiv.appendChild(productTitle);
+              
+//               const productPrice = document.createElement('p');
+//               productPrice.textContent = `${product.answer}`;
+//               productDiv.appendChild(productPrice);
+              
+//               container.appendChild(productDiv);
+//             });
+//           } else {
+           
+//           }
+//         })
+//         .catch(error =>{
+        
+//           console.error('Error fetching products:', error);
+//         });
+// }
+
 
 
  
