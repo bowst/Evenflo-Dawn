@@ -115,12 +115,13 @@
     fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
       .then(response => response.json())
       .then(data => {
-        const container = document.querySelector('.tab-header');
+       
+
         const categoriesBlock = document.getElementById('categoriesContainer');
         const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
 
-        alert(blocksToShow);
-
+        alert('Number of blocks to show :'.blocksToShow);
+        const container = document.querySelector('.tab-header');
         container.innerHTML = ""; // Clear the container once before the loop
 
         data.results.slice(0, blocksToShow).forEach((category, index) => {
