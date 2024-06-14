@@ -134,8 +134,14 @@ function fetchProductsData(){
 }
 
 document.addEventListener('shopify:section:load', (event) => { 
-  console.log('Section ID:', event.detail.sectionId);
-  fetchProductsData();
+  const sectionId = event?.detail?.sectionId;
+  if (sectionId.includes('evenflo_faq_popular_question')) {
+    console.log('The section ID contains "evenflo_faq_popular_question".');
+    fetchProductssData();
+  } else {
+    console.log('The section ID does not contain "evenflo_faq_popular_question".');
+  }
+
 });
 
 document.addEventListener('DOMContentLoaded', () => {
