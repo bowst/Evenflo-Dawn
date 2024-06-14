@@ -111,40 +111,35 @@
 
 
 <script>
+  function getPaginatedCategories() {
+    fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.querySelector('.category-tab-wrapper');
+        const categoriesBlock = document.getElementById('categoriesContainer');
+        const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
 
-  function getPaginatedCategories(){
-   
-    fetch(evenFloFAQURL+'products/getPaginatedCategories?page_size=10&page=1')
-        .then(response => response.json())
-        .then(data => {
-          const container = document.querySelector('.category-tab-wrapper');
-            const categoriesBlock = document.getElementById('categoriesContainer');
-            let blocksToShow=categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
+        alert(blocksToShow);
 
-            alert(blocksToShow)
+        container.innerHTML = ""; // Clear the container once before the loop
 
-    
-            data.results.slice(0, blocksToShow).forEach((category,index) => {
-                container.innerHTML=""
-                const categoryDiv = document.createElement('div');
-                categoryDiv.classList.add('tab-header');
-                let class= index==0 ? "active" : ""
+        data.results.slice(0, blocksToShow).forEach((category, index) => {
+          const categoryDiv = document.createElement('div');
+          categoryDiv.classList.add('tab-header');
+          const isActive = index === 0 ? "active" : "";
 
-                categoryDiv.innerHTML=`<button class="${class}">${category?.category_name}</button>`
-                
-                container.appendChild(categoryDiv);
-            });
-        })
-        .catch(error => console.error('Error fetching categories:', error));
-   
+          categoryDiv.innerHTML = `<button class="${isActive}">${category?.category_name}</button>`;
+          container.appendChild(categoryDiv);
+        });
+      })
+      .catch(error => console.error('Error fetching categories:', error));
   }
 
-    document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     alert(1);
     getPaginatedCategories();
-    });
-  </script>
-
+  });
+</script>
 
 
 
