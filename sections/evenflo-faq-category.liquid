@@ -126,10 +126,10 @@
         data.results.slice(0, blocksToShow).forEach((category, index) => {
           const categoryTag = document.createElement('button');
     
-         const isActive = index === 0 ? "active" : "";
-         categoryTag.classList.add(isActive);
+          const isActive = index === 0 ? "active" : "";
+          categoryTag.classList.add(isActive);
 
-         categoryTag.innerHTML=${category?.category_name};
+          categoryTag.innerHTML=category?.category_name;
           container.appendChild(categoryTag);
         });
       })
