@@ -120,17 +120,20 @@
         const categoriesBlock = document.getElementById('categoriesContainer');
         const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
 
-        alert('Number of blocks to show :'.blocksToShow);
-        const container = document.querySelector('.tab-header');
+        alert('Number of blocks to show: ' + blocksToShow);
+        
+        const container = document.querySelector('.tab-header'); // Corrected selector
         container.innerHTML = ""; // Clear the container once before the loop
 
         data.results.slice(0, blocksToShow).forEach((category, index) => {
           const categoryTag = document.createElement('button');
     
           const isActive = index === 0 ? "active" : "";
-          categoryTag.classList.add(isActive);
+          if (isActive) {
+            categoryTag.classList.add(isActive);
+          }
 
-          categoryTag.innerHTML=category?.category_name;
+          categoryTag.innerHTML = category?.category_name;
           container.appendChild(categoryTag);
         });
       })
