@@ -58,45 +58,47 @@
 
 
 <script>
-  function getPaginatedCategories() {
-    fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
-      .then(response => response.json())
-      .then(data => {
-        getProductsByCategory(data.results[0]?.id)
+ function getPaginatedCategories() {
+  fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
+    .then(response => response.json())
+    .then(data => {
+      getProductsByCategory(data.results[0]?.id);
 
-        const categoriesBlock = document.getElementById('categoriesContainer');
-        const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
+      const categoriesBlock = document.getElementById('categoriesContainer');
+      const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
+      
+      const container = document.querySelector('.tab-header'); 
+      container.innerHTML = ""; // Clear previous buttons
+
+      data.results.slice(0, blocksToShow).forEach((category, index) => {
+        const categoryTag = document.createElement('button');
+  
+        const isActive = index === 0 ? "active" : "";
+        if (isActive) {
+          categoryTag.classList.add(isActive);
+        }
         
-        const container = document.querySelector('.tab-header'); 
-        container.innerHTML = ""; // 
+        categoryTag.innerHTML = category?.category_name;
 
-        data.results.slice(0, blocksToShow).forEach((category, index) => {
-          const categoryTag = document.createElement('button');
-    
-          const isActive = index === 0 ? "active" : "";
-          if (isActive) {
-            categoryTag.classList.add(isActive);
-          }
-          
-          categoryTag.innerHTML = category?.category_name;
-
-          
-         // Appending an on click function to all the buttons
-          categoryTag.onclick = function() {
-          // Removing "active" class from all tags inside the .tab-header container
+        // Appending an onclick function to all the buttons
+        categoryTag.onclick = function() {
+          // Removing "active" class from all buttons inside the .tab-header container
           const allButtons = container.querySelectorAll('button');
           allButtons.forEach(button => button.classList.remove("active"));
 
-          // Adding "active" class to the clicked tag
+          // Adding "active" class to the clicked button
           categoryTag.classList.add("active");
+
+          // Fetch products for the selected category
           getProductsByCategory(category.id);
         };
-       
-          container.appendChild(categoryTag);
-        
-      })
-      .catch(error => console.error('Error fetching categories:', error));
-  }
+
+        container.appendChild(categoryTag);
+      });
+    })
+    .catch(error => console.error('Error fetching categories:', error));
+}
+
 
   function getProductsByCategory(category_id){
     fetch(evenFloFAQURL + `products/by/category/${category_id}`)
