@@ -92,13 +92,24 @@ function fetchProductsData(){
         data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
           const popularCard = document.createElement('div');
           popularCard.classList.add('popular-card');
+
+          let productsContent="";
+          let categories="";
+          product?.products.forEach((nestedProduct) => { 
+            productsContent+=`<span>${nestedProduct?.name}</span>`;
+            categories+=`<a href="abc.com/${nestedProduct?.category?.category_name}">${nestedProduct?.category?.category_name}</a>`
+          })
+          
+          // <a href="">Shyft DualRide</a>
+          //       <a href="">Car Seats</a>
+          //       <a href="">Category</a>
           
           popularCard.innerHTML = `
             <div class="heading">
               <h3>${product?.products[0]?.name}</h3>
               <h2>${product.question}</h2>
               <div class="description-wrapper">
-                <p>fjjjjjjjjjjjjdkjfjfjjjjjjdk</p>
+                <p>${productsContent}</p>
                 <button>
                   <span>Show more</span>
                   <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
@@ -115,9 +126,7 @@ function fetchProductsData(){
                 </div>
               </div>
               <div class="card-link-wrapper">
-                <a href="">Shyft DualRide</a>
-                <a href="">Car Seats</a>
-                <a href="">Category</a>
+                ${categories}
               </div>
             </div>
           `;
@@ -126,6 +135,7 @@ function fetchProductsData(){
           if (answerParagraph) {
             answerParagraph.innerHTML = product.answer;
           }
+          
           container.appendChild(popularCard);
         });
       } else {
