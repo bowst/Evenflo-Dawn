@@ -80,7 +80,7 @@
           
           categoryTag.innerHTML = category?.category_name;
 
-          categoryTag.onclick = function() {
+          
          // Appending an on click function to all the buttons
           categoryTag.onclick = function() {
           // Removing "active" class from all buttons inside the .tab-header container
@@ -91,9 +91,9 @@
           categoryTag.classList.add("active");
           getProductsByCategory(category.id);
         };
-
+       
           container.appendChild(categoryTag);
-        });
+        
       })
       .catch(error => console.error('Error fetching categories:', error));
   }
