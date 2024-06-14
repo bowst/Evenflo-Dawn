@@ -124,14 +124,13 @@
         container.innerHTML = ""; // Clear the container once before the loop
 
         data.results.slice(0, blocksToShow).forEach((category, index) => {
-         // const categoryDiv = document.createElement('div');
-         const categoryDiv = "";
+          const categoryTag = document.createElement('button');
+    
+         const isActive = index === 0 ? "active" : "";
+         categoryTag.classList.add(isActive);
 
-          // categoryDiv.classList.add('tab-header');
-          const isActive = index === 0 ? "active" : "";
-
-          categoryDiv. = `<button class="${isActive}">${category?.category_name}</button>`;
-          container.appendChild(categoryDiv);
+         categoryTag.innerHTML=${category?.category_name};
+          container.appendChild(categoryTag);
         });
       })
       .catch(error => console.error('Error fetching categories:', error));
