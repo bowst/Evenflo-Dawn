@@ -97,6 +97,11 @@
 
 
   function getProductsByCategory(category_id){
+     // Show the loader
+   const productByCategoriesLoader = document.getElementById('productByCategoriesLoader');
+    if (productByCategoriesLoader) {
+      productByCategoriesLoader.style.display = 'block';
+    }
     fetch(evenFloFAQURL + `products/by/category/${category_id}`)
     .then(response => response.json())
     .then(data => {
@@ -135,8 +140,14 @@
         console.error('Tab card wrapper container not found');
       }
     })
-    .catch(error =>{
+    .catch(error => {
       console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+      // Hide the loader
+      if (productByCategoriesLoader) {
+        productByCategoriesLoader.style.display = 'none';
+      }
     });
 }
 
