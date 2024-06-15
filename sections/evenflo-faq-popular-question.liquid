@@ -30,8 +30,8 @@
 					  <!-- Loader -->
             <div id="loader" class="loader" style="display: none;"></div>
 
-            <!-- This will be populated dynamically -->
-            <div id="popularCardsContainer"></div>
+            {% comment %} <!-- This will be populated dynamically -->
+            <div id="popularCardsContainer"></div> {% endcomment %}
 				
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 
 function fetchProductsData() {
   const loader = document.getElementById('loader');
-  const container = document.getElementById('popularCardsContainer');
+  const container = document.querySelector('.popular-card-wrapper');
   const popularQuestionBlock = document.getElementById('popularQuestionBlock');
   let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
 
@@ -76,6 +76,7 @@ function fetchProductsData() {
           });
 
           popularCard.innerHTML = `
+           <div id="loader" class="loader" style="display: none;"></div>
             <div class="heading">
               <h3>${product?.products[0]?.name}</h3>
               <h2>${product.question}</h2>
