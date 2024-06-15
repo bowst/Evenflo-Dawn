@@ -113,11 +113,9 @@
 
       container.appendChild(loader);
    
-
-   const loader = document.getElementById('productByCategoriesLoader');
-    if (loader) {
-      loader.style.display = 'block';
-    }
+      if (loader) {
+        loader.style.display = 'block';
+      }
 
     fetch(evenFloFAQURL + `products/by/category/${category_id}`)
     .then(response => response.json())
