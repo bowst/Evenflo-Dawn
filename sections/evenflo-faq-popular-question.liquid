@@ -1,21 +1,23 @@
+<style>
+  .loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-  {% comment %} <section class="container">
-    <h1>{{ section.settings.popularQuestionTitle }}</h1>
-
-      {% assign products_to_show= section.settings.popularQuestionRange%}
-      
-    <!-- Block 4: Products -->
-    <div id="productsContainer" class="block products-container" data-products-to-show="{{ products_to_show }}">
-      {{ products_to_show}}
-        <div class="product">
-            <h2>Product 1</h2>
-            <p>Price: $10</p>
-        </div>
-        
-    </div>
-
-
-</section> {% endcomment %}
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
 
 {% assign products_to_show= section.settings.popularQuestionRange%}
 
@@ -25,50 +27,11 @@
 					<h2>{{ section.settings.popularQuestionTitle }}</h2>
 				</div>
 				<div class="popular-card-wrapper">
-					<div class="popular-card">
-						<div class="heading">
-							<h3>Products</h3>
-							<h2>Can you use this car seat without the base?</h2>
-							<div class="description-wrapper">
-								<p>
-									Revolve360 Extend All-in-One Rotational Car Seat with Green
-									&amp; Gentle Fabric
-								</p>
-								<button>
-									<span>Show more</span>
-									<svg
-										aria-hidden="true"
-										focusable="false"
-										class="icon icon-caret"
-										viewBox="0 0 10 6"
-									>
-										<path
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-											d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
-											fill="currentColor"
-										></path>
-									</svg>
-								</button>
-							</div>
-						</div>
-						<div class="card-content">
-							<div class="card-detail-wrapper">
-								<p>
-									The Shyft DualRide can be used with or without the stroller
-									frame when installing without the base.
-								</p>
-								<div class="card-content-link">
-									<a href="">Read Answer</a>
-								</div>
-							</div>
-							<div class="card-link-wrapper">
-								<a href="">Shyft DualRide</a>
-								<a href="">Car Seats</a>
-								<a href="">Category</a>
-							</div>
-						</div>
-					</div>
+					  <!-- Loader -->
+            <div id="loader" class="loader" style="display: none;"></div>
+
+            <!-- This will be populated dynamically -->
+            <div id="popularCardsContainer"></div>
 				
 				</div>
 			</div>
@@ -77,38 +40,41 @@
 <script>
 
 
-function fetchProductsData(){
+function fetchProductsData() {
+  const loader = document.getElementById('loader');
+  const container = document.getElementById('popularCardsContainer');
+  const popularQuestionBlock = document.getElementById('popularQuestionBlock');
+  let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
+
+  // Show the loader
+  if (loader) {
+    loader.style.display = 'block';
+  }
+
   fetch(evenFloFAQURL + 'faqs/popular')
     .then(response => response.json())
     .then(data => {
-      const container = document.querySelector('.popular-card-wrapper');
-
-      const popularQuestionBlock = document.getElementById('popularQuestionBlock');
-      let blocksToShow=popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
-     
       if (container) {
         container.innerHTML = "";  // Clear existing content
 
-        data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
+        data.slice(0, blocksToShow).forEach((product) => {
           const popularCard = document.createElement('div');
           popularCard.classList.add('popular-card');
 
-          let productsContent="";
-          let categories=[];
-          let categoriesHtml="";
+          let productsContent = "";
+          let categories = [];
+          let categoriesHtml = "";
 
           product?.products.forEach((nestedProduct) => { 
-            productsContent+=`<span>${nestedProduct?.name}</span>`;
-            categories[nestedProduct?.category?.id]=nestedProduct?.category?.category_name
-          })
+            productsContent += `<span>${nestedProduct?.name}</span>`;
+            categories[nestedProduct?.category?.id] = nestedProduct?.category?.category_name;
+          });
 
           const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
-          uniqueCategoriesArray?.forEach((category,id)=>{
-            categoriesHtml+=`<a href="https://abc.com/${category}">${category}</a>`
-            
-            })
-          
-          
+          uniqueCategoriesArray?.forEach((category, id) => {
+            categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+          });
+
           popularCard.innerHTML = `
             <div class="heading">
               <h3>${product?.products[0]?.name}</h3>
@@ -135,22 +101,34 @@ function fetchProductsData(){
               </div>
             </div>
           `;
-          // Set the HTML content for the answer
-          const answerParagraph = popularCard.querySelector('.card-detail-wrapper p');
-          if (answerParagraph) {
-            answerParagraph.innerHTML = product.answer;
-          }
-
           container.appendChild(popularCard);
         });
       } else {
         console.error('Popular card wrapper container not found');
       }
     })
-    .catch(error =>{
+    .catch(error => {
       console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+      // Hide the loader
+      if (loader) {
+        loader.style.display = 'none';
+      }
     });
 }
+
+document.addEventListener('shopify:section:load', (event) => { 
+  const sectionId = event?.detail?.sectionId;
+  if (sectionId.includes('evenflo_faq_popular_question')) {
+    fetchProductsData();
+  } 
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchProductsData();
+});
+
 
 document.addEventListener('shopify:section:load', (event) => { 
   const sectionId = event?.detail?.sectionId;
