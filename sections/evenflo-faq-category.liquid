@@ -103,6 +103,15 @@
     if(!container){
       return;
     }
+    container.innerHTML = "";  // Clear existing content
+
+      //Creating loader div through javascript
+      const loader = document.createElement('div');
+      loader.id = 'productByCategoriesLoader';
+      loader.className = 'loader';
+      //loader.style.display = 'block';
+
+      container.appendChild(loader);
    
 
    const loader = document.getElementById('productByCategoriesLoader');
@@ -113,20 +122,15 @@
     fetch(evenFloFAQURL + `products/by/category/${category_id}`)
     .then(response => response.json())
     .then(data => {
-      container.innerHTML = "";  // Clear existing content
       
 
       const productsBlock = document.getElementById('productsByCategory');
       const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 3;
 
-      //Creating loader div through javascript
-      const loader = document.createElement('div');
-      loader.id = 'productByCategoriesLoader';
-      loader.className = 'loader';
+    
      
      
       if (container) {
-        container.appendChild(loader);
 
         data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
           const tabCard = document.createElement('div');
