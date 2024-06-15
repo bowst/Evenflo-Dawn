@@ -47,6 +47,7 @@
    if (loader) {
     loader.style.display = 'block';
   }
+  
   fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
     .then(response => response.json())
     .then(data => {
@@ -98,9 +99,9 @@
 
   function getProductsByCategory(category_id){
      // Show the loader
-   const productByCategoriesLoader = document.getElementById('productByCategoriesLoader');
-    if (productByCategoriesLoader) {
-      productByCategoriesLoader.style.display = 'block';
+   const loader = document.getElementById('productByCategoriesLoader');
+    if (loader) {
+      loader.style.display = 'block';
     }
     fetch(evenFloFAQURL + `products/by/category/${category_id}`)
     .then(response => response.json())
@@ -113,6 +114,10 @@
      
       if (container) {
         container.innerHTML = "";  // Clear existing content
+
+        if (loader) {
+          alert(2)
+        }
 
         data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
           const tabCard = document.createElement('div');
@@ -145,8 +150,8 @@
     })
     .finally(() => {
       // Hide the loader
-      if (productByCategoriesLoader) {
-        productByCategoriesLoader.style.display = 'none';
+      if (loader) {
+        loader.style.display = 'none';
       }
     });
 }
