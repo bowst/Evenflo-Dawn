@@ -99,15 +99,22 @@
 
   function getProductsByCategory(category_id){
      // Show the loader
+    const container = document.querySelector('.tab-content-wrapper');
+    if(!container){
+      return;
+    }
+   
+
    const loader = document.getElementById('productByCategoriesLoader');
     if (loader) {
       loader.style.display = 'block';
     }
+
     fetch(evenFloFAQURL + `products/by/category/${category_id}`)
     .then(response => response.json())
     .then(data => {
-
-      const container = document.querySelector('.tab-content-wrapper');
+      container.innerHTML = "";  // Clear existing content
+      
 
       const productsBlock = document.getElementById('productsByCategory');
       const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 3;
@@ -119,7 +126,6 @@
      
      
       if (container) {
-        container.innerHTML = "";  // Clear existing content
         container.appendChild(loader);
 
         data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
