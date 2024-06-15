@@ -116,7 +116,7 @@
         container.innerHTML = "";  // Clear existing content
 
         if (loader) {
-          alert(2)
+          container.appendChild(`<div id="productByCategoriesLoader" class="loader" style="display: none;"></div>`);
         }
 
         data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
