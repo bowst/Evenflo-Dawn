@@ -2,17 +2,50 @@
   "sections": {
     "main": {
       "type": "evenflo-faq-hero",
+      "blocks": {
+        "heading_UUQn3J": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand"
+          }
+        },
+        "links_y4zUTP": {
+          "type": "links",
+          "settings": {
+            "linkoneName": "Find",
+            "linkone": "",
+            "linktwoName": "Register",
+            "linktwo": ""
+          }
+        },
+        "search_iJpLzL": {
+          "type": "search",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "heading_UUQn3J",
+        "links_y4zUTP",
+        "search_iJpLzL"
+      ],
       "settings": {
+        "backGroundColor_hero": "#79E7E4"
       }
     },
     "products": {
       "type": "evenflo-faq-popular-question",
       "settings": {
+        "popularQuestionTitle": "Popular Questions",
+        "popularQuestionRange": 2
       }
     },
     "categories": {
       "type": "evenflo-faq-category",
       "settings": {
+        "faqCategoryTitle": "Categories",
+        "faqCategoriesRange": 4,
+        "faqProductsRange": 6
       }
     }
   },
