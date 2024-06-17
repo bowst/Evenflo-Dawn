@@ -42,6 +42,12 @@
             "custom_liquid": "{% for variant in product.variants %}\n  {% if variant.inventory_quantity > 0 %}\n    <!-- Variant is in stock, you can customize messages or actions here -->\n  {% else %}\n    <p>So sorry, the Shyft Rideshare All-Terrain Performance Stroller Wagon in {{ variant.title }} is currently out of stock! Another great option is our extremely popular Pivot Xplore All-Terrain Stroller Wagon for your next family adventure. <a href=\"https:\/\/www.evenflo.com\/products\/pivot-xplore-stroller-wagon\">Take a look >>><\/a> is currently out of stock.<\/p>\n  {% endif %}\n{% endfor %}"
           }
         },
+        "related_products_PGeCNY": {
+          "type": "related_products",
+          "settings": {
+            "heading": "Styles. Which is best for you?"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -74,6 +80,7 @@
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
         "custom_liquid_MijrXC",
+        "related_products_PGeCNY",
         "variant_picker",
         "ae2b090a-c8c0-410e-ae8a-b81555a2e14e",
         "buy_buttons",
