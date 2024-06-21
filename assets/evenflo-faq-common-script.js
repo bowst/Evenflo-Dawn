@@ -1,4 +1,4 @@
-var evenFloFAQURL = "https://django.evenflo-cms.orb.local/api/";
+var evenFloFAQURL = "http://127.0.0.1:7000/api/";
 
 document
 	.querySelectorAll(".description-wrapper button")
