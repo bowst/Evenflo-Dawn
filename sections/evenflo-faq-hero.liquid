@@ -69,21 +69,25 @@
 
 
 
+ 
 
-
+  {% javascript %}
     <script>
     
         function searchProducts(type=1) {
           //evenflo-faq-search
           const searchValue = document.getElementById('searchBox').value;
-          alert('Value is '+searchValue)
-          window.location.href = '/pages/evenflo-faq-search?search='+searchValue;
+          alert('Value is ncnv '+searchValue)
+          //window.location.href = '/pages/evenflo-faq-search?search='+searchValue;
+          window.location.href = '{{ routes.root_url }}/pages/evenflo-faq-search';
 
       }
 
       </script>
 
+  {% endjavascript %}
 
+  
     {% schema %}
     {
       "name": "EvenFlo FAQ Hero",
