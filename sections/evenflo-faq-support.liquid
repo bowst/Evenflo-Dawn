@@ -1,0 +1,85 @@
+
+
+{% assign topics_to_show= section.settings.topicsRange%}
+
+
+{% comment %} 
+    <div class="topic-block" id="topicsBlock" data-topics-to-show="{{ topics_to_show }}">
+			<div class="topic-main-wrapper page-width">
+				<div class="heading">
+					<h1>{{ section.settings.topicsTitle }}</h1>
+				</div>
+				<div class="topic-wrapper">
+					  <!-- Loader -->
+                      <div id="topicsLoader" class="loader" style="display: none;"></div>
+				</div>
+			</div>
+		</div> {% endcomment %}
+
+
+        <div class="support-block">
+			<div class="page-width">
+				<div class="support-content-wrapper">
+					<div class="support-card">
+						<div class="support-heading">
+							<h1>Get Support</h1>
+							<p>
+								Tincidunt mollis nisi volutpat quam. Justo, erat feugiat ornare
+								condimentum.
+							</p>
+						</div>
+						<div class="support-card-btn">
+							<button>Call to Action</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+      
+
+
+    
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "EvenFlo FAQ Support",
+  "tag": "section",
+  "class": "TopicQuestion",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "topicsTitle",
+      "label": "Topic Question Title",
+      "default":"By Topics"
+    },
+    {
+        "type": "range",
+        "id": "topicsRange",
+        "label": "Number of topics to show",
+        "default":6,
+        "min": 1,
+        "max": 6,
+        "step": 1
+      }
+  ],
+  "presets": [
+    {
+      "name": "EvenFlo FAQ Support",
+      "blocks": [
+        
+      ]
+    }
+  ]
+  
+}
+{% endschema %}
