@@ -76,6 +76,7 @@
         function searchProducts(type=1) {
           //evenflo-faq-search
           const searchValue = document.getElementById('searchBox').value;
+          console.log('urkk','{{ routes.root_url }}/pages/evenflo-faq-search?search='+searchValue)
           alert(searchValue)
           window.location.href = '{{ routes.root_url }}/pages/evenflo-faq-search?search='+searchValue;
 
