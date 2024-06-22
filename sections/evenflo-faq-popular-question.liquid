@@ -24,10 +24,22 @@ function fetchProductsData() {
   const popularQuestionBlock = document.getElementById('popularQuestionBlock');
   let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
 
-  // Show the loader
-  if (loader) {
-    loader.style.display = 'block';
-  }
+  if(!container){
+      return;
+    }
+    
+    container.innerHTML = "";  // Clear existing content
+
+      //Creating loader div through javascript
+      const loader = document.createElement('div');
+      loader.id = 'loader';
+      loader.className = 'loader';
+
+      container.appendChild(loader);
+   
+      if (loader) {
+        loader.style.display = 'block';
+      }
 
   fetch(evenFloFAQURL + 'faqs/popular')
     .then(response => response.json())
@@ -54,7 +66,7 @@ function fetchProductsData() {
           });
 
           popularCard.innerHTML = `
-           <div id="loader" class="loader" style="display: none;"></div>
+           
             <div class="heading">
               <h3>${product?.products[0]?.name}</h3>
               <h2>${product.question}</h2>
@@ -108,19 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchProductsData();
 });
 
-
-document.addEventListener('shopify:section:load', (event) => { 
-  const sectionId = event?.detail?.sectionId;
-  if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchProductsData();
-  } 
-
-});
-
-document.addEventListener('DOMContentLoaded', () => {
- 
-  fetchProductsData();
-});
 
 
 

@@ -365,3 +365,113 @@
 		transform: rotate(360deg);
 	}
 }
+
+/* topic css */
+
+.topic-block {
+	padding: 40px 0;
+}
+
+.topic-main-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.topic-block .heading {
+	text-align: center;
+}
+
+.topic-block .heading h1 {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.topic-block .heading h1:after {
+	content: "";
+	width: 80px;
+	height: 4px;
+	background: #2996c5;
+	display: inline-block;
+}
+
+.topic-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 24px;
+}
+
+.topic-card {
+	width: calc(33.33% - 16px);
+	background-image: url(https://www.evenflo.com/cdn/shop/files/Evenflo-Benefit-1.png?v=1690902298&width=303);
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+	height: 320px;
+}
+
+.topic-content {
+	padding: 40px;
+	background: rgba(0, 0, 0, 0.4);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.topic-title h2,
+.topic-title p {
+	color: #fff;
+}
+
+.topic-title p {
+	margin: 0;
+}
+
+.topic-title {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.topic-title h2 {
+	margin: 0;
+}
+
+.topic-img img {
+	width: 100%;
+	height: 100%;
+}
+@media screen and (max-width: 1024px) {
+	.topic-content {
+		padding: 24px;
+	}
+	.topic-card {
+		height: 260px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.topic-card {
+		width: calc(50% - 12px);
+	}
+}
+@media screen and (max-width: 767px) {
+	.topic-block {
+		padding: 32px 0;
+	}
+	.topic-main-wrapper {
+		gap: 32px;
+	}
+	.topic-card {
+		width: 100%;
+		height: 224px;
+	}
+	.topic-content {
+		padding: 16px;
+	}
+}
