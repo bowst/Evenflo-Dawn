@@ -19,7 +19,6 @@
 
 
 function fetchProductsData() {
-  const loader = document.getElementById('loader');
   const container = document.querySelector('.popular-card-wrapper');
   const popularQuestionBlock = document.getElementById('popularQuestionBlock');
   let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
@@ -117,18 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.addEventListener('shopify:section:load', (event) => { 
-  const sectionId = event?.detail?.sectionId;
-  if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchProductsData();
-  } 
-
-});
-
-document.addEventListener('DOMContentLoaded', () => {
- 
-  fetchProductsData();
-});
 
 
 
