@@ -76,16 +76,16 @@
  
     <script>
     
-        function searchProducts(type=1) {
-        
-          const searchValue = document.getElementById('searchBox').value;
-          if(searchValue && searchValue.length < 3){
-            alert('Please input atleast three characters');
-          }
-          window.location.href = '/pages/evenflo-faq-search?search='+searchValue;
-        
+    function searchProducts(type = 1) {
+      const searchValue = document.getElementById('searchBox').value;
+      if (searchValue?.length < 3) {
+        alert('Please input at least three characters');
+      }else{
+        window.location.href = '/pages/evenflo-faq-search?search=' + encodeURIComponent(searchValue);
 
       }
+    }
+
 
       </script>
 
