@@ -1,20 +1,19 @@
 
 
-{% assign topics_to_show= section.settings.topicsRange%}
+    {% assign default_background_image = 'https://www.evenflo.com/cdn/shop/files/Evenflo-Benefit-1.png?v=1690902298&width=303' %} <!-- Adjust if using an external URL -->
 
+    {% if section.settings.backgroundImage %}
+    {% assign background_image = section.settings.backgroundImage | image_url: 'master' %}
+    {% else %}
+    {% assign background_image = default_background_image %}
+    {% endif %}
 
-{% comment %} 
-    <div class="topic-block" id="topicsBlock" data-topics-to-show="{{ topics_to_show }}">
-			<div class="topic-main-wrapper page-width">
-				<div class="heading">
-					<h1>{{ section.settings.topicsTitle }}</h1>
-				</div>
-				<div class="topic-wrapper">
-					  <!-- Loader -->
-                      <div id="topicsLoader" class="loader" style="display: none;"></div>
-				</div>
-			</div>
-		</div> {% endcomment %}
+    <style>
+    .support-content-wrapper {
+        background-image: url({{ background_image }});
+    }
+    </style>
+
 
 
         <div class="support-block">
@@ -22,14 +21,13 @@
 				<div class="support-content-wrapper">
 					<div class="support-card">
 						<div class="support-heading">
-							<h1>Get Support</h1>
+							<h1> {{ section.settings.supportTitle }}</h1>
 							<p>
-								Tincidunt mollis nisi volutpat quam. Justo, erat feugiat ornare
-								condimentum.
+								{{ section.settings.supportDescription }}
 							</p>
 						</div>
 						<div class="support-card-btn">
-							<button>Call to Action</button>
+							<button>{{ section.settings.supportActionButton }}</button>
 						</div>
 					</div>
 				</div>
@@ -58,19 +56,27 @@
   "settings": [
     {
       "type": "text",
-      "id": "topicsTitle",
-      "label": "Topic Question Title",
-      "default":"By Topics"
+      "id": "supportTitle",
+      "label": "Support Title",
+      "default":"Get Support"
     },
     {
-        "type": "range",
-        "id": "topicsRange",
-        "label": "Number of topics to show",
-        "default":6,
-        "min": 1,
-        "max": 6,
-        "step": 1
-      }
+      "type": "text",
+      "id": "supportDescription",
+      "label": "Support Description",
+      "default":"Tincidunt mollis nisi volutpat quam. Justo, erat feugiat ornare condimentum."
+    },
+    {
+      "type": "text",
+      "id": "supportActionButton",
+      "label": "Button Title",
+      "default":"Call to Action"
+    },
+    {
+      "type": "image_picker",
+      "id": "backgroundImage",
+      "label": "Background Image"
+    }
   ],
   "presets": [
     {
