@@ -63,11 +63,10 @@
         if (container) {
             container.innerHTML = "";  // Clear existing content
 
-            data.slice(0, blocksToShow).forEach((product) => {
+            data?.results?.slice(0, blocksToShow).forEach((product) => {
+
             const topicCard = document.createElement('div');
             topicCard.classList.add('topic-card');
-
-         
 
             topicCard.innerHTML = `
 						<div class="topic-content">
@@ -87,6 +86,7 @@
 					
             `;
             container.appendChild(topicCard);
+            
             });
         } else {
             console.error('Topic card wrapper container not found');
