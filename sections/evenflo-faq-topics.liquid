@@ -63,22 +63,23 @@
         if (container) {
             container.innerHTML = "";  // Clear existing content
 
-            data?.results?.slice(0, blocksToShow).forEach((product) => {
+            data?.results?.slice(0, blocksToShow).forEach((topic) => {
 
             const topicCard = document.createElement('div');
             topicCard.classList.add('topic-card');
+            topicCard.style.backgroundImage=`url(${topic?.background_image})`
 
             topicCard.innerHTML = `
 						<div class="topic-content">
 							<div class="topic-title">
-								<h2>Revolve360™</h2>
+								<h2>${topic?.name}</h2>
 								<p>
-									Pellentesque venenatis faucibus at lacus aliquam vitae sed.
+									${topic?.description}
 								</p>
 							</div>
 							<div class="topic-icon">
 								<img
-									src="https://www.evenflo.com/cdn/shop/files/icon-give20.png?v=1688762914&width=45"
+									src="${topic?.icon}"
 									alt="topic-icon"
 								/>
 							</div>
@@ -86,7 +87,7 @@
 					
             `;
             container.appendChild(topicCard);
-            
+
             });
         } else {
             console.error('Topic card wrapper container not found');
