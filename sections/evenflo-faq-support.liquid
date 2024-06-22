@@ -3,7 +3,7 @@
     {% assign default_background_image = 'https://www.evenflo.com/cdn/shop/files/Evenflo-Benefit-1.png?v=1690902298&width=303' %} <!-- Adjust if using an external URL -->
 
     {% if section.settings.backgroundImage %}
-    {% assign background_image = section.settings.backgroundImage | image_url: 'master' %}
+    {% assign background_image = section.settings.backgroundImage | image_url %}
     {% else %}
     {% assign background_image = default_background_image %}
     {% endif %}
