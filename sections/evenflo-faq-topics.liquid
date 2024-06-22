@@ -67,8 +67,8 @@
 
             const topicCard = document.createElement('div');
             topicCard.classList.add('topic-card');
-            const backgroundImageURL = topic?.background_image.replace(/&quot;/g, '"');
-            topicCard.style.backgroundImage = `url(${backgroundImageURL | escape})`;
+            const backgroundImageURL = topic?.background_image;
+            topicCard.style.backgroundImage = `url(${backgroundImageURL | url_escape})`;
 
             topicCard.innerHTML = `
 						<div class="topic-content">
