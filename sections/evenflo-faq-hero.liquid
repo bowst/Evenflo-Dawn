@@ -37,16 +37,17 @@
 
         {%- when 'search' -%}
           <!-- Block 2: Search Box -->
-          <input id="email_84369887" class="needsclick go648205600 kl-private-reset-css-Xuajs1" type="email"
-              autocomplete="email" name="email" tabindex="0" placeholder="Enter your email"
-              aria-labelledby="label-email_84369887" aria-invalid="false" options="[object Object]"
-              style="box-sizing: border-box;border-radius: 0px;padding: 0px 0px 0px 16px;height: 50px;text-align: left;color: rgb(0, 0, 0);font-size: 24px;font-weight: 400;letter-spacing: 0px;background-color: rgb(255, 255, 255);border: 1px solid rgb(180, 187, 195);width: 100%;">
+          <input id="searchBox" class="needsclick go648205600 kl-private-reset-css-Xuajs1" type="text"
+              name="search" tabindex="0" placeholder="Search"
+              style="box-sizing: border-box;border-radius: 0px;padding: 0px 0px 0px 16px;height: 50px;text-align: left;color:
+               rgb(0, 0, 0);font-size: 24px;font-weight: 400;letter-spacing: 0px;background-color:
+                rgb(255, 255, 255);border: 1px solid rgb(180, 187, 195);width: 100%;">
           
         {%- when 'links' -%}
           <!-- Block 3: Button Links -->
           <div class="help-article-link-wrapper">
-              <a href="{{ block.settings.linkone }}">{{ block.settings.linkoneName }}</a>
-              <a href="{{ block.settings.linktwo }}">{{ block.settings.linktwoName }}</a>
+              <a onclick="searchProducts(1)" href="{{ block.settings.linkone }}">{{ block.settings.linkoneName }}</a>
+              <a onclick="searchProducts(2)"  href="{{ block.settings.linktwo }}">{{ block.settings.linktwoName }}</a>
           </div>
 
 
@@ -70,32 +71,16 @@
 
 
 
-  <script>
-   
-
-    function searchProducts() {
+    <script>
     
-      const searchValue = document.getElementById('searchBox').value;
-      let productsToShow=getNumberOfProducts();
+        function searchProducts(type=1) {
 
-     
-      if (productsToShow > 1) {
-        alert('Number of products to show:'+productsToShow);
-    
-        // Use the productsToShow value in your JavaScript logic
-        // For example, you might fetch and display the products here
-      } else {
-        alert('Element with id "products-container" not found');
+          const searchValue = document.getElementById('searchBox').value;
+          alert(searchValue)
+
       }
-  }
 
-  function getNumberOfProducts(){
-    let productsContainer = document.getElementById('productsContainer');
-    let productsToShow=productsContainer.dataset.productsToShow;
-    return productsToShow
-  }
-
-    </script>
+      </script>
 
 
     {% schema %}
