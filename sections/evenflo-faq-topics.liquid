@@ -67,7 +67,7 @@
 
             const topicCard = document.createElement('div');
             topicCard.classList.add('topic-card');
-            topicCard.style.backgroundImage=`url(${topic?.background_image})`
+            topicCard.style.backgroundImage = `url(${topic?.background_image | json})`;
 
             topicCard.innerHTML = `
 						<div class="topic-content">
