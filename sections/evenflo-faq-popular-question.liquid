@@ -44,8 +44,6 @@ function fetchProductsData() {
   fetch(evenFloFAQURL + 'faqs/popular')
     .then(response => response.json())
     .then(data => {
-      if (container) {
-        container.innerHTML = "";  // Clear existing content
 
         data.slice(0, blocksToShow).forEach((product) => {
           const popularCard = document.createElement('div');
@@ -94,9 +92,7 @@ function fetchProductsData() {
           `;
           container.appendChild(popularCard);
         });
-      } else {
-        console.error('Popular card wrapper container not found');
-      }
+      
     })
     .catch(error => {
       console.error('Error fetching products:', error);
