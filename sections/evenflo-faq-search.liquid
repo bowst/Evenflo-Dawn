@@ -10,7 +10,7 @@
         </div>
         <div class="search-listing-wrapper">
             <div class="search-listing-header">
-                <p><span id="numberOfResults">8</span> results for <b>“query”</b></p>
+                <p id="numberOfResults"> </p>
                 <div class="search-selector">
                     <select>
                         <option selected="" value="Select Product">
@@ -112,7 +112,8 @@ function fetchFAQsData(searchTerm="") {
 
         //Setting number of results shown   
         let numberOfResults=data?.length ?? 0
-        document.getElementById('numberOfResults').textContent=numberOfResults;
+        let insideContent=`${numberOfResults} results for <b>“query”</b>`
+        document.getElementById('numberOfResults').innerHTML=insideContent;
 
         data.slice(0, blocksToShow).forEach((product) => {
           const searchCard = document.createElement('div');
