@@ -6,7 +6,7 @@
             <h1>Search</h1>
         </div>
         <div class="search-input">
-            <input type="text" placeholder="query" />
+            <input type="text" id="searchBox" placeholder="Search" />
         </div>
         <div class="search-listing-wrapper">
             <div class="search-listing-header">
@@ -32,8 +32,10 @@
                     </select>
                 </div>
             </div>
+
+
             <div class="search-listing-body">
-                <div class="search-card">
+                {% comment %} <div class="search-card">
                     <div class="heading">
                         <h3>Products</h3>
                         <h2>Can you use this car seat without the base?</h2>
@@ -71,45 +73,122 @@
                         </div>
                     </div>
                 </div>
-                <div class="search-card">
-                    <div class="heading">
-                        <h3>Products</h3>
-                        <h2>Can you use this car seat without the base?</h2>
-                        <div class="description-wrapper">
-                            <p>Revolve360 Extend All-in-One Rotational Car Seat w...</p>
-                            <button>
-                                <span>Show 3 more</span>
-                                <svg
-                                    aria-hidden="true"
-                                    focusable="false"
-                                    class="icon icon-caret"
-                                    viewBox="0 0 10 6"
-                                >
-                                    <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
-                                        fill="currentColor"
-                                    ></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-detail-wrapper">
-                            <p>
-                                The Shyft DualRide can be used with or without the stroller
-                                frame when installing without the base.
-                            </p>
-                        </div>
-                        <div class="card-link-wrapper">
-                            <a href="">Shyft DualRide</a>
-                            <a href="">Car Seats</a>
-                            <a href="">Category</a>
-                        </div>
-                    </div>
+               {% endcomment %}
                 </div>
-            </div>
         </div>
     </div>
 </div>
+
+
+
+<script>
+
+
+function fetchFAQsData(searchTerm="") {
+  const container = document.querySelector('.search-listing-body');
+  const searchBlocks = document.getElementById('searchBlocks');
+  let blocksToShow = searchBlocks ? searchBlocks.dataset.searchBlocksToShow : 8;
+
+  if(!container){
+      return;
+    }
+    
+    container.innerHTML = "";  // Clear existing content
+
+      //Creating loader div through javascript
+      const loader = document.createElement('div');
+      loader.id = 'loader';
+      loader.className = 'loader';
+
+      container.appendChild(loader);
+   
+      if (loader) {
+        loader.style.display = 'block';
+      }
+
+  fetch(evenFloFAQURL + 'faqs/getFilteredFaqs?filter='+encodeURIComponent(searchTerm))
+    .then(response => response.json())
+    .then(data => {
+
+        data.slice(0, blocksToShow).forEach((product) => {
+          const searchCard = document.createElement('div');
+          searchCard.classList.add('search-card');
+
+          let productsContent = "";
+          let categories = [];
+          let categoriesHtml = "";
+
+          product?.products.forEach((nestedProduct) => { 
+            productsContent += `<span>${nestedProduct?.name}</span>`;
+            categories[nestedProduct?.category?.id] = nestedProduct?.category?.category_name;
+          });
+
+          const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
+          uniqueCategoriesArray?.forEach((category, id) => {
+            categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+          });
+
+          searchCard.innerHTML = `
+           
+            <div class="heading">
+              <h3>${product?.products[0]?.name}</h3>
+              <h2>${product.question}</h2>
+              <div class="description-wrapper">
+                <p>${productsContent}</p>
+                <button>
+                  <span>Show more</span>
+                  <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="card-detail-wrapper">
+                <p>${product.answer}</p>
+                <div class="card-content-link">
+                  <a href="">Read Answer</a>
+                </div>
+              </div>
+              <div class="card-link-wrapper">
+                ${categoriesHtml}
+              </div>
+            </div>
+          `;
+          container.appendChild(searchCard);
+        });
+      
+    })
+    .catch(error => {
+      console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+      // Hide the loader
+      if (loader) {
+        loader.style.display = 'none';
+      }
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    let searchTerm=""
+    if (urlParams.has('search')) {
+        searchTerm = urlParams.get('search');
+        document.getElementById('searchBox').value=searchTerm
+    } 
+
+    fetchFAQsData(searchTerm);
+});
+
+
+
+
+
+
+
+ 
+    </script>
