@@ -83,17 +83,21 @@ function fetchFAQsData(searchTerm="") {
           searchCard.classList.add('search-card');
 
           let productsContent = "";
-          let categories = [];
-          let categoriesHtml = "";
-
+          let tags = [];
+          let tagsHtml = "";
+          
           product?.products.forEach((nestedProduct) => { 
             productsContent += `<span>${nestedProduct?.name}</span>`;
-            categories[nestedProduct?.category?.id] = nestedProduct?.category?.category_name;
           });
 
-          const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
-          uniqueCategoriesArray?.forEach((category, id) => {
-            categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+         //Added for tags
+          product?.tags.forEach((tag) => { 
+            tags[tag?.id] = tag?.name;
+          });
+
+          const uniquetagsArray = tags?.filter((value, index, self) => self.indexOf(value) === index);
+          uniquetagsArray?.forEach((tag, id) => {
+            tagsHtml += `<a href="https://abc.com/${tag}">${tag}</a>`;
           });
 
           searchCard.innerHTML = `
@@ -114,12 +118,9 @@ function fetchFAQsData(searchTerm="") {
             <div class="card-content">
               <div class="card-detail-wrapper">
                 <p>${product.answer}</p>
-                <div class="card-content-link">
-                  <a href="">Read Answer</a>
-                </div>
               </div>
               <div class="card-link-wrapper">
-                ${categoriesHtml}
+                ${tagsHtml}
               </div>
             </div>
           `;
