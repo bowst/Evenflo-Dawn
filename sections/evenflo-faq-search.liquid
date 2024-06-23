@@ -115,7 +115,7 @@ function fetchFAQsData(searchTerm="") {
         let insideContent=`${numberOfResults} results for <b>“query”</b>`
         document.getElementById('numberOfResults').innerHTML=insideContent;
 
-        data.slice(0, blocksToShow).forEach((product) => {
+        data.forEach((product) => {
           const searchCard = document.createElement('div');
           searchCard.classList.add('search-card');
 
