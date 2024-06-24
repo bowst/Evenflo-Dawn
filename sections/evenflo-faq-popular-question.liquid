@@ -126,11 +126,12 @@ function fetchProductsData() {
 				.querySelectorAll(".description-wrapper button.active")
 				.forEach((activeBtn) => {
 					activeBtn.classList.remove("active");
+                  activeBtn.children[0].textContent = "Show more"
                   console.log(activeBtn.children)
 				});
 
 			descBtn.classList.add("active");
-
+            descBtn.children[0].textContent = "Show less";
 			description.textContent = description.getAttribute("data-full-text");
 		});
 	});
