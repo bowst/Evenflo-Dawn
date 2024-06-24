@@ -138,6 +138,40 @@ console.log(searchTerm)
       // Hide the loader
       if (loader) {
         loader.style.display = 'none';
+           document
+	.querySelectorAll(".description-wrapper button")
+	.forEach((descBtn, index) => {
+		let description = document.querySelectorAll(".description-wrapper p")[
+			index
+		];
+
+		description.setAttribute("data-full-text", description.textContent);
+
+		if (description.textContent.length > 50) {
+			description.textContent =
+				description.textContent.substring(0, 50) + "...";
+		}
+
+		descBtn.addEventListener("click", () => {
+			document.querySelectorAll(".description-wrapper p").forEach((desc) => {
+				let fullText = desc.getAttribute("data-full-text");
+				if (fullText && fullText.length > 50) {
+					desc.textContent = fullText.substring(0, 50) + "...";
+				}
+			});
+
+			document
+				.querySelectorAll(".description-wrapper button.active")
+				.forEach((activeBtn) => {
+					activeBtn.classList.remove("active");
+                  activeBtn.children[0].textContent = "Show more"
+				});
+
+			descBtn.classList.add("active");
+            descBtn.children[0].textContent = "Show less";
+			description.textContent = description.getAttribute("data-full-text");
+		});
+	});
       }
     });
 }
