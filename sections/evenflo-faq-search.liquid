@@ -75,7 +75,7 @@ function fetchFAQsData(searchTerm="") {
   fetch(evenFloFAQURL + 'faqs/getFilteredFaqs?filter='+encodeURIComponent(searchTerm))
     .then(response => response.json())
     .then(data => {
-
+console.log(data)
         //Setting number of results shown   
         let numberOfResults=data?.length ?? 0
         let insideContent=`${numberOfResults} results for <b>“query”</b>`
