@@ -12,6 +12,11 @@
     .support-content-wrapper {
         background-image: url({{ background_image }});
     }
+    @media screen and (max-width: 767px) {
+      .support-content-wrapper:after{
+        background-image: url({{ background_image }});
+      }
+    }
     </style>
 
 
