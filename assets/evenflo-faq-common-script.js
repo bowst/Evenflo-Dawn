@@ -1,4 +1,4 @@
-var evenFloFAQURL = "http://django.evenflo-cms.orb.local/api/";
+var evenFloFAQURL = "https://3a03-182-185-217-240.ngrok-free.app/api/";
 
 document
 	.querySelectorAll(".description-wrapper button")
