@@ -126,6 +126,7 @@ function fetchProductsData() {
 				.querySelectorAll(".description-wrapper button.active")
 				.forEach((activeBtn) => {
 					activeBtn.classList.remove("active");
+                  console.log(activeBtn.children)
 				});
 
 			descBtn.classList.add("active");
