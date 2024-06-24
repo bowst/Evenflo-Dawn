@@ -27,6 +27,16 @@
 	gap: 12px;
 	width: 100%;
 }
+.searchBox-wrapper {
+    position: relative;
+}
+
+.searchBox-wrapper svg {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 .help-article-link-wrapper {
 	display: flex;
