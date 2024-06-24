@@ -78,7 +78,7 @@ function fetchFAQsData(searchTerm="") {
 console.log(searchTerm)
         //Setting number of results shown   
         let numberOfResults=data?.length ?? 0
-        let insideContent=`${numberOfResults} results for <b>“query”</b>`
+        let insideContent=`${numberOfResults} results for <b>“${searchTerm}”</b>`
         document.getElementById('numberOfResults').innerHTML=insideContent;
 
         data.forEach((product) => {
