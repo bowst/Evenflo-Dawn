@@ -84,13 +84,14 @@
       console.log(e.key,"success")
       
        if(e.key == "Enter"){
+         if (searchValue?.length < 3) {
+        alert('Please input at least three characters');}
           window.location.href = '/pages/evenflo-faq-search?search=' + encodeURIComponent(searchValue);
           
         }else{
          const searchValue = document.getElementById('searchBox').value;
-          if (searchValue?.length < 3) {
-        alert('Please input at least three characters');
-      }
+          
+      
         }
     
     }
