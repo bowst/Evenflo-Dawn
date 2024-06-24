@@ -81,7 +81,7 @@
     <script>
     
     function searchProducts(e,type = 1) {
-      console.log(e,"success")
+      console.log(e.key,"success")
       const searchValue = document.getElementById('searchBox').value;
       if (searchValue?.length < 3) {
         alert('Please input at least three characters');
