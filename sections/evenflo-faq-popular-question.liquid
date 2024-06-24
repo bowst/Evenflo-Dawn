@@ -100,25 +100,7 @@ function fetchProductsData() {
       // Hide the loader
       if (loader) {
         loader.style.display = 'none';
-      }
-    });
-}
-
-document.addEventListener('shopify:section:load', (event) => { 
-  const sectionId = event?.detail?.sectionId;
-  if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchProductsData();
-  } 
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  fetchProductsData();
-});
-
-
-
-
-document
+        document
 	.querySelectorAll(".description-wrapper button")
 	.forEach((descBtn, index) => {
 		let description = document.querySelectorAll(".description-wrapper p")[
@@ -151,6 +133,25 @@ document
 			description.textContent = description.getAttribute("data-full-text");
 		});
 	});
+      }
+    });
+}
+
+document.addEventListener('shopify:section:load', (event) => { 
+  const sectionId = event?.detail?.sectionId;
+  if (sectionId.includes('evenflo_faq_popular_question')) {
+    fetchProductsData();
+  } 
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchProductsData();
+});
+
+
+
+
+
 
 
  
