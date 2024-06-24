@@ -82,16 +82,15 @@
     
     function searchProducts(e,type = 1) {
       console.log(e.key,"success")
-      
+      const searchValue = document.getElementById('searchBox').value;
        if(e.key == "Enter"){
          if (searchValue?.length < 3) {
-        alert('Please input at least three characters');}
-          window.location.href = '/pages/evenflo-faq-search?search=' + encodeURIComponent(searchValue);
+        alert('Please input at least three characters');
+         }else{
+             window.location.href = '/pages/evenflo-faq-search?search=' + encodeURIComponent(searchValue);
+         }
+        
           
-        }else{
-         const searchValue = document.getElementById('searchBox').value;
-          
-      
         }
     
     }
