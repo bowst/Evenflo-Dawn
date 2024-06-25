@@ -166,7 +166,10 @@ SECTION: Display Recommended Products
         
 <div class="collection page-width">
   <div class="loading-overlay gradient"></div>
-  <ul id="product-grid" class="grid product-grid grid--2-col-tablet-down grid--3-col-desktop" style="justify-content: center;" >
+  <ul id="product-grid" class="
+                grid product-grid grid--1-col-tablet-down
+                grid--4-col-desktop
+              " style="justify-content: center;" >
 
   {% comment %} Loop over the passed in products {% endcomment %}
   {%- for product_handle in product_handles -%}
@@ -192,7 +195,7 @@ SECTION: Display Recommended Products
  
     {% comment %} Render an individual product {% endcomment %}
 
-    <li>
+    <li class="grid__item">
 
     {%- comment -%}DIGIOH-OPTION: change to a different snippet to render item if desired {%- endcomment -%}
 
@@ -232,7 +235,10 @@ SECTION: Display Recommended Products
     
     {% if need_new_row == true %}
       </ul>
-      <ul id="product-grid" class="grid product-grid grid--2-col-tablet-down grid--3-col-desktop" style="justify-content: center;" >
+      <ul id="product-grid" class="
+                grid product-grid grid--1-col-tablet-down
+                grid--4-col-desktop
+              " style="justify-content: center;" >
       {% assign products_rendered_in_row = 0 %} {% assign current_row = current_row | plus: 1 %} {% assign need_new_row = false %}  {% comment %} reset for new row {% endcomment %}
     {% endif %}
 
