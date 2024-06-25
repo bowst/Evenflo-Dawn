@@ -298,7 +298,7 @@ background: #2996c5 !important;
 
 {% if my_string contains "Outlet" %}
   <div>Outlet: {{ outlet }}</div>
-  <input min="1" type="number" id="quantity" name="quantity" value="{{ outlet }}"/>
+  <input min="1" type="hidden" id="quantity" name="quantity" value="{{ outlet }}"/>
 {% endif %}
                   <button
                     id="{{ product_form_id }}-submit"
