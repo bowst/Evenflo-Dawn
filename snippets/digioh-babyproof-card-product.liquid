@@ -243,6 +243,7 @@ background: #2996c5 !important;
                   novalidate: 'novalidate',
                   data-type: 'add-to-cart-form'
                 -%}
+                  {% if card_product.variants.size > 1 %}
                   {% for option in card_product.options %}
                     {%- assign downcased_option = option | downcase -%}
                   
@@ -277,6 +278,14 @@ background: #2996c5 !important;
                       </div>
                     {% endif %}
                   {% endfor %}
+                  {% else %}
+                         <input
+                    type="hidden"
+                    name="id"
+                    value="{{ card_product.selected_or_first_available_variant.id }}"
+                    disabled
+                  >     
+                  {% endif %}
                               {% unless card_product.options %}
                   <input
                     type="hidden"
