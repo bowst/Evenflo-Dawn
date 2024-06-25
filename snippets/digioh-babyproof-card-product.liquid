@@ -231,6 +231,10 @@ background: #2996c5 !important;
                     <div>2 per table: You need {{ table | times : 2 }}</div>
                     {% assign qty = table | times : 2 %}
                   {% endif %}
+                  {% if my_string contains "Foam Edge" %}
+                    <div>1 per table: You need {{ table }}</div>
+                    {% assign qty = table %}
+                  {% endif %}
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
             {% endunless %}
