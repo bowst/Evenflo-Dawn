@@ -285,6 +285,14 @@ background: #2996c5 !important;
                     disabled
                   >
                                 {% endunless %}
+                              {% assign my_string = "9' X 12' <script>" %}
+{% assign keyword = "9' X 12'" %}
+
+{% if my_string contains keyword %}
+  <p>The string contains the keyword: {{ keyword }}</p>
+{% else %}
+  <p>The string does not contain the keyword: {{ keyword }}</p>
+{% endif %}
                   <button
                     id="{{ product_form_id }}-submit"
                     type="submit"
