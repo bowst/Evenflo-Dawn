@@ -40,6 +40,7 @@ SECTION: Template Variables
 {% assign my_custom_param = '' %}     {% comment %} debug used to display debug info. see SECTION: Set custom variables {% endcomment %}
 {% assign debug = false %}     {% comment %} debug used to display debug info {% endcomment %}
 {% assign outlet = 1 %}
+{% assign table = 1 %}
 {%- comment -%}
 ************************************
 END SECTION:Template Variables 
@@ -107,6 +108,9 @@ SECTION: Url Parsing
       
       {% if keyAndValue[0] == 'outlets' %}
         {% assign outlet = keyAndValue[1] | url_decode %}
+      {%- endif -%}
+      {% if keyAndValue[0] == 'table' %}
+        {% assign table = keyAndValue[1] | url_decode %}
       {%- endif -%}
       {% if keyAndValue[0] == 'debug' %}
         {% assign debug = true %}
