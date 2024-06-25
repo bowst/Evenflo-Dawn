@@ -297,7 +297,8 @@ background: #2996c5 !important;
                               {% assign my_string = card_product.title %}
 
 {% if my_string contains "Outlet" %}
-  <p>Outlet: {{ outlet }}</p>
+  <div>Outlet: {{ outlet }}</div>
+  <input min="1" type="number" id="quantity" name="quantity" value="{{ outlet }}"/>
 {% endif %}
                   <button
                     id="{{ product_form_id }}-submit"
