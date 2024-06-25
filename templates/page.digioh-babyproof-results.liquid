@@ -39,6 +39,7 @@ SECTION: Template Variables
 {% assign add_to_cart = true %}     {% comment %} enable quick add on product item, defaults to true {% endcomment %}
 {% assign my_custom_param = '' %}     {% comment %} debug used to display debug info. see SECTION: Set custom variables {% endcomment %}
 {% assign debug = false %}     {% comment %} debug used to display debug info {% endcomment %}
+{% assign outlet = 1 %}
 {%- comment -%}
 ************************************
 END SECTION:Template Variables 
@@ -102,6 +103,10 @@ SECTION: Url Parsing
       {%- endif -%}
       {% if keyAndValue[0] == 'products' %}
         {% assign product_handles = keyAndValue[1] | url_decode | split: ',' %}
+      {%- endif -%}
+      
+      {% if keyAndValue[0] == 'outlet' %}
+        {% assign outlet = keyAndValue[1] | url_decode %}
       {%- endif -%}
       {% if keyAndValue[0] == 'debug' %}
         {% assign debug = true %}
@@ -206,7 +211,7 @@ SECTION: Display Recommended Products
       {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
     {% endif %}  {% endcomment %}
 
-    {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart %}
+    {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart, outlet: outlet %}
     </li>
 
     {%- comment -%}
