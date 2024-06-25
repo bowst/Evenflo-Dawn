@@ -105,7 +105,7 @@ SECTION: Url Parsing
         {% assign product_handles = keyAndValue[1] | url_decode | split: ',' %}
       {%- endif -%}
       
-      {% if keyAndValue[0] == 'outlet' %}
+      {% if keyAndValue[0] == 'outlets' %}
         {% assign outlet = keyAndValue[1] | url_decode %}
       {%- endif -%}
       {% if keyAndValue[0] == 'debug' %}
