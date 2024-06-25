@@ -243,57 +243,12 @@ background: #2996c5 !important;
                   novalidate: 'novalidate',
                   data-type: 'add-to-cart-form'
                 -%}
-                  {% if card_product.variants.size > 1 %}
-                  {% for option in card_product.options %}
-                    {%- assign downcased_option = option | downcase -%}
-                  
-                    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
-                      {%- assign option_index = forloop.index0 -%}
-                      {%- assign values = '' -%}
-                      <div class="product-form__input">
-                        <p class="product__text inline-richtext left subtitle heading-underline">Color</p>
-                        <div class="select">
-                          <select
-                            name="id"
-                            class="select__select"
-                          >
-                                            {% for variant in card_product.variants %}
-                                              {%- assign value = variant.options[option_index] -%}
-                                      
-                                              {% unless values contains value %}
-                                                {%- assign values = values | join: ',' -%}
-                                                {%- assign values = values | append: ',' | append: value -%}
-                                                {%- assign values = values | split: ',' -%}
-                                                <option {% unless variant.available %} disabled {% endunless %}
-                                value="{{ variant.id }}"
-                              >{{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}</option>
-                                              {% endunless %}
-                                            {% endfor %}
-                          </select>
-                          <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-                          </svg>
-                    
-                        </div>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
-                  {% else %}
-                         <input
-                    type="hidden"
-                    name="id"
-                    value="{{ card_product.selected_or_first_available_variant.id }}"
-                    disabled
-                  >     
-                  {% endif %}
-                              {% unless card_product.options %}
                   <input
                     type="hidden"
                     name="id"
                     value="{{ card_product.selected_or_first_available_variant.id }}"
                     disabled
-                  >
-                                {% endunless %}
+                  >     
                    {% assign my_string = card_product.title %}
 
                   {% if my_string contains "Outlet" %}
