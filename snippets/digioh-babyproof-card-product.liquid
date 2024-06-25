@@ -221,6 +221,16 @@ background: #2996c5 !important;
            <div style="text-align: center">
 
 </div>
+            {% assign qty = 1 %}
+            {% assign my_string = card_product.title %}
+            {% if my_string contains "Outlet" %}
+                    <div>Outlet: {{ outlet }}</div>
+                    {% assign qty = outlet %}
+                  {% endif %}
+                  {% if my_string contains "Foam" %}
+                    <div>Table: {{ table }}</div>
+                    {% assign qty = table %}
+                  {% endif %}
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
             {% endunless %}
@@ -249,16 +259,8 @@ background: #2996c5 !important;
                     value="{{ card_product.selected_or_first_available_variant.id }}"
                     disabled
                   >     
-                   {% assign my_string = card_product.title %}
-
-                  {% if my_string contains "Outlet" %}
-                    <div>Outlet: {{ outlet }}</div>
-                    <input min="1" type="hidden" id="quantity" name="quantity" value="{{ outlet }}"/>
-                  {% endif %}
-                  {% if my_string contains "Foam" %}
-                    <div>Table: {{ table }}</div>
-                    <input min="1" type="hidden" id="quantity" name="quantity" value="{{ table }}"/>
-                  {% endif %}
+                  
+                  <input min="1" type="hidden" id="quantity" name="quantity" value="{{ qty }}"/>
                   <button
                     id="{{ product_form_id }}-submit"
                     type="submit"
