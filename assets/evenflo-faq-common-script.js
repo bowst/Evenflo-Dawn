@@ -1,4 +1,4 @@
-var evenFloFAQURL = "http://127.0.0.1:7000/api/";
+var evenFloFAQURL = "https://3454-182-185-217-240.ngrok-free.app/api/";
 
 document
 	.querySelectorAll(".description-wrapper button")
