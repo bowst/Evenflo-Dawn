@@ -218,3 +218,28 @@
 		flex-wrap: wrap;
 	}
 }
+
+/* CSS for pagination */
+
+.search-pagination {
+	display: flex;
+	gap: 15px;
+	justify-content: center;
+	padding: 20px 0;
+}
+
+.search-pagination button {
+	background: #fff;
+	border: 1px solid #00aea9;
+	font-size: 20px;
+	font-weight: 700;
+	min-width: 40px;
+	transition: all 0.3s;
+}
+
+.search-pagination button:hover,
+.search-pagination .active-btn {
+	background: #00aea9;
+	color: #fff;
+	transform: scale(1.2);
+}

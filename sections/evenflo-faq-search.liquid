@@ -42,6 +42,11 @@
              {% comment %} TO be displayed through javascript {% endcomment %}
                 </div>
         </div>
+
+      <div class="search-pagination" id="searchPagination">
+          
+
+      </div>
     </div>
 </div>
 
@@ -50,7 +55,7 @@
 <script>
 
 
-function fetchFAQsData(searchTerm="") {
+function fetchFAQsData(searchTerm="",page=1) {
     const container = document.querySelector('.search-listing-body');
     const searchBlocks = document.getElementById('searchBlocks');
     let blocksToShow = searchBlocks ? searchBlocks.dataset.searchBlocksToShow : 8;
@@ -72,16 +77,17 @@ function fetchFAQsData(searchTerm="") {
         loader.style.display = 'block';
       }
 
-  fetch(evenFloFAQURL + 'faqs/getFilteredFaqs?filter='+encodeURIComponent(searchTerm))
+  fetch(evenFloFAQURL + 'faqs/getFilteredFaqs?page='+page+'&count=10&filter='+encodeURIComponent(searchTerm))
     .then(response => response.json())
     .then(data => {
-console.log(searchTerm)
+        console.log('data',data)
         //Setting number of results shown   
-        let numberOfResults=data?.length ?? 0
+        let numberOfResults=data?.count ?? 0
+        let paginatedHTML=getPaginatedHTMLButtons(numberOfResults,page)
         let insideContent=`${numberOfResults} results for <b>“${searchTerm}”</b>`
         document.getElementById('numberOfResults').innerHTML=insideContent;
 
-        data.forEach((product) => {
+        data?.results?.forEach((product) => {
           const searchCard = document.createElement('div');
           searchCard.classList.add('search-card');
 
@@ -177,6 +183,65 @@ console.log(searchTerm)
 }
 
 
+function getPaginatedHTMLButtons(resultCount, page) {
+    if(resultCount <1){
+      return;
+    }
+    const perPage = 20;
+    const totalPages = Math.ceil(resultCount / perPage);
+    
+    const paginationDiv = document.getElementById('searchPagination');
+
+    // Create the 'prev' button
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'prev';
+    if (page == 1) {
+        prevButton.disabled = true;
+    }else{
+        prevButton.onclick=()=>paginatedClick(page-1)
+    }
+    paginationDiv.appendChild(prevButton);
+
+    // Create the page number buttons
+    let startPage = Math.max(1, page);
+    let endPage = Math.min(startPage + 2, totalPages);
+
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.onclick=()=>paginatedClick(i)
+        paginationDiv.appendChild(pageButton);
+    }
+
+    // Create the 'next' button
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'next';
+    if (page >= totalPages) {
+        nextButton.disabled = true;
+    }else{
+        nextButton.onclick=()=>paginatedClick(page+1)
+    }
+
+    paginationDiv.appendChild(nextButton);
+
+    return paginationDiv.outerHTML;
+}
+
+function paginatedClick(page){
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+    let searchTerm=""
+    if (urlParams.has('search')) {
+        searchTerm = urlParams.get('search');
+    } 
+
+    callLocation(page,searchTerm)
+
+  
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -187,7 +252,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('searchBox').value=searchTerm
     } 
 
-    fetchFAQsData(searchTerm);
+    let page=1
+    if (urlParams.has('page')) {
+        page = urlParams.get('page');
+      
+    }
+
+    fetchFAQsData(searchTerm,page);
 });
 
 
@@ -197,11 +268,15 @@ const inputElement = document.getElementById('searchBox');
 inputElement.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
-        const inputValue = inputElement.value;
-        fetchFAQsData(inputValue);
+        const searchTerm = inputElement.value;
+        callLocation(1,searchTerm)
 
     }
 });
+
+function callLocation(page=1,searchTerm=""){
+  window.location.href = '/pages/evenflo-faq-search?page='+page+'&search=' + encodeURIComponent(searchTerm)
+}
 
 
 
