@@ -227,10 +227,7 @@ background: #2996c5 !important;
                     <div>Outlet: {{ outlet }}</div>
                     {% assign qty = outlet %}
                   {% endif %}
-                  {% if my_string contains "Foam Corner" %}
-                    <div>2 per table: You need {{ table | times : 2 }}</div>
-                    {% assign qty = table | times : 2 %}
-                  {% endif %}
+                  
                   {% if my_string contains "Foam Edge" %}
                     <div>1 per table: You need {{ table }}</div>
                     {% assign qty = table %}
@@ -238,6 +235,9 @@ background: #2996c5 !important;
             {% if my_string contains "2-Pack" %}
                     <div>You need: 2 (2-packs)</div>
                     {% assign qty = 1 %}
+                  {% endif %}
+            {% if my_string contains "Foam Corner" %}
+                    {% assign qty = table | times : 2 %}
                   {% endif %}
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
