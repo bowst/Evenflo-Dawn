@@ -235,6 +235,10 @@ background: #2996c5 !important;
                     <div>1 per table: You need {{ table }}</div>
                     {% assign qty = table %}
                   {% endif %}
+            {% if my_string contains "2-Pack" %}
+                    <div>You need: 2 (2-packs)</div>
+                    {% assign qty = 1 %}
+                  {% endif %}
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
             {% endunless %}
