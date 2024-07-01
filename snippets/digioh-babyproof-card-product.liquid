@@ -223,6 +223,10 @@ background: #2996c5 !important;
 </div>
             {% assign qty = 1 %}
             {% assign my_string = card_product.title %}
+            {% if my_string contains "2-Pack" %}
+                    <div>You need: 2 (2-packs)</div>
+                    {% assign qty = 2 %}
+                  {% endif %}
             {% if my_string contains "Outlet" %}
                     {% assign qty = outlet %}
                   {% endif %}
@@ -231,10 +235,7 @@ background: #2996c5 !important;
                     <div>1 per table: You need {{ table }}</div>
                     {% assign qty = table %}
                   {% endif %}
-            {% if my_string contains "2-Pack" %}
-                    <div>You need: 2 (2-packs)</div>
-                    {% assign qty = 1 %}
-                  {% endif %}
+            
             {% if my_string contains "Foam Corner" %}
                     {% assign qty = table | times : 2 %}
                   {% endif %}
