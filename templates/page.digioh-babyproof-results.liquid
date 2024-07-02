@@ -24,7 +24,18 @@ Required Snippets:
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
-
+<style>
+  .retake-dev.page-width a{
+    min-width: 200px;
+    max-width: 386px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 18px;
+  }
+</style>
 {%- comment -%}
 ************************************
 SECTION: Template Variables 
