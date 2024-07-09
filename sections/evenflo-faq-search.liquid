@@ -179,6 +179,9 @@ function getPaginatedHTMLButtons(resultCount, page) {
     if(resultCount <1){
       return;
     }
+
+    page=parseInt(page);
+    
     const perPage = 20;
     const totalPages = Math.ceil(resultCount / perPage);
     
