@@ -1,0 +1,30 @@
+<script type="text/javascript">
+
+    window.kameleoonQueue = window.kameleoonQueue || [];
+
+    const kameleoonValidatePrice = (price) => {
+      let validatePrice = String(price).replace(/[,. ]/g, "");
+      let penny = validatePrice.substring(validatePrice.length - 2, validatePrice.length);
+      return validatePrice.substring(0, validatePrice.length - 2) + "." + penny;
+    };
+
+    if(Shopify.Checkout.page == "thank_you"){    
+      window.kameleoonQueue = window.kameleoonQueue || [];
+      kameleoonQueue.push(['Goals.processConversion', 'transaction_shopify', parseFloat(kameleoonValidatePrice("{{checkout.total_price | money_without_currency}}"))]);
+    }
+
+    if(Shopify.Checkout.page == "thank_you"){
+    
+      var line_items = [];
+      {% for line_item in checkout.line_items %}
+      line_items.push({
+      productId: '{{ line_item.product_id }}',
+      quantity: {{ line_item.quantity }},
+      });
+      {% endfor %}
+      
+      kameleoonQueue.push(['Products.trackTransaction', line_items]);
+    }
+
+</script>
+

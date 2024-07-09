@@ -1,0 +1,46 @@
+<script type="text/javascript">
+
+    window.kameleoonQueue = window.kameleoonQueue || []; 
+
+    const kameleoonValidatePrice = (price) => {
+      let validatePrice = String(price).replace(/[,. ]/g, "");
+      let penny = validatePrice.substring(validatePrice.length - 2, validatePrice.length);
+      return validatePrice.substring(0, validatePrice.length - 2) + "." + penny;
+    };
+
+    const product_item = {
+
+    id: "{{ product.id }}",
+
+    name: "{{ product.title }}",
+
+    categories: [],
+
+    imageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+
+    url: "{{ shop.secure_url }}{{ product.url }}",
+
+    brand: "{{ product.vendor }}",
+
+    price: kameleoonValidatePrice("{{ product.price }}"),
+      
+    available: {{ product.available }},
+
+    sku: "{{ product.id }}",
+
+    description: "{{ product.content }}"
+
+    };
+
+    {% for pr in product.collections %}
+    product_item.categories.push({id: "{{pr.id}}", name: "{{ pr.title }}" })
+    {% endfor %}
+
+    {%if  product.compare_at_price  %}
+      product_item.oldPrice = kameleoonValidatePrice("{{ product.compare_at_price }}");
+    {% endif %}
+    
+    kameleoonQueue.push(['Products.trackProductView', "{{ product.id }}", product_item]);
+
+    
+</script>
