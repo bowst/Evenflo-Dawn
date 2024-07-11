@@ -1,5 +1,65 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
+    "image_banner_yQXFLV": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_L8YY3Y": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "text_TD4UKU": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_txCET3": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_L8YY3Y",
+        "text_TD4UKU",
+        "buttons_txCET3"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "b592811e-a055-4215-acca-6521d5e6eca9": {
       "type": "evenflo-full-width-image",
       "disabled": true,
@@ -45,6 +105,56 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
+      }
+    },
+    "evenflo_full_width_image_Qi86p8": {
+      "type": "evenflo-full-width-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/line.gif"
+      }
+    },
+    "evenflo_image_with_text_hPbMwC": {
+      "type": "evenflo-image-with-text",
+      "blocks": {
+        "heading_faT6Vf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Evenflo Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text_MRrNz8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_NeRDpU": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_faT6Vf",
+        "text_MRrNz8",
+        "button_NeRDpU"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "18d4d9dd-156f-4845-9d4f-932d4df1aaae": {
@@ -510,8 +620,11 @@
     }
   },
   "order": [
+    "image_banner_yQXFLV",
     "b592811e-a055-4215-acca-6521d5e6eca9",
     "ba9f16be-e870-4780-b29f-b2c2911b2048",
+    "evenflo_full_width_image_Qi86p8",
+    "evenflo_image_with_text_hPbMwC",
     "18d4d9dd-156f-4845-9d4f-932d4df1aaae",
     "ba47e4d0-36f8-465a-a9a3-fdbdfca4f60a",
     "4411361a-ed44-4650-8148-672a8f576b39",
