@@ -31,7 +31,10 @@
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
-
+    <script
+      type="text/javascript"
+      src="//static.​kameleoon.​com/css/customers/96yyrsqxp4/0/kameleoon.js"
+    ></script>
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -371,13 +374,12 @@
       src="https://www.lightboxcdn.com/vendor/e07b6cf2-e433-4ace-afa4-2755fc915356/lightbox_speed.js"
     ></script>
     <!-- END Digioh Low Impact Javascript -->
-   
-{% capture snippet_content %}{% include 'kameleoon-root-script' %}{% endcapture %}
-  {% unless snippet_content contains "Liquid error" %}
-    {{ snippet_content }}
-  {% endunless %}
 
- </head>
+    {% capture snippet_content %}{% include 'kameleoon-root-script' %}{% endcapture %}
+    {% unless snippet_content contains 'Liquid error' %}
+      {{ snippet_content }}
+    {% endunless %}
+  </head>
 
   <body class="gradient">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
