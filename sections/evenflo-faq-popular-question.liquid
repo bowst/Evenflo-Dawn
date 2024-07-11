@@ -81,7 +81,7 @@ function fetchProductsData() {
               <div class="card-detail-wrapper">
                 <p>${product.answer}</p>
                 <div class="card-content-link">
-                  <a href="">Read Answer</a>
+                  <a href="/pages/evenflo-faq-answer?qid=${product?.id}">Read Answer</a>
                 </div>
               </div>
               <div class="card-link-wrapper">
@@ -101,18 +101,18 @@ function fetchProductsData() {
       if (loader) {
         loader.style.display = 'none';
         document
-	.querySelectorAll(".description-wrapper button")
-	.forEach((descBtn, index) => {
-		let description = document.querySelectorAll(".description-wrapper p")[
-			index
-		];
+        .querySelectorAll(".description-wrapper button")
+        .forEach((descBtn, index) => {
+          let description = document.querySelectorAll(".description-wrapper p")[
+            index
+          ];
 
-		description.setAttribute("data-full-text", description.textContent);
+        description.setAttribute("data-full-text", description.textContent);
 
-		if (description.textContent.length > 50) {
-			description.textContent =
-				description.textContent.substring(0, 50) + "...";
-		}
+        if (description.textContent.length > 50) {
+          description.textContent =
+            description.textContent.substring(0, 50) + "...";
+        }
 
 		descBtn.addEventListener("click", () => {
 			document.querySelectorAll(".description-wrapper p").forEach((desc) => {

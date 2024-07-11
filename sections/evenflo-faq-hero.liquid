@@ -50,10 +50,10 @@
         {%- when 'links' -%}
           <!-- Block 3: Button Links -->
           <div class="help-article-link-wrapper">
-              {% comment %} <a onclick="searchProducts(1)" href="{{ block.settings.linkone }}">{{ block.settings.linkoneName }}</a>
-              <a onclick="searchProducts(2)"  href="{{ block.settings.linktwo }}">{{ block.settings.linktwoName }}</a> {% endcomment %}
-              <a onclick="searchProducts(1)" href="javascript:void(0)">{{ block.settings.linkoneName }}</a>
-              <a onclick="searchProducts(2)"  href="javascript:void(0)">{{ block.settings.linktwoName }}</a>
+              <a  href="{{ block.settings.linkone }}">{{ block.settings.linkoneName }}</a>
+              <a  href="{{ block.settings.linktwo }}">{{ block.settings.linktwoName }}</a> 
+              {% comment %} <a onclick="searchProducts(1)" href="javascript:void(0)">{{ block.settings.linkoneName }}</a>
+              <a onclick="searchProducts(2)"  href="javascript:void(0)">{{ block.settings.linktwoName }}</a> {% endcomment %}
           </div>
 
 
