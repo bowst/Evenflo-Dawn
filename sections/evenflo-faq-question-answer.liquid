@@ -14,7 +14,7 @@
 <script>
 
 
-function fetchQuestionsAnswerData() {
+function fetchQuestionsAnswerData(id) {
   const container = document.querySelector('.question-banner-wrapper');
 
   const questionAnswerBlock = document.getElementById('questionAnswerBlock');
@@ -38,21 +38,26 @@ function fetchQuestionsAnswerData() {
       }
 
 
-  fetch(evenFloFAQURL + 'faqs/popular')
+  fetch(evenFloFAQURL + 'faqs/'+id)
     .then(response => response.json())
-    .then(data => {
-
-        data.slice(0, blocksToShow).forEach((product) => {
-			
-          const popularCard = document.createElement('div');
-          popularCard.classList.add('popular-card');
-
+    .then(product => {
+           console.log('product',product)
           let productsContent = "";
           let categories = [];
           let categoriesHtml = "";
 
           product?.products.forEach((nestedProduct) => { 
-            productsContent += `<span>${nestedProduct?.name}</span>`;
+            productsContent += `<div class="product-content">
+							<div class="product-img">
+								<img
+									src="${nestedProduct?.image}"
+									alt="product"
+								/>
+							</div>
+							<div class="product-title">
+								${nestedProduct?.name}
+							</div>
+						</div>`;
             categories[nestedProduct?.category?.id] = nestedProduct?.category?.category_name;
           });
 
@@ -61,15 +66,16 @@ function fetchQuestionsAnswerData() {
             categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
           });
 
-          popularCard.innerHTML = `
+		container.innerHTML = `
            
             	<div class="question-col question-col-1">
 				<div class="question-content">
 					<div class="heading">
 						<h1>
-							<span>Can I use this car seat on an aircraft?</span
-							><span>
+							<span>${product?.question}</span
+							><span onclick="copyCurrentUrlToClipboard()">
 								<svg
+								
 									xmlns="http://www.w3.org/2000/svg"
 									width="30"
 									height="25"
@@ -81,23 +87,18 @@ function fetchQuestionsAnswerData() {
 										fill="#00AEA9"
 									></path>
 								</svg>
+								
 							</span>
 						</h1>
-						<p>Updated 00/00/0000</p>
+						<p>Updated ${formatPostedDate(product?.updated)}</p>
 					</div>
 					<div class="description">
 						<p>
-							Yes, this infant car seat can be installed on an aircraft without
-							the use of the base. NOTE: If the car seat is equipped with
-							SensorSafe, tighten the harness around your child and then
-							unfasten the chest clip. In order to comply with the FAA
-							regulation for Portable Electronic Devices, the SensorSafe chest
-							clip must remain unfastened during take-off and landing.
+							${product?.answer}
 						</p>
 					</div>
 					<div class="question-banner-links">
-						<a href="">Shyft DUalRide</a>
-						<a href="">Car Seats</a>
+						${categoriesHtml}
 					</div>
 				</div>
 			</div>
@@ -110,18 +111,7 @@ function fetchQuestionsAnswerData() {
 						<h2>“THIS CAR SEAT”</h2>
 					</div>
 					<div class="product-list">
-						<div class="product-content">
-							<div class="product-img">
-								<img
-									src="https://www.evenflo.com/cdn/shop/files/kmpmonvfgbc0jh2grxil.jpg?v=1701111329&amp;width=720"
-									alt="product"
-								/>
-							</div>
-							<div class="product-title">
-								Revolve360 Extend All-in-One Rotational Car Seat with Green
-								&amp; Gentle Fabric
-							</div>
-						</div>
+				            ${productsContent}
 					</div>
 					<div class="question-banner-links">
 						<a href=""
@@ -144,8 +134,8 @@ function fetchQuestionsAnswerData() {
 				</div>
 			</div>
           `;
-          container.appendChild(popularCard);
-        });
+         // container.appendChild(popularCard);
+        
       
     })
     .catch(error => {
@@ -159,15 +149,18 @@ function fetchQuestionsAnswerData() {
     });
 }
 
-document.addEventListener('shopify:section:load', (event) => { 
-  const sectionId = event?.detail?.sectionId;
-  if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchQuestionsAnswerData();
-  } 
-});
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetchQuestionsAnswerData();
+	const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    if (urlParams.has('qid')) {
+        let questionID = urlParams.get('qid');
+		fetchQuestionsAnswerData(questionID);
+
+    } else{
+		window.location.href = '/pages/evenflo-faq-portal';
+	}
 });
 
 </script>

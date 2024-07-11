@@ -34,20 +34,37 @@ document
 		});
 	});
 
-// document.querySelectorAll(".tab-header button").forEach((tabBtn, index) => {
-// 	let tabContentWrapper = document.querySelectorAll(".tab-content-wrapper")[
-// 		index
-// 	];
-// 	tabBtn.addEventListener("click", () => {
-// 		document
-// 			.querySelectorAll(
-// 				".tab-header button.active, .tab-content-wrapper.active"
-// 			)
-// 			.forEach((activeElement) => {
-// 				activeElement.classList.remove("active");
-// 			});
+function formatPostedDate(timestamp) {
+	const date = new Date(timestamp);
 
-// 		tabBtn.classList.add("active");
-// 		tabContentWrapper.classList.add("active");
-// 	});
-// });
+	// Extracting the date part
+	const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, "0");
+	const day = String(date.getDate()).padStart(2, "0");
+
+	const formattedDate = `${year}-${month}-${day}`;
+	return formattedDate;
+}
+
+function copyCurrentUrlToClipboard() {
+	var dummyInput = document.createElement("input");
+
+	dummyInput.value = window.location.href;
+
+	document.body.appendChild(dummyInput);
+
+	dummyInput.select();
+
+	navigator.clipboard
+		.writeText(dummyInput.value)
+		.then(() => {
+			alert("URL copied to clipboard");
+		})
+		.catch((err) => {
+			console.error("Failed to copy:", err);
+			alert("Failed to copy URL to clipboard");
+		})
+		.finally(() => {
+			document.body.removeChild(dummyInput);
+		});
+}
