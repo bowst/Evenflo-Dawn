@@ -1,8 +1,11 @@
-<div class="new-custom-banner" style="background-image: url({{ section.settings.banner_image }});">
+<div
+  class="new-custom-banner"
+  style="background-image: url({{ section.settings.banner_image | image_url: 'master' }});"
+>
   <div class="page-width">
     <div class="heading">
       <h1 style="color: {{ section.settings.text_color }}">
-        {{ section.settings.banner_text }}
+        {{ section.settings.banner_text }} - {{ section.settings.overlay_opacity }}
       </h1>
     </div>
   </div>
