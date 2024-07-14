@@ -8,6 +8,7 @@
 
 <style>
   .new-custom-banner {
+    background-image: url({{ settings.banner_image | img_url: 'master' }});
     background-size: cover;
     background-position: center;
     padding: clamp(40px, 9vw, 150px) 0;
