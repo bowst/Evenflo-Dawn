@@ -1,6 +1,71 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<div class="new-custom-banner">
+  <div class="page-width">
+    <div class="heading">
+      <h1 style="color: {{ settings.text_color }}">{{ settings.banner_text }}</h1>
+    </div>
+  </div>
+</div>
+
+<style>
+  .new-custom-banner {
+    background-image: url({{ settings.banner_image | img_url: 'master' }});
+    background-size: cover;
+    background-position: center;
+    padding: clamp(40px, 9vw, 150px) 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
   }
+
+  .new-custom-banner .heading h1 {
+    margin: 0;
+    font-size: clamp(36px, 7vw, 100px);
+    line-height: 1;
+  }
+
+  .new-custom-banner .page-width {
+    width: 100%;
+  }
+
+  .new-custom-banner:after {
+    content: '';
+    background: rgba(0, 0, 0, {{ settings.overlay_opacity }});
+    position: absolute;
+    inset: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "banner_text",
+      "label": "Banner Text",
+      "default": "CHOOSE YOUR GREEN"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 1
+    }
+  ]
+}
 {% endschema %}
