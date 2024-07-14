@@ -1,0 +1,46 @@
+<div class="custom-text-animation">
+  {{ settings.custom_html | escape }}
+  {{ settings.custom_html | escape }}
+</div>
+
+<style>
+  .custom-text-animation {
+    display: flex;
+    width: 2600px;
+    animation-name: infiniteScroll;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  .custom-text-animation h2 {
+    white-space: nowrap;
+    margin: 0;
+    font-size: 40px;
+  }
+
+  @keyframes infiniteScroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Text Animation",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "custom_html",
+      "label": "Custom HTML",
+      "default": "<h2 class=\"moving-text\">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>"
+    }
+  ]
+}
+{% endschema %}
