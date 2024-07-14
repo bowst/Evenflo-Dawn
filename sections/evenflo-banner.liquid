@@ -5,39 +5,11 @@
     </div>
   </div>
 </div>
-
-<style>
-  .new-custom-banner {
-    background-image: url({{ settings.banner_image | img_url: 'master' }});
-    background-size: cover;
-    background-position: center;
-    padding: clamp(40px, 9vw, 150px) 0;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-
-  .new-custom-banner .heading h1 {
-    margin: 0;
-    font-size: clamp(36px, 7vw, 100px);
-    line-height: 1;
-  }
-
-  .new-custom-banner .page-width {
-    width: 100%;
-  }
-
-  .new-custom-banner:after {
-    content: '';
-    position: absolute;
-    inset: 0;
-  }
+{% stylesheet %}
   .new-custom-banner:after {
     background: rgba(0, 0, 0, 0.{{ section.settings.overlay_opacity }});
   }
-</style>
-
+{% endstylesheet %}
 {% schema %}
 {
   "name": "Evenflo Banner",
@@ -76,3 +48,4 @@
   ]
 }
 {% endschema %}
+{{ 'section-product-faq.css' | asset_url | stylesheet_tag }}
