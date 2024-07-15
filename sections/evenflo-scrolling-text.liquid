@@ -1,0 +1,25 @@
+<div class="custom-text-animation">
+  {{ section.settings.custom_html }}
+  {{ section.settings.custom_html }}
+</div>
+
+{% schema %}
+{
+  "name": "Evenflo Scrolling Text",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "custom_html",
+      "label": "Custom HTML",
+      "default": "<h2 class=\"moving-text\">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>"
+    }
+  ],
+   "presets": [
+        {
+          "name": "Evenflo Scrolling Text"
+        }
+  ]
+
+}
+{% endschema %}
+{{ 'section-evenflo-scrolling-text.css' | asset_url | stylesheet_tag }}
