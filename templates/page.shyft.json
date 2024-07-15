@@ -9,61 +9,14 @@
 */
 {
   "sections": {
-    "image_banner_yQXFLV": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_L8YY3Y": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1",
-            "heading_color": "black"
-          }
-        },
-        "text_TD4UKU": {
-          "type": "text",
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "buttons_txCET3": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_L8YY3Y",
-        "text_TD4UKU",
-        "buttons_txCET3"
-      ],
+    "evenflo_banner_rQizPz": {
+      "type": "evenflo-banner",
       "disabled": true,
       "settings": {
-        "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
-        "image_height": "medium",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "b592811e-a055-4215-acca-6521d5e6eca9": {
-      "type": "evenflo-full-width-image",
-      "settings": {
-        "image": "shopify:\/\/shop_images\/shyft-banner.jpg"
+        "banner_image": "shopify:\/\/shop_images\/3731211_Moonstone_ShyftDualRide_Strolling0445.png",
+        "banner_text": "SHYFT&trade; Dualride&trade;",
+        "text_color": "#fff",
+        "overlay_opacity": 0.1
       }
     },
     "evenflo_scrolling_text_cdHarR": {
@@ -71,6 +24,12 @@
       "disabled": true,
       "settings": {
         "custom_html": "<h2 class=\"moving-text\">CAR SEAT & STROLLER & CARRIER & SIMPLIFIER & FUSS-BUSTER & GEAR-REDUCER & LOAD-LIGHTENER & WORRY-RELIEVER & TIME-SAVER & HEAD-TURNER & LIFE-CHANGER &<\/h2>"
+      }
+    },
+    "b592811e-a055-4215-acca-6521d5e6eca9": {
+      "type": "evenflo-full-width-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/shyft-banner.jpg"
       }
     },
     "ba9f16be-e870-4780-b29f-b2c2911b2048": {
@@ -112,57 +71,6 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
-      }
-    },
-    "evenflo_full_width_image_Qi86p8": {
-      "type": "evenflo-full-width-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/line.gif"
-      }
-    },
-    "evenflo_image_with_text_hPbMwC": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "heading_faT6Vf": {
-          "type": "heading",
-          "settings": {
-            "heading": "Evenflo Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "text_MRrNz8": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
-          }
-        },
-        "button_NeRDpU": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_faT6Vf",
-        "text_MRrNz8",
-        "button_NeRDpU"
-      ],
-      "disabled": true,
-      "settings": {
-        "height": "adapt",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "18d4d9dd-156f-4845-9d4f-932d4df1aaae": {
@@ -286,20 +194,6 @@
         "padding_bottom": 28
       }
     },
-    "d95ad5c9-9869-411e-a4bd-7038cb5151f0": {
-      "type": "evenflo-full-width-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/shyft-into-life.jpg"
-      }
-    },
-    "b942efe6-3f2a-4137-b475-bad020bf9b47": {
-      "type": "evenflo-full-width-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/Shyft_DualRide_Core_Plus_Evenflo_Landing_Page_2_3000x1423_dd8e21d5-ac1e-4918-8cce-0c72753c2bbf.jpg"
-      }
-    },
     "48027750-8777-46c6-a9c2-a4446f088118": {
       "type": "featured-collection",
       "custom_css": [
@@ -329,92 +223,6 @@
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "ff999932-87a3-4d4f-944a-a49a54310684": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15826380030108__ff999932-87a3-4d4f-944a-a49a54310684-heading-1": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
-          }
-        },
-        "template--15826380030108__ff999932-87a3-4d4f-944a-a49a54310684-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>The Evenflo® Shyft™ DualRide™ Infant Car Seat and Stroller Combo is a single piece of baby gear<br\/>that shyfts from infant car seat to stroller in one step. For infants from 3 to 35 lb, it fits even<br\/>the tiniest riders. Streamline life on the go!<\/p>"
-          }
-        },
-        "template--15826380030108__ff999932-87a3-4d4f-944a-a49a54310684-button-1": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "template--15826380030108__ff999932-87a3-4d4f-944a-a49a54310684-heading-1",
-        "template--15826380030108__ff999932-87a3-4d4f-944a-a49a54310684-text-1",
-        "template--15826380030108__ff999932-87a3-4d4f-944a-a49a54310684-button-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "622ee948-d623-46b6-a726-cc8169bb4962": {
-      "type": "page",
-      "disabled": true,
-      "settings": {
-        "page": "swiper",
-        "heading_size": "h1",
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "26967515-da04-4a25-9548-cc548050fff5": {
-      "type": "video",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h2",
-        "enable_video_looping": false,
-        "video_url": "https:\/\/vimeo.com\/809093687",
-        "cover_image": "shopify:\/\/shop_images\/Screenshot_2023-08-09_at_10.20.55_AM.png",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "00959f36-c8a5-4e5f-bfa0-5cedafeb9fbf": {
-      "type": "evenflo-full-width-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/Shyft_DualRide_Core_Plus_Evenflo_Landing_Page_5_3000x1957_4bb0fc9a-32f3-4349-9a8b-ae066903a0a2.jpg"
-      }
-    },
-    "2cf327b0-5fde-46f9-a0da-b7211c0dac6d": {
-      "type": "evenflo-full-width-image",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/Shyft_DualRide_Gold_Evenflo_Landing_Page_6_3000x1795_be1e7f84-199f-4775-9483-341c6d65f6d9.jpg"
       }
     },
     "830ae932-f6a5-4dad-9115-7d61808857f7": {
@@ -625,42 +433,23 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "evenflo_banner_rQizPz": {
-      "type": "evenflo-banner",
-      "settings": {
-        "banner_image": "shopify:\/\/shop_images\/3731211_Moonstone_ShyftDualRide_Strolling0445.png",
-        "banner_text": "SHYFT&trade; Dualride&trade;",
-        "text_color": "#fff",
-        "overlay_opacity": 0.1
-      }
     }
   },
   "order": [
-    "image_banner_yQXFLV",
-    "b592811e-a055-4215-acca-6521d5e6eca9",
+    "evenflo_banner_rQizPz",
     "evenflo_scrolling_text_cdHarR",
+    "b592811e-a055-4215-acca-6521d5e6eca9",
     "ba9f16be-e870-4780-b29f-b2c2911b2048",
-    "evenflo_full_width_image_Qi86p8",
-    "evenflo_image_with_text_hPbMwC",
     "18d4d9dd-156f-4845-9d4f-932d4df1aaae",
     "ba47e4d0-36f8-465a-a9a3-fdbdfca4f60a",
     "4411361a-ed44-4650-8148-672a8f576b39",
     "main",
-    "d95ad5c9-9869-411e-a4bd-7038cb5151f0",
-    "b942efe6-3f2a-4137-b475-bad020bf9b47",
     "48027750-8777-46c6-a9c2-a4446f088118",
-    "ff999932-87a3-4d4f-944a-a49a54310684",
-    "622ee948-d623-46b6-a726-cc8169bb4962",
-    "26967515-da04-4a25-9548-cc548050fff5",
-    "00959f36-c8a5-4e5f-bfa0-5cedafeb9fbf",
-    "2cf327b0-5fde-46f9-a0da-b7211c0dac6d",
     "830ae932-f6a5-4dad-9115-7d61808857f7",
     "430d0b63-f9cc-4d5a-81b9-033c58b44e5e",
     "a6fc2ff3-9369-480f-94c5-280d596454e7",
     "67950236-28ff-4b08-8348-df1122711376",
     "68636c1d-500e-4a8c-b8b8-d9b87fc4f964",
-    "ab9bc11e-afe3-4818-88ea-3ca97095816b",
-    "evenflo_banner_rQizPz"
+    "ab9bc11e-afe3-4818-88ea-3ca97095816b"
   ]
 }
