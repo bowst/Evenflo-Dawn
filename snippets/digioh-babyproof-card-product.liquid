@@ -237,8 +237,11 @@ background: #2996c5 !important;
                   {% endif %}
             
             {% if my_string contains "Foam Corner" %}
+              <div>2 per table: You need {{ table | times : 2 }}</div>
                     {% assign qty = table | times : 2 %}
                   {% endif %}
+
+            
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
             {% endunless %}
