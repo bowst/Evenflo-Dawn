@@ -54,7 +54,7 @@
             
             
             tabCard.innerHTML = `
-            <div class="tab-img">
+            <a href="/pages/collection?cid=${collection?.id}" ><div class="tab-img">
                 <img
                     src=${collection?.image}
                     alt="tab-img"
@@ -62,7 +62,7 @@
                 </div>
                 <div class="tab-content">
                 <h4>${collection?.name}</h4>
-                </div>
+                </div></a>
             
             `;
     
