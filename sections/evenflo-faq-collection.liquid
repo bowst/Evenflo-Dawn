@@ -42,12 +42,12 @@
   fetch(evenFloFAQURL + 'collection/?page=1&page_size=6')
     .then(response => response.json())
     .then(data => {
-        const collectionsBlock = document.getElementById('allCollections');
-        const blocksToShow = collectionsBlock ? collectionsBlock.dataset.collectionsToShow : 6;
+     
+        const blocksToShow = container ? container.dataset.collectionsToShow : 6;
         
         if (container) {
 
-            data.slice(0, blocksToShow).forEach((product) => {  // Limit to number of collections to show
+            data?.?.results?.slice(0, blocksToShow).forEach((collection) => {  // Limit to number of collections to show
             const tabCard = document.createElement('div');
             tabCard.classList.add('tab-card');
 
@@ -56,12 +56,12 @@
             tabCard.innerHTML = `
             <div class="tab-img">
                 <img
-                    src=${product?.image}
+                    src=${collection?.image}
                     alt="tab-img"
                 />
                 </div>
                 <div class="tab-content">
-                <h4>${product?.name}</h4>
+                <h4>${collection?.name}</h4>
                 </div>
             
             `;
@@ -76,7 +76,7 @@
 
     })
     .catch(error => {
-      console.error('Error fetching products:', error);
+      console.error('Error fetching collections:', error);
     })
     .finally(() => {
       // Hide the loader
