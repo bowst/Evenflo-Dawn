@@ -239,8 +239,11 @@ background: #2996c5 !important;
             {% if my_string contains "Foam Corner" %}
                     {% assign qty = table | times : 2 %}
                   {% endif %}
-
-            
+            {% assign assembled_width = product.metafields.sf_products.assembled_width %}
+{% assign assembled_height = product.metafields.sf_products.assembled_height %}
+{% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
+            <strong>Assembled:</strong>
+          {{ assembled_width }}" W x {{ assembled_height }}" H x {{ assembled_depth }}" D
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
             {% endunless %}
