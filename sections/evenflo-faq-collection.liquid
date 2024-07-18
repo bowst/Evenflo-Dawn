@@ -42,12 +42,12 @@
         if (container) {
 
             data?.results?.slice(0, blocksToShow).forEach((collection) => {  // Limit to number of collections to show
-            const tabCard = document.createElement('div');
-            tabCard.classList.add('collection-card');
+            const collectionCard = document.createElement('div');
+            collectionCard.classList.add('collection-card');
 
             
             
-            tabCard.innerHTML = `
+            collectionCard.innerHTML = `
               <a href="/pages/evenflo-collection?cid=${collection?.id}" >
                 <div class="collection-title">
                     <h2>${collection?.name}</h2>
@@ -59,7 +59,7 @@
             `;
     
 
-            container.appendChild(tabCard);
+            container.appendChild(collectionCard);
             });
         } else {
             console.error('Tab card wrapper container not found');
