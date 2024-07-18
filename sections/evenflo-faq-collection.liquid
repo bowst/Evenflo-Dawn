@@ -1,6 +1,28 @@
 
 {% assign collections_to_show= section.settings.faqCollectionRange%}
 
+  <div class="collection-block">
+        <div class="collection-main-wrapper page-width">
+            <div class="heading">
+                <h1>{{ section.settings.faqCollectionTitle }}</h1>
+            </div>
+            <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}">
+                <!-- Loader -->
+                <div id="collectionsLoader" class="loader" style="display: none;"></div>
+              
+                <div class="collection-card">
+                    <div class="collection-title">
+                        <h2>Revolve360™</h2>
+                    </div>
+                    <div class="collection-img">
+                        <img src="https://www.evenflo.com/cdn/shop/files/kmpmonvfgbc0jh2grxil.jpg?v=1701111329&amp;width=720"
+                            alt="collection-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <div class="category-block nnn">
   <div class="category-content-wrapper page-width">
     <div class="heading center">
@@ -49,20 +71,19 @@
 
             data?.results?.slice(0, blocksToShow).forEach((collection) => {  // Limit to number of collections to show
             const tabCard = document.createElement('div');
-            tabCard.classList.add('tab-card');
+            tabCard.classList.add('collection-card');
 
             
             
             tabCard.innerHTML = `
-            <a href="/pages/evenflo-collection?cid=${collection?.id}" ><div class="tab-img">
-                <img
-                    src=${collection?.image}
-                    alt="tab-img"
-                />
-                </div>
-                <div class="tab-content">
-                <h4>${collection?.name}</h4>
-                </div></a>
+            <a href="/pages/evenflo-collection?cid=${collection?.id}" >
+              <div class="collection-title">
+                  <h2>${collection?.name}</h2>
+              </div>
+              <div class="collection-img">
+                  <img src=${collection?.image} alt="collection-img">
+              </div>
+            </a>
             
             `;
     
