@@ -5,11 +5,11 @@
                     <h1 style="color: {{ section.settings.title_color }}">{{ section.settings.banner_title }}</h1>
                     <p style="color: {{ section.settings.text_color }}">{{ section.settings.banner_text }}</p>
                 </div>
-                <div class="featured-banner-img desktop">
+                <div class="featured-banner-img desktop-img">
                    <img src="{{ section.settings.banner_image | image_url: '500x' }}" width="200" height="200"/>
                        
                 </div>
-                <div class="featured-banner-img mobile">
+                <div class="featured-banner-img mobile-img">
                    <img src="{{ section.settings.banner_image | image_url: '500x' }}"  width="200" height="200" />
                 </div>
             </div>
@@ -67,3 +67,4 @@
   ]
   }
 {% endschema %}
+{{ 'evenflo-featured-banner.css' | asset_url | stylesheet_tag }}
