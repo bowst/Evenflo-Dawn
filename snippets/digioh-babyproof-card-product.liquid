@@ -225,7 +225,7 @@ background: #2996c5 !important;
             {% assign my_string = card_product.title %}
             {% if my_string contains "2-Pack" %}
               {% if my_string contains "Outlet" %}
-                <div>You need: {% if outlet %}{{ outlet | times : 2 }}{% else %}2{% endif %} (2-packs)</div>
+                <div>You need {% if outlet %}{{ outlet | times : 2 }}{% else %}2{% endif %} (2-packs)</div>
                     {% assign qty = outlet | times : 2 %}
                 {% elsif my_string contains "TV" %}
                 {% else %}
@@ -246,6 +246,7 @@ background: #2996c5 !important;
                   {% endif %}
             
             {% if my_string contains "Foam Corner" %}
+              <div>2 per table: You need {{ table | times : 2 }}</div>
                     {% assign qty = table | times : 2 %}
                   {% endif %}
             {% if card_product.type == 'Gates' or card_product.type == 'Baby Gate' %}
