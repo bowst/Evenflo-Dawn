@@ -52,6 +52,8 @@ SECTION: Template Variables
 {% assign debug = false %}     {% comment %} debug used to display debug info {% endcomment %}
 {% assign outlet = 15 %}
 {% assign table = 1 %}
+{% assign knobs = 1 %}
+{% assign handle = 1 %}
 {%- comment -%}
 ************************************
 END SECTION:Template Variables 
@@ -123,6 +125,12 @@ SECTION: Url Parsing
       {% if keyAndValue[0] == 'table' %}
         {% assign table = keyAndValue[1] | url_decode %}
       {%- endif -%}
+      {% if keyAndValue[0] == 'knobs' %}
+        {% assign knobs = keyAndValue[1] | plus: 0 %}
+      {%- endif -%}
+      {% if keyAndValue[0] == 'handle' %}
+        {% assign handle = keyAndValue[1]  | plus: 0 %}
+      {%- endif -%}
       {% if keyAndValue[0] == 'debug' %}
         {% assign debug = true %}
       {%- endif -%}
@@ -146,7 +154,7 @@ SECTION: Url Parsing
   {%- endfor -%}
 {%- endfor -%}
 
-
+{% assign total_handle_knob = knobs | plus : handle %}
 {%- comment -%}
 ************************************
 END SECTION: Url Parsing 
@@ -226,7 +234,7 @@ SECTION: Display Recommended Products
       {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
     {% endif %}  {% endcomment %}
 
-    {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart, outlet: outlet, table: table %}
+    {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart, outlet: outlet, table: table, total_handle_knob: total_handle_knob %}
     </li>
 
     {%- comment -%}
