@@ -9,7 +9,7 @@
         {{ section.settings.banner_image | image_url: width: 1266 | image_tag }}
       </div>
       <div class="featured-banner-img mobile-img">
-        <img src="{{ section.settings.banner_image | image_url: '500x' }}" width="200" height="200">
+        {{ section.settings.banner_image | image_url: width: 1266 | image_tag }}
       </div>
     </div>
   </div>
