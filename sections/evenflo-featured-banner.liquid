@@ -6,11 +6,11 @@
                     <p style="color: {{ section.settings.text_color }}">{{ section.settings.banner_text }}</p>
                 </div>
                 <div class="wheel-img desktop">
-                   <img src="{{ section.settings.banner_image | img_url: '500x' }}" />
+                   <img src="{{ section.settings.banner_image | image_url: '500x' }}" width="200" height="200"/>
                        
                 </div>
                 <div class="wheel-img mobile">
-                   <img src="{{ section.settings.banner_image | img_url: '500x' }}" />
+                   <img src="{{ section.settings.banner_image | image_url: '500x' }}"  width="200" height="200" />
                 </div>
             </div>
         </div>
