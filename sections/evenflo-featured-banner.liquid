@@ -6,7 +6,7 @@
         <p style="color: {{ section.settings.text_color }}">{{ section.settings.banner_text }}</p>
       </div>
       <div class="featured-banner-img desktop-img">
-        {{ section.settings.banner_image | image_url: width: 200 | image_tag }}
+        {{ section.settings.banner_image | image_tag }}
       </div>
       <div class="featured-banner-img mobile-img">
         <img src="{{ section.settings.banner_image | image_url: '500x' }}" width="200" height="200">
