@@ -8,7 +8,9 @@
       <div class="featured-banner-img">
         {{ section.settings.banner_image_desktop | image_url: width: 1266 | image_tag }}
       </div>
-      
+      {% if section.settings.image_orientation == "right" %}
+          RIGHT
+      {% endif %}
     </div>
   </div>
 </div>
