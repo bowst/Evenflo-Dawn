@@ -4,6 +4,8 @@
 
         .featured-banner-wrapper {
             position: relative;
+            display: flex;
+          justify-content: flex-end;
         }
 
         .featured-banner-wrapper * {
@@ -30,7 +32,9 @@
             height: 4px;
             background: var(--color-secondary-100, #2996c5);
         }
-
+.featured-banner-img{
+  max-width: 72%;
+}
         .featured-banner-img img {
             width: 100%;
         }
