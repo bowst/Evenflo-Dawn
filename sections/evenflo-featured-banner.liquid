@@ -1,6 +1,6 @@
 <div class="featured-banner-block">
   <div class="page-width">
-    <div class="featured-banner-wrapper">
+    <div class="featured-banner-wrapper {% if section.settings.image_orientation == "left" %}featured-banner-reverse{% endif %}">
       <div class="heading">
         <h1 style="color: {{ section.settings.title_color }}">{{ section.settings.banner_title }}</h1>
         <p style="color: {{ section.settings.text_color }}">{{ section.settings.banner_text }}</p>
