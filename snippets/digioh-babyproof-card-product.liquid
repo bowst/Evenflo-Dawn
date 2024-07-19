@@ -226,14 +226,14 @@ background: #2996c5 !important;
             {% if my_string contains "2-Pack" %}
               {% if my_string contains "Outlet" %}
                 <div>You need: {% if outlet %}{{ outlet | times : 2 }}{% else %}2{% endif %} (2-packs)</div>
-                    {% assign qty = 2 %}
+                    {% assign qty = outlet | times : 2 %}
                 {% else %}
                     <div>You need: {% if table %}{{ table | times : 2 }}{% else %}2{% endif %} (2-packs)</div>
                     {% assign qty = 2 %}
                 {% endif %}
                   {% endif %}
             {% if my_string contains "Outlet" %}
-                    {% assign qty = outlet %}
+                    {% assign qty = outlet | times : 2 %}
                   {% endif %}
                   
                   {% if my_string contains "Foam Edge" %}
