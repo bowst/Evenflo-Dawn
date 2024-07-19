@@ -1,70 +1,68 @@
- <div class="featured-banner-block">
-        <div class="page-width">
-            <div class="featured-banner-wrapper">
-                <div class="heading">
-                    <h1 style="color: {{ section.settings.title_color }}">{{ section.settings.banner_title }}</h1>
-                    <p style="color: {{ section.settings.text_color }}">{{ section.settings.banner_text }}</p>
-                </div>
-                <div class="featured-banner-img desktop-img">
-                   <img src="url({{ section.settings.banner_image | image_url: height: 10000 }}" width="200" height="200"/>
-                       
-                </div>
-                <div class="featured-banner-img mobile-img">
-                   <img src="{{ section.settings.banner_image | image_url: '500x' }}"  width="200" height="200" />
-                </div>
-            </div>
-        </div>
+<div class="featured-banner-block">
+  <div class="page-width">
+    <div class="featured-banner-wrapper">
+      <div class="heading">
+        <h1 style="color: {{ section.settings.title_color }}">{{ section.settings.banner_title }}</h1>
+        <p style="color: {{ section.settings.text_color }}">{{ section.settings.banner_text }}</p>
+      </div>
+      <div class="featured-banner-img desktop-img">
+        <img src="url({{ section.settings.banner_image | image_url: height: 10000 }})" width="200" height="200">
+      </div>
+      <div class="featured-banner-img mobile-img">
+        <img src="{{ section.settings.banner_image | image_url: '500x' }}" width="200" height="200">
+      </div>
     </div>
-
+  </div>
+</div>
 
 {% schema %}
+{
+  "name": "Evenflo Featured Banner",
+    "settings": [
   {
-    "name": "Evenflo Featured Banner",
-      "settings": [
-    {
-      "type": "image_picker",
-      "id": "banner_image",
-      "label": "Banner Image"
-    },
-    {
-      "type": "text",
-      "id": "banner_title",
-      "label": "Banner Title",
-      "default": "wheels up to weels down"
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Title Color",
-      "default": "#121212"
-    },
-    {
-      "type": "text",
-      "id": "banner_text",
-      "label": "Banner Text",
-      "default": "Moving from car to sidewalk? Lift the carrier off the base, release the wheels and you’re rolling in no time. Maneuvering stairs? Simply retract the wheels, carry up or down steps, drop the wheels back down and stroll on."
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text Color",
-      "default": "#121212"
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "label": "Overlay Opacity",
-      "min": 0,
-      "max": 1,
-      "step": 0.1,
-      "default": 0.1
-    }
-  ],
-    "presets": [
-        {
-          "name": "Evenflo Featured Banner"
-        }
-  ]
+    "type": "image_picker",
+    "id": "banner_image",
+    "label": "Banner Image"
+  },
+  {
+    "type": "text",
+    "id": "banner_title",
+    "label": "Banner Title",
+    "default": "wheels up to weels down"
+  },
+  {
+    "type": "color",
+    "id": "title_color",
+    "label": "Title Color",
+    "default": "#121212"
+  },
+  {
+    "type": "text",
+    "id": "banner_text",
+    "label": "Banner Text",
+    "default": "Moving from car to sidewalk? Lift the carrier off the base, release the wheels and you’re rolling in no time. Maneuvering stairs? Simply retract the wheels, carry up or down steps, drop the wheels back down and stroll on."
+  },
+  {
+    "type": "color",
+    "id": "text_color",
+    "label": "Text Color",
+    "default": "#121212"
+  },
+  {
+    "type": "range",
+    "id": "overlay_opacity",
+    "label": "Overlay Opacity",
+    "min": 0,
+    "max": 1,
+    "step": 0.1,
+    "default": 0.1
   }
+],
+  "presets": [
+      {
+        "name": "Evenflo Featured Banner"
+      }
+]
+}
 {% endschema %}
 {{ 'evenflo-featured-banner.css' | asset_url | stylesheet_tag }}
