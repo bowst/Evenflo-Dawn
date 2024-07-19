@@ -60,12 +60,12 @@
                 position: static;
                 max-width: 40%;
             }
-
-            /* .desktop-img {
-                display: none;
-            } */
-
-            /* .mobile-img {
-                display: block;
-            } */
+        }
+  @media screen and (max-width: 1024px) {
+      .featured-banner-wrapper {
+                flex-direction: column;
+            }
+            .featured-banner-wrapper .heading {
+                max-width: 100%;
+            }
         }
