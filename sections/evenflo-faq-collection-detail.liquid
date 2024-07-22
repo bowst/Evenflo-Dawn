@@ -90,7 +90,7 @@ function fetchCollectionDetail(id) {
     //   }
 
 
-  fetch(evenFloFAQURL + 'collection/'+id)
+  fetch(evenFloFAQURL + 'collection/'+id+'/')
     .then(response => response.json())
     .then(collection => {
 
