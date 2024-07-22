@@ -43,63 +43,25 @@
 <script>
 
 
-function appendLoader(container){
-
-      //Creating loader div through javascript
-      const loader = document.createElement('div');
-      loader.id = 'loader';
-      loader.className = 'loader';
-
-      alert(333);
-
-      container.appendChild(loader);
-   
-      if (loader) {
-        loader.style.display = 'block';
-      }
-      return loader;
-
-}
-
-function hideLoader(loader){
-    loader.style.display = 'none';
-}
-
-
 function fetchCollectionDetail(id) {
   const container = document.getElementById('collectionDetail');
 
   if(!container){
       return;
     }
-   
     
    container.innerHTML = "";  // Clear existing content
 
    const loader = appendLoader(container)
 
-    //   //Creating loader div through javascript
-    //   const loader = document.createElement('div');
-    //   loader.id = 'loader';
-    //   loader.className = 'loader';
-
-    //   container.appendChild(loader);
-   
-    //   if (loader) {
-    //     loader.style.display = 'block';
-    //   }
-
 
   fetch(evenFloFAQURL + 'collection/'+id+'/')
     .then(response => response.json())
     .then(collection => {
-
 		container.innerHTML = `
-       <h1 id="collectionHeading">Revolve360www</h1>
-                    <p id="collectionDescription">Find your Revolve360 style below to view specific FAQs and related support documentation, or
-                        browse the list of FAQs related to the entire Revolve360 collection.</p>
-          `;
-        
+       <h1 id="collectionHeading">${collection?.name}</h1>
+                    <p id="collectionDescription">${collection?.description}</p>
+          `;     
       
     })
     .catch(error => {
@@ -112,6 +74,13 @@ function fetchCollectionDetail(id) {
       }
     });
 }
+
+
+
+
+
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

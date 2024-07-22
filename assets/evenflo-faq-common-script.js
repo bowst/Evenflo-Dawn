@@ -68,3 +68,21 @@ function copyCurrentUrlToClipboard() {
 			document.body.removeChild(dummyInput);
 		});
 }
+
+//For appending loader in specific div
+function appendLoader(container) {
+	//Creating loader div through javascript
+	const loader = document.createElement("div");
+	loader.id = "loader";
+	loader.className = "loader";
+	container.appendChild(loader);
+	if (loader) {
+		loader.style.display = "block";
+	}
+	return loader;
+}
+
+//For hiding the loader
+function hideLoader(loader) {
+	loader.style.display = "none";
+}
