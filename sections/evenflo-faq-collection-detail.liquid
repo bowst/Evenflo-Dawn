@@ -84,12 +84,12 @@ function fetchProductsByCollection(collectionID){
 
     container.innerHTML = "";  // Clear existing content
 
-    const loader= appendLoader(container)
+    //const loader= appendLoader(container)
 
     fetch(evenFloFAQURL + `products/filterByCollection/${collectionID}`)
     .then(response => response.json())
     .then(data => {
-      
+      console.log('data',data);
 
       const productsBlock = document.getElementById('productsInCollection');
       const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 8;
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (urlParams.has('cid')) {
         let collectionID = urlParams.get('cid');
 
-		fetchCollectionDetail(collectionID);
+		    fetchCollectionDetail(collectionID);
         fetchProductsByCollection(collectionID);
         // fetchFAQSByCollection(collectionID);
 
