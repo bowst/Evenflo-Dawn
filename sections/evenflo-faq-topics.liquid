@@ -32,16 +32,7 @@
 
     container.innerHTML = "";  // Clear existing content
 
-      //Creating loader div through javascript
-      const loader = document.createElement('div');
-      loader.id = 'topicsLoader';
-      loader.className = 'loader';
-
-      container.appendChild(loader);
-   
-      if (loader) {
-        loader.style.display = 'block';
-      }
+   const loader = appendLoader(container)
 
 
     fetch(evenFloFAQURL + 'topics/?page=1&page_size='+blocksToShow)
@@ -87,7 +78,7 @@
         .finally(() => {
         // Hide the loader
         if (loader) {
-            loader.style.display = 'none';
+            hideLoader(loader)
         }
         });
     }
