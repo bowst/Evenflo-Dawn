@@ -363,8 +363,10 @@ END SECTION: Display Recommended Products
 
   // Function to add items to the cart
   function addItemsToCart(items) {
+    const cart_Drawer = new CartDrawer();
     let itemData = {
- 'items': items
+ 'items': items,
+      'sections': 'cart-drawer,cart-icon-bubble'
 };
     fetch('/cart/add.js', {
         method: 'POST',
@@ -376,6 +378,7 @@ END SECTION: Display Recommended Products
       })
       .then(response => response.json())
       .then(data => {
+        cart_Drawer.renderContents(data);
         console.log('Item added to cart:', data);
       })
       .catch(error => {
