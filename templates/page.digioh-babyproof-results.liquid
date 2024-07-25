@@ -1,22 +1,22 @@
 {%- comment -%}
-************************************
-Digioh Product Recommendation Template
+  ************************************
+  Digioh Product Recommendation Template
 
-This template renders a list of products from a Digioh Product Recommendation Quiz
+  This template renders a list of products from a Digioh Product Recommendation Quiz
 
-Possible places to edit tagged with "DIGIOH-OPTION"
+  Possible places to edit tagged with "DIGIOH-OPTION"
 
-URL Parameters:
-  products : comma separated list of product handles
-  show_hero : if set to 'true' will show the hero section, defaults to 'false'
-  rowlen : the number of products to show per row, defaults to 3
-  max_products : the maximum number of products to show, default to 12
-  hide_oos : hide products that are out of stock, defaults to false
-  add_to_cart : add to cart, with option selection, default to true
+  URL Parameters:
+    products : comma separated list of product handles
+    show_hero : if set to 'true' will show the hero section, defaults to 'false'
+    rowlen : the number of products to show per row, defaults to 3
+    max_products : the maximum number of products to show, default to 12
+    hide_oos : hide products that are out of stock, defaults to false
+    add_to_cart : add to cart, with option selection, default to true
 
-Required Snippets: 
-  card-product.liquid (included in default theme)
-************************************
+  Required Snippets:
+    card-product.liquid (included in default theme)
+  ************************************
 {%- endcomment -%}
 
 {%- comment -%} Include Required CSS {%- endcomment -%}
@@ -25,32 +25,32 @@ Required Snippets:
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 <style>
-  .retake-dev.page-width a{
-    min-width: 200px;
-    max-width: 386px;
-    display: block;
-    margin: auto;
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding-top: 18px;
+    .retake-dev.page-width a{
+      min-width: 200px;
+      max-width: 386px;
+      display: block;
+      margin: auto;
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      padding-top: 18px;
+    }
+    select#quantity {
+      width: 100%;
+      border: 1px solid #caced1;
+      color: #000;
+      cursor: pointer;
+      background-color: transparent;
+      font-size: inherit;
+      padding: .5em;
+      padding-right: 2.5em;
+      margin: 0;
+      border-radius: 3px;
+      text-indent: 0.01px;
+      -webkit-appearance: button;
+      margin-bottom: 8px;
   }
-  select#quantity {
-    width: 100%;
-    border: 1px solid #caced1;
-    color: #000;
-    cursor: pointer;
-    background-color: transparent;
-    font-size: inherit;
-    padding: .5em;
-    padding-right: 2.5em;
-    margin: 0;
-    border-radius: 3px;
-    text-indent: 0.01px;
-    -webkit-appearance: button;
-    margin-bottom: 8px;
-}
- select#quantity:focus-visible {
+    select#quantity:focus-visible {
       outline-offset:unset;
   }
     .qty-dropdown {
@@ -66,19 +66,27 @@ Required Snippets:
   }
 </style>
 {%- comment -%}
-************************************
-SECTION: Template Variables 
-************************************
+  ************************************
+  SECTION: Template Variables
+  ************************************
 {%- endcomment -%}
 {% assign queryString = '' %}
-{% assign product_handles = "" | split: ',' %} {% comment %} product_handles the products to display, in order {% endcomment %}
-{% assign show_hero = false %} {% comment %} show_hero Show the first recommended product on a single line {% endcomment %}
-{% assign rowlen = 3 %} {% comment %} rowlen sets default number of products to display per row, aliased to rowlen {% endcomment %}
-{% assign max_products = 12 %} {% comment %} max_products maximum  number of products to render {% endcomment %}
-{% assign hide_oos = false %}  {% comment %} hide_oos if true will skip displaying products that are not currently available (out of stock) {% endcomment %}
-{% assign add_to_cart = true %}     {% comment %} enable quick add on product item, defaults to true {% endcomment %}
-{% assign my_custom_param = '' %}     {% comment %} debug used to display debug info. see SECTION: Set custom variables {% endcomment %}
-{% assign debug = false %}     {% comment %} debug used to display debug info {% endcomment %}
+{% assign product_handles = '' | split: ',' %}
+{% comment %} product_handles the products to display, in order {% endcomment %}
+{% assign show_hero = false %}
+{% comment %} show_hero Show the first recommended product on a single line {% endcomment %}
+{% assign rowlen = 3 %}
+{% comment %} rowlen sets default number of products to display per row, aliased to rowlen {% endcomment %}
+{% assign max_products = 12 %}
+{% comment %} max_products maximum  number of products to render {% endcomment %}
+{% assign hide_oos = false %}
+{% comment %} hide_oos if true will skip displaying products that are not currently available (out of stock) {% endcomment %}
+{% assign add_to_cart = true %}
+{% comment %} enable quick add on product item, defaults to true {% endcomment %}
+{% assign my_custom_param = '' %}
+{% comment %} debug used to display debug info. see SECTION: Set custom variables {% endcomment %}
+{% assign debug = false %}
+{% comment %} debug used to display debug info {% endcomment %}
 {% assign outlet = 15 %}
 {% assign table = 1 %}
 {% assign knobs = 2 %}
@@ -87,15 +95,15 @@ SECTION: Template Variables
 {% assign knob_cabinet = 1 %}
 {% assign furniturewallanchors = 1 %}
 {%- comment -%}
-************************************
-END SECTION:Template Variables 
-************************************
+  ************************************
+  END SECTION:Template Variables
+  ************************************
 {%- endcomment -%}
 
 {%- comment -%}
-************************************
-SECTION: Url Parsing 
-************************************
+  ************************************
+  SECTION: Url Parsing
+  ************************************
 {%- endcomment -%}
 
 {%- comment -%} Capture the content for header containing the tracking data {%- endcomment -%}
@@ -125,10 +133,9 @@ SECTION: Url Parsing
   {%- for part in parts -%}
     {%- assign keyAndValue = part | split: '=' -%}
     {%- if keyAndValue.size > 1 -%}
-
       {% comment %} Set Template Variables {% endcomment %}
       {%- if keyAndValue[0] == 'show_hero' and keyAndValue[1] == 'true' -%}
-        {%- assign show_hero = true  -%}
+        {%- assign show_hero = true -%}
       {%- endif -%}
       {%- if keyAndValue[0] == 'hide_oos' and keyAndValue[1] == 'true' -%}
         {%- assign hide_oos = true -%}
@@ -142,7 +149,7 @@ SECTION: Url Parsing
         {%- endif -%}
       {%- endif -%}
       {%- if keyAndValue[0] == 'rowlen' or keyAndValue[0] == 'rowlenN' -%}
-        {%- assign rowlen = keyAndValue[1] | plus: 0  -%}
+        {%- assign rowlen = keyAndValue[1] | plus: 0 -%}
       {%- endif -%}
       {%- if keyAndValue[0] == 'max_products' -%}
         {%- assign max_products = keyAndValue[1] | plus: 0 -%}
@@ -150,7 +157,7 @@ SECTION: Url Parsing
       {% if keyAndValue[0] == 'products' %}
         {% assign product_handles = keyAndValue[1] | url_decode | split: ',' %}
       {%- endif -%}
-      
+
       {% if keyAndValue[0] == 'outlets' %}
         {% assign outlet = keyAndValue[1] | url_decode %}
       {%- endif -%}
@@ -170,16 +177,16 @@ SECTION: Url Parsing
         {% assign furniturewallanchors = keyAndValue[1] | plus: 0 %}
       {%- endif -%}
       {% if keyAndValue[0] == 'handle' %}
-        {% assign handle = keyAndValue[1]  | plus: 0 %}
+        {% assign handle = keyAndValue[1] | plus: 0 %}
       {%- endif -%}
       {% if keyAndValue[0] == 'debug' %}
         {% assign debug = true %}
       {%- endif -%}
 
       {%- comment -%}
-      ************************************
-      SECTION: Set custom params
-      ************************************
+        ************************************
+        SECTION: Set custom params
+        ************************************
       {%- endcomment -%}
 
       {%- if keyAndValue[0] == 'my_custom_param' -%}
@@ -187,19 +194,19 @@ SECTION: Url Parsing
       {%- endif -%}
 
       {%- comment -%}
-      ************************************
-      END SECTION: Set custom params
-      ************************************
+        ************************************
+        END SECTION: Set custom params
+        ************************************
       {%- endcomment -%}
     {%- endif -%}
   {%- endfor -%}
 {%- endfor -%}
 
-{% assign total_handle_knob = knobs | plus : handle %}
+{% assign total_handle_knob = knobs | plus: handle %}
 {%- comment -%}
-************************************
-END SECTION: Url Parsing 
-************************************
+  ************************************
+  END SECTION: Url Parsing
+  ************************************
 {%- endcomment -%}
 
 {% comment %} Conditional includes {% endcomment %}
@@ -209,45 +216,37 @@ END SECTION: Url Parsing
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
-
-
 {%- comment -%} Render Title {%- endcomment -%}
 <div class="isolate">
-  <div class="rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--15824509272220__b44c8197-4385-4350-ad0f-238c04013fa1-padding" style="margin-top: 4rem;">
+  <div
+    class="rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--15824509272220__b44c8197-4385-4350-ad0f-238c04013fa1-padding"
+    style="margin-top: 4rem;"
+  >
     <div class="rich-text__wrapper rich-text__wrapper--center page-width">
-      <div class="rich-text__blocks center"><h2 class="rich-text__heading rte inline-richtext evenflo h1">
-                {%- comment -%}DIGIOH-OPTION: Hero Text - Edit this as desired {%- endcomment -%}
-        Here are the recommendations for you!! 
-              </h2><div class="rich-text__text rte">
-                </div></div>
+      <div class="rich-text__blocks center">
+        <h2 class="rich-text__heading rte inline-richtext evenflo h1">
+          {%- comment -%}DIGIOH-OPTION: Hero Text - Edit this as desired {%- endcomment -%}
+          Here are the recommendations for you!!
+        </h2>
+        <div class="rich-text__text rte"></div>
+      </div>
     </div>
   </div>
 </div>
 {%- comment -%}
-************************************
-SECTION: Display Recommended Products
-************************************
+  ************************************
+  SECTION: Display Recommended Products
+  ************************************
 {%- endcomment -%}
-<div class="add-all-to-cart page-width">
-<button
-        id="AddToCart"
-        type="submit"
-        class="quick-add__submit button button--full-width button--primary"
-      >
-        Add all to cart
-      </button>
-</div>
-{% assign products_rendered_count = 0 %} {% comment %} local counter to keep track of how many products we have shown {% endcomment %}
-{% assign products_rendered_in_row = 0 %} {% comment %} local counter to keep track of how many products we have shown for this row {% endcomment %}
-{% assign current_row = 1 %} {% comment %} local counter to keep track of the current row {% endcomment %}
-        
-<div class="collection page-width">
-  <div class="loading-overlay gradient"></div>
-  <ul id="product-grid" class="
-                grid product-grid grid--1-col-tablet-down
-                grid--4-col-desktop
-              " style="justify-content: center;" >
 
+{% assign products_rendered_count = 0 %}
+{% comment %} local counter to keep track of how many products we have shown {% endcomment %}
+{% assign products_rendered_in_row = 0 %}
+{% comment %} local counter to keep track of how many products we have shown for this row {% endcomment %}
+{% assign current_row = 1 %}
+{% comment %} local counter to keep track of the current row {% endcomment %}
+{% assign all_product_variants = '' %}
+{% capture all_product_content %}
   {% comment %} Loop over the passed in products {% endcomment %}
   {%- for product_handle in product_handles -%}
 
@@ -282,6 +281,7 @@ SECTION: Display Recommended Products
     {%  else %}
       {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
     {% endif %}  {% endcomment %}
+    {% assign all_product_variants = all_product_variants | append: product.selected_or_first_available_variant.id | append: ',' %}
 
     {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart, outlet: outlet, table: table, total_handle_knob: total_handle_knob, no_knob_cabinets: no_knob_cabinets, knob_cabinet: knob_cabinet, furniturewallanchors: furniturewallanchors, knobs: knobs, handle: handle %}
     </li>
@@ -324,74 +324,56 @@ SECTION: Display Recommended Products
     END SUB SECTION: Check New Row
     ************************************
     {%- endcomment -%}
-    
+      
   {%- endfor -%}
-
+        {% endcapture %}
+<div class="add-all-to-cart page-width">
+  <product-form>
+                {%- form 'product',
+                  card_product,
+                  id: product_form_id,
+                  class: 'form product-form',
+                  novalidate: 'novalidate',
+                  data-type: 'add-to-cart-form'
+                -%}
+    {% assign all_product_variants_list = all_product_variants | split: ',' %}
+    {% for variants in all_product_variants_list %}
+      <input class="ids" type="hidden" name="id[]" value="{{ variants }}">
+      <input class="quantities" type="hidden" name="quantity[]" value="1">
+    {% endfor %}
+    {% if all_product_variants != '' %}
+      <button
+        id="AddToCart"
+        type="submit"
+        class="quick-add__submit button button--full-width button--primary"
+      >
+        Add all to cart
+      </button>
+    {% endif %}
+    {% endform %}
+  </product-form>
+</div>
+<div class="collection page-width">
+  <div class="loading-overlay gradient"></div>
+  <ul
+    id="product-grid"
+    class="
+      grid product-grid grid--1-col-tablet-down
+      grid--4-col-desktop
+    "
+    style="justify-content: center;"
+  >
+    {{ all_product_content }}
   </ul>
 </div>
-  
+
 {%- comment -%}
-************************************
-END SECTION: Display Recommended Products
-************************************
+  ************************************
+  END SECTION: Display Recommended Products
+  ************************************
 {%- endcomment -%}
 <div class="retake-dev page-width">
-  <a href="/pages/babyproofing-experience" class="quick-add__submit button button--full-width button--primary ">Retake Quiz</a>
+  <a href="/pages/babyproofing-experience" class="quick-add__submit button button--full-width button--primary "
+    >Retake Quiz</a
+  >
 </div>
-<script>
-  document.getElementById('AddToCart').addEventListener('click', function() {
-  // Select all product forms on the page
-  const productForms = document.querySelectorAll('.product-form');
-
-  // Array to hold all items to add to cart
-  const itemsToAdd = [];
-
-  // Iterate over each form to get the product ID and quantity
-  productForms.forEach(form => {
-    const productId = form.querySelector('.variant_id').value;
-    const quantity = form.querySelector('.quantity-select').value;
-    const available = form.querySelector('.quick-add__submit');
-    if( !available.disabled){
-      itemsToAdd.push({
-        id: productId,
-        quantity: parseInt(quantity, 10)
-      });
-    }
-    // Add the item to the itemsToAdd array
-    
-  });
-
-  // Function to add items to the cart
-  function addItemsToCart(items) {
-    const cartDrawerOverlay = document.getElementById('CartDrawer-Overlay');
-        if (cartDrawerOverlay) {
-          cartDrawerOverlay.click();
-        }
-    const cart_Drawer = new CartDrawer(cartDrawerOverlay);
-    let itemData = {
- 'items': items,
-      'sections': 'cart-drawer,cart-icon-bubble'
-};
-    fetch('/cart/add.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(itemData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        
-        cart_Drawer.renderContents(data);
-        console.log('Item added to cart:', data);
-      })
-      .catch(error => {
-        console.error('Error adding item to cart:', error);
-      });
-  }
-
-  // Add all items to the cart
-  addItemsToCart(itemsToAdd);
-});
-</script>
