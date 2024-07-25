@@ -314,6 +314,7 @@ background: #2996c5 !important;
                   data-type: 'add-to-cart-form'
                 -%}
                   <input
+                    class="variant_id"
                     type="hidden"
                     name="id"
                     value="{{ card_product.selected_or_first_available_variant.id }}"
@@ -321,7 +322,7 @@ background: #2996c5 !important;
                   >
                   <div class="qty-dropdown">
                     <div class="quantity-heading">Quantity</div>
-                    <select name="quantity" id="quantity" class="quantity-select>
+                    <select name="quantity" id="quantity" class="quantity-select">
                       {% for i in (1..40) %}
                         <option value="{{ i }}" {% if qty == i %}selected{% endif %}>{{ i }}</option>
                       {% endfor %}
