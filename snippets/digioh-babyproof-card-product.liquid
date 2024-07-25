@@ -241,7 +241,14 @@ background: #2996c5 !important;
                 {% else %}
                   {% assign qty = 16 %}
                 {% endif %}
-                  {% endif %}
+            {% endif %}
+            {% if my_string contains "Cabinet Lock" %}
+                {% if knob_cabinet != 0 %}
+                    {% assign qty = knob_cabinet | plus: 0 %}
+                {% else %}
+                  {% assign qty = 8 %}
+                {% endif %}
+            {% endif %}
             {% if my_string contains "Finger" %}
                    {% if total_handle_knob %} <div>You need {{ total_handle_knob  }}</div>{% else %}{% endif %}
                     {% assign qty = outlet | times : 2 %}
