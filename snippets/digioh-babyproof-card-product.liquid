@@ -242,7 +242,7 @@ background: #2996c5 !important;
                   
                   {% if my_string contains "Foam Edge" %}
                     <div>1 per table: You need {{ table }}</div>
-                    {% assign qty = table %}
+                    {% assign qty = table | plus: 0 %}
                   {% endif %}
             
             {% if my_string contains "Foam Corner" %}
