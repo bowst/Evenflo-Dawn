@@ -284,12 +284,15 @@ background: #2996c5 !important;
                     value="{{ card_product.selected_or_first_available_variant.id }}"
                     disabled
                   >
-                  <div class="quantity-heading">Quantity</div>
-                  <select name="quantity" id="quantity">
-                    {% for i in (1..40) %}
-                      <option value="{{ i }}" {% if qty == i %}selected{% endif %}>{{ i }}</option>
-                    {% endfor %}
-                  </select>
+                  <div class="qty-dropdown">
+                    <div class="quantity-heading">Quantity</div>
+                    <select name="quantity" id="quantity">
+                      {% for i in (1..40) %}
+                        <option value="{{ i }}" {% if qty == i %}selected{% endif %}>{{ i }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  
                   <button
                     id="{{ product_form_id }}-submit"
                     type="submit"
