@@ -369,7 +369,7 @@ END SECTION: Display Recommended Products
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: itemData
+        body: JSON.stringify(itemData)
       })
       .then(response => response.json())
       .then(data => {
