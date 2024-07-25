@@ -228,6 +228,8 @@ background: #2996c5 !important;
                 <div>You need {% if outlet %}{{ outlet | times : 2 }}{% else %}2{% endif %} (2-packs)</div>
                     {% assign qty = outlet | times : 2 %}
                 {% elsif my_string contains "TV" %}
+                {% elsif my_string contains "Furniture Corner Cushions" %}
+                  {% assign qty = 8 %}
                 {% else %}
                     {% assign qty = 1 %}
                 {% endif %}
