@@ -281,8 +281,9 @@
     {%  else %}
       {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
     {% endif %}  {% endcomment %}
+      {% if product.selected_or_first_available_variant.available %}
     {% assign all_product_variants = all_product_variants | append: product.selected_or_first_available_variant.id | append: ',' %}
-
+{% endif %}
     {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart, outlet: outlet, table: table, total_handle_knob: total_handle_knob, no_knob_cabinets: no_knob_cabinets, knob_cabinet: knob_cabinet, furniturewallanchors: furniturewallanchors, knobs: knobs, handle: handle %}
     </li>
 
