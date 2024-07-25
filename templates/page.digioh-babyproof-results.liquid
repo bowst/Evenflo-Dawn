@@ -226,14 +226,7 @@ SECTION: Display Recommended Products
 {% assign products_rendered_count = 0 %} {% comment %} local counter to keep track of how many products we have shown {% endcomment %}
 {% assign products_rendered_in_row = 0 %} {% comment %} local counter to keep track of how many products we have shown for this row {% endcomment %}
 {% assign current_row = 1 %} {% comment %} local counter to keep track of the current row {% endcomment %}
-        
-<div class="collection page-width">
-  <div class="loading-overlay gradient"></div>
-  <ul id="product-grid" class="
-                grid product-grid grid--1-col-tablet-down
-                grid--4-col-desktop
-              " style="justify-content: center;" >
-
+        {% capture all_product_content %}
   {% comment %} Loop over the passed in products {% endcomment %}
   {%- for product_handle in product_handles -%}
 
@@ -312,6 +305,14 @@ SECTION: Display Recommended Products
     {%- endcomment -%}
     
   {%- endfor -%}
+        {% endcapture %}
+<div class="collection page-width">
+  <div class="loading-overlay gradient"></div>
+  <ul id="product-grid" class="
+                grid product-grid grid--1-col-tablet-down
+                grid--4-col-desktop
+              " style="justify-content: center;" >
+          {{ all_product_content }}
 
   </ul>
 </div>
