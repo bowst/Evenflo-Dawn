@@ -360,13 +360,16 @@ END SECTION: Display Recommended Products
 
   // Function to add items to the cart
   function addItemsToCart(items) {
+    let itemData = {
+ 'items': JSON.stringify(items)
+};
     fetch('/cart/add.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(items)
+        body: itemData
       })
       .then(response => response.json())
       .then(data => {
