@@ -226,6 +226,7 @@ SECTION: Display Recommended Products
 {% assign products_rendered_count = 0 %} {% comment %} local counter to keep track of how many products we have shown {% endcomment %}
 {% assign products_rendered_in_row = 0 %} {% comment %} local counter to keep track of how many products we have shown for this row {% endcomment %}
 {% assign current_row = 1 %} {% comment %} local counter to keep track of the current row {% endcomment %}
+{% assign all_product_variants = '' %}
         {% capture all_product_content %}
   {% comment %} Loop over the passed in products {% endcomment %}
   {%- for product_handle in product_handles -%}
@@ -261,6 +262,7 @@ SECTION: Display Recommended Products
     {%  else %}
       {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
     {% endif %}  {% endcomment %}
+{% assign all_product_variants = all_product_variants | append: product.selected_or_first_available_variant.id | append: ',' %}
 
     {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart, outlet: outlet, table: table, total_handle_knob: total_handle_knob, no_knob_cabinets: no_knob_cabinets, knob_cabinet: knob_cabinet, furniturewallanchors: furniturewallanchors, knobs: knobs, handle: handle %}
     </li>
@@ -306,6 +308,24 @@ SECTION: Display Recommended Products
     
   {%- endfor -%}
         {% endcapture %}
+        <div class="add-all-to-cart">
+           <form action="/cart/add" method="post" enctype="multipart/form-data" class="section_form">
+        {% assign all_product_variants_list = all_product_variants | split: ',' %}
+        {% for variants in all_product_variants_list %}
+            <input class="ids" type="hidden" name="id[]" value="{{ variants }}">
+            <input class="quantities" type="hidden" name="quantity[]" value="1">
+        {% endfor %}
+        {% if all_product_variants != '' %}
+            <button
+                id="AddToCart"
+                type="submit"
+                class="button button--secondary digioh-quiz-add-all-to-cart"
+            >
+                Add all to cart
+            </button>
+        {% endif %}
+    </form>
+        </div>
 <div class="collection page-width">
   <div class="loading-overlay gradient"></div>
   <ul id="product-grid" class="
