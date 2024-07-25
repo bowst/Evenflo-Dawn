@@ -378,6 +378,10 @@ END SECTION: Display Recommended Products
       })
       .then(response => response.json())
       .then(data => {
+        const cartDrawerOverlay = document.getElementById('CartDrawer-Overlay');
+        if (cartDrawerOverlay) {
+          cartDrawerOverlay.click();
+        }
         cart_Drawer.renderContents(data);
         console.log('Item added to cart:', data);
       })
