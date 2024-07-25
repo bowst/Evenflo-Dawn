@@ -248,7 +248,7 @@ background: #2996c5 !important;
             {% endif %}
             {% if my_string contains "Handle Lock" %}
               {% if handle != 0 %}
-                    {% assign qty = knobs | plus: 0 %}
+                    {% assign qty = handle | plus: 0 %}
                 {% else %}
                   {% assign qty = 4 %}
                 {% endif %}
