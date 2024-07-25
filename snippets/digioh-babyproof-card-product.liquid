@@ -236,7 +236,7 @@ background: #2996c5 !important;
                     {% assign qty = outlet | times : 2 %}
                   {% endif %}
             {% if my_string contains "Drawer Latches" %}
-                `{% if no_knob_cabinets != 0 %}
+                {% if no_knob_cabinets != 0 %}
                     {% assign qty = no_knob_cabinets | plus: 0 %}
                 {% else %}
                   {% assign qty = 16 %}
