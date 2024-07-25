@@ -74,6 +74,9 @@ SECTION: Template Variables
 {% assign table = 1 %}
 {% assign knobs = 2 %}
 {% assign handle = 2 %}
+{% assign no_knob_cabinets = 16 %}
+{% assign knob_cabinet = 1 %}
+{% assign furniturewallanchors = 1 %}
 {%- comment -%}
 ************************************
 END SECTION:Template Variables 
@@ -147,6 +150,15 @@ SECTION: Url Parsing
       {%- endif -%}
       {% if keyAndValue[0] == 'knobs' %}
         {% assign knobs = keyAndValue[1] | plus: 0 %}
+      {%- endif -%}
+      {% if keyAndValue[0] == 'no_knob_cabinets' %}
+        {% assign no_knob_cabinets = keyAndValue[1] | plus: 0 %}
+      {%- endif -%}
+      {% if keyAndValue[0] == 'knob_cabinet' %}
+        {% assign knob_cabinet = keyAndValue[1] | plus: 0 %}
+      {%- endif -%}
+      {% if keyAndValue[0] == 'furniturewallanchors' %}
+        {% assign furniturewallanchors = keyAndValue[1] | plus: 0 %}
       {%- endif -%}
       {% if keyAndValue[0] == 'handle' %}
         {% assign handle = keyAndValue[1]  | plus: 0 %}
@@ -254,7 +266,7 @@ SECTION: Display Recommended Products
       {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
     {% endif %}  {% endcomment %}
 
-    {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart, outlet: outlet, table: table, total_handle_knob: total_handle_knob %}
+    {% render 'digioh-babyproof-card-product', card_product: product, show_quick_add: add_to_cart, outlet: outlet, table: table, total_handle_knob: total_handle_knob, no_knob_cabinets: no_knob_cabinets, knob_cabinet: knob_cabinet, furniturewallanchors: furniturewallanchors %}
     </li>
 
     {%- comment -%}
