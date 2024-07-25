@@ -3,10 +3,7 @@ class CartDrawer extends HTMLElement {
     super();
 
     this.addEventListener('keyup', (evt) => evt.code === 'Escape' && this.close());
-    const cartDrawerOverlay = this.querySelector('#CartDrawer-Overlay');
-    if (cartDrawerOverlay) {
-      this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));
-    }
+    this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));
     this.setHeaderCartIconAccessibility();
   }
 
