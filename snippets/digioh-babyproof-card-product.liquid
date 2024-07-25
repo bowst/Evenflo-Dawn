@@ -321,7 +321,7 @@ background: #2996c5 !important;
                   >
                   <div class="qty-dropdown">
                     <div class="quantity-heading">Quantity</div>
-                    <select name="quantity" id="quantity">
+                    <select name="quantity" id="quantity" class="quantity-select>
                       {% for i in (1..40) %}
                         <option value="{{ i }}" {% if qty == i %}selected{% endif %}>{{ i }}</option>
                       {% endfor %}
