@@ -342,12 +342,22 @@
       <input class="quantities" type="hidden" name="quantity[]" value="1">
     {% endfor %}
     {% if all_product_variants != '' %}
+      
       <button
+        id="quick-add-6707700039836-submit"
+                    type="submit"
+                    name="add"
+                    class="quick-add__submit button button--full-width button--primary "
+                    aria-haspopup="dialog"
+                    aria-labelledby="quick-add-6707700039836-submit "
+                    aria-live="polite"
+                    data-sold-out-message="true"
         id="AddToCart"
         type="submit"
         class="quick-add__submit button button--full-width button--primary"
       >
-        Add all to cart
+        <span>Add all to cart</span>
+        
       </button>
     {% endif %}
     {% endform %}
