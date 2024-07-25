@@ -284,7 +284,11 @@ background: #2996c5 !important;
                     value="{{ card_product.selected_or_first_available_variant.id }}"
                     disabled
                   >     
-                  
+                  <select name="quantity" id="quantity">
+                    {% for i in (1..40) %}
+                      <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                  </select>
                   <input min="1" type="hidden" id="quantity" name="quantity" value="{{ qty }}"/>
                   <button
                     id="{{ product_form_id }}-submit"
