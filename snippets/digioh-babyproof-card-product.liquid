@@ -286,7 +286,7 @@ background: #2996c5 !important;
                   >     
                   <select name="quantity" id="quantity">
                     {% for i in (1..40) %}
-                      <option value="{{ i }}">{{ i }}</option>
+                      <option value="{{ i }}" {% if qty == i %}selected{% endif %}>{{ i }}</option>
                     {% endfor %}
                   </select>
                   <input min="1" type="hidden" id="quantity" name="quantity" value="{{ qty }}"/>
