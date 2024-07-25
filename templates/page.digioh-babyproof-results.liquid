@@ -348,14 +348,17 @@ END SECTION: Display Recommended Products
 
   // Iterate over each form to get the product ID and quantity
   productForms.forEach(form => {
-    const productId = form.querySelector('.variant_id');
+    const productId = form.querySelector('.variant_id').value;
     const quantity = form.querySelector('.quantity-select').value;
-
+    const available = form.querySelector('.quick-add__submit');
+    if( !available.disabled){
+      itemsToAdd.push({
+        id: productId,
+        quantity: parseInt(quantity, 10)
+      });
+    }
     // Add the item to the itemsToAdd array
-    itemsToAdd.push({
-      id: productId.value,
-      quantity: parseInt(quantity, 10)
-    });
+    
   });
 
   // Function to add items to the cart
