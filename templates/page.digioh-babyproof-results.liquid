@@ -50,14 +50,20 @@ Required Snippets:
     -webkit-appearance: button;
     margin-bottom: 8px;
 }
-  select#quantity:focus-visible {
-    outline-offset:unset;
-}
-  .qty-dropdown {
-    text-align: left;
-    padding-left: 10px;
-    padding-right: 10px;
-}
+ select#quantity:focus-visible {
+      outline-offset:unset;
+  }
+    .qty-dropdown {
+      text-align: left;
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+    button#AddToCart {
+      min-width: 200px;
+      max-width: 386px;
+      display: block;
+      margin: auto;
+  }
 </style>
 {%- comment -%}
 ************************************
@@ -332,3 +338,51 @@ END SECTION: Display Recommended Products
 <div class="retake-dev page-width">
   <a href="/pages/babyproofing-experience" class="quick-add__submit button button--full-width button--primary ">Retake Quiz</a>
 </div>
+<script>
+  document.getElementById('AddToCart').addEventListener('click', function() {
+  // Select all product forms on the page
+  const productForms = document.querySelectorAll('.product-form');
+
+  // Array to hold all items to add to cart
+  const itemsToAdd = [];
+
+  // Iterate over each form to get the product ID and quantity
+  productForms.forEach(form => {
+    const productId = form.querySelector('.variant_id');
+    const quantity = form.querySelector('.quantity-select').value;
+
+    // Add the item to the itemsToAdd array
+    itemsToAdd.push({
+      id: productId,
+      quantity: parseInt(quantity, 10)
+    });
+  });
+
+  // Function to add items to the cart
+  function addItemsToCart(items) {
+    items.forEach(item => {
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          id: item.id,
+          quantity: item.quantity
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Item added to cart:', data);
+      })
+      .catch(error => {
+        console.error('Error adding item to cart:', error);
+      });
+    });
+  }
+
+  // Add all items to the cart
+  addItemsToCart(itemsToAdd);
+});
+</script>
