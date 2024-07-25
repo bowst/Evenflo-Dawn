@@ -314,7 +314,7 @@ SECTION: Display Recommended Products
     
   {%- endfor -%}
         {% endcapture %}
-        <div class="add-all-to-cart">
+        <div class="add-all-to-cart page-width">
            <form action="/cart/add" method="post" enctype="multipart/form-data" class="section_form">
         {% assign all_product_variants_list = all_product_variants | split: ',' %}
         {% for variants in all_product_variants_list %}
