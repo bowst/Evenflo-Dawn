@@ -364,6 +364,9 @@ END SECTION: Display Recommended Products
   // Function to add items to the cart
   function addItemsToCart(items) {
     const cartDrawerOverlay = document.getElementById('CartDrawer-Overlay');
+        if (cartDrawerOverlay) {
+          cartDrawerOverlay.click();
+        }
     const cart_Drawer = new CartDrawer(cartDrawerOverlay);
     let itemData = {
  'items': items,
