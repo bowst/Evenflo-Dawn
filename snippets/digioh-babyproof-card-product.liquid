@@ -239,6 +239,20 @@ background: #2996c5 !important;
             {% if my_string contains "Outlet" %}
                     {% assign qty = outlet | times : 2 %}
                   {% endif %}
+            {% if my_string contains "Doorknob Covers" %}
+              {% if knobs != 0 %}
+                    {% assign qty = knobs | plus: 0 %}
+                {% else %}
+                  {% assign qty = 4 %}
+                {% endif %}
+            {% endif %}
+            {% if my_string contains "Handle Lock" %}
+              {% if handle != 0 %}
+                    {% assign qty = knobs | plus: 0 %}
+                {% else %}
+                  {% assign qty = 4 %}
+                {% endif %}
+            {% endif %}
             {% if my_string contains "Drawer Latches" %}
                 {% if no_knob_cabinets != 0 %}
                     {% assign qty = no_knob_cabinets | plus: 0 %}
