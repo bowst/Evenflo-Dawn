@@ -1,38 +1,42 @@
 var evenFloFAQURL = "https://api.dev.evenflocms.howst.io/api/";
 
-document
-	.querySelectorAll(".description-wrapper button")
-	.forEach((descBtn, index) => {
-		let description = document.querySelectorAll(".description-wrapper p")[
-			index
-		];
+toggleAnswerText();
 
-		description.setAttribute("data-full-text", description.textContent);
+function toggleAnswerText() {
+	document
+		.querySelectorAll(".description-wrapper button")
+		.forEach((descBtn, index) => {
+			let description = document.querySelectorAll(".description-wrapper p")[
+				index
+			];
 
-		if (description.textContent.length > 50) {
-			description.textContent =
-				description.textContent.substring(0, 50) + "...";
-		}
+			description.setAttribute("data-full-text", description.textContent);
 
-		descBtn.addEventListener("click", () => {
-			document.querySelectorAll(".description-wrapper p").forEach((desc) => {
-				let fullText = desc.getAttribute("data-full-text");
-				if (fullText && fullText.length > 50) {
-					desc.textContent = fullText.substring(0, 50) + "...";
-				}
-			});
+			if (description.textContent.length > 50) {
+				description.textContent =
+					description.textContent.substring(0, 50) + "...";
+			}
 
-			document
-				.querySelectorAll(".description-wrapper button.active")
-				.forEach((activeBtn) => {
-					activeBtn.classList.remove("active");
+			descBtn.addEventListener("click", () => {
+				document.querySelectorAll(".description-wrapper p").forEach((desc) => {
+					let fullText = desc.getAttribute("data-full-text");
+					if (fullText && fullText.length > 50) {
+						desc.textContent = fullText.substring(0, 50) + "...";
+					}
 				});
 
-			descBtn.classList.add("active");
+				document
+					.querySelectorAll(".description-wrapper button.active")
+					.forEach((activeBtn) => {
+						activeBtn.classList.remove("active");
+					});
 
-			description.textContent = description.getAttribute("data-full-text");
+				descBtn.classList.add("active");
+
+				description.textContent = description.getAttribute("data-full-text");
+			});
 		});
-	});
+}
 
 function formatPostedDate(timestamp) {
 	const date = new Date(timestamp);
@@ -85,4 +89,89 @@ function appendLoader(container) {
 //For hiding the loader
 function hideLoader(loader) {
 	loader.style.display = "none";
+}
+
+function fetchPopularProductsData(popularByProduct = false) {
+	const container = document.getElementById("popularCards");
+	const popularQuestionBlock = document.getElementById("popularQuestionBlock");
+	let blocksToShow = popularQuestionBlock
+		? popularQuestionBlock.dataset.productsToShow
+		: 3;
+
+	if (!container) {
+		console.log("Error on getting container");
+		return;
+	}
+
+	container.innerHTML = ""; // Clear existing content
+	const loader = appendLoader(container);
+
+	let url = popularByProduct
+		? evenFloFAQURL + "faqs/popular"
+		: evenFloFAQURL + "faqs/popular";
+
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			data.slice(0, blocksToShow).forEach((product) => {
+				const popularCard = document.createElement("div");
+				popularCard.classList.add("popular-card");
+
+				let productsContent = "";
+				let categories = [];
+				let categoriesHtml = "";
+
+				product?.products.forEach((nestedProduct) => {
+					productsContent += `<span>${nestedProduct?.name}</span>`;
+					categories[nestedProduct?.category?.id] =
+						nestedProduct?.category?.category_name;
+				});
+
+				const uniqueCategoriesArray = categories?.filter(
+					(value, index, self) => self.indexOf(value) === index
+				);
+				uniqueCategoriesArray?.forEach((category, id) => {
+					categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+				});
+
+				popularCard.innerHTML = `
+			 
+			  <div class="heading">
+				<h3>${product?.products[0]?.name}</h3>
+				<h2>${product.question}</h2>
+				<div class="description-wrapper">
+				  <p>${productsContent}</p>
+				  <button>
+					<span>Show more</span>
+					<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+					  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+					</svg>
+				  </button>
+				</div>
+			  </div>
+			  <div class="card-content">
+				<div class="card-detail-wrapper">
+				  <p>${product.answer}</p>
+				  <div class="card-content-link">
+					<a href="/pages/evenflo-faq-answer?qid=${product?.id}">Read Answer</a>
+				  </div>
+				</div>
+				<div class="card-link-wrapper">
+				  ${categoriesHtml}
+				</div>
+			  </div>
+			`;
+				container.appendChild(popularCard);
+			});
+		})
+		.catch((error) => {
+			console.error("Error fetching products:", error);
+		})
+		.finally(() => {
+			// Hide the loader
+			if (loader) {
+				hideLoader(loader);
+				toggleAnswerText();
+			}
+		});
 }
