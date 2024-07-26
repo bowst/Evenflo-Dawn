@@ -100,43 +100,30 @@
   function getProductsByCategory(category_id){
      // Show the loader
     const container = document.getElementById('productsByCategory');
+
     if(!container){
+      console.error('productsByCategory wrapper container not found');
       return;
     }
+
     container.innerHTML = "";  // Clear existing content
 
-      //Creating loader div through javascript
-      const loader = document.createElement('div');
-      loader.id = 'productByCategoriesLoader';
-      loader.className = 'loader';
-      //loader.style.display = 'block';
-
-      container.appendChild(loader);
-   
-      if (loader) {
-        loader.style.display = 'block';
-      }
+    const loader=appendLoader(container)
 
     fetch(evenFloFAQURL + `products/by/category/${category_id}`)
     .then(response => response.json())
     .then(data => {
       
-
       const productsBlock = document.getElementById('productsByCategory');
       const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 3;
-
-    
-     
-     
-      if (container) {
 
         data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
           const tabCard = document.createElement('div');
           tabCard.classList.add('tab-card');
 
           
-          
           tabCard.innerHTML = `
+          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
            <div class="tab-img">
               <img
                 src=${product?.image}
@@ -146,15 +133,13 @@
             <div class="tab-content">
               <h4>${product?.name}</h4>
             </div>
-          
+          </a>
           `;
   
 
           container.appendChild(tabCard);
         });
-      } else {
-        console.error('Tab card wrapper container not found');
-      }
+     
     })
     .catch(error => {
       console.error('Error fetching products:', error);
@@ -162,7 +147,7 @@
     .finally(() => {
       // Hide the loader
       if (loader) {
-        loader.style.display = 'none';
+        hideLoader(loader);
       }
     });
 }
