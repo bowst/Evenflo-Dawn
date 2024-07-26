@@ -1,1 +1,27 @@
-<h1>djjjjjjjjjjjjjjjjjjjjjjjjjjdjdcnnnnnnnnnd</h1>
+
+{% assign products_to_show= section.settings.popularQuestionRange%}
+
+<div class="popular-question-block" id="popularQuestionBlock" data-products-to-show="{{ products_to_show }}">
+			<div class="popular-content-wrapper page-width">
+				<div class="heading center">
+					<h2>{{ section.settings.popularQuestionTitle }}</h2>
+				</div>
+				<div class="popular-card-wrapper" id="popularCards">
+		
+				
+				</div>
+			</div>
+		</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchPopularProductsData();
+});
+
+</script>
+
+
+
+
+
