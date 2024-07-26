@@ -231,7 +231,11 @@ background: #2996c5 !important;
                 {% elsif my_string contains "Furniture Corner Cushions" %}
                   {% assign qty = 8 %}
                 {% elsif my_string contains "Furniture Wall Anchors" %}
-                  {% assign qty = 2 %}
+                  {% if furniturewallanchors != 0 %}
+                      {% assign qty = furniturewallanchors | plus: 0 %}
+                  {% else %}
+                    {% assign qty = 2 %}
+                  {% endif %}
                 {% else %}
                     {% assign qty = 1 %}
                 {% endif %}
