@@ -399,9 +399,9 @@
     // Function to add items to the cart
     function addItemsToCart(items) {
       let itemData = {
-   'items': items,
-        'sections': 'cart-drawer,cart-icon-bubble'
-  };
+       'items': items,
+            'sections': 'cart-drawer,cart-icon-bubble'
+      };
       fetch('/cart/add.js', {
           method: 'POST',
           headers: {
