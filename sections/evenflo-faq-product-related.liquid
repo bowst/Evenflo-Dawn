@@ -1,10 +1,10 @@
 
-{% assign products_to_show= section.settings.popularQuestionRange%}
+{% assign products_to_show= section.settings.productRelatedRange%}
 
-<div class="popular-question-block" id="popularQuestionBlock" data-products-to-show="{{ products_to_show }}">
+<div class="popular-question-block" id="productRelatedBlock" data-products-to-show="{{ products_to_show }}">
 			<div class="popular-content-wrapper page-width">
 				<div class="heading center">
-					<h2>{{ section.settings.popularQuestionTitle }}</h2>
+					<h2>{{ section.settings.productRelatedTitle }}</h2>
 				</div>
 				<div class="popular-card-wrapper" id="popularCards">
 		
@@ -22,6 +22,41 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
-
+{% schema %}
+{
+  "name": "EvenFlo FAQ ProdRel",
+  "tag": "section",
+  "class": "productRelated",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "productRelatedTitle",
+      "label": "Popular Question Title",
+      "default":"Popular Questions"
+    },
+    {
+        "type": "range",
+        "id": "productRelatedRange",
+        "label": "Number of questions to show",
+        "default":3,
+        "min": 1,
+        "max": 3,
+        "step": 1
+      }
+  ],
+  "presets": [
+    {
+      "name": "EvenFlo FAQ ProdRel",
+      "blocks": [
+        
+      ]
+    }
+  ]
+  
+}
+{% endschema %}
 
 
