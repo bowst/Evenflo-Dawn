@@ -1,5 +1,13 @@
 {{ 'section-evenflo-search.css' | asset_url | stylesheet_tag }}
 
+<style>
+  .help-articles-block {
+    padding-top: var(--space);
+    padding-bottom: var(--space);
+    /* background: var(--background); */
+}
+</style>
+
 {% assign products_to_show= section.settings.productRelatedRange %}
 
 <div class="help-articles-block">
