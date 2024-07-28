@@ -26,16 +26,7 @@ function fetchQuestionsAnswerData(id) {
     
     container.innerHTML = "";  // Clear existing content
 
-      //Creating loader div through javascript
-      const loader = document.createElement('div');
-      loader.id = 'loader';
-      loader.className = 'loader';
-
-      container.appendChild(loader);
-   
-      if (loader) {
-        loader.style.display = 'block';
-      }
+    const loader = appendLoader(container)
 
 
   fetch(evenFloFAQURL + 'faqs/'+id)
