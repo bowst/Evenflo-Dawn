@@ -2,8 +2,6 @@
 
 <style>
   .help-articles-block {
-    padding-top: var(--space);
-    padding-bottom: var(--space);
     background: #fff;
 }
 </style>
@@ -14,10 +12,9 @@
   <div class="help-articles-content page-width center"> 
       <div class="help-article-search-wrapper">
     
-          <h1 class=""> Talk about your brand</h1>
-          <div class="help-article-link-wrapper">
-              <a href="">Find</a>
-              <a href="">Register</a>       
+          <h1 id="productName"> </h1>
+          <div class="help-article-link-wrapper" id="productLinks">
+                 
           </div>
       </div> 
     
@@ -83,6 +80,14 @@ function fetchPopularProductsRelatedData(productID) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
+
+      document.getElementById('productName').innerHTML=data?.name
+      document.getElementById('productLinks').innerHTML=`
+      <a href="${data?.english_manual_url}">Manual EN</a>
+      <a href="${data?.spanish_manual_url}">Manual ES</a>
+      <a href="${data?.french_manual_url}">Manual FR</a>
+      `;
+
       data?.related_popular_faqs?.slice(0, blocksToShow).forEach((faqs) => {
         const popularCard = document.createElement("div");
         popularCard.classList.add("popular-card");
