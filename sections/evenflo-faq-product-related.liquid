@@ -15,7 +15,7 @@
 
 <script>
 
-function fetchPopularProductsRelatedData(popularByProduct = false) {
+function fetchPopularProductsRelatedData(productID) {
 	const container = document.getElementById("popularCards");
 	const popularQuestionBlock = document.getElementById("popularQuestionBlock");
 	let blocksToShow = popularQuestionBlock
@@ -30,12 +30,13 @@ function fetchPopularProductsRelatedData(popularByProduct = false) {
 	container.innerHTML = ""; // Clear existing content
 	const loader = appendLoader(container);
 
-	let url =  evenFloFAQURL + "faqs/popular";
+	let url =  evenFloFAQURL + "products/"+productID;
 
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
-			data.slice(0, blocksToShow).forEach((product) => {
+			data?.related_popular_faqs?.slice(0, blocksToShow).forEach((faqs) => {
+
 				const popularCard = document.createElement("div");
 				popularCard.classList.add("popular-card");
 
@@ -43,10 +44,14 @@ function fetchPopularProductsRelatedData(popularByProduct = false) {
 				let categories = [];
 				let categoriesHtml = "";
 
-				product?.products.forEach((nestedProduct) => {
+				faqs?.products.forEach((nestedProduct) => {
 					productsContent += `<span>${nestedProduct?.name}</span>`;
-					categories[nestedProduct?.category?.id] =
-						nestedProduct?.category?.category_name;
+					
+				});
+
+        faqs?.tags.forEach((tag) => {
+					categories[tag?.id] =
+						tag?.name;
 				});
 
 				const uniqueCategoriesArray = categories?.filter(
@@ -59,8 +64,8 @@ function fetchPopularProductsRelatedData(popularByProduct = false) {
 				popularCard.innerHTML = `
 			 
 			  <div class="heading">
-				<h3>${product?.products[0]?.name}</h3>
-				<h2>${product.question}</h2>
+				<h3>${faqs?.products[0]?.name}</h3>
+				<h2>${faqs.question}</h2>
 				<div class="description-wrapper">
 				  <p>${productsContent}</p>
 				  <button>
@@ -73,9 +78,9 @@ function fetchPopularProductsRelatedData(popularByProduct = false) {
 			  </div>
 			  <div class="card-content">
 				<div class="card-detail-wrapper">
-				  <p>${product.answer}</p>
+				  <p>${faqs.answer}</p>
 				  <div class="card-content-link">
-					<a href="/pages/evenflo-faq-answer?qid=${product?.id}">Read Answer</a>
+					<a href="/pages/evenflo-faq-answer?qid=${faqs?.id}">Read Answer</a>
 				  </div>
 				</div>
 				<div class="card-link-wrapper">
@@ -98,8 +103,18 @@ function fetchPopularProductsRelatedData(popularByProduct = false) {
 		});
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
-  fetchPopularProductsRelatedData();
+	const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    if (urlParams.has('pid')) {
+        let productID = urlParams.get('pid');
+        fetchPopularProductsRelatedData(productID);
+
+    } else{
+		window.location.href = '/pages/evenflo-faq-portal';
+	}
 });
 
 </script>
