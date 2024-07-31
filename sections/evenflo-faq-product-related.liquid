@@ -10,44 +10,23 @@
   }
 </style>
 
+{% assign first_product_found = false %}
 
-{% assign product_id = 'your_product_id_here' %}
-{% assign product = all_products[product_id] %}
-
-{% if product %}
-  <h2>Product Data:</h2>
-  <ul>
-    <li><strong>Title:</strong> {{ product.title | default: 'Not available' }}</li>
-    <li><strong>Description:</strong> {{ product.description | default: 'Not available' }}</li>
-    <li><strong>Price:</strong> {{ product.price | money | default: 'Not available' }}</li>
-    <li><strong>SKU:</strong> {{ product.sku | default: 'Not available' }}</li>
-    <li><strong>Vendor:</strong> {{ product.vendor | default: 'Not available' }}</li>
-    <li><strong>Type:</strong> {{ product.product_type | default: 'Not available' }}</li>
-    <li><strong>Handle:</strong> {{ product.handle | default: 'Not available' }}</li>
-    <li><strong>Available:</strong> {{ product.available | default: 'Not available' }}</li>
-    <li><strong>Tags:</strong> {{ product.tags | join: ', ' | default: 'Not available' }}</li>
-    <li><strong>Images:</strong> 
-      {% for image in product.images %}
-        <img src="{{ image.src | img_url: 'small' }}" alt="{{ image.alt | escape }}" />
-      {% else %}
-        <p>No images available</p>
-      {% endfor %}
-    </li>
-  </ul>
-{% else %}
-  <p>Product not found.</p>
-{% endif %}
-
-
-
+{% for product in collections.all.products %}
+  {% if product and first_product_found == false %}
+    {% assign shopify_product = product %}
+    {% assign first_product_found = true %}
+  {% endif %}
+{% endfor %}
 
 {% assign products_to_show = section.settings.productRelatedRange %}
+{% assign prod_handle = shopify_product.id %}
 
 <div class="help-articles-block">
   <div class="help-articles-content page-width center"> 
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
-    
+      {{prod_handle}}ddd
       <div class="help-article-link-wrapper" id="productLinks">
         
       </div>
