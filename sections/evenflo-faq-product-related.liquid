@@ -13,9 +13,8 @@
 {% assign first_product_found = false %}
 
 {% for product in collections.all.products %}
-  {% if product and first_product_found == false %}
+  {% if product.id == 7529439330460 %}
     {% assign shopify_product = product %}
-    {% assign first_product_found = true %}
   {% endif %}
 {% endfor %}
 
