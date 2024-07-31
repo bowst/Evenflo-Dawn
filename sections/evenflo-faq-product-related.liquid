@@ -10,8 +10,9 @@
   }
 </style>
 
+{% assign by_all_prod=all_products['7678864556188'].handle %}
+
 {% assign product_found = false %}
-{% assign product_handle = 'your-product-handle-here' %}
 
 {% for product in collections.all.products %}
   {% if product.id == 7678864556188 %}
@@ -40,13 +41,12 @@
 {% endif %}
 
 {% assign products_to_show = section.settings.productRelatedRange %}
-{% assign prod_handle = shopify_product.handle %}
 
 <div class="help-articles-block">
   <div class="help-articles-content page-width center"> 
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
-      {{prod_handle}}ddd
+      {{by_all_prod}}dddwwww
       <div class="help-article-link-wrapper" id="productLinks">
         
       </div>
