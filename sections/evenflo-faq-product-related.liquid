@@ -65,6 +65,8 @@
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+
+        console.log('relatedPopularFaqs',data)
         document.getElementById('productName').innerHTML = data?.name;
         document.getElementById('productLinks').innerHTML = `
           <a href="${data?.english_manual_url}">Manual EN</a>
@@ -72,19 +74,19 @@
           <a href="${data?.french_manual_url}">Manual FR</a>
         `;
 
-        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((faqs) => {
+        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((faq) => {
           const popularCard = document.createElement("div");
           popularCard.classList.add("popular-card");
 
-          let faqsContent = "";
+          let faqContent = "";
           let tags = [];
           let tagsHtml = "";
 
-          faqs?.products.forEach((nestedProduct) => {
-            faqsContent += `<span>${nestedProduct?.name}</span>`;
+          faq?.products.forEach((nestedProduct) => {
+            faqContent += `<span>${nestedProduct?.name}</span>`;
           });
 
-          faqs?.tags.forEach((tag) => {
+          faq?.tags.forEach((tag) => {
             tags[tag?.id] = tag?.name;
           });
 
@@ -97,10 +99,10 @@
 
           popularCard.innerHTML = `
             <div class="heading">
-              <h3>${faqs?.products[0]?.name}</h3>
-              <h2>${faqs.question}</h2>
+              <h3>${faq?.products[0]?.name}</h3>
+              <h2>${faq.question}</h2>
               <div class="description-wrapper">
-                <p>${faqsContent}</p>
+                <p>${faqContent}</p>
                 <button>
                   <span>Show more</span>
                   <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
@@ -111,9 +113,9 @@
             </div>
             <div class="card-content">
               <div class="card-detail-wrapper">
-                <p>${faqs.answer}</p>
+                <p>${faq.answer}</p>
                 <div class="card-content-link">
-                  <a href="/pages/evenflo-faq-answer?qid=${faqs?.id}">Read Answer</a>
+                  <a href="/pages/evenflo-faq-answer?qid=${faq?.id}">Read Answer</a>
                 </div>
               </div>
               <div class="card-link-wrapper">
