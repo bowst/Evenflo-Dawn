@@ -76,8 +76,11 @@
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+    transition: transform .3s;
 }
-
+.product-card:hover{
+  transform: scale(1.1);
+}
 .product-img img {
 	width: 100%;
 }
