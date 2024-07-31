@@ -11,27 +11,33 @@
 </style>
 
 
-{% assign product_id = '7678864556188' %}
+{% assign product_id = 'your_product_id_here' %}
 {% assign product = all_products[product_id] %}
 
 {% if product %}
   <h2>Product Data:</h2>
   <ul>
-    <li><strong>dddd:</strong> {{ product }}</li>
-    <li><strong>Title:</strong> {{ product.title }}</li>
-    <li><strong>Description:</strong> {{ product.description }}</li>
-    <li><strong>Price:</strong> {{ product.price | money }}</li>
-    <li><strong>SKU:</strong> {{ product.sku }}</li>
-    <li><strong>Vendor:</strong> {{ product.vendor }}</li>
-    <li><strong>Type:</strong> {{ product.product_type }}</li>
-    <li><strong>Handle:</strong> {{ product.handle }}</li>
-    <li><strong>Available:</strong> {{ product.available }}</li>
-    <li><strong>Tags:</strong> {{ product.tags | join: ', ' }}</li>
-  
+    <li><strong>Title:</strong> {{ product.title | default: 'Not available' }}</li>
+    <li><strong>Description:</strong> {{ product.description | default: 'Not available' }}</li>
+    <li><strong>Price:</strong> {{ product.price | money | default: 'Not available' }}</li>
+    <li><strong>SKU:</strong> {{ product.sku | default: 'Not available' }}</li>
+    <li><strong>Vendor:</strong> {{ product.vendor | default: 'Not available' }}</li>
+    <li><strong>Type:</strong> {{ product.product_type | default: 'Not available' }}</li>
+    <li><strong>Handle:</strong> {{ product.handle | default: 'Not available' }}</li>
+    <li><strong>Available:</strong> {{ product.available | default: 'Not available' }}</li>
+    <li><strong>Tags:</strong> {{ product.tags | join: ', ' | default: 'Not available' }}</li>
+    <li><strong>Images:</strong> 
+      {% for image in product.images %}
+        <img src="{{ image.src | img_url: 'small' }}" alt="{{ image.alt | escape }}" />
+      {% else %}
+        <p>No images available</p>
+      {% endfor %}
+    </li>
   </ul>
 {% else %}
   <p>Product not found.</p>
 {% endif %}
+
 
 
 
