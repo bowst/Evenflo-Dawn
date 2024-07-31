@@ -83,14 +83,6 @@
 <script>
   
 
-    function getProductsyyy(){
-      fetch('/products.json?product_id=7529439330460')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('data',data)
-})
-    }
-
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
@@ -298,9 +290,6 @@
 
     if (urlParams.has('pid')) {
       let productID = urlParams.get('pid');
-
-      getProductsyyy()
-
       fetchPopularProductsRelatedData(productID);
       fetchFAQsByProduct(productID);
       fetchTopicsByType(productID,true)
