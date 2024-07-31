@@ -113,6 +113,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
+			console.log("data", data);
 			data.slice(0, blocksToShow).forEach((product) => {
 				const popularCard = document.createElement("div");
 				popularCard.classList.add("popular-card");
