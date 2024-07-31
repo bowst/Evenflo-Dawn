@@ -70,7 +70,7 @@
        const shopifyId = data?.shopify_id;
 
        // Get the product handle using the Shopify ID
-        const productHandle = getProductHandle(shopifyId);
+       const productHandle = window.productHandles[shopifyId] || shopifyId;
 
         document.getElementById('productName').innerHTML = data?.name;
         document.getElementById('productLinks').innerHTML = `
@@ -143,15 +143,13 @@
       });
   }
 
-  function getProductHandle(shopifyId) {
-    // Assuming 'all_products' is available globally
-    for (const handle in all_products) {
-        if (all_products[handle].id == shopifyId) {
-            return handle;
-        }
-    }
-    return shopifyId; // Fallback if handle not found
-}
+
+  window.productHandles = {
+    {% for product in all_products %}
+      "{{ product.id }}": "{{ product.handle }}"{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  };
+
 
   function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
     const container = document.getElementById('searchListigBody');
