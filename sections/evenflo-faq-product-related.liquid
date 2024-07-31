@@ -80,28 +80,16 @@
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<script>
-  if (window.jQuery) {
-    alert("jQuery is loaded!");
-  } else {
-    alert("jQuery is not loaded.");
-  }
-</script>
 <script>
   
 
-$(document).ready(function() {
-  alert(3)
-        var productId = '7678864556188'; // Replace this with your actual product ID
-        $.getJSON('/products.json?product_id=7529439330460', function(product) {
-          console.log('product',product)
-            var productHandle = product.product.handle;
-            console.log(productHandle); // You can use the product handle as needed
-        });
-    });
-
+    function getProductsyyy(){
+      fetch('/products.json?product_id=7529439330460')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('data',data)
+}
+    }
 
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
