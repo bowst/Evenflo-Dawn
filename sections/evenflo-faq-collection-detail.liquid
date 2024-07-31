@@ -149,6 +149,68 @@ function fetchProductsByCollection(collectionID){
 
 
 
+function fetchTopicsByCollection(collectionID) {
+  const container = document.getElementById('selectTopic');
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  const defaultOption = document.createElement('option');
+  defaultOption.value = ""; 
+  defaultOption.textContent = "Select Topic";
+  container.appendChild(defaultOption);
+
+  fetch(evenFloFAQURL + `topics/?page=1&collection_id=${collectionID}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('topicsData', data);
+
+      data?.results.forEach((topic) => {
+        const option = document.createElement('option');
+        option.value = topic.id; 
+        option.textContent = topic.name;
+        container.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching topics:', error);
+    });
+}
+
+function fetchDropDownProductsByCollection(collectionID) {
+  const container = document.getElementById('selectProduct');
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  const defaultOption = document.createElement('option');
+  defaultOption.value = ""; 
+  defaultOption.textContent = "Select Product";
+  container.appendChild(defaultOption);
+
+  fetch(evenFloFAQURL + `products/filterByCollection/${collectionID}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('productsData', data);
+
+      data?.results.forEach((product) => {
+        const option = document.createElement('option');
+        option.value = product.id; 
+        option.textContent = product.name;
+        container.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching products:', error);
+    });
+}
+
 function fetchFAQSByCollection(collectionID,filter="",topicsID="",productID="") {
   const container = document.getElementById('faqsByCollection');
 
@@ -235,39 +297,6 @@ function fetchFAQSByCollection(collectionID,filter="",topicsID="",productID="") 
     });
 }
 
-function fetchTopicsByCollection(collectionID) {
-  const container = document.getElementById('selectTopic');
-
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = "";
-
-  const defaultOption = document.createElement('option');
-  defaultOption.value = ""; 
-  defaultOption.textContent = "Select Topic";
-  container.appendChild(defaultOption);
-
-  fetch(evenFloFAQURL + `topics/?page=1&collection_id=${collectionID}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log('topicsData', data);
-
-      data?.results.forEach((topic) => {
-        const option = document.createElement('option');
-        option.value = topic.id; 
-        option.textContent = topic.name;
-        container.appendChild(option);
-      });
-    })
-    .catch(error => {
-      console.error('Error fetching topics:', error);
-    });
-}
-
-
-
 function handleDropDownChange(event) {
       let topicID = document.getElementById('selectTopic').value;
       let productID = document.getElementById('selectProduct').value;
@@ -285,7 +314,7 @@ function debouncedSearch(event) {
       clearTimeout(debounceTimeout);
       debounceTimeout = setTimeout(() => {
         handleDropDownChange(event);
-      }, 300);
+      }, 500);
 }
 
 
@@ -307,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchFAQSByCollection(collectionID);
 
         fetchTopicsByCollection(collectionID);
-        //fetchDropDownProductsByCollection(collectionID);
+        fetchDropDownProductsByCollection(collectionID);
 
     } else{
 		window.location.href = '/pages/evenflo-faq-portal';
