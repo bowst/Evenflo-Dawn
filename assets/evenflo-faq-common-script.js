@@ -118,12 +118,12 @@ function fetchPopularProductsData(popularByProduct = false) {
 				const popularCard = document.createElement("div");
 				popularCard.classList.add("popular-card");
 
-				let productsContent = "";
+				let faqsContent = "";
 				let tags = [];
 				let tagsHtml = "";
 
 				product?.products.forEach((nestedProduct) => {
-					productsContent += `<span>${nestedProduct?.name}</span>`;
+					faqsContent += `<span>${nestedProduct?.name}</span>`;
 				});
 
 				product?.tags.forEach((tag) => {
@@ -144,7 +144,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 				<h3>${product?.topic?.name || ""}</h3>
 				<h2>${product.question}</h2>
 				<div class="description-wrapper">
-				  <p>${productsContent}</p>
+				  <p>${faqsContent}</p>
 				  <button>
 					<span>Show more</span>
 					<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">

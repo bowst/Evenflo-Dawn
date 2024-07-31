@@ -181,6 +181,7 @@ function fetchProductsByCollection(collectionID){
           tabCard.classList.add('product-card');
 
           tabCard.innerHTML = `
+          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
            <div class="product-img">
               <img
                 src=${product?.image}
@@ -190,6 +191,7 @@ function fetchProductsByCollection(collectionID){
             <div class="product-title">
               <h4>${product?.name}</h4>
             </div>
+            </a>
           `;
 
           container.appendChild(tabCard);
@@ -227,27 +229,33 @@ function fetchFAQSByCollection(collectionID) {
           const popularCard = document.createElement('div');
           popularCard.classList.add('popular-card');
 
-          let productsContent = "";
-          let categories = [];
-          let categoriesHtml = "";
+          let faqsContent = "";
+				let tags = [];
+				let tagsHtml = "";
 
-          product?.products.forEach((nestedProduct) => { 
-            productsContent += `<span>${nestedProduct?.name}</span>`;
-            categories[nestedProduct?.category?.id] = nestedProduct?.category?.category_name;
-          });
+				product?.products.forEach((nestedProduct) => {
+					faqsContent += `<span>${nestedProduct?.name}</span>`;
+				});
 
-          const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
-          uniqueCategoriesArray?.forEach((category, id) => {
-            categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
-          });
+				product?.tags.forEach((tag) => {
+					tags[tag?.id] = tag?.name;
+				});
+
+				const uniquetagsArray = tags?.filter(
+					(value, index, self) => self.indexOf(value) === index
+				);
+
+				uniquetagsArray?.forEach((category, id) => {
+					tagsHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+				});
 
           popularCard.innerHTML = `
            
             <div class="heading">
-              <h3>${product?.products[0]?.name}</h3>
+              <h3>${product?.topic?.name || ""}</h3>
               <h2>${product.question}</h2>
               <div class="description-wrapper">
-                <p>${productsContent}</p>
+                <p>${faqsContent}</p>
                 <button>
                   <span>Show more</span>
                   <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
@@ -264,7 +272,7 @@ function fetchFAQSByCollection(collectionID) {
                 </div>
               </div>
               <div class="card-link-wrapper">
-                ${categoriesHtml}
+                ${tagsHtml}
               </div>
             </div>
           `;
