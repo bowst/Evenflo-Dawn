@@ -10,9 +10,8 @@
   }
 </style>
 
-{% assign by_all_prod = all_products['7678864556188'].id %}
-{% comment %} {% assign by_all_prod = all_products['active-infant-carrier-support'].id %} {% endcomment %}
-
+{% comment %} {% assign by_all_prod = all_products['7678864556188'].id %}
+ {% assign by_all_prod = all_products['active-infant-carrier-support'].id %}
 {% assign product_found = false %}
 
 {% for product in collections.all.products %}
@@ -39,7 +38,7 @@
   </ul>
 {% else %}
   <p>Product not found.</p>
-{% endif %}
+{% endif %} {% endcomment %}
 
 {% assign products_to_show = section.settings.productRelatedRange %}
 
@@ -80,12 +79,21 @@
   </div>
 </div>
 
-{% assign product = all_products[productId] %}
-<script>
-  var productHandle = "{{ product.handle }}";
-</script>
+
 
 <script>
+
+$(document).ready(function() {
+        var productId = '7678864556188'; // Replace this with your actual product ID
+alert(33);
+        $.getJSON('/admin/products/' + productId + '.json', function(product) {
+          console.log('product',product)
+            var productHandle = product.product.handle;
+            console.log(productHandle); // You can use the product handle as needed
+        });
+    });
+
+
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
