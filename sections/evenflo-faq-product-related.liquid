@@ -150,23 +150,22 @@
   }
 
   function fetchProductHandle(productID) {
-  return fetch(`/products/${productID}.js`)
-    .then(response => response.json())
-    .then(product => {
-      console.log('producthandle',product)
-      product.handle
+  const url = `/products/${productID}.js`; // Adjust endpoint if necessary
+
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+      return response.json();
     })
+    .then(product => product.handle)
     .catch(error => {
       console.error('Error fetching product handle:', error);
       return null;
     });
 }
 
-  window.productHandles = {
-    {% for product in all_products %}
-      "{{ product.id }}": "{{ product.handle }}"{% if forloop.last == false %},{% endif %}
-    {% endfor %}
-  };
 
 
   function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
