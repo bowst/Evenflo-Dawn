@@ -11,12 +11,15 @@
 </style>
 
 {% assign products_to_show = section.settings.productRelatedRange %}
+{% assign prod_handle = all_products['7529439330460'].handle %}
 
 <div class="help-articles-block">
   <div class="help-articles-content page-width center"> 
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
+      {{prod_handle}}
       <div class="help-article-link-wrapper" id="productLinks">
+        
       </div>
     </div>
   </div>
