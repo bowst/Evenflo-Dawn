@@ -292,8 +292,14 @@
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+    transition: transform .3s;
 }
-
+.tab-card:hover {
+  transform: scale(1.1);
+}
+.tab-card a {
+  text-decoration: none;
+}
 .tab-img img {
 	width: 100%;
 	/* height: 200px; */
