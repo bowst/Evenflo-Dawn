@@ -14,7 +14,7 @@
 {% assign product_handle = 'your-product-handle-here' %}
 
 {% for product in collections.all.products %}
-  {% if product.id == 7529439330460 %}
+  {% if product.id == 7678864556188 %}
     {% assign product_found = true %}
     {% assign shopify_product = product %}
     {% break %}
@@ -24,7 +24,7 @@
 {% if product_found %}
   <h2>Product Data:</h2>
   <ul>
-    <li><strong>Title:</strong> {{ shopify_product.title }}</li>
+    <li><strong>Title:z</strong> {{ shopify_product.title }}</li>
     <li><strong>Description:</strong> {{ shopify_product.description }}</li>
     <li><strong>Price:</strong> {{ shopify_product.price | money }}</li>
     <li><strong>SKU:</strong> {{ shopify_product.sku }}</li>
