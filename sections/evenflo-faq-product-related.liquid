@@ -47,6 +47,11 @@
   </div>
 </div>
 
+{% assign product = all_products[productId] %}
+<script>
+  var productHandle = "{{ product.handle }}";
+</script>
+
 <script>
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
@@ -67,14 +72,15 @@
       .then((response) => response.json())
       .then((data) => {
 
-       const shopifyId = data?.shopify_id;
+       const productId = data?.shopify_id;
 
-       // Get the product handle using the Shopify ID
-       const productHandle = window.productHandles[shopifyId] || shopifyId;
+       fetchProductHandle(productId)
+ 
+       //const productHandle=""
 
         document.getElementById('productName').innerHTML = data?.name;
         document.getElementById('productLinks').innerHTML = `
-          <a href="/support/${productHandle}">Product Guide</a>
+          <a href="/support/${productId}">Product Guide</a>
           <a href="${data?.english_manual_url}">Manual EN</a>
           <a href="${data?.spanish_manual_url}">Manual ES</a>
           <a href="${data?.french_manual_url}">Manual FR</a>
@@ -143,6 +149,18 @@
       });
   }
 
+  function fetchProductHandle(productID) {
+  return fetch(`/products/${productID}.js`)
+    .then(response => response.json())
+    .then(product => {
+      console.log('producthandle',product)
+      product.handle
+    })
+    .catch(error => {
+      console.error('Error fetching product handle:', error);
+      return null;
+    });
+}
 
   window.productHandles = {
     {% for product in all_products %}
