@@ -31,84 +31,24 @@
 					<div class="popular-header">
 						<div class="search-selector-wrapper">
 							<div class="search-selector">
-								<select id="selectProduct">
-									<option selected="" value="Select Product">
-										Select Product
-									</option>
-									{% comment %} <option value="volvo">Volvo</option>
-									<option value="saab">Saab</option>
-									<option value="mercedes">Mercedes</option>
-									<option value="audi">Audi</option> {% endcomment %}
+								<select id="selectProduct" onchange="handleDropDownChange(event)">
+								
+					
 								</select>
 							</div>
 							<div class="search-selector">
-								<select id="selectTopic">
-									<option selected="" value="Select Topic">
-										Select Topic
-									</option>
-									{% comment %} <option value="volvo">Volvo</option>
-									<option value="saab">Saab</option>
-									<option value="mercedes">Mercedes</option>
-									<option value="audi">Audi</option> {% endcomment %}
+								<select id="selectTopic" onchange="handleDropDownChange(event)">
+							
 								</select>
 							</div>
 						</div>
 						<div class="search-input">
-							<input id="searchFAQ" type="text" placeholder="query" />
+							<input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)"/>
 						</div>
 					</div>
 
 
 					<div class="popular-card-wrapper" id="faqsByCollection" data-faqs-to-show="6">
-
-						{% comment %} <div class="popular-card">
-							<div class="heading">
-								<h3>Products</h3>
-								<h2>Can you use this car seat without the base?</h2>
-								<div class="description-wrapper">
-									<p>
-										Revolve360 Extend All-in-One Rotational Car Seat with Green
-										& Gentle Fabric Revolve360 Extend All-in-One Rotational Car
-										Seat with Green & Gentle Fabric Revolve360 Extend All-in-One
-										Rotational Car Seat with Green & Gentle Fabric Revolve360
-										Extend All-in-One Rotational Car Seat with Green & Gentle
-										Fabric
-									</p>
-									<button>
-										<span>Show 3 more</span>
-										<svg
-											aria-hidden="true"
-											focusable="false"
-											class="icon icon-caret"
-											viewBox="0 0 10 6"
-										>
-											<path
-												fill-rule="evenodd"
-												clip-rule="evenodd"
-												d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
-												fill="currentColor"
-											></path>
-										</svg>
-									</button>
-								</div>
-							</div>
-							<div class="card-content">
-								<div class="card-detail-wrapper">
-									<p>
-										The Shyft DualRide can be used with or without the stroller
-										frame when installing without the base.
-									</p>
-									<div class="card-content-link">
-										<a href="">Read Answer</a>
-									</div>
-								</div>
-								<div class="card-link-wrapper">
-									<a href="">Shyft DualRide</a>
-									<a href="">Car Seats</a>
-									<a href="">Category</a>
-								</div>
-							</div>
-						</div> {% endcomment %}
 
 					</div>
 
@@ -207,7 +147,9 @@ function fetchProductsByCollection(collectionID){
     });
 }
 
-function fetchFAQSByCollection(collectionID) {
+
+
+function fetchFAQSByCollection(collectionID,filter="",topicsID="",productID="") {
   const container = document.getElementById('faqsByCollection');
 
 	if (!container) {
@@ -216,20 +158,22 @@ function fetchFAQSByCollection(collectionID) {
 
 	container.innerHTML = ""; // Clear existing content
 
+  const blocksToShow = container ? container.dataset.faqsToShow : 6;
+
   const loader= appendLoader(container);
 
 
-  fetch(evenFloFAQURL + `faqs/by/collection/${collectionID}?page=1`)
+  fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&collection_id=${collectionID}&product_id=${productID}`)
     .then(response => response.json())
     .then(data => {
 
-        const blocksToShow = container ? container.dataset.faqsToShow : 6;
+    console.log('faqData',data)
 
         data?.results?.slice(0, blocksToShow).forEach((product) => {
           const popularCard = document.createElement('div');
           popularCard.classList.add('popular-card');
 
-          let faqsContent = "";
+        let faqsContent = "";
 				let tags = [];
 				let tagsHtml = "";
 
@@ -291,7 +235,6 @@ function fetchFAQSByCollection(collectionID) {
     });
 }
 
-
 function fetchTopicsByCollection(collectionID) {
   const container = document.getElementById('selectTopic');
 
@@ -300,6 +243,11 @@ function fetchTopicsByCollection(collectionID) {
   }
 
   container.innerHTML = "";
+
+  const defaultOption = document.createElement('option');
+  defaultOption.value = ""; 
+  defaultOption.textContent = "Select Topic";
+  container.appendChild(defaultOption);
 
   fetch(evenFloFAQURL + `topics/?page=1&collection_id=${collectionID}`)
     .then(response => response.json())
@@ -320,6 +268,28 @@ function fetchTopicsByCollection(collectionID) {
 
 
 
+function handleDropDownChange(event) {
+      let topicID = document.getElementById('selectTopic').value;
+      let productID = document.getElementById('selectProduct').value;
+      let filter = document.getElementById('searchFAQ').value;
+
+      console.log('topicID',topicID)
+      console.log('productID',productID)
+      console.log('filter',filter)
+
+      fetchFAQSByCollection(collectionID, filter, topicID, productID);
+    }
+
+let debounceTimeout;
+function debouncedSearch(event) {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        handleDropDownChange(event);
+      }, 300);
+}
+
+
+
 
 
 
@@ -329,8 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
+    var collectionID=""
     if (urlParams.has('cid')) {
-        let collectionID = urlParams.get('cid');
+      collectionID = urlParams.get('cid');
 
 		    fetchCollectionDetail(collectionID);
         fetchProductsByCollection(collectionID);
