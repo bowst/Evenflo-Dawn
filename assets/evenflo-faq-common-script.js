@@ -179,3 +179,48 @@ function fetchPopularProductsData(popularByProduct = false) {
 			}
 		});
 }
+
+function fetchTopicsByCollection(id, productPage = false) {
+	const container = document.getElementById("selectTopic");
+
+	if (!container) {
+		return;
+	}
+
+	container.innerHTML = "";
+
+	const defaultOption = document.createElement("option");
+	defaultOption.value = "";
+	defaultOption.textContent = "Select Topic";
+	container.appendChild(defaultOption);
+
+	let url = evenFloFAQURL + `topics/?page=1&collection_id=${id}`;
+
+	if (productPage) {
+		url = evenFloFAQURL + `topics/?page=1&collection_id=${id}`;
+	}
+
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			console.log("topicsData", data);
+
+			data?.results.forEach((topic) => {
+				const option = document.createElement("option");
+				option.value = topic.id;
+				option.textContent = topic.name;
+				container.appendChild(option);
+			});
+		})
+		.catch((error) => {
+			console.error("Error fetching topics:", error);
+		});
+}
+
+let debounceTimeout;
+function debouncedSearch(event) {
+	clearTimeout(debounceTimeout);
+	debounceTimeout = setTimeout(() => {
+		handleDropDownChange(event);
+	}, 500);
+}

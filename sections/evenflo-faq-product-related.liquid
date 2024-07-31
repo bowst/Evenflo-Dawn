@@ -40,23 +40,14 @@
 <div class="search-listing-wrapper">
   
   <div class="search-listing-header2">
+    
     <div class="search-selector">
-      <select>
-        <option selected="" value="Select Product">Select Product</option>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+      <select id="selectTopic" onchange="handleDropDownChange(event)">
+ 
       </select>
     </div>
-    <div class="search-selector">
-      <select>
-        <option selected="" value="Select Topic">Select Topic</option>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
+    <div class="search-input">
+      <input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)"/>
     </div>
   </div>
 

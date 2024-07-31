@@ -1,5 +1,4 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 {{ 'evenflo-full-slider.css' | asset_url | stylesheet_tag }}
 
 <section class="evenflo-multicolumn-slider color-background-4">
@@ -17,7 +16,7 @@
       autoplay-disable-on-interaction="false"
     >
       {% for block in section.blocks %}
-        {% assign blockClass = 'swiper-{{ forloop.index | string }}' %}
+        {% assign blockClass = "swiper-{{ forloop.index | string }}" %}
 
         {% if block.settings.image %}
           {% assign image = block.settings.image %}
