@@ -119,26 +119,29 @@ function fetchPopularProductsData(popularByProduct = false) {
 				popularCard.classList.add("popular-card");
 
 				let productsContent = "";
-				let categories = [];
-				let categoriesHtml = "";
+				let tags = [];
+				let tagsHtml = "";
 
 				product?.products.forEach((nestedProduct) => {
 					productsContent += `<span>${nestedProduct?.name}</span>`;
-					categories[nestedProduct?.category?.id] =
-						nestedProduct?.category?.category_name;
 				});
 
-				const uniqueCategoriesArray = categories?.filter(
+				product?.tags.forEach((tag) => {
+					tags[tag?.id] = tag?.name;
+				});
+
+				const uniquetagsArray = tags?.filter(
 					(value, index, self) => self.indexOf(value) === index
 				);
-				uniqueCategoriesArray?.forEach((category, id) => {
-					categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+
+				uniquetagsArray?.forEach((category, id) => {
+					tagsHtml += `<a href="https://abc.com/${category}">${category}</a>`;
 				});
 
 				popularCard.innerHTML = `
 			 
 			  <div class="heading">
-				<h3>${product?.products[0]?.name}</h3>
+				<h3>${product?.topic?.name || ""}</h3>
 				<h2>${product.question}</h2>
 				<div class="description-wrapper">
 				  <p>${productsContent}</p>
@@ -158,7 +161,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 				  </div>
 				</div>
 				<div class="card-link-wrapper">
-				  ${categoriesHtml}
+				  ${tagsHtml}
 				</div>
 			  </div>
 			`;
