@@ -95,7 +95,7 @@
 $(document).ready(function() {
   alert(3)
         var productId = '7678864556188'; // Replace this with your actual product ID
-        $.getJSON('evenflo.com/products.json?product_id='+productId , function(product) {
+        $.getJSON('/products.json?product_id=7529439330460', function(product) {
           console.log('product',product)
             var productHandle = product.product.handle;
             console.log(productHandle); // You can use the product handle as needed
