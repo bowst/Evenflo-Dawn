@@ -298,6 +298,9 @@
 
     if (urlParams.has('pid')) {
       let productID = urlParams.get('pid');
+
+      getProductsyyy()
+
       fetchPopularProductsRelatedData(productID);
       fetchFAQsByProduct(productID);
       fetchTopicsByType(productID,true)
