@@ -161,11 +161,11 @@
           let tags = [];
           let tagsHtml = "";
 
-          faqs?.products.forEach((nestedProduct) => {
+          faq?.products.forEach((nestedProduct) => {
             faqsContent += `<span>${nestedProduct?.name}</span>`;
           });
 
-          faqs?.tags.forEach((tag) => {
+          faq?.tags.forEach((tag) => {
             tags[tag?.id] = tag?.name;
           });
 
