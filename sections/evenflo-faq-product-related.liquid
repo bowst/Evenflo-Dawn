@@ -16,7 +16,8 @@
   <div class="help-articles-content page-width center"> 
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
-      <div class="help-article-link-wrapper" id="productLinks"></div>
+      <div class="help-article-link-wrapper" id="productLinks">
+      </div>
     </div>
   </div>
 </div>
@@ -66,9 +67,14 @@
       .then((response) => response.json())
       .then((data) => {
 
-        console.log('relatedPopularFaqs',data)
+       const shopifyId = data?.shopify_id;
+
+       // Get the product handle using the Shopify ID
+        const productHandle = getProductHandle(shopifyId);
+
         document.getElementById('productName').innerHTML = data?.name;
         document.getElementById('productLinks').innerHTML = `
+          <a href="/support/${productHandle}">Product Guide</a>
           <a href="${data?.english_manual_url}">Manual EN</a>
           <a href="${data?.spanish_manual_url}">Manual ES</a>
           <a href="${data?.french_manual_url}">Manual FR</a>
@@ -136,6 +142,16 @@
         }
       });
   }
+
+  function getProductHandle(shopifyId) {
+    // Assuming 'all_products' is available globally
+    for (const handle in all_products) {
+        if (all_products[handle].id == shopifyId) {
+            return handle;
+        }
+    }
+    return shopifyId; // Fallback if handle not found
+}
 
   function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
     const container = document.getElementById('searchListigBody');
