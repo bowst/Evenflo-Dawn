@@ -1948,3 +1948,4 @@ var swiper = new Swiper(".product-slider-wrapper ", {
     prevEl: ".swiper-button-prev",
   },
 });
+console.log(".product-slider-wrapper")
