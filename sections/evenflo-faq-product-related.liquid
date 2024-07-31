@@ -12,7 +12,7 @@
 
 {% assign first_product_found = false %}
 
-{% for product in collections.all.products %}
+{% for product in all_products %}
   {% if product.id == 7529439330460 %}
     {% assign shopify_product = product %}
   {% endif %}
