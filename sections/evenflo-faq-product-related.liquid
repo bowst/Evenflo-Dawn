@@ -10,14 +10,34 @@
   }
 </style>
 
-{% assign first_product_found = false %}
+{% assign product_found = false %}
+{% assign product_handle = 'your-product-handle-here' %}
 
 {% for product in collections.all.products %}
-  {% if product and first_product_found == false %}
+  {% if product.id == '7678864556188' %}
+    {% assign product_found = true %}
     {% assign shopify_product = product %}
-    {% assign first_product_found = true %}
+    {% break %}
   {% endif %}
 {% endfor %}
+
+{% if product_found %}
+  <h2>Product Data:</h2>
+  <ul>
+    <li><strong>Title:</strong> {{ shopify_product.title }}</li>
+    <li><strong>Description:</strong> {{ shopify_product.description }}</li>
+    <li><strong>Price:</strong> {{ shopify_product.price | money }}</li>
+    <li><strong>SKU:</strong> {{ shopify_product.sku }}</li>
+    <li><strong>Vendor:</strong> {{ shopify_product.vendor }}</li>
+    <li><strong>Type:</strong> {{ shopify_product.product_type }}</li>
+    <li><strong>Handle:</strong> {{ shopify_product.handle }}</li>
+    <li><strong>Available:</strong> {{ shopify_product.available }}</li>
+    <li><strong>Tags:</strong> {{ shopify_product.tags | join: ', ' }}</li>
+   
+  </ul>
+{% else %}
+  <p>Product not found.</p>
+{% endif %}
 
 {% assign products_to_show = section.settings.productRelatedRange %}
 {% assign prod_handle = shopify_product.handle %}
