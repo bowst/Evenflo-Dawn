@@ -31,30 +31,30 @@
 					<div class="popular-header">
 						<div class="search-selector-wrapper">
 							<div class="search-selector">
-								<select>
+								<select id="selectProduct">
 									<option selected="" value="Select Product">
 										Select Product
 									</option>
-									<option value="volvo">Volvo</option>
+									{% comment %} <option value="volvo">Volvo</option>
 									<option value="saab">Saab</option>
 									<option value="mercedes">Mercedes</option>
-									<option value="audi">Audi</option>
+									<option value="audi">Audi</option> {% endcomment %}
 								</select>
 							</div>
 							<div class="search-selector">
-								<select>
-									<option selected="" value="Select Product">
-										Select Product
+								<select id="selectTopic">
+									<option selected="" value="Select Topic">
+										Select Topic
 									</option>
-									<option value="volvo">Volvo</option>
+									{% comment %} <option value="volvo">Volvo</option>
 									<option value="saab">Saab</option>
 									<option value="mercedes">Mercedes</option>
-									<option value="audi">Audi</option>
+									<option value="audi">Audi</option> {% endcomment %}
 								</select>
 							</div>
 						</div>
 						<div class="search-input">
-							<input type="text" placeholder="query" />
+							<input id="searchFAQ" type="text" placeholder="query" />
 						</div>
 					</div>
 
@@ -292,6 +292,35 @@ function fetchFAQSByCollection(collectionID) {
 }
 
 
+function fetchTopicsByCollection(collectionID) {
+  const container = document.getElementById('selectTopic');
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = "";
+
+  fetch(evenFloFAQURL + `topics/?page=1&collection_id=${collectionID}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('topicsData', data);
+
+      data?.results.forEach((topic) => {
+        const option = document.createElement('option');
+        option.value = topic.id; 
+        option.textContent = topic.name;
+        container.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching topics:', error);
+    });
+}
+
+
+
+
 
 
 
@@ -306,6 +335,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		    fetchCollectionDetail(collectionID);
         fetchProductsByCollection(collectionID);
         fetchFAQSByCollection(collectionID);
+
+        fetchTopicsByCollection(collectionID);
+        //fetchDropDownProductsByCollection(collectionID);
 
     } else{
 		window.location.href = '/pages/evenflo-faq-portal';
