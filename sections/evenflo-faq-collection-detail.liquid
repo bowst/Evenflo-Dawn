@@ -294,12 +294,11 @@ function debouncedSearch(event) {
 
 
 
-
+var collectionID=""
 document.addEventListener('DOMContentLoaded', () => {
 	const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    var collectionID=""
     if (urlParams.has('cid')) {
       collectionID = urlParams.get('cid');
 
