@@ -15,8 +15,7 @@
 {% assign product = all_products[product_id] %}
 
 {% if product %}
-  <h1>{{ product.handle }}jjjjj</h1>
-  <p>{{ product.description }}</p>
+  <pre>{{ product | json }}</pre>
   <!-- Add more product details here -->
 {% else %}
   <p>Product not found.</p>
