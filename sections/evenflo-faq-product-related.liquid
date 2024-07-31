@@ -10,14 +10,17 @@
   }
 </style>
 
+{% assign first_product_found = false %}
+
 {% for product in collections.all.products %}
-  {% if product.id == 7529439330460 %}
-  {% assign shopify_product = product %}
+  {% if product and first_product_found == false %}
+    {% assign shopify_product = product %}
+    {% assign first_product_found = true %}
   {% endif %}
-  {% endfor %}
+{% endfor %}
 
 {% assign products_to_show = section.settings.productRelatedRange %}
-{% assign prod_handle = shopify_product %}
+{% assign prod_handle = shopify_product.title %}
 
 <div class="help-articles-block">
   <div class="help-articles-content page-width center"> 
