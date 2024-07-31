@@ -1,8 +1,5 @@
 {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <div class="product-page-wrapper">
 
@@ -271,14 +268,8 @@ function handleDropDownChange(event) {
       let topicID = document.getElementById('selectTopic').value;
       let productID = document.getElementById('selectProduct').value;
       let filter = document.getElementById('searchFAQ').value;
-
-      console.log('topicID',topicID)
-      console.log('productID',productID)
-      console.log('filter',filter)
-
       fetchFAQSByCollection(collectionID, filter, topicID, productID);
     }
-
 
 
 
@@ -298,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchProductsByCollection(collectionID);
         fetchFAQSByCollection(collectionID);
 
-        fetchTopicsByCollection(collectionID);
+        fetchTopicsByType(collectionID);
         fetchDropDownProductsByCollection(collectionID);
 
     } else{

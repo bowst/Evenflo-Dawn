@@ -3,29 +3,23 @@
 <style>
   .help-articles-block {
     background: #fff;
-}
-.search-listing-header2{
-  display: flex;
-  justify-content: space-between;
-}
+  }
+  .search-listing-header2 {
+    display: flex;
+    justify-content: space-between;
+  }
 </style>
 
-{% assign products_to_show= section.settings.productRelatedRange %}
+{% assign products_to_show = section.settings.productRelatedRange %}
 
 <div class="help-articles-block">
   <div class="help-articles-content page-width center"> 
-      <div class="help-article-search-wrapper">
-    
-          <h1 id="productName"> </h1>
-          <div class="help-article-link-wrapper" id="productLinks">
-                 
-          </div>
-      </div> 
-    
-    
+    <div class="help-article-search-wrapper">
+      <h1 id="productName"></h1>
+      <div class="help-article-link-wrapper" id="productLinks"></div>
+    </div>
   </div>
 </div>
-
 
 <div class="popular-question-block" id="productRelatedBlock" data-products-to-show="{{ products_to_show }}">
   <div class="popular-content-wrapper page-width">
@@ -37,200 +31,209 @@
 </div>
 
 <div class="page-width center"> 
-<div class="search-listing-wrapper">
-  
-  <div class="search-listing-header2">
-    
-    <div class="search-selector">
-      <select id="selectTopic" onchange="handleDropDownChange(event)">
- 
-      </select>
+  <div class="search-listing-wrapper">
+    <div class="search-listing-header2">
+      <div class="search-selector">
+        <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
+      </div>
+      <div class="search-input">
+        <input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)" />
+      </div>
     </div>
-    <div class="search-input">
-      <input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)"/>
+    <div class="search-listing-body" id="searchListigBody" data-search-blocks-to-show="8">
+      {% comment %} TO be displayed through javascript {% endcomment %}
     </div>
   </div>
-
-  <div class="search-listing-body" id="searchListigBody" data-search-blocks-to-show="8">
-    {% comment %} TO be displayed through javascript {% endcomment %}
-  </div>
-</div>
 </div>
 
 <script>
-function fetchPopularProductsRelatedData(productID) {
-  const container = document.getElementById("popularCards");
-  const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-  let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
+  function fetchPopularProductsRelatedData(productID) {
+    const container = document.getElementById("popularCards");
+    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
+    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
 
-  if (!container) {
-    console.log("Error on getting container");
-    return;
-  }
+    if (!container) {
+      console.log("Error on getting container");
+      return;
+    }
 
-  container.innerHTML = ""; // Clear existing content
-  const loader = appendLoader(container);
+    container.innerHTML = ""; // Clear existing content
+    const loader = appendLoader(container);
 
-  let url = evenFloFAQURL + "products/" + productID;
+    let url = evenFloFAQURL + "products/" + productID;
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById('productName').innerHTML = data?.name;
+        document.getElementById('productLinks').innerHTML = `
+          <a href="${data?.english_manual_url}">Manual EN</a>
+          <a href="${data?.spanish_manual_url}">Manual ES</a>
+          <a href="${data?.french_manual_url}">Manual FR</a>
+        `;
 
-      document.getElementById('productName').innerHTML=data?.name
-      document.getElementById('productLinks').innerHTML=`
-      <a href="${data?.english_manual_url}">Manual EN</a>
-      <a href="${data?.spanish_manual_url}">Manual ES</a>
-      <a href="${data?.french_manual_url}">Manual FR</a>
-      `;
+        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((faqs) => {
+          const popularCard = document.createElement("div");
+          popularCard.classList.add("popular-card");
 
-      data?.related_popular_faqs?.slice(0, blocksToShow).forEach((faqs) => {
-        const popularCard = document.createElement("div");
-        popularCard.classList.add("popular-card");
+          let faqsContent = "";
+          let tags = [];
+          let tagsHtml = "";
 
-        let productsContent = "";
-        let categories = [];
-        let categoriesHtml = "";
+          faqs?.products.forEach((nestedProduct) => {
+            faqsContent += `<span>${nestedProduct?.name}</span>`;
+          });
 
-        faqs?.products.forEach((nestedProduct) => {
-          productsContent += `<span>${nestedProduct?.name}</span>`;
-        });
+          faqs?.tags.forEach((tag) => {
+            tags[tag?.id] = tag?.name;
+          });
 
-        faqs?.tags.forEach((tag) => {
-          categories[tag?.id] = tag?.name;
-        });
+          const uniquetagsArray = tags?.filter(
+            (value, index, self) => self.indexOf(value) === index
+          );
+          uniquetagsArray?.forEach((category, id) => {
+            tagsHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+          });
 
-        const uniqueCategoriesArray = categories?.filter(
-          (value, index, self) => self.indexOf(value) === index
-        );
-        uniqueCategoriesArray?.forEach((category, id) => {
-          categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
-        });
-
-        popularCard.innerHTML = `
-          <div class="heading">
-            <h3>${faqs?.products[0]?.name}</h3>
-            <h2>${faqs.question}</h2>
-            <div class="description-wrapper">
-              <p>${productsContent}</p>
-              <button>
-                <span>Show more</span>
-                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="card-detail-wrapper">
-              <p>${faqs.answer}</p>
-              <div class="card-content-link">
-                <a href="/pages/evenflo-faq-answer?qid=${faqs?.id}">Read Answer</a>
+          popularCard.innerHTML = `
+            <div class="heading">
+              <h3>${faqs?.products[0]?.name}</h3>
+              <h2>${faqs.question}</h2>
+              <div class="description-wrapper">
+                <p>${faqsContent}</p>
+                <button>
+                  <span>Show more</span>
+                  <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+                  </svg>
+                </button>
               </div>
             </div>
-            <div class="card-link-wrapper">
-              ${categoriesHtml}
+            <div class="card-content">
+              <div class="card-detail-wrapper">
+                <p>${faqs.answer}</p>
+                <div class="card-content-link">
+                  <a href="/pages/evenflo-faq-answer?qid=${faqs?.id}">Read Answer</a>
+                </div>
+              </div>
+              <div class="card-link-wrapper">
+                ${tagsHtml}
+              </div>
             </div>
-          </div>
-        `;
-        container.appendChild(popularCard);
+          `;
+          container.appendChild(popularCard);
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      })
+      .finally(() => {
+        if (loader) {
+          hideLoader(loader);
+          toggleAnswerText();
+        }
       });
-    })
-    .catch((error) => {
-      console.error("Error fetching products:", error);
-    })
-    .finally(() => {
-      if (loader) {
-        hideLoader(loader);
-        toggleAnswerText();
-      }
-    });
-}
-
-function fetchFAQsByProduct(productID) {
-  const container = document.getElementById('searchListigBody');
-  if (!container) {
-    return;
   }
-  let blocksToShow = container.dataset.searchBlocksToShow || 8;
 
-  container.innerHTML = ""; // Clear existing content
-  const loader = appendLoader(container);
+  function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
+    const container = document.getElementById('searchListigBody');
 
-  fetch(evenFloFAQURL + 'faqs/product/'+productID)
-    .then(response => response.json())
-    .then(data => {
-      console.log('data', data);
+    if (!container) {
+      return;
+    }
 
-      data?.forEach((faq) => {
-        const searchCard = document.createElement('div');
-        searchCard.classList.add('search-card');
+    let blocksToShow = container.dataset.searchBlocksToShow || 8;
 
-        let faqsContent = "";
-        let categories = [];
-        let categoriesHtml = "";
+    container.innerHTML = ""; 
 
+    const loader = appendLoader(container);
 
-        faq?.products.forEach((nestedProduct) => { 
-          faqsContent += `<span>${nestedProduct?.name}</span>`;
-            categories[nestedProduct?.category?.id] = nestedProduct?.category?.category_name;
+    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&product_id=${productID}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log('relatedFaqsData', data);
+
+        data?.forEach((faq) => {
+          const searchCard = document.createElement('div');
+          searchCard.classList.add('search-card');
+
+          let faqsContent = "";
+          let tags = [];
+          let tagsHtml = "";
+
+          faqs?.products.forEach((nestedProduct) => {
+            faqsContent += `<span>${nestedProduct?.name}</span>`;
           });
 
-          const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
-          uniqueCategoriesArray?.forEach((category, id) => {
-            categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+          faqs?.tags.forEach((tag) => {
+            tags[tag?.id] = tag?.name;
           });
 
+          const uniquetagsArray = tags?.filter(
+            (value, index, self) => self.indexOf(value) === index
+          );
 
-        searchCard.innerHTML = `
-          <div class="heading">
-            <h3>${faq?.topic?.name || "N/A"}</h3>
-            <h2>${faq.question}</h2>
-            <div class="description-wrapper">
-              <p>${faqsContent}</p>
-              <button>
-                <span>Show more</span>
-                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
-                </svg>
-              </button>
+          uniquetagsArray?.forEach((category, id) => {
+            tagsHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+          });
+
+          searchCard.innerHTML = `
+            <div class="heading">
+              <h3>${faq?.topic?.name || "N/A"}</h3>
+              <h2>${faq.question}</h2>
+              <div class="description-wrapper">
+                <p>${faqsContent}</p>
+                <button>
+                  <span>Show more</span>
+                  <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="card-content">
-            <div class="card-detail-wrapper">
-              <p>${faq.answer}</p>
+            <div class="card-content">
+              <div class="card-detail-wrapper">
+                <p>${faq.answer}</p>
+              </div>
+              <div class="card-link-wrapper">
+                ${tagsHtml}
+              </div>
             </div>
-            <div class="card-link-wrapper">
-              ${categoriesHtml}
-            </div>
-          </div>
-        `;
-        container.appendChild(searchCard);
+          `;
+          container.appendChild(searchCard);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      })
+      .finally(() => {
+        if (loader) {
+          hideLoader(loader);
+          toggleAnswerText();
+        }
       });
-    })
-    .catch(error => {
-      console.error('Error fetching products:', error);
-    })
-    .finally(() => {
-      if (loader) {
-        hideLoader(loader);
-        toggleAnswerText();
-      }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-
-  if (urlParams.has('pid')) {
-    let productID = urlParams.get('pid');
-    fetchPopularProductsRelatedData(productID);
-    fetchFAQsByProduct(productID)
-  } else {
-    window.location.href = '/pages/evenflo-faq-portal';
   }
-});
+
+  function handleDropDownChange(event) {
+    let topicID = document.getElementById('selectTopic').value;
+    let filter = document.getElementById('searchFAQ').value;
+    fetchFAQsByProduct(productID, filter, topicID);
+  }
+
+  var productID = "";
+  document.addEventListener('DOMContentLoaded', () => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    if (urlParams.has('pid')) {
+      let productID = urlParams.get('pid');
+      fetchPopularProductsRelatedData(productID);
+      fetchFAQsByProduct(productID);
+      fetchTopicsByType(productID,true)
+    } else {
+      window.location.href = '/pages/evenflo-faq-portal';
+    }
+  });
 </script>
 
 {% schema %}

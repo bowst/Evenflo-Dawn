@@ -180,7 +180,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 		});
 }
 
-function fetchTopicsByCollection(id, productPage = false) {
+function fetchTopicsByType(id, productPage = false) {
 	const container = document.getElementById("selectTopic");
 
 	if (!container) {
@@ -195,9 +195,8 @@ function fetchTopicsByCollection(id, productPage = false) {
 	container.appendChild(defaultOption);
 
 	let url = evenFloFAQURL + `topics/?page=1&collection_id=${id}`;
-
 	if (productPage) {
-		url = evenFloFAQURL + `topics/?page=1&collection_id=${id}`;
+		url = evenFloFAQURL + `topics/?page=1&product_id=${id}`;
 	}
 
 	fetch(url)
