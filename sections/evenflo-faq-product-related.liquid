@@ -10,22 +10,26 @@
   }
 </style>
 
-{% assign first_product_found = false %}
 
-{% for product in all_products %}
-  {% if product.id == 7529439330460 %}
-    {% assign shopify_product = product %}
-  {% endif %}
-{% endfor %}
+{% assign product_id = '7529439330460' %}
+{% assign product = all_products[product_id] %}
+
+{% if product %}
+  <h1>{{ product.title }}</h1>
+  <p>{{ product.description }}</p>
+  <!-- Add more product details here -->
+{% else %}
+  <p>Product not found.</p>
+{% endif %}
+
 
 {% assign products_to_show = section.settings.productRelatedRange %}
-{% assign prod_handle = shopify_product.id %}
 
 <div class="help-articles-block">
   <div class="help-articles-content page-width center"> 
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
-      {{prod_handle}}ddd
+    
       <div class="help-article-link-wrapper" id="productLinks">
         
       </div>
