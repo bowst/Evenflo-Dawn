@@ -112,7 +112,7 @@ function fetchProductsByCollection(collectionID){
       console.log('data',data);
 
       const productsBlock = document.getElementById('productsInCollection');
-      const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 6;
+      const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 12;
 
         data.slice(0, blocksToShow).forEach((product) => {  
 
