@@ -64,48 +64,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
-    var swiper = new Swiper ('.product-slider-wrapper, {
-    // Optional parameters, remove if not needed
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    centeredSlides: false,
-    autoplay: {
-      delay: 3000,
-    },
-    keyboard: {
-      enabled: true,
-    },
-    // Swiper Nodes modules
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    scrollbar: {
-        el: '.swiper-scrollbar',
-        hide: true,
-    },
-    // Breakpoints
-    breakpoints: {
-      0: { /* Webflow mobile landscape/portriat */
-        slidesPerView: 1,
-        spaceBetween: 10,
-      },
-      767: { /* Webflow tablet */
-        slidesPerView: 2,
-        spaceBetween: 15,
-      },
-      988: { /* Webflow desktop */
-        slidesPerView: 3,
-        spaceBetween: 20,
-      }
-    },
-  })
-
 document.addEventListener('DOMContentLoaded', function () {
     var swiper = new Swiper('.product-slider-wrapper', {
         loop: true,
