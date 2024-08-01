@@ -1,6 +1,6 @@
 {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
 <!-- Add Swiper CSS -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
 
 
 
@@ -17,18 +17,11 @@
                 <div class="product-slider-heading center" id="collectionDetail">
                  {% comment %} Content will be dynamic {% endcomment %}
                 </div>
-                <div class="custom-product-slider-wrapper">
-                  <div class="product-slider-wrapper" id="productsInCollection" data-products-to-show="6" >
+                 <div class="product-slider-wrapper" id="productsInCollection" data-products-to-show="6" >
                   
                     {% comment %} Content will be dynamic {% endcomment %}
                   
                   </div>
-                  <div class="custom-slider-btn-wrapper">
-                    <button class="prevBtn">prev</button>
-                    <button class="nextBtn">next</button>
-                  </div>
-                  
-                </div>
                
         </div>
     </div>
@@ -66,7 +59,7 @@
 
 </div>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
 
 
@@ -124,7 +117,7 @@ function fetchProductsByCollection(collectionID){
         data.slice(0, blocksToShow).forEach((product) => {  
 
           const tabCard = document.createElement('div');
-          tabCard.classList.add('product-card');
+          tabCard.classList.add('swiper-slide','product-card');
 
           tabCard.innerHTML = `
           <a href="/pages/evenflo-faq-product?pid=${product?.id}">
@@ -143,6 +136,21 @@ function fetchProductsByCollection(collectionID){
           container.appendChild(tabCard);
 
         });
+       var swiper = new Swiper('.product-slider-wrapper', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+      });
       
     })
     .catch(error => {
