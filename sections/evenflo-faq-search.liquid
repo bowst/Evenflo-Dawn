@@ -175,10 +175,9 @@ function fetchDropDownProductsByCollection(product_id=1) {
   defaultOption.textContent = "Select Product";
   container.appendChild(defaultOption);
 
-  fetch(evenFloFAQURL + `products/filterByCollection/${collectionID}`)
+  fetch(evenFloFAQURL + `products/filterByCollection/${product_id}`)
     .then(response => response.json())
     .then(data => {
-      console.log('productsData', data);
 
       data?.forEach((product) => {
         const option = document.createElement('option');
