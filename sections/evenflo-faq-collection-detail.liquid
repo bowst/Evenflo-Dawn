@@ -138,22 +138,19 @@ function fetchProductsByCollection(collectionID){
           container.appendChild(tabCard);
 
         });
-       var swiper = new Swiper('.product-slider-wrapper', {
-        loop: true,
-         
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-      });
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            slidesPerView: 4,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
       
     })
     .catch(error => {
