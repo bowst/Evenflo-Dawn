@@ -17,11 +17,7 @@
         <p id="numberOfResults"></p>
         <div class="search-selector">
           <select id="selectProduct">
-            <option selected="" value="">Select Product</option>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+     
           </select>
         </div>
         <div class="search-selector">
@@ -53,15 +49,7 @@ function fetchFAQsData(searchTerm = "", product_id = "", topics_id = "", page = 
     container.innerHTML = "";  // Clear existing content
 
     // Creating loader div through javascript
-    const loader = document.createElement('div');
-    loader.id = 'loader';
-    loader.className = 'loader';
-
-    container.appendChild(loader);
-
-    if (loader) {
-        loader.style.display = 'block';
-    }
+    const loader = appendLoader(container)
 
     fetch(`${evenFloFAQURL}faqs/getFilteredFaqs?page=${page}&count=10&filter=${encodeURIComponent(searchTerm)}&product_id=${product_id}&topics_id=${topics_id}`)
         .then(response => response.json())
@@ -128,34 +116,8 @@ function fetchFAQsData(searchTerm = "", product_id = "", topics_id = "", page = 
         .finally(() => {
             // Hide the loader
             if (loader) {
-                loader.style.display = 'none';
-                document.querySelectorAll(".description-wrapper button").forEach((descBtn, index) => {
-                    let description = document.querySelectorAll(".description-wrapper p")[index];
-
-                    description.setAttribute("data-full-text", description.textContent);
-
-                    if (description.textContent.length > 50) {
-                        description.textContent = description.textContent.substring(0, 50) + "...";
-                    }
-
-                    descBtn.addEventListener("click", () => {
-                        document.querySelectorAll(".description-wrapper p").forEach((desc) => {
-                            let fullText = desc.getAttribute("data-full-text");
-                            if (fullText && fullText.length > 50) {
-                                desc.textContent = fullText.substring(0, 50) + "...";
-                            }
-                        });
-
-                        document.querySelectorAll(".description-wrapper button.active").forEach((activeBtn) => {
-                            activeBtn.classList.remove("active");
-                            activeBtn.children[0].textContent = "Show more"
-                        });
-
-                        descBtn.classList.add("active");
-                        descBtn.children[0].textContent = "Show less";
-                        description.textContent = description.getAttribute("data-full-text");
-                    });
-                });
+               hideLoader(loader)
+               toggleAnswerText();
             }
         });
 }
@@ -225,7 +187,7 @@ function fetchDropDownProductsByCollection(product_id=1) {
         if(product_id && product_id==topic.id){
           option.selected=true;
         }
-        
+
         option.textContent = product.name;
         container.appendChild(option);
       });
