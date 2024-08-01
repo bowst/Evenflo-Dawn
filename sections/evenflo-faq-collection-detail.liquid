@@ -43,7 +43,7 @@
                     <div class="swiper-wrapper" id="productsInCollection" data-products-to-show="6">
                       {% comment %} Content will be dynamic {% endcomment %}
                     </div>
-                    <div class="swiper-pagination"></div>
+                    <!-- <div class="swiper-pagination"></div> -->
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                   </div>
@@ -165,13 +165,13 @@ function fetchProductsByCollection(collectionID){
         });
         var swiper = new Swiper(".mySwiper", {
             loop: true,
-            slidesPerView: 4,
+            slidesPerView: 6,
             spaceBetween: 30,
            // centeredSlides: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true,
+            // },
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
