@@ -230,7 +230,7 @@ function paginatedClick(page) {
         topics_id = urlParams.get('topics_id');
     }
 
-    callLocation(page, searchTerm, product_id, topics_id)
+    callLocation(page, searchTerm, product_id, topics_id);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -270,16 +270,16 @@ inputElement.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         const searchTerm = inputElement.value;
-        callLocation(1, searchTerm)
+        callLocation(1, searchTerm, document.getElementById('selectProduct').value, document.getElementById('selectTopic').value);
     }
 });
 
 document.getElementById('selectProduct').addEventListener('change', function () {
-    callLocation(1);
+    callLocation(1, document.getElementById('searchBox').value, this.value, document.getElementById('selectTopic').value);
 });
 
 document.getElementById('selectTopic').addEventListener('change', function () {
-    callLocation(1);
+    callLocation(1, document.getElementById('searchBox').value, document.getElementById('selectProduct').value, this.value);
 });
 
 function callLocation(page = 1, searchTerm = "", product_id = "", topics_id = "") {
