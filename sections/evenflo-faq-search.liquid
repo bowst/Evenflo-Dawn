@@ -88,7 +88,7 @@ function fetchFAQsData(searchTerm="",page=1) {
           let tagsHtml = "";
           
           product?.products.forEach((nestedProduct) => { 
-            productsContent += `<span>${nestedProduct?.name}</span>`;
+            productsContent += `<li>${nestedProduct?.name}</li>`;
           });
 
          //Added for tags
@@ -107,7 +107,7 @@ function fetchFAQsData(searchTerm="",page=1) {
               <h3>${product?.topic?.name}</h3>
               <h2>${product.question}</h2>
               <div class="description-wrapper">
-                <p>${productsContent}</p>
+                <ul>${productsContent}</ul>
                 <button>
                   <span>Show more</span>
                   <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
