@@ -123,7 +123,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 				let tagsHtml = "";
 
 				product?.products.forEach((nestedProduct) => {
-					faqsContent += `<span>${nestedProduct?.name}</span>`;
+					faqsContent += `<li>${nestedProduct?.name}</li>`;
 				});
 
 				product?.tags.forEach((tag) => {
@@ -144,7 +144,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 				<h3>${product?.topic?.name || ""}</h3>
 				<h2>${product.question}</h2>
 				<div class="description-wrapper">
-				  <p>${faqsContent}</p>
+				  <ul>${faqsContent}</ul>
 				  <button>
 					<span>Show more</span>
 					<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
