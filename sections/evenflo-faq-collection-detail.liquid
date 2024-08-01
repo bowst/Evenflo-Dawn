@@ -64,23 +64,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.product-slider-wrapper', {
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-    });
-});
+
 
 function fetchCollectionDetail(id) {
   const container = document.getElementById('collectionDetail');
@@ -153,6 +137,24 @@ function fetchProductsByCollection(collectionID){
           `;
 
           container.appendChild(tabCard);
+
+          document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.product-slider-wrapper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+    });
+});
 
         });
       
@@ -315,10 +317,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.location.href = '/pages/evenflo-faq-portal';
 	}
 });
-var swiper = new Swiper(".product-slider-wrapper", {
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+
 </script>
