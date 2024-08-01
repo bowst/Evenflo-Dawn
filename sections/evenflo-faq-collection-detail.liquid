@@ -20,17 +20,10 @@
                  <div class="product-slider-wrapper" id="productsInCollection" data-products-to-show="6" >
                   
                     {% comment %} Content will be dynamic {% endcomment %}
-                    <div class="swiper-wrapper">
-      <!-- Slides will be dynamically added here by JavaScript -->
-    </div>
-    <!-- Pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- Navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
                   
                   </div>
-               
+                <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
         </div>
     </div>
 
@@ -104,7 +97,7 @@ function fetchCollectionDetail(id) {
 
 
 function fetchProductsByCollection(collectionID){
-    const container = document.getElementById('.swiper-wrapper');
+    const container = document.getElementById('productsInCollection');
 
     if(!container){
       return;
@@ -146,8 +139,7 @@ function fetchProductsByCollection(collectionID){
         });
        var swiper = new Swiper('.product-slider-wrapper', {
         loop: true,
-          slidesPerView: 4, // Show 4 slides at a time
-          spaceBetween: 30,
+         
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
