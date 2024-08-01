@@ -160,7 +160,7 @@ function fetchFAQsData(searchTerm = "", product_id = "", topics_id = "", page = 
         });
 }
 
-function fetchTopics() {
+function fetchTopics(topics_id="") {
 	const container = document.getElementById("selectTopic");
 
 	if (!container) {
@@ -185,6 +185,11 @@ function fetchTopics() {
 			data?.results.forEach((topic) => {
 				const option = document.createElement("option");
 				option.value = topic.id;
+
+        if(topics_id && topics_id==topic.id){
+          option.selected=true;
+        }
+        
 				option.textContent = topic.name;
 				container.appendChild(option);
 			});
@@ -264,8 +269,6 @@ function paginatedClick(page) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    fetchTopics()
-
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
@@ -291,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (urlParams.has('page')) {
         page = urlParams.get('page');
     }
-
+    fetchTopics(topics_id)
     fetchFAQsData(searchTerm, product_id, topics_id, page);
 });
 
