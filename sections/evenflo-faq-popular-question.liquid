@@ -1,18 +1,13 @@
-
-
-{% assign products_to_show= section.settings.popularQuestionRange%}
+{% assign products_to_show = section.settings.popularQuestionRange %}
 
 <div class="popular-question-block" id="popularQuestionBlock" data-products-to-show="{{ products_to_show }}">
-			<div class="popular-content-wrapper page-width">
-				<div class="heading center">
-					<h2>{{ section.settings.popularQuestionTitle }}</h2>
-				</div>
-				<div class="popular-card-wrapper" id="popularCards">
-					
-				
-				</div>
-			</div>
-		</div>
+  <div class="popular-content-wrapper page-width">
+    <div class="heading center">
+      <h2>{{ section.settings.popularQuestionTitle }}</h2>
+    </div>
+    <div class="popular-card-wrapper" id="popularCards"></div>
+  </div>
+</div>
 
 <script>
 
@@ -66,7 +61,7 @@
 //             <div class="heading">
 //               <h3>${product?.products[0]?.name}</h3>
 //               <h2>${product.question}</h2>
-//               <div class="description-wrapper">
+//               <div class="description-wrapper extra">
 //                 <p>${productsContent}</p>
 //                 <button>
 //                   <span>Show more</span>
@@ -147,14 +142,7 @@ document.addEventListener('shopify:section:load', (event) => {
 document.addEventListener('DOMContentLoaded', () => {
   fetchPopularProductsData();
 });
-
 </script>
-
-
-
-
-
-
 
 {% schema %}
 {
@@ -185,10 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       "name": "EvenFlo FAQ Popular",
       "blocks": [
-        
+
       ]
     }
   ]
-  
+
 }
 {% endschema %}
