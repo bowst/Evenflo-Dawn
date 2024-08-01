@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="search-listing-body">
+      <div class="search-listing-body" id="searchListingBody">
         {% comment %} TO be displayed through javascript {% endcomment %}
       </div>
     </div>
@@ -47,29 +47,21 @@
 <script>
 
 
-function fetchFAQsData(searchTerm="",page=1) {
-    const container = document.querySelector('.search-listing-body');
+function fetchFAQsData(searchTerm="",page=1,productId="",topicsId="") {
+    const container = document.getElementById('searchListingBody');
     const searchBlocks = document.getElementById('searchBlocks');
     let blocksToShow = searchBlocks ? searchBlocks.dataset.searchBlocksToShow : 8;
 
     if(!container){
         return;
-        }
+    }
     
     container.innerHTML = "";  // Clear existing content
 
-      //Creating loader div through javascript
-      const loader = document.createElement('div');
-      loader.id = 'loader';
-      loader.className = 'loader';
+   const loader = appendLoader(container)
+     
 
-      container.appendChild(loader);
-   
-      if (loader) {
-        loader.style.display = 'block';
-      }
-
-  fetch(evenFloFAQURL + 'faqs/getFilteredFaqs?page='+page+'&count=10&filter='+encodeURIComponent(searchTerm))
+  fetch(evenFloFAQURL + `faqs/getFilteredFaqs?page=${page}&count=10&filter=${encodeURIComponent(searchTerm)}&product_id=${productId}&topics_id=${topicsId}`)
     .then(response => response.json())
     .then(data => {
         console.log('data',data)
@@ -135,47 +127,15 @@ function fetchFAQsData(searchTerm="",page=1) {
     .finally(() => {
       // Hide the loader
       if (loader) {
-        loader.style.display = 'none';
-           document
-	.querySelectorAll(".description-wrapper button")
-	.forEach((descBtn, index) => {
-		let description = document.querySelectorAll(".description-wrapper p")[
-			index
-		];
-
-		description.setAttribute("data-full-text", description.textContent);
-
-		if (description.textContent.length > 50) {
-			description.textContent =
-				description.textContent.substring(0, 50) + "...";
-		}
-
-		descBtn.addEventListener("click", () => {
-			document.querySelectorAll(".description-wrapper p").forEach((desc) => {
-				let fullText = desc.getAttribute("data-full-text");
-				if (fullText && fullText.length > 50) {
-					desc.textContent = fullText.substring(0, 50) + "...";
-				}
-			});
-
-			document
-				.querySelectorAll(".description-wrapper button.active")
-				.forEach((activeBtn) => {
-					activeBtn.classList.remove("active");
-                  activeBtn.children[0].textContent = "Show more"
-				});
-
-			descBtn.classList.add("active");
-            descBtn.children[0].textContent = "Show less";
-			description.textContent = description.getAttribute("data-full-text");
-		});
-	});
+       hideLoader(loader)
+       toggleAnswerText();
       }
     });
 }
 
 
 function getPaginatedHTMLButtons(resultCount, page) {
+  
     if(resultCount <1){
       return;
     }
@@ -222,18 +182,54 @@ function getPaginatedHTMLButtons(resultCount, page) {
     return paginationDiv.outerHTML;
 }
 
+
+
 function paginatedClick(page){
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
 
-    let searchTerm=""
-    if (urlParams.has('search')) {
-        searchTerm = urlParams.get('search');
-    } 
-
-    callLocation(page,searchTerm)
-
+    callLocation(page)
   
+}
+
+
+ // Get the input element by its ID
+const inputElement = document.getElementById('searchBox');
+// Add an event listener for the 'keydown' event
+inputElement.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        callLocation(1)
+
+    }
+});
+
+function callLocation(page=1){
+
+  // const queryString = window.location.search;
+  // const urlParams = new URLSearchParams(queryString);
+
+  //   let searchTerm=""
+  //   if (urlParams.has('search')) {
+  //       searchTerm = urlParams.get('search');
+  //   } 
+
+  let queryParams=`?page=${page}`
+  let topicsID=document.getElementById('selectTopic').value
+  let productID=document.getElementById('selectProduct').value
+  let searchTerm=document.getElementById('searchBox').value
+
+  if(topicsID){
+    queryParams.=`&topics_id=${topicsID}`
+  }
+
+  if(productID){
+    queryParams.=`&product_id=${productID}`
+  }
+
+  if(searchTerm){
+    queryParams.=`&search=${searchTerm}`
+  }
+  
+  window.location.href = `/pages/evenflo-faq-search${queryParams}`
 }
 
 
@@ -247,29 +243,24 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('searchBox').value=searchTerm
     } 
 
+    let productID=""
+    if (urlParams.has('product_id')) {
+        productID = urlParams.get('product_id');
+        document.getElementById('selectProduct').value=productID
+    } 
+
+    let topicsID=""
+    if (urlParams.has('topic_id')) {
+      topicsID = urlParams.get('topic_id');
+        document.getElementById('selectTopic').value=topicsID
+    } 
+
     let page=1
     if (urlParams.has('page')) {
         page = urlParams.get('page');
       
     }
 
-    fetchFAQsData(searchTerm,page);
+    fetchFAQsData(searchTerm,page,productID,topicsID);
 });
-
-
- // Get the input element by its ID
-const inputElement = document.getElementById('searchBox');
-// Add an event listener for the 'keydown' event
-inputElement.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        const searchTerm = inputElement.value;
-        callLocation(1,searchTerm)
-
-    }
-});
-
-function callLocation(page=1,searchTerm=""){
-  window.location.href = '/pages/evenflo-faq-search?page='+page+'&search=' + encodeURIComponent(searchTerm)
-}
 </script>
