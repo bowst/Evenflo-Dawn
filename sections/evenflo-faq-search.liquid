@@ -295,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         page = urlParams.get('page');
     }
     fetchTopics(topics_id)
+    fetchDropDownProductsByCollection(product_id)
     fetchFAQsData(searchTerm, product_id, topics_id, page);
 });
 
