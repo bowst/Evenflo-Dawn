@@ -1,4 +1,26 @@
 var evenFloFAQURL = "https://api.dev.evenflocms.howst.io/api/";
+let descriptionWrapper = document.querySelectorAll(".description-wrapper");
+
+descriptionWrapper.forEach((desc, index)=>{
+     let bullet = desc.querySelectorAll("ul li").length;
+      if(bullet > 1){
+        desc.classList.remove("description-wrapper-remove");
+        console.log("bullets greater then 1");
+        desc.querySelector("button").addEventListener("click", ()=>{
+        desc.classList.toggle("description-wrapper-show");
+      
+        
+    })
+            
+        }else{
+        console.log("bullets less then 1");
+           desc.classList.add("description-wrapper-remove");
+        }
+
+    
+   
+})
+
 
 toggleAnswerText();
 
