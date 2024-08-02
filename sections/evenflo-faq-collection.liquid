@@ -1,17 +1,16 @@
-
-{% assign collections_to_show= section.settings.faqCollectionRange %}
-
-  <div class="collection-block">
-    <div class="collection-main-wrapper page-width">
-      <div class="heading">
-        <h1>{{ section.settings.faqCollectionTitle }}</h1>
-      </div>
-      <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}">
-        <!-- Loader -->
-        <div id="collectionsLoader" class="loader" style="display: none;"></div>
-      </div>
+{% assign collections_to_show = section.settings.faqCollectionRange %}
+{% render 'breadcrumbs' %}
+<div class="collection-block">
+  <div class="collection-main-wrapper page-width">
+    <div class="heading">
+      <h1>{{ section.settings.faqCollectionTitle }}</h1>
+    </div>
+    <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}">
+      <!-- Loader -->
+      <div id="collectionsLoader" class="loader" style="display: none;"></div>
     </div>
   </div>
+</div>
 
 <script>
  function getPaginatedCollections() {
@@ -87,11 +86,6 @@
   });
 </script>
 
-
-
-
-
-
 {% schema %}
 {
   "name": "EvenFlo FAQ Collection",
@@ -121,10 +115,10 @@
     {
       "name": "EvenFlo FAQ Category",
       "blocks": [
-        
+
       ]
     }
   ]
-  
+
 }
 {% endschema %}
