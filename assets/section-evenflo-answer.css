@@ -75,16 +75,21 @@
 	line-height: normal;
 	letter-spacing: 0.6px;
 }
-
-.product-list + .question-banner-links a {
+.product-list.product-list-custom .product-content:not(:first-child) {
+    display: none;
+}
+.product-list + .question-banner-links{
 	background: none;
-	color: #2996c5;
-	display: flex;
-	gap: 8px;
-	text-decoration-line: underline;
-	font-size: 19.2px;
-	font-weight: 400;
-	line-height: 25.6px;
+    color: #2996c5;
+    display: flex;
+    gap: 8px;
+    text-decoration-line: underline;
+    font-size: 19.2px;
+    font-weight: 400;
+    line-height: 25.6px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 6px;
 }
 
 @media screen and (max-width: 1024px) {
