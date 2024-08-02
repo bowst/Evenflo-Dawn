@@ -18,6 +18,7 @@ function toggleAnswerText() {
 			}
 
 			descBtn.addEventListener("click", () => {
+              console.log("description button")
 				document.querySelectorAll(".description-wrapper p").forEach((desc) => {
 					let fullText = desc.getAttribute("data-full-text");
 					if (fullText && fullText.length > 50) {
