@@ -28,7 +28,7 @@
 <div class="popular-question-block" id="productRelatedBlock" data-products-to-show="{{ products_to_show }}">
   <div class="popular-content-wrapper page-width">
     <div class="heading center">
-      <h2>{{ section.settings.productRelatedTitle }}</h2>
+      <h2 id="popularQuestionHeading">{{ section.settings.productRelatedTitle }}</h2>
     </div>
     <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
@@ -84,6 +84,10 @@
           <a href="${data?.spanish_manual_url}">Manual ES</a>
           <a href="${data?.french_manual_url}">Manual FR</a>
         `;
+        //Hiding Popular questions heading
+        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
+          document.getElementById('popularQuestionHeading').style.display ="none";
+        }
 
         data?.related_popular_faqs?.slice(0, blocksToShow).forEach((faq) => {
           const popularCard = document.createElement("div");
