@@ -129,6 +129,15 @@
 	letter-spacing: 0.6px;
 	color: var(--color-primary-content-100, #121212);
 }
+.description-wrapper ul li {
+    display: none;
+}
+.description-wrapper ul li:first-child {
+    display: block;
+}
+.description-wrapper.description-wrapper-show ul li {
+    display: block;
+}
 
 .description-wrapper button {
 	color: var(--color-secondary-100, #2996c5);
