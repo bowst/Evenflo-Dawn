@@ -153,12 +153,16 @@
 	align-items: center;
 	gap: 4px;
 }
+.description-wrapper.description-wrapper-remove button{
+  display:none;
+}
+
 .description-wrapper button svg {
 	width: 14px;
 	height: 18px;
 	margin: 0;
 }
-.description-wrapper button.active svg {
+.description-wrapper.description-wrapper-show button svg {
     transform: rotate(180deg);
 }
 
