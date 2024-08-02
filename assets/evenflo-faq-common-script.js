@@ -2,21 +2,19 @@ var evenFloFAQURL = "https://api.dev.evenflocms.howst.io/api/";
 
 toggleAnswerBullet();
 
-function toggleAnswerBullet(){
-  let descriptionWrapper = document.querySelectorAll(".description-wrapper");
-    descriptionWrapper.forEach((desc, index) => {
-        let bullet = desc.querySelectorAll("ul li").length;
-        if (bullet > 1) {
-            desc.classList.remove("description-wrapper-remove");
-            console.log("bullets greater then 1");
-            desc.querySelector("button").addEventListener("click", () => {
-                desc.classList.toggle("description-wrapper-show");
-            })
-        } else {
-            console.log("bullets less then 1");
-            desc.classList.add("description-wrapper-remove");
-        }
-    })
+function toggleAnswerBullet() {
+	let descriptionWrapper = document.querySelectorAll(".description-wrapper");
+	descriptionWrapper.forEach((desc, index) => {
+		let bullet = desc.querySelectorAll("ul li").length;
+		if (bullet > 1) {
+			desc.classList.remove("description-wrapper-remove");
+			desc.querySelector("button").addEventListener("click", () => {
+				desc.classList.toggle("description-wrapper-show");
+			});
+		} else {
+			desc.classList.add("description-wrapper-remove");
+		}
+	});
 }
 function formatPostedDate(timestamp) {
 	const date = new Date(timestamp);
@@ -93,7 +91,6 @@ function fetchPopularProductsData(popularByProduct = false) {
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log("data", data);
 			data.slice(0, blocksToShow).forEach((product) => {
 				const popularCard = document.createElement("div");
 				popularCard.classList.add("popular-card");
@@ -147,7 +144,6 @@ function fetchPopularProductsData(popularByProduct = false) {
 			`;
 				container.appendChild(popularCard);
 			});
-           
 		})
 		.catch((error) => {
 			console.error("Error fetching products:", error);
@@ -156,7 +152,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 			// Hide the loader
 			if (loader) {
 				hideLoader(loader);
-              toggleAnswerBullet();
+				toggleAnswerBullet();
 			}
 		});
 }
