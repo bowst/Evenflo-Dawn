@@ -118,7 +118,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 			console.log("data", data);
 			data.slice(0, blocksToShow).forEach((product) => {
 				const popularCard = document.createElement("div");
-				popularCard.classList.add("popular-card nn");
+				popularCard.classList.add("popular-cardnn");
 
 				let faqsContent = "";
 				let tags = [];
