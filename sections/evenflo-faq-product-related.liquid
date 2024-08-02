@@ -10,35 +10,6 @@
   }
 </style>
 
-{% comment %} {% assign by_all_prod = all_products['7678864556188'].id %}
- {% assign by_all_prod = all_products['active-infant-carrier-support'].id %}
-{% assign product_found = false %}
-
-{% for product in collections.all.products %}
-  {% if product.id == 7678864556188 %}
-    {% assign product_found = true %}
-    {% assign shopify_product = product %}
-    {% break %}
-  {% endif %}
-{% endfor %}
-
-{% if product_found %}
-  <h2>Product Data:</h2>
-  <ul>
-    <li><strong>Title:z</strong> {{ shopify_product.title }}</li>
-    <li><strong>Description:</strong> {{ shopify_product.description }}</li>
-    <li><strong>Price:</strong> {{ shopify_product.price | money }}</li>
-    <li><strong>SKU:</strong> {{ shopify_product.sku }}</li>
-    <li><strong>Vendor:</strong> {{ shopify_product.vendor }}</li>
-    <li><strong>Type:</strong> {{ shopify_product.product_type }}</li>
-    <li><strong>Handle:</strong> {{ shopify_product.handle }}</li>
-    <li><strong>Available:</strong> {{ shopify_product.available }}</li>
-    <li><strong>Tags:</strong> {{ shopify_product.tags | join: ', ' }}</li>
-   
-  </ul>
-{% else %}
-  <p>Product not found.</p>
-{% endif %} {% endcomment %}
 
 {% assign products_to_show = section.settings.productRelatedRange %}
 
@@ -70,7 +41,7 @@
         <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
       </div>
       <div class="search-input">
-        <input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)" />
+        <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
       </div>
     </div>
     <div class="search-listing-body" id="searchListigBody" data-search-blocks-to-show="8">
