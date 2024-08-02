@@ -126,6 +126,7 @@ function fetchFAQsData(searchTerm = "", product_id = "", topics_id = "", page = 
                 `;
                 container.appendChild(searchCard);
             });
+              toggleAnswerBullet();
 
         })
         .catch(error => {
@@ -137,9 +138,7 @@ function fetchFAQsData(searchTerm = "", product_id = "", topics_id = "", page = 
                hideLoader(loader)
                // toggleAnswerText();
               
-            }
-              toggleAnswerBullet();
-          
+            }          
         });
 }
 
