@@ -1,45 +1,62 @@
 var evenFloFAQURL = "https://api.dev.evenflocms.howst.io/api/";
 
 
-toggleAnswerText();
+// toggleAnswerText();
 
-function toggleAnswerText() {
-	document
-		.querySelectorAll(".description-wrapper button")
-		.forEach((descBtn, index) => {
-			let description = document.querySelectorAll(".description-wrapper p")[
-				index
-			];
+// function toggleAnswerText() {
+// 	document
+// 		.querySelectorAll(".description-wrapper button")
+// 		.forEach((descBtn, index) => {
+// 			let description = document.querySelectorAll(".description-wrapper p")[
+// 				index
+// 			];
 
-			description.setAttribute("data-full-text", description.textContent);
+// 			description.setAttribute("data-full-text", description.textContent);
 
-			if (description.textContent.length > 50) {
-				description.textContent =
-					description.textContent.substring(0, 50) + "...";
-			}
+// 			if (description.textContent.length > 50) {
+// 				description.textContent =
+// 					description.textContent.substring(0, 50) + "...";
+// 			}
 
-			descBtn.addEventListener("click", () => {
-              console.log("description button")
-				document.querySelectorAll(".description-wrapper p").forEach((desc) => {
-					let fullText = desc.getAttribute("data-full-text");
-					if (fullText && fullText.length > 50) {
-						desc.textContent = fullText.substring(0, 50) + "...";
-					}
-				});
+// 			descBtn.addEventListener("click", () => {
+//               console.log("description button")
+// 				document.querySelectorAll(".description-wrapper p").forEach((desc) => {
+// 					let fullText = desc.getAttribute("data-full-text");
+// 					if (fullText && fullText.length > 50) {
+// 						desc.textContent = fullText.substring(0, 50) + "...";
+// 					}
+// 				});
 
-				document
-					.querySelectorAll(".description-wrapper button.active")
-					.forEach((activeBtn) => {
-						activeBtn.classList.remove("active");
-					});
+// 				document
+// 					.querySelectorAll(".description-wrapper button.active")
+// 					.forEach((activeBtn) => {
+// 						activeBtn.classList.remove("active");
+// 					});
 
-				descBtn.classList.add("active");
+// 				descBtn.classList.add("active");
 
-				description.textContent = description.getAttribute("data-full-text");
-			});
-		});
+// 				description.textContent = description.getAttribute("data-full-text");
+// 			});
+// 		});
+// }
+toggleAnswerBullet();
+
+function toggleAnswerBullet(){
+  let descriptionWrapper = document.querySelectorAll(".description-wrapper");
+    descriptionWrapper.forEach((desc, index) => {
+        let bullet = desc.querySelectorAll("ul li").length;
+        if (bullet > 1) {
+            desc.classList.remove("description-wrapper-remove");
+            console.log("bullets greater then 1");
+            desc.querySelector("button").addEventListener("click", () => {
+                desc.classList.toggle("description-wrapper-show");
+            })
+        } else {
+            console.log("bullets less then 1");
+            desc.classList.add("description-wrapper-remove");
+        }
+    })
 }
-
 function formatPostedDate(timestamp) {
 	const date = new Date(timestamp);
 
@@ -169,20 +186,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 			`;
 				container.appendChild(popularCard);
 			});
-           let descriptionWrapper = document.querySelectorAll(".description-wrapper");
-            descriptionWrapper.forEach((desc, index) => {
-                let bullet = desc.querySelectorAll("ul li").length;
-                if (bullet > 1) {
-                    desc.classList.remove("description-wrapper-remove");
-                    console.log("bullets greater then 1");
-                    desc.querySelector("button").addEventListener("click", () => {
-                        desc.classList.toggle("description-wrapper-show");
-                    })
-                } else {
-                    console.log("bullets less then 1");
-                    desc.classList.add("description-wrapper-remove");
-                }
-            })
+           
 		})
 		.catch((error) => {
 			console.error("Error fetching products:", error);
@@ -191,7 +195,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 			// Hide the loader
 			if (loader) {
 				hideLoader(loader);
-				toggleAnswerText();
+              toggleAnswerBullet();
 			}
 		});
 }
