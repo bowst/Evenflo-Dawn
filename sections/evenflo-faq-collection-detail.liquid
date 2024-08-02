@@ -1,92 +1,75 @@
 {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-{% render 'breadcrumbs' %} - {{ 'SDDSDS' }}
+<div class="collection-block">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 <style>
-  
-        .swiper {
-            width: 100%;
-            height: 100%;
-        }
 
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  .swiper {
+      width: 100%;
+      height: 100%;
+  }
 
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+  .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
 </style>
 
 <div class="product-page-wrapper">
-
-
-
-    <div class="product-slider-block">
-
-        <div class="page-width">
-            <div class="product-slider-main-wrapper">
-
-
-                <div class="product-slider-heading center" id="collectionDetail">
-                 {% comment %} Content will be dynamic {% endcomment %}
-                </div>
-                 <div class="swiper mySwiper product-slider-wrapper" >
-                    <div class="swiper-wrapper" id="productsInCollection" data-products-to-show="6">
-                      {% comment %} Content will be dynamic {% endcomment %}
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                  </div>
-                <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+  <div class="product-slider-block">
+    <div class="page-width">
+      <div class="product-slider-main-wrapper">
+        <div class="product-slider-heading center" id="collectionDetail">
+          {% comment %} Content will be dynamic {% endcomment %}
         </div>
+        <div class="swiper mySwiper product-slider-wrapper">
+          <div class="swiper-wrapper" id="productsInCollection" data-products-to-show="6">
+            {% comment %} Content will be dynamic {% endcomment %}
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
     </div>
 
     <div class="popular-question-block">
-				<div class="popular-content-wrapper page-width">
-					<div class="popular-header">
-						<div class="search-selector-wrapper">
-							<div class="search-selector">
-								<select id="selectProduct" onchange="handleDropDownChange(event)">
-							
-								</select>
-							</div>
-							<div class="search-selector">
-								<select id="selectTopic" onchange="handleDropDownChange(event)">
-							
-								</select>
-							</div>
-						</div>
-						<div class="search-input">
-							<input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)"/>
-						</div>
-					</div>
+      <div class="popular-content-wrapper page-width">
+        <div class="popular-header">
+          <div class="search-selector-wrapper">
+            <div class="search-selector">
+              <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
+            </div>
+            <div class="search-selector">
+              <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
+            </div>
+          </div>
+          <div class="search-input">
+            <input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)">
+          </div>
+        </div>
 
-
-					<div class="popular-card-wrapper" id="faqsByCollection" data-faqs-to-show="6">
-
-					</div>
-
-				</div>
-			</div>
-
-
-
-
+        <div class="popular-card-wrapper" id="faqsByCollection" data-faqs-to-show="6"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
 
@@ -382,5 +365,4 @@ document.addEventListener('DOMContentLoaded', () => {
 //         },
 //     });
 // });
-
 </script>
