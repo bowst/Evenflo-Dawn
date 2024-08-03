@@ -92,8 +92,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 		.then((response) => response.json())
 		.then((data) => {
 			data.slice(0, blocksToShow).forEach((product) => {
-				const popularCard = document.createElement("div");
-				popularCard.classList.add("popular-card");
+				const popularCard = createPopularCardDivElement("popular-card");
 
 				const faqsContent = getFAQContent(product?.products || []);
 
@@ -164,6 +163,12 @@ function debouncedSearch(event) {
 	debounceTimeout = setTimeout(() => {
 		handleDropDownChange(event);
 	}, 500);
+}
+
+function createPopularCardDivElement(className = "popular-card") {
+	const popularCard = document.createElement("div");
+	popularCard.classList.add(className);
+	return popularCard;
 }
 
 function getTagsArray(tags) {
