@@ -1,20 +1,4 @@
 
-{% comment %} 
-  <section class="container">
-    <h1>{{ section.settings.faqCategoryTitle }}</h1>
-
-      {% assign categories_to_show= section.settings.faqCategoriesRange%}
-      
-    <div id="categoriesContainer" class="block category-container" data-categories-to-show="{{ categories_to_show }}">
-      {{ categories_to_show}}
-        <div class="categories">
-            <h2>category 1</h2>
-            <p>Price: $10</p>
-        </div>
-        
-    </div>
-
-</section> {% endcomment %}
 {% assign categories_to_show= section.settings.faqCategoriesRange%}
 {% assign products_to_show= section.settings.faqProductsRange%}
 
@@ -29,7 +13,7 @@
          <div id="categoriesLoader" class="loader" style="display: none;"></div>
       </div>
       <div class="tab-body">
-        <div class="tab-content-wrapper" id="productsByCategory" data-products-to-show="{{ categories_to_show }}">
+        <div class="tab-content-wrapper" id="productsByCategory" data-products-to-show="{{ products_to_show }}">
           <!-- Loader -->
           <div id="productByCategoriesLoader" class="loader" style="display: none;"></div>
          
@@ -141,10 +125,12 @@
 
           container.appendChild(tabCard);
         });
-
+        
+       //Appending all categories button
         const browseCategories = document.createElement('div');
         browseCategories.classList.add('browse-categories');
         browseCategories.innerHTML=`<button>Browse All ${category_name}</button>`
+        container.appendChild(browseCategories);
 
     }
  
