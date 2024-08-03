@@ -1,9 +1,10 @@
-.custom-text-animation-wrapper{
-  overflow:hidden;
+.custom-text-animation-wrapper {
+  overflow: hidden;
 }
+
 .custom-text-animation {
   display: flex;
-  width: 2600px;
+  width: 6600px;
   animation-name: infiniteScroll;
   animation-duration: 20s;
   animation-iteration-count: infinite;
@@ -22,6 +23,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
