@@ -112,7 +112,8 @@ function fetchPopularProductsData(popularByProduct = false) {
 				);
 
 				uniquetagsArray?.forEach((category, id) => {
-					tagsHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+					alert(id);
+					tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
 				});
 
 				popularCard.innerHTML = `
