@@ -247,7 +247,6 @@ function fetchFAQSByCollection(collectionID, filter = "", topicsID = "", product
   fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&collection_id=${collectionID}&product_id=${productID}`)
     .then(response => response.json())
     .then(data => {
-      console.log('faqData', data);
 
       data?.results?.slice(0, blocksToShow).forEach((product) => {
         const popularCard = createPopularCardDivElement("popular-card");
