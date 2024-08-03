@@ -231,91 +231,89 @@ function fetchDropDownProductsByCollection(collectionID) {
     });
 }
 
-function fetchFAQSByCollection(collectionID,filter="",topicsID="",productID="") {
+function fetchFAQSByCollection(collectionID, filter = "", topicsID = "", productID = "") {
   const container = document.getElementById('faqsByCollection');
 
-	if (!container) {
-		return;
-	}
+  if (!container) {
+    return;
+  }
 
-	container.innerHTML = ""; // Clear existing content
+  container.innerHTML = ""; // Clear existing content
 
   const blocksToShow = container ? container.dataset.faqsToShow : 6;
 
-  const loader= appendLoader(container);
-
+  const loader = appendLoader(container);
 
   fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&collection_id=${collectionID}&product_id=${productID}`)
     .then(response => response.json())
     .then(data => {
+      console.log('faqData', data);
 
-    console.log('faqData',data)
-
-        data?.results?.slice(0, blocksToShow).forEach((product) => {
-          const popularCard = document.createElement('div');
-          popularCard.classList.add('popular-card');
+      data?.results?.slice(0, blocksToShow).forEach((product) => {
+        const popularCard = document.createElement('div');
+        popularCard.classList.add('popular-card');
 
         let faqsContent = "";
-				let tags = [];
-				let tagsHtml = "";
+        let tags = [];
+        let tagsHtml = "";
 
-				product?.products.forEach((nestedProduct) => {
-					faqsContent += `<li>${nestedProduct?.name}</li>`;
-				});
-
-				product?.tags.forEach((tag) => {
-					tags[tag?.id] = tag?.name;
-				});
-
-				const uniquetagsArray = tags?.filter(
-					(value, index, self) => self.indexOf(value) === index
-				);
-
-				uniquetagsArray?.forEach((category, id) => {
-					tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
-				});
-
-          popularCard.innerHTML = `
-           
-            <div class="heading">
-              <h3>${product?.topic?.name || ""}</h3>
-              <h2>${product.question}</h2>
-              <div class="description-wrapper">
-                <ul>${faqsContent}</ul>
-                <button>
-                  <span>Show more</span>
-                  <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div class="card-content">
-              <div class="card-detail-wrapper">
-                <p>${product.answer}</p>
-                <div class="card-content-link">
-                  <a href="/pages/evenflo-faq-answer?qid=${product?.id}">Read Answer</a>
-                </div>
-              </div>
-              <div class="card-link-wrapper">
-                ${tagsHtml}
-              </div>
-            </div>
-          `;
-          container.appendChild(popularCard);
+        product?.products.forEach((nestedProduct) => {
+          faqsContent += `<li>${nestedProduct?.name}</li>`;
         });
 
+        product?.tags.forEach((tag) => {
+          tags[tag?.id] = tag?.name;
+        });
+
+        const uniquetagsArray = tags?.filter(
+          (value, index, self) => self.indexOf(value) === index
+        );
+
+        uniquetagsArray?.forEach((category, id) => {
+          tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
+        });
+
+        popularCard.innerHTML = `
+          <div class="heading">
+            <h3>${product?.topic?.name || ""}</h3>
+            <h2>${product.question}</h2>
+            <div class="description-wrapper">
+              <ul>${faqsContent}</ul>
+              <button>
+                <span>Show more</span>
+                <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-detail-wrapper">
+              <p>${product.answer}</p>
+              <div class="card-content-link">
+                <a href="/pages/evenflo-faq-answer?qid=${product?.id}">Read Answer</a>
+              </div>
+            </div>
+            <div class="card-link-wrapper">
+              ${tagsHtml}
+            </div>
+          </div>
+        `;
+        container.appendChild(popularCard);
+      });
+    })
     .catch(error => {
       console.error('Error fetching products:', error);
     })
     .finally(() => {
       // Hide the loader
       if (loader) {
-        hideLoader(loader)
+        hideLoader(loader);
         toggleAnswerBullet();
-}
+      }
     });
 }
+
 
 function handleDropDownChange(event) {
       let topicID = document.getElementById('selectTopic').value;
