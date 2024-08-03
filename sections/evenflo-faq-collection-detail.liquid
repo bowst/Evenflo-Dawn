@@ -257,7 +257,7 @@ function fetchFAQSByCollection(collectionID, filter = "", topicsID = "", product
 
         const tagsHtml = getTagsHtml(tags);
 
-        popularCard.innerHTML = setThreeBlockInnerHtml(
+        popularCard.innerHTML = setFAQBlockInnerHtml(
           product?.topic?.name || "",
           product.question,
           faqsContent,
