@@ -28,14 +28,14 @@
 	width: 100%;
 }
 .searchBox-wrapper {
-    position: relative;
+	position: relative;
 }
 
 .searchBox-wrapper svg {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+	position: absolute;
+	right: 16px;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 .help-article-link-wrapper {
@@ -121,22 +121,22 @@
 }
 
 .description-wrapper ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+	padding: 0;
+	margin: 0;
+	list-style: none;
 	font-size: 14px;
 	font-weight: 700;
 	letter-spacing: 0.6px;
 	color: var(--color-primary-content-100, #121212);
 }
 .description-wrapper ul li {
-    display: none;
+	display: none;
 }
 .description-wrapper ul li:first-child {
-    display: block;
+	display: block;
 }
 .description-wrapper.description-wrapper-show ul li {
-    display: block;
+	display: block;
 }
 
 .description-wrapper button {
@@ -153,8 +153,8 @@
 	align-items: center;
 	gap: 4px;
 }
-.description-wrapper.description-wrapper-remove button{
-  display:none;
+.description-wrapper.description-wrapper-remove button {
+	display: none;
 }
 
 .description-wrapper button svg {
@@ -163,7 +163,7 @@
 	margin: 0;
 }
 .description-wrapper.description-wrapper-show button svg {
-    transform: rotate(180deg);
+	transform: rotate(180deg);
 }
 
 .popular-card h2 {
@@ -243,6 +243,11 @@
 	padding: var(--space) 0;
 }
 
+.browse-categories {
+	display: flex;
+	align-items: center;
+}
+
 .category-content-wrapper {
 	display: flex;
 	flex-direction: column;
@@ -299,21 +304,21 @@
 .tab-content-wrapper {
 	display: flex;
 	gap: 24px;
-    justify-content: center;
+	justify-content: center;
 }
 
 .tab-card {
-    width: calc(20% - 19.2px);
+	width: calc(20% - 19.2px);
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-    transition: transform .3s;
+	transition: transform 0.3s;
 }
-.tab-card:hover{
-  transform: scale(1.1);
+.tab-card:hover {
+	transform: scale(1.1);
 }
-.tab-card a{
-  text-decoration: none;
+.tab-card a {
+	text-decoration: none;
 }
 .tab-img img {
 	width: 100%;
@@ -401,100 +406,98 @@
 	}
 }
 
-
-
 /* collection css */
 
 .collection-block {
-  padding: 40px 0;
+	padding: 40px 0;
 }
 
 .collection-main-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
 }
 
 .collection-block .heading {
-  text-align: center;
+	text-align: center;
 }
 
 .collection-block .heading h1 {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
 }
 
 .collection-block .heading h1:after {
-  content: "";
-  width: 80px;
-  height: 4px;
-  background: #2996c5;
-  display: inline-block;
+	content: "";
+	width: 80px;
+	height: 4px;
+	background: #2996c5;
+	display: inline-block;
 }
 
 .collection-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 24px;
 }
 
 .collection-card {
-  width: calc(20% - 19.2px);
-  padding: 24px;
-  border: 0.5px solid var(--color-primary-content-100, #121212);
-  overflow: hidden;
+	width: calc(20% - 19.2px);
+	padding: 24px;
+	border: 0.5px solid var(--color-primary-content-100, #121212);
+	overflow: hidden;
 }
 
 .collection-card a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .collection-title h2 {
-  margin: 0;
+	margin: 0;
 }
 
 .collection-img img {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .collection-img {
-  margin-right: -50%;
-  margin-bottom: -50%;
-  transition: margin 0.3s;
+	margin-right: -50%;
+	margin-bottom: -50%;
+	transition: margin 0.3s;
 }
 
 .collection-card:hover .collection-img {
-  margin-right: 0;
-  margin-bottom: 0;
+	margin-right: 0;
+	margin-bottom: 0;
 }
 @media screen and (max-width: 991px) {
-  .collection-card {
-    width: calc(33.33% - 16px);
-  }
+	.collection-card {
+		width: calc(33.33% - 16px);
+	}
 }
 @media screen and (max-width: 767px) {
-  .collection-block {
-    padding: 32px 0;
-  }
-  .collection-main-wrapper {
-    gap: 32px;
-  }
-  .collection-wrapper {
-    gap: 12px;
-  }
-  .collection-card {
-    width: calc(50% - 6px);
-    padding: 10px;
-  }
-  .collection-title h2 {
-    font-size: 16px;
-  }
+	.collection-block {
+		padding: 32px 0;
+	}
+	.collection-main-wrapper {
+		gap: 32px;
+	}
+	.collection-wrapper {
+		gap: 12px;
+	}
+	.collection-card {
+		width: calc(50% - 6px);
+		padding: 10px;
+	}
+	.collection-title h2 {
+		font-size: 16px;
+	}
 }
 
 /* topic css */
@@ -542,23 +545,23 @@
 	background-image: url(https://www.evenflo.com/cdn/shop/files/Evenflo-Benefit-1.png?v=1690902298&width=303);
 	background-repeat: no-repeat;
 	background-size: cover;
-    background-position: center;
+	background-position: center;
 	text-align: center;
 	/* height: 320px; */
-    transition: transform .3s;
+	transition: transform 0.3s;
 }
-.topic-card:hover{
-  transform: scale(0.9);
+.topic-card:hover {
+	transform: scale(0.9);
 }
 
 .topic-content {
 	padding: 40px;
-	background: #121212BF;
+	background: #121212bf;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-    gap: 30px;
+	gap: 30px;
 }
 
 .topic-title h2,
@@ -669,7 +672,7 @@
 		content: "";
 		background-repeat: no-repeat;
 		background-size: cover;
-        background-position-x: center;
+		background-position-x: center;
 		display: block;
 		height: 176px;
 	}
