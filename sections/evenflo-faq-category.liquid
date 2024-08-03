@@ -22,6 +22,10 @@
         </div>
       </div>
 
+      <div class="browse-categories" id="browseCategoriesDiv">
+
+      </div>
+
     </div>
   </div>
 </div>
@@ -87,6 +91,7 @@
   function getProductsByCategory(category_id,category_name){
      // Show the loader
     const container = document.getElementById('productsByCategory');
+    const browseCategoriesContainer = document.getElementById('browseCategoriesDiv'); 
 
     if(!container){
       console.error('productsByCategory wrapper container not found');
@@ -94,6 +99,8 @@
     }
 
     container.innerHTML = "";  // Clear existing content
+    browseCategoriesContainer.innerHTML = "";  // Clear existing content
+
 
     const loader=appendLoader(container)
 
@@ -130,17 +137,13 @@
         });
 
        //Appending all categories button
-       const browseCategoriesContainer = document.getElementById('categoryTabWrapper'); 
-        const browseCategories = document.createElement('div');
-        browseCategories.classList.add('browse-categories');
+     
+        const browseCategories = document.createElement('button');
         browseCategories.innerHTML=`<button>Browse All ${category_name}</button>`
-
         // Appending an onclick function to all the buttons
         browseCategories.onclick = ()=> {
                  alert(category_id)
         };
-
-
         browseCategoriesContainer.appendChild(browseCategories);
 
     }
