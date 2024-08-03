@@ -44,7 +44,7 @@
         <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
       </div>
     </div>
-    <div class="search-listing-body" id="searchListigBody" data-search-blocks-to-show="8">
+    <div class="search-listing-body" id="searchListingBody" data-search-blocks-to-show="8">
       {% comment %} TO be displayed through javascript {% endcomment %}
     </div>
   </div>
@@ -74,8 +74,6 @@
       .then((data) => {
 
        const productId = data?.shopify_id;
- 
-       //const productHandle=""
 
         document.getElementById('productName').innerHTML = data?.name;
         document.getElementById('productLinks').innerHTML = `
@@ -124,7 +122,7 @@
 
 
   function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
-    const container = document.getElementById('searchListigBody');
+    const container = document.getElementById('searchListingBody');
 
     if (!container) {
       return;
@@ -139,11 +137,8 @@
     fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&product_id=${productID}`)
       .then(response => response.json())
       .then(data => {
-        console.log('relatedFaqsData', data);
 
         data?.results?.forEach((product) => {
-          // const searchCard = document.createElement('div');
-          // searchCard.classList.add('search-card');
 
           const searchCard = createPopularCardDivElement("search-card");
 
