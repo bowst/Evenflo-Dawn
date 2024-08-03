@@ -1,7 +1,5 @@
 var evenFloFAQURL = "https://api.dev.evenflocms.howst.io/api/";
 
-toggleAnswerBullet();
-
 function toggleAnswerBullet() {
 	let descriptionWrapper = document.querySelectorAll(".description-wrapper");
 	descriptionWrapper.forEach((desc, index) => {
@@ -16,6 +14,27 @@ function toggleAnswerBullet() {
 		}
 	});
 }
+
+toggleAnswerBullet();
+
+//For appending loader in specific div
+function appendLoader(container) {
+	//Creating loader div through javascript
+	const loader = document.createElement("div");
+	loader.id = "loader";
+	loader.className = "loader";
+	container.appendChild(loader);
+	if (loader) {
+		loader.style.display = "block";
+	}
+	return loader;
+}
+
+//For hiding the loader
+function hideLoader(loader) {
+	loader.style.display = "none";
+}
+
 function formatPostedDate(timestamp) {
 	const date = new Date(timestamp);
 
@@ -49,24 +68,6 @@ function copyCurrentUrlToClipboard() {
 		.finally(() => {
 			document.body.removeChild(dummyInput);
 		});
-}
-
-//For appending loader in specific div
-function appendLoader(container) {
-	//Creating loader div through javascript
-	const loader = document.createElement("div");
-	loader.id = "loader";
-	loader.className = "loader";
-	container.appendChild(loader);
-	if (loader) {
-		loader.style.display = "block";
-	}
-	return loader;
-}
-
-//For hiding the loader
-function hideLoader(loader) {
-	loader.style.display = "none";
 }
 
 function fetchPopularProductsData(popularByProduct = false) {
@@ -108,6 +109,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 					product?.id,
 					tagsHtml
 				);
+
 				container.appendChild(popularCard);
 			});
 		})
@@ -130,12 +132,9 @@ function fetchTopicsByType(id, productPage = false) {
 		return;
 	}
 
-	container.innerHTML = "";
+	emptyContainerHtml(container);
 
-	const defaultOption = document.createElement("option");
-	defaultOption.value = "";
-	defaultOption.textContent = "Select Topic";
-	container.appendChild(defaultOption);
+	createAndAppendDropDownOption(container, "Select Topic");
 
 	let url = evenFloFAQURL + `topics/?page=1&collection_id=${id}`;
 	if (productPage) {
@@ -146,10 +145,7 @@ function fetchTopicsByType(id, productPage = false) {
 		.then((response) => response.json())
 		.then((data) => {
 			data?.results.forEach((topic) => {
-				const option = document.createElement("option");
-				option.value = topic.id;
-				option.textContent = topic.name;
-				container.appendChild(option);
+				createAndAppendDropDownOption(container, topic.name, topic.id);
 			});
 		})
 		.catch((error) => {
@@ -242,4 +238,19 @@ function setThreeBlockInnerHtml(
 	  </div>
 	</div>
   `;
+}
+
+function createAndAppendDropDownOption(
+	container,
+	textContent = "Select Topic",
+	value = ""
+) {
+	const defaultOption = document.createElement("option");
+	defaultOption.value = value;
+	defaultOption.textContent = textContent;
+	container.appendChild(defaultOption);
+}
+
+function emptyContainerHtml(container) {
+	container.innerHTML = "";
 }
