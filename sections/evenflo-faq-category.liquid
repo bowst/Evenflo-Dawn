@@ -7,11 +7,13 @@
     <div class="heading center">
       <h1>{{ section.settings.faqCategoryTitle }}</h1>
     </div>
-    <div class="category-tab-wrapper">
+    <div class="category-tab-wrapper" id="categoryTabWrapper">
+
       <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
          <!-- Loader -->
          <div id="categoriesLoader" class="loader" style="display: none;"></div>
       </div>
+
       <div class="tab-body">
         <div class="tab-content-wrapper" id="productsByCategory" data-products-to-show="{{ products_to_show }}">
           <!-- Loader -->
@@ -19,6 +21,7 @@
          
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -127,10 +130,11 @@
         });
 
        //Appending all categories button
+       const browseCategoriesContainer = document.getElementById('categoryTabWrapper'); 
         const browseCategories = document.createElement('div');
         browseCategories.classList.add('browse-categories');
         browseCategories.innerHTML=`<button>Browse All ${category_name}</button>`
-        container.appendChild(browseCategories);
+        browseCategoriesContainer.appendChild(browseCategories);
 
     }
  
