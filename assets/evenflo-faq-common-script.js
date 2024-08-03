@@ -210,9 +210,8 @@ function getTagsHtml(tags) {
 
 	console.log("uniqueTagsArray", uniquetagsArray);
 
-	uniquetagsArray?.forEach((category, id) => {
-		alert(id);
-		tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
+	uniquetagsArray?.forEach((category) => {
+		tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category.id}">${category.name}</a>`;
 	});
 
 	return tagsHtml;
