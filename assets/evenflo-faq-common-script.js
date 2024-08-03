@@ -101,33 +101,42 @@ function fetchPopularProductsData(popularByProduct = false) {
 
 				const tagsHtml = getTagsHtml(tags);
 
-				popularCard.innerHTML = `
-			 
-			  <div class="heading">
-				<h3>${product?.topic?.name || ""}</h3>
-				<h2>${product.question}</h2>
-				<div class="description-wrapper">
-				  <ul>${faqsContent}</ul>
-				  <button>
-					<span>Show more</span>
-					<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-					  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
-					</svg>
-				  </button>
-				</div>
-			  </div>
-			  <div class="card-content">
-				<div class="card-detail-wrapper">
-				  <p>${product.answer}</p>
-				  <div class="card-content-link">
-					<a href="/pages/evenflo-faq-answer?qid=${product?.id}">Read Answer</a>
-				  </div>
-				</div>
-				<div class="card-link-wrapper">
-				  ${tagsHtml}
-				</div>
-			  </div>
-			`;
+				// 	popularCard.innerHTML = `
+
+				//   <div class="heading">
+				// 	<h3>${product?.topic?.name || ""}</h3>
+				// 	<h2>${product.question}</h2>
+				// 	<div class="description-wrapper">
+				// 	  <ul>${faqsContent}</ul>
+				// 	  <button>
+				// 		<span>Show more</span>
+				// 		<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+				// 		  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+				// 		</svg>
+				// 	  </button>
+				// 	</div>
+				//   </div>
+				//   <div class="card-content">
+				// 	<div class="card-detail-wrapper">
+				// 	  <p>${product.answer}</p>
+				// 	  <div class="card-content-link">
+				// 		<a href="/pages/evenflo-faq-answer?qid=${product?.id}">Read Answer</a>
+				// 	  </div>
+				// 	</div>
+				// 	<div class="card-link-wrapper">
+				// 	  ${tagsHtml}
+				// 	</div>
+				//   </div>
+				// `;
+
+				popularCard.innerHTML = setThreeBlockInnerHtml(
+					product?.topic?.name || "",
+					product.question,
+					faqsContent,
+					product.answer,
+					product?.id,
+					tagsHtml
+				);
 				container.appendChild(popularCard);
 			});
 		})
@@ -225,4 +234,39 @@ function getFAQContent(products) {
 	});
 
 	return faqsContent;
+}
+
+function setThreeBlockInnerHtml(
+	topicName = "",
+	faqQuestion = "",
+	faqContent = "",
+	faqAnswer = "",
+	productID = "",
+	tagsHtml
+) {
+	return `<div class="heading">
+	  <h3>${topicName}</h3>
+	  <h2>${faqQuestion}</h2>
+	  <div class="description-wrapper">
+		<ul>${faqContent}</ul>
+		<button>
+		  <span>Show more</span>
+		  <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+		  </svg>
+		</button>
+	  </div>
+	</div>
+	<div class="card-content">
+	  <div class="card-detail-wrapper">
+		<p>${faqAnswer}</p>
+		<div class="card-content-link">
+		  <a href="/pages/evenflo-faq-answer?qid=${productID}">Read Answer</a>
+		</div>
+	  </div>
+	  <div class="card-link-wrapper">
+		${tagsHtml}
+	  </div>
+	</div>
+  `;
 }
