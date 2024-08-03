@@ -51,7 +51,7 @@
   fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
     .then(response => response.json())
     .then(data => {
-      getProductsByCategory(data.results[0]?.id);
+      getProductsByCategory(data.results[0]?.id,data.results[0]?.category_name);
 
       const categoriesBlock = document.getElementById('categoriesContainer');
       const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
@@ -97,7 +97,7 @@
 }
 
 
-  function getProductsByCategory(category_id){
+  function getProductsByCategory(category_id,category_name){
      // Show the loader
     const container = document.getElementById('productsByCategory');
 
@@ -114,7 +114,9 @@
     .then(response => response.json())
     .then(data => {
       
-      const productsBlock = document.getElementById('productsByCategory');
+    if(data && data?.length > 0){
+
+    const productsBlock = document.getElementById('productsByCategory');
       const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 3;
 
         data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
@@ -139,6 +141,14 @@
 
           container.appendChild(tabCard);
         });
+
+        const browseCategories = document.createElement('div');
+        browseCategories.classList.add('browse-categories');
+        browseCategories.innerHTML=`<button>Browse All ${category_name}</button>`
+
+    }
+ 
+
      
     })
     .catch(error => {
