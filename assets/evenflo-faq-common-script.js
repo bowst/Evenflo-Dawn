@@ -106,10 +106,12 @@ function fetchPopularProductsData(popularByProduct = false) {
 				product?.tags.forEach((tag) => {
 					tags[tag?.id] = tag?.name;
 				});
-
+				console.log("tags", tags);
 				const uniquetagsArray = tags?.filter(
 					(value, index, self) => self.indexOf(value) === index
 				);
+
+				console.log("uniquetagsArray", uniquetagsArray);
 
 				uniquetagsArray?.forEach((category, id) => {
 					alert(id);
