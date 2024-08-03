@@ -134,6 +134,13 @@
         const browseCategories = document.createElement('div');
         browseCategories.classList.add('browse-categories');
         browseCategories.innerHTML=`<button>Browse All ${category_name}</button>`
+
+        // Appending an onclick function to all the buttons
+        browseCategories.onclick = ()=> {
+                 alert(category_id)
+        };
+
+
         browseCategoriesContainer.appendChild(browseCategories);
 
     }
