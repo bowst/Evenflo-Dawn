@@ -1,6 +1,8 @@
 {{ 'section-evenflo-search.css' | asset_url | stylesheet_tag }}
 
+{% comment %} Class override in this section {% endcomment %}
 <style>
+
   .help-articles-block {
     background: #fff;
   }
@@ -11,24 +13,21 @@
 </style>
 
 
-{% assign products_to_show = section.settings.productRelatedRange %}
+{% assign products_to_show = section.settings.categoryRelatedRange %}
 
 <div class="help-articles-block">
   <div class="help-articles-content page-width center"> 
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
 
-      <div class="help-article-link-wrapper" id="productLinks">
-        
-      </div>
     </div>
   </div>
 </div>
 
-<div class="popular-question-block" id="productRelatedBlock" data-products-to-show="{{ products_to_show }}">
+<div class="popular-question-block" id="categoryRelatedBlock" data-products-to-show="{{ products_to_show }}">
   <div class="popular-content-wrapper page-width">
     <div class="heading center">
-      <h2 id="popularQuestionHeading">{{ section.settings.productRelatedTitle }}</h2>
+      <h2 id="popularQuestionHeading">{{ section.settings.categoryRelatedTitle }}</h2>
     </div>
     <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
@@ -54,7 +53,7 @@
 <script>
   
 
-  function fetchPopularProductsRelatedData(productID) {
+  function fetchPopularProductsRelatedData(categoryID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
     let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
@@ -66,24 +65,14 @@
 
     container.innerHTML = ""; // Clear existing content
     const loader = appendLoader(container);
-
-    let url = evenFloFAQURL + "products/" + productID;
+      
+    //TODO: Need to change URL 
+    let url = evenFloFAQURL + "products/" + categoryID;
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
 
-       const productId = data?.shopify_id;
- 
-       //const productHandle=""
-
-        document.getElementById('productName').innerHTML = data?.name;
-        document.getElementById('productLinks').innerHTML = `
-          <a href="/support/${productId}">Product Guide</a>
-          <a href="${data?.english_manual_url}">Manual EN</a>
-          <a href="${data?.spanish_manual_url}">Manual ES</a>
-          <a href="${data?.french_manual_url}">Manual FR</a>
-        `;
         //Hiding Popular questions heading
         if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
           document.getElementById('popularQuestionHeading').style.display ="none";
@@ -153,7 +142,7 @@
   }
 
 
-  function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
+  function fetchFAQsByProduct(categoryID, filter = "", topicsID = "") {
     const container = document.getElementById('searchListigBody');
 
     if (!container) {
@@ -166,7 +155,7 @@
 
     const loader = appendLoader(container);
 
-    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&product_id=${productID}`)
+    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&product_id=${categoryID}`)
       .then(response => response.json())
       .then(data => {
         console.log('relatedFaqsData', data);
@@ -235,19 +224,19 @@
   function handleDropDownChange(event) {
     let topicID = document.getElementById('selectTopic').value;
     let filter = document.getElementById('searchFAQ').value;
-    fetchFAQsByProduct(productID, filter, topicID);
+    fetchFAQsByProduct(categoryID, filter, topicID);
   }
 
-  var productID = "";
+  var categoryID = "";
   document.addEventListener('DOMContentLoaded', () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    if (urlParams.has('pid')) {
-      let productID = urlParams.get('pid');
-      fetchPopularProductsRelatedData(productID);
-      fetchFAQsByProduct(productID);
-      fetchTopicsByType(productID,true)
+    if (urlParams.has('cat_id')) {
+      let categoryID = urlParams.get('cat_id');
+      fetchPopularProductsRelatedData(categoryID);
+      fetchFAQsByProduct(categoryID);
+      fetchTopicsByType(categoryID,true)
     } else {
       window.location.href = '/pages/evenflo-faq-portal';
     }
@@ -256,22 +245,22 @@
 
 {% schema %}
 {
-  "name": "EvenFlo FAQ ProdRel",
+  "name": "EvenFlo FAQ Category",
   "tag": "section",
-  "class": "productRelated",
+  "class": "categoryRelated",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
   "settings": [
     {
       "type": "text",
-      "id": "productRelatedTitle",
+      "id": "categoryRelatedTitle",
       "label": "Popular Question Title",
       "default": "Popular Questions"
     },
     {
       "type": "range",
-      "id": "productRelatedRange",
+      "id": "categoryRelatedRange",
       "label": "Number of questions to show",
       "default": 3,
       "min": 1,
@@ -281,7 +270,7 @@
   ],
   "presets": [
     {
-      "name": "EvenFlo FAQ ProdRel",
+      "name": "EvenFlo FAQ Category",
       "blocks": []
     }
   ]

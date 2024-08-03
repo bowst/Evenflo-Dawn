@@ -69,7 +69,7 @@ function fetchQuestionsAnswerData(id) {
 
           const uniqueCategoriesArray = categories?.filter((value, index, self) => self.indexOf(value) === index);
           uniqueCategoriesArray?.forEach((category, id) => {
-            categoriesHtml += `<a href="https://abc.com/${category}">${category}</a>`;
+            categoriesHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
           });
 
 		container.innerHTML = `
