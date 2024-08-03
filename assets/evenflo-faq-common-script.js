@@ -95,17 +95,9 @@ function fetchPopularProductsData(popularByProduct = false) {
 				const popularCard = document.createElement("div");
 				popularCard.classList.add("popular-card");
 
-				let faqsContent = "";
-				let tags = [];
+				const faqsContent = getFAQContent(product?.products || []);
 
-				product?.products.forEach((nestedProduct) => {
-					faqsContent += `<li>${nestedProduct?.name}</li>`;
-				});
-
-				product?.tags.forEach((tag) => {
-					tags[tag?.id] = tag?.name;
-				});
-				console.log("tags", tags);
+				const tags = getTagsArray(product?.tags || []);
 
 				const tagsHtml = getTagsHtml(tags);
 
@@ -195,6 +187,18 @@ function debouncedSearch(event) {
 	}, 500);
 }
 
+function getTagsArray(tags) {
+	const tags = [];
+
+	tags?.forEach((tag) => {
+		if (tag?.id && tag?.name) {
+			tags.push({ id: tag.id, name: tag.name });
+		}
+	});
+
+	return tags;
+}
+
 function getTagsHtml(tags) {
 	let tagsHtml = "";
 
@@ -212,4 +216,14 @@ function getTagsHtml(tags) {
 	});
 
 	return tagsHtml;
+}
+
+function getFAQContent(products) {
+	let faqsContent = "";
+
+	products.forEach((nestedProduct) => {
+		faqsContent += `<li>${nestedProduct?.name}</li>`;
+	});
+
+	return faqsContent;
 }
