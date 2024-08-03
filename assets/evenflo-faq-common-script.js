@@ -95,29 +95,11 @@ function fetchPopularProductsData(popularByProduct = false) {
 				const popularCard = document.createElement("div");
 				popularCard.classList.add("popular-card");
 
-				let faqsContent = "";
-				let tags = [];
-				let tagsHtml = "";
+				const faqsContent = getFAQContent(product?.products || []);
 
-				product?.products.forEach((nestedProduct) => {
-					faqsContent += `<li>${nestedProduct?.name}</li>`;
-				});
+				const tags = getTagsArray(product?.tags || []);
 
-				product?.tags.forEach((tag) => {
-					tags[tag?.id] = tag?.name;
-				});
-				console.log("tags", tags);
-
-				const uniquetagsArray = tags?.filter(
-					(value, index, self) => self.indexOf(value) === index
-				);
-
-				console.log("uniquetagsArray", uniquetagsArray);
-
-				uniquetagsArray?.forEach((category, id) => {
-					alert(id);
-					tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
-				});
+				const tagsHtml = getTagsHtml(tags);
 
 				popularCard.innerHTML = `
 			 
@@ -203,4 +185,45 @@ function debouncedSearch(event) {
 	debounceTimeout = setTimeout(() => {
 		handleDropDownChange(event);
 	}, 500);
+}
+
+function getTagsArray(tags) {
+	const allTags = [];
+
+	tags?.forEach((tag) => {
+		if (tag?.id && tag?.name) {
+			allTags.push({ id: tag.id, name: tag.name });
+		}
+	});
+
+	return allTags;
+}
+
+function getTagsHtml(tags) {
+	let tagsHtml = "";
+
+	const uniquetagsArray = Array.from(new Set(tags.map((tag) => tag.id))).map(
+		(id) => {
+			return tags.find((tag) => tag.id === id);
+		}
+	);
+
+	console.log("uniqueTagsArray", uniquetagsArray);
+
+	uniquetagsArray?.forEach((category, id) => {
+		alert(id);
+		tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
+	});
+
+	return tagsHtml;
+}
+
+function getFAQContent(products) {
+	let faqsContent = "";
+
+	products.forEach((nestedProduct) => {
+		faqsContent += `<li>${nestedProduct?.name}</li>`;
+	});
+
+	return faqsContent;
 }
