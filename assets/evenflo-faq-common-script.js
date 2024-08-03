@@ -101,34 +101,6 @@ function fetchPopularProductsData(popularByProduct = false) {
 
 				const tagsHtml = getTagsHtml(tags);
 
-				// 	popularCard.innerHTML = `
-
-				//   <div class="heading">
-				// 	<h3>${product?.topic?.name || ""}</h3>
-				// 	<h2>${product.question}</h2>
-				// 	<div class="description-wrapper">
-				// 	  <ul>${faqsContent}</ul>
-				// 	  <button>
-				// 		<span>Show more</span>
-				// 		<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-				// 		  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
-				// 		</svg>
-				// 	  </button>
-				// 	</div>
-				//   </div>
-				//   <div class="card-content">
-				// 	<div class="card-detail-wrapper">
-				// 	  <p>${product.answer}</p>
-				// 	  <div class="card-content-link">
-				// 		<a href="/pages/evenflo-faq-answer?qid=${product?.id}">Read Answer</a>
-				// 	  </div>
-				// 	</div>
-				// 	<div class="card-link-wrapper">
-				// 	  ${tagsHtml}
-				// 	</div>
-				//   </div>
-				// `;
-
 				popularCard.innerHTML = setThreeBlockInnerHtml(
 					product?.topic?.name || "",
 					product.question,
@@ -174,8 +146,6 @@ function fetchTopicsByType(id, productPage = false) {
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log("topicsData", data);
-
 			data?.results.forEach((topic) => {
 				const option = document.createElement("option");
 				option.value = topic.id;
@@ -216,8 +186,6 @@ function getTagsHtml(tags) {
 			return tags.find((tag) => tag.id === id);
 		}
 	);
-
-	console.log("uniqueTagsArray", uniquetagsArray);
 
 	uniquetagsArray?.forEach((category) => {
 		tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category.id}">${category.name}</a>`;
