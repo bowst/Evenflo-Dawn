@@ -106,10 +106,12 @@ function fetchTopics(topics_id="") {
 
 	container.innerHTML = "";
 
-	const defaultOption = document.createElement("option");
-	defaultOption.value = "";
-	defaultOption.textContent = "Select Topic";
-	container.appendChild(defaultOption);
+	// const defaultOption = document.createElement("option");
+	// defaultOption.value = "";
+	// defaultOption.textContent = "Select Topic";
+	// container.appendChild(defaultOption);
+
+    createAndAppendDropDownOption(container,"Select Topic")
 
 	let url = evenFloFAQURL + `topics/?page=1`;
 
@@ -117,15 +119,13 @@ function fetchTopics(topics_id="") {
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log("topicsData", data);
-
 			data?.results.forEach((topic) => {
 				const option = document.createElement("option");
 				option.value = topic.id;
 
-        if(topics_id && topics_id==topic.id){
-          option.selected=true;
-        }
+                if(topics_id && topics_id==topic.id){
+                option.selected=true;
+                }
 
 				option.textContent = topic.name;
 				container.appendChild(option);
@@ -273,9 +273,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchFAQsData(searchTerm, product_id, topics_id, page);
 });
 
-// Get the input element by its ID
+// Get the search element by its ID
 const inputElement = document.getElementById('searchBox');
-// Add an event listener for the 'keydown' event
+
 inputElement.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
