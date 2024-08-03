@@ -63,7 +63,7 @@
           categoryTag.classList.add("active");
 
           // Fetch products for the selected category
-          getProductsByCategory(category.id);
+          getProductsByCategory(category.id,category.category_name);
         };
 
         container.appendChild(categoryTag);
@@ -125,7 +125,7 @@
 
           container.appendChild(tabCard);
         });
-        
+
        //Appending all categories button
         const browseCategories = document.createElement('div');
         browseCategories.classList.add('browse-categories');
