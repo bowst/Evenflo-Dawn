@@ -125,7 +125,7 @@ function fetchPopularProductsData(popularByProduct = false) {
 		});
 }
 
-function fetchTopicsByType(id, productPage = false) {
+function fetchTopicsByType(id, productPage = false, type = "collection") {
 	const container = document.getElementById("selectTopic");
 
 	if (!container) {
@@ -137,8 +137,13 @@ function fetchTopicsByType(id, productPage = false) {
 	createAndAppendDropDownOption(container, "Select Topic");
 
 	let url = evenFloFAQURL + `topics/?page=1&collection_id=${id}`;
+
 	if (productPage) {
 		url = evenFloFAQURL + `topics/?page=1&product_id=${id}`;
+	}
+
+	if (type == "category") {
+		url = evenFloFAQURL + `topics/?page=1&category_id=${id}`;
 	}
 
 	fetch(url)
