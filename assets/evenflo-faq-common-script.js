@@ -264,3 +264,40 @@ function emptyContainerHtml(container) {
 		container.innerHTML = "";
 	}
 }
+
+function fetchDropDownProductsByType(type_id = 1, type = "collection") {
+	const container = document.getElementById("selectProduct");
+
+	if (!container) {
+		return;
+	}
+
+	emptyContainerHtml(container);
+
+	createAndAppendDropDownOption(container, "Select Product");
+
+	let url = evenFloFAQURL + `products/filterByCollection/${type_id}`;
+
+	if (type == "category") {
+		url = evenFloFAQURL + `products/by/category/${type_id}`;
+	}
+
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			data?.forEach((product) => {
+				const option = document.createElement("option");
+				option.value = product.id;
+
+				if (type_id && type_id == topic.id) {
+					option.selected = true;
+				}
+
+				option.textContent = product.name;
+				container.appendChild(option);
+			});
+		})
+		.catch((error) => {
+			console.error("Error fetching products:", error);
+		});
+}

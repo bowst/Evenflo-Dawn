@@ -1,9 +1,26 @@
 <div class="page-width"> 
   <div class="search-listing-wrapper">
     <div class="search-listing-header2">
+
+    {% if show_topic_dropdown %}
       <div class="search-selector">
         <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
       </div>
+    {% endif %}
+
+    {% if show_product_dropdown %}
+      <div class="search-selector">
+        <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
+      </div>
+    {% endif %}
+
+    {% if show_collection_dropdown %}
+      <div class="search-selector">
+        <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
+      </div>
+    {% endif %}
+    
+
       <div class="search-input">
         <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
       </div>
@@ -26,21 +43,32 @@
 var currentPage = 1;
 var categoryID = "";
 var topicID = "";
+var collectionID = "";
+var productID = "";
 
 const loadMoreBtn = document.getElementById('loadMoreBtn');
 
-function handleDropDownChange(event) {
-    let topicID = document.getElementById('selectTopic').value || topicID;
-    let filter = document.getElementById('searchFAQ').value;
-    fetchFAQsByFilters(categoryID, filter, topicID);
+function handleDropDownChange(event) {  
+     getFilterValuesAndCallFunc()
   }
+
 
 loadMoreBtn.addEventListener('click', () => {
   currentPage++;
-  let topicsID = document.getElementById('selectTopic').value || topicID;
-  let filter = document.getElementById('searchFAQ').value;
-  fetchFAQsByFilters(categoryID, filter, topicsID, currentPage);
+  getFilterValuesAndCallFunc();
 });
+
+
+function getFilterValuesAndCallFunc(){
+    let filter = document.getElementById('searchFAQ').value;
+
+    //These can be from the url on can be from the dropdown, if they are from url they are intialized and there values set from there respective pages
+    let topicID = document.getElementById('selectTopic').value || topicID;
+    let product = document.getElementById('selectProduct').value || productID;
+    let collection = document.getElementById('selectCollection').value || collectionID;
+
+    fetchFAQsByFilters(categoryID, filter, topicID,currentPage,product,collection);
+  }
 
 
 

@@ -136,41 +136,6 @@ function fetchTopics(topics_id="") {
 		});
 }
 
-function fetchDropDownProductsByCollection(product_id=1) {
-  const container = document.getElementById('selectProduct');
-
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = "";
-
-  const defaultOption = document.createElement('option');
-  defaultOption.value = ""; 
-  defaultOption.textContent = "Select Product";
-  container.appendChild(defaultOption);
-
-  fetch(evenFloFAQURL + `products/filterByCollection/${product_id}`)
-    .then(response => response.json())
-    .then(data => {
-
-      data?.forEach((product) => {
-        const option = document.createElement('option');
-        option.value = product.id; 
-
-        if(product_id && product_id==topic.id){
-          option.selected=true;
-        }
-
-        option.textContent = product.name;
-        container.appendChild(option);
-      });
-    })
-    .catch(error => {
-      console.error('Error fetching products:', error);
-    });
-}
-
 
 function getPaginatedHTMLButtons(resultCount, page) {
     if (resultCount < 1) {
@@ -269,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         page = urlParams.get('page');
     }
     fetchTopics(topics_id)
-    fetchDropDownProductsByCollection(product_id)
+    fetchDropDownProductsByType(product_id)
     fetchFAQsData(searchTerm, product_id, topics_id, page);
 });
 

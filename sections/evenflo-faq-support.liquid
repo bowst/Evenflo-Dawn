@@ -1,26 +1,5 @@
 
 
-    {% comment %} {% assign default_background_image = 'https://www.evenflo.com/cdn/shop/files/Evenflo-Benefit-1.png?v=1690902298&width=303' %} <!-- Adjust if using an external URL -->
-
-    {% if section.settings.backgroundImage %}
-    {% assign background_image = section.settings.backgroundImage | image_url %}
-    {% else %}
-    {% assign background_image = default_background_image %}
-    {% endif %}
-
-    <style>
-    .support-content-wrapper {
-        background-image: url({{ background_image }});
-    }
-    @media screen and (max-width: 767px) {
-      .support-content-wrapper:after{
-        background-image: url({{ background_image }});
-      }
-    }
-    </style> {% endcomment %}
-
-
-
 {% assign background_image = section.settings.backgroundImage  %}
 {% assign support_title = section.settings.supportTitle  %}
 {% assign support_description = section.settings.supportDescription %}
@@ -28,34 +7,6 @@
 
 {% render 'faq-support-block', background_image:background_image, support_title : support_title, support_description: support_description, 
  support_button_title:support_button_title  %}
-
-{% comment %} 
-        <div class="support-block">
-			<div class="page-width">
-				<div class="support-content-wrapper">
-					<div class="support-card">
-						<div class="support-heading">
-							<h1> {{ section.settings.supportTitle }}</h1>
-							<p>
-								{{ section.settings.supportDescription }}
-							</p>
-						</div>
-						<div class="support-card-btn">
-							<button>{{ section.settings.supportActionButton }}</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> {% endcomment %}
-
-      
-
-
-    
-
-
-
-
 
 
 
