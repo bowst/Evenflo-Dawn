@@ -110,7 +110,7 @@
   }
 
 
-  function fetchFAQsByProduct(categoryID, filter = "", topicsID = "") {
+  function fetchFAQsByProduct(categoryID, filter = "", topicsID = "",page=1) {
     const container = document.getElementById('searchListigBody');
 
     if (!container) {
@@ -123,7 +123,7 @@
 
     const loader = appendLoader(container);
 
-    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&product_id=${categoryID}`)
+    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}`)
       .then(response => response.json())
       .then(data => {
 
