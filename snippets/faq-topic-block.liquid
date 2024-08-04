@@ -1,0 +1,97 @@
+<div class="topic-block" id="topicsBlock" data-topics-to-show="{{ topics_to_show }}">
+    <div class="topic-main-wrapper page-width">
+        <div class="heading">
+            <h1>{{ topics_title }}</h1>
+        </div>
+        <div class="topic-wrapper">
+              <!-- Loader -->
+              <div id="topicsLoader" class="loader" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+function fetchTopicsData() {
+
+const topicsBlock = document.getElementById('topicsBlock');
+let blocksToShow = topicsBlock ? topicsBlock.dataset.topicsToShow : 6;
+
+const container = document.querySelector('.topic-wrapper');
+
+if(!container){
+return;
+}
+
+container.innerHTML = "";  // Clear existing content
+
+const loader = appendLoader(container)
+
+
+fetch(evenFloFAQURL + 'topics/?page=1&page_size='+blocksToShow)
+.then(response => response.json())
+.then(data => {
+if (container) {
+    container.innerHTML = "";  // Clear existing content
+
+    data?.results?.slice(0, blocksToShow).forEach((topic) => {
+
+    const topicCard = document.createElement('div');
+    topicCard.classList.add('topic-card');
+    const backgroundImageURL = topic?.background_image;
+    topicCard.style.backgroundImage = `url(${backgroundImageURL})`;
+
+    topicCard.innerHTML = `
+                <div class="topic-content">
+                    <div class="topic-title">
+                        <h2>${topic?.name}</h2>
+                        <p>
+                            ${topic?.description}
+                        </p>
+                    </div>
+                    <div class="topic-icon">
+                        <img
+                            src="${topic?.icon}"
+                            alt="topic-icon"
+                        />
+                    </div>
+                </div>
+            
+    `;
+    container.appendChild(topicCard);
+
+    });
+} else {
+    console.error('Topic card wrapper container not found');
+}
+})
+.catch(error => {
+console.error('Error fetching topics:', error);
+})
+.finally(() => {
+// Hide the loader
+if (loader) {
+    hideLoader(loader)
+}
+});
+}
+
+
+
+document.addEventListener('shopify:section:load', (event) => { 
+const sectionId = event?.detail?.sectionId;
+if (sectionId.includes('evenflo_faq_topic')) {
+fetchTopicsData();
+} 
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+fetchTopicsData();
+});
+
+
+</script>
