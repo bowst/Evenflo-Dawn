@@ -63,11 +63,11 @@ function getFilterValuesAndCallFunc(){
     let filter = document.getElementById('searchFAQ').value;
 
     //These can be from the url on can be from the dropdown, if they are from url they are intialized and there values set from there respective pages
-    let topicID = document.getElementById('selectTopic').value || topicID;
+    let topic = document.getElementById('selectTopic').value || topicID;
     let product = document.getElementById('selectProduct').value || productID;
     let collection = document.getElementById('selectCollection').value || collectionID;
 
-    fetchFAQsByFilters(categoryID, filter, topicID,currentPage,product,collection);
+    fetchFAQsByFilters(categoryID, filter, topic, currentPage, product, collection);
   }
 
 
