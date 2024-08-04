@@ -90,7 +90,7 @@ function getFilterValuesAndCallFunc(){
 
     const loader=appendLoader(container)
 
-    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}`)
+    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}`)
       .then(response => response.json())
       .then(data => {
 
