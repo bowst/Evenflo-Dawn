@@ -72,7 +72,7 @@
       .then((data) => {
 
         //Hiding Popular questions heading
-        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
+        if (!data?.related_popular_faqs || (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0)){
           document.getElementById('popularQuestionHeading').style.display ="none";
         }
 
