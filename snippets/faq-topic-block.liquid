@@ -44,6 +44,7 @@ if (container) {
     topicCard.style.backgroundImage = `url(${backgroundImageURL})`;
 
     topicCard.innerHTML = `
+    <a href="/pages/evenflo-faq-topic?tid=${topic?.id}">
                 <div class="topic-content">
                     <div class="topic-title">
                         <h2>${topic?.name}</h2>
@@ -58,6 +59,7 @@ if (container) {
                         />
                     </div>
                 </div>
+                </a>
             
     `;
     container.appendChild(topicCard);
