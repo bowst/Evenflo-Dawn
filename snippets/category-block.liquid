@@ -1,0 +1,166 @@
+<div class="category-block">
+  <div class="category-content-wrapper page-width">
+    <div class="heading center">
+      <h1>{{ category_title }}</h1>
+    </div>
+    <div class="category-tab-wrapper" id="categoryTabWrapper">
+
+      <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
+         <!-- Loader -->
+         <div id="categoriesLoader" class="loader" style="display: none;"></div>
+      </div>
+
+      <div class="tab-body">
+        <div class="tab-content-wrapper" id="productsByCategory" data-products-to-show="{{ products_to_show }}">
+          <!-- Loader -->
+          <div id="productByCategoriesLoader" class="loader" style="display: none;"></div>
+         
+        </div>
+      </div>
+
+      <div class="browse-categories" id="browseCategoriesDiv">
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+ function getPaginatedCategories() {
+   // Show the loader
+   const loader = document.getElementById('categoriesLoader');
+   if (loader) {
+    loader.style.display = 'block';
+  }
+  
+  fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
+    .then(response => response.json())
+    .then(data => {
+      getProductsByCategory(data.results[0]?.id,data.results[0]?.category_name);
+
+      const categoriesBlock = document.getElementById('categoriesContainer');
+      const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
+      
+      const container = document.querySelector('.tab-header'); 
+      container.innerHTML = ""; // Clear previous buttons
+
+      data.results.slice(0, blocksToShow).forEach((category, index) => {
+        const categoryTag = document.createElement('button');
+  
+        const isActive = index === 0 ? "active" : "";
+        if (isActive) {
+          categoryTag.classList.add(isActive);
+        }
+        
+        categoryTag.innerHTML = category?.category_name;
+
+        // Appending an onclick function to all the buttons
+        categoryTag.onclick = function() {
+          // Removing "active" class from all buttons inside the .tab-header container
+          const allButtons = container.querySelectorAll('button');
+          allButtons.forEach(button => button.classList.remove("active"));
+
+          // Adding "active" class to the clicked button
+          categoryTag.classList.add("active");
+
+          // Fetch products for the selected category
+          getProductsByCategory(category.id,category.category_name);
+        };
+
+        container.appendChild(categoryTag);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+      // Hide the loader
+      if (loader) {
+        loader.style.display = 'none';
+      }
+    });
+}
+
+
+  function getProductsByCategory(category_id,category_name){
+     // Show the loader
+    const container = document.getElementById('productsByCategory');
+    const browseCategoriesContainer = document.getElementById('browseCategoriesDiv'); 
+
+    if(!container){
+      console.error('productsByCategory wrapper container not found');
+      return;
+    }
+
+    container.innerHTML = "";  // Clear existing content
+    browseCategoriesContainer.innerHTML = "";  // Clear existing content
+
+
+    const loader=appendLoader(container)
+
+    fetch(evenFloFAQURL + `products/by/category/${category_id}`)
+    .then(response => response.json())
+    .then(data => {
+      
+    if(data && data?.length > 0){
+
+    const productsBlock = document.getElementById('productsByCategory');
+      const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 3;
+
+        data.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
+          const tabCard = document.createElement('div');
+          tabCard.classList.add('tab-card');
+
+          
+          tabCard.innerHTML = `
+          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
+           <div class="tab-img">
+              <img
+                src=${product?.image}
+                alt="tab-img"
+              />
+            </div>
+            <div class="tab-content">
+              <h4>${product?.name}</h4>
+            </div>
+          </a>
+          `;
+  
+
+          container.appendChild(tabCard);
+        });
+
+       //Appending all categories button
+     
+        const browseCategories = document.createElement('button');
+        browseCategories.innerHTML=`<button>Browse All ${category_name}</button>`
+        // Appending an onclick function to all the buttons
+        browseCategories.onclick = ()=> {
+                 alert(category_id)
+        };
+        browseCategoriesContainer.appendChild(browseCategories);
+
+    }
+ 
+
+     
+    })
+    .catch(error => {
+      console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+      // Hide the loader
+      if (loader) {
+        hideLoader(loader);
+      }
+    });
+}
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    getPaginatedCategories();
+  });
+</script>
