@@ -76,7 +76,7 @@
           document.getElementById('popularQuestionHeading').style.display ="none";
         }
 
-        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((faq) => {
+        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
 
         const popularCard = createPopularCardDivElement("popular-card");
 
@@ -127,7 +127,7 @@
       .then(response => response.json())
       .then(data => {
 
-        data?.results?.forEach((faq) => {
+        data?.results?.forEach((product) => {
           const popularCard = createPopularCardDivElement("popular-card");
 
         const faqsContent = getFAQContent(product?.products || []);
