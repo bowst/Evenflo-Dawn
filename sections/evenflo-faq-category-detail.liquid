@@ -80,11 +80,12 @@ loadMoreBtn.addEventListener('click', () => {
   function fetchFAQsByCategory(categoryID, filter = "", topicsID = "",page=1) {
     const container = document.getElementById('searchListigBody');
 
-
     if(!container){
       console.error('searchListigBody wrapper container not found');
       return;
     }
+    
+    loadMoreBtn.style.display="none";
 
     if(page==1){
       emptyContainerHtml(container)
@@ -117,6 +118,8 @@ loadMoreBtn.addEventListener('click', () => {
 
           container.appendChild(popularCard);
         });
+
+        loadMoreBtn.style.display="block";
       })
       .catch(error => {
         console.error('Error fetching products:', error);
