@@ -50,7 +50,11 @@ var productID = "";
 const loadMoreBtn = document.getElementById('loadMoreBtn');
 
 function handleDropDownChange(event) {  
-  console.log('event',event);
+
+   //This we have added if some one searches we setting the page count to 1
+    if(event.target.id=="searchFAQ"){
+      currentPage = 1
+    }
      getFilterValuesAndCallFunc()
   }
 
