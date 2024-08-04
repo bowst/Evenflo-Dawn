@@ -40,102 +40,16 @@
 
 {% render 'faq-load-more-block' %}
 
-{% comment %} <div class="page-width"> 
-  <div class="search-listing-wrapper">
-    <div class="search-listing-header2">
-      <div class="search-selector">
-        <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
-      </div>
-      <div class="search-input">
-        <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
-      </div>
-    </div>
- 
-    <div class="search-listing-body" id="searchListigBody" data-search-blocks-to-show="8">
-     
-    </div> 
+{% assign topics_to_show = 3 %}
+{% assign topics_title = "By Topics" %}
 
-    <div class="browse-categories" id="loadBtnDiv">
-        <button id="loadMoreBtn"  >Load More</button>
-    </div>
-  </div>
-
-</div> {% endcomment %}
+{% render 'faq-topic-block', topics_to_show:topics_to_show , topics_title:topics_title%}
 
 
 
 <script>
 
-// var currentPage = 1;
-// var categoryID = "";
 
-// const loadMoreBtn = document.getElementById('loadMoreBtn');
-
-// loadMoreBtn.addEventListener('click', () => {
-//   currentPage++;
-//   let topicsID = document.getElementById('selectTopic').value;
-//   let filter = document.getElementById('searchFAQ').value;
-//   fetchFAQsByCategory(categoryID, filter, topicsID, currentPage);
-// });
-
-
-//   function fetchFAQsByCategory(categoryID, filter = "", topicsID = "",page=1) {
-//     const container = document.getElementById('searchListigBody');
-
-//     if(!container){
-//       console.error('searchListigBody wrapper container not found');
-//       return;
-//     }
-    
-//     loadMoreBtn.style.display="none";
-
-//     if(page==1){
-//       emptyContainerHtml(container)
-      
-//     }
-
-//     const loader=appendLoader(container)
-
-//     //let blocksToShow = container.dataset.searchBlocksToShow || 8;
-
-//     fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}`)
-//       .then(response => response.json())
-//       .then(data => {
-
-//         data?.results?.forEach((product) => {
-//           const popularCard = createPopularCardDivElement("popular-card");
-
-//           const faqsContent = getFAQContent(product?.products || []);
-
-//           const tags = getTagsArray(product?.tags || []);
-
-//           const tagsHtml = getTagsHtml(tags);
-
-//           popularCard.innerHTML = setFAQBlockInnerHtml(
-//             product?.topic?.name || "",
-//             product.question,
-//             faqsContent,
-//             product.answer,
-//             //product?.id,
-//             "",
-//             tagsHtml
-//           );
-
-//           container.appendChild(popularCard);
-//         });
-
-//         loadMoreBtn.style.display="block";
-//       })
-//       .catch(error => {
-//         console.error('Error fetching products:', error);
-//       })
-//       .finally(() => {
-//         if (loader) {
-//          hideLoader(loader);
-//          toggleAnswerBullet();
-//         }
-//       });
-//   }
 
   function fetchPopularCategoriesRelatedData(categoryID) {
     const container = document.getElementById("popularCards");
