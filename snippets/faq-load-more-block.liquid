@@ -31,14 +31,14 @@ const loadMoreBtn = document.getElementById('loadMoreBtn');
 function handleDropDownChange(event) {
     let topicID = document.getElementById('selectTopic').value;
     let filter = document.getElementById('searchFAQ').value;
-    fetchFAQsByCategory(categoryID, filter, topicID);
+    fetchFAQsByFilters(categoryID, filter, topicID);
   }
 
 loadMoreBtn.addEventListener('click', () => {
   currentPage++;
   let topicsID = document.getElementById('selectTopic').value;
   let filter = document.getElementById('searchFAQ').value;
-  fetchFAQsByCategory(categoryID, filter, topicsID, currentPage);
+  fetchFAQsByFilters(categoryID, filter, topicsID, currentPage);
 });
 
 
@@ -59,8 +59,6 @@ loadMoreBtn.addEventListener('click', () => {
     }
 
     const loader=appendLoader(container)
-
-    //let blocksToShow = container.dataset.searchBlocksToShow || 8;
 
     fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}`)
       .then(response => response.json())
