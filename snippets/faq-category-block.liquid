@@ -1,8 +1,12 @@
 <div class="category-block">
   <div class="category-content-wrapper page-width">
+
+    {% if show_title %}
     <div class="heading center">
       <h1>{{ category_title }}</h1>
     </div>
+  {% endif %}
+
     <div class="category-tab-wrapper" id="categoryTabWrapper">
 
       <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
@@ -18,9 +22,12 @@
         </div>
       </div>
 
-      <div class="browse-categories" id="browseCategoriesDiv">
+      {% if show_title %}
+        <div class="browse-categories" id="browseCategoriesDiv">
 
-      </div>
+        </div>
+      {% endif %}
+     
 
     </div>
   </div>
