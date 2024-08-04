@@ -96,7 +96,7 @@ loadMoreBtn.addEventListener('click', () => {
 
     //let blocksToShow = container.dataset.searchBlocksToShow || 8;
 
-    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}`)
+    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}`)
       .then(response => response.json())
       .then(data => {
 
@@ -206,7 +206,7 @@ loadMoreBtn.addEventListener('click', () => {
     const urlParams = new URLSearchParams(queryString);
 
     if (urlParams.has('cat_id')) {
-      let categoryID = urlParams.get('cat_id');
+      categoryID = urlParams.get('cat_id');
       fetchPopularCategoriesRelatedData(categoryID);
       fetchFAQsByCategory(categoryID);
       fetchTopicsByType(categoryID,true,"category")
