@@ -18,7 +18,7 @@
 <div class="help-articles-block">
   <div class="help-articles-content page-width center"> 
     <div class="help-article-search-wrapper">
-      <h1 id="productName"></h1>
+      <h1 id="categoryName"></h1>
     </div>
   </div>
 </div>
@@ -32,8 +32,15 @@
   </div>
 </div>
 
+{% assign categories_to_show = 6 %}
+{% assign products_to_show = 6 %}
+{% assign category_title = "Categories" %}
+
+{% render 'faq-category-block', categories_to_show: categories_to_show, products_to_show: products_to_show, category_title: category_title %}
+
 <div class="page-width"> 
   <div class="search-listing-wrapper">
+
     <div class="search-listing-header2">
       <div class="search-selector">
         <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
@@ -43,11 +50,17 @@
       </div>
     </div>
 
-    <div class="popular-card-wrapper" id="searchListigBody"></div>
+ 
     {% comment %} <div class="search-listing-body" id="searchListigBody" data-search-blocks-to-show="8">
      
     </div> {% endcomment %}
   </div>
+
+  <div class="popular-content-wrapper page-width">
+ 
+    <div class="popular-card-wrapper" id="searchListigBody"></div>
+  </div>
+
 </div>
 
 
@@ -73,6 +86,7 @@
       .then((response) => response.json())
       .then((data) => {
 
+      document.getElementById('categoryName').innerHTML = data?.name || "Child Fit";
         //Hiding Popular questions heading
         if (!data?.related_popular_faqs || (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0)){
           document.getElementById('popularQuestionHeading').style.display ="none";
