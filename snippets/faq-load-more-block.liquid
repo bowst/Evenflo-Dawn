@@ -116,7 +116,13 @@ function getFilterValuesAndCallFunc(){
           container.appendChild(popularCard);
         });
 
-        loadMoreBtn.style.display="block";
+        if(data?.next){
+          loadMoreBtn.style.display="block";
+        }else{
+          loadMoreBtn.style.display="none";
+        }
+
+        
       })
       .catch(error => {
         console.error('Error fetching products:', error);
