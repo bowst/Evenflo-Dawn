@@ -101,8 +101,10 @@
       return;
     }
 
-    container.innerHTML = "";  // Clear existing content
-    browseCategoriesContainer.innerHTML = "";  // Clear existing content
+    emptyContainerHtml(container)
+   
+    emptyContainerHtml(browseCategoriesContainer)
+  
 
 
     const loader=appendLoader(container)
@@ -139,16 +141,18 @@
           container.appendChild(tabCard);
         });
 
-       //Appending all categories button
-     
-        const browseCategories = document.createElement('button');
-        browseCategories.innerHTML=`<button>Browse All ${category_name}</button>`
-        // Appending an onclick function to all the buttons
-        browseCategories.onclick = ()=> {
-          window.location.href = `/pages/evenflo-faq-category?cat_id=${category_id}`
-                //  alert(category_id)
-        };
-        browseCategoriesContainer.appendChild(browseCategories);
+        if(browseCategoriesContainer){
+          //Appending all categories button
+          const browseCategories = document.createElement('button');
+            browseCategories.innerHTML=`<button>Browse All ${category_name}</button>`
+            // Appending an onclick function to all the buttons
+            browseCategories.onclick = ()=> {
+              window.location.href = `/pages/evenflo-faq-category?cat_id=${category_id}`
+                    //  alert(category_id)
+            };
+            browseCategoriesContainer.appendChild(browseCategories);
+        }
+
 
     }
  
