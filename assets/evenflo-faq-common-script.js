@@ -255,5 +255,7 @@ function createAndAppendDropDownOption(
 }
 
 function emptyContainerHtml(container) {
-	container.innerHTML = "";
+	if (container) {
+		container.innerHTML = "";
+	}
 }
