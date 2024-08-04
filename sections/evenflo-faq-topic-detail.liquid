@@ -1,0 +1,161 @@
+{{ 'section-evenflo-search.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Class override in this section {% endcomment %}
+<style>
+
+  .help-articles-block {
+    background: #fff;
+  }
+  .search-listing-header2 {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
+
+{% assign products_to_show = section.settings.topicRelatedRange %}
+
+<div class="help-articles-block">
+  <div class="help-articles-content page-width center"> 
+    <div class="help-article-search-wrapper">
+      <h1 id="topicName"></h1>
+    </div>
+  </div>
+</div>
+
+<div class="popular-question-block" id="topicRelatedBlock" data-products-to-show="{{ products_to_show }}">
+  <div class="popular-content-wrapper page-width">
+    <div class="heading center">
+      <h2 id="popularQuestionHeading">{{ section.settings.topicRelatedTitle }}</h2>
+    </div>
+    <div class="popular-card-wrapper" id="popularCards"></div>
+  </div>
+</div>
+
+
+
+{% render 'faq-load-more-block' %}
+
+{% assign topics_to_show = 3 %}
+{% assign topics_title = "By Topics" %}
+
+{% render 'faq-topic-block', topics_to_show:topics_to_show , topics_title:topics_title%}
+
+{% render 'faq-support-block' %}
+
+
+
+<script>
+
+
+
+  function fetchPopularTopicRelatedData(topicID) {
+    const container = document.getElementById("popularCards");
+    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
+    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
+
+    if (!container) {
+      console.log("Error on getting container");
+      return;
+    }
+
+    container.innerHTML = ""; // Clear existing content
+    const loader = appendLoader(container);
+      
+    //TODO: Need to change URL 
+    let url = evenFloFAQURL + "products/" + topicID;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+
+      document.getElementById('topicName').innerHTML = data?.name || "Child Fit";
+        //Hiding Popular questions heading
+        if (!data?.related_popular_faqs || (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0)){
+          document.getElementById('popularQuestionHeading').style.display ="none";
+        }
+
+        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
+
+        const popularCard = createPopularCardDivElement("popular-card");
+
+        const faqsContent = getFAQContent(product?.products || []);
+
+        const tags = getTagsArray(product?.tags || []);
+
+        const tagsHtml = getTagsHtml(tags);
+
+        popularCard.innerHTML = setFAQBlockInnerHtml(
+          product?.topic?.name || "",
+          product.question,
+          faqsContent,
+          product.answer,
+          product?.id,
+          tagsHtml
+        );
+
+        container.appendChild(popularCard);
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      })
+      .finally(() => {
+        if (loader) {
+          hideLoader(loader);
+          toggleAnswerBullet();
+        }
+      });
+  }
+
+
+ 
+  document.addEventListener('DOMContentLoaded', () => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    if (urlParams.has('tid')) {
+        
+      topicID = urlParams.get('tid');
+      fetchPopularTopicRelatedData(topicID);
+      fetchFAQsByFilters(topicID);
+      //fetchTopicsByType(topicID,true,"topic")
+    } else {
+      window.location.href = '/pages/evenflo-faq-portal';
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "EvenFlo FAQ Topic",
+  "tag": "section",
+  "class": "topicRelated",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "topicRelatedTitle",
+      "label": "Popular Question Title",
+      "default": "Popular Questions"
+    },
+    {
+      "type": "range",
+      "id": "topicRelatedRange",
+      "label": "Number of questions to show",
+      "default": 3,
+      "min": 1,
+      "max": 3,
+      "step": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "EvenFlo FAQ Topic",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
