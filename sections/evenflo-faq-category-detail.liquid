@@ -88,7 +88,7 @@ loadMoreBtn.addEventListener('click', () => {
 
     if(page==1){
       emptyContainerHtml(container)
-      const loader=appendLoader(container)
+      //const loader=appendLoader(container)
     }
 
     //let blocksToShow = container.dataset.searchBlocksToShow || 8;
@@ -100,22 +100,22 @@ loadMoreBtn.addEventListener('click', () => {
         data?.results?.forEach((product) => {
           const popularCard = createPopularCardDivElement("popular-card");
 
-        const faqsContent = getFAQContent(product?.products || []);
+          const faqsContent = getFAQContent(product?.products || []);
 
-        const tags = getTagsArray(product?.tags || []);
+          const tags = getTagsArray(product?.tags || []);
 
-        const tagsHtml = getTagsHtml(tags);
+          const tagsHtml = getTagsHtml(tags);
 
-        popularCard.innerHTML = setFAQBlockInnerHtml(
-          product?.topic?.name || "",
-          product.question,
-          faqsContent,
-          product.answer,
-          product?.id,
-          tagsHtml
-        );
+          popularCard.innerHTML = setFAQBlockInnerHtml(
+            product?.topic?.name || "",
+            product.question,
+            faqsContent,
+            product.answer,
+            product?.id,
+            tagsHtml
+          );
 
-        container.appendChild(popularCard);
+          container.appendChild(popularCard);
         });
       })
       .catch(error => {
@@ -123,7 +123,7 @@ loadMoreBtn.addEventListener('click', () => {
       })
       .finally(() => {
         if (loader) {
-          hideLoader(loader);
+         hideLoader(loader);
          toggleAnswerBullet();
         }
       });
