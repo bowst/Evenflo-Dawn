@@ -209,7 +209,7 @@ loadMoreBtn.addEventListener('click', () => {
       let categoryID = urlParams.get('cat_id');
       fetchPopularCategoriesRelatedData(categoryID);
       fetchFAQsByCategory(categoryID);
-      fetchTopicsByType(categoryID,true)
+      fetchTopicsByType(categoryID,true,"category")
     } else {
       window.location.href = '/pages/evenflo-faq-portal';
     }
