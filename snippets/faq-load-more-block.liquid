@@ -41,6 +41,7 @@
 <script>
 
 var currentPage = 1;
+
 var categoryID = "";
 var topicID = "";
 var collectionID = "";
@@ -60,12 +61,12 @@ loadMoreBtn.addEventListener('click', () => {
 
 
 function getFilterValuesAndCallFunc(){
-    let filter = document.getElementById('searchFAQ').value;
+    let filter = document.getElementById('searchFAQ')?.value;
 
     //These can be from the url on can be from the dropdown, if they are from url they are intialized and there values set from there respective pages
-    let topic = document.getElementById('selectTopic').value || topicID;
-    let product = document.getElementById('selectProduct').value || productID;
-    let collection = document.getElementById('selectCollection').value || collectionID;
+    let topic = document.getElementById('selectTopic')?.value || topicID;
+    let product = document.getElementById('selectProduct')?.value || productID;
+    let collection = document.getElementById('selectCollection')?.value || collectionID;
 
     fetchFAQsByFilters(categoryID, filter, topic, currentPage, product, collection);
   }
