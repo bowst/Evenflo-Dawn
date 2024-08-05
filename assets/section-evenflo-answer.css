@@ -45,7 +45,6 @@
 	text-decoration: none;
 }
 
-
 .question-content:has(.product-list) {
 	gap: 12px;
 }
@@ -86,6 +85,11 @@
     letter-spacing: 1.2px;
     text-transform: uppercase;
     padding: 6px;
+    display:none;
+    cursor: pointer;
+}
+.product-list + .question-banner-links.question-banner-links-show{
+  display: block;
 }
 
 @media screen and (max-width: 1024px) {
