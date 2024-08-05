@@ -46,8 +46,9 @@ function formatPostedDate(timestamp) {
 	const formattedDate = `${year}-${month}-${day}`;
 	return formattedDate;
 }
-let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
 function copyBtnFunc(){
+let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
+  
   setTimeout(() => {
       copyBtn.forEach((btn) => {
           btn.classList.add("copied-clipboard-btn");
