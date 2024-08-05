@@ -59,8 +59,9 @@ function formatPostedDate(timestamp) {
 
 function copyBtnFunc(){
     let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
-
+    console.log(copyBtn)
     copyBtn.forEach((btn) => {
+      console.log(btn)
         btn.classList.add("copied-clipboard-btn");
         btn.querySelector("span").textContent = "COPIED";
 
