@@ -1,4 +1,4 @@
-<div class="page-width"> 
+{% comment %} <div class="page-width"> 
   <div class="search-listing-wrapper">
     <div class="search-listing-header2">
 
@@ -35,6 +35,63 @@
     </div>
   </div>
 
+</div> {% endcomment %}
+
+<div class="popular-question-block">
+  <div class="popular-content-wrapper page-width">
+    <div class="popular-header">
+      <div class="search-selector-wrapper">
+        {% comment %} <div class="search-selector">
+          <select id="selectProduct" onchange="handleDropDownChange(event)">
+        
+          </select>
+        </div>
+        <div class="search-selector">
+          <select id="selectTopic" onchange="handleDropDownChange(event)">
+        
+          </select>
+        </div>
+      </div>
+      <div class="search-input">
+        <input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)"/>
+      </div> {% endcomment %}
+
+      {% if show_topic_dropdown %}
+        <div class="search-selector">
+          <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
+        </div>
+      {% endif %}
+  
+      {% if show_product_dropdown %}
+        <div class="search-selector">
+          <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
+        </div>
+      {% endif %}
+  
+      {% if show_collection_dropdown %}
+        <div class="search-selector">
+          <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
+        </div>
+      {% endif %}
+      
+  
+        <div class="search-input">
+          <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
+        </div>
+
+    </div>
+
+
+    <div class="popular-card-wrapper" id="searchListigBody" data-search-blocks-to-show="8">
+
+
+    </div>
+
+    <div class="browse-categories" id="loadBtnDiv">
+      <button id="loadMoreBtn"  >Load More</button>
+  </div>
+
+  </div>
 </div>
 
 
