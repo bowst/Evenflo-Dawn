@@ -73,7 +73,10 @@
       .then((response) => response.json())
       .then((data) => {
 
-       const productLinks = document.getElementById('productLinks');
+
+        document.getElementById('productName').innerHTML = data?.name;
+
+        const productLinks = document.getElementById('productLinks');
         let linksHtml = ``;
 
         if(data?.shopify_page_handel){
