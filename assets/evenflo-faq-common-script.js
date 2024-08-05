@@ -15,8 +15,6 @@ function toggleAnswerBullet() {
 	});
 }
 
-toggleAnswerBullet();
-
 //For appending loader in specific div
 function appendLoader(container) {
 	//Creating loader div through javascript
@@ -84,7 +82,7 @@ function copyCurrentUrlToClipboard() {
 			alert("Failed to copy URL to clipboard");
 		})
 		.finally(() => {
-copyBtnFunc()
+        copyBtnFunc()
 			document.body.removeChild(dummyInput);
 		});
 }
