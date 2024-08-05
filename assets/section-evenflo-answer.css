@@ -109,6 +109,13 @@
 .copy-clipboard-btn .copied-clipboard-svg {
     display: none;
 }
+.copy-clipboard-btn.copied-clipboard-btn .copied-clipboard-svg {
+    display: block;
+}
+
+.copy-clipboard-btn.copied-clipboard-btn .copy-clipboard-svg {
+    display: none;
+}
 @media screen and (max-width: 1024px) {
 	.question-banner-wrapper {
 		max-width: 100%;
