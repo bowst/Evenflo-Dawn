@@ -63,6 +63,7 @@ function copyBtnFunc(){
     copyBtn.forEach((btn) => {
       console.log(btn)
         btn.classList.add("copied-clipboard-btn");
+        if(btn.querySelect('span').textContent)
         btn.querySelector("span").textContent = "COPIED";
 
         setTimeout(() => {
