@@ -46,28 +46,15 @@ function formatPostedDate(timestamp) {
 	const formattedDate = `${year}-${month}-${day}`;
 	return formattedDate;
 }
-// function copyBtnFunc(){
-// let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
-  
-//   setTimeout(() => {
-//       copyBtn.forEach((btn) => {
-//           btn.classList.add("copied-clipboard-btn");
-//           btn.querySelector(span).textContent = "COPIED"
-//       });
-//   }, 2000);
-// }
 
 function copyBtnFunc(){
     let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
-    console.log(copyBtn)
     copyBtn.forEach((btn) => {
-      console.log(btn)
         btn.classList.add("copied-clipboard-btn");
         if(btn?.querySelector('span')?.textContent)
         btn.querySelector("span").textContent = "COPIED";
 
         setTimeout(() => {
-          debugger;
             btn.classList.remove("copied-clipboard-btn");
             if(btn?.querySelector('span')?.textContent)
             btn.querySelector("span").textContent = "COPY LINK"; // Reset the text to original
