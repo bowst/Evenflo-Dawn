@@ -189,7 +189,7 @@
 .card-content-link a:hover {
 	background: #00aea9;
 	color: #fff;
-	padding: 6px;
+	padding-inline: 6px;
 }
 .card-link-wrapper a {
 	border: 2px solid var(--color-primary-content-100, #121212);
@@ -203,6 +203,24 @@
 	line-height: 14px;
 	letter-spacing: 1.2px;
 	text-transform: uppercase;
+}
+.card-content-link a:after {
+    content: '';
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M6.75 0.15625C6.90625 0 7.125 0 7.28125 0.15625L13.875 6.75C14.0312 6.90625 14.0312 7.125 13.875 7.28125L7.28125 13.875C7.125 14.0312 6.90625 14.0312 6.75 13.875L6.53125 13.6562C6.375 13.5 6.375 13.2812 6.53125 13.125L12.0938 7.53125H0.375C0.15625 7.53125 0 7.375 0 7.15625V6.84375C0 6.65625 0.15625 6.46875 0.375 6.46875H12.0938L6.53125 0.90625C6.375 0.75 6.375 0.53125 6.53125 0.375L6.75 0.15625Z" fill="currentColor"/></svg>');
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    color: #fff;
+    -webkit-mask-box-image: #fff;
+}
+
+
+.card-content-link a {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    max-width: max-content;
 }
 
 .card-detail-wrapper {
