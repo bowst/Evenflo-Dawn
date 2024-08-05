@@ -99,6 +99,8 @@
   display: inline-flex;
 }
 
+
+
 @media screen and (max-width: 1024px) {
 	.question-banner-wrapper {
 		max-width: 100%;
@@ -133,4 +135,23 @@
 	.product-list + .question-banner-links a {
 		font-size: 16px;
 	}
+  .copy-clipboard-btn {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid #00AEA9;
+      padding: 8px;
+      color: #00AEA9;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 18px;
+  }
+  
+  .copy-clipboard-btn:hover {
+      background: #00AEA9;color: #fff;
+  }
+  
+  .copy-clipboard-btn:hover svg path {
+      fill: #fff;
+  }
 }
