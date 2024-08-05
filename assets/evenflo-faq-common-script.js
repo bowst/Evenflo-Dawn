@@ -46,6 +46,16 @@ function formatPostedDate(timestamp) {
 	const formattedDate = `${year}-${month}-${day}`;
 	return formattedDate;
 }
+let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
+function copyBtnFunc(){
+  setTimeout(() => {
+      copyBtn.forEach((btn) => {
+          btn.classList.add("copied-clipboard-btn");
+          btn.querySelector(span).textContent = "COPIED"
+      });
+  }, 2000);
+}
+
 
 function copyCurrentUrlToClipboard() {
 	var dummyInput = document.createElement("input");
@@ -59,6 +69,7 @@ function copyCurrentUrlToClipboard() {
 	navigator.clipboard
 		.writeText(dummyInput.value)
 		.then(() => {
+            copyBtnFunc();
 			alert("URL copied to clipboard");
 		})
 		.catch((err) => {
