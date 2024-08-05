@@ -320,7 +320,7 @@ function fetchDropDownProductsByType(type_id = 1, type = "collection") {
 				const option = document.createElement("option");
 				option.value = product.id;
 
-				if (type_id && type_id == topic.id) {
+				if (type_id && type_id == product.id) {
 					option.selected = true;
 				}
 
@@ -333,7 +333,7 @@ function fetchDropDownProductsByType(type_id = 1, type = "collection") {
 		});
 }
 
-//We are using this filter for generic search for all faqs
+//We are using this filter for generic search for all faqs in faq-load-more block
 function fetchFAQsByFilters(
 	categoryID = "",
 	filter = "",
