@@ -86,10 +86,14 @@
     padding: 6px;
     display:none;
     cursor: pointer;
+    width: max-content;
 }
 .product-list + .question-banner-links:hover{
   background: #2a5f5e;
   color: #fff;
+}
+.product-list + .question-banner-links:hover svg path{
+  fill: #fff;
 }
 .product-list + .question-banner-links.question-banner-links-show{
   display: inline-flex;
