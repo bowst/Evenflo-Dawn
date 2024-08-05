@@ -46,19 +46,20 @@ function formatPostedDate(timestamp) {
 	const formattedDate = `${year}-${month}-${day}`;
 	return formattedDate;
 }
-function copyBtnFunc(){
-let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
+// function copyBtnFunc(){
+// let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
   
-  setTimeout(() => {
-      copyBtn.forEach((btn) => {
-          btn.classList.add("copied-clipboard-btn");
-          btn.querySelector(span).textContent = "COPIED"
-      });
-  }, 2000);
-}
+//   setTimeout(() => {
+//       copyBtn.forEach((btn) => {
+//           btn.classList.add("copied-clipboard-btn");
+//           btn.querySelector(span).textContent = "COPIED"
+//       });
+//   }, 2000);
+// }
 
 
-function copyCurrentUrlToClipboard() {
+function copyCurrentUrlToClipboard(event) {
+  console.log(event)
 	var dummyInput = document.createElement("input");
 
 	dummyInput.value = window.location.href;
@@ -70,7 +71,7 @@ function copyCurrentUrlToClipboard() {
 	navigator.clipboard
 		.writeText(dummyInput.value)
 		.then(() => {
-            copyBtnFunc();
+            // copyBtnFunc();
 			alert("URL copied to clipboard");
 		})
 		.catch((err) => {
