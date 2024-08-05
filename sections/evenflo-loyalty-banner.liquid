@@ -1,6 +1,6 @@
 <a href="{{ section.settings.link_url }}">
   {%- for block in section.blocks -%}
-    {% if section.block.settings.loyalty_option.value == 'gold' %}
+    {% if block.settings.loyalty_option == 'gold' %}
       {{ 'SDS' }}   
     {% endif -%}
   {% endfor -%}
