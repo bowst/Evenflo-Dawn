@@ -115,6 +115,8 @@
 
 .copy-clipboard-btn.copied-clipboard-btn .copy-clipboard-svg {
     display: none;
+    width: 25px;
+    height: 25px;
 }
 @media screen and (max-width: 1024px) {
 	.question-banner-wrapper {
@@ -166,9 +168,9 @@
       max-width: max-content;
   }
   
-  .copy-clipboard-btn:hover {
+  /* .copy-clipboard-btn:hover {
       background: #00AEA9;color: #fff;
-  }
+  } */
   
   /* .copy-clipboard-btn:hover svg path {
       fill: #fff;
