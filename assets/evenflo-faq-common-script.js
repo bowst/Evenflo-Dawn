@@ -69,10 +69,13 @@ function copyBtnFunc(){
         setTimeout(() => {
           debugger;
             btn.classList.remove("copied-clipboard-btn");
+            if(btn?.querySelector('span')?.textContent)
             btn.querySelector("span").textContent = "COPY LINK"; // Reset the text to original
         }, 2000);
     });
 }
+
+
 
 
 
