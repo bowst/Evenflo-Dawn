@@ -1,31 +1,106 @@
 var evenFloFAQURL = "https://api.dev.evenflocms.howst.io/api/";
 
+var categoryID = "";
+var topicID = "";
+var collectionID = "";
+var productID = "";
+
+//We are using this filter for generic search for all faqs
+function fetchFAQsByFilters(
+	categoryID = "",
+	filter = "",
+	topicsID = "",
+	page = 1,
+	productID = "",
+	collectionID = ""
+) {
+	const container = document.getElementById("searchListigBody");
+
+	if (!container) {
+		console.error("searchListigBody wrapper container not found");
+		return;
+	}
+
+	loadMoreBtn.style.display = "none";
+
+	if (page == 1) {
+		emptyContainerHtml(container);
+	}
+
+	const loader = appendLoader(container);
+
+	fetch(
+		evenFloFAQURL +
+			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}`
+	)
+		.then((response) => response.json())
+		.then((data) => {
+			data?.results?.forEach((product) => {
+				const popularCard = createPopularCardDivElement("popular-card");
+
+				const faqsContent = getFAQContent(product?.products || []);
+
+				const tags = getTagsArray(product?.tags || []);
+
+				const tagsHtml = getTagsHtml(tags);
+
+				popularCard.innerHTML = setFAQBlockInnerHtml(
+					product?.topic?.name || "",
+					product.question,
+					faqsContent,
+					product.answer,
+					//product?.id,
+					"",
+					tagsHtml
+				);
+
+				container.appendChild(popularCard);
+			});
+
+			if (data?.next) {
+				loadMoreBtn.style.display = "block";
+			} else {
+				loadMoreBtn.style.display = "none";
+			}
+		})
+		.catch((error) => {
+			console.error("Error fetching products:", error);
+		})
+		.finally(() => {
+			if (loader) {
+				hideLoader(loader);
+				toggleAnswerBullet();
+			}
+		});
+}
+
 function toggleAnswerBullet() {
 	let descriptionWrapper = document.querySelectorAll(".description-wrapper");
-    if(descriptionWrapper.length > 1){
-      descriptionWrapper.forEach((desc, index) => {
-		let bullet = desc.querySelectorAll("ul li").length;
+	if (descriptionWrapper.length > 1) {
+		descriptionWrapper.forEach((desc, index) => {
+			let bullet = desc.querySelectorAll("ul li").length;
+			if (bullet > 1) {
+				desc.classList.remove("description-wrapper-remove");
+				desc.querySelector("button").addEventListener("click", () => {
+					desc.classList.toggle("description-wrapper-show");
+				});
+			} else {
+				desc.classList.add("description-wrapper-remove");
+			}
+		});
+	} else {
+		let bullet = descriptionWrapper.querySelectorAll("ul li").length;
 		if (bullet > 1) {
-			desc.classList.remove("description-wrapper-remove");
-			desc.querySelector("button").addEventListener("click", () => {
-				desc.classList.toggle("description-wrapper-show");
-			});
-		} else {
-			desc.classList.add("description-wrapper-remove");
-		}
-	});
-    }else{
-      let bullet = descriptionWrapper.querySelectorAll("ul li").length;
-      if (bullet > 1) {
 			descriptionWrapper.classList.remove("description-wrapper-remove");
-			descriptionWrapper.querySelector("button").addEventListener("click", () => {
-				descriptionWrapper.classList.toggle("description-wrapper-show");
-			});
+			descriptionWrapper
+				.querySelector("button")
+				.addEventListener("click", () => {
+					descriptionWrapper.classList.toggle("description-wrapper-show");
+				});
 		} else {
 			descriptionWrapper.classList.add("description-wrapper-remove");
 		}
-    }
-	
+	}
 }
 
 //For appending loader in specific div
@@ -58,24 +133,20 @@ function formatPostedDate(timestamp) {
 	return formattedDate;
 }
 
-function copyBtnFunc(){
-    let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
-    copyBtn.forEach((btn) => {
-        btn.classList.add("copied-clipboard-btn");
-        if(btn?.querySelector('span')?.textContent)
-        btn.querySelector("span").textContent = "COPIED";
+function copyBtnFunc() {
+	let copyBtn = document.querySelectorAll(".copy-clipboard-btn");
+	copyBtn.forEach((btn) => {
+		btn.classList.add("copied-clipboard-btn");
+		if (btn?.querySelector("span")?.textContent)
+			btn.querySelector("span").textContent = "COPIED";
 
-        setTimeout(() => {
-            btn.classList.remove("copied-clipboard-btn");
-            if(btn?.querySelector('span')?.textContent)
-            btn.querySelector("span").textContent = "COPY LINK"; // Reset the text to original
-        }, 2000);
-    });
+		setTimeout(() => {
+			btn.classList.remove("copied-clipboard-btn");
+			if (btn?.querySelector("span")?.textContent)
+				btn.querySelector("span").textContent = "COPY LINK"; // Reset the text to original
+		}, 2000);
+	});
 }
-
-
-
-
 
 function copyCurrentUrlToClipboard() {
 	var dummyInput = document.createElement("input");
@@ -88,14 +159,13 @@ function copyCurrentUrlToClipboard() {
 
 	navigator.clipboard
 		.writeText(dummyInput.value)
-		.then(() => {
-		})
+		.then(() => {})
 		.catch((err) => {
 			console.error("Failed to copy:", err);
 			alert("Failed to copy URL to clipboard");
 		})
 		.finally(() => {
-        copyBtnFunc()
+			copyBtnFunc();
 			document.body.removeChild(dummyInput);
 		});
 }
