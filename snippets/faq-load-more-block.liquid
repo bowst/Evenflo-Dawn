@@ -1,4 +1,4 @@
-{% comment %} <div class="page-width"> 
+<div class="page-width"> 
   <div class="search-listing-wrapper">
     <div class="search-listing-header2">
 
@@ -35,59 +35,8 @@
     </div>
   </div>
 
-</div> {% endcomment %}
-
-{{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
-
-<div class="product-page-wrapper">
-
-    <div class="product-slider-block">
-
-    <div class="popular-question-block">
-
-
-				<div class="popular-content-wrapper page-width">
-					<div class="popular-header">
-						<div class="search-selector-wrapper">
-
-				    {% if show_topic_dropdown %}
-              <div class="search-selector">
-                <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
-              </div>
-            {% endif %}
-        
-            {% if show_product_dropdown %}
-              <div class="search-selector">
-                <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
-              </div>
-            {% endif %}
-        
-            {% if show_collection_dropdown %}
-              <div class="search-selector">
-                <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
-              </div>
-            {% endif %}
-
-					</div>
-
-
-					<div class="popular-card-wrapper" id="searchListigBody" data-faqs-to-show="6">
-
-					</div>
-
-          <div class="browse-categories" id="loadBtnDiv">
-            <button id="loadMoreBtn"  >Load More</button>
-        </div>
-
-				</div>
-			</div>
-      </div>
-
-
-
-
 </div>
-</div>
+
 
 <script>
 
