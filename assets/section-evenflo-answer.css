@@ -125,16 +125,19 @@
 }
 
 @media screen and (max-width: 767px) {
-	.product-list {
-		gap: 0;
-		flex-direction: column;
-	}
-	.product-content {
-		max-width: 100%;
-	}
-	.product-list + .question-banner-links a {
-		font-size: 16px;
-	}
+  .product-list {
+      gap: 0;
+      flex-direction: column;
+  }
+  .product-content {
+      max-width: 100%;
+  }
+  .product-list + .question-banner-links a {
+      font-size: 16px;
+  }
+  .question-banner-wrapper h1 .copy-clipboard-btn {
+      display: none;
+  }
   .copy-clipboard-btn {
       display: inline-flex;
       gap: 10px;
