@@ -73,8 +73,7 @@ function copyBtnFunc(){
 
 
 
-function copyCurrentUrlToClipboard(event) {
-  console.log(event)
+function copyCurrentUrlToClipboard() {
 	var dummyInput = document.createElement("input");
 
 	dummyInput.value = window.location.href;
