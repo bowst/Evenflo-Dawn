@@ -16,9 +16,8 @@
 function productList(){
   let productListWapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
   let bullet = productListWapper.length;
-  console.log(bullet)
-  productListWapper.forEach((product, index)=>{
-    if(bullet > 1){
+  console.log(bullet, productListWapper)
+     if(bullet > 1){
           document.querySelector(".question-banner-wrapper .product-list").classList.add("product-list-custom");
           document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").classList.add("question-banner-links-show");
           document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").addEventListener("click", ()=>{
@@ -27,7 +26,6 @@ function productList(){
           })
        
       }
-  })
 }
 
 function fetchQuestionsAnswerData(id) {
