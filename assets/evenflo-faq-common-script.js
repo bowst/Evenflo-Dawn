@@ -86,7 +86,6 @@ function copyCurrentUrlToClipboard(event) {
 	navigator.clipboard
 		.writeText(dummyInput.value)
 		.then(() => {
-            // copyBtnFunc();
 			alert("URL copied to clipboard");
 		})
 		.catch((err) => {
@@ -94,6 +93,7 @@ function copyCurrentUrlToClipboard(event) {
 			alert("Failed to copy URL to clipboard");
 		})
 		.finally(() => {
+copyBtnFunc()
 			document.body.removeChild(dummyInput);
 		});
 }
