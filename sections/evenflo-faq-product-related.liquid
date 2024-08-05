@@ -18,6 +18,8 @@
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
 
+      <h3 id="productDescription"></h3>
+
       <div class="help-article-link-wrapper" id="productLinks">
         
       </div>
@@ -75,6 +77,7 @@
 
 
         document.getElementById('productName').innerHTML = data?.name;
+        document.getElementById('productDescription').innerHTML = data?.description;
 
         const productLinks = document.getElementById('productLinks');
         let linksHtml = ``;
