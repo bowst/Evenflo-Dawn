@@ -13,21 +13,22 @@
 
 <script>
 // productList();
-// function productList(){
-//   let productListWapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
-//   let bullet = productListWapper.length;
-//   productListWapper.forEach((product, index)=>{
-//     if(bullet > 1){
-//           document.querySelector(".question-banner-wrapper .product-list").classList.add("product-list-custom");
-//           document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").classList.add("question-banner-links-show");
-//           document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").addEventListener("click", ()=>{
-//               document.querySelector(".question-banner-wrapper .product-list").classList.toggle("product-list-custom");
-//               console.log("bullets greater then 1");
-//           })
+function productList(){
+  let productListWapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
+  let bullet = productListWapper.length;
+  console.log(bullet)
+  productListWapper.forEach((product, index)=>{
+    if(bullet > 1){
+          document.querySelector(".question-banner-wrapper .product-list").classList.add("product-list-custom");
+          document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").classList.add("question-banner-links-show");
+          document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").addEventListener("click", ()=>{
+              document.querySelector(".question-banner-wrapper .product-list").classList.toggle("product-list-custom");
+              console.log("bullets greater then 1");
+          })
        
-//       }
-//   })
-// }
+      }
+  })
+}
 
 function fetchQuestionsAnswerData(id) {
   const container = document.querySelector('.question-banner-wrapper');
@@ -151,7 +152,7 @@ function fetchQuestionsAnswerData(id) {
       // Hide the loader
       if (loader) {
         loader.style.display = 'none';
-        // productList();
+        productList();
       }
     });
 }
