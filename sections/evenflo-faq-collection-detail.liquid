@@ -53,40 +53,6 @@
     </div>
     </div>
 
-    {% comment %} <div class="popular-question-block">
-				<div class="popular-content-wrapper page-width">
-					<div class="popular-header">
-						<div class="search-selector-wrapper">
-							<div class="search-selector">
-								<select id="selectProduct" onchange="handleDropDownChange(event)">
-							
-								</select>
-							</div>
-							<div class="search-selector">
-								<select id="selectTopic" onchange="handleDropDownChange(event)">
-							
-								</select>
-							</div>
-						</div>
-
-						<div class="search-input">
-							<input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)"/>
-						</div>
-
-					</div>
-
-
-					<div class="popular-card-wrapper" id="faqsByCollection" data-faqs-to-show="6">
-
-					</div>
-
-				</div>
-			</div>
-
-
-
-
-</div> {% endcomment %}
 
 {% render 'faq-load-more-block', show_topic_dropdown:true, show_product_dropdown:true %}
 

@@ -73,15 +73,30 @@
       .then((response) => response.json())
       .then((data) => {
 
-       const productId = data?.shopify_id;
+       const productLinks = document.getElementById('productLinks');
+        let linksHtml = ``;
 
-        document.getElementById('productName').innerHTML = data?.name;
-        document.getElementById('productLinks').innerHTML = `
-          <a href="/support/${productId}">Product Guide</a>
-          <a href="${data?.english_manual_url}">Manual EN</a>
-          <a href="${data?.spanish_manual_url}">Manual ES</a>
-          <a href="${data?.french_manual_url}">Manual FR</a>
-        `;
+        if(data?.shopify_page_handel){
+          linksHtml += `<a href="/support/${data.shopify_page_handel}">Product Guide </a> | `
+        }
+
+        if (data?.english_manual_url) {
+          linksHtml += `<a href="${data.english_manual_url}">Manual EN</a>`;
+        }
+
+        if (data?.spanish_manual_url) {
+          linksHtml += `<a href="${data.spanish_manual_url}">Manual ES</a>`;
+        }
+
+        if (data?.french_manual_url) {
+          linksHtml += `<a href="${data.french_manual_url}">Manual FR</a>`;
+        }
+
+        if (data?.warranty_certificate) {
+          linksHtml += ` | <a href="${data.warranty_certificate}">Warranty</a>`;
+        }
+
+        productLinks.innerHTML = linksHtml;
         //Hiding Popular questions heading
         if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
           document.getElementById('popularQuestionHeading').style.display ="none";
