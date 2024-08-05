@@ -1,6 +1,6 @@
 <a href="{{ section.settings.link_url }}">
   {%- for block in section.blocks -%}
-    {% if block.settings.loyalty_option == 'gold' %}
+    {% if block.settings.loyalty_option == 'gold' and customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver" %}
       {{ 'SDS' }}
       <div style="position: relative;">
         <div class="desktop">
