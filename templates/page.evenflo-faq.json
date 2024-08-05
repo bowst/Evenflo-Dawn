@@ -79,6 +79,39 @@
         "supportActionButton": "Call to Action",
         "backgroundImage": "shopify:\/\/shop_images\/layout_none_full-width_true_size_lg_stage_design.png"
       }
+    },
+    "evenflo_loyalty_banner_fgLrWX": {
+      "type": "evenflo-loyalty-banner",
+      "blocks": {
+        "loyalty_8YPfCf": {
+          "type": "loyalty",
+          "settings": {
+            "loyalty_option": "gold"
+          }
+        },
+        "loyalty_PcFEq3": {
+          "type": "loyalty",
+          "settings": {
+            "loyalty_option": "gold"
+          }
+        },
+        "loyalty_HpTX7c": {
+          "type": "loyalty",
+          "settings": {
+            "loyalty_option": "gold"
+          }
+        }
+      },
+      "block_order": [
+        "loyalty_8YPfCf",
+        "loyalty_PcFEq3",
+        "loyalty_HpTX7c"
+      ],
+      "settings": {
+        "link_url": "",
+        "section_text_url": "",
+        "sectoin_link_text": "*Conditions apply. Details"
+      }
     }
   },
   "order": [
@@ -87,6 +120,7 @@
     "categories",
     "collections",
     "topics",
-    "support"
+    "support",
+    "evenflo_loyalty_banner_fgLrWX"
   ]
 }
