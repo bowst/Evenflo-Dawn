@@ -78,7 +78,6 @@ function copyCurrentUrlToClipboard() {
 	navigator.clipboard
 		.writeText(dummyInput.value)
 		.then(() => {
-			alert("URL copied to clipboard");
 		})
 		.catch((err) => {
 			console.error("Failed to copy:", err);
