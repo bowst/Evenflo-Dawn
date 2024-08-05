@@ -12,11 +12,11 @@
 
 
 <script>
-productList();
+// productList();
 function productList(){
-  let productList = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
-  let bullet = productList.length;
-  productList.forEach((product, index)=>{
+  let productListWapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
+  let bullet = productListWapper.length;
+  productListWapper.forEach((product, index)=>{
     if(bullet > 1){
           document.querySelector(".question-banner-wrapper .product-list").classList.add("product-list-custom");
           document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").classList.add("question-banner-links-show");
