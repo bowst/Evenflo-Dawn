@@ -98,7 +98,12 @@
 .product-list + .question-banner-links.question-banner-links-show{
   display: inline-flex;
 }
-
+.copy-clipboard-btn {
+  display: none;
+}
+.question-banner-wrapper h1 .copy-clipboard-btn {
+    display: inline-block;
+}
 
 
 @media screen and (max-width: 1024px) {
