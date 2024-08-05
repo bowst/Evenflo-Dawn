@@ -41,48 +41,33 @@
 
 <div class="product-page-wrapper">
 
-
-
     <div class="product-slider-block">
 
-        <div class="page-width">
-            <div class="product-slider-main-wrapper">
-
-
-                <div class="product-slider-heading center" id="collectionDetail">
-                 {% comment %} Content will be dynamic {% endcomment %}
-                </div>
-                 <div class="swiper mySwiper product-slider-wrapper" >
-                    <div class="swiper-wrapper" id="productsInCollection" data-products-to-show="6">
-                      {% comment %} Content will be dynamic {% endcomment %}
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                  </div>
-                <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-        </div>
-    </div>
-
     <div class="popular-question-block">
+
+
 				<div class="popular-content-wrapper page-width">
 					<div class="popular-header">
 						<div class="search-selector-wrapper">
-							<div class="search-selector">
-								<select id="selectProduct" onchange="handleDropDownChange(event)">
-							
-								</select>
-							</div>
-							<div class="search-selector">
-								<select id="selectTopic" onchange="handleDropDownChange(event)">
-							
-								</select>
-							</div>
-						</div>
-						<div class="search-input">
-							<input id="searchFAQ" type="text" placeholder="query" oninput="debouncedSearch(event)"/>
-						</div>
+
+				    {% if show_topic_dropdown %}
+              <div class="search-selector">
+                <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
+              </div>
+            {% endif %}
+        
+            {% if show_product_dropdown %}
+              <div class="search-selector">
+                <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
+              </div>
+            {% endif %}
+        
+            {% if show_collection_dropdown %}
+              <div class="search-selector">
+                <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
+              </div>
+            {% endif %}
+
 					</div>
 
 
@@ -96,6 +81,7 @@
 
 				</div>
 			</div>
+      </div>
 
 
 
