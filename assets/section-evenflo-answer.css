@@ -76,7 +76,6 @@
 .product-list + .question-banner-links{
 	background: none;
     color: #2996c5;
-    display: flex;
     gap: 8px;
     text-decoration-line: underline;
     font-size: 19.2px;
@@ -89,7 +88,7 @@
     cursor: pointer;
 }
 .product-list + .question-banner-links.question-banner-links-show{
-  display: block;
+  display: flex;
 }
 
 @media screen and (max-width: 1024px) {
