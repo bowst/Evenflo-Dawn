@@ -17,7 +17,6 @@ function fetchFAQsByFilters({
 	appendTo = "searchListigBody",
 	showLoadMore = true,
 }) {
-	alert(appendTo);
 	const container = document.getElementById(appendTo);
 
 	const faqsToShow =
