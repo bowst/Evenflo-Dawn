@@ -10,14 +10,14 @@
             width=""
             height=""
             class="desktop"
-            src="{{ block.settings.image_desktop | file_img_url: 'large' | image_tag }}">
+            src="{{ block.settings.image_desktop | image_url }}">
         </div>
         <div class="mobile">
           <img
             width=""
             height=""
             class="mobile"
-            src="{{ block.settings.image_mobile }}">
+            src="{{ block.settings.image_mobile | image_url }}">
         </div>
       {% endif %}
     {% elsif block.settings.loyalty_option == 'bronse&silver' %}
@@ -27,14 +27,14 @@
             width=""
             height=""
             class="desktop"
-            src="{{ block.settings.image_desktop }}">
+            src="{{ block.settings.image_desktop | image_url }}">
         </div>
         <div class="mobile">
           <img
             width=""
             height=""
             class="mobile"
-            src="{{ block.settings.image_mobile }}">
+            src="{{ block.settings.image_mobile | image_url }}">
         </div>
       {% endif %}
     {% elsif block.settings.loyalty_option == 'default' %}
@@ -51,7 +51,7 @@
             width=""
             height=""
             class="mobile"
-            src="{{ block.settings.image_mobile }}">
+            src="{{ block.settings.image_mobile | image_url }}">
         </div>
       {% endunless %}    
     {% endif %}
