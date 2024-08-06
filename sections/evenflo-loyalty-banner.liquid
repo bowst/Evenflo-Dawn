@@ -4,40 +4,40 @@
     </a>
     {%- for block in section.blocks -%}
     {% if block.settings.loyalty_option == 'gold' %}
-    {% if customer.tags contains "swell_vip_gold" %}
-      <div class="desktop">
-        <img
-          width=""
-          height=""
-          class="desktop"
-          src="{{ block.settings.image_desktop | file_img_url: 'large' | image_tag }}">
-      </div>
-      <div class="mobile">
-        <img
-          width=""
-          height=""
-          class="mobile"
-          src="{{ block.settings.image_mobile }}">
-      </div>
-    {% endif %}
+      {% if customer.tags contains "swell_vip_gold" %}
+        <div class="desktop">
+          <img
+            width=""
+            height=""
+            class="desktop"
+            src="{{ block.settings.image_desktop | file_img_url: 'large' | image_tag }}">
+        </div>
+        <div class="mobile">
+          <img
+            width=""
+            height=""
+            class="mobile"
+            src="{{ block.settings.image_mobile }}">
+        </div>
+      {% endif %}
     {% elsif block.settings.loyalty_option == 'bronse&silver' %}
-    {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver" %}
-      <div class="desktop">
-        <img
-          width=""
-          height=""
-          class="desktop"
-          src="{{ block.settings.image_desktop }}">
-      </div>
-      <div class="mobile">
-        <img
-          width=""
-          height=""
-          class="mobile"
-          src="{{ block.settings.image_mobile }}">
-      </div>
-    {% endif %}
-      {% elsif block.settings.loyalty_option == 'default' %}
+      {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver" %}
+        <div class="desktop">
+          <img
+            width=""
+            height=""
+            class="desktop"
+            src="{{ block.settings.image_desktop }}">
+        </div>
+        <div class="mobile">
+          <img
+            width=""
+            height=""
+            class="mobile"
+            src="{{ block.settings.image_mobile }}">
+        </div>
+      {% endif %}
+    {% elsif block.settings.loyalty_option == 'default' %}
        <div class="desktop">
         <img
           width=""
