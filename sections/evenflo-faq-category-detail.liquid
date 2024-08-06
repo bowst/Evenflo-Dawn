@@ -1,4 +1,4 @@
-{{ 'section-evenflo-search.css' | asset_url | stylesheet_tag }}
+{{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
 
 {% comment %} Class override in this section {% endcomment %}
 <style>
@@ -23,6 +23,10 @@
   </div>
 </div>
 
+
+
+<div class="product-page-wrapper">
+
 <div class="popular-question-block" id="categoryRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
   <div class="popular-content-wrapper page-width">
     <div class="heading center">
@@ -30,6 +34,8 @@
     </div>
     <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
+</div>
+
 </div>
 
 {% assign categories_to_show = 6 %}
