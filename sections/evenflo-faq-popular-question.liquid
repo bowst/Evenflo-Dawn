@@ -13,7 +13,7 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetchFAQsByFilters({popular:true});
+  fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
 });
 
 document.addEventListener('shopify:section:load', (event) => { 

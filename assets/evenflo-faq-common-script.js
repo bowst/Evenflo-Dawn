@@ -14,8 +14,10 @@ function fetchFAQsByFilters({
 	productID = "",
 	collectionID = "",
 	popular = false,
+	appendTo = "searchListigBody",
 }) {
-	const container = document.getElementById("searchListigBody");
+	alert(appendTo);
+	const container = document.getElementById(appendTo);
 
 	if (!container) {
 		console.error("searchListigBody wrapper container not found");
