@@ -16,17 +16,17 @@ function fetchFAQsByFilters({
 	popular = false,
 	appendTo = "searchListigBody",
 }) {
-	alert(appendTo);
+	alert(appendTo + "dkdk");
 	const container = document.getElementById(appendTo);
 	const faqsToShow =
-		document.getElementById("faqsToShow")?.dataset.faqsToShow || 3;
+		document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
 
 	if (!container) {
 		console.error("searchListigBody wrapper container not found");
 		return;
 	}
 
-	if (loadMoreBtn != undefined) {
+	if (typeof loadMoreBtn != undefined) {
 		loadMoreBtn.style.display = "none";
 	}
 
@@ -70,7 +70,7 @@ function fetchFAQsByFilters({
 				container.appendChild(popularCard);
 			});
 
-			if (loadMoreBtn != undefined) {
+			if (typeof loadMoreBtn != undefined) {
 				if (data?.next) {
 					loadMoreBtn.style.display = "block";
 				} else {
