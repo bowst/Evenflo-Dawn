@@ -2,26 +2,127 @@
   <a href="{{ section.settings.link_url }}">
   </a>
   <div style="position: relative;">
-  {%- for block in section.blocks -%}
-  {% if block.settings.loyalty_option == 'gold' %}
-  {% if customer.tags contains "swell_vip_gold" %}
-    <div class="desktop">
-      <img
-        width=""
-        height=""
-        class="desktop"
-        src="
-          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Desktop_1920x450_2beb3386-b894-4102-9929-35251f52342d.jpg?v=1711571389
-          {% elsif customer.tags contains "swell_vip_gold" %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Desktop_1920x450_2f19050d-f5ae-4631-8144-6c394e3072dc.jpg?v=1711571389
-          {% else %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Desktop_1920x450_0e420b55-a294-4e5a-bd44-2672d3ee6492.jpg?v=1711572376
-          {% endif %}
-        "
-      >
+    {%- for block in section.blocks -%}
+    {% if block.settings.loyalty_option == 'gold' %}
+    {% if customer.tags contains "swell_vip_gold" %}
+      <div class="desktop">
+        <img
+          width=""
+          height=""
+          class="desktop"
+          src="
+            {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Desktop_1920x450_2beb3386-b894-4102-9929-35251f52342d.jpg?v=1711571389
+            {% elsif customer.tags contains "swell_vip_gold" %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Desktop_1920x450_2f19050d-f5ae-4631-8144-6c394e3072dc.jpg?v=1711571389
+            {% else %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Desktop_1920x450_0e420b55-a294-4e5a-bd44-2672d3ee6492.jpg?v=1711572376
+            {% endif %}
+          "
+        >
+      </div>
+      <div class="mobile">
+        <img
+          width=""
+          height=""
+          class="mobile"
+          src="
+            {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Mobile_400x500_618c255b-9dd0-47b0-b461-63b46db534e3.jpg?v=1711571389
+            {% elsif customer.tags contains "swell_vip_gold" %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Mobile_400x500_6896a247-3053-47bb-8b6e-32131306a86e.jpg?v=1711571389
+            {% else %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Mobile_400x500_100a0ebd-4402-40a4-b90c-5c381fbe4e23.jpg?v=1711572376
+            {% endif %}
+          "
+        >
+      </div>
+    {% else %}
+      <div class="desktop">
+        <img
+          width=""
+          height=""
+          class="desktop"
+          src="
+            {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Desktop_1920x450_2beb3386-b894-4102-9929-35251f52342d.jpg?v=1711571389
+            {% elsif customer.tags contains "swell_vip_gold" %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Desktop_1920x450_2f19050d-f5ae-4631-8144-6c394e3072dc.jpg?v=1711571389
+            {% else %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Desktop_1920x450_0e420b55-a294-4e5a-bd44-2672d3ee6492.jpg?v=1711572376
+            {% endif %}
+          "
+        >
+      </div>
+      <div class="mobile">
+        <img
+          width=""
+          height=""
+          class="mobile"
+          src="
+            {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Mobile_400x500_618c255b-9dd0-47b0-b461-63b46db534e3.jpg?v=1711571389
+            {% elsif customer.tags contains "swell_vip_gold" %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Mobile_400x500_6896a247-3053-47bb-8b6e-32131306a86e.jpg?v=1711571389
+            {% else %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Mobile_400x500_100a0ebd-4402-40a4-b90c-5c381fbe4e23.jpg?v=1711572376
+            {% endif %}
+          "
+        >
+      </div>
+    {% endif %}
+    {% elsif block.settings.loyalty_option == 'bronse$silver' %}
+    {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver" %}
+      <div class="desktop">
+        <img
+          width=""
+          height=""
+          class="desktop"
+          src="
+            {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Desktop_1920x450_2beb3386-b894-4102-9929-35251f52342d.jpg?v=1711571389
+            {% elsif customer.tags contains "swell_vip_gold" %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Desktop_1920x450_2f19050d-f5ae-4631-8144-6c394e3072dc.jpg?v=1711571389
+            {% else %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Desktop_1920x450_0e420b55-a294-4e5a-bd44-2672d3ee6492.jpg?v=1711572376
+            {% endif %}
+          "
+        >
     </div>
-    <div class="mobile">
+      <div class="mobile">
+        <img
+          width=""
+          height=""
+          class="mobile"
+          src="
+            {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Mobile_400x500_618c255b-9dd0-47b0-b461-63b46db534e3.jpg?v=1711571389
+            {% elsif customer.tags contains "swell_vip_gold" %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Mobile_400x500_6896a247-3053-47bb-8b6e-32131306a86e.jpg?v=1711571389
+            {% else %}
+                https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Mobile_400x500_100a0ebd-4402-40a4-b90c-5c381fbe4e23.jpg?v=1711572376
+            {% endif %}
+          "
+        >
+    </div>
+    {% else %}
+      <div class="desktop">
+                    <img
+                      width=""
+                      height=""
+                      class="desktop"
+                      src="
+                        {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+                            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Desktop_1920x450_2beb3386-b894-4102-9929-35251f52342d.jpg?v=1711571389
+                        {% elsif customer.tags contains "swell_vip_gold" %}
+                            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Desktop_1920x450_2f19050d-f5ae-4631-8144-6c394e3072dc.jpg?v=1711571389
+                        {% else %}
+                            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Desktop_1920x450_0e420b55-a294-4e5a-bd44-2672d3ee6492.jpg?v=1711572376
+                        {% endif %}
+                      "
+                    >
+                  </div>
+      <div class="mobile">
       <img
         width=""
         height=""
@@ -37,122 +138,19 @@
         "
       >
     </div>
-  {% else %}
-    <div class="desktop">
-      <img
-        width=""
-        height=""
-        class="desktop"
-        src="
-          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Desktop_1920x450_2beb3386-b894-4102-9929-35251f52342d.jpg?v=1711571389
-          {% elsif customer.tags contains "swell_vip_gold" %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Desktop_1920x450_2f19050d-f5ae-4631-8144-6c394e3072dc.jpg?v=1711571389
-          {% else %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Desktop_1920x450_0e420b55-a294-4e5a-bd44-2672d3ee6492.jpg?v=1711572376
-          {% endif %}
-        "
-      >
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    <div style="min-height: 100%; margin: 0; z-index: 20 !important;">
+      <div style="position: absolute; bottom: 1.2vh; right: 7vw; width: 200px;">
+        <p style="color: white !important; text-align: right;">
+          <a href="{{ section.settings.section_text_url }}" style="color: white !important;">
+            {{- section.settings.sectoin_link_text -}}
+          </a>
+        </p>
+      </div>
     </div>
-    <div class="mobile">
-      <img
-        width=""
-        height=""
-        class="mobile"
-        src="
-          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Mobile_400x500_618c255b-9dd0-47b0-b461-63b46db534e3.jpg?v=1711571389
-          {% elsif customer.tags contains "swell_vip_gold" %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Mobile_400x500_6896a247-3053-47bb-8b6e-32131306a86e.jpg?v=1711571389
-          {% else %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Mobile_400x500_100a0ebd-4402-40a4-b90c-5c381fbe4e23.jpg?v=1711572376
-          {% endif %}
-        "
-      >
-    </div>
-  {% endif %}
-  {% elsif block.settings.loyalty_option == 'bronse$silver' %}
-  {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver" %}
-    <div class="desktop">
-      <img
-        width=""
-        height=""
-        class="desktop"
-        src="
-          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Desktop_1920x450_2beb3386-b894-4102-9929-35251f52342d.jpg?v=1711571389
-          {% elsif customer.tags contains "swell_vip_gold" %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Desktop_1920x450_2f19050d-f5ae-4631-8144-6c394e3072dc.jpg?v=1711571389
-          {% else %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Desktop_1920x450_0e420b55-a294-4e5a-bd44-2672d3ee6492.jpg?v=1711572376
-          {% endif %}
-        "
-      >
   </div>
-    <div class="mobile">
-      <img
-        width=""
-        height=""
-        class="mobile"
-        src="
-          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Mobile_400x500_618c255b-9dd0-47b0-b461-63b46db534e3.jpg?v=1711571389
-          {% elsif customer.tags contains "swell_vip_gold" %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Mobile_400x500_6896a247-3053-47bb-8b6e-32131306a86e.jpg?v=1711571389
-          {% else %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Mobile_400x500_100a0ebd-4402-40a4-b90c-5c381fbe4e23.jpg?v=1711572376
-          {% endif %}
-        "
-      >
-  </div>
-  {% else %}
-    <div class="desktop">
-                  <img
-                    width=""
-                    height=""
-                    class="desktop"
-                    src="
-                      {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-                          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Desktop_1920x450_2beb3386-b894-4102-9929-35251f52342d.jpg?v=1711571389
-                      {% elsif customer.tags contains "swell_vip_gold" %}
-                          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Desktop_1920x450_2f19050d-f5ae-4631-8144-6c394e3072dc.jpg?v=1711571389
-                      {% else %}
-                          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Desktop_1920x450_0e420b55-a294-4e5a-bd44-2672d3ee6492.jpg?v=1711572376
-                      {% endif %}
-                    "
-                  >
-                </div>
-    <div class="mobile">
-    <img
-      width=""
-      height=""
-      class="mobile"
-      src="
-        {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Silver_Bronze_Header_Mobile_400x500_618c255b-9dd0-47b0-b461-63b46db534e3.jpg?v=1711571389
-        {% elsif customer.tags contains "swell_vip_gold" %}
-            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_Gold_Header_Mobile_400x500_6896a247-3053-47bb-8b6e-32131306a86e.jpg?v=1711571389
-        {% else %}
-            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Loyalty-Exclusive_Promo_2024_New_Header_Mobile_400x500_100a0ebd-4402-40a4-b90c-5c381fbe4e23.jpg?v=1711572376
-        {% endif %}
-      "
-    >
-  </div>
-  {% endif %}
-  {% endif %}
-  {% endfor %}
-  <div style="min-height: 100%; margin: 0; z-index: 20 !important;">
-  <div style="position: absolute; bottom: 1.2vh; right: 7vw; width: 200px;">
-    <a style="z-index: 120 !important; position: relative !important; text-decoration: none;" href="https://www.evenflo.com/pages/rewards">
-      <p {% comment %} class="EzfySlideshow-subtitle" {% endcomment %} style="color: white !important; text-align: right;">
-        <a href="{{ section.settings.section_text_url }}" style="color: white !important;">
-          {{- section.settings.sectoin_link_text -}}
-        </a>
-      </p>
-    </a>
-  </div>
-  </div>
-</div>
 </section>
 
 {% stylesheet %}
