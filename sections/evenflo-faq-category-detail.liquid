@@ -51,8 +51,6 @@
 
 <script>
 
-
-
   function fetchPopularCategoriesRelatedData(categoryID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
@@ -121,7 +119,7 @@
     if (urlParams.has('cat_id')) {
       categoryID = urlParams.get('cat_id');
       fetchPopularCategoriesRelatedData(categoryID);
-      fetchFAQsByFilters(categoryID);
+      fetchFAQsByFilters({categoryID:categoryID});
       fetchTopicsByType(categoryID,true,"category")
     } else {
       window.location.href = '/pages/evenflo-faq-portal';

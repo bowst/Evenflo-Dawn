@@ -15,6 +15,7 @@ function fetchFAQsByFilters({
 	collectionID = "",
 	popular = false,
 	appendTo = "searchListigBody",
+	showLoadMore = true,
 }) {
 	const container = document.getElementById(appendTo);
 
@@ -28,7 +29,7 @@ function fetchFAQsByFilters({
 		return;
 	}
 
-	if (loadMoreBtn) {
+	if (loadMoreBtn && showLoadMore) {
 		loadMoreBtn.style.display = "none";
 	}
 
@@ -72,7 +73,7 @@ function fetchFAQsByFilters({
 				container.appendChild(popularCard);
 			});
 
-			if (loadMoreBtn) {
+			if (loadMoreBtn && showLoadMore) {
 				loadMoreBtn.style.display = data?.next ? "block" : "none";
 			}
 		})

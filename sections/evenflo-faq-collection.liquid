@@ -7,8 +7,7 @@
         <h1>{{ section.settings.faqCollectionTitle }}</h1>
       </div>
       <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}">
-        <!-- Loader -->
-        <div id="collectionsLoader" class="loader" style="display: none;"></div>
+     
       </div>
     </div>
   </div>
@@ -22,16 +21,8 @@
     container.innerHTML = "";  // Clear existing content
 
       //Creating loader div through javascript
-      const loader = document.createElement('div');
-      loader.id = 'collectionsLoader';
-      loader.className = 'loader';
-      //loader.style.display = 'block';
-
-      container.appendChild(loader);
+      const loader = appendLoader(loader)
    
-      if (loader) {
-        loader.style.display = 'block';
-      }
 
   fetch(evenFloFAQURL + 'collection/?page=1&page_size=6')
     .then(response => response.json())

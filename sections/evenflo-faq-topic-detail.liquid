@@ -2,7 +2,6 @@
 
 {% comment %} Class override in this section {% endcomment %}
 <style>
-
   .help-articles-block {
     background: #fff;
   }
@@ -12,116 +11,83 @@
   }
 </style>
 
-
-{% assign products_to_show = section.settings.topicRelatedRange %}
+{% assign products_to_show = section.settings.categoryRelatedRange %}
 
 <div class="help-articles-block">
-  <div class="help-articles-content page-width center"> 
+  <div class="help-articles-content page-width center">
     <div class="help-article-search-wrapper">
       <h1 id="topicName"></h1>
+      <p id="topicDescription"></p>
     </div>
   </div>
 </div>
 
-<div class="popular-question-block" id="topicRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
+<div class="popular-question-block" id="categoryRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
   <div class="popular-content-wrapper page-width">
     <div class="heading center">
-      <h2 id="popularQuestionHeading">{{ section.settings.topicRelatedTitle }}</h2>
+      <h2 id="popularQuestionHeading">{{ section.settings.categoryRelatedTitle }}</h2>
     </div>
     <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
 </div>
 
 
-
-{% render 'faq-load-more-block' %}
-
-{% assign topics_to_show = 3 %}
-{% assign topics_title = "By Topics" %}
-{% render 'faq-topic-block', topics_to_show:topics_to_show , topics_title:topics_title %}
-
-{% render 'faq-support-block' %}
-
-
+{% render 'faq-load-more-block', show_collection_dropdown: true %}
 
 <script>
+function fetchTopicDetail(topicID) {
+  let url = `${evenFloFAQURL}topics/${topicID}/`;
 
-  function fetchPopularTopicRelatedData(topicID) {
-    const container = document.getElementById("popularCards");
-    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById('topicName').innerHTML = data?.name;
+      document.getElementById('topicDescription').innerHTML = data?.description;
+    })
+    .catch((error) => {
+      console.error("Error fetching products:", error);
+    });
+}
 
-    if (!container) {
-      console.log("Error on getting container");
-      return;
-    }
+function fetchCollectionsForDropDown() {
+  const container = document.getElementById("selectCollection");
 
-    container.innerHTML = ""; // Clear existing content
-    const loader = appendLoader(container);
-      
-    //TODO: Need to change URL 
-    let url = evenFloFAQURL + "products/" + topicID;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-
-      document.getElementById('topicName').innerHTML = data?.name || "Child Fit";
-        //Hiding Popular questions heading
-        if (!data?.related_popular_faqs || (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0)){
-          document.getElementById('popularQuestionHeading').style.display ="none";
-        }
-
-        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
-
-        const popularCard = createPopularCardDivElement("popular-card");
-
-        const faqsContent = getFAQContent(product?.products || []);
-
-        const tags = getTagsArray(product?.tags || []);
-
-        const tagsHtml = getTagsHtml(tags);
-
-        popularCard.innerHTML = setFAQBlockInnerHtml(
-          product?.topic?.name || "",
-          product.question,
-          faqsContent,
-          product.answer,
-          product?.id,
-          tagsHtml
-        );
-
-        container.appendChild(popularCard);
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-      })
-      .finally(() => {
-        if (loader) {
-          hideLoader(loader);
-          toggleAnswerBullet();
-        }
-      });
+  if (!container) {
+    return;
   }
 
+  emptyContainerHtml(container);
+  createAndAppendDropDownOption(container, "Select Collection");
 
- 
-  document.addEventListener('DOMContentLoaded', () => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+  fetch(evenFloFAQURL + 'collection/?page=1')
+    .then(response => response.json())
+    .then(data => {
+      data?.results?.forEach((collection) => {
+        const option = document.createElement("option");
+        option.value = collection.id;
+        option.textContent = collection.name;
+        container.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching collections:', error);
+    });
+}
 
-    if (urlParams.has('tid')) {
+document.addEventListener('DOMContentLoaded', () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
 
-      topicID = urlParams.get('tid');
-      fetchPopularTopicRelatedData(topicID);
-      fetchFAQsByFilters("","",topicID);
-      //fetchDropDownProductsByType(topicID)
-      
-    } else {
-      window.location.href = '/pages/evenflo-faq-portal';
-    }
-  });
+  if (urlParams.has('tid')) {
+    topicID = urlParams.get('tid');
+    fetchTopicDetail(topicID);
+    fetchFAQsByFilters({ topicsID: topicID, popular: true, appendTo: "popularCards", showLoadMore: false });
+    fetchFAQsByFilters({ topicsID: topicID });
+    fetchCollectionsForDropDown();
+  } else {
+    window.location.href = '/pages/evenflo-faq-portal';
+  }
+});
 </script>
 
 {% schema %}
