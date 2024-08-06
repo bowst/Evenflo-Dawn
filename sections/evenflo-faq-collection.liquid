@@ -1,62 +1,48 @@
+{% assign collections_to_show = section.settings.faqCollectionRange %}
 
-{% assign collections_to_show= section.settings.faqCollectionRange %}
-
-  <div class="collection-block">
-    <div class="collection-main-wrapper page-width">
-      <div class="heading">
-        <h1>{{ section.settings.faqCollectionTitle }}</h1>
-      </div>
-      <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}">
-     
-      </div>
+<div class="collection-block">
+  <div class="collection-main-wrapper page-width">
+    <div class="heading">
+      <h1>{{ section.settings.faqCollectionTitle }}</h1>
     </div>
+    <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}"></div>
   </div>
+</div>
 
 <script>
- function getPaginatedCollections() {
-    const container = document.getElementById('allCollections');
-    if(!container){
-      return;
-    }
-    container.innerHTML = "";  // Clear existing content
+function getPaginatedCollections() {
+  const container = document.getElementById('allCollections');
+  if (!container) {
+    return;
+  }
+  container.innerHTML = "";  // Clear existing content
 
-      //Creating loader div through javascript
-      const loader = appendLoader(loader)
-   
+  // Creating loader div through JavaScript
+  const loader = appendLoader(container);
 
   fetch(evenFloFAQURL + 'collection/?page=1&page_size=6')
     .then(response => response.json())
     .then(data => {
-     
-        const blocksToShow = container ? container.dataset.collectionsToShow : 6;
-        
-        if (container) {
-
-            data?.results?.slice(0, blocksToShow).forEach((collection) => {  // Limit to number of collections to show
-            const collectionCard = document.createElement('div');
-            collectionCard.classList.add('collection-card');
-
-            
-            
-            collectionCard.innerHTML = `
-              <a href="/pages/evenflo-collection?cid=${collection?.id}" >
-                <div class="collection-title">
-                    <h2>${collection?.name}</h2>
-                </div>
-                <div class="collection-img">
-                    <img src=${collection?.image} alt="collection-img">
-                </div>
-              </a>
-            `;
+      const blocksToShow = container ? container.dataset.collectionsToShow : 6;
     
-
-            container.appendChild(collectionCard);
-            });
-        } else {
-            console.error('Tab card wrapper container not found');
-        }
-
-
+        data?.results?.slice(0, blocksToShow).forEach((collection) => {  // Limit to number of collections to show
+          const collectionCard = document.createElement('div');
+          collectionCard.classList.add('collection-card');
+          
+          collectionCard.innerHTML = `
+            <a href="/pages/evenflo-collection?cid=${collection?.id}">
+              <div class="collection-title">
+                <h2>${collection?.name}</h2>
+              </div>
+              <div class="collection-img">
+                <img src=${collection?.image} alt="collection-img">
+              </div>
+            </a>
+          `;
+          
+          container.appendChild(collectionCard);
+        });
+     
     })
     .catch(error => {
       console.error('Error fetching collections:', error);
@@ -69,19 +55,10 @@
     });
 }
 
-
-
-
-  document.addEventListener('DOMContentLoaded', () => {
-    
-    getPaginatedCollections();
-  });
+document.addEventListener('DOMContentLoaded', () => {
+  getPaginatedCollections();
+});
 </script>
-
-
-
-
-
 
 {% schema %}
 {
@@ -96,26 +73,23 @@
       "type": "text",
       "id": "faqCollectionTitle",
       "label": "FAQ Collections Title",
-      "default":"Collections"
+      "default": "Collections"
     },
     {
-        "type": "range",
-        "id": "faqCollectionRange",
-        "label": "Collections to show",
-        "default":5,
-        "min": 1,
-        "max": 6,
-        "step": 1
-      }
+      "type": "range",
+      "id": "faqCollectionRange",
+      "label": "Collections to show",
+      "default": 5,
+      "min": 1,
+      "max": 6,
+      "step": 1
+    }
   ],
   "presets": [
     {
-      "name": "EvenFlo FAQ Category",
-      "blocks": [
-        
-      ]
+      "name": "EvenFlo FAQ Collection",
+      "blocks": []
     }
   ]
-  
 }
 {% endschema %}
