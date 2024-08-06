@@ -1,7 +1,7 @@
 <section class="evenflo-loyalty-banner">
-  <a href="{{ section.settings.link_url }}">
-  </a>
   <div style="position: relative;">
+    <a href="{{ section.settings.link_url }}" style="position: absolute; inset: 0">
+    </a>
     {%- for block in section.blocks -%}
     {% if block.settings.loyalty_option == 'gold' %}
     {% if customer.tags contains "swell_vip_gold" %}
