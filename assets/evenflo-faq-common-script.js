@@ -18,6 +18,7 @@ function fetchFAQsByFilters({
 }) {
 	alert(appendTo + "uu");
 	const container = document.getElementById(appendTo);
+
 	const faqsToShow =
 		document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
 	const loadMoreBtn = document.getElementById("loadMoreBtn");
@@ -27,8 +28,9 @@ function fetchFAQsByFilters({
 		return;
 	}
 
-		loadMoreBtn?.style?.display = "none";
-	
+	if (loadMoreBtn) {
+		loadMoreBtn.style.display = "none";
+	}
 
 	if (page == 1) {
 		emptyContainerHtml(container);
@@ -70,13 +72,9 @@ function fetchFAQsByFilters({
 				container.appendChild(popularCard);
 			});
 
-			
-				if (data?.next) {
-					loadMoreBtn?.style?.display = "block";
-				} else {
-					loadMoreBtn?.style?.display = "none";
-				}
-			
+			if (loadMoreBtn) {
+				loadMoreBtn.style.display = data?.next ? "block" : "none";
+			}
 		})
 		.catch((error) => {
 			console.error("Error fetching products:", error);
