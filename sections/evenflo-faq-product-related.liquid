@@ -36,7 +36,7 @@
   </div>
 </div>
 
-<div class="page-width"> 
+{% comment %} <div class="page-width"> 
   <div class="search-listing-wrapper">
     <div class="search-listing-header2">
       <div class="search-selector">
@@ -47,172 +47,167 @@
       </div>
     </div>
     <div class="search-listing-body" id="searchListingBody" data-search-blocks-to-show="8">
-      {% comment %} TO be displayed through javascript {% endcomment %}
+   
     </div>
   </div>
-</div>
+</div> {% endcomment %}
+
+{% render 'faq-load-more-block', show_topic_dropdown:true %}
 
 
 <script>
   
 
-  // function fetchPopularProductsRelatedData(productID) {
-  //   const container = document.getElementById("popularCards");
-  //   const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-  //   let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
-
-  //   if (!container) {
-  //     console.log("Error on getting container");
-  //     return;
-  //   }
-
-  //   container.innerHTML = ""; // Clear existing content
-  //   const loader = appendLoader(container);
-
-  //   let url = evenFloFAQURL + "products/" + productID;
-
-  //   fetch(url)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-
-
-  //       document.getElementById('productName').innerHTML = data?.name;
-  //       document.getElementById('productDescription').innerHTML = data?.description;
-
-  //       const productLinks = document.getElementById('productLinks');
-  //       let linksHtml = ``;
-
-  //       if(data?.shopify_page_handel){
-  //         linksHtml += `<a href="/support/${data.shopify_page_handel}">Product Guide </a> | `
-  //       }
-
-  //       if (data?.english_manual_url) {
-  //         linksHtml += `<a href="${data.english_manual_url}">Manual EN</a>`;
-  //       }
-
-  //       if (data?.spanish_manual_url) {
-  //         linksHtml += `<a href="${data.spanish_manual_url}">Manual ES</a>`;
-  //       }
-
-  //       if (data?.french_manual_url) {
-  //         linksHtml += `<a href="${data.french_manual_url}">Manual FR</a>`;
-  //       }
-
-  //       if (data?.warranty_certificate) {
-  //         linksHtml += ` | <a href="${data.warranty_certificate}">Warranty</a>`;
-  //       }
-
-  //       productLinks.innerHTML = linksHtml;
-  //       //Hiding Popular questions heading
-  //       if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
-  //         document.getElementById('popularQuestionHeading').style.display ="none";
-  //       }
-
-  //       data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
-
-  //       const popularCard = createPopularCardDivElement("popular-card");
-
-  //       const faqsContent = getFAQContent(product?.products || []);
-
-  //       const tags = getTagsArray(product?.tags || []);
-
-  //       const tagsHtml = getTagsHtml(tags);
-
-  //       popularCard.innerHTML = setFAQBlockInnerHtml(
-  //         product?.topic?.name || "",
-  //         product.question,
-  //         faqsContent,
-  //         product.answer,
-  //         product?.id,
-  //         tagsHtml
-  //       );
-
-  //       container.appendChild(popularCard);
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching products:", error);
-  //     })
-  //     .finally(() => {
-  //       if (loader) {
-  //         hideLoader(loader);
-  //         toggleAnswerBullet();
-  //       }
-  //     });
-  // }
-
-  fetchFAQsByFilters({
-      productID :productID,
-      popular :true,
-      appendTo : "popularCards",
-});
-
-
-  function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
-    const container = document.getElementById('searchListingBody');
+  function fetchPopularProductsRelatedData(productID) {
+    const container = document.getElementById("popularCards");
+    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
+    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
 
     if (!container) {
+      console.log("Error on getting container");
       return;
     }
 
-    let blocksToShow = container.dataset.searchBlocksToShow || 8;
-
-    container.innerHTML = ""; 
-
+    container.innerHTML = ""; // Clear existing content
     const loader = appendLoader(container);
 
-    fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&product_id=${productID}`)
-      .then(response => response.json())
-      .then(data => {
+    let url = evenFloFAQURL + "products/" + productID;
 
-        data?.results?.forEach((product) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
 
-          const searchCard = createPopularCardDivElement("search-card");
 
-          const faqsContent = getFAQContent(product?.products || []);
+        document.getElementById('productName').innerHTML = data?.name;
+        document.getElementById('productDescription').innerHTML = data?.description;
 
-          const tags = getTagsArray(product?.tags || []);
+        const productLinks = document.getElementById('productLinks');
+        let linksHtml = ``;
 
-          const tagsHtml = getTagsHtml(tags);
+        if(data?.shopify_page_handel){
+          linksHtml += `<a href="/support/${data.shopify_page_handel}">Product Guide </a> | `
+        }
 
-          searchCard.innerHTML = setFAQBlockInnerHtml(
-            product?.topic?.name || "",
-            product.question,
-            faqsContent,
-            product.answer,
-            "",
-            tagsHtml
-          );
+        if (data?.english_manual_url) {
+          linksHtml += `<a href="${data.english_manual_url}">Manual EN</a>`;
+        }
 
-          container.appendChild(searchCard);
+        if (data?.spanish_manual_url) {
+          linksHtml += `<a href="${data.spanish_manual_url}">Manual ES</a>`;
+        }
+
+        if (data?.french_manual_url) {
+          linksHtml += `<a href="${data.french_manual_url}">Manual FR</a>`;
+        }
+
+        if (data?.warranty_certificate) {
+          linksHtml += ` | <a href="${data.warranty_certificate}">Warranty</a>`;
+        }
+
+        productLinks.innerHTML = linksHtml;
+        //Hiding Popular questions heading
+        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
+          document.getElementById('popularQuestionHeading').style.display ="none";
+        }
+
+        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
+
+        const popularCard = createPopularCardDivElement("popular-card");
+
+        const faqsContent = getFAQContent(product?.products || []);
+
+        const tags = getTagsArray(product?.tags || []);
+
+        const tagsHtml = getTagsHtml(tags);
+
+        popularCard.innerHTML = setFAQBlockInnerHtml(
+          product?.topic?.name || "",
+          product.question,
+          faqsContent,
+          product.answer,
+          product?.id,
+          tagsHtml
+        );
+
+        container.appendChild(popularCard);
         });
       })
-      .catch(error => {
-        console.error('Error fetching products:', error);
+      .catch((error) => {
+        console.error("Error fetching products:", error);
       })
       .finally(() => {
         if (loader) {
           hideLoader(loader);
-         toggleAnswerBullet();
+          toggleAnswerBullet();
         }
       });
   }
 
-  function handleDropDownChange(event) {
-    let topicID = document.getElementById('selectTopic').value;
-    let filter = document.getElementById('searchFAQ').value;
-    fetchFAQsByProduct(productID, filter, topicID);
-  }
 
-  var productID = "";
+  // function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
+  //   const container = document.getElementById('searchListingBody');
+
+  //   if (!container) {
+  //     return;
+  //   }
+
+  //   let blocksToShow = container.dataset.searchBlocksToShow || 8;
+
+  //   container.innerHTML = ""; 
+
+  //   const loader = appendLoader(container);
+
+  //   fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&product_id=${productID}`)
+  //     .then(response => response.json())
+  //     .then(data => {
+
+  //       data?.results?.forEach((product) => {
+
+  //         const searchCard = createPopularCardDivElement("search-card");
+
+  //         const faqsContent = getFAQContent(product?.products || []);
+
+  //         const tags = getTagsArray(product?.tags || []);
+
+  //         const tagsHtml = getTagsHtml(tags);
+
+  //         searchCard.innerHTML = setFAQBlockInnerHtml(
+  //           product?.topic?.name || "",
+  //           product.question,
+  //           faqsContent,
+  //           product.answer,
+  //           "",
+  //           tagsHtml
+  //         );
+
+  //         container.appendChild(searchCard);
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching products:', error);
+  //     })
+  //     .finally(() => {
+  //       if (loader) {
+  //         hideLoader(loader);
+  //        toggleAnswerBullet();
+  //       }
+  //     });
+  // }
+
+  // function handleDropDownChange(event) {
+  //   let topicID = document.getElementById('selectTopic').value;
+  //   let filter = document.getElementById('searchFAQ').value;
+  //   fetchFAQsByProduct(productID, filter, topicID);
+  // }
+
   document.addEventListener('DOMContentLoaded', () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
     if (urlParams.has('pid')) {
-      let productID = urlParams.get('pid');
+      productID = urlParams.get('pid');
       fetchPopularProductsRelatedData(productID);
-      fetchFAQsByProduct(productID);
+      fetchFAQsByFilters({productID:productID});
       fetchTopicsByType(productID,true)
     } else {
       window.location.href = '/pages/evenflo-faq-portal';
