@@ -13,13 +13,13 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetchPopularProductsData();
+  fetchPopularProductsData({popular:true});
 });
 
 document.addEventListener('shopify:section:load', (event) => { 
   const sectionId = event?.detail?.sectionId;
   if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchPopularProductsData();
+    fetchFAQsByFilters({popular:true});
   } 
 });
 
