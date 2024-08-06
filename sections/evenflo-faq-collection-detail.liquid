@@ -40,7 +40,7 @@
                  {% comment %} Content will be dynamic {% endcomment %}
                 </div>
                  <div class="swiper mySwiper product-slider-wrapper" >
-                    <div class="swiper-wrapper" id="productsInCollection" data-products-to-show="6">
+                    <div class="swiper-wrapper" id="productsInCollection" data-faqs-to-show="6">
                       {% comment %} Content will be dynamic {% endcomment %}
                     </div>
                     <div class="swiper-pagination"></div>
@@ -112,7 +112,7 @@ function fetchProductsByCollection(collectionID){
       console.log('data',data);
 
       const productsBlock = document.getElementById('productsInCollection');
-      const blocksToShow = productsBlock ? productsBlock.dataset.productsToShow : 6;
+      const blocksToShow = productsBlock ? productsBlock.dataset.faqsToShow : 6;
 
         data.slice(0, blocksToShow).forEach((product) => {  
 

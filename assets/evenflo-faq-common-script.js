@@ -18,6 +18,8 @@ function fetchFAQsByFilters({
 }) {
 	alert(appendTo);
 	const container = document.getElementById(appendTo);
+	const faqsToShow =
+		document.getElementById("faqsToShow")?.dataset.faqsToShow || 3;
 
 	if (!container) {
 		console.error("searchListigBody wrapper container not found");
@@ -41,7 +43,12 @@ function fetchFAQsByFilters({
 	)
 		.then((response) => response.json())
 		.then((data) => {
-			data?.results?.forEach((product) => {
+			let resultsToShow = data?.results;
+			if (popular) {
+				resultsToShow = resultsToShow.slice(0, faqsToShow);
+			}
+
+			resultsToShow?.forEach((product) => {
 				const popularCard = createPopularCardDivElement("popular-card");
 
 				const faqsContent = getFAQContent(product?.products || []);
@@ -182,7 +189,7 @@ function copyCurrentUrlToClipboard() {
 // 	const container = document.getElementById("popularCards");
 // 	const popularQuestionBlock = document.getElementById("popularQuestionBlock");
 // 	let blocksToShow = popularQuestionBlock
-// 		? popularQuestionBlock.dataset.productsToShow
+// 		? popularQuestionBlock.dataset.faqsToShow
 // 		: 3;
 
 // 	if (!container) {

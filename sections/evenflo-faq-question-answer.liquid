@@ -31,7 +31,7 @@ function fetchQuestionsAnswerData(id) {
   const container = document.querySelector('.question-banner-wrapper');
 
   const questionAnswerBlock = document.getElementById('questionAnswerBlock');
-  let blocksToShow = questionAnswerBlock ? questionAnswerBlock.dataset.productsToShow : 1;
+  let blocksToShow = questionAnswerBlock ? questionAnswerBlock.dataset.faqsToShow : 1;
 
   if(!container){
       return;

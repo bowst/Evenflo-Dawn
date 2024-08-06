@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class="popular-question-block" id="topicRelatedBlock" data-products-to-show="{{ products_to_show }}">
+<div class="popular-question-block" id="topicRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
   <div class="popular-content-wrapper page-width">
     <div class="heading center">
       <h2 id="popularQuestionHeading">{{ section.settings.topicRelatedTitle }}</h2>
@@ -49,7 +49,7 @@
   function fetchPopularTopicRelatedData(topicID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.productsToShow : 3;
+    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
 
     if (!container) {
       console.log("Error on getting container");
