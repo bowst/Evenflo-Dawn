@@ -16,11 +16,11 @@ function fetchFAQsByFilters({
 	popular = false,
 	appendTo = "searchListigBody",
 }) {
-	alert(appendTo + "uu");
 	const container = document.getElementById(appendTo);
 
 	const faqsToShow =
 		document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
+
 	const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 	if (!container) {

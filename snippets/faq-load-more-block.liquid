@@ -36,7 +36,7 @@
 
    
  
-    <div class="popular-card-wrapper" id="searchListigBody" data-search-blocks-to-show="8">
+    <div class="popular-card-wrapper" id="searchListigBody">
      
     </div> 
 
@@ -58,6 +58,10 @@
 var currentPage = 1;
 
 const loadMoreBtn = document.getElementById('loadMoreBtn');
+loadMoreBtn?.addEventListener('click', () => {
+  currentPage++;
+  getFilterValuesAndCallFunc();
+});
 
 function handleDropDownChange(event) {  
 
@@ -69,12 +73,6 @@ function handleDropDownChange(event) {
   }
 
 
-loadMoreBtn.addEventListener('click', () => {
-  currentPage++;
-  getFilterValuesAndCallFunc();
-});
-
-
 function getFilterValuesAndCallFunc(){
     let filter = document.getElementById('searchFAQ')?.value;
 
@@ -83,7 +81,18 @@ function getFilterValuesAndCallFunc(){
     let product = document.getElementById('selectProduct')?.value || productID;
     let collection = document.getElementById('selectCollection')?.value || collectionID;
 
-    fetchFAQsByFilters(categoryID, filter, topic, currentPage, product, collection);
+   // fetchFAQsByFilters(categoryID, filter, topic, currentPage, product, collection);
+    fetchFAQsByFilters({
+      categoryID:categoryID,
+      filter:filter ,
+      topicsID:topic,
+      page :currentPage,
+      productID :product,
+      collectionID: collection,
+      popular : false,
+      appendTo : "searchListigBody",
+});
+
   }
 
 
