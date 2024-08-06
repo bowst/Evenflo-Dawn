@@ -26,7 +26,7 @@ function fetchFAQsByFilters({
 		return;
 	}
 
-	if (loadMoreBtn) {
+	if (loadMoreBtn != undefined) {
 		loadMoreBtn.style.display = "none";
 	}
 
@@ -70,7 +70,7 @@ function fetchFAQsByFilters({
 				container.appendChild(popularCard);
 			});
 
-			if (loadMoreBtn) {
+			if (loadMoreBtn != undefined) {
 				if (data?.next) {
 					loadMoreBtn.style.display = "block";
 				} else {
