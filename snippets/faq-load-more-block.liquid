@@ -82,7 +82,6 @@ function getFilterValuesAndCallFunc(){
     let product = document.getElementById('selectProduct')?.value || productID;
     let collection = document.getElementById('selectCollection')?.value || collectionID;
 
-   // fetchFAQsByFilters(categoryID, filter, topic, currentPage, product, collection);
     fetchFAQsByFilters({
       categoryID:categoryID,
       filter:filter ,
