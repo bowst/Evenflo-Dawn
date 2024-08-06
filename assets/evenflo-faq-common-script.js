@@ -16,19 +16,19 @@ function fetchFAQsByFilters({
 	popular = false,
 	appendTo = "searchListigBody",
 }) {
-	alert(appendTo + "dkdk");
+	alert(appendTo + "uu");
 	const container = document.getElementById(appendTo);
 	const faqsToShow =
 		document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
+	const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 	if (!container) {
 		console.error("searchListigBody wrapper container not found");
 		return;
 	}
 
-	if (typeof loadMoreBtn != undefined) {
-		loadMoreBtn.style.display = "none";
-	}
+		loadMoreBtn?.style?.display = "none";
+	
 
 	if (page == 1) {
 		emptyContainerHtml(container);
@@ -70,13 +70,13 @@ function fetchFAQsByFilters({
 				container.appendChild(popularCard);
 			});
 
-			if (typeof loadMoreBtn != undefined) {
+			
 				if (data?.next) {
-					loadMoreBtn.style.display = "block";
+					loadMoreBtn?.style?.display = "block";
 				} else {
-					loadMoreBtn.style.display = "none";
+					loadMoreBtn?.style?.display = "none";
 				}
-			}
+			
 		})
 		.catch((error) => {
 			console.error("Error fetching products:", error);
