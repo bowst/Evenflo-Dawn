@@ -41,13 +41,13 @@
       {% unless customer.tags contains "swell_vip_gold" or customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver" %}
         <div class="desktop">
           "SSSS"
-          {{ block.settings.image_desktop | width: 100 | image_tag  }}
+          {{ block.settings.image_desktop | image_tag  }}
           
           <img
             width=""
             height=""
             class="desktop"
-            src="{{ block.settings.image_desktop | file_img_url:'master' }}">
+            src="{{ block.settings.image_desktop | file_url }}">
         </div>
         <div class="mobile">
           <img
