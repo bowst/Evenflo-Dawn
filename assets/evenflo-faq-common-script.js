@@ -5,6 +5,81 @@ var topicID = "";
 var collectionID = "";
 var productID = "";
 
+//We are using this filter for generic search for all faqs in faq-load-more block
+function fetchFAQsByFilters({
+	categoryID = "",
+	filter = "",
+	topicsID = "",
+	page = 1,
+	productID = "",
+	collectionID = "",
+	popular = false,
+}) {
+	const container = document.getElementById("searchListigBody");
+
+	if (!container) {
+		console.error("searchListigBody wrapper container not found");
+		return;
+	}
+
+	if (loadMoreBtn) {
+		loadMoreBtn.style.display = "none";
+	}
+
+	if (page == 1) {
+		emptyContainerHtml(container);
+	}
+
+	const loader = appendLoader(container);
+
+	fetch(
+		evenFloFAQURL +
+			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&
+			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
+	)
+		.then((response) => response.json())
+		.then((data) => {
+			data?.results?.forEach((product) => {
+				const popularCard = createPopularCardDivElement("popular-card");
+
+				const faqsContent = getFAQContent(product?.products || []);
+
+				const tags = getTagsArray(product?.tags || []);
+
+				const tagsHtml = getTagsHtml(tags);
+
+				popularCard.innerHTML = setFAQBlockInnerHtml(
+					product?.topic?.name || "",
+					product.question,
+					faqsContent,
+					product.answer,
+					//product?.id,
+					"",
+					tagsHtml
+				);
+
+				container.appendChild(popularCard);
+			});
+
+			if (loadMoreBtn) {
+				if (data?.next) {
+					loadMoreBtn.style.display = "block";
+				} else {
+					loadMoreBtn.style.display = "none";
+				}
+			}
+		})
+		.catch((error) => {
+			console.error("Error fetching products:", error);
+		})
+		.finally(() => {
+			if (loader) {
+				hideLoader(loader);
+				toggleAnswerBullet();
+			}
+		});
+}
+
 function toggleAnswerBullet() {
 	let descriptionWrapper = document.querySelectorAll(".description-wrapper");
 	if (descriptionWrapper.length > 1) {
@@ -330,76 +405,5 @@ function fetchDropDownProductsByType(type_id = 1, type = "collection") {
 		})
 		.catch((error) => {
 			console.error("Error fetching products:", error);
-		});
-}
-
-//We are using this filter for generic search for all faqs in faq-load-more block
-function fetchFAQsByFilters({
-	categoryID = "",
-	filter = "",
-	topicsID = "",
-	page = 1,
-	productID = "",
-	collectionID = "",
-	popular = false,
-}) {
-	const container = document.getElementById("searchListigBody");
-
-	if (!container) {
-		console.error("searchListigBody wrapper container not found");
-		return;
-	}
-
-	loadMoreBtn.style.display = "none";
-
-	if (page == 1) {
-		emptyContainerHtml(container);
-	}
-
-	const loader = appendLoader(container);
-
-	fetch(
-		evenFloFAQURL +
-			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&
-			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
-	)
-		.then((response) => response.json())
-		.then((data) => {
-			data?.results?.forEach((product) => {
-				const popularCard = createPopularCardDivElement("popular-card");
-
-				const faqsContent = getFAQContent(product?.products || []);
-
-				const tags = getTagsArray(product?.tags || []);
-
-				const tagsHtml = getTagsHtml(tags);
-
-				popularCard.innerHTML = setFAQBlockInnerHtml(
-					product?.topic?.name || "",
-					product.question,
-					faqsContent,
-					product.answer,
-					//product?.id,
-					"",
-					tagsHtml
-				);
-
-				container.appendChild(popularCard);
-			});
-
-			if (data?.next) {
-				loadMoreBtn.style.display = "block";
-			} else {
-				loadMoreBtn.style.display = "none";
-			}
-		})
-		.catch((error) => {
-			console.error("Error fetching products:", error);
-		})
-		.finally(() => {
-			if (loader) {
-				hideLoader(loader);
-				toggleAnswerBullet();
-			}
 		});
 }
