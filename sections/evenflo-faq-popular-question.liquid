@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('shopify:section:load', (event) => { 
   const sectionId = event?.detail?.sectionId;
   if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchFAQsByFilters({popular:true});
+    fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
   } 
 });
 
