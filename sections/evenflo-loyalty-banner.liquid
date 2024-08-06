@@ -38,20 +38,22 @@
         </div>
       {% endif %}
     {% elsif block.settings.loyalty_option == 'default' %}
-       <div class="desktop">
-        <img
-          width=""
-          height=""
-          class="desktop"
-          src="{{ block.settings.image_desktop }}">
-      </div>
-      <div class="mobile">
-        <img
-          width=""
-          height=""
-          class="mobile"
-          src="{{ block.settings.image_mobile }}">
-      </div>
+      {% unless customer.tags contains "swell_vip_gold" or customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver" %}
+        <div class="desktop">
+          <img
+            width=""
+            height=""
+            class="desktop"
+            src="{{ block.settings.image_desktop }}">
+        </div>
+        <div class="mobile">
+          <img
+            width=""
+            height=""
+            class="mobile"
+            src="{{ block.settings.image_mobile }}">
+        </div>
+      {% endunless %}    
     {% endif %}
     {% endfor %}
     <div style="min-height: 100%; margin: 0; z-index: 20 !important;">
