@@ -1,0 +1,48 @@
+.parentlink {
+  padding-top: 40px;
+  background: #00AEA9;
+}
+
+.parentlink h2 {
+  font-weight: 400;
+  text-align: center;
+}
+
+.parentlink .flex-item {
+  margin: 0 30px;
+  flex: 1;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  .parentlink .flex-row {
+    display: flex;
+    justify-content: center;
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+
+  .parentlink .flex-item {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .parentlink .flex-item {
+    max-width: 25%;
+    flex-basis: 25%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .parentlink .flex-item {
+    max-width: 15%;
+    flex-basis: 15%;
+  }
+
+  .parentlink h2 {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
