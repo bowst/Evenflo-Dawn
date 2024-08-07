@@ -606,6 +606,7 @@
       });
     </script>
     {% if template contains 'product' %}
+      <!-- Klaviyo Product -->
       <script>
         window.addEventListener('load', function () {
           var _learnq = window._learnq || [];
@@ -654,6 +655,12 @@
             });
           }
         });
+      </script>
+      <script type="text/javascript">
+        var _learnq = _learnq || [];
+        	document.getElementById("AddToCart").addEventListener('click',function (){
+         		_learnq.push(['track', 'Added to Cart', item]);
+        	});
       </script>
       <!-- END klaviyo -->
     {% endif %}
