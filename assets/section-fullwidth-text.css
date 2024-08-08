@@ -1,4 +1,4 @@
-.parentlink {
+.section-full-width-text {
   padding-top: 30px;
   padding-bottom: 5px;
   background: rgb(38, 151, 194);
@@ -11,39 +11,39 @@
   text-align: center;
 }
 
-.parentlink .flex-item {
+.section-full-width-text .flex-item {
   margin: 0 30px;
   flex: 1;
   text-align: center;
 }
 
 @media screen and (min-width: 750px) {
-  .parentlink .flex-row {
+  .section-full-width-text .flex-row {
     display: flex;
     justify-content: center;
     margin-left: -30px;
     margin-right: -30px;
   }
 
-  .parentlink .flex-item {
+  .section-full-width-text .flex-item {
     text-align: left;
   }
 }
 
 @media screen and (min-width: 990px) {
-  .parentlink .flex-item {
+  .section-full-width-text .flex-item {
     max-width: 25%;
     flex-basis: 25%;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .parentlink .flex-item {
+  .section-full-width-text .flex-item {
     max-width: 15%;
     flex-basis: 15%;
   }
 
-  .parentlink h2 {
+  .section-full-width-text h2 {
     max-width: 60%;
     margin-left: auto;
     margin-right: auto;
