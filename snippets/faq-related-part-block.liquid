@@ -35,10 +35,9 @@
     .then(response => response.json())
     .then(data => {
       
-    if(data && data?.length > 0){
 
         const blocksToShow =6;
-        data?.products?.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
+        data?.products?.slice(0, blocksToShow).forEach((product) => {
           const tabCard = document.createElement('div');
           tabCard.classList.add('tab-card');
 
@@ -59,7 +58,7 @@
 
           container.appendChild(tabCard);
         });
-    }
+    
      
     })
     .catch(error => {
