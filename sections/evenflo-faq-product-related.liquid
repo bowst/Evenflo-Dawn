@@ -38,7 +38,7 @@
 </div>
 </div>
 
-
+{% render 'faq-related-part-block' %}
 {% render 'faq-load-more-block', show_topic_dropdown:true %}
 
 
@@ -131,62 +131,6 @@
   }
 
 
-  // function fetchFAQsByProduct(productID, filter = "", topicsID = "") {
-  //   const container = document.getElementById('searchListingBody');
-
-  //   if (!container) {
-  //     return;
-  //   }
-
-  //   let blocksToShow = container.dataset.searchBlocksToShow || 8;
-
-  //   container.innerHTML = ""; 
-
-  //   const loader = appendLoader(container);
-
-  //   fetch(evenFloFAQURL + `faqs/getFilteredFaqs?filter=${filter}&page=1&page_size=${blocksToShow}&topics_id=${topicsID}&product_id=${productID}`)
-  //     .then(response => response.json())
-  //     .then(data => {
-
-  //       data?.results?.forEach((product) => {
-
-  //         const searchCard = createPopularCardDivElement("search-card");
-
-  //         const faqsContent = getFAQContent(product?.products || []);
-
-  //         const tags = getTagsArray(product?.tags || []);
-
-  //         const tagsHtml = getTagsHtml(tags);
-
-  //         searchCard.innerHTML = setFAQBlockInnerHtml(
-  //           product?.topic?.name || "",
-  //           product.question,
-  //           faqsContent,
-  //           product.answer,
-  //           "",
-  //           tagsHtml
-  //         );
-
-  //         container.appendChild(searchCard);
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching products:', error);
-  //     })
-  //     .finally(() => {
-  //       if (loader) {
-  //         hideLoader(loader);
-  //        toggleAnswerBullet();
-  //       }
-  //     });
-  // }
-
-  // function handleDropDownChange(event) {
-  //   let topicID = document.getElementById('selectTopic').value;
-  //   let filter = document.getElementById('searchFAQ').value;
-  //   fetchFAQsByProduct(productID, filter, topicID);
-  // }
-
   document.addEventListener('DOMContentLoaded', () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -194,6 +138,9 @@
     if (urlParams.has('pid')) {
       productID = urlParams.get('pid');
       fetchPopularProductsRelatedData(productID);
+      //Will be called in faq-related-part-block
+      getProductsPartsByProductID(productID)
+
       fetchFAQsByFilters({productID:productID});
       fetchTopicsByType(productID,true)
     } else {

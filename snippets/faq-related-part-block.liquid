@@ -1,0 +1,71 @@
+<div class="category-block">
+  <div class="category-content-wrapper page-width">
+
+
+
+    <div class="category-tab-wrapper">
+
+
+      <div class="tab-body">
+        <div class="tab-content-wrapper" id="productPartsByProduct">
+        
+         
+        </div>
+      </div>
+     
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+  function getProductsPartsByProductID(product_id){
+    const container = document.getElementById('productPartsByProduct');
+
+    if(!container){
+      console.error('productPartsByProduct wrapper container not found');
+      return;
+    }
+
+    emptyContainerHtml(container)
+
+    fetch(evenFloFAQURL + `product_parts/${product_id}/`)
+    .then(response => response.json())
+    .then(data => {
+      
+    if(data && data?.length > 0){
+
+        const blocksToShow =6;
+        data?.products?.slice(0, blocksToShow).forEach((product) => {  // Limit to 3 products
+          const tabCard = document.createElement('div');
+          tabCard.classList.add('tab-card');
+
+          
+          tabCard.innerHTML = `
+          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
+           <div class="tab-img">
+              <img
+                src=${product?.image}
+                alt="tab-img"
+              />
+            </div>
+            <div class="tab-content">
+              <h4>${product?.name}</h4>
+            </div>
+          </a>
+          `;
+
+          container.appendChild(tabCard);
+        });
+    }
+     
+    })
+    .catch(error => {
+      console.error('Error fetching product parts:', error);
+    });
+  
+}
+
+</script>
