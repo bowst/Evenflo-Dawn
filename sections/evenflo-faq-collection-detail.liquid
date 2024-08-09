@@ -74,7 +74,7 @@ function fetchCollectionDetail(id) {
 
    const loader = appendLoader(container)
 
-  fetch(evenFloFAQURL + 'collection/'+id+'/')
+  fetch(`${evenFloFAQURL}collection/${id}/`)
     .then(response => response.json())
     .then(collection => {
 		container.innerHTML = `
@@ -109,7 +109,6 @@ function fetchProductsByCollection(collectionID){
     fetch(evenFloFAQURL + `products/filterByCollection/${collectionID}`)
     .then(response => response.json())
     .then(data => {
-      console.log('data',data);
 
       const productsBlock = document.getElementById('productsInCollection');
       const blocksToShow = productsBlock ? productsBlock.dataset.faqsToShow : 6;
@@ -267,17 +266,15 @@ function fetchProductsByCollection(collectionID){
 
 
 
-var collectionID=""
 document.addEventListener('DOMContentLoaded', () => {
 	const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
     if (urlParams.has('cid')) {
-      collectionID = urlParams.get('cid');
-
+        collectionID = urlParams.get('cid');
 		    fetchCollectionDetail(collectionID);
         fetchProductsByCollection(collectionID);
-        fetchFAQsByFilters("","","",1,"",collectionID);
+        fetchFAQsByFilters({ collectionID: collectionID });
         //fetchFAQSByCollection(collectionID);
 
         fetchTopicsByType(collectionID);
