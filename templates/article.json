@@ -49,7 +49,7 @@
     "custom_liquid_B36DyE": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "",
+        "custom_liquid": "{% if article.tags.size > 0 %}\n  <ul class=\"tags\">\n    {% for tag in article.tags %}\n      <li>\n        <a href=\"{{ routes.blog_tags_url | append: tag | url_encode }}\">\n          {{ tag }}\n        <\/a>\n      <\/li>\n    {% endfor %}\n  <\/ul>\n{% endif %}",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
