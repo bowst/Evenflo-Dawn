@@ -1707,8 +1707,10 @@ a.product__text {
 
 .product-form__buttons .shopify-payment-button {
   margin-left: 6px;
-  max-width: calc(50% - 6px);
+  /* max-width: calc(50% - 6px); */
   height: inherit;
+  flex: 1 0 calc(50% - 4px);
+  max-width: calc(50% - 4px);
 }
 
 @media only screen and (min-width: 1401px) {
