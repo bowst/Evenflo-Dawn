@@ -1709,20 +1709,21 @@ a.product__text {
   margin-left: 6px;
   /* max-width: calc(50% - 6px); */
   height: inherit;
-  flex: 1 0 calc(50% - 4px);
-  max-width: calc(50% - 4px);
+  flex: 1 0 calc(50% - 6px);
+  max-width: calc(50% - 6px);
 }
 
-@media only screen and (min-width: 1401px) {
+/* @media only screen and (min-width: 1401px) {
   .product-form__buttons .shopify-payment-button {
     flex: 1 0 calc(50% - 4px);
     max-width: calc(50% - 4px);
   }
-}
+} */
 
 .baby-list-button {
-  width: 50%;
-  max-width: calc(50% - 2px);
+  /* width: 50%; */
+  max-width: calc(50% - 6px);
+  flex: 1 0 calc(50% - 6px);
   height: 44px !important;
 }
 
