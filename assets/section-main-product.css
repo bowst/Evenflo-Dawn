@@ -1726,7 +1726,13 @@ a.product__text {
   flex: 1 0 calc(50% - 3px);
   height: 44px !important;
 }
-
+@media screen and (min-width: 750px) and (max-width: 835px){
+.baby-list-button, .product-form__buttons .shopify-payment-button{
+  max-width: 100%;
+  margin-left: 0;
+  margin-bottom: 10px
+}
+}
 .product-popup-modal__opener {
   display: block;
 }
