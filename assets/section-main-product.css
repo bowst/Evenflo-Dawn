@@ -1515,21 +1515,40 @@ a.product__text {
 
 .product-form__buttons .shopify-payment-button {
   margin-left: 6px;
-  max-width: calc(50% - 6px);
   height: inherit;
+  flex: 1 0 calc(50% - 3px);
+  max-width: calc(50% - 3px);
 }
 
-@media only screen and (min-width: 1401px) {
+/* @media only screen and (min-width: 1401px) {
   .product-form__buttons .shopify-payment-button {
     flex: 1 0 calc(50% - 4px);
     max-width: calc(50% - 4px);
   }
-}
+} */
 
 .baby-list-button {
-  width: 50%;
-  max-width: calc(50% - 2px);
+  max-width: calc(50% - 3px);
+  flex: 1 0 calc(50% - 3px);
   height: 44px !important;
+}
+
+@media screen and (min-width: 750px) and (max-width: 835px){
+  .baby-list-button, .product-form__buttons .shopify-payment-button{
+    max-width: 100%;
+    flex: 1 0 100%;
+    margin-left: 0;
+    margin-bottom: 10px
+  }
+}
+
+@media screen and (max-width: 335px){
+  .baby-list-button, .product-form__buttons .shopify-payment-button{
+    max-width: 100%;
+    flex: 1 0 100%;
+    margin-left: 0;
+    margin-bottom: 10px
+  }
 }
 
 .product-popup-modal__opener {
