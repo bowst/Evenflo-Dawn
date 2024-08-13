@@ -410,7 +410,14 @@
       overflow: hidden;
       margin-bottom: 3rem;
     }
-
+.show-custom-content{
+  display: block !important;
+  height: auto!important;
+}
+.show-custom-content{
+  display: none !important;
+  height: 0!important;
+}
   }
 </style>
 
@@ -447,7 +454,18 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 </script> {% endcomment %}
-
+<script>
+  document.querySelectorAll(".footer-block__details-content").forEach((content)=>{
+    content.classList.add("hide-custom-content");
+})
+document.querySelectorAll(".footer-block__heading").forEach((accor, index) => {
+    accor.addEventListener("click", () => {
+        let content = accor.nextElementSibling;
+        content.classList.toggle("show-custom-content", "hide-custom-content");
+        console.log("Here " + content.offsetHeight);
+    });
+});
+</script>
 {% schema %}
 {
   "name": "t:sections.footer.name",
