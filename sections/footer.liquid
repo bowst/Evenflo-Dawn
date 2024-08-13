@@ -458,6 +458,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 </script> {% endcomment %}
 
+{{ 'footer.js' | asset_url | script_tag }}
+
 {% schema %}
 {
   "name": "t:sections.footer.name",
