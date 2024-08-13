@@ -441,7 +441,7 @@ window.addEventListener('DOMContentLoaded', () => {
     heading.setAttribute('aria-controls', `footer-block-index-${index}`)
 
     heading.addEventListener('click', () => { handleCollapse(heading) })
-    {% comment %} heading.addEventListener('keypress',  () => { handleCollapse(heading) }) {% endcomment %}
+    heading.addEventListener('keypress',  () => { handleCollapse(heading) })
   })
 
 })
