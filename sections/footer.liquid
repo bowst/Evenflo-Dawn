@@ -374,7 +374,7 @@
 {%- endif -%}
 
 <style>
-  @media (max-width: 749px) {
+  @media (max-width: 767px) {
     .grid .footer-block.grid__item {
       margin: 0;
     }
@@ -412,6 +412,16 @@
       transition: all 0.2s ease-out;
       overflow: hidden;
       margin-bottom: 3rem;
+    }
+    .hide-custom-content{
+      display: none !important;
+      height: 0!important;
+      margin-bottom: 0 !important;
+    }
+    .show-custom-content{
+      display: block !important;
+      height: auto!important;
+      margin-bottom: 3rem !important;
     }
   }
 </style>
@@ -451,6 +461,22 @@
 
   </script>
 {% endcomment %}
+
+<script>
+document.querySelectorAll(".footer-block__details-content").forEach((content) => {
+    content.classList.add("hide-custom-content");
+});
+
+document.querySelectorAll(".footer-block__heading").forEach((accor) => {
+    accor.addEventListener("click", () => {
+        let content = accor.nextElementSibling;
+        content.classList.toggle("show-custom-content");
+        content.classList.toggle("hide-custom-content");
+        console.log("Here " + content.offsetHeight);
+    });
+});
+
+</script>
 
 {% schema %}
 {
