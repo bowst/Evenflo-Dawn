@@ -31,7 +31,7 @@
 
     emptyContainerHtml(container)
 
-    fetch(evenFloFAQURL + `product_parts/${product_id}/`)
+    fetch(evenFloFAQURL + `product_parts/by/product/${product_id}/`)
     .then(response => response.json())
     .then(data => {
       
@@ -43,7 +43,7 @@
 
           
           tabCard.innerHTML = `
-          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
+          <a href="${product?.product_part_link}">
            <div class="tab-img">
               <img
                 src=${product?.image}

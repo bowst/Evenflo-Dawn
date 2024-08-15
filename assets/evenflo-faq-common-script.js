@@ -416,4 +416,29 @@ function fetchDropDownProductsByType(type_id = 1, type = "collection") {
 		});
 }
 
-function getBreadCrumbLinks() {}
+function getBreadCrumbLinks() {
+	const container = document.getElementById("breadcrumb");
+	if (!container) {
+		return;
+	}
+
+	emptyContainerHtml(container);
+
+	// Get the current URL
+	let currentUrl = window.location.href;
+
+	// Get the last slug of the current URL
+	let lastSlug = getLastSlug(currentUrl);
+	console.log(lastSlug);
+}
+
+function getLastSlug(url) {
+	// Remove the query parameters
+	let cleanUrl = url.split("?")[0];
+
+	// Split the URL by '/' and filter out any empty strings
+	let parts = cleanUrl.split("/").filter(Boolean);
+
+	// Return the last part
+	return parts[parts.length - 1];
+}
