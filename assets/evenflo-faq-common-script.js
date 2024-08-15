@@ -458,7 +458,6 @@ function getBreadcrumbLinkName(slug) {
 	const breadcrumbMappings = [
 		{ keyword: "collection", name: "Collection" },
 		{ keyword: "topic", name: "Topic" },
-		{ keyword: "faq", name: "FAQ" },
 		{ keyword: "product", name: "Product" },
 		{ keyword: "category", name: "Category" },
 		{ keyword: "question-answer", name: "Answer" },
