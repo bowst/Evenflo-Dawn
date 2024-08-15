@@ -443,7 +443,7 @@ function generateBreadcrumbTrail(currentUrl) {
 
 	// Define the static parts of the breadcrumb trail
 	let homeLink = '<a href="/">Home</a>';
-	let faqLink = '<a href="/evenflo-faq-portal">FAQ</a>';
+	let faqLink = '<a href="/pages/evenflo-faq-portal">FAQ</a>';
 
 	// Combine the breadcrumb parts
 	let breadcrumbTrail = `${homeLink} > ${faqLink} > ${lastBreadcrumbLink}`;
