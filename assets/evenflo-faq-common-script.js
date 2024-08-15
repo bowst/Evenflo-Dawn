@@ -461,6 +461,8 @@ function getBreadcrumbLinkName(slug) {
 		{ keyword: "faq", name: "FAQ" },
 		{ keyword: "product", name: "Product" },
 		{ keyword: "category", name: "Category" },
+		{ keyword: "question-answer", name: "Answer" },
+		{ keyword: "search", name: "Search" },
 	];
 
 	for (let mapping of breadcrumbMappings) {
