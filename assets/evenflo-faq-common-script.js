@@ -442,7 +442,7 @@ function generateBreadcrumbTrail(currentUrl) {
 	let homeLink = '<a href="/">Home</a>';
 	let faqLink = '<a href="/pages/evenflo-faq-portal">FAQ</a>';
 
-	let breadcrumbTrail = `${homeLink} > ${faqLink} > ${lastBreadcrumbLink}`;
+	let breadcrumbTrail = `${homeLink} | ${faqLink} | ${lastBreadcrumbLink}`;
 
 	return breadcrumbTrail;
 }
