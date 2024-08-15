@@ -1936,3 +1936,15 @@ var DIGIOH_LOADER = DIGIOH_LOADER || {};
     addListener("touchcancel", touchCancelListener);
   }
 })(DIGIOH_LOADER);
+
+// Check if an element with the class "swiper-container" exists in the DOM
+if (document.querySelector('.swiper-container')) {
+  // Initialize Swiper only if the element is present
+  var swiper = new Swiper('.swiper-container', {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    // You can add other Swiper options here
+  });
+}
