@@ -415,3 +415,5 @@ function fetchDropDownProductsByType(type_id = 1, type = "collection") {
 			console.error("Error fetching products:", error);
 		});
 }
+
+function getBreadCrumbLinks() {}
