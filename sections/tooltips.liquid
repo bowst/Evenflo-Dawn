@@ -237,11 +237,14 @@
 
 {%- comment -%} ---------------- THE MARKUP ------------------ {%- endcomment -%}
 {%- assign display_section = false -%}
+
 {%- if section.settings.product_handles != blank -%}
   {%- assign product_handle_list = section.settings.product_handles | split: ',' -%}
   {%- for handle in product_handle_list -%}
-    {%- if product.handle == handle -%}
+    {%- assign trimmed_handle = handle | strip -%}
+    {%- if product.handle == trimmed_handle -%}
       {%- assign display_section = true -%}
+      {%- break -%}
     {%- endif -%}
   {%- endfor -%}
 {%- endif -%}
@@ -249,158 +252,158 @@
 {%- if display_section -%}
   <!-- Section Markup -->
 
-<div class="tooltips-section" data-tooltips="{{ section.id }}">
-  <figure class="tooltips-figure">
-    {%- if section.settings.image == blank -%}
-      {{ 'image' | placeholder_svg_tag: 'tooltips-picture' }}
-    {%- else -%}
-      <picture class="tooltips-picture">
-        <source
-          srcset="
-            {{ section.settings.image | img_url: '320x' }} 1x,
-            {{ section.settings.image | img_url: '320x', scale: 2 }} 2x
-          "
-          media="(max-width: 320px)"
-        >
-        <source
-          srcset="
-            {{ section.settings.image | img_url: '420x' }} 1x,
-            {{ section.settings.image | img_url: '420x', scale: 2 }} 2x
-          "
-          media="(max-width: 420px)"
-        >
-        <source
-          srcset="
-            {{ section.settings.image | img_url: '768x' }} 1x,
-            {{ section.settings.image | img_url: '768x', scale: 2 }} 2x
-          "
-          media="(max-width: 768px)"
-        >
-        <source
-          srcset="
-            {{ section.settings.image | img_url: '1240x' }} 1x,
-            {{ section.settings.image | img_url: '1240x', scale: 2 }} 2x
-          "
-          media="(max-width: 1240px)"
-        >
-        <source
-          srcset="
-            {{ section.settings.image | img_url: '1440x' }} 1x,
-            {{ section.settings.image | img_url: '1440x', scale: 2 }} 2x
-          "
-          media="(max-width: 1440px)"
-        >
-        <source
-          srcset="
-            {{ section.settings.image | img_url: '1660x' }} 1x,
-            {{ section.settings.image | img_url: '1660x', scale: 2 }} 2x
-          "
-          media="(max-width: 1660px)"
-        >
-        <source
-          srcset="
-            {{ section.settings.image | img_url: '2048x' }} 1x,
-            {{ section.settings.image | img_url: '2048x', scale: 2 }} 2x
-          "
-          media="(min-width: 1661px)"
-        >
-        <img
-          class="tooltips-img"
-          src="{{ section.settings.image | img_url: '2048x' }}"
-          alt="{{ section.settings.image.alt }}"
-        >
-      </picture>
-    {%- endif -%}
-  </figure>
+  <div class="tooltips-section" data-tooltips="{{ section.id }}">
+    <figure class="tooltips-figure">
+      {%- if section.settings.image == blank -%}
+        {{ 'image' | placeholder_svg_tag: 'tooltips-picture' }}
+      {%- else -%}
+        <picture class="tooltips-picture">
+          <source
+            srcset="
+              {{ section.settings.image | img_url: '320x' }} 1x,
+              {{ section.settings.image | img_url: '320x', scale: 2 }} 2x
+            "
+            media="(max-width: 320px)"
+          >
+          <source
+            srcset="
+              {{ section.settings.image | img_url: '420x' }} 1x,
+              {{ section.settings.image | img_url: '420x', scale: 2 }} 2x
+            "
+            media="(max-width: 420px)"
+          >
+          <source
+            srcset="
+              {{ section.settings.image | img_url: '768x' }} 1x,
+              {{ section.settings.image | img_url: '768x', scale: 2 }} 2x
+            "
+            media="(max-width: 768px)"
+          >
+          <source
+            srcset="
+              {{ section.settings.image | img_url: '1240x' }} 1x,
+              {{ section.settings.image | img_url: '1240x', scale: 2 }} 2x
+            "
+            media="(max-width: 1240px)"
+          >
+          <source
+            srcset="
+              {{ section.settings.image | img_url: '1440x' }} 1x,
+              {{ section.settings.image | img_url: '1440x', scale: 2 }} 2x
+            "
+            media="(max-width: 1440px)"
+          >
+          <source
+            srcset="
+              {{ section.settings.image | img_url: '1660x' }} 1x,
+              {{ section.settings.image | img_url: '1660x', scale: 2 }} 2x
+            "
+            media="(max-width: 1660px)"
+          >
+          <source
+            srcset="
+              {{ section.settings.image | img_url: '2048x' }} 1x,
+              {{ section.settings.image | img_url: '2048x', scale: 2 }} 2x
+            "
+            media="(min-width: 1661px)"
+          >
+          <img
+            class="tooltips-img"
+            src="{{ section.settings.image | img_url: '2048x' }}"
+            alt="{{ section.settings.image.alt }}"
+          >
+        </picture>
+      {%- endif -%}
+    </figure>
 
-  <ol class="tooltips-list" aria-label="{{ section.settings.title }}">
-    {%- for block in section.blocks -%}
-      <li class="tooltip-item" id="tooltip-{{ block.id }}">
-        <button
-          class="tooltip-button"
-          type="button"
-          value="{{ block.id }}"
-          aria-describedby="tooltip-overlay-{{ block.id }}"
-          aria-label="{{ forloop.index }}, {{ block.settings.title }}"
-          aria-expanded="false"
-          data-tooltip-trigger
-          {{ block.shopify_attributes }}
-        >
-          <div class="tooltip-index" role="none">{{ forloop.index }}</div>
-          <strong class="tooltip-title" role="none">{{ block.settings.title }}</strong>
-        </button>
-        <aside class="tooltip-overlay" id="tooltip-overlay-{{ block.id }}" data-tooltip-overlay></aside>
-        <noscript data-tooltip-markup>
-          <strong class="tooltip-header">{{ block.settings.title }}</strong>
-          {{ block.settings.content }}
-        </noscript>
-      </li>
-    {%- endfor -%}
-  </ol>
+    <ol class="tooltips-list" aria-label="{{ section.settings.title }}">
+      {%- for block in section.blocks -%}
+        <li class="tooltip-item" id="tooltip-{{ block.id }}">
+          <button
+            class="tooltip-button"
+            type="button"
+            value="{{ block.id }}"
+            aria-describedby="tooltip-overlay-{{ block.id }}"
+            aria-label="{{ forloop.index }}, {{ block.settings.title }}"
+            aria-expanded="false"
+            data-tooltip-trigger
+            {{ block.shopify_attributes }}
+          >
+            <div class="tooltip-index" role="none">{{ forloop.index }}</div>
+            <strong class="tooltip-title" role="none">{{ block.settings.title }}</strong>
+          </button>
+          <aside class="tooltip-overlay" id="tooltip-overlay-{{ block.id }}" data-tooltip-overlay></aside>
+          <noscript data-tooltip-markup>
+            <strong class="tooltip-header">{{ block.settings.title }}</strong>
+            {{ block.settings.content }}
+          </noscript>
+        </li>
+      {%- endfor -%}
+    </ol>
 
-  {%- comment -%} ---------------- THE CONFIG ------------------ {%- endcomment -%}
+    {%- comment -%} ---------------- THE CONFIG ------------------ {%- endcomment -%}
 
-  <script data-tooltips-config type="application/json">
-    {
-      "breakpoint": {{ section.settings.breakpoint }},
-      "sectionId": {{ section.id | json }},
-      "blocksId": {{ section.blocks | map: 'id' | json }}
-    }
-  </script>
-</div>
+    <script data-tooltips-config type="application/json">
+      {
+        "breakpoint": {{ section.settings.breakpoint }},
+        "sectionId": {{ section.id | json }},
+        "blocksId": {{ section.blocks | map: 'id' | json }}
+      }
+    </script>
+  </div>
 
-{%- comment -%} ------------------ THE JS -------------------- {%- endcomment -%}
+  {%- comment -%} ------------------ THE JS -------------------- {%- endcomment -%}
 
-<script src="{{ 'tooltips.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'tooltips.js' | asset_url }}" defer="defer"></script>
 
-{%- comment -%} --------------- THEME EDITOR ----------------- {%- endcomment -%}
+  {%- comment -%} --------------- THEME EDITOR ----------------- {%- endcomment -%}
 
-{%- if section.blocks.last.shopify_attributes != blank -%}
-  <script>
-    (function ThemeEditor(SD){
-      var sectionId = {{ section.id | json }};
-      if (SD.ThemeEditor[sectionId]) return;
+  {%- if section.blocks.last.shopify_attributes != blank -%}
+    <script>
+      (function ThemeEditor(SD){
+        var sectionId = {{ section.id | json }};
+        if (SD.ThemeEditor[sectionId]) return;
 
-      SD.ThemeEditor[sectionId] = 'init';
-      initEvents(sectionId);
-
-      document.addEventListener('shopify:section:load', function(evt) {
-        if (evt.detail.sectionId !== sectionId) return;
-
-        var section = SD[sectionId];
-        section.init(section.config);
+        SD.ThemeEditor[sectionId] = 'init';
         initEvents(sectionId);
-      });
 
-      function initEvents(sectionId) {
-        var sectionHost = document.querySelector('[data-tooltips="' + sectionId + '"]');
+        document.addEventListener('shopify:section:load', function(evt) {
+          if (evt.detail.sectionId !== sectionId) return;
 
-        sectionHost.addEventListener('shopify:block:select', toggleSelect);
-        sectionHost.addEventListener('shopify:block:deselect', toggleSelect);
-      }
+          var section = SD[sectionId];
+          section.init(section.config);
+          initEvents(sectionId);
+        });
 
-      function toggleSelect(evt) {
-        var sectionId = evt.detail.sectionId;
-        var blockId = evt.detail.blockId;
-        var section = SD[sectionId];
+        function initEvents(sectionId) {
+          var sectionHost = document.querySelector('[data-tooltips="' + sectionId + '"]');
 
-        evt.type === 'shopify:block:select'
-        ? section.select(blockId)
-        : section.deselect(blockId)
-
-        updateBlocks(section, blockId);
-      }
-
-      function updateBlocks(section, blockId) {
-        if (section.config.blocksId.indexOf(blockId) === -1) {
-          section.config.blocksId.push(blockId);
+          sectionHost.addEventListener('shopify:block:select', toggleSelect);
+          sectionHost.addEventListener('shopify:block:deselect', toggleSelect);
         }
-      }
 
-    })(window.SectionsDesign = window.SectionsDesign || {ThemeEditor: []});
-  </script>
-{%- endif -%}
-      </div>
+        function toggleSelect(evt) {
+          var sectionId = evt.detail.sectionId;
+          var blockId = evt.detail.blockId;
+          var section = SD[sectionId];
+
+          evt.type === 'shopify:block:select'
+          ? section.select(blockId)
+          : section.deselect(blockId)
+
+          updateBlocks(section, blockId);
+        }
+
+        function updateBlocks(section, blockId) {
+          if (section.config.blocksId.indexOf(blockId) === -1) {
+            section.config.blocksId.push(blockId);
+          }
+        }
+
+      })(window.SectionsDesign = window.SectionsDesign || {ThemeEditor: []});
+    </script>
+  {%- endif -%}
+  </div>
 {%- endif -%}
 
 {%- comment -%} ---------------- THE SETTINGS ---------------- {%- endcomment -%}
