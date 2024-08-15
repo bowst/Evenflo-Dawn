@@ -1936,9 +1936,3 @@ var DIGIOH_LOADER = DIGIOH_LOADER || {};
     addListener("touchcancel", touchCancelListener);
   }
 })(DIGIOH_LOADER);
-var swiper = new Swiper(".swiper-container", {
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
