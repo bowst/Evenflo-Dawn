@@ -434,52 +434,40 @@ function getBreadCrumbLinks() {
 }
 
 function generateBreadcrumbTrail(currentUrl) {
-	// Get the last slug from the current URL
 	let lastSlug = getLastSlug(currentUrl);
 
-	// Determine the breadcrumb link name based on the last slug
 	let lastBreadcrumb = getBreadcrumbLinkName(lastSlug);
 	let lastBreadcrumbLink = `<a href="#" onclick="location.reload(); return false;">${lastBreadcrumb}</a>`;
 
-	// Define the static parts of the breadcrumb trail
 	let homeLink = '<a href="/">Home</a>';
 	let faqLink = '<a href="/pages/evenflo-faq-portal">FAQ</a>';
 
-	// Combine the breadcrumb parts
 	let breadcrumbTrail = `${homeLink} > ${faqLink} > ${lastBreadcrumbLink}`;
 
 	return breadcrumbTrail;
 }
 
 function getLastSlug(url) {
-	// Remove the query parameters
 	let cleanUrl = url.split("?")[0];
-
-	// Split the URL by '/' and filter out any empty strings
 	let parts = cleanUrl.split("/").filter(Boolean);
 
-	// Return the last part
 	return parts[parts.length - 1];
 }
 
 function getBreadcrumbLinkName(slug) {
-	// Array of keywords and corresponding breadcrumb names
 	const breadcrumbMappings = [
 		{ keyword: "collection", name: "Collection" },
 		{ keyword: "topic", name: "Topic" },
 		{ keyword: "faq", name: "FAQ" },
 		{ keyword: "product", name: "Product" },
 		{ keyword: "category", name: "Category" },
-		// Add more mappings as needed
 	];
 
-	// Check if the slug includes any of the keywords and return the corresponding breadcrumb name
 	for (let mapping of breadcrumbMappings) {
 		if (slug.includes(mapping.keyword)) {
 			return mapping.name;
 		}
 	}
 
-	// Return a default name if no match is found
-	return "Home";
+	return "FAQ";
 }
