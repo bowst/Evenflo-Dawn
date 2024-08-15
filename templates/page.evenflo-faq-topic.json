@@ -9,6 +9,11 @@
 */
 {
   "sections": {
+    "breadcrumb": {
+      "type": "evenflo-faq-breadcrumbs",
+      "settings": {
+      }
+    },
     "main": {
       "type": "evenflo-faq-topic-detail",
       "settings": {
@@ -16,6 +21,7 @@
     }
   },
   "order": [
+    "breadcrumb",
     "main"
   ]
 }
