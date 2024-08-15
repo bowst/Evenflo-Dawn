@@ -20,11 +20,11 @@
       })(window, document, 'script', 'dataLayer', 'GTM-THSHFKC');
     </script>
 
-        <!-- Conditionally include JavaScript file on specific JSON template pages -->
-        {% if (template contains 'evenflo-faq') or (template contains 'evenflo-collection') %}
-          <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
-          {{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
-      {% endif %}
+    <!-- Conditionally include JavaScript file on specific JSON template pages -->
+    {% if (template contains 'evenflo-faq') or (template contains 'evenflo-collection') %}
+      <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
+      {{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
+    {% endif %}
     <!-- End Google Tag Manager -->
 
     <link rel="canonical" href="{{ canonical_url }}">
@@ -37,7 +37,7 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-   <title>
+    <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
@@ -62,8 +62,6 @@
         src="https://www.babylist.com/add.js"
       ></script>
     {% endif %}
-
-  
 
     {{ content_for_header }}
 
@@ -259,8 +257,8 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'evenflo.css' | asset_url | stylesheet_tag }} 
-    {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }} 
+    {{ 'evenflo.css' | asset_url | stylesheet_tag }}
+    {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       {% comment %}theme-check-disable AssetPreload{% endcomment %}
@@ -529,13 +527,6 @@
       }
     </script>
     <!-- ShoppingGives End -->
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
 
     <script>
       var waitForFinalEvent = (function () {
