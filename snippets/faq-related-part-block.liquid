@@ -3,7 +3,7 @@
 
 
 
-    <div class="category-tab-wrapper">
+    <div class="category-tab-wrapper" id="categoryTabWrapper">
 
 
       <div class="tab-body">
@@ -35,6 +35,12 @@
     .then(response => response.json())
     .then(data => {
       
+    const categoryTabContainer= document.getElementById('categoryTabWrapper');
+    if(categoryTabContainer && data?.length > 0){
+      categoryTabContainer.prepend(` <div class="heading center">
+      <h2 id="relatedPartHeading">Related Parts</h2>
+    </div>`;)
+    }
 
         const blocksToShow =6;
         data?.slice(0, blocksToShow).forEach((product) => {
