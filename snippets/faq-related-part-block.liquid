@@ -2,11 +2,9 @@
   <div class="category-content-wrapper page-width">
 
 
-    <div class="category-tab-wrapper">
+    <div class="category-tab-wrapper" id="categoryTabWrapper">
 
-    <div class="heading center">
-      <h2 id="relatedPartHeading">Related Parts</h2>
-    </div>
+
       <div class="tab-body">
         <div class="tab-content-wrapper" id="productPartsByProduct">
         
@@ -37,6 +35,10 @@
     .then(data => {
       
 
+    document.getElementById('categoryTabWrapper').innerHTML=` <div class="heading center">
+      <h2 id="relatedPartHeading">Related Parts</h2>
+    </div>`;
+    
         const blocksToShow =6;
         data?.slice(0, blocksToShow).forEach((product) => {
           const tabCard = document.createElement('div');
