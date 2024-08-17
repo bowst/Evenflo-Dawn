@@ -36,11 +36,18 @@
     .then(data => {
       
     const categoryTabContainer= document.getElementById('categoryTabWrapper');
-    if(categoryTabContainer && data?.length > 0){
-      categoryTabContainer.prepend(` <div class="heading center">
-      <h2 id="relatedPartHeading">Related Parts</h2>
-    </div>`;)
-    }
+
+    if (categoryTabContainer && data?.length > 0) {
+                const headingDiv = document.createElement('div');
+                headingDiv.classList.add('heading', 'center');
+
+                const headingH2 = document.createElement('h2');
+                headingH2.id = 'relatedPartHeading';
+                headingH2.textContent = 'Related Parts';
+
+                headingDiv.appendChild(headingH2);
+                categoryTabContainer.prepend(headingDiv);
+            }
 
         const blocksToShow =6;
         data?.slice(0, blocksToShow).forEach((product) => {
