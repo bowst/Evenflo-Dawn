@@ -81,7 +81,7 @@ function fetchCollectionDetail(id) {
        <h1 id="collectionHeading">${collection?.name}</h1>
                     <p id="collectionDescription">${collection?.description}</p>
           `;     
-      
+          getBreadCrumbLinks(collection?.name,'collection')
     })
     .catch(error => {
       console.error('Error fetching collection:', error);

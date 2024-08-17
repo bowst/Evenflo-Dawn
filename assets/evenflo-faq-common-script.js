@@ -416,7 +416,7 @@ function fetchDropDownProductsByType(type_id = 1, type = "collection") {
 		});
 }
 
-function getBreadCrumbLinks(breadCrumbName = "") {
+function getBreadCrumbLinks(breadCrumbName = "", fromPage = "") {
 	const container = document.getElementById("breadcrumb");
 	if (!container) {
 		return;

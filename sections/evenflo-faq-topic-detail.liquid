@@ -47,6 +47,7 @@ function fetchTopicDetail(topicID) {
     .then((response) => response.json())
     .then((data) => {
       document.getElementById('topicName').innerHTML = data?.name;
+      getBreadCrumbLinks(data?.name,'topic')
       document.getElementById('topicDescription').innerHTML = data?.description;
     })
     .catch((error) => {
