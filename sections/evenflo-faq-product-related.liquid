@@ -67,6 +67,8 @@
 
 
         document.getElementById('productName').innerHTML = data?.name;
+        //Calling breadcrumb link to update the breadcrumb name
+        getBreadCrumbLinks(data?.name)
         document.getElementById('productDescription').innerHTML = data?.description;
 
         const productLinks = document.getElementById('productLinks');

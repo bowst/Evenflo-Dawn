@@ -416,7 +416,7 @@ function fetchDropDownProductsByType(type_id = 1, type = "collection") {
 		});
 }
 
-function getBreadCrumbLinks() {
+function getBreadCrumbLinks(breadCrumbName = "") {
 	const container = document.getElementById("breadcrumb");
 	if (!container) {
 		return;
@@ -426,18 +426,20 @@ function getBreadCrumbLinks() {
 
 	let currentUrl = window.location.href;
 
-	let breadcrumbTrail = generateBreadcrumbTrail(currentUrl);
+	let breadcrumbTrail = generateBreadcrumbTrail(currentUrl, breadCrumbName);
 
 	console.log("breadcrumbTrail", breadcrumbTrail);
 
 	container.innerHTML = breadcrumbTrail;
 }
 
-function generateBreadcrumbTrail(currentUrl) {
+function generateBreadcrumbTrail(currentUrl, name) {
 	let lastSlug = getLastSlug(currentUrl);
 
 	let lastBreadcrumb = getBreadcrumbLinkName(lastSlug);
-	let lastBreadcrumbLink = `<a href="#" onclick="location.reload(); return false;">${lastBreadcrumb}</a>`;
+	let lastBreadcrumbLink = `<a href="#" onclick="location.reload(); return false;">${
+		name ? name : lastBreadcrumb
+	}</a>`;
 
 	let homeLink = '<a href="/">Home</a>';
 	let faqLink = '<a href="/pages/evenflo-faq-portal">FAQ</a>';
