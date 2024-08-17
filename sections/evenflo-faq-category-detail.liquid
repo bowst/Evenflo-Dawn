@@ -78,6 +78,7 @@
       .then((data) => {
 
       document.getElementById('categoryName').innerHTML = data?.name || "Child Fit";
+      
       getBreadCrumbLinks(data?.name,'category')
 
         //Hiding Popular questions heading

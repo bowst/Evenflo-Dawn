@@ -71,6 +71,9 @@ function fetchQuestionsAnswerData(id) {
             categoriesHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
           });
 
+          //Calling breadcrumb link to update the breadcrumb name
+        getBreadCrumbLinks(product?.question,'question-answer')
+
 		container.innerHTML = `
            
             	<div class="question-col question-col-1">
