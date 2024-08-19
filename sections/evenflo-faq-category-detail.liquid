@@ -69,20 +69,21 @@
 
     container.innerHTML = ""; // Clear existing content
     const loader = appendLoader(container);
-      
-    //TODO: Need to change URL 
-    let url = evenFloFAQURL + "products/" + categoryID;
+
+    let url = evenFloFAQURL + "product_category/" + categoryID + "/";
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
 
-      document.getElementById('categoryName').innerHTML = data?.name || "Child Fit";
-      
-      getBreadCrumbLinks(data?.name,'category')
+
+        document.getElementById('categoryName').innerHTML = data?.category_name;
+        //Calling breadcrumb link to update the breadcrumb name
+        getBreadCrumbLinks(data?.category_name,'category')
+  
 
         //Hiding Popular questions heading
-        if (!data?.related_popular_faqs || (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0)){
+        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
           document.getElementById('popularQuestionHeading').style.display ="none";
         }
 
@@ -109,7 +110,7 @@
         });
       })
       .catch((error) => {
-        console.error("Error fetching products:", error);
+        console.error("Error fetching category:", error);
       })
       .finally(() => {
         if (loader) {
