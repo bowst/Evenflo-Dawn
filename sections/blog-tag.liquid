@@ -20,10 +20,12 @@
   <h1 class="title--primary">{{ page.title | escape }}</h1>
 
   <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-    {% assign tag = page.title %}
-    {% for article in blogs['evenflo-blog'].articles limit: 3000 %}
-      {{ 'FFF' }}
-      {% if article.tags contains tag %}
+    {%- assign tag_metafield = collection.metafields.custom_fields.blog_tag -%}
+    {%- assign start_limit = 1 -%}
+
+    {%- for article in blogs['evenflo-blog'].articles limit: 50 -%}
+      {%- if article.tags contains tag_metafield and start_limit <= 50 -%}
+        {%- assign start_limit = start_limit | plus: 1 -%}
         <div class="blog-articles__article article">
           {%- render 'article-card',
             article: article,
@@ -35,8 +37,8 @@
             show_excerpt: true
           -%}
         </div>
-      {% endif %}
-    {% endfor %}
+      {%- endif -%}
+    {%- endfor -%}
   </div>
 </div>
 
