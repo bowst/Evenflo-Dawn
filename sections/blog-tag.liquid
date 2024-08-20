@@ -20,7 +20,7 @@
 {% assign filtered_articles = '' %}
 
 {%- for article in blogs['evenflo-blog'].articles -%}
-  {% if article.tags contains tag %}
+  {% if 1 %}
     {% assign filtered_articles = filtered_articles | append: article.id | append: ',' %}
   {% endif %}
 {%- endfor -%}
