@@ -24,6 +24,7 @@
 
     <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
       {% for article in blogs['evenflo-blog'].articles %}
+        {{ article.tags }}
         {% if article.tags contains tag %}
           <div class="blog-articles__article article">
             {%- render 'article-card',
