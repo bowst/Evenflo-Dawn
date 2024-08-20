@@ -16,34 +16,25 @@
   }
 {%- endstyle -%}
 
-{% assign tag = page.title %}
-{% assign filtered_articles = '' %}
-
-{%- for article in blogs['evenflo-blog'].articles -%}
-  {% if 1 %}
-    {% assign filtered_articles = filtered_articles | append: article.id | append: ',' %}
-  {% endif %}
-{%- endfor -%}
-
-{% assign filtered_articles = filtered_articles | split: ',' %}
-
 <div class="main-blog page-width section-{{ section.id }}-padding">
   <h1 class="title--primary">{{ page.title | escape }}</h1>
 
   <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-    {% for article_id in filtered_articles %}
-      {% assign article = blogs['evenflo-blog'].articles | where: 'id', article_id | first %}
-      <div class="blog-articles__article article">
-        {%- render 'article-card',
-          article: article,
-          media_height: section.settings.image_height,
-          media_aspect_ratio: article.image.aspect_ratio,
-          show_image: section.settings.show_image,
-          show_date: section.settings.show_date,
-          show_author: section.settings.show_author,
-          show_excerpt: true
-        -%}
-      </div>
+    {% assign tag = page.title %}
+    {% for article in blogs['evenflo-blog'].articles %}
+      {% if article.tags contains tag %}
+        <div class="blog-articles__article article">
+          {%- render 'article-card',
+            article: article,
+            media_height: section.settings.image_height,
+            media_aspect_ratio: article.image.aspect_ratio,
+            show_image: section.settings.show_image,
+            show_date: section.settings.show_date,
+            show_author: section.settings.show_author,
+            show_excerpt: true
+          -%}
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
 </div>
