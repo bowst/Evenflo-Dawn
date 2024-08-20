@@ -17,6 +17,7 @@
 {%- endstyle -%}
 
 {% assign tag = page.title %}
+{{ page.title }}
 
 {%- paginate blogs['evenflo-blog'].articles by 6 -%}
   <div class="main-blog page-width section-{{ section.id }}-padding">
