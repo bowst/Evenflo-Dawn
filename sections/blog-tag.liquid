@@ -23,7 +23,6 @@
     {% assign tag = page.title %}
     {% for article in blogs['evenflo-blog'].articles limit: 3000 %}
       {% if article.tags contains tag %}
-        {{ 'ADDD' }}
         <div class="blog-articles__article article">
           {%- render 'article-card',
             article: article,
