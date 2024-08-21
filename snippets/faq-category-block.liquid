@@ -42,7 +42,7 @@
     loader.style.display = 'block';
   }
   
-  fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1')
+  fetch(evenFloFAQURL + 'products/getPaginatedCategories?page_size=10&page=1&show=true')
     .then(response => response.json())
     .then(data => {
       getProductsByCategory(data.results[0]?.id,data.results[0]?.category_name);
