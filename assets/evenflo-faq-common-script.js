@@ -16,6 +16,7 @@ function fetchFAQsByFilters({
 	popular = false,
 	appendTo = "searchListigBody",
 	showLoadMore = true,
+	categoryShow = false,
 }) {
 	const container = document.getElementById(appendTo);
 
@@ -42,7 +43,7 @@ function fetchFAQsByFilters({
 	fetch(
 		evenFloFAQURL +
 			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&
-			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}&show=true`
+			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}&show=${categoryShow}`
 	)
 		.then((response) => response.json())
 		.then((data) => {
