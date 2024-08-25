@@ -90,7 +90,7 @@ function fetchFAQsByFilters({
 
 function toggleAnswerBullet() {
 	let descriptionWrapper = document.querySelectorAll(".description-wrapper");
-	if (descriptionWrapper.length > 1) {
+	if (descriptionWrapper?.length > 1) {
 		descriptionWrapper.forEach((desc, index) => {
 			let bullet = desc.querySelectorAll("ul li").length;
 			if (bullet > 1) {
@@ -103,7 +103,7 @@ function toggleAnswerBullet() {
 			}
 		});
 	} else {
-		let bullet = descriptionWrapper.querySelectorAll("ul li").length;
+		let bullet = descriptionWrapper?.querySelectorAll("ul li").length || 0;
 		if (bullet > 1) {
 			descriptionWrapper.classList.remove("description-wrapper-remove");
 			descriptionWrapper
