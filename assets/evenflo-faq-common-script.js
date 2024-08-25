@@ -309,8 +309,7 @@ function getTagsHtml(tags) {
 	);
 
 	uniquetagsArray?.forEach((category) => {
-		// tagsHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category.id}">${category.name}</a>`;
-		tagsHtml += `<span>${category.name}</span>`;
+		tagsHtml += `<a href="#">${category.name}</a>`;
 	});
 
 	return tagsHtml;
