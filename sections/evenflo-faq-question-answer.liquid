@@ -11,18 +11,28 @@
 <script>
   // Function to initialize product list interactions
   function productList() {
-    let productListWrapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
-    let bullet = productListWrapper.length;
-    console.log(bullet, productListWrapper);
+  let productListWrapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
+  let bulletCount = productListWrapper.length;
 
-    if (bullet > 3) {
-      document.querySelector(".question-banner-wrapper .product-list").classList.add("product-list-custom");
-      document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").classList.add("question-banner-links-show");
-      document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").addEventListener("click", () => {
-        document.querySelector(".question-banner-wrapper .product-list").classList.toggle("product-list-custom");
+  if (bulletCount > 3) {
+    let productList = document.querySelector(".question-banner-wrapper .product-list");
+    let toggleLink = document.querySelector(".question-banner-wrapper .question-banner-links");
+
+    // Add class to hide extra items
+    productList.classList.add("product-list-custom");
+
+    // Show the toggle link
+    if (toggleLink) {
+      toggleLink.classList.add("question-banner-links-show");
+
+      // Add click event listener to toggle visibility
+      toggleLink.addEventListener("click", () => {
+        productList.classList.toggle("product-list-custom");
       });
     }
   }
+}
+
 
   // Function to fetch and display FAQ data
   function fetchQuestionsAnswerData(id) {
