@@ -21,14 +21,18 @@ function productList() {
     return;
   }
 
-  // Initially hide products after the first three
-  for (let i = 3; i < products.length; i++) {
-    products[i].style.display = "none";
-  }
+  console.log('products.length',products.length)
+
+  // // Initially hide products after the first three
+  // for (let i = 3; i < products.length; i++) {
+  //   products[i].style.display = "none";
+  // }
 
   // Display the toggle button
-  toggleLink.style.display = "inline-block";
+  toggleLink.style.display = "block";
   toggleLink.innerHTML = `<span>Show more products</span>`;
+
+  alert(2222)
 
   // Add click event listener to toggle visibility
   toggleLink.addEventListener("click", () => {
