@@ -332,8 +332,8 @@ function createAndAppendDropDownOption(
 	container.appendChild(defaultOption);
 }
 
-function contaninsString(str) {
-	return str.toLowerCase().includes("javascript");
+function containsString(str, search) {
+	return str.toLowerCase().includes(search);
 }
 
 function errorString(string = "Not found") {
