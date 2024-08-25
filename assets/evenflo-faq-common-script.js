@@ -89,31 +89,25 @@ function fetchFAQsByFilters({
 }
 
 function toggleAnswerBullet() {
-	let descriptionWrapper = document.querySelectorAll(".description-wrapper");
-	if (descriptionWrapper?.length > 1) {
-		descriptionWrapper.forEach((desc, index) => {
-			let bullet = desc.querySelectorAll("ul li").length;
-			if (bullet > 1) {
+	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
+
+	if (descriptionWrappers.length > 0) {
+		descriptionWrappers.forEach((desc) => {
+			const listItems = desc.querySelectorAll("ul li").length;
+
+			if (listItems > 1) {
 				desc.classList.remove("description-wrapper-remove");
-				desc.querySelector("button").addEventListener("click", () => {
-					desc.classList.toggle("description-wrapper-show");
-				});
+				const button = desc.querySelector("button");
+
+				if (button) {
+					button.addEventListener("click", () => {
+						desc.classList.toggle("description-wrapper-show");
+					});
+				}
 			} else {
 				desc.classList.add("description-wrapper-remove");
 			}
 		});
-	} else {
-		let bullet = descriptionWrapper?.querySelectorAll("ul li").length || 0;
-		if (bullet > 1) {
-			descriptionWrapper.classList.remove("description-wrapper-remove");
-			descriptionWrapper
-				.querySelector("button")
-				.addEventListener("click", () => {
-					descriptionWrapper.classList.toggle("description-wrapper-show");
-				});
-		} else {
-			descriptionWrapper.classList.add("description-wrapper-remove");
-		}
 	}
 }
 
