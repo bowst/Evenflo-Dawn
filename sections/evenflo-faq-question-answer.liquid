@@ -130,6 +130,7 @@
       })
       .catch(error => {
         console.error('Error fetching products:', error);
+        redirectIfNoData([])
       })
       .finally(() => {
         // Hide the loader
