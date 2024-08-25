@@ -336,7 +336,7 @@ function containsString(str, search) {
 	return str.toLowerCase().includes(search);
 }
 
-function errorString(string = "Not found") {
+function errorString(string = "not found") {
 	return string;
 }
 
