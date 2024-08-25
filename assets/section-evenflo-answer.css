@@ -70,9 +70,14 @@
 	line-height: normal;
 	letter-spacing: 0.6px;
 }
-.product-list.product-list-custom .product-content:not(:first-child) {
+/* .product-list.product-list-custom .product-content:not(:first-child) {
+	display: none;
+} */
+
+.product-list.product-list-custom .product-content:nth-child(n + 4) {
 	display: none;
 }
+
 .product-list + .question-banner-links {
 	background: none;
 	color: #2996c5;
