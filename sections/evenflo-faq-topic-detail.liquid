@@ -5,6 +5,7 @@
   .help-articles-block {
     background: #fff;
   }
+
   .search-listing-header2 {
     display: flex;
     justify-content: space-between;
@@ -23,41 +24,38 @@
 </div>
 
 <div class="product-page-wrapper">
-
-<div class="popular-question-block" id="topicRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
-  <div class="popular-content-wrapper page-width">
-    <div class="heading center">
-      <h2 id="popularQuestionHeading">{{ section.settings.topicRelatedTitle }}</h2>
+  <div class="popular-question-block" id="topicRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
+    <div class="popular-content-wrapper page-width">
+      <div class="heading center">
+        <h2 id="popularQuestionHeading">{{ section.settings.topicRelatedTitle }}</h2>
+      </div>
+      <div class="popular-card-wrapper" id="popularCards"></div>
     </div>
-    <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
-</div>
-
-
 </div>
 
 {% render 'faq-load-more-block', show_collection_dropdown:true %}
 
-
 <script>
 function fetchTopicDetail(topicID) {
-  let url = `${evenFloFAQURL}topics/${topicID}/`;
+  const url = `${evenFloFAQURL}topics/${topicID}/`;
 
   fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-
-    if(data?.detail && containsString(data?.detail,errorString())){
-          redirectIfNoData([])
-          return ""
-        }
+    .then(response => response.json())
+    .then(data => {
+      if (data?.detail && containsString(data?.detail, errorString())) {
+        redirectIfNoData([]);
+        return "";
+      }
+      fetchFAQsByFilters({ topicsID: topicID });
+      fetchCollectionsForDropDown();
       document.getElementById('topicName').innerHTML = data?.name;
-      getBreadCrumbLinks(data?.name,'topic')
+      getBreadCrumbLinks(data?.name, 'topic');
       document.getElementById('topicDescription').innerHTML = data?.description;
     })
-    .catch((error) => {
+    .catch(error => {
       console.error("Error fetching products:", error);
-      redirectIfNoData([])
+      redirectIfNoData([]);
     });
 }
 
@@ -74,7 +72,7 @@ function fetchCollectionsForDropDown() {
   fetch(evenFloFAQURL + 'collection/?page=1')
     .then(response => response.json())
     .then(data => {
-      data?.results?.forEach((collection) => {
+      data?.results?.forEach(collection => {
         const option = document.createElement("option");
         option.value = collection.id;
         option.textContent = collection.name;
@@ -91,13 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(queryString);
 
   if (urlParams.has('tid')) {
-    topicID = urlParams.get('tid');
+    const topicID = urlParams.get('tid');
     fetchTopicDetail(topicID);
-    // fetchFAQsByFilters({ topicsID: topicID, popular: true, appendTo: "popularCards", showLoadMore: false });
-    fetchFAQsByFilters({ topicsID: topicID });
-    fetchCollectionsForDropDown();
   } else {
-    window.location.href = '/pages/evenflo-faq-portal';
+    redirectIfNoData([]);
   }
 });
 </script>
