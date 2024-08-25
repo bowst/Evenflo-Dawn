@@ -270,7 +270,8 @@ function getFAQContent(products) {
 }
 
 function redirectIfNoData(data = []) {
-	if (!data) {
+	if (data && data?.length > 0) {
+	} else {
 		window.location.href = "/pages/evenflo-faq-portal";
 	}
 }
