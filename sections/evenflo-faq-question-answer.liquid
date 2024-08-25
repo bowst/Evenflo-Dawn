@@ -42,11 +42,7 @@
       .then(response => response.json())
       .then(product => {
 
-      console.log('errorString()',errorString())
-      console.log('containsString()',containsString(product?.detail,errorString()))
-      console.log('product?.detail',product?.detail)
         if(product?.detail && containsString(product?.detail,errorString())){
-         console.log(33333333333)
           redirectIfNoData([])
           return ""
         }

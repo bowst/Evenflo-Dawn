@@ -46,6 +46,11 @@ function fetchTopicDetail(topicID) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
+
+    if(data?.detail && containsString(data?.detail,errorString())){
+          redirectIfNoData([])
+          return ""
+        }
       document.getElementById('topicName').innerHTML = data?.name;
       getBreadCrumbLinks(data?.name,'topic')
       document.getElementById('topicDescription').innerHTML = data?.description;
