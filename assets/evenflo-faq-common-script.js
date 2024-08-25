@@ -333,7 +333,7 @@ function createAndAppendDropDownOption(
 }
 
 function containsString(str, search) {
-	return str.toLowerCase().includes(search);
+	return str?.toLowerCase()?.includes(search) || false;
 }
 
 function errorString(string = "not found") {
