@@ -41,29 +41,14 @@
     fetch(evenFloFAQURL + 'faqs/' + id)
       .then(response => response.json())
       .then(product => {
-        console.log('product', product);
-        let productsContent = "";
-        let categories = [];
-        let categoriesHtml = "";
+        
 
-        product?.products.forEach(nestedProduct => {
-          productsContent += `
-            <div class="product-content">
-              <div class="product-img">
-                <img src="${nestedProduct?.image}" alt="product" />
-              </div>
-              <div class="product-title">
-                ${nestedProduct?.name}
-              </div>
-            </div>`;
-          
-          categories[nestedProduct?.category?.id] = nestedProduct?.category?.category_name;
-        });
 
-        const uniqueCategoriesArray = categories.filter((value, index, self) => self.indexOf(value) === index);
-        uniqueCategoriesArray.forEach((category) => {
-          categoriesHtml += `<a href="/pages/evenflo-faq-category?cat_id=${category}">${category}</a>`;
-        });
+        const faqsContent = getFAQContent(product?.products || []);
+
+        const tags = getTagsArray(product?.tags || []);
+
+        const tagsHtml = getTagsHtml(tags);
 
         // Update breadcrumb links
         getBreadCrumbLinks(product?.question, 'question-answer');
@@ -100,7 +85,7 @@
                 <p>${product?.answer}</p>
               </div>
               <div class="question-banner-links">
-                ${categoriesHtml}
+                ${tagsHtml}
               </div>
             </div>
           </div>
@@ -111,7 +96,7 @@
                 <h2>Related Products</h2>
               </div>
               <div class="product-list">
-                ${productsContent}
+                ${faqsContent}
               </div>
               <div class="question-banner-links">
                 <span>Show more products</span>
