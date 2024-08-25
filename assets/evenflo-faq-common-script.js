@@ -319,7 +319,7 @@ function getFAQContent(products) {
 	let faqsContent = "";
 
 	products.forEach((nestedProduct) => {
-		faqsContent += `<li>${nestedProduct?.name}</li>`;
+		faqsContent += `<li><a href="/pages/evenflo-faq-product?pid=${nestedProduct?.id}">${nestedProduct?.name}</a></li>`;
 	});
 
 	return faqsContent;
