@@ -9,32 +9,37 @@
 </div>
 
 <script>
-  // Function to initialize product list interactions
-  function productList() {
+function productList() {
   const productList = document.querySelector(".question-banner-wrapper .product-list");
-  if (!productList) return;
+  const toggleLink = document.querySelector(".question-banner-links");
+  
+  if (!productList || !toggleLink) return;
 
   const products = productList.querySelectorAll(".product-content");
-  if (products.length <= 3) return;  // No need to hide if there are 3 or fewer products
+  if (products.length <= 3) {
+    toggleLink.style.display = "none";  // Hide toggle button if no more than 3 products
+    return;
+  }
 
-  // Hide products after the first three
+  // Initially hide products after the first three
   for (let i = 3; i < products.length; i++) {
     products[i].style.display = "none";
   }
 
-  // Show the toggle button
-  const toggleLink = document.querySelector(".question-banner-links");
-  if (toggleLink) {
-    toggleLink.style.display = "block";  // Make sure the toggle link is visible
-    toggleLink.addEventListener("click", () => {
-      const isHidden = products[3].style.display === "none";
-      for (let i = 3; i < products.length; i++) {
-        products[i].style.display = isHidden ? "block" : "none";
-      }
-      toggleLink.querySelector("span").textContent = isHidden ? "Show less products" : "Show more products";
-    });
-  }
+  // Display the toggle button
+  toggleLink.style.display = "block";
+  toggleLink.innerHTML = `<span>Show more products</span>`;
+
+  // Add click event listener to toggle visibility
+  toggleLink.addEventListener("click", () => {
+    const isHidden = products[3].style.display === "none";
+    for (let i = 3; i < products.length; i++) {
+      products[i].style.display = isHidden ? "block" : "none";
+    }
+    toggleLink.innerHTML = `<span>${isHidden ? 'Show less products' : 'Show more products'}</span>`;
+  });
 }
+
 
 
 
@@ -114,7 +119,7 @@
             <div class="product-list">
               ${productsContent}
             </div>
-            <div class="question-banner-links" style="display: none;">
+            <div class="question-banner-links">
               <span>Show more products</span>
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
