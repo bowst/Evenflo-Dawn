@@ -279,32 +279,24 @@ function setFAQBlockInnerHtml(
 ) {
 	return `
 	  <div class="heading">
-	  ${topicName ? <h3>${topicName}</h3> : null}
-	  ${faqQuestion ? <h2>${faqQuestion}</h2> : null}
+		${topicName ? `<h3>${topicName}</h3>` : ""}
+		${faqQuestion ? `<h2>${faqQuestion}</h2>` : ""}
 		
-		 ${
-				faqContent ? (
-					<div class="description-wrapper">
-						<ul>${faqContent}</ul>
-						<button>
-							<span>Show more</span>
-							<svg
-								aria-hidden="true"
-								focusable="false"
-								class="icon icon-caret"
-								viewBox="0 0 10 6"
-							>
-								<path
-									fill-rule="evenodd"
-									clip-rule="evenodd"
-									d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
-									fill="currentColor"
-								></path>
-							</svg>
-						</button>
-					</div>
-				) : null
-			}
+		${
+			faqContent
+				? `
+			<div class="description-wrapper">
+				<ul>${faqContent}</ul>
+				<button>
+					<span>Show more</span>
+					<svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+					</svg>
+				</button>
+			</div>
+		`
+				: ""
+		}
 	  </div>
 	  <div class="card-content">
 		<div class="card-detail-wrapper">
