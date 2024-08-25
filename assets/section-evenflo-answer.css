@@ -71,53 +71,63 @@
 	letter-spacing: 0.6px;
 }
 .product-list.product-list-custom .product-content:not(:first-child) {
-    display: none;
+	display: none;
 }
-.product-list + .question-banner-links{
+.product-list + .question-banner-links {
 	background: none;
-    color: #2996c5;
-    gap: 8px;
-    text-decoration-line: underline;
-    font-size: 19.2px;
-    font-weight: 400;
-    line-height: 25.6px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    padding: 6px;
-    display:none;
-    cursor: pointer;
-    width: max-content;
+	color: #2996c5;
+	gap: 8px;
+	text-decoration-line: underline;
+	font-size: 19.2px;
+	font-weight: 400;
+	line-height: 25.6px;
+	letter-spacing: 1.2px;
+	text-transform: uppercase;
+	padding: 6px;
+	display: none;
+	cursor: pointer;
+	width: max-content;
 }
-.product-list + .question-banner-links:hover{
-  background: #2a5f5e;
-  color: #fff;
+.product-list + .question-banner-links:hover {
+	background: #2a5f5e;
+	color: #fff;
 }
-.product-list + .question-banner-links:hover svg path{
-  fill: #fff;
+.product-list + .question-banner-links:hover svg path {
+	fill: #fff;
 }
-.product-list + .question-banner-links.question-banner-links-show{
-  display: inline-flex;
+.product-list + .question-banner-links.question-banner-links-show {
+	display: inline-flex;
 }
+
+/* Added the CSS by saif */
+.product-list-custom .product-content:nth-child(n + 4) {
+	display: none;
+}
+
+.question-banner-links-show {
+	display: block; /* Ensure the toggle button is visible */
+}
+/* /////////////////////////////////////// */
+
 .copy-clipboard-btn {
-  display: none;
+	display: none;
 }
 .question-banner-wrapper h1 .copy-clipboard-btn {
-    display: inline-flex;
-  align-items: center;
+	display: inline-flex;
+	align-items: center;
 }
 
 .copy-clipboard-btn .copied-clipboard-svg {
-    display: none;
+	display: none;
 }
 .copy-clipboard-btn.copied-clipboard-btn .copied-clipboard-svg {
-    display: block;
-   width: 25px;
-    height: 25px;
+	display: block;
+	width: 25px;
+	height: 25px;
 }
 
 .copy-clipboard-btn.copied-clipboard-btn .copy-clipboard-svg {
-    display: none;
-   
+	display: none;
 }
 @media screen and (max-width: 1024px) {
 	.question-banner-wrapper {
@@ -143,37 +153,37 @@
 }
 
 @media screen and (max-width: 767px) {
-  .product-list {
-      gap: 0;
-      flex-direction: column;
-  }
-  .product-content {
-      max-width: 100%;
-  }
-  .product-list + .question-banner-links a {
-      font-size: 16px;
-  }
-  .question-banner-wrapper h1 .copy-clipboard-btn {
-      display: none;
-  }
-  .copy-clipboard-btn {
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      border: 1px solid #00AEA9;
-      padding: 8px;
-      color: #00AEA9;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 18px;
-      max-width: max-content;
-  }
-  
-  /* .copy-clipboard-btn:hover {
+	.product-list {
+		gap: 0;
+		flex-direction: column;
+	}
+	.product-content {
+		max-width: 100%;
+	}
+	.product-list + .question-banner-links a {
+		font-size: 16px;
+	}
+	.question-banner-wrapper h1 .copy-clipboard-btn {
+		display: none;
+	}
+	.copy-clipboard-btn {
+		display: inline-flex;
+		gap: 10px;
+		align-items: center;
+		border: 1px solid #00aea9;
+		padding: 8px;
+		color: #00aea9;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 18px;
+		max-width: max-content;
+	}
+
+	/* .copy-clipboard-btn:hover {
       background: #00AEA9;color: #fff;
   } */
-  
-  /* .copy-clipboard-btn:hover svg path {
+
+	/* .copy-clipboard-btn:hover svg path {
       fill: #fff;
   } */
 }
