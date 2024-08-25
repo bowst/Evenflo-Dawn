@@ -42,11 +42,12 @@
       .then(response => response.json())
       .then(product => {
 
-      console.log('product',product)
+      console.log('productsssdetail',product?.detail)
         if(product?.detail){
+          console.log('productsss',product)
           redirectIfNoData([])
         }
-        
+        // && contaninsString(errorString(product?.detail))
 
         let productsContent = "";
         product?.products?.forEach(nestedProduct => {
