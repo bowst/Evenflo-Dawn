@@ -41,10 +41,25 @@
     fetch(evenFloFAQURL + 'faqs/' + id)
       .then(response => response.json())
       .then(product => {
+
+        let productsContent = "";
+        product?.products.forEach(nestedProduct => {
+          productsContent += `
+          <a href="/pages/evenflo-faq-product?pid=${nestedProduct?.id}">
+            <div class="product-content">
+              <div class="product-img">
+                <img src="${nestedProduct?.image}" alt="product" />
+              </div>
+              <div class="product-title">
+                ${nestedProduct?.name}
+              </div>
+            </div></a>`;
         
+        });
+
+  
 
 
-        const faqsContent = getFAQContent(product?.products || []);
 
         const tags = getTagsArray(product?.tags || []);
 
