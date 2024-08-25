@@ -76,6 +76,13 @@
       .then((response) => response.json())
       .then((data) => {
 
+      if(data?.detail && containsString(data?.detail,errorString())){
+          redirectIfNoData([])
+          return ""
+        }
+
+      fetchFAQsByFilters({categoryID:categoryID});
+      fetchTopicsByType(categoryID,true,"category")
 
         document.getElementById('categoryName').innerHTML = data?.category_name;
         //Calling breadcrumb link to update the breadcrumb name
@@ -111,6 +118,7 @@
       })
       .catch((error) => {
         console.error("Error fetching category:", error);
+        redirectIfNoData([])
       })
       .finally(() => {
         if (loader) {
@@ -129,10 +137,8 @@
     if (urlParams.has('cat_id')) {
       categoryID = urlParams.get('cat_id');
       fetchPopularCategoriesRelatedData(categoryID);
-      fetchFAQsByFilters({categoryID:categoryID});
-      fetchTopicsByType(categoryID,true,"category")
     } else {
-      window.location.href = '/pages/evenflo-faq-portal';
+      redirectIfNoData([]);
     }
   });
 </script>

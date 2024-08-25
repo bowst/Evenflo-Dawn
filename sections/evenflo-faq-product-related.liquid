@@ -65,6 +65,16 @@
       .then((response) => response.json())
       .then((data) => {
 
+      if(data?.detail && containsString(data?.detail,errorString())){
+          redirectIfNoData([])
+          return ""
+        }
+
+            //Will be called in faq-related-part-block
+        getProductsPartsByProductID(productID)
+
+        fetchFAQsByFilters({productID:productID});
+        fetchTopicsByType(productID,true)
 
         document.getElementById('productName').innerHTML = data?.name;
         //Calling breadcrumb link to update the breadcrumb name
@@ -124,6 +134,7 @@
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
+        redirectIfNoData([])
       })
       .finally(() => {
         if (loader) {
@@ -141,13 +152,8 @@
     if (urlParams.has('pid')) {
       productID = urlParams.get('pid');
       fetchPopularProductsRelatedData(productID);
-      //Will be called in faq-related-part-block
-      getProductsPartsByProductID(productID)
-
-      fetchFAQsByFilters({productID:productID});
-      fetchTopicsByType(productID,true)
     } else {
-      window.location.href = '/pages/evenflo-faq-portal';
+      redirectIfNoData([])
     }
   });
 </script>
