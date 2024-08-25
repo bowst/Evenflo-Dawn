@@ -16,7 +16,6 @@ function fetchFAQsByFilters({
 	popular = false,
 	appendTo = "searchListigBody",
 	showLoadMore = true,
-	categoryShow = false,
 }) {
 	const container = document.getElementById(appendTo);
 
@@ -43,7 +42,7 @@ function fetchFAQsByFilters({
 	fetch(
 		evenFloFAQURL +
 			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&
-			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}&show=${categoryShow}`
+			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
 	)
 		.then((response) => response.json())
 		.then((data) => {
@@ -184,61 +183,6 @@ function copyCurrentUrlToClipboard() {
 			document.body.removeChild(dummyInput);
 		});
 }
-
-// function fetchPopularProductsData(popularByProduct = false) {
-// 	const container = document.getElementById("popularCards");
-// 	const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-// 	let blocksToShow = popularQuestionBlock
-// 		? popularQuestionBlock.dataset.faqsToShow
-// 		: 3;
-
-// 	if (!container) {
-// 		console.log("Error on getting container");
-// 		return;
-// 	}
-
-// 	container.innerHTML = ""; // Clear existing content
-// 	const loader = appendLoader(container);
-
-// 	let url = popularByProduct
-// 		? evenFloFAQURL + "faqs/popular"
-// 		: evenFloFAQURL + "faqs/popular";
-
-// 	fetch(url)
-// 		.then((response) => response.json())
-// 		.then((data) => {
-// 			data.slice(0, blocksToShow).forEach((product) => {
-// 				const popularCard = createPopularCardDivElement("popular-card");
-
-// 				const faqsContent = getFAQContent(product?.products || []);
-
-// 				const tags = getTagsArray(product?.tags || []);
-
-// 				const tagsHtml = getTagsHtml(tags);
-
-// 				popularCard.innerHTML = setFAQBlockInnerHtml(
-// 					product?.topic?.name || "",
-// 					product.question,
-// 					faqsContent,
-// 					product.answer,
-// 					product?.id,
-// 					tagsHtml
-// 				);
-
-// 				container.appendChild(popularCard);
-// 			});
-// 		})
-// 		.catch((error) => {
-// 			console.error("Error fetching products:", error);
-// 		})
-// 		.finally(() => {
-// 			// Hide the loader
-// 			if (loader) {
-// 				hideLoader(loader);
-// 				toggleAnswerBullet();
-// 			}
-// 		});
-// }
 
 function fetchTopicsByType(id, productPage = false, type = "collection") {
 	const container = document.getElementById("selectTopic");
