@@ -63,7 +63,7 @@
 <script>
 
 
-function fetchCollectionDetail(id) {
+function fetchCollectionDetail(collectionID) {
   const container = document.getElementById('collectionDetail');
 
   if(!container){
@@ -74,9 +74,19 @@ function fetchCollectionDetail(id) {
 
    const loader = appendLoader(container)
 
-  fetch(`${evenFloFAQURL}collection/${id}/`)
+  fetch(`${evenFloFAQURL}collection/${collectionID}/`)
     .then(response => response.json())
     .then(collection => {
+
+    if(collection?.detail && containsString(collection?.detail,errorString())){
+          redirectIfNoData([])
+          return ""
+        }
+
+    fetchProductsByCollection(collectionID);
+        fetchFAQsByFilters({ collectionID: collectionID });
+        fetchTopicsByType(collectionID);
+        fetchDropDownProductsByType(collectionID);
 		container.innerHTML = `
        <h1 id="collectionHeading">${collection?.name}</h1>
                     <p id="collectionDescription">${collection?.description}</p>
@@ -85,6 +95,7 @@ function fetchCollectionDetail(id) {
     })
     .catch(error => {
       console.error('Error fetching collection:', error);
+      redirectIfNoData([])
     })
     .finally(() => {
       // Hide the loader
@@ -181,15 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (urlParams.has('cid')) {
         collectionID = urlParams.get('cid');
 		    fetchCollectionDetail(collectionID);
-        fetchProductsByCollection(collectionID);
-        fetchFAQsByFilters({ collectionID: collectionID });
-        //fetchFAQSByCollection(collectionID);
-
-        fetchTopicsByType(collectionID);
-        fetchDropDownProductsByType(collectionID);
 
     } else{
-		window.location.href = '/pages/evenflo-faq-portal';
+		  redirectIfNoData([]);
 	}
 });
 
