@@ -331,6 +331,14 @@ function createAndAppendDropDownOption(
 	container.appendChild(defaultOption);
 }
 
+function contaninsString(str) {
+	return str.toLowerCase().includes("javascript");
+}
+
+function errorString(string = "Not found") {
+	return string;
+}
+
 function emptyContainerHtml(container) {
 	if (container) {
 		container.innerHTML = "";

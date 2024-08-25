@@ -41,7 +41,12 @@
     fetch(evenFloFAQURL + 'faqs/' + id)
       .then(response => response.json())
       .then(product => {
-        redirectIfNoData(product)
+
+        if(product?.detail && contaninsString(errorString(product?.detail))){
+          alert(3)
+          redirectIfNoData([])
+        }
+        
 
         let productsContent = "";
         product?.products?.forEach(nestedProduct => {
