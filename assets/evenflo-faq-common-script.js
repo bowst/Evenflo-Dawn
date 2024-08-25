@@ -269,6 +269,12 @@ function getFAQContent(products) {
 	return faqsContent;
 }
 
+function redirectIfNoData(data = []) {
+	if (!data) {
+		window.location.href = "/pages/evenflo-faq-portal";
+	}
+}
+
 function setFAQBlockInnerHtml(
 	topicName = "",
 	faqQuestion = "",
