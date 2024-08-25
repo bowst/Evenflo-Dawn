@@ -43,7 +43,7 @@
       .then(product => {
 
         let productsContent = "";
-        product?.products.forEach(nestedProduct => {
+        product?.products?.forEach(nestedProduct => {
           productsContent += `
           <a href="/pages/evenflo-faq-product?pid=${nestedProduct?.id}">
             <div class="product-content">

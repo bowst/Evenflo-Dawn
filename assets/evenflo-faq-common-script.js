@@ -253,7 +253,7 @@ function getTagsHtml(tags) {
 	);
 
 	uniquetagsArray?.forEach((category) => {
-		tagsHtml += `<a href="#">${category.name}</a>`;
+		tagsHtml += `<a href="javascript:void(0)">${category.name}</a>`;
 	});
 
 	return tagsHtml;
