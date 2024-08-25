@@ -42,7 +42,7 @@
       .then(response => response.json())
       .then(product => {
 
-        if(product?.detail && containsString(product?.detail,errorString(product?.detail))){
+        if(product?.detail && containsString(product?.detail,errorString())){
          
           redirectIfNoData([])
         }
