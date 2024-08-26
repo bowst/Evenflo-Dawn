@@ -20,6 +20,12 @@
     <div class="help-article-search-wrapper">
       <h1 id="categoryName"></h1>
     </div>
+
+    <div class="tab-body">
+      <div class="tab-content-wrapper" id="productsByCategory">
+       
+      </div>
+    </div>
   </div>
 </div>
 
@@ -38,11 +44,11 @@
 
 </div>
 
-{% assign categories_to_show = 6 %}
+{% comment %} {% assign categories_to_show = 6 %}
 {% assign products_to_show = 6 %}
-{% assign category_title = "Categories" %}
+{% assign category_title = "Categories" %} {% endcomment %}
 
-{% render 'faq-category-block', categories_to_show: categories_to_show, products_to_show: products_to_show, category_title: category_title,show_title:false %}
+{% comment %} {% render 'faq-category-block', categories_to_show: categories_to_show, products_to_show: products_to_show, category_title: category_title,show_title:false %} {% endcomment %}
 
 {% render 'faq-load-more-block', show_topic_dropdown:true %}
 
@@ -80,7 +86,7 @@
           redirectIfNoData([])
           return ""
         }
-
+      getProductsByCategory(categoryID)
       fetchFAQsByFilters({categoryID:categoryID});
       fetchTopicsByType(categoryID,true,"category")
 

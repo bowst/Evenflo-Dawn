@@ -436,7 +436,7 @@ function getBreadcrumbLinkName(slug) {
 	return "FAQ";
 }
 
-function getProductsByCategory(category_id, category_name) {
+function getProductsByCategory(category_id, category_name = "") {
 	// Show the loader
 	const container = document.getElementById("productsByCategory");
 	const browseCategoriesContainer = document.getElementById(
