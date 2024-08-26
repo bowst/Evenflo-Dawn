@@ -74,6 +74,7 @@
         },
         "inventory_4ziRaQ": {
           "type": "inventory",
+          "disabled": true,
           "settings": {
             "text_style": "body",
             "inventory_threshold": 10,
@@ -230,6 +231,7 @@
     },
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
       "type": "evenflo-quote",
+      "disabled": true,
       "settings": {
         "quote": "{{ product.metafields.custom.customer_quote.value }}",
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
@@ -255,6 +257,7 @@
     },
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
       "type": "evenflo-join",
+      "disabled": true,
       "settings": {
       }
     },
