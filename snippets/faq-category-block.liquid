@@ -53,7 +53,7 @@
       const container = document.querySelector('.tab-header'); 
       container.innerHTML = ""; // Clear previous buttons
 
-      data.results?.slice(0, blocksToShow).forEach((category, index) => {
+      data.results?.forEach((category, index) => {
         const categoryTag = document.createElement('button');
   
         const isActive = index === 0 ? "active" : "";
