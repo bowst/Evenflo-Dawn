@@ -435,3 +435,76 @@ function getBreadcrumbLinkName(slug) {
 
 	return "FAQ";
 }
+
+function getProductsByCategory(category_id, category_name) {
+	// Show the loader
+	const container = document.getElementById("productsByCategory");
+	const browseCategoriesContainer = document.getElementById(
+		"browseCategoriesDiv"
+	);
+
+	if (!container) {
+		console.error("productsByCategory wrapper container not found");
+		return;
+	}
+
+	emptyContainerHtml(container);
+
+	emptyContainerHtml(browseCategoriesContainer);
+
+	const loader = appendLoader(container);
+
+	fetch(evenFloFAQURL + `products/by/category/${category_id}`)
+		.then((response) => response.json())
+		.then((data) => {
+			if (data && data?.length > 0) {
+				const productsBlock = document.getElementById("productsByCategory");
+				const blocksToShow = productsBlock
+					? productsBlock.dataset.faqsToShow
+					: 3;
+
+				data.slice(0, blocksToShow).forEach((product) => {
+					// Limit to 3 products
+					const tabCard = document.createElement("div");
+					tabCard.classList.add("tab-card");
+
+					tabCard.innerHTML = `
+		 <a href="/pages/evenflo-faq-product?pid=${product?.id}">
+		  <div class="tab-img">
+			 <img
+			   src=${product?.image}
+			   alt="tab-img"
+			 />
+		   </div>
+		   <div class="tab-content">
+			 <h4>${product?.name}</h4>
+		   </div>
+		 </a>
+		 `;
+
+					container.appendChild(tabCard);
+				});
+
+				if (browseCategoriesContainer) {
+					//Appending all categories button
+					const browseCategories = document.createElement("button");
+					browseCategories.innerHTML = `<button>Browse All ${category_name}</button>`;
+					// Appending an onclick function to all the buttons
+					browseCategories.onclick = () => {
+						window.location.href = `/pages/evenflo-faq-category?cat_id=${category_id}`;
+						//  alert(category_id)
+					};
+					browseCategoriesContainer.appendChild(browseCategories);
+				}
+			}
+		})
+		.catch((error) => {
+			console.error("Error fetching products:", error);
+		})
+		.finally(() => {
+			// Hide the loader
+			if (loader) {
+				hideLoader(loader);
+			}
+		});
+}
