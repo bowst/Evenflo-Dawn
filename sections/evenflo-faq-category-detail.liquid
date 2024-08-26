@@ -86,8 +86,8 @@
           redirectIfNoData([])
           return ""
         }
-        
-      getProductsByCategory(categoryID)
+
+      getProductsByCategory(categoryID,"",true)
       fetchFAQsByFilters({categoryID:categoryID});
       fetchTopicsByType(categoryID,true,"category")
 
