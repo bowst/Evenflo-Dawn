@@ -42,10 +42,10 @@
     loader.style.display = 'block';
   }
   
-  fetch(evenFloFAQURL + 'products/getPaginatedCategories?show=true')
+  fetch(evenFloFAQURL + 'products/getAllCategories')
     .then(response => response.json())
     .then(data => {
-      getProductsByCategory(data.results[0]?.id,data.results[0]?.category_name);
+      getProductsByCategory(data[0]?.id,data[0]?.category_name);
 
       const categoriesBlock = document.getElementById('categoriesContainer');
       const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
@@ -53,7 +53,7 @@
       const container = document.querySelector('.tab-header'); 
       container.innerHTML = ""; // Clear previous buttons
 
-      data.results?.forEach((category, index) => {
+      data?.forEach((category, index) => {
         const categoryTag = document.createElement('button');
   
         const isActive = index === 0 ? "active" : "";
