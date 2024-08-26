@@ -436,7 +436,11 @@ function getBreadcrumbLinkName(slug) {
 	return "FAQ";
 }
 
-function getProductsByCategory(category_id, category_name = "") {
+function getProductsByCategory(
+	category_id,
+	category_name = "",
+	fromCategoryDetail = false
+) {
 	// Show the loader
 	const container = document.getElementById("productsByCategory");
 	const browseCategoriesContainer = document.getElementById(
@@ -463,8 +467,15 @@ function getProductsByCategory(category_id, category_name = "") {
 					? productsBlock.dataset.faqsToShow
 					: 3;
 
-				data.slice(0, blocksToShow).forEach((product) => {
-					// Limit to 3 products
+				let resultsToShow = [];
+				if (fromCategoryDetail) {
+					resultsToShow = data;
+				} else {
+					// Limit to blocksToShow products
+					resultsToShow = data.slice(0, blocksToShow);
+				}
+
+				resultsToShow.forEach((product) => {
 					const tabCard = document.createElement("div");
 					tabCard.classList.add("tab-card");
 
@@ -499,7 +510,7 @@ function getProductsByCategory(category_id, category_name = "") {
 			}
 		})
 		.catch((error) => {
-			console.error("Error fetching products:", error);
+			console.error("Error fetching products by category:", error);
 		})
 		.finally(() => {
 			// Hide the loader
