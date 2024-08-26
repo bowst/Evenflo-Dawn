@@ -35,6 +35,7 @@
         },
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
           "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
           "settings": {
             "product": "{{product}}"
           }
@@ -64,6 +65,33 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
+        },
+        "related_products_DgU8dm": {
+          "type": "related_products",
+          "settings": {
+            "heading": "Related Products"
+          }
+        },
+        "inventory_4ziRaQ": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "complementary_Q3GEcD": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
         }
       },
       "block_order": [
@@ -73,7 +101,10 @@
         "price",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "related_products_DgU8dm",
+        "inventory_4ziRaQ",
+        "complementary_Q3GEcD"
       ],
       "settings": {
         "enable_sticky_info": false,
