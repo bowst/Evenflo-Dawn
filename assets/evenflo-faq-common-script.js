@@ -463,8 +463,9 @@ function getProductsByCategory(
 		.then((data) => {
 			if (data && data?.length > 0) {
 				const productsBlock = document.getElementById("productsByCategory");
+
 				const blocksToShow = productsBlock
-					? productsBlock.dataset.faqsToShow
+					? productsBlock?.dataset?.faqsToShow
 					: 3;
 
 				let resultsToShow = [];
