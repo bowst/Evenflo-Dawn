@@ -42,7 +42,7 @@
     loader.style.display = 'block';
   }
   
-  fetch(evenFloFAQURL + 'products/getAllCategories')
+  fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
     .then(response => response.json())
     .then(data => {
       getProductsByCategory(data[0]?.id,data[0]?.category_name);
