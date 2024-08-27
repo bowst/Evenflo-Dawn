@@ -90,7 +90,7 @@ function fetchFAQsByFilters({
 
 function toggleAnswerBullet() {
 	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
-console.log("ddd")
+
 	if (descriptionWrappers.length > 0) {
 		descriptionWrappers.forEach((desc) => {
 			const listItems = desc.querySelectorAll("ul li").length;
@@ -102,6 +102,7 @@ console.log("ddd")
 				if (button) {
 					button.addEventListener("click", () => {
 						desc.classList.toggle("description-wrapper-show");
+                      console.log("ddd")
 					});
 				}
 			} else {
