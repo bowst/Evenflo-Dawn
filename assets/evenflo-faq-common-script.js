@@ -88,50 +88,31 @@ function fetchFAQsByFilters({
 		});
 }
 
-// function toggleAnswerBullet() {
-// 	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
+function toggleAnswerBullet() {
+	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
 
-// 	if (descriptionWrappers.length > 0) {
-// 		descriptionWrappers.forEach((desc) => {
-// 			const listItems = desc.querySelectorAll("ul li").length;
-
-// 			if (listItems > 1) {
-// 				desc.classList.remove("description-wrapper-remove");
-// 				const button = desc.querySelector("button");
-
-// 				if (button) {
-// 					button.addEventListener("click", () => {
-// 						desc.classList.toggle("description-wrapper-show");
-//                       console.log("ddd" + descriptionWrappers.length)
-                  
-// 					});
-// 				}
-// 			} else {
-// 				desc.classList.add("description-wrapper-remove");
-// 			}
-// 		});
-// 	}
-// }
-
- function toggleAnswerBullet() {
-	const descriptionWrappers = document.querySelector(".description-wrapper");
-            const listItems = descriptionWrappers.querySelectorAll("ul li").length;
+	if (descriptionWrappers.length > 0) {
+		descriptionWrappers.forEach((desc) => {
+			const listItems = desc.querySelectorAll("ul li").length;
 
 			if (listItems > 1) {
-				descriptionWrappers.classList.remove("description-wrapper-remove");
-				const button = descriptionWrappers.querySelector("button");
+				desc.classList.remove("description-wrapper-remove");
+				const button = desc.querySelector("button");
 
 				if (button) {
 					button.addEventListener("click", () => {
-						descriptionWrappers.classList.toggle("description-wrapper-show");
-                      console.log("ddddff")
+						desc.classList.toggle("description-wrapper-show");
+                      console.log("dddf")
                   
 					});
 				}
 			} else {
-				descriptionWrappers.classList.add("description-wrapper-remove");
+				desc.classList.add("description-wrapper-remove");
 			}
+		});
+	}
 }
+
 
 //For appending loader in specific div
 function appendLoader(container) {
