@@ -519,6 +519,32 @@ function getProductsByCategory(
 			// Hide the loader
 			if (loader) {
 				hideLoader(loader);
+               var swiper = new Swiper(".product-category-wrapper", {
+            loop: true,
+            slidesPerView: 4,
+            spaceBetween: 30,   
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+              320: {  // when window width is >= 320px
+                slidesPerView: 1,
+                spaceBetween: 10
+              },
+              640: {  // when window width is >= 640px
+                slidesPerView: 2,
+              },
+              960: {  // when window width is >= 960px
+                slidesPerView: 4,
+              }
+            }
+        });
+ 
 			}
 		});
 }
