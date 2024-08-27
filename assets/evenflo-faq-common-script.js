@@ -103,7 +103,7 @@ function toggleAnswerBullet() {
 					button.addEventListener("click", () => {
 						desc.classList.toggle("description-wrapper-show");
                       console.log("ddd")
-                      debugger;
+                  
 					});
 				}
 			} else {
@@ -111,6 +111,24 @@ function toggleAnswerBullet() {
 			}
 		});
 	}
+  else{
+    const listItems = descriptionWrappers.querySelectorAll("ul li").length;
+
+			if (listItems > 1) {
+				descriptionWrappers.classList.remove("description-wrapper-remove");
+				const button = descriptionWrappers.querySelector("button");
+
+				if (button) {
+					button.addEventListener("click", () => {
+						descriptionWrappers.classList.toggle("description-wrapper-show");
+                      console.log("ddd")
+                  
+					});
+				}
+			} else {
+				descriptionWrappers.classList.add("description-wrapper-remove");
+			}
+  }
 }
 
 //For appending loader in specific div
