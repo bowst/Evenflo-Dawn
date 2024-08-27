@@ -89,13 +89,13 @@ function fetchFAQsByFilters({
 }
 
 function toggleAnswerBullet() {
-  debugger
+  
 	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
 
 	if (descriptionWrappers.length > 0) {
 		descriptionWrappers.forEach((desc) => {
 			const listItems = desc.querySelectorAll("ul li").length;
-
+console.log(listItems.length)
 			if (listItems > 1) {
 				desc.classList.remove("description-wrapper-remove");
 				const button = desc.querySelector("button");
