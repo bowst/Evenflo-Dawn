@@ -33,47 +33,24 @@
           "settings": {
           }
         },
-        "complementary_XkM9Dy": {
+        "complementary_QnDEwB": {
           "type": "complementary",
           "settings": {
             "block_heading": "Pairs well with",
             "make_collapsible_row": true,
-            "icon": "price_tag",
+            "icon": "ruler",
             "product_list_limit": 10,
             "products_per_page": 3,
             "pagination_style": "counter",
-            "image_ratio": "square",
-            "enable_quick_add": false
-          }
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": false
+            "image_ratio": "portrait",
+            "enable_quick_add": true
           }
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "complementary_XkM9Dy",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons"
+        "complementary_QnDEwB"
       ],
       "settings": {
         "enable_sticky_info": false,
