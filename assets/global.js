@@ -415,9 +415,9 @@ class MenuDrawer extends HTMLElement {
 
     openDetailsElement === this.mainDetailsToggle
       ? this.closeMenuDrawer(
-          event,
-          this.mainDetailsToggle.querySelector("summary")
-        )
+        event,
+        this.mainDetailsToggle.querySelector("summary")
+      )
       : this.closeSubmenu(openDetailsElement);
   }
 
@@ -459,9 +459,9 @@ class MenuDrawer extends HTMLElement {
         !reducedMotion || reducedMotion.matches
           ? addTrapFocus()
           : summaryElement.nextElementSibling.addEventListener(
-              "transitionend",
-              addTrapFocus
-            );
+            "transitionend",
+            addTrapFocus
+          );
       }, 100);
     }
   }
@@ -559,9 +559,9 @@ class HeaderDrawer extends MenuDrawer {
     this.header = this.header || document.querySelector(".section-header");
     this.borderOffset =
       this.borderOffset ||
-      this.closest(".header-wrapper").classList.contains(
-        "header-wrapper--border-bottom"
-      )
+        this.closest(".header-wrapper").classList.contains(
+          "header-wrapper--border-bottom"
+        )
         ? 1
         : 0;
     document.documentElement.style.setProperty(
@@ -738,7 +738,7 @@ class SliderComponent extends HTMLElement {
       this.sliderItemsToShow[0].offsetLeft;
     this.slidesPerPage = Math.floor(
       (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) /
-        this.sliderItemOffset
+      this.sliderItemOffset
     );
     this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
     this.update();
@@ -960,7 +960,7 @@ class SlideshowComponent extends SliderComponent {
       this.currentPage === this.sliderItems.length
         ? 0
         : this.slider.scrollLeft +
-          this.slider.querySelector(".slideshow__slide").clientWidth;
+        this.slider.querySelector(".slideshow__slide").clientWidth;
     this.slider.scrollTo({
       left: slideScrollPosition,
     });
@@ -992,9 +992,9 @@ class SlideshowComponent extends SliderComponent {
     const slideScrollPosition =
       this.slider.scrollLeft +
       this.sliderFirstItemNode.clientWidth *
-        (this.sliderControlLinksArray.indexOf(event.currentTarget) +
-          1 -
-          this.currentPage);
+      (this.sliderControlLinksArray.indexOf(event.currentTarget) +
+        1 -
+        this.currentPage);
     this.slider.scrollTo({
       left: slideScrollPosition,
     });
@@ -1173,10 +1173,9 @@ class VariantSelects extends HTMLElement {
       : this.dataset.section;
 
     fetch(
-      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${
-        this.dataset.originalSection
-          ? this.dataset.originalSection
-          : this.dataset.section
+      `${this.dataset.url}?variant=${requestedVariantId}&section_id=${this.dataset.originalSection
+        ? this.dataset.originalSection
+        : this.dataset.section
       }`
     )
       .then((response) => response.text())
@@ -1189,27 +1188,24 @@ class VariantSelects extends HTMLElement {
           `price-${this.dataset.section}`
         );
         const source = html.getElementById(
-          `price-${
-            this.dataset.originalSection
-              ? this.dataset.originalSection
-              : this.dataset.section
+          `price-${this.dataset.originalSection
+            ? this.dataset.originalSection
+            : this.dataset.section
           }`
         );
         const skuSource = html.getElementById(
-          `Sku-${
-            this.dataset.originalSection
-              ? this.dataset.originalSection
-              : this.dataset.section
+          `Sku-${this.dataset.originalSection
+            ? this.dataset.originalSection
+            : this.dataset.section
           }`
         );
         const skuDestination = document.getElementById(
           `Sku-${this.dataset.section}`
         );
         const inventorySource = html.getElementById(
-          `Inventory-${
-            this.dataset.originalSection
-              ? this.dataset.originalSection
-              : this.dataset.section
+          `Inventory-${this.dataset.originalSection
+            ? this.dataset.originalSection
+            : this.dataset.section
           }`
         );
         const inventoryDestination = document.getElementById(
@@ -1337,49 +1333,56 @@ class VariantRadios extends VariantSelects {
 customElements.define("variant-radios", VariantRadios);
 
 class ProductRecommendations extends HTMLElement {
+  observer = undefined;
+
   constructor() {
     super();
   }
 
   connectedCallback() {
-    const handleIntersection = (entries, observer) => {
-      if (!entries[0].isIntersecting) return;
-      observer.unobserve(this);
+    this.initializeRecommendations(this.dataset.productId);
+  }
 
-      fetch(this.dataset.url)
-        .then((response) => response.text())
-        .then((text) => {
-          const html = document.createElement("div");
-          html.innerHTML = text;
-          const recommendations = html.querySelector("product-recommendations");
+  initializeRecommendations(productId) {
+    this.observer?.unobserve(this);
+    this.observer = new IntersectionObserver(
+      (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.unobserve(this);
+        this.loadRecommendations(productId);
+      },
+      { rootMargin: '0px 0px 400px 0px' }
+    );
+    this.observer.observe(this);
+  }
 
-          if (recommendations && recommendations.innerHTML.trim().length) {
-            this.innerHTML = recommendations.innerHTML;
-          }
+  loadRecommendations(productId) {
+    fetch(`${this.dataset.url}&product_id=${productId}&section_id=${this.dataset.sectionId}`)
+      .then((response) => response.text())
+      .then((text) => {
+        const html = document.createElement('div');
+        html.innerHTML = text;
+        const recommendations = html.querySelector('product-recommendations');
 
-          if (
-            !this.querySelector("slideshow-component") &&
-            this.classList.contains("complementary-products")
-          ) {
-            this.remove();
-          }
+        if (recommendations?.innerHTML.trim().length) {
+          this.innerHTML = recommendations.innerHTML;
+        }
 
-          if (html.querySelector(".grid__item")) {
-            this.classList.add("product-recommendations--loaded");
-          }
-        })
-        .catch((e) => {
-          console.error(e);
-        });
-    };
+        if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
+          this.remove();
+        }
 
-    new IntersectionObserver(handleIntersection.bind(this), {
-      rootMargin: "0px 0px 400px 0px",
-    }).observe(this);
+        if (html.querySelector('.grid__item')) {
+          this.classList.add('product-recommendations--loaded');
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   }
 }
 
-customElements.define("product-recommendations", ProductRecommendations);
+customElements.define('product-recommendations', ProductRecommendations);
 
 var DIGIOH_LOADER = DIGIOH_LOADER || {};
 (function (digioh_loader) {
@@ -1393,7 +1396,7 @@ var DIGIOH_LOADER = DIGIOH_LOADER || {};
       isMainLoaded = true;
       try {
         localStorage.setItem("digishum", "yes");
-      } catch (e) {}
+      } catch (e) { }
       window.setTimeout(function () {
         var e = document.createElement("script");
         e.type = "text/javascript";
@@ -1401,7 +1404,7 @@ var DIGIOH_LOADER = DIGIOH_LOADER || {};
         e.src =
           "//www.lightboxcdn.com/vendor/e07b6cf2-e433-4ace-afa4-2755fc915356/user" +
           (window.sessionStorage.getItem("xdibx_boxqamode") == 1 ||
-          window.location.href.indexOf("boxqamode") > 0
+            window.location.href.indexOf("boxqamode") > 0
             ? "_qa"
             : "") +
           ".js?cb=638479241570618710";
@@ -1425,7 +1428,7 @@ var DIGIOH_LOADER = DIGIOH_LOADER || {};
       encodeURIComponent(hn) +
       "&e=p&u=45225";
     window.SENT_LIGHTBOX_PV = true;
-  } catch (e) {}
+  } catch (e) { }
   var bypassListeners = false;
   try {
     var ish = localStorage.getItem("digishum");
@@ -1433,7 +1436,7 @@ var DIGIOH_LOADER = DIGIOH_LOADER || {};
       bypassListeners = true;
       loadMain();
     }
-  } catch (e) {}
+  } catch (e) { }
   if (!bypassListeners) {
     var addListener, removeListener;
     if (document.addEventListener) {
