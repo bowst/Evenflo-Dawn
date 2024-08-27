@@ -520,7 +520,7 @@ function getProductsByCategory(
 			if (loader) {
 				hideLoader(loader);
                
- customSlider()
+ customSlider();
 			}
 		});
 }
