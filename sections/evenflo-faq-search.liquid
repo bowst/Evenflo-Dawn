@@ -38,6 +38,50 @@
 
 <script>
 
+function fetchTopicsAndProductsRelatedToSearch(searchTerm="",topics_id="",products_id="") {
+	const topicContainer = document.getElementById("selectTopic");
+    const productContainer = document.getElementById("selectProduct");
+
+	if (!topicContainer || productContainer) {
+		return;
+	}
+
+    createAndAppendDropDownOption(topicContainer,"Select Topic")
+    createAndAppendDropDownOption(productContainer,"Select Product")
+
+
+	fetch(`${evenFloFAQURL}faqs/getFilteredFaqs?filter=${encodeURIComponent(searchTerm)}`)
+		.then((response) => response.json())
+		.then((data) => {
+			data?.filtered_topics.forEach((topic) => {
+				const option = document.createElement("option");
+				option.value = topic.id;
+
+                if(topics_id && topics_id==topic.id){
+                option.selected=true;
+                }
+
+				option.textContent = topic.name;
+				topicContainer.appendChild(option);
+			});
+
+            data?.filtered_products.forEach((product) => {
+				const option = document.createElement("option");
+				option.value = product.id;
+
+                if(products_id && products_id==product.id){
+                option.selected=true;
+                }
+
+				option.textContent = product.name;
+				productContainer.appendChild(option);
+			});
+		})
+		.catch((error) => {
+			console.error("Error fetching topics and products:", error);
+		});
+}
+
 function fetchFAQsData(searchTerm = "", product_id = "", topics_id = "", page = 1) {
     const container = document.querySelector('.search-listing-body');
     const searchBlocks = document.getElementById('searchBlocks');
@@ -95,45 +139,6 @@ function fetchFAQsData(searchTerm = "", product_id = "", topics_id = "", page = 
               
             }          
         });
-}
-
-function fetchTopics(topics_id="") {
-	const container = document.getElementById("selectTopic");
-
-	if (!container) {
-		return;
-	}
-
-	container.innerHTML = "";
-
-	// const defaultOption = document.createElement("option");
-	// defaultOption.value = "";
-	// defaultOption.textContent = "Select Topic";
-	// container.appendChild(defaultOption);
-
-    createAndAppendDropDownOption(container,"Select Topic")
-
-	let url = evenFloFAQURL + `topics/?page=1`;
-
-
-	fetch(url)
-		.then((response) => response.json())
-		.then((data) => {
-			data?.results.forEach((topic) => {
-				const option = document.createElement("option");
-				option.value = topic.id;
-
-                if(topics_id && topics_id==topic.id){
-                option.selected=true;
-                }
-
-				option.textContent = topic.name;
-				container.appendChild(option);
-			});
-		})
-		.catch((error) => {
-			console.error("Error fetching topics:", error);
-		});
 }
 
 
@@ -233,8 +238,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (urlParams.has('page')) {
         page = urlParams.get('page');
     }
-    fetchTopics(topics_id)
-    fetchDropDownProductsByType(product_id)
+
+    // fetchTopics(topics_id)
+    // fetchDropDownProductsByType(product_id)
+
+    //Unified call to get products and topics to display in dropdown
+    fetchTopicsAndProductsRelatedToSearch(searchTerm,topics_id,product_id)
+    //Get All FAQS data
     fetchFAQsData(searchTerm, product_id, topics_id, page);
 });
 
@@ -245,7 +255,8 @@ inputElement.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         const searchTerm = inputElement.value;
-        callLocation(1, searchTerm, document.getElementById('selectProduct').value, document.getElementById('selectTopic').value);
+        // callLocation(1, searchTerm, document.getElementById('selectProduct').value, document.getElementById('selectTopic').value);
+        callLocation(1, searchTerm);
     }
 });
 
