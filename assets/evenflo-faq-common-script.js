@@ -498,6 +498,27 @@ function getProductsByCategory(
 
 					container.appendChild(tabCard);
 				});
+              
+				if (browseCategoriesContainer) {
+					//Appending all categories button
+					const browseCategories = document.createElement("button");
+					browseCategories.innerHTML = `<button>Browse All ${category_name}</button>`;
+					// Appending an onclick function to all the buttons
+					browseCategories.onclick = () => {
+						window.location.href = `/pages/evenflo-faq-category?cat_id=${category_id}`;
+						//  alert(category_id)
+					};
+					browseCategoriesContainer.appendChild(browseCategories);
+				}
+			}
+		})
+		.catch((error) => {
+			console.error("Error fetching products by category:", error);
+		})
+		.finally(() => {
+			// Hide the loader
+			if (loader) {
+				hideLoader(loader);
                 var swiper = new Swiper(".mySwiper", {
                     loop: true,
                     slidesPerView: 4,
@@ -523,27 +544,6 @@ function getProductsByCategory(
                       }
                     }
                 });
-				if (browseCategoriesContainer) {
-					//Appending all categories button
-					const browseCategories = document.createElement("button");
-					browseCategories.innerHTML = `<button>Browse All ${category_name}</button>`;
-					// Appending an onclick function to all the buttons
-					browseCategories.onclick = () => {
-						window.location.href = `/pages/evenflo-faq-category?cat_id=${category_id}`;
-						//  alert(category_id)
-					};
-					browseCategoriesContainer.appendChild(browseCategories);
-				}
-			}
-		})
-		.catch((error) => {
-			console.error("Error fetching products by category:", error);
-		})
-		.finally(() => {
-			// Hide the loader
-			if (loader) {
-				hideLoader(loader);
-              
  
 			}
 		});
