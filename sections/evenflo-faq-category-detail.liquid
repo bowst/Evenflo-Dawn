@@ -21,10 +21,13 @@
       <h1 id="categoryName"></h1>
     </div>
 
-    <div class="tab-body">
-      <div class="tab-content-wrapper" id="productsByCategory">
+    <div class="tab-body swiper mySwiper product-category-wrapper">
+      <div class="swiper-wrapper tab-content-wrapper" id="productsByCategory">
        
       </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </div>
 </div>
@@ -60,6 +63,8 @@
 {% render 'faq-support-block' %}
 
 
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
 
