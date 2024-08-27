@@ -354,6 +354,10 @@
 .tab-card:hover .tab-img{
 	transform: scale(1.1);
 }
+.tab-card .tab-content{
+  position:relative;
+  z-index:9;
+}
 .tab-card a {
 	text-decoration: none;
 }
