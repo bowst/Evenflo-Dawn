@@ -95,7 +95,7 @@ function toggleAnswerBullet() {
 	if (descriptionWrappers.length > 0) {
 		descriptionWrappers.forEach((desc) => {
 			const listItems = desc.querySelectorAll("ul li").length;
-console.log("listitems",listItems)
+
 			if (listItems > 1) {
 				desc.classList.remove("description-wrapper-remove");
 				const button = desc.querySelector("button");
@@ -103,9 +103,6 @@ console.log("listitems",listItems)
 				if (button) {
 					button.addEventListener("click", () => {
 						desc.classList.toggle("description-wrapper-show");
-                      console.log("dddf")
-                      
-                  
 					});
 				}
 			} else {
