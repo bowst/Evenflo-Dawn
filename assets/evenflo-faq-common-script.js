@@ -519,8 +519,7 @@ function getProductsByCategory(
 			// Hide the loader
 			if (loader) {
 				hideLoader(loader);
-               
- customSlider();
+                customSlider();
 			}
 		});
 }
