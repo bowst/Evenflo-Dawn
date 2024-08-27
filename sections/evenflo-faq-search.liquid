@@ -53,6 +53,7 @@ function fetchTopicsAndProductsRelatedToSearch(searchTerm="",topics_id="",produc
 	fetch(`${evenFloFAQURL}faqs/getFilteredFaqs?filter=${encodeURIComponent(searchTerm)}&page=1`)
 		.then((response) => response.json())
 		.then((data) => {
+            //Displaying search related topics
 			data?.filtered_topics.forEach((topic) => {
 				const option = document.createElement("option");
 				option.value = topic.id;
@@ -65,6 +66,7 @@ function fetchTopicsAndProductsRelatedToSearch(searchTerm="",topics_id="",produc
 				topicContainer.appendChild(option);
 			});
 
+            //Displaying search related products
             data?.filtered_products.forEach((product) => {
 				const option = document.createElement("option");
 				option.value = product.id;
@@ -239,8 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
         page = urlParams.get('page');
     }
 
-    // fetchTopics(topics_id)
-    // fetchDropDownProductsByType(product_id)
 
     //Unified call to get products and topics to display in dropdown
     fetchTopicsAndProductsRelatedToSearch(searchTerm,topics_id,product_id)
