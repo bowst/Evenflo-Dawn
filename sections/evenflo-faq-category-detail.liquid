@@ -87,7 +87,7 @@
 
 {% comment %} {% render 'faq-category-block', categories_to_show: categories_to_show, products_to_show: products_to_show, category_title: category_title,show_title:false %} {% endcomment %}
 
-{% render 'faq-load-more-block', show_topic_dropdown:true %}
+{% render 'faq-load-more-block', show_topic_dropdown:true, show_product_dropdown:true %}
 
 {% assign topics_to_show = 3 %}
 {% assign topics_title = "By Topics" %}
@@ -129,6 +129,7 @@
       getProductsByCategory(categoryID,"",true)
       fetchFAQsByFilters({categoryID:categoryID});
       fetchTopicsByType(categoryID,true,"category")
+      fetchDropDownProductsByType(categoryID,"category")
 
         document.getElementById('categoryName').innerHTML = data?.category_name;
         //Calling breadcrumb link to update the breadcrumb name
