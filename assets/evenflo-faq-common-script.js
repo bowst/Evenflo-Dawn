@@ -90,7 +90,7 @@ function fetchFAQsByFilters({
 
 function toggleAnswerBullet() {
 	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
-
+console.log("ddd")
 	if (descriptionWrappers.length > 0) {
 		descriptionWrappers.forEach((desc) => {
 			const listItems = desc.querySelectorAll("ul li").length;
