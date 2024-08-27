@@ -102,7 +102,7 @@ function toggleAnswerBullet() {
 				if (button) {
 					button.addEventListener("click", () => {
 						desc.classList.toggle("description-wrapper-show");
-                      console.log("ddd" descriptionWrappers.length)
+                     
                   
 					});
 				}
