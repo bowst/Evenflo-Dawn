@@ -84,7 +84,10 @@
 	gap: 20px;
     transition: transform .3s;
 }
-.product-card:hover{
+.product-card .product-img{
+   transition: transform .3s;
+}
+.product-card:hover .product-img{
   transform: scale(1.1)!important;
 }
 .product-card a{
