@@ -89,6 +89,7 @@ function fetchFAQsByFilters({
 }
 
 function toggleAnswerBullet() {
+  debugger
 	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
 
 	if (descriptionWrappers.length > 0) {
@@ -103,6 +104,7 @@ function toggleAnswerBullet() {
 					button.addEventListener("click", () => {
 						desc.classList.toggle("description-wrapper-show");
                       console.log("dddf")
+                      
                   
 					});
 				}
