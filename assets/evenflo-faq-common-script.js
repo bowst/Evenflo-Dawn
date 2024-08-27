@@ -88,71 +88,10 @@ function fetchFAQsByFilters({
 		});
 }
 
-// function toggleAnswerBullet() {
-// 	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
-
-// 	if (descriptionWrappers.length > 0) {
-// 		descriptionWrappers.forEach((desc) => {
-// 			const listItems = desc.querySelectorAll("ul li").length;
-
-// 			if (listItems > 1) {
-// 				desc.classList.remove("description-wrapper-remove");
-// 				const button = desc.querySelector("button");
-
-// 				if (button) {
-// 					button.addEventListener("click", () => {
-// 						desc.classList.toggle("description-wrapper-show");
-//                       console.log("ddd")
-                  
-// 					});
-// 				}
-// 			} else {
-// 				desc.classList.add("description-wrapper-remove");
-// 			}
-// 		});
-// 	}
-//   else{
-//     const listItems = descriptionWrappers.querySelectorAll("ul li").length;
-
-// 			if (listItems > 1) {
-// 				descriptionWrappers.classList.remove("description-wrapper-remove");
-// 				const button = descriptionWrappers.querySelector("button");
-
-// 				if (button) {
-// 					button.addEventListener("click", () => {
-// 						descriptionWrappers.classList.toggle("description-wrapper-show");
-//                       console.log("ddd")
-                  
-// 					});
-// 				}
-// 			} else {
-// 				descriptionWrappers.classList.add("description-wrapper-remove");
-// 			}
-//   }
-// }
 function toggleAnswerBullet() {
 	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
 
-	if (descriptionWrappers.length === 1) {
-		// Handle the case where there is exactly one .description-wrapper
-		const desc = descriptionWrappers[0];
-		const listItems = desc.querySelectorAll("ul li").length;
-
-		if (listItems > 1) {
-			desc.classList.remove("description-wrapper-remove");
-			const button = desc.querySelector("button");
-
-			if (button) {
-				button.addEventListener("click", () => {
-					desc.classList.toggle("description-wrapper-show");
-					console.log("Single description-wrapper toggled");
-				});
-			}
-		} else {
-			desc.classList.add("description-wrapper-remove");
-		}
-	} else if (descriptionWrappers.length > 1) {
-		// Handle the case where there are multiple .description-wrapper elements
+	if (descriptionWrappers.length > 0) {
 		descriptionWrappers.forEach((desc) => {
 			const listItems = desc.querySelectorAll("ul li").length;
 
@@ -163,7 +102,8 @@ function toggleAnswerBullet() {
 				if (button) {
 					button.addEventListener("click", () => {
 						desc.classList.toggle("description-wrapper-show");
-						console.log("Multiple description-wrappers toggled");
+                      console.log("ddd")
+                  
 					});
 				}
 			} else {
@@ -172,6 +112,7 @@ function toggleAnswerBullet() {
 		});
 	}
 }
+
 
 //For appending loader in specific div
 function appendLoader(container) {
