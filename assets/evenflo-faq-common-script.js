@@ -526,7 +526,7 @@ function getProductsByCategory(
 }
 
 function customSlider(){
-   var swiper = new Swiper(".product-category-slider-wrapper", {
+   var swiper = new Swiper(".mySwiper", {
       loop: true,
       slidesPerView: 4,
       spaceBetween: 30,   
