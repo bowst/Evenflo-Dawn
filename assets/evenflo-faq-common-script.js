@@ -498,6 +498,8 @@ function getProductsByCategory(
 
 					container.appendChild(tabCard);
 				});
+                customSlider();
+              
               
 				if (browseCategoriesContainer) {
 					//Appending all categories button
@@ -519,7 +521,6 @@ function getProductsByCategory(
 			// Hide the loader
 			if (loader) {
 				hideLoader(loader);
-                customSlider();
 			}
 		});
 }
