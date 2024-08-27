@@ -308,8 +308,12 @@
 	display: flex;
 	gap: 8px;
     overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
-
+.tab-header::-webkit-scrollbar {
+  display: none;
+}
 .tab-header button {
 	padding: 6px;
 	background: transparent;
