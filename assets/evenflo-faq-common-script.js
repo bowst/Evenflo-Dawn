@@ -480,7 +480,7 @@ function getProductsByCategory(
 
 				resultsToShow.forEach((product) => {
 					const tabCard = document.createElement("div");
-					tabCard.classList.add("tab-card");
+					tabCard.classList.add("swiper-slide","tab-card");
 
 					tabCard.innerHTML = `
 		 <a href="/pages/evenflo-faq-product?pid=${product?.id}">
