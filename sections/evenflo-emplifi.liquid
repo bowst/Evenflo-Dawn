@@ -1,7 +1,11 @@
 {% assign emplifi_id = collection.metafields.custom.emplifi_id %}
 
 <section class="join">
-  <div id="pixlee_container"></div><script type="text/javascript">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:{{ emplifi_id }},setMetaTags:true});};</script><script src="https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
+  <div id="pixlee_container"></div>
+  <script type="text/javascript">
+    window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:{{ emplifi_id }},setMetaTags:true});};
+  </script>
+  <script src="{{ 'pixlee_widget_1_0_0.js' | asset_url }}" defer="defer"></script>
 </section>
 {% schema %}
 {
