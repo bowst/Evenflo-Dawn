@@ -41,10 +41,12 @@
 function fetchTopicsAndProductsRelatedToSearch(searchTerm="",topics_id="",products_id="") {
 	const topicContainer = document.getElementById("selectTopic");
     const productContainer = document.getElementById("selectProduct");
+    alert(22)
 
 	if (!topicContainer || productContainer) {
 		return;
 	}
+    alert(33);
 
     createAndAppendDropDownOption(topicContainer,"Select Topic")
     createAndAppendDropDownOption(productContainer,"Select Product")
