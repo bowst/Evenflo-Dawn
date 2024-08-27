@@ -50,7 +50,7 @@ function fetchTopicsAndProductsRelatedToSearch(searchTerm="",topics_id="",produc
     createAndAppendDropDownOption(productContainer,"Select Product")
 
 
-	fetch(`${evenFloFAQURL}faqs/getFilteredFaqs?filter=${encodeURIComponent(searchTerm)}`)
+	fetch(`${evenFloFAQURL}faqs/getFilteredFaqs?filter=${encodeURIComponent(searchTerm)}&page=1`)
 		.then((response) => response.json())
 		.then((data) => {
 			data?.filtered_topics.forEach((topic) => {
