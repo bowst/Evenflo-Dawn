@@ -101,7 +101,6 @@ function toggleAnswerBullet() {
 
 				if (button) {
 					button.addEventListener("click", () => {
-                      debugger;
 						desc.classList.toggle("description-wrapper-show");
                       console.log("ddd" descriptionWrappers.length)
                   
