@@ -45,7 +45,28 @@
 
 <script>
   
+function toggleAnswerBullet() {
+	const descriptionWrappers = document.querySelectorAll(".description-wrapper");
 
+	if (descriptionWrappers.length > 0) {
+		descriptionWrappers.forEach((desc) => {
+			const listItems = desc.querySelectorAll("ul li").length;
+
+			if (listItems > 1) {
+				desc.classList.remove("description-wrapper-remove");
+				const button = desc.querySelector("button");
+
+				if (button) {
+					button.addEventListener("click", () => {
+						desc.classList.toggle("description-wrapper-show");
+					});
+				}
+			} else {
+				desc.classList.add("description-wrapper-remove");
+			}
+		});
+	}
+}
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
