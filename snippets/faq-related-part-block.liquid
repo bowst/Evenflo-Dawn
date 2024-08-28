@@ -1,3 +1,46 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+  .product-category-slider-wrapper .swiper-button-prev, .product-category-slider-wrapper .swiper-button-next {
+    display: block!important;
+  }
+  .product-category-slider-wrapper .tab-content-wrapper {
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .swiper {
+      width: 100%;
+      height: 100%;
+  }
+  
+  .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  @media screen and (max-width: 1180px) {
+    .product-category-slider-wrapper .tab-content-wrapper {
+      gap: 0;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+  }
+   .product-category-slider-wrapper .tab-card{
+      max-width: 100%;
+    }
+}
+</style>
+
+
 <div class="category-block">
   <div class="category-content-wrapper page-width">
 
@@ -6,8 +49,8 @@
     <div class="category-tab-wrapper" id="categoryTabWrapper">
 
 
-      <div class="tab-body">
-        <div class="tab-content-wrapper" id="productPartsByProduct">
+      <div class="tab-body swiper mySwiper product-category-slider-wrapper">
+        <div class="swiper-wrapper tab-content-wrapper" id="productPartsByProduct">
         
          
         </div>
@@ -18,7 +61,7 @@
   </div>
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 
   function getProductsPartsByProductID(product_id){
@@ -71,7 +114,13 @@
 
           container.appendChild(tabCard);
         });
-    
+      
+     if(document.querySelectorAll(".product-category-slider-wrapper .tab-card").length > 4){
+                document.querySelector(".product-category-slider-wrapper").classList.remove("product-slider-wrapper-hide");
+				customSlider(); 
+              }else{
+                    document.querySelector(".product-category-slider-wrapper").classList.add("product-slider-wrapper-hide");
+                  }
      
     })
     .catch(error => {
