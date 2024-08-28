@@ -634,8 +634,10 @@
     flex-wrap: wrap;
   justify-content: center!important;
 }
-
-.product-slider-wrapper.product-slider-wrapper-hide .swiper-button-prev,.product-slider-wrapper.product-slider-wrapper-hide .swiper-button-next {
+.product-category-slider-wrapper.product-slider-wrapper-hide .swiper-button-prev,
+.product-category-slider-wrapper.product-slider-wrapper-hide .swiper-button-next,
+.product-slider-wrapper.product-slider-wrapper-hide .swiper-button-prev,
+.product-slider-wrapper.product-slider-wrapper-hide .swiper-button-next {
     display: none!important;
 }
 @media screen and (max-width: 1024px) {
