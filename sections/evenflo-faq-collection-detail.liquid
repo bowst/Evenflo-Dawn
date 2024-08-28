@@ -145,7 +145,22 @@ function fetchProductsByCollection(collectionID){
           container.appendChild(tabCard);
 
         });
-        var swiper = new Swiper(".mySwiper", {
+      if(document.querySelectorAll(".product-slider-wrapper .product-card").length > 4){
+		customSlider(); 
+      }
+        
+      
+    })
+    .catch(error => {
+      console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+    
+    });
+}
+
+function customSlider(){
+  var swiper = new Swiper(".mySwiper", {
             loop: true,
             slidesPerView: 4,
             spaceBetween: 30,   
@@ -170,17 +185,7 @@ function fetchProductsByCollection(collectionID){
               }
             }
         });
-      
-    })
-    .catch(error => {
-      console.error('Error fetching products:', error);
-    })
-    .finally(() => {
-    
-    });
 }
-
-
 
 
 
