@@ -629,6 +629,9 @@
 .product-slider-wrapper-hide .swiper-slide {
     width: calc(25% - 15px);
 }
+.product-slider-wrapper-hide .swiper-wrapper{
+  gap: 20px;
+}
 
 .product-slider-wrapper.product-slider-wrapper-hide .swiper-button-prev,.product-slider-wrapper.product-slider-wrapper-hide .swiper-button-next {
     display: none!important;
