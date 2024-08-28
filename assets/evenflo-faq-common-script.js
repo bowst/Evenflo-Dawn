@@ -518,8 +518,7 @@ function getProductsByCategory(
 			if (loader) {
 				hideLoader(loader);
               if(document.querySelectorAll(".product-category-slider-wrapper .tab-card").length > 4){
-				customSlider();
-                
+				customSlider(); 
               }
 			}
 		});
