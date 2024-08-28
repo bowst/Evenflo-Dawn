@@ -146,10 +146,10 @@ function fetchProductsByCollection(collectionID){
 
         });
       if(document.querySelectorAll(".product-slider-wrapper .product-card").length > 4){
-        document.querySelector(".product-slider-wrapper").classlist.remove("product-slider-wrapper-hide");
+        document.querySelector(".product-slider-wrapper").classList.remove("product-slider-wrapper-hide");
 		customSlider(); 
       }else{
-        document.querySelector(".product-slider-wrapper").classlist.add("product-slider-wrapper-hide");
+        document.querySelector(".product-slider-wrapper").classList.add("product-slider-wrapper-hide");
       }
         
       
