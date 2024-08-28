@@ -521,7 +521,7 @@ function getProductsByCategory(
                 document.querySelector(".product-category-slider-wrapper").classList.remove("product-slider-wrapper-hide");
 				customSlider(); 
               }else{
-                    document.querySelector(".product-slider-wrapper").classList.add("product-slider-wrapper-hide");
+                    document.querySelector(".product-category-slider-wrapper").classList.add("product-slider-wrapper-hide");
                   }
 			}
 		});
