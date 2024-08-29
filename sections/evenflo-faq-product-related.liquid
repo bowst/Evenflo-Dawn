@@ -10,38 +10,34 @@
   }
 </style>
 
-
 {% assign products_to_show = section.settings.productRelatedRange %}
 
 <div class="help-articles-block">
-  <div class="help-articles-content page-width center"> 
+  <div class="help-articles-content page-width center">
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
 
       <p id="productDescription"></p>
 
-      <div class="help-article-link-wrapper" id="productLinks">
-        
-      </div>
+      <div class="help-article-link-wrapper" id="productLinks"></div>
     </div>
   </div>
 </div>
 
 <div class="product-page-wrapper">
-<div class="popular-question-block" id="productRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
-  <div class="popular-content-wrapper page-width">
-    <div class="heading center">
-      <h2 id="popularQuestionHeading">{{ section.settings.productRelatedTitle }}</h2>
+  <div class="popular-question-block" id="productRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
+    <div class="popular-content-wrapper page-width">
+      <div class="heading center">
+        <h2 id="popularQuestionHeading">{{ section.settings.productRelatedTitle }}</h2>
+      </div>
+      <div class="popular-card-wrapper" id="popularCards"></div>
     </div>
-    <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
-</div>
 </div>
 
 {% render 'faq-related-part-block' %}
 
-{% render 'faq-load-more-block', show_topic_dropdown:true %}
-
+{% render 'faq-load-more-block', show_topic_dropdown: true %}
 
 <script>
   function fetchPopularProductsRelatedData(productID) {
@@ -83,7 +79,7 @@
         let linksHtml = ``;
 
         if(data?.shopify_page_handel){
-          linksHtml += `<a href="/support/${data.shopify_page_handel}">Product Guide </a> | `
+          linksHtml += `<a href="/products/${data.shopify_page_handel}">Product Guide </a> | `
         }
 
         if (data?.english_manual_url) {
