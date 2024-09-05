@@ -248,6 +248,9 @@
   {%- endfor -%}
 {%- endif -%}
 
+{% if template contains 'page' %}
+  {% assign display_section = true %}
+{% endif %}
 
 {%- if display_section -%}
   <!-- Section Markup -->
