@@ -484,7 +484,7 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {% if template contains 'product' %}
+    {% if template contains 'product' and template != 'product.archived-product' %}
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
     <script>
         {% if product.selected_or_first_available_variant.metafields.custom.walmart_id == blank and product.selected_or_first_available_variant.metafields.custom.amazon_id == blank %}
