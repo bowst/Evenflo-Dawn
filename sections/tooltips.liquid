@@ -236,8 +236,17 @@
 </noscript>
 
 {%- comment -%} ---------------- THE MARKUP ------------------ {%- endcomment -%}
-{%- assign display_section = true -%}
-
+{%- assign display_section = false -%}
+{%- if section.settings.product_handles != blank -%}
+  {%- assign product_handle_list = section.settings.product_handles | split: ',' -%}
+  {%- for handle in product_handle_list -%}
+    {%- assign trimmed_handle = handle | strip -%}
+    {%- if product.handle == trimmed_handle -%}
+      {%- assign display_section = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 
 
 {%- if display_section -%}
