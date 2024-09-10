@@ -17,7 +17,7 @@
           "settings": {
             "heading": "A MORE SUSTAINABLE CHOICE WITH SOFT, RECYCLED FABRIC",
             "heading_size": "h1",
-            "heading_color": "black"
+            "heading_color": "white"
           }
         },
         "text_8dmzpg": {
@@ -33,7 +33,7 @@
             "button_label_1": "Shop The Collection",
             "button_link_1": "shopify:\/\/collections\/green-gentle",
             "button_style_secondary_1": false,
-            "button_label_2": "Button label",
+            "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
@@ -50,7 +50,7 @@
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
-        "image_height": "medium",
+        "image_height": "adapt",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
         "desktop_content_alignment": "right",
@@ -59,6 +59,58 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": false
+      }
+    },
+    "image_banner_TmwjT9": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_NhNmtp": {
+          "type": "heading",
+          "settings": {
+            "heading": "A MORE SUSTAINABLE CHOICE WITH SOFT, RECYCLED FABRIC",
+            "heading_size": "h1",
+            "heading_color": "white"
+          }
+        },
+        "text_7jFVQf": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_r6qtwt": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_NhNmtp",
+        "text_7jFVQf",
+        "buttons_r6qtwt"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/evenflo-greenandgentle-banner.png",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-right",
+        "show_text_box": false,
+        "desktop_content_alignment": "right",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
       }
     },
     "image_with_text_8EfCc9": {
@@ -593,6 +645,7 @@
   },
   "order": [
     "image_banner_fjNemY",
+    "image_banner_TmwjT9",
     "image_with_text_8EfCc9",
     "custom_liquid_BkcTXQ",
     "evenflo_image_with_text_xCTDK3",
