@@ -6,16 +6,22 @@
     align-items: center;
     background: #f2f2f2;
 }
-
-.evenflo-quote-slider-content .evenflo-quote-img {
+.evenflo-quote-slider-content .evenflo-quote-img-column{
     width: 40%;
-    text-align: right;
     padding: 15px;
+  
+}
+.evenflo-quote-slider-content .evenflo-quote-content-column{
+    width: 60%;
+    padding: 15px;
+  
+}
+.evenflo-quote-slider-content .evenflo-quote-img {
+    text-align: right;
 }
 
 .evenflo-quote-slider-content .evenflo-quote-content {
-    width: 60%;
-    padding: 15px;
+   max-width: 90%;
 }
 
 .evenflo-quote-slider-content .evenflo-quote-img img {
