@@ -336,9 +336,10 @@
 	display: flex;
 	gap: 24px;
 	justify-content: center;
+    flex-wrap: wrap;
 }
 
-.tab-card {
+.tab-content-wrapper .tab-card {
 	width: calc(20% - 19.2px);
 	display: flex;
 	flex-direction: column;
