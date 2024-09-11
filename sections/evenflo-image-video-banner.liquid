@@ -1,4 +1,4 @@
-{{ 'section-evenflo-image-video-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
@@ -231,7 +231,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.evenflo-image-video-banner.name",
+  "name": "Evenflo Img & Vid Banner",
   "tag": "section",
   "class": "section",
   "disabled_on": {
@@ -241,12 +241,12 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "t:sections.evenflo-image-video-banner.settings.image.label"
+      "label": "First image"
     },
     {
       "type": "image_picker",
       "id": "image_2",
-      "label": "t:sections.evenflo-image-video-banner.settings.image_2.label"
+      "label": "Second image"
     },
     {
       "type": "range",
@@ -255,20 +255,20 @@
       "max": 100,
       "step": 10,
       "unit": "%",
-      "label": "t:sections.evenflo-image-video-banner.settings.image_overlay_opacity.label",
+      "label": "Image overlay opacity",
       "default": 0
     },
     {
       "type": "checkbox",
       "id": "underline",
       "default": false,
-      "label": "t:sections.evenflo-image-video-banner.settings.underline.label"
+      "label": "Underline"
     },
     {
       "type": "checkbox",
       "id": "hide_image_on_mobile",
       "default": false,
-      "label": "t:sections.evenflo-image-video-banner.settings.hide_image_on_mobile.label"
+      "label": "Hide image on mobile"
     },
     {
       "type": "select",
@@ -276,24 +276,24 @@
       "options": [
         {
           "value": "adapt",
-          "label": "t:sections.evenflo-image-video-banner.settings.image_height.options__1.label"
+          "label": "Adapt to first image"
         },
         {
           "value": "small",
-          "label": "t:sections.evenflo-image-video-banner.settings.image_height.options__2.label"
+          "label": "Small"
         },
         {
           "value": "medium",
-          "label": "t:sections.evenflo-image-video-banner.settings.image_height.options__3.label"
+          "label": "Medium"
         },
         {
           "value": "large",
-          "label": "t:sections.evenflo-image-video-banner.settings.image_height.options__4.label"
+          "label": "Large"
         }
       ],
       "default": "medium",
-      "label": "t:sections.evenflo-image-video-banner.settings.image_height.label",
-      "info": "t:sections.evenflo-image-video-banner.settings.image_height.info"
+      "label": "Banner height",
+      "info": "For best results, use an image with a 3:2 aspect ratio. Learn more"
     },
     {
       "type": "select",
@@ -301,49 +301,49 @@
       "options": [
         {
           "value": "top-left",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__1.label"
+          "label": "Top Left"
         },
         {
           "value": "top-center",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__2.label"
+          "label": "Top Center"
         },
         {
           "value": "top-right",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__3.label"
+          "label": "Top Right"
         },
         {
           "value": "middle-left",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__4.label"
+          "label": "Middle Left"
         },
         {
           "value": "middle-center",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__5.label"
+          "label": "Middle Center"
         },
         {
           "value": "middle-right",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__6.label"
+          "label": "Middle Right"
         },
         {
           "value": "bottom-left",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__7.label"
+          "label": "Bottom Left"
         },
         {
           "value": "bottom-center",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__8.label"
+          "label": "Bottom Center"
         },
         {
           "value": "bottom-right",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.options__9.label"
+          "label": "Bottom Right"
         }
       ],
       "default": "middle-center",
-      "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_position.label"
+      "label": "Desktop content position"
     },
     {
       "type": "checkbox",
       "id": "show_text_box",
       "default": true,
-      "label": "t:sections.evenflo-image-video-banner.settings.show_text_box.label"
+      "label": "Show container on desktop"
     },
     {
       "type": "select",
@@ -351,29 +351,29 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_alignment.options__1.label"
+          "label": "left"
         },
         {
           "value": "center",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_alignment.options__2.label"
+          "label": "Center"
         },
         {
           "value": "right",
-          "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_alignment.options__3.label"
+          "label": "Right"
         }
       ],
       "default": "center",
-      "label": "t:sections.evenflo-image-video-banner.settings.desktop_content_alignment.label"
+      "label": "Desktop content alignment"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
+      "label": "Color scheme",
       "default": "scheme-1"
     },
     {
       "type": "header",
-      "content": "t:sections.all.animation.content"
+      "content": "Animations"
     },
     {
       "type": "select",
@@ -381,27 +381,27 @@
       "options": [
         {
           "value": "none",
-          "label": "t:sections.all.animation.image_behavior.options__1.label"
+          "label": "None"
         },
         {
           "value": "ambient",
-          "label": "t:sections.all.animation.image_behavior.options__2.label"
+          "label": "Ambient movement"
         },
         {
           "value": "fixed",
-          "label": "t:sections.all.animation.image_behavior.options__3.label"
+          "label": "Fixed background position"
         },
         {
           "value": "zoom-in",
-          "label": "t:sections.all.animation.image_behavior.options__4.label"
+          "label": "Zoom in on scroll"
         }
       ],
       "default": "none",
-      "label": "t:sections.all.animation.image_behavior.label"
+      "label": "Image behavior"
     },
     {
       "type": "header",
-      "content": "t:sections.evenflo-image-video-banner.settings.mobile.content"
+      "content": "Mobile Layout"
     },
     {
       "type": "select",
@@ -409,44 +409,44 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.evenflo-image-video-banner.settings.mobile_content_alignment.options__1.label"
+          "label": "Left"
         },
         {
           "value": "center",
-          "label": "t:sections.evenflo-image-video-banner.settings.mobile_content_alignment.options__2.label"
+          "label": "Center"
         },
         {
           "value": "right",
-          "label": "t:sections.evenflo-image-video-banner.settings.mobile_content_alignment.options__3.label"
+          "label": "Right"
         }
       ],
       "default": "center",
-      "label": "t:sections.evenflo-image-video-banner.settings.mobile_content_alignment.label"
+      "label": "Mobile content alignment"
     },
     {
       "type": "checkbox",
       "id": "stack_images_on_mobile",
       "default": true,
-      "label": "t:sections.evenflo-image-video-banner.settings.stack_images_on_mobile.label"
+      "label": "Stack images on mobile"
     },
     {
       "type": "checkbox",
       "id": "show_text_below",
       "default": true,
-      "label": "t:sections.evenflo-image-video-banner.settings.show_text_below.label"
+      "label": "Show container on mobile"
     }
   ],
   "blocks": [
     {
       "type": "heading",
-      "name": "t:sections.evenflo-image-video-banner.blocks.heading.name",
+      "name": "Heading",
       "limit": 1,
       "settings": [
         {
           "type": "inline_richtext",
           "id": "heading",
           "default": "Image banner",
-          "label": "t:sections.evenflo-image-video-banner.blocks.heading.settings.heading.label"
+          "label": "Heading"
         },
         {
           "type": "select",
@@ -454,19 +454,19 @@
           "options": [
             {
               "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
+              "label": "Small"
             },
             {
               "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
+              "label": "medium"
             },
             {
               "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
+              "label": "Large"
             }
           ],
           "default": "h1",
-          "label": "t:sections.all.heading_size.label"
+          "label": "Heading size"
         },
         {
           "type": "select",
@@ -488,14 +488,14 @@
     },
     {
       "type": "text",
-      "name": "t:sections.evenflo-image-video-banner.blocks.text.name",
+      "name": "Text",
       "limit": 1,
       "settings": [
         {
           "type": "inline_richtext",
           "id": "text",
           "default": "Give customers details about the banner image(s) or content on the template.",
-          "label": "t:sections.evenflo-image-video-banner.blocks.text.settings.text.label"
+          "label": "Description"
         },
         {
           "type": "select",
@@ -503,69 +503,69 @@
           "options": [
             {
               "value": "body",
-              "label": "t:sections.evenflo-image-video-banner.blocks.text.settings.text_style.options__1.label"
+              "label": "Body"
             },
             {
               "value": "subtitle",
-              "label": "t:sections.evenflo-image-video-banner.blocks.text.settings.text_style.options__2.label"
+              "label": "Subtitle"
             },
             {
               "value": "caption-with-letter-spacing",
-              "label": "t:sections.evenflo-image-video-banner.blocks.text.settings.text_style.options__3.label"
+              "label": "Uppercase"
             }
           ],
           "default": "body",
-          "label": "t:sections.evenflo-image-video-banner.blocks.text.settings.text_style.label"
+          "label": "Text style"
         }
       ]
     },
     {
       "type": "buttons",
-      "name": "t:sections.evenflo-image-video-banner.blocks.buttons.name",
+      "name": "Buttons",
       "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "button_label_1",
           "default": "Button label",
-          "label": "t:sections.evenflo-image-video-banner.blocks.buttons.settings.button_label_1.label",
-          "info": "t:sections.evenflo-image-video-banner.blocks.buttons.settings.button_label_1.info"
+          "label": "First button label",
+          "info": "Leave the label blank to hide the button "
         },
         {
           "type": "url",
           "id": "button_link_1",
-          "label": "t:sections.evenflo-image-video-banner.blocks.buttons.settings.button_link_1.label"
+          "label": "First button link"
         },
         {
           "type": "checkbox",
           "id": "button_style_secondary_1",
           "default": false,
-          "label": "t:sections.evenflo-image-video-banner.blocks.buttons.settings.button_style_secondary_1.label"
+          "label": "Use outline button style"
         },
         {
           "type": "text",
           "id": "button_label_2",
           "default": "Button label",
-          "label": "t:sections.evenflo-image-video-banner.blocks.buttons.settings.button_label_2.label",
-          "info": "t:sections.evenflo-image-video-banner.blocks.buttons.settings.button_label_2.info"
+          "label": "Second button label",
+          "info": "Leave the label blank to hide the button"
         },
         {
           "type": "url",
           "id": "button_link_2",
-          "label": "t:sections.evenflo-image-video-banner.blocks.buttons.settings.button_link_2.label"
+          "label": "Second button link"
         },
         {
           "type": "checkbox",
           "id": "button_style_secondary_2",
           "default": false,
-          "label": "t:sections.evenflo-image-video-banner.blocks.buttons.settings.button_style_secondary_2.label"
+          "label": "Use outline button style"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "t:sections.evenflo-image-video-banner.presets.name",
+      "name": "evenflo-image-video-banner",
       "blocks": [
         {
           "type": "heading"
