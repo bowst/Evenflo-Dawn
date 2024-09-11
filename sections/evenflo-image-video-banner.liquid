@@ -1,5 +1,5 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
-{{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
+{{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '400x' }}
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
