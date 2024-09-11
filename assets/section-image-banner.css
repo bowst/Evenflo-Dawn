@@ -17,6 +17,7 @@
     top: 0;
     bottom: 0;
       height: 100%;
+      object-fit: cover;
 }
 /* Needed for gradient continuity with or without animation, the transform scopes the gradient to its container which happens already when animation are turned on */
 .banner__box.gradient {
