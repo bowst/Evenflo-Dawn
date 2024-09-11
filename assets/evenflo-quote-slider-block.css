@@ -1,0 +1,28 @@
+.evenflo-quote-slider-content {
+    display: flex;
+    align-items: center;
+    background: #f2f2f2;
+}
+
+.evenflo-quote-slider-content .evenflo-quote-img {
+    width: 45%;
+    text-align: right;
+}
+
+.evenflo-quote-slider-content .evenflo-quote-content {
+    width: 55%;
+}
+
+.evenflo-quote-slider-content .evenflo-quote-img img {
+    max-width: 400px;
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.evenflo-quote-slider-content .evenflo-quote-content * {
+    margin: 0;
+}
+
+.evenflo-quote-slider-content .evenflo-quote-content p {
+    line-height: 1.2;
+}
