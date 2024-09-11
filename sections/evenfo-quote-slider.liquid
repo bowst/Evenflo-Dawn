@@ -13,38 +13,54 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Evenflo Quote Slider",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Slider image"
-      },
-      {
-        "type": "inline_richtext",
-        "id": "subtitle",
-        "default": "REVOLVE360 SLIM",
-        "label": "Subtitle"
-      },
-      {
-        "type": "inline_richtext",
-        "id": "title",
-        "default": "Economic Swivel Car Seat",
-        "label": "Title"
-      },
-      {
-        "type": "inline_richtext",
-        "id": "quote",
-        "default": "Economic Swivel Car Seat",
-        "label": "Quote"
-      },
-      {
-        "type": "inline_richtext",
-        "id": "name",
-        "default": "Economic Swivel Car Seat",
-        "label": "Name"
-      },
-    ]
-  }
+{
+  "name": "Evenflo Quote Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slider_block",
+      "name": "Evenflo Quote Slide",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slider Image"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "default": "REVOLVE360 SLIM",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Economic Swivel Car Seat",
+          "label": "Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "quote_id",
+          "default": "Economic Swivel Car Seat",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "default": "Economic Swivel Car Seat",
+          "label": "Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Quote Slider",
+      "category": "Custom Sections"
+    }
+  ]
+}
 {% endschema %}
