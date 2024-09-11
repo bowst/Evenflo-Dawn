@@ -36,6 +36,14 @@
 .evenflo-quote-slider-content .evenflo-quote-content h3 {
     font-size: 20px;
 }
+.evenflo-quote-slider-content .evenflo-quote-content h1:after {
+    content: '';
+    width: 105px;
+    height: 2px;
+    background: red;
+    display: block;
+    margin: 10px 0;
+}
 .evenflo-quote-slider-content .evenflo-quote-content p {
     line-height: 1.2;
 }
