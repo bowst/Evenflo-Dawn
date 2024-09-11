@@ -38,6 +38,20 @@
 .evenflo-quote-slider-content .evenflo-quote-content h3 {
     font-size: 20px;
 }
+.evenflo-quote-content h3:last-child {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.evenflo-quote-content h3:last-child::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: #000;
+    display: inline-block;
+}
+
+
 .evenflo-quote-slider-content .evenflo-quote-content h1:after {
     content: '';
     width: 105px;
