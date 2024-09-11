@@ -1,5 +1,4 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
-{{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '400x' }}
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
@@ -156,6 +155,9 @@
   <!-- <video width="320" height="240" controls>
     <source src="" type="video/mp4">
   </video> -->
+  <div class="banner-video-content">
+    {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}  
+  </div>
   <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width">
     <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
       {%- for block in section.blocks -%}
