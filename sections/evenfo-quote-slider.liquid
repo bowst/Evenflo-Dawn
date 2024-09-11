@@ -4,15 +4,19 @@
   <div class="evenflo-quote-slider page-width">
     {% for block in section.blocks %}
       <div class="evenflo-quote-slider-content">
-        <div class="evenflo-quote-img">
-          <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+        <div class="evenflo-quote-img-column">
+          <div class="evenflo-quote-img">
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+          </div>
         </div>
         <div class="evenflo-quote-content">
-          <h5>{{ block.settings.subtitle }}</h5>
-          <h1>{{ block.settings.title }}</h1>
-          <p>{{ block.settings.quote_id }}</p>
-          <h4>{{ block.settings.name }}</h4>
-        </div>
+          <div class="evenflo-quote-content">
+            <h5>{{ block.settings.subtitle }}</h5>
+            <h1>{{ block.settings.title }}</h1>
+            <p>{{ block.settings.quote_id }}</p>
+            <h4>{{ block.settings.name }}</h4>
+          </div>
+        </div>  
       </div>
     {% endfor %}
   </div>
