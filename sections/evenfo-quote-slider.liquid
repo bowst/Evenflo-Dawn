@@ -30,7 +30,7 @@
     <div class="swiper mySwiper evenflo-quote-slider">
       <div class="evenflo-quote-slider-wrapper">
         {% for block in section.blocks %}
-          <div class="evenflo-quote-slider-content">
+          <div class="swiper-slide evenflo-quote-slider-content">
             <div class="evenflo-quote-img-column">
               <div class="evenflo-quote-img">
                 <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
