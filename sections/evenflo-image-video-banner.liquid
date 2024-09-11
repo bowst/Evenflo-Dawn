@@ -64,9 +64,11 @@
     {%- endcase -%}
   {%- endfor -%}
 >
-  <div class="banner-video-content">
+  {%- if section.settings.video_enable -%}
+    <div class="banner-video-content">
     {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}  
   </div>
+  {% endif %}
   {%- if section.settings.image != blank -%}
     <div
       class="
@@ -260,7 +262,7 @@
       "type": "checkbox",
       "id": "video_enable",
       "default": false,
-      "label": "Video Enable"
+      "label": "Show video instead of images"
     },
     {
       "type": "range",
