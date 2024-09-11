@@ -50,3 +50,12 @@
 .evenflo-quote-slider-block .swiper-button-next{
   display: flex;
 }
+@media screen and (max-width: 991px){
+  .evenflo-quote-slider-content{
+    flex-direction: column;
+  }
+  .evenflo-quote-slider-content .evenflo-quote-img-column,
+  .evenflo-quote-slider-content .evenflo-quote-content-column{
+    width: 100%;
+  }
+}
