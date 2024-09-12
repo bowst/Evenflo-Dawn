@@ -202,9 +202,12 @@
   }
 }
 @media screen and (max-width: 767px){
+  .slim-tab-header{
+    gap: 10px;
+  }
   .slim-tab-card {
     width: calc(50% - 15px);
-    gap: 10px;
+    gap: 5px;
   }
   .slim-tab-body-content .slim-tab-card {
     width: calc(50% - 15px);
