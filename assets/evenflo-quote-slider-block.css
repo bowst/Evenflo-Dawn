@@ -142,4 +142,21 @@
 
 .slim-tab-card {
     width: calc(25% - 15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+.slim-tab-card * {
+    margin: 0;
+}
+
+.slim-tab-card button {
+    padding: 8px 40px;
+    font-size: 20px;
+    font-weight: 700;
+    background: transparent;
+    max-width: max-content;
+    margin: auto;
 }
