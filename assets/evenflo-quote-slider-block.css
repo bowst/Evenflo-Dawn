@@ -184,9 +184,13 @@
 .slim-tab-body-content .slim-tab-card {
     width: calc(25% - 22.5px);
 }
-
-.slim-tab-block * {
-    box-sizing: border-box;
+.slim-tab-body-content .slim-tab-card button{
+    background: #000;
+    color: #ffffff;
+}
+.slim-tab-body-content .slim-tab-card button:hover{
+  background:transparent;
+  color: #000;
 }
 @media screen and (max-width: 991px){
   .slim-tab-card {
