@@ -182,7 +182,7 @@
 }
 
 .slim-tab-body-content .slim-tab-card {
-    width: calc(25% - 30px);
+    width: calc(25% - 22.5px);
 }
 
 .slim-tab-block * {
@@ -196,5 +196,8 @@
     justify-content: center;
     gap: 20px;
     text-align: center;
+  }
+  .slim-tab-body-content .slim-tab-card {
+    width: calc(33.33% - 20px);
   }
 }
