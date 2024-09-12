@@ -188,3 +188,13 @@
 .slim-tab-block * {
     box-sizing: border-box;
 }
+@media screen and (max-width: 991px){
+  .slim-tab-card {
+    width: calc(40% - 15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+  }
+}
