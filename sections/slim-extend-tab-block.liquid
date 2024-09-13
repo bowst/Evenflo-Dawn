@@ -22,10 +22,10 @@
                     <h1>{{ block.settings.tab-description }}</h1>
                     {% for product in block.settings.product_list %}
                       <div class="slim-tab-card">
-                       <img src="{{ block.settings.product.featured_image | image_url }}" alt="{{ block.settings.title }}">
-                        <h3>{{ block.settings.product.title }}</h3>
+                       <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
+                        <h3>{{ product.title }}</h3>
                         <p>Your more sustainable Slim</p>
-                        <a href="{{ block.settings.product.url }}">Shop Now</a>
+                        <a href="{{ product.url }}">Shop Now</a>
                       </div>
                     {% endfor %}
                     <!-- 
