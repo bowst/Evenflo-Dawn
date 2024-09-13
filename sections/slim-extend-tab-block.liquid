@@ -4,9 +4,8 @@
     <div class="page-width">
         <div class="slim-tab-wrapper">
             <div class="heading center">
-                <h1>Find your revolve360</h1>
-                <p>Revolutionize your backseat with these innovative options with the rotating car seat that’s best
-                    for you:</p>
+                <h1>{{ section.settings.title }}</h1>
+                <p>{{ section.settings.description }}</p>
             </div>
             <div class="slim-tab-header">
                 <div class="slim-tab-card">
@@ -113,7 +112,20 @@
     "name": "Slim & Extend Tabs",
     "tag": "section",
     "class": "section",
-    "settings": [],
+    "settings": [
+       {
+          "type": "text",
+          "id": "title",
+          "default": "Find your revolve360",
+          "label": "Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "description",
+          "default": "Revolutionize your backseat with these innovative options with the rotating car seat that’s best for you:",
+          "label": "Description"
+        },
+    ],
     "presets": [
     {
       "name": "Slim & Extend Tabs",
