@@ -2,7 +2,9 @@
   <div class="page-width">
     <div class="product-img-slider">
       <div class="product-img-wrapper">
-        <div class="product-img-card"></div>
+        {% for product in section.product_list %}
+          <div class="product-img-card"></div>
+        {% endfor %}
       </div>
     </div>
   </div>
