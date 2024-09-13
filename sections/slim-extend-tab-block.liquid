@@ -8,6 +8,7 @@
                 <p>{{ section.settings.description }}</p>
             </div>
             <div class="slim-tab-header">
+              {% for block in section.blocks %}
                 <div class="slim-tab-card">
                     <img src="https://www.evenflo.com/cdn/shop/files/Extend.png?v=1713107872&width=1250"
                         alt="slim-tab-img">
@@ -20,6 +21,7 @@
                     <h3>1 car seat. 3 modes. 10 years. Grow with it!</h3>
                     <button>Extend</button>
                 </div>
+              {% endfor %} 
             </div>
             <div class="slim-tab-body">
                 <div class="slim-tab-body-content show">
