@@ -1,129 +1,127 @@
 {{ 'slim-tab-block.css' | asset_url | stylesheet_tag }}
 
 <div class="slim-tab-block">
-    <div class="page-width">
-        <div class="slim-tab-wrapper">
-            <div class="heading center">
-                <h1>{{ section.settings.title }}</h1>
-                <p>{{ section.settings.description }}</p>
-            </div>
-            <div class="slim-tab-header">
-              {% for block in section.blocks %}
-                <div class="slim-tab-card">
-                    <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
-                    <h3>{{ block.settings.tab-text }}</h3>
-                    <button class="">{{ block.settings.tab-btn-text }}</button>
+  <div class="page-width">
+    <div class="slim-tab-wrapper">
+      <div class="heading center">
+        <h1>{{ section.settings.title }}</h1>
+        <p>{{ section.settings.description }}</p>
+      </div>
+      <div class="slim-tab-header">
+        {% for block in section.blocks %}
+          <div class="slim-tab-card">
+            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+            <h3>{{ block.settings['tab-text'] }}</h3>
+            <button class="">{{ block.settings['tab-btn-text'] }}</button>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="slim-tab-body">
+        {% for block in section.blocks %}
+          <div class="slim-tab-body-content">
+            <h1>{{ block.settings['tab-description'] }}</h1>
+            {% for product in block.settings.product_list %}
+              <div class="slim-tab-card">
+                <div class="slim-tab-card-content">
+                  <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
+                  <h3>{{ product.title }}</h3>
+                  <p>Your more sustainable Slim</p>
                 </div>
-              {% endfor %} 
-            </div>
-            <div class="slim-tab-body">
-              {% for block in section.blocks %}
-                <div class="slim-tab-body-content">
-                    <h1>{{ block.settings.tab-description }}</h1>
-                    {% for product in block.settings.product_list %}
-                      <div class="slim-tab-card">
-                        <div class="slim-tab-card-content">
-                       <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
-                        <h3>{{ product.title }}</h3>
-                        <p>Your more sustainable Slim</p>
-                          
-                        </div>
-                        <a href="{{ product.url }}">Shop Now</a>
-                      </div>
-                    {% endfor %}
-                </div>
-              {% endfor %} 
-            </div>
-        </div>
+                <a href="{{ product.url }}">Shop Now</a>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
+  </div>
 </div>
 
 <script>
-    const slimTabBlock = document.querySelector(".slim-tab-block");
-    const slimTabBodyContents = slimTabBlock.querySelectorAll(".slim-tab-body .slim-tab-body-content");
-    const slimTabButtons = slimTabBlock.querySelectorAll(".slim-tab-header .slim-tab-card button");
+  const slimTabBlock = document.querySelector(".slim-tab-block");
+  const slimTabBodyContents = slimTabBlock.querySelectorAll(".slim-tab-body .slim-tab-body-content");
+  const slimTabButtons = slimTabBlock.querySelectorAll(".slim-tab-header .slim-tab-card button");
 
-    window.onload = function() {
-      slimTabButtons[0].classList.add("active");
-      slimTabBodyContents[0].classList.add("show");
-      
-    };
-    function clearActiveStates() {
-        slimTabButtons.forEach(btn => btn.classList.remove("active"));
-        slimTabBodyContents.forEach(content => content.classList.remove("show"));
-    }
-    slimTabButtons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-            clearActiveStates();
-            button.classList.add("active");
-            slimTabBodyContents[index].classList.add("show");
-        });
-    });
+  window.onload = function() {
+    slimTabButtons[0].classList.add("active");
+    slimTabBodyContents[0].classList.add("show");
 
+  };
+  function clearActiveStates() {
+      slimTabButtons.forEach(btn => btn.classList.remove("active"));
+      slimTabBodyContents.forEach(content => content.classList.remove("show"));
+  }
+  slimTabButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+          clearActiveStates();
+          button.classList.add("active");
+          slimTabBodyContents[index].classList.add("show");
+      });
+  });
 </script>
 
 {% schema %}
-  {
-    "name": "Slim & Extend Tabs",
-    "tag": "section",
-    "class": "section",
-    "settings": [
-       {
+{
+  "name": "Slim & Extend Tabs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+     {
+        "type": "text",
+        "id": "title",
+        "default": "Find your revolve360",
+        "label": "Title"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "description",
+        "default": "Revolutionize your backseat with these innovative options with the rotating car seat that’s best for you:",
+        "label": "Description"
+      },
+  ],
+  "blocks": [
+    {
+      "type": "slim_tab_block",
+      "name": "Slim Exetend Tab",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Tab Image"
+        },
+        {
           "type": "text",
-          "id": "title",
-          "default": "Find your revolve360",
-          "label": "Title"
+          "id": "tab-text",
+          "default": "Just 16.7 in. across. Fit more into your backseat!",
+          "label": "Tab Text"
         },
         {
           "type": "inline_richtext",
-          "id": "description",
-          "default": "Revolutionize your backseat with these innovative options with the rotating car seat that’s best for you:",
-          "label": "Description"
+          "id": "tab-description",
+          "default": "2-in-1, for children from 4-65 lb. Slim",
+          "label": "Tab Description"
         },
-    ],
-    "blocks": [
-      {
-        "type": "slim_tab_block",
-        "name": "Slim Exetend Tab",
-        "limit": 2,
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Tab Image"
-          },
-          {
-            "type": "text",
-            "id": "tab-text",
-            "default": "Just 16.7 in. across. Fit more into your backseat!",
-            "label": "Tab Text"
-          },
-          {
-            "type": "inline_richtext",
-            "id": "tab-description",
-            "default": "2-in-1, for children from 4-65 lb. Slim",
-            "label": "Tab Description"
-          },
-          {
-            "type": "text",
-            "id": "tab-btn-text",
-            "default": "Just 16.7 in. across. Fit more into your backseat!",
-            "label": "Tab Button Text"
-          },
-          {
-            "type": "product_list",
-            "id": "product_list",
-            "label": "Products",
-            "limit": 4
-          }
-        ]
-      }
-    ],
-    "presets": [
-    {
-      "name": "Slim & Extend Tabs",
-      "category": "Custom Sections"
+        {
+          "type": "text",
+          "id": "tab-btn-text",
+          "default": "Just 16.7 in. across. Fit more into your backseat!",
+          "label": "Tab Button Text"
+        },
+        {
+          "type": "product_list",
+          "id": "product_list",
+          "label": "Products",
+          "limit": 4
+        }
+      ]
     }
-  ]
+  ],
+  "presets": [
+  {
+    "name": "Slim & Extend Tabs",
+    "category": "Custom Sections"
   }
+]
+}
 {% endschema %}
