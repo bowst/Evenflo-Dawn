@@ -10,16 +10,9 @@
             <div class="slim-tab-header">
               {% for block in section.blocks %}
                 <div class="slim-tab-card">
-                    <img src="https://www.evenflo.com/cdn/shop/files/Extend.png?v=1713107872&width=1250"
-                        alt="slim-tab-img">
-                    <h3>Just 16.7 in. across. Fit more into your backseat!</h3>
+                    <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+                    <h3>{{ block.settings.tab-text }}</h3>
                     <button class="active">Slim</button>
-                </div>
-                <div class="slim-tab-card">
-                    <img src="https://www.evenflo.com/cdn/shop/files/slim.png?v=1713107907&width=1250"
-                        alt="slim-tab-img">
-                    <h3>1 car seat. 3 modes. 10 years. Grow with it!</h3>
-                    <button>Extend</button>
                 </div>
               {% endfor %} 
             </div>
