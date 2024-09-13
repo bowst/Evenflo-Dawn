@@ -12,13 +12,13 @@
                 <div class="slim-tab-card">
                     <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
                     <h3>{{ block.settings.tab-text }}</h3>
-                    <button class="active">{{ block.settings.tab-btn-text }}</button>
+                    <button class="">{{ block.settings.tab-btn-text }}</button>
                 </div>
               {% endfor %} 
             </div>
             <div class="slim-tab-body">
               {% for block in section.blocks %}
-                <div class="slim-tab-body-content show">
+                <div class="slim-tab-body-content">
                     <h1>{{ block.settings.tab-description }}</h1>
                     <div class="slim-tab-card">
                         <img src="https://www.evenflo.com/cdn/shop/files/slim.png?v=1713107907&width=1250"
