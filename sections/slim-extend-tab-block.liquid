@@ -9,10 +9,12 @@
       </div>
       <div class="slim-tab-header">
         {% for block in section.blocks %}
-          <div class="slim-tab-card">
-            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
-            <h3>{{ block.settings['tab-text'] }}</h3>
-            <button class="">{{ block.settings['tab-btn-text'] }}</button>
+          <div class="slim-tab-col">
+            <div class="slim-tab-card">
+              <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
+              <h3>{{ block.settings['tab-text'] }}</h3>
+              <button class="">{{ block.settings['tab-btn-text'] }}</button>
+            </div>
           </div>
         {% endfor %}
       </div>
