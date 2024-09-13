@@ -117,11 +117,10 @@
   color: #000;
 }
 @media screen and (max-width: 991px) {
-  .slim-tab-card {
+  .slim-tab-col {
     width: calc(40% - 15px);
-    gap: 10px;
   }
-  .slim-tab-body-content .slim-tab-card {
+  .slim-tab-body-content .slim-tab-col {
     width: calc(33.33% - 20px);
   }
 }
