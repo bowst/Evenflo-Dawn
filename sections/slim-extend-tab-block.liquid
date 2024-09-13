@@ -59,6 +59,12 @@
     const slimTabBlock = document.querySelector(".slim-tab-block");
     const slimTabBodyContents = slimTabBlock.querySelectorAll(".slim-tab-body .slim-tab-body-content");
     const slimTabButtons = slimTabBlock.querySelectorAll(".slim-tab-header .slim-tab-card button");
+
+    window.onload = function() {
+      slimTabButtons[0].classList.add("active");
+      slimTabBodyContents[0].classList.add("show");
+      
+    };
     function clearActiveStates() {
         slimTabButtons.forEach(btn => btn.classList.remove("active"));
         slimTabBodyContents.forEach(content => content.classList.remove("show"));
