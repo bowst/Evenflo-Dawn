@@ -3,7 +3,9 @@
     <div class="product-img-slider">
       <div class="product-img-wrapper">
         {% for product in section.product_list %}
-          <div class="product-img-card"></div>
+          <div class="product-img-card">
+            <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
+          </div>
         {% endfor %}
       </div>
     </div>
@@ -19,7 +21,7 @@
       "type": "product_list",
       "id": "product_list",
       "label": "Products",
-      "limit": 4
+      "limit": 12
     }
   ],
   "presets": [
