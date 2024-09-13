@@ -11,6 +11,7 @@
         {% for block in section.blocks %}
           <div class="slim-tab-col">
             <div class="slim-tab-card">
+              <div class="slim-tab-card-content"></div>
               <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
               <h3>{{ block.settings['tab-text'] }}</h3>
               <button class="">{{ block.settings['tab-btn-text'] }}</button>
