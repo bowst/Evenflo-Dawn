@@ -20,10 +20,10 @@
 </style>
 <div class="product-img-slider-block">
   <div class="page-width">
-    <div class="product-img-slider">
-      <div class="product-img-wrapper">
+    <div class="swiper mySwiper product-img-slider">
+      <div class="swiper-wrapper product-img-wrapper">
         {% for product in section.settings.product_list %}
-          <div class="product-img-card">
+          <div class="swiper-slide product-img-card">
             <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
           </div>
         {% endfor %}
