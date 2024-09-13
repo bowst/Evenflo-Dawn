@@ -2,7 +2,7 @@
   <div class="page-width">
     <div class="product-img-slider">
       <div class="product-img-wrapper">
-        {% for product in section.product_list %}
+        {% for product in section.settings.product_list %}
           <div class="product-img-card">
             <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
           </div>
