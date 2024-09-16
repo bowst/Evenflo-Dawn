@@ -44,8 +44,10 @@
       </div>
       <!-- Pagination and Navigation -->
       <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <!--
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      -->
     </div>
   </div>
 </div>
@@ -54,7 +56,6 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var swiper = new Swiper(".evenflo-quote-slider-block .mySwiper", {
-      // loop: true,
       slidesPerView: 1,
       spaceBetween: 0,
       pagination: {
@@ -65,21 +66,6 @@
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
-     //  breakpoints: {
-     //      320: {
-     //          // when window width is >= 320px
-     //          slidesPerView: 1,
-     //          spaceBetween: 0,
-     //      },
-     //      640: {
-     //          // when window width is >= 640px
-     //          slidesPerView: 1,
-     //      },
-     //      960: {
-     //          // when window width is >= 960px
-     //          slidesPerView: 1,
-     //      },
-    	// },
     });
   });
 </script>
