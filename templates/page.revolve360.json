@@ -24,7 +24,7 @@
           "type": "text",
           "settings": {
             "text": "with America’s #1* rotational car seat",
-            "text_style": "body"
+            "text_style": "subtitle"
           }
         },
         "buttons_DhGPte": {
@@ -45,6 +45,10 @@
         "buttons_DhGPte"
       ],
       "disabled": true,
+      "custom_css": [
+        "h1 {font-weight: 300; font-style: normal; font-size: 3em;}",
+        ".banner__heading {max-width: 500px;}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/class-banner.png",
         "image_overlay_opacity": 0,
