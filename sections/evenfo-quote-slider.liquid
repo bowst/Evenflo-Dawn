@@ -50,19 +50,12 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var swiper = new Swiper(".evenflo-quote-slider-block .mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 0,
-       pagination: {
+     var swiper = new Swiper(".evenflo-quote-slider-block .mySwiper", {
+      pagination: {
         el: ".swiper-pagination",
-        clickable: true,
-        },
-          autoplay: {
-            delay: 3000, // Delay between slides in milliseconds (3000ms = 3s)
-            disableOnInteraction: false, // Keeps autoplay enabled after user interaction
-        },
-       loop: false
+      },
     });
+
   });
 </script>
 
