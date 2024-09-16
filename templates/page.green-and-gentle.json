@@ -44,7 +44,9 @@
         "text_UpyHrr",
         "buttons_EyFndE"
       ],
-      "disabled": true,
+      "custom_css": [
+        "h1 {font-weight: 300;}"
+      ],
       "settings": {
         "video": "shopify:\/\/files\/videos\/Revolve G&G_15 Header_1920x450.mp4",
         "video_enable": true,
@@ -60,58 +62,6 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
-      }
-    },
-    "image_banner_fjNemY": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_AekB7B": {
-          "type": "heading",
-          "settings": {
-            "heading": "A MORE SUSTAINABLE CHOICE WITH SOFT, RECYCLED FABRIC",
-            "heading_size": "h1",
-            "heading_color": "white"
-          }
-        },
-        "text_8dmzpg": {
-          "type": "text",
-          "settings": {
-            "text": "REVOLVE360™ ROTATIONAL CAR SEATS WITH GREEN & GENTLE™ FABRIC",
-            "text_style": "body"
-          }
-        },
-        "buttons_KbqheC": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop The Collection",
-            "button_link_1": "shopify:\/\/collections\/green-gentle",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_AekB7B",
-        "text_8dmzpg",
-        "buttons_KbqheC"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/evenflo-greenandgentle-banner.png",
-        "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-right",
-        "show_text_box": false,
-        "desktop_content_alignment": "right",
-        "color_scheme": "accent-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": false
       }
     },
     "image_banner_TmwjT9": {
@@ -319,6 +269,7 @@
         "text_MFY96B",
         "button_Tfbk6n"
       ],
+      "disabled": true,
       "custom_css": [
         ".image-with-text {padding: 0; margin: 0; min-width: 100%;}",
         ".image-with-text__media-item a:after {display: none;}",
@@ -749,7 +700,6 @@
   },
   "order": [
     "evenflo_image_video_banner_XWaW9f",
-    "image_banner_fjNemY",
     "image_banner_TmwjT9",
     "video_with_text_itFr9i",
     "image_with_text_8EfCc9",
