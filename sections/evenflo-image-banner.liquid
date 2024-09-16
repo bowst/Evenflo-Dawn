@@ -1,20 +1,21 @@
-{{ 'evenflo-section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-section-image-banner-dawn.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
-      #Banner-{{ section.id }}: : before, #Banner-{{ section.id }}.banner__media::before, #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before  {
-        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}
-        %;
+      #Banner-{{ section.id }}::before,
+      #Banner-{{ section.id }} .banner__media::before,
+      #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
+        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
       }
     }
 
     @media screen and (min-width: 750px) {
-      #Banner-{{ section.id }}: : before, #Banner-{{ section.id }}.banner__media::before {
-        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}
-        %;
+      #Banner-{{ section.id }}::before,
+      #Banner-{{ section.id }} .banner__media::before {
+        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -23,71 +24,39 @@
 {%- endif -%}
 
 {%- style -%}
-    #Banner-{{ section.id }}::after {
-      opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }}
-      ;
-    }
-    @media screen and (max-width: 1300px) {
-    .hide_image_on_mobile {
-      display: none;
-    }
-  }
-
-  @media screen and (min-width: 900px) {
-    .custom-mobile-banner-image-mobile {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 900px) {
-    .custom-mobile-banner-image-desktop {
-      display: none;
-    }
+  #Banner-{{ section.id }}::after {
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
   }
 {%- endstyle -%}
 
 {%- liquid
+  assign full_width = '100vw'
+  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
   if section.settings.image_behavior == 'ambient'
     assign half_width = '60vw'
     assign full_width = '120vw'
     assign stacked_sizes = '(min-width: 750px) 60vw, 120vw'
     assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+  elsif section.settings.image_behavior == 'fixed' or section.settings.image_behavior == 'zoom-in'
+    assign half_width = '100vw'
+    assign stacked_sizes = '100vw'
   else
     assign half_width = '50vw'
-    assign full_width = '100vw'
     assign stacked_sizes = '(min-width: 750px) 50vw, 100vw'
-    assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+  endif
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
   endif
 -%}
 
 <div
   id="Banner-{{ section.id }}"
-  class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}"
-  {%- for block in section.blocks -%}
-    {%- case block.type -%}
-      {%- when 'heading' -%}
-        {%- if block.settings.heading == 'JOIN THE CLUB' -%}
-          {% if customer %}
-            style="display: none;"
-          {% endif %}
-        {%- endif -%}
-    {%- endcase -%}
-  {%- endfor -%}
+  class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
   {%- if section.settings.image != blank -%}
-    <div
-      class="
-        banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}
-              {%- for block in section.blocks -%}
-                {%- case block.type -%}
-                  {%- when 'heading' -%}
-                    {%- if block.settings.heading == 'It’s time to make' -%}
-              custom-mobile-banner-image-desktop
-            {%- endif -%}
-          {%- endcase -%}
-        {%- endfor -%}
-      "
-    >
+    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
         assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
         if section.settings.image_2 != blank
@@ -105,34 +74,21 @@
         section.settings.image
         | image_url: width: 3840
         | image_tag:
-          loading: 'lazy',
           width: section.settings.image.width,
           height: image_height,
           class: image_class,
           sizes: sizes,
-          widths: widths
+          widths: widths,
+          fetchpriority: fetch_priority
       }}
     </div>
-    {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'heading' -%}
-          {%- if block.settings.heading == 'It’s time to make' -%}
-            <img
-              class="custom-mobile-banner-image-mobile"
-              src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Screenshot_2024-04-01_at_9.46.18_PM.png?v=1712022425"
-              height=""
-              width=""
-            >
-          {%- endif -%}
-      {%- endcase -%}
-    {%- endfor -%}
   {%- elsif section.settings.image_2 == blank -%}
-    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
-      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
     </div>
   {%- endif -%}
   {%- if section.settings.image_2 != blank -%}
-    <div class="{% if section.settings.hide_image_on_mobile %}hide_image_on_mobile {% endif %}banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+    <div class="banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
         assign image_height_2 = section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio
         if section.settings.image != blank
@@ -150,56 +106,29 @@
         section.settings.image_2
         | image_url: width: 3840
         | image_tag:
-          loading: 'lazy',
           width: section.settings.image_2.width,
           height: image_height_2,
           class: image_class_2,
           sizes: sizes,
-          widths: widths
+          widths: widths,
+          fetchpriority: fetch_priority
       }}
     </div>
   {%- endif -%}
-  <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width">
+  <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
-            {%- if block.settings.heading == 'THE ONE PIECE OF BABY GEAR THAT DOES IT ALL' -%}
-              <img
-                loading="eager"
-                width=""
-                height=""
-                src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Shyft_DualRide_Gold_Infant_Car_Seat_and_Stroller_Combo_with_Carryall_Storage_Bag_Homepage_Header_GIF_6a7e4b9d-5c94-4a73-8ba1-455df93d84c7.gif?v=1701288993"
-              >
-            {%- endif -%}
-            {%- if block.settings.heading == 'Sustainable Forest Initiative' -%}
-              <img
-                loading="eager"
-                width=""
-                height=""
-                src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Group_605.png?v=1711997443"
-              >
-            {%- endif -%}
-            <h1
-              class="{% if section.settings.underline %} heading-underline {% endif %} banner__heading inline-richtext {{ block.settings.heading_size }} {{ block.settings.heading_color }}"
+            <h2
+              class="banner__heading inline-richtext {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
             >
               {{ block.settings.heading }}
-            </h1>
-            {%- if block.settings.heading == 'It’s time to make' -%}
-              <h1
-                class="{% if section.settings.underline %} heading-underline {% endif %} banner__heading inline-richtext {{ block.settings.heading_size }} {{ block.settings.heading_color }}"
-                {{ block.shopify_attributes }}
-              >
-                A CHANGE.
-              </h1>
-            {%- endif -%}
+            </h2>
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
-              <h2>{{ block.settings.text }}</h2>
-              {%- if block.settings.text == 'INTRODUCING PIVOT XPLORE™ DREAMZ' %}
-                <p class="custom-pivot-text">All-Terrain Stroller Wagon With Bassinet Insert</p>
-              {%- endif -%}
+              <p>{{ block.settings.text }}</p>
             </div>
           {%- when 'buttons' -%}
             <div
@@ -209,10 +138,10 @@
               {%- if block.settings.button_label_1 != blank -%}
                 <a
                   {% if block.settings.button_link_1 == blank %}
-                    role="link"aria-disabled="true"
+                    role="link" aria-disabled="true"
                   {% else %}
                     href="{{ block.settings.button_link_1 }}"
-                  {% endif -%}
+                  {% endif %}
                   class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
                 >
                   {{- block.settings.button_label_1 | escape -}}
@@ -221,10 +150,10 @@
               {%- if block.settings.button_label_2 != blank -%}
                 <a
                   {% if block.settings.button_link_2 == blank %}
-                    role="link"aria-disabled="true"
+                    role="link" aria-disabled="true"
                   {% else %}
                     href="{{ block.settings.button_link_2 }}"
-                  {% endif -%}
+                  {% endif %}
                   class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
                 >
                   {{- block.settings.button_label_2 | escape -}}
@@ -239,7 +168,7 @@
 
 {% schema %}
 {
-  "name": "Evenflo Image Banner",
+  "name": "Evenflo Image Banner new",
   "tag": "section",
   "class": "section",
   "disabled_on": {
@@ -249,12 +178,12 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "t:sections.image-banner.settings.image.label"
+      "label": "Page Title"
     },
     {
       "type": "image_picker",
       "id": "image_2",
-      "label": "t:sections.image-banner.settings.image_2.label"
+      "label": "Image"
     },
     {
       "type": "range",
@@ -265,18 +194,6 @@
       "unit": "%",
       "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
       "default": 0
-    },
-    {
-      "type": "checkbox",
-      "id": "underline",
-      "default": false,
-      "label": "t:sections.image-banner.settings.underline.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "hide_image_on_mobile",
-      "default": false,
-      "label": "t:sections.image-banner.settings.hide_image_on_mobile.label"
     },
     {
       "type": "select",
@@ -374,33 +291,10 @@
       "label": "t:sections.image-banner.settings.desktop_content_alignment.label"
     },
     {
-      "type": "select",
+      "type": "color_scheme",
       "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
-        }
-      ],
-      "default": "background-1",
       "label": "t:sections.all.colors.label",
-      "info": "t:sections.image-banner.settings.color_scheme.info"
+      "default": "scheme-1"
     },
     {
       "type": "header",
@@ -417,6 +311,14 @@
         {
           "value": "ambient",
           "label": "t:sections.all.animation.image_behavior.options__2.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:sections.all.animation.image_behavior.options__3.label"
+        },
+        {
+          "value": "zoom-in",
+          "label": "t:sections.all.animation.image_behavior.options__4.label"
         }
       ],
       "default": "none",
@@ -468,7 +370,7 @@
         {
           "type": "inline_richtext",
           "id": "heading",
-          "default": "Image banner",
+          "default": "t:sections.image-banner.blocks.heading.settings.heading.default",
           "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
         },
         {
@@ -486,26 +388,18 @@
             {
               "value": "h0",
               "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
             }
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
-        },
-        {
-          "type": "select",
-          "id": "heading_color",
-          "options": [
-            {
-              "value": "black",
-              "label": "Black"
-            },
-            {
-              "value": "white",
-              "label": "White"
-            }
-          ],
-          "default": "black",
-          "label": "Heading Color"
         }
       ]
     },
@@ -517,8 +411,8 @@
         {
           "type": "inline_richtext",
           "id": "text",
-          "default": "Give customers details about the banner image(s) or content on the template.",
-          "label": "t:sections.image-banner.blocks.text.settings.text.label"
+          "default": "Title",
+          "label": "Title"
         },
         {
           "type": "select",
@@ -550,7 +444,7 @@
         {
           "type": "text",
           "id": "button_label_1",
-          "default": "Button label",
+          "default": "t:sections.image-banner.blocks.buttons.settings.button_label_1.default",
           "label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
           "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
         },
@@ -568,7 +462,7 @@
         {
           "type": "text",
           "id": "button_label_2",
-          "default": "Button label",
+          "default": "t:sections.image-banner.blocks.buttons.settings.button_label_2.default",
           "label": "t:sections.image-banner.blocks.buttons.settings.button_label_2.label",
           "info": "t:sections.image-banner.blocks.buttons.settings.button_label_2.info"
         },
@@ -588,7 +482,7 @@
   ],
   "presets": [
     {
-      "name": "Evenflo Image Banner",
+      "name": "Evenflo Image Banner new",
       "blocks": [
         {
           "type": "heading"

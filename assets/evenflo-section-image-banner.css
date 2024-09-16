@@ -2,13 +2,20 @@
   display: flex;
   position: relative;
   flex-direction: column;
+  z-index: auto;
+  isolation: isolate;
 }
 
 .banner__box {
   text-align: center;
 }
 
-@media only screen and (max-width: 1299px) {
+/* Needed for gradient continuity with or without animation, the transform scopes the gradient to its container which happens already when animation are turned on */
+.banner__box.gradient {
+  transform: perspective(0);
+}
+
+@media only screen and (max-width: 749px) {
   .banner--content-align-mobile-right .banner__box {
     text-align: right;
   }
@@ -18,7 +25,7 @@
   }
 }
 
-@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 750px) {
   .banner--content-align-right .banner__box {
     text-align: right;
   }
@@ -34,7 +41,17 @@
   }
 }
 
-@media screen and (max-width: 1299px) {
+.banner__media.animate--zoom-in {
+  clip-path: inset(0px);
+}
+
+.banner__media.animate--zoom-in > img:not(.zoom):not(.deferred-media__poster-button),
+.banner__media.animate--zoom-in > svg:not(.zoom):not(.deferred-media__poster-button) {
+  position: fixed;
+  height: 100vh;
+}
+
+@media screen and (max-width: 749px) {
   .banner--small.banner--mobile-bottom:not(.banner--adapt) .banner__media,
   .banner--small.banner--stacked:not(.banner--mobile-bottom):not(.banner--adapt) > .banner__media {
     height: 28rem;
@@ -63,7 +80,7 @@
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 750px) {
   .banner {
     flex-direction: row;
   }
@@ -126,7 +143,7 @@
   }
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 749px) {
   .banner:not(.banner--stacked) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -158,7 +175,29 @@
   left: auto;
 }
 
-@media screen and (max-width: 1299px) {
+.banner__media-half.animate--fixed:first-child > img,
+.banner__media-half.animate--zoom-in:first-child > img {
+  width: 50%;
+}
+
+.banner__media-half.animate--fixed:nth-child(2) > img,
+.banner__media-half.animate--zoom-in:nth-child(2) > img {
+  left: 50%;
+  width: 50%;
+}
+
+@media screen and (max-width: 749px) {
+  .banner--stacked .animate--fixed:first-child > img,
+  .banner--stacked .animate--zoom-in:first-child > img {
+    width: 100%;
+  }
+
+  .banner--stacked .banner__media-half.animate--fixed:nth-child(2) > img,
+  .banner--stacked .banner__media-half.animate--zoom-in:nth-child(2) > img {
+    left: 0;
+    width: 100%;
+  }
+
   .banner--stacked .banner__media-half {
     width: 100%;
   }
@@ -168,7 +207,7 @@
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 750px) {
   .banner__media {
     height: 100%;
   }
@@ -179,7 +218,7 @@
   height: auto;
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 749px) {
   .banner--mobile-bottom .banner__media,
   .banner--stacked:not(.banner--mobile-bottom) .banner__media {
     position: relative;
@@ -191,9 +230,6 @@
 
   .banner:not(.banner--mobile-bottom):not(.email-signup-banner) .banner__box {
     background: transparent;
-    --color-foreground: 255, 255, 255;
-    --color-button: 255, 255, 255;
-    --color-button-text: 0, 0, 0;
   }
 
   .banner:not(.banner--mobile-bottom) .banner__box {
@@ -203,8 +239,6 @@
   }
 
   .banner:not(.banner--mobile-bottom) .button--secondary {
-    --color-button: 255, 255, 255;
-    --color-button-text: 255, 255, 255;
     --alpha-button-background: 0;
   }
 
@@ -223,6 +257,10 @@
     position: relative;
   }
 
+  .banner::before {
+    display: none !important;
+  }
+
   .banner--stacked .banner__media-image-half {
     width: 100%;
   }
@@ -238,7 +276,7 @@
   z-index: 2;
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 750px) {
   .banner__content {
     padding: 5rem;
   }
@@ -289,18 +327,19 @@
   }
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 749px) {
   .banner--mobile-bottom:not(.banner--stacked) .banner__content {
     order: 2;
   }
 
-  .banner:not(.banner--mobile-bottom) .field__input {
-    background-color: transparent;
+  .banner:not(.banner--mobile-bottom) .field__input,
+  .banner--mobile-bottom:not(.banner--stacked) .banner__box.color-scheme-1 {
+    background: transparent;
   }
 }
 
 .banner__box {
-  padding: 4rem 3.5rem;
+  padding: 4rem 1.5rem;
   position: relative;
   height: fit-content;
   align-items: center;
@@ -310,12 +349,18 @@
   z-index: 1;
 }
 
-@media screen and (min-width: 1300px) {
+.banner--mobile-bottom .banner__box {
+  padding: 4rem 3.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .banner__box {
+    padding: 4rem 3.5rem;
+  }
+
   .banner--desktop-transparent .banner__box {
+    padding: 4rem 0;
     background: transparent;
-    --color-foreground: 255, 255, 255;
-    --color-button: 255, 255, 255;
-    --color-button-text: 0, 0, 0;
     max-width: 89rem;
     border: none;
     border-radius: 0;
@@ -323,8 +368,6 @@
   }
 
   .banner--desktop-transparent .button--secondary {
-    --color-button: 255, 255, 255;
-    --color-button-text: 255, 255, 255;
     --alpha-button-background: 0;
   }
 
@@ -333,7 +376,7 @@
   }
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 749px) {
   .banner--mobile-bottom::after,
   .banner--mobile-bottom .banner__media::after {
     display: none;
@@ -356,7 +399,7 @@
   margin-top: 1.5rem;
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 750px) {
   .banner__box > * + .banner__text {
     margin-top: 2rem;
   }
@@ -370,13 +413,13 @@
   margin-top: 0;
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 749px) {
   .banner--stacked .banner__box {
     width: 100%;
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 750px) {
   .banner__box {
     width: auto;
     max-width: 71rem;
@@ -406,7 +449,7 @@
   word-break: break-word;
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 749px) {
   .banner--content-align-mobile-right .banner__buttons--multiple {
     justify-content: flex-end;
   }
@@ -417,7 +460,7 @@
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 750px) {
   .banner--content-align-center .banner__buttons--multiple > * {
     flex-grow: 1;
     min-width: 22rem;
@@ -432,7 +475,7 @@
   margin-top: 2rem;
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 749px) {
   .banner:not(.slideshow) .rte a,
   .banner:not(.slideshow) .inline-richtext a:hover,
   .banner:not(.slideshow) .rte a:hover {
@@ -440,91 +483,10 @@
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 750px) {
   .banner--desktop-transparent .rte a,
   .banner--desktop-transparent .inline-richtext a:hover,
   .banner--desktop-transparent .rte a:hover {
     color: currentColor;
-  }
-}
-
-/* Evenflo  */
-
-.banner__heading.inline-richtext.h1.white {
-  color: #fff;
-}
-
-.banner__heading.inline-richtext.h1.black {
-  color: #000;
-}
-
-.banner::before, .banner__content::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 10px;
-  z-index: 2;
-  background: linear-gradient(to right, #41c4bc, #c1db94);
-}
-
-.evenflo-collection-banner .banner__box .banner__text {
-  color: #000;
-}
-
-.evenflo-collection-banner .banner__box .banner__heading {
-  margin-bottom: 40px;
-}
-
-/* .evenflo-collection-banner.banner::before {
-  display: none;
-} */
-
-@media screen and (max-width: 1300px) {
-  .banner__content::before {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1299px) {
-  .evenflo-collection-banner .banner__box .banner__heading.heading-underline::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-@media screen and (min-width: 1300px) {
-  .evenflo-collection-banner .banner__content {
-    padding: 0;
-  }
-
-  .evenflo-collection-banner .banner__box {
-    height: 100%;
-    max-width: 30rem;
-    min-width: 30rem;
-    padding-left: 7rem;
-    padding-right: 7rem;
-  }
-
-  .evenflo-collection-banner .banner__media > img {
-    padding-left: 30rem;
-  }
-}
-
-@media screen and (min-width: 1300px) {
-  .evenflo-collection-banner .banner__box {
-    max-width: 50rem;
-    min-width: 40rem;
-  }
-
-  .evenflo-collection-banner .banner__media > img {
-    padding-left: 40rem;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .evenflo-collection-banner .banner__box {
-    max-width: 50rem;
   }
 }
