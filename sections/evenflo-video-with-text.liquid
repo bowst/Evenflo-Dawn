@@ -224,7 +224,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.video-with-text.name",
+  "name": "Evenflo Video with Text",
   "class": "section",
   "disabled_on": {
     "groups": ["header", "footer"]
@@ -234,7 +234,7 @@
       "type": "inline_richtext",
       "id": "heading",
       "default": "Video",
-      "label": "t:sections.video.settings.heading.label"
+      "label": "Heading"
     },
     {
       "type": "select",
@@ -242,70 +242,70 @@
       "options": [
         {
           "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
+          "label": "Small"
         },
         {
           "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
+          "label": "Medium"
         },
         {
           "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
+          "label": "Large"
         }
       ],
       "default": "h1",
-      "label": "t:sections.all.heading_size.label"
+      "label": "Heading Size"
     },
     {
       "type": "checkbox",
       "id": "enable_video_looping",
-      "label": "t:sections.video.settings.enable_video_looping.label",
+      "label": "Play video on loop",
       "default": false
     },
     {
       "type": "header",
-      "content": "t:sections.video.settings.header__1.content"
+      "content": "Shopify-hosted video"
     },
     {
       "type": "video",
       "id": "video",
-      "label": "t:sections.video.settings.video.label"
+      "label": "Video"
     },
     {
       "type": "header",
-      "content": "t:sections.video.settings.header__2.content"
+      "content": "Or embed video from URL"
     },
     {
       "type": "paragraph",
-      "content": "t:sections.video.settings.paragraph.content"
+      "content": "Shows when no Shopify-hosted video is selected."
     },
     {
       "type": "video_url",
       "id": "video_url",
       "accept": ["youtube", "vimeo"],
       "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-      "label": "t:sections.video.settings.video_url.label",
-      "info": "t:sections.video.settings.video_url.info"
+      "label": "URL",
+      "info": "Use a YouTube or Vimeo URL"
     },
     {
       "type": "image_picker",
       "id": "cover_image",
-      "label": "t:sections.video.settings.cover_image.label"
+      "label": "Cover image"
     },
     {
       "type": "text",
       "id": "description",
-      "label": "t:sections.video.settings.description.label",
-      "info": "t:sections.video.settings.description.info"
+      "label": "Video alt text",
+      "info": "Describe the video for customers using screen readers. Learn more"
     },
     {
       "type": "header",
-      "content": "t:sections.video.settings.header__3.content"
+      "content": "Style"
     },
     {
       "type": "checkbox",
       "id": "full_width",
-      "label": "t:sections.video.settings.full_width.label",
+      "label": "Make section full width",
       "default": false
     },
     {
@@ -314,36 +314,36 @@
       "options": [
         {
           "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
+          "label": "Accent 1"
         },
         {
           "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
+          "label": "Accent 2"
         },
         {
           "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
+          "label": "Background 1"
         },
         {
           "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
+          "label": "Background 2"
         },
         {
           "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
+          "label": "Inverse"
         }
       ],
       "default": "background-1",
-      "label": "t:sections.all.colors.label"
+      "label": "Color scheme"
     },
     {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "Section padding"
     },
     {
       "type": "image_picker",
       "id": "image",
-      "label": "t:sections.video-with-text.settings.image.label"
+      "label": "Image"
     },
     {
       "type": "select",
@@ -351,23 +351,23 @@
       "options": [
         {
           "value": "adapt",
-          "label": "t:sections.video-with-text.settings.height.options__1.label"
+          "label": "Adapt"
         },
         {
           "value": "small",
-          "label": "t:sections.video-with-text.settings.height.options__2.label"
+          "label": "Small"
         },
         {
           "value": "medium",
-          "label": "t:sections.video-with-text.settings.height.options__3.label"
+          "label": "Medium"
         },
         {
           "value": "large",
-          "label": "t:sections.video-with-text.settings.height.options__4.label"
+          "label": "Large"
         }
       ],
       "default": "adapt",
-      "label": "t:sections.video-with-text.settings.height.label"
+      "label": "Adapt"
     },
     {
       "type": "select",
@@ -375,20 +375,20 @@
       "options": [
         {
           "value": "small",
-          "label": "t:sections.video-with-text.settings.desktop_image_width.options__1.label"
+          "label": "Small"
         },
         {
           "value": "medium",
-          "label": "t:sections.video-with-text.settings.desktop_image_width.options__2.label"
+          "label": "Medium"
         },
         {
           "value": "large",
-          "label": "t:sections.video-with-text.settings.desktop_image_width.options__3.label"
+          "label": "Large"
         }
       ],
       "default": "medium",
-      "label": "t:sections.video-with-text.settings.desktop_image_width.label",
-      "info": "t:sections.video-with-text.settings.desktop_image_width.info"
+      "label": "Medium",
+      "info": "Medium"
     },
     {
       "type": "select",
@@ -396,16 +396,16 @@
       "options": [
         {
           "value": "image_first",
-          "label": "t:sections.video-with-text.settings.layout.options__1.label"
+          "label": "Image First"
         },
         {
           "value": "text_first",
-          "label": "t:sections.video-with-text.settings.layout.options__2.label"
+          "label": "Text First"
         }
       ],
       "default": "image_first",
-      "label": "t:sections.video-with-text.settings.layout.label",
-      "info": "t:sections.video-with-text.settings.layout.info"
+      "label": "Image First",
+      "info": "Image First"
     },
     {
       "type": "select",
@@ -413,19 +413,19 @@
       "options": [
         {
           "value": "top",
-          "label": "t:sections.video-with-text.settings.desktop_content_position.options__1.label"
+          "label": "Top"
         },
         {
           "value": "middle",
-          "label": "t:sections.video-with-text.settings.desktop_content_position.options__2.label"
+          "label": "Middle"
         },
         {
           "value": "bottom",
-          "label": "t:sections.video-with-text.settings.desktop_content_position.options__3.label"
+          "label": "Bottom"
         }
       ],
       "default": "top",
-      "label": "t:sections.video-with-text.settings.desktop_content_position.label"
+      "label": "Top"
     },
     {
       "type": "select",
@@ -433,19 +433,19 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.video-with-text.settings.desktop_content_alignment.options__1.label"
+          "label": "Left"
         },
         {
           "value": "center",
-          "label": "t:sections.video-with-text.settings.desktop_content_alignment.options__2.label"
+          "label": "Center"
         },
         {
           "value": "right",
-          "label": "t:sections.video-with-text.settings.desktop_content_alignment.options__3.label"
+          "label": "Right"
         }
       ],
       "default": "left",
-      "label": "t:sections.video-with-text.settings.desktop_content_alignment.label"
+      "label": "Left"
     },
     {
       "type": "select",
@@ -453,19 +453,19 @@
       "options": [
         {
           "value": "no-overlap",
-          "label": "t:sections.video-with-text.settings.content_layout.options__1.label"
+          "label": "No Overlap"
         },
         {
           "value": "overlap",
-          "label": "t:sections.video-with-text.settings.content_layout.options__2.label"
+          "label": "Overlap"
         }
       ],
       "default": "no-overlap",
-      "label": "t:sections.video-with-text.settings.content_layout.label"
+      "label": "No Overlap"
     },
     {
       "type": "header",
-      "content": "t:sections.all.animation.content"
+      "content": "Animations"
     },
     {
       "type": "select",
@@ -473,15 +473,15 @@
       "options": [
         {
           "value": "none",
-          "label": "t:sections.all.animation.image_behavior.options__1.label"
+          "label": "None"
         },
         {
           "value": "ambient",
-          "label": "t:sections.all.animation.image_behavior.options__2.label"
+          "label": "Ambient movement"
         }
       ],
       "default": "none",
-      "label": "t:sections.all.animation.image_behavior.label"
+      "label": "Image behavior"
     },
     {
       "type": "header",
@@ -493,23 +493,23 @@
       "options": [
         {
           "value": "left",
-          "label": "t:sections.video-with-text.settings.mobile_content_alignment.options__1.label"
+          "label": "Left"
         },
         {
           "value": "center",
-          "label": "t:sections.video-with-text.settings.mobile_content_alignment.options__2.label"
+          "label": "Center"
         },
         {
           "value": "right",
-          "label": "t:sections.video-with-text.settings.mobile_content_alignment.options__3.label"
+          "label": "Right"
         }
       ],
       "default": "left",
-      "label": "t:sections.video-with-text.settings.mobile_content_alignment.label"
+      "label": "Left"
     },
     {
       "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "content": "Section padding"
     },
     {
       "type": "range",
@@ -518,7 +518,7 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
+      "label": "Top padding",
       "default": 36
     },
     {
@@ -528,21 +528,21 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
+      "label": "Bottom padding",
       "default": 36
     }
   ],
   "blocks": [
     {
       "type": "heading",
-      "name": "t:sections.video-with-text.blocks.heading.name",
+      "name": "heading",
       "limit": 1,
       "settings": [
         {
           "type": "inline_richtext",
           "id": "heading",
           "default": "Image with text",
-          "label": "t:sections.video-with-text.blocks.heading.settings.heading.label"
+          "label": "Heading"
         },
         {
           "type": "select",
@@ -550,32 +550,32 @@
           "options": [
             {
               "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
+              "label": "Small"
             },
             {
               "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
+              "label": "Medium"
             },
             {
               "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
+              "label": "Large"
             }
           ],
           "default": "h1",
-          "label": "t:sections.all.heading_size.label"
+          "label": "Heading size"
         }
       ]
     },
     {
       "type": "caption",
-      "name": "t:sections.video-with-text.blocks.caption.name",
+      "name": "caption",
       "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "caption",
           "default": "Add a tagline",
-          "label": "t:sections.video-with-text.blocks.caption.settings.text.label"
+          "label": "Caption"
         },
         {
           "type": "select",
@@ -583,15 +583,15 @@
           "options": [
             {
               "value": "subtitle",
-              "label": "t:sections.video-with-text.blocks.caption.settings.text_style.options__1.label"
+              "label": "Subtitle"
             },
             {
               "value": "caption-with-letter-spacing",
-              "label": "t:sections.video-with-text.blocks.caption.settings.text_style.options__2.label"
+              "label": "caption with letter spacing"
             }
           ],
           "default": "caption-with-letter-spacing",
-          "label": "t:sections.video-with-text.blocks.caption.settings.text_style.label"
+          "label": "caption with letter spacing"
         },
         {
           "type": "select",
@@ -599,32 +599,32 @@
           "options": [
             {
               "value": "small",
-              "label": "t:sections.video-with-text.blocks.caption.settings.caption_size.options__1.label"
+              "label": "Small"
             },
             {
               "value": "medium",
-              "label": "t:sections.video-with-text.blocks.caption.settings.caption_size.options__2.label"
+              "label": "Medium"
             },
             {
               "value": "large",
-              "label": "t:sections.video-with-text.blocks.caption.settings.caption_size.options__3.label"
+              "label": "Large"
             }
           ],
           "default": "medium",
-          "label": "t:sections.video-with-text.blocks.caption.settings.caption_size.label"
+          "label": "Medium"
         }
       ]
     },
     {
       "type": "text",
-      "name": "t:sections.video-with-text.blocks.text.name",
+      "name": "Body Content",
       "limit": 1,
       "settings": [
         {
           "type": "richtext",
           "id": "text",
           "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-          "label": "t:sections.video-with-text.blocks.text.settings.text.label"
+          "label": "Body Content"
         },
         {
           "type": "select",
@@ -632,41 +632,41 @@
           "options": [
             {
               "value": "body",
-              "label": "t:sections.video-with-text.blocks.text.settings.text_style.options__1.label"
+              "label": "Body"
             },
             {
               "value": "subtitle",
-              "label": "t:sections.video-with-text.blocks.text.settings.text_style.options__2.label"
+              "label": "Subtitle"
             }
           ],
           "default": "body",
-          "label": "t:sections.video-with-text.blocks.text.settings.text_style.label"
+          "label": "Body"
         }
       ]
     },
     {
       "type": "button",
-      "name": "t:sections.video-with-text.blocks.button.name",
+      "name": "button",
       "limit": 1,
       "settings": [
         {
           "type": "text",
           "id": "button_label",
           "default": "Button label",
-          "label": "t:sections.video-with-text.blocks.button.settings.button_label.label",
-          "info": "t:sections.video-with-text.blocks.button.settings.button_label.info"
+          "label": "Button label",
+          "info": "Button label"
         },
         {
           "type": "url",
           "id": "button_link",
-          "label": "t:sections.video-with-text.blocks.button.settings.button_link.label"
+          "label": "Button link"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "t:sections.video-with-text.presets.name",
+      "name": "Evenflo Video with Text",
       "blocks": [
         {
           "type": "heading"
