@@ -1,6 +1,77 @@
+{{ 'product-img-slider-block.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<div class="product-img-slider-block">
+  <div class="page-width">
+    <div class="swiper mySwiper product-img-slider">
+      <div class="swiper-wrapper product-img-wrapper">
+        {% for product in section.settings.product_list %}
+          {% for variant in product.variants %}
+            <div class="swiper-slide product-img-card">
+              <img src="{{ variant.image.src | image_url }}" alt="{{ product.title }} - {{ variant.title }}">
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var swiper = new Swiper(".product-img-slider-block .mySwiper", {
+      loop: true,
+      slidesPerView: 5,
+      spaceBetween: 20,
+        centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+          320: {
+              // when window width is >= 320px
+              slidesPerView: 1,
+              spaceBetween: 10,
+          },
+          640: {
+              // when window width is >= 640px
+              slidesPerView: 3,
+          },
+          960: {
+              // when window width is >= 960px
+              slidesPerView: 5,
+          },
+    	},
+    });
+  });
+</script>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Product Image Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Image Slider",
+      "category": "Custom Sections"
+    }
+  ]
+}
 {% endschema %}
