@@ -2886,11 +2886,134 @@
         "name": "Rich text"
       }
     },
+    "evenflo-rich-text": {
+  "name": "Evenflo Rich text",
+  "settings": {
+    "desktop_content_position": {
+      "options__1": {
+        "label": "Left"
+      },
+      "options__2": {
+        "label": "Center"
+      },
+      "options__3": {
+        "label": "Right"
+      },
+      "label": "Desktop content position",
+      "info": "Position is automatically optimized for mobile.",
+      "default": "Center"  // Default content position
+    },
+    "content_alignment": {
+      "options__1": {
+        "label": "Left"
+      },
+      "options__2": {
+        "label": "Center"
+      },
+      "options__3": {
+        "label": "Right"
+      },
+      "label": "Content alignment",
+      "default": "Left"  // Default content alignment
+    },
+    "full_width": {
+      "label": "Make section full width",
+      "default": false  // Default to not full width
+    }
+  },
+  "blocks": {
+    "heading": {
+      "name": "Heading",
+      "settings": {
+        "heading": {
+          "label": "Heading",
+          "default": "Default heading text"  // Default heading text
+        }
+      }
+    },
+    "caption": {
+      "name": "Caption",
+      "settings": {
+        "text": {
+          "label": "Text",
+          "default": "Default caption text"  // Default caption text
+        },
+        "text_style": {
+          "label": "Text style",
+          "options__1": {
+            "label": "Subtitle"
+          },
+          "options__2": {
+            "label": "Uppercase"
+          },
+          "default": "Subtitle"  // Default text style
+        },
+        "caption_size": {
+          "label": "Text size",
+          "options__1": {
+            "label": "Small"
+          },
+          "options__2": {
+            "label": "Medium"
+          },
+          "options__3": {
+            "label": "Large"
+          },
+          "default": "Medium"  // Default caption size
+        }
+      }
+    },
+    "text": {
+      "name": "Text",
+      "settings": {
+        "text": {
+          "label": "Description",
+          "default": "Default description text"  // Default description text
+        }
+      }
+    },
+    "buttons": {
+      "name": "Buttons",
+      "settings": {
+        "button_label_1": {
+          "label": "First button label",
+          "info": "Leave the label blank to hide the button.",
+          "default": ""  // Default to empty to allow hiding by default
+        },
+        "button_link_1": {
+          "label": "First button link",
+          "default": "#"  // Default link
+        },
+        "button_style_secondary_1": {
+          "label": "Use outline button style",
+          "default": false  // Default to not use outline style
+        },
+        "button_label_2": {
+          "label": "Second button label",
+          "info": "Leave the label blank to hide the button.",
+          "default": ""  // Default to empty to allow hiding by default
+        },
+        "button_link_2": {
+          "label": "Second button link",
+          "default": "#"  // Default link
+        },
+        "button_style_secondary_2": {
+          "label": "Use outline button style",
+          "default": false  // Default to not use outline style
+        }
+      }
+    }
+  },
+  "presets": {
+    "name": "Evenflo Rich text"
+  }
+},
     "video": {
       "name": "Video",
       "settings": {
         "heading": {
           "label": "Heading"
+          
         },
         "cover_image": {
           "label": "Cover image"
