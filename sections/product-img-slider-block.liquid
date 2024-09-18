@@ -12,7 +12,9 @@
           {% for variant in product.variants %}
             {% if variant.image.src %}
               <div class="swiper-slide product-img-card">
-                <img src="{{ variant.image.src | image_url }}" alt="{{ product.title }} - {{ variant.title }}">
+                <a href="{{ product.url }}">
+                  <img src="{{ variant.image.src | image_url }}" alt="{{ product.title }} - {{ variant.title }}">
+                </a>
               </div>
             {% endif %}
           {% endfor %}
