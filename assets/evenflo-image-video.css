@@ -382,12 +382,16 @@
     --alpha-button-background: 0;
   }
 
-  
+  .banner--desktop-transparent .content-container:after {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 749px) {
   .banner--mobile-bottom::after,
-  
+  .banner--mobile-bottom .banner__media::after {
+    display: none;
+  }
 }
 
 .banner::after,
