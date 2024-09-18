@@ -40,6 +40,9 @@
     .text-color button {
     color: inherit !important; /* Inherit the color from .text-color class */
   }
+  .text-color .button{
+    background-color: {{ section.settings.button_color }} !important;
+  }
   /* Media query for mobile screens (adjust the max-width value as needed) */
   @media screen and (max-width: 750px) {
     .text-color {
