@@ -126,9 +126,9 @@
                     {%- if block.settings.liquid_content != blank -%}
                       {{ block.settings.liquid_content }}
                     {%- endif -%}
-                    {%- if block.settings.link_label != blank and section.settings.column_style == 'classic' -%}
+                    {%- if block.settings.link_label != blank and section.settings.column_style == 'modern' -%}
                       <a
-                        class="link animate-arrow"
+                        class="button button-black"
                         {% if block.settings.link == blank %}
                           role="link"
                           aria-disabled="true"
