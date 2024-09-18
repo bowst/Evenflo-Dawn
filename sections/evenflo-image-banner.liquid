@@ -10,11 +10,6 @@
         content: '';
         display: block;
       }
-
-      /* Mobile heading color */
-      .banner__heading {
-        color: var(--mobile-heading-color);
-      }
     }
 
     @media screen and (min-width: 750px) {
@@ -23,11 +18,6 @@
         padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
-      }
-
-      /* Desktop heading color */
-      .banner__heading {
-        color: {{ section.settings.desktop_heading_color }};
       }
     }
   {%- endstyle -%}
@@ -133,14 +123,9 @@
             <h2
               class="banner__heading inline-richtext {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
-              style="color: {{ block.settings.desktop_heading_color }};"
-              {% if block.settings.mobile_heading_color %}
-                data-mobile-color="{{ block.settings.mobile_heading_color }}"
-              {% endif %}
             >
               {{ block.settings.heading }}
             </h2>
-
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
               <p>{{ block.settings.text }}</p>
@@ -525,15 +510,3 @@
   ]
 }
 {% endschema %}
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const heading = document.querySelector('.banner__heading');
-    if (heading) {
-      const mobileColor = heading.getAttribute('data-mobile-color');
-      if (mobileColor) {
-        document.documentElement.style.setProperty('--mobile-heading-color', mobileColor);
-      }
-    }
-  });
-</script>
