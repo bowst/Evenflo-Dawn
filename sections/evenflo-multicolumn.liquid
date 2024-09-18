@@ -137,21 +137,6 @@
                         {% endif %}
                       >
                         {{- block.settings.link_label | escape -}}
-                        <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span>
-                      </a>
-                    {%- endif -%}
-                    {%- if block.settings.link_label != blank and section.settings.column_style == 'modern' -%}
-                      <a
-                        class="link animate-arrow"
-                        {% if block.settings.link == blank %}
-                          role="link"
-                          aria-disabled="true"
-                        {% else %}
-                          href="{{ block.settings.link }}"
-                        {% endif %}
-                      >
-                        {{- block.settings.link_label | escape -}}
-                        <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span>
                       </a>
                     {%- endif -%}
                   </div>
