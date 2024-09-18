@@ -126,7 +126,7 @@
                     {%- if block.settings.liquid_content != blank -%}
                       {{ block.settings.liquid_content }}
                     {%- endif -%}
-                    {%- if block.settings.link_label != blank -%}
+                    {%- if block.settings.link_label != blank and section.settings.colum_style == 'classic' -%}
                       <a
                         class="link animate-arrow"
                         {% if block.settings.link == blank %}
