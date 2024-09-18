@@ -24,11 +24,19 @@
 {%- endif -%}
 
 {%- style -%}
-  #Banner-{{ section.id }}::after {
-    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
-  }
-  .text-color {
-    color: {{ section.settings.desktop_heading_color }} !important;
+    #Banner-{{ section.id }}::after {
+      opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+    }
+    .text-color {
+      color: {{ section.settings.desktop_heading_color }} !important;
+    }
+    .text-color h1,
+    .text-color h2,
+    .text-color h3,
+    .text-color h4,
+    .text-color h5,
+    .text-color h6 {
+    color: inherit !important; /* Inherit the color from .text-color class */
   }
 {%- endstyle -%}
 
