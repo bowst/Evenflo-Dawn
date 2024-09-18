@@ -6382,3 +6382,6 @@ p {
   border: none;
   box-shadow: none;
 }
+.button-black:not([disabled]):after, .button-black:not([disabled]):hover{
+  box-shadow: none;
+}
