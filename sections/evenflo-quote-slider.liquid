@@ -21,7 +21,7 @@
 </style>
 
 <div class="evenflo-quote-slider-block" style="background-color: {{ section.settings.background }}">
-  <div class="{% if section.settings.full-width %}full-width-container{% else %}page-width{% endif %} evenflo-multicolumn-slider color-background-4">
+  <div class="{% if section.settings.full-width %} full-width-container {% else %} page-width {% endif %} evenflo-multicolumn-slider color-background-4">
     <div class="swiper mySwiper evenflo-quote-slider">
       <div class="swiper-wrapper evenflo-quote-slider-wrapper">
         {% for block in section.blocks %}
