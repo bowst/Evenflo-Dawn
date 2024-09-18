@@ -123,9 +123,14 @@
             <h2
               class="banner__heading inline-richtext {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
+              style="    color: {{ block.settings.desktop_heading_color }};"
+              {% if block.settings.mobile_heading_color %}
+                data-mobile-color="{{ block.settings.mobile_heading_color }}"
+              {% endif %}
             >
               {{ block.settings.heading }}
             </h2>
+
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
               <p>{{ block.settings.text }}</p>
