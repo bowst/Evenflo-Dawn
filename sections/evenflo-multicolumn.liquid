@@ -117,7 +117,7 @@
                     </div>
                   {%- endif -%}
                   <div class="multicolumn-card__info">
-                    {%- if block.settings.title != blank and section.settings.colum_style == 'classic' -%}
+                    {%- if block.settings.title != blank and section.settings.column_style == 'classic' -%}
                       <h3 class="inline-richtext">{{ block.settings.title }}</h3>
                     {%- endif -%}
                     {%- if block.settings.text != blank -%}
@@ -126,7 +126,21 @@
                     {%- if block.settings.liquid_content != blank -%}
                       {{ block.settings.liquid_content }}
                     {%- endif -%}
-                    {%- if block.settings.link_label != blank and section.settings.colum_style == 'classic' -%}
+                    {%- if block.settings.link_label != blank and section.settings.column_style == 'classic' -%}
+                      <a
+                        class="link animate-arrow"
+                        {% if block.settings.link == blank %}
+                          role="link"
+                          aria-disabled="true"
+                        {% else %}
+                          href="{{ block.settings.link }}"
+                        {% endif %}
+                      >
+                        {{- block.settings.link_label | escape -}}
+                        <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span>
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.link_label != blank and section.settings.column_style == 'modern' -%}
                       <a
                         class="link animate-arrow"
                         {% if block.settings.link == blank %}
