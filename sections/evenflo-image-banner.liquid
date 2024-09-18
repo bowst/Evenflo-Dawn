@@ -38,6 +38,20 @@
     .text-color h6 {
     color: inherit !important; /* Inherit the color from .text-color class */
   }
+  /* Media query for mobile screens (adjust the max-width value as needed) */
+  @media screen and (max-width: 750px) {
+    .text-color {
+      color: {{ section.settings.mobile_heading_color }} !important;
+    }
+    .text-color h1,
+    .text-color h2,
+    .text-color h3,
+    .text-color h4,
+    .text-color h5,
+    .text-color h6 {
+      color: red; /* Change the color to red on mobile screens */
+    }
+  }
 {%- endstyle -%}
 
 {%- liquid
