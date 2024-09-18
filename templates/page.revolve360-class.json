@@ -45,6 +45,8 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/EasyInAndOut.png",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
@@ -115,36 +117,45 @@
         "show_text_below": true
       }
     },
-    "video_with_text_fyEXWE": {
-      "type": "video-with-text",
+    "evenflo_video_with_text_keKddr": {
+      "type": "evenflo-video-with-text",
       "blocks": {
-        "heading_c7dH7B": {
+        "heading_THpeUU": {
           "type": "heading",
           "settings": {
-            "heading": "WHICH REVOLVE IS RIGHT FOR YOU?",
+            "heading": "Which revolve is right for you?",
             "heading_size": "h1"
           }
         },
-        "text_H3xHBb": {
+        "text_QTij7T": {
           "type": "text",
           "settings": {
             "text": "<p>We can’t help with the occasional chaos that comes with being a parent. But Evenflo® Revolve360™ Rotational Car Seats can add 360° of ease to life on the go!<\/p>",
             "text_style": "body"
           }
+        },
+        "button_Dd9RUt": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": ""
+          }
         }
       },
       "block_order": [
-        "heading_c7dH7B",
-        "text_H3xHBb"
+        "heading_THpeUU",
+        "text_QTij7T",
+        "button_Dd9RUt"
       ],
       "settings": {
         "heading": "",
+        "video-content-right": true,
         "heading_size": "h1",
         "enable_video_looping": false,
         "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "cover_image": "shopify:\/\/shop_images\/coverimage.png",
         "description": "",
-        "full_width": false,
+        "full_width": true,
         "color_scheme": "background-1",
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -386,7 +397,7 @@
   "order": [
     "evenflo_image_banner_ewniqE",
     "image_banner_QFFVAf",
-    "video_with_text_fyEXWE",
+    "evenflo_video_with_text_keKddr",
     "slim_extend_tab_block_8Dwqy6",
     "evenflo_quote_slider_aY3Vyj",
     "evenflo_full_width_image_YDjzzL",
