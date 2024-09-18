@@ -525,3 +525,15 @@
   ]
 }
 {% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heading = document.querySelector('.banner__heading');
+    if (heading) {
+      const mobileColor = heading.getAttribute('data-mobile-color');
+      if (mobileColor) {
+        document.documentElement.style.setProperty('--mobile-heading-color', mobileColor);
+      }
+    }
+  });
+</script>
