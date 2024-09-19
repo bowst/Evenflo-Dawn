@@ -72,6 +72,14 @@
   .banner__buttons a:after{
     box-shadow: none;
   }
+  @media screen and (max-width: 767px){
+    .text-color .button{
+    background-color: {{ section.settings.mobile_button_color }} !important;
+  }
+  .text-color a{
+     color: {{ section.settings.mobile_button_text_color }} !important;
+  }
+  }
 {%- endstyle -%}
 
 {%- liquid
