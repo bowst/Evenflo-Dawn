@@ -39,7 +39,6 @@
   margin: auto;
 }
 
-
 .evenflo-quote-slider-content .evenflo-quote-content * {
   margin: 0;
 }
@@ -63,7 +62,7 @@
   content: "";
   width: 105px;
   height: 6px;
-  background: rgba(var(--color-base-accent-2),1);
+  background: rgba(var(--color-base-accent-2), 1);
   display: block;
   margin-top: 10px;
 }
@@ -81,13 +80,13 @@
   /* .evenflo-quote-slider-block .page-width {
     background: #f2f2f2;
   } */
-  .full-width-container{
-    padding:40px;
+  .full-width-container {
+    padding: 40px;
   }
   .evenflo-quote-slider-content {
     flex-direction: column;
     padding: 15px 0;
-    text-align:center;
+    text-align: center;
   }
   .evenflo-quote-slider-content .evenflo-quote-content h3 {
     font-size: 16px;
@@ -102,5 +101,11 @@
   }
   .evenflo-quote-slider-content .evenflo-quote-content {
     max-width: 100%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .evenflo-quote-slider-content .evenflo-quote-content {
+    text-align: left;
+    gap: 5px;
   }
 }
