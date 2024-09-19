@@ -257,38 +257,40 @@
       </div>
     {% endif %}
 
-    {% if template == 'product.infant-car-seats' %}
-      <div class="flex-row">
-        <div class="flex-item">
-          <h3>Child Fit</h3>
-          <strong>Weight:</strong>
-          {{ child_weight_min_value }} - {{ child_weight_max_value }} lbs<br>
-          <strong>Height:</strong>
-          {{ child_height_min_value }} - {{ child_height_max_value }} in
-        </div>
-        <div class="flex-item">
-          <h3>Product Dimensions</h3>
-          <strong>Assembled:</strong>
-          {{ assembled_width }}" W x {{ assembled_height }}" H x {{ assembled_depth }}" D
-        </div>
-        <div class="flex-item">
-          <h3>Modes of Use</h3>
-          {{ modes_of_use }}
-        </div>
-        <div class="flex-item">
-          <h3>Specs</h3>
-          {%- if lightweight == 1 %}
-            Lightweight<br>
-          {% endif -%}
-          {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
-          {% if anti_rebound_bar == 1 %}
-            Anti-Rebound Bar<br>
-          {% endif %}
+    <!--
+      {% if template == 'product.infant-car-seats' %}
+        <div class="flex-row">
+          <div class="flex-item">
+            <h3>Child Fit</h3>
+            <strong>Weight:</strong>
+            {{ child_weight_min_value }} - {{ child_weight_max_value }} lbs<br>
+            <strong>Height:</strong>
+            {{ child_height_min_value }} - {{ child_height_max_value }} in
+          </div>
+          <div class="flex-item">
+            <h3>Product Dimensions</h3>
+            <strong>Assembled:</strong>
+            {{ assembled_width }}" W x {{ assembled_height }}" H x {{ assembled_depth }}" D
+          </div>
+          <div class="flex-item">
+            <h3>Modes of Use</h3>
+            {{ modes_of_use }}
+          </div>
+          <div class="flex-item">
+            <h3>Specs</h3>
+            {%- if lightweight == 1 %}
+              Lightweight<br>
+            {% endif -%}
+            {% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+            {% if anti_rebound_bar == 1 %}
+              Anti-Rebound Bar<br>
+            {% endif %}
 
-          {{ installation }} Installation
+            {{ installation }} Installation
+          </div>
         </div>
-      </div>
-    {% endif %}
+      {% endif %}
+    -->
     {% if template == 'product' %}
       <div class="flex-row">
         <div class="flex-item">
