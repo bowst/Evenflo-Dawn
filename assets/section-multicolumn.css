@@ -33,7 +33,10 @@ h2.title.inline-richtext.h2 {
   width: 50%;
 }
 
-.multicolumn-list__item.center .multicolumn-card__image-wrapper:not(.multicolumn-card__image-wrapper--full-width),
+.multicolumn-list__item.center
+  .multicolumn-card__image-wrapper:not(
+    .multicolumn-card__image-wrapper--full-width
+  ),
 .multicolumn-list__item:only-child {
   margin-left: auto;
   margin-right: auto;
@@ -74,7 +77,11 @@ a.button.button--primary:hover {
 }
 
 .multicolumn.background-primary .multicolumn-card {
-  background: rgb(var(--color-background)) linear-gradient(rgba(var(--color-foreground), 0.04), rgba(var(--color-foreground), 0.04));
+  background: rgb(var(--color-background))
+    linear-gradient(
+      rgba(var(--color-foreground), 0.04),
+      rgba(var(--color-foreground), 0.04)
+    );
 }
 
 .multicolumn-list h3 {
@@ -92,7 +99,7 @@ a.button.button--primary:hover {
   margin-right: 2.5rem;
 }
 
-.multicolumn-card__info> :nth-child(2) {
+.multicolumn-card__info > :nth-child(2) {
   margin-top: 1rem;
 }
 
@@ -118,9 +125,7 @@ a.button.button--primary:hover {
   }
 }
 
-
 @media screen and (min-width: 750px) {
-
   .multicolumn-list.slider,
   .multicolumn-list.grid--4-col-desktop {
     padding: 0;
@@ -156,7 +161,7 @@ a.button.button--primary:hover {
   padding-bottom: 0;
 }
 
-.background-none .multicolumn-card__image-wrapper+.multicolumn-card__info {
+.background-none .multicolumn-card__image-wrapper + .multicolumn-card__info {
   padding-top: 2.5rem;
 }
 
@@ -164,11 +169,17 @@ a.button.button--primary:hover {
   padding-left: 0.5rem;
 }
 
-.background-none .slider .multicolumn-card__image-wrapper+.multicolumn-card__info {
+.background-none
+  .slider
+  .multicolumn-card__image-wrapper
+  + .multicolumn-card__info {
   padding-left: 1.5rem;
 }
 
-.background-none .multicolumn-list:not(.slider) .center .multicolumn-card__info {
+.background-none
+  .multicolumn-list:not(.slider)
+  .center
+  .multicolumn-card__info {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
@@ -181,6 +192,12 @@ a.button.button--primary:hover {
   .multicolumn.background-none .slider.slider--mobile {
     margin-bottom: 0rem;
   }
+  .background-none
+    .multicolumn-list:not(.slider)
+    .center
+    .multicolumn-card__info {
+    padding: 0 !important;
+  }
 }
 
 @media screen and (min-width: 750px) {
@@ -190,7 +207,10 @@ a.button.button--primary:hover {
   }
 
   .background-none .multicolumn-list .multicolumn-card__info,
-  .background-none .multicolumn-list:not(.slider) .center .multicolumn-card__info {
+  .background-none
+    .multicolumn-list:not(.slider)
+    .center
+    .multicolumn-card__info {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
@@ -202,9 +222,16 @@ a.button.button--primary:hover {
   height: 100%;
 }
 
-.multicolumn-card>.multicolumn-card__image-wrapper--full-width:not(.multicolumn-card-spacing) {
-  border-top-left-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
-  border-top-right-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
+.multicolumn-card
+  > .multicolumn-card__image-wrapper--full-width:not(
+    .multicolumn-card-spacing
+  ) {
+  border-top-left-radius: calc(
+    var(--text-boxes-radius) - var(--text-boxes-border-width)
+  );
+  border-top-right-radius: calc(
+    var(--text-boxes-radius) - var(--text-boxes-border-width)
+  );
   overflow: hidden;
 }
 
