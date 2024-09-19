@@ -154,7 +154,7 @@
         {%- case block.type -%}
           {%- when 'heading' -%}
             <h2
-              class="banner__heading inline-richtext {{ block.settings.heading_size }}"
+              class="banner__heading inline-richtext {{ block.settings.heading_size }} {% if block.settings.heading_underline %}heading_underline{% endif %}"
               {{ block.shopify_attributes }}
             >
               {{ block.settings.heading }}
@@ -423,6 +423,12 @@
           "id": "heading",
           "default": "t:sections.image-banner.blocks.heading.settings.heading.default",
           "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "heading_underline",
+          "default": false,
+          "label": "Heading Underline"
         },
         {
           "type": "select",
