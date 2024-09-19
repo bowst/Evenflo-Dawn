@@ -72,7 +72,19 @@
   .banner__buttons a:after{
     box-shadow: none;
   }
+  .desktop {
+    display: block
+  }
+   .mobile {
+    display: none
+  }
   @media screen and (max-width: 767px){
+     .desktop {
+    display: none;
+  }
+     .mobile {
+    display: block
+  }
     .text-color .button{
     background-color: {{ section.settings.mobile_button_color }} !important;
   }
