@@ -189,6 +189,9 @@
 }
 
 @media screen and (min-width: 750px) {
+  .image-with-text__content {
+    padding-right: 80px;
+  }
   .image-with-text__grid--reverse .image-with-text__content {
     margin-left: auto;
   }
@@ -332,7 +335,6 @@
     var(--text-boxes-shadow-blur-radius)
     rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
   word-break: break-word;
-  padding-right: 50px;
 }
 
 @media screen and (min-width: 990px) {
