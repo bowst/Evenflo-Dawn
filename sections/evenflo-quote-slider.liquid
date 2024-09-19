@@ -51,7 +51,9 @@
         {% endfor %}
       </div>
       <!-- Pagination and Navigation -->
-      <div class="swiper-pagination"></div>
+      {% for block in section.blocks %}
+        <div class="swiper-pagination"></div>
+      {% endfor %}
     </div>
   </div>
 </div>
