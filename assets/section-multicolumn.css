@@ -13,7 +13,11 @@ h2.title.inline-richtext.h2 {
 .multicolumn .title-wrapper-with-link {
   margin-top: 0;
 }
-
+.multicolumn-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 @media screen and (max-width: 749px) {
   .multicolumn .title-wrapper-with-link {
     margin-bottom: 3rem;
