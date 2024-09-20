@@ -27,7 +27,7 @@
     window.kameleoonDisplayPageTimeOut = window.setTimeout(window.kameleoonDisplayPage, kameleoonLoadingTimeout);
   }
 </script>
-<script type="text/javascript" src="//96yyrsqxp4.kameleoon.eu/kameleoon.js" async="true"></script>
+<script type="text/javascript" src="//96yyrsqxp4.kameleoon.io/kameleoon.js" async="true" fetchpriority="high"></script>
 
 {% if request.path contains '/products' %}
   {% capture snippet_content %}{% render 'kameleoon-product-script' %}{% endcapture %}
