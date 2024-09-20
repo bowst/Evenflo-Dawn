@@ -252,7 +252,7 @@
         }
       }
     {% endstyle %}
-
+{% comment %}
     <script type="text/javascript">
       // Duration in milliseconds to wait while the Kameleoon application file is loaded
       var kameleoonLoadingTimeout = 1000;
@@ -288,7 +288,7 @@
       async="true"
       fetchpriority="high"
     ></script>
-
+{% endcomment %}
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}
