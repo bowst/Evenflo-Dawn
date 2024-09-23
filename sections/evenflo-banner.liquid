@@ -1,3 +1,5 @@
+{% comment %} {{ 'evenflo-banner-2.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{{ 'section-evenflo-banner.css' | asset_url | stylesheet_tag }}
 <div
   class="new-custom-banner"
   style="background-image: url({{ section.settings.banner_image | image_url: height: 10000 }});"
@@ -12,7 +14,7 @@
 </div>
 <style>
   .new-custom-banner:after {
-    background: rgba(0, 0, 0, {{ section.settings.overlay_opacity }});
+    background: rgba(0, 0, 0, {{section.settings.overlay_opacity}});
   }
 </style>
 {% schema %}
@@ -46,11 +48,10 @@
       "default": 0.1
     }
   ],
-    "presets": [
-        {
-          "name": "Evenflo Banner"
-        }
+  "presets": [
+    {
+      "name": "Evenflo Banner"
+    }
   ]
 }
 {% endschema %}
-{{ 'section-evenflo-banner.css' | asset_url | stylesheet_tag }}
