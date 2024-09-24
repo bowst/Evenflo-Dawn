@@ -34,7 +34,7 @@
           }
         },
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -48,11 +48,12 @@
           "type": "custom_liquid",
           "disabled": true,
           "settings": {
-            "custom_liquid": "{% for variant in product.variants %}\n  {% if variant.inventory_quantity > 0 %}\n    <!-- Variant is in stock, you can customize messages or actions here -->\n  {% else %}\n    <p>So sorry, the Shyft Rideshare All-Terrain Performance Stroller Wagon in {{ variant.title }} is currently out of stock! Another great option is our extremely popular Pivot Xplore All-Terrain Stroller Wagon for your next family adventure. <a href=\"https:\/\/www.evenflo.com\/products\/pivot-xplore-stroller-wagon\">Take a look >>><\/a> is currently out of stock.<\/p>\n  {% endif %}\n{% endfor %}"
+            "custom_liquid": "{% for variant in product.variants %}\n  {% if variant.inventory_quantity > 0 %}\n    <!-- Variant is in stock, you can customize messages or actions here -->\n  {% else %}\n    <p>So sorry, the Shyft Rideshare All-Terrain Performance Stroller Wagon in {{ variant.title }} is currently out of stock! Another great option is our extremely popular Pivot Xplore All-Terrain Stroller Wagon for your next family adventure. <a href=\"https://www.evenflo.com/products/pivot-xplore-stroller-wagon\">Take a look >>></a> is currently out of stock.</p>\n  {% endif %}\n{% endfor %}"
           }
         },
         "related_products_PGeCNY": {
           "type": "related_products",
+          "disabled": true,
           "settings": {
             "heading": "Styles. Which is best for you?"
           }
@@ -65,6 +66,7 @@
         },
         "ae2b090a-c8c0-410e-ae8a-b81555a2e14e": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by mid-December\n{% endif %}"
           }
@@ -87,13 +89,13 @@
             "products_per_page": 3,
             "pagination_style": "dots",
             "image_ratio": "portrait",
-            "enable_quick_add": true
+            "enable_quick_add": false
           }
         },
         "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"affirm-info-container\"><\/div>"
+            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
           }
         }
       },
@@ -184,7 +186,7 @@
         "tooltip_jAcBJm"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/19132264_PivotXplore_Ranger_Green_lifestyle_2_cropped.jpg",
+        "image": "shopify://shop_images/19132264_PivotXplore_Ranger_Green_lifestyle_2_cropped.jpg",
         "tooltip_color": "#ffffff",
         "tooltip_background_color": "#64cbdf",
         "tooltip_focus_color": "#2996c5",
@@ -228,7 +230,7 @@
       ],
       "settings": {
         "heading": "Peace Of Mind",
-        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.<\/p>",
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
         "support_content": ""
       }
     },
@@ -243,7 +245,7 @@
       "type": "apps",
       "blocks": {
         "0351fa36-f0a8-4ce4-b847-66f4891de96c": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -273,36 +275,36 @@
         "b076e55c-e236-4a35-a75a-85cf3402446b": {
           "type": "benefit_list",
           "settings": {
-            "description": "<h3>Give 20,<br> Get 20<\/h3>\nRefer a friendand earn points.",
-            "background_image": "shopify:\/\/shop_images\/Car-Seats-Square.jpg",
-            "icon_image": "shopify:\/\/shop_images\/icon-give20.png",
-            "link": "shopify:\/\/pages\/about-evenflo"
+            "description": "<h3>Give 20,<br> Get 20</h3>\nRefer a friendand earn points.",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "icon_image": "shopify://shop_images/icon-give20.png",
+            "link": "shopify://pages/about-evenflo"
           }
         },
         "d2ac9250-ec80-4eca-93cb-a5886833aa00": {
           "type": "benefit_list",
           "settings": {
-            "description": "<h3>Pay With Affirm<\/h3>\nPay over time.",
-            "background_image": "shopify:\/\/shop_images\/pay-with-affirm.jpg",
-            "icon_image": "shopify:\/\/shop_images\/icon-pay.png",
+            "description": "<h3>Pay With Affirm</h3>\nPay over time.",
+            "background_image": "shopify://shop_images/pay-with-affirm.jpg",
+            "icon_image": "shopify://shop_images/icon-pay.png",
             "link": ""
           }
         },
         "d8f4df94-c11c-4d5d-b7a8-440dbfaef239": {
           "type": "benefit_list",
           "settings": {
-            "description": "<h3>Community Heroes Discount<\/h3>\nSave on baby gear.",
-            "background_image": "shopify:\/\/shop_images\/Car-Seats-Square.jpg",
-            "icon_image": "shopify:\/\/shop_images\/icon-heroes.png",
+            "description": "<h3>Community Heroes Discount</h3>\nSave on baby gear.",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "icon_image": "shopify://shop_images/icon-heroes.png",
             "link": ""
           }
         },
         "09af9779-83cf-4821-bb96-4341c4f3063b": {
           "type": "benefit_list",
           "settings": {
-            "description": "<h3>Evenflo Blog<\/h3>\nCheck out the latest.",
-            "background_image": "shopify:\/\/shop_images\/Car-Seats-Square.jpg",
-            "icon_image": "shopify:\/\/shop_images\/icon-blog.png",
+            "description": "<h3>Evenflo Blog</h3>\nCheck out the latest.",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "icon_image": "shopify://shop_images/icon-blog.png",
             "link": ""
           }
         }
@@ -321,7 +323,7 @@
       "type": "custom-liquid",
       "disabled": true,
       "settings": {
-        "custom_liquid": "<script>\n  window.addEventListener('load', function() {\n  var _learnq = window._learnq || [];\n  function addedToCart() {\n   fetch(`${window.location.origin}\/cart.js`)\n   .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n       _learnq.push(['track', 'Added to Cart', cart]);\n       klAjax = false;\n      }\n   }))\n  };\n  (function (ns, fetch) {\n    ns.fetch = function() {\n      const response = fetch.apply(this, arguments);\n      response.then(res => {\n        if (`${window.location.origin}\/cart\/add.js`\n          .includes(res.url) && res.url !== '') {\n              addedToCart()\n        }\n      });\n      return response\n     }\n  }(window, window.fetch));\n  var klAjax = true;\n  var atcButtons = document.querySelectorAll(\"form[action*='\/cart\/add'] button[type='submit']\");\n  for (var i = 0; i < atcButtons.length; i++) { \n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n  }\n  });\n<\/script>\n<script type=\"text\/javascript\">\nvar _learnq = _learnq || [];\n\tdocument.getElementById(\"AddToCart\").addEventListener('click',function (){\n \t\t_learnq.push(['track', 'Added to Cart', item]);\n\t});<\/script>",
+        "custom_liquid": "<script>\n  window.addEventListener('load', function() {\n  var _learnq = window._learnq || [];\n  function addedToCart() {\n   fetch(`${window.location.origin}/cart.js`)\n   .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n       _learnq.push(['track', 'Added to Cart', cart]);\n       klAjax = false;\n      }\n   }))\n  };\n  (function (ns, fetch) {\n    ns.fetch = function() {\n      const response = fetch.apply(this, arguments);\n      response.then(res => {\n        if (`${window.location.origin}/cart/add.js`\n          .includes(res.url) && res.url !== '') {\n              addedToCart()\n        }\n      });\n      return response\n     }\n  }(window, window.fetch));\n  var klAjax = true;\n  var atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\n  for (var i = 0; i < atcButtons.length; i++) { \n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n  }\n  });\n</script>\n<script type=\"text/javascript\">\nvar _learnq = _learnq || [];\n\tdocument.getElementById(\"AddToCart\").addEventListener('click',function (){\n \t\t_learnq.push(['track', 'Added to Cart', item]);\n\t});</script>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
