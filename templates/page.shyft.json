@@ -349,17 +349,32 @@
         "padding_bottom": 36
       }
     },
-    "divider_7RHR9K": {
-      "type": "divider",
+    "rich_text_97NXha": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_j3gz9y": {
+          "type": "heading",
+          "settings": {
+            "heading": "WHERE ARE YOU HEADED? SHOW US YOUR LIFE IN THE ’FLO",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_j3gz9y"
+      ],
       "settings": {
-        "divider_spacing": 50,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 40,
+        "padding_bottom": 0
       }
     },
     "custom_liquid_RK9adL": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "<div class=\"rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--15815875330204__94000f54-3969-4ee6-a915-e78863cb7546-padding\">\n  <div class=\"rich-text__wrapper rich-text__wrapper--center page-width\">\n    <div class=\"rich-text__blocks center\"><h1 class=\"rich-text__heading rte inline-richtext evenflo h1\">WHERE ARE YOU HEADED?<br>SHOW US YOUR LIFE IN THE ’FLO </h1></div>\n  </div>\n</div>",
         "color_scheme": "background-1",
@@ -373,6 +388,48 @@
         "custom_liquid": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:24399946,setMetaTags:true});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>",
         "color_scheme": "background-1",
         "padding_top": 0,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_q64eLj": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_btfLED": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_YCYDep": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_RCQrTA": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_btfLED",
+        "text_YCYDep",
+        "button_RCQrTA"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
         "padding_bottom": 52
       }
     }
@@ -390,8 +447,9 @@
     "evenflo_image_with_text_t76LqM",
     "image_banner_yaHYGx",
     "featured_collection_nJQbmc",
-    "divider_7RHR9K",
+    "rich_text_97NXha",
     "custom_liquid_RK9adL",
-    "custom_liquid_Bn9GJJ"
+    "custom_liquid_Bn9GJJ",
+    "rich_text_q64eLj"
   ]
 }
