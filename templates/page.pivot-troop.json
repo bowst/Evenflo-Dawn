@@ -465,6 +465,7 @@
         "column_YDBN8w",
         "column_ydNeiD"
       ],
+      "disabled": true,
       "custom_css": [
         "h3 {font-size: calc(var(--font-heading-scale) * 3.6rem);}",
         ".heading-underline:after {bottom: 0px;}"
@@ -486,6 +487,71 @@
         "padding_top": 40,
         "padding_bottom": 0
       }
+    },
+    "evenflo_multicolumn_tMKFCc": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_LmRgbQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle-2.jpg",
+            "liquid_content": "",
+            "title": "TIMELY CLEANUPS",
+            "text": "<p>Parent cup holder features an integrated waste bag* holder</p><p></p><p>*load your own</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_PQmtLx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle.jpg",
+            "liquid_content": "",
+            "title": "NIBBLES ON THE GO",
+            "text": "<p>Includes a BPA-free child snack tray</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_UnfzEE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle-1.jpg",
+            "liquid_content": "",
+            "title": "PET PERKS",
+            "text": "<p>Includes a pet water bowl and treat container</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_LmRgbQ",
+        "column_PQmtLx",
+        "column_UnfzEE"
+      ],
+      "custom_css": [
+        "h3 {font-size: calc(var(--font-heading-scale) * 3.6rem);}",
+        ".heading-underline:after {bottom: 0px;}"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "Shop Now",
+        "button_link": "shopify://products/pivot-troop-child-and-pet-car-seat-and-stroller-travel-system",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -500,6 +566,7 @@
     "image_with_text_NaBrd3",
     "evenflo_image_banner_Bi3qbG",
     "image_banner_dmftNj",
-    "multicolumn_jVUB9j"
+    "multicolumn_jVUB9j",
+    "evenflo_multicolumn_tMKFCc"
   ]
 }
