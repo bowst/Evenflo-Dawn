@@ -1,3 +1,4 @@
+{{ 'evenflo-featured-banner.css' | asset_url | stylesheet_tag }}
 <div class="featured-banner-block">
   <div class="page-width">
     <div class="featured-banner-wrapper {% if section.settings.image_orientation == "left" %}featured-banner-reverse{% endif %}">
@@ -72,4 +73,3 @@
   ]
 }
 {% endschema %}
-{{ 'evenflo-featured-banner.css' | asset_url | stylesheet_tag }}
