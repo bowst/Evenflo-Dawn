@@ -13,7 +13,7 @@
             <div class="slim-tab-card">
               <div class="slim-tab-card-content">
                 <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}">
-                <h4 class="h4">{{ block.settings['tab-text'] }}</h4>
+                <h4 class="h1">{{ block.settings['tab-text'] }}</h4>
               </div>
               <button class="">{{ block.settings['tab-btn-text'] }}</button>
             </div>
@@ -23,7 +23,7 @@
       <div class="slim-tab-body">
         {% for block in section.blocks %}
           <div class="slim-tab-body-content">
-            <h3 class="h1 ">{{ block.settings['tab-description'] }}</h1>
+            <h1>{{ block.settings['tab-description'] }}</h1>
             {% for product in block.settings.product_list %}
               <div class="slim-tab-col">
                 <div class="slim-tab-card">
