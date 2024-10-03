@@ -328,8 +328,6 @@
                                   </div>
 
                                   <!-- Conditional Badge Display -->
-                                  {% assign amazon_id = item.metafields.custom.amazon_id %}
-                                  {% assign walmart_id = item.metafields.custom.walmart_id %}
 
                                   <div class="card__badge {{ settings.badge_position }}">
                                     {% if amazon_id and walmart_id %}
@@ -360,8 +358,6 @@
                                 </div>
 
                                 <!-- Conditional Badge Display -->
-                                {% assign amazon_id = item.metafields.custom.amazon_id %}
-                                {% assign walmart_id = item.metafields.custom.walmart_id %}
 
                                 <div class="card__badge {{ settings.badge_position }}">
                                   {% if amazon_id and walmart_id %}
