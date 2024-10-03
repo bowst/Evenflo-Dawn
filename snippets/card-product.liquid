@@ -117,7 +117,7 @@
               </a>
             </h3>
           </div>
-          <div class="card__badge {{ settings.badge_position }}">
+          <div class="card__badge {{ settings.badge_position }} wow">
             {%- if card_product.available == false -%}
               {% unless card_product.tags contains 'Support' %}
                 <span
@@ -159,7 +159,7 @@
               class="full-unstyled-link"
               aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
             >
-            {{ card_product.title | escape }}
+              {{ card_product.title | escape }}
             </a>
           </h3>
           <div class="card-information">
@@ -180,11 +180,13 @@
                   assign rating_decimal = 1
                 endif
               %}
-            <div style="text-align: center">
-    <div class="yotpo bottomLine" style="display:inline-block"
-       data-product-id="{{ card_product.id }}">
-    </div>
-</div>
+              <div style="text-align: center">
+                <div
+                  class="yotpo bottomLine"
+                  style="display:inline-block"
+                  data-product-id="{{ card_product.id }}"
+                ></div>
+              </div>
               <div
                 class="rating"
                 role="img"
@@ -210,12 +212,8 @@
                 </span>
               </p>
             {%- endif -%}
-            {% render 'collection-swatch',
-              product: card_product,
-            %}
-           <div style="text-align: center">
-
-</div>
+            {% render 'collection-swatch', product: card_product %}
+            <div style="text-align: center"></div>
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
             {% endunless %}
@@ -335,7 +333,7 @@
             {%- endif -%}
           </div>
         {%- endif -%}
-        <div class="card__badge {{ settings.badge_position }}">
+        <div class="card__badge {{ settings.badge_position }} now">
           {%- if card_product.available == false -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
