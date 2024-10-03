@@ -92,7 +92,7 @@
 
   <!-- Badges for Amazon and Walmart availability -->
   {%- if show_badges -%}
-    {%- if amazon_id != blank and walmart_id != blank -%}
+    {%- if amazon_id != blank and walmart_id != blank and product.available == false -%}
       <span class="badge price__badge-available-on-both color-{{ settings.available_on_both_badge_color_scheme }}">
         Available on Amazon and Walmart
       </span>
