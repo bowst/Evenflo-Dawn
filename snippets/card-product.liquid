@@ -23,7 +23,9 @@
   assign amazon_id = card_product.selected_or_first_available_variant.metafields.custom.amazon_id
   assign walmart_id = card_product.selected_or_first_available_variant.metafields.custom.walmart_id
 -%}
-
+<script>
+  alert({{ amazon_id }} )
+</script>
 {%- if card_product and card_product != empty -%}
   {%- liquid
     assign ratio = 1
