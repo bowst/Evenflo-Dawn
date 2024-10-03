@@ -545,11 +545,11 @@
         <div class="card__badge {{ settings.badge_position }}">
           {% if amazon_id and walmart_id and card_product.available == false %}
             <span class="badge color-background-1">Available on Amazon and Walmart</span>
-          {% elsif walmart_id %}
+          {% elsif walmart_id and card_product.available == false %}
             <span class="badge color-background-1">Walmart Exclusive</span>
           {% elsif amazon_id %}
             <span class="badge color-background-1">Amazon Exclusive</span>
-          {% elsif card_product.available == false %}
+          {% elsif card_product.available == false and card_product.available == false %}
             <span class="badge color-background-1">Sold Out</span>
           {% endif %}
         </div>
