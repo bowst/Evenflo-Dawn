@@ -10,6 +10,7 @@
   Usage:
   {% render 'price', product: product %}
 {% endcomment %}
+
 {%- liquid
   if use_variant
     assign target = product.selected_or_first_available_variant
@@ -28,28 +29,31 @@
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
+
+  assign amazon_id = product.selected_or_first_available_variant.metafields.custom.amazon_id
+  assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id
 -%}
 
-<div class="
+<div
+  class="
     price
     {%- if price_class %} {{ price_class }}{% endif -%}
-    {%- if available == false %} price--sold-out {% endif -%}
+    {%- if available == false and amazon_id == blank and walmart_id == blank %} price--sold-out {% endif -%}
     {%- if compare_at_price > price %} price--on-sale {% endif -%}
     {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
     {%- if show_badges %} price--show-badge{% endif -%}
-  ">
+  "
+>
   <div class="price__container">
-    {%- comment -%}
-      Explanation of description list:
-        - div.price__regular: Displayed when there are no variants on sale
-        - div.price__sale: Displayed when a variant is a sale
-    {%- endcomment -%}
+    <!-- Regular price display -->
     <div class="price__regular">
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
       <span class="price-item price-item--regular">
         {{ money_price }}
       </span>
     </div>
+
+    <!-- Sale price display -->
     <div class="price__sale">
       {%- unless product.price_varies == false and product.compare_at_price_varies %}
         <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
@@ -68,6 +72,8 @@
         {{ money_price }}
       </span>
     </div>
+
+    <!-- Unit price display -->
     <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
       <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
       <span class="price-item price-item--last">
@@ -83,13 +89,25 @@
       </span>
     </small>
   </div>
-  {%- if show_badges -%}
-    <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
-      {{ 'products.product.on_sale' | t }}
-    </span>
 
-    <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
-      {{ 'products.product.sold_out' | t }}
-    </span>
+  <!-- Badges for Amazon and Walmart availability -->
+  {%- if show_badges -%}
+    {%- if amazon_id != blank and walmart_id != blank -%}
+      <span class="badge price__badge-available-on-both color-{{ settings.available_on_both_badge_color_scheme }}">
+        Available on Amazon and Walmart
+      </span>
+    {%- elsif walmart_id != blank -%}
+      <span class="badge price__badge-walmart-exclusive color-{{ settings.walmart_badge_color_scheme }}">
+        Walmart Exclusive
+      </span>
+    {%- elsif amazon_id != blank -%}
+      <span class="badge price__badge-amazon-exclusive color-{{ settings.amazon_badge_color_scheme }}">
+        Amazon Exclusive
+      </span>
+    {%- else -%}
+      <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+        {{ 'products.product.sold_out' | t }}
+      </span>
+    {%- endif -%}
   {%- endif -%}
 </div>
