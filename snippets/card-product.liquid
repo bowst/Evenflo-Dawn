@@ -135,7 +135,7 @@
               <span class="badge color-background-1">Walmart Exclusive</span>
             {% elsif amazon_id %}
               <span class="badge color-background-1">Amazon Exclusive</span>
-            {% else %}
+            {% elsif card_product.available == false %}
               <span class="badge color-background-1">Sold Out</span>
             {% endif %}
           </div>
