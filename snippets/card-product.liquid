@@ -32,6 +32,9 @@
       assign ratio = 1
     endif
     assign collection_handles = card_product.collections | map: 'handle'
+
+    assign amazon_id = product.selected_or_first_available_variant.metafields.custom.amazon_id
+    assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
