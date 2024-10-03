@@ -2,7 +2,10 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-search.css' | asset_url | stylesheet_tag }}
-
+{%- liquid
+  assign amazon_id = product.selected_or_first_available_variant.metafields.custom.amazon_id
+  assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id
+-%}
 {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
   {{ 'component-facets.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
