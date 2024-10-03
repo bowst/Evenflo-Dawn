@@ -549,21 +549,15 @@
           {% endif %}
         {% endif %}
         <div class="card__badge {{ settings.badge_position }}">
-          {%- if card_product.available == false -%}
-            <span
-              id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-            >
-              {{- 'products.product.sold_out' | t -}}
-            </span>
-          {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-            <span
-              id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-            >
-              {{- 'products.product.on_sale' | t -}}
-            </span>
-          {%- endif -%}
+          {% if amazon_id and walmart_id %}
+            <span class="badge color-background-1">Available on Amazon and Walmart</span>
+          {% elsif walmart_id %}
+            <span class="badge color-background-1">Walmart Exclusive</span>
+          {% elsif amazon_id %}
+            <span class="badge color-background-1">Amazon Exclusive</span>
+          {% else %}
+            <span class="badge color-background-1">Sold Out</span>
+          {% endif %}
         </div>
       </div>
     </div>
