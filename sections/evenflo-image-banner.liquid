@@ -157,6 +157,13 @@
     <div class="banner__box content-container content-container--full-width-mobile gradient">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
+          {%- when 'heading-h1' -%}
+            <h1
+              class="banner__heading inline-richtext {{ block.settings.heading_size }} {% if block.settings.heading_underline %}heading_underline{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings['heading-h1'] }}
+            </h1>
           {%- when 'heading' -%}
             <h2
               class="banner__heading inline-richtext {{ block.settings.heading_size }} {% if block.settings.heading_underline %}heading_underline{% endif %}"
@@ -435,6 +442,12 @@
       "name": "t:sections.image-banner.blocks.heading.name",
       "limit": 1,
       "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading-h1",
+          "default": "t:sections.image-banner.blocks.heading.settings.heading.default",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+        },
         {
           "type": "inline_richtext",
           "id": "heading",
