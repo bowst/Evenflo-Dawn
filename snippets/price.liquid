@@ -28,16 +28,21 @@
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
+
+  assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id
 -%}
 
-<div class="
+<div
+  class="
     price
     {%- if price_class %} {{ price_class }}{% endif -%}
-    {%- if available == false %} price--sold-out {% endif -%}
+    {%- if available == false and walmart_id == blank %} price--sold-out {% endif -%}
+    {%- if available == false and walmart_id != blank %} price--walmart-exclusive {% endif -%}
     {%- if compare_at_price > price %} price--on-sale {% endif -%}
     {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
     {%- if show_badges %} price--show-badge{% endif -%}
-  ">
+  "
+>
   <div class="price__container">
     {%- comment -%}
       Explanation of description list:
@@ -84,12 +89,14 @@
     </small>
   </div>
   {%- if show_badges -%}
-    <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
-      {{ 'products.product.on_sale' | t }}
-    </span>
-
-    <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
-      {{ 'products.product.sold_out' | t }}
-    </span>
+    {%- if walmart_id != blank -%}
+      <span class="badge price__badge-walmart-exclusive color-{{ settings.walmart_badge_color_scheme }}">
+        Walmart Exclusive
+      </span>
+    {%- else -%}
+      <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+        {{ 'products.product.sold_out' | t }}
+      </span>
+    {%- endif -%}
   {%- endif -%}
 </div>
