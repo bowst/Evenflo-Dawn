@@ -30,6 +30,7 @@
   endif
 
   assign amazon_id = product.selected_or_first_available_variant.metafields.custom.amazon_id
+  assign amazon_id = product.selected_or_first_available_variant.metafields.custom.amazon_id
 -%}
 
 {% if amazon_id %}
