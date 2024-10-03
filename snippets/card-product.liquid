@@ -19,6 +19,10 @@
 {% endcomment %}
 
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign amazon_id = product.selected_or_first_available_variant.metafields.custom.amazon_id
+  assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id
+-%}
 
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -32,10 +36,6 @@
       assign ratio = 1
     endif
     assign collection_handles = card_product.collections | map: 'handle'
-  -%}
-  {%- liquid
-    assign amazon_id = product.selected_or_first_available_variant.metafields.custom.amazon_id
-    assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id
   -%}
   <div>
     <p>Amazon ID: {{ amazon_id }}</p>
