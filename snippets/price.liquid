@@ -96,11 +96,11 @@
       <span class="badge price__badge-available-on-both color-{{ settings.available_on_both_badge_color_scheme }}">
         Available on Amazon and Walmart
       </span>
-    {%- elsif walmart_id != blank -%}
+    {%- elsif walmart_id != blank and product.available == false -%}
       <span class="badge price__badge-walmart-exclusive color-{{ settings.walmart_badge_color_scheme }}">
         Walmart Exclusive
       </span>
-    {%- elsif amazon_id != blank -%}
+    {%- elsif amazon_id != blank and product.available == false -%}
       <span class="badge price__badge-amazon-exclusive color-{{ settings.amazon_badge_color_scheme }}">
         Amazon Exclusive
       </span>
