@@ -438,16 +438,29 @@
   ],
   "blocks": [
     {
-      "type": "heading",
-      "name": "t:sections.image-banner.blocks.heading.name",
+      "type": "heading-h1",
+      "name": "Heading h1",
       "limit": 1,
       "settings": [
         {
           "type": "inline_richtext",
           "id": "heading-h1",
           "default": "t:sections.image-banner.blocks.heading.settings.heading.default",
-          "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+          "label": "Heading h1"
         },
+        {
+          "type": "checkbox",
+          "id": "heading_underline",
+          "default": false,
+          "label": "Add Underline"
+        },
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "t:sections.image-banner.blocks.heading.name",
+      "limit": 1,
+      "settings": [
         {
           "type": "inline_richtext",
           "id": "heading",
