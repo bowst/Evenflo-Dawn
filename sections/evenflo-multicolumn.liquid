@@ -252,15 +252,35 @@
   </div>
 </div>
 <script>
-  let slideImage = document.querySelectorAll(".multicolumn-card__image-wrapper");
+    // let slideImage = document.querySelectorAll(".multicolumn-card__image-wrapper");
 
+    // slideImage.forEach((item) => {
+    //     item.addEventListener("click", function() {
+    //       item.querySelector(".image-modal-wrapper").classList.add("modal-show");
+    //     });
+    //     item.querySelector(".image-modal-wrapper .cross-btn").addEventListener("click", function(){
+    //       item.querySelector(".image-modal-wrapper").classList.remove("modal-show");
+    //     })
+    // });
+
+  let slideImage = document.querySelectorAll(".multicolumn-card__image-wrapper");
   slideImage.forEach((item) => {
+      // Add event listener to the image wrapper for opening the modal
       item.addEventListener("click", function() {
-        item.querySelector(".image-modal-wrapper").classList.add("modal-show");
+          // Show the modal by adding the 'modal-show' class
+          item.querySelector(".image-modal-wrapper").classList.add("modal-show");
       });
-      item.querySelector(".image-modal-wrapper .cross-btn").addEventListener("click", function(){
-        item.querySelector(".image-modal-wrapper").classList.remove("modal-show");
-      })
+
+      // Add event listener to the close button inside the modal for closing the modal
+      let closeButton = item.querySelector(".image-modal-wrapper .cross-btn");
+      if (closeButton) {
+          closeButton.addEventListener("click", function(e) {
+              // Stop the click from bubbling up to the parent (prevents reopening the modal)
+              e.stopPropagation();
+              // Hide the modal by removing the 'modal-show' class
+              item.querySelector(".image-modal-wrapper").classList.remove("modal-show");
+          });
+      }
   });
 </script>
 {% schema %}
