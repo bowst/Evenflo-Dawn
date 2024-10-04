@@ -30,7 +30,7 @@
                   <div class="slim-tab-card-content">
                     <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}">
                     <h3>{{ product.title }}</h3>
-                    <p>{{ product.custom.tab_block }}</p>
+                    <p>{{ product.metafields.custom.tab_block.value }}</p>
                   </div>
                   <a href="{{ product.url }}">Shop Now</a>
                 </div>
