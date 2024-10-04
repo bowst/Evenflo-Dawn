@@ -7,6 +7,9 @@
           padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
           padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
         }
+        .multicolumn-card__image-wrapper{
+          cursor: pointer;
+        }
         .image-modal-wrapper {
           position: fixed;
           top: 0;
@@ -42,6 +45,7 @@
       font-weight: 700;
       border: 1px solid rgba(18, 18, 18, 0.1);
           z-index: 999;
+      cursor: pointer;
 
   }
         @media screen and (min-width: 750px) {
