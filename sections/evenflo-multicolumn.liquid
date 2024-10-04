@@ -256,12 +256,7 @@
 
   slideImage.forEach((item) => {
       item.addEventListener("click", function() {
-        let modalShow = false;
-        if(modalShow){
-
-        }
         item.querySelector(".image-modal-wrapper").classList.add("modal-show");
-          console.log("Image clicked!" + modalShow);
       });
       item.querySelector(".image-modal-wrapper .cross-btn").addEventListener("click", function(){
         item.querySelector(".image-modal-wrapper").classList.remove("modal-show");
