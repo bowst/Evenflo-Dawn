@@ -249,7 +249,16 @@
     </div>
   </div>
 </div>
+<script>
+  let slideImage = document.querySelectorAll(".multicolumn-card__image-wrapper");
 
+  slideImage.forEach((item) => {
+      item.addEventListener("click", function() {
+          // Code to handle click event
+          console.log("Image clicked!");
+      });
+  });
+</script>
 {% schema %}
 {
   "name": "Evenflo Multicolumn",
