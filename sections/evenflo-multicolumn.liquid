@@ -260,9 +260,12 @@
         if(modalShow){
 
         }
-        item.querySelector(".image-modal-wrapper").style.display = "flex";
+        item.querySelector(".image-modal-wrapper").classList.add("modal-show");
           console.log("Image clicked!" + modalShow);
       });
+      item.querySelector(".image-modal-wrapper .cross-btn").addEventListener("click", function(){
+        item.querySelector(".image-modal-wrapper").classList.remove("modal-show");
+      })
   });
 </script>
 {% schema %}
