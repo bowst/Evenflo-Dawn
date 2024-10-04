@@ -257,11 +257,10 @@
   slideImage.forEach((item) => {
       item.addEventListener("click", function() {
         let modalShow = false;
-        // if(modalShow){
+        if(modalShow){
 
-        // }
-        // item.querySelector(".image-modal-wrapper").style.display = "flex";
-          // Code to handle click event
+        }
+        item.querySelector(".image-modal-wrapper").style.display = "flex";
           console.log("Image clicked!" + modalShow);
       });
   });
