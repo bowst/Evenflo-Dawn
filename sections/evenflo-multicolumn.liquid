@@ -256,9 +256,13 @@
 
   slideImage.forEach((item) => {
       item.addEventListener("click", function() {
-        item.querySelector(".image-modal-wrapper").style.display = "flex";
+        let modalShow = !modalShow;
+        // if(modalShow){
+
+        // }
+        // item.querySelector(".image-modal-wrapper").style.display = "flex";
           // Code to handle click event
-          console.log("Image clicked!");
+          console.log("Image clicked!" + modalShow);
       });
   });
 </script>
