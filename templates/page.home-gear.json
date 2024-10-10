@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "c5c0d082-c845-4a6f-bfef-6794dfacd1e6": {
@@ -18,6 +27,8 @@
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
@@ -50,7 +61,7 @@
         "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-1": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}</p>"
           }
         }
       },
@@ -72,7 +83,7 @@
       "disabled": true,
       "settings": {
         "category_anchor": "Shop Home + Gear",
-        "html": "<div class=\"flex-container\">\n  <a href=\"\/collections\/baby-carriers\" class=\"flex-item\">Baby Carriers<\/a>\n  <a href=\"\/collections\/playards-and-bassinets\" class=\"flex-item\">Playards &amp; Bassinets<\/a>\n  <a href=\"\/collections\/high-chairs\" class=\"flex-item\">High Chairs<\/a>\n  <a href=\"\/collections\/activity-centers-and-stationary-jumpers\" class=\"flex-item\">Baby Activity<\/a>\n<a href=\"\/collections\/rollplay\" class=\"flex-item\">Rollplay<\/a>\n<a href=\"\/products\/green-and-gentle-sustainable-crib-mattress\" class=\"flex-item\">Crib Mattress<\/a>\n<\/div>",
+        "html": "<div class=\"flex-container\">\n  <a href=\"/collections/baby-carriers\" class=\"flex-item\">Baby Carriers</a>\n  <a href=\"/collections/playards-and-bassinets\" class=\"flex-item\">Playards &amp; Bassinets</a>\n  <a href=\"/collections/high-chairs\" class=\"flex-item\">High Chairs</a>\n  <a href=\"/collections/activity-centers-and-stationary-jumpers\" class=\"flex-item\">Baby Activity</a>\n<a href=\"/collections/rollplay\" class=\"flex-item\">Rollplay</a>\n<a href=\"/products/green-and-gentle-sustainable-crib-mattress\" class=\"flex-item\">Crib Mattress</a>\n</div>",
         "liquid": ""
       }
     },
@@ -89,7 +100,7 @@
         "template--15781023842460__5c3aa6ad-59c8-49eb-a019-1bb8270f7413-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Mmm, baby head smell. Keep your little peanut happily nestled into you as you warm up a bottle or take your dog baby for a walk. With an Evenflo baby carrier, you can face your baby in\/out or carry them on your back.<br\/>Our baby carriers provide security and comfort for baby—and padding and support for you. They’re also easy to use, made with machine-washable fabrics, offer multiple modes, and make a great hiking baby carrier for longer treks.<\/p><p>• Multiple carrying positions <br\/>• Padding for baby and parent’s comfort <br\/>• Adjustable back straps <br\/>• Secure lock buckles <br\/>• For babies weighing 7 to 45 lb<\/p>",
+            "text": "<p>Mmm, baby head smell. Keep your little peanut happily nestled into you as you warm up a bottle or take your dog baby for a walk. With an Evenflo baby carrier, you can face your baby in/out or carry them on your back.<br/>Our baby carriers provide security and comfort for baby—and padding and support for you. They’re also easy to use, made with machine-washable fabrics, offer multiple modes, and make a great hiking baby carrier for longer treks.</p><p>• Multiple carrying positions <br/>• Padding for baby and parent’s comfort <br/>• Adjustable back straps <br/>• Secure lock buckles <br/>• For babies weighing 7 to 45 lb</p>",
             "text_style": "body"
           }
         }
@@ -99,7 +110,7 @@
         "template--15781023842460__5c3aa6ad-59c8-49eb-a019-1bb8270f7413-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image-4.jpg",
+        "image": "shopify://shop_images/image-4.jpg",
         "height": "adapt",
         "layout": "image_first",
         "desktop_content_position": "middle",
@@ -161,7 +172,7 @@
         "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Evenflo playards and bassinets are the must-have travel companions for parents who need versatility and portability. Features include UPF+ sun protection canopies, pouches for touch-screen devices, mesh sides, and easy-to-clean padding. Great as a bedside bassinet, our cozy bassinets can be folded flat for an easy carry from room to room.<\/p><p>• Portability: Lightweight & easy to carry <br\/>• Convenience: Easy to pack up and set up <br\/>• Safety and comfort for baby <br\/>• Machine-washable fabrics <br\/>• Age range: From birth to toddler<\/p>",
+            "text": "<p>Evenflo playards and bassinets are the must-have travel companions for parents who need versatility and portability. Features include UPF+ sun protection canopies, pouches for touch-screen devices, mesh sides, and easy-to-clean padding. Great as a bedside bassinet, our cozy bassinets can be folded flat for an easy carry from room to room.</p><p>• Portability: Lightweight & easy to carry <br/>• Convenience: Easy to pack up and set up <br/>• Safety and comfort for baby <br/>• Machine-washable fabrics <br/>• Age range: From birth to toddler</p>",
             "text_style": "body"
           }
         }
@@ -171,7 +182,7 @@
         "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image.jpg",
+        "image": "shopify://shop_images/image.jpg",
         "height": "adapt",
         "layout": "text_first",
         "desktop_content_position": "middle",
@@ -233,7 +244,7 @@
         "template--15781023842460__05891277-a8b8-4c94-930e-c349393c7a46-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Squished blueberries…squash dribbles…flying macaroni…get ready for things to get messy. Let your child rise and dine with high chairs that are easy to adjust, clean, and fold up. <br\/>Designed with safety and convenience in mind, our high chairs feature dishwasher safe tray liners, wipeable fabric seat pads, adjustable harnesses, and sturdy legs. For extended use, choose our 4-in-1 high chair that adapts to your child’s changing needs.<\/p><p>• Durability <br\/>• Portability <br\/>• Dishwasher safe tray liner <br\/>• Easy-to-fold design <br\/>• Age range: From 4 months to five years<\/p>",
+            "text": "<p>Squished blueberries…squash dribbles…flying macaroni…get ready for things to get messy. Let your child rise and dine with high chairs that are easy to adjust, clean, and fold up. <br/>Designed with safety and convenience in mind, our high chairs feature dishwasher safe tray liners, wipeable fabric seat pads, adjustable harnesses, and sturdy legs. For extended use, choose our 4-in-1 high chair that adapts to your child’s changing needs.</p><p>• Durability <br/>• Portability <br/>• Dishwasher safe tray liner <br/>• Easy-to-fold design <br/>• Age range: From 4 months to five years</p>",
             "text_style": "body"
           }
         }
@@ -243,7 +254,7 @@
         "template--15781023842460__05891277-a8b8-4c94-930e-c349393c7a46-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image-3.jpg",
+        "image": "shopify://shop_images/image-3.jpg",
         "height": "adapt",
         "layout": "image_first",
         "desktop_content_position": "middle",
@@ -305,7 +316,7 @@
         "template--15781023842460__e964574d-c732-4dd7-8d2f-8b3459396817-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Baby’s got moves! Give your little bundle of energy a safe, fun place to giggle, wiggle and let you catch your breath.<br\/>Create an instant play center with our doorway jumpers, stationary jumpers and activity centers for toddlers. Offered in a variety of bright, playful themes, they use toys and sounds to engage your baby’s senses, spark their imagination, encourage interaction, and get them moving.<\/p><p><\/p><p>• Durability <br\/>• Pressure mounts for safety <br\/>• Multiple uses (kids and pets) <br\/>• Variety of styles to fit your decor <br\/>• Easy assembly<\/p>",
+            "text": "<p>Baby’s got moves! Give your little bundle of energy a safe, fun place to giggle, wiggle and let you catch your breath.<br/>Create an instant play center with our doorway jumpers, stationary jumpers and activity centers for toddlers. Offered in a variety of bright, playful themes, they use toys and sounds to engage your baby’s senses, spark their imagination, encourage interaction, and get them moving.</p><p></p><p>• Durability <br/>• Pressure mounts for safety <br/>• Multiple uses (kids and pets) <br/>• Variety of styles to fit your decor <br/>• Easy assembly</p>",
             "text_style": "body"
           }
         }
@@ -315,7 +326,7 @@
         "template--15781023842460__e964574d-c732-4dd7-8d2f-8b3459396817-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image_d62925f1-5769-4570-a1d3-ed4e8ac79167.jpg",
+        "image": "shopify://shop_images/image_d62925f1-5769-4570-a1d3-ed4e8ac79167.jpg",
         "height": "adapt",
         "layout": "text_first",
         "desktop_content_position": "middle",
@@ -377,7 +388,7 @@
         "template--15797093990556__891203d8-511a-45d9-aee3-bb3ef909e5ca-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>A sister-brand of Evenflo, Rollplay delivers high-quality toys for kids that enable them to experience the thrill of driving. We are dedicated to creating the most innovative ride-on toys, that safely deliver the excitement of riding on wheels. We are adventurists by nature and our passion is to explore fresh ways that wheels can bring thrilling adventures to kids of all ages.<\/p>",
+            "text": "<p>A sister-brand of Evenflo, Rollplay delivers high-quality toys for kids that enable them to experience the thrill of driving. We are dedicated to creating the most innovative ride-on toys, that safely deliver the excitement of riding on wheels. We are adventurists by nature and our passion is to explore fresh ways that wheels can bring thrilling adventures to kids of all ages.</p>",
             "text_style": "body"
           }
         }
@@ -386,8 +397,9 @@
         "template--15797093990556__891203d8-511a-45d9-aee3-bb3ef909e5ca-16862547058f0d0c24-0",
         "template--15797093990556__891203d8-511a-45d9-aee3-bb3ef909e5ca-16862547058f0d0c24-1"
       ],
+      "disabled": true,
       "settings": {
-        "image": "shopify:\/\/shop_images\/image-2.jpg",
+        "image": "shopify://shop_images/image-2.jpg",
         "height": "adapt",
         "layout": "text_first",
         "desktop_content_position": "middle",
@@ -402,6 +414,7 @@
     },
     "2c9dca8d-a110-4c2f-b01b-1f750558f295": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -429,6 +442,7 @@
     },
     "9bf51a68-57a3-4029-bc8f-69a680744f42": {
       "type": "divider",
+      "disabled": true,
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -449,7 +463,7 @@
         "template--15797093990556__4d0c4653-0106-45c5-a997-2c9b4ed51788-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>The Evenflo® Green&Gentle™ Sustainable Crib Mattress brings Evenflo’s high-quality, innovative touch to bedtime! Unlike foam mattresses, the Green&Gentle™ mattress is made from approximately 250 post-consumer recycled plastic bottles, to help your child grow up in a greener world. EcoFibril™ materials in the mattress core that are also VOC free, allow for better air flow through the mattress, to help create a cooler, more comfortable sleep environment for your child.<\/p>",
+            "text": "<p>The Evenflo® Green&Gentle™ Sustainable Crib Mattress brings Evenflo’s high-quality, innovative touch to bedtime! Unlike foam mattresses, the Green&Gentle™ mattress is made from approximately 250 post-consumer recycled plastic bottles, to help your child grow up in a greener world. EcoFibril™ materials in the mattress core that are also VOC free, allow for better air flow through the mattress, to help create a cooler, more comfortable sleep environment for your child.</p>",
             "text_style": "body"
           }
         },
@@ -457,7 +471,7 @@
           "type": "button",
           "settings": {
             "button_label": "Buy On Amazon",
-            "button_link": "https:\/\/www.amazon.com\/dp\/B0BRR19744"
+            "button_link": "https://www.amazon.com/dp/B0BRR19744"
           }
         }
       },
@@ -467,7 +481,7 @@
         "template--15797093990556__4d0c4653-0106-45c5-a997-2c9b4ed51788-16862547058f0d0c24-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image-6.jpg",
+        "image": "shopify://shop_images/image-6.jpg",
         "height": "adapt",
         "layout": "image_first",
         "desktop_content_position": "middle",
