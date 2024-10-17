@@ -856,35 +856,94 @@
 
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
-{% if template == 'index' or template == 'page.contact-custom' or template == 'page.about-evenflo' %}
+{% assign schema = null %}
 
+{% if template == 'index' %}
+  {% assign schema = 'Organization' %}
+{% elsif template == 'page.contact-us' %}
+  {% assign schema = 'ContactPage' %}
+{% elsif template == 'page.about-evenflo' %}
+  {% assign schema = 'AboutPage' %}
+{% endif %}
+
+{% if schema %}
 <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    {% if settings.logo %}
-      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-    {% endif %}
-    "description": "For 100 years and counting, Evenflo has designed smart, innovative gear to help make growing with little ones safer and easier. We offer a full lineup of child car seats, strollers, travel systems, home gear, and other baby essentials. ",
-    "sameAs": [
-      "https://g.co/kgs/cPfSoC",
-      "https://www.wikidata.org/wiki/Q5416580",
-      "https://en.wikipedia.org/wiki/Evenflo",
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
-    ],
-    "url": {{ request.origin | append: page.url | json }}
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "{{ schema }}",
+  {% case schema %}
+    {% when 'Organization' %}
+      "name": {{ shop.name | json }},
+      {% if settings.logo %}"logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},{% endif %}
+      "description": "For 100 years and counting, Evenflo has designed smart, innovative gear to help make growing with little ones safer and easier. We offer a full lineup of child car seats, strollers, travel systems, home gear, and other baby essentials.",
+      "sameAs": [
+        "https://g.co/kgs/cPfSoC",
+        "https://www.wikidata.org/wiki/Q5416580",
+        "https://en.wikipedia.org/wiki/Evenflo",
+        {{ settings.social_twitter_link | json }},
+        {{ settings.social_facebook_link | json }},
+        {{ settings.social_pinterest_link | json }},
+        {{ settings.social_instagram_link | json }},
+        {{ settings.social_tiktok_link | json }},
+        {{ settings.social_tumblr_link | json }},
+        {{ settings.social_snapchat_link | json }},
+        {{ settings.social_youtube_link | json }},
+        {{ settings.social_vimeo_link | json }}
+      ],
+      "url": {{ request.origin | append: page.url | json }}
+    {% when 'ContactPage' %}
+      "name": "Contact Evenflo",
+      "description": "Contact Evenflo for support on Evenflo, Evenflo GOLD, ExerSaucer, Snugli, and Urbini branded products.",
+      "url": "https://www.evenflo.com/pages/contact-us",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer support",
+        "availableLanguage": ["English"],
+        "areaServed": ["US", "CA"],
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Evenflo",
+        "url": "https://www.evenflo.com"
+      }
+    {% when 'AboutPage' %}
+      "name": "About Evenflo",
+      "description": "For 100 years and counting, Evenflo has been a trusted source of precision-manufactured, high-quality child safety equipment and solutions.",
+      "url": "https://www.evenflo.com/pages/about-us",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Evenflo",
+        "foundingDate": "1920",
+        "description": "Evenflo designs smart, innovative gear to help make growing with little ones safer and easier. We offer a full lineup of child car seats, strollers, travel systems, home gear, and other baby essentials.",
+        "url": "https://www.evenflo.com",
+        "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+        "sameAs": [
+          "https://g.co/kgs/cPfSoC",
+          "https://www.wikidata.org/wiki/Q5416580",
+          "https://en.wikipedia.org/wiki/Evenflo",
+          {{ settings.social_twitter_link | json }},
+          {{ settings.social_facebook_link | json }},
+          {{ settings.social_pinterest_link | json }},
+          {{ settings.social_instagram_link | json }},
+          {{ settings.social_tiktok_link | json }},
+          {{ settings.social_tumblr_link | json }},
+          {{ settings.social_snapchat_link | json }},
+          {{ settings.social_youtube_link | json }},
+          {{ settings.social_vimeo_link | json }}
+        ]
+      }
+  {% endcase %}
+}
 </script>
 {% endif %}
+
 {%- if request.page_type == 'index' -%}
   {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
   <script type="application/ld+json">
