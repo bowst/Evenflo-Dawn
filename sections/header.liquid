@@ -967,7 +967,7 @@
       "description": {{ collection.description | strip_html | strip_newlines | json }}, 
       "mainEntity": {
         "@type": "OfferCatalog",
-        "name": "Convertible Car Seats",
+        "name": "{{ collection.title | json }}",
         "itemListElement": [
           {% for product in collection.products limit: 10 %}
             {
