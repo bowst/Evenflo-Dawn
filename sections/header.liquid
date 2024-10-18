@@ -877,30 +877,65 @@
       {% if settings.logo %}"logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},{% endif %}
       "description": "For 100 years and counting, Evenflo has designed smart, innovative baby gear to help make growing with little ones safer and easier. We offer a full lineup of child car seats, booster seats, strollers, travel systems, home gear, and other baby essentials.",
       "foundingDate": "1920",
-    "contactPoint" : [
-    { "@type" : "ContactPoint",
-      "telephone" : "+1-800-233-5921",
-      "contactType" : "customer service",
-      "areaServed" : "US"
-    } ], 
-      "knowsAbout": [
-    "https://www.wikidata.org/wiki/Q4402404",
-    "https://www.wikidata.org/wiki/Q507141"
-  ],
-    "sameAs": [
-        "https://g.co/kgs/cPfSoC",
-        "https://www.wikidata.org/wiki/Q5416580",
-        "https://en.wikipedia.org/wiki/Evenflo",
-        {{ settings.social_twitter_link | json }},
-        {{ settings.social_facebook_link | json }},
-        {{ settings.social_pinterest_link | json }},
-        {{ settings.social_instagram_link | json }},
-        {{ settings.social_snapchat_link | json }},
-        {{ settings.social_youtube_link | json }},
-        {{ settings.social_vimeo_link | json }}
+      "contactPoint" : [
+        { "@type" : "ContactPoint",
+          "telephone" : "+1-800-233-5921",
+          "contactType" : "customer service",
+          "areaServed" : "US"
+        } ], 
+          "knowsAbout": [
+        "https://www.wikidata.org/wiki/Q4402404",
+        "https://www.wikidata.org/wiki/Q507141"
       ],
-      "url": {{ request.origin | append: page.url | json }},
-    "hasOfferCatalog": [ "https://www.evenflo.com/collections/car-seats", "https://www.evenflo.com/collections/strollers"],
+          "sameAs": [
+            "https://g.co/kgs/cPfSoC",
+            "https://www.wikidata.org/wiki/Q5416580",
+            "https://en.wikipedia.org/wiki/Evenflo",
+            {{ settings.social_twitter_link | json }},
+            {{ settings.social_facebook_link | json }},
+            {{ settings.social_pinterest_link | json }},
+            {{ settings.social_instagram_link | json }},
+            {{ settings.social_snapchat_link | json }},
+            {{ settings.social_youtube_link | json }},
+            {{ settings.social_vimeo_link | json }}
+    
+          ],
+          "url": {{ request.origin | append: page.url | json }},
+          "hasOfferCatalog": [ "https://www.evenflo.com/collections/car-seats", "https://www.evenflo.com/collections/strollers"],
+      "alternateName": "Evenflo",
+      "areaServed": "http://www.wikidata.org/entity/Q30",
+      "hasMerchantReturnPolicy": [ 
+      {
+        "@type": "MerchantReturnPolicy",
+        "name": "Standard Return Policy",
+        "merchantReturnDays": "30",
+        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "returnMethod": "ReturnByMail",
+        "description": "You have 30 days from receipt to return unused Evenflo item(s) purchased from Evenflo.com for a full refund of the merchandise value. Please contact Evenflo prior to your return.",
+        "url": "https://www.evenflo.com/policies/refund-policy"
+        },
+        {
+        "@type": "MerchantReturnPolicy",
+        "name": "Evenflo Gold Return Policy",
+        "merchantReturnDays": "100",
+        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "returnMethod": "ReturnByMail",
+        "description": "For Evenflo Gold products, you have 100 days from receipt to return unused Evenflo Gold items, purchased from Evenflo.com for a full refund of the merchandise value. Please contact Evenflo prior to your return.",
+        "url": "https://www.evenflo.com/policies/refund-policy"
+        }
+        ],
+      "parentOrganization": {
+        "@type": "Organization",
+        "sameAs": "https://en.wikipedia.org/wiki/Goodbaby_International",
+        "description": "Never stop advancing.",
+        "name": "Goodbaby International Holdings Limited",
+        "url": "https://www.gbinternational.com.hk/en-en"
+      }
+        
+    }
+    
     
     {% when 'ContactPage' %}
       "name": "Contact Evenflo",
