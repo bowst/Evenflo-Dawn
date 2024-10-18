@@ -875,7 +875,7 @@
     {% when 'Organization' %}
       "name": {{ shop.name | json }},
       {% if settings.logo %}"logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},{% endif %}
-      "description": "For 100 years and counting, Evenflo has designed smart, innovative gear to help make growing with little ones safer and easier. We offer a full lineup of child car seats, strollers, travel systems, home gear, and other baby essentials.",
+      "description": "For 100 years and counting, Evenflo has designed smart, innovative baby gear to help make growing with little ones safer and easier. We offer a full lineup of child car seats, booster seats, strollers, travel systems, home gear, and other baby essentials.",
       "sameAs": [
         "https://g.co/kgs/cPfSoC",
         "https://www.wikidata.org/wiki/Q5416580",
@@ -908,7 +908,7 @@
       },
       "mainEntity": {
         "@type": "Organization",
-        "name": "Evenflo",
+        "name": "Evenflo® Company, Inc",
         "url": "https://www.evenflo.com"
       }
     {% when 'AboutPage' %}
