@@ -446,7 +446,7 @@
     {%- endif -%}
 
     {% if template contains 'product' and template != 'product.archived-product' %}
-    <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+    <script src="https://a.klaviyo.com/media/js/onsite/onsite.js" defer="defer"></script>
     <script>
         {% if product.selected_or_first_available_variant.metafields.custom.walmart_id == blank and product.selected_or_first_available_variant.metafields.custom.amazon_id == blank %}
         var klaviyo = klaviyo || [];
