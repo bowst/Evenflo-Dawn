@@ -1011,8 +1011,7 @@
       "name": {{ collection.title | json }},
       "description": {{ collection.description | strip_html | strip_newlines | json }}, 
       "url": {{ request.origin | append: page.url | json }},
-      "mainEntity": {
-  
+      "mainEntity": [
           {% for product in collection.products limit: 10 %}
             {
               "@type": "Product",
@@ -1030,10 +1029,8 @@
                 "itemCondition": "https://schema.org/NewCondition"
               }
             }{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-
-        
-      }
+          {% endfor %}     
+      ]
     }
     </script>
 {% endif %}
