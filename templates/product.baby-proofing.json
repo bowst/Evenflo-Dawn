@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "cb41505c-6b1b-4199-9d39-e967f3aad91f": {
@@ -34,7 +34,7 @@
           }
         },
         "48fa1049-84ea-4435-94e8-53b7babc133d": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -84,7 +84,7 @@
         "486136f0-1c6e-4077-acba-187f5a68ec50": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<a href=\"https:\/\/www.evenflo.com\/pages\/babyproofing\"><img\n                  style=\"max-width: 526px; margin: 0 !important;\"\n                  loading=\"eager\"\n                  width=\"\"\n                  height=\"\"\n                  src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0512\/2359\/3116\/files\/Baby_Proofing_Google_Affiliate_Banners_5_728x90_8bd858f9-d2bf-417f-bb73-147517fda164.jpg?v=1704303041\"\n                ><\/a>"
+            "custom_liquid": "<a href=\"https://www.evenflo.com/pages/babyproofing\"><img\n                  style=\"max-width: 526px; margin: 0 !important;\"\n                  loading=\"eager\"\n                  width=\"\"\n                  height=\"\"\n                  src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Baby_Proofing_Google_Affiliate_Banners_5_728x90_8bd858f9-d2bf-417f-bb73-147517fda164.jpg?v=1704303041\"\n                ></a>"
           }
         },
         "complementary_rCRdjY": {
@@ -134,7 +134,7 @@
       "type": "evenflo-full-width",
       "settings": {
         "heading": "{{ product.metafields.sf_products.description_header.value }}",
-        "content": "<p>Default Content<\/p>"
+        "content": "<p>Default Content</p>"
       }
     },
     "382b5a24-3363-4ef8-b0da-f27006e47213": {
@@ -177,7 +177,7 @@
       "type": "apps",
       "blocks": {
         "96e7b790-ca42-458d-9e86-80b28c48e272": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -194,27 +194,8 @@
       "type": "evenflo-peace-of-mind",
       "settings": {
         "heading": "Peace Of Mind",
-        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.<\/p>",
-        "support_content": "<h3 class=\"h1\">Supported by <strong>ParentLink Consumer Care<\/strong> via phone, email, chat and video<\/h3>\n\n<div class=\"peace-of-mind__container\">\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">Phone<\/h4>\n<a href=\"tel:1-800-233-5921\">1-800-233-5921 (US)<\/a><br>\n<a href=\"tel:1-937-773-3971\">1-937-773-3971 (Canada)<\/a>\n<\/div>\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">EMAIL<\/h4>\nNo time to chat?<br>\n<a href=\"mailto:\">Email us<\/a> your inquiry\n<\/div>\n<\/div>"
-      }
-    },
-    "60bc7f9e-4205-488e-be52-6653c7ffd46e": {
-      "type": "divider",
-      "settings": {
-        "divider_spacing": 50,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "custom_liquid_8Xi4wK": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}\/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}\/cart\/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='\/cart\/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n<\/script>",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
+        "support_content": "<h3 class=\"h1\">Supported by <strong>ParentLink Consumer Care</strong> via phone, email, chat and video</h3>\n\n<div class=\"peace-of-mind__container\">\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">Phone</h4>\n<a href=\"tel:1-800-233-5921\">1-800-233-5921 (US)</a><br>\n<a href=\"tel:1-937-773-3971\">1-937-773-3971 (Canada)</a>\n</div>\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">EMAIL</h4>\nNo time to chat?<br>\n<a href=\"mailto:\">Email us</a> your inquiry\n</div>\n</div>"
       }
     }
   },
@@ -227,8 +208,6 @@
     "dc7eb083-f707-4945-8475-788f8c91b45f",
     "related-products",
     "1692028530e448eb63",
-    "0badb5bb-37f7-491a-bc3c-9b6356f84930",
-    "60bc7f9e-4205-488e-be52-6653c7ffd46e",
-    "custom_liquid_8Xi4wK"
+    "0badb5bb-37f7-491a-bc3c-9b6356f84930"
   ]
 }
