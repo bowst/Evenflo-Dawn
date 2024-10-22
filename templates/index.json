@@ -9,15 +9,6 @@
  */
 {
   "sections": {
-    "evenflo_loyalty_banner_JntXjy": {
-      "type": "evenflo-loyalty-banner",
-      "disabled": true,
-      "settings": {
-        "bronze_and_silver": "https://www.evenflo.com/collections/memorial-day-2024",
-        "gold": "https://www.evenflo.com/collections/memorial-day-2024",
-        "non_member": "https://www.evenflo.com/pages/rewards"
-      }
-    },
     "4b4d3128-45aa-4315-877e-aae2e4b306a4": {
       "type": "ezfy-slideshow",
       "blocks": {
@@ -510,12 +501,6 @@
         "parallax_speed_mobile": 70
       }
     },
-    "53a5a568-93eb-4443-9549-de4d2aeebadb": {
-      "type": "HTML",
-      "settings": {
-        "html": "<br>"
-      }
-    },
     "image_with_text_gYnTE7": {
       "type": "image-with-text",
       "blocks": {
@@ -816,6 +801,8 @@
     "2bb73718-d177-4d2b-8227-df764ed4676c": {
       "type": "evenflo-join",
       "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "887fa3c8-2109-4d4c-8bab-03e80513a044": {
@@ -913,20 +900,10 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "d9b4ff70-a2ab-40d2-9938-76895436c9e7": {
-      "type": "evenflo-connect",
-      "disabled": true,
-      "settings": {
-        "heading": "Connect with us",
-        "text": "<p>Sign up for email and/or text messages to be the first to know about promos, news and offers!</p>"
-      }
     }
   },
   "order": [
-    "evenflo_loyalty_banner_JntXjy",
     "4b4d3128-45aa-4315-877e-aae2e4b306a4",
-    "53a5a568-93eb-4443-9549-de4d2aeebadb",
     "image_with_text_gYnTE7",
     "image_with_text_r6YWFK",
     "featured_collection",
@@ -940,7 +917,6 @@
     "887fa3c8-2109-4d4c-8bab-03e80513a044",
     "0608c2c0-1254-4407-abae-f10d438a76d4",
     "939ba59c-74f8-45b1-9e6f-974a10ecb111",
-    "video",
-    "d9b4ff70-a2ab-40d2-9938-76895436c9e7"
+    "video"
   ]
 }
