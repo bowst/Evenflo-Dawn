@@ -507,6 +507,7 @@
     <!-- CRITEO START -->
     {% render 'criteo-tracking' %}
     <!-- CRITEO END -->
+   {% comment %}
     <!-- ShoppingGives START -->
     <script id="sg-js-global-vars">
       sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] }};
@@ -517,6 +518,7 @@
       }
     </script>
     <!-- ShoppingGives End -->
+   {% endcomment %}
 
     <script>
       var waitForFinalEvent = (function () {
