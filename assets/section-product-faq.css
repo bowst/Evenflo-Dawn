@@ -1,4 +1,24 @@
 .product-faq {
+  display: flex;
+  justify-content: center;
+  /* Centers the content horizontally */
+  align-items: center;
+  /* Centers the content vertically if needed */
+  height: 100%;
+  /* Adjust as necessary */
+}
+
+.content-container {
+  /* Set a max-width to control the width of the content */
+  width: 100%;
+  /* Ensures the container takes full width up to max-width */
+  padding: 0 20px;
+  /* Optional: Add padding for spacing */
+  box-sizing: border-box;
+  /* Ensures padding is included in the width */
+}
+
+.product-faq {
   padding-top: 80px;
   padding-bottom: 80px;
 }
