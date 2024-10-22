@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "custom_liquid_TenaUX": {
@@ -34,7 +34,7 @@
           }
         },
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/star-rating\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -53,7 +53,7 @@
         "4fc26c25-fc9f-47fe-8fcc-c06feab6ef19": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"affirm-info-container\"><\/div>"
+            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
           }
         },
         "d6702130-cd8d-4a27-b9bc-b9c2828044dc": {
@@ -181,7 +181,7 @@
         "tooltip_VBepFQ"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/37312473_Boone_Shyft_Dual_Ride_0374-crop.jpg",
+        "image": "shopify://shop_images/37312473_Boone_Shyft_Dual_Ride_0374-crop.jpg",
         "tooltip_color": "#ffffff",
         "tooltip_background_color": "#64cbdf",
         "tooltip_focus_color": "#2996c5",
@@ -195,14 +195,14 @@
         "heading": "Free Video Chat Support",
         "description": "Need some real-time help? Schedule a live video call with us and we'll walk you through.",
         "button_label": "Book Now",
-        "button_link": "shopify:\/\/pages\/about-evenflo"
+        "button_link": "shopify://pages/about-evenflo"
       }
     },
     "e53d8931-4a73-4183-8cff-9bd760de70c3": {
       "type": "evenflo-peace-of-mind",
       "settings": {
         "heading": "Peace Of Mind",
-        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.<\/p>",
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
         "support_content": ""
       }
     },
@@ -215,6 +215,7 @@
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You May Also Like",
         "heading_size": "h2",
@@ -222,6 +223,7 @@
         "columns_desktop": 4,
         "color_scheme": "background-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
@@ -234,7 +236,7 @@
       "type": "apps",
       "blocks": {
         "ff8fbda8-275c-4b78-a626-1396af706d70": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -256,6 +258,8 @@
     "94dde192-35b0-4467-904b-69ef073615d6": {
       "type": "evenflo-join",
       "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "e87086c3-8bc1-4ebd-af1f-5d31612858d1": {
@@ -264,37 +268,37 @@
         "b076e55c-e236-4a35-a75a-85cf3402446b": {
           "type": "benefit_list",
           "settings": {
-            "description": "<h3>Give 20,<br> Get 20<\/h3>\nRefer a friend and earn points.",
-            "background_image": "shopify:\/\/shop_images\/Evenflo-Benefit-1.png",
-            "icon_image": "shopify:\/\/shop_images\/icon-give20.png",
-            "link": "shopify:\/\/pages\/refer"
+            "description": "<h3>Give 20,<br> Get 20</h3>\nRefer a friend and earn points.",
+            "background_image": "shopify://shop_images/Evenflo-Benefit-1.png",
+            "icon_image": "shopify://shop_images/icon-give20.png",
+            "link": "shopify://pages/refer"
           }
         },
         "d2ac9250-ec80-4eca-93cb-a5886833aa00": {
           "type": "benefit_list",
           "settings": {
-            "description": "<h3>Pay With Affirm<\/h3>\nPay over time.",
-            "background_image": "shopify:\/\/shop_images\/Benefit_2.png",
-            "icon_image": "shopify:\/\/shop_images\/icon-pay.png",
-            "link": "shopify:\/\/pages\/affirm-overview"
+            "description": "<h3>Pay With Affirm</h3>\nPay over time.",
+            "background_image": "shopify://shop_images/Benefit_2.png",
+            "icon_image": "shopify://shop_images/icon-pay.png",
+            "link": "shopify://pages/affirm-overview"
           }
         },
         "d8f4df94-c11c-4d5d-b7a8-440dbfaef239": {
           "type": "benefit_list",
           "settings": {
-            "description": "<h3>Community Heroes Discount<\/h3>\nSave on baby gear.",
-            "background_image": "shopify:\/\/shop_images\/Benefit_3.png",
-            "icon_image": "shopify:\/\/shop_images\/icon-heroes.png",
-            "link": "shopify:\/\/pages\/evenflo-promotions"
+            "description": "<h3>Community Heroes Discount</h3>\nSave on baby gear.",
+            "background_image": "shopify://shop_images/Benefit_3.png",
+            "icon_image": "shopify://shop_images/icon-heroes.png",
+            "link": "shopify://pages/evenflo-promotions"
           }
         },
         "09af9779-83cf-4821-bb96-4341c4f3063b": {
           "type": "benefit_list",
           "settings": {
-            "description": "<h3>Evenflo Blog<\/h3>\nCheck out the latest.",
-            "background_image": "shopify:\/\/shop_images\/Car-Seats-Square.jpg",
-            "icon_image": "shopify:\/\/shop_images\/icon-blog.png",
-            "link": "shopify:\/\/blogs\/evenflo-blog"
+            "description": "<h3>Evenflo Blog</h3>\nCheck out the latest.",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "icon_image": "shopify://shop_images/icon-blog.png",
+            "link": "shopify://blogs/evenflo-blog"
           }
         }
       },
@@ -312,7 +316,7 @@
       "type": "custom-liquid",
       "disabled": true,
       "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}\/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}\/cart\/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='\/cart\/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n<\/script>",
+        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
