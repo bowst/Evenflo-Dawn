@@ -67,8 +67,8 @@
 
     {{ content_for_header }}
 
-    {% comment %} <link rel="stylesheet" href="https://use.typekit.net/ati5bia.css"> {% endcomment %}
-    <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css">
+    <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css" media="print" onload="this.media='all'">
 
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
