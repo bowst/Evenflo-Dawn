@@ -54,16 +54,7 @@
       <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
     {% endcomment %}
 
-    {% if template contains 'product' %}
-      <script type="text/javascript">
-        window._bl = { partner: 'evenflo.com' };
-      </script>
-      <script
-        async
-        type="text/javascript"
-        src="https://www.babylist.com/add.js"
-      ></script>
-    {% endif %}
+
 
     {{ content_for_header }}
 
@@ -285,7 +276,16 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
- 
+     {% if template contains 'product' %}
+      <script type="text/javascript">
+        window._bl = { partner: 'evenflo.com' };
+      </script>
+      <script
+        async
+        type="text/javascript"
+        src="https://www.babylist.com/add.js"
+      ></script>
+    {% endif %}
 
     <!-- Start of LiveChat (www.livechat.com) code -->
     <script>
