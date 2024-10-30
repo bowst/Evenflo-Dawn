@@ -291,7 +291,7 @@
 
           <img
             class="EzfySlideshow-image--lazy EzfySlideshow-image EzfySlideshow-image--mobile"
-            loading="lazy"
+            
             src="{{ image_mobile | image_url: width: 300 }}"
             data-src="{{ image_mobile | image_url: width: 800 }}"
             data-aspectratio="{{ image_mobile.image.aspect_ratio }}"
@@ -1673,7 +1673,7 @@
         cellSelector: '.EzfySlideshow-cell',
         wrapAround: true,
         prevNextButtons: false,
-        lazyLoad: true,
+        
         autoPlay: options.autoplay ? parseInt(options.autoplaySpeed * 1000) : false,
         pageDots: options.dotsStyle === 'dots' || options.dotsStyle === 'bars' ? true : false,
         pauseAutoPlayOnHover: false,
