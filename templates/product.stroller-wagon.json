@@ -53,7 +53,6 @@
         },
         "related_products_PGeCNY": {
           "type": "related_products",
-          "disabled": true,
           "settings": {
             "heading": "Styles. Which is best for you?"
           }
@@ -66,7 +65,6 @@
         },
         "ae2b090a-c8c0-410e-ae8a-b81555a2e14e": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
             "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by mid-December\n{% endif %}"
           }
