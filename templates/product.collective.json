@@ -24,13 +24,6 @@
           "settings": {
           }
         },
-        "text_nfA3Wk": {
-          "type": "text",
-          "settings": {
-            "text": "This product is shipped and fulfilled from [retailer name] and any return information will be included in the box or emails from {{ product.vendor }}.",
-            "text_style": "body"
-          }
-        },
         "price": {
           "type": "price",
           "settings": {
@@ -55,6 +48,13 @@
             "show_gift_card_recipient": false
           }
         },
+        "text_nfA3Wk": {
+          "type": "text",
+          "settings": {
+            "text": "This product is shipped and fulfilled from [retailer name] and any return information will be included in the box or emails from {{ product.vendor }}.",
+            "text_style": "body"
+          }
+        },
         "description": {
           "type": "description",
           "settings": {
@@ -64,11 +64,11 @@
       "block_order": [
         "vendor",
         "title",
-        "text_nfA3Wk",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "text_nfA3Wk",
         "description"
       ],
       "custom_css": [
