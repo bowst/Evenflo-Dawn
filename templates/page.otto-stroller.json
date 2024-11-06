@@ -1,16 +1,63 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "evenflo_image_banner_FxJhgf": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_h1_9ak9Ji": {
+          "type": "heading-h1",
+          "settings": {
+            "heading-h1": "THE NEW OTTO™ SELF-FOLDING STROLLER. EXTRAORDINARY.",
+            "heading_underline": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_h1_9ak9Ji"
+      ],
+      "settings": {
+        "image": "{{ page.metafields.custom.header_image.value }}",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 50,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "image_banner_XYae3z": {
       "type": "image-banner",
+      "blocks": {
+        "heading_8LdYEq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8LdYEq"
+      ],
+      "disabled": true,
       "custom_css": [
         "@media screen and (max-width: 1315px) {.banner__heading {color: black; }}"
       ],
@@ -44,6 +91,7 @@
       "block_order": [
         "heading_zy9GtP"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -74,7 +122,7 @@
         "text_rirydB": {
           "type": "text",
           "settings": {
-            "text": "<p>Push the button, squeeze, and the luxe, lightweight Evenflo® Gold Otto Self-Folding Lightweight Stroller automatically folds and stands on its own in seconds — ready to work wonders when you are!<\/p>",
+            "text": "<p>Push the button, squeeze, and the luxe, lightweight Evenflo® Gold Otto Self-Folding Lightweight Stroller automatically folds and stands on its own in seconds — ready to work wonders when you are!</p>",
             "text_style": "body"
           }
         },
@@ -82,7 +130,7 @@
           "type": "button",
           "settings": {
             "button_label": "Buy Now",
-            "button_link": "shopify:\/\/products\/gold-otto-lightweight-stroller"
+            "button_link": "shopify://products/gold-otto-lightweight-stroller"
           }
         }
       },
@@ -92,7 +140,7 @@
         "button_tYHWRx"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/otto-stroller-modes.jpg",
+        "image": "shopify://shop_images/otto-stroller-modes.jpg",
         "height": "adapt",
         "layout": "image_first",
         "desktop_content_position": "middle",
@@ -112,7 +160,7 @@
         "heading": "TRANSFORM YOUR TRIPS",
         "heading_size": "h1",
         "enable_video_looping": false,
-        "video_url": "https:\/\/player.vimeo.com\/video\/637633829",
+        "video_url": "https://player.vimeo.com/video/637633829",
         "description": "",
         "full_width": false,
         "color_scheme": "background-1",
@@ -133,7 +181,7 @@
         "text_Vgwpha": {
           "type": "text",
           "settings": {
-            "text": "<p>Otto’s bumper bar doubles as a carry handle, making it easy to take along with just one hand and keep your day moving!<\/p>",
+            "text": "<p>Otto’s bumper bar doubles as a carry handle, making it easy to take along with just one hand and keep your day moving!</p>",
             "text_style": "body"
           }
         }
@@ -143,7 +191,7 @@
         "text_Vgwpha"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/gold-otto-carry-4.jpg",
+        "image": "shopify://shop_images/gold-otto-carry-4.jpg",
         "height": "adapt",
         "layout": "text_first",
         "desktop_content_position": "middle",
@@ -169,7 +217,7 @@
         "text_mzp3ED": {
           "type": "text",
           "settings": {
-            "text": "<p>Go from fully open to compactly folded and self-standing, automatically!<\/p>"
+            "text": "<p>Go from fully open to compactly folded and self-standing, automatically!</p>"
           }
         }
       },
@@ -189,7 +237,7 @@
     "evenflo_full_width_image_CJt4iB": {
       "type": "evenflo-full-width-image",
       "settings": {
-        "image": "shopify:\/\/shop_images\/wonders.jpg"
+        "image": "shopify://shop_images/wonders.jpg"
       }
     },
     "image_with_text_9eapNc": {
@@ -205,7 +253,7 @@
         "text_QCzjGy": {
           "type": "text",
           "settings": {
-            "text": "<p>Otto is designed to work seamlessly with the <a href=\"\/products\/securemax-infant-car-seats\" title=\"SecureMax Infant Car Seat with SensorSafe + SafeZone Load Leg Base\">Evenflo® Gold SecureMax Rear-Facing Car Seat<\/a> with SensorSafe (sold separately). Also compatible, Evenflo LiteMax and SafeMax infant car seats.<\/p>",
+            "text": "<p>Otto is designed to work seamlessly with the <a href=\"/products/securemax-infant-car-seats\" title=\"SecureMax Infant Car Seat with SensorSafe + SafeZone Load Leg Base\">Evenflo® Gold SecureMax Rear-Facing Car Seat</a> with SensorSafe (sold separately). Also compatible, Evenflo LiteMax and SafeMax infant car seats.</p>",
             "text_style": "body"
           }
         }
@@ -215,7 +263,7 @@
         "text_QCzjGy"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/simplify.jpg",
+        "image": "shopify://shop_images/simplify.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -242,7 +290,7 @@
         "text_bXaFni": {
           "type": "text",
           "settings": {
-            "text": "<p>2-position footrest and 2-panel canopy with peek-a-boo window make for happier travels with little ones.<\/p>",
+            "text": "<p>2-position footrest and 2-panel canopy with peek-a-boo window make for happier travels with little ones.</p>",
             "text_style": "body"
           }
         }
@@ -252,7 +300,7 @@
         "text_bXaFni"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/cruise.jpg",
+        "image": "shopify://shop_images/cruise.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -279,7 +327,7 @@
         "text_pqdaB4": {
           "type": "text",
           "settings": {
-            "text": "<p>Transforming your trips is just the beginning. Luxe fabrics and premium finishes make this first-class ride a real head-turner!<\/p>"
+            "text": "<p>Transforming your trips is just the beginning. Luxe fabrics and premium finishes make this first-class ride a real head-turner!</p>"
           }
         }
       },
@@ -299,7 +347,7 @@
     "evenflo_full_width_image_4KcRXg": {
       "type": "evenflo-full-width-image",
       "settings": {
-        "image": "shopify:\/\/shop_images\/go-in-style_3000x_01d7b3b4-7fa7-4566-9ced-3a06c3c556b9.jpg"
+        "image": "shopify://shop_images/go-in-style_3000x_01d7b3b4-7fa7-4566-9ced-3a06c3c556b9.jpg"
       }
     },
     "evenflo_pixlee_FGTi6L": {
@@ -312,11 +360,12 @@
     "html_AQ4KGM": {
       "type": "HTML",
       "settings": {
-        "html": "<div id=\"pixlee_container\"><\/div><script type=\"text\/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:7947831,setMetaTags:true});};<\/script><script src=\"https:\/\/assets.pxlecdn.com\/assets\/pixlee_widget_1_0_0.js\"><\/script>"
+        "html": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:7947831,setMetaTags:true});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>"
       }
     }
   },
   "order": [
+    "evenflo_image_banner_FxJhgf",
     "image_banner_XYae3z",
     "rich_text_TT6t9g",
     "main",
