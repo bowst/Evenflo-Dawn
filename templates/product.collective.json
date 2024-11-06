@@ -149,11 +149,21 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "custom_liquid_fBPQiC": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{{ product.description }}",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "evenflo_rich_text_AGzxi4"
+    "evenflo_rich_text_AGzxi4",
+    "custom_liquid_fBPQiC"
   ]
 }
