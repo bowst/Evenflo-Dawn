@@ -59,6 +59,13 @@
           "type": "description",
           "settings": {
           }
+        },
+        "text_nfA3Wk": {
+          "type": "text",
+          "settings": {
+            "text": "This product is shipped and fulfilled from [retailer name] and any return information will be included in the box or emails from {{ product.vendor }} .",
+            "text_style": "body"
+          }
         }
       },
       "block_order": [
@@ -69,7 +76,8 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description"
+        "description",
+        "text_nfA3Wk"
       ],
       "custom_css": [
         ".baby-list-button,.shopify-payment-button {width: 49%;}",
