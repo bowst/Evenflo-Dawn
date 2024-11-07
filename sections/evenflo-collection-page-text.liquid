@@ -17,14 +17,14 @@
   ]
 }
 {% endschema %}
-
+<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
 <div class="collection-page-text-content">
   <h1>{{ section.settings.page_title }}</h1>
   <div class="collection-content">
     <p>{{ collection.description }}</p>
   </div>
 </div>
-
+</div>
 <style>
   .collection-page-text-content {
     text-align: left;
