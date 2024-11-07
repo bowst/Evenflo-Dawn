@@ -7,12 +7,6 @@
       "id": "page_title",
       "label": "Page Title",
       "default": "Your Collection Title"
-    },
-    {
-      "type": "textarea",
-      "id": "content",
-      "label": "Content",
-      "default": "This is a customizable content area where you can add information about the collection."
     }
   ],
   "presets": [
@@ -27,7 +21,7 @@
 <div class="collection-page-text-content">
   <h1>{{ section.settings.page_title }}</h1>
   <div class="collection-content">
-    <p>{{ section.settings.content }}</p>
+    <p>{{ collection.description }}</p>
   </div>
 </div>
 
