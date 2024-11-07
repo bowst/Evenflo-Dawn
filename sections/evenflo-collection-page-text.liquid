@@ -1,6 +1,50 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Evenflo Collection Head",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Title",
+      "default": "Your Collection Title"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "This is a customizable content area where you can add information about the collection."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Collection Head",
+      "category": "Collection pages"
+    }
+  ]
+}
 {% endschema %}
+
+<div class="collection-page-text-content">
+  <h1>{{ section.settings.page_title }}</h1>
+  <div class="collection-content">
+    <p>{{ section.settings.content }}</p>
+  </div>
+</div>
+
+<style>
+  .collection-page-text-content {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .collection-page-text-content h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+
+  .collection-content {
+    font-size: 1em;
+    color: #333;
+  }
+</style>
