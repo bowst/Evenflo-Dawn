@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "evenflo_collection_page_text_hyDwab": {
+      "type": "evenflo-collection-page-text",
+      "settings": {
+        "page_title": "{{ collection.metafields.custom.collection_h1.value }}",
+        "content": ""
+      }
+    },
     "evenflo_page_title_bXymit": {
       "type": "evenflo-page-title",
       "disabled": true,
@@ -173,6 +180,7 @@
     }
   },
   "order": [
+    "evenflo_collection_page_text_hyDwab",
     "evenflo_page_title_bXymit",
     "evenflo_rich_text_PFYThg",
     "97cbd0cb-c9eb-4958-bc6e-0303f1a3a4aa",
