@@ -54,8 +54,6 @@
       <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
     {% endcomment %}
 
-
-
     {{ content_for_header }}
 
     <link rel="preconnect" href="https://use.typekit.net">
@@ -245,7 +243,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %} 
+    {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'evenflo-banner.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
@@ -276,7 +274,7 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-     {% if template contains 'product' %}
+    {% if template contains 'product' %}
       <script type="text/javascript">
         window._bl = { partner: 'evenflo.com' };
       </script>
@@ -339,7 +337,6 @@
     >
     <!-- End of LiveChat code -->
 
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -379,15 +376,13 @@
       src="https://www.lightboxcdn.com/vendor/e07b6cf2-e433-4ace-afa4-2755fc915356/lightbox_speed.js"
     ></script>
     <!-- END Digioh Low Impact Javascript -->
-
-
   </head>
 
   <body class="gradient">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
-   
+
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
@@ -439,7 +434,6 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-
     <script>
       document.addEventListener('shopify:section:load', function (e) {
         if (Shopify.designMode) {
@@ -460,59 +454,59 @@
     <!-- CRITEO START -->
     {% render 'criteo-tracking' %}
     <!-- CRITEO END -->
-   {% comment %}
-    <!-- ShoppingGives START -->
-    <script id="sg-js-global-vars">
-      sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] }};
-      if(sgGlobalVars) {
-      sgGlobalVars.cart = {{ cart | json }};
-      sgGlobalVars.currentProduct = {{ product | json }};
-      sgGlobalVars.isAdmin = {% if content_for_header contains 'adminBarInjector' or content_for_header contains 'previewBarInjector' %}true{% else %}false{% endif %};
-      }
-    </script>
-    <!-- ShoppingGives End -->
-   {% endcomment %}
+    {% comment %}
+      <!-- ShoppingGives START -->
+      <script id="sg-js-global-vars">
+        sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] }};
+        if(sgGlobalVars) {
+        sgGlobalVars.cart = {{ cart | json }};
+        sgGlobalVars.currentProduct = {{ product | json }};
+        sgGlobalVars.isAdmin = {% if content_for_header contains 'adminBarInjector' or content_for_header contains 'previewBarInjector' %}true{% else %}false{% endif %};
+        }
+      </script>
+      <!-- ShoppingGives End -->
+    {% endcomment %}
     {% if template contains 'product' and template != 'product.archived-product' %}
-    <script src="https://a.klaviyo.com/media/js/onsite/onsite.js" defer="defer"></script>
-    <script>
-        {% if product.selected_or_first_available_variant.metafields.custom.walmart_id == blank and product.selected_or_first_available_variant.metafields.custom.amazon_id == blank %}
-        var klaviyo = klaviyo || [];
-        klaviyo.init({
-          account: 'VWGYvg',
-          platform: 'shopify',
-          exclude_on_tags: 'hide',
-        });
-        klaviyo.enable('backinstock', {
-          trigger: {
-            product_page_text: 'Notify Me When Available',
-            product_page_class: 'button',
-            product_page_text_align: 'center',
-            product_page_margin: '0px',
+      <script src="https://a.klaviyo.com/media/js/onsite/onsite.js" defer="defer"></script>
+      <script>
+          {% if product.selected_or_first_available_variant.metafields.custom.walmart_id == blank and product.selected_or_first_available_variant.metafields.custom.amazon_id == blank %}
+          var klaviyo = klaviyo || [];
+          klaviyo.init({
+            account: 'VWGYvg',
+            platform: 'shopify',
+            exclude_on_tags: 'hide',
+          });
+          klaviyo.enable('backinstock', {
+            trigger: {
+              product_page_text: 'Notify Me When Available',
+              product_page_class: 'button',
+              product_page_text_align: 'center',
+              product_page_margin: '0px',
 
-            replace_anchor: false,
-          },
-          modal: {
-            headline: '{product_name}',
-            body_content: 'Register to receive a notification when this item comes back in stock.',
-            email_field_label: 'Email',
-            button_label: 'Notify Me When Available',
-            subscription_success_label: "You're in! We'll let you know when it's back.",
-            footer_content: '',
+              replace_anchor: false,
+            },
+            modal: {
+              headline: '{product_name}',
+              body_content: 'Register to receive a notification when this item comes back in stock.',
+              email_field_label: 'Email',
+              button_label: 'Notify Me When Available',
+              subscription_success_label: "You're in! We'll let you know when it's back.",
+              footer_content: '',
 
-            drop_background_color: '#000',
-            background_color: '#fff',
-            text_color: '#222',
-            button_text_color: '#fff',
-            button_background_color: '#439fdb',
-            close_button_color: '#ccc',
-            error_background_color: '#fcd6d7',
-            error_text_color: '#C72E2F',
-            success_background_color: '#d3efcd',
-            success_text_color: '#1B9500',
-          },
-        });
-      {% endif %}
-    </script>
+              drop_background_color: '#000',
+              background_color: '#fff',
+              text_color: '#222',
+              button_text_color: '#fff',
+              button_background_color: '#439fdb',
+              close_button_color: '#ccc',
+              error_background_color: '#fcd6d7',
+              error_text_color: '#C72E2F',
+              success_background_color: '#d3efcd',
+              success_text_color: '#1B9500',
+            },
+          });
+        {% endif %}
+      </script>
     {% endif %}
     <script>
       var waitForFinalEvent = (function () {
@@ -558,7 +552,7 @@
         );
       });
     </script>
-    
 
+    {% render 'customer-discount' %}
   </body>
 </html>
