@@ -379,14 +379,16 @@
   </head>
 
   <body class="gradient">
-        <div style="display: none;">
-      <!-- Customer Debug Info -->
-      <p>Customer Tags: {{ customer.tags | join: ', ' }}</p>
-      <p>Customer Email: {{ customer.email }}</p>
-      <p>Customer ID: {{ customer.id }}</p>
-      <p>Customer Role: {{ customer.role }}</p>
-      <!-- End Debug Info -->
-    </div>
+{% if customer %}
+  <div style="display: none;">
+    <!-- Customer Debug Info -->
+    <p>Customer Tags: {{ customer.tags | join: ', ' }}</p>
+    <p>Customer Email: {{ customer.email }}</p>
+    <p>Customer ID: {{ customer.id }}</p>
+    <p>Customer Role: {{ customer.role }}</p>
+    <!-- End Debug Info -->
+  </div>
+{% endif %}
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
