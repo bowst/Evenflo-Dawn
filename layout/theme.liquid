@@ -382,6 +382,7 @@
 {% if customer %}
   <div style="display: none;">
     <!-- Customer Debug Info -->
+    {{ customer.tags }}
     <p>Customer Tags: {{ customer.tags | join: ', ' }}</p>
     <p>Customer Email: {{ customer.email }}</p>
     <p>Customer ID: {{ customer.id }}</p>
