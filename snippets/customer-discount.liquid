@@ -3,10 +3,9 @@
   Replace LOYALTY and LOYALTY10 with the customer's tag and discount code
 {% endcomment %}
 
-{% assign discount_customer_tag = 'swell_vip_bronze' or 'swell_vip_gold' or 'swell_vip_silver'  %}
 {% assign discount_code = 'Early24Plus' %}
 
-{% if customer.tags contains discount_customer_tag %}
+{% if customer.tags contains 'swell_vip_bronze' or customer.tags contains 'swell_vip_gold' or customer.tags contains 'swell_vip_silver' %}
   <script>
     window.addEventListener('load', function () {
       fetch('/discount/{{ discount_code }}');
