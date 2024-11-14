@@ -14,8 +14,16 @@
   .evenflo-slideshow-slide .banner__media {
     height: 100% !important;
   }
+  .evenflo-slideshow-slide .slideshow__text-wrapper.banner__content {
+    height: 100%;
+    padding: 5rem;
+  }
 }
 @media screen and (max-width: 1299px) {
+  .evenflo-slideshow-slide .slideshow__text-wrapper.banner__content {
+    height: 100%;
+    padding: 0;
+  }
   .evenflo-slideshow-slide:has(.slideshow__text.banner__box:empty)
     .slideshow__text-wrapper.banner__content {
     display: none;
