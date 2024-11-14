@@ -10,12 +10,12 @@
 .mobile-image {
   display: none !important;
 }
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 1300px) {
   .evenflo-slideshow-slide .banner__media {
     height: 100% !important;
   }
 }
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 1299px) {
   .evenflo-slideshow-slide:has(.slideshow__text.banner__box:empty)
     .slideshow__text-wrapper.banner__content {
     display: none;
