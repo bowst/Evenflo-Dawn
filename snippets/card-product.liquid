@@ -30,6 +30,10 @@ Determine if the product is from support product collection
  	{% assign is_product_support = true %}
  {% endif %}
  {% endfor %}
+{% comment %}
+Determine if the product is from support product collection
+-- End --
+{% endcomment %}
 
 {%- unless skip_styles -%}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
