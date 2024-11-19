@@ -28,6 +28,7 @@ Determine if the product is from support product collection
 {% for collection in product.collections %}
  {% if collection.title contains 'Product Support'%}
  	{% assign is_product_support = true %}
+   {{ "SSSSS" }}
  {% endif %}
  {% endfor %}
 
