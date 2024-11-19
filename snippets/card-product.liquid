@@ -26,7 +26,7 @@ Determine if the product is from support product collection
 {% endcomment %}
 {% for collection in product.collections %}
  {% if collection.title contains 'Product Support'%}
- 	{% include 'product-circle_stickers' %}
+ 	{% assign is_product_support = true %}
  {% endif %}
  {% endfor %}
 
