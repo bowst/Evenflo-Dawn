@@ -21,11 +21,9 @@
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
 <style>
-.button {
-background: #2996c5 !important;
-}
-
-
+  .button {
+  background: #2996c5 !important;
+  }
 </style>
 
 {%- if card_product and card_product != empty -%}
@@ -167,7 +165,7 @@ background: #2996c5 !important;
               class="full-unstyled-link"
               aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
             >
-            {{ card_product.title | escape }}
+              {{ card_product.title | escape }}
             </a>
           </h3>
           <div class="card-information">
@@ -188,11 +186,13 @@ background: #2996c5 !important;
                   assign rating_decimal = 1
                 endif
               %}
-            <div style="text-align: center">
-    <div class="yotpo bottomLine" style="display:inline-block"
-       data-product-id="{{ card_product.id }}">
-    </div>
-</div>
+              <div style="text-align: center">
+                <div
+                  class="yotpo bottomLine"
+                  style="display:inline-block"
+                  data-product-id="{{ card_product.id }}"
+                ></div>
+              </div>
               <div
                 class="rating"
                 role="img"
@@ -218,82 +218,84 @@ background: #2996c5 !important;
                 </span>
               </p>
             {%- endif -%}
-           <div style="text-align: center">
-
-</div>
+            <div style="text-align: center"></div>
             {% assign qty = 1 %}
-            {% assign my_string = card_product.title %}
-            {% if my_string contains "2-Pack" %}
-              {% if my_string contains "Outlet" %}
-                <div>You need {% if outlet %}{{ outlet | times : 2 }}{% else %}2{% endif %} (2-packs)</div>
-                    {% assign qty = outlet | times : 2 %}
-                {% elsif my_string contains "TV" %}
-                {% elsif my_string contains "Furniture Corner Cushions" %}
-                  {% assign qty = 8 %}
-                {% elsif my_string contains "Furniture Wall Anchors" %}
-                  {% if furniturewallanchors != 0 %}
-                      {% assign qty = furniturewallanchors | plus: 0 %}
-                  {% else %}
-                    {% assign qty = 2 %}
-                  {% endif %}
+            {% assign card_title = card_product.title %}
+            {% if card_title contains '2-Pack' %}
+              {% if card_title contains 'Outlet' %}
+                <div>
+                  You need {% if outlet %}{{ outlet | times: 2 }}{% else %}2{% endif %} (2-packs)
+                </div>
+                {% assign qty = outlet | times: 2 %}
+              {% elsif card_title contains 'TV' %}
+
+              {% elsif card_title contains 'Furniture Corner Cushions' %}
+                {% assign qty = 8 %}
+              {% elsif card_title contains 'Furniture Wall Anchors' %}
+                {% if furniturewallanchors != 0 %}
+                  {% assign qty = furniturewallanchors | plus: 0 %}
                 {% else %}
-                    {% assign qty = 1 %}
+                  {% assign qty = 2 %}
                 {% endif %}
-                  {% endif %}
-            {% if my_string contains "Outlet" %}
-                    {% assign qty = outlet | times : 2 %}
-                  {% endif %}
-            {% if my_string contains "Doorknob Covers" %}
+              {% else %}
+                {% assign qty = 1 %}
+              {% endif %}
+            {% endif %}
+            {% if card_title contains 'Outlet' %}
+              {% assign qty = outlet | times: 2 %}
+            {% endif %}
+            {% if card_title contains 'Doorknob Covers' %}
               {% if knobs != 0 %}
-                    {% assign qty = knobs | plus: 0 %}
-                {% else %}
-                  {% assign qty = 4 %}
-                {% endif %}
+                {% assign qty = knobs | plus: 0 %}
+              {% else %}
+                {% assign qty = 4 %}
+              {% endif %}
             {% endif %}
-            {% if my_string contains "Handle Lock" %}
+            {% if card_title contains 'Handle Lock' %}
               {% if handle != 0 %}
-                    {% assign qty = handle | plus: 0 %}
-                {% else %}
-                  {% assign qty = 4 %}
-                {% endif %}
+                {% assign qty = handle | plus: 0 %}
+              {% else %}
+                {% assign qty = 4 %}
+              {% endif %}
             {% endif %}
-            {% if my_string contains "Drawer Latches" %}
-                {% if no_knob_cabinets != 0 %}
-                    {% assign qty = no_knob_cabinets | plus: 0 %}
-                {% else %}
-                  {% assign qty = 16 %}
-                {% endif %}
+            {% if card_title contains 'Drawer Latches' %}
+              {% if no_knob_cabinets != 0 %}
+                {% assign qty = no_knob_cabinets | plus: 0 %}
+              {% else %}
+                {% assign qty = 16 %}
+              {% endif %}
             {% endif %}
-            {% if my_string contains "Cabinet Lock" %}
-                {% if knob_cabinet != 0 %}
-                    {% assign qty = knob_cabinet | plus: 0 %}
-                {% else %}
-                  {% assign qty = 8 %}
-                {% endif %}
+            {% if card_title contains 'Cabinet Lock' %}
+              {% if knob_cabinet != 0 %}
+                {% assign qty = knob_cabinet | plus: 0 %}
+              {% else %}
+                {% assign qty = 8 %}
+              {% endif %}
             {% endif %}
-            {% if my_string contains "Finger" %}
-                   {% if total_handle_knob %} <div>You need {{ total_handle_knob  }}</div>
-                     {% assign qty = total_handle_knob | plus : 0 %}
-                   {% else %}
-                     {% assign qty = 4 %}
-                   {% endif %}
-                  {% endif %}
-                  
-                  {% if my_string contains "Foam Edge" %}
-                    <div>1 per table: You need {{ table }}</div>
-                    {% assign qty = table | plus: 0 %}
-                  {% endif %}
-            
-            {% if my_string contains "Foam Corner" %}
-              <div>2 per table: You need {{ table | times : 2 }}</div>
-                    {% assign qty = table | times : 2 %}
-                  {% endif %}
+            {% if card_title contains 'Finger' %}
+              {% if total_handle_knob %}
+                <div>You need {{ total_handle_knob }}</div>
+                {% assign qty = total_handle_knob | plus: 0 %}
+              {% else %}
+                {% assign qty = 4 %}
+              {% endif %}
+            {% endif %}
+
+            {% if card_title contains 'Foam Edge' %}
+              <div>1 per table: You need {{ table }}</div>
+              {% assign qty = table | plus: 0 %}
+            {% endif %}
+
+            {% if card_title contains 'Foam Corner' %}
+              <div>2 per table: You need {{ table | times: 2 }}</div>
+              {% assign qty = table | times: 2 %}
+            {% endif %}
             {% if card_product.type == 'Gates' or card_product.type == 'Baby Gate' %}
               {% assign assembled_width = card_product.metafields.sf_products.assembled_width %}
               {% assign assembled_height = card_product.metafields.sf_products.assembled_height %}
               {% assign assembled_depth = card_product.metafields.sf_products.assembled_depth %}
-                        <strong>Assembled:</strong>
-                      {{ assembled_width }}" W x {{ assembled_height }}" H x {{ assembled_depth }}" D
+              <strong>Assembled:</strong>
+              {{ assembled_width }}" W x {{ assembled_height }}" H x {{ assembled_depth }}" D
             {% endif %}
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
@@ -309,70 +311,77 @@ background: #2996c5 !important;
                 assign qty_rules = true
               endif
             -%}
-              <product-form>
-                {%- form 'product',
-                  card_product,
-                  id: product_form_id,
-                  class: 'form product-form',
-                  novalidate: 'novalidate',
-                  data-type: 'add-to-cart-form'
-                -%}
-                  <input
-                    class="variant_id"
-                    type="hidden"
-                    name="id"
-                    value="{{ card_product.selected_or_first_available_variant.id }}"
-                    disabled
-                  >
-                  <div class="qty-dropdown">
-                    <div class="quantity-heading">Quantity</div>
-                    <select name="quantity" id="quantity" class="quantity-select">
-                      {% for i in (1..40) %}
-                        <option value="{{ i }}" {% if qty == i %}selected{% endif %}>{{ i }}</option>
-                      {% endfor %}
-                    </select>
-                  </div>
-                  
-                  <button
-                    id="{{ product_form_id }}-submit"
-                    type="submit"
-                    name="add"
-                    class="quick-add__submit button button--full-width button--primary {% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
-                    aria-haspopup="dialog"
-                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-                    aria-live="polite"
-                    data-sold-out-message="true"
-                    {% if card_product.selected_or_first_available_variant.available == false %}
-                      disabled
-                    {% endif %}
-                  >
-                    <span>
-                      {%- if card_product.selected_or_first_available_variant.available -%}
-                        {{ 'products.product.add_to_cart' | t }}
-                      {%- else -%}
-                        {{ 'products.product.sold_out' | t }}
-                      {%- endif -%}
-                    </span>
-                    <span class="sold-out-message hidden">
-                      {{ 'products.product.sold_out' | t }}
-                    </span>
-                    {%- if horizontal_quick_add -%}
-                      <span class="icon-wrap">{% render 'icon-plus' %}</span>
-                    {%- endif -%}
-                    <div class="loading-overlay__spinner hidden">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        class="spinner"
-                        viewBox="0 0 66 66"
-                        xmlns="http://www.w3.org/2000/svg"
+            <product-form>
+              {%- form 'product',
+                card_product,
+                id: product_form_id,
+                class: 'form product-form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input
+                  class="variant_id"
+                  type="hidden"
+                  name="id"
+                  value="{{ card_product.selected_or_first_available_variant.id }}"
+                  disabled
+                >
+                <div class="qty-dropdown">
+                  <div class="quantity-heading">Quantity</div>
+                  <select name="quantity" id="quantity" class="quantity-select">
+                    {% for i in (1..40) %}
+                      <option
+                        value="{{ i }}"
+                        {% if qty == i %}
+                          selected
+                        {% endif %}
                       >
-                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                      </svg>
-                    </div>
-                  </button>
-                {%- endform -%}
-              </product-form>
+                        {{ i }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <button
+                  id="{{ product_form_id }}-submit"
+                  type="submit"
+                  name="add"
+                  class="quick-add__submit button button--full-width button--primary {% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                  aria-haspopup="dialog"
+                  aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                  aria-live="polite"
+                  data-sold-out-message="true"
+                  {% if card_product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  <span>
+                    {%- if card_product.selected_or_first_available_variant.available -%}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+                  </span>
+                  <span class="sold-out-message hidden">
+                    {{ 'products.product.sold_out' | t }}
+                  </span>
+                  {%- if horizontal_quick_add -%}
+                    <span class="icon-wrap">{% render 'icon-plus' %}</span>
+                  {%- endif -%}
+                  <div class="loading-overlay__spinner hidden">
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      class="spinner"
+                      viewBox="0 0 66 66"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                  </div>
+                </button>
+              {%- endform -%}
+            </product-form>
           </div>
         {%- endif -%}
         <div class="card__badge {{ settings.badge_position }}">
