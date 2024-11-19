@@ -565,7 +565,7 @@ Determine if the product is from support product collection
             <span class="badge color-background-1">Walmart Exclusive</span>
           {% elsif amazon_id %}
             <span class="badge color-background-1">Amazon Exclusive</span>
-          {% elsif card_product.available == false and card_product.available == false %}
+          {% elsif card_product.available == false and card_product.available == false and is_product_support == false %}
             <span class="badge color-background-1">Sold Out</span>
           {% endif %}
         </div>
