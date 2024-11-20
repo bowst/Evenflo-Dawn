@@ -60,6 +60,67 @@
 {% endschema %}
 
 {% stylesheet %}
+  .custom-image-text-section {
+  position: relative;
+  text-align: center;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.text-overlay {
+  position: absolute;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  text-align: center;
+}
+
+.text-overlay h2 {
+  margin: 0 0 0.5rem;
+}
+
+.text-overlay p {
+  margin: 0;
+}
+
+.text-overlay.top-left {
+  top: 10%;
+  left: 10%;
+  transform: translate(-10%, -10%);
+}
+
+.text-overlay.top-right {
+  top: 10%;
+  right: 10%;
+  transform: translate(10%, -10%);
+}
+
+.text-overlay.bottom-left {
+  bottom: 10%;
+  left: 10%;
+  transform: translate(-10%, 10%);
+}
+
+.text-overlay.bottom-right {
+  bottom: 10%;
+  right: 10%;
+  transform: translate(10%, 10%);
+}
+
+.text-overlay.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 {% endstylesheet %}
 
 {% javascript %}
