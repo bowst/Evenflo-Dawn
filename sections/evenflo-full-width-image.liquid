@@ -28,7 +28,7 @@
     {% endif %}
     <div class="text-overlay {{ section.settings.position }}">
       {% if section.settings.heading %}
-        <h2>{{ section.settings.heading }}</h2>
+        <h2>{{ section.settings.heading | escape | newline_to_br }}</h2>
       {% endif %}
       {% if section.settings.text %}
         <p>{{ section.settings.text }}</p>
