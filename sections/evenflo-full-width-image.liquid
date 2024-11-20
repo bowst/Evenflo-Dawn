@@ -1,24 +1,5 @@
-{% comment %}
-  <section class="full-width-image">
-    <div class="content-container--full-width">
-      {% if section.settings.image != blank %}
-        {{
-          section.settings.image
-          | image_url: width: 1800
-          | image_tag: loading: 'lazy', sizes: sizes, widths: widths, class: 'img-full'
-        }}
-      {% endif %}
-      <div class="text-overlay {{ section.settings.position }}">
-        {% if section.settings.heading %}
-          <h2>{{ section.settings.heading }}</h2>
-        {% endif %}
-        {% if section.settings.text %}
-          <p>{{ section.settings.text }}</p>
-        {% endif %}
-      </div>
-    </div>
-  </section>
-{% endcomment %}
+{{ 'evenflo-full-width-image.css' | asset_url | stylesheet_tag }}
+
 <section class="custom-image-text-section">
   <div class="image-container">
     {% if section.settings.image %}
@@ -82,101 +63,7 @@
 {% endschema %}
 
 {% stylesheet %}
-      .custom-image-text-section {
-      position: relative;
-      text-align: center;
-    }
 
-    .image-container {
-      position: relative;
-      display: inline-block;
-    }
-
-    .image-container img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .text-overlay {
-      position: absolute;
-      color: #fff;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      padding: 1rem;
-      width: 100%;
-      max-width: 50%;
-      text-align: left;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-
-    .text-overlay h2 {
-      margin: 0 0 0.5rem;
-      color: white;
-      font-size: 80px;
-    }
-
-    .text-overlay p {
-      margin: 0;
-      font-size: 30px;
-    }
-
-    .text-overlay.top-left {
-      top: 4.5%;
-      left: 5.5%;
-      transform: translate(-10%, -10%);
-    }
-
-    .text-overlay.top-right {
-      top: 5.5%;
-      right: 4.5%;
-      transform: translate(10%, -10%);
-    }
-
-    .text-overlay.bottom-left {
-      bottom: 5.5%;
-      left: 4.5%;
-      transform: translate(-10%, 10%);
-    }
-
-    .text-overlay.bottom-right {
-      bottom: 5.4%;
-      right: 4.5%;
-      transform: translate(10%, 10%);
-    }
-
-    .text-overlay.center {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  @media (max-width: 1024px) {
-     .text-overlay h2 {
-      font-size: x-large;
-    }
-
-    .text-overlay p {
-      font-size: small;
-    }
-  }
-  @media (max-width: 1440px) {
-     .text-overlay h2 {
-      font-size: xxx-large;
-    }
-
-    .text-overlay p {
-      font-size: x-large;
-    }
-  }
-    @media (max-width: 768px) {
-     .text-overlay h2 {
-      font-size: small;
-    }
-
-    .text-overlay p {
-      font-size: x-small;
-    }
-  }
 {% endstylesheet %}
 
 {% javascript %}
