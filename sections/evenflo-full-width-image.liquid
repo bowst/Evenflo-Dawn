@@ -6,6 +6,14 @@
       | image_url: width: 1800
       | image_tag: loading: 'lazy', sizes: sizes, widths: widths, class: 'img-full' }}
     {% endif %}
+     <div class="text-overlay {{ section.settings.position }}">
+      {% if section.settings.heading %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.text %}
+        <p>{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
   </div>
 </section>
 
