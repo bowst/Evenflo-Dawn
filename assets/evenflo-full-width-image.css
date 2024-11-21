@@ -15,9 +15,6 @@
 }
 
 .text-overlay {
-  opacity: 0; /* Initially hide the text to avoid layout issues */
-  visibility: hidden; /* Prevent any flicker before styles apply */
-  transition: opacity 0.5s ease, visibility 0s 0.5s; /* Smooth transition for text */
   position: absolute;
   color: #fff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -27,12 +24,6 @@
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
-}
-
-.image-container:hover .text-overlay, 
-.image-container:focus-within .text-overlay {
-  opacity: 1;
-  visibility: visible;
 }
 
 .text-overlay h2 {
