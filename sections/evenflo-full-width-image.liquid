@@ -61,3 +61,16 @@
   ]
 }
 {% endschema %}
+{% javascript %}
+    document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".image-container img");
+    images.forEach((img) => {
+      img.addEventListener("load", () => {
+        const overlay = img.closest(".image-container").querySelector(".text-overlay");
+        if (overlay) {
+          overlay.style.opacity = "1";
+        }
+      });
+    });
+  });
+{% endjavascript %}
