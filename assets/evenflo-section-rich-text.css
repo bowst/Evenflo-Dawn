@@ -139,10 +139,18 @@
   .decorative-heading::after{
     left: 10%;
     width: 12%;
-    }
+  }
   .decorative-heading::before{
     right: 10%;
     width: 12%;
   }
 
+}
+@media screen and (max-width: 990px) {
+  .decorative-heading::after{
+    left: 2%;
+  }
+  .decorative-heading::before{
+    right: 2%;
+  }
 }
