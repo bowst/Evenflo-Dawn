@@ -24,6 +24,8 @@
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  opacity: 0; /* Hide by default */
+  transition: opacity 0.3s ease-in-out; /* Smooth fade-in */
 }
 
 .text-overlay h2 {
