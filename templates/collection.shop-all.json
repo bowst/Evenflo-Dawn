@@ -24,39 +24,6 @@
         "page_title": "Shop all Evenflo"
       }
     },
-    "evenflo_image_banner_PB3MPb": {
-      "type": "evenflo-image-banner",
-      "blocks": {
-        "heading_h1_rLeUdj": {
-          "type": "heading-h1",
-          "settings": {
-            "heading-h1": "{{ collection.metafields.custom.collection_h1.value }}",
-            "heading_underline": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_h1_rLeUdj"
-      ],
-      "disabled": true,
-      "settings": {
-        "button_color": "#ffffff",
-        "button_text_color": "#000000",
-        "mobile_button_color": "#ffffff",
-        "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#2996c5",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "top-left",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -70,15 +37,15 @@
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 24,
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
+        "show_secondary_image": false,
+        "show_vendor": true,
         "show_rating": false,
-        "enable_quick_add": true,
+        "enable_quick_add": false,
         "enable_filtering": true,
         "filter_type": "vertical",
-        "enable_sorting": false,
+        "enable_sorting": true,
         "columns_mobile": "2",
         "padding_top": 28,
         "padding_bottom": 36
@@ -88,7 +55,6 @@
   "order": [
     "97cbd0cb-c9eb-4958-bc6e-0303f1a3a4aa",
     "evenflo_page_title_ekekYw",
-    "evenflo_image_banner_PB3MPb",
     "banner",
     "product-grid"
   ]
