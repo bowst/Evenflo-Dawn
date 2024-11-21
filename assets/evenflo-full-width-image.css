@@ -29,6 +29,12 @@
   overflow-wrap: break-word;
 }
 
+.image-container:hover .text-overlay, 
+.image-container:focus-within .text-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
 .text-overlay h2 {
   margin: 0 0 0.5rem;
   color: white;
