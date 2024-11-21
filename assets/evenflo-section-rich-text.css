@@ -154,3 +154,14 @@
     right: 2%;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .decorative-heading::after{
+    left: 2%;
+    width: 15%;
+  }
+  .decorative-heading::before{
+    right: 2%;
+    width: 15%;
+  }
+}
