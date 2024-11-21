@@ -86,7 +86,12 @@
 }
 
 /* Evenflo */
-
+.rich-text__heading {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
 .rich-text__heading.rte.inline-richtext.evenflo.h1 {
     margin-bottom: 40px;
     position: relative;
@@ -140,7 +145,7 @@
     left: 10%;
     width: 12%;
   }
-  .decorative-heading::before{
+  .rich-text__heading.decorative-heading::before{
     right: 10%;
     width: 12%;
   }
