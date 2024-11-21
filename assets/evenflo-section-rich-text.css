@@ -170,3 +170,12 @@
     width: 10%;
   }
 }
+@media screen and (min-width: 1025px) and (max-width: 1250px){
+  .rich-text__heading.decorative-heading::after {
+    left: 10%;
+  }
+  .rich-text__heading.decorative-heading:before
+  {    
+    right: 10%;
+  }
+}
