@@ -33,6 +33,38 @@
 .evenflo-multi-img-column, .evenflo-text-column {
     width: 50%;
 }
+  .evenflo-multi-img-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.evenflo-multi-img-item {
+    width: 60%;
+}
+
+.evenflo-multi-img-item:nth-child(odd) {
+    margin-left: auto;
+}
+
+.evenflo-multi-img-item:last-child {
+    margin-right: 6%;
+    transform: translateY(-45%);
+}
+
+.evenflo-multi-img-item:first-child {
+    transform: translateY(45%);
+    position: relative;
+    z-index: 2;
+}
+
+.evenflo-multi-img-item:nth-child(2) {
+    position: relative;
+    z-index: 1;
+}
+
+.evenflo-multi-img-item img {
+    border: 3px solid #fff;
+}
 </style>
 
 {% schema %}
