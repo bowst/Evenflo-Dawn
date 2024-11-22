@@ -1,148 +1,150 @@
 <div class="evenflo-multi-images-text-block page-width">
-   <div class="evenflo-multi-img-column">
-     <div class="evenflo-multi-img-wrapper">
-        {% for blocks in section.blocks %}
-          <div class="evenflo-multi-img-item">
-            <img
-              src="{{ blocks.settings.evenflo-multi-img | img_url: 'large' }}"
-              alt="evenflo-multi-img"
-              width=""
-              height=""
-            >
-          </div>
-        {% endfor %}
-      </div>
-   </div>
-   <div class="evenflo-text-column">
+  <div class="evenflo-multi-img-column">
+    <div class="evenflo-multi-img-wrapper">
+      {% for blocks in section.blocks %}
+        <div class="evenflo-multi-img-item">
+          <img
+            src="{{ blocks.settings.evenflo-multi-img | img_url: 'large' }}"
+            alt="evenflo-multi-img"
+            width=""
+            height=""
+          >
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="evenflo-text-column">
     <div class="evenflo-text-wrapper">
-      <h2 class="rich-text__heading rte inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+      <h2 class="rich-text__heading rte inline-richtext {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
       <div class="rich-text__text rte">
-          {{ section.settings.text }}
+        {{ section.settings.text }}
       </div>
     </div>
-   </div>
+  </div>
 </div>
 
 <style>
-  .evenflo-multi-images-text-block {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
+    .evenflo-multi-images-text-block {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+  }
 
-.evenflo-multi-img-column, .evenflo-text-column {
-    width: 50%;
-}
-  .evenflo-multi-img-wrapper {
-    display: flex;
-    flex-direction: column;
-        margin: -14% 0;
-}
+  .evenflo-multi-img-column, .evenflo-text-column {
+      width: 50%;
+  }
+    .evenflo-multi-img-wrapper {
+      display: flex;
+      flex-direction: column;
+           margin: -14% 0;
+  }
 
-.evenflo-multi-img-item {
-    width: 60%;
-  transition: transform 300ms ease 0ms;
-}
+  .evenflo-multi-img-item {
+      width: 60%;
+    transition: transform 300ms ease 0ms;
+  }
 
-.evenflo-multi-img-item:nth-child(odd) {
-    margin-left: auto;
-}
+  .evenflo-multi-img-item:nth-child(odd) {
+      margin-left: auto;
+  }
 
-.evenflo-multi-img-item:last-child {
-    margin-right: 6%;
-    transform: translateY(-45%);
-}
+  .evenflo-multi-img-item:last-child {
+      margin-right: 6%;
+      transform: translateY(-45%);
+  }
 
-.evenflo-multi-img-item:first-child {
-    transform: translateY(45%);
-    position: relative;
-    z-index: 2;
-}
+  .evenflo-multi-img-item:first-child {
+      transform: translateY(45%);
+      position: relative;
+      z-index: 2;
+  }
 
-.evenflo-multi-img-item:nth-child(2) {
-    position: relative;
-    transform: rotateZ(5deg);
-    z-index: 1;
-}
+  .evenflo-multi-img-item:nth-child(2) {
+      position: relative;
+      transform: rotateZ(5deg);
+      z-index: 1;
+  }
 
-.evenflo-multi-img-item img {
-    border: 3px solid #fff;
-    aspect-ratio: 2 / 1.5;
-    object-fit: cover;
-}
-.evenflo-multi-img-item:hover {
-    transform: scale(.90) rotateZ(0deg);
-}
-.evenflo-multi-img-item:first-child:hover {
-  transform: translateY(45%) scale(.90) rotateZ(-5deg);
-}
-.evenflo-multi-img-item:last-child:hover{
-  transform: translateY(-45%) scale(.90) rotateZ(5deg);
-}
+  .evenflo-multi-img-item img {
+      border: 3px solid #fff;
+      aspect-ratio: 2 / 1.5;
+      object-fit: cover;
+  }
+  .evenflo-multi-img-item:hover {
+      transform: scale(.90) rotateZ(0deg);
+  }
+  .evenflo-multi-img-item:first-child:hover {
+    transform: translateY(45%) scale(.90) rotateZ(-5deg);
+  }
+  .evenflo-multi-img-item:last-child:hover{
+    transform: translateY(-45%) scale(.90) rotateZ(5deg);
+  }
 </style>
 
 {% schema %}
-  {
-    "name": "Evenflo Multi images Text",
-    "class": "section",
-    "tag": "section",
-    "settings": [
+{
+  "name": "Evenflo Multi images Text",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+        "type": "inline_richtext",
+        "id": "heading",
+        "default": "Talk about your brand",
+        "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+      },
       {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "Talk about your brand",
-          "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
-        },
-        {
-          "type": "select",
-          "id": "heading_size",
-          "options": [
-            {
-              "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
-            },
-            {
-              "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
-            },
-            {
-              "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
-            },
-            {
-              "value": "hxl",
-              "label": "t:sections.all.heading_size.options__4.label"
-            },
-          ],
-          "default": "h1",
-          "label": "t:sections.all.heading_size.label"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
-          "label": "t:sections.rich-text.blocks.text.settings.text.label"
-        }
-    ],
-    "blocks": [
-      {
-        "name": "Evenflo Multi Img",
-        "type": "evenflo_multi_img",
-        "settings": [
+        "type": "select",
+        "id": "heading_size",
+        "options": [
           {
-            "type": "image_picker",
-            "id": "evenflo-multi-img",
-            "label": "Evenflo multi image"
-          }
-        ]
-      }
-    ],
-    "presets": [
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+      },
       {
-        "name": "Evenflo Multi images Text",
-       
+        "type": "richtext",
+        "id": "text",
+        "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+        "label": "t:sections.rich-text.blocks.text.settings.text.label"
       }
-    ],
-    "max_blocks": 3
-  }
+  ],
+  "blocks": [
+    {
+      "name": "Evenflo Multi Img",
+      "type": "evenflo_multi_img",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "evenflo-multi-img",
+          "label": "Evenflo multi image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Multi images Text",
+
+    }
+  ],
+  "max_blocks": 3
+}
 {% endschema %}
