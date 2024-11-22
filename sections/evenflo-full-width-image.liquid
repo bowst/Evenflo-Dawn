@@ -3,11 +3,7 @@
 <section class="custom-image-text-section">
   <div class="image-container">
     {% if section.settings.image %}
-      {{
-        section.settings.image
-        | image_url: width: 1800
-        | image_tag: loading: 'lazy',  class: 'img-full'
-      }}
+      {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', class: 'img-full' }}
     {% endif %}
     <div class="text-overlay {{ section.settings.position }}">
       {% if section.settings.heading %}
@@ -62,15 +58,51 @@
 }
 {% endschema %}
 {% javascript %}
+    //   document.addEventListener("DOMContentLoaded", function () {
+    //   const images = document.querySelectorAll(".image-container img");
+    //   images.forEach((img) => {
+    //     img.addEventListener("load", () => {
+    //       const overlay = img.closest(".image-container").querySelector(".text-overlay");
+    //       if (overlay) {
+    //         overlay.style.opacity = "1";
+    //       }
+    //     });
+    //   });
+    // });
     document.addEventListener("DOMContentLoaded", function () {
     const images = document.querySelectorAll(".image-container img");
+
+    // Function to show overlay
+    const showOverlay = (img) => {
+      const overlay = img.closest(".image-container").querySelector(".text-overlay");
+      if (overlay) {
+        overlay.style.opacity = "1";
+      }
+    };
+
+    // Check immediately for already loaded images
     images.forEach((img) => {
-      img.addEventListener("load", () => {
-        const overlay = img.closest(".image-container").querySelector(".text-overlay");
-        if (overlay) {
-          overlay.style.opacity = "1";
-        }
-      });
+      if (img.complete) {
+        showOverlay(img); // For already loaded images
+      } else {
+        img.addEventListener("load", () => showOverlay(img)); // For images that load later
+      }
+    });
+
+    // Use IntersectionObserver for lazy-loaded images
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            showOverlay(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 } // Adjust threshold as needed
+    );
+
+    images.forEach((img) => {
+      observer.observe(img);
     });
   });
 {% endjavascript %}
