@@ -1,7 +1,7 @@
 --gallery-gap: 20px;
 .image-gallery-wrapper {
   display: flex;
-  gap: 20px;
+  gap: var(--gallery-gap);
   margin-bottom: 30px;
   flex-wrap: wrap;
 }
