@@ -25,56 +25,7 @@
   </div>
 </div>
 
-<style>
-    .evenflo-multi-images-text-block {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-  }
-  .evenflo-multi-img-column, .evenflo-text-column {
-      width: 50%;
-  }
-    .evenflo-multi-img-wrapper {
-      display: flex;
-      flex-direction: column;
-           margin: -14% 0;
-  }
-  .evenflo-multi-img-item {
-      width: 60%;
-    transition: transform 300ms ease 0ms;
-  }
-  .evenflo-multi-img-item:nth-child(odd) {
-      margin-left: auto;
-  }
-  .evenflo-multi-img-item:last-child {
-      margin-right: 6%;
-      transform: translateY(-45%);
-  }
-  .evenflo-multi-img-item:first-child {
-      transform: translateY(45%);
-      position: relative;
-      z-index: 2;
-  }
-  .evenflo-multi-img-item:nth-child(2) {
-      position: relative;
-      transform: rotateZ(5deg);
-      z-index: 1;
-  }
-  .evenflo-multi-img-item img {
-      border: 3px solid #fff;
-      aspect-ratio: 2 / 1.5;
-      object-fit: cover;
-  }
-  .evenflo-multi-img-item:hover {
-      transform: scale(.90) rotateZ(0deg);
-  }
-  .evenflo-multi-img-item:first-child:hover {
-    transform: translateY(45%) scale(.90) rotateZ(-5deg);
-  }
-  .evenflo-multi-img-item:last-child:hover{
-    transform: translateY(-45%) scale(.90) rotateZ(5deg);
-  }
-</style>
+<style></style>
 
 {% schema %}
 {
