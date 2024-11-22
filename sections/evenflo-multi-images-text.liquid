@@ -5,7 +5,7 @@
   <div class="evenflo-multi-img-column">
     <div class="evenflo-multi-img-wrapper" data-aos="fade-up" data-aos-anchor-placement="center-center">
       {% for blocks in section.blocks %}
-        <div class="evenflo-multi-img-item">
+        <div class="evenflo-multi-img-item" data-aos="fade-up" data-aos-delay="{{ forloop.index |  times: 100 }}">
           <img
             src="{{ blocks.settings.evenflo-multi-img | img_url: 'large' }}"
             alt="evenflo-multi-img"
