@@ -1,39 +1,38 @@
 {%- if section.blocks -%}
   <style>
-        .image-gallery-wrapper {
-              display: flex;
-
+    .image-gallery-wrapper {
+    display: flex;
     gap: 20px;
-        }
+    }
 
-        .image-gallery-wrapper .image-gallery-item img {
-          width: 100%;
-          object-fit: cover;
-        margin: 0!important;
-        }
+    .image-gallery-wrapper .image-gallery-item img {
+    width: 100%;
+    object-fit: cover;
+    margin: 0!important;
+    }
 
 
-        .image-gallery-item img:first-child {
-        height: 250px;
+    .image-gallery-item img:first-child {
+    height: 250px;
     }
 
     .image-gallery-item img:last-child {
-        height: 350px;
+    height: 350px;
     }
 
     .image-gallery-item img {
-        object-fit: cover;
-        margin: 0!important;
+    object-fit: cover;
+    margin: 0!important;
     }
 
     .image-gallery-item {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     }
 
     .image-gallery-item:nth-child(odd) {
-        flex-direction: column-reverse;
+    flex-direction: column-reverse;
     }
   </style>
 
