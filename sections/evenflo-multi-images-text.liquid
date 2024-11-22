@@ -1,6 +1,17 @@
 <div class="evenflo-multi-images-text-block page-width">
    <div class="evenflo-multi-img-column">
-     
+     <div class="evenflo-multi-img-wrapper">
+        {% for blocks in section.blocks %}
+          <div class="evenflo-multi-img-item">
+            <img
+              src="{{ blocks.settings.gallery_image | img_url: 'large' }}"
+              alt="evenflo-multi-img"
+              width=""
+              height=""
+            >
+          </div>
+        {% endfor %}
+      </div>
    </div>
    <div class="evenflo-text-column">
     <div class="evenflo-text-wrapper">
