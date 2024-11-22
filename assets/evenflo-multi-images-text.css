@@ -18,7 +18,7 @@
   .evenflo-multi-img-item:nth-child(odd) {
       margin-left: auto;
   }
-  .evenflo-multi-img-item:last-child {
+  .evenflo-multi-img-item:last-child[data-aos^=fade][data-aos^=fade].aos-animate {
       margin-right: 6%;
       transform: translateY(-45%);
   }
