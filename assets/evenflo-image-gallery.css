@@ -20,10 +20,14 @@
 
 .image-gallery-item img:first-child {
   height: 250px;
+  height: auto;
+  aspect-ratio: 1;
 }
 
 .image-gallery-item img:last-child {
   height: 350px;
+  height: auto;
+  aspect-ratio: 1 / 1.5;
 }
 
 .image-gallery-item:nth-child(odd) {
