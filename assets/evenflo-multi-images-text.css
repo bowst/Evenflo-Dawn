@@ -37,13 +37,13 @@
       aspect-ratio: 2 / 1.5;
       object-fit: cover;
   }
-  .evenflo-multi-img-item:hover {
+  .evenflo-multi-img-item:hover[data-aos^=fade][data-aos^=fade].aos-animate {
       transform: scale(.90) rotateZ(0deg);
   }
-  .evenflo-multi-img-item:first-child:hover {
+  .evenflo-multi-img-item:first-child:hover[data-aos^=fade][data-aos^=fade].aos-animate {
     transform: translateY(45%) scale(.90) rotateZ(-5deg);
   }
-  .evenflo-multi-img-item:last-child:hover{
+  .evenflo-multi-img-item:last-child:hover[data-aos^=fade][data-aos^=fade].aos-animate{
     transform: translateY(-45%) scale(.90) rotateZ(5deg);
   }
   .evenflo-text-wrapper .rich-text__heading {
