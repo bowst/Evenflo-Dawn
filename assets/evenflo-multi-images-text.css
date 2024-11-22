@@ -22,12 +22,12 @@
       margin-right: 6%;
       transform: translateY(-45%);
   }
-  .evenflo-multi-img-item:first-child {
+  .evenflo-multi-img-item:first-child[data-aos^=fade][data-aos^=fade].aos-animate {
       transform: translateY(45%);
       position: relative;
       z-index: 2;
   }
-  .evenflo-multi-img-item:nth-child(2) {
+  .evenflo-multi-img-item:nth-child(2)[data-aos^=fade][data-aos^=fade].aos-animate {
       position: relative;
       transform: rotateZ(5deg);
       z-index: 1;
