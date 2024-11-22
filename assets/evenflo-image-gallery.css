@@ -33,3 +33,12 @@
 .image-gallery-item:nth-child(odd) {
   flex-direction: column-reverse;
 }
+@media screen and (max-width: 500px) {
+  .image-gallery-wrapper {
+    --gallery-gap: 10px;
+  }
+  .image-gallery-item {
+    gap: var(--gallery-gap);
+    width: calc(50% - var(--gallery-gap) * 1 / 2);
+  }
+}
