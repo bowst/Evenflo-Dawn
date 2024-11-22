@@ -25,6 +25,12 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   transition: opacity 0.3s ease-in-out; /* Smooth fade-in */
+  opacity: 0; /* Initially hide the text to avoid layout issues */
+  visibility: hidden; /* Prevent any flicker before styles apply */
+}
+.text-overlay.active {
+  opacity: 1; /* Make text visible */
+  visibility: visible; /* Ensure the text is displayed */
 }
 
 .text-overlay h2 {
