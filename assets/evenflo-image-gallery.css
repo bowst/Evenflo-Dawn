@@ -5,13 +5,16 @@
   margin-bottom: 30px;
   flex-wrap: wrap;
 }
+
 .image-gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gallery-gap);
   width: calc(25% - var(--gallery-gap) * 3 / 4);
 }
 .image-gallery-wrapper .image-gallery-item img {
   width: 100%;
   object-fit: cover;
-
   margin: 0 !important;
 }
 
@@ -26,12 +29,6 @@
 .image-gallery-item img {
   object-fit: cover;
   margin: 0 !important;
-}
-
-.image-gallery-item {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 
 .image-gallery-item:nth-child(odd) {
