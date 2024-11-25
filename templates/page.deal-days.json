@@ -9,9 +9,29 @@
  */
 {
   "sections": {
+    "evenflo_image_banner_bVAVTF": {
+      "type": "evenflo-image-banner",
+      "settings": {
+        "image": "shopify://shop_images/Holiday_2024_Landing_Page_Header.jpg",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "main": {
       "type": "main-page",
-      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -52,12 +72,13 @@
         "template--16065574142108__04ce38cd-08d1-4722-aee7-400a614b30ad-text-1",
         "template--16065574142108__04ce38cd-08d1-4722-aee7-400a614b30ad-buttons-1"
       ],
+      "disabled": true,
       "custom_css": [
         "div.banner__content.banner__content--middle-left > div {background-color: red; text-align: left;}",
         "div.banner__content.banner__content--middle-left > div > div.banner__text.rte.body {color: white;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/Screenshot_2023-11-30_at_12.31.15_PM.png",
+        "image": "shopify://shop_images/Holiday_2024_Landing_Page_Header.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
@@ -100,6 +121,7 @@
         "template--16065574142108__616c2918-bc7d-4fcf-bb29-c7e06b7b3a79-text-1",
         "template--16065574142108__616c2918-bc7d-4fcf-bb29-c7e06b7b3a79-button-1"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/12_Days_of_Deals_2023_Landing_Page_Day_5_Feature_1080x1080_a8c7f3e4-9546-48c0-8b7d-b5e84f97a7f2.jpg",
         "height": "adapt",
@@ -120,6 +142,7 @@
     }
   },
   "order": [
+    "evenflo_image_banner_bVAVTF",
     "main",
     "04ce38cd-08d1-4722-aee7-400a614b30ad",
     "616c2918-bc7d-4fcf-bb29-c7e06b7b3a79",
