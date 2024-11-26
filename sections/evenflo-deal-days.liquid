@@ -19,7 +19,11 @@
 <div class="evenflo-deal-days-block page-width">
   <div class="evenflo-deal-card-wrapper">
     {% for blocks in section.blocks %}
-      <div class="evenflo-deal-card">
+      <div
+        class="evenflo-deal-card"
+        date-content="{{ block.settings.date_list }}"
+        month-content="{{ block.settings.month_list }}"
+      >
         <img
           src="{{ blocks.settings.gift-box-img | img_url: 'large' }}"
           alt="evenflo-deal-card"
