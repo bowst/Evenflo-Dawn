@@ -4,6 +4,10 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
+  .evenflo-main-product-detail h2:after{
+    background: {{blocks.settings.heading_underline_color}}
+  }
+
 
   @media screen and (min-width: 750px) {
     .evenflo-deal-days-block {
