@@ -1,3 +1,18 @@
+<div class="evenflo-deal-days-block">
+  <div class="evenflo-deal-card-wrapper">
+    {% for blocks in section.blocks %}
+      <div class="evenflo-deal-card">
+        <img
+          src="{{ blocks.settings.evenflo-multi-img | img_url: 'large' }}"
+          alt="evenflo-deal-card"
+          width=""
+          height=""
+        >
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
 {% schema %}
 {
   "name": "Evenflo Deal Days",
