@@ -13,18 +13,18 @@
       </div>
     {% endfor %}
   </div>
-  {% for blocks in section.blocks %}
+  {% for block in section.blocks %}
     <div class="evenflo-deal-grid">
       <div class="evenflo-main-product-img">
         <img
-          src="{{ blocks.settings.main-product-img | img_url: 'large' }}"
+          src="{{ block.settings.main-product-img | img_url: 'large' }}"
           alt="evenflo-deal-card"
           width=""
           height=""
         >
       </div>
       <div class="evenflo-main-product-detail">
-        <h2>{{ blocks.settings['deal-heading'] }}</h2>
+        <h2>{{ blocks.settings.deal_heading }}</h2>
       </div>
     </div>
   {% endfor %}
@@ -63,7 +63,7 @@
         },
         {
           "type": "text",
-          "id": "deal-heading",
+          "id": "deal_heading",
           "label": "Deal heading",
           "default": "Deal heading"
         },
