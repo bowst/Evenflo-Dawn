@@ -31,7 +31,10 @@
   </div>
   {% for block in section.blocks %}
     {% if forloop.index == 3 %}
-      <div class="evenflo-deal-grid">
+      <div
+        class="evenflo-deal-grid"
+        date-content="{{ block.settings.date_list }}"
+      >
         <div class="evenflo-deal-grid-column">
           <div class="evenflo-main-product-img">
             <img
