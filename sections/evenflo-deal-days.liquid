@@ -1,8 +1,28 @@
 {% schema %}
+{
+    "name": "Evenflo Deal Days",
+    "class": "section",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
   {
-      "name": "Evenflo Multi images Text",
-      "class": "section",
-      "tag": "section",
-      "settings": []
+    "name": "Evenflo Multi Img",
+    "type": "evenflo_multi_img",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "evenflo-multi-img",
+        "label": "Evenflo multi image"
+      }
+    ]
   }
+],
+"presets": [
+  {
+    "name": "Evenflo Multi images Text",
+
+  }
+],
+"max_blocks": 3
+}
 {% endschema %}
