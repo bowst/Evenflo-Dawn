@@ -34,6 +34,13 @@
     text-align: center;
     margin: 0;
 }
+.evenflo-main-product-detail h2:after {
+    content: '';
+    background: red;
+    width: 100%;
+    height: 5px;
+    display: block;
+}
 .evenflo-main-product-detail a {
     background: #000000;
     padding: 10px 40px;
