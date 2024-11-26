@@ -21,8 +21,8 @@
     {% for blocks in section.blocks %}
       <div
         class="evenflo-deal-card"
-        date-content="{{ block.settings.date_list }}"
-        month-content="{{ block.settings.month_list }}"
+        date-content="{{ blocks.settings.date_list }}"
+        month-content="{{ blocks.settings.month_list }}"
       >
         <img
           src="{{ blocks.settings.gift-box-img | img_url: 'large' }}"
