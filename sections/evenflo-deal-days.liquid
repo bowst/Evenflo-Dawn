@@ -16,13 +16,16 @@
   {% for block in section.blocks %}
     <div class="evenflo-deal-grid">
       <div class="evenflo-main-product-img">
-        <img
-          src="{{ block.settings.main-product-img | img_url: 'large' }}"
-          alt="evenflo-deal-card"
-          width=""
-          height=""
-        >
+        <div class="evenflo-main-product-img">
+          <img
+            src="{{ block.settings.main-product-img | img_url: 'large' }}"
+            alt="evenflo-deal-card"
+            width=""
+            height=""
+          >
+        </div>
       </div>
+
       <div class="evenflo-main-product-detail">
         <h2>{{ block.settings.deal_heading }}</h2>
         <div class="rich-text__text rte">
