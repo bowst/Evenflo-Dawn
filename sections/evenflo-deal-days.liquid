@@ -43,7 +43,11 @@
       </div>
       <div class="evenflo-deal-grid-column">
         <div class="evenflo-main-product-detail">
-          <h2 class="{{ section.settings.heading_size }}">{{ block.settings.deal_heading }}</h2>
+          <h2 class="{{ section.settings.heading_size }}">
+            {{ block.settings.deal_heading }}
+            {{ block.settings.date_list }}
+            {{ block.settings.month_list }}
+          </h2>
           <div class="rich-text__text rte">
             {{ block.settings.description }}
           </div>
