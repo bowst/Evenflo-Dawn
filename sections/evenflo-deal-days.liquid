@@ -52,6 +52,7 @@
         </div>
         <div class="evenflo-deal-grid-column">
           <div class="evenflo-main-product-detail">
+            <h1 id="current-date"></h1>
             <h2 class="{{ section.settings.heading_size }}">
               {{ block.settings.deal_heading }}
               {{ block.settings.date_list }}
@@ -67,6 +68,12 @@
     {% endif %}
   {% endfor %}
 </div>
+
+<script>
+  const d = new Date();
+  let month = d.getMonth();
+  document.getElementById("demo").innerHTML = month;
+</script>
 
 {% schema %}
 {
