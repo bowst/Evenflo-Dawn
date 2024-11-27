@@ -115,15 +115,12 @@
 
 
   setInterval(() => {
-
      const [newEsMonth, NewEsDate] = new Date()
       .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
       .split("/");
     if(newEsMonth !== esMonth || newEsDate !== esDate){
-
-    location.reload();
+      location.reload();
     }
-
   }, 10 * 1000);
 </script>
 
