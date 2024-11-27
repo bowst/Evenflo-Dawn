@@ -113,13 +113,14 @@
 
 
   setInterval(() => {
+    console.log('1');
      const [newEsMonth, NewEsDate] = new Date()
       .toLocaleString("en-US", { timeZone: "Australia/Adelaide", month: "numeric", day: "numeric" })
       .split("/");
-    if(newEsMonth !== esMonth || newEsDate !== esDate){
+    if(newEsMonth !== esMonth || NewEsDate !== esDate){
       location.reload();
     }
-  }, 60 * 1000);
+  }, 10 * 1000);
 </script>
 
 {% schema %}
