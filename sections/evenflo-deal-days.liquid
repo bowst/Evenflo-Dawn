@@ -85,6 +85,7 @@
     const [esMonth, esDate, esSeconds] = new Date()
       .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", seconds: "numeric" })
       .split("/");
+  console.log("ESSEONDS", esSeconds)
     const month = parseInt(esMonth);
     const date = parseInt(esDate);
 
