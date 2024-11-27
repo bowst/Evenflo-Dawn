@@ -82,8 +82,8 @@
       const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
     const evenfloDealGrids = document.querySelectorAll(".evenflo-deal-grid");
 
-    const [esMonth, esDate] = new Date()
-      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
+    const [esMonth, esDate, esSeconds] = new Date()
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", seconds: "numeric" })
       .split("/");
     const month = parseInt(esMonth);
     const date = parseInt(esDate);
@@ -115,10 +115,10 @@
 
 
   setInterval(() => {
-     const [newEsMonth, NewEsDate] = new Date()
-      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
+     const [newEsMonth, newEsDate, newEsSeconds] = new Date()
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", seconds: "numeric" })
       .split("/");
-    if(newEsMonth !== esMonth || newEsDate !== esDate){
+    if(newEsMonth !== esMonth || newEsDate !== esDate || newEsSeconds !== esSeconds){
       location.reload();
     }
   }, 10 * 1000);
