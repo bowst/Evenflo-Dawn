@@ -45,38 +45,36 @@
     {% endfor %}
   </div>
   {% for block in section.blocks %}
-    {% if forloop.index == 3 %}
-      <div
-        class="evenflo-deal-grid"
-        date-content="{{ block.settings.date_list }}"
-        month-content="{{ block.settings.month_list }}"
-      >
-        <div class="evenflo-deal-grid-column">
-          <div class="evenflo-main-product-img">
-            <img
-              src="{{ block.settings.main-product-img | img_url: 'large' }}"
-              alt="evenflo-deal-card"
-              width=""
-              height=""
-            >
-          </div>
-        </div>
-        <div class="evenflo-deal-grid-column">
-          <div class="evenflo-main-product-detail">
-            <h1 id="current-date"></h1>
-            <h2 class="{{ section.settings.heading_size }}">
-              {{ block.settings.deal_heading }}
-              {{ block.settings.date_list }}
-              {{ block.settings.month_list }}
-            </h2>
-            <div class="rich-text__text rte">
-              {{ block.settings.description }}
-            </div>
-            <a href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
-          </div>
+    <div
+      class="evenflo-deal-grid"
+      date-content="{{ block.settings.date_list }}"
+      month-content="{{ block.settings.month_list }}"
+    >
+      <div class="evenflo-deal-grid-column">
+        <div class="evenflo-main-product-img">
+          <img
+            src="{{ block.settings.main-product-img | img_url: 'large' }}"
+            alt="evenflo-deal-card"
+            width=""
+            height=""
+          >
         </div>
       </div>
-    {% endif %}
+      <div class="evenflo-deal-grid-column">
+        <div class="evenflo-main-product-detail">
+          <h1 id="current-date"></h1>
+          <h2 class="{{ section.settings.heading_size }}">
+            {{ block.settings.deal_heading }}
+            {{ block.settings.date_list }}
+            {{ block.settings.month_list }}
+          </h2>
+          <div class="rich-text__text rte">
+            {{ block.settings.description }}
+          </div>
+          <a href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
+        </div>
+      </div>
+    </div>
   {% endfor %}
 </div>
 
