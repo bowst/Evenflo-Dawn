@@ -75,7 +75,7 @@
   const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
 
   evenfloDealCards.forEach((evenfloDealCard)=>{
-    evenfloDealCard.style.background= 'red';
+    console.log(evenfloDealCard.getAttribute("date-content"))
   })
   console.log(evenfloDealCards)
   document.getElementById("current-date").innerHTML = `${date} + ${month}`;
