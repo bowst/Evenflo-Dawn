@@ -89,10 +89,15 @@
   evenfloDealCards.forEach((evenfloDealCard, index)=>{
     const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"))
     const monthContent= parseInt(evenfloDealCard.getAttribute("month-content"))
+
+    const dateContent = parseInt(evenfloDealGrids[index].getAttribute("date-content"))
+    const monthContent= parseInt(evenfloDealGrids[index].getAttribute("month-content"))
+    
     console.log(dateContent, monthContent)
     const children = evenfloDealCard.children;
     if(monthContent === month && dateContent === date ){
-      children[1].style.display = "block"
+      children[1].style.display = "block";
+      
     }
     else if(monthContent === month && dateContent < date){
       children[2].style.display = "block"
