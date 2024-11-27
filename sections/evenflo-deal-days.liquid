@@ -88,7 +88,7 @@
 const [esMonth, esDate] = new Date().toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).split("/");
 const month = parseInt(esMonth)
   const date = parseInt(esDate)
-conosle.log({month, date})
+console.log({month, date})
   evenfloDealCards.forEach((evenfloDealCard, index)=>{
     const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"))
     const monthContent= parseInt(evenfloDealCard.getAttribute("month-content"))
