@@ -82,10 +82,9 @@
       const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
     const evenfloDealGrids = document.querySelectorAll(".evenflo-deal-grid");
 
-    const [esMonth, esDate, esSeconds] = new Date()
-      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", second: "numeric" })
-       .split(/[\/, ]+/);
-  console.log("ESSEONDS", esSeconds)
+    const [esMonth, esDate] = new Date()
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
+      .split("/");
     const month = parseInt(esMonth);
     const date = parseInt(esDate);
 
@@ -116,13 +115,13 @@
 
 
   setInterval(() => {
-     const [newEsMonth, newEsDate, newEsSeconds] = new Date()
-      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", second: "numeric" })
-       .split(/[\/, ]+/);
-    if(newEsMonth !== esMonth || newEsDate !== esDate || newEsSeconds !== esSeconds){
+     const [newEsMonth, NewEsDate] = new Date()
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
+      .split("/");
+    if(newEsMonth !== esMonth || newEsDate !== esDate){
       location.reload();
     }
-  }, 10 * 1000);
+  }, 60 * 1000);
 </script>
 
 {% schema %}
