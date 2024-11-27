@@ -97,16 +97,12 @@
     if(monthContent === month && dateContent === date ){
       children[1].style.display = "block"
     }
-    else if(monthContent < month && dateContent < date){
+    else if(monthContent === month && dateContent < date){
       children[0].style.display = "block"
     }
-    else if(monthContent > month && dateContent > date){
+    else if(monthContent === month && dateContent > date){
       children[2].style.display = "block"
     }
-    // else{
-    //   children.forEach(child=>child.style.display="none")
-    //   }
-
 
     console.log(evenfloDealCard.getAttribute("date-content"))
   })
