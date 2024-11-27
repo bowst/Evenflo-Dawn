@@ -95,9 +95,13 @@
     
     console.log(dateContent, monthContent)
     const children = evenfloDealCard.children;
+
+    if(gridDateContent === date && gridMonthContent === month){
+      evenfloDealGrids[index].style.display="block"
+    }
+    
     if(monthContent === month && dateContent === date ){
       children[1].style.display = "block";
-      
     }
     else if(monthContent === month && dateContent < date){
       children[2].style.display = "block"
