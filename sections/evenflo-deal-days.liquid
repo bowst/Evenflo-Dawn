@@ -80,6 +80,8 @@
 
 <script>
   const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
+  const evenfloDealGrids = document.querySelectorAll(".evenflo-deal-grid");
+  
   const [esMonth, esDate] = new Date().toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).split("/");
   const month = parseInt(esMonth)
   const date = parseInt(esDate)
