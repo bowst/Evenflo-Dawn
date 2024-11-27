@@ -93,10 +93,21 @@
     console.log({dateContent, monthContent})
 
         const children = evenfloDealCard.children;
-console.log(children)
-    // if(monthContent === month && dateContent === date ){
-    //   evenfloDealCard.querySelector("img").setAttribute("src", {{ blocks[index].settings.deal-day-img | img_url: 'large' }})
-    // }
+
+    if(monthContent === month && dateContent === date ){
+      children[1].style.display = "block"
+    }
+    else if(monthContent < month && dateContent < date){
+      children[0].style.display = "block"
+    }
+    else if(monthContent > month && dateContent > date){
+      children[2].style.display = "block"
+    }
+    else{
+      children.forEach(child=>child.style.display="none")
+      }
+
+
     console.log(evenfloDealCard.getAttribute("date-content"))
   })
   console.log(evenfloDealCards)
