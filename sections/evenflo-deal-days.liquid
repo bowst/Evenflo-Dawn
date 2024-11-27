@@ -95,13 +95,13 @@
         const children = evenfloDealCard.children;
 
     if(monthContent === month && dateContent === date ){
-      children[2].style.display = "block"
+      children[1].style.display = "block"
     }
     else if(monthContent === month && dateContent < date){
-      children[0].style.display = "block"
+      children[2].style.display = "block"
     }
     else if(monthContent === month && dateContent > date){
-      children[1].style.display = "block"
+      children[0].style.display = "block"
     }
     else{
       // const childrenArray = Array.from(evenfloDealCard.children);
