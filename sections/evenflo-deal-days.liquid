@@ -29,6 +29,18 @@
           width=""
           height=""
         >
+        <img
+          src="{{ blocks.settings.deal-day-img | img_url: 'large' }}"
+          alt="evenflo-deal-card"
+          width=""
+          height=""
+        >
+        <img
+          src="{{ blocks.settings.gift-box-img | img_url: 'large' }}"
+          alt="evenflo-deal-card"
+          width=""
+          height=""
+        >
       </div>
     {% endfor %}
   </div>
@@ -74,7 +86,17 @@
   let date = d.getDate();
   const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
 
-  evenfloDealCards.forEach((evenfloDealCard)=>{
+  evenfloDealCards.forEach((evenfloDealCard, index)=>{
+    const dateContent = evenfloDealCard.getAttribute("date-content")
+    const monthContent= evenfloDealCard.getAttribute("month-content")
+    
+    console.log({dateContent, monthContent})
+
+        const children = evenfloDealCard.children;
+console.log(children)
+    // if(monthContent === month && dateContent === date ){
+    //   evenfloDealCard.querySelector("img").setAttribute("src", {{ blocks[index].settings.deal-day-img | img_url: 'large' }})
+    // }
     console.log(evenfloDealCard.getAttribute("date-content"))
   })
   console.log(evenfloDealCards)
