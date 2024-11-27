@@ -87,10 +87,10 @@
   const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
 
   evenfloDealCards.forEach((evenfloDealCard, index)=>{
-    const dateContent = evenfloDealCard.getAttribute("date-content")
-    const monthContent= evenfloDealCard.getAttribute("month-content")
+    const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"))
+    const monthContent= parseInt(evenfloDealCard.getAttribute("month-content"))
     
-    console.log({dateContent, monthContent})
+    console.log(dateContent, monthContent)
 
         const children = evenfloDealCard.children;
 
@@ -103,9 +103,9 @@
     else if(monthContent > month && dateContent > date){
       children[2].style.display = "block"
     }
-    else{
-      children.forEach(child=>child.style.display="none")
-      }
+    // else{
+    //   children.forEach(child=>child.style.display="none")
+    //   }
 
 
     console.log(evenfloDealCard.getAttribute("date-content"))
