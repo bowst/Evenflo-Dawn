@@ -81,14 +81,11 @@
 </div>
 
 <script>
-  const d = new Date();
-  // let month = d.getMonth() + 1;
-  // let date = d.getDate();
   const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
-const [esMonth, esDate] = new Date().toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).split("/");
-const month = parseInt(esMonth)
+  const [esMonth, esDate] = new Date().toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).split("/");
+  const month = parseInt(esMonth)
   const date = parseInt(esDate)
-console.log({month, date})
+
   evenfloDealCards.forEach((evenfloDealCard, index)=>{
     const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"))
     const monthContent= parseInt(evenfloDealCard.getAttribute("month-content"))
