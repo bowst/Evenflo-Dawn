@@ -81,7 +81,7 @@
     const evenfloDealGrids = document.querySelectorAll(".evenflo-deal-grid");
 
     const [esMonth, esDate] = new Date()
-      .toLocaleString("en-US", { timeZone: "Australia/Adelaide", month: "numeric", day: "numeric" })
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
       .split("/");
     const month = parseInt(esMonth);
     const date = parseInt(esDate);
@@ -115,7 +115,7 @@
   setInterval(() => {
     console.log('1');
      const [newEsMonth, NewEsDate] = new Date()
-      .toLocaleString("en-US", { timeZone: "Australia/Adelaide", month: "numeric", day: "numeric" })
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
       .split("/");
     if(newEsMonth !== esMonth || NewEsDate !== esDate){
       location.reload();
