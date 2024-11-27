@@ -87,11 +87,8 @@
   evenfloDealCards.forEach((evenfloDealCard, index)=>{
     const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"))
     const monthContent= parseInt(evenfloDealCard.getAttribute("month-content"))
-    
     console.log(dateContent, monthContent)
-
-        const children = evenfloDealCard.children;
-
+    const children = evenfloDealCard.children;
     if(monthContent === month && dateContent === date ){
       children[1].style.display = "block"
     }
