@@ -104,7 +104,8 @@
       children[2].style.display = "block"
     }
     else{
-      children.forEach(console.log)
+      const childrenArray = Array.from(evenfloDealCard.children);
+      childrenArray.forEach(child=>child.style.display="block")
     }
 
     console.log(evenfloDealCard.getAttribute("date-content"))
