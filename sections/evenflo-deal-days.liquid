@@ -82,11 +82,13 @@
 
 <script>
   const d = new Date();
-  let month = d.getMonth() + 1;
-  let date = d.getDate();
+  // let month = d.getMonth() + 1;
+  // let date = d.getDate();
   const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
-const [month1, date1] = new Date().toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).split("/");
-console.log({month1,date1})
+const [esMonth, esDate] = new Date().toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).split("/");
+const month = parseInt(esMonth)
+  const date = parseInt(esDate)
+conosle.log({month, date})
   evenfloDealCards.forEach((evenfloDealCard, index)=>{
     const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"))
     const monthContent= parseInt(evenfloDealCard.getAttribute("month-content"))
