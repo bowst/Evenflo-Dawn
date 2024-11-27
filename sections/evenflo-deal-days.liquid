@@ -110,6 +110,11 @@
       children[0].style.display = "block"
     }
     else{
+      if(monthContent < month){
+        children[2].style.display="block"
+      }else if(monthContent > month){
+        children[0].style.display="block"
+      }else
       children[0].style.display="block"
     }
 
