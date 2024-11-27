@@ -79,39 +79,44 @@
 </div>
 
 <script>
-    const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
-  const evenfloDealGrids = document.querySelectorAll(".evenflo-deal-grid");
+      const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
+    const evenfloDealGrids = document.querySelectorAll(".evenflo-deal-grid");
 
-  const [esMonth, esDate] = new Date()
-    .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
-    .split("/");
-  const month = parseInt(esMonth);
-  const date = parseInt(esDate);
+    const [esMonth, esDate] = new Date()
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
+      .split("/");
+    const month = parseInt(esMonth);
+    const date = parseInt(esDate);
 
-  evenfloDealCards.forEach((evenfloDealCard, index) => {
-    const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"));
-    const monthContent = parseInt(evenfloDealCard.getAttribute("month-content"));
-    const gridDateContent = parseInt(evenfloDealGrids[index].getAttribute("date-content"));
-    const gridMonthContent = parseInt(evenfloDealGrids[index].getAttribute("month-content"));
+    evenfloDealCards.forEach((evenfloDealCard, index) => {
+      const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"));
+      const monthContent = parseInt(evenfloDealCard.getAttribute("month-content"));
+      const gridDateContent = parseInt(evenfloDealGrids[index].getAttribute("date-content"));
+      const gridMonthContent = parseInt(evenfloDealGrids[index].getAttribute("month-content"));
 
-    if (gridDateContent === date && gridMonthContent === month) {
-      evenfloDealGrids[index].style.display = "flex";
-    }
+      if (gridDateContent === date && gridMonthContent === month) {
+        evenfloDealGrids[index].style.display = "flex";
+      }
 
-    const children = evenfloDealCard.children;
+      const children = evenfloDealCard.children;
 
-    if (monthContent === month && dateContent === date) {
-      children[1].style.display = "block";
-    } else if (monthContent === month && dateContent < date) {
-      children[2].style.display = "block";
-    } else if (monthContent === month && dateContent > date) {
-      children[0].style.display = "block";
-    } else if (monthContent < month) {
-      children[2].style.display = "block";
-    } else {
-      children[0].style.display = "block";
-    }
-  });
+      if (monthContent === month && dateContent === date) {
+        children[1].style.display = "block";
+      } else if (monthContent === month && dateContent < date) {
+        children[2].style.display = "block";
+      } else if (monthContent === month && dateContent > date) {
+        children[0].style.display = "block";
+      } else if (monthContent < month) {
+        children[2].style.display = "block";
+      } else {
+        children[0].style.display = "block";
+      }
+    });
+
+
+  setInterval(() => {
+    location.reload();
+  }, 10 * 1000);
 </script>
 
 {% schema %}
