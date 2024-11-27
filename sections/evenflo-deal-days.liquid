@@ -84,7 +84,7 @@
 
     const [esMonth, esDate, esSeconds] = new Date()
       .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", second: "numeric" })
-      .split("/");
+       .split(/[\/, ]+/);
   console.log("ESSEONDS", esSeconds)
     const month = parseInt(esMonth);
     const date = parseInt(esDate);
@@ -118,7 +118,7 @@
   setInterval(() => {
      const [newEsMonth, newEsDate, newEsSeconds] = new Date()
       .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", second: "numeric" })
-      .split("/");
+       .split(/[\/, ]+/);
     if(newEsMonth !== esMonth || newEsDate !== esDate || newEsSeconds !== esSeconds){
       location.reload();
     }
