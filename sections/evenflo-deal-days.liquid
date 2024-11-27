@@ -85,7 +85,8 @@
   let month = d.getMonth() + 1;
   let date = d.getDate();
   const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
-
+const [month, date] = new Date().toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).split("/");
+console.log({month,date})
   evenfloDealCards.forEach((evenfloDealCard, index)=>{
     const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"))
     const monthContent= parseInt(evenfloDealCard.getAttribute("month-content"))
