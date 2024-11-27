@@ -111,11 +111,17 @@
     }
     else{
       if(monthContent < month){
+        console.log("monthContent < month")
         children[2].style.display="block"
-      }else if(monthContent > month){
+      } 
+      else if(monthContent > month){
+        console.log("monthContent > month")
         children[0].style.display="block"
-      }else
-      children[0].style.display="block"
+      }
+      else{
+        console.log("ELSE")
+       children[0].style.display="block"
+      }
     }
 
     console.log(evenfloDealCard.getAttribute("date-content"))
