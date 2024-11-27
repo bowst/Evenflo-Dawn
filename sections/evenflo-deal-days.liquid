@@ -73,6 +73,10 @@
   let month = d.getMonth() + 1;
   let date = d.getDate();
   const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
+
+  evenfloDealCards.forEach((evenfloDealCard)=>{
+    evenfloDealCard.style.background= 'red';
+  })
   console.log(evenfloDealCards)
   document.getElementById("current-date").innerHTML = `${date} + ${month}`;
 </script>
