@@ -1,7 +1,9 @@
 <a href="{{ section.settings.promo_link }}">
   <div style="position: relative;">
     <div class="desktop">
-            
+            {{ comment }}
+
+      {{ endcomment }}
       <img
         width=""
         height=""
@@ -10,8 +12,7 @@
           
         "
       >
-      {%- assign desktop_banner = section.settings.desktop_banner -%}
-{{ desktop_banner | image_url: width: desktop_banner.width | image_tag: class: 'desktop', loading: 'lazy' }}
+
     </div>
 
     <div class="mobile">
