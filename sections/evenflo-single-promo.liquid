@@ -1,34 +1,41 @@
 <a href="{{ section.settings.promo_link }}">
   <div style="position: relative;">
+    {% assign current_date = 'now' | date: '%s' %}
+    {% assign start_date = '2024-12-02' | date: '%s' %}
+    {%- comment -%}Promotion Start Date{%- endcomment -%}
+    {% assign end_date = '2024-12-03' | date: '%s' %}
+
     <div class="desktop">
-            {{ comment }}
-
-      {{ endcomment }}
-      <img
-        width=""
-        height=""
-        class="desktop"
-        src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_Header.jpg?v=1732851209
-          
-        "
-      >
-
+      {% if current_date >= start_date and current_date <= end_date %}
+        {%- if section.settings.desktop_banner != blank -%}
+          {%- assign desktop_banner = section.settings.desktop_banner -%}
+          {{ desktop_banner | image_url: width: desktop_banner.width | image_tag: class: 'desktop', loading: 'lazy' }}
+        {%- endif -%}
+      {% else %}
+        <img
+          width=""
+          height=""
+          class="desktop"
+          src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_Header.jpg?v=1732851209"
+        >
+      {% endif %}
     </div>
 
     <div class="mobile">
-      <img
-        width=""
-        height=""
-        class="mobile"
-        src="
-
-            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_MObile.jpg?v=1732851255  
-         
-        "
-      >
+      {% if current_date >= start_date and current_date <= end_date %}
+        {%- if section.settings.mobile_image != blank -%}
+          {%- assign mobile_image = section.settings.mobile_image -%}
+          {{ mobile_image | image_url: width: mobile_image.width | image_tag: class: 'mobile', loading: 'lazy' }}
+        {%- endif -%}
+      {% else %}
+        <img
+          width=""
+          height=""
+          class="mobile"
+          src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_MObile.jpg?v=1732851255"
+        >
+      {% endif %}
     </div>
-
-    
   </div>
 </a>
 
@@ -72,7 +79,7 @@
       "type": "image_picker",
       "id": "mobile_image",
       "label": "Mobile Image"
-    },
+    }
   ],
   "presets": [
     {
