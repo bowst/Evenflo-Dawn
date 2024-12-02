@@ -132,6 +132,7 @@
         },
         "button_DkeHXQ": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Buy Now",
             "button_link": "shopify://products/hummingbird-ultra-lightweight-stroller"
@@ -144,7 +145,8 @@
         "button_DkeHXQ"
       ],
       "custom_css": [
-        ".button:after {background-color: #000; color: rgb(var(--color-button-text));}"
+        ".button:after {background-color: #000;}",
+        ".button {color: white !important;}"
       ],
       "settings": {
         "heading": "",
