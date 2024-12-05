@@ -1,0 +1,15 @@
+{{ page.content }}
+<script>
+  function addMetaTag(httpEquiv, content) {
+    const meta = document.createElement('meta');
+    meta.setAttribute('http-equiv', httpEquiv);
+    meta.setAttribute('content', content);
+    document.head.appendChild(meta);
+}
+
+// Add Cache-Control meta tag
+addMetaTag('Cache-control', 'no-cache');
+
+// Add Expires meta tag
+addMetaTag('Expires', '-1');
+</script>
