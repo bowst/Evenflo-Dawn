@@ -1,9 +1,9 @@
 <a href="{{ section.settings.promo_link }}">
   <div style="position: relative;">
     {% assign current_date = 'now' | date: '%s' %}
-    {% assign start_date = '2024-12-03' | date: '%s' %}
+    {% assign start_date = '2024-12-05' | date: '%s' %}
     {%- comment -%}Promotion Start Date{%- endcomment -%}
-    {% assign end_date = '2024-12-04' | date: '%s' %}
+    {% assign end_date = '2024-12-12' | date: '%s' %}
 
     <div class="desktop">
       {% if current_date >= start_date and current_date <= end_date %}
