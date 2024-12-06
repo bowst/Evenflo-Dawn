@@ -98,6 +98,12 @@
     .evenflo-image-banner:has(.banner__content .banner__box:empty) {
       height: auto;
     }
+        .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media img{
+           position: static;
+        }
+        .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media::before{
+          display: none;
+        }
         .text-color .button{
         background-color: {{ section.settings.mobile_button_color }} !important;
           border: 1px solid #000;
