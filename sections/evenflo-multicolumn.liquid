@@ -80,7 +80,7 @@
     {%- endunless -%}
     <slider-component class="slider-mobile-gutter">
       <ul
-        class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}  {%- if section.settings.container_size != blank and section.settings.column_style == 'modern' -%} {% endif %}"
+        class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}  {%- if section.settings.container_size == '' and section.settings.column_style == 'modern' -%} modern-container {% endif %}"
         id="Slider-{{ section.id }}"
         role="list"
       >
@@ -367,15 +367,15 @@
     "label": "Container Size",
     "options": [
       {
-        "label": "Full Width",
-        "value": "full_width"
+        "label": "Half",
+        "value": "half"
       },
       {
-        "label": "Normal",
-        "value": "normal"
+        "label": "Full Width",
+        "value": "full_width"
       }
     ],
-    "default": "normal",
+    "default": "full_width",
     "info": "Only applicable in modern style",
     },
     {
