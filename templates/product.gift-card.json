@@ -101,10 +101,12 @@
     },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
+      "disabled": true,
       "settings": {}
     },
     "49c36a4c-d12e-4b40-99dc-d0893ec62107": {
       "type": "evenflo-full-width",
+      "disabled": true,
       "settings": {
         "heading": "Evenflo",
         "content": "<p>Default Content</p>"
@@ -112,6 +114,7 @@
     },
     "4600ac99-da69-454a-a56c-0fae1b682f2e": {
       "type": "evenflo-video",
+      "disabled": true,
       "settings": {
         "heading": "Video Title",
         "description": "Video Description"
@@ -119,6 +122,7 @@
     },
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
+      "disabled": true,
       "settings": {
         "product_handles": ""
       }
@@ -143,10 +147,12 @@
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
       "type": "evenflo-pdp-faq",
+      "disabled": true,
       "settings": {}
     },
     "45849377-4cee-48de-b8f8-52fd115e29b4": {
       "type": "evenflo-video-support",
+      "disabled": true,
       "settings": {
         "heading": "Free Video Chat Support",
         "description": "Need some real-time help? Schedule a live video call with us and we'll walk you through.",
@@ -165,6 +171,7 @@
     },
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
       "type": "evenflo-quote",
+      "disabled": true,
       "settings": {
         "quote": "{{ product.metafields.custom.customer_quote.value }}",
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
@@ -183,13 +190,17 @@
       "block_order": [
         "847d2477-1327-4af5-8986-19ec4a565df8"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
     },
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
       "type": "evenflo-join",
-      "settings": {}
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     },
     "e87086c3-8bc1-4ebd-af1f-5d31612858d1": {
       "type": "evenflo-shopping-benefits",
