@@ -29,7 +29,9 @@
       {{ block.shopify_attributes }}
     >
       {%- for option in product.options_with_values -%}
-        {% if option.name == 'Trim' %}
+        {% if product.template_suffix == 'gift-card' %}
+          <p class="product__text inline-richtext subtitle heading-underline">Amount</p>
+        {% elsif option.name == 'Trim' %}
           <p class="product__text inline-richtext subtitle heading-underline">Styles. Which is best for you</p>
         {% else %}
           <p class="product__text inline-richtext subtitle heading-underline">Color</p>
