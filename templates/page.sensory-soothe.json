@@ -17,7 +17,7 @@
           "settings": {
             "heading": "{{ page.title }}",
             "heading_size": "h1",
-            "heading_color": "black"
+            "heading_color": "white"
           }
         }
       },
@@ -25,11 +25,11 @@
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
       ],
       "settings": {
-        "image": "{{ page.metafields.custom.header_image.value }}",
+        "image": "shopify://shop_images/sensor-soothe-launch_banner.png",
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
-        "image_height": "small",
+        "image_height": "adapt",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
         "desktop_content_alignment": "center",
@@ -54,6 +54,23 @@
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "1736179946b06b3696": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_F6GViB": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "Rq8iLG"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_F6GViB"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "b44c8197-4385-4350-ad0f-238c04013fa1": {
@@ -154,32 +171,15 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "1736179946b06b3696": {
-      "type": "apps",
-      "blocks": {
-        "klaviyo_email_marketing_sms_form_embed_block_F6GViB": {
-          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
-          "settings": {
-            "formId": "Rq8iLG"
-          }
-        }
-      },
-      "block_order": [
-        "klaviyo_email_marketing_sms_form_embed_block_F6GViB"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "custom_liquid_ARfx8a",
     "main",
+    "1736179946b06b3696",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
     "013f6ab7-3595-492c-8062-a12326290142",
-    "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
-    "1736179946b06b3696"
+    "81ccdd0b-70ea-4e2e-aff0-a92138c7e376"
   ]
 }
