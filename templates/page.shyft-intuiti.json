@@ -9,6 +9,57 @@
  */
 {
   "sections": {
+    "evenflo_image_video_banner_EAP6MQ": {
+      "type": "evenflo-image-video-banner",
+      "blocks": {
+        "heading_tmPzyb": {
+          "type": "heading",
+          "settings": {
+            "heading": "SHYFT™ INTUITI+™",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "text_3dRxNV": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>With Sensorysoothe™</strong>",
+            "text_style": "body"
+          }
+        },
+        "buttons_AHVXaD": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_tmPzyb",
+        "text_3dRxNV",
+        "buttons_AHVXaD"
+      ],
+      "settings": {
+        "video": "shopify://files/videos/Shyft-Intuiti-LP-Header - 1920x450.mp4",
+        "video_enable": true,
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "evenflo_image_banner_BqdqwC": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -46,11 +97,11 @@
       ],
       "settings": {
         "image": "shopify://shop_images/Shyft_Intuiti.png",
-        "button_color": "#FFFFFF",
+        "button_color": "#ffffff",
         "button_text_color": "#000000",
-        "mobile_button_color": "#FFFFFF",
+        "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#FFFFFF",
+        "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
@@ -313,6 +364,7 @@
     }
   },
   "order": [
+    "evenflo_image_video_banner_EAP6MQ",
     "evenflo_image_banner_BqdqwC",
     "main",
     "013f6ab7-3595-492c-8062-a12326290142",
