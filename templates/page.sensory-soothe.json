@@ -27,50 +27,17 @@
       "settings": {
         "image": "shopify://shop_images/sensor-soothe-launch_banner.png",
         "image_2": "shopify://shop_images/sensor-soothe-launch_banner.png",
-        "button_color": "#FFFFFF",
+        "button_color": "#ffffff",
         "button_text_color": "#000000",
-        "mobile_button_color": "#FFFFFF",
+        "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#FFFFFF",
+        "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
-      "type": "image-banner",
-      "blocks": {
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "SOMETHING BRILLIANT IS COMING",
-            "heading_size": "h1",
-            "heading_color": "white"
-          }
-        }
-      },
-      "block_order": [
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/sensor-soothe-launch_banner.png",
-        "image_2": "shopify://shop_images/sensor-soothe-launch_banner.png",
-        "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -121,13 +88,30 @@
         "heading": "Connect with us",
         "text": "Sensorsafe"
       }
+    },
+    "1736190670cb199d7b": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_email_marketing_sms_form_embed_block_fTwiXr": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "Rq8iLG"
+          }
+        }
+      },
+      "block_order": [
+        "klaviyo_email_marketing_sms_form_embed_block_fTwiXr"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "evenflo_image_banner_XLNPxg",
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "rich_text_3GhWaC",
     "main",
-    "evenflo_klaviyo_soothe_7zDEKh"
+    "evenflo_klaviyo_soothe_7zDEKh",
+    "1736190670cb199d7b"
   ]
 }
