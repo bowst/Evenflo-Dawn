@@ -270,6 +270,11 @@ a.button.button--primary:hover {
 .evenflo-multicolumn-variant-slider .page-width {
     max-width: 90%;
 }
+@media screen and (max-width){
+  .evenflo-multicolumn-variant-slider .page-width {
+      max-width: 100%;
+  }
+}
 .evenflo-multicolumn-variant-slider .multicolumn-list h4.sub-title.inline-richtext {
     font-size: 16px;
     font-weight: 400;
