@@ -38,11 +38,6 @@
       </div>
     {%- endunless -%}
     <slider-component class="slider-mobile-gutter">
-      <div class="label-wrapper">
-        <div class="label lebal-1">Feature</div>
-        <div class="label lebal-2">Colorway</div>
-        <div class="label lebal-3">Price</div>
-      </div>
       <ul
         class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}"
         id="Slider-{{ section.id }}"
@@ -132,7 +127,12 @@
                       {{ block.settings.sub_title }}
                   </h4>
                 {%- endif -%}
-               
+               <div class="before-item">
+                 <div class="label-wrapper">
+                    <div class="label lebal-1">Feature</div>
+                    <div class="label lebal-2">Colorway</div>
+                    <div class="label lebal-3">Price</div>
+                  </div>
                 {%- if block.settings.text != blank -%}
                   <div class="rte">{{ block.settings.text }}</div>
                 {%- endif -%}
@@ -213,6 +213,7 @@
                       {{ block.settings.price_text }}
                   </h2>
                 {%- endif -%}
+              </div>
                 {%- if block.settings.link_label != blank
                   and block.settings.link
                     == 'https://www.livechat.com/?utm_source=chat_button&amp;utm_medium=referral&amp;utm_campaign=lc_3753191'
