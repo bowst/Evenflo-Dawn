@@ -5,9 +5,7 @@ h2.title.inline-richtext.h2 {
 .multicolumn .title {
   margin: 0;
 }
-.multicolumn .title.center {
-  width: 100%;
-}
+
 .multicolumn.no-heading .title {
   display: none;
 }
@@ -266,36 +264,42 @@ a.button.button--primary:hover {
     display: list-item;
   }
 }
-.multicolumn-list h4.sub-title.inline-richtext {
+.multicolumn .title.center {
+  width: 100%;
+}
+.evenflo-multicolumn-variant-slider .page-width {
+    max-width: 90%;
+}
+.evenflo-multicolumn-variant-slider .multicolumn-list h4.sub-title.inline-richtext {
     font-size: 16px;
     font-weight: 400;
     margin-top:0;
 }
-.multicolumn-list h2{
+.evenflo-multicolumn-variant-slider .multicolumn-list h2{
   margin: 10px 0;
 }
-.variants-wrapper {
+.evenflo-multicolumn-variant-slider .variants-wrapper {
     display: flex;
     gap: 10px;
     justify-content: center;
 }
 
-.variants-wrapper .variant img {
+.evenflo-multicolumn-variant-slider .variants-wrapper .variant img {
     width: 40px;
     border-radius: 100%;
     border: 3px solid transparent;
 }
-.variants-wrapper .variant img:hover {
+.evenflo-multicolumn-variant-slider .variants-wrapper .variant img:hover {
     width: 40px;
     border-radius: 100%;
     border: 3px solid #ccd1d1;
 }
-.before-item {
+.evenflo-multicolumn-variant-slider .before-item {
     display: flex;
     position: relative;
 }
 
-.label-wrapper {
+.evenflo-multicolumn-variant-slider .label-wrapper {
     border-right: 2px solid #b3b6b7 ;
     text-align: right;
     padding-right: 15px;
@@ -307,13 +311,13 @@ a.button.button--primary:hover {
     top: 0;
     left: -100px;
 }
-.label-wrapper .label-wrap {
+.evenflo-multicolumn-variant-slider .label-wrapper .label-wrap {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.label-wrapper .label {
+.evenflo-multicolumn-variant-slider .label-wrapper .label {
     padding: 7px 0;
     color:#b3b6b7;
 }
