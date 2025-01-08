@@ -328,7 +328,11 @@ a.button.button--primary:hover {
     padding: 7px 0;
     color:#b3b6b7;
 }
-
+@media screen and (min-width:992px){
+  .evenflo-multicolumn-variant-slider .multicolumn-list__item:not(:first-child) .label-wrapper{
+    display: none;
+  }
+}
 @media screen and (max-width:991px){
   .evenflo-multicolumn-variant-slider .page-width {
       max-width: 100%;
