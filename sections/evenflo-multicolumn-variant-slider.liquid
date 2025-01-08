@@ -27,7 +27,7 @@
   <div class="page-width section-{{ section.id }}-padding isolate">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
-        <h2 class="title inline-richtext {{ section.settings.heading_size }} {% if section.settings.heading_alignment == 'center' %} center{% endif %}">
+        <h2 class="title inline-richtext {{ section.settings.heading_size }} {% if section.settings.heading_alignment == 'center' %} center{% endif %} {% if section.settings.heading_underline %} heading-underline heading-underline-center{% endif %}">
           {{ section.settings.title }}
         </h2>
         {%- if section.settings.button_label != blank and show_mobile_slider -%}
@@ -213,6 +213,12 @@
       "id": "title",
       "default": "Multicolumn",
       "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_underline",
+      "default": false,
+      "label": "Add an underline to the heading"
     },
     {
       "type": "select",
