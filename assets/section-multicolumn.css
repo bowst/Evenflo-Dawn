@@ -333,6 +333,11 @@ a.button.button--primary:hover {
     display: none;
   }
 }
+@media screen and (max-width:1100px){
+  .evenflo-multicolumn-variant-slider .variants-wrapper .variant img:hover {
+      width: 20px;
+  }
+}
 @media screen and (max-width:991px){
   .evenflo-multicolumn-variant-slider .page-width {
       max-width: 100%;
