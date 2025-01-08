@@ -294,8 +294,6 @@ a.button.button--primary:hover {
     border: 3px solid transparent;
 }
 .evenflo-multicolumn-variant-slider .variants-wrapper .variant img:hover {
-    width: 40px;
-    border-radius: 100%;
     border: 3px solid #ccd1d1;
 }
 .evenflo-multicolumn-variant-slider .before-item {
@@ -334,7 +332,7 @@ a.button.button--primary:hover {
   }
 }
 @media screen and (max-width: 1100px){
-  .evenflo-multicolumn-variant-slider .variants-wrapper .variant img:hover {
+  .evenflo-multicolumn-variant-slider .variants-wrapper .variant img {
       width: 20px;
   }
 }
@@ -344,9 +342,6 @@ a.button.button--primary:hover {
   }
   .evenflo-multicolumn-variant-slider .before-item .rte {
       min-height: auto;
-  }
-  .evenflo-multicolumn-variant-slider .variants-wrapper .variant img:hover {
-      width: 20px;
   }
   .evenflo-multicolumn-variant-slider .label-wrapper {
       position: static;
