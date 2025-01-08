@@ -131,6 +131,16 @@
                 {%- if block.settings.text != blank -%}
                   <div class="rte">{{ block.settings.text }}</div>
                 {%- endif -%}
+                  <div class="variants-wrapper">
+                    <div class="variant">
+                       <img 
+                          src="{{ block.settings.variant_1 | image_url: 'large' }}" 
+                          alt="{{ block.settings.variant_1_alt | default: 'Image description' }}" 
+                          width="100" 
+                          height="100"
+                       >
+                    </div>
+                  </div>
                  {%- if block.settings.price_text != blank -%}
                   <h2 class="sub-title inline-richtext">
                       {{ block.settings.price_text }}
