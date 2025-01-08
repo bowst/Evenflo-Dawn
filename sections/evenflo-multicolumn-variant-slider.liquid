@@ -132,6 +132,7 @@
                   <div class="rte">{{ block.settings.text }}</div>
                 {%- endif -%}
                   <div class="variants-wrapper">
+                    {%- if block.settings.image != blank -%}
                     <div class="variant">
                       {{
                             block.settings.variant_1
@@ -144,6 +145,7 @@
                           }}
                        
                     </div>
+                    {%- endif -%}
                   </div>
                  {%- if block.settings.price_text != blank -%}
                   <h2 class="sub-title inline-richtext">
