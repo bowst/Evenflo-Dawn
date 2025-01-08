@@ -146,6 +146,62 @@
                        
                     </div>
                     {%- endif -%}
+                     {%- if block.settings.variant_2 != blank -%}
+                    <div class="variant">
+                      {{
+                            block.settings.variant_2
+                            | image_url: width: 100
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '50, 75, 100',
+                              sizes: sizes,
+                              class: 'variant-img'
+                          }}
+                       
+                    </div>
+                    {%- endif -%}
+                     {%- if block.settings.variant_3 != blank -%}
+                    <div class="variant">
+                      {{
+                            block.settings.variant_3
+                            | image_url: width: 100
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '50, 75, 100',
+                              sizes: sizes,
+                              class: 'variant-img'
+                          }}
+                       
+                    </div>
+                    {%- endif -%}
+                     {%- if block.settings.variant_4 != blank -%}
+                    <div class="variant">
+                      {{
+                            block.settings.variant_4
+                            | image_url: width: 100
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '50, 75, 100',
+                              sizes: sizes,
+                              class: 'variant-img'
+                          }}
+                       
+                    </div>
+                    {%- endif -%}
+                     {%- if block.settings.variant_5 != blank -%}
+                    <div class="variant">
+                      {{
+                            block.settings.variant_5
+                            | image_url: width: 100
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '50, 75, 100',
+                              sizes: sizes,
+                              class: 'variant-img'
+                          }}
+                       
+                    </div>
+                    {%- endif -%}
                   </div>
                  {%- if block.settings.price_text != blank -%}
                   <h2 class="sub-title inline-richtext">
