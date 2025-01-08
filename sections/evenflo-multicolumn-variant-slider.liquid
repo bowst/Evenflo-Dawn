@@ -128,14 +128,16 @@
                   </h4>
                 {%- endif -%}
                <div class="before-item">
-                 <div class="label-wrapper">
-                    <div class="label lebal-1">Feature</div>
-                     <div class="label-wrap">
-                        <div class="label lebal-2">Colorway</div>
-                        <div class="label lebal-3">Price</div>
-                     </div>
-                    
-                  </div>
+                  {% if forloop.first %}
+                    <div class="label-wrapper">
+                      <div class="label lebal-1">Feature</div>
+                       <div class="label-wrap">
+                          <div class="label lebal-2">Colorway</div>
+                          <div class="label lebal-3">Price</div>
+                       </div>
+                    </div>
+                  {% endif %}
+                 
                  <div>
                 {%- if block.settings.text != blank -%}
                   <div class="rte">{{ block.settings.text }}</div>
