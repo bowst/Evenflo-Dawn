@@ -337,6 +337,11 @@ a.button.button--primary:hover {
   }
 }
 @media screen and (max-width: 991px){
+  .evenflo-multicolumn-variant-slider img.multicolumn-card__image {
+    width: 80% !important;
+    height: auto !important;
+    aspect-ratio: 1 !important;
+  }
   .evenflo-multicolumn-variant-slider .page-width {
       max-width: 100%;
   }
