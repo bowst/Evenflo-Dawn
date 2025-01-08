@@ -283,5 +283,10 @@ a.button.button--primary:hover {
 .variants-wrapper .variant img {
     width: 40px;
     border-radius: 100%;
+    border: 3px solid transparent;
+}
+.variants-wrapper .variant img:hover {
+    width: 40px;
+    border-radius: 100%;
     border: 3px solid #ccd1d1;
 }
