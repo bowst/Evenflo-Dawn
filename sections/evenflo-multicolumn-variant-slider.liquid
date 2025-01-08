@@ -122,6 +122,11 @@
                     {%- endif -%}
                   </h3>
                 {%- endif -%}
+                {%- if block.settings.sub_title != blank -%}
+                  <h4 class="sub-title inline-richtext">
+                      {{ block.settings.sub_title }}
+                  </h4>
+                {%- endif -%}
                 {%- if block.settings.text != blank -%}
                   <div class="rte">{{ block.settings.text }}</div>
                 {%- endif -%}
@@ -452,6 +457,12 @@
           "id": "title",
           "default": "Column",
           "label": "t:sections.multicolumn.blocks.column.settings.title.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "sub_title",
+          "default": "Column",
+          "label": "Sub Heading"
         },
         {
           "type": "richtext",
