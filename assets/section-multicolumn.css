@@ -297,7 +297,6 @@ a.button.button--primary:hover {
     border: 3px solid #ccd1d1;
 }
 .evenflo-multicolumn-variant-slider .before-item {
-    display: flex;
     position: relative;
 }
 .evenflo-multicolumn-variant-slider .before-item .rte {
@@ -337,6 +336,9 @@ a.button.button--primary:hover {
   }
 }
 @media screen and (max-width: 991px){
+  .evenflo-multicolumn-variant-slider .before-item {
+    display: flex;
+  }
   .evenflo-multicolumn-variant-slider .multicolumn-card {
     justify-content:flex-start;
   }
