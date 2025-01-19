@@ -1,9 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_Ak7Ug7": {
       "type": "image-banner",
       "blocks": {
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
+        "heading_EkRTt4": {
           "type": "heading",
           "settings": {
             "heading": "{{ page.title }}",
@@ -13,108 +30,91 @@
         }
       },
       "block_order": [
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
+        "heading_EkRTt4"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/MicrosoftTeams-image_39.jpg",
+        "image": "shopify://shop_images/MicrosoftTeams-image_39.jpg",
         "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "b44c8197-4385-4350-ad0f-238c04013fa1": {
+    "rich_text_7GmKQL": {
       "type": "rich-text",
       "blocks": {
-        "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-0": {
+        "heading_dhxUBM": {
           "type": "heading",
           "settings": {
             "heading": "{{ page.metafields.custom.page_heading.value }}",
             "heading_size": "h1"
           }
         },
-        "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1": {
+        "text_H4wwjp": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}</p>"
           }
         }
       },
       "block_order": [
-        "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-0",
-        "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1"
+        "heading_dhxUBM",
+        "text_H4wwjp"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
       }
     },
-    "00cfd03a-1ff8-471a-9dcb-f8fc54b99aac": {
-      "type": "category_anchors",
-      "disabled": true,
-      "settings": {
-        "category_anchor": "Shop Strollers",
-        "html": "<div class=\"flex-container\">\n  <a href=\"\/collections\/travel-systems\" class=\"flex-item\">Travel Systems<\/a>\n  <a href=\"\/collections\/strollers\" class=\"flex-item\">Strollers<\/a>\n  <a href=\"\/collections\/car-seat-stroller-combos\" class=\"flex-item\">Car Seat Stroller Combo<\/a>\n  <a href=\"\/collections\/stroller-accessories\" class=\"flex-item\">Accessories<\/a>\n<\/div>",
-        "liquid": ""
-      }
-    },
-    "81ccdd0b-70ea-4e2e-aff0-a92138c7e376": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_dtzKpN": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15779834593436__81ccdd0b-70ea-4e2e-aff0-a92138c7e376-16855813912b1a6790-0": {
+        "heading_6mUCPh": {
           "type": "heading",
           "settings": {
             "heading": "Travel Systems",
             "heading_size": "h1"
           }
         },
-        "template--15779834593436__81ccdd0b-70ea-4e2e-aff0-a92138c7e376-16855813912b1a6790-1": {
+        "text_daVMkL": {
           "type": "text",
           "settings": {
-            "text": "<p>Evenflo’s travel systems put it all together for you—infant car seat plus a stroller, all in one convenient and versatile package. From baby travel systems to easy-to-expand designs, each of our models deliver a smart value that goes the distance.<br\/><br\/>Our stroller car seat combos make for easier, smoother car-to-stroller transitions. Simply lift up the car seat and attach it directly to the stroller, all while keeping your child comfy and safely buckled in. The little details make a big difference, too. From full-coverage canopies and oversized storage baskets to self-standing fold and adjustable handles, our travel systems meet your need for convenience and safety at every turn.<\/p><p>• All-in-one convenience and value <br\/>• Evenflo car seat compatibility <br\/>• Comfort and protection for baby <br\/>• On-the-go conveniences <br\/>• Extended use<\/p>",
+            "text": "<p>Evenflo’s travel systems put it all together for you—infant car seat plus a stroller, all in one convenient and versatile package. From baby travel systems to easy-to-expand designs, each of our models deliver a smart value that goes the distance.<br/><br/>Our stroller car seat combos make for easier, smoother car-to-stroller transitions. Simply lift up the car seat and attach it directly to the stroller, all while keeping your child comfy and safely buckled in. The little details make a big difference, too. From full-coverage canopies and oversized storage baskets to self-standing fold and adjustable handles, our travel systems meet your need for convenience and safety at every turn.</p><p>• All-in-one convenience and value <br/>• Evenflo car seat compatibility <br/>• Comfort and protection for baby <br/>• On-the-go conveniences <br/>• Extended use</p>",
             "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15779834593436__81ccdd0b-70ea-4e2e-aff0-a92138c7e376-16855813912b1a6790-0",
-        "template--15779834593436__81ccdd0b-70ea-4e2e-aff0-a92138c7e376-16855813912b1a6790-1"
+        "heading_6mUCPh",
+        "text_daVMkL"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/travel-systems.png",
+        "image": "shopify://shop_images/travel-systems.png",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "6bb51026-ccbd-4604-8669-add5ff4b5ad5": {
+    "featured_collection_z46fH4": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -129,20 +129,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "138f8f4b-4cfe-4df3-b5c3-535b265230eb": {
-      "type": "divider",
+    "evenflo_divider_RP9wYE": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -150,43 +151,45 @@
         "custom_css": ""
       }
     },
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_zjKKAV": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0": {
+        "heading_6EcaQF": {
           "type": "heading",
           "settings": {
             "heading": "Strollers",
             "heading_size": "h1"
           }
         },
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1": {
+        "text_WadKVt": {
           "type": "text",
           "settings": {
-            "text": "<p>From the backyard to the park and beyond, stay active and open to adventure with one or more of your little ones. Evenflo strollers are a great choice for parents who need a stylish, dependable ride without the attachable car seat option.<\/p><p><br\/>Whether your priority is versatility, lightweight design or all-terrain flexibility, we offer a stroller to meet your family’s needs. You’ll love how we paid attention to the features and details that make all the difference in your busy life, including robust wheels, easy-to-access storage, flip-flop friendly brakes, cupholders, UPF sun protection, and more.<\/p>",
+            "text": "<p>From the backyard to the park and beyond, stay active and open to adventure with one or more of your little ones. Evenflo strollers are a great choice for parents who need a stylish, dependable ride without the attachable car seat option.</p><p><br/>Whether your priority is versatility, lightweight design or all-terrain flexibility, we offer a stroller to meet your family’s needs. You’ll love how we paid attention to the features and details that make all the difference in your busy life, including robust wheels, easy-to-access storage, flip-flop friendly brakes, cupholders, UPF sun protection, and more.</p>",
             "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0",
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1"
+        "heading_6EcaQF",
+        "text_WadKVt"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/strollers-block.png",
+        "image": "shopify://shop_images/strollers-block.png",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "a57a509f-6a3a-4906-bd96-6259c5bda711": {
+    "featured_collection_Py3VYr": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -201,20 +204,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
-        "swipe_on_mobile": true,
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "fee912ee-b220-423b-99ba-b474d2bcea21": {
-      "type": "divider",
+    "evenflo_divider_3Adcke": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -222,43 +226,45 @@
         "custom_css": ""
       }
     },
-    "393c58dd-ab50-46b8-ac29-f72433dcd6b2": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_iM4cgk": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15792893919388__393c58dd-ab50-46b8-ac29-f72433dcd6b2-16855813912b1a6790-0": {
+        "heading_c8FW4V": {
           "type": "heading",
           "settings": {
             "heading": "Infant car seat stroller combo",
             "heading_size": "h1"
           }
         },
-        "template--15792893919388__393c58dd-ab50-46b8-ac29-f72433dcd6b2-16855813912b1a6790-1": {
+        "text_bwJFEy": {
           "type": "text",
           "settings": {
-            "text": "<p>A single piece of baby gear that Shyfts from infant car seat to stroller in one step, streamlining life on the go. Moving from car to sidewalk? Simply lift the carrier off the base, release the wheels and you’re rolling in no time.<\/p>",
+            "text": "<p>A single piece of baby gear that Shyfts from infant car seat to stroller in one step, streamlining life on the go. Moving from car to sidewalk? Simply lift the carrier off the base, release the wheels and you’re rolling in no time.</p>",
             "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15792893919388__393c58dd-ab50-46b8-ac29-f72433dcd6b2-16855813912b1a6790-0",
-        "template--15792893919388__393c58dd-ab50-46b8-ac29-f72433dcd6b2-16855813912b1a6790-1"
+        "heading_c8FW4V",
+        "text_bwJFEy"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/combos.png",
+        "image": "shopify://shop_images/combos.png",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "e19c3fe6-bdd2-4fe6-8480-0ecfacb9e35d": {
+    "featured_collection_4kDHAM": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -273,20 +279,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "bff8051a-634b-4d66-804d-9a33451894e9": {
-      "type": "divider",
+    "evenflo_divider_WhyFmx": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -294,43 +301,45 @@
         "custom_css": ""
       }
     },
-    "88ee7c8d-6dee-411f-84d8-71466a916b6c": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_6RLq3b": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15792893919388__88ee7c8d-6dee-411f-84d8-71466a916b6c-16855813912b1a6790-0": {
+        "heading_kwbz7c": {
           "type": "heading",
           "settings": {
             "heading": "STROLLER ACCESSORIES",
             "heading_size": "h1"
           }
         },
-        "template--15792893919388__88ee7c8d-6dee-411f-84d8-71466a916b6c-16855813912b1a6790-1": {
+        "text_QGV9Qz": {
           "type": "text",
           "settings": {
-            "text": "<p>As your little one outgrows their booties and onesies, our convertible car seats easily adapt, convert and grow right along with them. <\/p>",
+            "text": "<p>As your little one outgrows their booties and onesies, our convertible car seats easily adapt, convert and grow right along with them. </p>",
             "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15792893919388__88ee7c8d-6dee-411f-84d8-71466a916b6c-16855813912b1a6790-0",
-        "template--15792893919388__88ee7c8d-6dee-411f-84d8-71466a916b6c-16855813912b1a6790-1"
+        "heading_kwbz7c",
+        "text_QGV9Qz"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/stroller-accessories.png",
+        "image": "shopify://shop_images/stroller-accessories.jpg",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "0c3b3e6e-bdb8-4073-959c-0e7c876ca86c": {
+    "featured_collection_PXaer9": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -345,20 +354,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "8c38582d-758a-4442-b69e-a758109399c5": {
-      "type": "divider",
+    "evenflo_divider_q4CeFC": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -368,21 +378,20 @@
     }
   },
   "order": [
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "main",
-    "b44c8197-4385-4350-ad0f-238c04013fa1",
-    "00cfd03a-1ff8-471a-9dcb-f8fc54b99aac",
-    "81ccdd0b-70ea-4e2e-aff0-a92138c7e376",
-    "6bb51026-ccbd-4604-8669-add5ff4b5ad5",
-    "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e",
-    "a57a509f-6a3a-4906-bd96-6259c5bda711",
-    "fee912ee-b220-423b-99ba-b474d2bcea21",
-    "393c58dd-ab50-46b8-ac29-f72433dcd6b2",
-    "e19c3fe6-bdd2-4fe6-8480-0ecfacb9e35d",
-    "bff8051a-634b-4d66-804d-9a33451894e9",
-    "88ee7c8d-6dee-411f-84d8-71466a916b6c",
-    "0c3b3e6e-bdb8-4073-959c-0e7c876ca86c",
-    "8c38582d-758a-4442-b69e-a758109399c5"
+    "image_banner_Ak7Ug7",
+    "rich_text_7GmKQL",
+    "evenflo_image_text_dtzKpN",
+    "featured_collection_z46fH4",
+    "evenflo_divider_RP9wYE",
+    "evenflo_image_text_zjKKAV",
+    "featured_collection_Py3VYr",
+    "evenflo_divider_3Adcke",
+    "evenflo_image_text_iM4cgk",
+    "featured_collection_4kDHAM",
+    "evenflo_divider_WhyFmx",
+    "evenflo_image_text_6RLq3b",
+    "featured_collection_PXaer9",
+    "evenflo_divider_q4CeFC"
   ]
 }

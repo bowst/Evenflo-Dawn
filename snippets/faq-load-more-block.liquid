@@ -1,0 +1,99 @@
+
+{{ 'faq-load-more-block.css' | asset_url | stylesheet_tag }}
+
+
+<div class="product-page-wrapper">
+<div class="popular-question-block">
+  <div class="popular-content-wrapper page-width">
+
+  <div class="popular-header">
+
+	<div class="search-selector-wrapper">
+    {% if show_topic_dropdown %}
+      <div class="search-selector">
+        <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
+      </div>
+    {% endif %}
+
+    {% if show_product_dropdown %}
+      <div class="search-selector">
+        <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
+      </div>
+    {% endif %}
+
+    {% if show_collection_dropdown %}
+      <div class="search-selector">
+        <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
+      </div>
+    {% endif %}
+    </div>
+
+    <div class="search-input">
+      <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
+    </div>
+
+    </div>
+
+   
+ 
+    <div class="popular-card-wrapper" id="searchListigBody">
+     
+    </div> 
+
+    <div class="browse-categories" id="loadBtnDiv">
+        <button id="loadMoreBtn"  >Load More</button>
+    </div>
+
+
+  </div>
+  </div>
+
+  </div>
+
+
+
+
+<script>
+
+var currentPage = 1;
+
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+loadMoreBtn?.addEventListener('click', () => {
+  currentPage++;
+  getFilterValuesAndCallFunc();
+});
+
+function handleDropDownChange(event) {  
+
+   //This we have added if some one searches we setting the page count to 1
+    // if(event.target.id=="searchFAQ"){
+    //   currentPage = 1
+    // }
+     currentPage = 1
+     getFilterValuesAndCallFunc()
+  }
+
+
+function getFilterValuesAndCallFunc(){
+    let filter = document.getElementById('searchFAQ')?.value;
+
+    //These can be from the url on can be from the dropdown, if they are from url they are intialized and there values set from there respective pages
+    let topic = document.getElementById('selectTopic')?.value || topicID;
+    let product = document.getElementById('selectProduct')?.value || productID;
+    let collection = document.getElementById('selectCollection')?.value || collectionID;
+
+    fetchFAQsByFilters({
+      categoryID:categoryID,
+      filter:filter ,
+      topicsID:topic,
+      page :currentPage,
+      productID :product,
+      collectionID: collection,
+      popular : false,
+      appendTo : "searchListigBody",
+});
+
+  }
+
+
+</script>

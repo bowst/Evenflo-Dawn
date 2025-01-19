@@ -1,40 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner_EhB8Xm": {
+    "image_banner_nLGXwR": {
       "type": "image-banner",
       "blocks": {
-        "heading_MKjBFd": {
-          "type": "heading",
-          "settings": {
-            "heading": "{{ page.title }}",
-            "heading_size": "h1",
-            "heading_color": "white"
-          }
-        }
-      },
-      "block_order": [
-        "heading_MKjBFd"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/stroller-accessories-Header.jpg",
-        "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": true,
-        "image_height": "small",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "401ce55f-8dc2-47f6-8040-67332fcb9a11": {
-      "type": "evenflo-collection-image-banner",
-      "blocks": {
-        "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-heading-1": {
+        "heading_4PhXjE": {
           "type": "heading",
           "settings": {
             "heading": "Accessories",
@@ -42,61 +20,35 @@
             "heading_color": "white"
           }
         },
-        "text_QxTBmR": {
-          "type": "text",
+        "buttons_yJ7wat": {
+          "type": "buttons",
+          "disabled": true,
           "settings": {
-            "text": "Explore our range of innovative accessories designed to make your parenting journey smoother and more enjoyable. From convenient storage solutions to practical add-ons, Evenflo offers everything you need to enhance your everyday adventures with your little one.",
-            "text_style": "body"
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-heading-1",
-        "text_QxTBmR"
+        "heading_4PhXjE",
+        "buttons_yJ7wat"
       ],
-      "disabled": true,
       "settings": {
-        "image": "shopify:\/\/shop_images\/nwbpytaa90ibinraunjm_61a5c043-f252-45ed-a40a-37b12854e9e6.jpg",
+        "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-left",
-        "show_text_box": true,
-        "desktop_content_alignment": "left",
-        "color_scheme": "accent-1",
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
-      }
-    },
-    "61932dcb-05d1-4cd5-9238-cb4b1f4cba58": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15877042503836__61932dcb-05d1-4cd5-9238-cb4b1f4cba58-heading-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Shop Evenflo Accessories",
-            "heading_size": "h1"
-          }
-        },
-        "text_r9Ugxe": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Explore our range of innovative accessories designed to make your parenting journey smoother and more enjoyable. From convenient storage solutions to practical add-ons, Evenflo offers everything you need to enhance your everyday adventures with your little one.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "template--15877042503836__61932dcb-05d1-4cd5-9238-cb4b1f4cba58-heading-1",
-        "text_r9Ugxe"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "main": {
@@ -107,16 +59,50 @@
         "padding_bottom": 28
       }
     },
-    "4cacfa3a-8f0d-47df-b959-1d6d44c29828": {
-      "type": "category_anchors",
-      "disabled": true,
+    "rich_text_g8jhPG": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_tQryXR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_aafHcB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Explore our range of innovative accessories designed to make your parenting journey smoother and more enjoyable. From convenient storage solutions to practical add-ons, Evenflo offers everything you need to enhance your everyday adventures with your little one.</p>"
+          }
+        },
+        "button_yRGFab": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_tQryXR",
+        "text_aafHcB",
+        "button_yRGFab"
+      ],
       "settings": {
-        "category_anchor": "Shop Car Seats",
-        "html": "<div class=\"flex-container\">\n  <a href=\"\/collections\/infant-car-seats\" class=\"flex-item\">Infant Car Seats<\/a>\n  <a href=\"\/collections\/convertible-car-seats\" class=\"flex-item\">Convertible Car Seats<\/a>\n  <a href=\"\/collections\/booster-car-seats\" class=\"flex-item\">Booster Car Seats<\/a>\n  <a href=\"\/collections\/car-seat-accessories\" class=\"flex-item\">Accessories<\/a>\n<\/div>",
-        "liquid": ""
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
-    "c256954c-c7e1-43f8-b1ee-a1d20cb0eda4": {
+    "featured_collection_Vcgerc": {
       "type": "featured-collection",
       "settings": {
         "title": "Car Seat Accessories",
@@ -131,28 +117,20 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 84,
         "padding_bottom": 36
       }
     },
-    "b434f72e-de68-4045-9e0a-4dbc958bb789": {
-      "type": "divider",
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "1f66ea07-4c00-4e0b-ab5d-9ba9a0954277": {
+    "featured_collection_giTJnN": {
       "type": "featured-collection",
       "settings": {
         "title": "Stroller Accessories",
@@ -167,28 +145,20 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "d111bf9e-a6c4-427f-ac39-ad1a53d5f159": {
-      "type": "divider",
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "7e7ff757-2cc8-4589-b196-cc8c29cc49e7": {
+    "featured_collection_AAW6NC": {
       "type": "featured-collection",
       "settings": {
         "title": "Pivot Suite Accessories",
@@ -203,28 +173,20 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "b2f14bfe-1db3-47a4-9640-a2ac4d63d125": {
-      "type": "divider",
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "9205ff37-d1e2-48de-80a6-06285e405749": {
+    "featured_collection_4Gazq6": {
       "type": "featured-collection",
       "settings": {
         "title": "Pivot XPand Accessories",
@@ -239,28 +201,20 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "71ef8528-5882-47a4-b54d-e4e1d678d130": {
-      "type": "divider",
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "fea7c127-5949-4914-91cd-f1de1c140b37": {
+    "featured_collection_3WfBPF": {
       "type": "featured-collection",
       "settings": {
         "title": "Pivot Xplore Accessories",
@@ -275,28 +229,20 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "4fc29e68-c4ea-452d-a428-de8750b80406": {
-      "type": "divider",
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "a928dd5f-0e9e-4b37-ac9a-a4b7665d9aa4": {
+    "featured_collection_EnrHtx": {
       "type": "featured-collection",
       "settings": {
         "title": "Shyft DualRide Accessories",
@@ -311,12 +257,13 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -325,21 +272,14 @@
     }
   },
   "order": [
-    "image_banner_EhB8Xm",
-    "401ce55f-8dc2-47f6-8040-67332fcb9a11",
-    "61932dcb-05d1-4cd5-9238-cb4b1f4cba58",
+    "image_banner_nLGXwR",
     "main",
-    "4cacfa3a-8f0d-47df-b959-1d6d44c29828",
-    "c256954c-c7e1-43f8-b1ee-a1d20cb0eda4",
-    "b434f72e-de68-4045-9e0a-4dbc958bb789",
-    "1f66ea07-4c00-4e0b-ab5d-9ba9a0954277",
-    "d111bf9e-a6c4-427f-ac39-ad1a53d5f159",
-    "7e7ff757-2cc8-4589-b196-cc8c29cc49e7",
-    "b2f14bfe-1db3-47a4-9640-a2ac4d63d125",
-    "9205ff37-d1e2-48de-80a6-06285e405749",
-    "71ef8528-5882-47a4-b54d-e4e1d678d130",
-    "fea7c127-5949-4914-91cd-f1de1c140b37",
-    "4fc29e68-c4ea-452d-a428-de8750b80406",
-    "a928dd5f-0e9e-4b37-ac9a-a4b7665d9aa4"
+    "rich_text_g8jhPG",
+    "featured_collection_Vcgerc",
+    "featured_collection_giTJnN",
+    "featured_collection_AAW6NC",
+    "featured_collection_4Gazq6",
+    "featured_collection_3WfBPF",
+    "featured_collection_EnrHtx"
   ]
 }

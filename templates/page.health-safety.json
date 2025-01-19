@@ -1,9 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "c5c0d082-c845-4a6f-bfef-6794dfacd1e6": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_yLiUNd": {
       "type": "image-banner",
       "blocks": {
-        "template--15781023842460__c5c0d082-c845-4a6f-bfef-6794dfacd1e6-16862544866cbdc191-0": {
+        "heading_hfFUWA": {
           "type": "heading",
           "settings": {
             "heading": "{{ page.title }}",
@@ -13,123 +30,102 @@
         }
       },
       "block_order": [
-        "template--15781023842460__c5c0d082-c845-4a6f-bfef-6794dfacd1e6-16862544866cbdc191-0"
+        "heading_hfFUWA"
       ],
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
         "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
     },
-    "24526522-9d8c-4b10-9aa8-0c31e8b483d0": {
+    "rich_text_WyfEen": {
       "type": "rich-text",
       "blocks": {
-        "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-0": {
+        "heading_naUwPW": {
           "type": "heading",
           "settings": {
             "heading": "{{ page.metafields.custom.page_heading.value }}",
             "heading_size": "h1"
           }
         },
-        "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-1": {
+        "text_ELkCkP": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}</p>"
           }
         }
       },
       "block_order": [
-        "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-0",
-        "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-1"
+        "heading_naUwPW",
+        "text_ELkCkP"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
       }
     },
-    "9ace5954-b364-4bbe-81ff-50e9318cf00c": {
-      "type": "video",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video": "shopify:\/\/files\/videos\/baby_proofing_home_walkthrough_overview (720p).mp4",
-        "video_url": "",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "675dda64-bf00-4316-b45a-473b96a14da4": {
+    "image_with_text_znX6QK": {
       "type": "image-with-text",
       "blocks": {
-        "template--15797094023324__675dda64-bf00-4316-b45a-473b96a14da4-168625782560ecb10d-0": {
+        "heading_nEhHkw": {
           "type": "heading",
           "settings": {
             "heading": "Help Protect Your Little Explorer",
             "heading_size": "h1"
           }
         },
-        "template--15797094023324__675dda64-bf00-4316-b45a-473b96a14da4-168625782560ecb10d-1": {
+        "text_xTUyBM": {
           "type": "text",
           "settings": {
-            "text": "<p>Is your home safe for your curious little wanderer? We’ll help you identify potential hazard areas and safeguards.<\/p>",
+            "text": "<p>Is your home safe for your curious little wanderer? We’ll help you identify potential hazard areas and safeguards.</p>",
             "text_style": "body"
           }
         },
-        "template--15797094023324__675dda64-bf00-4316-b45a-473b96a14da4-168625782560ecb10d-2": {
+        "button_gVmreb": {
           "type": "button",
           "settings": {
             "button_label": "Let’s walk through your home",
-            "button_link": "https:\/\/www.evenflo.com\/pages\/babyproofing"
+            "button_link": "https://www.evenflo.com/pages/babyproofing",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "template--15797094023324__675dda64-bf00-4316-b45a-473b96a14da4-168625782560ecb10d-0",
-        "template--15797094023324__675dda64-bf00-4316-b45a-473b96a14da4-168625782560ecb10d-1",
-        "template--15797094023324__675dda64-bf00-4316-b45a-473b96a14da4-168625782560ecb10d-2"
+        "heading_nEhHkw",
+        "text_xTUyBM",
+        "button_gVmreb"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image_648bde8d-df8d-4da2-8214-4d96126a72e8.png",
+        "image": "shopify://shop_images/image_648bde8d-df8d-4da2-8214-4d96126a72e8.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "c256954c-c7e1-43f8-b1ee-a1d20cb0eda4": {
+    "featured_collection_L3AyRh": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -144,20 +140,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": true,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "b434f72e-de68-4045-9e0a-4dbc958bb789": {
-      "type": "divider",
+    "evenflo_divider_AWzrgw": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -165,43 +162,45 @@
         "custom_css": ""
       }
     },
-    "38fb5d1f-1549-47e6-809d-6367f48bcd16": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_eGmYmf": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-0": {
+        "heading_fmi8ga": {
           "type": "heading",
           "settings": {
             "heading": "Contain your Curious Rambler",
             "heading_size": "h1"
           }
         },
-        "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-1": {
+        "text_cwCMK9": {
           "type": "text",
           "settings": {
-            "text": "<p>From stairs to kitchen, there will be parts of your home you’ll want to make off-limits for your little one. We have the level of protection you need for your child or pet— combined with the look you’ll love. <\/p><ul><li>Pressure-mounted and hardware-mounted (for safety) <\/li><li>Easy installation <\/li><li>Styles to suit your décor <\/li><\/ul>",
+            "text": "<p>From stairs to kitchen, there will be parts of your home you’ll want to make off-limits for your little one. We have the level of protection you need for your child or pet— combined with the look you’ll love. </p><ul><li>Pressure-mounted and hardware-mounted (for safety) </li><li>Easy installation </li><li>Styles to suit your décor </li></ul>",
             "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-0",
-        "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-1"
+        "heading_fmi8ga",
+        "text_cwCMK9"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image-1.jpg",
+        "image": "shopify://shop_images/image-1.jpg",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "1f66ea07-4c00-4e0b-ab5d-9ba9a0954277": {
+    "featured_collection_76nHKb": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -216,20 +215,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "b2f14bfe-1db3-47a4-9640-a2ac4d63d125": {
-      "type": "divider",
+    "evenflo_divider_fpFBD9": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -237,43 +237,45 @@
         "custom_css": ""
       }
     },
-    "e42fb725-2521-4c5b-9c68-04ea14baf95a": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_QHhr8b": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15797094023324__e42fb725-2521-4c5b-9c68-04ea14baf95a-168625829416ac9ab2-0": {
+        "heading_UtzdBi": {
           "type": "heading",
           "settings": {
             "heading": "Be Prepared",
             "heading_size": "h1"
           }
         },
-        "template--15797094023324__e42fb725-2521-4c5b-9c68-04ea14baf95a-168625829416ac9ab2-1": {
+        "text_wiP7UR": {
           "type": "text",
           "settings": {
-            "text": "<p>Speed. Accuracy. Safety. These are just a few of the reasons you want a reliable thermometer on hand for taking your child’s temperature. <\/p>",
+            "text": "<p>Speed. Accuracy. Safety. These are just a few of the reasons you want a reliable thermometer on hand for taking your child’s temperature. </p>",
             "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15797094023324__e42fb725-2521-4c5b-9c68-04ea14baf95a-168625829416ac9ab2-0",
-        "template--15797094023324__e42fb725-2521-4c5b-9c68-04ea14baf95a-168625829416ac9ab2-1"
+        "heading_UtzdBi",
+        "text_wiP7UR"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image-2_6c0ced08-3c15-460b-933c-355147c01cdf.jpg",
+        "image": "shopify://shop_images/image-2_6c0ced08-3c15-460b-933c-355147c01cdf.jpg",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "65f9c335-ded6-4ca2-93a4-9ec4717d6666": {
+    "featured_collection_AQzHyj": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -288,119 +290,41 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "ea308e59-00e4-4323-9259-775549a26f8d": {
-      "type": "divider",
+    "evenflo_divider_QTtEGn": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
         "css_class": "",
         "custom_css": ""
       }
-    },
-    "5f9af723-4c15-40d6-8241-ca1b0fddc0a0": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15797094023324__5f9af723-4c15-40d6-8241-ca1b0fddc0a0-16883899944eb7ebf2-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Support",
-            "heading_size": "h1"
-          }
-        },
-        "template--15797094023324__5f9af723-4c15-40d6-8241-ca1b0fddc0a0-16883899944eb7ebf2-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Parents have trusted Evenflo for precision-manufactured, high-quality children’s products for more than 100 years. Building on that trust, we’re proud to introduce a collection of home baby proofing essentials that can help you keep your growing, curious little one safe. For product instructions please see the manual below.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "template--15797094023324__5f9af723-4c15-40d6-8241-ca1b0fddc0a0-16883899944eb7ebf2-0",
-        "template--15797094023324__5f9af723-4c15-40d6-8241-ca1b0fddc0a0-16883899944eb7ebf2-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "97414c90-194f-4a0b-a8a9-0dcc3dbf60ed": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "template--15797094023324__97414c90-194f-4a0b-a8a9-0dcc3dbf60ed-168838994211d276ac-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Download Manual",
-            "heading_size": "h1"
-          }
-        },
-        "template--15797094023324__97414c90-194f-4a0b-a8a9-0dcc3dbf60ed-168838994211d276ac-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Always read all instructions and warnings applicable to your particular product prior to first use, and keep the instructions available for future reference.<\/p>",
-            "text_style": "body"
-          }
-        },
-        "template--15797094023324__97414c90-194f-4a0b-a8a9-0dcc3dbf60ed-168838994211d276ac-2": {
-          "type": "button",
-          "settings": {
-            "button_label": "Download Now",
-            "button_link": "shopify:\/\/pages\/instruction-manuals"
-          }
-        }
-      },
-      "block_order": [
-        "template--15797094023324__97414c90-194f-4a0b-a8a9-0dcc3dbf60ed-168838994211d276ac-0",
-        "template--15797094023324__97414c90-194f-4a0b-a8a9-0dcc3dbf60ed-168838994211d276ac-1",
-        "template--15797094023324__97414c90-194f-4a0b-a8a9-0dcc3dbf60ed-168838994211d276ac-2"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/image_8ccf8db2-0551-486a-a89b-f4c4ba1b327f.jpg",
-        "height": "adapt",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
-    "c5c0d082-c845-4a6f-bfef-6794dfacd1e6",
-    "24526522-9d8c-4b10-9aa8-0c31e8b483d0",
-    "9ace5954-b364-4bbe-81ff-50e9318cf00c",
     "main",
-    "675dda64-bf00-4316-b45a-473b96a14da4",
-    "c256954c-c7e1-43f8-b1ee-a1d20cb0eda4",
-    "b434f72e-de68-4045-9e0a-4dbc958bb789",
-    "38fb5d1f-1549-47e6-809d-6367f48bcd16",
-    "1f66ea07-4c00-4e0b-ab5d-9ba9a0954277",
-    "b2f14bfe-1db3-47a4-9640-a2ac4d63d125",
-    "e42fb725-2521-4c5b-9c68-04ea14baf95a",
-    "65f9c335-ded6-4ca2-93a4-9ec4717d6666",
-    "ea308e59-00e4-4323-9259-775549a26f8d",
-    "5f9af723-4c15-40d6-8241-ca1b0fddc0a0",
-    "97414c90-194f-4a0b-a8a9-0dcc3dbf60ed"
+    "image_banner_yLiUNd",
+    "rich_text_WyfEen",
+    "image_with_text_znX6QK",
+    "featured_collection_L3AyRh",
+    "evenflo_divider_AWzrgw",
+    "evenflo_image_text_eGmYmf",
+    "featured_collection_76nHKb",
+    "evenflo_divider_fpFBD9",
+    "evenflo_image_text_QHhr8b",
+    "featured_collection_AQzHyj",
+    "evenflo_divider_QTtEGn"
   ]
 }

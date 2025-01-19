@@ -21,11 +21,9 @@
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
 <style>
-.button {
-background: #2996c5 !important;
-}
-
-
+  .button {
+  background: #2996c5 !important;
+  }
 </style>
 
 {%- if card_product and card_product != empty -%}
@@ -167,7 +165,7 @@ background: #2996c5 !important;
               class="full-unstyled-link"
               aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
             >
-            {{ card_product.title | escape }}
+              {{ card_product.title | escape }}
             </a>
           </h3>
           <div class="card-information">
@@ -188,11 +186,13 @@ background: #2996c5 !important;
                   assign rating_decimal = 1
                 endif
               %}
-            <div style="text-align: center">
-    <div class="yotpo bottomLine" style="display:inline-block"
-       data-product-id="{{ card_product.id }}">
-    </div>
-</div>
+              <div style="text-align: center">
+                <div
+                  class="yotpo bottomLine"
+                  style="display:inline-block"
+                  data-product-id="{{ card_product.id }}"
+                ></div>
+              </div>
               <div
                 class="rating"
                 role="img"
@@ -218,9 +218,7 @@ background: #2996c5 !important;
                 </span>
               </p>
             {%- endif -%}
-           <div style="text-align: center">
-
-</div>
+            <div style="text-align: center"></div>
             {% unless card_product.tags contains 'Support' %}
               {% render 'price', product: card_product, price_class: '' %}
             {% endunless %}
@@ -235,96 +233,100 @@ background: #2996c5 !important;
                 assign qty_rules = true
               endif
             -%}
-              <product-form>
-                {%- form 'product',
-                  card_product,
-                  id: product_form_id,
-                  class: 'form',
-                  novalidate: 'novalidate',
-                  data-type: 'add-to-cart-form'
-                -%}
-                  {% for option in card_product.options %}
-                    {%- assign downcased_option = option | downcase -%}
-                  
-                    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
-                      {%- assign option_index = forloop.index0 -%}
-                      {%- assign values = '' -%}
-                      <div class="product-form__input">
-                        <p class="product__text inline-richtext left subtitle heading-underline">Color</p>
-                        <div class="select">
-                          <select
-                            name="id"
-                            class="select__select"
-                          >
-                                            {% for variant in card_product.variants %}
-                                              {%- assign value = variant.options[option_index] -%}
-                                      
-                                              {% unless values contains value %}
-                                                {%- assign values = values | join: ',' -%}
-                                                {%- assign values = values | append: ',' | append: value -%}
-                                                {%- assign values = values | split: ',' -%}
-                                                <option {% unless variant.available %} disabled {% endunless %}
+            <product-form>
+              {%- form 'product',
+                card_product,
+                id: product_form_id,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                {% for option in card_product.options %}
+                  {%- assign downcased_option = option | downcase -%}
+
+                  {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+                    {%- assign option_index = forloop.index0 -%}
+                    {%- assign values = '' -%}
+                    <div class="product-form__input">
+                      <p class="product__text inline-richtext left subtitle heading-underline">Color</p>
+                      <div class="select">
+                        <select
+                          name="id"
+                          class="select__select"
+                        >
+                          {% for variant in card_product.variants %}
+                            {%- assign value = variant.options[option_index] -%}
+
+                            {% unless values contains value %}
+                              {%- assign values = values | join: ',' -%}
+                              {%- assign values = values | append: ',' | append: value -%}
+                              {%- assign values = values | split: ',' -%}
+                              <option
+                                {% unless variant.available %}
+                                  disabled
+                                {% endunless %}
                                 value="{{ variant.id }}"
-                              >{{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}</option>
-                                              {% endunless %}
-                                            {% endfor %}
-                          </select>
-                          <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-                          </svg>
-                    
-                        </div>
+                              >
+                                {{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}
+                              </option>
+                            {% endunless %}
+                          {% endfor %}
+                        </select>
+                        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                        </svg>
                       </div>
-                    {% endif %}
-                  {% endfor %}
-                              {% unless card_product.options %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+                {% unless card_product.options %}
                   <input
                     type="hidden"
                     name="id"
                     value="{{ card_product.selected_or_first_available_variant.id }}"
                     disabled
                   >
-                                {% endunless %}
-                  <button
-                    id="{{ product_form_id }}-submit"
-                    type="submit"
-                    name="add"
-                    class="quick-add__submit button button--full-width button--primary {% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
-                    aria-haspopup="dialog"
-                    aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-                    aria-live="polite"
-                    data-sold-out-message="true"
-                    {% if card_product.selected_or_first_available_variant.available == false %}
-                      disabled
-                    {% endif %}
-                  >
-                    <span>
-                      {%- if card_product.selected_or_first_available_variant.available -%}
-                        {{ 'products.product.add_to_cart' | t }}
-                      {%- else -%}
-                        {{ 'products.product.sold_out' | t }}
-                      {%- endif -%}
-                    </span>
-                    <span class="sold-out-message hidden">
+                {% endunless %}
+                <button
+                  id="{{ product_form_id }}-submit"
+                  type="submit"
+                  name="add"
+                  class="quick-add__submit button button--full-width button--primary {% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                  aria-haspopup="dialog"
+                  aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                  aria-live="polite"
+                  data-sold-out-message="true"
+                  {% if card_product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  <span>
+                    {%- if card_product.selected_or_first_available_variant.available -%}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {%- else -%}
                       {{ 'products.product.sold_out' | t }}
-                    </span>
-                    {%- if horizontal_quick_add -%}
-                      <span class="icon-wrap">{% render 'icon-plus' %}</span>
                     {%- endif -%}
-                    <div class="loading-overlay__spinner hidden">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        class="spinner"
-                        viewBox="0 0 66 66"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                      </svg>
-                    </div>
-                  </button>
-                {%- endform -%}
-              </product-form>
+                  </span>
+                  <span class="sold-out-message hidden">
+                    {{ 'products.product.sold_out' | t }}
+                  </span>
+                  {%- if horizontal_quick_add -%}
+                    <span class="icon-wrap">{% render 'icon-plus' %}</span>
+                  {%- endif -%}
+                  <div class="loading-overlay__spinner hidden">
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      class="spinner"
+                      viewBox="0 0 66 66"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                  </div>
+                </button>
+              {%- endform -%}
+            </product-form>
           </div>
         {%- endif -%}
         <div class="card__badge {{ settings.badge_position }}">

@@ -1,0 +1,46 @@
+
+
+{% assign topics_to_show= section.settings.topicsRange%}
+{% assign topics_title= section.settings.topicsTitle%}
+
+
+{% render 'faq-topic-block', topics_to_show: topics_to_show, topics_title: topics_title %}
+
+
+
+{% schema %}
+{
+  "name": "EvenFlo FAQ Topics",
+  "tag": "section",
+  "class": "TopicQuestion",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "topicsTitle",
+      "label": "Topic Question Title",
+      "default":"By Topics"
+    },
+    {
+        "type": "range",
+        "id": "topicsRange",
+        "label": "Number of topics to show",
+        "default":6,
+        "min": 1,
+        "max": 6,
+        "step": 1
+      }
+  ],
+  "presets": [
+    {
+      "name": "EvenFlo FAQ Topics",
+      "blocks": [
+        
+      ]
+    }
+  ]
+  
+}
+{% endschema %}

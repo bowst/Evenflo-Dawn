@@ -1,0 +1,56 @@
+
+
+{% assign background_image = section.settings.backgroundImage  %}
+{% assign support_title = section.settings.supportTitle  %}
+{% assign support_description = section.settings.supportDescription %}
+{% assign support_button_title = section.settings.supportActionButton  %}
+
+{% render 'faq-support-block', background_image:background_image, support_title : support_title, support_description: support_description, 
+ support_button_title:support_button_title  %}
+
+
+
+{% schema %}
+{
+  "name": "EvenFlo FAQ Support",
+  "tag": "section",
+  "class": "TopicQuestion",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "supportTitle",
+      "label": "Support Title",
+      "default":"Get Support"
+    },
+    {
+      "type": "text",
+      "id": "supportDescription",
+      "label": "Support Description",
+      "default":"Tincidunt mollis nisi volutpat quam. Justo, erat feugiat ornare condimentum."
+    },
+    {
+      "type": "text",
+      "id": "supportActionButton",
+      "label": "Button Title",
+      "default":"Call to Action"
+    },
+    {
+      "type": "image_picker",
+      "id": "backgroundImage",
+      "label": "Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "EvenFlo FAQ Support",
+      "blocks": [
+        
+      ]
+    }
+  ]
+  
+}
+{% endschema %}

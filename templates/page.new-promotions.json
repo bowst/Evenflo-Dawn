@@ -9,22 +9,16 @@
  */
 {
   "sections": {
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_dRaMwc": {
       "type": "image-banner",
-      "blocks": {
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "Evenflo Promotions",
-            "heading_size": "h0",
-            "heading_color": "white"
-          }
-        }
-      },
-      "block_order": [
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
-      ],
       "settings": {
         "image": "shopify://shop_images/Rectangle_59cb3537-c6a3-487d-a832-b6a4171da5df.png",
         "image_overlay_opacity": 0,
@@ -34,32 +28,24 @@
         "desktop_content_position": "bottom-left",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
     },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "b44c8197-4385-4350-ad0f-238c04013fa1": {
+    "rich_text_CfwLAR": {
       "type": "rich-text",
       "blocks": {
-        "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-0": {
+        "heading_RggrNn": {
           "type": "heading",
           "settings": {
             "heading": "Promotions & Discounts",
             "heading_size": "h1"
           }
         },
-        "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1": {
+        "text_PjNThh": {
           "type": "text",
           "settings": {
             "text": "<p>Explore the latest discounts and promos.</p>"
@@ -67,244 +53,22 @@
         }
       },
       "block_order": [
-        "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-0",
-        "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1"
+        "heading_RggrNn",
+        "text_PjNThh"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
       }
     },
-    "a2479147-b212-46ce-bdae-66b040eabe99": {
-      "type": "slideshow",
-      "blocks": {
-        "template--15824513532060__a2479147-b212-46ce-bdae-66b040eabe99-slide-1": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Summer_Sale_Promo_2023_Homepage_Header_1920X600_624cfd7b-c165-45b5-a4e7-5b368eeccb40.jpg",
-            "heading": "",
-            "heading_size": "h2",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "template--15824513532060__a2479147-b212-46ce-bdae-66b040eabe99-slide-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "layout": "grid",
-        "slide_height": "small",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 3,
-        "image_behavior": "none",
-        "show_text_below": false,
-        "accessibility_info": ""
-      }
-    },
-    "138f8f4b-4cfe-4df3-b5c3-535b265230eb": {
-      "type": "divider",
-      "disabled": true,
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1",
-            "heading_underline_color": "#2996c5"
-          }
-        },
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        },
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-2": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0",
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1",
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-2"
-      ],
-      "disabled": true,
-      "settings": {
-        "height": "adapt",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "6992fe26-9e50-44c7-8b18-c85a3a6daa99": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15824513532060__6992fe26-9e50-44c7-8b18-c85a3a6daa99-heading-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Summer is Better Together",
-            "heading_size": "h1"
-          }
-        },
-        "0d061db5-1a43-4e44-a6c6-71c6cbd7e72a": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Save 20% Sitewide</strong>",
-            "heading_size": "h2"
-          }
-        },
-        "template--15824513532060__6992fe26-9e50-44c7-8b18-c85a3a6daa99-text-1": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
-          }
-        },
-        "template--15824513532060__6992fe26-9e50-44c7-8b18-c85a3a6daa99-button-1": {
-          "type": "button",
-          "settings": {
-            "button_label": "Save Now",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "https://www.evenflo.com/discount/SUMMER23?redirect=%2Fcollections%2Fall",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "template--15824513532060__6992fe26-9e50-44c7-8b18-c85a3a6daa99-heading-1",
-        "0d061db5-1a43-4e44-a6c6-71c6cbd7e72a",
-        "template--15824513532060__6992fe26-9e50-44c7-8b18-c85a3a6daa99-text-1",
-        "template--15824513532060__6992fe26-9e50-44c7-8b18-c85a3a6daa99-button-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "background-1",
-        "full_width": false,
-        "padding_top": 32,
-        "padding_bottom": 52
-      }
-    },
-    "6245d473-e03b-4572-83e4-3394bba55b8c": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "template--15824513532060__6245d473-e03b-4572-83e4-3394bba55b8c-heading-1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Roll Into Labor Day",
-            "heading_size": "h1",
-            "heading_underline_color": "#2996c5"
-          }
-        },
-        "94c014a9-677d-4553-a159-afb195369004": {
-          "type": "caption",
-          "settings": {
-            "caption": "Shop & Save 20%",
-            "text_style": "subtitle",
-            "text_size": "large"
-          }
-        },
-        "template--15824513532060__6245d473-e03b-4572-83e4-3394bba55b8c-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>When you buy 2 or more Shyft™ DualRide™ and/or Pivot® products or accessories now through September 4, 2023. </p><p><em>Discount automatically applied at checkout.</em> </p>",
-            "text_style": "body"
-          }
-        },
-        "template--15824513532060__6245d473-e03b-4572-83e4-3394bba55b8c-button-1": {
-          "type": "button",
-          "settings": {
-            "button_label": "Save Now",
-            "button_link": "shopify://pages/labor-day-sale"
-          }
-        }
-      },
-      "block_order": [
-        "template--15824513532060__6245d473-e03b-4572-83e4-3394bba55b8c-heading-1",
-        "94c014a9-677d-4553-a159-afb195369004",
-        "template--15824513532060__6245d473-e03b-4572-83e4-3394bba55b8c-text-1",
-        "template--15824513532060__6245d473-e03b-4572-83e4-3394bba55b8c-button-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/37312473_Boone_Shyft_Dual_Ride_1333-2.jpg",
-        "height": "adapt",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "bd8466a5-5044-45aa-89dc-ed149e420bc0": {
+    "evenflo_multicolumn_JYH6gk": {
       "type": "evenflo-multicolumn",
       "blocks": {
-        "column_DmHC74": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/card-topic.png",
-            "liquid_content": "",
-            "title": "20% off The Right Car Seat",
-            "text": "<p>Save 20% on car seats available on evenflo.com through 1/31/25. Use code CARSEAT20 at checkout to save. </p>",
-            "link_label": "Shop Now",
-            "link": "shopify://collections/car-seats"
-          }
-        },
-        "column_7drnPf": {
-          "type": "column",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/PTA45481.jpg",
-            "liquid_content": "",
-            "title": "Do Good!",
-            "text": "<p>5% of sales goes to the National Safety Council when you shop<br/>evenflo.com through 9/21/24. National Safety Council and the NSC logo are trademarks of National Safety Council, used under license.</p>",
-            "link_label": "Shop Now",
-            "link": "shopify://collections/shop-all"
-          }
-        },
-        "template--15851171971228__bd8466a5-5044-45aa-89dc-ed149e420bc0-column-2": {
+        "column_hFHkN6": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/evenfo-promotions-loyalty.jpg",
@@ -312,10 +76,10 @@
             "title": "Loyalty",
             "text": "<p>Become a member and earn points & exclusive rewards every time you shop.</p>",
             "link_label": "Join Now",
-            "link": ""
+            "link": "shopify://pages/babyproof-results"
           }
         },
-        "template--15851171971228__bd8466a5-5044-45aa-89dc-ed149e420bc0-column-3": {
+        "column_EYQbbE": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/evenflo-promotion-referral.jpg",
@@ -326,7 +90,7 @@
             "link": "shopify://pages/refer"
           }
         },
-        "afe957c0-150d-4ffa-8d34-8daa4180d839": {
+        "column_CNUVVt": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/evenflo-promotion-outlet.jpg",
@@ -339,132 +103,38 @@
         }
       },
       "block_order": [
-        "column_DmHC74",
-        "column_7drnPf",
-        "template--15851171971228__bd8466a5-5044-45aa-89dc-ed149e420bc0-column-2",
-        "template--15851171971228__bd8466a5-5044-45aa-89dc-ed149e420bc0-column-3",
-        "afe957c0-150d-4ffa-8d34-8daa4180d839"
+        "column_hFHkN6",
+        "column_EYQbbE",
+        "column_CNUVVt"
       ],
       "custom_css": [
         "h3 {color: #00aea9;}",
-        ".multicolumn.background-none .multicolumn-card {border: solid 1px black;}",
-        ".background-none .multicolumn-card__image-wrapper {margin-left: 0px; margin-right: 0px;}"
+        ".multicolumn.background-primary .multicolumn-card {border: solid 1px black;}",
+        ".background-primary .multicolumn-card__image-wrapper {padding-top: 0; margin-left: 0px; margin-right: 0px;}"
       ],
       "settings": {
         "title": "",
         "heading_size": "h1",
         "column_style": "classic",
-        "container_size": "full_width",
         "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "square",
         "columns_desktop": 4,
         "column_alignment": "center",
-        "background_style": "none",
+        "background_style": "primary",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "ceb69993-8724-4d55-ab17-a442ee17b956": {
-      "type": "multicolumn",
-      "blocks": {
-        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-1": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Evenflo-First-Responder.jpg",
-            "title": "First Responders",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "discount_verification": ""
-          }
-        },
-        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-2": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/evenflo-Healthcare-Worker.jpg",
-            "title": "Healthcare Heroes",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "discount_verification": ""
-          }
-        },
-        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-3": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Evenflo-Military_2.jpg",
-            "title": "Military Heroes",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "discount_verification": ""
-          }
-        },
-        "fefade77-2cab-4ec3-ae10-3f2a2944129c": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Evenflo-Teacher.jpg",
-            "title": "Teachers",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "discount_verification": ""
-          }
-        },
-        "affbf238-f5bd-44d3-b1b1-986fd8b8b137": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Evenflo-Students.jpg",
-            "title": "Students",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "discount_verification": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-1",
-        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-2",
-        "template--15824513532060__ceb69993-8724-4d55-ab17-a442ee17b956-column-3",
-        "fefade77-2cab-4ec3-ae10-3f2a2944129c",
-        "affbf238-f5bd-44d3-b1b1-986fd8b8b137"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "Discounts",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 5,
-        "column_alignment": "center",
-        "background_style": "none",
-        "underline": false,
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "650cf004-7b77-4109-af15-f452cfd096ba": {
-      "type": "HTML",
-      "settings": {
-        "html": "<div id=\"communityheroes\"> </div>\n<div id=\"communityheroesdiscount\"> </div>"
-      }
-    },
-    "b79e41e5-6be7-4190-9966-cd71a8761a88": {
+    "evenflo_sheerid_multicolumn_X3ihqh": {
       "type": "evenflo-sheerid-multicolumn",
       "blocks": {
-        "5ad9514b-c533-49ad-9f09-00a38855051b": {
+        "column_U3f4jn": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Evenflo-Teacher.jpg",
@@ -475,7 +145,7 @@
             "discount_verification": ""
           }
         },
-        "465a84c9-0014-4960-be72-afe9bf1ffb40": {
+        "column_8rieGh": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Evenflo-Students.jpg",
@@ -486,18 +156,18 @@
             "discount_verification": ""
           }
         },
-        "template--15824513532060__b79e41e5-6be7-4190-9966-cd71a8761a88-column-1": {
+        "column_nFx9R6": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Evenflo-First-Responder.jpg",
             "title": "First Responders",
             "text": "",
             "link_label": "Learn More",
-            "link": "https://www.evenflo.com/pages/first-responder-discount",
+            "link": "",
             "discount_verification": ""
           }
         },
-        "template--15824513532060__b79e41e5-6be7-4190-9966-cd71a8761a88-column-2": {
+        "column_m7H7Yd": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/evenflo-Healthcare-Worker.jpg",
@@ -508,7 +178,7 @@
             "discount_verification": ""
           }
         },
-        "template--15824513532060__b79e41e5-6be7-4190-9966-cd71a8761a88-column-3": {
+        "column_RNCxUF": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Evenflo-Military_2.jpg",
@@ -521,16 +191,16 @@
         }
       },
       "block_order": [
-        "5ad9514b-c533-49ad-9f09-00a38855051b",
-        "465a84c9-0014-4960-be72-afe9bf1ffb40",
-        "template--15824513532060__b79e41e5-6be7-4190-9966-cd71a8761a88-column-1",
-        "template--15824513532060__b79e41e5-6be7-4190-9966-cd71a8761a88-column-2",
-        "template--15824513532060__b79e41e5-6be7-4190-9966-cd71a8761a88-column-3"
+        "column_U3f4jn",
+        "column_8rieGh",
+        "column_nFx9R6",
+        "column_m7H7Yd",
+        "column_RNCxUF"
       ],
       "custom_css": [
         "h3 {color: #00aea9;}",
-        ".multicolumn.background-none .multicolumn-card {border: solid 1px black;}",
-        ".background-none .multicolumn-card__image-wrapper {margin-left: 0px; margin-right: 0px;}"
+        ".multicolumn.background-primary .multicolumn-card {border: solid 1px black;}",
+        ".background-primary .multicolumn-card__image-wrapper {padding-top: 0; margin-left: 0px; margin-right: 0px;}"
       ],
       "settings": {
         "title": "Discounts For:",
@@ -539,30 +209,23 @@
         "image_ratio": "adapt",
         "columns_desktop": 5,
         "column_alignment": "center",
-        "background_style": "none",
+        "background_style": "primary",
         "button_label": "",
         "discount_verification": "",
         "button_link": "",
         "color_scheme": "background-1",
         "columns_mobile": "1",
-        "swipe_on_mobile": true,
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "main",
-    "b44c8197-4385-4350-ad0f-238c04013fa1",
-    "a2479147-b212-46ce-bdae-66b040eabe99",
-    "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e",
-    "6992fe26-9e50-44c7-8b18-c85a3a6daa99",
-    "6245d473-e03b-4572-83e4-3394bba55b8c",
-    "bd8466a5-5044-45aa-89dc-ed149e420bc0",
-    "ceb69993-8724-4d55-ab17-a442ee17b956",
-    "650cf004-7b77-4109-af15-f452cfd096ba",
-    "b79e41e5-6be7-4190-9966-cd71a8761a88"
+    "image_banner_dRaMwc",
+    "rich_text_CfwLAR",
+    "evenflo_multicolumn_JYH6gk",
+    "evenflo_sheerid_multicolumn_X3ihqh"
   ]
 }

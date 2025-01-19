@@ -1,0 +1,193 @@
+.product__text {
+  text-transform: uppercase;
+}
+.product__info-container .subtitle.heading-underline {
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: #000;
+  margin-top: 0px;
+}
+
+.product__info-container .subtitle.heading-underline::after {
+  bottom: 0;
+}
+.baby-list-button {
+    max-width: calc(50% - 3px);
+    flex: 1 0 calc(50% - 3px);
+    height: 44px !important;
+    text-align: center;
+}
+.product-form__buttons .shopify-payment-button {
+    margin-left: 6px;
+    height: inherit;
+    flex: 1 0 calc(50% - 3px);
+    max-width: calc(50% - 3px);
+}
+.product-form__input input[type='radio'] + label {
+  border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
+  background-color: rgb(var(--color-background));
+  color: rgba(var(--color-foreground));
+  border-radius: var(--variant-pills-radius);
+  color: rgb(var(--color-foreground));
+  display: inline-block;
+  margin: 0.7rem 0.5rem 0.2rem 0;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  text-align: center;
+  transition: border var(--duration-short) ease;
+  cursor: pointer;
+  position: relative;
+}
+.product-form__input input[type=radio]:disabled+label, .product-form__input input[type=radio].disabled+label {
+    border-color: rgba(var(--color-foreground), .1);
+    color: rgba(var(--color-foreground), .6);
+    text-decoration: line-through;
+}
+/** related product **/
+
+.related-products .product-card {
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  min-width: 100px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.related-products .product-name {
+  text-decoration: none;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.related-products .product-header {
+  display: flex;
+  /* Apply flex container to the header */
+  justify-content: space-between;
+  /* Space between the name and price */
+  /* Align items vertically */
+  margin-bottom: 15px;
+  /* Add some margin to the bottom */
+  text-decoration: none;
+  flex-direction: column;
+  flex: 3;
+}
+
+.related-products .product-name {
+  font-size: 20px !important;
+  margin: 0;
+  flex: 3;
+  /* 3/4 of the space */
+  font-family: var(--font-body-family);
+  text-decoration: none !important;
+}
+
+.related-products a.product-name {
+  text-decoration: none !important;
+}
+
+.related-products .product-price {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  color: black;
+  flex: 1;
+  /* 1/4 of the space */
+}
+
+.related-products .product-type {
+  font-size: 12px !important;
+  line-height: 1.3;
+  color: #555;
+  margin: 0;
+}
+
+.related-products a {
+  text-decoration: none;
+}
+
+.related-products .product-footer .installment-info span {
+  font-size: 14px;
+}
+
+.related-products .product-footer .installment-info .learn-more {
+  display: block;
+  font-size: 14px;
+}
+
+.related-products .product-footer {
+  /* width: 36%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  text-align: right;
+}
+
+.related-products a:has(.product-header) {
+  width: 65%;
+}
+
+.related-products .product-price {
+  justify-content: flex-end;
+  /* padding-right: 15px; */
+}
+
+.related-products .installment-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.related-products .installment-info a {
+  text-align: right;
+  color: #000;
+}
+
+.related-products .product-header {
+  margin: 0;
+  height: 100%;
+}
+
+.related-products .product-footer .installment-info .learn-more {
+  color: #2996c5;
+  font-weight: 700;
+}
+
+.related-products .product-card {
+  max-width: 530px;
+  gap: 10px;
+}
+
+.related-products .product-card .product-card-wrapper-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.related-products .product-card.active {
+  border: 1px solid #00aea9;
+  background: #e3f2f3;
+}
+
+.related-products .product-card:hover {
+  background: #e3f2f3;
+}
+.related-products .product-card.active .product-name {
+  font-weight: 700;
+}
+.product__info-container .subtitle.heading-underline {
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: #000;
+  margin-top: 0px;
+}
+
+.product__info-container .subtitle.heading-underline::after {
+  bottom: 0;
+}

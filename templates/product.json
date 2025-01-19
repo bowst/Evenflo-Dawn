@@ -9,13 +9,109 @@
  */
 {
   "sections": {
-    "7b84f3ca-c559-4693-98d8-ed24f81958e0": {
-      "type": "custom-liquid",
+    "evenflo_main_product_4BJMnB": {
+      "type": "evenflo-main-product",
+      "blocks": {
+        "text_bX8f78": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_9xtMrd": {
+          "type": "title",
+          "settings": {}
+        },
+        "yotpo_product_reviews_ugc_star_rating_3bREKm": {
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price_8WtYp8": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_XFWBx4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
+          }
+        },
+        "custom_liquid_LCdpH4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by early November\n{% endif %}"
+          }
+        },
+        "related_products_bW3NFr": {
+          "type": "related_products",
+          "settings": {
+            "heading": "Styles. Which is best for you?"
+          }
+        },
+        "variant_picker_QwXGc8": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "custom_liquid_kAJdqB": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by late November\n{% endif %}"
+          }
+        },
+        "buy_buttons_7cXcW4": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "complementary_hD37RD": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
+        }
+      },
+      "block_order": [
+        "text_bX8f78",
+        "title_9xtMrd",
+        "yotpo_product_reviews_ugc_star_rating_3bREKm",
+        "price_8WtYp8",
+        "custom_liquid_XFWBx4",
+        "custom_liquid_LCdpH4",
+        "related_products_bW3NFr",
+        "variant_picker_QwXGc8",
+        "custom_liquid_kAJdqB",
+        "buy_buttons_7cXcW4",
+        "complementary_hD37RD"
+      ],
       "settings": {
-        "custom_liquid": "{% render 'breadcrumbs' %}",
-        "color_scheme": "background-1",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "main": {
@@ -32,8 +128,8 @@
           "type": "title",
           "settings": {}
         },
-        "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "yotpo_product_reviews_ugc_star_rating_dKxww7": {
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -45,22 +141,23 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": false
+            "show_gift_card_recipient": true
           }
         },
-        "complementary_fJtQq9": {
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "complementary_gheQ9U": {
           "type": "complementary",
           "settings": {
             "block_heading": "Pairs well with",
@@ -77,17 +174,19 @@
       "block_order": [
         "vendor",
         "title",
-        "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
+        "yotpo_product_reviews_ugc_star_rating_dKxww7",
         "price",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
-        "complementary_fJtQq9"
+        "description",
+        "complementary_gheQ9U"
       ],
+      "disabled": true,
       "settings": {
-        "enable_sticky_info": false,
-        "media_size": "small",
-        "constrain_to_viewport": false,
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
         "media_position": "left",
@@ -99,25 +198,48 @@
         "padding_bottom": 12
       }
     },
-    "de262cc2-cd7a-45ad-abd0-474f06e53224": {
+    "evenflo_product_video_KEFXhc": {
+      "type": "evenflo-product-video",
+      "settings": {
+        "heading": "",
+        "description": ""
+      }
+    },
+    "evenflo_product_highlights_yGptpT": {
       "type": "evenflo-product-highlights",
       "settings": {}
     },
-    "49c36a4c-d12e-4b40-99dc-d0893ec62107": {
+    "evenflo_full_width_ngaV99": {
       "type": "evenflo-full-width",
+      "disabled": true,
       "settings": {
         "heading": "Evenflo",
         "content": "<p>Default Content</p>"
       }
     },
-    "4600ac99-da69-454a-a56c-0fae1b682f2e": {
+    "evenflo_video_cbQmLm": {
       "type": "evenflo-video",
+      "disabled": true,
       "settings": {
-        "heading": "Video Title",
-        "description": "Video Description"
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
+    "evenflo_full_width_An6GrY": {
+      "type": "evenflo-full-width",
+      "settings": {
+        "heading": "{{ product.metafields.custom.platform_name.value }}",
+        "content": "<p>Default Content</p>"
+      }
+    },
+    "evenflo_features_f9tF3G": {
       "type": "evenflo-features",
       "settings": {
         "product_handles": ""
@@ -125,12 +247,13 @@
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
-        "heading": "You May Also Like",
+        "heading": "You may also like",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
-        "color_scheme": "background-1",
+        "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -141,135 +264,139 @@
         "padding_bottom": 28
       }
     },
-    "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
-      "type": "evenflo-pdp-faq",
-      "settings": {}
-    },
-    "45849377-4cee-48de-b8f8-52fd115e29b4": {
-      "type": "evenflo-video-support",
+    "rich_text_BXQwKw": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3YW6mh": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.title }}",
+            "heading_size": "h1"
+          }
+        },
+        "text_T7jF4q": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.sf_products.short_description | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3YW6mh",
+        "text_T7jF4q"
+      ],
+      "disabled": true,
       "settings": {
-        "heading": "Free Video Chat Support",
-        "description": "Need some real-time help? Schedule a live video call with us and we'll walk you through.",
-        "button_label": "Book Now",
-        "button_link": "shopify://pages/about-evenflo"
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
-    "3b0269b9-b8c1-48e0-927e-0b85cd0c441c": {
-      "type": "evenflo-peace-of-mind",
-      "custom_css": [],
+    "evenflo_contact_parentlink_KAtMr7": {
+      "type": "evenflo-contact-parentlink",
       "settings": {
         "heading": "Peace Of Mind",
-        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>\n<a href=\"#\"><strong>30 DAYS FOR RETURNS</strong></a><br>\n<a href=\"#\"><strong>LIMITED 90 DAY WARRANTY</strong></a>",
-        "support_content": "<h3 class=\"h1\">Supported by <strong>ParentLink Consumer Care</strong> via phone, email, chat and video</h3>\n\n<div class=\"peace-of-mind__container\">\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">Phone</h4>\n<a href=\"tel:1-800-233-5921\">1-800-233-5921 (US)</a><br>\n<a href=\"tel:1-937-773-3971\">1-937-773-3971 (Canada)</a>\n</div>\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">EMAIL</h4>\nNo time to chat?<br>\n<a href=\"mailto:parentlink@evenflo.com\">Email us</a> your inquiry\n</div>\n</div>"
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
+        "support_content": ""
       }
     },
-    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
+    "evenflo_quote_Q6Q7qn": {
       "type": "evenflo-quote",
       "settings": {
         "quote": "{{ product.metafields.custom.customer_quote.value }}",
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
       }
     },
-    "1692190782c86a45fb": {
+    "1728651794c071ea89": {
       "type": "apps",
       "blocks": {
-        "847d2477-1327-4af5-8986-19ec4a565df8": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "yotpo_product_reviews_ugc_reviews_nnaqeW": {
+          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
         }
       },
       "block_order": [
-        "847d2477-1327-4af5-8986-19ec4a565df8"
+        "yotpo_product_reviews_ugc_reviews_nnaqeW"
       ],
       "settings": {
         "include_margins": true
       }
     },
-    "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
+    "evenflo_join_aYHW79": {
       "type": "evenflo-join",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "settings": {}
     },
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1": {
+    "evenflo_shopping_benefits_MVExtY": {
       "type": "evenflo-shopping-benefits",
       "blocks": {
-        "b076e55c-e236-4a35-a75a-85cf3402446b": {
+        "benefit_list_9aVXBk": {
           "type": "benefit_list",
           "settings": {
             "description": "<h3>Give $20,<br> Get $20</h3>\nRefer a friend and earn points.",
-            "background_image": "shopify://shop_images/Evenflo-Benefit-1.png",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
             "icon_image": "shopify://shop_images/icon-give20.png",
             "link": "shopify://pages/about-evenflo"
           }
         },
-        "d2ac9250-ec80-4eca-93cb-a5886833aa00": {
+        "benefit_list_VGk9cr": {
           "type": "benefit_list",
           "settings": {
             "description": "<h3>Pay With Affirm</h3>\nPay over time.",
-            "background_image": "shopify://shop_images/Benefit_2.png",
+            "background_image": "shopify://shop_images/pay-with-affirm.jpg",
             "icon_image": "shopify://shop_images/icon-pay.png",
             "link": ""
           }
         },
-        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239": {
+        "benefit_list_Ttgccn": {
           "type": "benefit_list",
           "settings": {
             "description": "<h3>Community Heroes Discount</h3>\nSave on baby gear.",
-            "background_image": "shopify://shop_images/Benefit_3.png",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
             "icon_image": "shopify://shop_images/icon-heroes.png",
             "link": ""
           }
         },
-        "09af9779-83cf-4821-bb96-4341c4f3063b": {
+        "benefit_list_YiYFMk": {
           "type": "benefit_list",
           "settings": {
             "description": "<h3>Evenflo Blog</h3>\nCheck out the latest.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "background_image": "shopify://shop_images/infant-car-seats.jpg",
             "icon_image": "shopify://shop_images/icon-blog.png",
             "link": ""
           }
         }
       },
       "block_order": [
-        "b076e55c-e236-4a35-a75a-85cf3402446b",
-        "d2ac9250-ec80-4eca-93cb-a5886833aa00",
-        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239",
-        "09af9779-83cf-4821-bb96-4341c4f3063b"
+        "benefit_list_9aVXBk",
+        "benefit_list_VGk9cr",
+        "benefit_list_Ttgccn",
+        "benefit_list_YiYFMk"
       ],
       "settings": {
         "heading": "Benefits of shopping evenflo.com"
       }
-    },
-    "custom_liquid_w3K9Jz": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>\n<script type=\"text/javascript\">\nvar _learnq = _learnq || [];\n\tdocument.getElementById(\"AddToCart\").addEventListener('click',function (){\n \t\t_learnq.push(['track', 'Added to Cart', item]);\n\t});</script>",
-        "color_scheme": "background-1",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
     }
   },
   "order": [
-    "7b84f3ca-c559-4693-98d8-ed24f81958e0",
+    "evenflo_main_product_4BJMnB",
     "main",
-    "de262cc2-cd7a-45ad-abd0-474f06e53224",
-    "49c36a4c-d12e-4b40-99dc-d0893ec62107",
-    "4600ac99-da69-454a-a56c-0fae1b682f2e",
-    "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
+    "evenflo_product_video_KEFXhc",
+    "evenflo_product_highlights_yGptpT",
+    "evenflo_full_width_ngaV99",
+    "evenflo_video_cbQmLm",
+    "evenflo_full_width_An6GrY",
+    "evenflo_features_f9tF3G",
     "related-products",
-    "46391549-e9d3-4404-8c19-b08b5eab6ca7",
-    "45849377-4cee-48de-b8f8-52fd115e29b4",
-    "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
-    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
-    "1692190782c86a45fb",
-    "a40977eb-46b5-4322-81f4-bb36dab6bfff",
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
-    "custom_liquid_w3K9Jz"
+    "rich_text_BXQwKw",
+    "evenflo_contact_parentlink_KAtMr7",
+    "evenflo_quote_Q6Q7qn",
+    "1728651794c071ea89",
+    "evenflo_join_aYHW79",
+    "evenflo_shopping_benefits_MVExtY"
   ]
 }

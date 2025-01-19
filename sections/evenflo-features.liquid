@@ -11,10 +11,10 @@
 {%- endif -%}
 
 {%- if display_section -%}
-  {% assign feature_image_1 = product.metafields.custom.feature_image_1 %}
-  {% assign feature_image_2 = product.metafields.custom.feature_image_2 %}
-  {% assign feature_image_3 = product.metafields.custom.feature_image_3 %}
-  {% assign feature_image_4 = product.metafields.custom.feature_image_4 %}
+  {% assign feature_image_1 = product.metafields.custom.featured_image_1_shopify %}
+  {% assign feature_image_2 = product.metafields.custom.featured_image_2_shopify %}
+  {% assign feature_image_3 = product.metafields.custom.featured_image_3_shopify %}
+  {% assign feature_image_4 = product.metafields.custom.featured_image_4_shopify %}
   {% assign feature_text_1 = product.metafields.custom.feature_text_1 %}
   {% assign feature_text_2 = product.metafields.custom.feature_text_2 %}
   {% assign feature_text_3 = product.metafields.custom.feature_text_3 %}
@@ -32,10 +32,11 @@
                 <div class="flex-item">
                   {% if feature_image_1 %}
                     <img
-                      src="{{ feature_image_1 }}"
-                      alt="{{ product.title }}"
+                      src="{{ feature_image_1 | img_url: 'large' }}"
+                      alt="{{ product.title }} - Feature Image 1"
                       loading="lazy"
-
+                      height=""
+                      width=""
                     >
                   {% endif %}
                 </div>
@@ -52,10 +53,11 @@
                 <div class="flex-item">
                   {% if feature_image_2 %}
                     <img
-                      src="{{ feature_image_2 }}"
-                      alt="{{ product.title }}"
+                      src="{{ feature_image_2 | img_url: 'large' }}"
+                      alt="{{ product.title }} - Feature Image 2"
                       loading="lazy"
-
+                      height=""
+                      width=""
                     >
                   {% endif %}
                 </div>
@@ -76,11 +78,11 @@
                 <div class="flex-item">
                   {% if feature_image_3 %}
                     <img
-                      src="{{ feature_image_3 }}"
-                      alt="{{ product.title }}"
+                      src="{{ feature_image_3 | img_url: 'large' }}"
+                      alt="{{ product.title }} - Feature Image 3"
                       loading="lazy"
-                      width="900"
-                      height="900"
+                      height=""
+                      width=""
                     >
                   {% endif %}
                 </div>
@@ -97,11 +99,11 @@
                 <div class="flex-item">
                   {% if feature_image_4 %}
                     <img
-                      src="{{ feature_image_4 }}"
-                      alt="{{ product.title }}"
+                      src="{{ feature_image_4 | img_url: 'large' }}"
+                      alt="{{ product.title }} - Feature Image 4"
                       loading="lazy"
-                      width="900"
-                      height="900"
+                      height=""
+                      width=""
                     >
                   {% endif %}
                 </div>
@@ -127,13 +129,11 @@
   "name": "Evenflo Features",
   "class": "text",
   "tag": "section",
-  "settings": [
-    {
-      "type": "textarea",
-      "id": "product_handles",
-      "label": "Exclude Product Handles"
-    }
-  ],
+  "settings": [    {
+  "type": "textarea",
+  "id": "product_handles",
+  "label": "Exclude Product Handles"
+    }],
   "presets": [
     {
       "name": "Evenflo Features"

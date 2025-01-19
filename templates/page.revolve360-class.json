@@ -1,40 +1,48 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "evenflo_image_banner_ewniqE": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "evenflo_image_banner_A9hVig": {
       "type": "evenflo-image-banner",
       "blocks": {
-        "text_RQwHJa": {
+        "text_CLWtQt": {
           "type": "text",
           "settings": {
-            "text": "REVOLVE360™ ROTATING CAR SEAT",
+            "text": "Give customers details about the banner image(s) or content on the template.",
             "text_style": "body"
           }
         },
-        "heading_FkbmjR": {
+        "heading_aU4LGf": {
           "type": "heading",
           "settings": {
             "heading": "REVOLUTIONIZE YOUR BACKSEAT",
             "heading_underline": false,
-            "heading_size": "h0"
+            "heading_size": "h1"
           }
         },
-        "text_LeDCRE": {
+        "text_mPFaJc": {
           "type": "text",
           "settings": {
             "text": "with America’s #1* rotational car seat",
             "text_style": "body"
           }
         },
-        "buttons_U4L4dM": {
+        "buttons_aR9YXd": {
           "type": "buttons",
           "settings": {
             "button_label_1": "Find your Revolve360",
@@ -47,14 +55,14 @@
         }
       },
       "block_order": [
-        "text_RQwHJa",
-        "heading_FkbmjR",
-        "text_LeDCRE",
-        "buttons_U4L4dM"
+        "text_CLWtQt",
+        "heading_aU4LGf",
+        "text_mPFaJc",
+        "buttons_aR9YXd"
       ],
       "custom_css": [
         ".h0 {font-weight: 300; font-style: normal;}",
-        ".banner__heading {max-width: 500px;}"
+        ".banner__heading {max-width: 500px; margin: auto;}"
       ],
       "settings": {
         "image": "shopify://shop_images/class-banner.png",
@@ -75,35 +83,27 @@
         "show_text_below": true
       }
     },
-    "evenflo_video_with_text_keKddr": {
+    "evenflo_video_with_text_xzfUDF": {
       "type": "evenflo-video-with-text",
       "blocks": {
-        "heading_THpeUU": {
+        "heading_QLgnwP": {
           "type": "heading",
           "settings": {
             "heading": "Which revolve is right for you?",
             "heading_size": "h1"
           }
         },
-        "text_QTij7T": {
+        "text_mTyzng": {
           "type": "text",
           "settings": {
             "text": "<p>We can’t help with the occasional chaos that comes with being a parent. But Evenflo® Revolve360™ Rotational Car Seats can add 360° of ease to life on the go!</p>",
             "text_style": "body"
           }
-        },
-        "button_Dd9RUt": {
-          "type": "button",
-          "settings": {
-            "button_label": "",
-            "button_link": ""
-          }
         }
       },
       "block_order": [
-        "heading_THpeUU",
-        "text_QTij7T",
-        "button_Dd9RUt"
+        "heading_QLgnwP",
+        "text_mTyzng"
       ],
       "settings": {
         "heading": "",
@@ -120,32 +120,32 @@
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
-        "content_layout": "overlap",
+        "content_layout": "no-overlap",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "slim_extend_tab_block_8Dwqy6": {
+    "slim_extend_tab_block_36U4ek": {
       "type": "slim-extend-tab-block",
       "blocks": {
-        "slim_tab_block_rzaGQr": {
+        "slim_tab_block_qFDLXY": {
           "type": "slim_tab_block",
           "settings": {
             "image": "shopify://shop_images/extend-slim.png",
             "tab-text": "Just 16.7 in. across. Fit more into your backseat!",
-            "tab-description": "2-in-1, for children from 4-65 lb.",
+            "tab-description": "2-in-1, for children from 4-65 lb. Slim",
             "tab-btn-text": "SLIM",
             "product_list": [
               "revolve360-slim-green-and-gentle-convertible-car-seat",
-              "revolve360-slim-swivel-convertible-car-seat-sensorsafe",
+              "revolve360-slim-2-in-1-rotational-car-seat-with-green-gentle-fabric-support",
               "revolve360-slim-swivel-convertible-car-seat-quick-clean-cover",
-              "revolve360-slim-swivel-convertible-car-seat"
+              "revolve360-slim-2-in-1-rotational-car-seat-with-quick-clean-cover-support"
             ]
           }
         },
-        "slim_tab_block_BjjTpU": {
+        "slim_tab_block_P4TGip": {
           "type": "slim_tab_block",
           "settings": {
             "image": "shopify://shop_images/extend_0553ca00-514e-4d4f-a884-cc935da489ac.png",
@@ -155,24 +155,25 @@
             "product_list": [
               "revolve360-extend-swivel-convertible-car-seat-sensorsafe-green",
               "revolve360-extend-swivel-convertible-car-seat-sensorsafe",
-              "revolve360-extend-swivel-convertible-car-seat-quick-clean-cover"
+              "revolve360-extend-swivel-convertible-car-seat-quick-clean-cover",
+              "revolve360-slim-2-in-1-rotational-car-seat-with-green-gentle-fabric-support"
             ]
           }
         }
       },
       "block_order": [
-        "slim_tab_block_rzaGQr",
-        "slim_tab_block_BjjTpU"
+        "slim_tab_block_qFDLXY",
+        "slim_tab_block_P4TGip"
       ],
       "settings": {
         "title": "Find your revolve360",
         "description": "Revolutionize your backseat with these innovative options with the rotating car seat that’s best for you:"
       }
     },
-    "evenflo_quote_slider_aY3Vyj": {
+    "evenflo_quote_slider_zeWfjh": {
       "type": "evenflo-quote-slider",
       "blocks": {
-        "slider_block_3xpmrq": {
+        "slider_block_GVmjDV": {
           "type": "slider_block",
           "settings": {
             "image": "shopify://shop_images/evenflo-revolve-quote.png",
@@ -184,23 +185,23 @@
         }
       },
       "block_order": [
-        "slider_block_3xpmrq"
+        "slider_block_GVmjDV"
       ],
       "settings": {
-        "background": "#f5f5f5",
+        "background": "#F5F5F5",
         "full-width": true
       }
     },
-    "evenflo_full_width_image_YDjzzL": {
+    "evenflo_full_width_image_PBDaqL": {
       "type": "evenflo-full-width-image",
       "settings": {
         "image": "shopify://shop_images/Green-and-Gentle-Full-Take.png"
       }
     },
-    "evenflo_multicolumn_XBWmmq": {
+    "evenflo_multicolumn_QUeadM": {
       "type": "evenflo-multicolumn",
       "blocks": {
-        "column_HBFUBm": {
+        "column_8qCXNy": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/one-hand-rotation_8dd82fbe-73c8-4cbb-922c-872ca37d1bc2.png",
@@ -211,7 +212,7 @@
             "link": ""
           }
         },
-        "column_wFgJeK": {
+        "column_ekdG9P": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/easy-in-and-out.png",
@@ -222,7 +223,7 @@
             "link": ""
           }
         },
-        "column_K6gUmj": {
+        "column_eKwMbE": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/one-time-install.png",
@@ -235,41 +236,33 @@
         }
       },
       "block_order": [
-        "column_HBFUBm",
-        "column_wFgJeK",
-        "column_K6gUmj"
+        "column_8qCXNy",
+        "column_ekdG9P",
+        "column_eKwMbE"
       ],
       "settings": {
         "title": "",
         "heading_size": "h1",
         "column_style": "classic",
-        "heading_alignment": "end",
+        "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 3,
         "column_alignment": "center",
-        "background_style": "none",
+        "background_style": "primary",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 12,
-        "padding_bottom": 0
+        "padding_bottom": 4
       }
     },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "8ed4770d-4826-49f3-9094-b5bae8c64fdd": {
+    "rich_text_JAdUtU": {
       "type": "rich-text",
       "blocks": {
-        "template--15826225922204__8ed4770d-4826-49f3-9094-b5bae8c64fdd-text-1": {
+        "text_QTGJLj": {
           "type": "text",
           "settings": {
             "text": "<p>* SOURCE: IRCANA/RETAIL TRACKING SERVICE/US/JAN-DEC 2023, YTD APRIL 2024/JUVENILE PRODUCTS/ROTATING CAR SEAT ATTRIBUTE/USD, UNITS</p>"
@@ -277,33 +270,33 @@
         }
       },
       "block_order": [
-        "template--15826225922204__8ed4770d-4826-49f3-9094-b5bae8c64fdd-text-1"
+        "text_QTGJLj"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "full_width": true,
         "padding_top": 0,
         "padding_bottom": 52
       }
     },
-    "html_9HRQR7": {
-      "type": "HTML",
+    "evenflo_html_rcDMF9": {
+      "type": "evenflo-html",
       "settings": {
         "html": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:7947727});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>"
       }
     }
   },
   "order": [
-    "evenflo_image_banner_ewniqE",
-    "evenflo_video_with_text_keKddr",
-    "slim_extend_tab_block_8Dwqy6",
-    "evenflo_quote_slider_aY3Vyj",
-    "evenflo_full_width_image_YDjzzL",
-    "evenflo_multicolumn_XBWmmq",
     "main",
-    "8ed4770d-4826-49f3-9094-b5bae8c64fdd",
-    "html_9HRQR7"
+    "evenflo_image_banner_A9hVig",
+    "evenflo_video_with_text_xzfUDF",
+    "slim_extend_tab_block_36U4ek",
+    "evenflo_quote_slider_zeWfjh",
+    "evenflo_full_width_image_PBDaqL",
+    "evenflo_multicolumn_QUeadM",
+    "rich_text_JAdUtU",
+    "evenflo_html_rcDMF9"
   ]
 }

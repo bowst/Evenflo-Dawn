@@ -11,68 +11,62 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "02a30b28-054b-43a5-8f59-e86a6d7a13e2": {
-      "type": "evenflo-connect",
-      "disabled": true,
-      "settings": {
-        "heading": "Connect with us",
-        "text": "<p>Sign up for email messages to be the first to know about promos, news and offers!</p>"
-      }
-    },
-    "1684973213eb987277": {
-      "type": "apps",
-      "disabled": true,
-      "settings": {
-        "include_margins": true
-      }
-    },
     "footer": {
       "type": "footer",
       "blocks": {
-        "7bdea8fe-920e-40e8-8fb6-106ed582c22f": {
+        "brand_information_4HfBqx": {
           "type": "brand_information",
           "settings": {
             "show_social": true
           }
         },
-        "91178a9f-eac3-43ed-8712-6a98982acf28": {
+        "link_list_jDpkiz": {
           "type": "link_list",
           "settings": {
             "heading": "Company",
             "menu": "about"
           }
         },
-        "footer-0": {
+        "link_list_h3WNDP": {
           "type": "link_list",
           "settings": {
             "heading": "Shop",
             "menu": "shop-footer-2023"
           }
         },
-        "1c0bce4b-b646-4702-abea-b68d23102ef8": {
+        "link_list_mNkaHk": {
           "type": "link_list",
           "settings": {
             "heading": "My Evenflo",
             "menu": "my-evenflo"
           }
         },
-        "c52e66b4-3f1f-4e73-b241-046ca342b2a2": {
+        "link_list_HW8DTw": {
           "type": "link_list",
           "settings": {
             "heading": "Support",
-            "menu": "consumer-care"
+            "menu": "footer"
+          }
+        },
+        "link_list_DrxFWt": {
+          "type": "link_list",
+          "disabled": true,
+          "settings": {
+            "heading": "Quick links",
+            "menu": "footer"
           }
         }
       },
       "block_order": [
-        "7bdea8fe-920e-40e8-8fb6-106ed582c22f",
-        "91178a9f-eac3-43ed-8712-6a98982acf28",
-        "footer-0",
-        "1c0bce4b-b646-4702-abea-b68d23102ef8",
-        "c52e66b4-3f1f-4e73-b241-046ca342b2a2"
+        "brand_information_4HfBqx",
+        "link_list_jDpkiz",
+        "link_list_h3WNDP",
+        "link_list_mNkaHk",
+        "link_list_HW8DTw",
+        "link_list_DrxFWt"
       ],
       "settings": {
-        "color_scheme": "background-1",
+        "color_scheme": "scheme-1",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
@@ -86,7 +80,7 @@
         "padding_bottom": 0
       }
     },
-    "c6ff28c5-1b5a-479a-ad36-c40fa2e6a860": {
+    "custom_liquid_arpGqm": {
       "type": "custom-liquid",
       "custom_css": [
         ".footer-link-bar ul {list-style: none; /* Remove default bullet points */ padding: 0; /* Remove default padding */ margin: 0; /* Remove default margin */}",
@@ -94,16 +88,14 @@
       ],
       "settings": {
         "custom_liquid": "<div class=\"footer-link-bar center\">  \n    <ul> <li><strong>The Goodbaby Family</strong><li><a href=\"https://www.evenflo.com/\">Evenflo</a></li> \n       \n        <li><a href=\"/collections/exersaucer\">ExerSaucer</a></li> \n        <li><a href=\"https://rollplay.com/\">Rollplay</a></li> \n        <li><a href=\"https://www.cybex-online.com/en/us\">Cybex</a></li> \n        <li><a href=\"http://gb-online.com/\">GB</a></li></ul>\n    </div>",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
       }
     }
   },
   "order": [
-    "02a30b28-054b-43a5-8f59-e86a6d7a13e2",
-    "1684973213eb987277",
     "footer",
-    "c6ff28c5-1b5a-479a-ad36-c40fa2e6a860"
+    "custom_liquid_arpGqm"
   ]
 }

@@ -9,10 +9,18 @@
  */
 {
   "sections": {
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_VtBFAW": {
       "type": "image-banner",
       "blocks": {
-        "heading_NXEjp3": {
+        "heading_mPa6Kj": {
           "type": "heading",
           "settings": {
             "heading": "Exersaucer",
@@ -22,45 +30,33 @@
         }
       },
       "block_order": [
-        "heading_NXEjp3"
+        "heading_mPa6Kj"
       ],
       "settings": {
         "image": "shopify://shop_images/collection-exersaucer-header.jpg",
         "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
-        "desktop_content_alignment": "right",
-        "color_scheme": "background-1",
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
     },
-    "26cbbcc5-e415-4184-ae36-500f6c86453e": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "9676eda7-2a6b-4038-b4b0-3f4b0f1db5d1": {
+    "rich_text_JDm4tn": {
       "type": "rich-text",
       "blocks": {
-        "template--15826407063708__9676eda7-2a6b-4038-b4b0-3f4b0f1db5d1-heading-1": {
+        "heading_MCX8Dj": {
           "type": "heading",
           "settings": {
             "heading": "Magical little stations for  budding  imaginations",
             "heading_size": "h1"
           }
         },
-        "d6bae049-7c25-44c6-8cad-a65c8609cba3": {
+        "text_wyY7ER": {
           "type": "text",
           "settings": {
             "text": "<p>In the first few months of life, your baby is content to just lie there, comforted by your voice, smiles and tummy tickles. But as soon as they learn to lift up their own head, their senses awaken and they're ready to engage with the world beyond Mom and Dad.</p><p>As their curiosity and energy level grow, our Exersaucer line helps you channel them. You’ll love how our collection of activity centers, stationary jumpers and doorway jumpers stimulates minds, muscles and funny bones.</p>"
@@ -68,63 +64,66 @@
         }
       },
       "block_order": [
-        "template--15826407063708__9676eda7-2a6b-4038-b4b0-3f4b0f1db5d1-heading-1",
-        "d6bae049-7c25-44c6-8cad-a65c8609cba3"
+        "heading_MCX8Dj",
+        "text_wyY7ER"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
       }
     },
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_iMdAiH": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0": {
+        "heading_etVHCf": {
           "type": "heading",
           "settings": {
             "heading": "ACTIVITY CENTERS",
             "heading_size": "h1"
           }
         },
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1": {
+        "text_pLffC4": {
           "type": "text",
           "settings": {
             "text": "<p>Activity centers make it easy to create a safe, fun, contained center of learning and exercise in your home. Designed with 20+ activities that include lights, sounds and engaging toys, you’ll love the way they light up your child’s eyes and imagination.  </p>",
             "text_style": "body"
           }
         },
-        "a2707b55-5e61-4b04-9f70-98853fa75ebf": {
+        "button_PMMAGn": {
           "type": "button",
           "settings": {
             "button_label": "Get Moving",
-            "button_link": "shopify://collections/activity-centers-and-stationary-jumpers"
+            "button_link": "shopify://collections/activity-centers-and-stationary-jumpers",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-0",
-        "template--15779834593436__8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e-16855813912b1a6790-1",
-        "a2707b55-5e61-4b04-9f70-98853fa75ebf"
+        "heading_etVHCf",
+        "text_pLffC4",
+        "button_PMMAGn"
       ],
       "settings": {
         "image": "shopify://shop_images/Activity_Centers_and_Jumpers_Header_d43c0973-438c-4c2d-a318-380fa05839e3.jpg",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "efedd7fe-8772-4e68-8ba9-fbcc5e824351": {
+    "featured_collection_TEBGaJ": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -139,20 +138,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "138f8f4b-4cfe-4df3-b5c3-535b265230eb": {
-      "type": "divider",
+    "evenflo_divider_tpQxcd": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -160,99 +160,54 @@
         "custom_css": ""
       }
     },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "f0b95f46-5fa4-4253-9851-3530f0ffc7ab": {
-      "type": "collage",
+    "evenflo_image_text_AemzGC": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15826408177820__f0b95f46-5fa4-4253-9851-3530f0ffc7ab-image-1": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/square-collections-pivot-xplore-lifestyle-1-gallery.jpg"
-          }
-        },
-        "72100bc2-457c-4299-8be5-264be1ecdc84": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/collections-pivot-xplore-features-tip-down.jpg"
-          }
-        },
-        "template--15826408177820__f0b95f46-5fa4-4253-9851-3530f0ffc7ab-product-1": {
-          "type": "product",
-          "settings": {
-            "product": "pivot-xplore-stroller-wagon",
-            "second_image": false
-          }
-        }
-      },
-      "block_order": [
-        "template--15826408177820__f0b95f46-5fa4-4253-9851-3530f0ffc7ab-image-1",
-        "72100bc2-457c-4299-8be5-264be1ecdc84",
-        "template--15826408177820__f0b95f46-5fa4-4253-9851-3530f0ffc7ab-product-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "desktop_layout": "left",
-        "mobile_layout": "column",
-        "card_styles": "product-card-wrapper",
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "8fa99d5c-93d6-4d28-98d8-c774bab1f8d2": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "template--15826420105372__8fa99d5c-93d6-4d28-98d8-c774bab1f8d2-heading-1": {
+        "heading_r7bgMY": {
           "type": "heading",
           "settings": {
             "heading": "Doorway Jumpers",
             "heading_size": "h1"
           }
         },
-        "template--15826420105372__8fa99d5c-93d6-4d28-98d8-c774bab1f8d2-text-1": {
+        "text_PE3MKY": {
           "type": "text",
           "settings": {
             "text": "<p>Doorway jumpers give your little one a safe, fun and comfy place to hang out and work out, without taking up much space. Easy to install (no tools needed), they're the perfect option for parents who need a portable, secure bouncer. Use them from the time your baby can hold their head upright unassisted (approximately 4 months of age) to 24 lb.</p>",
             "text_style": "body"
           }
         },
-        "template--15826420105372__8fa99d5c-93d6-4d28-98d8-c774bab1f8d2-button-1": {
+        "button_pjdbyP": {
           "type": "button",
           "settings": {
             "button_label": "Hop On It",
-            "button_link": "shopify://collections/doorway-jumpers"
+            "button_link": "shopify://collections/doorway-jumpers",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "template--15826420105372__8fa99d5c-93d6-4d28-98d8-c774bab1f8d2-heading-1",
-        "template--15826420105372__8fa99d5c-93d6-4d28-98d8-c774bab1f8d2-text-1",
-        "template--15826420105372__8fa99d5c-93d6-4d28-98d8-c774bab1f8d2-button-1"
+        "heading_r7bgMY",
+        "text_PE3MKY",
+        "button_pjdbyP"
       ],
       "settings": {
         "image": "shopify://shop_images/collections-exersaucer-doorway-jumper_18f89aa1-593e-4b58-8b37-1bac9a1f18ab.png",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "7d34a33b-b7ab-4e8c-8ab3-d31127d2a5a0": {
+    "featured_collection_ckHjVe": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -267,20 +222,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "c795ee75-6768-4d72-9f2b-531a00abf42a": {
-      "type": "divider",
+    "evenflo_divider_RK3afN": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -290,16 +246,14 @@
     }
   },
   "order": [
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea",
-    "26cbbcc5-e415-4184-ae36-500f6c86453e",
-    "9676eda7-2a6b-4038-b4b0-3f4b0f1db5d1",
-    "8f7bf5fd-4e9f-41a1-8a91-13ec8d8ac45e",
-    "efedd7fe-8772-4e68-8ba9-fbcc5e824351",
-    "138f8f4b-4cfe-4df3-b5c3-535b265230eb",
     "main",
-    "f0b95f46-5fa4-4253-9851-3530f0ffc7ab",
-    "8fa99d5c-93d6-4d28-98d8-c774bab1f8d2",
-    "7d34a33b-b7ab-4e8c-8ab3-d31127d2a5a0",
-    "c795ee75-6768-4d72-9f2b-531a00abf42a"
+    "image_banner_VtBFAW",
+    "rich_text_JDm4tn",
+    "evenflo_image_text_iMdAiH",
+    "featured_collection_TEBGaJ",
+    "evenflo_divider_tpQxcd",
+    "evenflo_image_text_AemzGC",
+    "featured_collection_ckHjVe",
+    "evenflo_divider_RK3afN"
   ]
 }

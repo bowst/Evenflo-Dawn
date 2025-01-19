@@ -1,32 +1,20 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "cart-items": {
       "type": "main-cart-items",
       "settings": {
+        "color_scheme": "scheme-1",
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "rich_text_mxwitg": {
-      "type": "rich-text",
-      "blocks": {
-        "text_JCAQHL": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Please be aware that we are currently experiencing shipping delays due to systems maintenance. Your patience during this time is greatly appreciated. If you have any concerns or questions regarding your order, please don't hesitate to reach out to our Parentlink Consumer Care team for assistance. Thank you for your understanding.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_JCAQHL"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 0,
-        "padding_bottom": 12
       }
     },
     "cart-footer": {
@@ -41,67 +29,21 @@
           "type": "buttons",
           "settings": {
           }
-        },
-        "shoppinggives_roundup_pR3J7p": {
-          "type": "shopify:\/\/apps\/shoppinggives\/blocks\/roundup\/7b6c2cd4-8962-4dc6-975b-870e1f567789",
-          "settings": {
-            "full_width": false,
-            "availableStateTitle": "Round Up Your Purchase",
-            "unavailableStateTitle": "Start Shopping to Start Giving",
-            "activeStateTitle": "Thanks for Making an Impact",
-            "title_color": "",
-            "main_text_color": "",
-            "link_color": "",
-            "background_color": "rgba(0,0,0,0)",
-            "border_color": "#000000",
-            "border_radius": 0,
-            "checkbox_label_color": "",
-            "checkbox_border_color": "#009581",
-            "widget_font": "roboto_n4",
-            "font_size": 12
-          }
         }
       },
       "block_order": [
         "subtotal",
-        "buttons",
-        "shoppinggives_roundup_pR3J7p"
+        "buttons"
       ],
       "settings": {
-      }
-    },
-    "featured-collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "new",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "square",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 40
       }
     }
   },
   "order": [
     "cart-items",
-    "rich_text_mxwitg",
-    "cart-footer",
-    "featured-collection"
+    "cart-footer"
   ]
 }

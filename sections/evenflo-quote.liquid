@@ -1,26 +1,57 @@
-{{ 'section-quote.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-quote.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .heading-underline-custom::after {
+    transform: translateX(-50%);
+    left: 50%;
+    height: 6px;
+    width: 150px;
+    bottom: 1px;
+  }
+</style>
 
 {% if section.settings.quote != blank %}
-  <section class="quote content-container page-width content-container--full-width">
-    <div class="quote__inner">
-      <div class="quote__inner_quote">
-        <h3>{{ section.settings.quote }}</h3>
+  <div style="background: #e2f4f5; min-width: 100%; margin-top: 80px; margin-bottom: 80px;">
+    <section
+      class="quote content-container page-width content-container--full-width"
+      style="padding-top: 120px; padding-bottom: 120px;"
+    >
+      <div
+        class="quote__inner"
+        style="padding-left: 0px !important; display: flex; justify-content: center; align-items: center; flex-direction: column;"
+      >
+        <div
+          class="quote__inner_name heading-underline heading-underline-custom"
+          style="text-align: center; max-width: 1000px; padding-left: 0px !important;"
+        >
+          <p>{{ section.settings.quote }}</p>
+        </div>
+        <div class="quote__inner_quote" style="text-align: center; padding-top: 30px;">
+          <h3 style="margin-bottom: 10px;">{{ section.settings.name }}</h3>
+        </div>
+        {% if section.settings.name == 'JON CONAWAY' %}
+          <div
+            class="quote__inner_name"
+            style="text-align: center; max-width: 1000px; padding-left: 0px !important; margin-top: 0px; margin-bottom: 0px;"
+          >
+            <p style="text-align: center; max-width: 1000px; padding-left: 0px !important; margin-top: 0px; margin-bottom: 0px;">
+              AVP of Product Innovation
+            </p>
+          </div>
+        {% endif %}
       </div>
-      <div class="quote__inner_name">
-        <p>–{{ section.settings.name }}</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 {% endif %}
 
 {% schema %}
 {
-  "name": "Section Quote",
+  "name": "Evenflo Quote",
   "tag": "section",
   "class": "section",
   "presets": [
     {
-      "name": "Section Quote"
+      "name": "Evenflo Quote"
     }
   ],
   "disabled_on": {

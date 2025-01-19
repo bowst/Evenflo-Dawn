@@ -1,18 +1,26 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "c5c0d082-c845-4a6f-bfef-6794dfacd1e6": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_AndMYL": {
       "type": "image-banner",
       "blocks": {
-        "template--15781023842460__c5c0d082-c845-4a6f-bfef-6794dfacd1e6-16862544866cbdc191-0": {
+        "heading_dXWA7A": {
           "type": "heading",
           "settings": {
             "heading": "{{ page.title }}",
@@ -22,43 +30,33 @@
         }
       },
       "block_order": [
-        "template--15781023842460__c5c0d082-c845-4a6f-bfef-6794dfacd1e6-16862544866cbdc191-0"
+        "heading_dXWA7A"
       ],
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
         "image_height": "small",
-        "desktop_content_position": "middle-right",
+        "desktop_content_position": "middle-center",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
     },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "24526522-9d8c-4b10-9aa8-0c31e8b483d0": {
+    "rich_text_jmRqAN": {
       "type": "rich-text",
       "blocks": {
-        "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-0": {
+        "heading_9zUU9W": {
           "type": "heading",
           "settings": {
             "heading": "{{ page.metafields.custom.page_heading.value }}",
             "heading_size": "h1"
           }
         },
-        "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-1": {
+        "text_AzaB7P": {
           "type": "text",
           "settings": {
             "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}</p>"
@@ -66,38 +64,29 @@
         }
       },
       "block_order": [
-        "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-0",
-        "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-1"
+        "heading_9zUU9W",
+        "text_AzaB7P"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
       }
     },
-    "524e7cc8-c105-4a71-94ff-841b1e417a4a": {
-      "type": "category_anchors",
-      "disabled": true,
-      "settings": {
-        "category_anchor": "Shop Home + Gear",
-        "html": "<div class=\"flex-container\">\n  <a href=\"/collections/baby-carriers\" class=\"flex-item\">Baby Carriers</a>\n  <a href=\"/collections/playards-and-bassinets\" class=\"flex-item\">Playards &amp; Bassinets</a>\n  <a href=\"/collections/high-chairs\" class=\"flex-item\">High Chairs</a>\n  <a href=\"/collections/activity-centers-and-stationary-jumpers\" class=\"flex-item\">Baby Activity</a>\n<a href=\"/collections/rollplay\" class=\"flex-item\">Rollplay</a>\n<a href=\"/products/green-and-gentle-sustainable-crib-mattress\" class=\"flex-item\">Crib Mattress</a>\n</div>",
-        "liquid": ""
-      }
-    },
-    "5c3aa6ad-59c8-49eb-a019-1bb8270f7413": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_VRHW8X": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15781023842460__5c3aa6ad-59c8-49eb-a019-1bb8270f7413-16862547058f0d0c24-0": {
+        "heading_mrCtRd": {
           "type": "heading",
           "settings": {
             "heading": "BABY CARRIERS",
             "heading_size": "h1"
           }
         },
-        "template--15781023842460__5c3aa6ad-59c8-49eb-a019-1bb8270f7413-16862547058f0d0c24-1": {
+        "text_LMjxLV": {
           "type": "text",
           "settings": {
             "text": "<p>Mmm, baby head smell. Keep your little peanut happily nestled into you as you warm up a bottle or take your dog baby for a walk. With an Evenflo baby carrier, you can face your baby in/out or carry them on your back.<br/>Our baby carriers provide security and comfort for baby—and padding and support for you. They’re also easy to use, made with machine-washable fabrics, offer multiple modes, and make a great hiking baby carrier for longer treks.</p><p>• Multiple carrying positions <br/>• Padding for baby and parent’s comfort <br/>• Adjustable back straps <br/>• Secure lock buckles <br/>• For babies weighing 7 to 45 lb</p>",
@@ -106,28 +95,30 @@
         }
       },
       "block_order": [
-        "template--15781023842460__5c3aa6ad-59c8-49eb-a019-1bb8270f7413-16862547058f0d0c24-0",
-        "template--15781023842460__5c3aa6ad-59c8-49eb-a019-1bb8270f7413-16862547058f0d0c24-1"
+        "heading_mrCtRd",
+        "text_LMjxLV"
       ],
       "settings": {
         "image": "shopify://shop_images/image-4.jpg",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "c256954c-c7e1-43f8-b1ee-a1d20cb0eda4": {
+    "featured_collection_UePCCC": {
       "type": "featured-collection",
       "settings": {
         "title": "",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
@@ -138,20 +129,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": true,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "b434f72e-de68-4045-9e0a-4dbc958bb789": {
-      "type": "divider",
+    "evenflo_divider_PyieVD": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -159,89 +151,17 @@
         "custom_css": ""
       }
     },
-    "38fb5d1f-1549-47e6-809d-6367f48bcd16": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_fAURdr": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "PLAYARDS",
-            "heading_size": "h1"
-          }
-        },
-        "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Evenflo playards and bassinets are the must-have travel companions for parents who need versatility and portability. Features include UPF+ sun protection canopies, pouches for touch-screen devices, mesh sides, and easy-to-clean padding. Great as a bedside bassinet, our cozy bassinets can be folded flat for an easy carry from room to room.</p><p>• Portability: Lightweight & easy to carry <br/>• Convenience: Easy to pack up and set up <br/>• Safety and comfort for baby <br/>• Machine-washable fabrics <br/>• Age range: From birth to toddler</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-0",
-        "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-1"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/image.jpg",
-        "height": "adapt",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "1f66ea07-4c00-4e0b-ab5d-9ba9a0954277": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "playards-and-bassinets",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "b2f14bfe-1db3-47a4-9640-a2ac4d63d125": {
-      "type": "divider",
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "05891277-a8b8-4c94-930e-c349393c7a46": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "template--15781023842460__05891277-a8b8-4c94-930e-c349393c7a46-16862547058f0d0c24-0": {
+        "heading_cWBzm3": {
           "type": "heading",
           "settings": {
             "heading": "HIGH CHAIRS",
             "heading_size": "h1"
           }
         },
-        "template--15781023842460__05891277-a8b8-4c94-930e-c349393c7a46-16862547058f0d0c24-1": {
+        "text_dGimj9": {
           "type": "text",
           "settings": {
             "text": "<p>Squished blueberries…squash dribbles…flying macaroni…get ready for things to get messy. Let your child rise and dine with high chairs that are easy to adjust, clean, and fold up. <br/>Designed with safety and convenience in mind, our high chairs feature dishwasher safe tray liners, wipeable fabric seat pads, adjustable harnesses, and sturdy legs. For extended use, choose our 4-in-1 high chair that adapts to your child’s changing needs.</p><p>• Durability <br/>• Portability <br/>• Dishwasher safe tray liner <br/>• Easy-to-fold design <br/>• Age range: From 4 months to five years</p>",
@@ -250,24 +170,26 @@
         }
       },
       "block_order": [
-        "template--15781023842460__05891277-a8b8-4c94-930e-c349393c7a46-16862547058f0d0c24-0",
-        "template--15781023842460__05891277-a8b8-4c94-930e-c349393c7a46-16862547058f0d0c24-1"
+        "heading_cWBzm3",
+        "text_dGimj9"
       ],
       "settings": {
-        "image": "shopify://shop_images/image-3.jpg",
+        "image": "shopify://shop_images/image-3.webp",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "9205ff37-d1e2-48de-80a6-06285e405749": {
+    "featured_collection_z7GndB": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -282,20 +204,21 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "d61c5faa-790d-4a1d-a572-d5e73bf1165e": {
-      "type": "divider",
+    "evenflo_divider_Tg4wFC": {
+      "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
         "divider_border": false,
@@ -303,17 +226,17 @@
         "custom_css": ""
       }
     },
-    "e964574d-c732-4dd7-8d2f-8b3459396817": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_axzWVi": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15781023842460__e964574d-c732-4dd7-8d2f-8b3459396817-16862547058f0d0c24-0": {
+        "heading_JF6XbN": {
           "type": "heading",
           "settings": {
             "heading": "BABY ACTIVITY",
             "heading_size": "h1"
           }
         },
-        "template--15781023842460__e964574d-c732-4dd7-8d2f-8b3459396817-16862547058f0d0c24-1": {
+        "text_FagGE6": {
           "type": "text",
           "settings": {
             "text": "<p>Baby’s got moves! Give your little bundle of energy a safe, fun place to giggle, wiggle and let you catch your breath.<br/>Create an instant play center with our doorway jumpers, stationary jumpers and activity centers for toddlers. Offered in a variety of bright, playful themes, they use toys and sounds to engage your baby’s senses, spark their imagination, encourage interaction, and get them moving.</p><p></p><p>• Durability <br/>• Pressure mounts for safety <br/>• Multiple uses (kids and pets) <br/>• Variety of styles to fit your decor <br/>• Easy assembly</p>",
@@ -322,24 +245,26 @@
         }
       },
       "block_order": [
-        "template--15781023842460__e964574d-c732-4dd7-8d2f-8b3459396817-16862547058f0d0c24-0",
-        "template--15781023842460__e964574d-c732-4dd7-8d2f-8b3459396817-16862547058f0d0c24-1"
+        "heading_JF6XbN",
+        "text_FagGE6"
       ],
       "settings": {
         "image": "shopify://shop_images/image_d62925f1-5769-4570-a1d3-ed4e8ac79167.jpg",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "7e7ff757-2cc8-4589-b196-cc8c29cc49e7": {
+    "featured_collection_BnhFTc": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -354,150 +279,70 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "background-1",
+        "color_scheme": "",
         "image_ratio": "adapt",
+        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "enable_quick_add": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "4fc29e68-c4ea-452d-a428-de8750b80406": {
-      "type": "divider",
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "891203d8-511a-45d9-aee3-bb3ef909e5ca": {
-      "type": "evenflo-image-with-text",
+    "evenflo_image_text_zm8TpC": {
+      "type": "evenflo-image-text",
       "blocks": {
-        "template--15797093990556__891203d8-511a-45d9-aee3-bb3ef909e5ca-16862547058f0d0c24-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Rollplay",
-            "heading_size": "h1"
-          }
-        },
-        "template--15797093990556__891203d8-511a-45d9-aee3-bb3ef909e5ca-16862547058f0d0c24-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>A sister-brand of Evenflo, Rollplay delivers high-quality toys for kids that enable them to experience the thrill of driving. We are dedicated to creating the most innovative ride-on toys, that safely deliver the excitement of riding on wheels. We are adventurists by nature and our passion is to explore fresh ways that wheels can bring thrilling adventures to kids of all ages.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "template--15797093990556__891203d8-511a-45d9-aee3-bb3ef909e5ca-16862547058f0d0c24-0",
-        "template--15797093990556__891203d8-511a-45d9-aee3-bb3ef909e5ca-16862547058f0d0c24-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/image-2.jpg",
-        "height": "adapt",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "2c9dca8d-a110-4c2f-b01b-1f750558f295": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "rollplay",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "9bf51a68-57a3-4029-bc8f-69a680744f42": {
-      "type": "divider",
-      "disabled": true,
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "4d0c4653-0106-45c5-a997-2c9b4ed51788": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "template--15797093990556__4d0c4653-0106-45c5-a997-2c9b4ed51788-16862547058f0d0c24-0": {
+        "heading_e9j6pW": {
           "type": "heading",
           "settings": {
             "heading": "Crib Mattress",
             "heading_size": "h1"
           }
         },
-        "template--15797093990556__4d0c4653-0106-45c5-a997-2c9b4ed51788-16862547058f0d0c24-1": {
+        "text_mdNGEE": {
           "type": "text",
           "settings": {
             "text": "<p>The Evenflo® Green&Gentle™ Sustainable Crib Mattress brings Evenflo’s high-quality, innovative touch to bedtime! Unlike foam mattresses, the Green&Gentle™ mattress is made from approximately 250 post-consumer recycled plastic bottles, to help your child grow up in a greener world. EcoFibril™ materials in the mattress core that are also VOC free, allow for better air flow through the mattress, to help create a cooler, more comfortable sleep environment for your child.</p>",
             "text_style": "body"
           }
         },
-        "template--15797093990556__4d0c4653-0106-45c5-a997-2c9b4ed51788-16862547058f0d0c24-2": {
+        "button_PydhG4": {
           "type": "button",
           "settings": {
             "button_label": "Buy On Amazon",
-            "button_link": "https://www.amazon.com/dp/B0BRR19744"
+            "button_link": "https://www.amazon.com/dp/B0BRR19744",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "template--15797093990556__4d0c4653-0106-45c5-a997-2c9b4ed51788-16862547058f0d0c24-0",
-        "template--15797093990556__4d0c4653-0106-45c5-a997-2c9b4ed51788-16862547058f0d0c24-1",
-        "template--15797093990556__4d0c4653-0106-45c5-a997-2c9b4ed51788-16862547058f0d0c24-2"
+        "heading_e9j6pW",
+        "text_mdNGEE",
+        "button_PydhG4"
       ],
       "settings": {
         "image": "shopify://shop_images/image-6.jpg",
         "height": "adapt",
+        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "section_color_scheme": "",
+        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "2c46f19b-4726-4890-9380-a1e66fd31ab2": {
-      "type": "divider",
+    "evenflo_divider_HfrTPn": {
+      "type": "evenflo-divider",
       "settings": {
-        "divider_spacing": 50,
+        "divider_spacing": 20,
         "divider_border": false,
         "css_class": "",
         "custom_css": ""
@@ -505,26 +350,18 @@
     }
   },
   "order": [
-    "c5c0d082-c845-4a6f-bfef-6794dfacd1e6",
     "main",
-    "24526522-9d8c-4b10-9aa8-0c31e8b483d0",
-    "524e7cc8-c105-4a71-94ff-841b1e417a4a",
-    "5c3aa6ad-59c8-49eb-a019-1bb8270f7413",
-    "c256954c-c7e1-43f8-b1ee-a1d20cb0eda4",
-    "b434f72e-de68-4045-9e0a-4dbc958bb789",
-    "38fb5d1f-1549-47e6-809d-6367f48bcd16",
-    "1f66ea07-4c00-4e0b-ab5d-9ba9a0954277",
-    "b2f14bfe-1db3-47a4-9640-a2ac4d63d125",
-    "05891277-a8b8-4c94-930e-c349393c7a46",
-    "9205ff37-d1e2-48de-80a6-06285e405749",
-    "d61c5faa-790d-4a1d-a572-d5e73bf1165e",
-    "e964574d-c732-4dd7-8d2f-8b3459396817",
-    "7e7ff757-2cc8-4589-b196-cc8c29cc49e7",
-    "4fc29e68-c4ea-452d-a428-de8750b80406",
-    "891203d8-511a-45d9-aee3-bb3ef909e5ca",
-    "2c9dca8d-a110-4c2f-b01b-1f750558f295",
-    "9bf51a68-57a3-4029-bc8f-69a680744f42",
-    "4d0c4653-0106-45c5-a997-2c9b4ed51788",
-    "2c46f19b-4726-4890-9380-a1e66fd31ab2"
+    "image_banner_AndMYL",
+    "rich_text_jmRqAN",
+    "evenflo_image_text_VRHW8X",
+    "featured_collection_UePCCC",
+    "evenflo_divider_PyieVD",
+    "evenflo_image_text_fAURdr",
+    "featured_collection_z7GndB",
+    "evenflo_divider_Tg4wFC",
+    "evenflo_image_text_axzWVi",
+    "featured_collection_BnhFTc",
+    "evenflo_image_text_zm8TpC",
+    "evenflo_divider_HfrTPn"
   ]
 }

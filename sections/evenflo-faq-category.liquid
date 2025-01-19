@@ -1,0 +1,48 @@
+{% assign categories_to_show = section.settings.faqCategoriesRange %}
+{% assign products_to_show = section.settings.faqProductsRange %}
+{% assign category_title = section.settings.faqCategoryTitle %}
+
+{% render 'faq-category-block', categories_to_show: categories_to_show, products_to_show: products_to_show, category_title: category_title, show_title:true  %}
+
+{% schema %}
+{
+  "name": "Evenflo FAQ Category",
+  "tag": "section",
+  "class": "faqCategory",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "faqCategoryTitle",
+      "label": "FAQ Categories Title",
+      "default": "Categories"
+    },
+    {
+      "type": "range",
+      "id": "faqCategoriesRange",
+      "label": "Categories to show",
+      "default": 6,
+      "min": 1,
+      "max": 8,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "faqProductsRange",
+      "label": "Products to show",
+      "default": 6,
+      "min": 1,
+      "max": 6,
+      "step": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo FAQ Category",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

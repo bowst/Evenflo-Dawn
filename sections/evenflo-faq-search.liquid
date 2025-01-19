@@ -1,0 +1,298 @@
+{{ 'section-evenflo-search.css' | asset_url | stylesheet_tag }}
+
+<div class="search-main-block">
+  <div class="search-block page-width">
+    <div class="search-heading">
+      <h1>Search</h1>
+    </div>
+    <div class="search-input searchBox-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+        <path d="M12.9375 7.5625C12.9375 5.55859 11.8477 3.73047 10.125 2.71094C8.36719 1.69141 6.22266 1.69141 4.5 2.71094C2.74219 3.73047 1.6875 5.55859 1.6875 7.5625C1.6875 9.60156 2.74219 11.4297 4.5 12.4492C6.22266 13.4688 8.36719 13.4688 10.125 12.4492C11.8477 11.4297 12.9375 9.60156 12.9375 7.5625ZM11.8477 13.3281C10.582 14.3125 9 14.875 7.3125 14.875C3.26953 14.875 0 11.6055 0 7.5625C0 3.55469 3.26953 0.25 7.3125 0.25C11.3203 0.25 14.625 3.55469 14.625 7.5625C14.625 9.28516 14.0273 10.8672 13.043 12.1328L17.7539 16.8086C18.0703 17.1602 18.0703 17.6875 17.7539 18.0039C17.4023 18.3555 16.875 18.3555 16.5586 18.0039L11.8477 13.3281Z" fill="#121212" fill-opacity="0.5"/>
+      </svg>
+      <input type="text" id="searchBox" placeholder="Search">
+    </div>
+    <div class="search-listing-wrapper">
+      <div class="search-listing-header">
+        <p id="numberOfResults"></p>
+        <div class="search-selector">
+          <select id="selectProduct"></select>
+        </div>
+        <div class="search-selector">
+          <select id="selectTopic"></select>
+        </div>
+      </div>
+
+      <div class="search-listing-body">
+        {% comment %} TO be displayed through javascript {% endcomment %}
+      </div>
+    </div>
+
+    <div class="search-pagination" id="searchPagination"></div>
+  </div>
+</div>
+
+<script>
+
+function fetchTopicsAndProductsRelatedToSearch(searchTerm="",topics_id="",products_id="") {
+	const topicContainer = document.getElementById("selectTopic");
+    const productContainer = document.getElementById("selectProduct");
+
+	if (!topicContainer || !productContainer) {
+		return;
+	}
+
+    createAndAppendDropDownOption(topicContainer,"Select Topic")
+    createAndAppendDropDownOption(productContainer,"Select Product")
+
+
+	fetch(`${evenFloFAQURL}faqs/getFilteredFaqs?filter=${encodeURIComponent(searchTerm)}&page=1`)
+		.then((response) => response.json())
+		.then((data) => {
+            //Displaying search related topics
+			data?.filtered_topics.forEach((topic) => {
+				const option = document.createElement("option");
+				option.value = topic.id;
+
+                if(topics_id && topics_id==topic.id){
+                option.selected=true;
+                }
+
+				option.textContent = topic.name;
+				topicContainer.appendChild(option);
+			});
+
+            //Displaying search related products
+            data?.filtered_products.forEach((product) => {
+				const option = document.createElement("option");
+				option.value = product.id;
+
+                if(products_id && products_id==product.id){
+                option.selected=true;
+                }
+
+				option.textContent = product.name;
+				productContainer.appendChild(option);
+			});
+		})
+		.catch((error) => {
+			console.error("Error fetching topics and products:", error);
+		});
+}
+
+function fetchFAQsData(searchTerm = "", product_id = "", topics_id = "", page = 1) {
+    const container = document.querySelector('.search-listing-body');
+    const searchBlocks = document.getElementById('searchBlocks');
+    let blocksToShow = searchBlocks ? searchBlocks.dataset.searchBlocksToShow : 8;
+
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = "";  // Clear existing content
+
+    // Creating loader div through javascript
+    const loader = appendLoader(container)
+
+    fetch(`${evenFloFAQURL}faqs/getFilteredFaqs?page=${page}&count=10&filter=${encodeURIComponent(searchTerm)}&product_id=${product_id}&topics_id=${topics_id}`)
+        .then(response => response.json())
+        .then(data => {
+            // Setting number of results shown   
+            let numberOfResults = data?.count ?? 0;
+            let paginatedHTML = getPaginatedHTMLButtons(numberOfResults, page);
+            let insideContent = `${numberOfResults} results for <b>“${searchTerm}”</b>`;
+            document.getElementById('numberOfResults').innerHTML = insideContent;
+
+            data?.results?.forEach((product) => {
+                const searchCard = createPopularCardDivElement("search-card");
+
+                const faqsContent = getFAQContent(product?.products || []);
+
+                const tags = getTagsArray(product?.tags || []);
+
+                const tagsHtml = getTagsHtml(tags);
+
+                searchCard.innerHTML = setFAQBlockInnerHtml(
+                product?.topic?.name || "",
+                product.question,
+                faqsContent,
+                product.answer,
+                "",
+                tagsHtml
+                );
+
+                container.appendChild(searchCard);
+            });
+              
+
+        })
+        .catch(error => {
+            console.error('Error fetching products:', error);
+        })
+        .finally(() => {
+            // Hide the loader
+            if (loader) {
+               hideLoader(loader)
+               toggleAnswerBullet();
+              
+            }          
+        });
+}
+
+
+function getPaginatedHTMLButtons(resultCount, page) {
+    if (resultCount < 1) {
+        return;
+    }
+
+    page = parseInt(page);
+
+    const perPage = 20;
+    const totalPages = Math.ceil(resultCount / perPage);
+
+    const paginationDiv = document.getElementById('searchPagination');
+
+    // Create the 'prev' button
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'prev';
+    if (page == 1) {
+        prevButton.disabled = true;
+    } else {
+        prevButton.onclick = () => paginatedClick(page - 1)
+    }
+    paginationDiv.appendChild(prevButton);
+
+    // Create the page number buttons
+    let startPage = Math.max(1, page);
+    let endPage = Math.min(startPage + 2, totalPages);
+
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.onclick = () => paginatedClick(i)
+        paginationDiv.appendChild(pageButton);
+    }
+
+    // Create the 'next' button
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'next';
+    if (page >= totalPages) {
+        nextButton.disabled = true;
+    } else {
+        nextButton.onclick = () => paginatedClick(page + 1)
+    }
+
+    paginationDiv.appendChild(nextButton);
+
+    return paginationDiv.outerHTML;
+}
+
+function paginatedClick(page) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    let searchTerm = ""
+    if (urlParams.has('search')) {
+        searchTerm = urlParams.get('search');
+    }
+
+    let product_id = ""
+    if (urlParams.has('product_id')) {
+        product_id = urlParams.get('product_id');
+    }
+
+    let topics_id = ""
+    if (urlParams.has('topics_id')) {
+        topics_id = urlParams.get('topics_id');
+    }
+
+    callLocation(page, searchTerm, product_id, topics_id);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    let searchTerm = ""
+    if (urlParams.has('search')) {
+        searchTerm = urlParams.get('search');
+        document.getElementById('searchBox').value = searchTerm;
+    }
+
+    let product_id = ""
+    if (urlParams.has('product_id')) {
+        product_id = urlParams.get('product_id');
+        document.getElementById('selectProduct').value = product_id;
+    }
+
+    let topics_id = ""
+    if (urlParams.has('topics_id')) {
+        topics_id = urlParams.get('topics_id');
+        document.getElementById('selectTopic').value = topics_id;
+    }
+
+    let page = 1
+    if (urlParams.has('page')) {
+        page = urlParams.get('page');
+    }
+
+
+    //Unified call to get products and topics to display in dropdown
+    fetchTopicsAndProductsRelatedToSearch(searchTerm,topics_id,product_id)
+    //Get All FAQS data
+    fetchFAQsData(searchTerm, product_id, topics_id, page);
+});
+
+// Get the search element by its ID
+const inputElement = document.getElementById('searchBox');
+
+inputElement.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        const searchTerm = inputElement.value;
+        // callLocation(1, searchTerm, document.getElementById('selectProduct').value, document.getElementById('selectTopic').value);
+        callLocation(1, searchTerm);
+    }
+});
+
+document.getElementById('selectProduct').addEventListener('change', function () {
+    callLocation(1, document.getElementById('searchBox').value, this.value, document.getElementById('selectTopic').value);
+});
+
+document.getElementById('selectTopic').addEventListener('change', function () {
+    callLocation(1, document.getElementById('searchBox').value, document.getElementById('selectProduct').value, this.value);
+});
+
+function callLocation(page = 1, searchTerm = "", product_id = "", topics_id = "") {
+    const urlParams = new URLSearchParams();
+
+    if (searchTerm) {
+        urlParams.set('search', searchTerm);
+    }
+
+    if (product_id) {
+        urlParams.set('product_id', product_id);
+    }
+
+    if (topics_id) {
+        urlParams.set('topics_id', topics_id);
+    }
+
+    urlParams.set('page', page);
+
+    window.location.href = '/pages/evenflo-faq-search?' + urlParams.toString();
+}
+</script>
+
+{% schema %}
+{
+  "name": "evenflo faq search",
+  "settings": [
+  ],
+  "presets": [
+    {
+      "name": "evenflo faq search",
+    }
+  ]
+}
+{% endschema %}

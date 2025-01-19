@@ -1,0 +1,59 @@
+{% assign default_background_image = 'https://www.evenflo.com/cdn/shop/files/Evenflo-Benefit-1.png?v=1690902298&width=303' %} <!-- Adjust if using an external URL -->
+
+{% if background_image %}
+    {% assign background_image = background_image | image_url %}
+    {% else %}
+    {% assign background_image = default_background_image %}
+{% endif %}
+
+
+<style>
+.support-content-wrapper {
+    background-image: url({{ background_image }});
+}
+@media screen and (max-width: 767px) {
+  .support-content-wrapper:after{
+    background-image: url({{ background_image }});
+  }
+}
+</style>
+
+
+{% if support_title %}
+    {% assign support_title = support_title %}
+    {% else %}
+    {% assign support_title = "Get Support" %}
+{% endif %}
+
+{% if support_description %}
+        {% assign support_description = support_description %}
+        {% else %}
+        {% assign support_description = "Tincidunt mollis nisi volutpat quam. Justo, erat feugiat ornare condimentum." %}
+ {% endif %}
+
+{% if support_button_title %}
+    {% assign support_button_title = support_button_title  %}
+    {% else %}
+    {% assign support_button_title = "Call to Action" %}
+{% endif %}
+
+
+
+
+    <div class="support-block">
+        <div class="page-width">
+            <div class="support-content-wrapper">
+                <div class="support-card">
+                    <div class="support-heading">
+                        <h1> {{ support_title }}</h1>
+                        <p>
+                            {{ support_description }}
+                        </p>
+                    </div>
+                    <div class="support-card-btn">
+                        <button>{{ support_button_title }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

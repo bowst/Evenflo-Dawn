@@ -1,6 +1,6 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
-<article class="article-template" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="article-template">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when '@app' -%}
@@ -9,10 +9,12 @@
         </div>
       {%- when 'featured_image' -%}
         {%- if article.image -%}
-          <div class="article-template__hero-container" {{ block.shopify_attributes }}>
+          <div
+            class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            {{ block.shopify_attributes }}
+          >
             <div
               class="article-template__hero-{{ block.settings.image_height }} media"
-              itemprop="image"
               {% if block.settings.image_height == 'adapt' and article.image %}
                 style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
               {% endif %}
@@ -40,68 +42,62 @@
         {%- endif -%}
 
       {%- when 'title' -%}
-        <header class="page-width page-width--narrow" {{ block.shopify_attributes }}>
-          <h1 class="article-template__title" itemprop="headline">{{ article.title | escape }}</h1>
+        <header
+          class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <h1
+            class="article-template__title"
+          >
+            {{ article.title | escape }}
+          </h1>
           {%- if block.settings.blog_show_date -%}
-            <span class="circle-divider caption-with-letter-spacing" itemprop="dateCreated datePublished">
+            <span class="circle-divider caption-with-letter-spacing">
               {{- article.published_at | time_tag: format: 'date' -}}
             </span>
           {%- endif -%}
           {%- if block.settings.blog_show_author -%}
-            <span class="caption-with-letter-spacing" itemprop="author" itemscope itemtype="http://schema.org/Person">
-              <span itemprop="name">{{ article.author }}</span>
+            <span class="caption-with-letter-spacing">
+              <span>{{ article.author }}</span>
             </span>
           {%- endif -%}
         </header>
 
       {%- when 'content' -%}
         <div
-          class="article-template__content page-width page-width--narrow rte"
-          itemprop="articleBody"
+          class="article-template__content page-width page-width--narrow rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {{ block.shopify_attributes }}
         >
           {{ article.content }}
         </div>
 
       {%- when 'share' -%}
-        <div class="article-template__social-sharing page-width page-width--narrow" {{ block.shopify_attributes }}>
+        <div
+          class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {{ block.shopify_attributes }}
+        >
           {% assign share_url = request.origin | append: article.url %}
           {% render 'share-button', block: block, share_link: share_url %}
         </div>
     {%- endcase -%}
   {%- endfor -%}
 
-  {% if article.author contains 'Sarah Haverstick' %}
-    <div class="article-template__content page-width page-width--narrow rte blog_author">
-      <img
-        src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Sarah_Havestick_Headshot_2020.jpg?v=1649264201"
-        alt="{{ article.author }}"
-      >
-      <div class="author_bio">
-        <h4>{{ article.author }}</h4>
-        <p>
-          Sarah Haverstick is the Safety Advocate for Evenflo. She is a certified Child Passenger Safety Technician
-          Instructor and an instructor in the safe transportation of children with special health care needs. Sarah is a
-          former chair of the National Child Passenger Safety Board and current vice chair of the Manufacturers Alliance
-          for Child Passenger Safety. In 2021, she was inducted into the Child Passenger Safety Hall of Fame. Sarah has
-          been educating kids and adults on child passenger safety topics for 15 years. She is a mom to two awesome
-          kiddos (3 year old and 10 year old) – and a few fur babies (four cats and two dogs). Rounding out her family
-          is a husband who might not love all the car seats that live in the garage.
-        </p>
-      </div>
-    </div>
-  {% endif %}
-
-  <div class="article-template__back element-margin-top center">
+  <div class="article-template__back element-margin-top center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
-      <span class="icon-wrap">{% render 'icon-arrow' %}</span>
-      {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
+      <span class="icon-wrap">
+        <span class="svg-wrapper">
+          {{- 'icon-arrow.svg' | inline_asset_content -}}
+        </span>
+      </span>
+      {{ 'blogs.article.back_to_blog' | t: title: blog.title | escape }}
     </a>
   </div>
-
   {%- if blog.comments_enabled? -%}
     <div class="article-template__comment-wrapper background-secondary">
-      <div id="comments" class="page-width page-width--narrow">
+      <div
+        id="comments"
+        class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      >
         {%- if article.comments_count > 0 -%}
           {%- assign anchorId = '#Comments-' | append: article.id -%}
 
@@ -145,7 +141,9 @@
           {%- if form.errors -%}
             <div class="form__message" role="alert">
               <h3 class="form-status caption-large text-body" tabindex="-1" autofocus>
-                {% render 'icon-error' %}
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
                 {{ 'templates.contact.form.error_heading' | t }}
               </h3>
             </div>
@@ -168,7 +166,9 @@
           {%- elsif form.posted_successfully? -%}
             <div class="form-status-list form__message" role="status">
               <h3 class="form-status" tabindex="-1" autofocus>
-                {% render 'icon-success' %}
+                <span class="svg-wrapper">
+                  {{- 'icon-success.svg' | inline_asset_content -}}
+                </span>
                 {{ post_message | t }}
               </h3>
             </div>
@@ -203,7 +203,9 @@
                 {%- if form.errors contains 'author' -%}
                   <small id="CommentForm-author-error">
                     <span class="form__message">
-                      {%- render 'icon-error' -%}
+                      <span class="svg-wrapper">
+                        {{- 'icon-error.svg' | inline_asset_content -}}
+                      </span>
                       {{- 'blogs.article.name' | t }}
                       {{ form.errors.messages.author }}.</span
                     >
@@ -235,7 +237,9 @@
                 {%- if form.errors contains 'email' -%}
                   <small id="CommentForm-email-error">
                     <span class="form__message">
-                      {%- render 'icon-error' -%}
+                      <span class="svg-wrapper">
+                        {{- 'icon-error.svg' | inline_asset_content -}}
+                      </span>
                       {{- 'blogs.article.email' | t }}
                       {{ form.errors.messages.email }}.</span
                     >
@@ -265,7 +269,9 @@
             {%- if form.errors contains 'body' -%}
               <small id="CommentForm-body-error">
                 <span class="form__message">
-                  {%- render 'icon-error' -%}
+                  <span class="svg-wrapper">
+                    {{- 'icon-error.svg' | inline_asset_content -}}
+                  </span>
                   {{- 'blogs.article.message' | t }}
                   {{ form.errors.messages.body }}.</span
                 >
@@ -283,34 +289,7 @@
 </article>
 
 <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "articleBody": {{ article.content | strip_html | json }},
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": {{ request.origin | append: page.url | json }}
-    },
-    "headline": {{ article.title | json }},
-    {% if article.excerpt != blank %}
-      "description": {{ article.excerpt | strip_html | json }},
-    {% endif %}
-    {% if article.image %}
-      "image": [
-        {{ article | image_url: width: 1920 | prepend: "https:" | json }}
-      ],
-    {% endif %}
-    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "author": {
-      "@type": "Person",
-      "name": {{ article.author | json }}
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": {{ shop.name | json }}
-    }
-  }
+  {{ article | structured_data }}
 </script>
 
 {% schema %}
@@ -387,7 +366,7 @@
           "type": "text",
           "id": "share_label",
           "label": "t:sections.main-article.blocks.share.settings.text.label",
-          "default": "Share"
+          "default": "t:sections.main-article.blocks.share.settings.text.default"
         },
         {
           "type": "paragraph",
