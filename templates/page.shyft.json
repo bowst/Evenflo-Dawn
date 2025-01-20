@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -39,7 +39,8 @@
           "type": "heading",
           "settings": {
             "heading": "THE ONE PIECE OF BABY GEAR THAT DOES IT ALL",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_kbR6Pj": {
@@ -154,7 +155,8 @@
           "type": "heading",
           "settings": {
             "heading": "Combo",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "button_FP7tJQ": {
@@ -194,7 +196,8 @@
           "type": "heading",
           "settings": {
             "heading": "COMBO WITH CARRYALL STORAGE",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "button_dXQqcV": {
@@ -234,7 +237,8 @@
           "type": "heading",
           "settings": {
             "heading": "COMBO WITH CARRYALL STORAGE & EXTENDED CANOPY",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "button_RcpTgz": {
@@ -382,8 +386,28 @@
         "padding_bottom": 0
       }
     },
+    "1737394494c2165c5f": {
+      "type": "apps",
+      "blocks": {
+        "pixlee_turnto_social_ugc_simple_block_gfVz69": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/simple-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": "24399946",
+            "fallback_album_id": "",
+            "fallback_threshold": ""
+          }
+        }
+      },
+      "block_order": [
+        "pixlee_turnto_social_ugc_simple_block_gfVz69"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "custom_liquid_Bn9GJJ": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:24399946,setMetaTags:true});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>",
         "color_scheme": "background-1",
@@ -449,6 +473,7 @@
     "featured_collection_nJQbmc",
     "rich_text_97NXha",
     "custom_liquid_RK9adL",
+    "1737394494c2165c5f",
     "custom_liquid_Bn9GJJ",
     "rich_text_q64eLj"
   ]
