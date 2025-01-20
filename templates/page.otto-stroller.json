@@ -26,11 +26,11 @@
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_2": "shopify://shop_images/Otto_Gold_Homepage_Masthead-mobile.jpg",
-        "button_color": "#FFFFFF",
+        "button_color": "#ffffff",
         "button_text_color": "#000000",
-        "mobile_button_color": "#FFFFFF",
+        "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#FFFFFF",
+        "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 50,
         "image_height": "medium",
@@ -117,7 +117,8 @@
           "type": "heading",
           "settings": {
             "heading": "AUTOMATICALLY FOLDS AND SELF-STANDS IN A FLASH",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_rirydB": {
@@ -176,7 +177,8 @@
           "type": "heading",
           "settings": {
             "heading": "CARRY ON WITH YOUR DAY",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_Vgwpha": {
@@ -238,7 +240,10 @@
     "evenflo_full_width_image_CJt4iB": {
       "type": "evenflo-full-width-image",
       "settings": {
-        "image": "shopify://shop_images/wonders.jpg"
+        "image": "shopify://shop_images/wonders.jpg",
+        "heading": "",
+        "text": "",
+        "position": "top-left"
       }
     },
     "image_with_text_9eapNc": {
@@ -348,7 +353,10 @@
     "evenflo_full_width_image_4KcRXg": {
       "type": "evenflo-full-width-image",
       "settings": {
-        "image": "shopify://shop_images/go-in-style_3000x_01d7b3b4-7fa7-4566-9ced-3a06c3c556b9.jpg"
+        "image": "shopify://shop_images/go-in-style_3000x_01d7b3b4-7fa7-4566-9ced-3a06c3c556b9.jpg",
+        "heading": "",
+        "text": "",
+        "position": "top-left"
       }
     },
     "evenflo_pixlee_FGTi6L": {
@@ -358,10 +366,23 @@
         "pixlee_id": "7947831"
       }
     },
-    "html_AQ4KGM": {
-      "type": "HTML",
+    "17373946441c1aff05": {
+      "type": "apps",
+      "blocks": {
+        "pixlee_turnto_social_ugc_simple_block_PmkMHE": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/simple-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": "7947831",
+            "fallback_album_id": "",
+            "fallback_threshold": ""
+          }
+        }
+      },
+      "block_order": [
+        "pixlee_turnto_social_ugc_simple_block_PmkMHE"
+      ],
       "settings": {
-        "html": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:7947831,setMetaTags:true});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>"
+        "include_margins": true
       }
     }
   },
@@ -380,6 +401,6 @@
     "rich_text_j6cXyP",
     "evenflo_full_width_image_4KcRXg",
     "evenflo_pixlee_FGTi6L",
-    "html_AQ4KGM"
+    "17373946441c1aff05"
   ]
 }
