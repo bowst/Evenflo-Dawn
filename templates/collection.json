@@ -172,6 +172,23 @@
       "settings": {
         "pixlee_id": "{{ collection.metafields.custom.emplifi_id.value }}"
       }
+    },
+    "1737395054f50a9810": {
+      "type": "apps",
+      "blocks": {
+        "pixlee_turnto_social_ugc_collection_block_wmcheT": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/collection-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": "{{ collection.metafields.custom.emplifi_id.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "pixlee_turnto_social_ugc_collection_block_wmcheT"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -182,6 +199,7 @@
     "banner",
     "product-grid",
     "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8",
-    "evenflo_emplifi_jfQgzf"
+    "evenflo_emplifi_jfQgzf",
+    "1737395054f50a9810"
   ]
 }
