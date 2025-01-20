@@ -30,7 +30,8 @@
           "type": "heading",
           "settings": {
             "heading": "{{ collection.title }}",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "decorative_heading": false
           }
         },
         "text_XaPbe6": {
@@ -123,6 +124,10 @@
         "padding_bottom": 36
       }
     },
+    "evenflo_collection_description_wJpdAF": {
+      "type": "evenflo-collection-description",
+      "settings": {}
+    },
     "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8": {
       "type": "evenflo-collection-image-banner",
       "blocks": {
@@ -174,15 +179,22 @@
         "show_text_below": true
       }
     },
-    "evenflo_emplifi_jfQgzf": {
-      "type": "evenflo-emplifi",
+    "1737395813336a332c": {
+      "type": "apps",
+      "blocks": {
+        "pixlee_turnto_social_ugc_collection_block_BKypM7": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/collection-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": "{{ collection.metafields.custom.emplifi_id.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "pixlee_turnto_social_ugc_collection_block_BKypM7"
+      ],
       "settings": {
-        "pixlee_id": "{{ collection.metafields.custom.emplifi_id.value }}"
+        "include_margins": true
       }
-    },
-    "evenflo_collection_description_wJpdAF": {
-      "type": "evenflo-collection-description",
-      "settings": {}
     }
   },
   "order": [
@@ -195,6 +207,6 @@
     "product-grid",
     "evenflo_collection_description_wJpdAF",
     "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8",
-    "evenflo_emplifi_jfQgzf"
+    "1737395813336a332c"
   ]
 }
