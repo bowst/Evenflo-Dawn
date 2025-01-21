@@ -154,7 +154,7 @@
                               sizes: sizes,
                               class: 'multicolumn-card__image'
                           }}
-                          {% if section.settings.vimeo_url %}
+                          {% if block.settings.vimeo_url %}
                           <div class="multicolumn-card__video-wrapper">
                             <iframe 
                                 src="https://player.vimeo.com/video/{{ block.settings.vimeo_url | split: '/' | last }}" 
