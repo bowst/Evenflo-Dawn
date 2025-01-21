@@ -24,15 +24,15 @@
 {%- endif -%}
 
 {%- style -%}
-    .app-btn {
+    .banner__content .app-btn {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
     }
-    .app-btn a {
+    .banner__content .app-btn a {
         flex-basis: 200px;
     }
-    .app-btn a img {
+    .banner__content .app-btn a img {
         width: 100%;
     }
         #Banner-{{ section.id }}::after {
@@ -237,14 +237,12 @@
         {%- endcase -%}
       {%- endfor -%}
       <div class="app-btn">
-        <a href="{{ section.settings.app_store }}">
-          
+        <a href="{{ section.settings.app_store }}"> 
           <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/playstore-logo_1.svg?v=1737463606" alt="" />
         </a>
         <a href="{{ section.settings.play_store }}">
           <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/app-store-logo_1.svg?v=1737463606" alt="" />
-        </a>
-        
+        </a>  
       </div>
     </div>
   </div>
