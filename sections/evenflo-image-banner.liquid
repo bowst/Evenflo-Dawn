@@ -36,6 +36,11 @@
     .banner__content .app-btn a img {
         width: 100%;
     }
+    @media screen and (max-width: 749px) {
+      .banner__content .app-btn {
+       justify-content: center;
+      }
+    }
         #Banner-{{ section.id }}::after {
           opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
         }
