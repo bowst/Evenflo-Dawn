@@ -24,6 +24,17 @@
 {%- endif -%}
 
 {%- style -%}
+    .app-btn {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .app-btn a {
+        flex-basis: 200px;
+    }
+    .app-btn a img {
+        width: 100%;
+    }
         #Banner-{{ section.id }}::after {
           opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
         }
