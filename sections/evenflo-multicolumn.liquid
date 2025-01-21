@@ -156,7 +156,7 @@
                           }}
                           <div class="multicolumn-card__video-wrapper">
                             <iframe 
-                                src="https://player.vimeo.com/video/919738412" 
+                                src="https://player.vimeo.com/video/{{ section.settings.vimeo_url | split: '/' | last }}" 
                                 width="640" 
                                 height="360" 
                                 frameborder="0" 
@@ -593,6 +593,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "vimeo_url",
+          "label": "Vimeo Video URL",
+          "default": "https://vimeo.com/123456789"
         },
         {
           "type": "liquid",
