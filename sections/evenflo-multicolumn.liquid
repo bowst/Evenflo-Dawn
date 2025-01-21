@@ -154,7 +154,7 @@
                               sizes: sizes,
                               class: 'multicolumn-card__image'
                           }}
-                          {% if section.settings.vimeo_video %}
+                          {% if block.settings.vimeo_video %}
                             {% if block.settings.vimeo_url %}
                               <div class="multicolumn-card__video-wrapper">
                                 <iframe 
@@ -558,12 +558,6 @@
     },
     {
       "type": "checkbox",
-      "id": "vimeo_video",
-      "default": false,
-      "label": "Enable Vimeo Video"
-    },
-    {
-      "type": "checkbox",
       "id": "swipe_on_mobile",
       "default": false,
       "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
@@ -608,6 +602,12 @@
           "id": "vimeo_url",
           "label": "Vimeo Video URL",
           "default": "https://vimeo.com/123456789"
+        },
+        {
+          "type": "checkbox",
+          "id": "vimeo_video",
+          "default": false,
+          "label": "Enable Vimeo Video"
         },
         {
           "type": "liquid",
