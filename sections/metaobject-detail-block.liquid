@@ -1,6 +1,41 @@
+<div class="metaobject-detail-block">
+  <div class="page-width">
+    <h2>{{ section.settings.section_title }}</h2>
+    <h3>{{ section.settings.page_title }}</h3>
+    <p>{{ section.settings.body_field }}</p>
+  </div>
+</div>
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Custom Content Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Default Section Title"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Title",
+      "default": "Default Page Title"
+    },
+    {
+      "type": "textarea",
+      "id": "body_field",
+      "label": "Body Field",
+      "default": "Default body content for this section. You can add any text or description here."
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Custom Content Section",
+      "category": "Text"
+    }
+  ]
+}
 {% endschema %}
+
+
