@@ -14,7 +14,7 @@
       "settings": {
         "section_title": "{{ metaobject.name.value }}",
         "page_title": "{{ metaobject.page_title.value }}",
-        "body_field": "Default body content for this section. You can add any text or description here."
+        "rich_text_content": "{{ metaobject.description | metafield_tag }}"
       }
     }
   },
