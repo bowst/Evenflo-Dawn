@@ -49,17 +49,8 @@
   }
 }
 </style>
-<!-- <div class="metaobject-tags">
-  {% assign grouped_metaobjects = shop.metaobjects.glossary.values | sort: "name" %}
-  {% for metaobject in grouped_metaobjects %}
-    {% assign first_letter = metaobject.name | slice: 0, 1 | upcase %}
-    <a href="#metaobject-list-group-{{ first_letter }}">{{ first_letter }}</a>
-  {% endfor %}
-</div> -->
 <div class="metaobject-tags">
-  {% assign alphabet = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" | split: "," %}
-  {% assign grouped_metaobjects = shop.metaobjects.glossary.values | sort: "name" %}
-  
+  {% assign alphabet = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" | split: "," %}  
   {% for letter in alphabet %}
     <a href="#metaobject-list-group-{{ letter }}">{{ letter }}</a>
   {% endfor %}
