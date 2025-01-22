@@ -129,6 +129,9 @@
          color: {{ section.settings.mobile_button_text_color }} !important;
       }
       }
+  .evenflo-image-banner{
+    background: {{section.settings.banner_color}};
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -275,6 +278,12 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "Mobile Image"
+    },
+    {
+      "type": "color",
+      "id": "banner_color",
+      "label": "Banner Color",
+      "default": "#FFFFFF"
     },
     {
       "type": "checkbox",
