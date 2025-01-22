@@ -1,6 +1,73 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<style>
+.designer-card {
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 15px #ccc;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+.metaobject-list-group {
+  display: grid;
+  row-gap: 32px;
+  padding: 24px 0 32px;
+}
+
+.metaobject-list-group * {
+    margin: 0;
+}
+
+.metaobject-list-group:not(:last-child) {
+    border-bottom: 1px solid #e9dcc6;
+}
+.metaobject-list-group ul {
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 24px;
+  row-gap: 16px;
+}
+@media screen and (min-width: 990px) {
+  .page-width--narrow:has(.designer-list) {
+      max-width: 100rem;
   }
+}
+</style>
+<div class="page-width">
+  <div class="metaobject-list">
+    {% assign grouped_metaobjects = shop.metaobjects.glossary.values | sort: "name" %}
+    {% assign current_letter = "" %}
+    {% for metaobject in grouped_metaobjects %}
+      {% assign first_letter = metaobject.name | slice: 0, 1 | upcase %}
+      {% if first_letter != current_letter %}
+        {% if current_letter != "" %}
+          </ul>
+          </div>
+        {% endif %}
+        <div class="metaobject-list-group">
+        <h2 id="metaobject-list-group-{{ first_letter }}">{{ first_letter }}</h2>
+        <ul>
+        {% assign current_letter = first_letter %}
+      {% endif %}
+      <li><a href="{{ metaobject.system.url }}">{{ metaobject.name }}</a></li>
+    {% endfor %}
+    {% if current_letter != "" %}
+      </ul>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Glossary MetaObject List",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Glossary MetaObject List",
+    }
+  ]
+}
 {% endschema %}
