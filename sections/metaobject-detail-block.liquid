@@ -2,7 +2,7 @@
   <div class="page-width">
     <h2>{{ section.settings.section_title }}</h2>
     <h3>{{ section.settings.page_title }}</h3>
-    <p>{{ section.settings.body_field }}</p>
+    <p>{{ section.settings.rich_text_content }}</p>
   </div>
 </div>
 {% schema %}
@@ -22,10 +22,10 @@
       "default": "Default Page Title"
     },
     {
-      "type": "textarea",
-      "id": "body_field",
-      "label": "Body Field",
-      "default": "Default body content for this section. You can add any text or description here."
+      "type": "richtext",
+      "id": "rich_text_content",
+      "label": "Rich Text Content",
+      "default": "<p>This is the default rich text content. You can <strong>bold</strong> or <em>italicize</em> text, add <a href='#'>links</a>, and more.</p>"
     }
   ],
   "blocks": [],
