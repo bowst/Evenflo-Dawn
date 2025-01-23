@@ -63,6 +63,11 @@ html:has(.metaobject-tags) {
     display: none;
   }
 }
+@media screen and (max-width: 767px){
+  .metaobject-list-group ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 </style>
 <div class="metaobject-tags">
   {% assign alphabet = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" | split: "," %}  
