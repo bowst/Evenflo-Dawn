@@ -53,8 +53,14 @@ html:has(.metaobject-tags) {
   }
 }
 @media screen and (max-width: 991px) {
-  .page-width:has(.metaobject-list) {
-      max-width: 100rem;
+  .metaobject-tags {
+    justify-content: flex-start;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+  }
+  .metaobject-tags::-webkit-scrollbar {
+    display: none;
   }
 }
 </style>
