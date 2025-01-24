@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "7232f063-1345-4370-b773-68e048509a7d": {
@@ -30,19 +30,17 @@
         },
         "title": {
           "type": "title",
-          "settings": {
-          }
+          "settings": {}
         },
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
         },
         "price": {
           "type": "price",
-          "settings": {
-          }
+          "settings": {}
         },
         "feb577d3-23f1-4904-a3ca-9965e8fbe351": {
           "type": "custom_liquid",
@@ -53,7 +51,7 @@
         "21a10421-a44c-41d2-8239-39abc04c19f8": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by early November\n{% endif %}"
+            "custom_liquid": ""
           }
         },
         "related_products_H3k8my": {
@@ -71,8 +69,7 @@
         "quantity_selector": {
           "type": "quantity_selector",
           "disabled": true,
-          "settings": {
-          }
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -94,6 +91,7 @@
         "quantity_selector",
         "buy_buttons"
       ],
+      "custom_css": [],
       "settings": {
         "enable_sticky_info": false,
         "media_size": "small",
@@ -118,8 +116,7 @@
     },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
-      "settings": {
-      }
+      "settings": {}
     },
     "evenflo_full_width_8jpFeL": {
       "type": "evenflo-full-width",
@@ -136,8 +133,7 @@
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
       "type": "evenflo-pdp-faq",
-      "settings": {
-      }
+      "settings": {}
     },
     "45849377-4cee-48de-b8f8-52fd115e29b4": {
       "type": "evenflo-video-support",
@@ -169,9 +165,7 @@
     },
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c": {
       "type": "evenflo-peace-of-mind",
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "heading": "Peace Of Mind",
         "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
@@ -189,7 +183,7 @@
       "type": "apps",
       "blocks": {
         "2df1d67e-9c15-4910-9a8f-0a6d3e68e115": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -205,6 +199,8 @@
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
       "type": "evenflo-join",
       "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "755a7dc5-f3bb-444c-a0dc-93ce456b88ba": {
