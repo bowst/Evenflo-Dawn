@@ -1,6 +1,8 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-evenflo-multicolumn.css' | asset_url | stylesheet_tag }}
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
 
 {% style %}
         #shopify-section-{{ section.id }} {
@@ -154,20 +156,60 @@
                               sizes: sizes,
                               class: 'multicolumn-card__image'
                           }}
-                          {% if block.settings.vimeo_video %}
-                            {% if block.settings.vimeo_url %}
+                          {% if block.settings.enable_video %}
+                            {% if block.settings.video_type == 'vimeo' and block.settings.vimeo_url %}
                               <div class="multicolumn-card__video-wrapper">
-                                <iframe 
-                                    src="https://player.vimeo.com/video/{{ block.settings.vimeo_url | split: '/' | last }}" 
-                                    width="640" 
-                                    height="360" 
-                                    frameborder="0" 
-                                    allow="autoplay; fullscreen; picture-in-picture" 
-                                    allowfullscreen>
-                                </iframe>
+                                <iframe
+                                  src="https://player.vimeo.com/video/{{ block.settings.vimeo_url }}"
+                                  width="640"
+                                  height="360"
+                                  frameborder="0"
+                                  allow="autoplay; fullscreen; picture-in-picture"
+                                  allowfullscreen
+                                ></iframe>
+                              </div>
+                            {% elsif block.settings.video_type == 'video' and block.settings.shopify_video %}
+                              <div
+                                class="video-section__media"
+                                {% if block.settings.shopify_video.preview_image != blank %}
+                                  style="--ratio-percent: {{ 1 | divided_by: block.settings.shopify_video.aspect_ratio | times: 100 }}%;"
+                                {% endif %}
+                              >
+                                <deferred-media
+                                  class="deferred-media no-js-hidden"
+                                  data-media-id="{{ block.settings.shopify_video.id }}"
+                                >
+                                  <button
+                                    id="Deferred-Poster-Modal-{{ block.settings.shopify_video.id }}"
+                                    class="video-section__poster media deferred-media__poster media--landscape"
+                                    type="button"
+                                  >
+                                    {% if block.settings.shopify_video.preview_image != blank %}
+                                      {{
+                                        block.settings.shopify_video.preview_image
+                                        | image_url: width: 1100
+                                        | image_tag
+                                      }}
+                                    {% else %}
+                                      {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                                    {% endif %}
+                                    <span class="deferred-media__poster-button motion-reduce">
+                                      {%- render 'icon-play' -%}
+                                    </span>
+                                  </button>
+                                  <template>
+                                    {{
+                                      block.settings.shopify_video
+                                      | video_tag:
+                                        controls: true,
+                                        autoplay: true,
+                                        loop: block.settings.enable_video_looping
+                                    }}
+                                  </template>
+                                </deferred-media>
                               </div>
                             {% endif %}
-                          {% endif %}
+                          {% endif -%}
                         </div>
                         <div class="image-modal-wrapper">
                           <div class="cross-btn">X</div>
@@ -598,18 +640,47 @@
           "label": "t:sections.multicolumn.blocks.column.settings.image.label",
         },
         {
+          "type": "checkbox",
+          "id": "enable_video",
+          "default": false,
+          "label": "Enable Video",
+          "info": "Enable this for vimeo video or shopify video"
+        },
+
+        {
+          "type": "select",
+          "id": "video_type",
+          "options": [
+            {
+              "value": "vimeo",
+              "label": "Vimeo Video"
+            },
+            {
+              "value": "video",
+              "label": "Shopify Video"
+            }
+          ],
+          "default": "vimeo",
+          "label": "Video Type"
+        },
+        {
           "type": "text",
           "id": "vimeo_url",
-          "label": "Vimeo Video Id",
+          "label": "Vimeo Video ID",
           "default": "123456789",
-          "info": "Enter only the video ID (e.g., for https://vimeo.com/123456789, use 123456789)."
-          
+          "info": "Enter only the video ID (e.g., for https://vimeo.com/123456789, use 123456789)"
+        },
+        {
+          "type": "video",
+          "id": "shopify_video",
+          "label": "Shopify Video",
+          "info": "Select video from media library"
         },
         {
           "type": "checkbox",
-          "id": "vimeo_video",
-          "default": false,
-          "label": "Enable Vimeo Video"
+          "id": "enable_video_looping",
+          "label": "Enable Video Looping",
+          "default": false
         },
         {
           "type": "liquid",
