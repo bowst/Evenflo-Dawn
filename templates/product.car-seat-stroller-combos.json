@@ -244,6 +244,23 @@
         "include_margins": true
       }
     },
+    "1737394390718ffe1c": {
+      "type": "apps",
+      "blocks": {
+        "pixlee_turnto_social_ugc_product_block_6NJaQt": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": ""
+          }
+        }
+      },
+      "block_order": [
+        "pixlee_turnto_social_ugc_product_block_6NJaQt"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "932a7bd1-78d6-41d3-895a-200e09134f47": {
       "type": "evenflo-pixlee",
       "disabled": true,
@@ -307,33 +324,6 @@
       "settings": {
         "heading": "Benefits of shopping evenflo.com"
       }
-    },
-    "custom_liquid_RK7Rhz": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "1737394390718ffe1c": {
-      "type": "apps",
-      "blocks": {
-        "pixlee_turnto_social_ugc_product_block_6NJaQt": {
-          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
-          "settings": {
-            "widget_id": ""
-          }
-        }
-      },
-      "block_order": [
-        "pixlee_turnto_social_ugc_product_block_6NJaQt"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
@@ -352,7 +342,6 @@
     "1737394390718ffe1c",
     "932a7bd1-78d6-41d3-895a-200e09134f47",
     "94dde192-35b0-4467-904b-69ef073615d6",
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
-    "custom_liquid_RK7Rhz"
+    "e87086c3-8bc1-4ebd-af1f-5d31612858d1"
   ]
 }

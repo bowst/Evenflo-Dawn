@@ -30,19 +30,17 @@
         },
         "title": {
           "type": "title",
-          "settings": {
-          }
+          "settings": {}
         },
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
         },
         "price": {
           "type": "price",
-          "settings": {
-          }
+          "settings": {}
         },
         "d8033ec6-6109-4faa-b2a1-f7cc3ea80e32": {
           "type": "custom_liquid",
@@ -54,12 +52,6 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {
           }
         },
         "buy_buttons": {
@@ -77,7 +69,6 @@
         "price",
         "d8033ec6-6109-4faa-b2a1-f7cc3ea80e32",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons"
       ],
       "settings": {
@@ -97,8 +88,7 @@
     },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
-      "settings": {
-      }
+      "settings": {}
     },
     "49c36a4c-d12e-4b40-99dc-d0893ec62107": {
       "type": "evenflo-full-width",
@@ -197,8 +187,7 @@
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
       "type": "evenflo-pdp-faq",
-      "settings": {
-      }
+      "settings": {}
     },
     "45849377-4cee-48de-b8f8-52fd115e29b4": {
       "type": "evenflo-video-support",
@@ -228,7 +217,7 @@
       "type": "apps",
       "blocks": {
         "bb929286-bcc8-4922-907f-025c5b17ddd9": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
