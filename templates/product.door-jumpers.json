@@ -30,19 +30,17 @@
         },
         "title": {
           "type": "title",
-          "settings": {
-          }
+          "settings": {}
         },
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
         },
         "price": {
           "type": "price",
-          "settings": {
-          }
+          "settings": {}
         },
         "21abca87-6416-4044-8984-a04ab4fa09a1": {
           "type": "custom_liquid",
@@ -54,12 +52,6 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {
           }
         },
         "buy_buttons": {
@@ -77,7 +69,6 @@
         "price",
         "21abca87-6416-4044-8984-a04ab4fa09a1",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons"
       ],
       "settings": {
@@ -97,8 +88,7 @@
     },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
-      "settings": {
-      }
+      "settings": {}
     },
     "49c36a4c-d12e-4b40-99dc-d0893ec62107": {
       "type": "evenflo-full-width",
@@ -141,8 +131,7 @@
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
       "type": "evenflo-pdp-faq",
-      "settings": {
-      }
+      "settings": {}
     },
     "45849377-4cee-48de-b8f8-52fd115e29b4": {
       "type": "evenflo-video-support",
@@ -155,9 +144,7 @@
     },
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c": {
       "type": "evenflo-peace-of-mind",
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "heading": "Peace Of Mind",
         "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
@@ -175,7 +162,7 @@
       "type": "apps",
       "blocks": {
         "a963f342-9af9-4188-afbd-92f53d6fdc19": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -244,16 +231,6 @@
       "settings": {
         "heading": "Benefits of shopping evenflo.com"
       }
-    },
-    "custom_liquid_V8cxjp": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
@@ -270,7 +247,6 @@
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
     "16915422528d31f0dc",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
-    "custom_liquid_V8cxjp"
+    "e87086c3-8bc1-4ebd-af1f-5d31612858d1"
   ]
 }
