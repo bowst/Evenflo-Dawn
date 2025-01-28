@@ -1492,3 +1492,31 @@ a.product__text {
     border: none;
   }
 }
+
+
+/* latest update 15.2 theme */
+.product__text.caption-with-letter-spacing {
+  max-width: 44rem;
+  margin-bottom: 20px;
+  padding-top: 16px;
+  text-transform: none;
+  font-size: 1em;
+  color: #000;
+  position: relative;
+  border-top: 1px solid #00aea9;
+}
+.product__text.caption-with-letter-spacing:before {
+  content: "";
+  width: 50px;
+  height: 4px;
+  background: #00aea9;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.product__text.caption-with-letter-spacing:after {
+  display: none;
+}
+.product__text.caption-with-letter-spacing+.product__title h1,.product__text.caption-with-letter-spacing+.product__title h2{
+    line-height: calc(1 / max(1, var(--font-heading-scale))); 
+}
