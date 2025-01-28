@@ -348,7 +348,7 @@
   let slideImage = document.querySelectorAll(".multicolumn-card__image-wrapper");
   slideImage.forEach((item) => {
       // Add event listener to the image wrapper for opening the modal
-      item.addEventListener("click", function() {
+      item.querySelector(".multicolumn-card__image").addEventListener("click", function() {
           // Show the modal by adding the 'modal-show' class
           item.querySelector(".image-modal-wrapper").classList.add("modal-show");
       });
