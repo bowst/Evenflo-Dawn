@@ -26,7 +26,7 @@
         ".breadcrumb span {margin: 0 5px;}"
       ],
       "settings": {
-        "custom_liquid": "<div class=\"content-container page-width content-container--full-width\">\n<nav class=\"breadcrumb\">\n  <a href=\"{{ routes.root_url }}\">Home</a> \n  {% if metaobject %}\n    <span> | </span>\n    <a href=\"/pages/glossary-listing\">glossary</a> \n    <span> | </span>\n    <span>{{ metaobject.name | escape }}</span>\n  {% endif %}\n</nav>\n</div>",
+        "custom_liquid": "<div class=\"content-container page-width content-container--full-width\">\n<nav class=\"breadcrumb\">\n  <a href=\"{{ routes.root_url }}\">Home</a> \n  {% if metaobject %}\n    <span> | </span>\n    <a href=\"/pages/glossary-listing\"> Glossary</a> \n    <span> | </span>\n    <span>{{ metaobject.name | escape }}</span>\n  {% endif %}\n</nav>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
