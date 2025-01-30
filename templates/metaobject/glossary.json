@@ -21,7 +21,7 @@
     "custom_liquid_mtXQyn": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<nav class=\"breadcrumb\">\n  <a href=\"{{ routes.root_url }}\">Home</a> \n  {% if metaobject %}\n    <span> | </span>\n    <a href=\"pages/glossary-listing\">glossary</a> \n    <span> | </span>\n    <span>{{ metaobject.name | escape }}</span>\n  {% endif %}\n</nav>",
+        "custom_liquid": "<nav class=\"breadcrumb\">\n  <a href=\"{{ routes.root_url }}\">Home</a> \n  {% if metaobject %}\n    <span> | </span>\n    <a href=\"/pages/glossary-listing\">glossary</a> \n    <span> | </span>\n    <span>{{ metaobject.name | escape }}</span>\n  {% endif %}\n</nav>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
