@@ -81,7 +81,7 @@
       "disabled": true,
       "settings": {
         "background_show": false,
-        "banner_color": "#FFFFFF",
+        "banner_color": "#ffffff",
         "store_btn_show": false,
         "app_store": "",
         "play_store": "",
@@ -138,7 +138,9 @@
     },
     "evenflo_collection_description_wJpdAF": {
       "type": "evenflo-collection-description",
-      "settings": {}
+      "settings": {
+        "collection_h3": "{{ collection.metafields.custom.collection_H3.value }}"
+      }
     },
     "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8": {
       "type": "evenflo-collection-image-banner",
