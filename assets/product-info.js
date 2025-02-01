@@ -177,6 +177,13 @@ if (!customElements.get('product-info')) {
 
           this.updateMedia(html, variant?.featured_media?.id);
 
+          if (this.querySelector('media-gallery').getAttribute('has_variant') === 'true') {
+  const mediaGallerySource = this.querySelector('media-gallery');
+  const mediaGalleryDestination = html.querySelector(`media-gallery`);
+  mediaGallerySource.outerHTML = mediaGalleryDestination.outerHTML;
+  return;
+}
+
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
             const source = html.getElementById(`${id}-${this.sectionId}`);
             const destination = this.querySelector(`#${id}-${this.dataset.section}`);
@@ -241,12 +248,6 @@ if (!customElements.get('product-info')) {
 
       updateMedia(html, variantFeaturedMediaId) {
 
-        if (this.querySelector('media-gallery').getAttribute('has_variant') === 'true') {
-  const mediaGallerySource = this.querySelector('media-gallery');
-  const mediaGalleryDestination = html.querySelector(`media-gallery`);
-  mediaGallerySource.outerHTML = mediaGalleryDestination.outerHTML;
-  return;
-}
         
         if (!variantFeaturedMediaId) return;
 
