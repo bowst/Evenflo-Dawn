@@ -48,6 +48,11 @@
       "settings": {
         "image": "shopify://shop_images/banner2.jpg",
         "image_2": "shopify://shop_images/mobile-home.jpg",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
         "mobile_button_color": "#ffffff",
@@ -125,7 +130,6 @@
         },
         "3d6bacce-013c-4d56-803d-9727df19d89c": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Evenflo_SDR_Refresh_2024_Desktop_2.png",
             "focal_point": "center center",
@@ -160,8 +164,44 @@
             "text_align": "EzfySlideshow-textbox--center"
           }
         },
+        "image_ALNCLK": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "focal_point": "center center",
+            "focal_point_mobile": "center center",
+            "title": "Two line\ntitle slide.",
+            "subtitle": "An optional subtitle",
+            "image_link": "",
+            "clickable_image_new_tab": false,
+            "button_text": "",
+            "button_link": "",
+            "button_text_2": "",
+            "button_link_2": "",
+            "title_font_size": 80,
+            "title_font_size_mobile": 40,
+            "subtitle_font_size": 21,
+            "subtitle_font_size_mobile": 17,
+            "button_text_size": 13,
+            "button_text_size_mobile": 13,
+            "text_shadow": 20,
+            "overlay_opacity": 0,
+            "button_background_color": "",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#ffffff",
+            "button_background_color_2": "",
+            "button_text_color_2": "#ffffff",
+            "button_border_color_2": "#ffffff",
+            "title_color": "#ffffff",
+            "subtitle_color": "#ffffff",
+            "text_shadow_color": "#000000",
+            "overlay_color": "#000000",
+            "text_align": "EzfySlideshow-textbox--center"
+          }
+        },
         "image_wYCwRm": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Evenflo_Car-Seat-Promo_2024_Homepage_Headers_Desktop_1920x450_A03.jpg",
             "focal_point": "center center",
@@ -570,6 +610,7 @@
       "block_order": [
         "image_LTqV9c",
         "3d6bacce-013c-4d56-803d-9727df19d89c",
+        "image_ALNCLK",
         "image_wYCwRm",
         "image_MQ4zAR",
         "015e746f-2f54-460b-a062-b47de3598e58",
