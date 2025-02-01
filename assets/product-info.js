@@ -240,6 +240,14 @@ if (!customElements.get('product-info')) {
       }
 
       updateMedia(html, variantFeaturedMediaId) {
+
+        if (this.querySelector('media-gallery').getAttribute('has_variant') === 'true') {
+  const mediaGallerySource = this.querySelector('media-gallery');
+  const mediaGalleryDestination = html.querySelector(`media-gallery`);
+  mediaGallerySource.outerHTML = mediaGalleryDestination.outerHTML;
+  return;
+}
+        
         if (!variantFeaturedMediaId) return;
 
         const mediaGallerySource = this.querySelector('media-gallery ul');
