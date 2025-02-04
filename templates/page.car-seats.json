@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "c5c0d082-c845-4a6f-bfef-6794dfacd1e6": {
@@ -18,6 +27,8 @@
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
@@ -31,7 +42,6 @@
     },
     "401ce55f-8dc2-47f6-8040-67332fcb9a11": {
       "type": "evenflo-collection-image-banner",
-      "disabled": true,
       "blocks": {
         "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-heading-1": {
           "type": "heading",
@@ -53,8 +63,9 @@
         "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-heading-1",
         "template--15781023842460__401ce55f-8dc2-47f6-8040-67332fcb9a11-text-1"
       ],
+      "disabled": true,
       "settings": {
-        "image": "shopify:\/\/shop_images\/38412464_Core_Plus_Revolve360_Extend_Rotational_All_In_One_Car_Seat_Revere_Single_1847.jpg",
+        "image": "shopify://shop_images/38412464_Core_Plus_Revolve360_Extend_Rotational_All_In_One_Car_Seat_Revere_Single_1847.jpg",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "middle-left",
@@ -88,7 +99,7 @@
         "template--15781023842460__24526522-9d8c-4b10-9aa8-0c31e8b483d0-16837344027c52c6dd-1": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}</p>"
           }
         }
       },
@@ -108,8 +119,8 @@
     "4cacfa3a-8f0d-47df-b959-1d6d44c29828": {
       "type": "category_anchors",
       "settings": {
-        "category_anchor": "Shop Car Seats",
-        "html": "<div class=\"flex-container\">\n  <a href=\"\/collections\/infant-car-seats\" class=\"flex-item\">Infant Car Seats<\/a>\n  <a href=\"\/collections\/convertible-car-seats\" class=\"flex-item\">Convertible Car Seats<\/a>\n  <a href=\"\/collections\/booster-car-seats\" class=\"flex-item\">Booster Car Seats<\/a>\n  <a href=\"\/collections\/car-seat-accessories\" class=\"flex-item\">Accessories<\/a>\n<\/div>",
+        "category_anchor": "Shop Evenflo Car Seats",
+        "html": "<div class=\"flex-container\">\n  <a href=\"/collections/infant-car-seats\" class=\"flex-item\">Infant Car Seats</a>\n  <a href=\"/collections/convertible-car-seats\" class=\"flex-item\">Convertible Car Seats</a>\n  <a href=\"/collections/booster-car-seats\" class=\"flex-item\">Booster Car Seats</a>\n  <a href=\"/collections/car-seat-accessories\" class=\"flex-item\">Accessories</a>\n</div>",
         "liquid": ""
       }
     },
@@ -120,13 +131,14 @@
           "type": "heading",
           "settings": {
             "heading": "Infant Car Seat",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "template--15781023842460__5c3aa6ad-59c8-49eb-a019-1bb8270f7413-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Safety has never meant more. From that first anxious ride home from the hospital, trust in the leading-edge safety, comfort and convenience of Evenflo infant car seats. <\/p>",
+            "text": "<p>Safety has never meant more. From that first anxious ride home from the hospital, trust in the leading-edge safety, comfort and convenience of Evenflo infant car seats. </p>",
             "text_style": "body"
           }
         }
@@ -136,7 +148,7 @@
         "template--15781023842460__5c3aa6ad-59c8-49eb-a019-1bb8270f7413-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/infant-car-seats.jpg",
+        "image": "shopify://shop_images/infant-car-seats.jpg",
         "height": "adapt",
         "layout": "image_first",
         "desktop_content_position": "middle",
@@ -192,13 +204,14 @@
           "type": "heading",
           "settings": {
             "heading": "CAR SEAT STROLLER COMBO",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>A single piece of baby gear that Shyfts from infant car seat to stroller in one step, streamlining life on the go. Moving from car to sidewalk? Simply lift the carrier off the base, release the wheels and you’re rolling in no time.<\/p>",
+            "text": "<p>A single piece of baby gear that Shyfts from infant car seat to stroller in one step, streamlining life on the go. Moving from car to sidewalk? Simply lift the carrier off the base, release the wheels and you’re rolling in no time.</p>",
             "text_style": "body"
           }
         }
@@ -208,7 +221,7 @@
         "template--15781023842460__38fb5d1f-1549-47e6-809d-6367f48bcd16-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/CAR_SEAT_STROLLER_COMBO.jpg",
+        "image": "shopify://shop_images/CAR_SEAT_STROLLER_COMBO.jpg",
         "height": "adapt",
         "layout": "text_first",
         "desktop_content_position": "middle",
@@ -264,13 +277,14 @@
           "type": "heading",
           "settings": {
             "heading": "Convertible Car Seat",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "template--15781023842460__e964574d-c732-4dd7-8d2f-8b3459396817-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>As your little one outgrows their booties and onesies, our convertible car seats easily adapt, convert and grow right along with them. <\/p>",
+            "text": "<p>As your little one outgrows their booties and onesies, our convertible car seats easily adapt, convert and grow right along with them. </p>",
             "text_style": "body"
           }
         }
@@ -280,7 +294,7 @@
         "template--15781023842460__e964574d-c732-4dd7-8d2f-8b3459396817-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/convertible-car-seaats.jpg",
+        "image": "shopify://shop_images/convertible-car-seaats.jpg",
         "height": "adapt",
         "layout": "image_first",
         "desktop_content_position": "middle",
@@ -336,13 +350,14 @@
           "type": "heading",
           "settings": {
             "heading": "Booster Seat",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "template--15781023842460__05891277-a8b8-4c94-930e-c349393c7a46-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Wow, that little baby in your rear view has transformed into a big kid. Time to transition to a  forward-facing booster that balances safety and big kid style. <\/p>",
+            "text": "<p>Wow, that little baby in your rear view has transformed into a big kid. Time to transition to a  forward-facing booster that balances safety and big kid style. </p>",
             "text_style": "body"
           }
         }
@@ -352,7 +367,7 @@
         "template--15781023842460__05891277-a8b8-4c94-930e-c349393c7a46-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/booster.jpg",
+        "image": "shopify://shop_images/booster.jpg",
         "height": "adapt",
         "layout": "text_first",
         "desktop_content_position": "middle",
@@ -408,13 +423,14 @@
           "type": "heading",
           "settings": {
             "heading": "Car Seat Accessories",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "template--15781023842460__9e506a2a-27d9-4151-a8e8-f332d4e71a83-16862547058f0d0c24-1": {
           "type": "text",
           "settings": {
-            "text": "<p>From added storage to a handy extra car seat base for your sitter, Evenflo accessories help you get even more performance and convenience out of your Evenflo car seat. <\/p>",
+            "text": "<p>From added storage to a handy extra car seat base for your sitter, Evenflo accessories help you get even more performance and convenience out of your Evenflo car seat. </p>",
             "text_style": "body"
           }
         }
@@ -424,7 +440,7 @@
         "template--15781023842460__9e506a2a-27d9-4151-a8e8-f332d4e71a83-16862547058f0d0c24-1"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/car-seat-accessories.jpg",
+        "image": "shopify://shop_images/car-seat-accessories.jpg",
         "height": "adapt",
         "layout": "image_first",
         "desktop_content_position": "middle",
