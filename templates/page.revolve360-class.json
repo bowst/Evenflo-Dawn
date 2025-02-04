@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "evenflo_image_banner_ewniqE": {
@@ -15,7 +15,7 @@
         "text_RQwHJa": {
           "type": "text",
           "settings": {
-            "text": "REVOLVE360™ ROTATING CAR SEAT",
+            "text": "EVENFLO REVOLVE360™ ROTATING CAR SEAT",
             "text_style": "body"
           }
         },
@@ -58,6 +58,11 @@
       ],
       "settings": {
         "image": "shopify://shop_images/class-banner.png",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
         "mobile_button_color": "#ffffff",
@@ -82,7 +87,8 @@
           "type": "heading",
           "settings": {
             "heading": "Which revolve is right for you?",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_QTij7T": {
@@ -194,7 +200,10 @@
     "evenflo_full_width_image_YDjzzL": {
       "type": "evenflo-full-width-image",
       "settings": {
-        "image": "shopify://shop_images/Green-and-Gentle-Full-Take.png"
+        "image": "shopify://shop_images/Green-and-Gentle-Full-Take.png",
+        "heading": "",
+        "text": "",
+        "position": "top-left"
       }
     },
     "evenflo_multicolumn_XBWmmq": {
@@ -204,6 +213,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/one-hand-rotation_8dd82fbe-73c8-4cbb-922c-872ca37d1bc2.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "ONE-HAND, 360° ROTATION",
             "text": "",
@@ -215,6 +228,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/easy-in-and-out.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "EASY IN AND OUT",
             "text": "",
@@ -226,6 +243,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/one-time-install.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "ONE-TIME INSTALLATION",
             "text": "",
@@ -243,6 +264,7 @@
         "title": "",
         "heading_size": "h1",
         "column_style": "classic",
+        "container_size": "full_width",
         "heading_alignment": "end",
         "image_width": "full",
         "image_ratio": "adapt",
