@@ -83,7 +83,7 @@
 
                   <div class="related-products">
                     {% for prod in relatedProducts %}
-                      {% if prod.available == true %}
+                      
                         <div class="product-card {% if product.title == prod.title %} active {% endif %}">
                           {% if product.title != prod.title %}
                             <a
@@ -121,7 +121,7 @@
                             {% endif %}
                           </div>
                         </div>
-                      {% endif %}
+                      
                     {% endfor %}
                   </div>
                 {% endif %}
