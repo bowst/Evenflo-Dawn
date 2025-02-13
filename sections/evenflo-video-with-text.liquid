@@ -100,6 +100,14 @@
                     controls: true,
                     muted: false
                 }}
+                {{
+                  section.settings.video_mobile
+                  | video_tag:
+                    image_size: '1100x',
+                    loop: section.settings.enable_video_looping,
+                    controls: true,
+                    muted: false
+                }}
               {%- endif -%}
             </div>
           </noscript>
