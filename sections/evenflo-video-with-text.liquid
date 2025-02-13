@@ -168,6 +168,15 @@
                     controls: true,
                     muted: false
                 }}
+                {{
+                  section.settings.video_mobile
+                  | video_tag:
+                    image_size: '1100x',
+                    autoplay: true,
+                    loop: section.settings.enable_video_looping,
+                    controls: true,
+                    muted: false
+                }}
               {%- endif -%}
             </template>
           </deferred-media>
@@ -286,6 +295,11 @@
     {
       "type": "video",
       "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
       "label": "Video"
     },
     {
