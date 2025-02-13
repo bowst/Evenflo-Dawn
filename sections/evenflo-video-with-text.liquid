@@ -159,6 +159,7 @@
                   ></iframe>
                 {%- endif -%}
               {%- else -%}
+                <div class="desktop-video">
                 {{
                   section.settings.video
                   | video_tag:
@@ -168,6 +169,8 @@
                     controls: true,
                     muted: false
                 }}
+                </div>
+                <div class="desktop-video">
                 {{
                   section.settings.video_mobile
                   | video_tag:
@@ -177,6 +180,7 @@
                     controls: true,
                     muted: false
                 }}
+                </div>
               {%- endif -%}
             </template>
           </deferred-media>
