@@ -300,10 +300,10 @@ document.addEventListener("DOMContentLoaded", function () {
               }}
             </div>`;
     if (window.innerWidth >= 750) {
-      document.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;
+      document.querySelector('.section-{{ section.id }} .shopify-video-wrapper').innerHTML = desktopVideo;
       
     } else {
-      document.querySelector('.shopify-video-wrapper').innerHTML = mobileVideo;
+      document.querySelector('.section-{{ section.id }} .shopify-video-wrapper').innerHTML = mobileVideo;
       
     }
   }
