@@ -76,7 +76,7 @@
   {%- endif %}
 {%- endcapture -%}
 
-<div class="qqq image-with-text image-with-text--{{ section.settings.content_layout }} page-width isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == 'background-1' and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %} section-{{ section.id }}-padding">
+<div id="section-{{ section.id }}" class="qqq image-with-text image-with-text--{{ section.settings.content_layout }} page-width isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == 'background-1' and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %} section-{{ section.id }}-padding">
   <div
     class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}"
     style="flex-direction: {% if section.settings.video-content-right %}row-reverse{% endif %}"
@@ -300,10 +300,10 @@ document.addEventListener("DOMContentLoaded", function () {
               }}
             </div>`;
     if (window.innerWidth >= 750) {
-      document.querySelector('.section-{{ section.id }} .shopify-video-wrapper').innerHTML = desktopVideo;
+      document.querySelector('#section-{{ section.id }} .shopify-video-wrapper').innerHTML = desktopVideo;
       
     } else {
-      document.querySelector('.section-{{ section.id }} .shopify-video-wrapper').innerHTML = mobileVideo;
+      document.querySelector('#section-{{ section.id }} .shopify-video-wrapper').innerHTML = mobileVideo;
       
     }
   }
