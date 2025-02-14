@@ -238,7 +238,10 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   var section = document.querySelector('#section-{{ section.id }}');
-  var empty = {{ section.settings.video_mobile }};
+  
+   empty = 1;
+  
+  // var empty = {{ section.settings.video_mobile }};
   
   
   var desktopVideo = `<div class="desktop-video">
@@ -274,11 +277,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth >= 750 ) {
       section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
     } else {
-      if( ){
-      section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
-      }else{
+      {% if section.settings.video_mobile == null  %}
+          section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo; 
+        {% else %}
         section.querySelector('.shopify-video-wrapper').innerHTML = mobileVideo;
-      }        
+        
+      {% endif %}
     }
   }
   checkWidth(); // Initial check
