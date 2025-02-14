@@ -177,6 +177,18 @@
                 style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
               {% endif %}
             >
+              <div class="desktop-video">
+              {{
+                section.settings.video
+                | video_tag:
+                  image_size: '1100x',
+                  autoplay: 'autoplay',
+                  loop: section.settings.enable_video_looping,
+                  controls: true,
+                  muted: true,
+                  playsinline: 'playsinline'
+              }}
+            </div>
               <button
                 id="Deferred-Poster-Modal-{{ video_id }}"
                 class="video-section__poster media deferred-media__poster media--landscape"
@@ -226,18 +238,7 @@
                     ></iframe>
                   {%- endif -%}
                 {%- else -%}
-                  <div class="desktop-video">
-                    {{
-                      section.settings.video
-                      | video_tag:
-                        image_size: '1100x',
-                        autoplay: 1,
-                        loop: section.settings.enable_video_looping,
-                        controls: true,
-                        muted: true,
-                        playsinline: 'playsinline'
-                    }}
-                  </div>
+                  
                 {%- endif -%}
               </template>
             </deferred-media>
