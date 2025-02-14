@@ -170,14 +170,7 @@
               {%- endif -%}
             </div>
           </noscript>
-            <deferred-media
-              class="desktop-video-section__media video-section__media deferred-media no-js-hidden gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}"
-              data-media-id="{{ video_id }}"
-              {% if poster != null %}
-                style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
-              {% endif %}
-            >
-              <div class="desktop-video">
+          <div class="desktop-video">
               {{
                 section.settings.video
                 | video_tag:
@@ -189,6 +182,14 @@
                   playsinline: 'playsinline'
               }}
             </div>
+            <deferred-media
+              class="desktop-video-section__media video-section__media deferred-media no-js-hidden gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}"
+              data-media-id="{{ video_id }}"
+              {% if poster != null %}
+                style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+              {% endif %}
+            >
+              
               <button
                 id="Deferred-Poster-Modal-{{ video_id }}"
                 class="video-section__poster media deferred-media__poster media--landscape"
