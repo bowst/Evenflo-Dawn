@@ -13,17 +13,19 @@
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-    .mobile-video-section__media {
+    .mobile-video-section__media,
+    .desktop-video-section__media  {
       display: none;
     }
-    .desktop-video-section__media {
+    /* .desktop-video-section__media {
       display: block;
-    }
+    } */
   }
   @media screen and (max-width: 749px) {
-    .mobile-video-section__media {
+    /* .mobile-video-section__media {
       display: block;
-    }
+    } */
+    .mobile-video-section__media,
     .desktop-video-section__media {
       display: none;
     }
