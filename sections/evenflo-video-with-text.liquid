@@ -132,7 +132,29 @@
               style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
             {% endif %}
           >
-            
+            <button
+              id="Deferred-Poster-Modal-{{ video_id }}"
+              class="video-section__poster media deferred-media__poster media--landscape"
+              type="button"
+              aria-label="{{ alt }}"
+            >
+              {%- if poster != null -%}
+                {{
+                  poster
+                  | image_url: width: 3840
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: sizes,
+                    widths: '375, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+                    alt: alt
+                }}
+              {%- else -%}
+                {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+              {%- endif -%}
+              <span class="deferred-media__poster-button motion-reduce">
+                {%- render 'icon-play' -%}
+              </span>
+            </button>
             <template>
               {%- if section.settings.video == null and section.settings.video_url != null -%}
                 {%- liquid
