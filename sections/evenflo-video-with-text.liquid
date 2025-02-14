@@ -99,8 +99,7 @@
               </div>
             {%- endunless -%}
           </div>
-          {% if section.settings.video %}
-            <div class="desktop-video">
+           <!-- <div class="desktop-video">
               {{
                 section.settings.video
                 | video_tag:
@@ -123,25 +122,8 @@
                   muted: true,
                   playsinline: 'playsinline'
               }}
-            </div>
-          {% else %}
-            {%- if section.settings.video_url.type == 'youtube' -%}
-                    <iframe
-                      src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
-                      class="js-youtube"
-                      allow="autoplay; encrypted-media"
-                      allowfullscreen
-                      title="{{ section.settings.description | escape }}"
-                    ></iframe>
-                  {%- else -%}
-                    <iframe
-                      src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
-                      class="js-vimeo"
-                      allow="autoplay; encrypted-media"
-                      allowfullscreen
-                      title="{{ section.settings.description | escape }}"
-                    ></iframe>
-                  {%- endif -%}
+            </div> -->
+           
             <noscript>
             <div
               class="video-section__media"
@@ -259,7 +241,6 @@
                 {%- endif -%}
               </template>
             </deferred-media>
-          {% endif %}
         </div>
       </div>
     </div>
