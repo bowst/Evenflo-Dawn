@@ -70,7 +70,13 @@
               </div>
             {%- endunless -%}
           </div>
-          {%- if section.settings.video == null and section.settings.video_mobile == null -%}
+          {%- if section.settings.video and section.settings.video_mobile -%}
+            <div class="shopify-video-wrapper"></div>
+            
+
+            {% else %}
+            
+            
             <noscript>
               <div
                 class="video-section__media"
@@ -176,9 +182,7 @@
                 {%- endif -%}
               </template>
             </deferred-media>
-            {% else %}
             
-            <div class="shopify-video-wrapper"></div>
             
           {%- endif -%}
         </div>
