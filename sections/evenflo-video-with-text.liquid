@@ -238,6 +238,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   var section = document.querySelector('#section-{{ section.id }}');
+  
   var desktopVideo = `<div class="desktop-video">
               {{
                 section.settings.video
@@ -268,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth >= 750 ) {
       section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
     } else {
-      if( {section.settings.video_mobile == null} ){
+      if( { mobileVideo == "" ){
       section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
       }else{
         section.querySelector('.shopify-video-wrapper').innerHTML = mobileVideo;
