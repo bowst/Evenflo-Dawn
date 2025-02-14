@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth >= 750 ) {
       section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
     } else {
-      if( { mobileVideo == " " ){
+      if( { empty == null ){
       section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
       }else{
         section.querySelector('.shopify-video-wrapper').innerHTML = mobileVideo;
