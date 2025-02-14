@@ -239,7 +239,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   var section = document.querySelector('#section-{{ section.id }}');
   var empty = {{ section.settings.video_mobile }};
-  console.log({{ section.settings.video_mobile }});
+  
   var desktopVideo = `<div class="desktop-video">
               {{
                 section.settings.video
@@ -265,8 +265,10 @@ document.addEventListener("DOMContentLoaded", function () {
                   playsinline: 'playsinline'
               }}
             </div>`;
-  console.log(mobileVideo)
   function checkWidth() {  
+    console.log({{ section.settings.video_mobile }});
+  console.log(mobileVideo)
+    
     if (window.innerWidth >= 750 ) {
       section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
     } else {
