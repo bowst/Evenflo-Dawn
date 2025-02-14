@@ -273,8 +273,8 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
-  function checkWidth() {
-    var desktopVideo = `<div class="desktop-video">
+  var section = document.querySelector('#section-{{ section.id }}');
+  var desktopVideo = `<div class="desktop-video">
               {{
                 section.settings.video
                 | video_tag:
@@ -299,15 +299,14 @@ document.addEventListener("DOMContentLoaded", function () {
                   playsinline: 'playsinline'
               }}
             </div>`;
+  
+  function checkWidth() {  
     if (window.innerWidth >= 750) {
-      document.querySelector('#section-{{ section.id }} .shopify-video-wrapper').innerHTML = desktopVideo;
-      
+      section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
     } else {
-      document.querySelector('#section-{{ section.id }} .shopify-video-wrapper').innerHTML = mobileVideo;
-      
+      section.querySelector('.shopify-video-wrapper').innerHTML = mobileVideo;     
     }
   }
-
   checkWidth(); // Initial check
   window.addEventListener('resize', checkWidth); // Recheck on window resize
 });
