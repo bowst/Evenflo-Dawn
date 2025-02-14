@@ -100,31 +100,7 @@
             {%- endunless -%}
           </div>
           <div class="shopify-video-wrapper">
-           <div class="desktop-video">
-              {{
-                section.settings.video
-                | video_tag:
-                  image_size: '1100x',
-                  autoplay: 'autoplay',
-                  loop: section.settings.enable_video_looping,
-                  controls: true,
-                  muted: true,
-                  playsinline: 'playsinline'
-              }}
-            </div>
-          
-            <div class="mobile-video">
-              {{
-                section.settings.video_mobile
-                | video_tag:
-                  image_size: '1100x',
-                  autoplay: 'autoplay',
-                  loop: section.settings.enable_video_looping,
-                  controls: true,
-                  muted: true,
-                  playsinline: 'playsinline'
-              }}
-            </div>
+           
           </div>
             <noscript>
             <div
