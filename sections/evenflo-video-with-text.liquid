@@ -99,7 +99,7 @@
               </div>
             {%- endunless -%}
           </div>
-           <!-- <div class="desktop-video">
+           <div class="desktop-video">
               {{
                 section.settings.video
                 | video_tag:
@@ -122,7 +122,7 @@
                   muted: true,
                   playsinline: 'playsinline'
               }}
-            </div> -->
+            </div>
            
             <noscript>
             <div
@@ -170,18 +170,6 @@
               {%- endif -%}
             </div>
           </noscript>
-          <div class="desktop-video">
-              {{
-                section.settings.video
-                | video_tag:
-                  image_size: '1100x',
-                  autoplay: 'autoplay',
-                  loop: section.settings.enable_video_looping,
-                  controls: true,
-                  muted: true,
-                  playsinline: 'playsinline'
-              }}
-            </div>
             <deferred-media
               class="desktop-video-section__media video-section__media deferred-media no-js-hidden gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}"
               data-media-id="{{ video_id }}"
