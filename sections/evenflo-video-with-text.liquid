@@ -237,13 +237,7 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
-  var section = document.querySelector('#section-{{ section.id }}');
-  
-   empty = 1;
-  
-  // var empty = {{ section.settings.video_mobile }};
-  
-  
+  var section = document.querySelector('#section-{{ section.id }}');  
   var desktopVideo = `<div class="desktop-video">
               {{
                 section.settings.video
