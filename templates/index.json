@@ -26,13 +26,30 @@
             "heading_size": "h1",
             "heading_color": "white"
           }
+        },
+        "buttons_Ve6Pan": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Learn More",
+            "button_link_1": "shopify://pages/sensorysoothe",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
         }
       },
       "block_order": [
         "text_VG9AXd",
-        "heading_KUT9xK"
+        "heading_KUT9xK",
+        "buttons_Ve6Pan"
       ],
       "disabled": true,
+      "custom_css": [
+        "h1 {font-weight: 300;}",
+        "h2 {color: white; font-weight: 300;}",
+        ".button {background: white; color: black; box-shadow: none; border: none;}"
+      ],
       "settings": {
         "video": "shopify://files/videos/Evenflo_HomepageHeader_1920x450_Lifestyle_2025.mp4",
         "video_enable": true,
@@ -42,7 +59,7 @@
         "image_height": "small",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
