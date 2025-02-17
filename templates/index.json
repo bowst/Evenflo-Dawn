@@ -9,6 +9,58 @@
  */
 {
   "sections": {
+    "evenflo_image_video_banner_7VyCe6": {
+      "type": "evenflo-image-video-banner",
+      "blocks": {
+        "heading_4DqCG7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "text_xMGHJp": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_MWwNkh": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_4DqCG7",
+        "text_xMGHJp",
+        "buttons_MWwNkh"
+      ],
+      "disabled": true,
+      "settings": {
+        "video": "shopify://files/videos/Evenflo_HomepageHeader_1920x450_Lifestyle_2025.mp4",
+        "video_enable": true,
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "evenflo_image_banner_qxr8qF": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -1099,6 +1151,7 @@
     }
   },
   "order": [
+    "evenflo_image_video_banner_7VyCe6",
     "evenflo_image_banner_qxr8qF",
     "evenflo_single_promo_FamxQU",
     "evenflo_loyalty_banner_HKKdFd",
