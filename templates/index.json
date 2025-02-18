@@ -29,6 +29,7 @@
         },
         "buttons_NjgH8P": {
           "type": "buttons",
+          "disabled": true,
           "settings": {
             "button_label_1": "Button label",
             "button_link_1": "",
@@ -44,22 +45,26 @@
         "text_jWggHX",
         "buttons_NjgH8P"
       ],
-      "disabled": true,
+      "custom_css": [
+        "h1 {font-weight: 300;}",
+        "h2 {color: white; font-weight: 300;}",
+        ".button {background: white; color: black; box-shadow: none; border: none;}"
+      ],
       "settings": {
         "video": "shopify://files/videos/SensorySoothe_Homepage Header_1920x450_2_no text.mp4",
         "video_mobile": "shopify://files/videos/SensorySoothe_Homepage Header_400x500_2_no text.mp4",
-        "video_enable": false,
+        "video_enable": true,
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
-        "image_height": "medium",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
+        "image_height": "adapt",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
     "evenflo_image_video_banner_za8b6T": {
