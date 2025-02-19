@@ -47,7 +47,7 @@
       "custom_css": [
         ".banner__box.content-container {background: none;}",
         ".banner__box.content-container img {height: 60px;}",
-        ".banner__text.rte.body h2{color: #000000;}"
+        ".banner__text.rte.body h2 {color: #000000;}"
       ],
       "settings": {
         "image": "shopify://shop_images/Evenflo_APP_LP_Desktop_header.jpg",
@@ -164,7 +164,10 @@
           "type": "button",
           "settings": {
             "button_label": "Learn More",
-            "button_link": ""
+            "button_link": "",
+            "button_label_2": "Second button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
@@ -271,7 +274,10 @@
           "type": "button",
           "settings": {
             "button_label": "Button label",
-            "button_link": ""
+            "button_link": "",
+            "button_label_2": "Second button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
@@ -325,7 +331,7 @@
         "text_gNQFM9"
       ],
       "custom_css": [
-        "@media screen and (min-width: 900px) {.banner--content-align-left .banner__box {background: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/background-card.jpg?v=1739979350); }}"
+        "@media screen and (min-width: 1300px) {.banner--content-align-left .banner__box {background: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/background-card.jpg?v=1739979350);width: 50%; }}"
       ],
       "settings": {
         "image": "shopify://shop_images/Travertine-Collection_Lifestyle_3Across_A01_1.jpg",
