@@ -45,7 +45,7 @@
         "buttons_mc94zq"
       ],
       "custom_css": [
-        ".banner__box.content-container{background: none;}"
+        ".banner__box.content-container {background: none;}"
       ],
       "settings": {
         "image": "shopify://shop_images/Evenflo_APP_LP_Desktop_header.jpg",
@@ -172,6 +172,12 @@
         "text_9RjmWy",
         "button_MYqLaw"
       ],
+      "custom_css": [
+        ".caption-with-letter-spacing {color: #000000; font-weight: 600;}",
+        "h2:after {display: none;}",
+        ".image-with-text__text.rte.body {color: #000000;}",
+        ".banner__buttons a {background: #000000 !important; opacity: 1; outline: none;}"
+      ],
       "settings": {
         "image": "shopify://shop_images/CS160412545_Revolve180_LiteMaxGold_Quartz_App_1786_5145da5c-8a67-42a1-9f36-f6cbacfb599d.jpg",
         "height": "adapt",
@@ -271,6 +277,12 @@
         "heading_wWeTUV",
         "text_KqEdnd",
         "button_YtpyPY"
+      ],
+      "custom_css": [
+        ".caption-with-letter-spacing {color: #000000; font-weight: 600;}",
+        "h2:after {display: none;}",
+        ".image-with-text__text.rte.body {color: #000000;}",
+        ".banner__buttons a {background: #000000 !important; opacity: 1; outline: none;}"
       ],
       "settings": {
         "image": "shopify://shop_images/36812450C_30_Gold_Revolve360_Slim_2_in_1_Rotational_Convertible_Car_Seat_Obsidian_Lifestyle_SensorSafe_Alert_Comp.jpg",
@@ -386,6 +398,9 @@
         "heading_7iHqUH",
         "text_LeiFdj"
       ],
+      "custom_css": [
+        "h2:after {display: none;}"
+      ],
       "settings": {
         "image": "shopify://shop_images/TS100112516_Omni_Signature_CoastalCoffee_FamilyMoment_3340.jpg",
         "height": "adapt",
@@ -414,7 +429,7 @@
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}</p>"
+            "text": ""
           }
         }
       },
