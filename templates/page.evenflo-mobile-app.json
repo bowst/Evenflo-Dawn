@@ -9,6 +9,57 @@
  */
 {
   "sections": {
+    "image_banner_with_app_link_nGAGBH": {
+      "type": "image-banner-with-app-link",
+      "blocks": {
+        "heading_7NgHmd": {
+          "type": "heading",
+          "settings": {
+            "heading": "One App. Total Peace of Mind.",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "text_PiHVBm": {
+          "type": "text",
+          "settings": {
+            "text": "Download the evenflo app",
+            "text_style": "body"
+          }
+        },
+        "buttons_mc94zq": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_7NgHmd",
+        "text_PiHVBm",
+        "buttons_mc94zq"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Evenflo_APP_LP_Desktop_header.jpg",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
     "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
       "type": "image-banner",
       "blocks": {
@@ -44,6 +95,7 @@
         "49692314-9402-40ec-b70e-bbd78c2f2eb6",
         "buttons_BmcChF"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Evenflo_APP_LP_Desktop_header.jpg",
         "image_overlay_opacity": 0,
@@ -70,6 +122,7 @@
     },
     "e0811ebf-ff02-474c-9a53-4cce24c2aa87": {
       "type": "divider",
+      "disabled": true,
       "settings": {
         "divider_spacing": 45,
         "divider_border": true,
@@ -420,6 +473,7 @@
     }
   },
   "order": [
+    "image_banner_with_app_link_nGAGBH",
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "main",
     "e0811ebf-ff02-474c-9a53-4cce24c2aa87",
