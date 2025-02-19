@@ -86,20 +86,6 @@
                   {{ block.settings.button_label | escape }}
                 </a>
               {%- endif -%}
-            {%- when 'double_button' -%}
-              {%- if block.settings.button_label != blank -%}
-                <a
-                  {% if block.settings.button_link == blank %}
-                    role="link" aria-disabled="true"
-                  {% else %}
-                    href="{{ block.settings.button_link }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
-                  {{ block.settings.button_label | escape }}
-                </a>
-              {%- endif -%}
           {%- endcase -%}
         {%- endfor -%}
       </div>
@@ -463,32 +449,6 @@
           "type": "url",
           "id": "button_link",
           "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
-        }
-      ]
-    },
-    {
-      "type": "double_button",
-      "name": "Double Button",
-      "settings": [
-        {
-          "type": "text",
-          "id": "first_button_label",
-          "label": "First Button Label"
-        },
-        {
-          "type": "url",
-          "id": "first_button_link",
-          "label": "First Button URL"
-        },
-        {
-          "type": "text",
-          "id": "second_button_label",
-          "label": "Second Button Label"
-        },
-        {
-          "type": "url",
-          "id": "second_button_link",
-          "label": "Second Button URL"
         }
       ]
     }
