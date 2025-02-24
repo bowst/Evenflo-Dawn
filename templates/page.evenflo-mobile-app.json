@@ -48,7 +48,7 @@
         ".banner__box.content-container {background: none;}",
         ".banner__box.content-container img {height: 60px;}",
         ".banner__text.rte.body h2 {color: #000000;}",
-        "@media (max-width: 991px){.banner__box.content-container {background: rgba(255, 255, 255, .5); backdrop-filter: blur(2px); }}"
+        "@media (max-width: 991px) {.banner__box.content-container {background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(2px); }}"
       ],
       "settings": {
         "image": "shopify://shop_images/Evenflo_APP_LP_Desktop_header.jpg",
@@ -182,7 +182,8 @@
         ".caption-with-letter-spacing {color: #000000; font-weight: 600;}",
         "h2:after {display: none;}",
         ".image-with-text__text.rte.body {color: #000000;}",
-        ".banner__buttons a {background: #000000 !important; opacity: 1; outline: none;}"
+        ".banner__buttons a {background: #000000 !important; opacity: 1; outline: none;}",
+        ".banner__buttons a:after {box-shadow: none!important;}"
       ],
       "settings": {
         "image": "shopify://shop_images/CS160412545_Revolve180_LiteMaxGold_Quartz_App_1786_5145da5c-8a67-42a1-9f36-f6cbacfb599d.jpg",
