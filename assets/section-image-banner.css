@@ -531,3 +531,41 @@
 .banner__buttons a:after {
     box-shadow: none !important;
   }
+
+
+
+.banner__box.content-container {
+  background: none;
+}
+.banner__box.content-container img {
+  height: 60px;
+}
+.banner__text.rte.body h2 {
+  color: #000000;
+}
+@media (max-width: 991px) {
+  .banner__box.content-container {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+    background-image: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_APP_LP_Mobile_2025_Header.png?v=1740411138);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: right;
+    padding-inline: 18px;
+  }
+  .banner__box.content-container img {
+    margin-top: 50px;
+  }
+  .banner__buttons {
+    flex-wrap: nowrap;
+    max-width: 75%;
+    margin-top: 0 !important;
+  }
+  .banner__buttons img {
+    height: 40px !important;
+    margin-top: 0 !important;
+  }
+  .banner__heading.inline-richtext.h1.black {
+    max-width: 50%;
+  }
+}
