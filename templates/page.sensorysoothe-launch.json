@@ -310,89 +310,6 @@
         "show_text_below": true
       }
     },
-    "video_TQVccU": {
-      "type": "video",
-      "disabled": true,
-      "settings": {
-        "heading": "See it in the evenflo app",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "evenflo_image_banner_Mw9Mac": {
-      "type": "evenflo-image-banner",
-      "blocks": {
-        "heading_RNjdi7": {
-          "type": "heading",
-          "settings": {
-            "heading": "EVENFLO APP CONVENIENCE",
-            "heading_underline": false,
-            "heading_size": "h1"
-          }
-        },
-        "text_WYyxhK": {
-          "type": "text",
-          "settings": {
-            "text": "EVENFLO APP CONVENIENCE",
-            "text_style": "body"
-          }
-        },
-        "text_xVtUNt": {
-          "type": "text",
-          "settings": {
-            "text": "Look how much you can do with our app: Customize sound and lighting scenes so you can call up your baby’s faves. Sync lights to sounds. Switch on a calming amber nightlight — and more!",
-            "text_style": "body"
-          }
-        },
-        "buttons_wtwKw7": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Learn About The App",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_RNjdi7",
-        "text_WYyxhK",
-        "text_xVtUNt",
-        "buttons_wtwKw7"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/CS160412545_Revolve180_LiteMaxGold_Quartz_App_1786.jpg",
-        "background_show": false,
-        "banner_color": "#ffffff",
-        "store_btn_show": false,
-        "app_store": "",
-        "play_store": "",
-        "button_color": "#ffffff",
-        "button_text_color": "#000000",
-        "mobile_button_color": "#ffffff",
-        "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#ffffff",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
     "evenflo_multicolumn_variant_slider_NdptwK": {
       "type": "evenflo-multicolumn-variant-slider",
       "blocks": {
@@ -485,6 +402,54 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "image_with_text_EDb3gT": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_KBDJ4Q": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text_3zWgWX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_TNNfb3": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_KBDJ4Q",
+        "text_3zWgWX",
+        "button_TNNfb3"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -497,8 +462,7 @@
     "evenflo_multicolumn_WBe4qh",
     "1736197887da26f17a",
     "evenflo_image_banner_XkYErD",
-    "video_TQVccU",
-    "evenflo_image_banner_Mw9Mac",
-    "evenflo_multicolumn_variant_slider_NdptwK"
+    "evenflo_multicolumn_variant_slider_NdptwK",
+    "image_with_text_EDb3gT"
   ]
 }
