@@ -79,33 +79,30 @@
     <a href="#metaobject-list-group-{{ letter }}">{{ letter }}</a>
   {% endfor %}
 </div>
-
 <div class="page-width">
   <div class="metaobject-list">
-    {% paginate shop.metaobjects.glossary.values by 200 %}
-      {% assign grouped_metaobjects = paginate.items | sort: 'name' %}
-      {% assign current_letter = '' %}
-      {% for metaobject in grouped_metaobjects %}
-        {% assign first_letter = metaobject.name | slice: 0, 1 | upcase %}
-        {% if first_letter != current_letter %}
-          {% if current_letter != '' %}
-            </ul>
-            </div>
-          {% endif %}
-          <div class="metaobject-list-group" id="metaobject-list-group-{{ first_letter }}">
-            <h2>{{ first_letter }}</h2>
-            <ul>
-              {% assign current_letter = first_letter %}
+    {% assign grouped_metaobjects = shop.metaobjects.glossary.values | sort: 'name' %}
+    {% assign current_letter = '' %}
+    {% for metaobject in grouped_metaobjects %}
+      {% assign first_letter = metaobject.name | slice: 0, 1 | upcase %}
+      {% if first_letter != current_letter %}
+        {% if current_letter != '' %}
+          </ul>
+          </div>
         {% endif %}
-        <li>
-          <a href="{{ metaobject.system.url }}">{{ metaobject.name }}</a>
-        </li>
-      {% endfor %}
-      {% if current_letter != '' %}
-        </ul>
-        </div>
+        <div class="metaobject-list-group" id="metaobject-list-group-{{ first_letter }}">
+          <h2>{{ first_letter }}</h2>
+          <ul>
+            {% assign current_letter = first_letter %}
       {% endif %}
-    {% endpaginate %}
+      <li>
+        <a href="{{ metaobject.system.url }}">{{ metaobject.name }}</a>
+      </li>
+    {% endfor %}
+    {% if current_letter != '' %}
+      </ul>
+      </div>
+    {% endif %}
   </div>
 </div>
 
