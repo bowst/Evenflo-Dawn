@@ -1,4 +1,7 @@
 {{ 'evenflo-image-video.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-video-section.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-component-image-with-text.css' | asset_url | stylesheet_tag }}
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
@@ -26,8 +29,19 @@
   #Banner-{{ section.id }}::after {
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
   }
-{%- endstyle -%}
+    .video-section .desktop-video video,
+    .video-section .mobile-video video{
+      width: 100%;
+    }
 
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+  }
+{%- endstyle -%}
 {%- liquid
   assign full_width = '100vw'
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
@@ -66,7 +80,7 @@
 >
   {%- if section.settings.video_enable -%}
     <div class="banner-video-content">
-      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+      <div class="shopify-video-wrapper"></div>
     </div>
   {%- else -%}
     {%- if section.settings.image != blank -%}
@@ -233,6 +247,52 @@
     </div>
   </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var section = document.querySelector('#Banner-{{ section.id }}');  
+
+    var desktopVideo = `<div class="desktop-video">
+        {{
+            section.settings.video
+            | video_tag:
+                image_size: '1100x',
+                autoplay: 'autoplay',
+                loop: section.settings.enable_video_looping,
+                controls: false,
+                muted: true,
+                playsinline: 'playsinline'
+        }}
+    </div>`;
+
+    var mobileVideo = `<div class="mobile-video">
+        {{
+            section.settings.video_mobile
+            | video_tag:
+                image_size: '1100x',
+                autoplay: 'autoplay',
+                loop: section.settings.enable_video_looping,
+                controls: false,
+                muted: true,
+                playsinline: 'playsinline'
+        }}
+    </div>`;
+
+    function checkWidth() {
+        if (window.innerWidth >= 750) {
+            section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;    
+        } else {
+            {% if section.settings.video_mobile == null %}
+                section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo; 
+            {% else %}
+                section.querySelector('.shopify-video-wrapper').innerHTML = mobileVideo;
+            {% endif %}
+        }
+    }
+
+    checkWidth(); // Initial check
+    window.addEventListener('resize', checkWidth); // Recheck on window resize
+});
+</script>
 
 {% schema %}
 {
@@ -254,9 +314,22 @@
       "label": "Second image"
     },
     {
+      "type": "header",
+      "content": "Shopify-hosted video"
+    },
+    {
       "type": "video",
       "id": "video",
-      "label": "Video",
+      "label": "Video"
+    },
+    {
+      "type": "header",
+      "content": "Shopify-hosted mobile video"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Mobile Video"
     },
     {
       "type": "checkbox",
@@ -499,7 +572,7 @@
     {
       "type": "text",
       "name": "Text",
-      "limit": 1,
+      "limit": 2,
       "settings": [
         {
           "type": "inline_richtext",
