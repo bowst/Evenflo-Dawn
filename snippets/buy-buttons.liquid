@@ -159,37 +159,37 @@
             >
               Add to Babylist
             </a>
-            {% comment %}
-              {% elsif target_link %}
-              <a
-                href="{{ target_link }}"
-                target="_blank"
-                style="display: block; width: 100%; text-align: center;"
-              >
-                <img
-                  src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/target-add-to-cart.png?v=1741371907"
-                  alt="Buy at Target"
-                  style="max-width: 100%; height: auto;"
-                  width="100"
-                  height="auto"
-                >
-              </a>
 
-              <a
-                id="add-to-babylist"
-                class="button button--secondary gold-branding-true on-dark-bg-false navigable baby-list-button"
-                href="
-                  javascript: bl.addToRegistry({
-                    images: '{{ product.selected_or_first_available_variant.featured_image | image_url }}',
-                    price: '{{ product.selected_or_first_available_variant.price | money }}',
-                    title: '{{ product.title }}',
-                    url: window.location.href
-                  });
-                "
+          {% elsif target_link %}
+            <a
+              href="{{ target_link }}"
+              target="_blank"
+              style="display: block; width: 100%; text-align: center;"
+            >
+              <img
+                src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/target-add-to-cart.png?v=1741371907"
+                alt="Buy at Target"
+                style="max-width: 100%; height: auto;"
+                width="100"
+                height="auto"
               >
-                Add to Babylist
-              </a>
-            {% endcomment %}
+            </a>
+
+            <a
+              id="add-to-babylist"
+              class="button button--secondary gold-branding-true on-dark-bg-false navigable baby-list-button"
+              href="
+                javascript: bl.addToRegistry({
+                  images: '{{ product.selected_or_first_available_variant.featured_image | image_url }}',
+                  price: '{{ product.selected_or_first_available_variant.price | money }}',
+                  title: '{{ product.title }}',
+                  url: window.location.href
+                });
+              "
+            >
+              Add to Babylist
+            </a>
+
           {%- else -%}
             <div style="width: 100%;">
               <button
