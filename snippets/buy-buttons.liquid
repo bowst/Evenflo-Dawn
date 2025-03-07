@@ -72,6 +72,8 @@
           -%}
           {% assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id %}
           {% assign amazon_link = product.metafields.custom.amazon_link %}
+          {%- assign target_link = product.selected_or_first_available_variant.metafields.custom.target_id -%}
+
           {%- if walmart_id -%}
             <a
               href="https://www.walmart.com/ip/seort/{{ walmart_id }}"
@@ -174,7 +176,7 @@
                     {{ 'products.product.add_to_cart' | t }}
                   {%- endif -%}
                 </span>
-                
+
                 <div class="loading-overlay__spinner hidden">
                   <svg
                     aria-hidden="true"
