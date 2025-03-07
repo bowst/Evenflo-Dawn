@@ -70,8 +70,8 @@
     {%- endif -%}
 
     {{ content_for_header }}
-    <!-- evenflo fonts -->
-    <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css">
+    <!-- New Font -->
+    <link rel="stylesheet" href="https://use.typekit.net/jnf1gfc.css">
     <!-- evenflo fonts -->
 
     {%- liquid
@@ -133,12 +133,12 @@
       }
 
       :root {
-        --font-body-family: "mr-eaves-modern", sans-serif, {{ settings.type_body_font.fallback_families }} !important;
+        --font-body-family: "graphie", sans-serif, {{ settings.type_body_font.fallback_families }} !important;
         --font-body-style: {{ settings.type_body_font.style }};
         --font-body-weight: {{ settings.type_body_font.weight }};
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
 
-        --font-heading-family:  "mr-eaves-modern", sans-serif, {{ settings.type_header_font.fallback_families }};
+        --font-heading-family:  "graphie", sans-serif, {{ settings.type_header_font.fallback_families }};
         --font-heading-style: {{ settings.type_header_font.style }};
         --font-heading-weight: {{ settings.type_header_font.weight }};
 
