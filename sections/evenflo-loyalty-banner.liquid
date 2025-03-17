@@ -16,12 +16,14 @@
         height=""
         class="desktop"
         src="
-          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Cyber_Week.jpg?v=1732268047
+          {% if customer.tags contains  "swell_vip_bronze" %}
+            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/March_Loyalty_Promo_2025_HP_Header_bronze_1600x450_desktop.jpg?v=1742210887
+          {% elsif customer.tags contains "swell_vip_silver" %}
+            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/March_Loyalty_Promo_2025_HP_Header_silver_1600x450_desktop.jpg?v=1742211099
           {% elsif customer.tags contains "swell_vip_gold" %}
-          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Cyber_Week.jpg?v=1732268047
+          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/March_Loyalty_Promo_2025_HP_Header_gold_1600x450_desktop.jpg?v=1742211158
           {% else %}
-          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Cyber_Week.jpg?v=1732268047
+          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/March_Loyalty_Promo_2025_HP_Header_bronze_1600x450_desktop.jpg?v=1742210887
           {% endif %}
         "
       >
@@ -33,17 +35,18 @@
         height=""
         class="mobile"
         src="
-          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
-            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_Headers_Cyber_Week_Mobile.jpg?v=1732268081  
+          {% if customer.tags contains  "swell_vip_bronze" %}
+          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/March_Loyalty_Promo_2025_HP_Header_bronze_500x400_mobile.jpg?v=1742210887
+          {% elsif customer.tags contains "swell_vip_silver" %}
+          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/March_Loyalty_Promo_2025_HP_Header_silver_500x400_mobile.jpg?v=1742211099
           {% elsif customer.tags contains "swell_vip_gold" %}
-https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_Headers_Cyber_Week_Mobile.jpg?v=1732268081          {% else %}
-              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_Headers_Cyber_Week_Mobile.jpg?v=1732268081
+          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/March_Loyalty_Promo_2025_HP_Header_gold_500x400_mobile.jpg?v=1742211158
+          {% else %}
+          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/March_Loyalty_Promo_2025_HP_Header_bronze_500x400_mobile.jpg?v=1742210887
           {% endif %}
         "
       >
     </div>
-
-    
   </div>
 </a>
 
