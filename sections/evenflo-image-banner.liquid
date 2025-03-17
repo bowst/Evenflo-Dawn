@@ -24,118 +24,135 @@
 {%- endif -%}
 
 {%- style -%}
-    .banner__content .app-btn {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-    .banner__content .app-btn a {
-        flex-basis: 200px;
-    }
-    .banner__content .app-btn a img {
-        width: 100%;
-    }
-    @media screen and (max-width: 749px) {
       .banner__content .app-btn {
-       justify-content: center;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 24px;
       }
-    }
-        #Banner-{{ section.id }}::after {
-          opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+      .banner__content .app-btn a {
+          flex-basis: 200px;
+      }
+      .banner__content .app-btn a img {
+          width: 100%;
+      }
+      @media screen and (max-width: 749px) {
+        .banner__content .app-btn {
+         justify-content: center;
         }
-        .text-color {
-          color: {{ section.settings.desktop_heading_color }} !important;
-        }
-        .text-color h1,
-        .text-color h2,
-        .text-color h3,
-        .text-color h4,
-        .text-color h5,
-        .text-color h6,
-        .text-color button {
-        color: inherit !important; /* Inherit the color from .text-color class */
       }
-      .text-color .button{
-        background-color: {{ section.settings.button_color }} !important;
-      }
-      .text-color a{
-         color: {{ section.settings.button_text_color }} !important;
-      }
-      /* Media query for mobile screens (adjust the max-width value as needed) */
-      @media screen and (max-width: 750px) {
-        .text-color {
-          color: {{ section.settings.mobile_heading_color }} !important;
-        }
-        .text-color h1,
-        .text-color h2,
-        .text-color h3,
-        .text-color h4,
-        .text-color h5,
-        .text-color h6,
-        .text-color button {
+          #Banner-{{ section.id }}::after {
+            opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+          }
+          .text-color {
+            color: {{ section.settings.desktop_heading_color }} !important;
+          }
+          .text-color h1,
+          .text-color h2,
+          .text-color h3,
+          .text-color h4,
+          .text-color h5,
+          .text-color h6,
+          .text-color button {
           color: inherit !important; /* Inherit the color from .text-color class */
         }
-      }
-      .heading_underline:after {
-        content: '';
-        width: 136px;
-        height: 5px;
-        background: #fff;
-        display: block;
-        margin: auto;
-        margin-top: 10px;
-      }
-      .banner__buttons a:after,.banner__buttons a:hover::after{
-        box-shadow: none!important;
-      }
-      .desktop {
-        display: block
-      }
-
-       .mobile {
-        display: none
-      }
-      @media screen and (max-width: 767px){
-         .desktop {
-        display: none;
-      }
-         .mobile {
-        display: block
-      }
-  .evenflo-image-banner:has(.banner__content .banner__box:empty) .desktop.banner__media.media {
-        display: block;
-    }
-    .evenflo-image-banner:has(.mobile.banner__media.media) .desktop.banner__media.media,
-    .evenflo-image-banner .banner__content .banner__box:empty{
-        display: none;
-    }
-
-
-    .evenflo-image-banner:has(.banner__content .banner__box:empty) {
-      height: auto;
-    }
-        .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media img{
-           position: static;
-        }
-        .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media::before{
-          display: none!important;
-        }
         .text-color .button{
-        background-color: {{ section.settings.mobile_button_color }} !important;
-          border: 1px solid #000;
+          background-color: {{ section.settings.button_color }} !important;
+        }
+        .text-color a{
+           color: {{ section.settings.button_text_color }} !important;
+        }
+        /* Media query for mobile screens (adjust the max-width value as needed) */
+        @media screen and (max-width: 750px) {
+          .text-color {
+            color: {{ section.settings.mobile_heading_color }} !important;
+          }
+          .text-color h1,
+          .text-color h2,
+          .text-color h3,
+          .text-color h4,
+          .text-color h5,
+          .text-color h6,
+          .text-color button {
+            color: inherit !important; /* Inherit the color from .text-color class */
+          }
+        }
+        .heading_underline:after {
+          content: '';
+          width: 136px;
+          height: 5px;
+          background: #fff;
+          display: block;
+          margin: auto;
+          margin-top: 10px;
+        }
+        .banner__buttons a:after,.banner__buttons a:hover::after{
+          box-shadow: none!important;
+        }
+        .desktop {
+          display: block
+        }
+
+         .mobile {
+          display: none
+        }
+        @media screen and (max-width: 767px){
+           .desktop {
+          display: none;
+        }
+           .mobile {
+          display: block
+        }
+    .evenflo-image-banner:has(.banner__content .banner__box:empty) .desktop.banner__media.media {
+          display: block;
       }
-      .text-color a{
-         color: {{ section.settings.mobile_button_text_color }} !important;
+      .evenflo-image-banner:has(.mobile.banner__media.media) .desktop.banner__media.media,
+      .evenflo-image-banner .banner__content .banner__box:empty{
+          display: none;
       }
+
+
+      .evenflo-image-banner:has(.banner__content .banner__box:empty) {
+        height: auto;
       }
-  .evenflo-image-banner-bg{
-    background: {{section.settings.banner_color}};
-    color: #ffffff !important;
+          .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media img{
+             position: static;
+          }
+          .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media::before{
+            display: none!important;
+          }
+          .text-color .button{
+          background-color: {{ section.settings.mobile_button_color }} !important;
+            border: 1px solid #000;
+        }
+        .text-color a{
+           color: {{ section.settings.mobile_button_text_color }} !important;
+        }
+        }
+    .evenflo-image-banner-bg{
+      background: {{section.settings.banner_color}};
+      color: #ffffff !important;
+    }
+    .evenflo-image-banner-bg .banner__box{
+      max-width: 60rem!important;
+      background: transparent!important;
+    }
+
+    .banner-block-image.small {
+    max-width: 300px;
   }
-  .evenflo-image-banner-bg .banner__box{
-    max-width: 60rem!important;
-    background: transparent!important;
+
+  .banner-block-image.medium {
+    max-width: 500px;
+  }
+
+  .banner-block-image.large {
+    max-width: 700px;
+  }
+
+  .banner-block-image {
+    width: 100%;
+    height: auto;
   }
 {%- endstyle -%}
 
@@ -248,19 +265,29 @@
                 </a>
               {%- endif -%}
             </div>
-               
+          {%- when 'image' -%}
+            <div class="banner__image" {{ block.shopify_attributes }}>
+              {%- if block.settings.block_image != blank -%}
+                {{
+                  block.settings.block_image
+                  | image_url: width: 2000
+                  | image_tag: loading: 'lazy', class: 'banner-block-image '
+                  | append: block.settings.image_width
+                }}
+              {%- endif -%}
+            </div>
         {%- endcase -%}
       {%- endfor -%}
-        {% if section.settings.store_btn_show %}
+      {% if section.settings.store_btn_show %}
         <div class="app-btn">
-          <a href="{{ section.settings.app_store }}"> 
-            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/playstore-logo_1.svg?v=1737463606" alt="" />
+          <a href="{{ section.settings.app_store }}">
+            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/playstore-logo_1.svg?v=1737463606" alt="">
           </a>
           <a href="{{ section.settings.play_store }}">
-            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/app-store-logo_1.svg?v=1737463606" alt="" />
-          </a>  
+            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/app-store-logo_1.svg?v=1737463606" alt="">
+          </a>
         </div>
-        {% endif %}
+      {% endif %}
     </div>
   </div>
 </div>
@@ -535,7 +562,7 @@
           "id": "heading_underline",
           "default": false,
           "label": "Add Underline"
-        },
+        }
       ]
     },
     {
@@ -661,7 +688,38 @@
         }
       ]
     },
-    
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_width",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "medium",
+          "label": "Image width"
+        }
+      ]
+    }
   ],
   "presets": [
     {
