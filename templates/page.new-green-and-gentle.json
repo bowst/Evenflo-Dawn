@@ -9,6 +9,65 @@
  */
 {
   "sections": {
+    "evenflo_image_banner_Yt6neq": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_pfKKMG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Better For The Planet",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_bJWTwe": {
+          "type": "text",
+          "settings": {
+            "text": "Title",
+            "text_style": "body"
+          }
+        },
+        "buttons_FzpdHj": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "First button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Second button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_pfKKMG",
+        "text_bJWTwe",
+        "buttons_FzpdHj"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Evenflo_Header_Banner_Green_and_Gentle_Fabric_Car_Seat_Desktop.jpg",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "image_banner_XYae3z": {
       "type": "image-banner",
       "blocks": {
@@ -24,7 +83,7 @@
           "type": "text",
           "settings": {
             "text": "Soft, sustainable, eco-friendly Green & Gentle Fabric is made with recycled bottles, with no added chemicals or flame retardants. Something you can feel good about!",
-            "text_style": "body"
+            "text_style": "subtitle"
           }
         }
       },
@@ -283,6 +342,7 @@
     }
   },
   "order": [
+    "evenflo_image_banner_Yt6neq",
     "image_banner_XYae3z",
     "main",
     "evenflo_image_with_text_k4bAyE",
