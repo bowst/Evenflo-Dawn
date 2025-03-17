@@ -1,4 +1,4 @@
-{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+{{ 'ev-component-image-with-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -89,6 +89,16 @@
               </div>
             {%- when 'button' -%}
               {%- if block.settings.button_label != blank -%}
+                {% style %}
+                  #Button-{{ block.id }} {
+                    {% if block.settings.button_color != blank %}
+                      background-color: {{ block.settings.button_color }};
+                    {% endif %}
+                    {% if block.settings.button_text_color != blank %}
+                      color: {{ block.settings.button_text_color }} !important;
+                    {% endif %}
+                  }
+                {% endstyle %}
                 <a
                   {% if block.settings.button_link == blank %}
                     role="link"
@@ -96,6 +106,7 @@
                   {% else %}
                     href="{{ block.settings.button_link }}"
                   {% endif %}
+                  id="Button-{{ block.id }}"
                   class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
                   {{ block.shopify_attributes }}
                 >
@@ -451,6 +462,18 @@
           "type": "url",
           "id": "button_link",
           "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Button Color",
+          "info": "Leave blank for default color"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "info": "Leave blank for default color"
         }
       ]
     },
