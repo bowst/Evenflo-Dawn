@@ -266,16 +266,18 @@
               {%- endif -%}
             </div>
 {%- when 'image' -%}
-            <div class="banner__image" {{ block.shopify_attributes }}>
-              {%- if block.settings.block_image != blank -%}
-                {{
-                  block.settings.block_image
-                  | image_url: width: 2000
-                  | image_tag: loading: 'lazy', class: 'banner-block-image '
-                  | append: block.settings.image_width
-                }}
-              {%- endif -%}
-            </div>
+  <div class="banner__image" {{ block.shopify_attributes }}>
+    {%- if block.settings.block_image != blank -%}
+      {%- assign image_class = 'banner-block-image ' | append: block.settings.image_width -%}
+      {{
+        block.settings.block_image
+        | image_url: width: 2000
+        | image_tag: 
+          loading: 'lazy',
+          class: image_class
+      }}
+    {%- endif -%}
+  </div>
         {%- endcase -%}
       {%- endfor -%}
       {% if section.settings.store_btn_show %}
