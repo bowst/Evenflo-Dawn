@@ -20,25 +20,25 @@
             "heading_size": "h1"
           }
         },
-        "image_fmdyc9": {
-          "type": "image",
-          "settings": {
-            "block_image": "shopify://shop_images/Evenflo_Process-Icon_Banner_Green_and_Gentle_Fabric_Car_Seat_Mobile.png",
-            "image_width": "small"
-          }
-        },
         "text_bJWTwe": {
           "type": "text",
           "settings": {
             "text": "Soft, sustainable, eco-friendly Green & Gentle Fabric is made with recycled bottles, with no added chemicals or flame retardants. Something you can feel good about!",
             "text_style": "body"
           }
+        },
+        "image_fmdyc9": {
+          "type": "image",
+          "settings": {
+            "block_image": "shopify://shop_images/Evenflo_Process-Icon_Banner_Green_and_Gentle_Fabric_Car_Seat_Mobile.png",
+            "image_width": "small"
+          }
         }
       },
       "block_order": [
         "heading_pfKKMG",
-        "image_fmdyc9",
-        "text_bJWTwe"
+        "text_bJWTwe",
+        "image_fmdyc9"
       ],
       "settings": {
         "image": "shopify://shop_images/Evenflo_Header_Banner_Green_and_Gentle_Fabric_Car_Seat_Desktop.jpg",
@@ -60,8 +60,8 @@
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
