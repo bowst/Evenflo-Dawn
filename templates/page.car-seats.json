@@ -9,6 +9,60 @@
  */
 {
   "sections": {
+    "evenflo_image_banner_A4Pz9a": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_UCCwHA": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_underline": false,
+            "heading_size": "h0"
+          }
+        },
+        "text_EEnbwE": {
+          "type": "text",
+          "settings": {
+            "text": "Title",
+            "text_style": "body"
+          }
+        },
+        "buttons_df7tUN": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "First button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Second button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_UCCwHA",
+        "text_EEnbwE",
+        "buttons_df7tUN"
+      ],
+      "settings": {
+        "image": "{{ page.metafields.custom.header_image.value }}",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "image_banner_YPHMyD": {
       "type": "image-banner",
       "blocks": {
@@ -27,6 +81,8 @@
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
@@ -236,6 +292,7 @@
     }
   },
   "order": [
+    "evenflo_image_banner_A4Pz9a",
     "image_banner_YPHMyD",
     "main",
     "rich_text_aDEq8A",
