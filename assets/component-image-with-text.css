@@ -340,20 +340,6 @@
   margin-top: 2rem;
 }
 
-.image-with-text__heading {
-  display: inline-block;
-  position: relative;
-}
-
-.image-with-text__heading::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 80px;
-  height: 4px;
-  background-color: #2996c5;
-}
 .image-with-text__content > .image-with-text__text:empty ~ a {
   margin-top: 2rem;
 }
