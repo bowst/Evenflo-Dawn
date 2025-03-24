@@ -12,17 +12,16 @@
     "evenflo_image_banner_A4Pz9a": {
       "type": "evenflo-image-banner",
       "blocks": {
-        "heading_UCCwHA": {
-          "type": "heading",
+        "heading_h1_fMNkQh": {
+          "type": "heading-h1",
           "settings": {
-            "heading": "{{ page.title }}",
-            "heading_underline": false,
-            "heading_size": "hxl"
+            "heading-h1": "{{ page.title }}",
+            "heading_underline": false
           }
         }
       },
       "block_order": [
-        "heading_UCCwHA"
+        "heading_h1_fMNkQh"
       ],
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
