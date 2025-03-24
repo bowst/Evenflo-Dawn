@@ -9,6 +9,39 @@
  */
 {
   "sections": {
+    "evenflo_image_banner_8tNDkM": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_h1_qQHAjx": {
+          "type": "heading-h1",
+          "settings": {
+            "heading-h1": "{{ page.title }}",
+            "heading_underline": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_h1_qQHAjx"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/MicrosoftTeams-image_39.jpg",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -35,6 +68,8 @@
       "settings": {
         "image": "shopify://shop_images/MicrosoftTeams-image_39.jpg",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
@@ -378,6 +413,7 @@
     }
   },
   "order": [
+    "evenflo_image_banner_8tNDkM",
     "main",
     "image_banner_Ak7Ug7",
     "rich_text_7GmKQL",
