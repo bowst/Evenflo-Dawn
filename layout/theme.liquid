@@ -71,9 +71,13 @@
 
     {{ content_for_header }}
     <!-- New Font -->
-    <link rel="stylesheet" href="https://use.typekit.net/jnf1gfc.css">
+    <!-- <link rel="stylesheet" href="https://use.typekit.net/jnf1gfc.css"> -->
     <!-- evenflo fonts -->
-
+    <!-- Live Font -->
+        <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css" media="print" onload="this.media='all'">
+<!-- End Live Font -->
+    
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
       assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
