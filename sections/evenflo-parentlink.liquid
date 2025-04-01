@@ -1,8 +1,8 @@
 {{ 'evenflo-section-parentlink.css' | asset_url | stylesheet_tag }}
 
 <section class="parentlink">
-  <div class="content-container page-width rich-text--full-width content-container--full-width">
-    <h2 class="h1">{{ section.settings.heading }}</h2>
+  <div class="page-width rich-text--full-width content-container--full-width">
+    <h2 class="h1">Supported By <strong>ParentLink Consumer Care</strong> Via Phone, Email, Chat and Video</h2>
 
     <div class="flex-row">
       <div class="flex-item">
@@ -17,10 +17,14 @@
         </div>
       </div>
       <div class="flex-item">
-        {{ section.settings.left_content }}
+        <h3>Email</h3>
+        <p>No time to chat? Email us your inquiry</p>
+        <p><a href="mailto:parentlink@evenflo.com">parentlink@evenflo.com</a></p>
       </div>
       <div class="flex-item">
-        {{ section.settings.right_content }}
+        <h3>Phone</h3>
+        <p><a href="tel:1-937-773-3971">1-937-773-3971 (Canada)</a><br>
+        <a href="tel:1-800-233-5921">1-800-233-5921 (US)</a></p>
       </div>
     </div>
   </div>
@@ -31,31 +35,7 @@
   "name": "Evenflo Parentlink",
   "class": "text",
   "tag": "section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Supported By"
-    },
-    {
-      "type": "html",
-      "id": "left_content",
-      "label": "Left Content",
-      "default": "Phone"
-    },
-    {
-      "type": "html",
-      "id": "right_content",
-      "label": "Right Content",
-      "default": "Email"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Evenflo Parentlink"
-    }
-  ]
+
 }
 {% endschema %}
 
