@@ -9,13 +9,26 @@
  */
 {
   "sections": {
-    "7232f063-1345-4370-b773-68e048509a7d": {
-      "type": "custom-liquid",
+    "evenflo_breadcrumbs_DQRa7X": {
+      "type": "evenflo-breadcrumbs",
       "settings": {
-        "custom_liquid": "{% render 'breadcrumbs' %}",
-        "color_scheme": "background-1",
-        "padding_top": 0,
-        "padding_bottom": 0
+        "custom_class": "page-width",
+        "separator_class": "arrows",
+        "breadcrumbs_alignment": "start",
+        "text_color": "#000",
+        "font_weight": "normal",
+        "font_case": "default",
+        "font_size": 16,
+        "padding_left": 20,
+        "padding_right": 20,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left_mobile": 20,
+        "padding_right_mobile": 20,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "hide_title": false,
+        "home_text": "Home"
       }
     },
     "main": {
@@ -310,7 +323,7 @@
     }
   },
   "order": [
-    "7232f063-1345-4370-b773-68e048509a7d",
+    "evenflo_breadcrumbs_DQRa7X",
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_full_width_8jpFeL",
