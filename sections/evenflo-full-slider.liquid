@@ -1,0 +1,88 @@
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+{{ 'evenflo-full-slider.css' | asset_url | stylesheet_tag }}
+
+<section class="evenflo-multicolumn-slider color-background-4">
+  <div class="page-width section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
+    {% if section.settings.header %}
+      <hl class="main-page-title page-title h0">{{ section.settings.header }}</hl>
+    {% endif %}
+    <swiper-container
+      class="color-background-1"
+      navigation="false"
+      pagination="true"
+      pagination-clickable="true"
+      centered-slides="true"
+      autoplay-delay="5000"
+      autoplay-disable-on-interaction="false"
+    >
+      {% for block in section.blocks %}
+        {% assign blockClass = "swiper-{{ forloop.index | string }}" %}
+
+        {% if block.settings.image %}
+          {% assign image = block.settings.image %}
+          {% assign blockHtml = block.settings.html %}
+          <swiper-slide>
+            <div class="row">
+              <div class="col-4">
+                {{ image.src | image_url: width: 650 | image_tag }}
+              </div>
+
+              <div class="col-7">{{ blockHtml }}</div>
+            </div>
+          </swiper-slide>
+        {% endif %}
+      {% endfor %}
+    </swiper-container>
+  </div>
+</section>
+
+{%- if request.design_mode -%}
+  <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Evenflo Full Slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "html",
+          "id": "html",
+          "label": "HTML"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Full Slider",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
