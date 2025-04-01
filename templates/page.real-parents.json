@@ -9,44 +9,52 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
+    "custom_liquid_BkcTXQ": {
+      "type": "custom-liquid",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "custom_liquid": "<style>\n#ImageWithText--template--16644243783836__evenflo_image_with_text_xCTDK3 > .image-with-text__heading:after {\nbackground-color: #edf1f3 !important;\nleft: unset;\nright: 0px;\n}\n\n@media screen and (max-width: 749px) {\n#ImageWithText--template--16644243783836__evenflo_image_with_text_xCTDK3 > .image-with-text__heading:after {\nbackground-color: #edf1f3 !important;\nleft: 0px;\nright: unset;\n}\n}\n</style>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
-    "evenflo_image_text_4P7VHa": {
-      "type": "evenflo-image-text",
+    "evenflo_image_with_text_xCTDK3": {
+      "type": "evenflo-image-with-text",
       "blocks": {
-        "heading_6y8Hix": {
+        "image_EYggmY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Product.png",
+            "alt_text": "Green and Gentle"
+          }
+        },
+        "heading_WnFXDe": {
           "type": "heading",
           "settings": {
             "heading": "Built for a greener future",
             "heading_size": "h1"
           }
         },
-        "text_yBxaMa": {
+        "text_MFY96B": {
           "type": "text",
           "settings": {
             "text": "<p>INTRODUCING <strong>REVOLVE360™</strong><br/>WITH GREEN & GENTLE™ FABRIC</p>",
             "text_style": "body"
           }
         },
-        "button_qbJDRQ": {
+        "button_Tfbk6n": {
           "type": "button",
           "settings": {
             "button_label": "Shop now",
-            "button_link": "https://www.evenflo.com/collections/green-gentle",
-            "button_style_secondary": false
+            "button_link": "https://www.evenflo.com/collections/green-gentle"
           }
         }
       },
       "block_order": [
-        "heading_6y8Hix",
-        "text_yBxaMa",
-        "button_qbJDRQ"
+        "image_EYggmY",
+        "heading_WnFXDe",
+        "text_MFY96B",
+        "button_Tfbk6n"
       ],
       "custom_css": [
         ".image-with-text {padding: 0; margin: 0; min-width: 100%;}",
@@ -61,21 +69,74 @@
       "settings": {
         "image": "shopify://shop_images/green-and-gentle-banner.png",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "right",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "evenflo_divider_QpTbaM": {
-      "type": "evenflo-divider",
+    "image_with_text_WaXdPG": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_pChFet": {
+          "type": "heading",
+          "settings": {
+            "heading": "Built for a greener future",
+            "heading_size": "h1"
+          }
+        },
+        "text_APj4p8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>INTRODUCING REVOLVE360™<br/>WITH GREEN & GENTLE™ FABRIC</p>",
+            "text_style": "body"
+          }
+        },
+        "button_8cYACD": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/pivot-troop-child-and-pet-car-seat-and-stroller-travel-system"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pChFet",
+        "text_APj4p8",
+        "button_8cYACD"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".image-with-text {padding: 0; margin: 0; min-width: 100%;}",
+        ".image-with-text__heading:after {display: none;}",
+        ".image-with-text__media {min-height: 500px;}",
+        "a {background-color: black; border-color: black; border: 0;}",
+        "a:after {display: none;}",
+        ".button {background-color: #0a514b;}",
+        "@media screen and (max-width: 749px) {.image-with-text__media {min-height: unset; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/green-and-gentle-banner.png",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "right",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "divider_7njMcJ": {
+      "type": "divider",
       "custom_css": [
         "div {background: rgb(0, 180, 177); background: linear-gradient( 90deg, rgba(0, 180, 177, 1) 0%, rgba(184, 218, 121, 1) 100% ); height: 20px; min-width: 100%; margin: 0; padding: 0;}"
       ],
@@ -86,10 +147,10 @@
         "custom_css": ""
       }
     },
-    "multicolumn_Dq8DFK": {
+    "multicolumn_F4X6j3": {
       "type": "multicolumn",
       "blocks": {
-        "column_xB4Wib": {
+        "column_7XycH3": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Extend.png",
@@ -99,7 +160,7 @@
             "link": "shopify://products/revolve360-extend-swivel-convertible-car-seat-sensorsafe-green-sale"
           }
         },
-        "column_LiDRGw": {
+        "column_Nha8Q4": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/slim.png",
@@ -111,8 +172,18 @@
         }
       },
       "block_order": [
-        "column_xB4Wib",
-        "column_LiDRGw"
+        "column_7XycH3",
+        "column_Nha8Q4"
+      ],
+      "custom_css": [
+        "h2 {margin: auto; text-align: center;}",
+        "h3 {font-size: 1.5em;}",
+        ".multicolumn {max-width: 1000px; margin: auto;}",
+        "p {padding-top: 10px;}",
+        ".button {background-color: #0a514b;}",
+        "p {font-weight: bold;}",
+        "@media screen and (max-width: 749px) {p {display: none; }}",
+        "span {font-weight: normal;}"
       ],
       "settings": {
         "title": "Choose your Green & Gentle™ gear",
@@ -121,36 +192,39 @@
         "image_ratio": "adapt",
         "columns_desktop": 2,
         "column_alignment": "center",
-        "background_style": "primary",
+        "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "evenflo_divider_K6JGzr": {
-      "type": "evenflo-divider",
+    "divider_PpHJmK": {
+      "type": "divider",
+      "custom_css": [
+        "hr {min-height: 4px; background-color: #0a514b;}"
+      ],
       "settings": {
-        "divider_spacing": 20,
+        "divider_spacing": 25,
         "divider_border": false,
         "css_class": "",
         "custom_css": ""
       }
     },
-    "evenflo_image_text_J8xeN8": {
-      "type": "evenflo-image-text",
+    "evenflo_image_with_text_ydirMk": {
+      "type": "evenflo-image-with-text",
       "blocks": {
-        "heading_c76ErX": {
+        "heading_VQCCqk": {
           "type": "heading",
           "settings": {
             "heading": "RECYCLING Plastic bottles WITH EVERY product SOLD",
             "heading_size": "h1"
           }
         },
-        "text_QeBbEr": {
+        "text_PgUJth": {
           "type": "text",
           "settings": {
             "text": "<p>Our <strong>Green & Gentle™</strong> Fabric is manufactured using recycled plastic bottles, allowing your baby gear to have a positive impact on the environment. </p><p>22 bottles are recycled for every <strong>Revolve360™</strong> Slim Car Seat.</p><p>26 bottles are recycled for every <strong>Revolve360™</strong> Extend Car Seat.</p><p>We will continue to expand our <strong>Green & Gentle™</strong> collection to include new and innovative products, ranging from travel systems to strollers and more!</p>",
@@ -159,8 +233,8 @@
         }
       },
       "block_order": [
-        "heading_c76ErX",
-        "text_QeBbEr"
+        "heading_VQCCqk",
+        "text_PgUJth"
       ],
       "custom_css": [
         "h2::after {background-color: #edf1f3;}",
@@ -172,30 +246,28 @@
       "settings": {
         "image": "shopify://shop_images/Screenshot_2024-04-15_at_4.25.14_PM.png",
         "height": "small",
-        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "evenflo_image_text_gfAGPK": {
-      "type": "evenflo-image-text",
+    "evenflo_image_with_text_C3ajx3": {
+      "type": "evenflo-image-with-text",
       "blocks": {
-        "heading_jFM8cn": {
+        "heading_G99KL6": {
           "type": "heading",
           "settings": {
             "heading": "HELP MAKE a greener future",
             "heading_size": "h1"
           }
         },
-        "text_DHFy7b": {
+        "text_7jFfzr": {
           "type": "text",
           "settings": {
             "text": "<p>The revolution in car seat innovation adds an evolution for a more positive impact on the planet! Our Revolve360™ Car Seats with <strong>Green & Gentle™</strong> fabric feature soft, eco-friendly fabric free of added chemicals and flame retardants, and manufactured using recycled plastic bottles.</p>",
@@ -204,8 +276,8 @@
         }
       },
       "block_order": [
-        "heading_jFM8cn",
-        "text_DHFy7b"
+        "heading_G99KL6",
+        "text_7jFfzr"
       ],
       "custom_css": [
         "h2::after {background-color: #edf1f3;}",
@@ -218,30 +290,36 @@
       "settings": {
         "image": "shopify://shop_images/help-make_924d37b0-8745-4136-b9c5-20fdf064add1.png",
         "height": "small",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "evenflo_image_text_fgNefN": {
-      "type": "evenflo-image-text",
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_NaBrd3": {
+      "type": "image-with-text",
       "blocks": {
-        "heading_dgANik": {
+        "heading_yRJgDi": {
           "type": "heading",
           "settings": {
             "heading": "No added chemicals? Easy choice!",
             "heading_size": "h1"
           }
         },
-        "text_KgkikA": {
+        "text_wrbFy6": {
           "type": "text",
           "settings": {
             "text": "<p>Our Green & Gentle™ Fabric is free of added chemicals and flame retardants, making it a safe and sustainable option for your child! This collection was designed to be both sustainable and fashion-forward, while always keeping safety as a top priority.</p><p><strong>Soft to the touch </strong><br/>Green & Gentle™ Fabric is engineered to be soft and gentle to the touch — this was a necessity when creating a recycled fabric made from plastic materials.</p><p><strong>No added flame retardants</strong><br/>Our Green & Gentle™ Fabric passes federal flammability regulations without the use of added flame retardant chemicals. Some flame retardants can cause damage to the environment — many do not easily breakdown and can remain for years.</p><p><strong>Decomposes in landfill </strong><br/>Green & Gentle™ Fabric has a shorter life span, allowing it to decompose in the landfill (in about half the time when compared to regular fabric).</p>",
@@ -250,8 +328,8 @@
         }
       },
       "block_order": [
-        "heading_dgANik",
-        "text_KgkikA"
+        "heading_yRJgDi",
+        "text_wrbFy6"
       ],
       "custom_css": [
         "h2::after {background-color: #edf1f3;}",
@@ -269,18 +347,17 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "rich_text_4F9aGp": {
+    "rich_text_Cxih6d": {
       "type": "rich-text",
       "blocks": {
-        "heading_bArCFT": {
+        "heading_yBmpiC": {
           "type": "heading",
           "settings": {
             "heading": "Here’s what our consumers are saying about it…",
@@ -289,7 +366,7 @@
         }
       },
       "block_order": [
-        "heading_bArCFT"
+        "heading_yBmpiC"
       ],
       "custom_css": [
         ".rich-text {background-color: #edf1f3;}",
@@ -299,14 +376,14 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
-    "evenflo_quote_jEGi4A": {
-      "type": "evenflo-quote",
+    "evenflo_custom_quote_8P4YtX": {
+      "type": "evenflo-custom-quote",
       "custom_css": [
         "div {background-color: #edf1f3 !important; margin-top: 0px !important; margin-bottom: 0px !important;}",
         ".heading-underline-custom {text-align: left !important;}",
@@ -322,10 +399,10 @@
         "name": "- GRACE M."
       }
     },
-    "rich_text_f4Ar6R": {
+    "rich_text_LbtGRY": {
       "type": "rich-text",
       "blocks": {
-        "button_ezkK6n": {
+        "button_6qCTYK": {
           "type": "button",
           "settings": {
             "button_label": "SHOP REVOLVE360",
@@ -338,7 +415,7 @@
         }
       },
       "block_order": [
-        "button_ezkK6n"
+        "button_6qCTYK"
       ],
       "custom_css": [
         ".rich-text {background-color: #edf1f3;}",
@@ -347,24 +424,26 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 0,
+        "padding_bottom": 24
       }
     }
   },
   "order": [
+    "custom_liquid_BkcTXQ",
+    "evenflo_image_with_text_xCTDK3",
+    "image_with_text_WaXdPG",
+    "divider_7njMcJ",
+    "multicolumn_F4X6j3",
+    "divider_PpHJmK",
+    "evenflo_image_with_text_ydirMk",
+    "evenflo_image_with_text_C3ajx3",
     "main",
-    "evenflo_image_text_4P7VHa",
-    "evenflo_divider_QpTbaM",
-    "multicolumn_Dq8DFK",
-    "evenflo_divider_K6JGzr",
-    "evenflo_image_text_J8xeN8",
-    "evenflo_image_text_gfAGPK",
-    "evenflo_image_text_fgNefN",
-    "rich_text_4F9aGp",
-    "evenflo_quote_jEGi4A",
-    "rich_text_f4Ar6R"
+    "image_with_text_NaBrd3",
+    "rich_text_Cxih6d",
+    "evenflo_custom_quote_8P4YtX",
+    "rich_text_LbtGRY"
   ]
 }
