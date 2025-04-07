@@ -9,32 +9,55 @@
  */
 {
   "sections": {
-    "image_banner_JLhNQQ": {
-      "type": "image-banner",
+    "evenflo_image_banner_GeTMXj": {
+      "type": "evenflo-image-banner",
       "blocks": {
-        "heading_kjdP6P": {
+        "heading_qq8Mfx": {
           "type": "heading",
           "settings": {
-            "heading": "100 Years and Growing",
-            "heading_size": "h1",
-            "heading_color": "white"
+            "heading": "Image banner",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_69Cwrp": {
+          "type": "text",
+          "settings": {
+            "text": "Title",
+            "text_style": "body"
+          }
+        },
+        "buttons_DXVj37": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "First button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Second button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "heading_kjdP6P"
+        "heading_qq8Mfx",
+        "text_69Cwrp",
+        "buttons_DXVj37"
       ],
       "settings": {
         "image": "shopify://shop_images/Evenflo_Header_Banner_Green_and_Gentle_Fabric_Car_Seat_Desktop.jpg",
         "image_2": "shopify://shop_images/Evenflo_Header_Banner_Green_and_Gentle_Fabric_Car_Seat_Mobile.jpg",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
-        "image_height": "small",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "color_scheme": "",
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -260,7 +283,7 @@
     }
   },
   "order": [
-    "image_banner_JLhNQQ",
+    "evenflo_image_banner_GeTMXj",
     "evenflo_rich_text_k43jei",
     "main",
     "image_banner_Rt8waY",
