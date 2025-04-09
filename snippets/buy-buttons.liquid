@@ -65,15 +65,15 @@
           {% assign amazon_link = product.metafields.custom.amazon_link %}
 
           {%- if walmart_id -%}
-            {% render 'walmart-buy-button', walmart_id: walmart_id %}
-            {% render 'babylist-button', product: product %}
+            {% render 'evenflo-walmart-buy-button', walmart_id: walmart_id %}
+            {% render 'evenflo-babylist-button', product: product %}
             {% comment %}
               Note: No dynamic checkout button for Walmart products
               This matches the original logic that skips dynamic checkout for external marketplace products
             {% endcomment %}
           {%- elsif amazon_link -%}
-            {% render 'amazon-buy-button', amazon_link: amazon_link %}
-            {% render 'babylist-button', product: product %}
+            {% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
+            {% render 'evenflo-babylist-button', product: product %}
             {% comment %}
               Note: No dynamic checkout button for Amazon products
               This matches the original logic that skips dynamic checkout for external marketplace products
@@ -86,14 +86,14 @@
               endif
             %}
 
-            {% render 'standard-buy-button',
+            {% render 'evenflo-standard-buy-button',
               product: product,
               section_id: section_id,
               show_dynamic_checkout: show_dynamic_checkout,
               check_against_inventory: check_against_inventory
             %}
 
-            {% render 'babylist-button', product: product %}
+            {% render 'evenflo-babylist-button', product: product %}
 
             {% comment %}
               Dynamic checkout is already handled inside standard-buy-button snippet
