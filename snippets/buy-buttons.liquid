@@ -65,11 +65,11 @@
           {% assign amazon_link = product.metafields.custom.amazon_link %}
 
           {%- if walmart_id -%}
-            {% render 'walmart-buy-button', walmart_id: walmart_id %}
-            {% render 'babylist-button', product: product %}
+            {% render 'evenflo-walmart-buy-button', walmart_id: walmart_id %}
+            {% render 'evenflo-babylist-button', product: product %}
           {%- elsif amazon_link -%}
-            {% render 'amazon-buy-button', amazon_link: amazon_link %}
-            {% render 'babylist-button', product: product %}
+            {% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
+            {% render 'evenflo-babylist-button', product: product %}
           {%- else -%}
             {% liquid
               assign check_against_inventory = true
