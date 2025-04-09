@@ -66,12 +66,12 @@
 
           {%- if walmart_id -%}
             {% comment %}Walmart exclusive buy button{% endcomment %}
-            {% render 'walmart-buy-button', walmart_id: walmart_id %}
-            {% render 'babylist-button', product: product %}
+            {% render 'evenflo-walmart-buy-button', walmart_id: walmart_id %}
+            {% render 'evenflo-babylist-button', product: product %}
           {%- elsif amazon_link -%}
             {% comment %}Amazon exclusive buy button{% endcomment %}
-            {% render 'amazon-buy-button', amazon_link: amazon_link %}
-            {% render 'babylist-button', product: product %}
+            {% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
+            {% render 'evenflo-babylist-button', product: product %}
           {%- else -%}
             {% comment %}Standard Shopify buy button{% endcomment %}
             {%- liquid
@@ -115,7 +115,7 @@
               {{ form | payment_button }}
             {%- endif -%}
 
-            {% render 'babylist-button', product: product %}
+            {% render 'evenflo-babylist-button', product: product %}
           {%- endif -%}
         </div>
       {%- endform -%}
