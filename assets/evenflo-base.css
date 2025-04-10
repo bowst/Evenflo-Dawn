@@ -162,13 +162,14 @@ img {
   max-width: 100%;
   height: auto;
 }
-.product-form__buttons .shopify-payment-button {
+
+.shopify-payment-button {
     height: inherit;
     flex: 1 0 calc(50% - 3px);
-    /* max-width: calc(50% - 3px); */
+    max-width: 100% !important;
 }
 .baby-list-button {
-    /* max-width: calc(50% - 3px); */
+    max-width: 100% !important;
     flex: 1 0 calc(50% - 3px);
     height: 44px !important;
     text-align: center;
