@@ -38,6 +38,10 @@
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
+
+  assign amazon_link = product.metafields.custom.amazon_link
+  assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id
+  assign target_link = product.selected_or_first_available_variant.metafields.custom.target_id
 -%}
 
 {%- unless target == null and placeholder == null -%}
@@ -124,13 +128,45 @@
       </small>
     </div>
     {%- if show_badges -%}
-      <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
-        {{ 'products.product.on_sale' | t }}
-      </span>
+      {% comment %} Marketplace exclusive badges and standard sale/sold out badges {% endcomment %}
 
-      <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
-        {{ 'products.product.sold_out' | t }}
-      </span>
+      {%- if amazon_link != blank and walmart_id != blank and target_link != blank and available == false -%}
+        <span class="badge price__badge-sold-out color-{{ settings.available_on_both_badge_color_scheme | default: settings.sold_out_badge_color_scheme }}">
+          Available on Amazon, Walmart, and Target
+        </span>
+      {%- elsif amazon_link != blank and walmart_id != blank and available == false -%}
+        <span class="badge price__badge-sold-out color-{{ settings.available_on_both_badge_color_scheme | default: settings.sold_out_badge_color_scheme }}">
+          Available on Amazon and Walmart
+        </span>
+      {%- elsif amazon_link != blank and target_link != blank and available == false -%}
+        <span class="badge price__badge-sold-out color-{{ settings.available_on_both_badge_color_scheme | default: settings.sold_out_badge_color_scheme }}">
+          Available on Amazon and Target
+        </span>
+      {%- elsif walmart_id != blank and target_link != blank and available == false -%}
+        <span class="badge price__badge-sold-out color-{{ settings.available_on_both_badge_color_scheme | default: settings.sold_out_badge_color_scheme }}">
+          Available on Walmart and Target
+        </span>
+      {%- elsif walmart_id != blank and available == false -%}
+        <span class="badge price__badge-walmart-exclusive color-{{ settings.walmart_badge_color_scheme | default: settings.sold_out_badge_color_scheme }}">
+          Walmart Exclusive
+        </span>
+      {%- elsif amazon_link != blank and available == false -%}
+        <span class="badge price__badge-amazon-exclusive color-{{ settings.amazon_badge_color_scheme | default: settings.sold_out_badge_color_scheme }}">
+          Amazon Exclusive
+        </span>
+      {%- elsif target_link != blank and available == false -%}
+        <span class="badge price__badge-target-exclusive color-{{ settings.target_badge_color_scheme | default: settings.sold_out_badge_color_scheme }}">
+          Target Exclusive
+        </span>
+      {%- elsif compare_at_price > price and available and product.quantity_price_breaks_configured? != true -%}
+        <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
+          {{ 'products.product.on_sale' | t }}
+        </span>
+      {%- elsif available == false -%}
+        <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+          {{ 'products.product.sold_out' | t }}
+        </span>
+      {%- endif -%}
     {%- endif -%}
   </div>
 {% endunless %}
