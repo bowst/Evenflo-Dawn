@@ -190,3 +190,15 @@ img {
 .swatch-input__input:checked+.swatch-input__label {
     outline: 3px solid #ccd1d1 !important;
 }
+.product-form__submit {
+  margin-bottom: 1rem;
+  background-color: #00aea9;
+  color: #ffffff;
+  --border-offset: 0;
+}
+.product-form__submit:not([disabled]):hover::after {
+  box-shadow: 0 0 0 3px #00aea9;
+}
+.babylist-button:not([disabled]):hover::after {
+  box-shadow: 0 0 0 3px #000000;
+}
