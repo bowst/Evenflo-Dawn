@@ -177,8 +177,6 @@ if (!customElements.get('product-info')) {
 
           this.updateMedia(html, variant?.featured_media?.id);
 
-          
-
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
             const source = html.getElementById(`${id}-${this.sectionId}`);
             const destination = this.querySelector(`#${id}-${this.dataset.section}`);
@@ -242,8 +240,6 @@ if (!customElements.get('product-info')) {
       }
 
       updateMedia(html, variantFeaturedMediaId) {
-
-        
         if (!variantFeaturedMediaId) return;
 
         const mediaGallerySource = this.querySelector('media-gallery ul');
@@ -344,7 +340,7 @@ if (!customElements.get('product-info')) {
         if (!currentVariantId) return;
 
         this.querySelector('.quantity__rules-cart .loading__spinner').classList.remove('hidden');
-        fetch(`${this.dataset.url}?variant=${currentVariantId}&section_id=${this.dataset.section}`)
+        return fetch(`${this.dataset.url}?variant=${currentVariantId}&section_id=${this.dataset.section}`)
           .then((response) => response.text())
           .then((responseText) => {
             const html = new DOMParser().parseFromString(responseText, 'text/html');
