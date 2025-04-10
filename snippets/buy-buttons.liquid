@@ -79,18 +79,19 @@
             {% comment %}Walmart exclusive buy button{% endcomment %}
             <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
               {% render 'evenflo-walmart-buy-button', walmart_id: walmart_id %}
-              {% render 'evenflo-babylist-button', product: product %}
-            </div>
+              <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
+                {% render 'evenflo-babylist-button', product: product %}
+              </div>
           {%- elsif amazon_link -%}
+            {% comment %}Amazon exclusive buy button{% endcomment %}
+            {% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
             <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
-              {% comment %}Amazon exclusive buy button{% endcomment %}
-              {% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
               {% render 'evenflo-babylist-button', product: product %}
             </div>
           {%- elsif target_link -%}
+            {% comment %}Target exclusive buy button{% endcomment %}
+            {% render 'evenflo-target-buy-button', target_link: target_link %}
             <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
-              {% comment %}Target exclusive buy button{% endcomment %}
-              {% render 'evenflo-target-buy-button', target_link: target_link %}
               {% render 'evenflo-babylist-button', product: product %}
             </div>
           {%- else -%}
