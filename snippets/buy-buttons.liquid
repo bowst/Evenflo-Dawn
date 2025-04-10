@@ -22,6 +22,7 @@
       if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
         assign show_dynamic_checkout = true
       endif
+      assign collection_handles = product.collections | map: 'handle'
     -%}
 
     <product-form
@@ -61,28 +62,33 @@
         {%- endif -%}
 
         <div class="product-form__buttons">
+          {%- liquid
+            assign check_against_inventory = true
+            if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+              assign check_against_inventory = false
+            endif
+            if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+              assign quantity_rule_soldout = true
+            endif
+          -%}
           {% assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id %}
           {% assign amazon_link = product.metafields.custom.amazon_link %}
+          {%- assign target_link = product.selected_or_first_available_variant.metafields.custom.target_id -%}
 
           {%- if walmart_id -%}
             {% comment %}Walmart exclusive buy button{% endcomment %}
-            {% render 'evenflo-walmart-buy-button', walmart_id: walmart_id %}
-            {% render 'evenflo-babylist-button', product: product %}
+            {% render 'walmart-buy-button', walmart_id: walmart_id %}
+            {% render 'babylist-button', product: product %}
           {%- elsif amazon_link -%}
             {% comment %}Amazon exclusive buy button{% endcomment %}
-            {% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
-            {% render 'evenflo-babylist-button', product: product %}
+            {% render 'amazon-buy-button', amazon_link: amazon_link %}
+            {% render 'babylist-button', product: product %}
+          {%- elsif target_link -%}
+            {% comment %}Target exclusive buy button{% endcomment %}
+            {% render 'target-buy-button', target_link: target_link %}
+            {% render 'babylist-button', product: product %}
           {%- else -%}
             {% comment %}Standard Shopify buy button{% endcomment %}
-            {%- liquid
-              assign check_against_inventory = true
-              if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
-                assign check_against_inventory = false
-              endif
-              if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
-                assign quantity_rule_soldout = true
-              endif
-            -%}
             <button
               id="ProductSubmitButton-{{ section_id }}"
               type="submit"
@@ -107,15 +113,22 @@
               {%- render 'loading-spinner' -%}
             </button>
 
-            {% comment %}Show Shop Pay / dynamic checkout only for standard products that are available{% endcomment %}
-            {%- if show_dynamic_checkout
-              and product.selected_or_first_available_variant.available
-              and quantity_rule_soldout != true
-            -%}
-              {{ form | payment_button }}
-            {%- endif -%}
+            {% comment %}Display Babylist and Shop Pay buttons horizontally{% endcomment %}
+            <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
+              {% comment %}Only show Shop Pay if product is available{% endcomment %}
+              {%- if show_dynamic_checkout
+                and product.selected_or_first_available_variant.available
+                and quantity_rule_soldout != true
+              -%}
+                <div style="flex: 1;">
+                  {{ form | payment_button }}
+                </div>
+              {%- endif -%}
 
-            {% render 'evenflo-babylist-button', product: product %}
+              <div style="flex: 1;">
+                {% render 'babylist-button', product: product %}
+              </div>
+            </div>
           {%- endif -%}
         </div>
       {%- endform -%}
