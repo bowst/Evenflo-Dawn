@@ -481,6 +481,7 @@
                     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                     {{ form | payment_terms }}
                   {%- endform -%}
+                </div>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
