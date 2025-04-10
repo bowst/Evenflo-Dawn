@@ -174,3 +174,19 @@ img {
     height: 44px !important;
     text-align: center;
 }
+
+
+.swatch-input__input+.swatch-input__label:hover, 
+.swatch-input__input:hover+.swatch-input__label {
+    outline: 3px solid #ccd1d1 !important;
+}
+.product-form__input input[type=radio]+label{
+  border:none !important;
+}
+.swatch-input__input+.swatch-input__label {
+  outline-offset:0 !important;
+}
+.swatch-input__input:active+.swatch-input__label, 
+.swatch-input__input:checked+.swatch-input__label {
+    outline: 3px solid #ccd1d1 !important;
+}
