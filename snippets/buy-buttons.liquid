@@ -120,9 +120,7 @@
                 and product.selected_or_first_available_variant.available
                 and quantity_rule_soldout != true
               -%}
-                <div style="flex: 1;">
-                  {{ form | payment_button }}
-                </div>
+                {{ form | payment_button }}
               {%- endif -%}
 
               <div style="flex: 1;">
