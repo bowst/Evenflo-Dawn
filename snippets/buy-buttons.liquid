@@ -61,61 +61,40 @@
         {%- endif -%}
 
         <div class="product-form__buttons">
-          {% assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id %}
-          {% assign amazon_link = product.metafields.custom.amazon_link %}
-
-          {%- if walmart_id -%}
-            {% comment %}Walmart exclusive buy button{% endcomment %}
-            {% render 'evenflo-walmart-buy-button', walmart_id: walmart_id %}
-            {% render 'evenflo-babylist-button', product: product %}
-          {%- elsif amazon_link -%}
-            {% comment %}Amazon exclusive buy button{% endcomment %}
-            {% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
-            {% render 'evenflo-babylist-button', product: product %}
-          {%- else -%}
-            {% comment %}Standard Shopify buy button{% endcomment %}
-            {%- liquid
-              assign check_against_inventory = true
-              if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
-                assign check_against_inventory = false
-              endif
-              if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
-                assign quantity_rule_soldout = true
-              endif
-            -%}
-            <button
-              id="ProductSubmitButton-{{ section_id }}"
-              type="submit"
-              name="add"
-              class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-              {% if product.selected_or_first_available_variant.available == false
-                or quantity_rule_soldout
-                or product.selected_or_first_available_variant == null
-              %}
-                disabled
-              {% endif %}
-            >
-              <span>
-                {%- if product.selected_or_first_available_variant == null -%}
-                  {{ 'products.product.unavailable' | t }}
-                {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-                  {{ 'products.product.sold_out' | t }}
-                {%- else -%}
-                  {{ 'products.product.add_to_cart' | t }}
-                {%- endif -%}
-              </span>
-              {%- render 'loading-spinner' -%}
-            </button>
-
-            {% comment %}Show Shop Pay / dynamic checkout only for standard products that are available{% endcomment %}
-            {%- if show_dynamic_checkout
-              and product.selected_or_first_available_variant.available
-              and quantity_rule_soldout != true
-            -%}
-              {{ form | payment_button }}
-            {%- endif -%}
-
-            {% render 'evenflo-babylist-button', product: product %}
+          {%- liquid
+            assign check_against_inventory = true
+            if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+              assign check_against_inventory = false
+            endif
+            if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+              assign quantity_rule_soldout = true
+            endif
+          -%}
+          <button
+            id="ProductSubmitButton-{{ section_id }}"
+            type="submit"
+            name="add"
+            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            {% if product.selected_or_first_available_variant.available == false
+              or quantity_rule_soldout
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            <span>
+              {%- if product.selected_or_first_available_variant == null -%}
+                {{ 'products.product.unavailable' | t }}
+              {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- else -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- endif -%}
+            </span>
+            {%- render 'loading-spinner' -%}
+          </button>
+          {%- if show_dynamic_checkout -%}
+            {{ form | payment_button }}
           {%- endif -%}
         </div>
       {%- endform -%}
