@@ -16,7 +16,8 @@
           "type": "text",
           "settings": {
             "text": "Introducing first-of-its-kind",
-            "text_style": "body"
+            "text_style": "body",
+            "text_color": "black"
           }
         },
         "heading_R3UnCL": {
@@ -53,6 +54,7 @@
         "video": "shopify://files/videos/SensorySoothe_Homepage Header_1920x450_2_no text.mp4",
         "video_mobile": "shopify://files/videos/SensorySoothe_Homepage Header_400x500_2_no text.mp4",
         "video_enable": true,
+        "enable_video_looping": true,
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
@@ -68,7 +70,6 @@
     },
     "evenflo_featured_collection_XHFN7m": {
       "type": "evenflo-featured-collection",
-      "disabled": true,
       "settings": {
         "title": "Bestsellers",
         "heading_size": "h1",
@@ -155,17 +156,17 @@
       ],
       "settings": {
         "image": "shopify://shop_images/Shyft_Intuiti_for_Image_Block_smaller.jpg",
-        "height": "adapt",
-        "desktop_image_width": "small",
+        "height": "medium",
+        "desktop_image_width": "medium",
         "layout": "image_first",
-        "desktop_content_position": "middle",
+        "desktop_content_position": "top",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
-        "padding_top": 36,
+        "padding_top": 0,
         "padding_bottom": 36
       }
     },
@@ -471,11 +472,7 @@
     },
     "evenflo_parentlink_4YbGPw": {
       "type": "evenflo-parentlink",
-      "settings": {
-        "heading": "Supported By <strong>ParentLink Consumer Care</strong> Via Phone, Email, Chat and Video",
-        "left_content": "<h3>Email</h3>\nNo time to chat?<br>\n<a href=\"https://www.evenflo.com/pages/contact-us\">Email us</a> your inquiry",
-        "right_content": "<h3>Phone</h3>\n\n1-800-233-5921 (US)<br>\n1-937-773-3971 (Canada)"
-      }
+      "settings": {}
     },
     "evenflo_rich_text_prfidL": {
       "type": "evenflo-rich-text",
