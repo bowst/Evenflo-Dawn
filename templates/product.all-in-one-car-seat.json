@@ -11,11 +11,12 @@
   "sections": {
     "evenflo_breadcrumbs_RhhERx": {
       "type": "evenflo-breadcrumbs",
+      "disabled": true,
       "settings": {
         "custom_class": "page-width",
         "separator_class": "arrows",
         "breadcrumbs_alignment": "start",
-        "text_color": "#000",
+        "text_color": "#000000",
         "font_weight": "normal",
         "font_case": "default",
         "font_size": 16,
@@ -29,6 +30,15 @@
         "padding_bottom_mobile": 20,
         "hide_title": true,
         "home_text": "Home"
+      }
+    },
+    "custom_liquid_jxAAmX": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "main": {
@@ -54,6 +64,12 @@
         "price": {
           "type": "price",
           "settings": {}
+        },
+        "related_products_XgPBpc": {
+          "type": "related_products",
+          "settings": {
+            "heading": "Styles. Which is best for you?"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -93,6 +109,7 @@
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
+        "related_products_XgPBpc",
         "variant_picker",
         "186af034-c686-428f-82fc-e61cf13f5e65",
         "buy_buttons",
@@ -256,6 +273,7 @@
   },
   "order": [
     "evenflo_breadcrumbs_RhhERx",
+    "custom_liquid_jxAAmX",
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
