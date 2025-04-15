@@ -31,7 +31,7 @@
         "heading_mdhyEt": {
           "type": "heading",
           "settings": {
-            "heading": "SensorySoothe&trade; Technology",
+            "heading": "SensorySoothe™ Technology",
             "heading_size": "h1",
             "heading_color": "white"
           }
@@ -53,6 +53,7 @@
         "heading_mdhyEt",
         "buttons_NjgH8P"
       ],
+      "disabled": true,
       "custom_css": [
         "h1 {font-weight: 300;}",
         "h2 {color: white; font-weight: 300;}",
@@ -77,24 +78,58 @@
     },
     "evenflo_image_video_banner_za8b6T": {
       "type": "evenflo-image-video-banner",
-      "disabled": true,
+      "blocks": {
+        "text_dPFTQk": {
+          "type": "text",
+          "settings": {
+            "text": "REVOLVE360™ EXTEND & SHYFT™ DUALRIDE™",
+            "text_style": "body"
+          }
+        },
+        "heading_kcEbGL": {
+          "type": "heading",
+          "settings": {
+            "heading": "Limited Edition Collection",
+            "heading_size": "h1",
+            "heading_color": "white"
+          }
+        },
+        "buttons_JtAL6x": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Learn More",
+            "button_link_1": "https://www.evenflo.com/pages/limited-edition-revolve360-extend-shyft-dualride?_pos=1&_sid=4ba5a15e9&_ss=r",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_dPFTQk",
+        "heading_kcEbGL",
+        "buttons_JtAL6x"
+      ],
       "custom_css": [
-        ".banner__content.banner__content--middle-center {width: 100vw; aspect-ratio: 1900 / 450; height: auto;}"
+        "h1 {font-weight: 300;}",
+        "h2 {color: white; font-weight: 300;}",
+        ".button {background: white; color: black; box-shadow: none; border: none;}"
       ],
       "settings": {
-        "video": "shopify://files/videos/Evenflo_HomepageHeader_1920x450_Lifestyle_2025.mp4",
-        "video_mobile": "shopify://files/videos/Evenflo_HomepageHeader_400x500_Lifestyle_2025.mp4",
+        "video": "shopify://files/videos/Limited Edition_Homepage-Header_1920x400.mp4",
+        "video_mobile": "shopify://files/videos/Limited Edition_Homepage-Header_400x500.mp4",
         "video_enable": true,
-        "image_overlay_opacity": 0,
+        "image_overlay_opacity": 20,
         "underline": false,
         "hide_image_on_mobile": false,
         "image_height": "adapt",
-        "desktop_content_position": "middle-center",
+        "desktop_content_position": "bottom-left",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
+        "stack_images_on_mobile": true,
         "show_text_below": false
       }
     },
