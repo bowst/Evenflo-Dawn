@@ -366,6 +366,13 @@
 .image-with-text__heading {
   margin-bottom: 0;
 }
+.image-with-text__heading:after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: #2996c5;
+    display: block;
+}
 
 .image-with-text__text p {
   margin-top: 0;
