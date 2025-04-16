@@ -74,10 +74,71 @@
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
+    },
+    "evenflo_image_with_text_xGNWdF": {
+      "type": "evenflo-image-with-text",
+      "blocks": {
+        "caption_VXrPjP": {
+          "type": "caption",
+          "settings": {
+            "caption": "Sensorysoothe™ technology",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading_xbrcHj": {
+          "type": "heading",
+          "settings": {
+            "heading": "Calm at your Fingertips",
+            "heading_size": "h1"
+          }
+        },
+        "text_knR3TL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Accessible through the Evenflo® app, SensorySoothe™ technology calms and mesmerizes your little one at a moment’s notice. Right from your phone, you can cue a captivating light show, create a calming space with nature sounds or play a favorite lullaby.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_HdLbE4": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify://pages/sensorysoothe"
+          }
+        }
+      },
+      "block_order": [
+        "caption_VXrPjP",
+        "heading_xbrcHj",
+        "text_knR3TL",
+        "button_HdLbE4"
+      ],
+      "custom_css": [
+        ".caption-with-letter-spacing {color: #000000; font-weight: 600;}",
+        "h2:after {display: none;}",
+        ".image-with-text__text.rte.body {color: #000000;}",
+        ".banner__buttons a {background: #000000 !important; opacity: 1; outline: none;}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/CS160412545_Revolve180_LiteMaxGold_Quartz_App_1786_5145da5c-8a67-42a1-9f36-f6cbacfb599d.jpg",
+        "height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 56
+      }
     }
   },
   "order": [
     "main",
-    "image_banner_with_app_link_4a4FeJ"
+    "image_banner_with_app_link_4a4FeJ",
+    "evenflo_image_with_text_xGNWdF"
   ]
 }
