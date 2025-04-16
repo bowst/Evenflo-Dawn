@@ -134,11 +134,68 @@
         "padding_top": 60,
         "padding_bottom": 56
       }
+    },
+    "image_banner_Y7wMTj": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_LNfdhq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "text_KFPMx7": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_Rr8ghr": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_LNfdhq",
+        "text_KFPMx7",
+        "buttons_Rr8ghr"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 1300px) {.banner--content-align-left .banner__box {width: 50%; }}",
+        ".banner--content-align-left .banner__box {background: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/background-card.jpg?v=1739979350); background-repeat: no-repeat; background-size: cover; background-position: bottom;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Travertine-Collection_Lifestyle_3Across_A01_1.jpg",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
     "main",
     "image_banner_with_app_link_4a4FeJ",
-    "evenflo_image_with_text_xGNWdF"
+    "evenflo_image_with_text_xGNWdF",
+    "image_banner_Y7wMTj"
   ]
 }
