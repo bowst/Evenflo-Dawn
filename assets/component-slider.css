@@ -10,7 +10,9 @@ slider-component {
 slider-component.slider-component-full-width {
   --desktop-margin-left-first-item: 1.5rem;
 }
-
+.collection .product-grid {
+    justify-content: center;
+}
 @media screen and (max-width: 749px) {
   slider-component.page-width {
     padding: 0 1.5rem;
