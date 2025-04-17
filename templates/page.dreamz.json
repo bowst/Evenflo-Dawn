@@ -296,6 +296,61 @@
         "padding_bottom": 36
       }
     },
+    "image_banner_DpFjCd": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_8cXKYN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "text_UGHnxX": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_NNfjiB": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8cXKYN",
+        "text_UGHnxX",
+        "buttons_NNfjiB"
+      ],
+      "custom_css": [
+        ".banner__text {color: white; padding-top: 10px;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Dreamz-18912482_JetSetter_566.jpg",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
     "evenflo_image_banner_ghj9AB": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -331,6 +386,7 @@
         "text_VUcebm",
         "buttons_4KXFTJ"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Dreamz-18912482_JetSetter_566.jpg",
@@ -459,6 +515,7 @@
     "evenflo_full_width_image_nQ6AKr",
     "evenflo_rich_text_K6aRry",
     "evenflo_multicolumn_Rn3qFJ",
+    "image_banner_DpFjCd",
     "evenflo_image_banner_ghj9AB",
     "evenflo_multicolumn_GAA8dY",
     "evenflo_multicolumn_axeGpP"
