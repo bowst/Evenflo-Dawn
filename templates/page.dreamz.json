@@ -9,6 +9,64 @@
  */
 {
   "sections": {
+    "image_banner_na3djE": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_jh8kwz": {
+          "type": "heading",
+          "settings": {
+            "heading": "ADVENTURE, THEN NAP",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "text_fhe33U": {
+          "type": "text",
+          "settings": {
+            "text": "INTRODUCING PIVOT XPLORE™ DREAMZ",
+            "text_style": "subtitle"
+          }
+        },
+        "buttons_Qn4DPJ": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify://products/pivot-xplore-dreamz-all-terrain-stroller-wagon-with-bassinet-insert-support",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jh8kwz",
+        "text_fhe33U",
+        "buttons_Qn4DPJ"
+      ],
+      "custom_css": [
+        "p {color: black;}",
+        "a {color: white; background-color: black;}",
+        ".banner__text p {margin: 0px;}",
+        "a {--border-offset: 0;}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/clouds.jpg",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
     "evenflo_image_banner_DUXhf8": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -16,8 +74,8 @@
           "type": "heading",
           "settings": {
             "heading": "ADVENTURE, THEN NAP",
-            "heading_size": "h1",
-            "heading_color": "black"
+            "heading_underline": false,
+            "heading_size": "h1"
           }
         },
         "text_bbYAKt": {
@@ -44,6 +102,7 @@
         "text_bbYAKt",
         "buttons_nVbDXJ"
       ],
+      "disabled": true,
       "custom_css": [
         "p {color: black;}",
         "a {color: white; background-color: black;}",
@@ -52,12 +111,17 @@
       ],
       "settings": {
         "image": "shopify://shop_images/clouds.jpg",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "middle-center",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
@@ -108,6 +172,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
+        "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 0
@@ -122,8 +187,7 @@
         "heading": "",
         "heading_size": "h1",
         "enable_video_looping": false,
-        "video_url": "https://player.vimeo.com/video/891079730",
-        "cover_image": "shopify://shop_images/wagon-video.jpg",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
         "color_scheme": "",
@@ -173,6 +237,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
+        "color_scheme": "",
         "full_width": false,
         "padding_top": 40,
         "padding_bottom": 52
@@ -185,6 +250,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/bassinet-insert-hung.png",
+            "liquid_content": "",
             "title": "",
             "text": "",
             "link_label": "",
@@ -195,6 +261,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/bassinet-insert-isolated.png",
+            "liquid_content": "",
             "title": "",
             "text": "",
             "link_label": "",
@@ -212,6 +279,8 @@
       "settings": {
         "title": "",
         "heading_size": "h1",
+        "column_style": "classic",
+        "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "circle",
         "columns_desktop": 2,
@@ -233,8 +302,8 @@
           "type": "heading",
           "settings": {
             "heading": "Shade your littles",
-            "heading_size": "h1",
-            "heading_color": "white"
+            "heading_underline": false,
+            "heading_size": "h1"
           }
         },
         "text_VUcebm": {
@@ -261,17 +330,20 @@
         "text_VUcebm",
         "buttons_4KXFTJ"
       ],
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Dreamz-18912482_JetSetter_566.jpg",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "middle-center",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "scheme-5",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
@@ -285,6 +357,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/stay-organized.jpg",
+            "liquid_content": "",
             "title": "Column",
             "text": "<p>Detachable storage basket has pop-out cup holders</p>",
             "link_label": "",
@@ -295,6 +368,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/keep-comfy.jpg",
+            "liquid_content": "",
             "title": "Keep Kids Comfy",
             "text": "<p>The newly extended footwell provides more legroom</p>",
             "link_label": "",
@@ -309,6 +383,8 @@
       "settings": {
         "title": "",
         "heading_size": "h1",
+        "column_style": "classic",
+        "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "adapt",
         "columns_desktop": 2,
@@ -330,6 +406,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/black.jpg",
+            "liquid_content": "",
             "title": "Jetsetter black",
             "text": "",
             "link_label": "",
@@ -340,6 +417,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/green.jpg",
+            "liquid_content": "",
             "title": "Voyager green",
             "text": "",
             "link_label": "",
@@ -354,6 +432,8 @@
       "settings": {
         "title": "",
         "heading_size": "h1",
+        "column_style": "classic",
+        "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "adapt",
         "columns_desktop": 2,
@@ -370,6 +450,7 @@
     }
   },
   "order": [
+    "image_banner_na3djE",
     "evenflo_image_banner_DUXhf8",
     "main",
     "evenflo_rich_text_c76eWA",
