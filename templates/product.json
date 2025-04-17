@@ -23,7 +23,6 @@
           "type": "title",
           "settings": {}
         },
-        
         "yotpo_product_reviews_ugc_star_rating_3bREKm": {
           "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
@@ -112,12 +111,8 @@
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 12
       }
-    },
-    "evenflo_parentlink_QJ7UGE": {
-      "type": "evenflo-parentlink",
-      "settings": {}
     },
     "main": {
       "type": "main-product",
@@ -203,16 +198,28 @@
         "padding_bottom": 12
       }
     },
+    "evenflo_product_highlights_yGptpT": {
+      "type": "evenflo-product-highlights",
+      "settings": {}
+    },
+    "evenflo_parentlink_QJ7UGE": {
+      "type": "evenflo-parentlink",
+      "disabled": true,
+      "settings": {}
+    },
+    "evenflo_full_width_An6GrY": {
+      "type": "evenflo-full-width",
+      "settings": {
+        "heading": "{{ product.metafields.custom.platform_name.value }}Evenflo",
+        "content": "<p>Default Content</p>"
+      }
+    },
     "evenflo_product_video_KEFXhc": {
       "type": "evenflo-product-video",
       "settings": {
         "heading": "",
         "description": ""
       }
-    },
-    "evenflo_product_highlights_yGptpT": {
-      "type": "evenflo-product-highlights",
-      "settings": {}
     },
     "evenflo_full_width_ngaV99": {
       "type": "evenflo-full-width",
@@ -235,13 +242,6 @@
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "evenflo_full_width_An6GrY": {
-      "type": "evenflo-full-width",
-      "settings": {
-        "heading": "{{ product.metafields.custom.platform_name.value }}",
-        "content": "<p>Default Content</p>"
       }
     },
     "evenflo_features_f9tF3G": {
@@ -389,12 +389,12 @@
   "order": [
     "evenflo_main_product_4BJMnB",
     "main",
-    "evenflo_parentlink_QJ7UGE",
-    "evenflo_product_video_KEFXhc",
     "evenflo_product_highlights_yGptpT",
+    "evenflo_parentlink_QJ7UGE",
+    "evenflo_full_width_An6GrY",
+    "evenflo_product_video_KEFXhc",
     "evenflo_full_width_ngaV99",
     "evenflo_video_cbQmLm",
-    "evenflo_full_width_An6GrY",
     "evenflo_features_f9tF3G",
     "related-products",
     "rich_text_BXQwKw",
