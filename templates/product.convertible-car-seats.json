@@ -11,6 +11,7 @@
   "sections": {
     "evenflo_breadcrumbs_DQRa7X": {
       "type": "evenflo-breadcrumbs",
+      "disabled": true,
       "settings": {
         "custom_class": "page-width",
         "separator_class": "arrows",
@@ -29,6 +30,15 @@
         "padding_bottom_mobile": 20,
         "hide_title": false,
         "home_text": "Home"
+      }
+    },
+    "custom_liquid_akYmAr": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "main": {
@@ -263,6 +273,7 @@
   },
   "order": [
     "evenflo_breadcrumbs_DQRa7X",
+    "custom_liquid_akYmAr",
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_full_width_8jpFeL",
