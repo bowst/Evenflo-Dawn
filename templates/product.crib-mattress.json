@@ -210,13 +210,6 @@
         "description": ""
       }
     },
-    "evenflo_full_width_An6GrY": {
-      "type": "evenflo-full-width",
-      "settings": {
-        "heading": "{{ product.metafields.custom.platform_name.value }}",
-        "content": "<p>Default Content</p>"
-      }
-    },
     "evenflo_features_f9tF3G": {
       "type": "evenflo-features",
       "settings": {
@@ -225,7 +218,6 @@
     },
     "related-products": {
       "type": "related-products",
-      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
@@ -240,6 +232,14 @@
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 28
+      }
+    },
+    "evenflo_full_width_An6GrY": {
+      "type": "evenflo-full-width",
+      "disabled": true,
+      "settings": {
+        "heading": "{{ product.metafields.custom.platform_name.value }}",
+        "content": "<p>Default Content</p>"
       }
     },
     "rich_text_BXQwKw": {
@@ -301,6 +301,7 @@
       "block_order": [
         "yotpo_product_reviews_ugc_reviews_nnaqeW"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
@@ -355,7 +356,6 @@
         "benefit_list_Ttgccn",
         "benefit_list_YiYFMk"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Benefits of shopping evenflo.com"
       }
@@ -366,9 +366,9 @@
     "main",
     "evenflo_product_highlights_yGptpT",
     "evenflo_product_video_KEFXhc",
-    "evenflo_full_width_An6GrY",
     "evenflo_features_f9tF3G",
     "related-products",
+    "evenflo_full_width_An6GrY",
     "rich_text_BXQwKw",
     "evenflo_contact_parentlink_KAtMr7",
     "evenflo_quote_Q6Q7qn",
