@@ -1,8 +1,8 @@
-{{ 'evenflo-section-parentlink.css' | asset_url | stylesheet_tag }}
+{{ 'section-parentlink.css' | asset_url | stylesheet_tag }}
 
 <section class="parentlink">
-  <div class="page-width rich-text--full-width content-container--full-width">
-    <h2 class="h1">Supported By <strong>ParentLink Consumer Care</strong> Via Phone, Email, Chat and Video</h2>
+  <div class="content-container page-width rich-text--full-width content-container--full-width">
+    <h2 class="h1">{{ section.settings.heading }}</h2>
 
     <div class="flex-row">
       <div class="flex-item">
@@ -10,24 +10,17 @@
         {% comment %} <p>You can get in touch with us at any time during business hours by using LiveChat.</p> {% endcomment %}
         <p><strong>Available between 9am and 5pm, Monday through Friday</strong></p>
 
-        <div data-id="14e749b8fb" class="livechat_button action_button cc-button">
+        <!-- <div data-id="14e749b8fb" class="livechat_button action_button cc-button">
           <a href="https://www.livechat.com/?utm_source=chat_button&amp;utm_medium=referral&amp;utm_campaign=lc_3753191"
             >Chat Now</a
           >
-        </div>
+        </div> -->
       </div>
       <div class="flex-item">
-        <h3>Email</h3>
-        <p>No time to chat? Email us your inquiry</p>
-        <p><a href="mailto:parentlink@evenflo.com">parentlink@evenflo.com</a></p>
+        {{ section.settings.left_content }}
       </div>
       <div class="flex-item">
-        <h3>Phone</h3>
-        <p>
-          <a href="tel:1-800-233-5921">1-800-233-5921 (US)</a><br>
-        <a href="tel:1-937-773-3971">1-937-773-3971 (Canada)</a>
-        
-        </p>
+        {{ section.settings.right_content }}
       </div>
     </div>
   </div>
@@ -35,10 +28,34 @@
 
 {% schema %}
 {
-  "name": "Evenflo Parentlink",
+  "name": "Parentlink",
   "class": "text",
   "tag": "section",
-
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Supported By"
+    },
+    {
+      "type": "html",
+      "id": "left_content",
+      "label": "Left Content",
+      "default": "Phone"
+    },
+    {
+      "type": "html",
+      "id": "right_content",
+      "label": "Right Content",
+      "default": "Email"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Parentlink"
+    }
+  ]
 }
 {% endschema %}
 
