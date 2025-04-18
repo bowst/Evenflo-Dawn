@@ -165,6 +165,7 @@
         "image-with-text-0",
         "image-with-text-1"
       ],
+      "disabled": true,
       "settings": {
         "height": "small",
         "desktop_image_width": "medium",
@@ -207,6 +208,7 @@
         "column-0",
         "column-1"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -219,6 +221,42 @@
         "button_label": "",
         "button_link": "",
         "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "evenflo_multicolumn_GQRxmc": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_xJyJbP": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "{{ product.description }}",
+            "title": "",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_xJyJbP"
+      ],
+      "settings": {
+        "title": "About the {{ product.title }}",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -248,6 +286,7 @@
     "main",
     "image-with-text",
     "multicolumn",
+    "evenflo_multicolumn_GQRxmc",
     "related-products"
   ]
 }
