@@ -24,7 +24,7 @@
           "settings": {}
         },
         "yotpo_product_reviews_ugc_star_rating_3bREKm": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "disabled": true,
           "settings": {
             "product": "{{product}}"
@@ -71,7 +71,6 @@
         },
         "buy_buttons_7cXcW4": {
           "type": "buy_buttons",
-          "disabled": true,
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
@@ -106,7 +105,7 @@
         "complementary_hD37RD"
       ],
       "settings": {
-        "enable_sticky_info": true,
+        "enable_sticky_info": false,
         "color_scheme": "",
         "media_size": "small",
         "constrain_to_viewport": false,
@@ -179,6 +178,8 @@
       "settings": {
         "title": "What's in the box?",
         "heading_size": "hxl",
+        "column_style": "classic",
+        "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 3,
@@ -214,7 +215,7 @@
           "settings": {}
         },
         "yotpo_product_reviews_ugc_star_rating_dKxww7": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -269,7 +270,7 @@
       "disabled": true,
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -311,7 +312,7 @@
         "heading": "",
         "heading_size": "h1",
         "enable_video_looping": false,
-        "video_url": "",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
         "color_scheme": "",
@@ -397,7 +398,7 @@
       "type": "apps",
       "blocks": {
         "yotpo_product_reviews_ugc_reviews_nnaqeW": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
