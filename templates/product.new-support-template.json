@@ -24,7 +24,7 @@
           "settings": {}
         },
         "yotpo_product_reviews_ugc_star_rating_3bREKm": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "disabled": true,
           "settings": {
             "product": "{{product}}"
@@ -143,7 +143,7 @@
           "settings": {}
         },
         "yotpo_product_reviews_ugc_star_rating_dKxww7": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -198,7 +198,7 @@
       "disabled": true,
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -303,7 +303,7 @@
       "type": "apps",
       "blocks": {
         "yotpo_product_reviews_ugc_reviews_nnaqeW": {
-          "type": "shopify://apps/yotpo-product-reviews-ugc/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
@@ -412,14 +412,19 @@
         "column_jGQpQH",
         "column_TwKbHH"
       ],
+      "custom_css": [
+        ".flex-item h3 {font-size: 28px;}"
+      ],
       "settings": {
         "title": "What's in the box?",
-        "heading_size": "hxl",
+        "heading_size": "h1 heading-underline",
+        "column_style": "classic",
+        "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 3,
         "column_alignment": "left",
-        "background_style": "primary",
+        "background_style": "none",
         "button_label": "",
         "button_link": "",
         "color_scheme": "",
