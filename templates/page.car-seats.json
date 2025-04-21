@@ -45,7 +45,8 @@
         "buttons_hNtEza"
       ],
       "custom_css": [
-        "h2 {font-size: 45px;}"
+        "h2 {font-size: 45px;}",
+        " @media screen and (max-width: 767px) {h2 {font-size: 30px;} }"
       ],
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
