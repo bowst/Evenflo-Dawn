@@ -9,15 +9,6 @@
  */
 {
   "sections": {
-    "ecd14614-cffe-4c1d-99ef-38249843ae00": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{% render 'breadcrumbs' %}",
-        "color_scheme": "background-1",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -42,20 +33,9 @@
           "type": "price",
           "settings": {}
         },
-        "related_products_ncpjex": {
-          "type": "related_products",
-          "settings": {
-            "heading": "Styles. Which is best for you?"
-          }
-        },
-        "63e2db87-8e3d-4127-b544-25da1f282b54": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
@@ -63,7 +43,6 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
@@ -79,14 +58,9 @@
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
-        "related_products_ncpjex",
-        "63e2db87-8e3d-4127-b544-25da1f282b54",
         "variant_picker",
         "quantity_selector",
         "buy_buttons"
-      ],
-      "custom_css": [
-        "p.product__text.inline-richtext.subtitle.heading-underline {text-transform: capitalize;}"
       ],
       "settings": {
         "enable_sticky_info": false,
@@ -108,21 +82,33 @@
       "type": "evenflo-product-highlights",
       "settings": {}
     },
-    "evenflo_product_video_yEnkXh": {
+    "49c36a4c-d12e-4b40-99dc-d0893ec62107": {
+      "type": "evenflo-full-width",
+      "settings": {
+        "heading": "Evenflo",
+        "content": "<p>Default Content</p>"
+      }
+    },
+    "evenflo_product_video_7gjk8M": {
       "type": "evenflo-product-video",
       "settings": {
         "heading": "",
         "description": ""
       }
     },
-    "215233c3-69f3-4f5d-ba0f-3e80ca0f3806": {
-      "type": "custom-liquid",
+    "4600ac99-da69-454a-a56c-0fae1b682f2e": {
+      "type": "evenflo-video",
       "disabled": true,
       "settings": {
-        "custom_liquid": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addProductWidget({accountId:1999, widgetId:19067745, skuId:\"litemax-vizor-infant-car-seat\",setMetaTags:true});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "heading": "Video Title",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "Video Description",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
@@ -130,10 +116,6 @@
       "settings": {
         "product_handles": ""
       }
-    },
-    "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
-      "type": "evenflo-pdp-faq",
-      "settings": {}
     },
     "related-products": {
       "type": "related-products",
@@ -153,21 +135,16 @@
         "padding_bottom": 28
       }
     },
-    "45849377-4cee-48de-b8f8-52fd115e29b4": {
-      "type": "evenflo-video-support",
-      "settings": {
-        "heading": "Free Video Chat Support",
-        "description": "Need some real-time help? Schedule a live video call with us and we'll walk you through.",
-        "button_label": "Book Now",
-        "button_link": "shopify://pages/about-evenflo"
-      }
+    "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
+      "type": "evenflo-pdp-faq",
+      "settings": {}
     },
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c": {
       "type": "evenflo-peace-of-mind",
       "custom_css": [],
       "settings": {
         "heading": "Peace Of Mind",
-        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>\n<a href=\"#\"><strong>30 DAYS FOR RETURNS</strong></a><br>\n<a href=\"#\"><strong>LIMITED 90 DAY WARRANTY</strong></a>",
         "support_content": "<h3 class=\"h1\">Supported by <strong>ParentLink Consumer Care</strong> via phone, email, chat and video</h3>\n\n<div class=\"peace-of-mind__container\">\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">Phone</h4>\n<a href=\"tel:1-800-233-5921\">1-800-233-5921 (US)</a><br>\n<a href=\"tel:1-937-773-3971\">1-937-773-3971 (Canada)</a>\n</div>\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">EMAIL</h4>\nNo time to chat?<br>\n<a href=\"mailto:\">Email us</a> your inquiry\n</div>\n</div>"
       }
     },
@@ -178,10 +155,10 @@
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
       }
     },
-    "1691542364be6ead55": {
+    "169154238775f9f0ca": {
       "type": "apps",
       "blocks": {
-        "64d5012e-22dc-4dbb-8c03-84ceeda2d45b": {
+        "bde39c72-c99b-4557-905e-7cc2774819f6": {
           "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
@@ -189,16 +166,10 @@
         }
       },
       "block_order": [
-        "64d5012e-22dc-4dbb-8c03-84ceeda2d45b"
+        "bde39c72-c99b-4557-905e-7cc2774819f6"
       ],
       "settings": {
         "include_margins": true
-      }
-    },
-    "39506c09-df00-4542-8b40-732cf6fc014a": {
-      "type": "evenflo-pixlee",
-      "settings": {
-        "pixlee_id": "{{ product.metafields.custom.pixlee_gallery.value }}"
       }
     },
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
@@ -212,27 +183,27 @@
           "type": "benefit_list",
           "settings": {
             "description": "<h3>Give 20,<br> Get 20</h3>\nRefer a friendand earn points.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "background_image": "shopify://shop_images/Evenflo-Benefit-1.png",
             "icon_image": "shopify://shop_images/icon-give20.png",
-            "link": "shopify://pages/about-evenflo"
+            "link": "shopify://pages/refer"
           }
         },
         "d2ac9250-ec80-4eca-93cb-a5886833aa00": {
           "type": "benefit_list",
           "settings": {
             "description": "<h3>Pay With Affirm</h3>\nPay over time.",
-            "background_image": "shopify://shop_images/pay-with-affirm.jpg",
+            "background_image": "shopify://shop_images/Benefit_2.png",
             "icon_image": "shopify://shop_images/icon-pay.png",
-            "link": ""
+            "link": "shopify://pages/affirm-overview"
           }
         },
         "d8f4df94-c11c-4d5d-b7a8-440dbfaef239": {
           "type": "benefit_list",
           "settings": {
             "description": "<h3>Community Heroes Discount</h3>\nSave on baby gear.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "background_image": "shopify://shop_images/Benefit_3.png",
             "icon_image": "shopify://shop_images/icon-heroes.png",
-            "link": ""
+            "link": "shopify://pages/evenflo-promotions"
           }
         },
         "09af9779-83cf-4821-bb96-4341c4f3063b": {
@@ -241,7 +212,7 @@
             "description": "<h3>Evenflo Blog</h3>\nCheck out the latest.",
             "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
             "icon_image": "shopify://shop_images/icon-blog.png",
-            "link": ""
+            "link": "shopify://blogs/evenflo-blog"
           }
         }
       },
@@ -255,7 +226,7 @@
         "heading": "Benefits of shopping evenflo.com"
       }
     },
-    "custom_liquid_MhwpEX": {
+    "custom_liquid_XUhHji": {
       "type": "custom-liquid",
       "disabled": true,
       "settings": {
@@ -267,21 +238,19 @@
     }
   },
   "order": [
-    "ecd14614-cffe-4c1d-99ef-38249843ae00",
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
-    "evenflo_product_video_yEnkXh",
-    "215233c3-69f3-4f5d-ba0f-3e80ca0f3806",
+    "49c36a4c-d12e-4b40-99dc-d0893ec62107",
+    "evenflo_product_video_7gjk8M",
+    "4600ac99-da69-454a-a56c-0fae1b682f2e",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
-    "46391549-e9d3-4404-8c19-b08b5eab6ca7",
     "related-products",
-    "45849377-4cee-48de-b8f8-52fd115e29b4",
+    "46391549-e9d3-4404-8c19-b08b5eab6ca7",
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
-    "1691542364be6ead55",
-    "39506c09-df00-4542-8b40-732cf6fc014a",
+    "169154238775f9f0ca",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
     "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
-    "custom_liquid_MhwpEX"
+    "custom_liquid_XUhHji"
   ]
 }
