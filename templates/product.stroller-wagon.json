@@ -1,0 +1,361 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ade0198e-e493-4715-af0e-d37aecc64ddd": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "58a13a44-6b34-475b-b044-5bc4ab42f7c1": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_MijrXC": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "{% for variant in product.variants %}\n  {% if variant.inventory_quantity > 0 %}\n    <!-- Variant is in stock, you can customize messages or actions here -->\n  {% else %}\n    <p>So sorry, the Shyft Rideshare All-Terrain Performance Stroller Wagon in {{ variant.title }} is currently out of stock! Another great option is our extremely popular Pivot Xplore All-Terrain Stroller Wagon for your next family adventure. <a href=\"https://www.evenflo.com/products/pivot-xplore-stroller-wagon\">Take a look >>></a> is currently out of stock.</p>\n  {% endif %}\n{% endfor %}"
+          }
+        },
+        "related_products_PGeCNY": {
+          "type": "related_products",
+          "settings": {
+            "heading": "Styles. Which is best for you?"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "ae2b090a-c8c0-410e-ae8a-b81555a2e14e": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by mid-December\n{% endif %}"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "complementary_VKePeD": {
+          "type": "complementary",
+          "disabled": true,
+          "settings": {
+            "block_heading": "Frequently Bought Together",
+            "make_collapsible_row": false,
+            "icon": "star",
+            "product_list_limit": 3,
+            "products_per_page": 3,
+            "pagination_style": "dots",
+            "image_ratio": "portrait",
+            "enable_quick_add": false
+          }
+        },
+        "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
+        "price",
+        "custom_liquid_MijrXC",
+        "related_products_PGeCNY",
+        "variant_picker",
+        "ae2b090a-c8c0-410e-ae8a-b81555a2e14e",
+        "buy_buttons",
+        "complementary_VKePeD",
+        "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "color_scheme": "",
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "de262cc2-cd7a-45ad-abd0-474f06e53224": {
+      "type": "evenflo-product-highlights",
+      "settings": {}
+    },
+    "evenflo_product_video_xhmRdz": {
+      "type": "evenflo-product-video",
+      "settings": {
+        "heading": "",
+        "description": ""
+      }
+    },
+    "4600ac99-da69-454a-a56c-0fae1b682f2e": {
+      "type": "evenflo-video",
+      "disabled": true,
+      "settings": {
+        "heading": "Video Title",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "Video Description",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "tooltips_Ae39yK": {
+      "type": "tooltips",
+      "blocks": {
+        "tooltip_9nRe9D": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "GET TWO RIDES IN ONE:",
+            "content": "Change from push to pull mode with a flip of the 3-position telescoping handle, which adjusts easily to suit a parent’s height",
+            "top": 44,
+            "left": 18
+          }
+        },
+        "tooltip_49hErP": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "COVER MORE GROUND:",
+            "content": "All-terrain wheels give you the freedom to go from pavement to beach and beyond",
+            "top": 87,
+            "left": 29
+          }
+        },
+        "tooltip_L9XfRi": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "PROTECT PRECIOUS CARGO:",
+            "content": "Keep sensitive skin safe from harmful rays with UPF 50+ sun-shielding canopies",
+            "top": 61,
+            "left": 50
+          }
+        },
+        "tooltip_jAcBJm": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "STOW AND GO:",
+            "content": "Storage inside and out keeps everything you need within arm’s reach — from water bottles to diaper bags",
+            "top": 69,
+            "left": 58
+          }
+        }
+      },
+      "block_order": [
+        "tooltip_9nRe9D",
+        "tooltip_49hErP",
+        "tooltip_L9XfRi",
+        "tooltip_jAcBJm"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/19132264_PivotXplore_Ranger_Green_lifestyle_2_cropped.jpg",
+        "tooltip_color": "#ffffff",
+        "tooltip_background_color": "#64cbdf",
+        "tooltip_focus_color": "#2996c5",
+        "product_handles": "pivot-xplore-stroller-wagon",
+        "breakpoint": "768"
+      }
+    },
+    "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
+      "type": "evenflo-features",
+      "settings": {
+        "product_handles": "pivot-xplore-stroller-wagon"
+      }
+    },
+    "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
+      "type": "evenflo-pdp-faq",
+      "settings": {}
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You May Also Like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "3b0269b9-b8c1-48e0-927e-0b85cd0c441c": {
+      "type": "evenflo-peace-of-mind",
+      "custom_css": [],
+      "settings": {
+        "heading": "Peace Of Mind",
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
+        "support_content": ""
+      }
+    },
+    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
+      "type": "evenflo-quote",
+      "settings": {
+        "quote": "{{ product.metafields.custom.customer_quote.value }}",
+        "name": "{{ product.metafields.custom.customer_quote_name.value }}"
+      }
+    },
+    "16915424702f51b61e": {
+      "type": "apps",
+      "blocks": {
+        "0351fa36-f0a8-4ce4-b847-66f4891de96c": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "0351fa36-f0a8-4ce4-b847-66f4891de96c"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "6614d21a-2920-408d-9aeb-b82c3014dad3": {
+      "type": "evenflo-pixlee",
+      "disabled": true,
+      "settings": {
+        "pixlee_id": "{{ product.metafields.custom.pixlee_gallery.value }}"
+      }
+    },
+    "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
+      "type": "evenflo-join",
+      "settings": {}
+    },
+    "e87086c3-8bc1-4ebd-af1f-5d31612858d1": {
+      "type": "evenflo-shopping-benefits",
+      "blocks": {
+        "b076e55c-e236-4a35-a75a-85cf3402446b": {
+          "type": "benefit_list",
+          "settings": {
+            "description": "<h3>Give 20,<br> Get 20</h3>\nRefer a friendand earn points.",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "icon_image": "shopify://shop_images/icon-give20.png",
+            "link": "shopify://pages/about-evenflo"
+          }
+        },
+        "d2ac9250-ec80-4eca-93cb-a5886833aa00": {
+          "type": "benefit_list",
+          "settings": {
+            "description": "<h3>Pay With Affirm</h3>\nPay over time.",
+            "background_image": "shopify://shop_images/pay-with-affirm.jpg",
+            "icon_image": "shopify://shop_images/icon-pay.png",
+            "link": ""
+          }
+        },
+        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239": {
+          "type": "benefit_list",
+          "settings": {
+            "description": "<h3>Community Heroes Discount</h3>\nSave on baby gear.",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "icon_image": "shopify://shop_images/icon-heroes.png",
+            "link": ""
+          }
+        },
+        "09af9779-83cf-4821-bb96-4341c4f3063b": {
+          "type": "benefit_list",
+          "settings": {
+            "description": "<h3>Evenflo Blog</h3>\nCheck out the latest.",
+            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
+            "icon_image": "shopify://shop_images/icon-blog.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "b076e55c-e236-4a35-a75a-85cf3402446b",
+        "d2ac9250-ec80-4eca-93cb-a5886833aa00",
+        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239",
+        "09af9779-83cf-4821-bb96-4341c4f3063b"
+      ],
+      "settings": {
+        "heading": "Benefits of shopping evenflo.com"
+      }
+    },
+    "custom_liquid_DWJrPD": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<script>\n  window.addEventListener('load', function() {\n  var _learnq = window._learnq || [];\n  function addedToCart() {\n   fetch(`${window.location.origin}/cart.js`)\n   .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n       _learnq.push(['track', 'Added to Cart', cart]);\n       klAjax = false;\n      }\n   }))\n  };\n  (function (ns, fetch) {\n    ns.fetch = function() {\n      const response = fetch.apply(this, arguments);\n      response.then(res => {\n        if (`${window.location.origin}/cart/add.js`\n          .includes(res.url) && res.url !== '') {\n              addedToCart()\n        }\n      });\n      return response\n     }\n  }(window, window.fetch));\n  var klAjax = true;\n  var atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\n  for (var i = 0; i < atcButtons.length; i++) { \n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n  }\n  });\n</script>\n<script type=\"text/javascript\">\nvar _learnq = _learnq || [];\n\tdocument.getElementById(\"AddToCart\").addEventListener('click',function (){\n \t\t_learnq.push(['track', 'Added to Cart', item]);\n\t});</script>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "ade0198e-e493-4715-af0e-d37aecc64ddd",
+    "main",
+    "de262cc2-cd7a-45ad-abd0-474f06e53224",
+    "evenflo_product_video_xhmRdz",
+    "4600ac99-da69-454a-a56c-0fae1b682f2e",
+    "tooltips_Ae39yK",
+    "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
+    "46391549-e9d3-4404-8c19-b08b5eab6ca7",
+    "related-products",
+    "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
+    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
+    "16915424702f51b61e",
+    "6614d21a-2920-408d-9aeb-b82c3014dad3",
+    "a40977eb-46b5-4322-81f4-bb36dab6bfff",
+    "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
+    "custom_liquid_DWJrPD"
+  ]
+}
