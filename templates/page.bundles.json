@@ -25,7 +25,7 @@
           "settings": {
             "heading": "{{ page.title }}",
             "heading_size": "h1",
-            "heading_color": "white"
+            "heading_color": "black"
           }
         }
       },
@@ -33,12 +33,15 @@
         "heading_kbK4CG"
       ],
       "settings": {
+        "image": "{{ page.metafields.custom.header_image.value }}",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "small",
-        "desktop_content_position": "middle-center",
+        "desktop_content_position": "middle-right",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -56,17 +59,6 @@
     },
     "1729847553e18fbae6": {
       "type": "apps",
-      "blocks": {
-        "zoorix_bundle_kit_zrx_bundles_DQpxw9": {
-          "type": "shopify://apps/zoorix-bundle-kit/blocks/zrx-bundles/51fffd07-f9df-4d6a-b901-6d14b243dcad",
-          "settings": {
-            "offer_id": ""
-          }
-        }
-      },
-      "block_order": [
-        "zoorix_bundle_kit_zrx_bundles_DQpxw9"
-      ],
       "settings": {
         "include_margins": true
       }
