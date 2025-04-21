@@ -1,5 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "evenflo_image_banner_9mbz7b": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_GrRyUx": {
+          "type": "heading",
+          "settings": {
+            "heading": "JOIN THE CLUB",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_qCgjAP": {
+          "type": "text",
+          "settings": {
+            "text": "Title",
+            "text_style": "body"
+          }
+        },
+        "buttons_LeEEUw": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "First button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Second button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_GrRyUx",
+        "text_qCgjAP",
+        "buttons_LeEEUw"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/image-left.png",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "a2871d33-5aab-4343-afe0-8cc8f1a669ef": {
       "type": "image-banner",
       "blocks": {
@@ -22,10 +90,10 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "JOIN NOW",
-            "button_link_1": "https:\/\/www.evenflo.com\/account\/register",
+            "button_link_1": "https://www.evenflo.com/account/register",
             "button_style_secondary_1": false,
             "button_label_2": "LOGIN",
-            "button_link_2": "https:\/\/www.evenflo.com\/account\/login?checkout_url=https:\/\/www.evenflo.com\/pages\/rewards",
+            "button_link_2": "https://www.evenflo.com/account/login?checkout_url=https://www.evenflo.com/pages/rewards",
             "button_style_secondary_2": false
           }
         }
@@ -39,18 +107,17 @@
         "p,a {color: black;}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/image-left.png",
-        "image_2": "shopify:\/\/shop_images\/image-right.png",
+        "image": "shopify://shop_images/image-left.png",
         "image_overlay_opacity": 0,
         "underline": false,
-        "hide_image_on_mobile": true,
+        "hide_image_on_mobile": false,
         "image_height": "medium",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "accent-1",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
+        "mobile_content_alignment": "left",
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
@@ -58,7 +125,7 @@
     "e926af89-44a9-4408-998b-39e54f29b69b": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<script src=\"https:\/\/cdn-widgetsrepository.yotpo.com\/v1\/loader\/JyvaKuPpFqHLrbpZwHpU6Q\" async><\/script>\n<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"251507\"><\/div>",
+        "custom_liquid": "<script src=\"https://cdn-widgetsrepository.yotpo.com/v1/loader/JyvaKuPpFqHLrbpZwHpU6Q\" async></script>\n<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"251507\"></div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
@@ -83,6 +150,7 @@
     }
   },
   "order": [
+    "evenflo_image_banner_9mbz7b",
     "a2871d33-5aab-4343-afe0-8cc8f1a669ef",
     "e926af89-44a9-4408-998b-39e54f29b69b",
     "main",
