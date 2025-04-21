@@ -11,10 +11,37 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "featured_collection_febiQn": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "evenflo-top-items",
+        "products_to_show": 3,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "image_banner_with_app_link_4a4FeJ": {
@@ -52,13 +79,13 @@
         "text_ANkgaz",
         "buttons_YUy9H8"
       ],
+      "disabled": true,
       "custom_css": [
         ".banner__box.content-container {background: none;}",
         ".banner__box.content-container img {height: 60px;}",
         ".banner__text.rte.body h2 {color: #000000;}",
         "@media (max-width: 991px) {.banner__box.content-container {background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(2px); background-image: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_APP_LP_Mobile_2025_Header.png?v=1740411138); background-repeat: no-repeat; background-size: cover; background-position-x: right; padding-inline: 18px; }}"
       ],
-      "name": "Image banner app link",
       "settings": {
         "image": "shopify://shop_images/Evenflo_APP_LP_Desktop_header.jpg",
         "image_overlay_opacity": 0,
@@ -114,13 +141,13 @@
         "text_knR3TL",
         "button_HdLbE4"
       ],
+      "disabled": true,
       "custom_css": [
         ".caption-with-letter-spacing {color: #000000; font-weight: 600;}",
         "h2:after {display: none;}",
         ".image-with-text__text.rte.body {color: #000000;}",
         ".banner__buttons a {background: #000000 !important; opacity: 1; outline: none;}"
       ],
-      "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/CS160412545_Revolve180_LiteMaxGold_Quartz_App_1786_5145da5c-8a67-42a1-9f36-f6cbacfb599d.jpg",
         "height": "adapt",
@@ -158,11 +185,11 @@
         "heading_LNfdhq",
         "text_KFPMx7"
       ],
+      "disabled": true,
       "custom_css": [
         "@media screen and (min-width: 1300px) {.banner--content-align-left .banner__box {width: 50%; }}",
         ".banner--content-align-left .banner__box {background: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/background-card.jpg?v=1739979350); background-repeat: no-repeat; background-size: cover; background-position: bottom;}"
       ],
-      "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/Travertine-Collection_Lifestyle_3Across_A01_1.jpg",
         "image_overlay_opacity": 0,
@@ -209,7 +236,7 @@
         "text_TGD9NF",
         "button_78FdkC"
       ],
-      "name": "t:sections.image-with-text.presets.name",
+      "disabled": true,
       "settings": {
         "height": "adapt",
         "layout": "image_first",
@@ -244,7 +271,7 @@
         "heading_diDxxn",
         "text_YD8GAD"
       ],
-      "name": "t:sections.rich-text.presets.name",
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -256,14 +283,13 @@
     },
     "html_ggg6LE": {
       "type": "HTML",
-      "name": "HTML",
+      "disabled": true,
       "settings": {
         "html": "<span class=\"center\"><center>\n<a href=\"https://play.google.com/store/apps/details?id=com.evenflo.sensorsafe&amp;pli=1\"><img src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/google.png?v=1654260732\"><sp><sp><sp><sp><sp><sp><sp></sp></sp></sp></sp></sp></sp></sp></a>\n<a href=\"https://apps.apple.com/us/app/evenflo-sensorsafe/id1619330386\"><img src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/apple.png?v=1654260732\"></a>\n</center></span>"
       }
     },
     "evenflo_divider_T7jPCW": {
       "type": "evenflo-divider",
-      "name": "Evenflo Divider",
       "settings": {
         "divider_spacing": 40,
         "divider_border": false,
@@ -274,6 +300,7 @@
   },
   "order": [
     "main",
+    "featured_collection_febiQn",
     "image_banner_with_app_link_4a4FeJ",
     "evenflo_image_with_text_xGNWdF",
     "image_banner_Y7wMTj",
