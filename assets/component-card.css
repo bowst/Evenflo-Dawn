@@ -477,6 +477,10 @@
 .card-information > .price {
   color: rgb(var(--color-foreground));
 }
+.price--on-sale .price-item.price-item--regular {
+  font-size: 1.6rem;
+  color: #db222a;
+}
 
 .card--horizontal .card-information > .price {
   color: rgba(var(--color-foreground), 0.75);
