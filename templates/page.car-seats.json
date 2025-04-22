@@ -46,7 +46,7 @@
       ],
       "custom_css": [
         "h2 {font-size: 45px;}",
-        " @media screen and (max-width: 767px) {h2 {font-size: 30px;} }"
+        "@media screen and (max-width: 767px) {h2 {font-size: 30px; }}"
       ],
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
@@ -333,9 +333,7 @@
     },
     "featured_collection_bT4z3j": {
       "type": "featured-collection",
-      "custom_css": [
-        "span {border-radius: unset; font-size: 16px; font-weight: 600; text-transform: uppercase;}"
-      ],
+      "custom_css": [],
       "settings": {
         "title": "",
         "heading_size": "h1",
