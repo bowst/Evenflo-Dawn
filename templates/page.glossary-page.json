@@ -9,8 +9,22 @@
  */
 {
   "sections": {
+    "evenflo_full_width_image_PttbpT": {
+      "type": "evenflo-full-width-image",
+      "settings": {
+        "image": "shopify://shop_images/Evenflo_Glossary-Page_Desktop.png"
+      }
+    },
+    "evenflo_full_width_Y6G8E9": {
+      "type": "evenflo-full-width",
+      "settings": {
+        "heading": "Baby Gear Glossary",
+        "content": "<p>Welcome to Evenflo's comprehensive Baby Gear Glossary, your go-to resource for understanding the essential terms and products related to infant car seats, strollers, highchairs, and other juvenile gear. This guide is designed to help new and expectant parents navigate the world of baby gear with confidence, providing clear definitions and insights into the items that support your baby's comfort. </p>"
+      }
+    },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -18,6 +32,7 @@
     },
     "featured_collection_febiQn": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -36,6 +51,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -297,6 +313,8 @@
     }
   },
   "order": [
+    "evenflo_full_width_image_PttbpT",
+    "evenflo_full_width_Y6G8E9",
     "main",
     "featured_collection_febiQn",
     "image_banner_with_app_link_4a4FeJ",
