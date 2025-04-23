@@ -31,7 +31,8 @@
           "type": "heading",
           "settings": {
             "heading": "BRING YOUR WHOLE TROOP",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "button_JgXhBJ": {
@@ -39,7 +40,8 @@
           "settings": {
             "button_label": "Shop Now",
             "button_link": "shopify://products/pivot-troop-child-and-pet-car-seat-and-stroller-travel-system-sale",
-            "button_style_secondary": false
+            "button_color": "#000000",
+            "button_text_color": "#ffffff"
           }
         }
       },
@@ -57,13 +59,11 @@
       "settings": {
         "image": "shopify://shop_images/troop-header.png",
         "height": "small",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "right",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
+        "color_scheme": "background-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
@@ -76,7 +76,7 @@
         "div {background: rgb(0, 180, 177); background: linear-gradient( 90deg, rgba(0, 180, 177, 1) 0%, rgba(184, 218, 121, 1) 100% ); height: 20px; min-width: 100%; margin: 0; padding: 0;}"
       ],
       "settings": {
-        "divider_spacing": 20,
+        "divider_spacing": 0,
         "divider_border": false,
         "css_class": "",
         "custom_css": ""
@@ -89,7 +89,8 @@
           "type": "heading",
           "settings": {
             "heading": "KIDDO, DOGGO, LET'S GO",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_9iApgY": {
@@ -156,7 +157,6 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -189,11 +189,16 @@
       ],
       "settings": {
         "image": "shopify://shop_images/57412487_Troop_ICS_FF_CanopyDown_3666_2.jpg",
-        "button_color": "#FFFFFF",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#ffffff",
         "button_text_color": "#000000",
-        "mobile_button_color": "#FFFFFF",
+        "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#FFFFFF",
+        "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
         "image_height": "medium",
@@ -213,6 +218,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Rectangle-2.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "TIMELY CLEANUPS",
             "text": "<p>Parent cup holder features an integrated waste bag* holder</p><p></p><p>*load your own</p>",
@@ -224,6 +233,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Rectangle.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "NIBBLES ON THE GO",
             "text": "<p>Includes a BPA-free child snack tray</p>",
@@ -235,6 +248,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Rectangle-1.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "PET PERKS",
             "text": "<p>Includes a pet water bowl and treat container</p>",
@@ -256,6 +273,7 @@
         "title": "",
         "heading_size": "h1",
         "column_style": "classic",
+        "container_size": "full_width",
         "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "adapt",
