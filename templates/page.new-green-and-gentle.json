@@ -27,41 +27,44 @@
             "text_style": "body"
           }
         },
-        "buttons_DXVj37": {
-          "type": "buttons",
+        "image_h4qWVt": {
+          "type": "image",
           "settings": {
-            "button_label_1": "First button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Second button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "image_width": "medium"
           }
         }
       },
       "block_order": [
         "heading_qq8Mfx",
         "text_69Cwrp",
-        "buttons_DXVj37"
+        "image_h4qWVt"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 750px) {.banner__box {padding: 100px; height: 800px; }}"
       ],
       "settings": {
         "image": "shopify://shop_images/Evenflo_Header_Banner_Green_and_Gentle_Fabric_Car_Seat_Desktop.jpg",
         "image_2": "shopify://shop_images/Evenflo_Header_Banner_Green_and_Gentle_Fabric_Car_Seat_Mobile.jpg",
-        "button_color": "#FFFFFF",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#ffffff",
         "button_text_color": "#000000",
-        "mobile_button_color": "#FFFFFF",
+        "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#FFFFFF",
+        "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "desktop_content_position": "middle-center",
+        "image_height": "adapt",
+        "desktop_content_position": "top-right",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
     "main": {
@@ -79,7 +82,8 @@
           "type": "heading",
           "settings": {
             "heading": "Shyft™ Intuiti+™ WITH GREEN & GENTLE™ FABRIC",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "button_dwWeXp": {
@@ -87,7 +91,8 @@
           "settings": {
             "button_label": "See More",
             "button_link": "shopify://products/shyft-intuiti-plus-travel-system-revolve180-litemax-nxt-with-sensory-soothe-green-and-gentle",
-            "button_style_secondary": false
+            "button_color": "",
+            "button_text_color": ""
           }
         }
       },
@@ -98,12 +103,10 @@
       "settings": {
         "image": "shopify://shop_images/Green_Gentle_Landing-Page_Colorways_2025-Update_R360-Intuiti_896cfbee-9474-44c2-9bb8-f87421b8af1c.gif",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-649118d5-b34f-4022-b91c-a42805f2e3c3",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
