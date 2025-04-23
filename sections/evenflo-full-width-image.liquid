@@ -1,12 +1,18 @@
-<section class="full-width-image">
-  <div class="content-container--full-width">
-    {% if section.settings.image != blank %}
-      {{
-        section.settings.image
-        | image_url: width: 1800
-        | image_tag: loading: 'lazy', sizes: sizes, widths: widths, class: 'img-full'
-      }}
+{{ 'evenflo-full-width-image.css' | asset_url | stylesheet_tag }}
+
+<section class="custom-image-text-section">
+  <div class="image-container">
+    {% if section.settings.image %}
+      {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', class: 'img-full' }}
     {% endif %}
+    <div class="text-overlay {{ section.settings.position }}">
+      {% if section.settings.heading %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.text %}
+        <p>{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
   </div>
 </section>
 
@@ -20,6 +26,28 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Text Position",
+      "options": [
+        { "value": "top-left", "label": "Top Left" },
+        { "value": "top-right", "label": "Top Right" },
+        { "value": "bottom-left", "label": "Bottom Left" },
+        { "value": "bottom-right", "label": "Bottom Right" },
+        { "value": "center", "label": "Center" }
+      ]
     }
   ],
   "presets": [
@@ -29,9 +57,52 @@
   ]
 }
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
 {% javascript %}
+    //   document.addEventListener("DOMContentLoaded", function () {
+    //   const images = document.querySelectorAll(".image-container img");
+    //   images.forEach((img) => {
+    //     img.addEventListener("load", () => {
+    //       const overlay = img.closest(".image-container").querySelector(".text-overlay");
+    //       if (overlay) {
+    //         overlay.style.opacity = "1";
+    //       }
+    //     });
+    //   });
+    // });
+    document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".image-container img");
+
+    // Function to show overlay
+    const showOverlay = (img) => {
+      const overlay = img.closest(".image-container").querySelector(".text-overlay");
+      if (overlay) {
+        overlay.style.opacity = "1";
+      }
+    };
+
+    // Check immediately for already loaded images
+    images.forEach((img) => {
+      if (img.complete) {
+        showOverlay(img); // For already loaded images
+      } else {
+        img.addEventListener("load", () => showOverlay(img)); // For images that load later
+      }
+    });
+
+    // Use IntersectionObserver for lazy-loaded images
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            showOverlay(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 } // Adjust threshold as needed
+    );
+
+    images.forEach((img) => {
+      observer.observe(img);
+    });
+  });
 {% endjavascript %}
