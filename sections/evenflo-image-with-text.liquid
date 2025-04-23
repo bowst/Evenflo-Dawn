@@ -52,9 +52,9 @@
     class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}"
     style="flex-direction: {% if section.settings.video-content-right %}row-reverse{% endif %}"
   >
-    <div
+    <!-- <div
       class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item"
-    >
+    > -->
       <div class="color-{{ section.settings.color_scheme }} gradient">
         <div class="video-section isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}-padding">
           <div
