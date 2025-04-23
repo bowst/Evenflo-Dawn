@@ -24,75 +24,135 @@
 {%- endif -%}
 
 {%- style -%}
-    #Banner-{{ section.id }}::after {
-      opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+      .banner__content .app-btn {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+      .banner__content .app-btn a {
+          flex-basis: 200px;
+      }
+      .banner__content .app-btn a img {
+          width: 100%;
+      }
+      @media screen and (max-width: 749px) {
+        .banner__content .app-btn {
+         justify-content: center;
+        }
+      }
+          #Banner-{{ section.id }}::after {
+            opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+          }
+          .text-color {
+            color: {{ section.settings.desktop_heading_color }} !important;
+          }
+          .text-color h1,
+          .text-color h2,
+          .text-color h3,
+          .text-color h4,
+          .text-color h5,
+          .text-color h6,
+          .text-color button {
+          color: inherit !important; /* Inherit the color from .text-color class */
+        }
+        .text-color .button{
+          background-color: {{ section.settings.button_color }} !important;
+        }
+        .text-color a{
+           color: {{ section.settings.button_text_color }} !important;
+        }
+        /* Media query for mobile screens (adjust the max-width value as needed) */
+        @media screen and (max-width: 750px) {
+          .text-color {
+            color: {{ section.settings.mobile_heading_color }} !important;
+          }
+          .text-color h1,
+          .text-color h2,
+          .text-color h3,
+          .text-color h4,
+          .text-color h5,
+          .text-color h6,
+          .text-color button {
+            color: inherit !important; /* Inherit the color from .text-color class */
+          }
+        }
+        .heading_underline:after {
+          content: '';
+          width: 136px;
+          height: 5px;
+          background: #fff;
+          display: block;
+          margin: auto;
+          margin-top: 10px;
+        }
+        .banner__buttons a:after,.banner__buttons a:hover::after{
+          box-shadow: none!important;
+        }
+        .desktop {
+          display: block
+        }
+
+         .mobile {
+          display: none
+        }
+        @media screen and (max-width: 767px){
+           .desktop {
+          display: none;
+        }
+           .mobile {
+          display: block
+        }
+    .evenflo-image-banner:has(.banner__content .banner__box:empty) .desktop.banner__media.media {
+          display: block;
+      }
+      .evenflo-image-banner:has(.mobile.banner__media.media) .desktop.banner__media.media,
+      .evenflo-image-banner .banner__content .banner__box:empty{
+          display: none;
+      }
+
+
+      .evenflo-image-banner:has(.banner__content .banner__box:empty) {
+        height: auto;
+      }
+          .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media img{
+             position: static;
+          }
+          .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media::before{
+            display: none!important;
+          }
+          .text-color .button{
+          background-color: {{ section.settings.mobile_button_color }} !important;
+            border: 1px solid #000;
+        }
+        .text-color a{
+           color: {{ section.settings.mobile_button_text_color }} !important;
+        }
+        }
+    .evenflo-image-banner-bg{
+      background: {{section.settings.banner_color}};
+      color: #ffffff !important;
     }
-    .text-color {
-      color: {{ section.settings.desktop_heading_color }} !important;
+    .evenflo-image-banner-bg .banner__box{
+      max-width: 60rem!important;
+      background: transparent!important;
     }
-    .text-color h1,
-    .text-color h2,
-    .text-color h3,
-    .text-color h4,
-    .text-color h5,
-    .text-color h6,
-    .text-color button {
-    color: inherit !important; /* Inherit the color from .text-color class */
-  }
-  .text-color .button{
-    background-color: {{ section.settings.button_color }} !important;
-  }
-  .text-color a{
-     color: {{ section.settings.button_text_color }} !important;
-  }
-  /* Media query for mobile screens (adjust the max-width value as needed) */
-  @media screen and (max-width: 750px) {
-    .text-color {
-      color: {{ section.settings.mobile_heading_color }} !important;
-    }
-    .text-color h1,
-    .text-color h2,
-    .text-color h3,
-    .text-color h4,
-    .text-color h5,
-    .text-color h6,
-    .text-color button {
-      color: inherit !important; /* Inherit the color from .text-color class */
-    }
-  }
-  .heading_underline:after {
-    content: '';
-    width: 136px;
-    height: 5px;
-    background: #fff;
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-  }
-  .banner__buttons a:after,.banner__buttons a:hover::after{
-    box-shadow: none!important;
-  }
-  .desktop {
-    display: block
+
+    .banner-block-image.small {
+    max-width: 300px;
   }
 
-   .mobile {
-    display: none
+  .banner-block-image.medium {
+    max-width: 500px;
   }
-  @media screen and (max-width: 767px){
-     .desktop {
-    display: none;
+
+  .banner-block-image.large {
+    max-width: 700px;
   }
-     .mobile {
-    display: block
-  }
-    .text-color .button{
-    background-color: {{ section.settings.mobile_button_color }} !important;
-      border: 1px solid #000;
-  }
-  .text-color a{
-     color: {{ section.settings.mobile_button_text_color }} !important;
-  }
+
+  .banner-block-image {
+    width: 100%;
+    height: auto;
   }
 {%- endstyle -%}
 
@@ -120,7 +180,7 @@
 
 <div
   id="Banner-{{ section.id }}"
-  class=" text-color banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+  class="evenflo-image-banner {% if section.settings.background_show %}evenflo-image-banner-bg{% endif %} text-color banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
   {%- if section.settings.image != blank -%}
     <div class="desktop banner__media media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
@@ -205,8 +265,31 @@
                 </a>
               {%- endif -%}
             </div>
+{%- when 'image' -%}
+  <div class="banner__image" {{ block.shopify_attributes }}>
+    {%- if block.settings.block_image != blank -%}
+      {%- assign image_class = 'banner-block-image ' | append: block.settings.image_width -%}
+      {{
+        block.settings.block_image
+        | image_url: width: 2000
+        | image_tag: 
+          loading: 'lazy',
+          class: image_class
+      }}
+    {%- endif -%}
+  </div>
         {%- endcase -%}
       {%- endfor -%}
+      {% if section.settings.store_btn_show %}
+        <div class="app-btn">
+          <a href="{{ section.settings.app_store }}">
+            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/playstore-logo_1.svg?v=1737463606" alt="">
+          </a>
+          <a href="{{ section.settings.play_store }}">
+            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/app-store-logo_1.svg?v=1737463606" alt="">
+          </a>
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -229,6 +312,34 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "Mobile Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "background_show",
+      "default": false,
+      "label": "Enable Banner Backgroud"
+    },
+    {
+      "type": "color",
+      "id": "banner_color",
+      "label": "Banner Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "store_btn_show",
+      "default": false,
+      "label": "Enable App Store Button"
+    },
+    {
+      "type": "url",
+      "id": "app_store",
+      "label": "APP STORE BUTTON"
+    },
+    {
+      "type": "url",
+      "id": "play_store",
+      "label": "GOOGLE PLAY STORE BUTTON"
     },
     {
       "type": "color",
@@ -453,7 +564,7 @@
           "id": "heading_underline",
           "default": false,
           "label": "Add Underline"
-        },
+        }
       ]
     },
     {
@@ -539,7 +650,7 @@
     {
       "type": "buttons",
       "name": "t:sections.image-banner.blocks.buttons.name",
-      "limit": 1,
+      "limit": 2,
       "settings": [
         {
           "type": "text",
@@ -576,6 +687,38 @@
           "id": "button_style_secondary_2",
           "default": false,
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_width",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "medium",
+          "label": "Image width"
         }
       ]
     }
