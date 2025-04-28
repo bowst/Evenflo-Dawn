@@ -14,7 +14,7 @@ h2.title.inline-richtext.h2 {
   transform: translate(-50%);
   width: 150px;
   height: 6px;
-  background: #2996C5;
+  background: rgba(var(--color-base-accent-2), 1);
 }
 
 .multicolumn.no-heading .title {
@@ -411,14 +411,4 @@ a.button.button--primary:hover {
   .multicolumn h2.title:after {
   width: 114px;
 }
-}
-.text-center {
-  text-align: center !important;
-  justify-content: center;
-  align-items: center;
-}
-.text-end{
-  text-align: center !important;
-  justify-content: end;
-  align-items: center;
 }
