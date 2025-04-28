@@ -52,6 +52,7 @@
         "text_7A8Adq",
         "buttons_YMdr8J"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/image-left.png",
         "image_2": "shopify://shop_images/image-left.png",
@@ -63,6 +64,67 @@
         "show_text_box": true,
         "desktop_content_alignment": "left",
         "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "evenflo_image_banner_6K8DRt": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_y77LRd": {
+          "type": "heading",
+          "settings": {
+            "heading": "JOIN THE CLUB",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_7f7CmN": {
+          "type": "text",
+          "settings": {
+            "text": "Become a member and earn points & exclusive rewards every time you shop.",
+            "text_style": "body"
+          }
+        },
+        "buttons_twfrxM": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Join Now",
+            "button_link_1": "https://www.evenflo.com/account/register",
+            "button_style_secondary_1": false,
+            "button_label_2": "Login",
+            "button_link_2": "https://www.evenflo.com/account/login?checkout_url=https://www.evenflo.com/pages/rewards",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_y77LRd",
+        "text_7f7CmN",
+        "buttons_twfrxM"
+      ],
+      "name": "Evenflo Image Banner",
+      "settings": {
+        "image": "shopify://shop_images/image-left.png",
+        "image_2": "shopify://shop_images/image-left.png",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#000000",
+        "button_text_color": "#ffffff",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#000000",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -91,6 +153,7 @@
   "order": [
     "main",
     "image_banner_WnzJQX",
+    "evenflo_image_banner_6K8DRt",
     "custom_liquid_mqEypQ",
     "evenflo_divider_NJtxpx"
   ]
