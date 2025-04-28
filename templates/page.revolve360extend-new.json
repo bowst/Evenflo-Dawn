@@ -63,6 +63,11 @@
       "settings": {
         "image": "shopify://shop_images/38412311_Gold_Revolve360_Extend_Moonstone_RearFacing_Toddler_0203.png",
         "image_2": "shopify://shop_images/38412311_Gold_Revolve360_Extend_Moonstone_RearFacing_Toddler_0203_dedf62b0-f7bc-4d1d-9cdc-56e6339218ff.png",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
         "mobile_button_color": "#ffffff",
@@ -87,7 +92,8 @@
           "type": "heading",
           "settings": {
             "heading": "GROW WITH IT",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_pEKxte": {
@@ -130,7 +136,11 @@
         "column_MkCpzk": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/38412428_1_Gold_Revolve360_Extend_Rotational_All_In_One_Car_Seat_Emerald_V1_4.png",
+            "image": "shopify://shop_images/CS360212506_Studio_Limited_Edition_Revolve360_Extend_Champagne_A02.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "REVOLVE360 EXTEND WITH GREEN & GENTLE™ FABRIC",
             "text": "<p><strong>Your more sustainable Extend</strong><br/>One-hand, 360° rotation<br/>Extended rear-facing to 50 lb.<br/>Real-time SensorSafe™ alerts<br/>One-time LockStrong™ installation<br/>Reversible, ergonomic leg rest</p>",
@@ -141,7 +151,11 @@
         "column_iYEfhX": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-08-05_at_8.31.19_PM.png",
+            "image": "shopify://shop_images/CS360212547_Studio_Revolve-Extend_Travertine_Hero_A01.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "REVOLVE360 EXTEND WITH SENSORSAFE™",
             "text": "<p><strong>Your connected safety technology Extend</strong><br/>Real-time SensorSafe™ alerts<br/>Extended rear-facing to 50 lb.<br/>One-time LockStrong™ installation<br/>Reversible, ergonomic leg rest</p>",
@@ -152,30 +166,51 @@
         "column_eLTtfE": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-08-05_at_3.49.46_PM.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-05_at_8.31.19_PM.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "REVOLVE360 EXTEND WITH QUICK CLEAN COVER",
             "text": "<p><strong>Your easy-to-keep-clean Extend</strong><br/>One-hand, 360° rotation<br/>Quick Clean Cover<br/>Extended rear-facing to 50 lb.<br/>One-time LockStrong™ installation<br/>Reversible, ergonomic leg rest</p>",
             "link_label": "Shop Now",
             "link": "https://www.evenflo.com/products/revolve360-extend-swivel-convertible-car-seat-quick-clean-cover"
           }
+        },
+        "column_Wp4R6P": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/CS360212464_Studio-Revolve360_Extend_core_plus-Front_A03.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "REVOLVE360 EXTEND WITH QUICK CLEAN COVER",
+            "text": "<p><strong>Your easy-to-keep-clean Extend</strong><br/>One-hand, 360° rotation<br/>Quick Clean Cover<br/>Extended rear-facing to 50 lb.<br/>One-time LockStrong™ installation<br/>Reversible, ergonomic leg rest</p>",
+            "link_label": "Shop Now",
+            "link": "shopify://products/revolve360-extend-convertible-car-seat-quick-clean-cover-core-plus"
+          }
         }
       },
       "block_order": [
         "column_MkCpzk",
         "column_iYEfhX",
-        "column_eLTtfE"
+        "column_eLTtfE",
+        "column_Wp4R6P"
       ],
       "settings": {
         "title": "Choose your problem-solver",
         "heading_size": "h1",
         "column_style": "modern",
+        "container_size": "full_width",
         "heading_alignment": "center",
         "image_width": "full",
         "image_ratio": "adapt",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "column_alignment": "center",
-        "background_style": "primary",
+        "background_style": "none",
         "button_label": "",
         "button_link": "",
         "color_scheme": "",
@@ -214,7 +249,7 @@
         "slider_block_byFG7z"
       ],
       "settings": {
-        "background": "#f5f5f5",
+        "background": "#ffffff",
         "full-width": false
       }
     },
@@ -305,7 +340,8 @@
             "title": "ONE-HAND, 360° ROTATION",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "discount_verification": ""
           }
         },
         "column_FwfqQE": {
@@ -315,7 +351,8 @@
             "title": "EASY IN AND OUT",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "discount_verification": ""
           }
         },
         "column_xtq9y6": {
@@ -325,7 +362,8 @@
             "title": "ONE-TIME INSTALLATION",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "discount_verification": ""
           }
         }
       },
@@ -344,7 +382,8 @@
         "image_ratio": "adapt",
         "columns_desktop": 3,
         "column_alignment": "center",
-        "background_style": "primary",
+        "background_style": "none",
+        "underline": false,
         "button_label": "",
         "button_link": "",
         "color_scheme": "",
