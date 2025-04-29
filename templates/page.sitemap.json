@@ -51,6 +51,10 @@
     },
     "custom_liquid_fQxxNe": {
       "type": "custom-liquid",
+      "custom_css": [
+        ".row{display: flex;}",
+        ".col-md-6 {flex: 0 0 auto; width: 50%; }"
+      ],
       "settings": {
         "custom_liquid": "<div class=\"row\">\n    <div class=\"col-md-6\">\n    <h2>Collections</h2>\n    <ul>\n    {% for c in collections %}\n    <li>\n    <a href=\"{{ c.url }}\">{{ c.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n    </div>\n    <div class=\"col-md-6\">\n    <h2>Products</h2>\n    <ul>\n    {% for product in collections.all.products %}\n    <li>\n    <a href=\"{{ product.url }}\">{{ product.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n    </div>\n    </div>",
         "color_scheme": "background-1",
@@ -60,6 +64,7 @@
     },
     "custom_liquid_QYwybJ": {
       "type": "custom-liquid",
+      "custom_css": [],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "<ul>\n  {% for link in linklists.pages-menu.links %}\n    <li>\n      <a href=\"{{ link.url }}\">{{ link.title }}</a>\n    </li>\n  {% endfor %}\n</ul>",
