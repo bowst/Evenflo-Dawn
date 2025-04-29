@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
+      "type": "image-banner",
+      "blocks": {
+        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        }
+      },
+      "block_order": [
+        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "{{ page.metafields.custom.header_image.value }}",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "small",
+        "desktop_content_position": "middle-right",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_fQxxNe": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"row\">\n    <div class=\"col-md-6\">\n    <h2>Collections</h2>\n    <ul>\n    {% for c in collections %}\n    <li>\n    <a href=\"{{ c.url }}\">{{ c.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n    </div>\n    <div class=\"col-md-6\">\n    <h2>Products</h2>\n    <ul>\n    {% for product in collections.all.products %}\n    <li>\n    <a href=\"{{ product.url }}\">{{ product.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n    </div>\n    </div>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_QYwybJ": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<ul>\n  {% for link in linklists.pages-menu.links %}\n    <li>\n      <a href=\"{{ link.url }}\">{{ link.title }}</a>\n    </li>\n  {% endfor %}\n</ul>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "baf838c7-9596-49e3-b43e-c31a09aa32ea",
+    "main",
+    "custom_liquid_fQxxNe",
+    "custom_liquid_QYwybJ"
+  ]
+}
