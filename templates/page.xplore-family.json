@@ -54,6 +54,11 @@
       ],
       "disabled": true,
       "settings": {
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
         "mobile_button_color": "#ffffff",
@@ -106,11 +111,11 @@
         "desktop_content_position": "middle-center",
         "show_text_box": false,
         "desktop_content_alignment": "center",
-        "color_scheme": "scheme-1",
+        "color_scheme": "accent-2",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
-        "show_text_below": false
+        "show_text_below": true
       }
     },
     "rich_text_C9BdYa": {
@@ -185,7 +190,7 @@
           "type": "heading",
           "settings": {
             "heading": "> PUSH < PULL ❤ DREAM",
-            "heading_size": "h1"
+            "heading_size": "h0"
           }
         }
       },
@@ -208,7 +213,8 @@
           "type": "heading",
           "settings": {
             "heading": "FOR NAPTIME ON THE GO",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_ETb366": {
@@ -223,7 +229,8 @@
           "settings": {
             "button_label": "Shop Styles",
             "button_link": "shopify://products/pivot-xplore-dreamz-stroller-wagon",
-            "button_style_secondary": false
+            "button_color": "#333333",
+            "button_text_color": "#ffffff"
           }
         }
       },
@@ -235,12 +242,10 @@
       "settings": {
         "image": "shopify://shop_images/image-2.png",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -296,7 +301,8 @@
           "type": "heading",
           "settings": {
             "heading": "FOR FAMILY ADVENTURE",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_3i7AfN": {
@@ -311,7 +317,8 @@
           "settings": {
             "button_label": "Shop Styles",
             "button_link": "shopify://products/pivot-xplore-stroller-wagon",
-            "button_style_secondary": false
+            "button_color": "#333333",
+            "button_text_color": "#ffffff"
           }
         }
       },
@@ -323,12 +330,10 @@
       "settings": {
         "image": "shopify://shop_images/image-1.png",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -343,7 +348,7 @@
       ],
       "settings": {
         "heading": "",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "enable_video_looping": false,
         "video_url": "https://player.vimeo.com/video/891079730",
         "cover_image": "shopify://shop_images/video-2.png",
