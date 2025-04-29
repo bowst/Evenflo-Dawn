@@ -23,14 +23,19 @@
       "block_order": [
         "heading_h1_qQHAjx"
       ],
+      "disabled": true,
       "settings": {
-        "image": "shopify://shop_images/MicrosoftTeams-image_39.jpg",
-        "image_2": "shopify://shop_images/MicrosoftTeams-image_39.jpg",
-        "button_color": "#FFFFFF",
+        "image": "shopify://shop_images/Evenflo_Hummingbird_GoogleResponsive-Ad_1200x628_5.jpg",
+        "background_show": false,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#ffffff",
         "button_text_color": "#000000",
-        "mobile_button_color": "#FFFFFF",
+        "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#FFFFFF",
+        "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#ffffff",
         "image_overlay_opacity": 0,
         "image_height": "small",
@@ -40,6 +45,58 @@
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "image_banner_AYQgLk": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_QJXjLY": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h1",
+            "heading_color": "white"
+          }
+        },
+        "text_XMrGtp": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "buttons_qN9cta": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_QJXjLY",
+        "text_XMrGtp",
+        "buttons_qN9cta"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Evenflo_Hummingbird_GoogleResponsive-Ad_1200x628_5.jpg",
+        "image_overlay_opacity": 10,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
@@ -88,7 +145,8 @@
           "type": "heading",
           "settings": {
             "heading": "Travel Systems",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_daVMkL": {
@@ -106,12 +164,10 @@
       "settings": {
         "image": "shopify://shop_images/travel-systems.png",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -136,11 +192,10 @@
         "enable_desktop_slider": false,
         "color_scheme": "",
         "image_ratio": "adapt",
-        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
@@ -163,7 +218,8 @@
           "type": "heading",
           "settings": {
             "heading": "Strollers",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_WadKVt": {
@@ -181,12 +237,10 @@
       "settings": {
         "image": "shopify://shop_images/strollers-block.png",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -211,11 +265,10 @@
         "enable_desktop_slider": false,
         "color_scheme": "",
         "image_ratio": "adapt",
-        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -238,7 +291,8 @@
           "type": "heading",
           "settings": {
             "heading": "Infant car seat stroller combo",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_bwJFEy": {
@@ -256,12 +310,10 @@
       "settings": {
         "image": "shopify://shop_images/combos.png",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -286,11 +338,10 @@
         "enable_desktop_slider": false,
         "color_scheme": "",
         "image_ratio": "adapt",
-        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 36,
@@ -313,7 +364,8 @@
           "type": "heading",
           "settings": {
             "heading": "STROLLER ACCESSORIES",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_QGV9Qz": {
@@ -331,12 +383,10 @@
       "settings": {
         "image": "shopify://shop_images/stroller-accessories.jpg",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -361,11 +411,10 @@
         "enable_desktop_slider": false,
         "color_scheme": "",
         "image_ratio": "adapt",
-        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -384,6 +433,7 @@
   },
   "order": [
     "evenflo_image_banner_8tNDkM",
+    "image_banner_AYQgLk",
     "main",
     "rich_text_7GmKQL",
     "evenflo_image_text_dtzKpN",
