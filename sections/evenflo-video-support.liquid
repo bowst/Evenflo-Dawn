@@ -2,33 +2,33 @@
 
 {% assign instructional_videos = product.metafields.sf_products.instructional_videos %}
 {% if instructional_videos != blank %}
-<section class="evenflo-video">
-  <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
-    <div class="flex-row">
-      <div class="flex-item video-content-section">
-        <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
-        <p>{{ section.settings.description }}</p>
-        {%- if section.settings.button_label != blank -%}
-          <a
-            {% if section.settings.button_link == blank %}
-            role="link"
-            aria-disabled="true"
-            {% else %}
-            href="{{ section.settings.button_link }}"
-            {% endif %}
-            class="button button--primary">
-            {{ section.settings.button_label | escape }}
-          </a>
-        {%- endif -%}
-      </div>
-      <div class="flex-item video-section">
-        <div style="padding:56.25% 0 0 0; position:relative;">
-          {{ instructional_videos }}
+  <section class="evenflo-video">
+    <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
+      <div class="flex-row">
+        <div class="flex-item video-content-section">
+          <h2 class="h1 heading-underline">{{ section.settings.heading }}</h2>
+          <p>{{ section.settings.description }}</p>
+          {%- if section.settings.button_label != blank -%}
+            <a
+              {% if section.settings.button_link == blank %}
+              role="link"
+              aria-disabled="true"
+              {% else %}
+              href="{{ section.settings.button_link }}"
+              {% endif %}
+              class="button button--primary">
+              {{ section.settings.button_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+        <div class="flex-item video-section">
+          <div style="position:relative; padding-top:56.25%;">
+            {{ instructional_videos }}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 {% endif %}
 
 
@@ -42,16 +42,19 @@
         "type": "text",
         "id": "heading",
         "label": "Heading"
-      }, {
+      },
+      {
         "type": "textarea",
         "id": "description",
         "label": "Description"
-      }, {
+      },
+      {
         "type": "text",
         "id": "button_label",
         "default": "Button label",
         "label": "Button Label"
-      }, {
+      },
+      {
         "type": "url",
         "id": "button_link",
         "label": "Button Link"
