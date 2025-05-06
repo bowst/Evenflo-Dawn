@@ -1,0 +1,109 @@
+{{ 'section-multicolumn-slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-element-bundle.min.js' | asset_url }}" defer="defer"></script>
+
+
+<section class="evenflo-multicolumn-slider color-background-1">
+  <div class="page-width page-width--narrow section-{{ section.id }}-padding{% if section.settings.secondary_background %} isolate{% endif %}">
+    {% if section.settings.header %}
+      <hl class="main-page-title page-title h0 center">{{ section.settings.header }}</hl>
+    {% endif %}
+    <div class="row cc-three-columns">
+      {% for block in section.blocks %}
+        {% assign blockClass = "swiper-{{ forloop.index }}" %}
+        <div class="one-third column alpha">
+          <swiper-container class="{{ blockClass }}" navigation="true">
+            {% if block.settings.image_0 %}
+              {% assign image = block.settings.image_0 %}
+              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+            {% endif %}
+            {% if block.settings.image_1 %}
+              {% assign image = block.settings.image_1 %}
+              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+            {% endif %}
+            {% if block.settings.image_2 %}
+              {% assign image = block.settings.image_2 %}
+              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+            {% endif %}
+            {% if block.settings.image_3 %}
+              {% assign image = block.settings.image_3 %}
+              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+            {% endif %}
+          </swiper-container>
+          <a class="button button--primary" href="{{ block.settings.product.url }}">SHOP NOW</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{%- if request.design_mode -%}
+  <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Evenflo Multi Slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slider",
+      "name": "Slider",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product Association"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_0",
+          "label": "Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 4"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Multicolumn Slider",
+      "blocks": [
+        {
+          "type": "slider"
+        },
+        {
+          "type": "slider"
+        },
+        {
+          "type": "slider"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

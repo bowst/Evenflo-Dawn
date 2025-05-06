@@ -1,0 +1,70 @@
+<a href="{{ section.settings.promo_link }}">
+  <div style="position: relative;">
+    <div class="desktop">
+      {%- if section.settings.desktop_banner != blank -%}
+        {%- assign desktop_banner = section.settings.desktop_banner -%}
+        {{ desktop_banner | image_url: width: desktop_banner.width | image_tag: class: 'desktop', loading: 'lazy' }}
+      {%- endif -%}
+    </div>
+
+    <div class="mobile">
+      {%- if section.settings.mobile_image != blank -%}
+        {%- assign mobile_image = section.settings.mobile_image -%}
+        {{ mobile_image | image_url: width: mobile_image.width | image_tag: class: 'mobile', loading: 'lazy' }}
+      {%- endif -%}
+    </div>
+  </div>
+</a>
+
+<style>
+  .mobile,
+  .desktop {
+    min-width: 100%;
+  }
+
+  @media screen and (min-width: 800px) {
+    .mobile {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .desktop {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Evenflo Single Promo",
+  "tag": "section",
+  "class": "text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "promo_link",
+      "label": "Bronze and Silver Loyalty Banner Link",
+      "default": "Add url here"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_banner",
+      "label": "Desktop Banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Single Promo"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}

@@ -1,0 +1,58 @@
+{{ 'section-video.css' | asset_url | stylesheet_tag }}
+{% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
+
+
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{% for variant in product.variants %}
+  {%- if current_variant.id == variant.id -%}
+    <section class="evenflo-video">
+      <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
+        <div class="flex-row">
+          <div class="flex-item video-content-section">
+            <h2 class="h1 heading-underline">{{ product.metafields.custom.short_description_header }}</h2>
+            {{ product.metafields.custom.short_description }}
+          </div>
+          <div class="flex-item video-section">
+            <div style="padding:56.25% 0 0 0;position:relative;">
+              <iframe
+                src="https://player.vimeo.com/video/{{ product.metafields.custom.sf_products.vimeo_product_video }}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+                style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                title="{{ product.metafields.custom.short_description_header }}"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Evenflo Video Variant",
+  "class": "video",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Video Variant"
+    }
+  ]
+}
+{% endschema %}

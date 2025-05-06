@@ -1,0 +1,71 @@
+{{ 'evenflo-image-gallery.css' | asset_url | stylesheet_tag }}
+
+{%- if section.blocks -%}
+  <section class="image-gallery">
+    <div class="page-width">
+      {%- if section.settings.custom_text_title -%}
+        <h2 class="h1">{{ section.settings.custom_text_title }}</h2>
+      {%- endif -%}
+
+      <div class="image-gallery-wrapper">
+        {% for blocks in section.blocks %}
+          <div class="image-gallery-item">
+            <img
+              src="{{ blocks.settings.gallery_image1 | img_url: 'large' }}"
+              alt="{{ section.settings.custom_text_title }} gallery image"
+              width=""
+              height=""
+            >
+            <img
+              src="{{ blocks.settings.gallery_image2 | img_url: 'large' }}"
+              alt="{{ section.settings.custom_text_title }} gallery image"
+              width=""
+              height=""
+            >
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "EvenfloImage Gallery",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "id": "custom_text_title",
+      "type": "text",
+      "label": "Text box heading",
+      "default": "Gallery Title"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Gallery Image",
+      "type": "gallery_image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "gallery_image1",
+          "label": "gallery image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "gallery_image2",
+          "label": "gallery image 2"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Gallery",
+      "category": "Image Gallery"
+    }
+  ]
+}
+{% endschema %}

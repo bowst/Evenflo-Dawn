@@ -1,0 +1,260 @@
+{{ 'evenflo-deal-days.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .evenflo-deal-days-block {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .evenflo-main-product-detail h2:after{
+    background: {{section.settings.heading_underline_color}}
+  }
+
+  @media screen and (min-width: 750px) {
+    .evenflo-deal-days-block {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="evenflo-deal-days-block page-width">
+  <div class="evenflo-deal-card-wrapper">
+    {% for blocks in section.blocks %}
+      <div
+        class="evenflo-deal-card"
+        date-content="{{ blocks.settings.date_list }}"
+        month-content="{{ blocks.settings.month_list }}"
+      >
+        <img
+          src="{{ blocks.settings.gift-box-img | img_url: 'large' }}"
+          alt="evenflo-deal-card"
+          width=""
+          height=""
+        >
+        <img
+          src="{{ blocks.settings.deal-day-img | img_url: 'large' }}"
+          alt="evenflo-deal-card"
+          width=""
+          height=""
+        >
+        <img
+          src="{{ blocks.settings.product-img | img_url: 'large' }}"
+          alt="evenflo-deal-card"
+          width=""
+          height=""
+        >
+      </div>
+    {% endfor %}
+  </div>
+  {% for block in section.blocks %}
+    <div
+      class="evenflo-deal-grid"
+      date-content="{{ block.settings.date_list }}"
+      month-content="{{ block.settings.month_list }}"
+    >
+      <div class="evenflo-deal-grid-column">
+        <div class="evenflo-main-product-img">
+          <img
+            src="{{ block.settings.main-product-img | img_url: 'large' }}"
+            alt="evenflo-deal-card"
+            width=""
+            height=""
+          >
+        </div>
+      </div>
+      <div class="evenflo-deal-grid-column">
+        <div class="evenflo-main-product-detail">
+          <h1 id="current-date"></h1>
+          <h2 class="{{ section.settings.heading_size }}">
+            {{ block.settings.deal_heading }}
+          </h2>
+          <div class="rich-text__text rte">
+            {{ block.settings.description }}
+          </div>
+          <a href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+    const evenfloDealCards = document.querySelectorAll(".evenflo-deal-card");
+    const evenfloDealGrids = document.querySelectorAll(".evenflo-deal-grid");
+
+    const [esMonth, esDate] = new Date()
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
+      .split("/");
+    const month = parseInt(esMonth);
+    const date = parseInt(esDate);
+
+    evenfloDealCards.forEach((evenfloDealCard, index) => {
+      const dateContent = parseInt(evenfloDealCard.getAttribute("date-content"));
+      const monthContent = parseInt(evenfloDealCard.getAttribute("month-content"));
+      const gridDateContent = parseInt(evenfloDealGrids[index].getAttribute("date-content"));
+      const gridMonthContent = parseInt(evenfloDealGrids[index].getAttribute("month-content"));
+
+      if (gridDateContent === date && gridMonthContent === month) {
+        evenfloDealGrids[index].style.display = "flex";
+      }
+
+      const children = evenfloDealCard.children;
+
+      if (monthContent === month && dateContent === date) {
+        children[1].style.display = "block";
+      } else if (monthContent === month && dateContent < date) {
+        children[2].style.display = "block";
+      } else if (monthContent === month && dateContent > date) {
+        children[0].style.display = "block";
+      } else if (monthContent < month) {
+        children[2].style.display = "block";
+      } else {
+        children[0].style.display = "block";
+      }
+    });
+
+
+  setInterval(() => {
+    console.log('1');
+     const [newEsMonth, NewEsDate] = new Date()
+      .toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" })
+      .split("/");
+    if(newEsMonth !== esMonth || NewEsDate !== esDate){
+      location.reload();
+    }
+  }, 10 * 1000);
+</script>
+
+{% schema %}
+{
+  "name": "Evenflo Deal Days",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+        {
+          "type": "color",
+          "id": "heading_underline_color",
+          "label": "Heading underline color",
+          "default": "#FFFFFF"
+        },
+  {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Evenflo Deal Day",
+      "type": "evenflo_deal_day",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "gift-box-img",
+          "label": "Gift Box Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "deal-day-img",
+          "label": "Deal Day Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "product-img",
+          "label": "Product Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "main-product-img",
+          "label": "Main Product Image"
+        },
+        {
+          "type": "text",
+          "id": "deal_heading",
+          "label": "Deal heading",
+          "default": "Deal heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>TODAY ONLY: 30% off the Pivot Xplore ™ and Pivot Xplore ™ Dreamz Stroller Wagons</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "Button label",
+          "info": "t:sections.rich-text.blocks.buttons.settings.button_label_1.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "range",
+          "id": "date_list",
+          "min": 1,
+          "max": 31,
+          "step": 1,
+          "label": "Date",
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "month_list",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "label": "Month",
+          "default": 1
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Deal Days",
+    }
+  ],
+  "max_blocks": 7
+}
+{% endschema %}

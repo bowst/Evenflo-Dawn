@@ -1,0 +1,103 @@
+<a
+  href="
+    {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+      {{ section.settings.bronze_and_silver }}
+    {% elsif customer.tags contains "swell_vip_gold" %}
+      {{ section.settings.gold }}
+    {% else %}
+      {{ section.settings.non_member }}
+    {% endif %}
+  "
+>
+  <div style="position: relative;">
+    <div class="desktop">
+      <img
+        width=""
+        height=""
+        class="desktop"
+        src="
+          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Cyber_Week.jpg?v=1732268047
+          {% elsif customer.tags contains "swell_vip_gold" %}
+          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Cyber_Week.jpg?v=1732268047
+          {% else %}
+          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Cyber_Week.jpg?v=1732268047
+          {% endif %}
+        "
+      >
+    </div>
+
+    <div class="mobile">
+      <img
+        width=""
+        height=""
+        class="mobile"
+        src="
+          {% if customer.tags contains  "swell_vip_bronze" or customer.tags contains  "swell_vip_silver"%}
+            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_Headers_Cyber_Week_Mobile.jpg?v=1732268081  
+          {% elsif customer.tags contains "swell_vip_gold" %}
+https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_Headers_Cyber_Week_Mobile.jpg?v=1732268081          {% else %}
+              https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday_2024_DTC_Homepage_Headers_Cyber_Week_Mobile.jpg?v=1732268081
+          {% endif %}
+        "
+      >
+    </div>
+
+    
+  </div>
+</a>
+
+<style>
+  .mobile,
+  .desktop {
+    min-width: 100%;
+  }
+
+  @media screen and (min-width: 800px) {
+    .mobile {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .desktop {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Evenflo Loyalty Banner",
+  "tag": "section",
+  "class": "text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "bronze_and_silver",
+      "label": "Bronze and Silver Loyalty Banner Link",
+      "default": "Add url here"
+    },
+    {
+      "type": "text",
+      "id": "gold",
+      "label": "Gold Loyalty Banner Link",
+      "default": "Add url here"
+    },
+    {
+      "type": "text",
+      "id": "non_member",
+      "label": "No Loyalty Banner Link",
+      "default": "Add url here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Loyalty Banner"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}

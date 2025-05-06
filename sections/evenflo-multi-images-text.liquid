@@ -1,0 +1,105 @@
+{{ 'evenflo-aos-animation.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-multi-images-text.css' | asset_url | stylesheet_tag }}
+
+<div class="evenflo-multi-images-text-block page-width">
+  <div class="evenflo-multi-img-column">
+    <div class="evenflo-multi-img-wrapper">
+      {% for blocks in section.blocks %}
+        <div
+          class="evenflo-multi-img-item"
+          data-aos="fade-up"
+          data-aos-delay="{{ forloop.index | times: 100 }}"
+        >
+          <img
+            src="{{ blocks.settings.evenflo-multi-img | img_url: 'large' }}"
+            alt="evenflo-multi-img"
+            width=""
+            height=""
+          >
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="evenflo-text-column">
+    <div class="evenflo-text-wrapper">
+      <h2 class="rich-text__heading rte inline-richtext {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
+      <div class="rich-text__text rte">
+        {{ section.settings.text }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init();
+</script>
+
+{% schema %}
+{
+  "name": "Evenflo Multi images Text",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+        "type": "inline_richtext",
+        "id": "heading",
+        "default": "Talk about your brand",
+        "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "options": [
+          {
+            "value": "h2",
+            "label": "t:sections.all.heading_size.options__1.label"
+          },
+          {
+            "value": "h1",
+            "label": "t:sections.all.heading_size.options__2.label"
+          },
+          {
+            "value": "h0",
+            "label": "t:sections.all.heading_size.options__3.label"
+          },
+          {
+            "value": "hxl",
+            "label": "t:sections.all.heading_size.options__4.label"
+          },
+        ],
+        "default": "h1",
+        "label": "t:sections.all.heading_size.label"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+        "label": "t:sections.rich-text.blocks.text.settings.text.label"
+      }
+  ],
+  "blocks": [
+    {
+      "name": "Evenflo Multi Img",
+      "type": "evenflo_multi_img",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "evenflo-multi-img",
+          "label": "Evenflo multi image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Multi images Text",
+
+    }
+  ],
+  "max_blocks": 3
+}
+{% endschema %}

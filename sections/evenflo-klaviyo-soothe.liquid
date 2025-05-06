@@ -1,0 +1,37 @@
+{{ 'section-connect.css' | asset_url | stylesheet_tag }}
+
+
+<div class="content-container page-width content-container--full-width">
+  <div class="row">
+    <div class="one-third column omega"></div>
+    <div class="one-third column">
+      <div class="klaviyo-form-Rq8iLG"></div>
+    </div>
+    <div class="one-third column omega"></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Evenflo Soothe Subscribe",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Connect with us"
+    },
+    {
+      "type": "html",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Soothe Subscribe"
+    }
+  ]
+}
+{% endschema %}

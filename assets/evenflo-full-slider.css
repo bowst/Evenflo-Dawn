@@ -1,0 +1,27 @@
+.evenflo-multicolumn-slider {
+    padding: 40px;
+    text-align: center;
+}
+
+.evenflo-multicolumn-slider,
+swiper-container.color-background-1 {
+    background-color: #dff3f3;
+}
+
+.swiper-slide-active,
+.swiper-slide-next {
+    text-align: left;
+}
+
+.col-4,
+.col-7 {
+    margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+
+    .col-4,
+    .col-7 {
+        width: 90%;
+    }
+}

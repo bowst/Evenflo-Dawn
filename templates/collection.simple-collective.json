@@ -1,0 +1,194 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "evenflo_collection_page_text_hyDwab": {
+      "type": "evenflo-collection-page-text",
+      "settings": {
+        "page_title": "{{ collection.metafields.custom.collection_h1.value }}"
+      }
+    },
+    "evenflo_page_title_bXymit": {
+      "type": "evenflo-page-title",
+      "disabled": true,
+      "settings": {
+        "page_title": "{{ collection.metafields.custom.collection_h1.value }}"
+      }
+    },
+    "evenflo_rich_text_PFYThg": {
+      "type": "evenflo-rich-text",
+      "blocks": {
+        "heading_aV6UdV": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_size": "h1"
+          }
+        },
+        "text_XaPbe6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ collection.metafields.custom.description | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aV6UdV",
+        "text_XaPbe6"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "full_width": false,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "97cbd0cb-c9eb-4958-bc6e-0303f1a3a4aa": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "evenflo_image_banner_PB3MPb": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_h1_rLeUdj": {
+          "type": "heading-h1",
+          "settings": {
+            "heading-h1": "{{ collection.metafields.custom.collection_h1.value }}",
+            "heading_underline": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_h1_rLeUdj"
+      ],
+      "disabled": true,
+      "settings": {
+        "button_color": "#ffffff",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#ffffff",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#2996c5",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "top-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "inverse"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 3,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 28,
+        "padding_bottom": 36
+      }
+    },
+    "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8": {
+      "type": "evenflo-collection-image-banner",
+      "blocks": {
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.metafields.custom.collection_h1.value }}",
+            "heading_size": "h1",
+            "heading_color": "white"
+          }
+        },
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-buttons-1": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-heading-1",
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-text-1",
+        "template--15779855073436__ace4b6de-14e2-4f3f-89dc-3b1e381f93d8-buttons-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "{{ collection.metafields.custom.header_image.value }}",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "top-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "accent-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "evenflo_emplifi_jfQgzf": {
+      "type": "evenflo-emplifi",
+      "settings": {
+        "pixlee_id": "{{ collection.metafields.custom.emplifi_id.value }}"
+      }
+    }
+  },
+  "order": [
+    "evenflo_collection_page_text_hyDwab",
+    "evenflo_page_title_bXymit",
+    "evenflo_rich_text_PFYThg",
+    "97cbd0cb-c9eb-4958-bc6e-0303f1a3a4aa",
+    "evenflo_image_banner_PB3MPb",
+    "banner",
+    "product-grid",
+    "ace4b6de-14e2-4f3f-89dc-3b1e381f93d8",
+    "evenflo_emplifi_jfQgzf"
+  ]
+}

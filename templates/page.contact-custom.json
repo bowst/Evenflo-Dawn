@@ -1,0 +1,127 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "evenflo_page_title_WEdbBV": {
+      "type": "evenflo-page-title",
+      "settings": {
+        "page_title": "Contact"
+      }
+    },
+    "94000f54-3969-4ee6-a915-e78863cb7546": {
+      "type": "rich-text",
+      "blocks": {
+        "template--15815875330204__94000f54-3969-4ee6-a915-e78863cb7546-1689607271c145c82c-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h1"
+          }
+        },
+        "template--15815875330204__94000f54-3969-4ee6-a915-e78863cb7546-1689607271c145c82c-1": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15815875330204__94000f54-3969-4ee6-a915-e78863cb7546-1689607271c145c82c-0",
+        "template--15815875330204__94000f54-3969-4ee6-a915-e78863cb7546-1689607271c145c82c-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "877222ca-2c41-49d3-b116-acb35ab52e59": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "template--15815875330204__877222ca-2c41-49d3-b116-acb35ab52e59-column-1": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "<br><strong>A special message from our ParentLink team:<\/strong> Your questions are important to us! We have approached our peak season and our call center is experiencing high call and high email volume making wait times longer than usual. We appreciate your patience as we continue to assist as expeditiously as possible, thank you for being a loyal consumer to Evenflo!<br>\n\n<h4>Chat with us<\/h4>\n\nYou can get in touch with us at any time during business hours by using LiveChat.<\/p>\n<p>\n<br>\nAvailable between 9am and 5pm, Monday through Friday<\/p>\n            <div data-id=\"14e749b8fb\" class=\"livechat_button action_button cc-button\">\n          <a href=\"https:\/\/www.livechat.com\/?utm_source=chat_button&amp;utm_medium=referral&amp;utm_campaign=lc_3753191\"\n            >Chat Now<\/a\n          >",
+            "title": "Looking for help",
+            "text": "<p>You're welcome to contact Evenflo directly <strong>Monday through Friday between 8am and 5pm ET<\/strong>. We provide support for both US and Canada, and cover Evenflo, Evenflo GOLD, ExerSaucer, Snugli, and Urbini branded products.<\/p><p><\/p><p><\/p><p><\/p><p><\/p><p><\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--15815875330204__877222ca-2c41-49d3-b116-acb35ab52e59-column-2": {
+          "type": "column",
+          "settings": {
+            "liquid_content": "<script src=\"https:\/\/www.google.com\/recaptcha\/api.js\"><\/script>\n<script>\n function timestamp() { var response = document.getElementById(\"g-recaptcha-response\"); if (response == null || response.value.trim() == \"\") {var elems = JSON.parse(document.getElementsByName(\"captcha_settings\")[0].value);elems[\"ts\"] = JSON.stringify(new Date().getTime());document.getElementsByName(\"captcha_settings\")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); \n\n\n $(\"form\").submit(function(event) {\n   var recaptcha = document.getElementById(\"g-recaptcha-response\");\n   if (recaptcha === \"\") {\n      event.preventDefault();\n   }\n});\n\nfunction submitButtonClick(event) {\n    var v = grecaptcha.getResponse();\n    console.log(\"EVENT SUBMITTEd\", v)\n    if(v){\n        console.log(\"submitting\")\n    } else {\n      event.preventDefault();\n      alert(\"Please check the recaptcha\");\n    }\n      \n\t\t\/\/other stuff you want to do instead...\n} \n<\/script>\n<style>\n\n  .field__input { border: solid 1px black}\n<\/style>\n<!--  ----------------------------------------------------------------------  -->\n<!--  NOTE: Please add the following <FORM> element to your page.             -->\n<!--  ----------------------------------------------------------------------  -->\n\n<form id=\"contact-form\" onsubmit=\"submitButtonClick(event)\" action=\"https:\/\/webto.salesforce.com\/servlet\/servlet.WebToCase?encoding=UTF-8\" method=\"POST\">\n\n<input type=hidden name='captcha_settings' value='{\"keyname\":\"EvenfloDomainreCAPTCHA\",\"fallback\":\"true\",\"orgId\":\"00Df4000002dTF0\",\"ts\":\"\"}'>\n<input type=hidden name=\"orgid\" value=\"00Df4000002dTF0\">\n<input type=hidden name=\"retURL\" value=\"http:\/\/www.evenflo.com\">\n\n<!--  ----------------------------------------------------------------------  -->\n<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->\n<!--  these lines if you wish to test in debug mode.                          -->\n<!--  <input type=\"hidden\" name=\"debug\" value=1>                              -->\n<!--  <input type=\"hidden\" name=\"debugEmail\" value=\"alexs@orion-gs.com\">      -->\n<!--  ----------------------------------------------------------------------  -->\n\nFirst Name:<input  id=\"00N5G00000WigJE\" class=\"field__input\" maxlength=\"255\" name=\"00N5G00000WigJE\" size=\"20\" type=\"text\" required=\"yes\"  \/><br>\n\nLast Name:<input  id=\"00N5G00000WigJJ\" class=\"field__input\" maxlength=\"255\" name=\"00N5G00000WigJJ\" size=\"20\" type=\"text\" required=\"yes\" \/><br>\n\n<label for=\"email\">Email<\/label><input  id=\"email\" maxlength=\"80\" name=\"email\" size=\"20\" type=\"text\" required=\"yes\" class=\"field__input\"  \/><br>\n\n<label for=\"phone\">Phone<\/label><input  id=\"phone\" maxlength=\"40\" name=\"phone\" size=\"20\" type=\"text\" class=\"field__input\"  \/><br>\n\nStreet:<input  id=\"00N5G00000WigJT\" maxlength=\"255\" name=\"00N5G00000WigJT\" size=\"20\" type=\"text\" class=\"field__input\"  \/><br>\n\nCity:<input  id=\"00N5G00000WigJO\" maxlength=\"255\" name=\"00N5G00000WigJO\" size=\"20\" type=\"text\" class=\"field__input\"  \/><br>\n\nState:<input  id=\"00N5G00000WigJS\" maxlength=\"255\" name=\"00N5G00000WigJS\" size=\"20\" type=\"text\" class=\"field__input\"  \/><br>\n\nZip:<input  id=\"00N5G00000WigJU\" maxlength=\"255\" name=\"00N5G00000WigJU\" size=\"20\" type=\"text\" class=\"field__input\"  \/><br>\n\nOrder Number:<input  id=\"00N5G00000WigJR\" maxlength=\"255\" name=\"00N5G00000WigJR\" size=\"20\" type=\"text\" class=\"field__input\"  \/><br>\n\nModel Number:<input  id=\"00N5G00000WigJQ\" maxlength=\"255\" name=\"00N5G00000WigJQ\" size=\"20\" type=\"text\" class=\"field__input\"  \/><br>\n\nManufacturer Date:<span class=\"dateInput dateOnlyInput\"><input  id=\"00N5G00000WigJP\" name=\"00N5G00000WigJP\" size=\"12\" type=\"text\" class=\"field__input\"  \/><\/span><br>\n\n<label for=\"description\">Comment<\/label><textarea name=\"description\" class=\"field__input\" ><\/textarea><br>\n\n<input id=\"recordType\" name=\"recordType\" type=\"hidden\" value=\"0125G000001NaoT\">\n\n<input id=\"OwnerId\" name=\"OwnerId\" type=\"hidden\" value=\"00Gf4000003U5HV\">\n\n<input id=\"Origin\" name=\"Origin\" type=\"hidden\" value=\"Web\">\n\n\n<div class=\"g-recaptcha\" data-sitekey=\"6LdhHrQmAAAAAIzG4KNd6VH3BABBMqlX451RVTZ3\"><\/div><br>\n<input type=\"submit\" name=\"submit\">\n\n<\/form><\/div><\/div>\n            <\/div>\n          <\/li><\/ul><\/slider-component>\n    <div class=\"center\"><\/div>\n  <\/div>\n<\/div>",
+            "title": "E-Mail Us",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15815875330204__877222ca-2c41-49d3-b116-acb35ab52e59-column-1",
+        "template--15815875330204__877222ca-2c41-49d3-b116-acb35ab52e59-column-2"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "7b692cc5-e995-49a7-8ba0-a33a1a138a48": {
+      "type": "evenflo-contact-form",
+      "disabled": true,
+      "settings": {
+        "title": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ddf5ba73-8830-4100-964a-d7d8fc252a5b": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "evenflo_page_title_WEdbBV",
+    "94000f54-3969-4ee6-a915-e78863cb7546",
+    "877222ca-2c41-49d3-b116-acb35ab52e59",
+    "7b692cc5-e995-49a7-8ba0-a33a1a138a48",
+    "main",
+    "ddf5ba73-8830-4100-964a-d7d8fc252a5b"
+  ]
+}

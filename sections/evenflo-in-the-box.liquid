@@ -1,0 +1,42 @@
+{{ 'section-product-highlights.css' | asset_url | stylesheet_tag }}
+
+<section class="product-highlights">
+  <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
+  <h3>{{ section.settings.whats_in_the_box }} </h3>
+
+     {% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}
+                {% if retail_package_contents_value %}
+                <div>
+                  <h3>Contents</h3>
+                  <p>{{ retail_package_contents_value }}</p>
+                </div>
+                {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+  "name": "Evenflo Box",
+  "class": "content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "whats_in_the_box",
+      "label": "What's In the Box",
+      "default": "What's In the Box",
+      "placeholder": "What's In the Box"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Box"
+    }
+  ]
+}  
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

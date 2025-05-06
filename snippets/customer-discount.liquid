@@ -1,0 +1,11 @@
+
+
+{% assign discount_code = 'Early24Plus' %}
+
+{% if customer.tags contains 'swell_vip_bronze' or customer.tags contains 'swell_vip_gold' or customer.tags contains 'swell_vip_silver' %}
+  <script>
+    window.addEventListener('load', function () {
+      fetch('/discount/{{ discount_code }}');
+    });
+  </script>
+{% endif %}

@@ -1,0 +1,43 @@
+.benefits .content-container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.benefits h2 {
+  color: #fff;
+}
+
+.benefits h3 {
+  margin-bottom: 18px;
+}
+
+.benefits .flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+
+.benefits .flex-item {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 30px;
+}
+
+@media screen and (min-width: 560px) {
+  .benefits .flex-item {
+    width: 50%;
+    flex: 0 0 auto;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .benefits .flex-item {
+    width: 25%;
+  }
+}
+
+.benefits.anchor-gradient {
+  background: linear-gradient(#00aea9, #c1db95);
+}

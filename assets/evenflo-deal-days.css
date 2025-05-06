@@ -1,0 +1,111 @@
+.evenflo-deal-days-block{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.evenflo-deal-card-wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 60%;
+    margin: auto;
+}
+.evenflo-deal-card img{
+  display: none;
+}
+.evenflo-deal-grid {
+    display: none;
+    align-items: center;
+    max-width: 75%;
+    width: 100%;
+    margin: auto;
+}
+.evenflo-deal-grid-column{
+  width: 50%;
+}
+.evenflo-main-product-img,
+.evenflo-main-product-detail{
+  max-width:80%;
+  margin: auto;
+}
+
+.evenflo-main-product-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.evenflo-main-product-detail * {
+    text-align: center;
+    margin: 0;
+}
+.evenflo-main-product-detail h2{
+  position: relative;
+  max-width: max-content;
+  margin: auto;
+  padding-inline: 35px;
+  padding-bottom: 20px;
+}
+.evenflo-main-product-detail h2:after {
+    content: '';
+    background: red;
+    width: 100%;
+    height: 5px;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.evenflo-main-product-detail p {
+    font-size: 28px;
+}
+.evenflo-main-product-detail a {
+    background: #000000;
+    padding: 10px 40px;
+    max-width: max-content;
+    color: #fff;
+    text-decoration: none;
+    margin: auto;
+    transition: box-shadow .1s ease;
+}
+.evenflo-main-product-detail a:hover {
+  box-shadow:0 0 0 1px #000;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1469px){
+  .evenflo-deal-card-wrapper{
+    max-width: 75%;
+  }
+}
+@media screen and (max-width: 1199px){
+  .evenflo-deal-card-wrapper,
+  .evenflo-main-product-img,
+  .evenflo-main-product-detail,
+  .evenflo-deal-grid{
+    max-width: 100%;
+  }
+  .evenflo-deal-grid{
+    gap: 30px;
+  } 
+}
+@media screen and (max-width: 767px){
+  .evenflo-deal-days-block{
+    gap: 35px;
+  }
+  .evenflo-deal-card-wrapper{
+    gap: 16px;
+  }
+  .evenflo-deal-card {
+    width: calc(50% - 8px);
+  }
+  .evenflo-deal-card img{
+    margin: auto;
+  }
+  .evenflo-deal-grid{
+    flex-wrap: wrap;
+  } 
+  .evenflo-deal-grid-column{
+    width: 100%;
+  }
+}
