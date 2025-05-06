@@ -207,7 +207,7 @@
   text-transform: uppercase;
 }
 .card-content-link a:after {
-  content: "";
+  content: '';
   -webkit-mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M6.75 0.15625C6.90625 0 7.125 0 7.28125 0.15625L13.875 6.75C14.0312 6.90625 14.0312 7.125 13.875 7.28125L7.28125 13.875C7.125 14.0312 6.90625 14.0312 6.75 13.875L6.53125 13.6562C6.375 13.5 6.375 13.2812 6.53125 13.125L12.0938 7.53125H0.375C0.15625 7.53125 0 7.375 0 7.15625V6.84375C0 6.65625 0.15625 6.46875 0.375 6.46875H12.0938L6.53125 0.90625C6.375 0.75 6.375 0.53125 6.53125 0.375L6.75 0.15625Z" fill="currentColor"/></svg>');
   display: inline-block;
   width: 15px;
@@ -268,13 +268,6 @@
   justify-content: center;
 }
 
-.browse-categories button {
-  border: 1px solid var(--color-primary-100, #00aea9);
-  background: var(--color-primary-100, #00aea9);
-  color: var(--White, #fff);
-  text-transform: uppercase;
-}
-
 .category-content-wrapper {
   display: flex;
   flex-direction: column;
@@ -290,7 +283,7 @@
 }
 
 .category-block .heading h1:after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 88px;
   height: 4px;
@@ -469,7 +462,7 @@
 }
 
 .collection-block .heading h1:after {
-  content: "";
+  content: '';
   width: 80px;
   height: 4px;
   background: #2996c5;
@@ -563,7 +556,7 @@
 }
 
 .topic-block .heading h1:after {
-  content: "";
+  content: '';
   width: 80px;
   height: 4px;
   background: #2996c5;
@@ -633,10 +626,8 @@
   flex-wrap: wrap !important;
   justify-content: center !important;
 }
-.product-category-slider-wrapper.product-slider-wrapper-hide
-  .swiper-button-prev,
-.product-category-slider-wrapper.product-slider-wrapper-hide
-  .swiper-button-next,
+.product-category-slider-wrapper.product-slider-wrapper-hide .swiper-button-prev,
+.product-category-slider-wrapper.product-slider-wrapper-hide .swiper-button-next,
 .product-slider-wrapper.product-slider-wrapper-hide .swiper-button-prev,
 .product-slider-wrapper.product-slider-wrapper-hide .swiper-button-next {
   display: none !important;
@@ -755,7 +746,7 @@
     background: none;
   }
   .support-content-wrapper:after {
-    content: "";
+    content: '';
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
