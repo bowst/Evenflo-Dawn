@@ -270,6 +270,93 @@
                     </div>
                   </details>
                 </div>
+              {%- when 'evenflo-at-a-glance' -%}
+                {{ 'evenflo-section-at-a-glance.css' | asset_url | stylesheet_tag }}
+
+                <div class="at-a-glance">
+                  <div class="font-body-bold">
+                    At a glance
+                  </div>
+                  <div class="at-a-glance-wrapper">
+                    {%- if product.metafields.shopify.infant-age-group.value -%}
+                      <div class="at-a-glance-card">
+                        <div class="at-a-glance-card__image">
+                          {{- 'icon-child-age.svg' | inline_asset_content -}}
+                        </div>
+                        <div class="at-a-glance-card__content">
+                          <h3 class="at-a-glance-card__title">Child Age</h3>
+                          <p class="at-a-glance-card__description">
+                            {% for age in product.metafields.shopify.infant-age-group.value %}
+                              {{ age.label }}
+                              {% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                          </p>
+                        </div>
+                      </div>
+                    {%- endif -%}
+                    {%- if product.metafields.custom.forward_facing_weight_max.value -%}
+                      <div class="at-a-glance-card">
+                        <div class="at-a-glance-card__image">
+                          {{- 'icon-weight.svg' | inline_asset_content -}}
+                        </div>
+                        <div class="at-a-glance-card__content">
+                          <h3 class="at-a-glance-card__title">Child Weight</h3>
+                          <p class="at-a-glance-card__description">Min. {{ product.metafields.custom.forward_facing_weight_min.value }} lbs</p>
+                          <p class="at-a-glance-card__description">Max. {{ product.metafields.custom.forward_facing_weight_max.value }} lbs</p>
+                        </div>
+                      </div>
+                    {%- endif -%}
+                    {%- if product.metafields.sf_products.assembled_weight -%}
+                    <div class="at-a-glance-card">
+                      <div class="at-a-glance-card__image">
+                        {{- 'icon-weight.svg' | inline_asset_content -}}
+                      </div>
+                      <div class="at-a-glance-card__content">
+                        <h3 class="at-a-glance-card__title">Product Weight</h3>
+                        <p class="at-a-glance-card__description">{{ product.metafields.sf_products.assembled_weight }} lbs</p>
+                      </div>
+                    </div>
+                    {%- endif -%}
+                    {%- if product.metafields.custom.modes_of_use.value -%}
+                      <div class="at-a-glance-card">
+                        <div class="at-a-glance-card__image">
+                          {{- 'icon-sensorysoothe.svg' | inline_asset_content -}}
+                        </div>
+                        <div class="at-a-glance-card__content">
+                          <h3 class="at-a-glance-card__title">Modes of Use</h3>
+                          {% assign items = product.metafields.custom.modes_of_use.value | newline_to_br | split: '<br />' %}
+                          <p class="at-a-glance-card__description">
+                            {% for item in items %}
+                              {{ item }}<br>
+                            {% endfor %}
+                          </p>
+                        </div>
+                      </div>
+                    {%- endif -%}
+                    {%- if product.metafields.custom.sensorsafe.value == true -%}
+                      <div class="at-a-glance-card">
+                        <div class="at-a-glance-card__image">
+                          {{- 'icon-sensorsafe.svg' | inline_asset_content -}}
+                        </div>
+                        <div class="at-a-glance-card__content">
+                          <h3 class="at-a-glance-card__title">SensorSafe</h3>
+                          <a href="/pages/sensorsafe" class="at-a-glance-card__cta">See Details</a>
+                        </div>
+                      </div>
+                    {%- endif -%}
+                    {%- if product.metafields.custom.sensorysoothe.value == true -%}
+                      <div class="at-a-glance-card">
+                        <div class="at-a-glance-card__image">
+                          {{- 'icon-sensorysoothe.svg' | inline_asset_content -}}
+                        </div>
+                        <div class="at-a-glance-card__content">
+                          <h3 class="at-a-glance-card__title">SensorySoothe</h3>
+                          <a href="/pages/sensorysoothe" class="at-a-glance-card__cta">See Details</a>
+                        </div>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
@@ -2153,6 +2240,11 @@
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
       ]
+    },
+    {
+      "type": "evenflo-at-a-glance",
+      "name": "At a Glance",
+      "limit": 1
     }
   ],
   "settings": [

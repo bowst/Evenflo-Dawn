@@ -1,0 +1,33 @@
+/* .at-a-glance {
+  max-width: 44rem;
+} */
+
+.at-a-glance-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.at-a-glance-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 30%;
+  align-self: stretch;
+  background: #e3f2f3;
+  padding: 20px 15px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 130%;
+}
+
+.at-a-glance-card__title {
+  margin: 15px 0 6px;
+  font-weight: 700;
+}
+
+p.at-a-glance-card__description {
+  margin: 0;
+}
