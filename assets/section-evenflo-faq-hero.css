@@ -503,8 +503,8 @@
 }
 
 .collection-card:hover .collection-img {
-  margin-right: 0;
-  margin-bottom: 0;
+  margin-right: -40%;
+  margin-bottom: -40%;
 }
 @media screen and (max-width: 991px) {
   .collection-card {
@@ -581,7 +581,7 @@
   transition: transform 0.3s;
 }
 .topic-card:hover {
-  transform: scale(0.9);
+  transform: scale(0.96);
 }
 .topic-card a {
   text-decoration: none !important;
