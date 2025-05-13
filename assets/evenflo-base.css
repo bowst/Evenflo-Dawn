@@ -1,3 +1,7 @@
+body {
+  line-height: calc(1 + 0.4 / var(--font-body-scale));
+}
+
 h1,
 h2,
 h2,
@@ -20,6 +24,7 @@ h5,
 .h5 {
   font-weight: 700;
   text-transform: uppercase;
+  line-height: calc(1 / max(1, var(--font-heading-scale)));
 }
 @media only screen and (min-width: 750px) {
   h1,
@@ -32,7 +37,7 @@ h5,
   position: relative;
 }
 .heading-underline::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -10px;
   left: 0;
@@ -65,10 +70,10 @@ a {
   text-transform: uppercase;
 }
 .button:disabled,
-.button[aria-disabled="true"],
+.button[aria-disabled='true'],
 .button.disabled,
 .customer button:disabled,
-.customer button[aria-disabled="true"],
+.customer button[aria-disabled='true'],
 .customer button.disabled,
 .quantity__button.disabled {
   background-color: gray;
@@ -102,7 +107,7 @@ details[open] > .header__menu-item {
   text-decoration: none;
 }
 details[open] > .header__menu-item::after {
-  content: "";
+  content: '';
   display: block;
   width: calc(100% - 2.7rem);
   height: 2px;
@@ -119,27 +124,24 @@ details[open] > .header__menu-item::after {
 .header .mega-menu__link--level-2:not(:only-child) {
   margin-bottom: 0;
 }
-#shopify-section-template--15779855106204__369648eb-eb5b-42a1-b24e-d1fa01d0d60b
-  .gradient,
+#shopify-section-template--15779855106204__369648eb-eb5b-42a1-b24e-d1fa01d0d60b .gradient,
 #shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb,
-#shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb
-  .gradient,
+#shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb .gradient,
 #shopify-section-template--15779855106204__c381a814-fe0f-472f-aa35-34ec00dc633b,
-#shopify-section-template--15779855106204__c381a814-fe0f-472f-aa35-34ec00dc633b
-  .gradient {
+#shopify-section-template--15779855106204__c381a814-fe0f-472f-aa35-34ec00dc633b .gradient {
   background: #e3f2f3;
 }
-.product-form__input input[type="radio"] + .color-swatch {
+.product-form__input input[type='radio'] + .color-swatch {
   border: 3px solid #f4f5ff;
   width: 40px;
   height: 40px;
   padding: 0;
 }
-.product-form__input input[type="radio"]:checked + .color-swatch,
-.product-form__input input[type="radio"]:hover + .color-swatch {
+.product-form__input input[type='radio']:checked + .color-swatch,
+.product-form__input input[type='radio']:hover + .color-swatch {
   border: 3px solid #ccd1d1;
 }
-.product-form__input input[type="radio"] + .swatch {
+.product-form__input input[type='radio'] + .swatch {
   border: 3px solid #f4f5ff;
   width: 40px;
   height: 40px;
@@ -149,8 +151,8 @@ details[open] > .header__menu-item::after {
   justify-content: center;
   align-items: center;
 }
-.product-form__input input[type="radio"]:checked + .swatch,
-.product-form__input input[type="radio"]:hover + .swatch {
+.product-form__input input[type='radio']:checked + .swatch,
+.product-form__input input[type='radio']:hover + .swatch {
   border: 3px solid #ccd1d1;
   background: none;
 }
@@ -164,31 +166,30 @@ img {
 }
 
 .shopify-payment-button {
-    height: inherit;
-    flex: 1 0 calc(50% - 3px);
-    max-width: 100% !important;
+  height: inherit;
+  flex: 1 0 calc(50% - 3px);
+  max-width: 100% !important;
 }
 .baby-list-button {
-    max-width: 100% !important;
-    flex: 1 0 calc(50% - 3px);
-    height: 44px !important;
-    text-align: center;
+  max-width: 100% !important;
+  flex: 1 0 calc(50% - 3px);
+  height: 44px !important;
+  text-align: center;
 }
 
-
-.swatch-input__input+.swatch-input__label:hover, 
-.swatch-input__input:hover+.swatch-input__label {
-    outline: 3px solid #ccd1d1 !important;
+.swatch-input__input + .swatch-input__label:hover,
+.swatch-input__input:hover + .swatch-input__label {
+  outline: 3px solid #ccd1d1 !important;
 }
-.product-form__input input[type=radio]+label{
-  border:none !important;
+.product-form__input input[type='radio'] + label {
+  border: none !important;
 }
-.swatch-input__input+.swatch-input__label {
-  outline-offset:0 !important;
+.swatch-input__input + .swatch-input__label {
+  outline-offset: 0 !important;
 }
-.swatch-input__input:active+.swatch-input__label, 
-.swatch-input__input:checked+.swatch-input__label {
-    outline: 3px solid #ccd1d1 !important;
+.swatch-input__input:active + .swatch-input__label,
+.swatch-input__input:checked + .swatch-input__label {
+  outline: 3px solid #ccd1d1 !important;
 }
 .product-form__submit {
   margin-bottom: 1rem;
