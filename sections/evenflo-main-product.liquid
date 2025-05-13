@@ -278,7 +278,7 @@
                     At a glance
                   </div>
                   <div class="at-a-glance-wrapper">
-                    {%- if product.metafields.shopify.infant-age-group.value -%}
+                    {%- if product.metafields.sf_products.forward_facing_age_limit.value -%}
                       <div class="at-a-glance-card">
                         <div class="at-a-glance-card__image">
                           {{- 'icon-child-age.svg' | inline_asset_content -}}
@@ -286,34 +286,31 @@
                         <div class="at-a-glance-card__content">
                           <h3 class="at-a-glance-card__title">Child Age</h3>
                           <p class="at-a-glance-card__description">
-                            {% for age in product.metafields.shopify.infant-age-group.value %}
-                              {{ age.label }}
-                              {% unless forloop.last %}, {% endunless %}
-                            {% endfor %}
+                            {{ product.metafields.sf_products.forward_facing_age_limit.value }}
                           </p>
                         </div>
                       </div>
                     {%- endif -%}
-                    {%- if product.metafields.custom.forward_facing_weight_max.value -%}
+                    {%- if product.metafields.sf_products.child_weight_max.value -%}
                       <div class="at-a-glance-card">
                         <div class="at-a-glance-card__image">
                           {{- 'icon-weight.svg' | inline_asset_content -}}
                         </div>
                         <div class="at-a-glance-card__content">
                           <h3 class="at-a-glance-card__title">Child Weight</h3>
-                          <p class="at-a-glance-card__description">Min. {{ product.metafields.custom.forward_facing_weight_min.value }} lbs</p>
-                          <p class="at-a-glance-card__description">Max. {{ product.metafields.custom.forward_facing_weight_max.value }} lbs</p>
+                          <p class="at-a-glance-card__description">Min. {{ product.metafields.sf_products.child_weight_min.value }} lbs</p>
+                          <p class="at-a-glance-card__description">Max. {{ product.metafields.sf_products.child_weight_max.value }} lbs</p>
                         </div>
                       </div>
                     {%- endif -%}
-                    {%- if product.metafields.sf_products.assembled_weight -%}
+                    {%- if product.metafields.sf_products.assembled_weight.value -%}
                     <div class="at-a-glance-card">
                       <div class="at-a-glance-card__image">
                         {{- 'icon-weight.svg' | inline_asset_content -}}
                       </div>
                       <div class="at-a-glance-card__content">
                         <h3 class="at-a-glance-card__title">Product Weight</h3>
-                        <p class="at-a-glance-card__description">{{ product.metafields.sf_products.assembled_weight }} lbs</p>
+                        <p class="at-a-glance-card__description">{{ product.metafields.sf_products.assembled_weight.value }} lbs</p>
                       </div>
                     </div>
                     {%- endif -%}
@@ -333,7 +330,7 @@
                         </div>
                       </div>
                     {%- endif -%}
-                    {%- if product.metafields.custom.sensorsafe.value == true -%}
+                    {%- if product.metafields.sf_car_seat.sensorsafe.value == 1 -%}
                       <div class="at-a-glance-card">
                         <div class="at-a-glance-card__image">
                           {{- 'icon-sensorsafe.svg' | inline_asset_content -}}
@@ -344,7 +341,7 @@
                         </div>
                       </div>
                     {%- endif -%}
-                    {%- if product.metafields.custom.sensorysoothe.value == true -%}
+                    {%- if product.metafields.custom.sensorysoothe.value == 1 -%}
                       <div class="at-a-glance-card">
                         <div class="at-a-glance-card__image">
                           {{- 'icon-sensorysoothe.svg' | inline_asset_content -}}
