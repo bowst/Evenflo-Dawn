@@ -11,41 +11,29 @@
 >
   <div style="position: relative;">
     <div class="desktop">
-      <img
-        width=""
-        height=""
-        class="desktop"
-        src="
-          {% if customer.tags contains  "swell_vip_bronze" %}
-            https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Memorial_Day_Promo_2025_HP_Header_1600x450_1e77bbcf-604b-4c70-b2c0-72cfce3f3382.jpg?v=1747769429
-          {% elsif customer.tags contains "swell_vip_silver" %}
-           https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Memorial_Day_Promo_2025_HP_Header_1600x450_1e77bbcf-604b-4c70-b2c0-72cfce3f3382.jpg?v=1747769429
-          {% elsif customer.tags contains "swell_vip_gold" %}
-          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Memorial_Day_Promo_2025_HP_Header_1600x450_1e77bbcf-604b-4c70-b2c0-72cfce3f3382.jpg?v=1747769429
-          {% else %}
-          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Memorial_Day_Promo_2025_HP_Header_1600x450_1e77bbcf-604b-4c70-b2c0-72cfce3f3382.jpg?v=1747769429
-          {% endif %}
-        "
-      >
+      {% if customer.tags contains 'swell_vip_bronze'
+        or customer.tags contains 'swell_vip_silver'
+        or customer.tags contains 'swell_vip_gold'
+      %}
+        <img src="{{ section.settings.desktop_image }}" alt="Loyalty Banner">
+      {% else %}
+        <video autoplay muted loop playsinline class="desktop">
+          <source src="{{ section.settings.desktop_video_non_member }}" type="video/mp4">
+        </video>
+      {% endif %}
     </div>
 
     <div class="mobile">
-      <img
-        width=""
-        height=""
-        class="mobile"
-        src="
-          {% if customer.tags contains  "swell_vip_bronze" %}
-        https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Memorial_Day_Promo_2025_HP_Header_400x500_1.jpg?v=1747769462
-          {% elsif customer.tags contains "swell_vip_silver" %}
-        https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Memorial_Day_Promo_2025_HP_Header_400x500_1.jpg?v=1747769462
-          {% elsif customer.tags contains "swell_vip_gold" %}
-         https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Memorial_Day_Promo_2025_HP_Header_400x500_1.jpg?v=1747769462
-          {% else %}
-          https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Memorial_Day_Promo_2025_HP_Header_400x500_1.jpg?v=1747769462
-          {% endif %}
-        "
-      >
+      {% if customer.tags contains 'swell_vip_bronze'
+        or customer.tags contains 'swell_vip_silver'
+        or customer.tags contains 'swell_vip_gold'
+      %}
+        <img src="{{ section.settings.mobile_image }}" alt="Loyalty Banner">
+      {% else %}
+        <video autoplay muted loop playsinline class="mobile">
+          <source src="{{ section.settings.mobile_video_non_member }}" type="video/mp4">
+        </video>
+      {% endif %}
     </div>
   </div>
 </a>
@@ -92,6 +80,28 @@
       "id": "non_member",
       "label": "No Loyalty Banner Link",
       "default": "Add url here"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image - Members"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image - Members"
+    },
+    {
+      "type": "url",
+      "id": "desktop_video_non_member",
+      "label": "Desktop Video - Non Members",
+      "info": "MP4 format required"
+    },
+    {
+      "type": "url",
+      "id": "mobile_video_non_member",
+      "label": "Mobile Video - Non Members",
+      "info": "MP4 format required"
     }
   ],
   "presets": [
