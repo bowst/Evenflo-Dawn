@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "evenflo_loyalty_banner_nijkJM": {
+      "type": "evenflo-loyalty-banner",
+      "name": "Evenflo Loyalty Banner",
+      "settings": {
+        "bronze_and_silver": "Add url here",
+        "gold": "Add url here",
+        "non_member": "Add url here"
+      }
+    },
     "evenflo_image_video_banner_83ndy4": {
       "type": "evenflo-image-video-banner",
       "blocks": {
@@ -45,6 +54,7 @@
         "heading_R3UnCL",
         "buttons_4V7d6B"
       ],
+      "disabled": true,
       "custom_css": [
         "h1 {font-weight: 300;}",
         "h2 {color: white; font-weight: 300;}",
@@ -517,6 +527,7 @@
     }
   },
   "order": [
+    "evenflo_loyalty_banner_nijkJM",
     "evenflo_image_video_banner_83ndy4",
     "evenflo_featured_collection_XHFN7m",
     "evenflo_image_text_ALMbqz",
