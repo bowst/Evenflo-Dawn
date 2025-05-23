@@ -406,6 +406,19 @@
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
+    "description": "For 100 years and counting, Evenflo has designed smart, innovative baby gear to help make growing with little ones safer and easier. We offer a full lineup of child car seats, booster seats, strollers, travel systems, home gear, and other baby essentials.",
+      "url": "https://www.evenflo.com",
+      "foundingDate": "1920",
+      "contactPoint" : [
+        { "@type" : "ContactPoint",
+          "telephone" : "+1-800-233-5921",
+          "contactType" : "customer service",
+          "areaServed" : "US"
+        } ], 
+          "knowsAbout": [
+        "https://www.wikidata.org/wiki/Q4402404",
+        "https://www.wikidata.org/wiki/Q507141"
+      ],
     "sameAs": [
       {{ settings.social_twitter_link | json }},
       {{ settings.social_facebook_link | json }},
