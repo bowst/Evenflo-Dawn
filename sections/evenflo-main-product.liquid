@@ -870,7 +870,26 @@
     -%}
 
     <script type="application/ld+json">
-      {{ product | structured_data }}
+        {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{ product.title | escape }}",
+    "image": "{{ product.featured_image | img_url: 'large' | escape }}",
+    "description": "{{ product.description | strip_html | escape }}",
+    "sku": "{{ product.sku }}",
+    "brand": {
+      "@type": "Brand",
+      "name": "{{ product.vendor | escape }}"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "{{ shop.currency }}",
+      "price": "{{ product.price | divided_by: 100 }}",
+      "availability": "{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+      "url": "{{ product.url }}",
+      "priceValidUntil": "{{ 'now' | date: '%Y-12-31' }}" 
+    }
+  }
     </script>
   </div>
 </product-info>
