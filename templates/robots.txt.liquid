@@ -1,22 +1,47 @@
-# we use Shopify as our ecommerce platform
-{%- comment -%}
-# Caution! Please read https://help.shopify.com/en/manual/promoting-marketing/seo/editing-robots-txt before proceeding to make changes to this file.
-{% endcomment %}
+# We use Shopify as our ecommerce platform.
 {% for group in robots.default_groups %}
   {{- group.user_agent -}}
-
   {% for rule in group.rules %}
     {{- rule -}}
   {% endfor %}
 
   {%- if group.user_agent.value == '*' -%}
-    {{ 'Disallow: */wpm@' }}
-  {%- endif -%}
+    # Custom rules for all user agents
+    Disallow: /services/login_with_shop/authorize
+    Disallow: /*?utm_source=*
+    Disallow: /*?cmp_id=*
+    Disallow: /*?cmp_rec=*
+    Disallow: /*?_kx=*
+    Disallow: /*?redirect_uri=*
+    Disallow: /*?customer_posted=*
+    Disallow: /*?contact_posted=*
+    Disallow: /*?form_type=*
+    Disallow: /*?pf_id=*
+    Disallow: /*?pr_prod_strat=*
+    Disallow: /*?pr_rec_id=*
+    Disallow: /*?pr_rec_pid=*
+    Disallow: /*?pr_ref_pid=*
+    Disallow: /*?pr_seq=*
+    Disallow: /*?q=*
+    Disallow: /*?sort_by=*
+    Disallow: /account/
+    Disallow: /admin/
+    Disallow: /cart
+    Disallow: /checkout
+    Disallow: /collections/*/products/*
+    Disallow: /collections/*/*filter=*
+    Disallow: /collections/*/*sort_by=*
+    Disallow: /collections/*/*page=*
+    Disallow: /comments/feed
+    Disallow: /community/
+    Disallow: /pages/contact*
+    Disallow: /pages/search*
+    Disallow: /policies/
+    Disallow: /search
+    Disallow: /wishlist
+  {% endif %}
 
   {%- if group.sitemap != blank -%}
     {{ group.sitemap }}
   {%- endif -%}
 {% endfor %}
-
-User-agent: *
-Disallow: /services/login_with_shop/authorize
