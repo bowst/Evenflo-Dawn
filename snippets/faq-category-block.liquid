@@ -28,15 +28,13 @@
 </div>
 
 <style>
-  /* Center skeleton buttons with flex */
+  /* Category buttons skeleton - centered */
   .tab-header.skeleton-loading {
     display: flex;
     justify-content: center;
     gap: 12px;
     padding: 16px 0;
   }
-
-  /* Skeleton buttons size and shimmer */
   .tab-header.skeleton-loading .skeleton-tag {
     width: 145px;
     height: 38px;
@@ -46,19 +44,25 @@
     animation: shimmer 1.5s infinite ease-in-out;
   }
 
-  /* Products container fixed size */
+  /* tab-content-wrapper - flexible size */
   .tab-content-wrapper {
-    width: 292.8px;
-    height: 322.8px;
     position: relative;
     overflow: hidden;
   }
 
-  /* Products skeleton shimmer effect */
-  .tab-content-wrapper.skeleton-loading {
+  /* Inner container inside tab-content-wrapper fixed size */
+  .tab-content-wrapper > .content-inner {
+    width: 292.8px;
+    height: 322.8px;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  /* Skeleton loading effect on inner container */
+  .tab-content-wrapper.skeleton-loading > .content-inner {
     background: #f1f2f3;
   }
-  .tab-content-wrapper.skeleton-loading::before {
+  .tab-content-wrapper.skeleton-loading > .content-inner::before {
     content: "";
     position: absolute;
     top: 0; left: -150%;
@@ -66,6 +70,7 @@
     height: 100%;
     background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
     animation: shimmer-slide 1.5s infinite;
+    border-radius: 12px;
   }
 
   @keyframes shimmer {
@@ -79,16 +84,16 @@
 </style>
 
 <script>
-  // Skeleton markup for categories buttons
+  // Skeleton markup for category buttons
   const categoriesSkeletonMarkup = `
     <button class="skeleton-tag"></button>
     <button class="skeleton-tag"></button>
     <button class="skeleton-tag"></button>
   `;
 
-  // Skeleton markup for products area (simple block)
+  // Skeleton markup for products - add .content-inner wrapper with fixed size
   const productsSkeletonMarkup = `
-    <div style="width: 100%; height: 100%; border-radius: 12px;"></div>
+    <div class="content-inner"></div>
   `;
 
   function getPaginatedCategories() {
@@ -146,20 +151,24 @@
     productsWrapper.classList.add('skeleton-loading');
     productsWrapper.innerHTML = productsSkeletonMarkup;
 
-    // Replace this fetch URL with your actual API endpoint to get products by category
+    // Replace with your real fetch and rendering logic
     fetch(evenFloFAQURL + 'products/getByCategory?id=' + categoryId)
       .then(response => response.json())
       .then(data => {
         productsWrapper.classList.remove('skeleton-loading');
 
-        // Build product HTML here (simplified example)
-        let html = '<ul>';
+        // Example render inside content-inner div
+        const innerDiv = document.createElement('div');
+        innerDiv.classList.add('content-inner');
+        let html = '<ul style="padding: 10px;">';
         (data.products || []).forEach(product => {
           html += `<li>${product.name}</li>`;
         });
         html += '</ul>';
+        innerDiv.innerHTML = html;
 
-        productsWrapper.innerHTML = html;
+        productsWrapper.innerHTML = '';
+        productsWrapper.appendChild(innerDiv);
       })
       .catch(error => {
         console.error('Error fetching products:', error);
@@ -172,3 +181,4 @@
     getPaginatedCategories();
   });
 </script>
+
