@@ -15,34 +15,6 @@
 .question-banner-wrapper.question-banner-loading .question-col.skeleton {
         background: #f1f2f3;
 }
-  .question-banner-wrapper.question-banner-loading .question-col.skeleton::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  pointer-events: none;
-  z-index: 10;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
 </style>
 <script>
   // Function to initialize product list interactions
