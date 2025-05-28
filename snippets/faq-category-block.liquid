@@ -5,6 +5,41 @@
     <div class="heading center">
       <h1>{{ category_title }}</h1>
     </div>
+  {% endif %}
+
+    <div class="category-tab-wrapper" id="categoryTabWrapper">
+
+      <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
+         <!-- Loader -->
+         <div id="categoriesLoader" class="loader" style="display: none;"></div>
+      </div>
+
+      <div class="tab-body">
+        <div class="tab-content-wrapper" id="productsByCategory" data-faqs-to-show="{{ products_to_show }}">
+          <!-- Loader -->
+          <div id="productByCategoriesLoader" class="loader" style="display: none;"></div>
+         
+        </div>
+      </div>
+
+      {% if show_title %}
+        <div class="browse-categories" id="browseCategoriesDiv">
+
+        </div>
+      {% endif %}
+     
+
+    </div>
+  </div>
+</div>
+
+<div class="category-block">
+  <div class="category-content-wrapper page-width">
+
+    {% if show_title %}
+    <div class="heading center">
+      <h1>{{ category_title }}</h1>
+    </div>
     {% endif %}
 
     <div class="category-tab-wrapper" id="categoryTabWrapper">
