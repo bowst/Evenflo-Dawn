@@ -3,6 +3,8 @@
   <div class="page-width">
     <div class="question-banner-wrapper">
       <!-- Content will be inserted here dynamically -->
+      <div class="question-col question-col-1"></div>
+      <div class="question-col"></div>
     </div>
   </div>
 </div>
@@ -38,7 +40,7 @@
       return;
     }
  container.classList.add('question-banner-loading');
-    container.innerHTML = `<div class="question-col question-col-1"></div><div class="question-col"></div>`;  // Clear existing content
+    container.innerHTML = "";  // Clear existing content
 
     const loader = appendLoader(container);
 
