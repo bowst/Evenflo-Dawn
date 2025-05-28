@@ -1,172 +1,8 @@
 {{ 'section-evenflo-answer.css' | asset_url | stylesheet_tag }}
-
-<style>
-/* Skeleton Loading Styles */
-.skeleton-loading {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem 0;
-}
-
-.skeleton-col {
-  flex: 1;
-}
-
-.skeleton-col:first-child {
-  flex: 2;
-}
-
-.skeleton-item {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: skeleton-shimmer 1.5s infinite;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.skeleton-title {
-  height: 3rem;
-  width: 80%;
-  margin-bottom: 0.5rem;
-}
-
-.skeleton-subtitle {
-  height: 1.5rem;
-  width: 40%;
-  margin-bottom: 2rem;
-}
-
-.skeleton-text {
-  height: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.skeleton-text:nth-child(1) { width: 100%; }
-.skeleton-text:nth-child(2) { width: 95%; }
-.skeleton-text:nth-child(3) { width: 85%; }
-.skeleton-text:nth-child(4) { width: 90%; }
-
-.skeleton-tags {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.skeleton-tag {
-  height: 2rem;
-  width: 80px;
-  border-radius: 20px;
-}
-
-.skeleton-products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.skeleton-product {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.skeleton-product-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-}
-
-.skeleton-product-title {
-  height: 1rem;
-  width: 80%;
-}
-
-.skeleton-section-title {
-  height: 2rem;
-  width: 60%;
-  margin-bottom: 1rem;
-}
-
-@keyframes skeleton-shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-/* Hide skeleton when content is loaded */
-.content-loaded .skeleton-loading {
-  display: none;
-}
-
-/* Initially hide the actual content */
-.question-banner-wrapper .question-col {
-  display: none;
-}
-
-/* Show content when loaded */
-.content-loaded .question-banner-wrapper .question-col {
-  display: block;
-}
-</style>
-
 <div class="question-block">
   <div class="page-width">
     <div class="question-banner-wrapper">
-      <!-- Skeleton Loading Structure -->
-      <div class="skeleton-loading">
-        <!-- Main Content Column Skeleton -->
-        <div class="skeleton-col">
-          <div class="skeleton-item skeleton-title"></div>
-          <div class="skeleton-item skeleton-subtitle"></div>
-          
-          <!-- Description skeleton -->
-          <div class="skeleton-text-block">
-            <div class="skeleton-item skeleton-text"></div>
-            <div class="skeleton-item skeleton-text"></div>
-            <div class="skeleton-item skeleton-text"></div>
-            <div class="skeleton-item skeleton-text"></div>
-          </div>
-          
-          <!-- Tags skeleton -->
-          <div class="skeleton-tags">
-            <div class="skeleton-item skeleton-tag"></div>
-            <div class="skeleton-item skeleton-tag"></div>
-            <div class="skeleton-item skeleton-tag"></div>
-          </div>
-        </div>
-        
-        <!-- Products Column Skeleton -->
-        <div class="skeleton-col">
-          <div class="skeleton-item skeleton-section-title"></div>
-          
-          <div class="skeleton-products">
-            <div class="skeleton-product">
-              <div class="skeleton-item skeleton-product-image"></div>
-              <div class="skeleton-item skeleton-product-title"></div>
-            </div>
-            <div class="skeleton-product">
-              <div class="skeleton-item skeleton-product-image"></div>
-              <div class="skeleton-item skeleton-product-title"></div>
-            </div>
-            <div class="skeleton-product">
-              <div class="skeleton-item skeleton-product-image"></div>
-              <div class="skeleton-item skeleton-product-title"></div>
-            </div>
-            <div class="skeleton-product">
-              <div class="skeleton-item skeleton-product-image"></div>
-              <div class="skeleton-item skeleton-product-title"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Actual content will be inserted here dynamically -->
+      <!-- Content will be inserted here dynamically -->
     </div>
   </div>
 </div>
@@ -187,18 +23,6 @@
     }
   }
 
-  // Function to show skeleton loading
-  function showSkeletonLoading() {
-    const container = document.querySelector('.question-banner-wrapper');
-    container.classList.remove('content-loaded');
-  }
-
-  // Function to hide skeleton loading and show content
-  function hideSkeletonLoading() {
-    const container = document.querySelector('.question-banner-wrapper');
-    container.classList.add('content-loaded');
-  }
-
   // Function to fetch and display FAQ data
   function fetchQuestionsAnswerData(id) {
     const container = document.querySelector('.question-banner-wrapper');
@@ -209,8 +33,9 @@
       return;
     }
 
-    // Show skeleton loading
-    showSkeletonLoading();
+    container.innerHTML = "";  // Clear existing content
+
+    const loader = appendLoader(container);
 
     fetch(evenFloFAQURL + 'faqs/' + id)
       .then(response => response.json())
@@ -221,6 +46,7 @@
           return ""
         }
         
+
         let productsContent = "";
         product?.products?.forEach(nestedProduct => {
           productsContent += `
@@ -238,14 +64,15 @@
         
         });
 
+  
         const tags = getTagsArray(product?.tags || []);
+
         const tagsHtml = getTagsHtml(tags);
 
         // Update breadcrumb links
         getBreadCrumbLinks(product?.question, 'question-answer');
 
-        // Insert the actual content (append to existing content, don't replace)
-        const contentHTML = `
+        container.innerHTML = `
           <div class="question-col question-col-1">
             <div class="question-content">
               <div class="heading">
@@ -301,18 +128,17 @@
             </div>
           </div>`;
         
-        // Add the content to the container
-        container.insertAdjacentHTML('beforeend', contentHTML);
-        
       })
       .catch(error => {
         console.error('Error fetching products:', error);
         redirectIfNoData([])
       })
       .finally(() => {
-        // Hide skeleton loading and show content
-        hideSkeletonLoading();
-        productList();
+        // Hide the loader
+        if (loader) {
+          loader.style.display = 'none';
+          productList();
+        }
       });
   }
 
