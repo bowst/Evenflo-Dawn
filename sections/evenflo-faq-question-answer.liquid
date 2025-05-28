@@ -17,9 +17,29 @@
     border-radius: 12px;
     padding: 10px;
   }
-
 </style>
 <script>
+  // Function to inject FAQPage JSON-LD schema in the <head>
+  function injectFAQSchema(faqData) {
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqData.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    };
+
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(faqSchema);
+    document.head.appendChild(scriptTag);
+  }
+
   // Function to initialize product list interactions
   function productList() {
     let productListWrapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
@@ -113,6 +133,12 @@
 
         // Update breadcrumb links
         getBreadCrumbLinks(product?.question, 'question-answer');
+
+        // Inject FAQ Schema JSON-LD for SEO
+        injectFAQSchema([{
+          question: product?.question,
+          answer: product?.answer
+        }]);
 
         container.innerHTML = `
           <div class="question-col question-col-1">
