@@ -99,64 +99,66 @@
 
 <script>
   // Skeleton markup for category buttons
-  const categoriesSkeletonMarkup = `
-    <button class="skeleton-tag"></button>
-    <button class="skeleton-tag"></button>
-    <button class="skeleton-tag"></button>
-  `;
+const categoriesSkeletonMarkup = `
+  <button class="skeleton-tag"></button>
+  <button class="skeleton-tag"></button>
+  <button class="skeleton-tag"></button>
+`;
 
   // Skeleton markup for products - fixed size container with shimmer
   const productsSkeletonMarkup = `
     <div class="content-inner"></div>
   `;
 
-  function getPaginatedCategories() {
-    const categoriesContainer = document.getElementById('categoriesContainer');
-    const productsWrapper = document.getElementById('productsByCategory');
-    if (!categoriesContainer || !productsWrapper) return;
+function getPaginatedCategories() {
+  const categoriesContainer = document.getElementById('categoriesContainer');
+  const productsWrapper = document.getElementById('productsByCategory');
+  if (!categoriesContainer || !productsWrapper) return;
 
-    // Show skeleton loaders for categories and products
-    categoriesContainer.classList.add('skeleton-loading');
-    categoriesContainer.innerHTML = categoriesSkeletonMarkup;
+  // Show skeleton loading BEFORE fetching categories
+  categoriesContainer.classList.add('skeleton-loading');
+  categoriesContainer.innerHTML = categoriesSkeletonMarkup;
 
-    productsWrapper.classList.add('skeleton-loading');
-    productsWrapper.innerHTML = productsSkeletonMarkup;
+  productsWrapper.classList.add('skeleton-loading');
+  productsWrapper.innerHTML = `<div class="content-inner"></div>`;
 
-    fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
-      .then(response => response.json())
-      .then(data => {
-        categoriesContainer.classList.remove('skeleton-loading');
-        categoriesContainer.innerHTML = ""; // Clear skeleton
+  fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
+    .then(response => response.json())
+    .then(data => {
+      categoriesContainer.classList.remove('skeleton-loading');
+      categoriesContainer.innerHTML = ""; // Clear skeleton
 
-        data?.forEach((category, index) => {
-          const categoryTag = document.createElement('button');
-          if(index === 0) categoryTag.classList.add("active");
-          categoryTag.textContent = category?.category_name;
+      if (!data || data.length === 0) {
+        categoriesContainer.innerHTML = '<p>No categories found.</p>';
+        return;
+      }
 
-          categoryTag.onclick = function() {
-            const allButtons = categoriesContainer.querySelectorAll('button');
-            allButtons.forEach(button => button.classList.remove("active"));
-            categoryTag.classList.add("active");
-            getProductsByCategory(category.id, category.category_name);
-          };
+      data.forEach((category, index) => {
+        const categoryTag = document.createElement('button');
+        if (index === 0) categoryTag.classList.add("active");
+        categoryTag.textContent = category?.category_name;
 
-          categoriesContainer.appendChild(categoryTag);
-        });
+        categoryTag.onclick = function() {
+          const allButtons = categoriesContainer.querySelectorAll('button');
+          allButtons.forEach(button => button.classList.remove("active"));
+          categoryTag.classList.add("active");
+          getProductsByCategory(category.id, category.category_name);
+        };
 
-        // Load products for first category by default
-        if(data.length > 0) {
-          getProductsByCategory(data[0].id, data[0].category_name);
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching categories:', error);
-        categoriesContainer.classList.remove('skeleton-loading');
-        categoriesContainer.innerHTML = '<p>Error loading categories</p>';
-        productsWrapper.classList.remove('skeleton-loading');
-        productsWrapper.innerHTML = '';
+        categoriesContainer.appendChild(categoryTag);
       });
-  }
 
+      // Load products for first category automatically
+      getProductsByCategory(data[0].id, data[0].category_name);
+    })
+    .catch(error => {
+      console.error('Error fetching categories:', error);
+      categoriesContainer.classList.remove('skeleton-loading');
+      categoriesContainer.innerHTML = '<p>Error loading categories</p>';
+      productsWrapper.classList.remove('skeleton-loading');
+      productsWrapper.innerHTML = '';
+    });
+}
   function getProductsByCategory(categoryId, categoryName) {
     const productsWrapper = document.getElementById('productsByCategory');
     if (!productsWrapper) return;
