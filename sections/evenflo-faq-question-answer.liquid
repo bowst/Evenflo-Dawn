@@ -1,79 +1,98 @@
 {{ 'section-evenflo-answer.css' | asset_url | stylesheet_tag }}
-
-<style>
-.skeleton-loading {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem 0;
-}
-
-.skeleton-col {
-  flex: 1;
-}
-
-.skeleton-col:first-child {
-  flex: 2;
-}
-
-.skeleton-item {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: skeleton-shimmer 1.5s infinite;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.skeleton-title {
-  height: 3rem;
-  width: 80%;
-}
-
-.skeleton-text {
-  height: 1rem;
-  width: 90%;
-}
-
-.skeleton-products {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.skeleton-product {
-  height: 120px;
-}
-
-@keyframes skeleton-shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-</style>
-
 <div class="question-block">
   <div class="page-width">
     <div class="question-banner-wrapper">
-      <!-- Skeleton Loading -->
-      <div class="skeleton-loading" id="skeletonLoader">
-        <div class="skeleton-col">
-          <div class="skeleton-item skeleton-title"></div>
-          <div class="skeleton-item skeleton-text"></div>
-          <div class="skeleton-item skeleton-text"></div>
-          <div class="skeleton-item skeleton-text"></div>
-        </div>
-        <div class="skeleton-col">
-          <div class="skeleton-item skeleton-title"></div>
-          <div class="skeleton-products">
-            <div class="skeleton-item skeleton-product"></div>
-            <div class="skeleton-item skeleton-product"></div>
-            <div class="skeleton-item skeleton-product"></div>
-          </div>
-        </div>
-      </div>
       <!-- Content will be inserted here dynamically -->
+      <div class="question-col question-col-1"></div>
+      <div class="question-col"></div>
     </div>
   </div>
 </div>
+<style>
+  .question-banner-wrapper.question-banner-loading{
+    height: 306px;
+  }
+  .question-banner-wrapper.question-banner-loading .question-col.skeleton {
+    background: #f1f2f3;
+    border-radius: 6px;
+    padding: 10px;
+  }
 
+  .skeleton-text,
+  .skeleton-product,
+  .skeleton-tag,
+  .skeleton-icon,
+  .skeleton-show-more {
+    position: relative;
+    background-color: #ddd;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  .skeleton-title {
+    width: 60%;
+    height: 24px;
+    margin-bottom: 10px;
+  }
+
+  .skeleton-subtitle {
+    width: 40%;
+    height: 20px;
+    margin-bottom: 8px;
+  }
+
+  .skeleton-paragraph {
+    width: 100%;
+    height: 12px;
+    margin: 6px 0;
+  }
+
+  .skeleton-product {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
+  }
+
+  .skeleton-tag {
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  .skeleton-icon {
+    width: 30px;
+    height: 30px;
+    float: right;
+  }
+
+  .skeleton-show-more {
+    width: 120px;
+    height: 24px;
+    margin-top: 10px;
+    border-radius: 12px;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+</style>
 <script>
   // Function to initialize product list interactions
   function productList() {
@@ -99,6 +118,44 @@
     if (!container) {
       return;
     }
+    
+    container.classList.add('question-banner-loading');
+    container.innerHTML = `
+      <div class="question-col question-col-1 skeleton">
+        <div class="question-content">
+          <div class="heading">
+            <div class="skeleton-text skeleton-title"></div>
+            <div class="skeleton-icon"></div>
+          </div>
+          <div class="description">
+            <div class="skeleton-text skeleton-paragraph"></div>
+            <div class="skeleton-text skeleton-paragraph"></div>
+            <div class="skeleton-text skeleton-paragraph"></div>
+          </div>
+          <div class="question-banner-links">
+            <div class="skeleton-tag"></div>
+            <div class="skeleton-tag"></div>
+            <div class="skeleton-tag"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-col skeleton">
+        <div class="question-content">
+          <div class="heading">
+            <div class="skeleton-text skeleton-subtitle"></div>
+          </div>
+          <div class="product-list">
+            <div class="skeleton-product"></div>
+            <div class="skeleton-product"></div>
+            <div class="skeleton-product"></div>
+          </div>
+          <div class="question-banner-links">
+            <div class="skeleton-show-more"></div>
+          </div>
+        </div>
+      </div>
+    `;
 
     fetch(evenFloFAQURL + 'faqs/' + id)
       .then(response => response.json())
@@ -109,11 +166,9 @@
           return ""
         }
         
-
         let productsContent = "";
         product?.products?.forEach(nestedProduct => {
           productsContent += `
-         
             <div class="product-content">
              <a href="/pages/evenflo-faq-product?pid=${nestedProduct?.id}">
               <div class="product-img">
@@ -124,21 +179,15 @@
               </div>
               </a>
             </div>`;
-        
         });
 
-  
         const tags = getTagsArray(product?.tags || []);
-
         const tagsHtml = getTagsHtml(tags);
 
         // Update breadcrumb links
         getBreadCrumbLinks(product?.question, 'question-answer');
 
-        // Hide skeleton loader
-        document.getElementById('skeletonLoader').style.display = 'none';
-
-        container.innerHTML += `
+        container.innerHTML = `
           <div class="question-col question-col-1">
             <div class="question-content">
               <div class="heading">
@@ -200,6 +249,7 @@
         redirectIfNoData([])
       })
       .finally(() => {
+        container.classList.remove('question-banner-loading');
         productList();
       });
   }
