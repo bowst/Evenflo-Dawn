@@ -41,7 +41,7 @@
  container.classList.add('question-banner-loading');
     container.innerHTML = "";  // Clear existing content
 
-    const loader = appendLoader(container);
+    // const loader = appendLoader(container);
 
     fetch(evenFloFAQURL + 'faqs/' + id)
       .then(response => response.json())
@@ -141,12 +141,13 @@
       })
       .finally(() => {
         // Hide the loader
-        if (loader) {
-          loader.style.display = 'none';
-            // Remove loading class after fetch is done (success or failure)
-      container.classList.remove('question-banner-loading');
+        container.classList.remove('question-banner-loading');
           productList();
-        }
+      //   if (loader) {
+      //     loader.style.display = 'none';
+      // container.classList.remove('question-banner-loading');
+      //     productList();
+      //   }
       });
   }
 
