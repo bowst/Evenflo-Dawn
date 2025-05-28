@@ -38,7 +38,7 @@
       return;
     }
  container.classList.add('question-banner-loading');
-    container.innerHTML = "";  // Clear existing content
+    container.innerHTML = `<div class="question-col question-col-1"></div><div class="question-col"></div>`;  // Clear existing content
 
     const loader = appendLoader(container);
 
