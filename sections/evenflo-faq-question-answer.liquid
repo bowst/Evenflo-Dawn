@@ -1,21 +1,79 @@
 {{ 'section-evenflo-answer.css' | asset_url | stylesheet_tag }}
+
+<style>
+.skeleton-loading {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.skeleton-col {
+  flex: 1;
+}
+
+.skeleton-col:first-child {
+  flex: 2;
+}
+
+.skeleton-item {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.skeleton-title {
+  height: 3rem;
+  width: 80%;
+}
+
+.skeleton-text {
+  height: 1rem;
+  width: 90%;
+}
+
+.skeleton-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.skeleton-product {
+  height: 120px;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+</style>
+
 <div class="question-block">
   <div class="page-width">
     <div class="question-banner-wrapper">
+      <!-- Skeleton Loading -->
+      <div class="skeleton-loading" id="skeletonLoader">
+        <div class="skeleton-col">
+          <div class="skeleton-item skeleton-title"></div>
+          <div class="skeleton-item skeleton-text"></div>
+          <div class="skeleton-item skeleton-text"></div>
+          <div class="skeleton-item skeleton-text"></div>
+        </div>
+        <div class="skeleton-col">
+          <div class="skeleton-item skeleton-title"></div>
+          <div class="skeleton-products">
+            <div class="skeleton-item skeleton-product"></div>
+            <div class="skeleton-item skeleton-product"></div>
+            <div class="skeleton-item skeleton-product"></div>
+          </div>
+        </div>
+      </div>
       <!-- Content will be inserted here dynamically -->
-      <div class="question-col question-col-1"></div>
-      <div class="question-col"></div>
     </div>
   </div>
 </div>
-<style>
-  .question-banner-wrapper.question-banner-loading{
-    height: 306px;
-}
-.question-banner-wrapper.question-banner-loading  .question-col.skeleton {
-        background: #f1f2f3;
-}
-</style>
+
 <script>
   // Function to initialize product list interactions
   function productList() {
@@ -41,45 +99,6 @@
     if (!container) {
       return;
     }
- container.classList.add('question-banner-loading');
-    container.innerHTML = `
-    <div class="question-col question-col-1 skeleton">
-      <div class="question-content">
-        <div class="heading">
-          <div class="skeleton-text skeleton-title"></div>
-          <div class="skeleton-icon"></div>
-        </div>
-        <div class="description">
-          <div class="skeleton-text skeleton-paragraph"></div>
-          <div class="skeleton-text skeleton-paragraph"></div>
-          <div class="skeleton-text skeleton-paragraph"></div>
-        </div>
-        <div class="question-banner-links">
-          <div class="skeleton-tag"></div>
-          <div class="skeleton-tag"></div>
-          <div class="skeleton-tag"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="question-col skeleton">
-      <div class="question-content">
-        <div class="heading">
-          <div class="skeleton-text skeleton-subtitle"></div>
-        </div>
-        <div class="product-list">
-          <div class="skeleton-product"></div>
-          <div class="skeleton-product"></div>
-          <div class="skeleton-product"></div>
-        </div>
-        <div class="question-banner-links">
-          <div class="skeleton-show-more"></div>
-        </div>
-      </div>
-    </div>
-  `;;  // Clear existing content
-
-    const loader = appendLoader(container);
 
     fetch(evenFloFAQURL + 'faqs/' + id)
       .then(response => response.json())
@@ -116,7 +135,10 @@
         // Update breadcrumb links
         getBreadCrumbLinks(product?.question, 'question-answer');
 
-        container.innerHTML = `
+        // Hide skeleton loader
+        document.getElementById('skeletonLoader').style.display = 'none';
+
+        container.innerHTML += `
           <div class="question-col question-col-1">
             <div class="question-content">
               <div class="heading">
@@ -178,14 +200,7 @@
         redirectIfNoData([])
       })
       .finally(() => {
-        // Hide the loader
-        container.classList.remove('question-banner-loading');
-          productList();
-      //   if (loader) {
-      //     loader.style.display = 'none';
-      // container.classList.remove('question-banner-loading');
-      //     productList();
-      //   }
+        productList();
       });
   }
 
