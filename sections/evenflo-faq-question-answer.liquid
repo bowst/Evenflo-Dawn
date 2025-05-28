@@ -1,157 +1,537 @@
-{{ 'section-evenflo-answer.css' | asset_url | stylesheet_tag }}
-<div class="question-block">
-  <div class="page-width">
-    <div class="question-banner-wrapper">
-      <!-- Content will be inserted here dynamically -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Skeleton Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .question-block {
+            padding: 20px 0;
+        }
+
+        .page-width {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Skeleton Loading Styles */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+        }
+        
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+        
+        .skeleton-wrapper {
+            padding: 20px 0;
+        }
+        
+        .skeleton-question-col {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .skeleton-question-col-1 {
+            flex: 2;
+        }
+        
+        .skeleton-question-col-2 {
+            flex: 1;
+        }
+        
+        .skeleton-heading {
+            margin-bottom: 20px;
+        }
+        
+        .skeleton-title {
+            height: 40px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        
+        .skeleton-subtitle {
+            height: 20px;
+            width: 60%;
+            margin-bottom: 15px;
+        }
+        
+        .skeleton-date {
+            height: 16px;
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        
+        .skeleton-description {
+            margin-bottom: 20px;
+        }
+        
+        .skeleton-text-line {
+            height: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .skeleton-text-line:nth-child(1) { width: 100%; }
+        .skeleton-text-line:nth-child(2) { width: 95%; }
+        .skeleton-text-line:nth-child(3) { width: 85%; }
+        .skeleton-text-line:nth-child(4) { width: 90%; }
+        .skeleton-text-line:nth-child(5) { width: 70%; }
+        
+        .skeleton-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .skeleton-tag {
+            height: 30px;
+            border-radius: 15px;
+        }
+        
+        .skeleton-tag:nth-child(1) { width: 80px; }
+        .skeleton-tag:nth-child(2) { width: 100px; }
+        .skeleton-tag:nth-child(3) { width: 90px; }
+        .skeleton-tag:nth-child(4) { width: 70px; }
+        
+        .skeleton-section-title {
+            height: 28px;
+            width: 180px;
+            margin-bottom: 20px;
+        }
+        
+        .skeleton-product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .skeleton-product-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .skeleton-product-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        .skeleton-product-title {
+            height: 20px;
+            width: 100%;
+        }
+        
+        .skeleton-show-more {
+            height: 40px;
+            width: 150px;
+            border-radius: 20px;
+        }
+
+        /* Actual content styles (hidden initially) */
+        .question-col {
+            display: flex;
+            gap: 30px;
+        }
+
+        .question-col-1 {
+            flex: 2;
+        }
+
+        .question-col-2 {
+            flex: 1;
+        }
+
+        .question-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .heading h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .heading h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .heading p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .description p {
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .product-list {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .product-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-content:hover {
+            background-color: #f5f5f5;
+        }
+
+        .product-img {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .product-title {
+            font-weight: 500;
+        }
+
+        .copy-clipboard-btn {
+            background: #00AEA9;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+
+        .question-banner-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .question-banner-links span {
+            background: #f0f0f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* Test button */
+        .test-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .test-btn {
+            background: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .test-btn:hover {
+            background: #005a87;
+        }
+        
+        @media (max-width: 768px) {
+            .skeleton-question-col,
+            .question-col {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Controls -->
+    <div class="test-controls">
+        <button class="test-btn" onclick="showSkeleton()">Show Skeleton</button>
+        <button class="test-btn" onclick="showContent()">Show Content</button>
+        <button class="test-btn" onclick="simulateLoading()">Simulate Loading</button>
     </div>
-  </div>
-</div>
 
-<script>
-  // Function to initialize product list interactions
-  function productList() {
-    let productListWrapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
-    let bullet = productListWrapper.length;
-    console.log(bullet, productListWrapper);
+    <div class="question-block">
+        <div class="page-width">
+            <div class="question-banner-wrapper" id="questionWrapper">
+                <!-- Content will be inserted here dynamically -->
+            </div>
+        </div>
+    </div>
 
-    if (bullet > 3) {
-      document.querySelector(".question-banner-wrapper .product-list").classList.add("product-list-custom");
-      document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").classList.add("question-banner-links-show");
-      document.querySelector(".question-banner-wrapper .product-list + .question-banner-links").addEventListener("click", () => {
-        document.querySelector(".question-banner-wrapper .product-list").classList.toggle("product-list-custom");
-      });
-    }
-  }
-
-  // Function to fetch and display FAQ data
-  function fetchQuestionsAnswerData(id) {
-    const container = document.querySelector('.question-banner-wrapper');
-    const questionAnswerBlock = document.getElementById('questionAnswerBlock');
-    let blocksToShow = questionAnswerBlock ? questionAnswerBlock.dataset.faqsToShow : 1;
-
-    if (!container) {
-      return;
-    }
-
-    container.innerHTML = "";  // Clear existing content
-
-    const loader = appendLoader(container);
-
-    fetch(evenFloFAQURL + 'faqs/' + id)
-      .then(response => response.json())
-      .then(product => {
-
-        if(product?.detail && containsString(product?.detail,errorString())){
-          redirectIfNoData([])
-          return ""
-        }
-        
-
-        let productsContent = "";
-        product?.products?.forEach(nestedProduct => {
-          productsContent += `
-         
-            <div class="product-content">
-             <a href="/pages/evenflo-faq-product?pid=${nestedProduct?.id}">
-              <div class="product-img">
-                <img src="${nestedProduct?.image}" alt="product" />
-              </div>
-              <div class="product-title">
-                ${nestedProduct?.name}
-              </div>
-              </a>
-            </div>`;
-        
-        });
-
-  
-        const tags = getTagsArray(product?.tags || []);
-
-        const tagsHtml = getTagsHtml(tags);
-
-        // Update breadcrumb links
-        getBreadCrumbLinks(product?.question, 'question-answer');
-
-        container.innerHTML = `
-          <div class="question-col question-col-1">
-            <div class="question-content">
-              <div class="heading">
-                <h1>
-                  <span>${product?.question}</span>
-                  <span onclick="copyCurrentUrlToClipboard()" class="copy-clipboard-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" viewBox="0 0 30 25" fill="none" class="copy-clipboard-svg">
-                      <path d="M27.1875 13.0625L21.8906 18.3594C19.2188 20.9844 14.9531 20.9844 12.3281 18.3594C9.84375 15.8281 9.70312 11.8438 12 9.17188L12.2344 8.89062C12.6562 8.42188 13.3594 8.375 13.8281 8.79688C14.2969 9.21875 14.3438 9.92188 13.9219 10.3906L13.7344 10.625C12.1406 12.4062 12.2344 15.0781 13.9219 16.7656C15.6562 18.5 18.5156 18.5 20.2969 16.7656L25.5938 11.4688C27.3281 9.6875 27.3281 6.875 25.5938 5.09375C23.9062 3.45312 21.2344 3.35938 19.4531 4.90625L19.1719 5.14062C18.7031 5.5625 18 5.51562 17.5781 5.04688C17.1562 4.57812 17.2031 3.875 17.6719 3.45312L17.9531 3.21875C20.625 0.875 24.6562 1.01562 27.1875 3.5C29.8125 6.125 29.8125 10.3906 27.1875 13.0625ZM2.76562 11.9844L8.10938 6.6875C10.7344 4.0625 15 4.0625 17.625 6.6875C20.1562 9.17188 20.2969 13.2031 17.9531 15.875L17.6719 16.1562C17.2969 16.625 16.5469 16.7188 16.0781 16.2969C15.6094 15.875 15.5625 15.1719 15.9844 14.7031L16.2656 14.4219C17.8125 12.6406 17.7188 9.96875 16.0312 8.28125C14.2969 6.5 11.4375 6.5 9.70312 8.28125L4.35938 13.5781C2.625 15.3125 2.625 18.1719 4.35938 19.9531C6.04688 21.5938 8.71875 21.6875 10.5 20.1406L10.7812 19.9062C11.25 19.4844 11.9531 19.5312 12.375 20C12.7969 20.4688 12.75 21.1719 12.2812 21.5938L12 21.8281C9.32812 24.1719 5.29688 24.0312 2.76562 21.5469C0.140625 18.9219 0.140625 14.6094 2.76562 11.9844Z" fill="#00AEA9"></path>
-                    </svg>
-                    <svg class="copied-clipboard-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
-                      <path fill="#00aea94d" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"/>
-                      <path fill="#00AEA9" d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"/>
-                    </svg>
-                  </span>
-                </h1>
-                <div onclick="copyCurrentUrlToClipboard()" class="copy-clipboard-btn">
-                  <span>COPY LINK</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" viewBox="0 0 30 25" fill="none" class="copy-clipboard-svg">
-                    <path d="M27.1875 13.0625L21.8906 18.3594C19.2188 20.9844 14.9531 20.9844 12.3281 18.3594C9.84375 15.8281 9.70312 11.8438 12 9.17188L12.2344 8.89062C12.6562 8.42188 13.3594 8.375 13.8281 8.79688C14.2969 9.21875 14.3438 9.92188 13.9219 10.3906L13.7344 10.625C12.1406 12.4062 12.2344 15.0781 13.9219 16.7656C15.6562 18.5 18.5156 18.5 20.2969 16.7656L25.5938 11.4688C27.3281 9.6875 27.3281 6.875 25.5938 5.09375C23.9062 3.45312 21.2344 3.35938 19.4531 4.90625L19.1719 5.14062C18.7031 5.5625 18 5.51562 17.5781 5.04688C17.1562 4.57812 17.2031 3.875 17.6719 3.45312L17.9531 3.21875C20.625 0.875 24.6562 1.01562 27.1875 3.5C29.8125 6.125 29.8125 10.3906 27.1875 13.0625ZM2.76562 11.9844L8.10938 6.6875C10.7344 4.0625 15 4.0625 17.625 6.6875C20.1562 9.17188 20.2969 13.2031 17.9531 15.875L17.6719 16.1562C17.2969 16.625 16.5469 16.7188 16.0781 16.2969C15.6094 15.875 15.5625 15.1719 15.9844 14.7031L16.2656 14.4219C17.8125 12.6406 17.7188 9.96875 16.0312 8.28125C14.2969 6.5 11.4375 6.5 9.70312 8.28125L4.35938 13.5781C2.625 15.3125 2.625 18.1719 4.35938 19.9531C6.04688 21.5938 8.71875 21.6875 10.5 20.1406L10.7812 19.9062C11.25 19.4844 11.9531 19.5312 12.375 20C12.7969 20.4688 12.75 21.1719 12.2812 21.5938L12 21.8281C9.32812 24.1719 5.29688 24.0312 2.76562 21.5469C0.140625 18.9219 0.140625 14.6094 2.76562 11.9844Z" fill="#00AEA9"></path>
-                  </svg>
-                  <svg class="copied-clipboard-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
-                    <path fill="#00aea94d" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"/>
-                    <path fill="#00AEA9" d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"/>
-                  </svg>
+    <script>
+        // Function to create and show skeleton loader
+        function appendLoader(container) {
+            const skeletonHTML = `
+                <div class="skeleton-wrapper">
+                    <div class="skeleton-question-col">
+                        <!-- Main Content Column -->
+                        <div class="skeleton-question-col-1">
+                            <div class="skeleton-heading">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-date"></div>
+                            </div>
+                            
+                            <div class="skeleton-description">
+                                <div class="skeleton skeleton-text-line"></div>
+                                <div class="skeleton skeleton-text-line"></div>
+                                <div class="skeleton skeleton-text-line"></div>
+                                <div class="skeleton skeleton-text-line"></div>
+                                <div class="skeleton skeleton-text-line"></div>
+                            </div>
+                            
+                            <div class="skeleton-tags">
+                                <div class="skeleton skeleton-tag"></div>
+                                <div class="skeleton skeleton-tag"></div>
+                                <div class="skeleton skeleton-tag"></div>
+                                <div class="skeleton skeleton-tag"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Related Products Column -->
+                        <div class="skeleton-question-col-2">
+                            <div class="skeleton-heading">
+                                <div class="skeleton skeleton-section-title"></div>
+                            </div>
+                            
+                            <div class="skeleton-product-grid">
+                                <div class="skeleton-product-item">
+                                    <div class="skeleton skeleton-product-image"></div>
+                                    <div class="skeleton skeleton-product-title"></div>
+                                </div>
+                                <div class="skeleton-product-item">
+                                    <div class="skeleton skeleton-product-image"></div>
+                                    <div class="skeleton skeleton-product-title"></div>
+                                </div>
+                                <div class="skeleton-product-item">
+                                    <div class="skeleton skeleton-product-image"></div>
+                                    <div class="skeleton skeleton-product-title"></div>
+                                </div>
+                                <div class="skeleton-product-item">
+                                    <div class="skeleton skeleton-product-image"></div>
+                                    <div class="skeleton skeleton-product-title"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skeleton skeleton-show-more"></div>
+                        </div>
+                    </div>
                 </div>
-                <p>Updated ${formatPostedDate(product?.updated)}</p>
-              </div>
-              <div class="description">
-                <p>${product?.answer}</p>
-              </div>
-              <div class="question-banner-links">
-                ${tagsHtml}
-              </div>
-            </div>
-          </div>
-          
-          <div class="question-col">
-            <div class="question-content">
-              <div class="heading">
-                <h2>Related Products</h2>
-              </div>
-              <div class="product-list">
-                ${productsContent}
-              </div>
-              <div class="question-banner-links">
-                <span>Show more products</span>
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M11.75 5.25C11.875 5.25 12 5.375 12 5.5V6.5C12 6.65625 11.875 6.75 11.75 6.75H6.75V11.75C6.75 11.9062 6.625 12 6.5 12H5.5C5.34375 12 5.25 11.9062 5.25 11.75V6.75H0.25C0.09375 6.75 0 6.65625 0 6.5V5.5C0 5.375 0.09375 5.25 0.25 5.25H5.25V0.25C5.25 0.125 5.34375 0 5.5 0H6.5C6.625 0 6.75 0.125 6.75 0.25V5.25H11.75Z" fill="#2996C5"></path>
-                  </svg>
-                </span>
-              </div>
-            </div>
-          </div>`;
-        
-      })
-      .catch(error => {
-        console.error('Error fetching products:', error);
-        redirectIfNoData([])
-      })
-      .finally(() => {
-        // Hide the loader
-        if (loader) {
-          loader.style.display = 'none';
-          productList();
+            `;
+            
+            container.innerHTML = skeletonHTML;
+            return container.querySelector('.skeleton-wrapper');
         }
-      });
-  }
 
-  // Initialize the script when the document is fully loaded
-  document.addEventListener('DOMContentLoaded', () => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+        // Function to show actual content
+        function showActualContent(container) {
+            const contentHTML = `
+                <div class="question-col question-col-1">
+                    <div class="question-content">
+                        <div class="heading">
+                            <h1>
+                                <span>How do I install the car seat base?</span>
+                                <span class="copy-clipboard-btn">
+                                    <span>COPY LINK</span>
+                                </span>
+                            </h1>
+                            <p>Updated March 15, 2024</p>
+                        </div>
+                        <div class="description">
+                            <p>Installing your car seat base properly is crucial for your child's safety. Follow these step-by-step instructions to ensure a secure installation. First, locate the LATCH anchors or seat belt path in your vehicle. Position the base firmly against the vehicle seat...</p>
+                        </div>
+                        <div class="question-banner-links">
+                            <span>Installation</span>
+                            <span>Safety</span>
+                            <span>Car Seat</span>
+                            <span>Base</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-col-2">
+                    <div class="question-content">
+                        <div class="heading">
+                            <h2>Related Products</h2>
+                        </div>
+                        <div class="product-list">
+                            <a href="#" class="product-content">
+                                <div class="product-img">
+                                    <img src="https://via.placeholder.com/60x60/00AEA9/white?text=P1" alt="product" />
+                                </div>
+                                <div class="product-title">
+                                    SafeMax Infant Car Seat
+                                </div>
+                            </a>
+                            <a href="#" class="product-content">
+                                <div class="product-img">
+                                    <img src="https://via.placeholder.com/60x60/00AEA9/white?text=P2" alt="product" />
+                                </div>
+                                <div class="product-title">
+                                    SecureRide Base
+                                </div>
+                            </a>
+                            <a href="#" class="product-content">
+                                <div class="product-img">
+                                    <img src="https://via.placeholder.com/60x60/00AEA9/white?text=P3" alt="product" />
+                                </div>
+                                <div class="product-title">
+                                    Advanced SensorSafe
+                                </div>
+                            </a>
+                            <a href="#" class="product-content">
+                                <div class="product-img">
+                                    <img src="https://via.placeholder.com/60x60/00AEA9/white?text=P4" alt="product" />
+                                </div>
+                                <div class="product-title">
+                                    LiteMax 35 Car Seat
+                                </div>
+                            </a>
+                        </div>
+                        <div class="question-banner-links">
+                            <span>Show more products</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = contentHTML;
+        }
 
-    if (urlParams.has('qid')) {
-      let questionID = urlParams.get('qid');
-      fetchQuestionsAnswerData(questionID);
-    } else {
-      window.location.href = '/pages/evenflo-faq-portal';
-    }
-  });
-</script>
+        // Test functions
+        function showSkeleton() {
+            const container = document.getElementById('questionWrapper');
+            appendLoader(container);
+        }
+
+        function showContent() {
+            const container = document.getElementById('questionWrapper');
+            showActualContent(container);
+        }
+
+        function simulateLoading() {
+            const container = document.getElementById('questionWrapper');
+            
+            // Show skeleton
+            appendLoader(container);
+            
+            // After 2 seconds, show content
+            setTimeout(() => {
+                showActualContent(container);
+            }, 2000);
+        }
+
+        // Your original function (simplified)
+        function fetchQuestionsAnswerData(id) {
+            const container = document.querySelector('.question-banner-wrapper');
+            
+            if (!container) {
+                console.error('Container not found!');
+                return;
+            }
+
+            console.log('Starting to fetch data...');
+            
+            // Show skeleton loading
+            const loader = appendLoader(container);
+            console.log('Skeleton should be visible now');
+
+            // Simulate API call (replace this with your actual fetch)
+            setTimeout(() => {
+                console.log('Simulating API response...');
+                
+                // Your actual API call would go here
+                // fetch(evenFloFAQURL + 'faqs/' + id)
+                //     .then(response => response.json())
+                //     .then(product => {
+                //         // Handle response and show content
+                //         showActualContent(container);
+                //     })
+                //     .catch(error => {
+                //         console.error('Error:', error);
+                //     });
+                
+                // For now, just show sample content
+                showActualContent(container);
+                
+            }, 2000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Page loaded');
+            
+            // Show skeleton by default
+            showSkeleton();
+            
+            // Check for URL parameters (your original logic)
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+
+            if (urlParams.has('qid')) {
+                let questionID = urlParams.get('qid');
+                console.log('Found question ID:', questionID);
+                fetchQuestionsAnswerData(questionID);
+            } else {
+                console.log('No question ID found');
+                // For testing, simulate loading after 1 second
+                setTimeout(() => {
+                    simulateLoading();
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
