@@ -40,7 +40,42 @@
       return;
     }
  container.classList.add('question-banner-loading');
-    container.innerHTML = "";  // Clear existing content
+    container.innerHTML = `
+    <div class="question-col question-col-1 skeleton">
+      <div class="question-content">
+        <div class="heading">
+          <div class="skeleton-text skeleton-title"></div>
+          <div class="skeleton-icon"></div>
+        </div>
+        <div class="description">
+          <div class="skeleton-text skeleton-paragraph"></div>
+          <div class="skeleton-text skeleton-paragraph"></div>
+          <div class="skeleton-text skeleton-paragraph"></div>
+        </div>
+        <div class="question-banner-links">
+          <div class="skeleton-tag"></div>
+          <div class="skeleton-tag"></div>
+          <div class="skeleton-tag"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="question-col skeleton">
+      <div class="question-content">
+        <div class="heading">
+          <div class="skeleton-text skeleton-subtitle"></div>
+        </div>
+        <div class="product-list">
+          <div class="skeleton-product"></div>
+          <div class="skeleton-product"></div>
+          <div class="skeleton-product"></div>
+        </div>
+        <div class="question-banner-links">
+          <div class="skeleton-show-more"></div>
+        </div>
+      </div>
+    </div>
+  `;;  // Clear existing content
 
     const loader = appendLoader(container);
 
