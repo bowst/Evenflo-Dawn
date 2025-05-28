@@ -33,67 +33,113 @@
   </div>
 </div>
 
+<div class="category-block">
+  <div class="category-content-wrapper page-width">
 
-<script>
- function getPaginatedCategories() {
-   // Show the loader
-   const loader = document.getElementById('categoriesLoader');
-   if (loader) {
-    loader.style.display = 'block';
+    {% if show_title %}
+    <div class="heading center">
+      <h1>{{ category_title }}</h1>
+    </div>
+    {% endif %}
+
+    <div class="category-tab-wrapper" id="categoryTabWrapper">
+
+      <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
+        <!-- Skeleton loader will be injected here -->
+      </div>
+
+      <div class="tab-body">
+        <div class="tab-content-wrapper" id="productsByCategory" data-faqs-to-show="{{ products_to_show }}">
+          <!-- You can similarly add skeleton for products loading if needed -->
+        </div>
+      </div>
+
+      {% if show_title %}
+      <div class="browse-categories" id="browseCategoriesDiv"></div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Skeleton styles similar to your given example */
+  .tab-header.skeleton-loading {
+    display: flex;
+    gap: 12px;
+  }
+  .tab-header.skeleton-loading .skeleton-tag {
+    background: linear-gradient(90deg, #e2e5e7 25%, #f5f5f5 50%, #e2e5e7 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite ease-in-out;
+    border-radius: 12px;
+    width: 100px;
+    height: 32px;
   }
   
-  fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
-    .then(response => response.json())
-    .then(data => {
-      getProductsByCategory(data[0]?.id,data[0]?.category_name);
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+</style>
 
-      const categoriesBlock = document.getElementById('categoriesContainer');
-      const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
-      
-      const container = document.querySelector('.tab-header'); 
-      container.innerHTML = ""; // Clear previous buttons
+<script>
+  // Skeleton HTML for category buttons
+  const categoriesSkeletonMarkup = `
+    <button class="skeleton-tag"></button>
+    <button class="skeleton-tag"></button>
+    <button class="skeleton-tag"></button>
+  `;
 
-      data?.forEach((category, index) => {
-        const categoryTag = document.createElement('button');
-  
-        const isActive = index === 0 ? "active" : "";
-        if (isActive) {
-          categoryTag.classList.add(isActive);
+  function getPaginatedCategories() {
+    const container = document.getElementById('categoriesContainer');
+    if (!container) return;
+
+    // Show skeleton loading
+    container.classList.add('skeleton-loading');
+    container.innerHTML = categoriesSkeletonMarkup;
+
+    fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
+      .then(response => response.json())
+      .then(data => {
+        // Remove skeleton loading styles
+        container.classList.remove('skeleton-loading');
+        container.innerHTML = ""; // Clear skeleton
+
+        const blocksToShow = container.dataset.categoriesToShow || 3;
+
+        data?.forEach((category, index) => {
+          const categoryTag = document.createElement('button');
+          const isActive = index === 0 ? "active" : "";
+          if (isActive) {
+            categoryTag.classList.add(isActive);
+          }
+          categoryTag.textContent = category?.category_name;
+
+          // Click handler to fetch products for category
+          categoryTag.onclick = function() {
+            const allButtons = container.querySelectorAll('button');
+            allButtons.forEach(button => button.classList.remove("active"));
+            categoryTag.classList.add("active");
+            getProductsByCategory(category.id, category.category_name);
+          };
+
+          container.appendChild(categoryTag);
+        });
+
+        // Automatically load products for first category
+        if(data.length > 0) {
+          getProductsByCategory(data[0].id, data[0].category_name);
         }
-        
-        categoryTag.innerHTML = category?.category_name;
-
-        // Appending an onclick function to all the buttons
-        categoryTag.onclick = function() {
-          // Removing "active" class from all buttons inside the .tab-header container
-          const allButtons = container.querySelectorAll('button');
-          allButtons.forEach(button => button.classList.remove("active"));
-
-          // Adding "active" class to the clicked button
-          categoryTag.classList.add("active");
-
-          // Fetch products for the selected category
-          getProductsByCategory(category.id,category.category_name);
-        };
-
-        container.appendChild(categoryTag);
+      })
+      .catch(error => {
+        console.error('Error fetching categories:', error);
+        container.classList.remove('skeleton-loading');
+        container.innerHTML = '<p>Error loading categories</p>';
       });
-    })
-    .catch(error => {
-      console.error('Error fetching products:', error);
-    })
-    .finally(() => {
-      // Hide the loader
-      if (loader) {
-        loader.style.display = 'none';
-      }
-    });
-}
-
-
+  }
 
   document.addEventListener('DOMContentLoaded', () => {
-    
     getPaginatedCategories();
   });
 </script>
