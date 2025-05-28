@@ -9,112 +9,14 @@
   </div>
 </div>
 <style>
-  .question-banner-wrapper.question-banner-loading {
-  height: 306px;
-}
-
-.question-banner-wrapper.question-banner-loading .question-col.skeleton {
-  background: #f1f2f3;
-  border-radius: 6px;
-  padding: 10px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Base shimmer styles for skeleton children */
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-text,
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-product,
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-tag,
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-icon,
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-show-more {
-  background: #e2e5e7;
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* The actual shimmer background animation */
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-text::before,
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-product::before,
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-tag::before,
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-icon::before,
-.question-banner-wrapper.question-banner-loading .question-col.skeleton .skeleton-show-more::before {
-  content: "";
-  position: absolute;
-  top: 0; left: -150%; bottom: 0;
-  width: 150%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255,255,255,0.4) 50%,
-    transparent 100%
-  );
-  animation: shimmer-slide 1.5s infinite;
-  border-radius: 4px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Size presets */
-.skeleton-title {
-  width: 60%;
-  height: 24px;
-  margin-bottom: 10px;
-}
-
-.skeleton-subtitle {
-  width: 40%;
-  height: 20px;
-  margin-bottom: 8px;
-}
-
-.skeleton-paragraph {
-  width: 100%;
-  height: 12px;
-  margin: 6px 0;
-}
-
-.skeleton-product {
-  width: 80px;
-  height: 80px;
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: top;
-  border-radius: 6px;
-}
-
-.skeleton-tag {
-  display: inline-block;
-  width: 50px;
-  height: 20px;
-  margin-right: 8px;
-  border-radius: 12px;
-}
-
-.skeleton-icon {
-  width: 30px;
-  height: 30px;
-  float: right;
-  border-radius: 50%;
-}
-
-.skeleton-show-more {
-  width: 120px;
-  height: 24px;
-  margin-top: 10px;
-  border-radius: 12px;
-}
-
-/* Shimmer sliding animation */
-@keyframes shimmer-slide {
-  0% {
-    left: -150%;
+  .question-banner-wrapper.question-banner-loading{
+    height: 306px;
   }
-  100% {
-    left: 100%;
+  .question-banner-wrapper.question-banner-loading .question-col.skeleton {
+    background: #f1f2f3;
+    border-radius: 12px;
+    padding: 10px;
   }
-}
-
 
 </style>
 <script>
