@@ -9,12 +9,103 @@
   </div>
 </div>
 <style>
-  .question-banner-wrapper.question-banner-loading{
-    height: 306px;
+.question-banner-wrapper.question-banner-loading {
+  height: 306px;
 }
+
+/* Skeleton container background */
 .question-banner-wrapper.question-banner-loading .question-col.skeleton {
-        background: #f1f2f3;
+  background: #f1f2f3;
+  position: relative;
+  overflow: hidden;
 }
+
+/* The shimmering effect overlay */
+.question-banner-wrapper.question-banner-loading .question-col.skeleton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.8s infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Base skeleton elements inside the question-col */
+.question-banner-wrapper.question-banner-loading .skeleton-text,
+.question-banner-wrapper.question-banner-loading .skeleton-product,
+.question-banner-wrapper.question-banner-loading .skeleton-tag,
+.question-banner-wrapper.question-banner-loading .skeleton-icon,
+.question-banner-wrapper.question-banner-loading .skeleton-show-more {
+  background-color: #ddd;
+  border-radius: 4px;
+}
+
+/* Specific sizes for different skeleton parts */
+.skeleton-title {
+  width: 60%;
+  height: 24px;
+  margin-bottom: 10px;
+}
+
+.skeleton-subtitle {
+  width: 40%;
+  height: 20px;
+  margin-bottom: 8px;
+}
+
+.skeleton-paragraph {
+  width: 100%;
+  height: 12px;
+  margin: 6px 0;
+}
+
+.skeleton-product {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.skeleton-tag {
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.skeleton-icon {
+  width: 30px;
+  height: 30px;
+  float: right;
+}
+
+.skeleton-show-more {
+  width: 120px;
+  height: 24px;
+  margin-top: 10px;
+  border-radius: 12px;
+}
+
+/* Shimmer keyframes */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 </style>
 <script>
   // Function to initialize product list interactions
