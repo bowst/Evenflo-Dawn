@@ -1,54 +1,4 @@
 {{ 'section-evenflo-answer.css' | asset_url | stylesheet_tag }}
-
-<style>
-  /* Skeleton loader styles */
-  .skeleton {
-    animation: pulse 1.5s infinite ease-in-out;
-    background: linear-gradient(90deg, #eee 25%, #ddd 37%, #eee 63%);
-    background-size: 400% 100%;
-    border-radius: 4px;
-    margin-bottom: 12px;
-  }
-
-  @keyframes pulse {
-    0% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0 50%;
-    }
-  }
-
-  .skeleton-heading {
-    width: 70%;
-    height: 32px;
-    margin-bottom: 16px;
-  }
-
-  .skeleton-paragraph {
-    width: 100%;
-    height: 16px;
-    margin-bottom: 8px;
-  }
-
-  .skeleton-product-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    margin-right: 12px;
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .skeleton-product-title {
-    width: 120px;
-    height: 18px;
-    margin-top: 10px;
-    display: inline-block;
-    vertical-align: top;
-  }
-</style>
-
 <div class="question-block">
   <div class="page-width">
     <div class="question-banner-wrapper">
@@ -58,44 +8,7 @@
 </div>
 
 <script>
-  // Show skeleton loading blocks inside container
-  function showSkeletonLoader(container) {
-    container.innerHTML = `
-      <div class="question-col question-col-1">
-        <div class="question-content">
-          <div class="skeleton skeleton-heading"></div>
-          <div class="skeleton skeleton-paragraph"></div>
-          <div class="skeleton skeleton-paragraph"></div>
-          <div class="skeleton skeleton-paragraph"></div>
-        </div>
-      </div>
-      <div class="question-col">
-        <div class="question-content">
-          <div class="skeleton skeleton-heading" style="width: 40%;"></div>
-          <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 12px;">
-            <div>
-              <div class="skeleton-product-img"></div>
-              <div class="skeleton-product-title"></div>
-            </div>
-            <div>
-              <div class="skeleton-product-img"></div>
-              <div class="skeleton-product-title"></div>
-            </div>
-            <div>
-              <div class="skeleton-product-img"></div>
-              <div class="skeleton-product-title"></div>
-            </div>
-            <div>
-              <div class="skeleton-product-img"></div>
-              <div class="skeleton-product-title"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  // Initialize product list interactions
+  // Function to initialize product list interactions
   function productList() {
     let productListWrapper = document.querySelectorAll(".question-banner-wrapper .product-list .product-content");
     let bullet = productListWrapper.length;
@@ -110,41 +23,53 @@
     }
   }
 
-  // Fetch and display FAQ data
+  // Function to fetch and display FAQ data
   function fetchQuestionsAnswerData(id) {
     const container = document.querySelector('.question-banner-wrapper');
     const questionAnswerBlock = document.getElementById('questionAnswerBlock');
     let blocksToShow = questionAnswerBlock ? questionAnswerBlock.dataset.faqsToShow : 1;
 
-    if (!container) return;
+    if (!container) {
+      return;
+    }
 
-    showSkeletonLoader(container);  // Show skeleton loading UI first
+    container.innerHTML = "";  // Clear existing content
+
+    const loader = appendLoader(container);
 
     fetch(evenFloFAQURL + 'faqs/' + id)
       .then(response => response.json())
       .then(product => {
-        if (product?.detail && containsString(product?.detail, errorString())) {
-          redirectIfNoData([]);
-          return "";
+
+        if(product?.detail && containsString(product?.detail,errorString())){
+          redirectIfNoData([])
+          return ""
         }
+        
 
         let productsContent = "";
         product?.products?.forEach(nestedProduct => {
           productsContent += `
+         
             <div class="product-content">
-              <a href="/pages/evenflo-faq-product?pid=${nestedProduct?.id}">
-                <div class="product-img">
-                  <img src="${nestedProduct?.image}" alt="product" />
-                </div>
-                <div class="product-title">
-                  ${nestedProduct?.name}
-                </div>
+             <a href="/pages/evenflo-faq-product?pid=${nestedProduct?.id}">
+              <div class="product-img">
+                <img src="${nestedProduct?.image}" alt="product" />
+              </div>
+              <div class="product-title">
+                ${nestedProduct?.name}
+              </div>
               </a>
             </div>`;
+        
         });
 
+  
         const tags = getTagsArray(product?.tags || []);
+
         const tagsHtml = getTagsHtml(tags);
+
+        // Update breadcrumb links
         getBreadCrumbLinks(product?.question, 'question-answer');
 
         container.innerHTML = `
@@ -154,7 +79,6 @@
                 <h1>
                   <span>${product?.question}</span>
                   <span onclick="copyCurrentUrlToClipboard()" class="copy-clipboard-btn">
-                    <!-- clipboard SVGs here (kept your original SVGs) -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" viewBox="0 0 30 25" fill="none" class="copy-clipboard-svg">
                       <path d="M27.1875 13.0625L21.8906 18.3594C19.2188 20.9844 14.9531 20.9844 12.3281 18.3594C9.84375 15.8281 9.70312 11.8438 12 9.17188L12.2344 8.89062C12.6562 8.42188 13.3594 8.375 13.8281 8.79688C14.2969 9.21875 14.3438 9.92188 13.9219 10.3906L13.7344 10.625C12.1406 12.4062 12.2344 15.0781 13.9219 16.7656C15.6562 18.5 18.5156 18.5 20.2969 16.7656L25.5938 11.4688C27.3281 9.6875 27.3281 6.875 25.5938 5.09375C23.9062 3.45312 21.2344 3.35938 19.4531 4.90625L19.1719 5.14062C18.7031 5.5625 18 5.51562 17.5781 5.04688C17.1562 4.57812 17.2031 3.875 17.6719 3.45312L17.9531 3.21875C20.625 0.875 24.6562 1.01562 27.1875 3.5C29.8125 6.125 29.8125 10.3906 27.1875 13.0625ZM2.76562 11.9844L8.10938 6.6875C10.7344 4.0625 15 4.0625 17.625 6.6875C20.1562 9.17188 20.2969 13.2031 17.9531 15.875L17.6719 16.1562C17.2969 16.625 16.5469 16.7188 16.0781 16.2969C15.6094 15.875 15.5625 15.1719 15.9844 14.7031L16.2656 14.4219C17.8125 12.6406 17.7188 9.96875 16.0312 8.28125C14.2969 6.5 11.4375 6.5 9.70312 8.28125L4.35938 13.5781C2.625 15.3125 2.625 18.1719 4.35938 19.9531C6.04688 21.5938 8.71875 21.6875 10.5 20.1406L10.7812 19.9062C11.25 19.4844 11.9531 19.5312 12.375 20C12.7969 20.4688 12.75 21.1719 12.2812 21.5938L12 21.8281C9.32812 24.1719 5.29688 24.0312 2.76562 21.5469C0.140625 18.9219 0.140625 14.6094 2.76562 11.9844Z" fill="#00AEA9"></path>
                     </svg>
@@ -164,6 +88,16 @@
                     </svg>
                   </span>
                 </h1>
+                <div onclick="copyCurrentUrlToClipboard()" class="copy-clipboard-btn">
+                  <span>COPY LINK</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" viewBox="0 0 30 25" fill="none" class="copy-clipboard-svg">
+                    <path d="M27.1875 13.0625L21.8906 18.3594C19.2188 20.9844 14.9531 20.9844 12.3281 18.3594C9.84375 15.8281 9.70312 11.8438 12 9.17188L12.2344 8.89062C12.6562 8.42188 13.3594 8.375 13.8281 8.79688C14.2969 9.21875 14.3438 9.92188 13.9219 10.3906L13.7344 10.625C12.1406 12.4062 12.2344 15.0781 13.9219 16.7656C15.6562 18.5 18.5156 18.5 20.2969 16.7656L25.5938 11.4688C27.3281 9.6875 27.3281 6.875 25.5938 5.09375C23.9062 3.45312 21.2344 3.35938 19.4531 4.90625L19.1719 5.14062C18.7031 5.5625 18 5.51562 17.5781 5.04688C17.1562 4.57812 17.2031 3.875 17.6719 3.45312L17.9531 3.21875C20.625 0.875 24.6562 1.01562 27.1875 3.5C29.8125 6.125 29.8125 10.3906 27.1875 13.0625ZM2.76562 11.9844L8.10938 6.6875C10.7344 4.0625 15 4.0625 17.625 6.6875C20.1562 9.17188 20.2969 13.2031 17.9531 15.875L17.6719 16.1562C17.2969 16.625 16.5469 16.7188 16.0781 16.2969C15.6094 15.875 15.5625 15.1719 15.9844 14.7031L16.2656 14.4219C17.8125 12.6406 17.7188 9.96875 16.0312 8.28125C14.2969 6.5 11.4375 6.5 9.70312 8.28125L4.35938 13.5781C2.625 15.3125 2.625 18.1719 4.35938 19.9531C6.04688 21.5938 8.71875 21.6875 10.5 20.1406L10.7812 19.9062C11.25 19.4844 11.9531 19.5312 12.375 20C12.7969 20.4688 12.75 21.1719 12.2812 21.5938L12 21.8281C9.32812 24.1719 5.29688 24.0312 2.76562 21.5469C0.140625 18.9219 0.140625 14.6094 2.76562 11.9844Z" fill="#00AEA9"></path>
+                  </svg>
+                  <svg class="copied-clipboard-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+                    <path fill="#00aea94d" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"/>
+                    <path fill="#00AEA9" d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"/>
+                  </svg>
+                </div>
                 <p>Updated ${formatPostedDate(product?.updated)}</p>
               </div>
               <div class="description">
@@ -174,7 +108,7 @@
               </div>
             </div>
           </div>
-
+          
           <div class="question-col">
             <div class="question-content">
               <div class="heading">
@@ -192,21 +126,26 @@
                 </span>
               </div>
             </div>
-          </div>
-        `;
+          </div>`;
+        
       })
       .catch(error => {
         console.error('Error fetching products:', error);
-        redirectIfNoData([]);
+        redirectIfNoData([])
       })
       .finally(() => {
-        productList();
+        // Hide the loader
+        if (loader) {
+          loader.style.display = 'none';
+          productList();
+        }
       });
   }
 
-  // Initialize when page loads
+  // Initialize the script when the document is fully loaded
   document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
 
     if (urlParams.has('qid')) {
       let questionID = urlParams.get('qid');
