@@ -153,7 +153,7 @@
         });
 debugger
         // Load products for first category by default
-        getProductsByCategoryNew(data[0].id, data[0].category_name);
+        getProductsByCategory(data[0].id, data[0].category_name);
 
         // productsWrapper.classList.remove('skeleton-loading')
       })
@@ -163,7 +163,9 @@ debugger
         categoriesContainer.innerHTML = '<p>Error loading categories</p>';
         productsWrapper.classList.remove('skeleton-loading');
         productsWrapper.innerHTML = '';
-      });
+      })
+      
+      ;
   }
 
   function getProductsByCategoryNew(categoryId, categoryName) {
