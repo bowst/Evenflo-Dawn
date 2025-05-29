@@ -186,7 +186,7 @@ debugger
         innerDiv.classList.add('content-inner');
 
         let html = '<ul style="padding: 10px; margin: 0; list-style: none;">';
-        (data.products || []).forEach(product => {
+        (data || []).forEach(product => {
           html += `<li>${product.name}</li>`;
         });
         html += '</ul>';
