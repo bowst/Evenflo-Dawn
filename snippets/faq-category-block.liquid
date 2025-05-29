@@ -163,10 +163,11 @@ debugger
         categoriesContainer.innerHTML = '<p>Error loading categories</p>';
         productsWrapper.classList.remove('skeleton-loading');
         productsWrapper.innerHTML = '';
-      }).finally{
+      }).finally(()=>
+        {
               productsWrapper.classList.remove('skeleton-loading')
 
-      }
+      })
   }
 
   // function getProductsByCategoryNew(categoryId, categoryName) {
