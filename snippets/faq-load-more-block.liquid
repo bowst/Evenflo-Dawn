@@ -1,144 +1,99 @@
+
 {{ 'faq-load-more-block.css' | asset_url | stylesheet_tag }}
 
-<style>
-  .faq-skeleton {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  .faq-skeleton-item {
-    background-color: #e0e0e0;
-    height: 20px;
-    width: 80%;
-    border-radius: 4px;
-    animation: pulse 1.2s infinite ease-in-out;
-  }
-
-  .faq-skeleton-item.short {
-    width: 50%;
-  }
-
-  @keyframes pulse {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.4;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-</style>
-
-<template id="faqSkeletonTemplate">
-  <div class="faq-skeleton">
-    <div class="faq-skeleton-item"></div>
-    <div class="faq-skeleton-item short"></div>
-    <div class="faq-skeleton-item"></div>
-  </div>
-</template>
 
 <div class="product-page-wrapper">
-  <div class="popular-question-block">
-    <div class="popular-content-wrapper page-width">
-      <div class="popular-header">
-        <div class="search-selector-wrapper">
-          {% if show_topic_dropdown %}
-          <div class="search-selector">
-            <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
-          </div>
-          {% endif %}
+<div class="popular-question-block">
+  <div class="popular-content-wrapper page-width">
 
-          {% if show_product_dropdown %}
-          <div class="search-selector">
-            <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
-          </div>
-          {% endif %}
+  <div class="popular-header">
 
-          {% if show_collection_dropdown %}
-          <div class="search-selector">
-            <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
-          </div>
-          {% endif %}
-        </div>
-
-        <div class="search-input">
-          <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
-        </div>
+	<div class="search-selector-wrapper">
+    {% if show_topic_dropdown %}
+      <div class="search-selector">
+        <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
       </div>
+    {% endif %}
 
-      <div class="popular-card-wrapper" id="searchListigBody"></div>
-
-      <div class="browse-categories" id="loadBtnDiv">
-        <button id="loadMoreBtn">Load More</button>
+    {% if show_product_dropdown %}
+      <div class="search-selector">
+        <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
       </div>
+    {% endif %}
+
+    {% if show_collection_dropdown %}
+      <div class="search-selector">
+        <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
+      </div>
+    {% endif %}
     </div>
+
+    <div class="search-input">
+      <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
+    </div>
+
+    </div>
+
+   
+ 
+    <div class="popular-card-wrapper" id="searchListigBody">
+     
+    </div> 
+
+    <div class="browse-categories" id="loadBtnDiv">
+        <button id="loadMoreBtn"  >Load More</button>
+    </div>
+
+
   </div>
-</div>
+  </div>
+
+  </div>
+
+
+
 
 <script>
-  var currentPage = 1;
-  var topicID = '';
-  var productID = '';
-  var collectionID = '';
-  var categoryID = '';
 
-  const loadMoreBtn = document.getElementById('loadMoreBtn');
-  loadMoreBtn?.addEventListener('click', () => {
-    currentPage++;
-    getFilterValuesAndCallFunc();
-  });
+var currentPage = 1;
 
-  function handleDropDownChange() {
-    currentPage = 1;
-    getFilterValuesAndCallFunc();
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+loadMoreBtn?.addEventListener('click', () => {
+  currentPage++;
+  getFilterValuesAndCallFunc();
+});
+
+function handleDropDownChange(event) {  
+
+   //This we have added if some one searches we setting the page count to 1
+    // if(event.target.id=="searchFAQ"){
+    //   currentPage = 1
+    // }
+     currentPage = 1
+     getFilterValuesAndCallFunc()
   }
 
-  function getFilterValuesAndCallFunc() {
-    const container = document.getElementById('searchListigBody');
-    container.innerHTML = '';
 
-    // Insert skeletons
-    const template = document.getElementById('faqSkeletonTemplate');
-    for (let i = 0; i < 5; i++) {
-      const skeletonClone = template.content.cloneNode(true);
-      container.appendChild(skeletonClone);
-    }
+function getFilterValuesAndCallFunc(){
+    let filter = document.getElementById('searchFAQ')?.value;
 
-    const filter = document.getElementById('searchFAQ')?.value || '';
-    const topic = document.getElementById('selectTopic')?.value || topicID;
-    const product = document.getElementById('selectProduct')?.value || productID;
-    const collection = document.getElementById('selectCollection')?.value || collectionID;
+    //These can be from the url on can be from the dropdown, if they are from url they are intialized and there values set from there respective pages
+    let topic = document.getElementById('selectTopic')?.value || topicID;
+    let product = document.getElementById('selectProduct')?.value || productID;
+    let collection = document.getElementById('selectCollection')?.value || collectionID;
 
-    // Simulate async fetch
     fetchFAQsByFilters({
-      categoryID,
-      filter,
-      topicsID: topic,
-      page: currentPage,
-      productID: product,
+      categoryID:categoryID,
+      filter:filter ,
+      topicsID:topic,
+      page :currentPage,
+      productID :product,
       collectionID: collection,
-      appendTo: 'searchListigBody'
-    });
+      popular : false,
+      appendTo : "searchListigBody",
+});
+
   }
 
-  function fetchFAQsByFilters({ appendTo }) {
-    const container = document.getElementById(appendTo);
 
-    // Simulate 1s delay then inject dummy FAQ cards
-    setTimeout(() => {
-      container.innerHTML = '';
-
-      for (let i = 1; i <= 3; i++) {
-        const faqItem = document.createElement('div');
-        faqItem.className = 'faq-item';
-        faqItem.style.padding = '10px 0';
-        faqItem.innerHTML = `<strong>FAQ Question ${i}</strong><p>This is a sample answer to question ${i}.</p>`;
-        container.appendChild(faqItem);
-      }
-    }, 1000);
-  }
 </script>
