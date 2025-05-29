@@ -175,7 +175,7 @@
     fetch(evenFloFAQURL + 'products/getByCategory?id=' + categoryId)
       .then(response => response.json())
       .then(data => {
-        productsWrapper.classList.remove('skeleton-loading');
+       
 
         // Render product content inside fixed size container
         const innerDiv = document.createElement('div');
@@ -188,7 +188,7 @@
         html += '</ul>';
 
         innerDiv.innerHTML = html;
-
+ productsWrapper.classList.remove('skeleton-loading');
         productsWrapper.innerHTML = '';
         productsWrapper.appendChild(innerDiv);
 
