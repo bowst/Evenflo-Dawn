@@ -73,7 +73,7 @@
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
+    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 20; // Set to 20 for your request
 
     if (!container) {
       console.log("Error on getting container");
@@ -202,9 +202,9 @@
       "type": "range",
       "id": "productRelatedRange",
       "label": "Number of questions to show",
-      "default": 3,
+      "default": 20,  // Set to 20 as per your requirement
       "min": 1,
-      "max": 3,
+      "max": 20,
       "step": 1
     }
   ],
