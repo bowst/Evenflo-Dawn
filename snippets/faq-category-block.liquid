@@ -1,5 +1,12 @@
+<!-- 1) Include Swiper’s CSS (in <head>) -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper/swiper-bundle.min.css"
+/>
+
 <style>
-  .skeleton {
+  /* Skeleton shimmer */
+  .tab-card.skeleton {
     width: 292px;
     height: 322px;
     background-color: #eee;
@@ -7,7 +14,7 @@
     position: relative;
     overflow: hidden;
   }
-  .skeleton::before {
+  .tab-card.skeleton::before {
     content: "";
     position: absolute;
     top: 0; left: -150px;
@@ -21,19 +28,20 @@
     animation: shimmer 1.5s infinite;
   }
   @keyframes shimmer {
-    100% { transform: translateX(442px); }
+    to { transform: translateX(442px); }
   }
 
-  /* grid for skeleton items */
-  .skeleton-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 292px);
-    gap: 16px;
+  /* Swiper slide style */
+  .swiper-slide.tab-card {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    font-size: 1rem;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
   }
-
-  /* hide any old spinner loaders just in case */
-  .loader { display: none !important; }
 </style>
 
 <div class="category-block">
@@ -45,25 +53,21 @@
     {% endif %}
 
     <div class="category-tab-wrapper">
-      <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
-        <!-- skeleton placeholders for categories -->
-        <div id="categoriesSkeleton" class="skeleton-grid">
-          <!-- change count as needed -->
-          <div class="skeleton"></div>
-          <div class="skeleton"></div>
-          <div class="skeleton"></div>
-        </div>
+      <!-- Categories slider -->
+      <div class="swiper-container categories-swiper">
+        <div class="swiper-wrapper" id="categoriesWrapper"></div>
+        <!-- navigation buttons, optional -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
 
       <div class="tab-body">
-        <div id="productsByCategory" class="tab-content-wrapper" data-faqs-to-show="{{ products_to_show }}">
-          <!-- skeleton placeholders for products -->
-          <div id="productsSkeleton" class="skeleton-grid">
-            <!-- change count as needed -->
-            <div class="skeleton"></div>
-            <div class="skeleton"></div>
-            <div class="skeleton"></div>
-            <div class="skeleton"></div>
+        <div class="tab-content-wrapper">
+          <!-- Products slider -->
+          <div class="swiper-container products-swiper">
+            <div class="swiper-wrapper" id="productsWrapper"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
         </div>
       </div>
@@ -75,61 +79,96 @@
   </div>
 </div>
 
+<!-- 2) Include Swiper’s JS (before closing </body>) -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-  function getPaginatedCategories() {
-    const catSkeleton = document.getElementById('categoriesSkeleton');
-    const catContainer = document.getElementById('categoriesContainer');
+  // initialize both Swipers
+  const categoriesSwiper = new Swiper('.categories-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 16,
+    navigation: {
+      nextEl: '.categories-swiper .swiper-button-next',
+      prevEl: '.categories-swiper .swiper-button-prev',
+    },
+  });
+  const productsSwiper = new Swiper('.products-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 16,
+    navigation: {
+      nextEl: '.products-swiper .swiper-button-next',
+      prevEl: '.products-swiper .swiper-button-prev',
+    },
+  });
 
-    // show skeleton, clear any old buttons
-    catSkeleton.style.display = 'grid';
-    catContainer.querySelectorAll('button').forEach(b => b.remove());
+  // inject skeleton slides
+  function showCategorySkeletons(count = 4) {
+    const wrap = document.getElementById('categoriesWrapper');
+    wrap.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide tab-card skeleton';
+      wrap.appendChild(slide);
+    }
+    categoriesSwiper.update();
+  }
+  function showProductSkeletons(count = 6) {
+    const wrap = document.getElementById('productsWrapper');
+    wrap.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide tab-card skeleton';
+      wrap.appendChild(slide);
+    }
+    productsSwiper.update();
+  }
 
+  // fetch categories → render slides
+  function loadCategories() {
+    showCategorySkeletons();
     fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
       .then(r => r.json())
       .then(data => {
-        catSkeleton.style.display = 'none';  // hide skeleton
-
+        const wrap = document.getElementById('categoriesWrapper');
+        wrap.innerHTML = '';
         data.forEach((cat, idx) => {
-          const btn = document.createElement('button');
-          btn.textContent = cat.category_name;
-          if (idx === 0) btn.classList.add('active');
-          btn.onclick = () => {
-            catContainer.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide tab-card';
+          slide.textContent = cat.category_name;
+          slide.addEventListener('click', () => {
             getProductsByCategory(cat.id);
-          };
-          catContainer.appendChild(btn);
+          });
+          wrap.appendChild(slide);
         });
-
+        categoriesSwiper.update();
         if (data[0]) {
           getProductsByCategory(data[0].id);
         }
       })
-      .catch(console.error);
+      .catch(err => console.error(err));
   }
 
+  // fetch products → render slides
   function getProductsByCategory(categoryId) {
-    const prodSkeleton = document.getElementById('productsSkeleton');
-    const prodWrapper  = document.getElementById('productsByCategory');
-
-    // show skeleton, clear old products
-    prodSkeleton.style.display = 'grid';
-    prodWrapper.querySelectorAll('.product-card').forEach(c => c.remove());
-
+    showProductSkeletons();
     fetch(evenFloFAQURL + `products/getByCategory/${categoryId}?show=true`)
       .then(r => r.json())
       .then(products => {
-        prodSkeleton.style.display = 'none';  // hide skeleton
-
+        const wrap = document.getElementById('productsWrapper');
+        wrap.innerHTML = '';
         products.forEach(p => {
-          const card = document.createElement('div');
-          card.className = 'product-card';
-          card.textContent = p.name;
-          prodWrapper.appendChild(card);
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide tab-card';
+          // build your card markup here:
+          slide.innerHTML = `
+            <img src="${p.image_url}" alt="${p.name}" style="max-width:100%;border-bottom:1px solid #ddd"/>
+            <div>${p.name}</div>
+          `;
+          wrap.appendChild(slide);
         });
+        productsSwiper.update();
       })
-      .catch(console.error);
+      .catch(err => console.error(err));
   }
 
-  document.addEventListener('DOMContentLoaded', getPaginatedCategories);
+  document.addEventListener('DOMContentLoaded', loadCategories);
 </script>
