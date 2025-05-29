@@ -53,7 +53,7 @@
     if (!container) return;
 
     // how many items to show, capped at 3
-    const toShow = Math.min(Number(container.dataset.collectionsToShow) || 4;
+    const toShow = Math.min(Number(container.dataset.collectionsToShow) || 3, 3;
 
     // render skeletons
     container.classList.add('collection-loading');
