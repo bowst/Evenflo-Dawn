@@ -31,8 +31,6 @@
   .popular-card.skeleton {
     height: 460px;
     background: #f1f2f3;
-    /* border-radius: 6px;
-    padding: 10px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -55,7 +53,6 @@
     const wrapper = document.getElementById('popularCards');
     if (!wrapper) return console.error('popularCards container missing');
 
-    // figure out how many to show (schema caps at 3)
     const max = 3;
     const wanted = Number(
       document.getElementById('popularQuestionBlock')
@@ -82,24 +79,41 @@
         wrapper.innerHTML = '';
 
         // render up to `toShow` real cards
-        (data.results || []).slice(0, toShow)
-          .forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'popular-card';
-            card.innerHTML = setFAQBlockInnerHtml(
-              item.topic?.name || '',
-              item.question,
-              getFAQContent(item.products || []),
-              item.answer,
-              '',
-              getTagsHtml(getTagsArray(item.tags || []))
-            );
-            wrapper.appendChild(card);
-          });
+        const faqsToRender = (data.results || []).slice(0, toShow);
+        faqsToRender.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'popular-card';
+          card.innerHTML = setFAQBlockInnerHtml(
+            item.topic?.name || '',
+            item.question,
+            getFAQContent(item.products || []),
+            item.answer,
+            '',
+            getTagsHtml(getTagsArray(item.tags || []))
+          );
+          wrapper.appendChild(card);
+        });
+
+        // 3) build and inject JSON-LD schema
+        const faqLd = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqsToRender.map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": item.answer
+            }
+          }))
+        };
+        const ldScript = document.createElement('script');
+        ldScript.type = 'application/ld+json';
+        ldScript.text = JSON.stringify(faqLd, null, 2);
+        document.head.appendChild(ldScript);
       })
       .catch(err => {
         console.error('Error loading popular FAQs:', err);
-        // if you want, you can keep skeletons or show an error message
       });
   });
 
