@@ -1,22 +1,21 @@
 <style>
-  /* Skeleton card & shimmer */
+  /* === Skeleton loader styles === */
   .swiper-slide.tab-card.skeleton {
+    display: block;
     width: 292px;
     height: 322px;
     border-radius: 8px;
     background: #e0e0e0;
     position: relative;
     overflow: hidden;
-    margin: 0 8px;      /* spacing between cards */
-    flex: 0 0 auto;     /* keep fixed size in a row */
+    margin: 0 8px;
+    flex: 0 0 auto;
   }
   .swiper-slide.tab-card.skeleton::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: -150%;
-    width: 50%;
-    height: 100%;
+    top: 0; left: -150%;
+    width: 50%; height: 100%;
     background: linear-gradient(
       to right,
       transparent 0%,
@@ -30,7 +29,7 @@
     100% { left: 150%;  }
   }
 
-  /* Ensure the .tab-content-wrapper is a flex row */
+  /* make products row scrollable */
   #productsByCategory {
     display: flex;
     flex-wrap: nowrap;
@@ -75,35 +74,33 @@
 <script>
   const baseURL = evenFloFAQURL + 'products/';
 
-  // Render up to 5 skeleton cards
+  // 1) Render up to 5 skeleton cards
   function showProductSkeletons() {
     const container = document.getElementById('productsByCategory');
     container.innerHTML = '';
     for (let i = 0; i < 5; i++) {
       const skel = document.createElement('div');
-      skel.classList.add('swiper-slide', 'tab-card', 'skeleton');
+      skel.className = 'swiper-slide tab-card skeleton';
       container.appendChild(skel);
     }
   }
 
-  // Fetch and render products for a category
-  function getProductsByCategory(categoryId, categoryName) {
+  // 2) Fetch & render products for a category
+  function getProductsByCategory(categoryId) {
     showProductSkeletons();
-
     fetch(baseURL + 'getByCategory?id=' + encodeURIComponent(categoryId))
-      .then(res => res.json())
-      .then(data => {
+      .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
+      .then(products => {
         const container = document.getElementById('productsByCategory');
         container.innerHTML = '';
-
-        data.forEach(product => {
+        products.forEach(p => {
           const card = document.createElement('div');
-          card.classList.add('swiper-slide', 'tab-card');
+          card.className = 'swiper-slide tab-card';
           card.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" width="292" height="200" />
+            <img src="${p.image}" alt="${p.name}" width="292" height="200" />
             <div class="card-content">
-              <h3>${product.name}</h3>
-              <p>${product.price}</p>
+              <h3>${p.name}</h3>
+              <p>${p.price}</p>
             </div>
           `;
           container.appendChild(card);
@@ -111,33 +108,28 @@
       })
       .catch(err => {
         console.error('Error loading products:', err);
-        // Optionally show an error message here
       });
   }
 
-  // Fetch & render category tabs
+  // 3) Fetch & render category tabs
   function getPaginatedCategories() {
-    const container = document.getElementById('categoriesContainer');
-    container.innerHTML = '';
-
+    const tabs = document.getElementById('categoriesContainer');
+    tabs.innerHTML = '';
     fetch(baseURL + 'getAllCategories?show=true')
-      .then(res => res.json())
-      .then(data => {
-        data.forEach((category, idx) => {
+      .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
+      .then(categories => {
+        categories.forEach((cat, i) => {
           const btn = document.createElement('button');
-          btn.textContent = category.category_name;
-          if (idx === 0) btn.classList.add('active');
+          btn.textContent = cat.category_name;
+          if (i === 0) btn.classList.add('active');
           btn.addEventListener('click', () => {
-            container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            tabs.querySelectorAll('button').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            getProductsByCategory(category.id, category.category_name);
+            getProductsByCategory(cat.id);
           });
-          container.appendChild(btn);
+          tabs.appendChild(btn);
         });
-        // load first category products
-        if (data[0]) {
-          getProductsByCategory(data[0].id, data[0].category_name);
-        }
+        if (categories[0]) getProductsByCategory(categories[0].id);
       })
       .catch(err => console.error('Error fetching categories:', err));
   }
