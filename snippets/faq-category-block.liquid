@@ -99,7 +99,12 @@
 
   // Skeleton markup for products (fixed size container)
   const productsSkeletonMarkup = `
-    <div class="swiper-slide tab-card"></div>
+    <div class="swiper-slide tab-card skeleton-card"></div>
+    <div class="swiper-slide tab-card skeleton-card"></div>
+    <div class="swiper-slide tab-card skeleton-card"></div>
+    <div class="swiper-slide tab-card skeleton-card"></div>
+    <div class="swiper-slide tab-card skeleton-card"></div>
+    <div class="swiper-slide tab-card skeleton-card"></div>
   `;
 
   function getPaginatedCategories() {
@@ -111,7 +116,7 @@
     categoriesContainer.classList.add('skeleton-loading');
     categoriesContainer.innerHTML = categoriesSkeletonMarkup;
 
-    productsWrapper.classList.add('skeleton-loading-show');
+    productsWrapper.classList.add('skeleton-loading');
     productsWrapper.innerHTML = productsSkeletonMarkup;
 
     fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
