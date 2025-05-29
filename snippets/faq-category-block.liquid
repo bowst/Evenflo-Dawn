@@ -263,36 +263,15 @@ function getProductsByCategoryNew(
 
 					container.appendChild(tabCard);
 				});
-
-				// if (browseCategoriesContainer) {
-				// 	//Appending all categories button
-				// 	const browseCategories = document.createElement("button");
-				// 	browseCategories.innerHTML = `<button>Browse All ${category_name}</button>`;
-				// 	// Appending an onclick function to all the buttons
-				// 	browseCategories.onclick = () => {
-				// 		window.location.href = `/pages/evenflo-faq-category?cat_id=${category_id}`;
-				// 		//  alert(category_id)
-				// 	};
-				// 	browseCategoriesContainer.appendChild(browseCategories);
-				// }
 			}
 		})
 		.catch((error) => {
 			console.error("Error fetching products by category:", error);
 		})
 		.finally(() => {
+          debugger
                         productsWrapper.classList.remove('skeleton-loading-new')
 
-			// Hide the loader
-			// if (loader) {
-			// 	hideLoader(loader);
-   //            if(document.querySelectorAll(".product-category-slider-wrapper .tab-card").length > 4){
-   //              document.querySelector(".product-category-slider-wrapper").classList.remove("product-slider-wrapper-hide");
-			// 	customSlider(); 
-   //            }else{
-   //                  document.querySelector(".product-category-slider-wrapper").classList.add("product-slider-wrapper-hide");
-   //                }
-			// }
 		});
 }
 
