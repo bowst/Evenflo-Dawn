@@ -15,7 +15,7 @@
 
       <div class="tab-body">
         <div class="tab-content-wrapper" id="productsByCategory" data-faqs-to-show="{{ products_to_show }}">
-          <!-- Products skeleton injected here while loading -->
+          <!-- Skeleton loader for product category area while loading -->
         </div>
       </div>
 
@@ -28,13 +28,13 @@
 </div>
 
 <style>
-  /* Category buttons skeleton - centered */
+  /* Skeleton loader style for the category buttons */
   .tab-header.skeleton-loading {
     display: flex;
     justify-content: center;
     gap: 12px;
     padding: 16px 0;
-    flex-wrap: wrap; /* Wraps skeleton buttons if too many */
+    flex-wrap: wrap; /* Wrap skeleton buttons if too many */
   }
 
   .tab-header.skeleton-loading .skeleton-tag {
@@ -65,7 +65,7 @@
     visibility: hidden;
   }
 
-  /* Additional styles for content to make skeleton visible and positioned */
+  /* Additional styling for content to make skeleton visible and positioned */
   .tab-content-wrapper.skeleton-loading {
     display: flex;
     justify-content: center;
