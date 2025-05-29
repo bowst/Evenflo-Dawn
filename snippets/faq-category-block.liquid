@@ -28,7 +28,18 @@
 </div>
 
 <style>
-  /* Category buttons skeleton - centered */
+  /* Skeleton loader style */
+  .question-banner-wrapper.question-banner-loading {
+    height: 306px;
+  }
+
+  .question-banner-wrapper.question-banner-loading .question-col.skeleton {
+    background: #f1f2f3;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  /* Center skeleton buttons for categories */
   .tab-header.skeleton-loading {
     display: flex;
     justify-content: center;
@@ -40,63 +51,27 @@
     width: 145px;
     height: 38px;
     border-radius: 12px;
-    background: linear-gradient(90deg, #e2e5e7 25%, #f5f5f5 50%, #e2e5e7 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite ease-in-out;
+    background: #f1f2f3;
   }
 
-  /* tab-content-wrapper - flexible container */
-  .tab-content-wrapper {
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Skeleton for products container - fixed size */
-  .tab-content-wrapper > .content-inner {
+  /* Skeleton for product categories with fixed size */
+  .tab-content-wrapper.skeleton-loading > .content-inner {
     width: 292.8px;
     height: 322.8px;
-    border-radius: 12px;
-    position: relative;
-    background: #f1f2f3; /* Initial background before product load */
-  }
-
-  /* Skeleton shimmer for the product container */
-  .tab-content-wrapper.skeleton-loading > .content-inner::before {
-    content: "";
-    position: absolute;
-    top: 0; left: -150%;
-    width: 150%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
-    animation: shimmer-slide 1.5s infinite;
-    border-radius: 12px;
-  }
-
-  /* Skeleton shimmer for swiper-slide tab-card */
-  .swiper-slide.tab-card.skeleton {
-    width: 292.8px;
-    height: 322.8px;
-    background: linear-gradient(90deg, #e2e5e7 25%, #f5f5f5 50%, #e2e5e7 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite ease-in-out;
+    background: #f1f2f3;
     border-radius: 8px;
-    color: transparent;       /* hide text during loading */
-    pointer-events: none;     /* disable interactions */
   }
 
-  /* Hide children content during loading */
+  .swiper-slide.tab-card.skeleton {
+    width: 292px;
+    height: 322px;
+    background: #f1f2f3;
+    border-radius: 8px;
+  }
+
+  /* Hide content inside skeleton while loading */
   .swiper-slide.tab-card.skeleton * {
     visibility: hidden;
-  }
-
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
-
-  @keyframes shimmer-slide {
-    0% { left: -150%; }
-    100% { left: 100%; }
   }
 </style>
 
@@ -108,7 +83,7 @@
     <button class="skeleton-tag"></button>
   `;
 
-  // Skeleton markup for products - fixed size container with shimmer
+  // Skeleton markup for products (fixed size container)
   const productsSkeletonMarkup = `
     <div class="content-inner"></div>
   `;
