@@ -1,99 +1,154 @@
+<style>
+  /* shimmer keyframes */
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+
+  /* base skeleton */
+  .skeleton {
+    background: #f1f2f3;
+    position: relative;
+    overflow: hidden;
+  }
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: shimmer 1.2s infinite;
+  }
+
+  /* category-tag skeleton (145×38) */
+  .skeleton-category {
+    width: 145px;
+    height: 38px;
+    border-radius: 4px;
+    margin: 4px;
+    display: inline-block;
+  }
+
+  /* product-card skeleton (292×322) */
+  .skeleton-product {
+    width: 292px;
+    height: 322px;
+    border-radius: 8px;
+    margin: 8px;
+    display: inline-block;
+  }
+
+  /* layout overrides so skeletons line up nicely */
+  #categoriesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #productsByCategory {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+</style>
+
 <div class="category-block">
   <div class="category-content-wrapper page-width">
 
     {% if show_title %}
-    <div class="heading center">
-      <h1>{{ category_title }}</h1>
-    </div>
-  {% endif %}
+      <div class="heading center">
+        <h1>{{ category_title }}</h1>
+      </div>
+    {% endif %}
 
     <div class="category-tab-wrapper" id="categoryTabWrapper">
 
+      <!-- categories go here -->
       <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
-         <!-- Loader -->
-         <div id="categoriesLoader" class="loader" style="display: none;"></div>
+        <!-- JS will inject `<div class="skeleton skeleton-category">` placeholders here -->
       </div>
 
       <div class="tab-body">
+        <!-- products go here -->
         <div class="tab-content-wrapper" id="productsByCategory" data-faqs-to-show="{{ products_to_show }}">
-          <!-- Loader -->
-          <div id="productByCategoriesLoader" class="loader" style="display: none;"></div>
-         
+          <!-- JS will inject `<div class="skeleton skeleton-product">` placeholders here -->
         </div>
       </div>
 
       {% if show_title %}
-        <div class="browse-categories" id="browseCategoriesDiv">
-
-        </div>
+        <div class="browse-categories" id="browseCategoriesDiv"></div>
       {% endif %}
-     
 
     </div>
   </div>
 </div>
 
-
 <script>
- function getPaginatedCategories() {
-   // Show the loader
-   const loader = document.getElementById('categoriesLoader');
-   if (loader) {
-    loader.style.display = 'block';
+  function getPaginatedCategories() {
+    const container = document.getElementById('categoriesContainer');
+    const count = parseInt(container.dataset.categoriesToShow) || 3;
+
+    // show skeleton tags
+    container.innerHTML = "";
+    for (let i = 0; i < count; i++) {
+      const sk = document.createElement('div');
+      sk.className = 'skeleton skeleton-category';
+      container.appendChild(sk);
+    }
+
+    fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
+      .then(res => res.json())
+      .then(data => {
+        // clear skeletons & render real buttons
+        container.innerHTML = "";
+        data.forEach((cat, idx) => {
+          const btn = document.createElement('button');
+          btn.textContent = cat.category_name;
+          if (idx === 0) btn.classList.add('active');
+          btn.onclick = () => {
+            container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            getProductsByCategory(cat.id);
+          };
+          container.appendChild(btn);
+        });
+        // auto-load first category
+        if (data[0]) getProductsByCategory(data[0].id);
+      })
+      .catch(err => console.error(err));
   }
-  
-  fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
-    .then(response => response.json())
-    .then(data => {
-      getProductsByCategory(data[0]?.id,data[0]?.category_name);
 
-      const categoriesBlock = document.getElementById('categoriesContainer');
-      const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
-      
-      const container = document.querySelector('.tab-header'); 
-      container.innerHTML = ""; // Clear previous buttons
+  function getProductsByCategory(categoryId) {
+    const wrapper = document.getElementById('productsByCategory');
+    const count = parseInt(wrapper.dataset.faqsToShow) || 4;
 
-      data?.forEach((category, index) => {
-        const categoryTag = document.createElement('button');
-  
-        const isActive = index === 0 ? "active" : "";
-        if (isActive) {
-          categoryTag.classList.add(isActive);
-        }
-        
-        categoryTag.innerHTML = category?.category_name;
+    // show skeleton cards
+    wrapper.innerHTML = "";
+    for (let i = 0; i < count; i++) {
+      const sk = document.createElement('div');
+      sk.className = 'skeleton skeleton-product';
+      wrapper.appendChild(sk);
+    }
 
-        // Appending an onclick function to all the buttons
-        categoryTag.onclick = function() {
-          // Removing "active" class from all buttons inside the .tab-header container
-          const allButtons = container.querySelectorAll('button');
-          allButtons.forEach(button => button.classList.remove("active"));
+    fetch(evenFloFAQURL + `products/getByCategory/${categoryId}?show=true`)
+      .then(res => res.json())
+      .then(products => {
+        // clear skeletons & render real cards
+        wrapper.innerHTML = "";
+        products.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <a href="/pages/evenflo-faq-product?pid=${p.id}">
+              <div class="product-img">
+                <img src="${p.image}" alt="${p.name}" style="width:100%;height:auto;" />
+              </div>
+              <div class="product-title">${p.name}</div>
+            </a>
+          `;
+          wrapper.appendChild(card);
+        });
+      })
+      .catch(err => console.error(err));
+  }
 
-          // Adding "active" class to the clicked button
-          categoryTag.classList.add("active");
-
-          // Fetch products for the selected category
-          getProductsByCategory(category.id,category.category_name);
-        };
-
-        container.appendChild(categoryTag);
-      });
-    })
-    .catch(error => {
-      console.error('Error fetching products:', error);
-    })
-    .finally(() => {
-      // Hide the loader
-      if (loader) {
-        loader.style.display = 'none';
-      }
-    });
-}
-
-
-
-  document.addEventListener('DOMContentLoaded', () => {
-    
-    getPaginatedCategories();
-  });
+  document.addEventListener('DOMContentLoaded', getPaginatedCategories);
 </script>
