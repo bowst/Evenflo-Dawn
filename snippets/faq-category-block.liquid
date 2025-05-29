@@ -28,18 +28,19 @@
 </div>
 
 <style>
-  /* Center skeleton buttons for categories */
+  /* Category buttons skeleton - centered */
   .tab-header.skeleton-loading {
     display: flex;
     justify-content: center;
     gap: 12px;
     padding: 16px 0;
+    flex-wrap: wrap; /* Wraps skeleton buttons if too many */
   }
 
   .tab-header.skeleton-loading .skeleton-tag {
     width: 145px;
-    height: 32px;
-    border-radius: 8px;
+    height: 38px;
+    border-radius: 12px;
     background: #f1f2f3;
   }
 
@@ -51,9 +52,10 @@
     border-radius: 8px;
   }
 
+  /* Skeleton for swiper-slide tab-card */
   .swiper-slide.tab-card.skeleton {
-    width: 292px;
-    height: 322px;
+    width: 292.8px;
+    height: 322.8px;
     background: #f1f2f3;
     border-radius: 8px;
   }
@@ -62,11 +64,31 @@
   .swiper-slide.tab-card.skeleton * {
     visibility: hidden;
   }
+
+  /* Additional styles for content to make skeleton visible and positioned */
+  .tab-content-wrapper.skeleton-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .tab-content-wrapper.skeleton-loading .content-inner {
+    background: #f1f2f3;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
 </style>
 
 <script>
-  // Skeleton markup for category buttons
+  // Skeleton markup for category buttons (10 placeholders)
   const categoriesSkeletonMarkup = `
+    <button class="skeleton-tag"></button>
     <button class="skeleton-tag"></button>
     <button class="skeleton-tag"></button>
     <button class="skeleton-tag"></button>
