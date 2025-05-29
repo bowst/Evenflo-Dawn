@@ -129,8 +129,8 @@
     fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
       .then(response => response.json())
       .then(data => {
-        // categoriesContainer.classList.remove('skeleton-loading');
-        // categoriesContainer.innerHTML = ""; // Clear skeleton
+        categoriesContainer.classList.remove('skeleton-loading');
+        categoriesContainer.innerHTML = ""; // Clear skeleton
 
         if (!data || data.length === 0) {
           categoriesContainer.innerHTML = '<p>No categories found.</p>';
@@ -193,7 +193,7 @@
 
         // Also, remove skeleton from swiper-slide tab-card elements if you have them inside products
         document.querySelectorAll('.swiper-slide.tab-card').forEach(el => {
-          // el.classList.remove('skeleton');
+          el.classList.remove('skeleton');
         });
          // productsWrapper.classList.remove('skeleton-loading');
 
