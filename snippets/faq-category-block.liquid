@@ -1,158 +1,205 @@
-<style>
-  /* shimmer animation */
-  @keyframes shimmer {
-    100% { transform: translateX(100%); }
-  }
-
-  /* base skeleton styling: same pattern as your FAQ section */
-  .skeleton {
-    background: #f1f2f3;
-    position: relative;
-    overflow: hidden;
-  }
-  .skeleton::after {
-    content: "";
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-    animation: shimmer 1.2s infinite;
-  }
-
-  /* category pill */
-  .skeleton-category {
-    width: 145px;
-    height: 38px;
-    border-radius: 4px;
-    margin: 4px;
-  }
-
-  /* product card */
-  .skeleton-product {
-    width: 292px;
-    height: 322px;
-    border-radius: 8px;
-    margin: 8px;
-  }
-
-  /* layout helpers */
-  #categoriesContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  #productsByCategory {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  /* hide any old loader divs */
-  .loader { display: none !important; }
-</style>
+{{ 'section-evenflo-answer.css' | asset_url | stylesheet_tag }}
 
 <div class="category-block">
   <div class="category-content-wrapper page-width">
+
     {% if show_title %}
-      <div class="heading center"><h1>{{ category_title }}</h1></div>
+    <div class="heading center">
+      <h1>{{ category_title }}</h1>
+    </div>
     {% endif %}
+
     <div class="category-tab-wrapper" id="categoryTabWrapper">
 
-      <!-- categories -->
-      <div id="categoriesContainer"
-           class="tab-header"
-           data-categories-to-show="{{ categories_to_show }}">
-        <!-- skeletons injected by JS -->
+      <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
+         <!-- Categories will load here with skeleton -->
       </div>
 
       <div class="tab-body">
-        <!-- products -->
-        <div class="tab-content-wrapper"
-             id="productsByCategory"
-             data-faqs-to-show="{{ products_to_show }}">
-          <!-- skeletons injected by JS -->
+        <div class="tab-content-wrapper" id="productsByCategory" data-faqs-to-show="{{ products_to_show }}">
+          <!-- Products will load here with skeleton -->
         </div>
       </div>
 
       {% if show_title %}
-        <div class="browse-categories" id="browseCategoriesDiv"></div>
+        <div class="browse-categories" id="browseCategoriesDiv">
+        </div>
       {% endif %}
 
     </div>
   </div>
 </div>
 
+<style>
+  /* Skeleton Loading Styles for Categories */
+  .categories-loading .tab-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .categories-loading .categoriesSkeleton {
+    width: 145px;
+    height: 38px;
+    background: #f1f2f3;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .categories-loading .categoriesSkeleton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Skeleton Loading Styles for Products */
+  .products-loading #productsByCategory {
+    width: 292px;
+    height: 322px;
+    background: #f1f2f3;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .products-loading #productsByCategory::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Shimmer Animation */
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+</style>
+
 <script>
-  // on page load, kick things off
-  document.addEventListener('DOMContentLoaded', getPaginatedCategories);
-
   function getPaginatedCategories() {
-    const container = document.getElementById('categoriesContainer');
-    const toShow = parseInt(container.dataset.categoriesToShow, 10) || 3;
-
-    // 1) show skeletons
-    container.innerHTML = "";
-    for (let i = 0; i < toShow; i++) {
-      const sk = document.createElement('div');
-      sk.className = 'skeleton skeleton-category';
-      container.appendChild(sk);
-    }
-
-    // 2) fetch real categories
+    const categoryWrapper = document.getElementById('categoryTabWrapper');
+    const categoriesContainer = document.getElementById('categoriesContainer');
+    
+    // Add skeleton loading class for categories
+    categoryWrapper.classList.add('categories-loading');
+    
+    // Show category skeleton - make sure to clear any existing content first
+    categoriesContainer.innerHTML = `
+      <div class="categoriesSkeleton"></div>
+      <div class="categoriesSkeleton"></div>
+      <div class="categoriesSkeleton"></div>
+      <div class="categoriesSkeleton"></div>
+      <div class="categoriesSkeleton"></div>
+    `;
+    
     fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
-      .then(r => r.json())
+      .then(response => response.json())
       .then(data => {
-        container.innerHTML = "";
-        data.forEach((cat, idx) => {
-          const btn = document.createElement('button');
-          btn.textContent = cat.category_name;
-          if (idx === 0) btn.classList.add('active');
-          btn.onclick = () => {
-            container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            getProductsByCategory(cat.id);
+        getProductsByCategory(data[0]?.id, data[0]?.category_name);
+
+        const categoriesBlock = document.getElementById('categoriesContainer');
+        const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
+        
+        const container = document.querySelector('.tab-header'); 
+        container.innerHTML = ""; // Clear skeleton
+
+        data?.forEach((category, index) => {
+          const categoryTag = document.createElement('button');
+    
+          const isActive = index === 0 ? "active" : "";
+          if (isActive) {
+            categoryTag.classList.add(isActive);
+          }
+          
+          categoryTag.innerHTML = category?.category_name;
+
+          // Appending an onclick function to all the buttons
+          categoryTag.onclick = function() {
+            // Removing "active" class from all buttons inside the .tab-header container
+            const allButtons = container.querySelectorAll('button');
+            allButtons.forEach(button => button.classList.remove("active"));
+
+            // Adding "active" class to the clicked button
+            categoryTag.classList.add("active");
+
+            // Fetch products for the selected category
+            getProductsByCategory(category.id, category.category_name);
           };
-          container.appendChild(btn);
+
+          container.appendChild(categoryTag);
         });
-        // auto-load first
-        if (data[0]) getProductsByCategory(data[0].id);
       })
-      .catch(err => {
-        console.error('Error loading categories:', err);
+      .catch(error => {
+        console.error('Error fetching categories:', error);
+      })
+      .finally(() => {
+        // Remove skeleton loading class for categories
+        categoryWrapper.classList.remove('categories-loading');
       });
   }
 
-  function getProductsByCategory(categoryId) {
-    const wrapper = document.getElementById('productsByCategory');
-    const toShow = parseInt(wrapper.dataset.faqsToShow, 10) || 4;
-
-    // 1) show skeleton cards
-    wrapper.innerHTML = "";
-    for (let i = 0; i < toShow; i++) {
-      const sk = document.createElement('div');
-      sk.className = 'skeleton skeleton-product';
-      wrapper.appendChild(sk);
-    }
-
-    // 2) fetch real products
-    fetch(evenFloFAQURL + `products/getByCategory/${categoryId}?show=true`)
-      .then(r => r.json())
-      .then(products => {
-        wrapper.innerHTML = "";
-        products.forEach(p => {
-          const card = document.createElement('div');
-          card.className = 'product-card';
-          card.innerHTML = `
-            <a href="/pages/evenflo-faq-product?pid=${p.id}">
-              <div class="product-img">
-                <img src="${p.image}" alt="${p.name}" style="width:100%;height:auto" />
-              </div>
-              <div class="product-title">${p.name}</div>
-            </a>`;
-          wrapper.appendChild(card);
+  function getProductsByCategory(categoryId, categoryName) {
+    const categoryWrapper = document.getElementById('categoryTabWrapper');
+    const productsContainer = document.getElementById('productsByCategory');
+    
+    // Add skeleton loading class for products
+    categoryWrapper.classList.add('products-loading');
+    
+    // Clear products container and show skeleton
+    productsContainer.innerHTML = '';
+    
+    // Add a small delay to ensure skeleton is visible
+    setTimeout(() => {
+      // Your existing fetch logic for products
+      fetch(evenFloFAQURL + 'products/getProductsByCategory/' + categoryId)
+        .then(response => response.json())
+        .then(data => {
+          // Your existing product rendering logic here
+          let productsContent = "";
+          data?.forEach(product => {
+            productsContent += `
+              <div class="product-content">
+                <a href="/pages/evenflo-faq-product?pid=${product?.id}">
+                  <div class="product-img">
+                    <img src="${product?.image}" alt="product" />
+                  </div>
+                  <div class="product-title">
+                    ${product?.name}
+                  </div>
+                </a>
+              </div>`;
+          });
+          
+          productsContainer.innerHTML = productsContent;
+        })
+        .catch(error => {
+          console.error('Error fetching products:', error);
+        })
+        .finally(() => {
+          // Remove skeleton loading class for products
+          categoryWrapper.classList.remove('products-loading');
         });
-      })
-      .catch(err => {
-        console.error('Error loading products:', err);
-      });
+    }, 100); // Small delay to ensure skeleton shows
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    getPaginatedCategories();
+  });
 </script>
