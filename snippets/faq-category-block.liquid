@@ -177,7 +177,6 @@ function getProductsByCategoryNew(
 	fetch(evenFloFAQURL + `products/by/category/${category_id}`)
 		.then((response) => response.json())
 		.then((data) => {
-          debugger
 			if (data && data?.length > 0) {
 				const productsBlock = document.getElementById("productsByCategory");
 
@@ -219,10 +218,8 @@ function getProductsByCategoryNew(
 			console.error("Error fetching products by category:", error);
 		})
 		.finally(() => {
-          debugger
                   const skeletons = container.querySelectorAll('.skeleton-card');
                   skeletons.forEach(el => el.remove());
-          debugger
                         container.classList.remove('skeleton-loading-new')
 
 		});
