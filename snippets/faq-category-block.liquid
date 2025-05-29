@@ -58,7 +58,7 @@
     position: relative;
   }
 
-  /* Products skeleton shimmer effect on inner container */
+  /* Skeleton shimmer for the category container (fixed size) */
   .tab-content-wrapper.skeleton-loading > .content-inner {
     background: #f1f2f3;
   }
@@ -75,6 +75,8 @@
 
   /* Skeleton shimmer for swiper-slide tab-card */
   .swiper-slide.tab-card.skeleton {
+    width: 292px;
+    height: 322px;
     background: linear-gradient(90deg, #e2e5e7 25%, #f5f5f5 50%, #e2e5e7 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite ease-in-out;
