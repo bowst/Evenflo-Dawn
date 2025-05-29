@@ -1,165 +1,64 @@
-{% assign collections_to_show = section.settings.faqCollectionRange %}
+{% assign products_to_show = section.settings.popularQuestionRange %}
 
-<div class="collection-block">
-  <div class="collection-main-wrapper page-width">
-    <div class="heading">
-      <h1>{{ section.settings.faqCollectionTitle }}</h1>
+<div class="popular-question-block" id="popularQuestionBlock" data-faqs-to-show="{{ products_to_show }}">
+  <div class="popular-content-wrapper page-width">
+    <div class="heading center">
+      <h2>{{ section.settings.popularQuestionTitle }}</h2>
     </div>
-    <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}">
-      <!-- Skeleton loader for collections will be shown initially -->
-      <div class="skeleton collection-loader"></div>
-      <!-- Real content will be injected here after fetching -->
-    </div>
+    <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
 </div>
 
 <script>
-// Fetch collections and show skeleton loader until data is available
-function getPaginatedCollections() {
-  const container = document.getElementById('allCollections');
-  if (!container) return;
 
-  // Clear any previous content (if any)
-  container.innerHTML = ""; // Clear existing content
-
-  // Add skeleton loader
-  const loader = document.createElement('div');
-  loader.classList.add('collection-loader', 'skeleton');
-  container.appendChild(loader);
-
-  fetch(evenFloFAQURL + 'collection/?page=1&page_size=6')
-    .then(response => response.json())
-    .then(data => {
-      console.log("API Response: ", data); // Debugging API response
-
-      // Ensure data contains the expected structure
-      const blocksToShow = container ? container.dataset.collectionsToShow : 6;
-
-      // If results exist, proceed with rendering
-      if (data?.results && data.results.length > 0) {
-        // Clear skeleton loader and insert actual collection data
-        container.innerHTML = ""; // Clear loader
-
-        data.results.slice(0, blocksToShow).forEach((collection) => {
-          const collectionCard = document.createElement('div');
-          collectionCard.classList.add('collection-card');
-          
-          // Ensure we are accessing the correct data
-          collectionCard.innerHTML = `
-            <a href="/pages/evenflo-collection?cid=${collection?.id}">
-              <div class="collection-title">
-                <h2>${collection?.name || 'No Name Available'}</h2>
-              </div>
-              <div class="collection-img">
-                <img src="${collection?.image || 'default_image_path.jpg'}" alt="collection-img">
-              </div>
-            </a>
-          `;
-          
-          container.appendChild(collectionCard);
-        });
-      } else {
-        container.innerHTML = '<p>No collections available.</p>';
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching collections:', error);
-      container.innerHTML = '<p>Error loading collections</p>';
-    });
-}
 
 document.addEventListener('DOMContentLoaded', () => {
-  getPaginatedCollections();
+  fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
 });
+
+document.addEventListener('shopify:section:load', (event) => { 
+  const sectionId = event?.detail?.sectionId;
+  if (sectionId.includes('evenflo_faq_popular_question')) {
+    fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
+  } 
+});
+
+
 </script>
-
-<style>
-/* Skeleton Loader Styles */
-.skeleton {
-  background-color: #f1f2f3;
-  animation: skeleton-loading 1.5s infinite ease-in-out;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-/* Collection loader placeholder */
-.collection-loader {
-  width: 100%;
-  height: 200px;
-  margin-bottom: 10px;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-color: #f1f2f3;
-  }
-  50% {
-    background-color: #e0e0e0;
-  }
-  100% {
-    background-color: #f1f2f3;
-  }
-}
-
-/* Collection card styles */
-.collection-card {
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.collection-title h2 {
-  margin: 0;
-  font-size: 18px;
-  color: #333;
-}
-
-.collection-img img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-
-/* Adding padding to the collection block wrapper */
-.collection-wrapper {
-  padding: 20px;
-}
-</style>
 
 {% schema %}
 {
-  "name": "EvenFlo FAQ Collection",
+  "name": "EvenFlo FAQ Popular",
   "tag": "section",
-  "class": "faqCollection",
+  "class": "popularQuestion",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
   "settings": [
     {
       "type": "text",
-      "id": "faqCollectionTitle",
-      "label": "FAQ Collections Title",
-      "default": "Collections"
+      "id": "popularQuestionTitle",
+      "label": "Popular Question Title",
+      "default":"Popular Questions"
     },
     {
-      "type": "range",
-      "id": "faqCollectionRange",
-      "label": "Collections to show",
-      "default": 5,
-      "min": 1,
-      "max": 6,
-      "step": 1
-    }
+        "type": "range",
+        "id": "popularQuestionRange",
+        "label": "Number of questions to show",
+        "default":3,
+        "min": 1,
+        "max": 3,
+        "step": 1
+      }
   ],
   "presets": [
     {
-      "name": "EvenFlo FAQ Collection",
-      "blocks": []
+      "name": "EvenFlo FAQ Popular",
+      "blocks": [
+
+      ]
     }
   ]
+
 }
 {% endschema %}
