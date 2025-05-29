@@ -274,23 +274,23 @@
                 {{ 'evenflo-section-at-a-glance.css' | asset_url | stylesheet_tag }}
 
                 <div class="at-a-glance">
-                  <div class="font-body-bold">
-                    At a glance
-                  </div>
+                  <div class="font-body-bold">At a glance</div>
                   <div class="at-a-glance-wrapper">
-                    {%- if product.metafields.sf_products.forward_facing_age_limit.value -%}
-                      <div class="at-a-glance-card">
-                        <div class="at-a-glance-card__image">
-                          {{- 'icon-child-age.svg' | inline_asset_content -}}
+                    {% comment %}
+                      {%- if product.metafields.sf_products.forward_facing_age_limit.value -%}
+                        <div class="at-a-glance-card">
+                          <div class="at-a-glance-card__image">
+                            {{- 'icon-child-age.svg' | inline_asset_content -}}
+                          </div>
+                          <div class="at-a-glance-card__content">
+                            <h3 class="at-a-glance-card__title">Child Age</h3>
+                            <p class="at-a-glance-card__description">
+                              {{ product.metafields.sf_products.forward_facing_age_limit.value }}
+                            </p>
+                          </div>
                         </div>
-                        <div class="at-a-glance-card__content">
-                          <h3 class="at-a-glance-card__title">Child Age</h3>
-                          <p class="at-a-glance-card__description">
-                            {{ product.metafields.sf_products.forward_facing_age_limit.value }}
-                          </p>
-                        </div>
-                      </div>
-                    {%- endif -%}
+                      {%- endif -%}
+                    {% endcomment %}
                     {%- if product.metafields.sf_products.child_weight_max.value -%}
                       <div class="at-a-glance-card">
                         <div class="at-a-glance-card__image">
@@ -298,21 +298,27 @@
                         </div>
                         <div class="at-a-glance-card__content">
                           <h3 class="at-a-glance-card__title">Child Weight</h3>
-                          <p class="at-a-glance-card__description">Min. {{ product.metafields.sf_products.child_weight_min.value }} lbs</p>
-                          <p class="at-a-glance-card__description">Max. {{ product.metafields.sf_products.child_weight_max.value }} lbs</p>
+                          <p class="at-a-glance-card__description">
+                            Min. {{ product.metafields.sf_products.child_weight_min.value }} lbs
+                          </p>
+                          <p class="at-a-glance-card__description">
+                            Max. {{ product.metafields.sf_products.child_weight_max.value }} lbs
+                          </p>
                         </div>
                       </div>
                     {%- endif -%}
                     {%- if product.metafields.sf_products.assembled_weight.value -%}
-                    <div class="at-a-glance-card">
-                      <div class="at-a-glance-card__image">
-                        {{- 'icon-weight.svg' | inline_asset_content -}}
+                      <div class="at-a-glance-card">
+                        <div class="at-a-glance-card__image">
+                          {{- 'icon-weight.svg' | inline_asset_content -}}
+                        </div>
+                        <div class="at-a-glance-card__content">
+                          <h3 class="at-a-glance-card__title">Product Weight</h3>
+                          <p class="at-a-glance-card__description">
+                            {{ product.metafields.sf_products.assembled_weight.value }} lbs
+                          </p>
+                        </div>
                       </div>
-                      <div class="at-a-glance-card__content">
-                        <h3 class="at-a-glance-card__title">Product Weight</h3>
-                        <p class="at-a-glance-card__description">{{ product.metafields.sf_products.assembled_weight.value }} lbs</p>
-                      </div>
-                    </div>
                     {%- endif -%}
                     {%- if product.metafields.custom.modes_of_use.value -%}
                       <div class="at-a-glance-card">
@@ -321,10 +327,14 @@
                         </div>
                         <div class="at-a-glance-card__content">
                           <h3 class="at-a-glance-card__title">Modes of Use</h3>
-                          {% assign items = product.metafields.custom.modes_of_use.value | newline_to_br | split: '<br />' %}
+                          {% assign items = product.metafields.custom.modes_of_use.value
+                            | newline_to_br
+                            | split: '<br />'
+                          %}
                           <p class="at-a-glance-card__description">
                             {% for item in items %}
-                              {{ item }}<br>
+                              {{ item -}}
+                              <br>
                             {% endfor %}
                           </p>
                         </div>
@@ -881,7 +891,7 @@
   "tag": "section",
   "class": "section",
   "blocks": [
-        {
+    {
       "type": "related_products",
       "name": "Related Products",
       "settings": [
