@@ -145,6 +145,12 @@
         container.innerHTML = ''; // Clear skeletons
 
         // Render FAQ content
+        const faqSchemaData = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": []
+        };
+
         data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
           const popularCard = createPopularCardDivElement("popular-card");
 
@@ -162,7 +168,23 @@
           );
 
           container.appendChild(popularCard);
+
+          // Add each FAQ to JSON-LD schema
+          faqSchemaData.mainEntity.push({
+            "@type": "Question",
+            "name": product.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": product.answer
+            }
+          });
         });
+
+        // Inject JSON-LD for FAQ schema
+        const scriptTag = document.createElement('script');
+        scriptTag.type = 'application/ld+json';
+        scriptTag.innerHTML = JSON.stringify(faqSchemaData);
+        document.head.appendChild(scriptTag);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
