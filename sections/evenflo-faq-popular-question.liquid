@@ -5,15 +5,13 @@
     <div class="heading center">
       <h2>{{ section.settings.popularQuestionTitle }}</h2>
     </div>
-    <!-- Skeleton Loader (Placeholder) -->
-    <div class="popular-card-wrapper" id="popularCards">
-      <div class="skeleton-loader" style="width: 504px; height: 468px;"></div>
-      <!-- Add more skeleton loaders if you want multiple placeholders -->
-    </div>
+    <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
 </div>
 
 <script>
+
+
 document.addEventListener('DOMContentLoaded', () => {
   fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
 });
@@ -25,37 +23,8 @@ document.addEventListener('shopify:section:load', (event) => {
   } 
 });
 
-// Example fetchFAQsByFilters function
-function fetchFAQsByFilters(options) {
-  const popularCardsContainer = document.getElementById(options.appendTo);
-  // Simulating fetch with setTimeout
-  setTimeout(() => {
-    popularCardsContainer.innerHTML = `<div>FAQ Content Loaded</div>`; // Replace with actual content
-  }, 2000); // Simulated delay
-}
+
 </script>
-
-<style>
-/* Skeleton Loader Styles */
-.skeleton-loader {
-  background-color: #e0e0e0;
-  animation: skeleton 1.5s infinite ease-in-out;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-@keyframes skeleton {
-  0% {
-    background-color: #e0e0e0;
-  }
-  50% {
-    background-color: #f0f0f0;
-  }
-  100% {
-    background-color: #e0e0e0;
-  }
-}
-</style>
 
 {% schema %}
 {
@@ -90,5 +59,6 @@ function fetchFAQsByFilters(options) {
       ]
     }
   ]
+
 }
 {% endschema %}
