@@ -200,7 +200,7 @@
       })
       .catch(error => {
         console.error('Error fetching products:', error);
-        productsWrapper.classList.remove('skeleton-loading');
+        // productsWrapper.classList.remove('skeleton-loading');/
         productsWrapper.innerHTML = '<p>Error loading products</p>';
       });
   }
