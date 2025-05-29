@@ -130,7 +130,7 @@
       .then(response => response.json())
       .then(data => {
         // categoriesContainer.classList.remove('skeleton-loading');
-        categoriesContainer.innerHTML = ""; // Clear skeleton
+        // categoriesContainer.innerHTML = ""; // Clear skeleton
 
         if (!data || data.length === 0) {
           categoriesContainer.innerHTML = '<p>No categories found.</p>';
