@@ -103,7 +103,6 @@
     const container = document.getElementById('searchListigBody');
     container.innerHTML = '';
 
-    // 👉 Show skeleton
     const template = document.getElementById('faqSkeletonTemplate');
     for (let i = 0; i < 5; i++) {
       const skeletonClone = template.content.cloneNode(true);
@@ -115,7 +114,7 @@
     let product = document.getElementById('selectProduct')?.value || productID;
     let collection = document.getElementById('selectCollection')?.value || collectionID;
 
-    // 🚀 Replace this with your real fetch call
+
     fetchFAQsByFilters({
       categoryID: categoryID,
       filter: filter,
@@ -133,8 +132,8 @@
   }
 
   function fetchFAQsByFilters({ appendTo, onComplete }) {
-    // ⏳ Simulate async fetch delay
-    setTimeout(() => {
+
+        setTimeout(() => {
       if (typeof onComplete === 'function') {
         onComplete();
       }
