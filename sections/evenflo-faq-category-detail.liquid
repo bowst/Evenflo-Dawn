@@ -1,7 +1,6 @@
 {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-{% comment %} Class override in this section {% endcomment %}
 <style>
   .help-articles-block {
     background: #fff;
@@ -10,177 +9,199 @@
     display: flex;
     justify-content: space-between;
   }
-  .product-category-slider-wrapper .swiper-button-prev, .product-category-slider-wrapper .swiper-button-next {
-    display: flex!important;
+  .product-category-slider-wrapper .swiper-button-prev,
+  .product-category-slider-wrapper .swiper-button-next {
+    display: flex !important;
   }
   .product-category-slider-wrapper .tab-content-wrapper {
     justify-content: flex-start;
     gap: 0;
   }
   .swiper {
-      width: 100%;
-      height: 100%;
+    width: 100%;
+    height: 100%;
   }
-  
   .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  
   .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   @media screen and (max-width: 1180px) {
     .product-category-slider-wrapper .tab-content-wrapper {
       gap: 0;
       flex-wrap: nowrap;
       justify-content: flex-start;
-  }
-   .product-category-slider-wrapper .tab-card{
+    }
+    .product-category-slider-wrapper .tab-card {
       max-width: 100%;
     }
-}
+  }
+
+  /* Skeleton Styles */
+  .faq-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .faq-skeleton-item {
+    background-color: #e0e0e0;
+    height: 20px;
+    width: 80%;
+    border-radius: 4px;
+    animation: pulse 1.2s infinite ease-in-out;
+  }
+  .faq-skeleton-item.short {
+    width: 50%;
+  }
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 </style>
+
+<template id="faqSkeletonTemplate">
+  <div class="faq-skeleton">
+    <div class="faq-skeleton-item"></div>
+    <div class="faq-skeleton-item short"></div>
+    <div class="faq-skeleton-item"></div>
+  </div>
+</template>
 
 {% assign products_to_show = section.settings.categoryRelatedRange %}
 
 <div class="help-articles-block">
-  <div class="help-articles-content page-width center"> 
+  <div class="help-articles-content page-width center">
     <div class="help-article-search-wrapper">
       <h1 id="categoryName"></h1>
     </div>
 
     <div class="swiper mySwiper tab-body product-category-slider-wrapper">
       <div class="swiper-wrapper tab-content-wrapper" id="productsByCategory"></div>
-      <!-- <div class="swiper-pagination"></div> -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     </div>
   </div>
 </div>
 
-
-
 <div class="product-page-wrapper">
-
-<div class="popular-question-block" id="categoryRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
-  <div class="popular-content-wrapper page-width">
-    <div class="heading center">
-      <h2 id="popularQuestionHeading">{{ section.settings.categoryRelatedTitle }}</h2>
+  <div class="popular-question-block" id="categoryRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
+    <div class="popular-content-wrapper page-width">
+      <div class="heading center">
+        <h2 id="popularQuestionHeading">{{ section.settings.categoryRelatedTitle }}</h2>
+      </div>
+      <div class="popular-card-wrapper" id="popularCards"></div>
     </div>
-    <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
 </div>
-
-</div>
-
-{% comment %} {% assign categories_to_show = 6 %}
-{% assign products_to_show = 6 %}
-{% assign category_title = "Categories" %} {% endcomment %}
-
-{% comment %} {% render 'faq-category-block', categories_to_show: categories_to_show, products_to_show: products_to_show, category_title: category_title,show_title:false %} {% endcomment %}
 
 {% render 'faq-load-more-block', show_topic_dropdown:true, show_product_dropdown:true %}
 
 {% assign topics_to_show = 3 %}
 {% assign topics_title = "By Topics" %}
 
-{% render 'faq-topic-block', topics_to_show:topics_to_show , topics_title:topics_title%}
-
+{% render 'faq-topic-block', topics_to_show:topics_to_show , topics_title:topics_title %}
 {% render 'faq-support-block' %}
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
+  var categoryID = "";
 
   function fetchPopularCategoriesRelatedData(categoryID) {
     const container = document.getElementById("popularCards");
-    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
+    const block = document.getElementById("categoryRelatedBlock");
+    const blocksToShow = block ? block.dataset.faqsToShow : 3;
 
     if (!container) {
       console.log("Error on getting container");
       return;
     }
 
-    container.innerHTML = ""; // Clear existing content
-    const loader = appendLoader(container);
+    container.innerHTML = "";
 
-    let url = evenFloFAQURL + "product_category/" + categoryID + "/";
+    // Inject skeletons
+    const template = document.getElementById("faqSkeletonTemplate");
+    for (let i = 0; i < blocksToShow; i++) {
+      const skeletonClone = template.content.cloneNode(true);
+      container.appendChild(skeletonClone);
+    }
+
+    const url = evenFloFAQURL + "product_category/" + categoryID + "/";
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-
-      if(data?.detail && containsString(data?.detail,errorString())){
-          redirectIfNoData([])
-          return ""
+        if (data?.detail && containsString(data?.detail, errorString())) {
+          redirectIfNoData([]);
+          return;
         }
 
-      getProductsByCategory(categoryID,"",true)
-      fetchFAQsByFilters({categoryID:categoryID});
-      fetchTopicsByType(categoryID,true,"category")
-      fetchDropDownProductsByType(categoryID,"category")
+        getProductsByCategory(categoryID, "", true);
+        fetchFAQsByFilters({ categoryID: categoryID });
+        fetchTopicsByType(categoryID, true, "category");
+        fetchDropDownProductsByType(categoryID, "category");
 
-        document.getElementById('categoryName').innerHTML = data?.category_name;
-        //Calling breadcrumb link to update the breadcrumb name
-        getBreadCrumbLinks(data?.category_name,'category')
-  
+        document.getElementById("categoryName").innerText = data?.category_name;
+        getBreadCrumbLinks(data?.category_name, "category");
 
-        //Hiding Popular questions heading
-        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
-          document.getElementById('popularQuestionHeading').style.display ="none";
+        if (
+          Array.isArray(data?.related_popular_faqs) &&
+          data?.related_popular_faqs.length === 0
+        ) {
+          document.getElementById("popularQuestionHeading").style.display = "none";
         }
 
-        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
+        container.innerHTML = ""; // Clear skeletons
 
-        const popularCard = createPopularCardDivElement("popular-card");
+        data?.related_popular_faqs
+          ?.slice(0, blocksToShow)
+          .forEach((product) => {
+            const popularCard = createPopularCardDivElement("popular-card");
+            const faqsContent = getFAQContent(product?.products || []);
+            const tags = getTagsArray(product?.tags || []);
+            const tagsHtml = getTagsHtml(tags);
 
-        const faqsContent = getFAQContent(product?.products || []);
+            popularCard.innerHTML = setFAQBlockInnerHtml(
+              product?.topic?.name || "",
+              product.question,
+              faqsContent,
+              product.answer,
+              product?.id,
+              tagsHtml
+            );
 
-        const tags = getTagsArray(product?.tags || []);
-
-        const tagsHtml = getTagsHtml(tags);
-
-        popularCard.innerHTML = setFAQBlockInnerHtml(
-          product?.topic?.name || "",
-          product.question,
-          faqsContent,
-          product.answer,
-          product?.id,
-          tagsHtml
-        );
-
-        container.appendChild(popularCard);
-        });
+            container.appendChild(popularCard);
+          });
       })
       .catch((error) => {
         console.error("Error fetching category:", error);
-        redirectIfNoData([])
-      })
-      .finally(() => {
-        if (loader) {
-          hideLoader(loader);
-        }
+        redirectIfNoData([]);
       });
   }
 
-
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    if (urlParams.has('cat_id')) {
-      categoryID = urlParams.get('cat_id');
+    if (urlParams.has("cat_id")) {
+      categoryID = urlParams.get("cat_id");
       fetchPopularCategoriesRelatedData(categoryID);
     } else {
       redirectIfNoData([]);
