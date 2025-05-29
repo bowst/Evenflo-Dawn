@@ -18,7 +18,7 @@
     min-height: 470px;
   }
 
-  /* skeleton placeholder cards */
+  /* skeleton card */
   .popular-card-wrapper.loading .popular-card.skeleton {
     width: 504px;
     height: 470px;
@@ -45,105 +45,43 @@
 </style>
 
 <script>
-  function fetchFAQsByFilters({
-    categoryID = "",
-    filter = "",
-    topicsID = "",
-    page = 1,
-    productID = "",
-    collectionID = "",
-    popular = false,
-    appendTo = "popularCards",
-    showLoadMore = true,
-  }) {
-    const container = document.getElementById(appendTo);
-    if (!container) {
-      console.error("Container not found:", appendTo);
-      return;
+  function renderPopularSkeletons() {
+    const cardsWrapper = document.getElementById('popularCards');
+    if (!cardsWrapper) return;
+    // how many to show, capped at 3
+    const max = 3;
+    const wanted = Number(cardsWrapper.closest('#popularQuestionBlock').dataset.faqsToShow) || max;
+    const toShow = Math.min(wanted, max);
+
+    cardsWrapper.classList.add('loading');
+    let skeletons = '';
+    for (let i = 0; i < toShow; i++) {
+      skeletons += `
+        <div class="popular-card skeleton">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-content"></div>
+        </div>`;
     }
-
-    const faqsToShow = Number(
-      document.getElementById("popularQuestionBlock")?.dataset?.faqsToShow
-    ) || 3;
-
-    // If loading first page of popular, render skeletons
-    if (popular && page === 1) {
-      container.classList.add("loading");
-      container.innerHTML = "";
-      const count = Math.min(faqsToShow, 3);
-      let html = "";
-      for (let i = 0; i < count; i++) {
-        html += `
-          <div class="popular-card skeleton">
-            <div class="skeleton-title"></div>
-            <div class="skeleton-content"></div>
-          </div>`;
-      }
-      container.innerHTML = html;
-    }
-    else if (page === 1) {
-      // clear for non-popular or subsequent pages
-      container.innerHTML = "";
-    }
-
-    fetch(
-      evenFloFAQURL +
-        `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // remove skeletons if present
-        if (popular && page === 1) {
-          container.classList.remove("loading");
-          container.querySelectorAll(".skeleton").forEach(el => el.remove());
-        }
-
-        let results = data?.results || [];
-        if (popular) results = results.slice(0, faqsToShow);
-
-        results.forEach((item) => {
-          const card = createPopularCardDivElement("popular-card");
-          const faqsContent = getFAQContent(item?.products || []);
-          const tagsHtml = getTagsHtml(getTagsArray(item?.tags || []));
-
-          card.innerHTML = setFAQBlockInnerHtml(
-            item?.topic?.name || "",
-            item.question,
-            faqsContent,
-            item.answer,
-            "",
-            tagsHtml
-          );
-          container.appendChild(card);
-        });
-
-        // handle load-more button if you have one
-        const loadMoreBtn = document.getElementById("loadMoreBtn");
-        if (loadMoreBtn && showLoadMore) {
-          loadMoreBtn.style.display = data?.next ? "block" : "none";
-        }
-      })
-      .catch((err) => {
-        console.error("Error fetching popular FAQs:", err);
-        // cleanup skeletons on error
-        if (popular && page === 1) {
-          container.classList.remove("loading");
-          container.querySelectorAll(".skeleton").forEach(el => el.remove());
-        }
-      })
-      .finally(() => {
-        toggleAnswerBullet();
-      });
+    cardsWrapper.innerHTML = skeletons;
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function loadPopularFAQs() {
+    const cardsWrapper = document.getElementById('popularCards');
+    if (!cardsWrapper) return;
+
+    // show skeletons first
+    renderPopularSkeletons();
+
+    // then fetch real content (this will replace skeletons)
     fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', loadPopularFAQs);
 
   document.addEventListener('shopify:section:load', (event) => {
     const sectionId = event?.detail?.sectionId;
     if (sectionId?.includes('evenflo_faq_popular_question')) {
-      fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
+      loadPopularFAQs();
     }
   });
 </script>
