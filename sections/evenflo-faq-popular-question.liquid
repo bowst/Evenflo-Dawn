@@ -5,62 +5,26 @@
     <div class="heading center">
       <h2>{{ section.settings.popularQuestionTitle }}</h2>
     </div>
-    <div class="popular-card-wrapper" id="popularCards">
-      <!-- Skeleton loader is shown initially -->
-      <div class="skeleton-card" style="width: 504px; height: 468px;"></div>
-    </div>
+    <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
 </div>
 
 <script>
+
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Check if the current page is a product category page (modify as per your actual page structure)
-  if (window.location.pathname.includes('product-category')) {
-    fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
-  }
+  fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
 });
 
-document.addEventListener('shopify:section:load', (event) => {
+document.addEventListener('shopify:section:load', (event) => { 
   const sectionId = event?.detail?.sectionId;
   if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
-  }
+    fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
+  } 
 });
 
-// Simulate fetch for FAQs (this function should be replaced with your actual API call)
-function fetchFAQsByFilters(options) {
-  const popularCardsContainer = document.getElementById(options.appendTo);
 
-  // Simulate a fetch call with setTimeout
-  setTimeout(() => {
-    // Replace skeleton loader with actual content after 2 seconds
-    popularCardsContainer.innerHTML = `<div>FAQ Content Loaded for Product Category</div>`; // Replace this with actual content
-  }, 2000); // Simulated delay (adjust timing as needed)
-}
 </script>
-
-<style>
-/* Skeleton Loader Styles */
-.skeleton-card {
-  background-color: #e0e0e0;
-  animation: skeleton 1.5s infinite ease-in-out;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-/* Skeleton animation for a "pulsing" effect */
-@keyframes skeleton {
-  0% {
-    background-color: #e0e0e0;
-  }
-  50% {
-    background-color: #f0f0f0;
-  }
-  100% {
-    background-color: #e0e0e0;
-  }
-}
-</style>
 
 {% schema %}
 {
@@ -95,5 +59,6 @@ function fetchFAQsByFilters(options) {
       ]
     }
   ]
+
 }
 {% endschema %}
