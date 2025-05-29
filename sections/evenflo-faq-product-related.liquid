@@ -1,108 +1,76 @@
 {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-{% comment %} Class override in this section {% endcomment %}
 <style>
   .help-articles-block {
     background: #fff;
   }
+
   .search-listing-header2 {
     display: flex;
     justify-content: space-between;
   }
-  .product-category-slider-wrapper .swiper-button-prev, .product-category-slider-wrapper .swiper-button-next {
-    display: flex!important;
+
+  /* Skeleton styles */
+  .popular-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 470px;
   }
-  .product-category-slider-wrapper .tab-content-wrapper {
-    justify-content: flex-start;
-    gap: 0;
+
+  /* Skeleton for popular card */
+  .popular-card.skeleton {
+    width: 504px;
+    height: 525px;
+    background: #f1f2f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
   }
-  .swiper {
-      width: 100%;
-      height: 100%;
+
+  .popular-card.skeleton .skeleton-title {
+    width: 60%;
+    height: 1.5em;
+    background: #e0e0e0;
+    margin-bottom: 1rem;
   }
-  
-  .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+
+  .popular-card.skeleton .skeleton-content {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 4px;
   }
-  
-  .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
-  @media screen and (max-width: 1180px) {
-    .product-category-slider-wrapper .tab-content-wrapper {
-      gap: 0;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-  }
-   .product-category-slider-wrapper .tab-card{
-      max-width: 100%;
-    }
-}
 </style>
 
-{% assign products_to_show = section.settings.categoryRelatedRange %}
+{% assign products_to_show = section.settings.productRelatedRange %}
 
 <div class="help-articles-block">
-  <div class="help-articles-content page-width center"> 
+  <div class="help-articles-content page-width center">
     <div class="help-article-search-wrapper">
-      <h1 id="categoryName"></h1>
-    </div>
-
-    <div class="swiper mySwiper tab-body product-category-slider-wrapper">
-      <div class="swiper-wrapper tab-content-wrapper" id="productsByCategory"></div>
-      <!-- <div class="swiper-pagination"></div> -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      <h1 id="productName"></h1>
+      <p id="productDescription"></p>
+      <div class="help-article-link-wrapper" id="productLinks"></div>
     </div>
   </div>
 </div>
-
-
 
 <div class="product-page-wrapper">
-
-<div class="popular-question-block" id="categoryRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
-  <div class="popular-content-wrapper page-width">
-    <div class="heading center">
-      <h2 id="popularQuestionHeading">{{ section.settings.categoryRelatedTitle }}</h2>
+  <div class="popular-question-block" id="productRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
+    <div class="popular-content-wrapper page-width">
+      <div class="heading center">
+        <h2 id="popularQuestionHeading">{{ section.settings.productRelatedTitle }}</h2>
+      </div>
+      <div class="popular-card-wrapper" id="popularCards"></div>
     </div>
-    <div class="popular-card-wrapper" id="popularCards"></div>
   </div>
 </div>
 
-</div>
-
-{% comment %} {% assign categories_to_show = 6 %}
-{% assign products_to_show = 6 %}
-{% assign category_title = "Categories" %} {% endcomment %}
-
-{% comment %} {% render 'faq-category-block', categories_to_show: categories_to_show, products_to_show: products_to_show, category_title: category_title,show_title:false %} {% endcomment %}
-
-{% render 'faq-load-more-block', show_topic_dropdown:true, show_product_dropdown:true %}
-
-{% assign topics_to_show = 3 %}
-{% assign topics_title = "By Topics" %}
-
-{% render 'faq-topic-block', topics_to_show:topics_to_show , topics_title:topics_title%}
-
-{% render 'faq-support-block' %}
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{% render 'faq-related-part-block' %}
+{% render 'faq-load-more-block', show_topic_dropdown: true %}
 
 <script>
-
-  function fetchPopularCategoriesRelatedData(categoryID) {
+  function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
     let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
@@ -112,76 +80,125 @@
       return;
     }
 
-    container.innerHTML = ""; // Clear existing content
-    const loader = appendLoader(container);
+    // 1) Inject skeletons before fetching data
+    let skeletonHTML = '';
+    for (let i = 0; i < blocksToShow; i++) {
+      skeletonHTML += `
+        <div class="popular-card skeleton">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-content"></div>
+        </div>`;
+    }
+    container.innerHTML = skeletonHTML;
 
-    let url = evenFloFAQURL + "product_category/" + categoryID + "/";
+    let url = evenFloFAQURL + "products/" + productID;
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
 
-      if(data?.detail && containsString(data?.detail,errorString())){
-          redirectIfNoData([])
-          return ""
+        if (data?.detail && containsString(data?.detail, errorString())) {
+          redirectIfNoData([]);
+          return "";
         }
 
-      getProductsByCategory(categoryID,"",true)
-      fetchFAQsByFilters({categoryID:categoryID});
-      fetchTopicsByType(categoryID,true,"category")
-      fetchDropDownProductsByType(categoryID,"category")
+        // Will be called in faq-related-part-block
+        getProductsPartsByProductID(productID);
+        fetchFAQsByFilters({ productID: productID });
+        fetchTopicsByType(productID, true);
 
-        document.getElementById('categoryName').innerHTML = data?.category_name;
-        //Calling breadcrumb link to update the breadcrumb name
-        getBreadCrumbLinks(data?.category_name,'category')
-  
+        document.getElementById('productName').innerHTML = data?.name;
+        getBreadCrumbLinks(data?.name, 'product');
+        document.getElementById('productDescription').innerHTML = data?.description;
 
-        //Hiding Popular questions heading
-        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
-          document.getElementById('popularQuestionHeading').style.display ="none";
+        const productLinks = document.getElementById('productLinks');
+        let linksHtml = ``;
+
+        if (data?.shopify_page_handel) {
+          linksHtml += `<a href="/products/${data.shopify_page_handel}">Product Guide </a> | `;
         }
+
+        if (data?.english_manual_url) {
+          linksHtml += `<a href="${data.english_manual_url}">Manual EN</a>`;
+        }
+
+        if (data?.spanish_manual_url) {
+          linksHtml += `<a href="${data.spanish_manual_url}">Manual ES</a>`;
+        }
+
+        if (data?.french_manual_url) {
+          linksHtml += `<a href="${data.french_manual_url}">Manual FR</a>`;
+        }
+
+        if (data?.warranty_certificate) {
+          linksHtml += ` | <a href="${data.warranty_certificate}">Warranty</a>`;
+        }
+
+        productLinks.innerHTML = linksHtml;
+        
+        // Hide Popular questions heading if no FAQs are found
+        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0) {
+          document.getElementById('popularQuestionHeading').style.display = "none";
+        }
+
+        // 2) Clear skeletons and render actual FAQs
+        container.innerHTML = ''; // Clear skeletons
+
+        // Render FAQ content
+        const faqSchemaData = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": []
+        };
 
         data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
+          const popularCard = createPopularCardDivElement("popular-card");
 
-        const popularCard = createPopularCardDivElement("popular-card");
+          const faqsContent = getFAQContent(product?.products || []);
+          const tags = getTagsArray(product?.tags || []);
+          const tagsHtml = getTagsHtml(tags);
 
-        const faqsContent = getFAQContent(product?.products || []);
+          popularCard.innerHTML = setFAQBlockInnerHtml(
+            product?.topic?.name || "",
+            product.question,
+            faqsContent,
+            product.answer,
+            product?.id,
+            tagsHtml
+          );
 
-        const tags = getTagsArray(product?.tags || []);
+          container.appendChild(popularCard);
 
-        const tagsHtml = getTagsHtml(tags);
-
-        popularCard.innerHTML = setFAQBlockInnerHtml(
-          product?.topic?.name || "",
-          product.question,
-          faqsContent,
-          product.answer,
-          product?.id,
-          tagsHtml
-        );
-
-        container.appendChild(popularCard);
+          // Add each FAQ to JSON-LD schema
+          faqSchemaData.mainEntity.push({
+            "@type": "Question",
+            "name": product.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": product.answer
+            }
+          });
         });
+
+        // Inject JSON-LD for FAQ schema
+        const scriptTag = document.createElement('script');
+        scriptTag.type = 'application/ld+json';
+        scriptTag.innerHTML = JSON.stringify(faqSchemaData);
+        document.head.appendChild(scriptTag);
       })
       .catch((error) => {
-        console.error("Error fetching category:", error);
-        redirectIfNoData([])
-      })
-      .finally(() => {
-        if (loader) {
-          hideLoader(loader);
-        }
+        console.error("Error fetching products:", error);
+        redirectIfNoData([]);
       });
   }
-
 
   document.addEventListener('DOMContentLoaded', () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    if (urlParams.has('cat_id')) {
-      categoryID = urlParams.get('cat_id');
-      fetchPopularCategoriesRelatedData(categoryID);
+    if (urlParams.has('pid')) {
+      const productID = urlParams.get('pid');
+      fetchPopularProductsRelatedData(productID);
     } else {
       redirectIfNoData([]);
     }
@@ -190,22 +207,22 @@
 
 {% schema %}
 {
-  "name": "EvenFlo FAQ Category",
+  "name": "EvenFlo FAQ ProdRel",
   "tag": "section",
-  "class": "categoryRelated",
+  "class": "productRelated",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
   "settings": [
     {
       "type": "text",
-      "id": "categoryRelatedTitle",
+      "id": "productRelatedTitle",
       "label": "Popular Question Title",
       "default": "Popular Questions"
     },
     {
       "type": "range",
-      "id": "categoryRelatedRange",
+      "id": "productRelatedRange",
       "label": "Number of questions to show",
       "default": 3,
       "min": 1,
@@ -215,7 +232,7 @@
   ],
   "presets": [
     {
-      "name": "EvenFlo FAQ Category",
+      "name": "EvenFlo FAQ ProdRel",
       "blocks": []
     }
   ]
