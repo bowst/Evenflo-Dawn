@@ -153,7 +153,7 @@
         });
 debugger
         // Load products for first category by default
-        getProductsByCategory(data[0].id, data[0].category_name);
+        getProductsByCategoryNew(data[0].id, data[0].category_name);
 
         // productsWrapper.classList.remove('skeleton-loading')
       })
@@ -232,6 +232,7 @@ function getProductsByCategoryNew(
 	fetch(evenFloFAQURL + `products/by/category/${category_id}`)
 		.then((response) => response.json())
 		.then((data) => {
+          debugger
 			if (data && data?.length > 0) {
 				const productsBlock = document.getElementById("productsByCategory");
 
