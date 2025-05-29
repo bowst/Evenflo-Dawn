@@ -1,6 +1,8 @@
 {% assign products_to_show = section.settings.popularQuestionRange %}
 
-<div class="popular-question-block" id="popularQuestionBlock" data-faqs-to-show="{{ products_to_show }}">
+<div class="popular-question-block" 
+     id="popularQuestionBlock" 
+     data-faqs-to-show="{{ products_to_show }}">
   <div class="popular-content-wrapper page-width">
     <div class="heading center">
       <h2>{{ section.settings.popularQuestionTitle }}</h2>
@@ -10,18 +12,30 @@
 </div>
 
 <style>
-  /* apply skeleton styles directly on .popular-card */
-  .popular-card.skeleton {
+  /* layout: flex-wrap for cards */
+  .popular-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 470px;
+  }
+
+  /* real card sizing so they’re never hidden */
+  .popular-card {
     width: 504px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+  }
+
+  /* skeleton placeholder */
+  .popular-card.skeleton {
     height: 470px;
     background: #f1f2f3;
     border-radius: 8px;
     padding: 10px;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0 1rem 1rem 0;
   }
   .popular-card.skeleton .skeleton-title {
     width: 60%;
@@ -35,112 +49,65 @@
     background: #e0e0e0;
     border-radius: 4px;
   }
-
-  /* ensure the wrapper lays out cards in rows */
-  .popular-card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    min-height: 470px; /* reserve space for up to one row */
-  }
 </style>
 
 <script>
-  function fetchFAQsByFilters({
-    categoryID = "",
-    filter = "",
-    topicsID = "",
-    page = 1,
-    productID = "",
-    collectionID = "",
-    popular = false,
-    appendTo = "popularCards",
-    showLoadMore = true,
-  }) {
-    const container = document.getElementById(appendTo);
-    if (!container) return;
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.getElementById('popularCards');
+    if (!wrapper) return console.error('popularCards container missing');
 
-    const faqsToShow = Number(
-      document.getElementById("popularQuestionBlock")?.dataset?.faqsToShow
-    ) || 3;
+    // figure out how many to show (schema caps at 3)
+    const max = 3;
+    const wanted = Number(
+      document.getElementById('popularQuestionBlock')
+        .dataset.faqsToShow
+    ) || max;
+    const toShow = Math.min(wanted, max);
 
-    // 1) On first page of popular, inject skeleton cards
-    if (popular && page === 1) {
-      container.innerHTML = "";
-      const skeletonCount = Math.min(faqsToShow, 3);
-      let html = "";
-      for (let i = 0; i < skeletonCount; i++) {
-        html += `
-          <div class="popular-card skeleton">
-            <div class="skeleton-title"></div>
-            <div class="skeleton-content"></div>
-          </div>`;
-      }
-      container.innerHTML = html;
+    // 1) inject skeletons
+    let skeletonHTML = '';
+    for (let i = 0; i < toShow; i++) {
+      skeletonHTML += `
+        <div class="popular-card skeleton">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-content"></div>
+        </div>`;
     }
-    // 2) On first page of non-popular, just clear
-    else if (page === 1) {
-      container.innerHTML = "";
-    }
+    wrapper.innerHTML = skeletonHTML;
 
-    // Fetch real FAQs
-    fetch(
-      evenFloFAQURL +
-        `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // remove skeletons if present
-        if (popular && page === 1) {
-          container.querySelectorAll(".popular-card.skeleton").forEach(el => el.remove());
-        }
+    // 2) fetch real FAQs
+    fetch(`${evenFloFAQURL}faqs/getFilteredFaqs?popular=true&page=1`)
+      .then(res => res.json())
+      .then(data => {
+        // clear skeletons
+        wrapper.innerHTML = '';
 
-        let results = data?.results || [];
-        if (popular) results = results.slice(0, faqsToShow);
-
-        results.forEach((item) => {
-          const card = createPopularCardDivElement("popular-card");
-          const faqsContent = getFAQContent(item?.products || []);
-          const tagsHtml = getTagsHtml(getTagsArray(item?.tags || []));
-
-          card.innerHTML = setFAQBlockInnerHtml(
-            item?.topic?.name || "",
-            item.question,
-            faqsContent,
-            item.answer,
-            "",
-            tagsHtml
-          );
-
-          container.appendChild(card);
-        });
-
-        // show/hide load-more if you use it
-        const loadMoreBtn = document.getElementById("loadMoreBtn");
-        if (loadMoreBtn && showLoadMore) {
-          loadMoreBtn.style.display = data?.next ? "block" : "none";
-        }
+        // render up to `toShow` real cards
+        (data.results || []).slice(0, toShow)
+          .forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'popular-card';
+            card.innerHTML = setFAQBlockInnerHtml(
+              item.topic?.name || '',
+              item.question,
+              getFAQContent(item.products || []),
+              item.answer,
+              '',
+              getTagsHtml(getTagsArray(item.tags || []))
+            );
+            wrapper.appendChild(card);
+          });
       })
-      .catch((err) => {
-        console.error("Error fetching popular FAQs:", err);
-        // on error, remove any leftover skeletons
-        if (popular && page === 1) {
-          container.querySelectorAll(".popular-card.skeleton").forEach(el => el.remove());
-        }
-      })
-      .finally(() => {
-        toggleAnswerBullet();
+      .catch(err => {
+        console.error('Error loading popular FAQs:', err);
+        // if you want, you can keep skeletons or show an error message
       });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
   });
 
-  document.addEventListener("shopify:section:load", (event) => {
-    const sectionId = event?.detail?.sectionId;
-    if (sectionId?.includes("evenflo_faq_popular_question")) {
-      fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
+  // re-run on Shopify section load (when theme editor refreshes just that block)
+  document.addEventListener('shopify:section:load', (event) => {
+    if (event.detail.sectionId.includes('evenflo_faq_popular_question')) {
+      document.dispatchEvent(new Event('DOMContentLoaded'));
     }
   });
 </script>
@@ -150,9 +117,7 @@
   "name": "EvenFlo FAQ Popular",
   "tag": "section",
   "class": "popularQuestion",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
+  "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
     {
       "type": "text",
@@ -170,11 +135,6 @@
       "step": 1
     }
   ],
-  "presets": [
-    {
-      "name": "EvenFlo FAQ Popular",
-      "blocks": []
-    }
-  ]
+  "presets": [{ "name": "EvenFlo FAQ Popular", "blocks": [] }]
 }
 {% endschema %}
