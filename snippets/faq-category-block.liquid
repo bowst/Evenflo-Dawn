@@ -163,10 +163,6 @@ debugger
         categoriesContainer.innerHTML = '<p>Error loading categories</p>';
         productsWrapper.classList.remove('skeleton-loading');
         productsWrapper.innerHTML = '';
-      }).finally(()=>
-        {
-              productsWrapper.classList.remove('skeleton-loading')
-
       })
   }
 
@@ -288,16 +284,18 @@ function getProductsByCategoryNew(
 			console.error("Error fetching products by category:", error);
 		})
 		.finally(() => {
+                        productsWrapper.classList.remove('skeleton-loading')
+
 			// Hide the loader
-			if (loader) {
-				hideLoader(loader);
-              if(document.querySelectorAll(".product-category-slider-wrapper .tab-card").length > 4){
-                document.querySelector(".product-category-slider-wrapper").classList.remove("product-slider-wrapper-hide");
-				customSlider(); 
-              }else{
-                    document.querySelector(".product-category-slider-wrapper").classList.add("product-slider-wrapper-hide");
-                  }
-			}
+			// if (loader) {
+			// 	hideLoader(loader);
+   //            if(document.querySelectorAll(".product-category-slider-wrapper .tab-card").length > 4){
+   //              document.querySelector(".product-category-slider-wrapper").classList.remove("product-slider-wrapper-hide");
+			// 	customSlider(); 
+   //            }else{
+   //                  document.querySelector(".product-category-slider-wrapper").classList.add("product-slider-wrapper-hide");
+   //                }
+			// }
 		});
 }
 
