@@ -10,17 +10,20 @@
 </div>
 
 <style>
-  .collection-wrapper.loading {
-    min-height: 250px;
+  /* keep wrapper height steady while loading */
+  .collection-wrapper.collection-loading {
+    min-height: 300px;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
   }
-  .collection-card.skeleton {
-    flex: 1 1 calc(33.333% - 1rem);
+
+  /* same skeleton style as your FAQ loader */
+  .collection-wrapper.collection-loading .collection-card.skeleton {
     background: #f1f2f3;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 10px;
+    flex: 1 1 calc(33.333% - 1rem);
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -39,59 +42,53 @@
 </style>
 
 <script>
-  function appendLoader(container, count = 3) {
-    container.classList.add('loading');
-    const frag = document.createDocumentFragment();
-    for (let i = 0; i < count; i++) {
-      const card = document.createElement('div');
-      card.className = 'collection-card skeleton';
-      card.innerHTML = `
-        <div class="skeleton-title"></div>
-        <div class="skeleton-img"></div>
-      `;
-      frag.appendChild(card);
-    }
-    container.appendChild(frag);
-  }
-
-  function getPaginatedCollections() {
+  document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('allCollections');
     if (!container) return;
 
-    // show loader skeletons
-    container.innerHTML = '';
+    // show skeleton loader
     const count = Number(container.dataset.collectionsToShow) || 3;
-    appendLoader(container, count);
+    container.classList.add('collection-loading');
 
+    let skeletonHTML = '';
+    for (let i = 0; i < count; i++) {
+      skeletonHTML += `
+        <div class="collection-card skeleton">
+          <div class="collection-title"><div class="skeleton-title"></div></div>
+          <div class="collection-img"><div class="skeleton-img"></div></div>
+        </div>`;
+    }
+    container.innerHTML = skeletonHTML;
+
+    // fetch real collections
     fetch(evenFloFAQURL + 'collection/?page=1&page_size=6')
       .then(res => res.json())
       .then(data => {
-        // clear loader
+        // clear skeletons
         container.innerHTML = '';
-        container.classList.remove('loading');
+        container.classList.remove('collection-loading');
 
-        const toShow = Number(container.dataset.collectionsToShow) || data.results.length;
-        data.results.slice(0, toShow).forEach(collection => {
-          const card = document.createElement('div');
-          card.className = 'collection-card';
-          card.innerHTML = `
-            <a href="/pages/evenflo-collection?cid=${collection.id}">
-              <div class="collection-title"><h2>${collection.name}</h2></div>
-              <div class="collection-img">
-                <img src="${collection.image}" alt="${collection.name}">
-              </div>
-            </a>
-          `;
-          container.appendChild(card);
-        });
+        data.results
+          .slice(0, count)
+          .forEach(collection => {
+            const card = document.createElement('div');
+            card.className = 'collection-card';
+            card.innerHTML = `
+              <a href="/pages/evenflo-collection?cid=${collection.id}">
+                <div class="collection-title"><h2>${collection.name}</h2></div>
+                <div class="collection-img">
+                  <img src="${collection.image}" alt="${collection.name}">
+                </div>
+              </a>`;
+            container.appendChild(card);
+          });
       })
       .catch(err => {
         console.error('Error fetching collections:', err);
-        container.classList.remove('loading');
+        container.classList.remove('collection-loading');
+        // optionally show a fallback message here
       });
-  }
-
-  document.addEventListener('DOMContentLoaded', getPaginatedCollections);
+  });
 </script>
 
 {% schema %}
