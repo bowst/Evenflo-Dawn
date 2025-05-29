@@ -146,14 +146,14 @@
             const allButtons = categoriesContainer.querySelectorAll('button');
             allButtons.forEach(button => button.classList.remove("active"));
             categoryTag.classList.add("active");
-            getProductsByCategory(category.id, category.category_name);
+            getProductsByCategoryNew(category.id, category.category_name);
           };
 
           categoriesContainer.appendChild(categoryTag);
         });
 debugger
         // Load products for first category by default
-        getProductsByCategory(data[0].id, data[0].category_name);
+        getProductsByCategoryNew(data[0].id, data[0].category_name);
       })
       .catch(error => {
         console.error('Error fetching categories:', error);
@@ -164,7 +164,7 @@ debugger
       });
   }
 
-  function getProductsByCategory(categoryId, categoryName) {
+  function getProductsByCategoryNew(categoryId, categoryName) {
     debugger
     const productsWrapper = document.getElementById('productsByCategory');
     debugger
