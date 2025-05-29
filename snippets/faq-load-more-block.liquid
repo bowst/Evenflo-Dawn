@@ -1,98 +1,94 @@
+{% comment %} Skeleton for faq-load-more-block {% endcomment %}
 
-{{ 'faq-load-more-block.css' | asset_url | stylesheet_tag }}
+<style>
+  .faq-skeleton.placeholder-item {
+    background: #f1f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    animation: pulse 1.5s infinite;
+  }
 
+  .faq-skeleton-line {
+    height: 16px;
+    background: #e0e0e0;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
 
-<div class="product-page-wrapper">
-<div class="popular-question-block">
-  <div class="popular-content-wrapper page-width">
+  .faq-skeleton-line.short { width: 50%; }
+  .faq-skeleton-line.medium { width: 75%; }
+  .faq-skeleton-line.long { width: 100%; }
 
-  <div class="popular-header">
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+</style>
 
-	<div class="search-selector-wrapper">
-    {% if show_topic_dropdown %}
-      <div class="search-selector">
-        <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
-      </div>
-    {% endif %}
-
-    {% if show_product_dropdown %}
-      <div class="search-selector">
-        <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
-      </div>
-    {% endif %}
-
-    {% if show_collection_dropdown %}
-      <div class="search-selector">
-        <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
-      </div>
-    {% endif %}
-    </div>
-
-    <div class="search-input">
-      <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
-    </div>
-
-    </div>
-
-   
- 
-    <div class="popular-card-wrapper" id="searchListigBody">
-    </div> 
-
-    <div class="browse-categories" id="loadBtnDiv">
-        <button id="loadMoreBtn"  >Load More</button>
-    </div>
-
-
+<template id="faqSkeletonTemplate">
+  <div class="faq-skeleton placeholder-item">
+    <div class="faq-skeleton-line long"></div>
+    <div class="faq-skeleton-line medium"></div>
+    <div class="faq-skeleton-line short"></div>
   </div>
-  </div>
-
-  </div>
-
-
-
+</template>
 
 <script>
-
-var currentPage = 1;
-
-const loadMoreBtn = document.getElementById('loadMoreBtn');
-loadMoreBtn?.addEventListener('click', () => {
-  currentPage++;
-  getFilterValuesAndCallFunc();
-});
-
-function handleDropDownChange(event) {  
-
-   //This we have added if some one searches we setting the page count to 1
-    // if(event.target.id=="searchFAQ"){
-    //   currentPage = 1
-    // }
-     currentPage = 1
-     getFilterValuesAndCallFunc()
+function fetchFAQsByFilters({
+  categoryID = "",
+  filter = "",
+  topicsID = "",
+  page = 1,
+  productID = "",
+  collectionID = "",
+  popular = false,
+  appendTo = "searchListigBody",
+  showLoadMore = true,
+}) {
+  const container = document.getElementById(appendTo);
+  if (!container) {
+    console.error("Container not found:", appendTo);
+    return;
   }
 
+  const template = document.getElementById("faqSkeletonTemplate");
+  const count = parseInt(document.getElementById("categoryRelatedBlock")?.dataset?.faqsToShow || 3);
 
-function getFilterValuesAndCallFunc(){
-    let filter = document.getElementById('searchFAQ')?.value;
+  if (page === 1) container.innerHTML = "";
 
-    //These can be from the url on can be from the dropdown, if they are from url they are intialized and there values set from there respective pages
-    let topic = document.getElementById('selectTopic')?.value || topicID;
-    let product = document.getElementById('selectProduct')?.value || productID;
-    let collection = document.getElementById('selectCollection')?.value || collectionID;
-
-    fetchFAQsByFilters({
-      categoryID:categoryID,
-      filter:filter ,
-      topicsID:topic,
-      page :currentPage,
-      productID :product,
-      collectionID: collection,
-      popular : false,
-      appendTo : "searchListigBody",
-});
-
+  for (let i = 0; i < count; i++) {
+    const skeleton = template.content.cloneNode(true);
+    container.appendChild(skeleton);
   }
 
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+  if (loadMoreBtn && showLoadMore) loadMoreBtn.style.display = "none";
 
+  const url = `${evenFloFAQURL}faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      container.querySelectorAll(".placeholder-item").forEach(el => el.remove());
+
+      const results = popular ? data.results?.slice(0, count) : data.results;
+
+      results?.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "popular-card";
+        card.innerHTML = `<h3>${product.question}</h3><p>${product.answer}</p>`;
+        container.appendChild(card);
+      });
+
+      if (loadMoreBtn && showLoadMore && data.next) {
+        loadMoreBtn.style.display = "block";
+      }
+    })
+    .catch(err => {
+      console.error("Fetch failed", err);
+      container.innerHTML = "<p>Error loading FAQs.</p>";
+    });
+}
 </script>
