@@ -4,8 +4,8 @@
   .faq-skeleton {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding: 10px 0;
+    gap: 12px;
+    margin-bottom: 20px;
   }
 
   .faq-skeleton-item {
@@ -17,7 +17,7 @@
   }
 
   .faq-skeleton-item.short {
-    width: 40%;
+    width: 50%;
   }
 
   @keyframes pulse {
@@ -25,7 +25,7 @@
       opacity: 1;
     }
     50% {
-      opacity: 0.5;
+      opacity: 0.4;
     }
     100% {
       opacity: 1;
@@ -38,7 +38,6 @@
     <div class="faq-skeleton-item"></div>
     <div class="faq-skeleton-item short"></div>
     <div class="faq-skeleton-item"></div>
-    <div class="faq-skeleton-item short"></div>
   </div>
 </template>
 
@@ -48,31 +47,26 @@
       <div class="popular-header">
         <div class="search-selector-wrapper">
           {% if show_topic_dropdown %}
-            <div class="search-selector">
-              <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
-            </div>
+          <div class="search-selector">
+            <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
+          </div>
           {% endif %}
 
           {% if show_product_dropdown %}
-            <div class="search-selector">
-              <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
-            </div>
+          <div class="search-selector">
+            <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
+          </div>
           {% endif %}
 
           {% if show_collection_dropdown %}
-            <div class="search-selector">
-              <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
-            </div>
+          <div class="search-selector">
+            <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
+          </div>
           {% endif %}
         </div>
 
         <div class="search-input">
-          <input
-            id="searchFAQ"
-            type="text"
-            placeholder="search"
-            oninput="debouncedSearch(event)"
-          />
+          <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
         </div>
       </div>
 
@@ -87,6 +81,10 @@
 
 <script>
   var currentPage = 1;
+  var topicID = '';
+  var productID = '';
+  var collectionID = '';
+  var categoryID = '';
 
   const loadMoreBtn = document.getElementById('loadMoreBtn');
   loadMoreBtn?.addEventListener('click', () => {
@@ -94,7 +92,7 @@
     getFilterValuesAndCallFunc();
   });
 
-  function handleDropDownChange(event) {
+  function handleDropDownChange() {
     currentPage = 1;
     getFilterValuesAndCallFunc();
   }
@@ -103,40 +101,44 @@
     const container = document.getElementById('searchListigBody');
     container.innerHTML = '';
 
+    // Insert skeletons
     const template = document.getElementById('faqSkeletonTemplate');
     for (let i = 0; i < 5; i++) {
       const skeletonClone = template.content.cloneNode(true);
       container.appendChild(skeletonClone);
     }
 
-    let filter = document.getElementById('searchFAQ')?.value;
-    let topic = document.getElementById('selectTopic')?.value || topicID;
-    let product = document.getElementById('selectProduct')?.value || productID;
-    let collection = document.getElementById('selectCollection')?.value || collectionID;
+    const filter = document.getElementById('searchFAQ')?.value || '';
+    const topic = document.getElementById('selectTopic')?.value || topicID;
+    const product = document.getElementById('selectProduct')?.value || productID;
+    const collection = document.getElementById('selectCollection')?.value || collectionID;
 
-
+    // Simulate async fetch
     fetchFAQsByFilters({
-      categoryID: categoryID,
-      filter: filter,
+      categoryID,
+      filter,
       topicsID: topic,
       page: currentPage,
       productID: product,
       collectionID: collection,
-      popular: false,
-      appendTo: 'searchListigBody',
-      onComplete: () => {
-        container.innerHTML = '';
-        container.innerHTML = '<div>Loaded FAQ content goes here</div>';
-      }
+      appendTo: 'searchListigBody'
     });
   }
 
-  function fetchFAQsByFilters({ appendTo, onComplete }) {
+  function fetchFAQsByFilters({ appendTo }) {
+    const container = document.getElementById(appendTo);
 
-        setTimeout(() => {
-      if (typeof onComplete === 'function') {
-        onComplete();
+    // Simulate 1s delay then inject dummy FAQ cards
+    setTimeout(() => {
+      container.innerHTML = '';
+
+      for (let i = 1; i <= 3; i++) {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'faq-item';
+        faqItem.style.padding = '10px 0';
+        faqItem.innerHTML = `<strong>FAQ Question ${i}</strong><p>This is a sample answer to question ${i}.</p>`;
+        container.appendChild(faqItem);
       }
-    }, 1000); // Replace with actual AJAX logic
+    }, 1000);
   }
 </script>
