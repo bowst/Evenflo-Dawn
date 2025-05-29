@@ -154,6 +154,8 @@
 debugger
         // Load products for first category by default
         getProductsByCategoryNew(data[0].id, data[0].category_name);
+
+        productsWrapper.classList.remove('skeleton-loading')
       })
       .catch(error => {
         console.error('Error fetching categories:', error);
@@ -188,7 +190,7 @@ debugger
           html += `<li>${product.name}</li>`;
         });
         html += '</ul>';
-
+        debugger
         innerDiv.innerHTML = html;
         productsWrapper.innerHTML = '';
         productsWrapper.appendChild(innerDiv);
@@ -197,6 +199,7 @@ debugger
         document.querySelectorAll('.swiper-slide.tab-card').forEach(el => {
           el.classList.remove('skeleton');
         });
+        
          // productsWrapper.classList.remove('skeleton-loading');
 
       })
