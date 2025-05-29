@@ -270,10 +270,10 @@ function getProductsByCategoryNew(
 		})
 		.finally(() => {
           debugger
-                  const skeletons = productsWrapper.querySelectorAll('.skeleton-card');
+                  const skeletons = container.querySelectorAll('.skeleton-card');
                   skeletons.forEach(el => el.remove());
           debugger
-                        productsWrapper.classList.remove('skeleton-loading-new')
+                        container.classList.remove('skeleton-loading-new')
 
 		});
 }
