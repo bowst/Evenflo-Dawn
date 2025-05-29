@@ -7,7 +7,7 @@
     </div>
     <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}">
       <!-- Skeleton loader for collections will be shown initially -->
-      <div class="collection-loader skeleton"></div>
+      <div class="skeleton collection-loader"></div>
       <!-- Real content will be injected here after fetching -->
     </div>
   </div>
@@ -19,12 +19,10 @@ function getPaginatedCollections() {
   const container = document.getElementById('allCollections');
   if (!container) return;
 
+  // Clear any previous content (if any)
   container.innerHTML = ""; // Clear existing content
 
-  // Add skeleton loading class to show skeleton loader
-  container.classList.add('collection-loading');
-
-  // Show skeleton loader while fetching
+  // Immediately show skeleton loader
   const loader = document.createElement('div');
   loader.classList.add('collection-loader', 'skeleton');
   container.appendChild(loader);
@@ -35,7 +33,6 @@ function getPaginatedCollections() {
       const blocksToShow = container ? container.dataset.collectionsToShow : 6;
 
       // Clear skeleton loader and insert actual collection data
-      container.classList.remove('collection-loading');
       container.innerHTML = ""; // Clear loader
 
       // Loop through and add collections to the container
@@ -117,15 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
   height: auto;
   border-radius: 8px;
   margin-top: 10px;
-}
 
-/* Loading state for collection wrapper */
-.collection-wrapper.collection-loading {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+/* Adding padding to the collection block wrapper */
+.collection-wrapper {
+  padding: 20px;
 }
 </style>
 
