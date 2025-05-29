@@ -5,53 +5,61 @@
     <div class="heading">
       <h1>{{ section.settings.faqCollectionTitle }}</h1>
     </div>
-    <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}"></div>
+    <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}">
+      <!-- Skeleton loader for collections will be shown initially -->
+      <div class="collection-loader skeleton"></div>
+      <!-- Real content will be injected here after fetching -->
+    </div>
   </div>
 </div>
 
 <script>
+// Fetch collections and show skeleton loader until data is available
 function getPaginatedCollections() {
   const container = document.getElementById('allCollections');
-  if (!container) {
-    return;
-  }
-  container.innerHTML = "";  // Clear existing content
+  if (!container) return;
 
-  // Creating loader div through JavaScript
-  const loader = appendLoader(container);
+  container.innerHTML = ""; // Clear existing content
+
+  // Add skeleton loading class to show skeleton loader
+  container.classList.add('collection-loading');
+
+  // Show skeleton loader while fetching
+  const loader = document.createElement('div');
+  loader.classList.add('collection-loader', 'skeleton');
+  container.appendChild(loader);
 
   fetch(evenFloFAQURL + 'collection/?page=1&page_size=6')
     .then(response => response.json())
     .then(data => {
       const blocksToShow = container ? container.dataset.collectionsToShow : 6;
-    
-        data?.results?.slice(0, blocksToShow).forEach((collection) => {  // Limit to number of collections to show
-          const collectionCard = document.createElement('div');
-          collectionCard.classList.add('collection-card');
-          
-          collectionCard.innerHTML = `
-            <a href="/pages/evenflo-collection?cid=${collection?.id}">
-              <div class="collection-title">
-                <h2>${collection?.name}</h2>
-              </div>
-              <div class="collection-img">
-                <img src=${collection?.image} alt="collection-img">
-              </div>
-            </a>
-          `;
-          
-          container.appendChild(collectionCard);
-        });
-     
+
+      // Clear skeleton loader and insert actual collection data
+      container.classList.remove('collection-loading');
+      container.innerHTML = ""; // Clear loader
+
+      // Loop through and add collections to the container
+      data?.results?.slice(0, blocksToShow).forEach((collection) => {
+        const collectionCard = document.createElement('div');
+        collectionCard.classList.add('collection-card');
+        
+        collectionCard.innerHTML = `
+          <a href="/pages/evenflo-collection?cid=${collection?.id}">
+            <div class="collection-title">
+              <h2>${collection?.name}</h2>
+            </div>
+            <div class="collection-img">
+              <img src="${collection?.image}" alt="collection-img">
+            </div>
+          </a>
+        `;
+        
+        container.appendChild(collectionCard);
+      });
     })
     .catch(error => {
       console.error('Error fetching collections:', error);
-    })
-    .finally(() => {
-      // Hide the loader
-      if (loader) {
-        loader.style.display = 'none';
-      }
+      container.innerHTML = '<p>Error loading collections</p>';
     });
 }
 
@@ -59,6 +67,67 @@ document.addEventListener('DOMContentLoaded', () => {
   getPaginatedCollections();
 });
 </script>
+
+<style>
+/* Skeleton Loader Styles */
+.skeleton {
+  background-color: #f1f2f3;
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* Collection loader placeholder */
+.collection-loader {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: #f1f2f3;
+  }
+  50% {
+    background-color: #e0e0e0;
+  }
+  100% {
+    background-color: #f1f2f3;
+  }
+}
+
+/* Collection card styles */
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.collection-title h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.collection-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Loading state for collection wrapper */
+.collection-wrapper.collection-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+</style>
 
 {% schema %}
 {
