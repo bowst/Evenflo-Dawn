@@ -9,21 +9,140 @@
   </div>
 </div>
 
+<style>
+  /* apply skeleton styles directly on .popular-card */
+  .popular-card.skeleton {
+    width: 504px;
+    height: 470px;
+    background: #f1f2f3;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 1rem 1rem 0;
+  }
+  .popular-card.skeleton .skeleton-title {
+    width: 60%;
+    height: 1.5em;
+    background: red;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .popular-card.skeleton .skeleton-content {
+    flex: 1;
+    background: red;
+    border-radius: 4px;
+  }
+
+  /* ensure the wrapper lays out cards in rows */
+  .popular-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 470px; /* reserve space for up to one row */
+  }
+</style>
+
 <script>
+  function fetchFAQsByFilters({
+    categoryID = "",
+    filter = "",
+    topicsID = "",
+    page = 1,
+    productID = "",
+    collectionID = "",
+    popular = false,
+    appendTo = "popularCards",
+    showLoadMore = true,
+  }) {
+    const container = document.getElementById(appendTo);
+    if (!container) return;
 
+    const faqsToShow = Number(
+      document.getElementById("popularQuestionBlock")?.dataset?.faqsToShow
+    ) || 3;
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
-});
+    // 1) On first page of popular, inject skeleton cards
+    if (popular && page === 1) {
+      container.innerHTML = "";
+      const skeletonCount = Math.min(faqsToShow, 3);
+      let html = "";
+      for (let i = 0; i < skeletonCount; i++) {
+        html += `
+          <div class="popular-card skeleton">
+            <div class="skeleton-title"></div>
+            <div class="skeleton-content"></div>
+          </div>`;
+      }
+      container.innerHTML = html;
+    }
+    // 2) On first page of non-popular, just clear
+    else if (page === 1) {
+      container.innerHTML = "";
+    }
 
-document.addEventListener('shopify:section:load', (event) => { 
-  const sectionId = event?.detail?.sectionId;
-  if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
-  } 
-});
+    // Fetch real FAQs
+    fetch(
+      evenFloFAQURL +
+        `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        // remove skeletons if present
+        if (popular && page === 1) {
+          container.querySelectorAll(".popular-card.skeleton").forEach(el => el.remove());
+        }
 
+        let results = data?.results || [];
+        if (popular) results = results.slice(0, faqsToShow);
 
+        results.forEach((item) => {
+          const card = createPopularCardDivElement("popular-card");
+          const faqsContent = getFAQContent(item?.products || []);
+          const tagsHtml = getTagsHtml(getTagsArray(item?.tags || []));
+
+          card.innerHTML = setFAQBlockInnerHtml(
+            item?.topic?.name || "",
+            item.question,
+            faqsContent,
+            item.answer,
+            "",
+            tagsHtml
+          );
+
+          container.appendChild(card);
+        });
+
+        // show/hide load-more if you use it
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+        if (loadMoreBtn && showLoadMore) {
+          loadMoreBtn.style.display = data?.next ? "block" : "none";
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching popular FAQs:", err);
+        // on error, remove any leftover skeletons
+        if (popular && page === 1) {
+          container.querySelectorAll(".popular-card.skeleton").forEach(el => el.remove());
+        }
+      })
+      .finally(() => {
+        toggleAnswerBullet();
+      });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
+  });
+
+  document.addEventListener("shopify:section:load", (event) => {
+    const sectionId = event?.detail?.sectionId;
+    if (sectionId?.includes("evenflo_faq_popular_question")) {
+      fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
+    }
+  });
 </script>
 
 {% schema %}
@@ -39,26 +158,23 @@ document.addEventListener('shopify:section:load', (event) => {
       "type": "text",
       "id": "popularQuestionTitle",
       "label": "Popular Question Title",
-      "default":"Popular Questions"
+      "default": "Popular Questions"
     },
     {
-        "type": "range",
-        "id": "popularQuestionRange",
-        "label": "Number of questions to show",
-        "default":3,
-        "min": 1,
-        "max": 3,
-        "step": 1
-      }
+      "type": "range",
+      "id": "popularQuestionRange",
+      "label": "Number of questions to show",
+      "default": 3,
+      "min": 1,
+      "max": 3,
+      "step": 1
+    }
   ],
   "presets": [
     {
       "name": "EvenFlo FAQ Popular",
-      "blocks": [
-
-      ]
+      "blocks": []
     }
   ]
-
 }
 {% endschema %}
