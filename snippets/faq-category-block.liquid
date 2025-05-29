@@ -129,8 +129,8 @@
     fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
       .then(response => response.json())
       .then(data => {
-        // categoriesContainer.classList.remove('skeleton-loading');
-        // categoriesContainer.innerHTML = ""; // Clear skeleton
+        categoriesContainer.classList.remove('skeleton-loading');
+        categoriesContainer.innerHTML = ""; // Clear skeleton
 
         if (!data || data.length === 0) {
           categoriesContainer.innerHTML = '<p>No categories found.</p>';
@@ -188,7 +188,7 @@
         html += '</ul>';
 
         innerDiv.innerHTML = html;
-        productsWrapper.innerHTML = '';
+        // productsWrapper.innerHTML = '';
         productsWrapper.appendChild(innerDiv);
 
         // Also, remove skeleton from swiper-slide tab-card elements if you have them inside products
