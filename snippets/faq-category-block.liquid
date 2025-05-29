@@ -129,7 +129,7 @@
     fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
       .then(response => response.json())
       .then(data => {
-        categoriesContainer.classList.remove('skeleton-loading');
+        // categoriesContainer.classList.remove('skeleton-loading');
         categoriesContainer.innerHTML = ""; // Clear skeleton
 
         if (!data || data.length === 0) {
