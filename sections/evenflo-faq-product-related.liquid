@@ -4,9 +4,42 @@
   .help-articles-block {
     background: #fff;
   }
+
   .search-listing-header2 {
     display: flex;
     justify-content: space-between;
+  }
+
+  /* Skeleton styles */
+  .popular-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 470px;
+  }
+
+  /* Skeleton for popular card */
+  .popular-card.skeleton {
+    width: 504px;
+    height: 460px;
+    background: #f1f2f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .popular-card.skeleton .skeleton-title {
+    width: 60%;
+    height: 1.5em;
+    background: #e0e0e0;
+    margin-bottom: 1rem;
+  }
+
+  .popular-card.skeleton .skeleton-content {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 4px;
   }
 </style>
 
@@ -16,9 +49,7 @@
   <div class="help-articles-content page-width center">
     <div class="help-article-search-wrapper">
       <h1 id="productName"></h1>
-
       <p id="productDescription"></p>
-
       <div class="help-article-link-wrapper" id="productLinks"></div>
     </div>
   </div>
@@ -36,7 +67,6 @@
 </div>
 
 {% render 'faq-related-part-block' %}
-
 {% render 'faq-load-more-block', show_topic_dropdown: true %}
 
 <script>
@@ -55,31 +85,40 @@
 
     let url = evenFloFAQURL + "products/" + productID;
 
+    // 1) Inject skeletons before fetching data
+    let skeletonHTML = '';
+    for (let i = 0; i < blocksToShow; i++) {
+      skeletonHTML += `
+        <div class="popular-card skeleton">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-content"></div>
+        </div>`;
+    }
+    container.innerHTML = skeletonHTML;
+
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
 
-      if(data?.detail && containsString(data?.detail,errorString())){
-          redirectIfNoData([])
-          return ""
+        if (data?.detail && containsString(data?.detail, errorString())) {
+          redirectIfNoData([]);
+          return "";
         }
 
-        //Will be called in faq-related-part-block
-        getProductsPartsByProductID(productID)
-
-        fetchFAQsByFilters({productID:productID});
-        fetchTopicsByType(productID,true)
+        // Will be called in faq-related-part-block
+        getProductsPartsByProductID(productID);
+        fetchFAQsByFilters({ productID: productID });
+        fetchTopicsByType(productID, true);
 
         document.getElementById('productName').innerHTML = data?.name;
-        //Calling breadcrumb link to update the breadcrumb name
-        getBreadCrumbLinks(data?.name,'product')
+        getBreadCrumbLinks(data?.name, 'product');
         document.getElementById('productDescription').innerHTML = data?.description;
 
         const productLinks = document.getElementById('productLinks');
         let linksHtml = ``;
 
-        if(data?.shopify_page_handel){
-          linksHtml += `<a href="/products/${data.shopify_page_handel}">Product Guide </a> | `
+        if (data?.shopify_page_handel) {
+          linksHtml += `<a href="/products/${data.shopify_page_handel}">Product Guide </a> | `;
         }
 
         if (data?.english_manual_url) {
@@ -99,36 +138,36 @@
         }
 
         productLinks.innerHTML = linksHtml;
-        //Hiding Popular questions heading
-        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0){
-          document.getElementById('popularQuestionHeading').style.display ="none";
+        
+        // Hide Popular questions heading if no FAQs are found
+        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0) {
+          document.getElementById('popularQuestionHeading').style.display = "none";
         }
 
+        // 2) Render actual FAQs
         data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
 
-        const popularCard = createPopularCardDivElement("popular-card");
+          const popularCard = createPopularCardDivElement("popular-card");
 
-        const faqsContent = getFAQContent(product?.products || []);
+          const faqsContent = getFAQContent(product?.products || []);
+          const tags = getTagsArray(product?.tags || []);
+          const tagsHtml = getTagsHtml(tags);
 
-        const tags = getTagsArray(product?.tags || []);
+          popularCard.innerHTML = setFAQBlockInnerHtml(
+            product?.topic?.name || "",
+            product.question,
+            faqsContent,
+            product.answer,
+            product?.id,
+            tagsHtml
+          );
 
-        const tagsHtml = getTagsHtml(tags);
-
-        popularCard.innerHTML = setFAQBlockInnerHtml(
-          product?.topic?.name || "",
-          product.question,
-          faqsContent,
-          product.answer,
-          product?.id,
-          tagsHtml
-        );
-
-        container.appendChild(popularCard);
+          container.appendChild(popularCard);
         });
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
-        redirectIfNoData([])
+        redirectIfNoData([]);
       })
       .finally(() => {
         if (loader) {
@@ -137,16 +176,15 @@
       });
   }
 
-
   document.addEventListener('DOMContentLoaded', () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
     if (urlParams.has('pid')) {
-      productID = urlParams.get('pid');
+      const productID = urlParams.get('pid');
       fetchPopularProductsRelatedData(productID);
     } else {
-      redirectIfNoData([])
+      redirectIfNoData([]);
     }
   });
 </script>
