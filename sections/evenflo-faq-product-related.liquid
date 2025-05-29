@@ -10,7 +10,6 @@
     justify-content: space-between;
   }
 
-  /* Skeleton styles */
   .popular-card-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -18,7 +17,6 @@
     min-height: 470px;
   }
 
-  /* Skeleton for popular card */
   .popular-card.skeleton {
     width: 504px;
     height: 525px;
@@ -27,19 +25,29 @@
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    animation: pulse 1.5s infinite ease-in-out;
   }
 
-  .popular-card.skeleton .skeleton-title {
+  .skeleton-title {
     width: 60%;
     height: 1.5em;
     background: #e0e0e0;
+    border-radius: 4px;
     margin-bottom: 1rem;
   }
 
-  .popular-card.skeleton .skeleton-content {
+  .skeleton-content {
     flex: 1;
     background: #e0e0e0;
     border-radius: 4px;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
   }
 </style>
 
@@ -72,7 +80,7 @@
 <script>
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
-    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
+    const popularQuestionBlock = document.getElementById("productRelatedBlock");
     let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
 
     if (!container) {
@@ -80,7 +88,7 @@
       return;
     }
 
-    // 1) Inject skeletons before fetching data
+    // Inject skeletons
     let skeletonHTML = '';
     for (let i = 0; i < blocksToShow; i++) {
       skeletonHTML += `
@@ -91,20 +99,18 @@
     }
     container.innerHTML = skeletonHTML;
 
-    let url = evenFloFAQURL + "products/" + productID;
+    const url = `${evenFloFAQURL}products/${productID}`;
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-
         if (data?.detail && containsString(data?.detail, errorString())) {
           redirectIfNoData([]);
-          return "";
+          return;
         }
 
-        // Will be called in faq-related-part-block
         getProductsPartsByProductID(productID);
-        fetchFAQsByFilters({ productID: productID });
+        fetchFAQsByFilters({ productID });
         fetchTopicsByType(productID, true);
 
         document.getElementById('productName').innerHTML = data?.name;
@@ -135,25 +141,21 @@
         }
 
         productLinks.innerHTML = linksHtml;
-        
-        // Hide Popular questions heading if no FAQs are found
-        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0) {
+
+        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs.length === 0) {
           document.getElementById('popularQuestionHeading').style.display = "none";
         }
 
-        // 2) Clear skeletons and render actual FAQs
-        container.innerHTML = ''; // Clear skeletons
+        container.innerHTML = '';
 
-        // Render FAQ content
         const faqSchemaData = {
           "@context": "https://schema.org",
           "@type": "FAQPage",
           "mainEntity": []
         };
 
-        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
+        data.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
           const popularCard = createPopularCardDivElement("popular-card");
-
           const faqsContent = getFAQContent(product?.products || []);
           const tags = getTagsArray(product?.tags || []);
           const tagsHtml = getTagsHtml(tags);
@@ -169,7 +171,6 @@
 
           container.appendChild(popularCard);
 
-          // Add each FAQ to JSON-LD schema
           faqSchemaData.mainEntity.push({
             "@type": "Question",
             "name": product.question,
@@ -180,7 +181,6 @@
           });
         });
 
-        // Inject JSON-LD for FAQ schema
         const scriptTag = document.createElement('script');
         scriptTag.type = 'application/ld+json';
         scriptTag.innerHTML = JSON.stringify(faqSchemaData);
