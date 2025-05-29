@@ -5,34 +5,40 @@
     <div class="heading">
       <h1>{{ section.settings.faqCollectionTitle }}</h1>
     </div>
-    <div class="collection-wrapper" id="allCollections" data-collections-to-show="{{ collections_to_show }}"></div>
+    <div
+      class="collection-wrapper"
+      id="allCollections"
+      data-collections-to-show="{{ collections_to_show }}"
+    ></div>
   </div>
 </div>
 
 <style>
   /* keep wrapper height steady while loading */
   .collection-wrapper.collection-loading {
-    min-height: 300px;
+    min-height: 328px;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
   }
 
-  /* same skeleton style as your FAQ loader */
-  .collection-wrapper.collection-loading .collection-card.skeleton {
+  /* skeleton card */
+  .collection-card.skeleton {
+    width: 292px;
+    height: 328px;
     background: #f1f2f3;
     border-radius: 8px;
     padding: 10px;
-    flex: 1 1 calc(33.333% - 1rem);
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    justify-content: space-between;
   }
   .collection-card.skeleton .skeleton-title {
     width: 60%;
-    height: 1.2em;
+    height: 1.5em;
     background: #e0e0e0;
     border-radius: 4px;
+    margin-bottom: 1rem;
   }
   .collection-card.skeleton .skeleton-img {
     flex: 1;
@@ -46,12 +52,13 @@
     const container = document.getElementById('allCollections');
     if (!container) return;
 
-    // show skeleton loader
-    const count = Number(container.dataset.collectionsToShow) || 3;
-    container.classList.add('collection-loading');
+    // how many items to show, capped at 3
+    const toShow = Math.min(Number(container.dataset.collectionsToShow) || 3, 3);
 
+    // render skeletons
+    container.classList.add('collection-loading');
     let skeletonHTML = '';
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < toShow; i++) {
       skeletonHTML += `
         <div class="collection-card skeleton">
           <div class="collection-title"><div class="skeleton-title"></div></div>
@@ -60,33 +67,33 @@
     }
     container.innerHTML = skeletonHTML;
 
-    // fetch real collections
+    // fetch real data
     fetch(evenFloFAQURL + 'collection/?page=1&page_size=6')
       .then(res => res.json())
       .then(data => {
-        // clear skeletons
         container.innerHTML = '';
         container.classList.remove('collection-loading');
 
-        data.results
-          .slice(0, count)
-          .forEach(collection => {
-            const card = document.createElement('div');
-            card.className = 'collection-card';
-            card.innerHTML = `
-              <a href="/pages/evenflo-collection?cid=${collection.id}">
-                <div class="collection-title"><h2>${collection.name}</h2></div>
-                <div class="collection-img">
-                  <img src="${collection.image}" alt="${collection.name}">
-                </div>
-              </a>`;
-            container.appendChild(card);
-          });
+        data.results.slice(0, toShow).forEach(collection => {
+          const card = document.createElement('div');
+          card.className = 'collection-card';
+          card.style.width = '292px';
+          card.style.height = '328px';
+          card.innerHTML = `
+            <a href="/pages/evenflo-collection?cid=${collection.id}">
+              <div class="collection-title"><h2>${collection.name}</h2></div>
+              <div class="collection-img">
+                <img src="${collection.image}"
+                     alt="${collection.name}"
+                     style="width:100%;height:auto;max-height:240px;object-fit:cover;">
+              </div>
+            </a>`;
+          container.appendChild(card);
+        });
       })
       .catch(err => {
         console.error('Error fetching collections:', err);
         container.classList.remove('collection-loading');
-        // optionally show a fallback message here
       });
   });
 </script>
@@ -110,9 +117,9 @@
       "type": "range",
       "id": "faqCollectionRange",
       "label": "Collections to show",
-      "default": 5,
+      "default": 3,
       "min": 1,
-      "max": 6,
+      "max": 3,
       "step": 1
     }
   ],
