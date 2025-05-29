@@ -1,38 +1,44 @@
 <style>
   .faq-skeleton.placeholder-item {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
+    display: block;
     background: #f1f1f1;
     padding: 20px;
     border-radius: 8px;
+    margin-bottom: 16px;
+    animation: pulse 1.5s infinite;
   }
 
-  .faq-skeleton-item {
-    background-color: #e0e0e0;
-    height: 20px;
-    width: 80%;
+  .faq-skeleton-line {
+    height: 16px;
+    background: #e0e0e0;
+    margin-bottom: 10px;
     border-radius: 4px;
-    animation: pulse 1.2s infinite ease-in-out;
   }
 
-  .faq-skeleton-item.short {
+  .faq-skeleton-line.short {
     width: 50%;
+  }
+
+  .faq-skeleton-line.medium {
+    width: 75%;
+  }
+
+  .faq-skeleton-line.long {
+    width: 100%;
   }
 
   @keyframes pulse {
     0% { opacity: 1; }
-    50% { opacity: 0.4; }
+    50% { opacity: 0.5; }
     100% { opacity: 1; }
   }
 </style>
 
 <template id="faqSkeletonTemplate">
   <div class="faq-skeleton placeholder-item">
-    <div class="faq-skeleton-item"></div>
-    <div class="faq-skeleton-item short"></div>
-    <div class="faq-skeleton-item"></div>
+    <div class="faq-skeleton-line long"></div>
+    <div class="faq-skeleton-line medium"></div>
+    <div class="faq-skeleton-line short"></div>
   </div>
 </template>
 
@@ -50,7 +56,7 @@ function fetchFAQsByFilters({
 }) {
   const container = document.getElementById(appendTo);
   const faqsToShow =
-    document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
+    document.getElementById("categoryRelatedBlock")?.dataset?.faqsToShow || 3;
   const loadMoreBtn = document.getElementById("loadMoreBtn");
 
   if (!container) {
@@ -63,10 +69,9 @@ function fetchFAQsByFilters({
   }
 
   if (page === 1) {
-    emptyContainerHtml(container);
+    container.innerHTML = "";
   }
 
-  // Inject skeletons
   const template = document.getElementById("faqSkeletonTemplate");
   for (let i = 0; i < faqsToShow; i++) {
     const skeleton = template.content.cloneNode(true);
@@ -84,8 +89,7 @@ function fetchFAQsByFilters({
         resultsToShow = resultsToShow.slice(0, faqsToShow);
       }
 
-      // Remove skeletons
-      container.querySelectorAll('.placeholder-item').forEach(el => el.remove());
+      container.querySelectorAll(".placeholder-item").forEach((el) => el.remove());
 
       resultsToShow?.forEach((product) => {
         const popularCard = createPopularCardDivElement("popular-card");
