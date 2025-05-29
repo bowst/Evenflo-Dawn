@@ -5,36 +5,37 @@
     <div class="heading center">
       <h2>{{ section.settings.popularQuestionTitle }}</h2>
     </div>
-    <!-- Skeleton Loader (Placeholder) -->
     <div class="popular-card-wrapper" id="popularCards">
-      <!-- Skeleton loader boxes matching the size (504px x 468px) -->
+      <!-- Initially show skeleton loader -->
       <div class="skeleton-card" style="width: 504px; height: 468px;"></div>
-      <!-- Add more skeleton cards if you want multiple placeholders -->
+      <!-- Add more skeleton loaders for each product/category item if needed -->
     </div>
   </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
+  // Check if we're on a category page
+  if (window.location.pathname.includes('product-category')) {
+    fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
+  }
 });
 
 document.addEventListener('shopify:section:load', (event) => { 
   const sectionId = event?.detail?.sectionId;
   if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
+    fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
   } 
 });
 
-// Example fetchFAQsByFilters function
 function fetchFAQsByFilters(options) {
   const popularCardsContainer = document.getElementById(options.appendTo);
   
-  // Simulating fetch with setTimeout
+  // Simulate fetching category data
   setTimeout(() => {
-    // Replace skeleton loader with actual content after the fetch
-    popularCardsContainer.innerHTML = `<div>FAQ Content Loaded</div>`; // Replace with actual content
-  }, 2000); // Simulated delay for 2 seconds
+    // Remove skeleton loader once the data is fetched
+    popularCardsContainer.innerHTML = `<div>FAQ Content Loaded for Product Category</div>`; // Replace with actual fetched content
+  }, 2000); // Simulated fetch delay (2 seconds)
 }
 </script>
 
