@@ -14,18 +14,23 @@
 </div>
 
 <style>
-  /* keep wrapper height steady while loading */
-  .collection-wrapper.collection-loading {
-    min-height: 328px;
+  /* wrapper uses flex so cards wrap into rows */
+  .collection-wrapper.loading {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    min-height: 328px; /* reserve space for one row */
   }
 
-  /* skeleton card */
-  .collection-card.skeleton {
+  /* all cards fixed size */
+  .collection-card {
     width: 292px;
     height: 328px;
+    box-sizing: border-box;
+  }
+
+  /* skeleton placeholder style */
+  .collection-card.skeleton {
     background: #f1f2f3;
     border-radius: 8px;
     padding: 10px;
@@ -52,17 +57,22 @@
     const container = document.getElementById('allCollections');
     if (!container) return;
 
-    // how many items to show, capped at 3
-    const toShow = Math.min(Number(container.dataset.collectionsToShow) || 3, 3;
+    const maxCards = 4;
+    const requested = Number(container.dataset.collectionsToShow) || maxCards;
+    const toShow = Math.min(requested, maxCards);
 
-    // render skeletons
-    container.classList.add('collection-loading');
+    // show skeleton loaders
+    container.classList.add('loading');
     let skeletonHTML = '';
     for (let i = 0; i < toShow; i++) {
       skeletonHTML += `
         <div class="collection-card skeleton">
-          <div class="collection-title"><div class="skeleton-title"></div></div>
-          <div class="collection-img"><div class="skeleton-img"></div></div>
+          <div class="collection-title">
+            <div class="skeleton-title"></div>
+          </div>
+          <div class="collection-img">
+            <div class="skeleton-img"></div>
+          </div>
         </div>`;
     }
     container.innerHTML = skeletonHTML;
@@ -72,20 +82,20 @@
       .then(res => res.json())
       .then(data => {
         container.innerHTML = '';
-        container.classList.remove('collection-loading');
+        container.classList.remove('loading');
 
         data.results.slice(0, toShow).forEach(collection => {
           const card = document.createElement('div');
           card.className = 'collection-card';
-          card.style.width = '292px';
-          card.style.height = '328px';
           card.innerHTML = `
             <a href="/pages/evenflo-collection?cid=${collection.id}">
-              <div class="collection-title"><h2>${collection.name}</h2></div>
+              <div class="collection-title">
+                <h2>${collection.name}</h2>
+              </div>
               <div class="collection-img">
                 <img src="${collection.image}"
                      alt="${collection.name}"
-                     style="width:100%;height:auto;max-height:240px;object-fit:cover;">
+                     style="width:100%; height:auto; max-height:240px; object-fit:cover;">
               </div>
             </a>`;
           container.appendChild(card);
@@ -93,7 +103,7 @@
       })
       .catch(err => {
         console.error('Error fetching collections:', err);
-        container.classList.remove('collection-loading');
+        container.classList.remove('loading');
       });
   });
 </script>
@@ -117,9 +127,9 @@
       "type": "range",
       "id": "faqCollectionRange",
       "label": "Collections to show",
-      "default": 3,
+      "default": 4,
       "min": 1,
-      "max": 3,
+      "max": 4,
       "step": 1
     }
   ],
