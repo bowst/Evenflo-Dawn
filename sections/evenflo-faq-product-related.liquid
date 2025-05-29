@@ -56,12 +56,24 @@
 </div>
 
 <div class="product-page-wrapper">
-  <div class="popular-question-block" id="productRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
+  <!-- Popular Questions Section -->
+  <div class="popular-question-block" id="productRelatedBlock" data-faqs-to-show="3">
     <div class="popular-content-wrapper page-width">
       <div class="heading center">
         <h2 id="popularQuestionHeading">{{ section.settings.productRelatedTitle }}</h2>
       </div>
       <div class="popular-card-wrapper" id="popularCards"></div>
+      <button id="loadMoreBtn">Load More</button> <!-- Load More Button -->
+    </div>
+  </div>
+
+  <!-- Section for additional FAQ content -->
+  <div class="popular-question-block" id="additionalFaqsSection" style="display:none;">
+    <div class="popular-content-wrapper page-width">
+      <div class="heading center">
+        <h2>More Popular Questions</h2>
+      </div>
+      <div class="popular-card-wrapper" id="additionalCards"></div>
     </div>
   </div>
 </div>
@@ -70,19 +82,25 @@
 {% render 'faq-load-more-block', show_topic_dropdown: true %}
 
 <script>
-  function fetchPopularProductsRelatedData(productID) {
-    const container = document.getElementById("popularCards");
-    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
+  // Function to fetch FAQs and handle pagination
+  let currentPage = 1; // Start on page 1
+  const faqsPerPage = 3;
+  const faqsPerLoadMore = 23;
 
+  // Fetch the initial popular FAQs
+  function fetchPopularProductsRelatedData(productID, page = 1) {
+    const container = document.getElementById("popularCards");
+    const loadMoreContainer = document.getElementById("additionalCards");
+    const loadMoreButton = document.getElementById("loadMoreBtn");
+    
     if (!container) {
       console.log("Error on getting container");
       return;
     }
 
-    // 1) Inject skeletons before fetching data
+    // Inject skeleton loader for 3 FAQs initially
     let skeletonHTML = '';
-    for (let i = 0; i < blocksToShow; i++) {
+    for (let i = 0; i < faqsPerPage; i++) {
       skeletonHTML += `
         <div class="popular-card skeleton">
           <div class="skeleton-title"></div>
@@ -91,21 +109,15 @@
     }
     container.innerHTML = skeletonHTML;
 
-    let url = evenFloFAQURL + "products/" + productID;
+    let url = `${evenFloFAQURL}products/${productID}?page=${page}&limit=${faqsPerPage}`;
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-
         if (data?.detail && containsString(data?.detail, errorString())) {
           redirectIfNoData([]);
           return "";
         }
-
-        // Will be called in faq-related-part-block
-        getProductsPartsByProductID(productID);
-        fetchFAQsByFilters({ productID: productID });
-        fetchTopicsByType(productID, true);
 
         document.getElementById('productName').innerHTML = data?.name;
         getBreadCrumbLinks(data?.name, 'product');
@@ -136,16 +148,9 @@
 
         productLinks.innerHTML = linksHtml;
         
-        // Hide Popular questions heading if no FAQs are found
-        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0) {
-          document.getElementById('popularQuestionHeading').style.display = "none";
-        }
-
-        // 2) Clear skeletons and render actual FAQs
+        // Render popular questions
         container.innerHTML = ''; // Clear skeletons
-
-        // Render FAQ content
-        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
+        data?.related_popular_faqs?.slice(0, faqsPerPage).forEach((product) => {
           const popularCard = createPopularCardDivElement("popular-card");
 
           const faqsContent = getFAQContent(product?.products || []);
@@ -163,6 +168,13 @@
 
           container.appendChild(popularCard);
         });
+
+        // Show Load More button if more FAQs are available
+        if (data?.related_popular_faqs?.length > faqsPerPage) {
+          loadMoreButton.style.display = 'block';
+        } else {
+          loadMoreButton.style.display = 'none';
+        }
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -170,10 +182,57 @@
       });
   }
 
+  // Load more FAQs when the button is clicked
+  document.getElementById("loadMoreBtn").addEventListener("click", () => {
+    currentPage++;
+    fetchPopularProductsRelatedData(productID, currentPage);
+
+    // Show the next section of 23 FAQs
+    document.getElementById('additionalFaqsSection').style.display = 'block';
+    const loadMoreContainer = document.getElementById("additionalCards");
+    let skeletonHTML = '';
+    for (let i = 0; i < faqsPerLoadMore; i++) {
+      skeletonHTML += `
+        <div class="popular-card skeleton">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-content"></div>
+        </div>`;
+    }
+    loadMoreContainer.innerHTML = skeletonHTML;
+    
+    // Fetch additional FAQs
+    fetch(`${evenFloFAQURL}products/${productID}?page=${currentPage}&limit=${faqsPerLoadMore}`)
+      .then((response) => response.json())
+      .then((data) => {
+        loadMoreContainer.innerHTML = ''; // Clear skeletons
+        data?.related_popular_faqs?.slice(0, faqsPerLoadMore).forEach((product) => {
+          const popularCard = createPopularCardDivElement("popular-card");
+
+          const faqsContent = getFAQContent(product?.products || []);
+          const tags = getTagsArray(product?.tags || []);
+          const tagsHtml = getTagsHtml(tags);
+
+          popularCard.innerHTML = setFAQBlockInnerHtml(
+            product?.topic?.name || "",
+            product.question,
+            faqsContent,
+            product.answer,
+            product?.id,
+            tagsHtml
+          );
+
+          loadMoreContainer.appendChild(popularCard);
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching additional FAQs:", error);
+      });
+  });
+
+  // Initialize the FAQ section on page load
   document.addEventListener('DOMContentLoaded', () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-
     if (urlParams.has('pid')) {
       const productID = urlParams.get('pid');
       fetchPopularProductsRelatedData(productID);
