@@ -9,21 +9,81 @@
   </div>
 </div>
 
+<style>
+  /* maintain layout while loading */
+  .popular-card-wrapper.loading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 470px;
+  }
+
+  /* skeleton card */
+  .popular-card-wrapper.loading .popular-card.skeleton {
+    width: 504px;
+    height: 470px;
+    background: #f1f2f3;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .popular-card.skeleton .skeleton-title {
+    width: 60%;
+    height: 1.5em;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .popular-card.skeleton .skeleton-content {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 4px;
+  }
+</style>
+
 <script>
+  function renderPopularSkeletons() {
+    const cardsWrapper = document.getElementById('popularCards');
+    if (!cardsWrapper) return;
+    // how many to show, capped at 3
+    const max = 3;
+    const wanted = Number(cardsWrapper.closest('#popularQuestionBlock').dataset.faqsToShow) || max;
+    const toShow = Math.min(wanted, max);
 
+    cardsWrapper.classList.add('loading');
+    let skeletons = '';
+    for (let i = 0; i < toShow; i++) {
+      skeletons += `
+        <div class="popular-card skeleton">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-content"></div>
+        </div>`;
+    }
+    cardsWrapper.innerHTML = skeletons;
+  }
 
-document.addEventListener('DOMContentLoaded', () => {
-  fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
-});
+  function loadPopularFAQs() {
+    const cardsWrapper = document.getElementById('popularCards');
+    if (!cardsWrapper) return;
 
-document.addEventListener('shopify:section:load', (event) => { 
-  const sectionId = event?.detail?.sectionId;
-  if (sectionId.includes('evenflo_faq_popular_question')) {
-    fetchFAQsByFilters({popular:true,appendTo:"popularCards"});
-  } 
-});
+    // show skeletons first
+    renderPopularSkeletons();
 
+    // then fetch real content (this will replace skeletons)
+    fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
+  }
 
+  document.addEventListener('DOMContentLoaded', loadPopularFAQs);
+
+  document.addEventListener('shopify:section:load', (event) => {
+    const sectionId = event?.detail?.sectionId;
+    if (sectionId?.includes('evenflo_faq_popular_question')) {
+      loadPopularFAQs();
+    }
+  });
 </script>
 
 {% schema %}
@@ -39,26 +99,23 @@ document.addEventListener('shopify:section:load', (event) => {
       "type": "text",
       "id": "popularQuestionTitle",
       "label": "Popular Question Title",
-      "default":"Popular Questions"
+      "default": "Popular Questions"
     },
     {
-        "type": "range",
-        "id": "popularQuestionRange",
-        "label": "Number of questions to show",
-        "default":3,
-        "min": 1,
-        "max": 3,
-        "step": 1
-      }
+      "type": "range",
+      "id": "popularQuestionRange",
+      "label": "Number of questions to show",
+      "default": 3,
+      "min": 1,
+      "max": 3,
+      "step": 1
+    }
   ],
   "presets": [
     {
       "name": "EvenFlo FAQ Popular",
-      "blocks": [
-
-      ]
+      "blocks": []
     }
   ]
-
 }
 {% endschema %}
