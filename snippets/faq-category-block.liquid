@@ -188,7 +188,7 @@
         html += '</ul>';
 
         innerDiv.innerHTML = html;
-        // productsWrapper.innerHTML = '';
+        productsWrapper.innerHTML = '';
         productsWrapper.appendChild(innerDiv);
 
         // Also, remove skeleton from swiper-slide tab-card elements if you have them inside products
@@ -200,7 +200,7 @@
       })
       .catch(error => {
         console.error('Error fetching products:', error);
-        productsWrapper.classList.remove('skeleton-loading');/
+        productsWrapper.classList.remove('skeleton-loading');
         productsWrapper.innerHTML = '<p>Error loading products</p>';
       });
   }
