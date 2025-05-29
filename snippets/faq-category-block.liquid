@@ -1,5 +1,3 @@
-{{ 'section-evenflo-answer.css' | asset_url | stylesheet_tag }}
-
 <div class="category-block">
   <div class="category-content-wrapper page-width">
 
@@ -7,294 +5,94 @@
     <div class="heading center">
       <h1>{{ category_title }}</h1>
     </div>
-    {% endif %}
+  {% endif %}
 
     <div class="category-tab-wrapper" id="categoryTabWrapper">
 
       <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
-         <!-- Categories will load here with skeleton -->
+         <!-- Loader -->
+         <div id="categoriesLoader" class="loader" style="display: none;"></div>
       </div>
 
       <div class="tab-body">
         <div class="tab-content-wrapper" id="productsByCategory" data-faqs-to-show="{{ products_to_show }}">
-          <!-- Products will load here with skeleton -->
+          <!-- Loader -->
+          <div id="productByCategoriesLoader" class="loader" style="display: none;"></div>
+         
         </div>
       </div>
 
       {% if show_title %}
         <div class="browse-categories" id="browseCategoriesDiv">
+
         </div>
       {% endif %}
+     
 
     </div>
   </div>
 </div>
 
-<style>
-  /* Debug: Make sure the skeleton is visible */
-  .category-tab-wrapper {
-    position: relative;
-    min-height: 50px;
-  }
-
-  .tab-header {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    min-height: 50px;
-  }
-
-  .tab-content-wrapper {
-    min-height: 322px;
-    margin-top: 20px;
-  }
-
-  /* Skeleton Loading Styles for Categories */
-  .category-tab-wrapper.categories-loading .tab-header {
-    display: flex !important;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .category-tab-wrapper.categories-loading .categoriesSkeleton {
-    width: 145px !important;
-    height: 38px !important;
-    background: #f1f2f3 !important;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-    display: block !important;
-  }
-
-  .category-tab-wrapper.categories-loading .categoriesSkeleton::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-    animation: shimmer 1.5s infinite;
-  }
-
-  /* Skeleton Loading Styles for Products */
-  .category-tab-wrapper.products-loading #productsByCategory {
-    width: 292px !important;
-    height: 322px !important;
-    background: #f1f2f3 !important;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    display: block !important;
-  }
-
-  .category-tab-wrapper.products-loading #productsByCategory::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-    animation: shimmer 1.5s infinite;
-  }
-
-  /* Shimmer Animation */
-  @keyframes shimmer {
-    0% {
-      left: -100%;
-    }
-    100% {
-      left: 100%;
-    }
-  }
-
-  /* Debug styles - remove these after testing */
-  .debug-skeleton {
-    border: 2px solid red !important;
-    background: yellow !important;
-  }
-</style>
 
 <script>
-  console.log('FAQ Category Script Loaded'); // Debug log
-
-  function getPaginatedCategories() {
-    console.log('getPaginatedCategories called'); // Debug log
-    
-    const categoryWrapper = document.getElementById('categoryTabWrapper');
-    const categoriesContainer = document.getElementById('categoriesContainer');
-    
-    if (!categoryWrapper || !categoriesContainer) {
-      console.error('Required elements not found');
-      return;
-    }
-    
-    console.log('Adding categories-loading class'); // Debug log
-    
-    // Add skeleton loading class for categories
-    categoryWrapper.classList.add('categories-loading');
-    
-    // Show category skeleton - make sure to clear any existing content first
-    categoriesContainer.innerHTML = `
-      <div class="categoriesSkeleton debug-skeleton"></div>
-      <div class="categoriesSkeleton debug-skeleton"></div>
-      <div class="categoriesSkeleton debug-skeleton"></div>
-      <div class="categoriesSkeleton debug-skeleton"></div>
-      <div class="categoriesSkeleton debug-skeleton"></div>
-    `;
-    
-    console.log('Skeleton HTML added, starting fetch'); // Debug log
-    
-    // Add a small delay to see the skeleton
-    setTimeout(() => {
-      fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
-        .then(response => response.json())
-        .then(data => {
-          console.log('Categories data received:', data); // Debug log
-          
-          if (data && data.length > 0) {
-            getProductsByCategory(data[0]?.id, data[0]?.category_name);
-
-            const categoriesBlock = document.getElementById('categoriesContainer');
-            const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
-            
-            const container = document.querySelector('.tab-header'); 
-            container.innerHTML = ""; // Clear skeleton
-
-            data?.forEach((category, index) => {
-              const categoryTag = document.createElement('button');
-        
-              const isActive = index === 0 ? "active" : "";
-              if (isActive) {
-                categoryTag.classList.add(isActive);
-              }
-              
-              categoryTag.innerHTML = category?.category_name;
-
-              // Appending an onclick function to all the buttons
-              categoryTag.onclick = function() {
-                // Removing "active" class from all buttons inside the .tab-header container
-                const allButtons = container.querySelectorAll('button');
-                allButtons.forEach(button => button.classList.remove("active"));
-
-                // Adding "active" class to the clicked button
-                categoryTag.classList.add("active");
-
-                // Fetch products for the selected category
-                getProductsByCategory(category.id, category.category_name);
-              };
-
-              container.appendChild(categoryTag);
-            });
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching categories:', error);
-        })
-        .finally(() => {
-          console.log('Removing categories-loading class'); // Debug log
-          // Remove skeleton loading class for categories
-          categoryWrapper.classList.remove('categories-loading');
-        });
-    }, 1000); // 1 second delay to see skeleton
+ function getPaginatedCategories() {
+   // Show the loader
+   const loader = document.getElementById('categoriesLoader');
+   if (loader) {
+    loader.style.display = 'block';
   }
+  
+  fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
+    .then(response => response.json())
+    .then(data => {
+      getProductsByCategory(data[0]?.id,data[0]?.category_name);
 
-  function getProductsByCategory(categoryId, categoryName) {
-    console.log('getProductsByCategory called for:', categoryId, categoryName); // Debug log
-    
-    const categoryWrapper = document.getElementById('categoryTabWrapper');
-    const productsContainer = document.getElementById('productsByCategory');
-    
-    if (!categoryWrapper || !productsContainer) {
-      console.error('Required elements not found for products');
-      return;
-    }
-    
-    console.log('Adding products-loading class'); // Debug log
-    
-    // Add skeleton loading class for products
-    categoryWrapper.classList.add('products-loading');
-    
-    // Clear products container and show skeleton
-    productsContainer.innerHTML = '';
-    
-    // Add a delay to ensure skeleton is visible
-    setTimeout(() => {
-      console.log('Starting products fetch'); // Debug log
+      const categoriesBlock = document.getElementById('categoriesContainer');
+      const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
       
-      // Your existing fetch logic for products
-      fetch(evenFloFAQURL + 'products/getProductsByCategory/' + categoryId)
-        .then(response => response.json())
-        .then(data => {
-          console.log('Products data received:', data); // Debug log
-          
-          // Your existing product rendering logic here
-          let productsContent = "";
-          if (data && Array.isArray(data)) {
-            data?.forEach(product => {
-              productsContent += `
-                <div class="product-content">
-                  <a href="/pages/evenflo-faq-product?pid=${product?.id}">
-                    <div class="product-img">
-                      <img src="${product?.image}" alt="product" />
-                    </div>
-                    <div class="product-title">
-                      ${product?.name}
-                    </div>
-                  </a>
-                </div>`;
-            });
-          }
-          
-          productsContainer.innerHTML = productsContent || '<p>No products found</p>';
-        })
-        .catch(error => {
-          console.error('Error fetching products:', error);
-          productsContainer.innerHTML = '<p>Error loading products</p>';
-        })
-        .finally(() => {
-          console.log('Removing products-loading class'); // Debug log
-          // Remove skeleton loading class for products
-          categoryWrapper.classList.remove('products-loading');
-        });
-    }, 500); // 0.5 second delay to ensure skeleton shows
-  }
+      const container = document.querySelector('.tab-header'); 
+      container.innerHTML = ""; // Clear previous buttons
 
-  // Test function to manually trigger skeleton
-  function testSkeleton() {
-    console.log('Testing skeleton manually');
-    const categoryWrapper = document.getElementById('categoryTabWrapper');
-    const categoriesContainer = document.getElementById('categoriesContainer');
-    
-    categoryWrapper.classList.add('categories-loading');
-    categoriesContainer.innerHTML = `
-      <div class="categoriesSkeleton debug-skeleton">SKELETON 1</div>
-      <div class="categoriesSkeleton debug-skeleton">SKELETON 2</div>
-      <div class="categoriesSkeleton debug-skeleton">SKELETON 3</div>
-    `;
-    
-    setTimeout(() => {
-      categoryWrapper.classList.add('products-loading');
-    }, 1000);
-  }
+      data?.forEach((category, index) => {
+        const categoryTag = document.createElement('button');
+  
+        const isActive = index === 0 ? "active" : "";
+        if (isActive) {
+          categoryTag.classList.add(isActive);
+        }
+        
+        categoryTag.innerHTML = category?.category_name;
 
-  // Make test function available globally for debugging
-  window.testSkeleton = testSkeleton;
+        // Appending an onclick function to all the buttons
+        categoryTag.onclick = function() {
+          // Removing "active" class from all buttons inside the .tab-header container
+          const allButtons = container.querySelectorAll('button');
+          allButtons.forEach(button => button.classList.remove("active"));
+
+          // Adding "active" class to the clicked button
+          categoryTag.classList.add("active");
+
+          // Fetch products for the selected category
+          getProductsByCategory(category.id,category.category_name);
+        };
+
+        container.appendChild(categoryTag);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+      // Hide the loader
+      if (loader) {
+        loader.style.display = 'none';
+      }
+    });
+}
+
+
 
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded, checking evenFloFAQURL:', typeof evenFloFAQURL !== 'undefined' ? evenFloFAQURL : 'NOT DEFINED');
-    
-    // Check if evenFloFAQURL is defined
-    if (typeof evenFloFAQURL === 'undefined') {
-      console.error('evenFloFAQURL is not defined! Please make sure it is set before this script runs.');
-      // You can uncomment the line below to test skeleton without API
-      // testSkeleton();
-      return;
-    }
     
     getPaginatedCategories();
   });
