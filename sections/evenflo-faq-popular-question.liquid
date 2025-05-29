@@ -10,7 +10,7 @@
 </div>
 
 <style>
-  /* maintain layout while loading */
+  /* Keep layout steady while loading */
   .popular-card-wrapper.loading {
     display: flex;
     flex-wrap: wrap;
@@ -18,8 +18,8 @@
     min-height: 470px;
   }
 
-  /* skeleton card */
-  .popular-card-wrapper.loading .popular-card.skeleton {
+  /* Skeleton cards */
+  .popular-card.skeleton {
     width: 504px;
     height: 470px;
     background: #f1f2f3;
@@ -45,34 +45,38 @@
 </style>
 
 <script>
-  function renderPopularSkeletons() {
-    const cardsWrapper = document.getElementById('popularCards');
-    if (!cardsWrapper) return;
-    // how many to show, capped at 3
-    const max = 3;
-    const wanted = Number(cardsWrapper.closest('#popularQuestionBlock').dataset.faqsToShow) || max;
-    const toShow = Math.min(wanted, max);
+  function showPopularSkeletons() {
+    const wrapper = document.getElementById('popularCards');
+    if (!wrapper) return;
 
-    cardsWrapper.classList.add('loading');
-    let skeletons = '';
+    const maxCards = 3;
+    const wanted = Number(wrapper.closest('#popularQuestionBlock').dataset.faqsToShow) || maxCards;
+    const toShow = Math.min(wanted, maxCards);
+
+    wrapper.classList.add('loading');
+    let html = '';
     for (let i = 0; i < toShow; i++) {
-      skeletons += `
+      html += `
         <div class="popular-card skeleton">
           <div class="skeleton-title"></div>
           <div class="skeleton-content"></div>
         </div>`;
     }
-    cardsWrapper.innerHTML = skeletons;
+    wrapper.innerHTML = html;
+
+    // Remove skeletons once real cards arrive
+    const observer = new MutationObserver((mutations, obs) => {
+      if (wrapper.querySelector('.popular-card:not(.skeleton)')) {
+        wrapper.classList.remove('loading');
+        wrapper.querySelectorAll('.skeleton').forEach(el => el.remove());
+        obs.disconnect();
+      }
+    });
+    observer.observe(wrapper, { childList: true });
   }
 
   function loadPopularFAQs() {
-    const cardsWrapper = document.getElementById('popularCards');
-    if (!cardsWrapper) return;
-
-    // show skeletons first
-    renderPopularSkeletons();
-
-    // then fetch real content (this will replace skeletons)
+    showPopularSkeletons();
     fetchFAQsByFilters({ popular: true, appendTo: "popularCards" });
   }
 
