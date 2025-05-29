@@ -1,3 +1,27 @@
+<style>
+  /* Skeleton styles */
+  .skeleton {
+    background: #f1f2f3;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .skeleton-text {
+    height: 16px;
+    width: 80%;
+  }
+  .skeleton-button {
+    height: 32px;
+    width: 100px;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .skeleton-product {
+    height: 150px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+</style>
+
 <div class="category-block">
   <div class="category-content-wrapper page-width">
 
@@ -5,95 +29,100 @@
     <div class="heading center">
       <h1>{{ category_title }}</h1>
     </div>
-  {% endif %}
+    {% endif %}
 
     <div class="category-tab-wrapper" id="categoryTabWrapper">
 
       <div id="categoriesContainer" class="tab-header" data-categories-to-show="{{ categories_to_show }}">
-         <!-- Loader -->
-         <div id="categoriesLoader" class="loader" style="display: none;"></div>
+         <!-- Skeleton Loader -->
+         <div id="categoriesLoader"></div>
       </div>
 
       <div class="tab-body">
         <div class="tab-content-wrapper" id="productsByCategory" data-faqs-to-show="{{ products_to_show }}">
-          <!-- Loader -->
-          <div id="productByCategoriesLoader" class="loader" style="display: none;"></div>
-         
+          <!-- Skeleton Loader -->
+          <div id="productByCategoriesLoader"></div>
         </div>
       </div>
 
       {% if show_title %}
-        <div class="browse-categories" id="browseCategoriesDiv">
-
-        </div>
+        <div class="browse-categories" id="browseCategoriesDiv"></div>
       {% endif %}
-     
 
     </div>
   </div>
 </div>
 
-
 <script>
- function getPaginatedCategories() {
-   // Show the loader
-   const loader = document.getElementById('categoriesLoader');
-   if (loader) {
-    loader.style.display = 'block';
+  // Inject skeletons
+  function showCategorySkeleton() {
+    const loader = document.getElementById('categoriesLoader');
+    loader.innerHTML = Array(3).fill(
+      '<div class="skeleton skeleton-button"></div>'
+    ).join('');
   }
-  
-  fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
-    .then(response => response.json())
-    .then(data => {
-      getProductsByCategory(data[0]?.id,data[0]?.category_name);
 
-      const categoriesBlock = document.getElementById('categoriesContainer');
-      const blocksToShow = categoriesBlock ? categoriesBlock.dataset.categoriesToShow : 3;
-      
-      const container = document.querySelector('.tab-header'); 
-      container.innerHTML = ""; // Clear previous buttons
+  function showProductSkeleton() {
+    const loader = document.getElementById('productByCategoriesLoader');
+    loader.innerHTML = Array(4).fill(
+      '<div class="skeleton skeleton-product"></div>'
+    ).join('');
+  }
 
-      data?.forEach((category, index) => {
-        const categoryTag = document.createElement('button');
-  
-        const isActive = index === 0 ? "active" : "";
-        if (isActive) {
-          categoryTag.classList.add(isActive);
-        }
-        
-        categoryTag.innerHTML = category?.category_name;
+  function getPaginatedCategories() {
+    // Show skeletons
+    showCategorySkeleton();
+    const loader = document.getElementById('categoriesLoader');
+    loader.style.display = 'flex';
 
-        // Appending an onclick function to all the buttons
-        categoryTag.onclick = function() {
-          // Removing "active" class from all buttons inside the .tab-header container
-          const allButtons = container.querySelectorAll('button');
-          allButtons.forEach(button => button.classList.remove("active"));
-
-          // Adding "active" class to the clicked button
-          categoryTag.classList.add("active");
-
-          // Fetch products for the selected category
-          getProductsByCategory(category.id,category.category_name);
-        };
-
-        container.appendChild(categoryTag);
+    fetch(evenFloFAQURL + 'products/getAllCategories?show=true')
+      .then(response => response.json())
+      .then(data => {
+        // Render real categories
+        const container = document.getElementById('categoriesContainer');
+        container.innerHTML = '';
+        data.forEach((category, index) => {
+          const btn = document.createElement('button');
+          btn.textContent = category.category_name;
+          if (index === 0) btn.classList.add('active');
+          btn.onclick = () => {
+            container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            getProductsByCategory(category.id, category.category_name);
+          };
+          container.appendChild(btn);
+        });
+        // Fetch first category's products
+        if (data[0]) getProductsByCategory(data[0].id, data[0].category_name);
+      })
+      .catch(err => console.error('Error:', err))
+      .finally(() => {
+        document.getElementById('categoriesLoader').style.display = 'none';
       });
-    })
-    .catch(error => {
-      console.error('Error fetching products:', error);
-    })
-    .finally(() => {
-      // Hide the loader
-      if (loader) {
+  }
+
+  function getProductsByCategory(categoryId, categoryName) {
+    // Show product skeleton
+    showProductSkeleton();
+    const loader = document.getElementById('productByCategoriesLoader');
+    loader.style.display = 'block';
+
+    fetch(evenFloFAQURL + `products/getByCategory/${categoryId}?show=true`)
+      .then(res => res.json())
+      .then(products => {
+        const wrapper = document.getElementById('productsByCategory');
+        wrapper.innerHTML = products.map(p => (
+          `<div class="product-card">
+             <img src="${p.image}" alt="${p.name}" />
+             <h3>${p.name}</h3>
+           </div>`
+        )).join('');
+      })
+      .catch(err => console.error('Error:', err))
+      .finally(() => {
         loader.style.display = 'none';
-      }
-    });
-}
+      });
+  }
 
-
-
-  document.addEventListener('DOMContentLoaded', () => {
-    
-    getPaginatedCategories();
-  });
+  document.addEventListener('DOMContentLoaded', getPaginatedCategories);
 </script>
