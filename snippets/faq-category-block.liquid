@@ -167,17 +167,15 @@ debugger
   function getProductsByCategoryNew(categoryId, categoryName) {
     debugger
     const productsWrapper = document.getElementById('productsByCategory');
-    debugger
     if (!productsWrapper) return;
 
     // Show skeleton for products while loading
     // productsWrapper.classList.add('skeleton-loading');
     // productsWrapper.innerHTML = productsSkeletonMarkup;
-debugger
     fetch(evenFloFAQURL + 'products/getByCategory?id=' + categoryId)
       .then(response => response.json())
       .then(data => {
-       
+       debugger
 
         // Render product content inside fixed size container
         const innerDiv = document.createElement('div');
