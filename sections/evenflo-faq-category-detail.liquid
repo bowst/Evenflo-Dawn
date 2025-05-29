@@ -47,7 +47,7 @@
   }
 
   /* Skeleton Styles */
-  .faq-skeleton {
+  .faq-skeleton.placeholder-item {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -77,7 +77,7 @@
 </style>
 
 <template id="faqSkeletonTemplate">
-  <div class="faq-skeleton">
+  <div class="faq-skeleton placeholder-item">
     <div class="faq-skeleton-item"></div>
     <div class="faq-skeleton-item short"></div>
     <div class="faq-skeleton-item"></div>
@@ -134,9 +134,10 @@
       return;
     }
 
-    container.innerHTML = "";
+    // Clear all existing cards and skeletons
+    container.querySelectorAll('.popular-card, .placeholder-item').forEach(el => el.remove());
 
-    // Inject skeletons
+    // Show skeletons
     const template = document.getElementById("faqSkeletonTemplate");
     for (let i = 0; i < blocksToShow; i++) {
       const skeletonClone = template.content.cloneNode(true);
@@ -168,8 +169,10 @@
           document.getElementById("popularQuestionHeading").style.display = "none";
         }
 
-        container.innerHTML = ""; // Clear skeletons
+        // Remove skeletons
+        container.querySelectorAll('.placeholder-item').forEach(el => el.remove());
 
+        // Render real FAQ cards
         data?.related_popular_faqs
           ?.slice(0, blocksToShow)
           .forEach((product) => {
