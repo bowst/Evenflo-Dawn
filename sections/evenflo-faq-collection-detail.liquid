@@ -2,163 +2,207 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <style>
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
 
-  /* ─── SKELETON CARD ─── */
-  .popular-card.skeleton {
-    width: 503px;
-    height: 425px;
-    background: #f1f2f3;
-    margin: 0 15px; /* keep some gutter between slides */
-    border-radius: 4px;
-  }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 </style>
 
 <div class="product-page-wrapper">
-  <div class="product-slider-block">
-    <div class="page-width">
-      <div class="product-slider-main-wrapper">
-        <div class="product-slider-heading center" id="collectionDetail">
-          {% comment %} will be filled dynamically {% endcomment %}
+
+
+
+    <div class="product-slider-block">
+
+        <div class="page-width">
+            <div class="product-slider-main-wrapper">
+
+
+                <div class="product-slider-heading center" id="collectionDetail">
+                 {% comment %} Content will be dynamic {% endcomment %}
+                </div>
+                 <div class="swiper mySwiper product-slider-wrapper" >
+                    <div class="swiper-wrapper" id="productsInCollection" data-faqs-to-show="6">
+                      {% comment %} Content will be dynamic {% endcomment %}
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                  </div>
+             
         </div>
-        <div class="swiper mySwiper product-slider-wrapper">
-          <div
-            class="swiper-wrapper"
-            id="productsInCollection"
-            data-faqs-to-show="6">
-            <!-- skeleton cards injected here on init -->
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </div>
     </div>
-  </div>
+    </div>
+
+
 </div>
 
 {% render 'faq-load-more-block', show_topic_dropdown:true, show_product_dropdown:true %}
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script>
-  // 1) On initial render, dump skeletons into the slider
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('productsInCollection');
-    if (container) {
-      const count = +container.dataset.faqsToShow || 6;
-      let html = '';
-      for (let i = 0; i < count; i++) {
-        html += '<div class="swiper-slide popular-card skeleton"></div>';
-      }
-      container.innerHTML = html;
+
+
+function fetchCollectionDetail(collectionID) {
+  const container = document.getElementById('collectionDetail');
+
+  if(!container){
+      return;
     }
+    
+   container.innerHTML = "";  // Clear existing content
 
-    const params = new URLSearchParams(window.location.search);
-    if (params.has('cid')) {
-      fetchCollectionDetail(params.get('cid'));
-    } else {
-      redirectIfNoData([]);
-    }
-  });
+   const loader = appendLoader(container)
 
-  function fetchCollectionDetail(collectionID) {
-    const heading = document.getElementById('collectionDetail');
-    if (!heading) return;
+  fetch(`${evenFloFAQURL}collection/${collectionID}/`)
+    .then(response => response.json())
+    .then(collection => {
 
-    heading.innerHTML = '';
-    const loader = appendLoader(heading);
-
-    fetch(`${evenFloFAQURL}collection/${collectionID}/`)
-      .then(res => res.json())
-      .then(col => {
-        if (col?.detail && containsString(col.detail, errorString())) {
-          redirectIfNoData([]); return;
+    if(collection?.detail && containsString(collection?.detail,errorString())){
+          redirectIfNoData([])
+          return ""
         }
-        heading.innerHTML = `
-          <h1 id="collectionHeading">${col.name}</h1>
-          <p id="collectionDescription">${col.description}</p>`;
-        getBreadCrumbLinks(col.name, 'collection');
 
-        // now replace skeletons with real slides
-        fetchProductsByCollection(collectionID);
-
-        // also kick off the FAQ bits
-        fetchFAQsByFilters({ collectionID });
+    fetchProductsByCollection(collectionID);
+        fetchFAQsByFilters({ collectionID: collectionID });
         fetchTopicsByType(collectionID);
         fetchDropDownProductsByType(collectionID);
-      })
-      .catch(err => {
-        console.error('Error fetching collection:', err);
-        redirectIfNoData([]);
-      })
-      .finally(() => {
-        if (loader) hideLoader(loader);
-      });
-  }
-
-  function fetchProductsByCollection(collectionID) {
-    const container = document.getElementById('productsInCollection');
-    if (!container) return;
-
-    // clear skeletons
-    container.innerHTML = '';
-
-    fetch(`${evenFloFAQURL}products/filterByCollection/${collectionID}`)
-      .then(res => res.json())
-      .then(data => {
-        const count = +container.dataset.faqsToShow || 6;
-        data.slice(0, count).forEach(product => {
-          const slide = document.createElement('div');
-          slide.classList.add('swiper-slide', 'product-card');
-          slide.innerHTML = `
-            <a href="/pages/evenflo-faq-product?pid=${product.id}">
-              <div class="product-img">
-                <img src="${product.image}" alt="${product.name}" />
-              </div>
-              <div class="product-title">
-                <h4>${product.name}</h4>
-              </div>
-            </a>`;
-          container.appendChild(slide);
-        });
-
-        // init or update the Swiper
-        customSlider();
-      })
-      .catch(err => console.error('Error fetching products:', err));
-  }
-
-  function customSlider() {
-    // destroy previous if exists
-    if (window.__collectionSwiper) window.__collectionSwiper.destroy();
-    window.__collectionSwiper = new Swiper(".mySwiper", {
-      loop:      true,
-      slidesPerView: 4,
-      spaceBetween:  30,
-      pagination: { el: ".swiper-pagination", clickable: true },
-      navigation:{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-      breakpoints: {
-        320: { slidesPerView: 1, spaceBetween: 10 },
-        640: { slidesPerView: 2 },
-        960: { slidesPerView: 4 }
+		container.innerHTML = `
+       <h1 id="collectionHeading">${collection?.name}</h1>
+                    <p id="collectionDescription">${collection?.description}</p>
+          `;     
+          getBreadCrumbLinks(collection?.name,'collection')
+    })
+    .catch(error => {
+      console.error('Error fetching collection:', error);
+      redirectIfNoData([])
+    })
+    .finally(() => {
+      // Hide the loader
+      if (loader) {
+        hideLoader(loader)
       }
     });
-  }
+}
+
+
+function fetchProductsByCollection(collectionID){
+    const container = document.getElementById('productsInCollection');
+
+    if(!container){
+      return;
+    }
+
+    container.innerHTML = "";  // Clear existing content
+
+    //const loader= appendLoader(container)
+
+    fetch(evenFloFAQURL + `products/filterByCollection/${collectionID}`)
+    .then(response => response.json())
+    .then(data => {
+
+      const productsBlock = document.getElementById('productsInCollection');
+      const blocksToShow = productsBlock ? productsBlock.dataset.faqsToShow : 6;
+
+        data.slice(0, blocksToShow).forEach((product) => {  
+
+          const tabCard = document.createElement('div');
+          tabCard.classList.add('swiper-slide','product-card');
+
+          tabCard.innerHTML = `
+          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
+           <div class="product-img">
+              <img
+                src=${product?.image}
+                alt="tab-img"
+              />
+            </div>
+            <div class="product-title">
+              <h4>${product?.name}</h4>
+            </div>
+            </a>
+          `;
+
+          container.appendChild(tabCard);
+
+        });
+      if(document.querySelectorAll(".product-slider-wrapper .product-card").length > 4){
+        document.querySelector(".product-slider-wrapper").classList.remove("product-slider-wrapper-hide");
+		customSlider(); 
+      }else{
+        document.querySelector(".product-slider-wrapper").classList.add("product-slider-wrapper-hide");
+      }
+        
+      
+    })
+    .catch(error => {
+      console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+    
+    });
+}
+
+function customSlider(){
+  var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            slidesPerView: 4,
+            spaceBetween: 30,   
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+              320: {  // when window width is >= 320px
+                slidesPerView: 1,
+                spaceBetween: 10
+              },
+              640: {  // when window width is >= 640px
+                slidesPerView: 2,
+              },
+              960: {  // when window width is >= 960px
+                slidesPerView: 4,
+              }
+            }
+        });
+}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+	const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    if (urlParams.has('cid')) {
+        collectionID = urlParams.get('cid');
+		    fetchCollectionDetail(collectionID);
+
+    } else{
+		  redirectIfNoData([]);
+	}
+});
+
+
 </script>
