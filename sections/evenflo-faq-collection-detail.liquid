@@ -91,6 +91,21 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
+// FAQ Schema definition
+const faqSchema = {
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Common questions about our service.",
+    "questions": [
+      {
+        "question": "What is the service?",
+        "answer": "We provide ...",
+        "tags": ["service", "overview"]
+      }
+    ]
+  }
+};
+
 function fetchCollectionDetail(collectionID) {
   const container = document.getElementById('collectionDetail');
   
