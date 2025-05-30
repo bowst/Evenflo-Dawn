@@ -6,86 +6,158 @@ var collectionID = "";
 var productID = "";
 
 //We are using this filter for generic search for all faqs in faq-load-more block
+// function fetchFAQsByFilters({
+// 	categoryID = "",
+// 	filter = "",
+// 	topicsID = "",
+// 	page = 1,
+// 	productID = "",
+// 	collectionID = "",
+// 	popular = false,
+// 	appendTo = "searchListigBody",
+// 	showLoadMore = true,
+// }) {
+// 	const container = document.getElementById(appendTo);
+
+// 	const faqsToShow =
+// 		document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
+
+// 	const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+// 	if (!container) {
+// 		console.error("searchListigBody wrapper container not found");
+// 		return;
+// 	}
+
+// 	if (loadMoreBtn && showLoadMore) {
+// 		loadMoreBtn.style.display = "none";
+// 	}
+
+// 	if (page == 1) {
+// 		emptyContainerHtml(container);
+// 	}
+
+// 	const loader = appendLoader(container);
+
+// 	fetch(
+// 		evenFloFAQURL +
+// 			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&
+// 			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
+// 	)
+// 		.then((response) => response.json())
+// 		.then((data) => {
+// 			let resultsToShow = data?.results;
+// 			if (popular) {
+// 				resultsToShow = resultsToShow.slice(0, faqsToShow);
+// 			}
+
+// 			resultsToShow?.forEach((product) => {
+// 				const popularCard = createPopularCardDivElement("popular-card");
+
+// 				const faqsContent = getFAQContent(product?.products || []);
+
+// 				const tags = getTagsArray(product?.tags || []);
+
+// 				const tagsHtml = getTagsHtml(tags);
+
+// 				popularCard.innerHTML = setFAQBlockInnerHtml(
+// 					product?.topic?.name || "",
+// 					product.question,
+// 					faqsContent,
+// 					product.answer,
+// 					//product?.id,
+// 					"",
+// 					tagsHtml
+// 				);
+
+// 				container.appendChild(popularCard);
+// 			});
+
+// 			if (loadMoreBtn && showLoadMore) {
+// 				loadMoreBtn.style.display = data?.next ? "block" : "none";
+// 			}
+// 		})
+// 		.catch((error) => {
+// 			console.error("Error fetching products:", error);
+// 		})
+// 		.finally(() => {
+// 			if (loader) {
+// 				hideLoader(loader);
+// 				toggleAnswerBullet();
+// 			}
+// 		});
+// }
 function fetchFAQsByFilters({
-	categoryID = "",
-	filter = "",
-	topicsID = "",
-	page = 1,
-	productID = "",
-	collectionID = "",
-	popular = false,
-	appendTo = "searchListigBody",
-	showLoadMore = true,
+  categoryID = "",
+  filter = "",
+  topicsID = "",
+  page = 1,
+  productID = "",
+  collectionID = "",
+  popular = false,
+  appendTo = "searchListigBody",
+  showLoadMore = true,
 }) {
-	const container = document.getElementById(appendTo);
+  const container   = document.getElementById(appendTo);
+  const faqsToShow  = +document.getElementById("faqsToShow")?.dataset.faqsToShow || 3;
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
 
-	const faqsToShow =
-		document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
+  if (!container) {
+    console.error("searchListigBody wrapper container not found");
+    return;
+  }
+  if (loadMoreBtn && showLoadMore) {
+    loadMoreBtn.style.display = "none";
+  }
 
-	const loadMoreBtn = document.getElementById("loadMoreBtn");
+  // — replace spinner with skeleton cards on initial load or filter change —
+  if (page === 1) {
+    emptyContainerHtml(container);
+    appendSkeletons(container, faqsToShow);
+  }
 
-	if (!container) {
-		console.error("searchListigBody wrapper container not found");
-		return;
-	}
+  fetch(
+    evenFloFAQURL +
+    `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&topics_id=${topicsID}` +
+    `&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
+  )
+  .then(res => res.json())
+  .then(data => {
+    // once data arrives, clear skeletons and render real cards
+    if (page === 1) {
+      emptyContainerHtml(container);
+    }
 
-	if (loadMoreBtn && showLoadMore) {
-		loadMoreBtn.style.display = "none";
-	}
+    let resultsToShow = data.results;
+    if (popular) {
+      resultsToShow = resultsToShow.slice(0, faqsToShow);
+    }
 
-	if (page == 1) {
-		emptyContainerHtml(container);
-	}
+    resultsToShow.forEach(product => {
+      const popularCard = createPopularCardDivElement("popular-card");
+      const faqsContent = getFAQContent(product.products || []);
+      const tags        = getTagsHtml(getTagsArray(product.tags || []));
+      popularCard.innerHTML = setFAQBlockInnerHtml(
+        product.topic?.name || "",
+        product.question,
+        faqsContent,
+        product.answer,
+        "", // id if needed
+        tags
+      );
+      container.appendChild(popularCard);
+    });
 
-	const loader = appendLoader(container);
-
-	fetch(
-		evenFloFAQURL +
-			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&
-			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
-	)
-		.then((response) => response.json())
-		.then((data) => {
-			let resultsToShow = data?.results;
-			if (popular) {
-				resultsToShow = resultsToShow.slice(0, faqsToShow);
-			}
-
-			resultsToShow?.forEach((product) => {
-				const popularCard = createPopularCardDivElement("popular-card");
-
-				const faqsContent = getFAQContent(product?.products || []);
-
-				const tags = getTagsArray(product?.tags || []);
-
-				const tagsHtml = getTagsHtml(tags);
-
-				popularCard.innerHTML = setFAQBlockInnerHtml(
-					product?.topic?.name || "",
-					product.question,
-					faqsContent,
-					product.answer,
-					//product?.id,
-					"",
-					tagsHtml
-				);
-
-				container.appendChild(popularCard);
-			});
-
-			if (loadMoreBtn && showLoadMore) {
-				loadMoreBtn.style.display = data?.next ? "block" : "none";
-			}
-		})
-		.catch((error) => {
-			console.error("Error fetching products:", error);
-		})
-		.finally(() => {
-			if (loader) {
-				hideLoader(loader);
-				toggleAnswerBullet();
-			}
-		});
+    if (loadMoreBtn && showLoadMore) {
+      loadMoreBtn.style.display = data.next ? "block" : "none";
+    }
+  })
+  .catch(err => {
+    console.error("Error fetching FAQs:", err);
+  })
+  .finally(() => {
+    toggleAnswerBullet();
+  });
 }
 
 function toggleAnswerBullet() {
