@@ -92,22 +92,45 @@ function createSkeletonCardDivElement() {
   const card = document.createElement('div');
   card.className = 'popular-card skeleton';
   card.innerHTML = `
-    <div class="skeleton-topic   skeleton-line"></div>
+    <div class="skeleton-topic skeleton-line"></div>
     <div class="skeleton-question skeleton-line"></div>
-    <div class="skeleton-answer   skeleton-line"></div>
-    <div class="skeleton-tags     skeleton-line"></div>
+    <div class="skeleton-answer skeleton-line"></div>
+    <div class="skeleton-tags skeleton-line"></div>
   `;
   return card;
 }
+
 function appendSkeletons(container, count) {
   for (let i = 0; i < count; i++) {
     container.appendChild(createSkeletonCardDivElement());
   }
 }
+
 function removeSkeletons(container) {
   container
     .querySelectorAll('.popular-card.skeleton')
     .forEach(el => el.remove());
+}
+
+function generateFAQSchema(faqs) {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  // Create a script tag for JSON-LD and inject it into the head
+  const scriptTag = document.createElement("script");
+  scriptTag.type = "application/ld+json";
+  scriptTag.innerHTML = JSON.stringify(faqSchema);
+  document.head.appendChild(scriptTag);
 }
 
 // your fetch…
@@ -122,15 +145,20 @@ function fetchFAQsByFilters({
   appendTo = "searchListigBody",
   showLoadMore = true,
 }) {
-  const container   = document.getElementById(appendTo);
-  const faqsToShow  = +document.getElementById("faqsToShow")?.dataset.faqsToShow || 20;
+  const container = document.getElementById(appendTo);
+  const faqsToShow = +document.getElementById("faqsToShow")?.dataset.faqsToShow || 20;
   const loadMoreBtn = document.getElementById("loadMoreBtn");
-  if (!container) { console.error("No container"); return; }
-  if (loadMoreBtn && showLoadMore) { loadMoreBtn.style.display = "none"; }
+  if (!container) {
+    console.error("No container");
+    return;
+  }
+  if (loadMoreBtn && showLoadMore) {
+    loadMoreBtn.style.display = "none";
+  }
 
   // — inject skeletons at _start_ or _append_ position —
   if (page === 1) {
-    container.innerHTML = "";               // clear any old cards
+    container.innerHTML = ""; // clear any old cards
     appendSkeletons(container, faqsToShow); // top-of-page skeletons
   } else {
     appendSkeletons(container, faqsToShow); // bottom-of-list skeletons
@@ -138,9 +166,9 @@ function fetchFAQsByFilters({
 
   fetch(
     evenFloFAQURL +
-    `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}` +
-    `&topics_id=${topicsID}&product_id=${productID}` +
-    `&collection_id=${collectionID}&popular=${popular}`
+      `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}` +
+      `&topics_id=${topicsID}&product_id=${productID}` +
+      `&collection_id=${collectionID}&popular=${popular}`
   )
     .then(res => res.json())
     .then(data => {
@@ -150,10 +178,20 @@ function fetchFAQsByFilters({
       let results = data.results;
       if (popular) results = results.slice(0, faqsToShow);
 
+      // Create an array of FAQs for the JSON-LD schema
+      const faqs = results.map(product => ({
+        question: product.question,
+        answer: product.answer
+      }));
+
+      // Generate the FAQ schema
+      generateFAQSchema(faqs);
+
+      // Append FAQ content to the container
       results.forEach(product => {
         const card = createPopularCardDivElement("popular-card");
         const faqsContent = getFAQContent(product.products || []);
-        const tagsHtml    = getTagsHtml(getTagsArray(product.tags || []));
+        const tagsHtml = getTagsHtml(getTagsArray(product.tags || []));
         card.innerHTML = setFAQBlockInnerHtml(
           product.topic?.name || "",
           product.question,
@@ -165,6 +203,7 @@ function fetchFAQsByFilters({
         container.appendChild(card);
       });
 
+      // Show or hide the "Load More" button
       if (loadMoreBtn && showLoadMore) {
         loadMoreBtn.style.display = data.next ? "block" : "none";
       }
@@ -174,6 +213,7 @@ function fetchFAQsByFilters({
       toggleAnswerBullet();
     });
 }
+
 
 
 function toggleAnswerBullet() {
