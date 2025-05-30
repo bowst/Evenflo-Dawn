@@ -41,7 +41,7 @@
   .skeleton-answer { width: 100%; }
   .skeleton-tags { width: 50%; }
 
-  /* Skeleton styles for FAQ cards */
+  /* Skeleton styles for product cards */
   .popular-card.skeleton {
     width: 503px;
     height: 425px;
@@ -74,7 +74,7 @@
           {% comment %} Content will be dynamic {% endcomment %}
         </div>
         <div class="swiper mySwiper product-slider-wrapper">
-          <div class="swiper-wrapper" id="faqsInCollection" data-faqs-to-show="6">
+          <div class="swiper-wrapper" id="productsInCollection" data-faqs-to-show="6">
             {% comment %} Content will be dynamic {% endcomment %}
           </div>
           <div class="swiper-pagination"></div>
@@ -107,10 +107,9 @@ function fetchCollectionDetail(collectionID) {
   fetch(`${evenFloFAQURL}collection/${collectionID}/`)
     .then(response => response.json())
     .then(collection => {
-      if (!collection || !collection?.detail || containsString(collection?.detail, errorString())) {
-        // Don't redirect if collection is invalid, just log the error.
-        console.error("Collection data is invalid or missing.");
-        return; // Stop execution without redirecting
+      if (collection?.detail && containsString(collection?.detail, errorString())) {
+        redirectIfNoData([])
+        return ""
       }
 
       fetchProductsByCollection(collectionID);
@@ -127,13 +126,12 @@ function fetchCollectionDetail(collectionID) {
     })
     .catch(error => {
       console.error('Error fetching collection:', error);
-      // Don't redirect, just handle the error and display a message.
+      redirectIfNoData([])
     });
 }
 
-// Fetch and display FAQs in the swiper
-function fetchFAQsByFilters({ collectionID }) {
-  const container = document.getElementById('faqsInCollection');
+function fetchProductsByCollection(collectionID) {
+  const container = document.getElementById('productsInCollection');
 
   if (!container) return;
 
@@ -143,38 +141,43 @@ function fetchFAQsByFilters({ collectionID }) {
   let skeletonHTML = '';
   for (let i = 0; i < 4; i++) {
     skeletonHTML += `
-      <div class="swiper-slide popular-card skeleton swiper-slide-active">
-        <div class="skeleton-line skeleton-title"></div>
-        <div class="skeleton-line skeleton-content"></div>
+      <div class="swiper-slide product-card skeleton swiper-slide-active">
+        <div class="skeleton-line skeleton-topic"></div>
+        <div class="skeleton-line skeleton-question"></div>
+        <div class="skeleton-line skeleton-answer"></div>
       </div>
     `;
   }
   container.innerHTML = skeletonHTML;  // Inject skeletons before fetch
 
-  fetch(`${evenFloFAQURL}faqs/filterByCollection/${collectionID}`)
+  fetch(evenFloFAQURL + `products/filterByCollection/${collectionID}`)
     .then(response => response.json())
-    .then(faqs => {
-      const faqsBlock = document.getElementById('faqsInCollection');
-      const blocksToShow = faqsBlock ? faqsBlock.dataset.faqsToShow : 6;
+    .then(data => {
+      const productsBlock = document.getElementById('productsInCollection');
+      const blocksToShow = productsBlock ? productsBlock.dataset.faqsToShow : 6;
 
-      // Clear skeletons and render the actual FAQ cards
-      faqsBlock.innerHTML = '';
+      // Clear skeletons and render the actual products
+      productsBlock.innerHTML = '';
 
-      faqs.slice(0, blocksToShow).forEach((faq) => {
-        const faqCard = document.createElement('div');
-        faqCard.classList.add('swiper-slide', 'popular-card');
+      data.slice(0, blocksToShow).forEach((product) => {
+        const tabCard = document.createElement('div');
+        tabCard.classList.add('swiper-slide', 'product-card');
 
-        faqCard.innerHTML = `
-          <div class="popular-card-content">
-            <h4 class="popular-card-title">${faq?.question}</h4>
-            <p class="popular-card-answer">${faq?.answer}</p>
-          </div>
+        tabCard.innerHTML = `
+          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
+            <div class="product-img">
+              <img src="${product?.image}" alt="tab-img"/>
+            </div>
+            <div class="product-title">
+              <h4>${product?.name}</h4>
+            </div>
+          </a>
         `;
 
-        faqsBlock.appendChild(faqCard);
+        productsBlock.appendChild(tabCard);
       });
 
-      if (document.querySelectorAll(".product-slider-wrapper .popular-card").length > 4) {
+      if (document.querySelectorAll(".product-slider-wrapper .product-card").length > 4) {
         document.querySelector(".product-slider-wrapper").classList.remove("product-slider-wrapper-hide");
         customSlider(); 
       } else {
@@ -182,10 +185,10 @@ function fetchFAQsByFilters({ collectionID }) {
       }
     })
     .catch(error => {
-      console.error('Error fetching FAQs:', error);
+      console.error('Error fetching products:', error);
     })
     .finally(() => {
-      // After the fetch, remove skeletons
+      // After the fetch, the skeletons are removed
     });
 }
 
@@ -225,9 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const collectionID = urlParams.get('cid');
     fetchCollectionDetail(collectionID);
   } else {
-    // Handle missing 'cid' gracefully without redirecting
-    console.log("Collection ID is missing, cannot fetch collection details.");
-    // Optionally show an error message or handle fallback content
+    redirectIfNoData([]);
   }
 });
 </script>
