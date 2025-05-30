@@ -7,10 +7,9 @@
     height: 100%;
   }
 
-  /* Set size for swiper-slide to match desired card size */
   .swiper-slide {
-    width: 503px;  /* Set the width of swiper-slide to 503px */
-    height: 425px; /* Set the height of swiper-slide to 425px */
+    width: 503px;
+    height: 425px;
     text-align: center;
     font-size: 18px;
     background: #fff;
@@ -21,8 +20,8 @@
 
   /* Skeleton styles for swiper-slide */
   .swiper-slide.skeleton {
-    width: 503px;  /* Set skeleton width to 503px */
-    height: 425px; /* Set skeleton height to 425px */
+    width: 503px;
+    height: 425px;
     background: #f1f2f3;
     display: flex;
     justify-content: center;
@@ -37,23 +36,15 @@
     border-radius: 4px;
   }
 
-  .skeleton-topic   { width: 30%;  }
-  .skeleton-question{ width: 80%;  }
-  .skeleton-answer  { width: 100%; }
-  .skeleton-tags    { width: 50%;  }
+  .skeleton-topic { width: 30%; }
+  .skeleton-question { width: 80%; }
+  .skeleton-answer { width: 100%; }
+  .skeleton-tags { width: 50%; }
 
-  /* Image styles */
-  .swiper-slide img {
-    width: 100%; /* Make the image fill the width of the container */
-    height: 100%; /* Make the image fill the height of the container */
-    object-fit: contain; /* Prevent zoom and cropping, make sure the image fits within the container */
-    object-position: center; /* Ensure the image stays centered */
-  }
-
-  /* Product card (popular-card) styles */
+  /* Skeleton styles for product cards */
   .popular-card.skeleton {
-    width: 503px;  /* Set skeleton width to 503px */
-    height: 425px; /* Set skeleton height to 425px */
+    width: 503px;
+    height: 425px;
     background: #f1f2f3;
     display: flex;
     flex-direction: column;
@@ -102,25 +93,17 @@
 <script>
 function fetchCollectionDetail(collectionID) {
   const container = document.getElementById('collectionDetail');
-
-  if (!container) {
-    return;
-  }
+  
+  if (!container) return;
 
   container.innerHTML = "";  // Clear existing content
-
-  // Inject skeleton loading before data fetch
-  const skeletonHTML = `
-    <h1 class="skeleton-line skeleton-topic"></h1>
-    <p class="skeleton-line skeleton-question"></p>
-    <div class="swiper-slide skeleton">
-      <div class="skeleton-line skeleton-topic"></div>
-      <div class="skeleton-line skeleton-question"></div>
-      <div class="skeleton-line skeleton-answer"></div>
-    </div>
+  
+  // Show skeleton loader before fetching the collection details
+  container.innerHTML = `
+    <div class="skeleton-line skeleton-topic"></div>
+    <div class="skeleton-line skeleton-question"></div>
   `;
-  container.innerHTML = skeletonHTML;
-
+  
   fetch(`${evenFloFAQURL}collection/${collectionID}/`)
     .then(response => response.json())
     .then(collection => {
@@ -134,11 +117,12 @@ function fetchCollectionDetail(collectionID) {
       fetchTopicsByType(collectionID);
       fetchDropDownProductsByType(collectionID);
 
+      // Fill the collection details after fetching
       container.innerHTML = `
         <h1 id="collectionHeading">${collection?.name}</h1>
         <p id="collectionDescription">${collection?.description}</p>
       `;
-      getBreadCrumbLinks(collection?.name, 'collection')
+      getBreadCrumbLinks(collection?.name, 'collection');
     })
     .catch(error => {
       console.error('Error fetching collection:', error);
@@ -149,9 +133,7 @@ function fetchCollectionDetail(collectionID) {
 function fetchProductsByCollection(collectionID) {
   const container = document.getElementById('productsInCollection');
 
-  if (!container) {
-    return;
-  }
+  if (!container) return;
 
   container.innerHTML = "";  // Clear existing content
 
