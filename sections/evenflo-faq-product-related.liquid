@@ -72,8 +72,7 @@
 <script>
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
-    // const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-    const popularQuestionBlock = document.getElementById("productRelatedBlock");
+    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
     let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
 
     if (!container) {
