@@ -204,16 +204,10 @@
   //   }
   // });
 document.addEventListener('DOMContentLoaded', () => {
-  const pid = new URLSearchParams(window.location.search).get('pid');
-  if (pid) {
-    fetchPopularProductsRelatedData(pid);
-    if (typeof getFilterValuesAndCallFunc === 'function') {
-      getFilterValuesAndCallFunc();
-    }
-  } else {
-    redirectIfNoData([]);
-  }
+  fetchPopularProductsRelatedData(pid);
+  getFilterValuesAndCallFunc();
 });
+
 
 </script>
 
