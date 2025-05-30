@@ -67,23 +67,26 @@
 </style>
 
 <!-- FAQ Schema JSON-LD (Dynamic) -->
-<script type="application/ld+json">
-  const faqs = {{ faqData | json }}; // Assuming `faqData` is your dynamic data (JSON format) passed from backend
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
-
+<script>
   document.addEventListener("DOMContentLoaded", function () {
+    // Assuming `faqData` is passed into JavaScript as an array of objects with `question` and `answer` properties
+    const faqs = {{ faqData | json }}; // Ensure this variable is passed correctly from your backend
+
+    // Generate FAQ schema dynamically
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    };
+
+    // Inject the JSON-LD into the head of the document
     const scriptTag = document.createElement("script");
     scriptTag.type = "application/ld+json";
     scriptTag.innerHTML = JSON.stringify(faqSchema);
