@@ -204,6 +204,11 @@
   //   }
   // });
 document.addEventListener('DOMContentLoaded', () => {
+  // 1) Only proceed if the Popular block is actually on this page
+  const block = document.getElementById('productRelatedBlock');
+  if (!block) return;
+
+  // 2) Then require a pid param as before
   const pid = new URLSearchParams(window.location.search).get('pid');
   if (pid) {
     fetchPopularProductsRelatedData(pid);
@@ -214,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     redirectIfNoData([]);
   }
 });
+
 
 </script>
 
