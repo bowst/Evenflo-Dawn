@@ -10,7 +10,9 @@
     justify-content: space-between;
   }
 
-  /* Skeleton styles */
+  /* ---------------------------------------------------
+     CARD SKELETON STYLES
+     --------------------------------------------------- */
   .popular-card-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -18,7 +20,6 @@
     min-height: 470px;
   }
 
-  /* Skeleton for popular card */
   .popular-card.skeleton {
     width: 504px;
     height: 525px;
@@ -27,19 +28,59 @@
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .popular-card.skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.6) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    animation: skeleton-loading 1.5s infinite;
+  }
+  .popular-card.skeleton .skeleton-title {
+    width: 60%; height: 1.5em;
+    background: #e0e0e0; margin-bottom: 1rem;
+  }
+  .popular-card.skeleton .skeleton-content {
+    flex: 1; background: #e0e0e0; border-radius: 4px;
   }
 
-  .popular-card.skeleton .skeleton-title {
-    width: 60%;
+  /* ---------------------------------------------------
+     HEADING SKELETON STYLES
+     --------------------------------------------------- */
+  .skeleton-heading {
+    width: 40%;
     height: 1.5em;
-    background: #e0e0e0;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
     margin-bottom: 1rem;
   }
+  .skeleton-heading::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.6) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    animation: skeleton-loading 1.5s infinite;
+  }
 
-  .popular-card.skeleton .skeleton-content {
-    flex: 1;
-    background: #e0e0e0;
-    border-radius: 4px;
+  @keyframes skeleton-loading {
+    0%   { left: -100%; }
+    100% { left: 100%; }
   }
 </style>
 
@@ -56,9 +97,14 @@
 </div>
 
 <div class="product-page-wrapper">
-  <div class="popular-question-block" id="productRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
+  <div
+    class="popular-question-block"
+    id="productRelatedBlock"
+    data-faqs-to-show="{{ products_to_show }}"
+  >
     <div class="popular-content-wrapper page-width">
       <div class="heading center">
+        <!-- this H2 will get a skeleton while loading -->
         <h2 id="popularQuestionHeading">{{ section.settings.productRelatedTitle }}</h2>
       </div>
       <div class="popular-card-wrapper" id="popularCards"></div>
@@ -70,145 +116,153 @@
 {% render 'faq-load-more-block', show_topic_dropdown: true %}
 
 <script>
+  //
+  // ─── SKELETON HELPERS ───────────────────────────────
+  //
+  function createSkeletonCardDivElement() {
+    const card = document.createElement('div');
+    card.className = 'popular-card skeleton';
+    card.innerHTML = `
+      <div class="skeleton-title"></div>
+      <div class="skeleton-content"></div>
+    `;
+    return card;
+  }
+
+  function appendSkeletons(container, count) {
+    for (let i = 0; i < count; i++) {
+      container.appendChild(createSkeletonCardDivElement());
+    }
+  }
+
+  function removeSkeletons(container) {
+    container.querySelectorAll('.popular-card.skeleton').forEach(el => el.remove());
+  }
+
+  //
+  // ─── FETCH & RENDER POPULAR FAQS ────────────────────
+  //
   function fetchPopularProductsRelatedData(productID) {
-    const container = document.getElementById("popularCards");
-    const popularQuestionBlock = document.getElementById("popularQuestionBlock");
-    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
+    const headingEl = document.getElementById('popularQuestionHeading');
+    // stash original text, inject heading–skeleton
+    headingEl.dataset.originalText = headingEl.textContent;
+    headingEl.textContent = '';
+    headingEl.classList.add('skeleton-heading');
+
+    const container = document.getElementById('popularCards');
+    const blocksToShow = +document
+      .getElementById('productRelatedBlock')
+      .dataset.faqsToShow;
 
     if (!container) {
-      console.log("Error on getting container");
+      console.error('popularCards container not found');
       return;
     }
 
-    // 1) Inject skeletons before fetching data
-    let skeletonHTML = '';
-    for (let i = 0; i < blocksToShow; i++) {
-      skeletonHTML += `
-        <div class="popular-card skeleton">
-          <div class="skeleton-title"></div>
-          <div class="skeleton-content"></div>
-        </div>`;
-    }
-    container.innerHTML = skeletonHTML;
+    // clear & inject card skeletons
+    container.innerHTML = '';
+    appendSkeletons(container, blocksToShow);
 
-    let url = evenFloFAQURL + "products/" + productID;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-
-        if (data?.detail && containsString(data?.detail, errorString())) {
+    fetch(`${evenFloFAQURL}products/${productID}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.detail && containsString(data.detail, errorString())) {
           redirectIfNoData([]);
-          return "";
+          return;
         }
 
-        // Will be called in faq-related-part-block
+        // restore heading
+        headingEl.classList.remove('skeleton-heading');
+        headingEl.textContent = headingEl.dataset.originalText;
+
+        // clear card skeletons
+        removeSkeletons(container);
+
+        // kick off related snippets
         getProductsPartsByProductID(productID);
-        fetchFAQsByFilters({ productID: productID });
+        fetchFAQsByFilters({ productID });
         fetchTopicsByType(productID, true);
 
-        document.getElementById('productName').innerHTML = data?.name;
-        getBreadCrumbLinks(data?.name, 'product');
-        document.getElementById('productDescription').innerHTML = data?.description;
+        // populate product info
+        document.getElementById('productName').textContent = data.name;
+        getBreadCrumbLinks(data.name, 'product');
+        document.getElementById('productDescription').textContent = data.description;
 
-        const productLinks = document.getElementById('productLinks');
-        let linksHtml = ``;
-
-        if (data?.shopify_page_handel) {
-          linksHtml += `<a href="/products/${data.shopify_page_handel}">Product Guide </a> | `;
+        // build links
+        let linksHtml = '';
+        if (data.shopify_page_handel) {
+          linksHtml += `<a href="/products/${data.shopify_page_handel}">Product Guide</a> | `;
         }
-
-        if (data?.english_manual_url) {
-          linksHtml += `<a href="${data.english_manual_url}">Manual EN</a>`;
-        }
-
-        if (data?.spanish_manual_url) {
-          linksHtml += `<a href="${data.spanish_manual_url}">Manual ES</a>`;
-        }
-
-        if (data?.french_manual_url) {
-          linksHtml += `<a href="${data.french_manual_url}">Manual FR</a>`;
-        }
-
-        if (data?.warranty_certificate) {
+        if (data.english_manual_url)  linksHtml += `<a href="${data.english_manual_url}">Manual EN</a>`;
+        if (data.spanish_manual_url)  linksHtml += `<a href="${data.spanish_manual_url}">Manual ES</a>`;
+        if (data.french_manual_url)   linksHtml += `<a href="${data.french_manual_url}">Manual FR</a>`;
+        if (data.warranty_certificate) {
           linksHtml += ` | <a href="${data.warranty_certificate}">Warranty</a>`;
         }
+        document.getElementById('productLinks').innerHTML = linksHtml;
 
-        productLinks.innerHTML = linksHtml;
-        
-        // Hide Popular questions heading if no FAQs are found
-        if (Array.isArray(data?.related_popular_faqs) && data?.related_popular_faqs?.length == 0) {
-          document.getElementById('popularQuestionHeading').style.display = "none";
-        }
-
-        // 2) Clear skeletons and render actual FAQs
-        container.innerHTML = ''; // Clear skeletons
-
-        // Render FAQ content
+        // render the actual FAQ cards
         const faqSchemaData = {
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          "mainEntity": []
+          mainEntity: []
         };
 
-        data?.related_popular_faqs?.slice(0, blocksToShow).forEach((product) => {
-          const popularCard = createPopularCardDivElement("popular-card");
+        data.related_popular_faqs
+          .slice(0, blocksToShow)
+          .forEach(prod => {
+            const card       = createPopularCardDivElement('popular-card');
+            const faqsContent = getFAQContent(prod.products || []);
+            const tagsHtml   = getTagsHtml(getTagsArray(prod.tags || []));
 
-          const faqsContent = getFAQContent(product?.products || []);
-          const tags = getTagsArray(product?.tags || []);
-          const tagsHtml = getTagsHtml(tags);
+            card.innerHTML = setFAQBlockInnerHtml(
+              prod.topic?.name || '',
+              prod.question,
+              faqsContent,
+              prod.answer,
+              prod.id,
+              tagsHtml
+            );
+            container.appendChild(card);
 
-          popularCard.innerHTML = setFAQBlockInnerHtml(
-            product?.topic?.name || "",
-            product.question,
-            faqsContent,
-            product.answer,
-            product?.id,
-            tagsHtml
-          );
-
-          container.appendChild(popularCard);
-
-          // Add each FAQ to JSON-LD schema
-          faqSchemaData.mainEntity.push({
-            "@type": "Question",
-            "name": product.question,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": product.answer
-            }
+            faqSchemaData.mainEntity.push({
+              "@type": 'Question',
+              name: prod.question,
+              acceptedAnswer: {
+                "@type": 'Answer',
+                text: prod.answer
+              }
+            });
           });
-        });
 
-        // Inject JSON-LD for FAQ schema
+        // inject JSON-LD
         const scriptTag = document.createElement('script');
         scriptTag.type = 'application/ld+json';
-        scriptTag.innerHTML = JSON.stringify(faqSchemaData);
+        scriptTag.textContent = JSON.stringify(faqSchemaData);
         document.head.appendChild(scriptTag);
       })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
+      .catch(err => {
+        console.error('Error fetching products:', err);
         redirectIfNoData([]);
       });
   }
 
-  // document.addEventListener('DOMContentLoaded', () => {
-  //   const queryString = window.location.search;
-  //   const urlParams = new URLSearchParams(queryString);
-
-  //   if (urlParams.has('pid')) {
-  //     const productID = urlParams.get('pid');
-  //     fetchPopularProductsRelatedData(productID);
-  //   } else {
-  //     redirectIfNoData([]);
-  //   }
-  // });
-document.addEventListener('DOMContentLoaded', () => {
-  fetchPopularProductsRelatedData(pid);
-  getFilterValuesAndCallFunc();
-});
-
-
+  //
+  // ─── KICK EVERYTHING OFF ────────────────────────────
+  //
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('pid')) {
+      const pid = urlParams.get('pid');
+      fetchPopularProductsRelatedData(pid);
+      // also trigger the search/load-more snippet’s initial load
+      if (typeof getFilterValuesAndCallFunc === 'function') {
+        getFilterValuesAndCallFunc();
+      }
+    } else {
+      redirectIfNoData([]);
+    }
+  });
 </script>
 
 {% schema %}
