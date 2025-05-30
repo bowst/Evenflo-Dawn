@@ -1,4 +1,4 @@
-{{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
+{% comment %} {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
 
 <style>
   .help-articles-block {
@@ -256,3 +256,325 @@ document.addEventListener('DOMContentLoaded', () => {
   ]
 }
 {% endschema %}
+ {% endcomment %}
+
+
+ {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .help-articles-block {
+    background: #fff;
+  }
+
+  .search-listing-header2 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Skeleton styles */
+  .popular-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 470px;
+  }
+
+  /* Skeleton for popular card */
+  .popular-card.skeleton {
+    width: 504px;
+    height: 525px;
+    background: #f1f2f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .popular-card.skeleton .skeleton-title {
+    width: 60%;
+    height: 1.5em;
+    background: #e0e0e0;
+    margin-bottom: 1rem;
+  }
+
+  .popular-card.skeleton .skeleton-content {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 4px;
+  }
+</style>
+
+{% assign products_to_show = section.settings.productRelatedRange %}
+
+<div class="help-articles-block">
+  <div class="help-articles-content page-width center">
+    <div class="help-article-search-wrapper">
+      <h1 id="productName"></h1>
+      <p id="productDescription"></p>
+      <div class="help-article-link-wrapper" id="productLinks"></div>
+    </div>
+  </div>
+</div>
+
+<div class="product-page-wrapper">
+  <div class="popular-question-block" id="productRelatedBlock" data-faqs-to-show="{{ products_to_show }}">
+    <div class="popular-content-wrapper page-width">
+      <div class="heading center">
+        <h2 id="popularQuestionHeading">{{ section.settings.productRelatedTitle }}</h2>
+      </div>
+      <div class="popular-card-wrapper" id="popularCards"></div>
+    </div>
+  </div>
+</div>
+
+{% render 'faq-related-part-block' %}
+
+<script>
+  function fetchPopularProductsRelatedData(productID) {
+    const container = document.getElementById("popularCards");
+    const popularQuestionBlock = document.getElementById("productRelatedBlock");
+    let blocksToShow = popularQuestionBlock ? popularQuestionBlock.dataset.faqsToShow : 3;
+
+    if (!container) {
+      console.log("Error on getting container");
+      return;
+    }
+
+    // 1) Inject skeletons before fetching data
+    let skeletonHTML = '';
+    for (let i = 0; i < blocksToShow; i++) {
+      skeletonHTML += `
+        <div class="popular-card skeleton">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-content"></div>
+        </div>`;
+    }
+    container.innerHTML = skeletonHTML;
+
+    let url = evenFloFAQURL + "products/" + productID;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+
+        if (data?.detail && containsString(data?.detail, errorString())) {
+          redirectIfNoData([]);
+          return "";
+        }
+
+        // Will be called in faq-related-part-block
+        getProductsPartsByProductID(productID);
+        fetchFAQsByFilters({ productID: productID });
+        fetchTopicsByType(productID, true);
+
+        document.getElementById('productName').innerHTML = data?.name;
+        getBreadCrumbLinks(data?.name, 'product');
+        document.getElementById('productDescription').innerHTML = data?.description;
+
+        const productLinks = document.getElementById('productLinks');
+        let linksHtml = ``;
+
+        if (data?.shopify_page_handel) {
+          linksHtml += `<a href="/products/${data.shopify_page_handel}">Product Guide </a> | `;
+        }
+        if (data?.english_manual_url) {
+          linksHtml += `<a href="${data.english_manual_url}">Manual EN</a>`;
+        }
+        if (data?.spanish_manual_url) {
+          linksHtml += `<a href="${data.spanish_manual_url}">Manual ES</a>`;
+        }
+        if (data?.french_manual_url) {
+          linksHtml += `<a href="${data.french_manual_url}">Manual FR</a>`;
+        }
+        if (data?.warranty_certificate) {
+          linksHtml += ` | <a href="${data.warranty_certificate}">Warranty</a>`;
+        }
+        productLinks.innerHTML = linksHtml;
+        
+        // Hide Popular questions heading if no FAQs are found
+        if (Array.isArray(data?.related_popular_faqs) && data.related_popular_faqs.length === 0) {
+          document.getElementById('popularQuestionHeading').style.display = "none";
+        }
+
+        // 2) Clear skeletons and render actual FAQs
+        container.innerHTML = '';
+
+        // Render FAQ content
+        const faqSchemaData = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": []
+        };
+
+        data.related_popular_faqs.slice(0, blocksToShow).forEach((product) => {
+          const popularCard = createPopularCardDivElement("popular-card");
+          const faqsContent = getFAQContent(product.products || []);
+          const tagsHtml   = getTagsHtml(getTagsArray(product.tags || []));
+          popularCard.innerHTML = setFAQBlockInnerHtml(
+            product.topic?.name || "",
+            product.question,
+            faqsContent,
+            product.answer,
+            product.id,
+            tagsHtml
+          );
+          container.appendChild(popularCard);
+
+          faqSchemaData.mainEntity.push({
+            "@type": "Question",
+            "name": product.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": product.answer
+            }
+          });
+        });
+
+        const scriptTag = document.createElement('script');
+        scriptTag.type = 'application/ld+json';
+        scriptTag.innerHTML = JSON.stringify(faqSchemaData);
+        document.head.appendChild(scriptTag);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+        redirectIfNoData([]);
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const block = document.getElementById('productRelatedBlock');
+    if (!block) return;
+    const pid = new URLSearchParams(window.location.search).get('pid');
+    if (pid) {
+      fetchPopularProductsRelatedData(pid);
+      if (typeof getFilterValuesAndCallFunc === 'function') {
+        getFilterValuesAndCallFunc();
+      }
+    } else {
+      redirectIfNoData([]);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "EvenFlo FAQ ProdRel",
+  "tag": "section",
+  "class": "productRelated",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    {
+      "type": "text",
+      "id": "productRelatedTitle",
+      "label": "Popular Question Title",
+      "default": "Popular Questions"
+    },
+    {
+      "type": "range",
+      "id": "productRelatedRange",
+      "label": "Number of questions to show",
+      "default": 3,
+      "min": 1,
+      "max": 3,
+      "step": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "EvenFlo FAQ ProdRel",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
+
+{%- comment -%}
+  Only show the general “Load More” FAQ block on the main FAQ page
+{%- endcomment -%}
+{% if template.name == 'page.faq' %}
+  {{ 'faq-load-more-block.css' | asset_url | stylesheet_tag }}
+  <style>
+    .popular-card.skeleton {
+      position: relative;
+      background-color: #e0e0e0;
+      overflow: hidden;
+    }
+    .skeleton-line {
+      display: block;
+      height: 16px;
+      background-color: #ccc;
+      margin: 8px 0;
+      border-radius: 4px;
+    }
+    .skeleton-topic   { width: 30%; }
+    .skeleton-question{ width: 80%; }
+    .skeleton-answer  { width: 100%; }
+    .skeleton-tags    { width: 50%; }
+  </style>
+
+  <div class="product-page-wrapper">
+    <div class="popular-question-block">
+      <div class="popular-content-wrapper page-width">
+        <div class="popular-header">
+          <div class="search-selector-wrapper">
+            {% if show_topic_dropdown %}
+              <div class="search-selector">
+                <select id="selectTopic" onchange="handleDropDownChange(event)"></select>
+              </div>
+            {% endif %}
+            {% if show_product_dropdown %}
+              <div class="search-selector">
+                <select id="selectProduct" onchange="handleDropDownChange(event)"></select>
+              </div>
+            {% endif %}
+            {% if show_collection_dropdown %}
+              <div class="search-selector">
+                <select id="selectCollection" onchange="handleDropDownChange(event)"></select>
+              </div>
+            {% endif %}
+          </div>
+          <div class="search-input">
+            <input id="searchFAQ" type="text" placeholder="search" oninput="debouncedSearch(event)" />
+          </div>
+        </div>
+
+        <div class="popular-card-wrapper" id="searchListigBody"></div>
+        <div class="browse-categories" id="loadBtnDiv">
+          <button id="loadMoreBtn">Load More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 1;
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    loadMoreBtn?.addEventListener('click', () => {
+      currentPage++;
+      getFilterValuesAndCallFunc();
+    });
+
+    function handleDropDownChange(event) {
+      currentPage = 1;
+      getFilterValuesAndCallFunc();
+    }
+
+    function getFilterValuesAndCallFunc() {
+      const filter     = document.getElementById('searchFAQ')?.value || '';
+      const topic      = document.getElementById('selectTopic')?.value      || topicID;
+      const product    = document.getElementById('selectProduct')?.value    || productID;
+      const collection = document.getElementById('selectCollection')?.value || collectionID;
+
+      fetchFAQsByFilters({
+        categoryID:  categoryID,
+        filter:      filter,
+        topicsID:    topic,
+        page:        currentPage,
+        productID:   product,
+        collectionID:collection,
+        popular:     false,
+        appendTo:    "searchListigBody",
+      });
+    }
+  </script>
+{% endif %}
