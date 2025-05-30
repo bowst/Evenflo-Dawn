@@ -41,7 +41,7 @@
   .skeleton-answer { width: 100%; }
   .skeleton-tags { width: 50%; }
 
-  /* Skeleton styles for product cards */
+  /* Skeleton styles for FAQ cards */
   .popular-card.skeleton {
     width: 503px;
     height: 425px;
@@ -74,7 +74,7 @@
           {% comment %} Content will be dynamic {% endcomment %}
         </div>
         <div class="swiper mySwiper product-slider-wrapper">
-          <div class="swiper-wrapper" id="productsInCollection" data-faqs-to-show="6">
+          <div class="swiper-wrapper" id="faqsInCollection" data-faqs-to-show="6">
             {% comment %} Content will be dynamic {% endcomment %}
           </div>
           <div class="swiper-pagination"></div>
@@ -130,8 +130,9 @@ function fetchCollectionDetail(collectionID) {
     });
 }
 
-function fetchProductsByCollection(collectionID) {
-  const container = document.getElementById('productsInCollection');
+// Fetch and display FAQs in the swiper
+function fetchFAQsByFilters({ collectionID }) {
+  const container = document.getElementById('faqsInCollection');
 
   if (!container) return;
 
@@ -141,43 +142,38 @@ function fetchProductsByCollection(collectionID) {
   let skeletonHTML = '';
   for (let i = 0; i < 4; i++) {
     skeletonHTML += `
-      <div class="swiper-slide product-card skeleton swiper-slide-active">
-        <div class="skeleton-line skeleton-topic"></div>
-        <div class="skeleton-line skeleton-question"></div>
-        <div class="skeleton-line skeleton-answer"></div>
+      <div class="swiper-slide popular-card skeleton swiper-slide-active">
+        <div class="skeleton-line skeleton-title"></div>
+        <div class="skeleton-line skeleton-content"></div>
       </div>
     `;
   }
   container.innerHTML = skeletonHTML;  // Inject skeletons before fetch
 
-  fetch(evenFloFAQURL + `products/filterByCollection/${collectionID}`)
+  fetch(`${evenFloFAQURL}faqs/filterByCollection/${collectionID}`)
     .then(response => response.json())
-    .then(data => {
-      const productsBlock = document.getElementById('productsInCollection');
-      const blocksToShow = productsBlock ? productsBlock.dataset.faqsToShow : 6;
+    .then(faqs => {
+      const faqsBlock = document.getElementById('faqsInCollection');
+      const blocksToShow = faqsBlock ? faqsBlock.dataset.faqsToShow : 6;
 
-      // Clear skeletons and render the actual products
-      productsBlock.innerHTML = '';
+      // Clear skeletons and render the actual FAQ cards
+      faqsBlock.innerHTML = '';
 
-      data.slice(0, blocksToShow).forEach((product) => {
-        const tabCard = document.createElement('div');
-        tabCard.classList.add('swiper-slide', 'product-card');
+      faqs.slice(0, blocksToShow).forEach((faq) => {
+        const faqCard = document.createElement('div');
+        faqCard.classList.add('swiper-slide', 'popular-card');
 
-        tabCard.innerHTML = `
-          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
-            <div class="product-img">
-              <img src="${product?.image}" alt="tab-img"/>
-            </div>
-            <div class="product-title">
-              <h4>${product?.name}</h4>
-            </div>
-          </a>
+        faqCard.innerHTML = `
+          <div class="popular-card-content">
+            <h4 class="popular-card-title">${faq?.question}</h4>
+            <p class="popular-card-answer">${faq?.answer}</p>
+          </div>
         `;
 
-        productsBlock.appendChild(tabCard);
+        faqsBlock.appendChild(faqCard);
       });
 
-      if (document.querySelectorAll(".product-slider-wrapper .product-card").length > 4) {
+      if (document.querySelectorAll(".product-slider-wrapper .popular-card").length > 4) {
         document.querySelector(".product-slider-wrapper").classList.remove("product-slider-wrapper-hide");
         customSlider(); 
       } else {
@@ -185,7 +181,7 @@ function fetchProductsByCollection(collectionID) {
       }
     })
     .catch(error => {
-      console.error('Error fetching products:', error);
+      console.error('Error fetching FAQs:', error);
     })
     .finally(() => {
       // After the fetch, the skeletons are removed
