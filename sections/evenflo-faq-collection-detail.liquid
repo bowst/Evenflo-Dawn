@@ -118,13 +118,11 @@ function fetchCollectionDetail(collectionID) {
       fetchDropDownProductsByType(collectionID);
 
       // Fill the collection details after fetching
-      setTimeout(() => { // Adding delay to ensure skeleton shows before replacing
-        container.innerHTML = `
-          <h1 id="collectionHeading">${collection?.name}</h1>
-          <p id="collectionDescription">${collection?.description}</p>
-        `;
-        getBreadCrumbLinks(collection?.name, 'collection');
-      }, 500); // 500ms delay to let skeleton appear
+      container.innerHTML = `
+        <h1 id="collectionHeading">${collection?.name}</h1>
+        <p id="collectionDescription">${collection?.description}</p>
+      `;
+      getBreadCrumbLinks(collection?.name, 'collection');
     })
     .catch(error => {
       console.error('Error fetching collection:', error);
