@@ -88,6 +88,17 @@
 
 {% render 'faq-load-more-block', show_topic_dropdown: true, show_product_dropdown: true %}
 
+<!-- Inject JSON-LD Schema Script -->
+<div id="faq-jsonld" style="display:none;">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": []
+    }
+  </script>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
@@ -218,6 +229,32 @@ function customSlider() {
       },
     }
   });
+}
+
+function fetchFAQsByFilters(filters) {
+  fetch(`${evenFloFAQURL}faq/filterByCollection/${filters.collectionID}`)
+    .then(response => response.json())
+    .then(data => {
+      const faqs = data.map(faq => {
+        return {
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        };
+      });
+
+      // Inject the FAQ JSON-LD schema into the #faq-jsonld script tag dynamically
+      const jsonLdScript = document.querySelector('#faq-jsonld script[type="application/ld+json"]');
+      const jsonLdData = JSON.parse(jsonLdScript.innerHTML);
+      jsonLdData.mainEntity = faqs; // Populate the mainEntity array with the FAQ data
+
+      // Update the script tag with the new JSON-LD data
+      jsonLdScript.innerHTML = JSON.stringify(jsonLdData, null, 2);
+    })
+    .catch(error => console.error('Error fetching FAQs:', error));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
