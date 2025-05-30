@@ -66,6 +66,29 @@
   }
 </style>
 
+<!-- FAQ Schema JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "How to find an apprenticeship?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "<p>We provide an official service to search through available apprenticeships. To get started, create an account here, specify the desired region, and your preferences. You will be able to search through all officially registered open apprenticeships.</p>"
+    }
+  }, {
+    "@type": "Question",
+    "name": "Whom to contact?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "You can contact the apprenticeship office through our official phone hotline above, or with the web-form below. We generally respond to written requests within 7-10 days."
+    }
+  }]
+}
+</script>
+
 <div class="product-page-wrapper">
   <div class="product-slider-block">
     <div class="page-width">
@@ -91,21 +114,6 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-// FAQ Schema definition
-const faqSchema = {
-  "faq": {
-    "title": "Frequently Asked Questions",
-    "description": "Common questions about our service.",
-    "questions": [
-      {
-        "question": "What is the service?",
-        "answer": "We provide ...",
-        "tags": ["service", "overview"]
-      }
-    ]
-  }
-};
-
 function fetchCollectionDetail(collectionID) {
   const container = document.getElementById('collectionDetail');
   
