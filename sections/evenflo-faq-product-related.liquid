@@ -69,7 +69,7 @@
 {% render 'faq-related-part-block' %}
 {% render 'faq-load-more-block', show_topic_dropdown: true %}
 
-<!-- <script>
+<script>
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
     const popularQuestionBlock = document.getElementById("popularQuestionBlock");
@@ -221,105 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-</script>
- -->
-<script>
-  function fetchPopularProductsRelatedData(productID) {
-    const container               = document.getElementById("popularCards");
-    const popularSection          = document.getElementById("productRelatedBlock");
-    const heading                 = document.getElementById("popularQuestionHeading");
-    const blocksToShow            = +(popularSection?.dataset.faqsToShow || 3);
-    if (!container || !popularSection || !heading) return;
-
-    const url = evenFloFAQURL + "products/" + productID;
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        // redirect early on error
-        if (data?.detail && containsString(data.detail, errorString())) {
-          redirectIfNoData([]);
-          return;
-        }
-
-        const faqs = Array.isArray(data.related_popular_faqs)
-          ? data.related_popular_faqs
-          : [];
-
-        // if no FAQs, hide entire section and bail out
-        if (faqs.length === 0) {
-          popularSection.style.display = "none";
-          return;
-        }
-
-        // otherwise, show heading and inject skeletons
-        heading.style.display = "";
-        let skeletonHTML = "";
-        for (let i = 0; i < blocksToShow; i++) {
-          skeletonHTML += `
-            <div class="popular-card skeleton">
-              <div class="skeleton-title"></div>
-              <div class="skeleton-content"></div>
-            </div>`;
-        }
-        container.innerHTML = skeletonHTML;
-
-        // now clear skeletons and render real FAQ cards
-        container.innerHTML = "";
-        const faqSchema = {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": []
-        };
-
-        faqs.slice(0, blocksToShow).forEach(item => {
-          const card     = createPopularCardDivElement("popular-card");
-          const content  = getFAQContent(item.products || []);
-          const tags     = getTagsHtml(getTagsArray(item.tags || []));
-          card.innerHTML = setFAQBlockInnerHtml(
-            item.topic?.name || "",
-            item.question,
-            content,
-            item.answer,
-            item.id,
-            tags
-          );
-          container.appendChild(card);
-
-          faqSchema.mainEntity.push({
-            "@type": "Question",
-            "name": item.question,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": item.answer
-            }
-          });
-        });
-
-        // inject JSON-LD
-        const scriptTag = document.createElement('script');
-        scriptTag.type  = 'application/ld+json';
-        scriptTag.innerHTML = JSON.stringify(faqSchema);
-        document.head.appendChild(scriptTag);
-      })
-      .catch(err => {
-        console.error("Error fetching popular FAQs:", err);
-        redirectIfNoData([]);
-      });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const block = document.getElementById('productRelatedBlock');
-    if (!block) return;
-    const pid = new URLSearchParams(window.location.search).get('pid');
-    if (pid) {
-      fetchPopularProductsRelatedData(pid);
-      if (typeof getFilterValuesAndCallFunc === 'function') {
-        getFilterValuesAndCallFunc();
-      }
-    } else {
-      redirectIfNoData([]);
-    }
-  });
 </script>
 
 {% schema %}
