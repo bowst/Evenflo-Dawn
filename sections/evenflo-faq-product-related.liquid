@@ -83,11 +83,11 @@
     // 1) Inject skeletons before fetching data
     let skeletonHTML = '';
     for (let i = 0; i < blocksToShow; i++) {
-      skeletonHTML += `
+      skeletonHTML += 
         <div class="popular-card skeleton">
           <div class="skeleton-title"></div>
           <div class="skeleton-content"></div>
-        </div>`;
+        </div>;
     }
     container.innerHTML = skeletonHTML;
 
@@ -112,26 +112,26 @@
         document.getElementById('productDescription').innerHTML = data?.description;
 
         const productLinks = document.getElementById('productLinks');
-        let linksHtml = ``;
+        let linksHtml = `;
 
         if (data?.shopify_page_handel) {
-          linksHtml += `<a href="/products/${data.shopify_page_handel}">Product Guide </a> | `;
+          linksHtml += <a href="/products/${data.shopify_page_handel}">Product Guide </a> | ;
         }
 
         if (data?.english_manual_url) {
-          linksHtml += `<a href="${data.english_manual_url}">Manual EN</a>`;
+          linksHtml += <a href="${data.english_manual_url}">Manual EN</a>;
         }
 
         if (data?.spanish_manual_url) {
-          linksHtml += `<a href="${data.spanish_manual_url}">Manual ES</a>`;
+          linksHtml += <a href="${data.spanish_manual_url}">Manual ES</a>;
         }
 
         if (data?.french_manual_url) {
-          linksHtml += `<a href="${data.french_manual_url}">Manual FR</a>`;
+          linksHtml += <a href="${data.french_manual_url}">Manual FR</a>;
         }
 
         if (data?.warranty_certificate) {
-          linksHtml += ` | <a href="${data.warranty_certificate}">Warranty</a>`;
+          linksHtml +=  | <a href="${data.warranty_certificate}">Warranty</a>;
         }
 
         productLinks.innerHTML = linksHtml;
