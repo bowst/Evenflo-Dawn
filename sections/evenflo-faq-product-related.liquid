@@ -210,17 +210,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2) Then require a pid param as before
   const pid = new URLSearchParams(window.location.search).get('pid');
-if (pid) {
-  fetchPopularProductsRelatedData(pid);
-
-  // only call the load-more/search logic if THAT container exists
-  if (document.getElementById('searchListigBody')) {
-    getFilterValuesAndCallFunc();
+  if (pid) {
+    fetchPopularProductsRelatedData(pid);
+    if (typeof getFilterValuesAndCallFunc === 'function') {
+      getFilterValuesAndCallFunc();
+    }
+  } else {
+    redirectIfNoData([]);
   }
-} else {
-  redirectIfNoData([]);
-}
-
+});
 
 
 </script>
