@@ -84,7 +84,18 @@
         </div>
         <div class="swiper mySwiper product-slider-wrapper">
           <div class="swiper-wrapper" id="productsInCollection" data-faqs-to-show="6">
-            {% comment %} Content will be dynamic {% endcomment %}
+            <!-- Skeleton content will be loaded here -->
+            <div class="swiper-slide product-card skeleton swiper-slide-active">
+              <div class="skeleton-line skeleton-topic"></div>
+              <div class="skeleton-line skeleton-question"></div>
+              <div class="skeleton-line skeleton-answer"></div>
+            </div>
+            <div class="swiper-slide product-card skeleton swiper-slide-active">
+              <div class="skeleton-line skeleton-topic"></div>
+              <div class="skeleton-line skeleton-question"></div>
+              <div class="skeleton-line skeleton-answer"></div>
+            </div>
+            <!-- Add more skeletons as needed -->
           </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>
@@ -109,10 +120,15 @@ function fetchCollectionDetail(collectionID) {
 
   container.innerHTML = "";  // Clear existing content
 
-  // Inject skeleton loading before data fetch
+  // Add skeleton loading before fetching data
   const skeletonHTML = `
     <h1 class="skeleton-line skeleton-topic"></h1>
     <p class="skeleton-line skeleton-question"></p>
+    <div class="swiper-slide skeleton">
+      <div class="skeleton-line skeleton-topic"></div>
+      <div class="skeleton-line skeleton-question"></div>
+      <div class="skeleton-line skeleton-answer"></div>
+    </div>
     <div class="swiper-slide skeleton">
       <div class="skeleton-line skeleton-topic"></div>
       <div class="skeleton-line skeleton-question"></div>
@@ -143,6 +159,9 @@ function fetchCollectionDetail(collectionID) {
     .catch(error => {
       console.error('Error fetching collection:', error);
       redirectIfNoData([])
+    })
+    .finally(() => {
+      // Skeletons are replaced with real content
     });
 }
 
@@ -239,14 +258,4 @@ function customSlider() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-
-  if (urlParams.has('cid')) {
-    const collectionID = urlParams.get('cid');
-    fetchCollectionDetail(collectionID);
-  } else {
-    redirectIfNoData([]);
-  }
-});
-</script>
+  const queryString = window.location.search
