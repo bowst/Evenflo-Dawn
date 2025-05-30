@@ -66,31 +66,54 @@
   }
 </style>
 
-<!-- FAQ Schema JSON-LD (Dynamic) -->
+<!-- FAQ Schema JSON-LD will be injected dynamically -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Assuming `faqData` is passed into JavaScript as an array of objects with `question` and `answer` properties
-    const faqs = {{ faqData | json }}; // Ensure this variable is passed correctly from your backend
+    // Function to generate and inject FAQ JSON-LD dynamically
+    function generateFAQSchema(faqs) {
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        }))
+      };
 
-    // Generate FAQ schema dynamically
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
-    };
+      // Create a script tag for JSON-LD and inject it into the head
+      const scriptTag = document.createElement("script");
+      scriptTag.type = "application/ld+json";
+      scriptTag.innerHTML = JSON.stringify(faqSchema);
+      document.head.appendChild(scriptTag);
+    }
 
-    // Inject the JSON-LD into the head of the document
-    const scriptTag = document.createElement("script");
-    scriptTag.type = "application/ld+json";
-    scriptTag.innerHTML = JSON.stringify(faqSchema);
-    document.head.appendChild(scriptTag);
+    // Fetch the FAQs after the page has loaded and generate the JSON-LD schema
+    function fetchFAQsByFilters(filters) {
+      fetch(`${evenFloFAQURL}faqs/filters`, {
+        method: "POST",
+        body: JSON.stringify(filters),
+        headers: { "Content-Type": "application/json" }
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Assuming `data` contains an array of FAQs with `question` and `answer`
+          const faqs = data.faqs || [];
+          if (faqs.length > 0) {
+            generateFAQSchema(faqs);  // Generate the schema after FAQs are fetched
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching FAQs:', error);
+        });
+    }
+
+    // Fetch the FAQs when collectionID is available (or based on your logic)
+    const filters = { collectionID: 'yourCollectionID' };  // Adjust according to your needs
+    fetchFAQsByFilters(filters);
   });
 </script>
 
