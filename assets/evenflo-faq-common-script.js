@@ -116,7 +116,7 @@ function fetchFAQsByFilters({
   showLoadMore = true,
 }) {
   const container   = document.getElementById(appendTo);
-  const faqsToShow  = +document.getElementById("faqsToShow")?.dataset.faqsToShow || 3;
+  const faqsToShow  = +document.getElementById("faqsToShow")?.dataset.faqsToShow || 20;
   const loadMoreBtn = document.getElementById("loadMoreBtn");
 
   if (!container) {
