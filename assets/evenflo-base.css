@@ -94,6 +94,75 @@ a {
   left: 50%;
   transform: translateX(-50%);
 }
+.header__icons {
+  /* width: 100%; */
+  max-width: 600px;
+  justify-self: none;
+  justify-content: flex-end;
+}
+predictive-search.search-modal__form {
+  width: 60%;
+}
+.search-modal__form[data-upgraded='true'] {
+  padding: 0.5rem 0;
+}
+.search-modal__form[data-upgraded='true'] input {
+  padding: 1rem 1.5rem;
+  padding-right: 8.5rem;
+  height: 4rem;
+  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground), var(--popup-border-opacity));
+}
+.search-modal__form[data-upgraded='true'] input:focus,
+.search-modal__form[data-upgraded='true'] input:hover {
+  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground), var(--popup-border-opacity));
+}
+.search-modal__form[data-upgraded='true'] .field__label {
+  top: calc(0.75rem + var(--inputs-border-width));
+}
+.search-modal__form[data-upgraded='true'] .field__input:focus ~ .field__label {
+  top: calc(var(--inputs-border-width) + 0.125rem);
+}
+.search-modal__form[data-upgraded='true'] .field__button {
+  height: 4rem;
+}
+@media (max-width: 1100px) {
+  .shopify-section.section-header {
+    margin-bottom: 54px !important;
+  }
+  .search-modal__form[data-upgraded='true'] {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: #fff;
+  }
+  .search-modal__form[data-upgraded='true'],
+  .search-modal__form[data-upgraded='true'] .search-modal__form {
+    max-width: 100%;
+  }
+  .header__icon:not(.header__icon--summary) {
+    margin-left: auto;
+  }
+  .header__icon--menu[aria-expanded='true']:before {
+    z-index: 1;
+  }
+}
+@media (min-width: 1101px) and (max-width: 1300px) {
+  .header--middle-left {
+    grid-template-columns: auto 1fr 1fr;
+  }
+}
+@media (min-width: 1101px) {
+  predictive-search[open] .predictive-search {
+    width: 100vw;
+    max-width: 750px;
+    left: auto;
+    right: -1px;
+    top: 55px;
+    border-top: 1px solid rgba(var(--color-foreground), var(--popup-border-opacity)) !important;
+  }
+}
 .header__menu-item {
   padding-left: 2rem;
   font-weight: 700;

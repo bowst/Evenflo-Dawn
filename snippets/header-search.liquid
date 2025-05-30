@@ -8,7 +8,7 @@
   {% render 'header-search', input_id: 'My-Id'%}
 {% endcomment %}
 
-<details-modal class="header__search">
+{% comment %} <details-modal class="header__search">
   <details>
     <summary
       class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle"
@@ -34,9 +34,9 @@
       <div
         class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
         tabindex="-1"
-      >
+      > {% endcomment %}
         {%- if settings.predictive_search_enabled -%}
-          <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+          <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}" data-upgraded="true">
         {%- else -%}
           <search-form class="search-modal__form">
         {%- endif -%}
@@ -93,7 +93,7 @@
         {%- else -%}
           </search-form>
         {%- endif -%}
-        <button
+        {% comment %} <button
           type="button"
           class="search-modal__close-button modal__close-button link link--text focus-inset"
           aria-label="{{ 'accessibility.close' | t }}"
@@ -105,4 +105,4 @@
       </div>
     </div>
   </details>
-</details-modal>
+</details-modal> {% endcomment %}
