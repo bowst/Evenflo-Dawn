@@ -87,6 +87,23 @@ var productID = "";
 // 			}
 // 		});
 // }
+function createSkeletonCardDivElement() {
+  const card = document.createElement('div');
+  card.className = 'popular-card skeleton';
+  card.innerHTML = `
+    <div class="skeleton-topic   skeleton-line"></div>
+    <div class="skeleton-question skeleton-line"></div>
+    <div class="skeleton-answer   skeleton-line"></div>
+    <div class="skeleton-tags     skeleton-line"></div>
+  `;
+  return card;
+}
+
+function appendSkeletons(container, count) {
+  for (let i = 0; i < count; i++) {
+    container.appendChild(createSkeletonCardDivElement());
+  }
+}
 function fetchFAQsByFilters({
   categoryID = "",
   filter = "",
