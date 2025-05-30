@@ -88,6 +88,17 @@
 
 {% render 'faq-load-more-block', show_topic_dropdown: true, show_product_dropdown: true %}
 
+<!-- Inject JSON-LD Schema Script -->
+<div id="faq-jsonld" style="display:none;">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": []
+    }
+  </script>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
@@ -107,13 +118,10 @@ function fetchCollectionDetail(collectionID) {
   fetch(`${evenFloFAQURL}collection/${collectionID}/`)
     .then(response => response.json())
     .then(collection => {
-      if (!collection || !collection?.detail || containsString(collection?.detail, errorString())) {
-        console.log('Redirecting due to missing or incorrect collection data');
-        redirectIfNoData([]); // Trigger redirect if data is missing or incorrect
-        return ""; // Stop further execution
+      if (collection?.detail && containsString(collection?.detail, errorString())) {
+        redirectIfNoData([])
+        return ""
       }
-
-      console.log('Collection data:', collection); // Log collection data for debugging
 
       fetchProductsByCollection(collectionID);
       fetchFAQsByFilters({ collectionID: collectionID });
@@ -126,13 +134,10 @@ function fetchCollectionDetail(collectionID) {
         <p id="collectionDescription">${collection?.description}</p>
       `;
       getBreadCrumbLinks(collection?.name, 'collection');
-
-      // Inject FAQ JSON-LD Schema immediately after rendering
-      injectFAQJsonSchema(collection?.faqs); // Inject FAQ schema without delay
     })
     .catch(error => {
       console.error('Error fetching collection:', error);
-      redirectIfNoData([]); // Trigger redirect if fetch fails
+      redirectIfNoData([])
     });
 }
 
@@ -198,26 +203,6 @@ function fetchProductsByCollection(collectionID) {
     });
 }
 
-function injectFAQJsonSchema(faqData) {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
-
-  const scriptTag = document.createElement("script");
-  scriptTag.type = "application/ld+json";
-  scriptTag.innerHTML = JSON.stringify(faqSchema);
-  document.head.appendChild(scriptTag); // Inject immediately into head
-}
-
 function customSlider() {
   var swiper = new Swiper(".mySwiper", {
     loop: true,
@@ -244,6 +229,55 @@ function customSlider() {
       },
     }
   });
+}
+
+function fetchFAQsByFilters(filters) {
+  fetch(`${evenFloFAQURL}faq/filterByCollection/${filters.collectionID}`)
+    .then(response => response.json())
+    .then(data => {
+      const faqs = data.map(faq => {
+        return {
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
+          }
+        };
+      });
+
+      // Inject the FAQ JSON-LD schema into the #faq-jsonld script tag dynamically
+      const jsonLdScript = document.querySelector('#faq-jsonld script[type="application/ld+json"]');
+      const jsonLdData = JSON.parse(jsonLdScript.innerHTML);
+      jsonLdData.mainEntity = faqs; // Populate the mainEntity array with the FAQ data
+
+      // Update the script tag with the new JSON-LD data
+      jsonLdScript.innerHTML = JSON.stringify(jsonLdData, null, 2);
+
+      // Create FAQ items as product cards and inject them
+      const productsBlock = document.getElementById('productsInCollection');
+      productsBlock.innerHTML = '';  // Clear any existing products
+
+      faqs.forEach(faq => {
+        const tabCard = document.createElement('div');
+        tabCard.classList.add('swiper-slide', 'popular-card');
+
+        tabCard.innerHTML = `
+          <div class="product-title">
+            <h4>${faq.name}</h4>
+          </div>
+          <div class="product-content">
+            <p>${faq.acceptedAnswer.text}</p>
+          </div>
+        `;
+
+        productsBlock.appendChild(tabCard);
+      });
+
+      // Initialize the slider again to adjust the new cards
+      customSlider();
+    })
+    .catch(error => console.error('Error fetching FAQs:', error));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
