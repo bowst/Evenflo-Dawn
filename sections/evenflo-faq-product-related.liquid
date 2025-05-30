@@ -204,26 +204,21 @@
   //   }
   // });
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) Only proceed if the section’s container is on this page
-  const wrapper = document.getElementById('productRelatedBlock');
-  if (!wrapper) return;
+  // 1) Only proceed if the Popular block is actually on this page
+  const block = document.getElementById('productRelatedBlock');
+  if (!block) return;
 
-  // 2) If there’s no pid query-param, remove the whole section
+  // 2) Then require a pid param as before
   const pid = new URLSearchParams(window.location.search).get('pid');
-  if (!pid) {
-    wrapper.closest('.product-page-wrapper')?.remove();
-    return;
-  }
-
-  // 3) Otherwise fire your existing functions
-  fetchPopularProductsRelatedData(pid);
-
-  // only call the Load-More/search init if that snippet is present
-  if (document.getElementById('searchListigBody')) {
-    getFilterValuesAndCallFunc();
+  if (pid) {
+    fetchPopularProductsRelatedData(pid);
+    if (typeof getFilterValuesAndCallFunc === 'function') {
+      getFilterValuesAndCallFunc();
+    }
+  } else {
+    redirectIfNoData([]);
   }
 });
-
 
 
 </script>
