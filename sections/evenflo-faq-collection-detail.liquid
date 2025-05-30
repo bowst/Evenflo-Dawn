@@ -123,9 +123,6 @@ function fetchCollectionDetail(collectionID) {
         <p id="collectionDescription">${collection?.description}</p>
       `;
       getBreadCrumbLinks(collection?.name, 'collection');
-
-      // Inject FAQ JSON-LD Schema immediately after rendering
-      injectFAQJsonSchema(collection?.faqs); // Inject FAQ schema without delay
     })
     .catch(error => {
       console.error('Error fetching collection:', error);
@@ -193,26 +190,6 @@ function fetchProductsByCollection(collectionID) {
     .finally(() => {
       // After the fetch, the skeletons are removed
     });
-}
-
-function injectFAQJsonSchema(faqData) {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
-
-  const scriptTag = document.createElement("script");
-  scriptTag.type = "application/ld+json";
-  scriptTag.innerHTML = JSON.stringify(faqSchema);
-  document.head.appendChild(scriptTag); // Inject immediately into head
 }
 
 function customSlider() {
