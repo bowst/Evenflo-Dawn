@@ -12,26 +12,49 @@
   justify-content: center;
   align-items: center;
 }
-        .swiper {
-            width: 100%;
-            height: 100%;
-        }
+/* Ensure that swiper-slide has a fixed size */
+.swiper-slide {
+  width: 503px;  /* Set the width of swiper-slide to 503px */
+  height: 425px; /* Set the height of swiper-slide to 425px */
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+/* Skeleton styles */
+.swiper-slide.skeleton {
+  width: 503px;  /* Set the skeleton width to 503px */
+  height: 425px; /* Set the skeleton height to 425px */
+  background: #f1f2f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.skeleton-line {
+  display: block;
+  height: 16px;
+  background-color: #ccc;
+  margin: 8px 0;
+  border-radius: 4px;
+}
+
+.skeleton-topic   { width: 30%;  }
+.skeleton-question{ width: 80%;  }
+.skeleton-answer  { width: 100%; }
+.skeleton-tags    { width: 50%;  }
+
+/* Adjust the images inside swiper-slide */
+.swiper-slide img {
+  width: 100%; /* Make the image fill the width of the container */
+  height: 100%; /* Make the image fill the height of the container */
+  object-fit: cover; /* This will make the image cover the container */
+  object-position: center; /* Ensure the image stays centered */
+}
+
 </style>
 
 <div class="product-page-wrapper">
