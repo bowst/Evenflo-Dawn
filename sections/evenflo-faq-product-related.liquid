@@ -105,14 +105,7 @@
 
         // Will be called in faq-related-part-block
         getProductsPartsByProductID(productID);
-        // fetchFAQsByFilters({ productID: productID });
-        fetchFAQsByFilters({
-          productID: productID,
-          // render into the popular-cards container,
-          appendTo: 'popularCards',
-          // but DON'T touch the Load More button
-          showLoadMore: false
-        });
+        fetchFAQsByFilters({ productID: productID });
         fetchTopicsByType(productID, true);
 
         document.getElementById('productName').innerHTML = data?.name;
