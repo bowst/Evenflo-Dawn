@@ -1,239 +1,234 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ Collection Detail</title>
+{{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <!-- Link to external stylesheets -->
-  {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
 
-  <style>
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
+  .swiper-slide {
+    width: 503px;
+    height: 425px;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .swiper-slide {
-      width: 503px;
-      height: 425px;
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  /* Skeleton styles for swiper-slide */
+  .swiper-slide.skeleton {
+    width: 503px;
+    height: 425px;
+    background: #f1f2f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    /* Skeleton styles for swiper-slide */
-    .swiper-slide.skeleton {
-      width: 503px;
-      height: 425px;
-      background: #f1f2f3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  .skeleton-line {
+    display: block;
+    height: 16px;
+    background-color: #ccc;
+    margin: 8px 0;
+    border-radius: 4px;
+  }
 
-    .skeleton-line {
-      display: block;
-      height: 16px;
-      background-color: #ccc;
-      margin: 8px 0;
-      border-radius: 4px;
-    }
+  .skeleton-topic { width: 30%; }
+  .skeleton-question { width: 80%; }
+  .skeleton-answer { width: 100%; }
+  .skeleton-tags { width: 50%; }
 
-    .skeleton-topic { width: 30%; }
-    .skeleton-question { width: 80%; }
-    .skeleton-answer { width: 100%; }
-    .skeleton-tags { width: 50%; }
+  /* Skeleton styles for product cards */
+  .popular-card.skeleton {
+    width: 503px;
+    height: 425px;
+    background: #f1f2f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
 
-    /* Skeleton styles for popular cards */
-    .popular-card.skeleton {
-      width: 503px;
-      height: 425px;
-      background: #f1f2f3;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
+  .popular-card.skeleton .skeleton-title {
+    width: 60%;
+    height: 1.5em;
+    background: #e0e0e0;
+    margin-bottom: 1rem;
+  }
 
-    .popular-card.skeleton .skeleton-title {
-      width: 60%;
-      height: 1.5em;
-      background: #e0e0e0;
-      margin-bottom: 1rem;
-    }
+  .popular-card.skeleton .skeleton-content {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 4px;
+  }
+</style>
 
-    .popular-card.skeleton .skeleton-content {
-      flex: 1;
-      background: #e0e0e0;
-      border-radius: 4px;
-    }
-  </style>
-</head>
-<body>
-  <div class="product-page-wrapper">
-    <div class="product-slider-block">
-      <div class="page-width">
-        <div class="product-slider-main-wrapper">
-          <div class="product-slider-heading center" id="collectionDetail">
+<div class="product-page-wrapper">
+  <div class="product-slider-block">
+    <div class="page-width">
+      <div class="product-slider-main-wrapper">
+        <div class="product-slider-heading center" id="collectionDetail">
+          {% comment %} Content will be dynamic {% endcomment %}
+        </div>
+        <div class="swiper mySwiper product-slider-wrapper">
+          <div class="swiper-wrapper" id="productsInCollection" data-faqs-to-show="6">
             {% comment %} Content will be dynamic {% endcomment %}
           </div>
-          <div class="swiper mySwiper product-slider-wrapper">
-            <div class="swiper-wrapper" id="faqsInCollection" data-faqs-to-show="6">
-              {% comment %} Content will be dynamic {% endcomment %}
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  {% render 'faq-load-more-block', show_topic_dropdown: true, show_product_dropdown: true %}
+{% render 'faq-load-more-block', show_topic_dropdown: true, show_product_dropdown: true %}
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <script>
-    function fetchFAQsByFilters(collectionID) {
-      const container = document.getElementById('faqsInCollection');
-      if (!container) return;
+<script>
+function fetchCollectionDetail(collectionID) {
+  const container = document.getElementById('collectionDetail');
+  
+  if (!container) return;
 
-      container.innerHTML = "";  // Clear existing content
-
-      // Show skeleton loader before fetching the FAQ data
-      let skeletonHTML = '';
-      for (let i = 0; i < 4; i++) {
-        skeletonHTML += `
-          <div class="swiper-slide popular-card skeleton swiper-slide-active">
-            <div class="skeleton-line skeleton-title"></div>
-            <div class="skeleton-line skeleton-content"></div>
-          </div>
-        `;
+  container.innerHTML = "";  // Clear existing content
+  
+  // Show skeleton loader before fetching the collection details
+  container.innerHTML = `
+    <div class="skeleton-line skeleton-topic"></div>
+    <div class="skeleton-line skeleton-question"></div>
+  `;
+  
+  fetch(`${evenFloFAQURL}collection/${collectionID}/`)
+    .then(response => response.json())
+    .then(collection => {
+      if (collection?.detail && containsString(collection?.detail, errorString())) {
+        redirectIfNoData([])
+        return ""
       }
-      container.innerHTML = skeletonHTML;  // Inject skeletons before fetch
 
-      fetch(evenFloFAQURL + `faqs/filterByCollection/${collectionID}`)
-        .then(response => response.json())
-        .then(faqs => {
-          const faqsBlock = document.getElementById('faqsInCollection');
-          const blocksToShow = faqsBlock ? faqsBlock.dataset.faqsToShow : 6;
+      fetchProductsByCollection(collectionID);
+      fetchFAQsByFilters({ collectionID: collectionID });
+      fetchTopicsByType(collectionID);
+      fetchDropDownProductsByType(collectionID);
 
-          // Clear skeletons and render the actual FAQs
-          faqsBlock.innerHTML = '';
-
-          faqs.slice(0, blocksToShow).forEach((faq) => {
-            const faqCard = document.createElement('div');
-            faqCard.classList.add('swiper-slide', 'popular-card');
-
-            faqCard.innerHTML = `
-              <div class="popular-card-content">
-                <h4 class="popular-card-title">${faq?.question}</h4>
-                <p class="popular-card-answer">${faq?.answer}</p>
-              </div>
-            `;
-
-            faqsBlock.appendChild(faqCard);
-          });
-
-          if (document.querySelectorAll(".product-slider-wrapper .popular-card").length > 4) {
-            document.querySelector(".product-slider-wrapper").classList.remove("product-slider-wrapper-hide");
-            customSlider(); 
-          } else {
-            document.querySelector(".product-slider-wrapper").classList.add("product-slider-wrapper-hide");
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching FAQs:', error);
-        })
-        .finally(() => {
-          // After the fetch, the skeletons are removed
-        });
-    }
-
-    function fetchCollectionDetail(collectionID) {
-      const container = document.getElementById('collectionDetail');
-      
-      if (!container) return;
-
-      container.innerHTML = "";  // Clear existing content
-      
-      // Show skeleton loader before fetching the collection details
+      // Fill the collection details after fetching
       container.innerHTML = `
+        <h1 id="collectionHeading">${collection?.name}</h1>
+        <p id="collectionDescription">${collection?.description}</p>
+      `;
+      getBreadCrumbLinks(collection?.name, 'collection');
+    })
+    .catch(error => {
+      console.error('Error fetching collection:', error);
+      redirectIfNoData([])
+    });
+}
+
+function fetchProductsByCollection(collectionID) {
+  const container = document.getElementById('productsInCollection');
+
+  if (!container) return;
+
+  container.innerHTML = "";  // Clear existing content
+
+  // Add skeleton divs to the swiper-wrapper before fetching data
+  let skeletonHTML = '';
+  for (let i = 0; i < 4; i++) {
+    skeletonHTML += `
+      <div class="swiper-slide product-card skeleton swiper-slide-active">
         <div class="skeleton-line skeleton-topic"></div>
         <div class="skeleton-line skeleton-question"></div>
-      `;
-      
-      fetch(`${evenFloFAQURL}collection/${collectionID}/`)
-        .then(response => response.json())
-        .then(collection => {
-          if (collection?.detail && containsString(collection?.detail, errorString())) {
-            redirectIfNoData([])
-            return "";
-          }
+        <div class="skeleton-line skeleton-answer"></div>
+      </div>
+    `;
+  }
+  container.innerHTML = skeletonHTML;  // Inject skeletons before fetch
 
-          fetchProductsByCollection(collectionID);
-          fetchFAQsByFilters(collectionID);
-          fetchTopicsByType(collectionID);
-          fetchDropDownProductsByType(collectionID);
+  fetch(evenFloFAQURL + `products/filterByCollection/${collectionID}`)
+    .then(response => response.json())
+    .then(data => {
+      const productsBlock = document.getElementById('productsInCollection');
+      const blocksToShow = productsBlock ? productsBlock.dataset.faqsToShow : 6;
 
-          // Fill the collection details after fetching
-          container.innerHTML = `
-            <h1 id="collectionHeading">${collection?.name}</h1>
-            <p id="collectionDescription">${collection?.description}</p>
-          `;
-          getBreadCrumbLinks(collection?.name, 'collection');
-        })
-        .catch(error => {
-          console.error('Error fetching collection:', error);
-          redirectIfNoData([]);
-        });
-    }
+      // Clear skeletons and render the actual products
+      productsBlock.innerHTML = '';
 
-    function customSlider() {
-      var swiper = new Swiper(".mySwiper", {
-        loop: true,
-        slidesPerView: 4,
-        spaceBetween: 30,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          640: {
-            slidesPerView: 2,
-          },
-          960: {
-            slidesPerView: 4,
-          },
-        }
+      data.slice(0, blocksToShow).forEach((product) => {
+        const tabCard = document.createElement('div');
+        tabCard.classList.add('swiper-slide', 'product-card');
+
+        tabCard.innerHTML = `
+          <a href="/pages/evenflo-faq-product?pid=${product?.id}">
+            <div class="product-img">
+              <img src="${product?.image}" alt="tab-img"/>
+            </div>
+            <div class="product-title">
+              <h4>${product?.name}</h4>
+            </div>
+          </a>
+        `;
+
+        productsBlock.appendChild(tabCard);
       });
-    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-
-      if (urlParams.has('cid')) {
-        const collectionID = urlParams.get('cid');
-        fetchCollectionDetail(collectionID);
+      if (document.querySelectorAll(".product-slider-wrapper .product-card").length > 4) {
+        document.querySelector(".product-slider-wrapper").classList.remove("product-slider-wrapper-hide");
+        customSlider(); 
       } else {
-        redirectIfNoData([]);
+        document.querySelector(".product-slider-wrapper").classList.add("product-slider-wrapper-hide");
       }
+    })
+    .catch(error => {
+      console.error('Error fetching products:', error);
+    })
+    .finally(() => {
+      // After the fetch, the skeletons are removed
     });
-  </script>
-</body>
-</html>
+}
+
+function customSlider() {
+  var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    slidesPerView: 4,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      640: {
+        slidesPerView: 2,
+      },
+      960: {
+        slidesPerView: 4,
+      },
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  if (urlParams.has('cid')) {
+    const collectionID = urlParams.get('cid');
+    fetchCollectionDetail(collectionID);
+  } else {
+    redirectIfNoData([]);
+  }
+});
+</script>
