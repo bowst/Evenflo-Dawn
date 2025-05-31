@@ -19,7 +19,7 @@
       }
     },
     "main": {
-       "type": "evenflo-main-product",
+      "type": "evenflo-main-product",
       "blocks": {
         "vendor": {
           "type": "text",
@@ -67,6 +67,17 @@
             "show_gift_card_recipient": false
           }
         },
+        "affirm_pay_over_time_messaging_product_block_eiPpkc": {
+          "type": "shopify://apps/affirm-pay-over-time-messaging/blocks/product-block/6dce54be-130d-4d13-9636-1e8f611b3071",
+          "settings": {
+            "logo_align": "left",
+            "font_size": 16,
+            "logo_color": "blue",
+            "logo_type": "logo",
+            "public_api_key": "",
+            "price_selector": ""
+          }
+        },
         "complementary_BeCYfJ": {
           "type": "complementary",
           "settings": {
@@ -79,6 +90,10 @@
             "image_ratio": "square",
             "enable_quick_add": false
           }
+        },
+        "evenflo_at_a_glance_MFjG7q": {
+          "type": "evenflo-at-a-glance",
+          "settings": {}
         }
       },
       "block_order": [
@@ -90,7 +105,9 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "complementary_BeCYfJ"
+        "affirm_pay_over_time_messaging_product_block_eiPpkc",
+        "complementary_BeCYfJ",
+        "evenflo_at_a_glance_MFjG7q"
       ],
       "settings": {
         "enable_sticky_info": false,
