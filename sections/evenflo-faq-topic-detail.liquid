@@ -3,25 +3,58 @@
 {% comment %} Class override in this section {% endcomment %}
 {% comment %} Class override in this section {% endcomment %}
 <style>
-  .help-articles-block {
-    background: #fff;
-  }
+/* ------------------------------------
+   Class override in this section
+------------------------------------ */
+.help-articles-block {
+  background: #fff;
+}
 
-  .search-listing-header2 {
-    display: flex;
-    justify-content: space-between;
-  }
-  .popular-card.skeleton {
-    width: 503px;
-    height: 508px;
-  }
+.search-listing-header2 {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .skeleton-line {
-    height: 16px;
-    margin: 8px 16px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-  }
+/* Fix for popular card size */
+.popular-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.popular-card.skeleton {
+  width: 503px; /* Fixed width */
+  height: 508px; /* Fixed height */
+  background: #f1f2f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  box-sizing: border-box; /* Ensure padding and border don't affect the width/height */
+}
+
+/* Skeleton content */
+.skeleton-line {
+  height: 16px;
+  margin: 8px 16px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+/* Make sure the skeleton elements inside the card do not exceed the parent */
+.popular-card.skeleton .skeleton-title,
+.popular-card.skeleton .skeleton-question,
+.popular-card.skeleton .skeleton-answer,
+.popular-card.skeleton .skeleton-tags {
+  width: 100%; /* Fill the available width of the parent card */
+}
+
+/* Hide the heading by default; JS will reveal it if FAQs exist */
+#popularQuestionHeading {
+  display: none;
+}
+
 </style>
 
 
