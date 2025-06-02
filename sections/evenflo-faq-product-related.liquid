@@ -1,7 +1,7 @@
 {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
 
 {%- comment -%}
-  Only Product-related FAQ section: skeleton CSS + JS + FAQPage schema (20 FAQs)
+  Only Product-related FAQ section: skeleton CSS + JS + schema
 {%- endcomment -%}
 <style>
   /* ------------------------------------
@@ -183,7 +183,6 @@
           };
 
           faqs.slice(0, blocksToShow).forEach((item) => {
-            // Build the DOM card itself
             const popularCard = createPopularCardDivElement("popular-card");
             const faqsContent = getFAQContent(item.products || []);
             const tagsArray = getTagsArray(item.tags || []);
@@ -199,18 +198,18 @@
             );
             container.appendChild(popularCard);
 
-            // Also push this FAQ into the JSON-LD schema
+            // Build JSON-LD
             faqSchemaData.mainEntity.push({
               "@type": "Question",
-              "name": item.question,
-              "acceptedAnswer": {
+              name: item.question,
+              acceptedAnswer: {
                 "@type": "Answer",
-                "text": item.answer
-              }
+                text: item.answer,
+              },
             });
           });
 
-          // 4) Inject JSON-LD script containing ALL 20 FAQs
+          // 4) Inject JSON-LD script
           const scriptTag = document.createElement("script");
           scriptTag.type = "application/ld+json";
           scriptTag.innerHTML = JSON.stringify(faqSchemaData);
