@@ -1,7 +1,7 @@
 {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
 
 {%- comment -%}
-  Only Product-related FAQ section: always show 20 skeletons, no other blocks
+  Only Product-related FAQ section: skeleton CSS + JS + schema
 {%- endcomment -%}
 <style>
   /* ------------------------------------
@@ -49,7 +49,7 @@
     border-radius: 4px;
   }
 
-  /* Hide the heading by default; JS will show it if FAQs exist */
+  /* Hide the heading by default; JS will reveal it if FAQs exist */
   #popularQuestionHeading {
     display: none;
   }
@@ -93,7 +93,6 @@
   function fetchPopularProductsRelatedData(productID) {
     const container = document.getElementById("popularCards");
     const heading = document.getElementById("popularQuestionHeading");
-    // Always read “20” from the data attribute:
     const blocksToShow = parseInt(
       document.getElementById("productRelatedBlock").dataset.faqsToShow,
       10
@@ -104,7 +103,8 @@
       return;
     }
 
-    // 1) Inject exactly 20 skeleton placeholders:
+    // 1) Inject exactly 20 skeleton placeholders and record start time
+    const startTime = Date.now();
     let skeletonHTML = "";
     for (let i = 0; i < blocksToShow; i++) {
       skeletonHTML += `
@@ -131,9 +131,9 @@
         fetchTopicsByType(productID, true);
 
         // Populate product info
-        document.getElementById("productName").innerHTML = data?.name || "";
+        document.getElementById("productName").innerText = data?.name || "";
         getBreadCrumbLinks(data?.name, "product");
-        document.getElementById("productDescription").innerHTML =
+        document.getElementById("productDescription").innerText =
           data?.description || "";
 
         // Build links (if present)
@@ -166,48 +166,55 @@
           heading.style.display = "none";
         }
 
-        // 2) Remove skeletons (all 20) so we can render actual cards
-        container.innerHTML = "";
+        // Calculate elapsed time and enforce a 500ms minimum skeleton display
+        const elapsed = Date.now() - startTime;
+        const minDisplay = 500; // minimum time (ms) to show skeleton
+        const delay = Math.max(0, minDisplay - elapsed);
 
-        // 3) Render actual FAQ cards (up to 20)
-        const faqSchemaData = {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [],
-        };
+        setTimeout(() => {
+          // 2) Remove skeletons
+          container.innerHTML = "";
 
-        faqs.slice(0, blocksToShow).forEach((item) => {
-          const popularCard = createPopularCardDivElement("popular-card");
-          const faqsContent = getFAQContent(item.products || []);
-          const tagsArray = getTagsArray(item.tags || []);
-          const tagsHtml = getTagsHtml(tagsArray);
+          // 3) Render actual FAQ cards (up to 20)
+          const faqSchemaData = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [],
+          };
 
-          popularCard.innerHTML = setFAQBlockInnerHtml(
-            item.topic?.name || "",
-            item.question,
-            faqsContent,
-            item.answer,
-            item.id,
-            tagsHtml
-          );
-          container.appendChild(popularCard);
+          faqs.slice(0, blocksToShow).forEach((item) => {
+            const popularCard = createPopularCardDivElement("popular-card");
+            const faqsContent = getFAQContent(item.products || []);
+            const tagsArray = getTagsArray(item.tags || []);
+            const tagsHtml = getTagsHtml(tagsArray);
 
-          // Build JSON-LD
-          faqSchemaData.mainEntity.push({
-            "@type": "Question",
-            name: item.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: item.answer,
-            },
+            popularCard.innerHTML = setFAQBlockInnerHtml(
+              item.topic?.name || "",
+              item.question,
+              faqsContent,
+              item.answer,
+              item.id,
+              tagsHtml
+            );
+            container.appendChild(popularCard);
+
+            // Build JSON-LD
+            faqSchemaData.mainEntity.push({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer,
+              },
+            });
           });
-        });
 
-        // 4) Inject JSON-LD script
-        const scriptTag = document.createElement("script");
-        scriptTag.type = "application/ld+json";
-        scriptTag.innerHTML = JSON.stringify(faqSchemaData);
-        document.head.appendChild(scriptTag);
+          // 4) Inject JSON-LD script
+          const scriptTag = document.createElement("script");
+          scriptTag.type = "application/ld+json";
+          scriptTag.innerHTML = JSON.stringify(faqSchemaData);
+          document.head.appendChild(scriptTag);
+        }, delay);
       })
       .catch((error) => {
         console.error("Error fetching product FAQs:", error);
@@ -216,7 +223,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Make sure only this Product section is rendered:
     const block = document.getElementById("productRelatedBlock");
     if (!block) return;
 
