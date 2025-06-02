@@ -1,6 +1,7 @@
 {{ 'section-evenflo-collection-detail.css' | asset_url | stylesheet_tag }}
 
 {% comment %} Class override in this section {% endcomment %}
+{% comment %} Class override in this section {% endcomment %}
 <style>
   .help-articles-block {
     background: #fff;
@@ -10,7 +11,23 @@
     display: flex;
     justify-content: space-between;
   }
+
+  /* ------------------------------------
+     Ensure each skeleton card is 418×573px
+  ------------------------------------ */
+  .popular-card.skeleton {
+    width: 418px;
+    height: 573px;
+  }
+
+  .skeleton-line {
+    height: 16px;
+    margin: 8px 16px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+  }
 </style>
+
 
 {% assign products_to_show = section.settings.topicRelatedRange %}
 
