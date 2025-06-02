@@ -4,60 +4,55 @@
   Only Product-related FAQ section: skeleton CSS + JS + schema
 {%- endcomment -%}
 <style>
-/* ------------------------------------
-   Your existing overrides
------------------------------------- */
-.help-articles-block {
-  background: #fff;
-}
+  /* ------------------------------------
+     Your existing overrides
+  ------------------------------------ */
+  .help-articles-block {
+    background: #fff;
+  }
 
-.search-listing-header2 {
-  display: flex;
-  justify-content: space-between;
-}
+  .search-listing-header2 {
+    display: flex;
+    justify-content: space-between;
+  }
 
-/* ------------------------------------
-   Skeleton layout for popular cards
------------------------------------- */
-.popular-card-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  min-height: 470px;
-}
+  /* ------------------------------------
+     Skeleton layout for popular cards
+  ------------------------------------ */
+  .popular-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 470px;
+  }
 
-/* Updated size for the skeleton card */
-.popular-card.skeleton {
-  width: 584px; /* Set the fixed width */
-  height: 470px; /* Set the fixed height */
-  background: #f1f2f3;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  box-sizing: border-box; /* Ensure padding and border don't affect the overall size */
-}
+  .popular-card.skeleton {
+    width: 504px;
+    height: 525px;
+    background: #f1f2f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
 
-/* Ensure skeleton title and content fit properly */
-.popular-card.skeleton .skeleton-title {
-  width: 60%;
-  height: 1.5em;
-  background: #e0e0e0;
-  margin-bottom: 1rem;
-}
+  .popular-card.skeleton .skeleton-title {
+    width: 60%;
+    height: 1.5em;
+    background: #e0e0e0;
+    margin-bottom: 1rem;
+  }
 
-.popular-card.skeleton .skeleton-content {
-  flex: 1;
-  background: #e0e0e0;
-  border-radius: 4px;
-  width: 100%; /* Ensure it takes the full width */
-}
+  .popular-card.skeleton .skeleton-content {
+    flex: 1;
+    background: #e0e0e0;
+    border-radius: 4px;
+  }
 
-/* Hide the heading by default; JS will reveal it if FAQs exist */
-#popularQuestionHeading {
-  display: none;
-}
-
+  /* Hide the heading by default; JS will reveal it if FAQs exist */
+  #popularQuestionHeading {
+    display: none;
+  }
 </style>
 
 {%- comment -%}
