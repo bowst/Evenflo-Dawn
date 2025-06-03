@@ -6,213 +6,213 @@ var collectionID = "";
 var productID = "";
 
 //We are using this filter for generic search for all faqs in faq-load-more block
-// function fetchFAQsByFilters({
-// 	categoryID = "",
-// 	filter = "",
-// 	topicsID = "",
-// 	page = 1,
-// 	productID = "",
-// 	collectionID = "",
-// 	popular = false,
-// 	appendTo = "searchListigBody",
-// 	showLoadMore = true,
-// }) {
-// 	const container = document.getElementById(appendTo);
-
-// 	const faqsToShow =
-// 		document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
-
-// 	const loadMoreBtn = document.getElementById("loadMoreBtn");
-
-// 	if (!container) {
-// 		console.error("searchListigBody wrapper container not found");
-// 		return;
-// 	}
-
-// 	if (loadMoreBtn && showLoadMore) {
-// 		loadMoreBtn.style.display = "none";
-// 	}
-
-// 	if (page == 1) {
-// 		emptyContainerHtml(container);
-// 	}
-
-// 	const loader = appendLoader(container);
-
-// 	fetch(
-// 		evenFloFAQURL +
-// 			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&
-// 			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
-// 	)
-// 		.then((response) => response.json())
-// 		.then((data) => {
-// 			let resultsToShow = data?.results;
-// 			if (popular) {
-// 				resultsToShow = resultsToShow.slice(0, faqsToShow);
-// 			}
-
-// 			resultsToShow?.forEach((product) => {
-// 				const popularCard = createPopularCardDivElement("popular-card");
-
-// 				const faqsContent = getFAQContent(product?.products || []);
-
-// 				const tags = getTagsArray(product?.tags || []);
-
-// 				const tagsHtml = getTagsHtml(tags);
-
-// 				popularCard.innerHTML = setFAQBlockInnerHtml(
-// 					product?.topic?.name || "",
-// 					product.question,
-// 					faqsContent,
-// 					product.answer,
-// 					//product?.id,
-// 					"",
-// 					tagsHtml
-// 				);
-
-// 				container.appendChild(popularCard);
-// 			});
-
-// 			if (loadMoreBtn && showLoadMore) {
-// 				loadMoreBtn.style.display = data?.next ? "block" : "none";
-// 			}
-// 		})
-// 		.catch((error) => {
-// 			console.error("Error fetching products:", error);
-// 		})
-// 		.finally(() => {
-// 			if (loader) {
-// 				hideLoader(loader);
-// 				toggleAnswerBullet();
-// 			}
-// 		});
-// }
-// helpers
-function createSkeletonCardDivElement() {
-  const card = document.createElement('div');
-  card.className = 'popular-card skeleton';
-  card.innerHTML = `
-    <div class="skeleton-topic skeleton-line"></div>
-    <div class="skeleton-question skeleton-line"></div>
-    <div class="skeleton-answer skeleton-line"></div>
-    <div class="skeleton-tags skeleton-line"></div>
-  `;
-  return card;
-}
-
-function appendSkeletons(container, count) {
-  for (let i = 0; i < count; i++) {
-    container.appendChild(createSkeletonCardDivElement());
-  }
-}
-
-function removeSkeletons(container) {
-  container
-    .querySelectorAll('.popular-card.skeleton')
-    .forEach(el => el.remove());
-}
-
-function generateFAQSchema(faqs) {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
-
-  // Create a script tag for JSON-LD and inject it into the head
-  const scriptTag = document.createElement("script");
-  scriptTag.type = "application/ld+json";
-  scriptTag.innerHTML = JSON.stringify(faqSchema);
-  document.head.appendChild(scriptTag);
-}
-
-// your fetch…
 function fetchFAQsByFilters({
-  categoryID = "",
-  filter = "",
-  topicsID = "",
-  page = 1,
-  productID = "",
-  collectionID = "",
-  popular = false,
-  appendTo = "searchListigBody",
-  showLoadMore = true,
+	categoryID = "",
+	filter = "",
+	topicsID = "",
+	page = 1,
+	productID = "",
+	collectionID = "",
+	popular = false,
+	appendTo = "searchListigBody",
+	showLoadMore = true,
 }) {
-  const container = document.getElementById(appendTo);
-  const faqsToShow = +document.getElementById("faqsToShow")?.dataset.faqsToShow || 20;
-  const loadMoreBtn = document.getElementById("loadMoreBtn");
-  if (!container) {
-    console.error("No container");
-    return;
-  }
-  if (loadMoreBtn && showLoadMore) {
-    loadMoreBtn.style.display = "none";
-  }
+	const container = document.getElementById(appendTo);
 
-  // — inject skeletons at _start_ or _append_ position —
-  if (page === 1) {
-    container.innerHTML = ""; // clear any old cards
-    appendSkeletons(container, faqsToShow); // top-of-page skeletons
-  } else {
-    appendSkeletons(container, faqsToShow); // bottom-of-list skeletons
-  }
+	const faqsToShow =
+		document.getElementById("faqsToShow")?.dataset?.faqsToShow || 3;
 
-  fetch(
-    evenFloFAQURL +
-      `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}` +
-      `&topics_id=${topicsID}&product_id=${productID}` +
-      `&collection_id=${collectionID}&popular=${popular}`
-  )
-    .then(res => res.json())
-    .then(data => {
-      // nuke skeletons wherever they were
-      removeSkeletons(container);
+	const loadMoreBtn = document.getElementById("loadMoreBtn");
 
-      let results = data.results;
-      if (popular) results = results.slice(0, faqsToShow);
+	if (!container) {
+		console.error("searchListigBody wrapper container not found");
+		return;
+	}
 
-      // Create an array of FAQs for the JSON-LD schema
-      const faqs = results.map(product => ({
-        question: product.question,
-        answer: product.answer
-      }));
+	if (loadMoreBtn && showLoadMore) {
+		loadMoreBtn.style.display = "none";
+	}
 
-      // Generate the FAQ schema
-      generateFAQSchema(faqs);
+	if (page == 1) {
+		emptyContainerHtml(container);
+	}
 
-      // Append FAQ content to the container
-      results.forEach(product => {
-        const card = createPopularCardDivElement("popular-card");
-        const faqsContent = getFAQContent(product.products || []);
-        const tagsHtml = getTagsHtml(getTagsArray(product.tags || []));
-        card.innerHTML = setFAQBlockInnerHtml(
-          product.topic?.name || "",
-          product.question,
-          faqsContent,
-          product.answer,
-          "",
-          tagsHtml
-        );
-        container.appendChild(card);
-      });
+	const loader = appendLoader(container);
 
-      // Show or hide the "Load More" button
-      if (loadMoreBtn && showLoadMore) {
-        loadMoreBtn.style.display = data.next ? "block" : "none";
-      }
-    })
-    .catch(err => console.error("Error:", err))
-    .finally(() => {
-      toggleAnswerBullet();
-    });
+	fetch(
+		evenFloFAQURL +
+			`faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}&
+			topics_id=${topicsID}&product_id=${productID}&collection_id=${collectionID}&popular=${popular}`
+	)
+		.then((response) => response.json())
+		.then((data) => {
+			let resultsToShow = data?.results;
+			if (popular) {
+				resultsToShow = resultsToShow.slice(0, faqsToShow);
+			}
+
+			resultsToShow?.forEach((product) => {
+				const popularCard = createPopularCardDivElement("popular-card");
+
+				const faqsContent = getFAQContent(product?.products || []);
+
+				const tags = getTagsArray(product?.tags || []);
+
+				const tagsHtml = getTagsHtml(tags);
+
+				popularCard.innerHTML = setFAQBlockInnerHtml(
+					product?.topic?.name || "",
+					product.question,
+					faqsContent,
+					product.answer,
+					//product?.id,
+					"",
+					tagsHtml
+				);
+
+				container.appendChild(popularCard);
+			});
+
+			if (loadMoreBtn && showLoadMore) {
+				loadMoreBtn.style.display = data?.next ? "block" : "none";
+			}
+		})
+		.catch((error) => {
+			console.error("Error fetching products:", error);
+		})
+		.finally(() => {
+			if (loader) {
+				hideLoader(loader);
+				toggleAnswerBullet();
+			}
+		});
 }
+// helpers
+// function createSkeletonCardDivElement() {
+//   const card = document.createElement('div');
+//   card.className = 'popular-card skeleton';
+//   card.innerHTML = `
+//     <div class="skeleton-topic skeleton-line"></div>
+//     <div class="skeleton-question skeleton-line"></div>
+//     <div class="skeleton-answer skeleton-line"></div>
+//     <div class="skeleton-tags skeleton-line"></div>
+//   `;
+//   return card;
+// }
+
+// function appendSkeletons(container, count) {
+//   for (let i = 0; i < count; i++) {
+//     container.appendChild(createSkeletonCardDivElement());
+//   }
+// }
+
+// function removeSkeletons(container) {
+//   container
+//     .querySelectorAll('.popular-card.skeleton')
+//     .forEach(el => el.remove());
+// }
+
+// function generateFAQSchema(faqs) {
+//   const faqSchema = {
+//     "@context": "https://schema.org",
+//     "@type": "FAQPage",
+//     "mainEntity": faqs.map(faq => ({
+//       "@type": "Question",
+//       "name": faq.question,
+//       "acceptedAnswer": {
+//         "@type": "Answer",
+//         "text": faq.answer
+//       }
+//     }))
+//   };
+
+//   // Create a script tag for JSON-LD and inject it into the head
+//   const scriptTag = document.createElement("script");
+//   scriptTag.type = "application/ld+json";
+//   scriptTag.innerHTML = JSON.stringify(faqSchema);
+//   document.head.appendChild(scriptTag);
+// }
+
+// // your fetch…
+// function fetchFAQsByFilters({
+//   categoryID = "",
+//   filter = "",
+//   topicsID = "",
+//   page = 1,
+//   productID = "",
+//   collectionID = "",
+//   popular = false,
+//   appendTo = "searchListigBody",
+//   showLoadMore = true,
+// }) {
+//   const container = document.getElementById(appendTo);
+//   const faqsToShow = +document.getElementById("faqsToShow")?.dataset.faqsToShow || 20;
+//   const loadMoreBtn = document.getElementById("loadMoreBtn");
+//   if (!container) {
+//     console.error("No container");
+//     return;
+//   }
+//   if (loadMoreBtn && showLoadMore) {
+//     loadMoreBtn.style.display = "none";
+//   }
+
+//   // — inject skeletons at _start_ or _append_ position —
+//   if (page === 1) {
+//     container.innerHTML = ""; // clear any old cards
+//     appendSkeletons(container, faqsToShow); // top-of-page skeletons
+//   } else {
+//     appendSkeletons(container, faqsToShow); // bottom-of-list skeletons
+//   }
+
+//   fetch(
+//     evenFloFAQURL +
+//       `faqs/getFilteredFaqs?filter=${filter}&page=${page}&category_id=${categoryID}` +
+//       `&topics_id=${topicsID}&product_id=${productID}` +
+//       `&collection_id=${collectionID}&popular=${popular}`
+//   )
+//     .then(res => res.json())
+//     .then(data => {
+//       // nuke skeletons wherever they were
+//       removeSkeletons(container);
+
+//       let results = data.results;
+//       if (popular) results = results.slice(0, faqsToShow);
+
+//       // Create an array of FAQs for the JSON-LD schema
+//       const faqs = results.map(product => ({
+//         question: product.question,
+//         answer: product.answer
+//       }));
+
+//       // Generate the FAQ schema
+//       generateFAQSchema(faqs);
+
+//       // Append FAQ content to the container
+//       results.forEach(product => {
+//         const card = createPopularCardDivElement("popular-card");
+//         const faqsContent = getFAQContent(product.products || []);
+//         const tagsHtml = getTagsHtml(getTagsArray(product.tags || []));
+//         card.innerHTML = setFAQBlockInnerHtml(
+//           product.topic?.name || "",
+//           product.question,
+//           faqsContent,
+//           product.answer,
+//           "",
+//           tagsHtml
+//         );
+//         container.appendChild(card);
+//       });
+
+//       // Show or hide the "Load More" button
+//       if (loadMoreBtn && showLoadMore) {
+//         loadMoreBtn.style.display = data.next ? "block" : "none";
+//       }
+//     })
+//     .catch(err => console.error("Error:", err))
+//     .finally(() => {
+//       toggleAnswerBullet();
+//     });
+// }
 
 
 
