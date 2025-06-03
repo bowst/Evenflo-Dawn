@@ -12,40 +12,45 @@
 </div>
 
 <style>
-  /* layout: flex-wrap for cards */
-  .popular-card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    min-height: 470px;
-  }
+/* layout: flex-wrap for cards */
+.popular-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  min-height: 470px;
+  justify-content: space-between; /* Ensures space is evenly distributed */
+}
 
-  /* real card sizing so they’re never hidden */
-  .popular-card {
-    width: 504px;
-    box-sizing: border-box;
-    margin-bottom: 1rem;
-  }
+/* real card sizing so they’re never hidden */
+.popular-card {
+  width: 100%; /* Makes the card fill the available width */
+  max-width: 504px; /* Ensures cards don't get too wide */
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
 
-  /* skeleton placeholder */
-  .popular-card.skeleton {
-    height: 460px;
-    background: #f1f2f3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .popular-card.skeleton .skeleton-title {
-    width: 60%;
-    height: 1.5em;
-    background: #e0e0e0;
-    margin-bottom: 1rem;
-  }
-  .popular-card.skeleton .skeleton-content {
-    flex: 1;
-    background: #e0e0e0;
-    border-radius: 4px;
-  }
+/* skeleton placeholder */
+.popular-card.skeleton {
+  height: 460px;
+  background: #f1f2f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.popular-card.skeleton .skeleton-title {
+  width: 60%;
+  height: 1.5em;
+  background: #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.popular-card.skeleton .skeleton-content {
+  flex: 1;
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
 </style>
 
 <script>
