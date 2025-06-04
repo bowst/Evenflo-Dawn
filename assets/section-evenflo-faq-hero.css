@@ -340,11 +340,14 @@
 }
 
 .tab-content-wrapper .tab-card {
-	width: calc(20% - 19.2px);
+	/* width: calc(20% - 19.2px); */
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 	transition: transform 0.3s;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 290px
 }
 .tab-card .tab-img{
   transition: transform 0.3s;
