@@ -42,13 +42,6 @@
           "type": "price",
           "settings": {}
         },
-        "custom_liquid_MijrXC": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "{% for variant in product.variants %}\n  {% if variant.inventory_quantity > 0 %}\n    <!-- Variant is in stock, you can customize messages or actions here -->\n  {% else %}\n    <p>So sorry, the Shyft Rideshare All-Terrain Performance Stroller Wagon in {{ variant.title }} is currently out of stock! Another great option is our extremely popular Pivot Xplore All-Terrain Stroller Wagon for your next family adventure. <a href=\"https://www.evenflo.com/products/pivot-xplore-stroller-wagon\">Take a look >>></a> is currently out of stock.</p>\n  {% endif %}\n{% endfor %}"
-          }
-        },
         "related_products_PGeCNY": {
           "type": "related_products",
           "settings": {
@@ -62,18 +55,16 @@
             "swatch_shape": "circle"
           }
         },
-        "ae2b090a-c8c0-410e-ae8a-b81555a2e14e": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by mid-December\n{% endif %}"
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
+        },
+        "evenflo_at_a_glance_H9wRrE": {
+          "type": "evenflo-at-a-glance",
+          "settings": {}
         },
         "complementary_VKePeD": {
           "type": "complementary",
@@ -87,16 +78,6 @@
             "image_ratio": "portrait",
             "enable_quick_add": false
           }
-        },
-        "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
-          }
-        },
-        "evenflo_at_a_glance_H9wRrE": {
-          "type": "evenflo-at-a-glance",
-          "settings": {}
         }
       },
       "block_order": [
@@ -104,14 +85,11 @@
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
-        "custom_liquid_MijrXC",
         "related_products_PGeCNY",
         "variant_picker",
-        "ae2b090a-c8c0-410e-ae8a-b81555a2e14e",
         "buy_buttons",
-        "complementary_VKePeD",
-        "cc3f18c4-92cb-4bf6-9da3-f9042ea031bd",
-        "evenflo_at_a_glance_H9wRrE"
+        "evenflo_at_a_glance_H9wRrE",
+        "complementary_VKePeD"
       ],
       "settings": {
         "enable_sticky_info": false,
