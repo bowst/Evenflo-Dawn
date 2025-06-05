@@ -264,7 +264,9 @@
         ".multicolumn.background-primary .multicolumn-card {border: solid 1px black;}",
         ".background-primary .multicolumn-card__image-wrapper {padding-top: 0; margin-left: 0px; margin-right: 0px;}",
         "@media (min-width: 750px) {.multicolumn .multicolumn-list {margin-left: 0; margin-right: 0; }}",
-        "h2::after {bottom: -10px; left: 0; width: 50px; height: 4px; transform: none;}"
+        "h2::after {bottom: -10px; left: 0; width: 50px; height: 4px; transform: none;}",
+        "@media (min-width: 990px) {h3.inline-richtext {font-size: 15px; }}",
+        "@media (min-width: 1200px) {h3.inline-richtext {font-size: 22px; }}"
       ],
       "settings": {
         "title": "Discounts For:",
