@@ -76,6 +76,19 @@
         "evenflo_at_a_glance_V4VzMP": {
           "type": "evenflo-at-a-glance",
           "settings": {}
+        },
+        "complementary_8MELjA": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
         }
       },
       "block_order": [
@@ -88,7 +101,8 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "evenflo_at_a_glance_V4VzMP"
+        "evenflo_at_a_glance_V4VzMP",
+        "complementary_8MELjA"
       ],
       "custom_css": [
         "p.product__text.inline-richtext.subtitle.heading-underline {text-transform: capitalize;}"
