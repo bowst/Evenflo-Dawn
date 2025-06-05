@@ -1,0 +1,2384 @@
+{% comment %}
+[[ QQ - Split Screen Vertical Scroll ]] [[ Section for Shopify Websites to display an image with block of text ]]
+Author: qwiqode.com
+Created: 07.18.2023 Version: 1.32
+Company website: qwiqode.com
+Email: hello@qwiqode.com
+* (c) Copyright by Studio Umbrella Inc. /
+{% endcomment %}
+{% if request.design_mode == true %}
+<p class="QQ-JS-init-msg" style="display:block;padding: 10px 15px;text-align: center;max-width: 450px;background-color: #d5d5d5;color: red;border: 1px solid red;border-radius: 10px;margin: 0 auto;">Please save the Theme Editor before adding content or changing settings in order to initiate functionality.</p>
+{% endif %}
+{% if iconSize == true %}
+    {% assign imageSizes = "768,500,256,128x,56,32" | split: ',' %}
+{% else %}
+    {% assign imageSizes = "2400,1920,1500,1200,900x,768,500,240" | split: ',' %}
+{% endif %}  
+{% liquid
+    assign contentMaxWidth = section.settings.content_max_width
+    assign contentFullwidth = section.settings.content_fullwidth
+    assign sectionClass = section.settings.section_class
+    assign sectionWidth = section.settings.section_width
+    assign sectionBackgroundColor = section.settings.background_color
+    assign textAreaTextAlign = section.settings.text_alignment
+    assign textAreaTextAlignMobile = section.settings.text_alignment_mobile
+    if textAreaTextAlign == 'left'
+      assign buttonsAlignment = 'flex-start'
+    elsif textAreaTextAlign == 'right'
+      assign buttonsAlignment = 'flex-end'
+    else
+      assign buttonsAlignment = textAreaTextAlign
+    endif
+    if textAreaTextAlignMobile == 'left'
+      assign buttonsAlignmentMobile = 'flex-start'
+    elsif textAreaTextAlignMobile == 'right'
+      assign buttonsAlignmentMobile = 'flex-end'
+    else
+      assign buttonsAlignmentMobile = textAreaTextAlignMobile
+    endif
+    assign sectionMarginTop = section.settings.section_margin_top
+    assign sectionMarginTopMobile = section.settings.section_margin_top_mobile
+    assign sectionMarginBottom = section.settings.section_margin_bottom
+    assign sectionMarginBottomMobile = section.settings.section_margin_bottom_mobile
+    assign sectionPaddingHorizontal = section.settings.section_padding_horizontal
+    assign sectionPaddingHorizontalMobile = section.settings.section_padding_horizontal_mobile
+    assign sectionPaddingTop = section.settings.section_padding_top
+    assign sectionPaddingTopMobile = section.settings.section_padding_top_mobile
+    assign sectionPaddingBottom = section.settings.section_padding_bottom
+    assign sectionPaddingBottomMobile = section.settings.section_padding_bottom_mobile
+    assign textAreaVerticalPos = section.settings.text_area_vertical_position
+    assign textAreaPaddingRight = section.settings.text_area_padding_right
+    assign textAreaPaddingLeft = section.settings.text_area_padding_left
+    assign textAreaPaddingHorizontalMobile = section.settings.text_area_padding_horizontal_mobile
+    assign textAreaPaddingTop = section.settings.text_area_padding_top
+    assign textAreaPaddingTopMobile = section.settings.text_area_padding_top_mobile
+    assign textAreaPaddingBottom = section.settings.text_area_padding_bottom
+    assign textAreaPaddingBottomMobile = section.settings.text_area_padding_bottom_mobile
+    assign mediaWidth = section.settings.media_width
+    assign mediaWidthMobile = section.settings.media_width_mobile
+    assign mediaMargin = section.settings.media_margin
+    assign mediaMarginMobile = section.settings.media_margin_mobile
+    assign mediaDimensions = section.settings.media_size
+    assign mediaBorderRadius = section.settings.media_border_radius
+    assign mediaBorderRadiusMobile = section.settings.media_border_radius_mobile
+    assign mediaPosition = section.settings.media_position
+    if mediaPosition == 'right'
+      assign blocksOrder = 'qq-row'
+    elsif mediaPosition == 'left'
+      assign blocksOrder = 'qq-row-reverse'
+    endif
+    assign textWidth = 100 | minus: mediaWidth
+    assign carouselEnabled = section.settings.carousel_enabled
+    assign carouselAutoplay = section.settings.carousel_autoplay
+    assign carouselSpeed = section.settings.carousel_speed
+    assign carouselAnimation = section.settings.carousel_animation
+    assign carouselNavigation = section.settings.carousel_navigation
+    assign carouselArrowsLineColor = section.settings.carousel_arrows_color_line
+    assign carouselArrowsBgColor = section.settings.carousel_arrows_color_bg
+    assign carouselDotsColor = section.settings.carousel_dots_color
+    assign carouselDotsSize = section.settings.carousel_dots_size
+    assign carouselDotsPosition = section.settings.carousel_dots_position_mobile
+    assign mediaPositionMobile = section.settings.media_position_mobile
+    if carouselEnabled == false 
+      if mediaPositionMobile contains 'behind-'
+        if mediaPositionMobile contains 'bottom'
+          assign mediaPositionMobile = 'bottom'        
+        else 
+          assign mediaPositionMobile = 'top'
+        endif
+      endif
+    endif 
+    if mediaPositionMobile == 'top'
+      assign blocksOrderMobile = 'qq-column-reverse'
+    elsif mediaPositionMobile == 'bottom'
+      assign blocksOrderMobile = 'qq-column'
+    elsif mediaPositionMobile == 'hidden'
+      assign blocksOrderMobile = 'qq-mobile-hidden-media'
+    endif
+    assign mediaGap = section.settings.media_gap
+    assign mediaGapMobile = section.settings.media_gap_mobile
+%}
+{% capture carouselArrows %}
+  {% liquid
+    assign arrowLeftImage = section.settings.arrow_left
+    assign arrowLeftImageUrl = arrowLeftImage | img_url: '32x32', crop: 'center'
+      if arrowLeftImageUrl != blank
+          assign customLeft = 'qq-custom-left'
+      else
+          assign customLeft = ''
+      endif
+    assign arrowRightImage = section.settings.arrow_right
+    assign arrowRightImageUrl = arrowRightImage | img_url: '32x32', crop: 'center'
+    if arrowRightImageUrl != blank
+        assign customRight = 'qq-custom-right'
+    else
+        assign customRight = ''
+    endif
+  %}
+  <div class="qq-carousel-arrows qq-{{arrowsAlignment}} qq-hidden">
+      <span class="qq-carousel-arrow qq-carousel-prev {{customLeft}}">
+          {% if arrowLeftImage != blank %}
+              <img src="{{arrowLeftImageUrl}}">
+          {% else %}
+              <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g id="Layer_1-2"><g><circle cx="12" cy="12" r="12" style="fill:#fff;"/><polyline points="14 6.17 8.6 11.57 14 16.97" style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:8; stroke-width:2px;"/></g></g></svg>
+          {% endif %}
+      </span>
+      <span class="qq-carousel-arrow qq-carousel-next {{customRight}}">
+          {% if arrowRightImage != blank %}
+              <img src="{{arrowRightImageUrl}}">
+          {% else %}
+                <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g id="Layer_1-2"><g><circle cx="12" cy="12" r="12" style="fill:#fff;"/><polyline points="10 17.83 15.4 12.43 10 7.03" style="fill:none; stroke:#000; stroke-linecap:round; stroke-miterlimit:8; stroke-width:2px;"/></g></g></svg>
+          {% endif %}
+      </span>
+  </div>
+{% endcapture %}
+<div class="qq-section-wrap-{{sectionWidth}} {{sectionClass}}">
+  <div class="qq-split-sections {{blocksOrder}} {{blocksOrderMobile}}">
+    <div class="qq-section-content">
+      <div>
+        {% assign buttonCounter = 1 %}
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'title' -%}
+              {% liquid
+                assign title = block.settings.title
+                assign titleCustomFont = block.settings.title_custom_font
+                assign titleFont = block.settings.title_font
+                assign titleFontName = block.settings.title_font_name
+                assign titleFontWeight = block.settings.title_font_weight
+                assign titleColor = block.settings.title_color
+                assign titleFontSize = block.settings.title_font_size
+                assign titleFontSizeMobile = block.settings.title_font_size_mobile
+                assign titleLineHeight = block.settings.title_line_height
+                assign titleLineHeightMobile = block.settings.title_line_height_mobile
+                assign titleLetterSpacing = block.settings.title_letter_spacing
+                assign titleLetterSpacingMobile = block.settings.title_letter_spacing_mobile
+                assign titleMarginTop = block.settings.title_margin_top
+                assign titleMarginTopMobile = block.settings.title_margin_top_mobile
+                assign titleMarginBottom = block.settings.title_margin_bottom
+                assign titleMarginBottomMobile = block.settings.title_margin_bottom_mobile
+              %}
+              <div class="qq-title">{{title}}</div>
+            {%- when 'subtitle' -%}
+              {% liquid
+                assign subtitle = block.settings.subtitle
+                assign subtitleCustomFont = block.settings.subtitle_custom_font
+                assign subtitleFont = block.settings.subtitle_font
+                assign subtitleFontName = block.settings.subtitle_font_name
+                assign subtitleFontWeight = block.settings.subtitle_font_weight
+                assign subtitleColor = block.settings.subtitle_color
+                assign subtitleFontSize = block.settings.subtitle_font_size
+                assign subtitleFontSizeMobile = block.settings.subtitle_font_size_mobile
+                assign subtitleLineHeight = block.settings.subtitle_line_height
+                assign subtitleLineHeightMobile = block.settings.subtitle_line_height_mobile
+                assign subtitleLetterSpacing = block.settings.subtitle_letter_spacing
+                assign subtitleLetterSpacingMobile = block.settings.subtitle_letter_spacing_mobile
+                assign subtitleMarginTop = block.settings.subtitle_margin_top
+                assign subtitleMarginTopMobile = block.settings.subtitle_margin_top_mobile
+                assign subtitleMarginBottom = block.settings.subtitle_margin_bottom
+                assign subtitleMarginBottomMobile = block.settings.subtitle_margin_bottom_mobile
+              %}
+              <div class="qq-subtitle">{{subtitle}}</div>
+            {%- when 'textblock' -%}
+              {% liquid
+                assign textblock = block.settings.textblock
+                assign textblockCustomFont = block.settings.textblock_custom_font
+                assign textblockFont = block.settings.textblock_font
+                assign textblockFontName = block.settings.textblock_font_name
+                assign textblockFontWeight = block.settings.textblock_font_weight
+                assign textblockColor = block.settings.textblock_color
+                assign textblockFontSize = block.settings.textblock_font_size
+                assign textblockFontSizeMobile = block.settings.textblock_font_size_mobile
+                assign textblockLineHeight = block.settings.textblock_line_height
+                assign textblockLineHeightMobile = block.settings.textblock_line_height_mobile
+                assign textblockLetterSpacing = block.settings.textblock_letter_spacing
+                assign textblockLetterSpacingMobile = block.settings.textblock_letter_spacing_mobile
+              %}
+              <div class="qq-rte">
+                {{textblock}}
+              </div>
+            {%- when 'buttons' -%}
+              {% liquid
+                assign buttonUrl = block.settings.button_link
+                assign buttonLabel = block.settings.button_label
+                assign buttonClass = block.settings.button_class
+                assign buttonCustomFont = block.settings.button_custom_font
+                assign buttonFont = block.settings.button_font
+                assign buttonFontName = block.settings.button_font_name
+                assign buttonFontWeight = block.settings.button_font_weight
+                assign buttonMaxWidth = block.settings.button_max_width
+                assign buttonFontSize = block.settings.button_font_size
+                assign buttonPaddingHorizontal = block.settings.button_padding_horizontal
+                assign buttonPaddingVertical =  block.settings.button_padding_vertical
+                assign buttonBorder = block.settings.button_border
+                assign buttonRadius = block.settings.button_radius
+                assign buttonBackground = block.settings.button_background_color
+                assign buttonBackgroundHover = block.settings.button_background_color_hover
+                assign buttonColor = block.settings.button_text_color
+                assign buttonColorHover = block.settings.button_text_color_hover
+                assign buttonBorderColor = block.settings.button_border_color
+                assign buttonBorderColorHover = block.settings.button_border_color_hover
+                assign buttonLetterSpacing = block.settings.button_letter_spacing
+                assign buttonLetterSpacingMobile = block.settings.button_letter_spacing_mobile
+                assign buttonMarginTop = block.settings.button_margin_top
+                assign buttonMarginTopMobile = block.settings.button_margin_top_mobile
+                assign buttonMarginBottom = block.settings.button_margin_bottom
+                assign buttonMarginBottomMobile = block.settings.button_margin_bottom_mobile
+                if block.settings.button_tab
+                  assign buttonTab = 'target="blank"'
+                else
+                  assign buttonTab = ''
+                endif
+                assign buttonLabel_2 = block.settings.button_label_2
+                if buttonLabel_2 != blank
+                  assign buttonUrl_2 = block.settings.button_link_2
+                  assign buttonClass_2 = block.settings.button_class_2
+                  assign buttonCustomFont_2 = block.settings.button_custom_font_2
+                  assign buttonFont_2 = block.settings.button_font_2
+                  assign buttonFontName_2 = block.settings.button_font_name_2
+                  assign buttonFontWeight_2 = block.settings.button_font_weight_2
+                  assign buttonMaxWidth_2 = block.settings.button_max_width_2
+                  assign buttonFontSize_2 = block.settings.button_font_size_2
+                  assign buttonFontSizeMobile_2 = block.settings.button_font_size_mobile_2
+                  assign buttonPaddingHorizontal_2 = block.settings.button_padding_horizontal_2
+                  assign buttonPaddingVertical_2 =  block.settings.button_padding_vertical_2
+                  assign buttonBorder_2 = block.settings.button_border_2
+                  assign buttonRadius_2 = block.settings.button_radius_2
+                  assign buttonBackground_2 = block.settings.button_background_color_2
+                  assign buttonBackgroundHover_2 = block.settings.button_background_color_hover_2
+                  assign buttonColor_2 = block.settings.button_text_color_2
+                  assign buttonColorHover_2 = block.settings.button_text_color_hover_2
+                  assign buttonBorderColor_2 = block.settings.button_border_color_2
+                  assign buttonBorderColorHover_2 = block.settings.button_border_color_hover_2
+                  assign buttonLetterSpacing_2 = block.settings.button_letter_spacing_2
+                  assign buttonLetterSpacingMobile_2 = block.settings.button_letter_spacing_mobile_2
+                  assign buttonMarginTop_2 = block.settings.button_margin_top_2
+                  assign buttonMarginTopMobile_2 = block.settings.button_margin_top_mobile_2
+                  assign buttonMarginBottom_2 = block.settings.button_margin_bottom_2
+                  assign buttonMarginBottomMobile_2 = block.settings.button_margin_bottom_mobile_2
+                  if block.settings.button_tab_2
+                    assign buttonTab_2 = 'target="blank"'
+                  else
+                    assign buttonTab_2 = ''
+                  endif
+                endif
+                assign buttonsMargin = block.settings.buttons_margin
+                assign buttonsLayout = block.settings.buttons_layout
+              %}
+              <div class="qq-button-wrapper" style="display:flex;">
+                 <a href="{{buttonUrl}}" class="qq-btn {{buttonClass}} qq-el-1" {{buttonTab}}>{{ buttonLabel | escape }}</a>
+                 {% if buttonLabel_2 != blank %}
+                   <a href="{{buttonUrl_2}}" class="qq-btn {{buttonClass_2}} qq-el-2" {{buttonTab_2}}>{{ buttonLabel_2 | escape }}</a>
+                {% endif %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="qq-media"
+    data-media-size="{{mediaDimensions}}"
+    data-carouselEnabled="{{carouselEnabled}}"
+    data-carouselAutoplay="{{carouselAutoplay}}"
+    data-carouselSpeed="{{carouselSpeed}}"
+    data-carouselAnimation="{{carouselAnimation}}"
+    data-carouselNavigation="{{carouselNavigation}}"
+    data-carouselDotsSize="{{carouselDotsSize}}"
+    data-carouselMediaPositionMobile="{{mediaPositionMobile}}"
+    >
+      {%- for block in section.blocks -%}
+        {% if block.type == 'media' %}
+          {% liquid
+          assign mediaType = block.settings.media_type
+          if mediaType == 'video'
+            assign blockVideo = true
+            assign externalVideo = block.settings.video_url
+            assign localVideo = block.settings.local_video_url
+            assign videoAutoplay = block.settings.video_autoplay
+            assign videoLoop = block.settings.video_loop
+            assign videoControls = block.settings.video_controls
+            assign videoDimensions = block.settings.video_dimensions
+            if mediaPosition == 'right'
+              assign blocksOrderVideo = 'qq-row'
+            elsif mediaPosition == 'left'
+              assign blocksOrderVideo = 'qq-row-reverse'
+            endif
+            if mediaPositionMobile == 'top'
+              assign blocksOrderVideoMobile = 'qq-column-reverse'
+            elsif mediaPositionMobile == 'bottom'
+              assign blocksOrderVideoMobile = 'qq-column'
+            elsif mediaPositionMobile == 'hidden'
+              assign blocksOrderVideoMobile = 'qq-column'
+              assign videoClass = 'qq-hidden-on-mobile'
+            endif
+            if externalVideo != blank or localVideo != blank
+              assign divClass = 'qq-responsive-video-container '
+              assign blockVideo = true
+            else
+              assign divClass = ''
+              assign blockVideo = false
+            endif
+          elsif mediaType == 'image'
+            assign blockImage = block.settings.image
+          endif
+        %}        
+        <div class="qq-{{mediaType}}">
+          {% if mediaType == 'video' %}
+            <div class="qq-responsive-video-container qq-{{mediaDimensions}}">
+              {% if localVideo != blank %}
+                {% liquid                 
+                  if videoAutoplay == true
+                    assign videoAttributes = ' muted="" autoplay'
+                  else
+                    assign videoAttributes = ''
+                  endif
+                  if videoControls == true
+                    assign videoAttributes = videoAttributes | append: ' controls'
+                  endif
+                  if videoLoop == true
+                    assign videoAttributes = videoAttributes | append: ' loop'
+                  endif
+                  for vid in localVideo.sources
+                    if vid.format == 'mp4'
+                      assign localVideoUrl = vid.url
+                      assign localVideoMime = vid.mime_type
+                      break
+                    endif
+                  endfor
+                %}
+                <video
+                  {{videoAttributes}}
+                  playsinline="true"
+                  preload="{{vid_preload}}"
+                  class="qq-local"
+                  id="{{videoID}}">
+                    <source src="{{localVideoUrl}}#t=0.1" type="{{ localVideoMime }}">
+                </video>
+              {% else %}
+                {% if externalVideo %}
+                  {% if externalVideo.type == 'youtube' %}
+                    {% liquid                      
+                      if videoAutoplay == true
+                        assign videoAttributes = '&autoplay=1&mute=1'
+                      else
+                        assign videoAttributes = ''
+                      endif
+                      if videoControls == false
+                        assign videoAttributes = videoAttributes | append: '&controls=0&modestbranding=1&showinfo=0&showsearch=0'
+                      endif
+                      if videoLoop == true
+                        assign videoAttributes = videoAttributes | append: '&loop=1&playlist=' | append: externalVideo.id
+                      endif
+                    %}                    
+                    <iframe class="youtube" src="//www.youtube.com/embed/{{ externalVideo.id }}?rel=0&amp;showinfo=0{{videoAttributes}}&iv_load_policy=3" frameborder="0" allowfullscreen  {{ block.shopify_attributes }} {% unless request.design_mode == true %}loading="lazy"{% endunless %}></iframe>                                        
+                  {% elsif externalVideo.type == 'vimeo' %}
+                    {% liquid
+                      if videoAutoplay == true
+                        assign videoAttributes = '&autoplay=1&muted=1'
+                      else
+                        assign videoAttributes = ''
+                      endif
+                      if videoControls == false
+                        assign videoAttributes = videoAttributes | append: '&controls=0'
+                      endif
+                      if videoLoop == true
+                        assign videoAttributes = videoAttributes | append: '&loop=1'
+                      endif
+                    %}                    
+                    <iframe class="vimeo" src="//player.vimeo.com/video/{{ externalVideo.id }}?{{videoAttributes}}" width="500" height="232" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen  {{ block.shopify_attributes }} loading="lazy"></iframe>
+                  {% endif %}
+                {% else %}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 771 771" style="width:100%;height:100%;" preserveAspectRatio="xMidYMid slice"><g style="isolation:isolate"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1" style="fill:#efefef;"><rect width="771" height="771" style="fill:#efefef;"/><g style="opacity:0.5"><path d="M280.73,441.53V406.12h-.48c-3,6.78-8.91,10.7-17.23,10.7-14.49,0-23-11.77-23-30.42S248.41,356,263.14,356c8.79,0,14.74,4,17.59,11.28h.47l.6-9.86H290v84.13Zm0-53.71V385c0-12.83-6.42-20.44-16-20.44s-15.1,7.72-15.1,21.87,5.47,21.86,15.1,21.86S280.73,400.66,280.73,387.82Z" style="fill:#373833"/><path d="M302.48,357.4h8.91l7.72,44.09h.48l10-44.09h7.49l10,44.09h.47l7.73-44.09h8.55l-10.81,58h-9.87l-9.74-43h-.47l-9.75,43h-9.86Z" style="fill:#373833"/><path d="M376.86,407.19h20V365.6h-20v-8.2h29.23v49.79h20v8.2h-49.2Zm15.21-69.52a8.08,8.08,0,1,1,8.08,8.09A7.87,7.87,0,0,1,392.07,337.67Z" style="fill:#373833"/><path d="M471.45,441.53V406.12H471c-3,6.78-8.92,10.7-17.23,10.7-14.5,0-23.06-11.77-23.06-30.42S439.13,356,453.86,356c8.8,0,14.74,4,17.59,11.28h.48l.59-9.86h8.2v84.13Zm0-53.71V385c0-12.83-6.41-20.44-16-20.44s-15.09,7.72-15.09,21.87,5.47,21.86,15.09,21.86S471.45,400.66,471.45,387.82Z" style="fill:#373833"/><path d="M492.72,386.4c0-19.73,8.8-30.42,25.19-30.42s25.2,10.69,25.2,30.42-8.8,30.42-25.2,30.42S492.72,406.12,492.72,386.4Zm40.76,0c0-14.38-5.35-21.87-15.57-21.87S502.35,372,502.35,386.4s5.35,21.86,15.56,21.86S533.48,400.77,533.48,386.4Z" style="fill:#373833"/><path d="M553.09,386.4c0-18.66,8.55-30.42,23-30.42,8.32,0,14.26,3.92,17.23,10.69h.48V331h9.27v84.37h-8.2l-.6-9.86h-.47c-2.85,7.25-8.8,11.29-17.59,11.29C561.52,416.82,553.09,405.17,553.09,386.4Zm40.76,1.42V385c0-12.83-6.42-20.44-16.05-20.44s-15.09,7.72-15.09,21.87,5.47,21.86,15.09,21.86S593.85,400.66,593.85,387.82Z" style="fill:#373833"/><path d="M615.36,386.28c0-19.61,8.79-30.3,25.31-30.3S666,366.67,666,386.28a18.15,18.15,0,0,1-.12,2.49H625c.59,13,6.06,19.49,16.52,19.49,6.53,0,11-2.61,13.43-7.6h10.34C661.94,411,654,416.82,641.38,416.82,624.39,416.82,615.36,406.24,615.36,386.28Zm40.75-5.35c-1.3-10.81-6.53-16.4-15.44-16.4s-14.15,5.59-15.45,16.4Z" style="fill:#373833"/><polygon points="105.12 429.87 179.13 385.56 105.12 341.26 115.51 324 201.41 375.33 201.41 395.8 115.51 447.13 105.12 429.87" style="fill:#29abe2"/><polygon points="119.25 395.8 119.25 375.33 205.22 323.97 215.55 341.26 141.53 385.56 215.55 429.87 205.16 447.13 119.25 395.8" style="fill:#0071bc;mix-blend-mode:multiply"/></g></g></g></g></svg>
+                {% endif %}
+              {% endif %}
+            </div>
+          {% elsif mediaType == 'image' %}
+            <div class="qq-{{imageClass}}">
+              {% if blockImage != blank %}
+								{% assign loopImage = blockImage %}								
+								{% assign mediaSize = mediaDimensions %}								
+								{% liquid 
+                    if loopImage.alt != blank
+                      assign loopImageAlt = 'alt="' | append: loopImage.alt | append: '"'
+                    else
+                      assign loopImageAlt = ''
+                    endif
+                    assign proportion = loopImage.aspect_ratio
+                    assign imageW = loopImage.width
+                    assign imageH = loopImage.height   
+                    for imageSize in imageSizes
+                      assign maxWidthAllowed = imageSize | remove: 'x'
+                      assign maxHeightAllowed = imageSize | remove: 'x'
+                      if proportion > 1
+                        # landscape
+                        assign mostW = maxWidthAllowed
+                        assign mostH = mostW | times: proportion
+                      elsif proportion < 1
+                        # portrait
+                        assign mostH = maxHeightAllowed
+                        assign mostW = mostH | times: proportion
+                      else
+                        # square
+                        assign mostW = maxWidthAllowed
+                        assign mostH = mostW
+                      endif
+                      assign iw = imageW | at_most: mostW | round
+                      assign ih	= imageH | at_most: mostH | round
+                      if mediaSize == 'portrait'
+                        if halfSquarePortrait == true  
+                          assign ih = iw | times: 2 | round
+                            if imageH < ih
+                                assign ih = imageH
+                                assign iw = ih | divided_by: 2 | round
+                            endif
+                            if imageW < iw
+                                assign iw = imageW
+                                assign ih = iw | times: 2 | round
+                            endif
+                        else 
+                          assign ih = iw | divided_by: 0.6666667 | round
+                          if imageH < ih
+                            assign ih = imageH
+                            assign iw = ih | divided_by: 1.5 | round
+                          endif
+                          if imageW < iw
+                            assign iw = imageW
+                            assign ih = iw | divided_by: 0.666667 | round
+                          endif
+                        endif
+                      elsif mediaSize == 'vertical'
+                        assign ih = iw | times: 16 | divided_by: 9 | round
+                        if imageH < ih
+                          assign ih = imageH
+                          assign iw = ih | times: 9 | divided_by: 16 | round
+                        endif
+                        if imageW < iw
+                          assign iw = imageW
+                          assign ih = iw | times: 16 | divided_by: 9 | round
+                        endif     
+                      elsif mediaSize == 'horizontal'
+                        assign ih = iw | times: 9 | divided_by: 16 | round
+                        if imageH < ih
+                          assign ih = imageH
+                          assign iw = ih | times: 16 | divided_by: 9 | round
+                        endif
+                        if imageW < iw
+                          assign iw = imageW
+                          assign ih = iw | times: 9 | divided_by: 16 | round
+                        endif                                          
+                      elsif mediaSize == 'square'
+                        assign ih = iw
+                        if iw > imageW
+                          assign iw = imageW
+                          assign ih = iw
+                        endif
+                        if ih > imageH
+                          assign ih = imageH
+                          assign iw = ih
+                        endif
+                      elsif mediaSize == 'landscape'
+                        if halfSquareLandscape == true 
+                          assign ih = iw | times: 0.5 | round
+                          if imageH < ih
+                            assign ih = imageH
+                            assign iw = ih | times: 2 | round
+                          endif
+                          if imageW < iw
+                            assign iw = imageW
+                            assign ih = iw | times: 0.5 | round
+                          endif                        
+                        else 
+                         assign ih = iw | times: 4 | divided_by: 6 | round
+                          if imageH < ih
+                            assign ih = imageH
+                            assign iw = ih | times: 6 | divided_by: 4 | round
+                          endif
+                          if imageW < iw
+                            assign iw = imageW
+                            assign ih = iw | times: 4 | divided_by: 6 | round
+                          endif
+                        endif
+                      elsif mediaSize == 'original'
+                        assign ih = iw | divided_by: proportion | round
+                      endif
+                      assign size = iw | append: 'x' | append: ih
+                      assign imageUrl = loopImage | img_url: size, crop: 'center'
+                      if forloop.first
+                        assign imageUrls = imageUrl
+                      else
+                        assign imageUrls = imageUrls | append: ',' | append: imageUrl
+                      endif                      
+                    endfor
+                    assign imageUrls = imageUrls | split: ','                                                              
+%}
+								{% assign blockImageAlt = loopImageAlt %}
+								{% assign blockImageUrls = imageUrls %}	
+								{% capture blockImagesLoopArray %}
+									{% for imageSize in imageSizes %}
+									{% if imageSize contains 'x' %}
+									{% assign defaultImageUrl = blockImageUrls[forloop.index0] %}
+									{% assign imageSize = imageSize | remove: 'x' %}
+									{% endif %}
+									{{blockImageUrls[forloop.index0]}} {{imageSize}}w{% unless forloop.last %},{% endunless %}
+									{% endfor %}
+								{% endcapture %}
+								<picture>
+									<img srcset="{{blockImagesLoopArray}}" {{blockImageAlt}} src=”{{defaultImageUrl}}”/>
+								</picture>
+							{% else %}
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 771 771" style="width:100%;height:100%	;" preserveAspectRatio="xMidYMid slice"><g style="isolation:isolate"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1" style="fill:#efefef;"><rect width="771" height="771" style="fill:#efefef;"/><g style="opacity:0.5"><path d="M280.73,441.53V406.12h-.48c-3,6.78-8.91,10.7-17.23,10.7-14.49,0-23-11.77-23-30.42S248.41,356,263.14,356c8.79,0,14.74,4,17.59,11.28h.47l.6-9.86H290v84.13Zm0-53.71V385c0-12.83-6.42-20.44-16-20.44s-15.1,7.72-15.1,21.87,5.47,21.86,15.1,21.86S280.73,400.66,280.73,387.82Z" style="fill:#373833"/><path d="M302.48,357.4h8.91l7.72,44.09h.48l10-44.09h7.49l10,44.09h.47l7.73-44.09h8.55l-10.81,58h-9.87l-9.74-43h-.47l-9.75,43h-9.86Z" style="fill:#373833"/><path d="M376.86,407.19h20V365.6h-20v-8.2h29.23v49.79h20v8.2h-49.2Zm15.21-69.52a8.08,8.08,0,1,1,8.08,8.09A7.87,7.87,0,0,1,392.07,337.67Z" style="fill:#373833"/><path d="M471.45,441.53V406.12H471c-3,6.78-8.92,10.7-17.23,10.7-14.5,0-23.06-11.77-23.06-30.42S439.13,356,453.86,356c8.8,0,14.74,4,17.59,11.28h.48l.59-9.86h8.2v84.13Zm0-53.71V385c0-12.83-6.41-20.44-16-20.44s-15.09,7.72-15.09,21.87,5.47,21.86,15.09,21.86S471.45,400.66,471.45,387.82Z" style="fill:#373833"/><path d="M492.72,386.4c0-19.73,8.8-30.42,25.19-30.42s25.2,10.69,25.2,30.42-8.8,30.42-25.2,30.42S492.72,406.12,492.72,386.4Zm40.76,0c0-14.38-5.35-21.87-15.57-21.87S502.35,372,502.35,386.4s5.35,21.86,15.56,21.86S533.48,400.77,533.48,386.4Z" style="fill:#373833"/><path d="M553.09,386.4c0-18.66,8.55-30.42,23-30.42,8.32,0,14.26,3.92,17.23,10.69h.48V331h9.27v84.37h-8.2l-.6-9.86h-.47c-2.85,7.25-8.8,11.29-17.59,11.29C561.52,416.82,553.09,405.17,553.09,386.4Zm40.76,1.42V385c0-12.83-6.42-20.44-16.05-20.44s-15.09,7.72-15.09,21.87,5.47,21.86,15.09,21.86S593.85,400.66,593.85,387.82Z" style="fill:#373833"/><path d="M615.36,386.28c0-19.61,8.79-30.3,25.31-30.3S666,366.67,666,386.28a18.15,18.15,0,0,1-.12,2.49H625c.59,13,6.06,19.49,16.52,19.49,6.53,0,11-2.61,13.43-7.6h10.34C661.94,411,654,416.82,641.38,416.82,624.39,416.82,615.36,406.24,615.36,386.28Zm40.75-5.35c-1.3-10.81-6.53-16.4-15.44-16.4s-14.15,5.59-15.45,16.4Z" style="fill:#373833"/><polygon points="105.12 429.87 179.13 385.56 105.12 341.26 115.51 324 201.41 375.33 201.41 395.8 115.51 447.13 105.12 429.87" style="fill:#29abe2"/><polygon points="119.25 395.8 119.25 375.33 205.22 323.97 215.55 341.26 141.53 385.56 215.55 429.87 205.16 447.13 119.25 395.8" style="fill:#0071bc;mix-blend-mode:multiply"/></g></g></g></g></svg>              								
+							{% endif %} 
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if carouselNavigation == 'arrows' %}
+      {{carouselArrows}}
+    {% endif %}
+  </div>
+</div>
+<style data='../SplitScreenVerticalScroll.css.liquid'>section.qq-splitscreen-vertical-scroll{margin-left:auto;margin-right:auto;position:relative}section.qq-splitscreen-vertical-scroll>div{width:100%;margin-left:auto;margin-right:auto;position:relative}section.qq-splitscreen-vertical-scroll>div .qq-rte :not(ul):not(ol):not(li),section.qq-splitscreen-vertical-scroll>div .qq-subtitle :not(ul):not(ol):not(li),section.qq-splitscreen-vertical-scroll>div .qq-title :not(ul):not(ol):not(li){margin-top:0;margin-bottom:0}section.qq-splitscreen-vertical-scroll>div .qq-split-sections{width:100%;position:relative;margin:auto}@media (min-width:980px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections{display:grid}section.qq-splitscreen-vertical-scroll>div .qq-split-sections.qq-row-reverse>div{grid-row:1}section.qq-splitscreen-vertical-scroll>div .qq-split-sections.qq-row-reverse>div.qq-section-image,section.qq-splitscreen-vertical-scroll>div .qq-split-sections.qq-row-reverse>div.qq-section-video{grid-column:1}section.qq-splitscreen-vertical-scroll>div .qq-split-sections.qq-row-reverse>div.qq-section-content{grid-column:2}}@media (max-width:979px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections{display:flex}section.qq-splitscreen-vertical-scroll>div .qq-split-sections.qq-column{flex-direction:column}section.qq-splitscreen-vertical-scroll>div .qq-split-sections.qq-column-reverse{flex-direction:column-reverse}section.qq-splitscreen-vertical-scroll>div .qq-split-sections.qq-mobile-hidden-media .qq-media{display:none!important}}section.qq-splitscreen-vertical-scroll>div .qq-split-sections>div{position:relative}@media (max-width:979px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-hidden-on-mobile{display:none}}@media (min-width:980px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media{display:flex;flex-direction:column}}@media (max-width:979px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media{width:100%!important}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media[data-carouselEnabled=true]>div{transition:all .25s ease}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media[data-carouselEnabled=true]:not(.slick-slider)>div:not(:first-of-type){height:0!important;opacity:0!important}}@media (min-width:980px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-image{height:100%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-image img,section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-image>div{height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center}}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-image img{display:block;width:100%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video div:not(.qq-responsive-video-container):not(.qq-video-cover):not(.qq-video-wrapper){display:flex;width:100%;align-items:center;justify-content:center}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container{position:relative;width:100%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container:not(.qq-original){overflow:hidden}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container:not(.qq-original).qq-vertical{padding-bottom:177.77%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container:not(.qq-original).qq-portrait{padding-bottom:150%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container:not(.qq-original).qq-horizontal{padding-bottom:56.25%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container:not(.qq-original).qq-landscape{padding-bottom:66.69%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container:not(.qq-original).qq-square{padding-top:100%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container:not(.qq-original) iframe,section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container:not(.qq-original) video{position:absolute;top:0;left:0}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container.qq-original iframe,section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container.qq-original video{position:relative}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container iframe,section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container video{height:100%;width:100%}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container iframe.vimeo{background:#000}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container video{-o-object-fit:cover;object-fit:cover}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media .qq-video .qq-responsive-video-container video:fullscreen{-o-object-fit:contain!important;object-fit:contain!important}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media svg{height:auto}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media[data-carouselnavigation=dots][data-carouselDotsSize=small] ul.slick-dots{bottom:-5px}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media[data-carouselnavigation=dots][data-carouselDotsSize=small] ul.slick-dots li{height:10px;width:10px}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media[data-carouselnavigation=dots][data-carouselDotsSize=medium] ul.slick-dots{bottom:-7px}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media[data-carouselnavigation=dots][data-carouselDotsSize=medium] ul.slick-dots li{height:14px;width:14px}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media[data-carouselnavigation=dots][data-carouselDotsSize=large] ul.slick-dots{bottom:-9px}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-media[data-carouselnavigation=dots][data-carouselDotsSize=large] ul.slick-dots li{height:18px;width:18px}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-section-content{z-index:9}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-section-content>div{width:100%}@media (min-width:980px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-section-content{position:sticky;top:0;max-height:100vh;display:flex}}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-section-content .qq-btn{text-align:center}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-section-content .qq-btn,section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-section-content .qq-btn:hover{text-decoration:none!important}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows{transition:all .25s ease}@media (min-width:980px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows{display:none}}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows.qq-hidden{display:none!important}@media (max-width:979px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows{display:flex;justify-content:center;margin:0 auto;position:absolute;width:100%;top:0;height:32px}}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows span.qq-carousel-arrow{position:absolute;height:32px;width:32px;transition:all .25s ease;cursor:pointer;bottom:0;transform:none;border-radius:0;z-index:99}@media (min-width:980px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows span.qq-carousel-arrow{display:inline-block}}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows span.qq-carousel-arrow svg path{transform:scale(2)}@media (min-width:980px){section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows span.qq-carousel-arrow:hover{opacity:.7}}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows span.qq-carousel-arrow.qq-carousel-prev{left:10px}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows span.qq-carousel-arrow.qq-carousel-next{right:10px}section.qq-splitscreen-vertical-scroll>div .qq-split-sections .qq-carousel-arrows span.qq-carousel-arrow.slick-disabled{opacity:.5;pointer-events:none}section.qq-splitscreen-vertical-scroll>div .qq-split-sections ul.slick-dots{display:flex!important;max-width:100%;gap:10px;justify-content:center;margin:0;width:100%;top:auto;position:absolute}section.qq-splitscreen-vertical-scroll>div .qq-split-sections ul.slick-dots li{margin:0 3px;border-radius:50%;transition:all .5s ease;cursor:pointer}section.qq-splitscreen-vertical-scroll>div .qq-split-sections ul.slick-dots li button{display:none}section.qq-splitscreen-vertical-scroll>div .qq-split-sections ul.slick-dots li:not(.slick-active){opacity:.5}section.qq-splitscreen-vertical-scroll>div .qq-split-sections ul.slick-dots li::marker{font-size:0}html[dir=rtl] .qq-splitscreen-vertical-scroll .qq-button-wrapper{direction:ltr}</style>
+{% assign sectionID = 'shopify-section-' | append: section.id %}
+<style data='../SplitScreenVerticalScroll-inline-css.min.css.liquid'>{% if titleCustomFont %} {{titleFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% if textblockCustomFont %} {{textblockFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% if buttonCustomFont %} {{buttonFont | font_face: font_display: 'swap' | strip_newlines }} {% endif %} {% if buttonCustomFont_2 %} {{buttonFont_2 | font_face: font_display: 'swap' | strip_newlines }} {% endif %} #{{sectionID}} * { text-transform:none; } {% if sectionWidth == 'fullwidth' %} #{{sectionID}} { width: 100vw !important; position: relative !important; height: auto !important; background: {{sectionBackgroundColor}}; } html:not([dir="rtl"]) #{{sectionID}} { margin-left: -50vw !important; left: 50% !important; } html[dir="rtl"] #{{sectionID}} { margin-right: -50vw !important; right: 50% !important; } body { overflow-x:hidden; } {% if contentFullwidth == false %} #{{sectionID}} > div { max-width:{{contentMaxWidth}}px; } {% endif %} {% else %} #{{sectionID}} { max-width:{{contentMaxWidth}}px; } #{{sectionID}} .qq-split-sections { background: {{sectionBackgroundColor}}; } {% endif %} #{{sectionID}} .qq-title > * { {% if titleCustomFont %} {% if titleFontName != blank %} font-family: {{titleFontName}} !important; {% else %} font-family:{{titleFont.family}}, {{titleFont.fallback_families}} !important; {% endif %} {%endif%} {% if titleFontWeight != "default" %}font-weight:{{titleFontWeight}} !important;{%endif%} {% if titleColor contains '#' %}color:{{titleColor}};{%endif%} } #{{sectionID}} .qq-subtitle > * { {% if subtitleCustomFont %} {% if subtitleFontName != blank %} font-family: {{subtitleFontName}} !important; {% else %} font-family:{{subtitleFont.family}}, {{subtitleFont.fallback_families}} !important; {% endif %} {%endif%} {% if subtitleFontWeight != "default" %}font-weight:{{subtitleFontWeight}} !important;{%endif%} {% if subtitleColor contains '#' %}color:{{subtitleColor}};{%endif%} } #{{sectionID}} .qq-rte * { {% if textblockColor contains '#' %}color:{{textblockColor}};{%endif%} } #{{sectionID}} .qq-rte { {% if textblockCustomFont %} {% if textblockFontName != blank %} font-family: {{textblockFontName}} !important; {% else %} font-family:{{textblockFont.family}}, {{textblockFont.fallback_families}} !important; {% endif %} {%endif%} {% if textblockFontWeight != "default" %}font-weight:{{textblockFontWeight}} !important;{%endif%} } #{{sectionID}} .qq-btn { display: flex; align-items: center; justify-content: center; } #{{sectionID}} .qq-btn.qq-el-1 { {% if butttonFontSize != 0 %}font-size:{{butttonFontSize}}px;{% endif %} {% if butttonLetterSpacing != 0 %}letter-spacing:{{butttonLetterSpacing}}px !important;{% endif %} } #{{sectionID}} .qq-btn.qq-el-1 { width:100%; {% if buttonCustomFont %} {% if buttonFontName != blank %} font-family: {{buttonFontName}} !important; {% else %} font-family:{{buttonFont.family}}, {{buttonFont.fallback_families}} !important; {% endif %} {%endif%} {% if buttonFontWeight != "default" %}font-weight:{{buttonFontWeight}} !important;{%endif%} max-width: {{buttonMaxWidth}}px; padding: {{buttonPaddingVertical}}px {{buttonPaddingHorizontal}}px; color:{{buttonColor}}; background-color:{{buttonBackground}}; {% if buttonBorderColor contains '#' %} border:{{buttonBorder}}px solid {{buttonBorderColor}}; {% endif %} border-radius:{{buttonRadius}}px; transition: all 0.5s ease; } #{{sectionID}} .qq-btn.qq-el-1:hover { color: {{buttonColorHover}} !important; background-color:{{buttonBackgroundHover}} !important; border-color:{{buttonBorderColorHover}} !important; } {% if buttonLabel_2 != blank %} #{{sectionID}} .qq-btn.qq-el-2 { width:100%; {% if buttonCustomFont_2 %} {% if buttonFontName_2 != blank %} font-family: {{buttonFontName_2}} !important; {% else %} font-family:{{buttonFont_2.family}}, {{buttonFont.fallback_families}} !important; {% endif %} {%endif%} {% if buttonFontWeight_2 != "default" %}font-weight:{{buttonFontWeight_2}} !important;{%endif%} max-width: {{buttonMaxWidth_2}}px; padding: {{buttonPaddingVertical_2}}px {{buttonPaddingHorizontal_2}}px; color:{{buttonColor_2}}; background-color:{{buttonBackground_2}}; {% if buttonBorderColor_2 contains '#' %} border:{{buttonBorder_2}}px solid {{buttonBorderColor_2}}; {% endif %} border-radius:{{buttonRadius_2}}px; transition: all 0.5s ease; } #{{sectionID}} .qq-btn.qq-el-2:hover { color: {{buttonColorHover_2}} !important; background-color:{{buttonBackgroundHover_2}} !important; border-color:{{buttonBorderColorHover_2}} !important; } {% endif %} {% if carouselNavigation == 'arrows' %} {% if carouselArrowsLineColor contains '#'%} #{{sectionID}} .qq-carousel-arrow svg polyline { stroke:{{carouselArrowsLineColor}} !important; } {%endif%} #{{sectionID}} .qq-carousel-arrow svg circle { {% if carouselArrowsBgColor contains '#'%} fill:{{carouselArrowsBgColor}} !important; {% else %} fill:none !important; {% endif %} } {% endif %} @media only screen and (min-width: 980px) { #{{sectionID}} { margin-top:{{sectionMarginTop}}px; margin-bottom:{{sectionMarginBottom}}px; } {% if sectionWidth == 'fullwidth' %} #{{sectionID}} { padding:{{sectionPaddingTop}}px {{sectionPaddingHorizontal}}px {{sectionPaddingBottom}}px {{sectionPaddingHorizontal}}px; } {% else %} #{{sectionID}} .qq-split-sections { padding:{{sectionPaddingTop}}px {{sectionPaddingHorizontal}}px {{sectionPaddingBottom}}px {{sectionPaddingHorizontal}}px; } {% endif %} #{{sectionID}} .qq-section-content { align-items: {{textAreaVerticalPos}}; padding:{{textAreaPaddingTop}}px {{textAreaPaddingRight}}px {{textAreaPaddingBottom}}px {{textAreaPaddingLeft}}px; } #{{sectionID}} .qq-title > * { {% if titleFontSize != 0 %}font-size:{{titleFontSize}}px;{% endif %} {% if titleLineHeight != 0 %}line-height:{{titleLineHeight}}px;{% endif %} {% if titleLetterSpacing != 0 %}letter-spacing:{{titleLetterSpacing}}px !important;{% endif %} margin-top:{{titleMarginTop}}px; margin-bottom:{{titleMarginBottom}}px; } #{{sectionID}} .qq-subtitle > * { {% if subtitleFontSize != 0 %}font-size:{{subtitleFontSize}}px;{% endif %} {% if subtitleLineHeight != 0 %}line-height:{{subtitleLineHeight}}px;{% endif %} {% if subtitleLetterSpacing != 0 %}letter-spacing:{{subtitleLetterSpacing}}px !important;{% endif %} margin-top:{{subtitleMarginTop}}px; margin-bottom:{{subtitleMarginBottom}}px; } #{{sectionID}} .qq-split-sections { grid-gap:{{mediaMargin}}px } #{{sectionID}} .qq-split-sections.qq-row { grid-template-columns: calc({{textWidth}}% - {{mediaMargin | divided_by: 2 | round }}px) calc({{mediaWidth}}% - {{mediaMargin | divided_by: 2 | round}}px); } #{{sectionID}} .qq-split-sections.qq-row-reverse { grid-template-columns: calc({{mediaWidth}}% - {{mediaMargin | divided_by: 2 | round}}px) calc({{textWidth}}% - {{mediaMargin | divided_by: 2 | round }}px); } #{{sectionID}} .qq-title > *, #{{sectionID}} .qq-subtitle > *, #{{sectionID}} .qq-rte p { text-align:{{textAreaTextAlign}}; } #{{sectionID}} .qq-rte p { {% if textblockFontSize != 0 %}font-size:{{textblockFontSize}}px;{% endif %} {% if textblockLineHeight != 0 %}line-height:{{textblockLineHeight}}px;{% endif %} {% if textblockLetterSpacing != 0 %}letter-spacing:{{textblockLetterSpacing}}px !important;{% endif %} } #{{sectionID}} .qq-button-wrapper { {% comment %} margin-top:{{buttonMarginTop}}px; {% endcomment %} {% comment %} margin-bottom:{{buttonMarginBottom}}px; {% endcomment %} padding-top:{{buttonMarginTop}}px; padding-bottom:{{buttonMarginBottom}}px; } #{{sectionID}} .qq-button-wrapper { flex-direction:{{buttonsLayout}}; align-items:{{buttonsAlignment}}; } html:not([dir="rtl"]) #{{sectionID}} .qq-button-wrapper { justify-content:{{buttonsAlignment}}; } html[dir="rtl"] #{{sectionID}} .qq-button-wrapper { justify-content:flex-end; } #{{sectionID}} .qq-btn.qq-el-1 { {% if buttonFontSize != 0 %}font-size:{{buttonFontSize}}px;{% endif %} {% if buttonLetterSpacing != 0 %}letter-spacing:{{buttonLetterSpacing}}px !important;{% endif %} } {% if buttonLabel_2 != blank %} #{{sectionID}} .qq-btn.qq-el-2 { {% if buttonFontSize_2 != 0 %}font-size:{{buttonFontSize_2}}px;{% endif %} {% if buttonLetterSpacing_2 != 0 %}letter-spacing:{{buttonLetterSpacing_2}}px !important;{% endif %} } html:not([dir="rtl"]) #{{sectionID}} .qq-btn.qq-el-2 { {% if buttonsLayout == 'row' %} margin-left:{{buttonsMargin}}px; {% else %} margin-top:{{buttonsMargin}}px; {% endif %} } html[dir="rtl"] #{{sectionID}} .qq-btn.qq-el-2 { {% if buttonsLayout == 'row' %} margin-right:{{buttonsMargin}}px; {% else %} margin-top:{{buttonsMargin}}px; {% endif %} } {% endif %} #{{sectionID}} .qq-media { gap: {{mediaGap}}px; } {% if mediaBorderRadius > 0 %} #{{sectionID}} .qq-image img, #{{sectionID}} .qq-responsive-video-container * { border-radius:{{mediaBorderRadius}}px; } {% endif %} } @media only screen and (max-width: 979px) { #{{sectionID}} { margin-top:{{sectionMarginTopMobile}}px; margin-bottom:{{sectionMarginBottomMobile}}px; padding:{{sectionPaddingTopMobile}}px {{sectionPaddingHorizontalMobile}}px {{sectionPaddingBottomMobile}}px {{sectionPaddingHorizontalMobile}}px; } {% if sectionWidth == 'fullwidth' %} #{{sectionID}} { padding:{{sectionPaddingTopMobile}}px {{sectionPaddingHorizontalMobile}}px {{sectionPaddingBottomMobile}}px {{sectionPaddingHorizontalMobile}}px; } {% else %} #{{sectionID}} .qq-split-sections { padding:{{sectionPaddingTopMobile}}px {{sectionPaddingHorizontalMobile}}px {{sectionPaddingBottomMobile}}px {{sectionPaddingHorizontalMobile}}px; } {% endif %} #{{sectionID}} .qq-section-content { padding:{{textAreaPaddingTopMobile}}px {{textAreaPaddingHorizontalMobile}}px {{textAreaPaddingBottomMobile}}px {{textAreaPaddingHorizontalMobile}}px; } #{{sectionID}} .qq-title > * { {% if titleFontSizeMobile != 0 %}font-size:{{titleFontSizeMobile}}px;{% endif %} {% if titleLineHeightMobile != 0 %}line-height:{{titleLineHeightMobile}}px;{% endif %} {% if titleLetterSpacingMobile != 0 %}letter-spacing:{{titleLetterSpacingMobile}}px !important;{% endif %} margin-top:{{titleMarginTopMobile}}px; margin-bottom:{{titleMarginBottomMobile}}px; } #{{sectionID}} .qq-subtitle > * { {% if subtitleFontSizeMobile != 0 %}font-size:{{subtitleFontSizeMobile}}px;{% endif %} {% if subtitleLineHeightMobile != 0 %}line-height:{{subtitleLineHeightMobile}}px;{% endif %} {% if subtitleLetterSpacingMobile != 0 %}letter-spacing:{{subtitleLetterSpacingMobile}}px !important;{% endif %} margin-top:{{subtitleMarginTopMobile}}px; margin-bottom:{{subtitleMarginBottomMobile}}px; } #{{sectionID}} .qq-rte p { {% if textblockFontSizeMobile != 0 %}font-size:{{textblockFontSizeMobile}}px;{% endif %} {% if textblockLineHeightMobile != 0 %}line-height:{{textblockLineHeightMobile}}px;{% endif %} {% if textblockLetterSpacingMobile != 0 %}letter-spacing:{{textblockLetterSpacingMobile}}px !important;{% endif %} } #{{sectionID}} .qq-title > *, #{{sectionID}} .qq-subtitle > *, #{{sectionID}} .qq-rte p { text-align:{{textAreaTextAlignMobile}}; } #{{sectionID}} .qq-button-wrapper { {% comment %} margin-top:{{buttonMarginTopMobile}}px; {% endcomment %} {% comment %} margin-bottom:{{buttonMarginBottomMobile}}px; {% endcomment %} padding-top:{{buttonMarginTopMobile}}px; padding-bottom:{{buttonMarginBottomMobile}}px; flex-direction:column; } #{{sectionID}} .qq-button-wrapper { align-items:{{buttonsAlignmentMobile}}; } #{{sectionID}} .qq-btn.qq-el-1 { {% if buttonFontSizeMobile != 0 %}font-size:{{buttonFontSizeMobile}}px;{% endif %} {% if buttonLetterSpacingMobile != 0 %}letter-spacing:{{buttonLetterSpacingMobile}}px !important;{% endif %} } {% if buttonLabel_2 != blank %} #{{sectionID}} .qq-btn.qq-el-2 { {% if buttonFontSizeMobile_2 != 0 %}font-size:{{buttonFontSizeMobile_2}}px;{% endif %} {% if buttonLetterSpacingMobile_2 != 0 %}letter-spacing:{{buttonLetterSpacingMobile_2}}px !important;{% endif %} margin-top:{{buttonsMargin}}px; } {% endif %} {% if mediaPositionMobile contains 'behind' %} #{{sectionID}} .qq-section-content { position:absolute; width:100%; z-index:9; {% if mediaPositionMobile contains 'top' %} top:0; {% elsif mediaPositionMobile contains 'center' %} top: 50%; left: 50%; transform: translate(-50%, -50%); {% elsif mediaPositionMobile contains 'bottom' %} bottom:0; {% endif %} } {% elsif mediaPositionMobile != 'hidden' %} #{{sectionID}} .qq-split-sections { gap:{{mediaMarginMobile}}px; } #{{sectionID}} .qq-media { max-width:{{mediaWidthMobile}}%; margin:0 auto; {% if carouselEnabled == false %} display:flex; flex-direction:column; gap:{{mediaGapMobile}}px; {% endif %} } {% endif %} {% if mediaBorderRadiusMobile > 0 %} #{{sectionID}} .qq-image img, #{{sectionID}} .qq-responsive-video-container * { border-radius:{{mediaBorderRadiusMobile}}px; } {% endif %} {% if carouselNavigation == 'dots' %} #{{sectionID}} ul.slick-dots { transform: translateY({{carouselDotsPosition}}px); } #{{sectionID}} ul.slick-dots li { {% if carouselDotsColor contains '#'%}background-color:{{carouselDotsColor}} !important;{%endif%} } {% endif %} }</style>
+<!-- js:../SplitScreenVerticalScroll.min.js --><script>{% raw %}function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}(()=>{function t(){var e=document.querySelectorAll(".qq-splitscreen-vertical-scroll .QQ-JS-init-msg");e&&e.forEach(function(e){e.remove()})}var n;function i(){(n=document.getElementsByClassName("qq-splitscreen-vertical-scroll")).length&&o()}function o(){var t,e;null==("undefined"==typeof $?"undefined":_typeof($))||null==window.$?((e=document.createElement("script")).id="qq-jquery",document.head.appendChild(e),e.type="text/javascript",e.src="https://code.jquery.com/jquery-3.6.0.min.js",e.onload=function(){o()}):document.getElementById("qq-slick")&&document.getElementById("qq-slick-css")?t=setInterval(function(){if($.fn.slick&&(clearInterval(t),n.length))for(var e=function(){var e=n[i].id,t=e;(t=$("#"+t+" .qq-responsive-video-container")).length&&t.each(function(e){var t;$(this).hasClass("qq-portrait")&&(t=1.33*$(this).outerWidth(!0),$(this).css("height",t))}),s(e),window.addEventListener("resize",function(){clearTimeout(window.resizedFinished),window.resizedFinished=setTimeout(function(){s(e)},500)})},i=0;i<n.length;i++)e()},10):(document.getElementById("qq-slick")||((e=document.createElement("script")).id="qq-slick",document.head.appendChild(e),e.type="text/javascript",e.src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js",e.onload=function(){o()}),document.getElementById("qq-slick-css")||((e=document.createElement("link")).id="qq-slick-css",document.head.appendChild(e),e.type="text/css",e.rel="stylesheet",e.href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"))}function s(e){var t,i,n,o,s,l,r,d,a,c,u,m,f,h=$("#"+e+" .qq-media");"true"==h.attr("data-carouselEnabled")&&(t=window.innerWidth,i=h.parent(),t<980&&!i.hasClass("qq-mobile-hidden-media")?(t=/true/i.test(h.attr("data-carouselAutoplay")),i=1e3*Number(h.attr("data-carouselSpeed")),d=h.attr("data-carouselAnimation"),n=h.attr("data-carouselNavigation"),o=h.attr("data-carouselMediaPositionMobile"),l=(s=$("#"+e+"  .qq-carousel-arrows")).find(".qq-carousel-prev"),r=s.find(".qq-carousel-next"),d="fade"==d,"arrows"==n?(a=!1,c=h.children("div").length,$(window).width()<768&&s.hasClass("qq-hidden")&&1<c&&s.removeClass("qq-hidden")):a=!0,c=!1,u=$("html").attr("dir"),f=$("html").css("direction"),(null!=u&&"rtl"==u||null!=_typeof(f)&&"rtl"==f)&&(c=!0,null==u)&&$("html").attr("dir","rtl"),f="original"==h.attr("data-media-size")?(m=!0,"init afterChange"):(m=!1,"init"),self["sliderItems"+e]&&self["sliderItems"+e].slick("unslick"),self["sliderItems"+e]=$("#"+e+" .qq-media").not(".slick-initialized").on(f,function(e,t){"qq-mobile-hidden-media"!==o&&"arrows"===n&&p(h,s,o)}).slick({slidesToShow:1,rtl:c,slidesToScroll:1,arrows:!0,fade:d,dots:a,speed:500,adaptiveHeight:m,centerMode:!1,prevArrow:l,nextArrow:r,autoplay:t,autoplaySpeed:t?i:void 0}),"qq-mobile-hidden-media"!==o&&"arrows"===n&&p(h,s,o)):h.hasClass("slick-initialized")&&h.slick("unslick"))}function p(i,n,o){setTimeout(function(){var e=i.outerHeight(),t=(n.find(".qq-carousel-arrow"),n.outerHeight());e=o.includes("behind")?e/2-t/2-t/2:o.includes("top")?e/2:i.prev().outerHeight()+(e/2-t/2),n.css("top",e)},200)}window.addEventListener("shopify:section:load",function(e){t()}),t(),"loading"!==document.readyState?i():document.addEventListener("DOMContentLoaded",function(){i()}),window.addEventListener("shopify:section:load",function(e){i()}),window.addEventListener("shopify:block:select",function(e){o()})})();{% endraw %}</script><!-- endjs -->
+{% schema %}
+{
+  "name": "QQ-SplitVerticalScroll",
+  "tag": "section",
+  "class": "qq-splitscreen-vertical-scroll",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_class",
+      "label": "Section Class",
+      "info": "Add section class (without .). Use spaces to add multiple classes"
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {
+          "value": "regular",
+          "label": "Regular"
+        },
+        {
+          "value": "fullwidth",
+          "label": "Fullwidth"
+        }
+      ],
+      "default": "regular",
+      "label": "Section Width"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 500,
+      "max": 1500,
+      "step": 20,
+      "unit": "px",
+      "label": "Content Max Width",
+      "default": 1280
+    },
+    {
+      "type": "checkbox",
+      "id": "content_fullwidth",
+      "label": "Real Fullwidth",
+      "info": "Enable to ignore 'Content Max Width'",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Margin Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Margin Bottom",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Section Padding Horizontal",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Section Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Section Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Styling - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_top_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Margin Top - Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_margin_bottom_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Margin Bottom - Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Padding Horizontal - Mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Padding Top - Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section Padding Bottom - Mobile",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Media Settings"
+    },
+    {
+      "type": "range",
+      "id": "media_width",
+      "min": 25,
+      "max": 75,
+      "step": 1,
+      "unit": "%",
+      "label": "Media Width",
+      "default": 50
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Media Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "range",
+      "id": "media_margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin between media and text",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "media_size",
+      "options": [
+    {
+        "value": "original",
+        "label": "Original"
+    },
+    {
+        "value": "landscape",
+        "label": "Landscape"
+    },            
+    {
+        "value": "portrait",
+        "label": "Portrait"
+    },
+    {
+        "value": "square",
+        "label": "Square"
+    },
+    {
+        "value": "horizontal",
+        "label": "Horizontal (16x9)"
+    },
+    {
+        "value": "vertical",
+        "label": "Vertical (9x16)"
+    }
+],
+      "default": "original",
+      "label": "Media Dimensions"
+    },
+    {
+      "type": "range",
+      "id": "media_border_radius",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Media Border Radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "media_gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Margin between media elements",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Media Settings - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "media_width_mobile",
+      "min": 15,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Media Width - Mobile",
+      "info": "Only available when 'Top' or 'Bottom' it's selected on 'Media Position on Mobile'",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "media_border_radius_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Media Border Radius - Mobile",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "media_position_mobile",
+      "label": "Media position on Mobile",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "behind-top",
+          "label": "Behind Image (Top) - Only for Carousel"
+        },
+        {
+          "value": "behind-center",
+          "label": "Behind Image (Center) - Only for Carousel"
+        },
+        {
+          "value": "behind-bottom",
+          "label": "Behind Image (Bottom) - Only for Carousel"
+        }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "range",
+      "id": "media_margin_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Margin between media and text - Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "media_gap_mobile",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Margin between media elements - Mobile",
+      "info": "Only available when carousel is not enabled",
+      "default": 10
+    },   
+    {
+      "type": "header",
+      "content": "Text Area Styling"
+    },
+    {
+      "type": "select",
+      "id": "text_area_vertical_position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "label": "Vertical position"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Text Alignment"
+    },
+    {
+      "type": "range",
+      "id": "text_area_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Area Padding Top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_area_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Area Padding Bottom",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_area_padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Area Padding Left",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_area_padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Area Padding Right",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Text Area Styling - Mobile"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Text Alignment - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "text_area_padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Area Top Padding - Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_area_padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Area Bottom Padding - Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "text_area_padding_horizontal_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Area Horizontal Padding - Mobile",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Carousel Settings"
+    },    
+    {
+      "type": "checkbox",
+      "id": "carousel_enabled",
+      "label": "Enable Carousel on Mobile",
+      "default": true
+    },        
+    {
+      "type": "paragraph",
+      "content": "When enabled, this section becomes a carousel on mobile devices."
+    },   
+    {
+      "type": "checkbox",
+      "id": "carousel_autoplay",
+      "label": "Autoplay Carousel Slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "carousel_speed",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "label": "Carousel Speed",
+      "info": "Speed in seconds",
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "carousel_animation",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        }
+      ],
+      "default": "fade",
+      "label": "Carousel Animation"
+    },
+    {
+      "type": "select",
+      "id": "carousel_navigation",
+      "options": [
+        {
+          "value": "arrows",
+          "label": "Arrows"
+        },
+        {
+          "value": "dots",
+          "label": "Dots"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "arrows",
+      "label": "Carousel Navigation"
+    },
+    {
+      "type": "header",
+      "content": "Carousel Arrows"
+    },
+    {
+      "type": "color",
+      "id": "carousel_arrows_color_line",
+      "label": "Carousel Arrows Line Color"
+    },
+    {
+      "type": "color",
+      "id": "carousel_arrows_color_bg",
+      "label": "Carousel Arrows Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_left",
+      "label": "Custom Left Arrow (Optional)",
+      "info": "Recommended size 32px X 32px"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_right",
+      "label": "Custom Right Arrow (Optional)",
+      "info": "Recommended size 32px X 32px"
+    },
+    {
+      "type": "header",
+      "content": "Carousel Dots"
+    },
+    {
+      "type": "select",
+      "id": "carousel_dots_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium",
+      "label": "Carousel Dots Size"
+    },
+    {
+      "type": "color",
+      "id": "carousel_dots_color",
+      "label": "Carousel Dots Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "carousel_dots_position_mobile",
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Carousel Dots Position - Mobile",
+      "default": -20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "default": "<h2>Section Title</h2>",
+          "label": "Title"
+        },
+        {
+          "type": "header",
+          "content": "Title Styling"
+        },
+        {
+          "type": "checkbox",
+          "id": "title_custom_font",
+          "label": "Use Custom Font",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "title_font",
+          "label": "Title Font",
+          "default": "mono"
+        },
+        {
+          "type": "text",
+          "id": "title_font_name",
+          "label": "Custom Font Family Name",
+          "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+        },
+        {
+          "type": "select",
+          "id": "title_font_weight",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "100",
+              "label": "100"
+            },
+            {
+              "value": "200",
+              "label": "200"
+            },
+            {
+              "value": "300",
+              "label": "300"
+            },
+            {
+              "value": "400",
+              "label": "400 (Regular)"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700 (Bold)"
+            },
+            {
+              "value": "800",
+              "label": "800"
+            },
+            {
+              "value": "900",
+              "label": "900"
+            }
+          ],
+          "default": "default",
+          "label": "Font Weight"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color"
+        },
+        {
+          "type": "paragraph",
+          "content": "Set value to 0 to use your theme's default values:"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Font Size",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "title_line_height",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Line Height",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "title_letter_spacing",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Letter Spacing",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Title Styling - Mobile"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Font Size - Mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "title_line_height_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Line Height - Mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "title_letter_spacing_mobile",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Letter Spacing - Mobile",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Title Margins"
+        },
+        {
+          "type": "range",
+          "id": "title_margin_top",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Title Margin Top",
+          "default": 10
+        },
+        {
+          "type": "range",
+          "id": "title_margin_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Title Margin Bottom",
+          "default": 10
+        },
+        {
+          "type": "header",
+          "content": "Title Margins - Mobile"
+        },
+        {
+          "type": "range",
+          "id": "title_margin_top_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Title Margin Top - Mobile",
+          "default": 10
+        },
+        {
+          "type": "range",
+          "id": "title_margin_bottom_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Title Margin Bottom - Mobile",
+          "default": 10
+        }
+      ]
+    },
+    {
+      "type": "subtitle",
+      "name": "Subtitle",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "subtitle",
+          "default": "<h4>Section Subtitle</h4>",
+          "label": "Subtitle"
+        },
+        {
+          "type": "header",
+          "content": "Subtitle Styling"
+        },
+        {
+          "type": "checkbox",
+          "id": "subtitle_custom_font",
+          "label": "Use Custom Font",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "subtitle_font",
+          "label": "Subtitle Font",
+          "default": "mono"
+        },
+        {
+          "type": "text",
+          "id": "subtitle_font_name",
+          "label": "Custom Font Family Name",
+          "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+        },
+        {
+          "type": "select",
+          "id": "subtitle_font_weight",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "100",
+              "label": "100"
+            },
+            {
+              "value": "200",
+              "label": "200"
+            },
+            {
+              "value": "300",
+              "label": "300"
+            },
+            {
+              "value": "400",
+              "label": "400 (Regular)"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700 (Bold)"
+            },
+            {
+              "value": "800",
+              "label": "800"
+            },
+            {
+              "value": "900",
+              "label": "900"
+            }
+          ],
+          "default": "default",
+          "label": "Font Weight"
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "Subtitle Color"
+        },
+        {
+          "type": "paragraph",
+          "content": "Set value to 0 to use your theme's default values:"
+        },
+        {
+          "type": "range",
+          "id": "subtitle_font_size",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Subtitle Font Size",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "subtitle_line_height",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Subtitle Line Height",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "subtitle_letter_spacing",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Subtitle Letter Spacing",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Subtitle Styling - Mobile"
+        },
+        {
+          "type": "range",
+          "id": "subtitle_font_size_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Subtitle Font Size - Mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "subtitle_line_height_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Subtitle Line Height - Mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "subtitle_letter_spacing_mobile",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Subtitle Letter Spacing - Mobile",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Subtitle Margins"
+        },
+        {
+          "type": "range",
+          "id": "subtitle_margin_top",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Subtitle Margin Top",
+          "default": 10
+        },
+        {
+          "type": "range",
+          "id": "subtitle_margin_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Subtitle Margin Bottom",
+          "default": 10
+        },
+        {
+          "type": "header",
+          "content": "Subtitle Margins - Mobile"
+        },
+        {
+          "type": "range",
+          "id": "subtitle_margin_top_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Subtitle Margin Top - Mobile",
+          "default": 10
+        },
+        {
+          "type": "range",
+          "id": "subtitle_margin_bottom_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Subtitle Margin Bottom - Mobile",
+          "default": 10
+        }
+      ]
+    },
+    {
+      "type": "textblock",
+      "name": "Text Block",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "textblock",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+          "label": "Text Block"
+        },
+        {
+          "type": "header",
+          "content": "Text Block Styling"
+        },
+        {
+          "type": "checkbox",
+          "id": "textblock_custom_font",
+          "label": "Use Custom Font",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "textblock_font",
+          "label": "Text Font",
+          "default": "mono"
+        },
+        {
+          "type": "text",
+          "id": "textblock_font_name",
+          "label": "Custom Font Family Name",
+          "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+        },
+        {
+          "type": "select",
+          "id": "textblock_font_weight",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "100",
+              "label": "100"
+            },
+            {
+              "value": "200",
+              "label": "200"
+            },
+            {
+              "value": "300",
+              "label": "300"
+            },
+            {
+              "value": "400",
+              "label": "400 (Regular)"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700 (Bold)"
+            },
+            {
+              "value": "800",
+              "label": "800"
+            },
+            {
+              "value": "900",
+              "label": "900"
+            }
+          ],
+          "default": "default",
+          "label": "Font Weight"
+        },
+        {
+          "type": "color",
+          "id": "textblock_color",
+          "label": "Text Block Color"
+        },
+        {
+          "type": "paragraph",
+          "content": "Set value to 0 to use your theme's default values:"
+        },
+        {
+          "type": "range",
+          "id": "textblock_font_size",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Block Font Size",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "textblock_line_height",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Block Line Height",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "textblock_letter_spacing",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Block Letter Spacing",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Text Block Styling - Mobile"
+        },
+        {
+          "type": "range",
+          "id": "textblock_font_size_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Block Font Size - Mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "textblock_line_height_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Block Line Height - Mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "textblock_letter_spacing_mobile",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Block Letter Spacing - Mobile",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "button_class",
+          "label": "Button CSS Class (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_tab",
+          "label": "Open in a New Tab",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Button Styling"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_custom_font",
+          "label": "Use Custom Font",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "button_font",
+          "label": "Button Font",
+          "default": "mono"
+        },
+        {
+          "type": "text",
+          "id": "button_font_name",
+          "label": "Custom Font Family Name",
+          "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+        },
+        {
+          "type": "select",
+          "id": "button_font_weight",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "100",
+              "label": "100"
+            },
+            {
+              "value": "200",
+              "label": "200"
+            },
+            {
+              "value": "300",
+              "label": "300"
+            },
+            {
+              "value": "400",
+              "label": "400 (Regular)"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700 (Bold)"
+            },
+            {
+              "value": "800",
+              "label": "800"
+            },
+            {
+              "value": "900",
+              "label": "900"
+            }
+          ],
+          "default": "default",
+          "label": "Font Weight"
+        },
+        {
+          "type": "range",
+          "id": "button_border",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Border Width",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_radius",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Border Radius",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_max_width",
+          "min": 40,
+          "max": 700,
+          "step": 20,
+          "unit": "px",
+          "label": "Button Max Width Size",
+          "default": 180
+        },
+        {
+          "type": "range",
+          "id": "button_padding_horizontal",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Horizontal Padding",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_padding_vertical",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button Vertical Padding",
+          "default": 10
+        },
+        {
+          "type": "range",
+          "id": "button_margin_top",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button Margin Top",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_margin_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button Margin Bottom",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_font_size",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Font Size",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_letter_spacing",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Letter Spacing",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Button Styling - Mobile"
+        },
+        {
+          "type": "range",
+          "id": "button_margin_top_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button Margin Top - Mobile",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_margin_bottom_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button Margin Bottom - Mobile",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_font_size_mobile",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Font Size - Mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_letter_spacing_mobile",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Letter Spacing - Mobile",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Button Colors"
+        },
+        {
+          "type": "color",
+          "id": "button_background_color",
+          "label": "Button Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_border_color",
+          "label": "Button Border Color"
+        },
+        {
+          "type": "header",
+          "content": "Button Hover Colors"
+        },
+        {
+          "type": "color",
+          "id": "button_background_color_hover",
+          "label": "Button Hover Background Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color_hover",
+          "label": "Button Hover Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_border_color_hover",
+          "label": "Button Hover Border Color"
+        },
+        {
+          "type": "header",
+          "content": "Button 2"
+        },
+        {
+          "type": "text",
+          "id": "button_class_2",
+          "label": "Button 2 CSS Class (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Button 2 Label"
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "Button 2 Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_tab_2",
+          "label": "Open in a New Tab",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Button 2 Styling"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_custom_font_2",
+          "label": "Use Custom Font",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "button_font_2",
+          "label": "Button 2 Font",
+          "default": "mono"
+        },
+        {
+          "type": "text",
+          "id": "button_font_name_2",
+          "label": "Custom Font Family Name",
+          "info": "Add your custom font. Example: ‘Helvetica’, sans-serif."
+        },
+        {
+          "type": "select",
+          "id": "button_font_weight_2",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "100",
+              "label": "100"
+            },
+            {
+              "value": "200",
+              "label": "200"
+            },
+            {
+              "value": "300",
+              "label": "300"
+            },
+            {
+              "value": "400",
+              "label": "400 (Regular)"
+            },
+            {
+              "value": "500",
+              "label": "500"
+            },
+            {
+              "value": "600",
+              "label": "600"
+            },
+            {
+              "value": "700",
+              "label": "700 (Bold)"
+            },
+            {
+              "value": "800",
+              "label": "800"
+            },
+            {
+              "value": "900",
+              "label": "900"
+            }
+          ],
+          "default": "default",
+          "label": "Font Weight"
+        },
+        {
+          "type": "range",
+          "id": "button_border_2",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "label": "Button 2 Border Width",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_radius_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Button 2 Border Radius",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_max_width_2",
+          "min": 40,
+          "max": 700,
+          "step": 20,
+          "unit": "px",
+          "label": "Button 2 Max Width Size",
+          "default": 180
+        },
+        {
+          "type": "range",
+          "id": "button_padding_horizontal_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Button 2 Horizontal Padding",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_padding_vertical_2",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button 2 Vertical Padding",
+          "default": 10
+        },
+        {
+          "type": "range",
+          "id": "button_margin_top_2",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button 2 Margin Top",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_margin_bottom_2",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button 2 Margin Bottom",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_font_size_2",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Button 2 Font Size",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_letter_spacing_2",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Button 2 Letter Spacing",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Button 2 Styling - Mobile"
+        },
+        {
+          "type": "range",
+          "id": "button_margin_top_mobile_2",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button 2 Margin Top - Mobile",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_margin_bottom_mobile_2",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Button 2 Margin Bottom - Mobile",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "button_font_size_mobile_2",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Button 2 Font Size - Mobile",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "button_letter_spacing_mobile_2",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Button 2 Letter Spacing - Mobile",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Button 2 Colors"
+        },
+        {
+          "type": "color",
+          "id": "button_background_color_2",
+          "label": "Button 2 Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color_2",
+          "label": "Button 2 Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_border_color_2",
+          "label": "Button 2 Border Color"
+        },
+        {
+          "type": "header",
+          "content": "Button 2 Hover Colors"
+        },
+        {
+          "type": "color",
+          "id": "button_background_color_hover_2",
+          "label": "Button 2 Hover Background Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color_hover_2",
+          "label": "Button 2 Hover Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "button_border_color_hover_2",
+          "label": "Button 2 Hover Border Color"
+        },
+        {
+          "type": "header",
+          "content": "Buttons Styling"
+        },
+        {
+          "type": "range",
+          "id": "buttons_margin",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Margin between buttons",
+          "default": 20
+        },
+        {
+          "type": "select",
+          "id": "buttons_layout",
+          "options": [
+            {
+              "value": "row",
+              "label": "Side by Side"
+            },
+            {
+              "value": "column",
+              "label": "Stack"
+            }
+          ],
+          "default": "row",
+          "label": "Buttons Layout"
+        }
+      ]
+    },
+    {
+      "type": "media",
+      "name": "Media",
+      "settings": [
+        {
+          "type": "select",
+          "id": "media_type",
+          "options": [
+            {
+              "value": "image",
+              "label": "Image"
+            },
+            {
+              "value": "video",
+              "label": "Video"
+            }
+          ],
+          "default": "image",
+          "label": "Media selector"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "id": "video_url",
+          "type": "video_url",
+          "label": "Video URL",
+          "placeholder": "Enter Video URL here",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "info": "Leave blank if you don't want to use a Youtube or Vimeo video"
+        },
+        {
+          "type": "video",
+          "id": "local_video_url",
+          "label": "A Shopify-hosted MP4 video",
+          "info": "This will take priority over Youtube/Vimeo videos"
+        },
+        {
+          "type": "header",
+          "content": "Video Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "video_autoplay",
+          "label": "Autoplay Video",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "video_loop",
+          "label": "Loop Video",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "video_controls",
+          "label": "Show Controls on Video",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "QQ - Split Screen with Vertical Scroll",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "textblock"
+        },
+        {
+          "type": "buttons"
+        },
+        {
+          "type": "media"
+        },
+        {
+          "type": "media"
+        },
+        {
+          "type": "media"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
