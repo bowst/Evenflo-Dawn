@@ -61,8 +61,13 @@
     background-color: #ffffff;
     padding: 16px;
   }
+
+  #shopify-section-{{ section.id }} .page-width {
+    max-width: 1200px;
+  }
   
   /* / Variant specific */
+  
   @media screen and (min-width: 750px) {
     #shopify-section-{{ section.id }} .multicolumn {
       padding-top: {{ section.settings.padding_top }}px;
