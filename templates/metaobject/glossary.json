@@ -8,6 +8,25 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "custom_liquid_NehnQy": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".content-container:has(.breadcrumb) {width: 100%; padding: 0 20px; box-sizing: border-box;}",
+        ".breadcrumb {font-size: 15px; color: inherit; padding: 1rem 5rem;}",
+        ".breadcrumb a {text-decoration: none; color: inherit;}",
+        ".breadcrumb span {margin: 0 5px;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"content-container page-width content-container--full-width\">\n<nav class=\"breadcrumb\">\n  <a href=\"{{ routes.root_url }}\">Home</a> \n  {% if metaobject %}\n    <span> | </span>\n    <a href=\"/pages/glossary-listing\"> Glossary</a> \n    <span> | </span>\n    <span>{{ metaobject.name | escape }}</span>\n  {% endif %}\n</nav>\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_NehnQy"
+  ]
 }
