@@ -170,10 +170,17 @@
           "settings": {
             "product": "{{product}}"
           }
+        },
+        "pixlee_turnto_social_ugc_product_block_jL6T8G": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": "{{ product.metafields.custom.pixlee_gallery.value }}"
+          }
         }
       },
       "block_order": [
-        "0207158f-2187-4a28-8e4c-ec72e9bc2a54"
+        "0207158f-2187-4a28-8e4c-ec72e9bc2a54",
+        "pixlee_turnto_social_ugc_product_block_jL6T8G"
       ],
       "settings": {
         "include_margins": true
