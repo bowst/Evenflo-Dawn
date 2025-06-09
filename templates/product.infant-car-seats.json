@@ -134,16 +134,6 @@
         "description": ""
       }
     },
-    "215233c3-69f3-4f5d-ba0f-3e80ca0f3806": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addProductWidget({accountId:1999, widgetId:19067745, skuId:\"litemax-vizor-infant-car-seat\",setMetaTags:true});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
       "settings": {
@@ -200,6 +190,12 @@
     "1691542364be6ead55": {
       "type": "apps",
       "blocks": {
+        "pixlee_turnto_social_ugc_product_block_aMMVyD": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": "{{ product.metafields.custom.pixlee_gallery.value }}"
+          }
+        },
         "64d5012e-22dc-4dbb-8c03-84ceeda2d45b": {
           "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
@@ -208,6 +204,7 @@
         }
       },
       "block_order": [
+        "pixlee_turnto_social_ugc_product_block_aMMVyD",
         "64d5012e-22dc-4dbb-8c03-84ceeda2d45b"
       ],
       "settings": {
@@ -219,23 +216,6 @@
       "disabled": true,
       "settings": {
         "pixlee_id": "{{ product.metafields.custom.pixlee_gallery.value }}"
-      }
-    },
-    "1749485345666679f8": {
-      "type": "apps",
-      "blocks": {
-        "pixlee_turnto_social_ugc_product_block_8GQRU3": {
-          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
-          "settings": {
-            "widget_id": "{{ product.metafields.custom.pixlee_gallery.value }}"
-          }
-        }
-      },
-      "block_order": [
-        "pixlee_turnto_social_ugc_product_block_8GQRU3"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
@@ -308,7 +288,6 @@
     "main",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_product_video_yEnkXh",
-    "215233c3-69f3-4f5d-ba0f-3e80ca0f3806",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
     "46391549-e9d3-4404-8c19-b08b5eab6ca7",
     "related-products",
@@ -316,7 +295,6 @@
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
     "1691542364be6ead55",
-    "1749485345666679f8",
     "39506c09-df00-4542-8b40-732cf6fc014a",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
     "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
