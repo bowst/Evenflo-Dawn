@@ -1,0 +1,53 @@
+<style>
+  .metaobject-detail-block{
+    padding: 80px 0;
+  }
+  .metaobject-detail-block h1 {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e9dcc6;
+  }
+@media screen and (min-width: 990px) {
+  .metaobject-detail-block .page-width {
+      max-width: 100rem;
+  }
+}
+</style>
+<div class="metaobject-detail-block">
+  <div class="page-width">
+    <h1>{{ section.settings.page_title }}</h1>
+    <h2>{{ section.settings.section_title }}</h2>
+    <div class="metaobject-body">{{ section.settings.rich_text_content }}</div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Meta Object Detail",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Default Section Title"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Title",
+      "default": "Default Page Title"
+    },
+    {
+      "type": "richtext",
+      "id": "rich_text_content",
+      "label": "Rich Text Content",
+      "default": "<p>This is the default rich text content. You can <strong>bold</strong> or <em>italicize</em> text, add <a href='#'>links</a>, and more.</p>"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Meta Object Detail",
+      "category": "Text",
+    }
+  ]
+}
+{% endschema %}
