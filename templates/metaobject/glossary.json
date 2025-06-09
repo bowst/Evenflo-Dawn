@@ -24,9 +24,19 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "metaobject_detail_block_wNdptY": {
+      "type": "metaobject-detail-block",
+      "name": "Meta Object Detail",
+      "settings": {
+        "section_title": "{{ metaobject.name.value }}",
+        "page_title": "{{ metaobject.page_title.value }}",
+        "rich_text_content": "{{ metaobject.description | metafield_tag }}"
+      }
     }
   },
   "order": [
-    "custom_liquid_NehnQy"
+    "custom_liquid_NehnQy",
+    "metaobject_detail_block_wNdptY"
   ]
 }
