@@ -35,20 +35,19 @@
         "position": "top-left"
       }
     },
-    "custom_liquid_gnL977": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
+    "metaobject_detail_block_xJndpL": {
+      "type": "metaobject-detail-block",
+      "name": "Meta Object Detail",
       "settings": {
-        "custom_liquid": "<div class=\"content-container page-width content-container--full-width\">\n<nav class=\"breadcrumb\">\n  <a href=\"{{ routes.root_url }}\">Home</a> \n  {% if metaobject %}\n    <span> | </span>\n    <a href=\"/pages/glossary-listing\"> Glossary</a> \n    <span> | </span>\n    <span>{{ metaobject.name | escape }}</span>\n  {% endif %}\n</nav>\n</div>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "section_title": "{{ metaobject.name.value }}",
+        "page_title": "{{ metaobject.page_title.value }}",
+        "rich_text_content": "{{ metaobject.description | metafield_tag }}"
       }
     }
   },
   "order": [
     "custom_liquid_NehnQy",
     "evenflo_full_width_image_d6VqnX",
-    "custom_liquid_gnL977"
+    "metaobject_detail_block_xJndpL"
   ]
 }
