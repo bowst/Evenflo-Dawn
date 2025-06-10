@@ -19,6 +19,13 @@
             "text_style": "uppercase"
           }
         },
+        "text_UX6HjL": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.title }}",
+            "text_style": "subtitle"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -37,7 +44,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "quantity_selector": {
@@ -114,6 +122,7 @@
       },
       "block_order": [
         "vendor",
+        "text_UX6HjL",
         "title",
         "caption",
         "price",
@@ -130,6 +139,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "color_scheme": "",
         "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
