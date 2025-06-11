@@ -1,27 +1,26 @@
-.shopping-benefits .content-container {
+.evenflo-shopping-benefits .content-container {
   padding-top: 80px;
   padding-bottom: 80px;
 }
 
-.shopping-benefits .flex-row {
+.evenflo-shopping-benefits .flex-row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -10px;
-  margin-right: -10px;
+  gap: 10px;
 }
 
-.shopping-benefits .flex-item {
+.evenflo-shopping-benefits .flex-item {
   width: 50%;
-  padding: 10px;
-  flex: 0 0 auto;
+  padding: 0;
+  flex: 1 1 calc(50% - 5px);
 }
 
-.shopping-benefits .flex-item .inner {
+.evenflo-shopping-benefits .flex-item .inner {
   position: relative;
   line-height: 0;
 }
 
-.shopping-benefits .flex-item .content {
+.evenflo-shopping-benefits .flex-item .content {
   width: 100%;
   height: 100%;
   padding: 10px;
@@ -37,11 +36,11 @@
   line-height: 1;
 }
 
-.shopping-benefits .flex-item .content * {
+.evenflo-shopping-benefits .flex-item .content * {
   position: relative;
 }
 
-.shopping-benefits .flex-item .content::before {
+.evenflo-shopping-benefits .flex-item .content::before {
   content: '';
   width: 100%;
   height: 100%;
@@ -51,46 +50,44 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-.shopping-benefits .flex-item .content h3 {
+.evenflo-shopping-benefits .flex-item .content h3 {
   margin-bottom: 0;
   color: #fff;
   font-size: 24px;
   text-transform: none;
 }
 
-.shopping-benefits .flex-item .background-image {
+.evenflo-shopping-benefits .flex-item .background-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.shopping-benefits .flex-item .content .icon {
+.evenflo-shopping-benefits .flex-item .content .icon {
   width: auto;
   max-height: 35px;
 }
 
 @media screen and (min-width: 1200px) {
- .shopping-benefits .flex-row {
-    margin-left: -30px;
-    margin-right: -30px;
+ .evenflo-shopping-benefits .flex-row {
+    gap: 30px;
   }
   
-  .shopping-benefits .flex-item {
-    width: 25%;
-    padding: 0 30px;
+  .evenflo-shopping-benefits .flex-item {
+    flex: 1 1 calc(25% - 22.5px);
   }
 
-  .shopping-benefits .flex-item .content {
+  .evenflo-shopping-benefits .flex-item .content {
     padding: 40px;
   }
 
-  .shopping-benefits .flex-item .content .icon {
+  .evenflo-shopping-benefits .flex-item .content .icon {
     max-height: 65px;
   }
 }
 /*
 @media screen and (max-width: 768px) {
-  .shopping-benefits .flex-row {
+  .evenflo-shopping-benefits .flex-row {
     margin-left: -30px;
     margin-right: -30px;
   }
