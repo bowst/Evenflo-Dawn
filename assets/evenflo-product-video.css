@@ -1,72 +1,80 @@
-.video-section__media {
+/* @TODO: Most of these styles are duplicated from .evenflo-video class. Once .evenflo-video is updated, these styles should be reviewed or the shared class should be removed. */
+
+.evenflo-product-video.evenflo-video .video-section__media {
   --ratio-percent: 56.25%;
   position: relative;
   padding-bottom: calc(var(--ratio-percent) - var(--media-border-width));
 }
 
-.video-section__media.global-media-settings--full-width {
+.evenflo-product-video.evenflo-video .video-section__media.global-media-settings--full-width {
   padding-bottom: var(--ratio-percent);
 }
 
-.video-section__media.deferred-media {
+.evenflo-product-video.evenflo-video .video-section__media.deferred-media {
   box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
     rgba(var(--color-shadow), var(--media-shadow-opacity));
 }
 
-.video-section__media.deferred-media:after {
+.evenflo-product-video.evenflo-video .video-section__media.deferred-media:after {
   content: none;
 }
 
-.video-section__poster.deferred-media__poster:focus {
+.evenflo-product-video.evenflo-video .video-section__poster.deferred-media__poster:focus {
   outline-offset: 0.3rem;
 }
 
-.video-section__media iframe {
+.evenflo-product-video.evenflo-video .video-section__media iframe {
   background-color: rgba(var(--color-foreground), 0.03);
   border: 0;
 }
 
-.video-section__poster,
-.video-section__media iframe,
-.video-section__media video {
+.evenflo-product-video.evenflo-video .video-section__poster,
+.evenflo-product-video.evenflo-video .video-section__media iframe,
+.evenflo-product-video.evenflo-video .video-section__media video {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.video-section__media video {
+.evenflo-product-video.evenflo-video .video-section__media video {
   background: #000000;
 }
 
-.video-section__media.media-fit-cover video {
+.evenflo-product-video.evenflo-video .video-section__media.media-fit-cover video {
   object-fit: cover;
 }
 
 /* Evenflo */
 
-.video-section .title {
+.evenflo-product-video.evenflo-video .video-section .title {
   text-align: center;
 }
 
-.evenflo-video {
+.evenflo-product-video.evenflo-video {
     background-color: #e3f2f3 !important;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-.evenflo-video .flex-row {
+.evenflo-product-video.evenflo-video .flex-row {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -30px;
-    margin-right: -30px;
+    gap: 30px;
+    margin-left: 0;
+    margin-right: 0;
 }
-.evenflo-video .flex-item {
-    padding: 0 30px;
+
+.evenflo-product-video.evenflo-video .flex-item {
+    padding: 0;
 }
+
+
 @media screen and (min-width: 1000px) {
-    .evenflo-video .video-content-section {
-        width: 30%;
-    }
-   .evenflo-video .video-section {
-        width: 70%;
+  .evenflo-product-video.evenflo-video .video-content-section {
+        flex: 3;
+        width: auto;
+  }
+    .evenflo-product-video.evenflo-video .video-section {
+        flex: 7;
+		width: auto;
     }
 }
