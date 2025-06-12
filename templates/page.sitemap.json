@@ -56,7 +56,7 @@
         ".col-md-6 {flex: 0 0 auto; width: 50%;}"
       ],
       "settings": {
-        "custom_liquid": "<div class=\"page-width\"><div class=\"row\">\n    <div class=\"col-md-6\">\n    <h2>Collections</h2>\n    <ul>\n    {% for c in collections %}\n    <li>\n    <a href=\"{{ c.url }}\">{{ c.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n    </div>\n    <div class=\"col-md-6\">\n    <h2>Products</h2>\n    <ul>\n    {% for product in collections.all.products %}\n    <li>\n{{ product.vendor }}<br>\n    <a href=\"{{ product.url }}\">{{ product.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n<h2>Product Support</h2>\n    <ul>\n    {% for product in collections.product-support.products %}\n    <li>\n    <a href=\"{{ product.url }}\">{{ product.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n\n    </div>\n    </div></div>",
+        "custom_liquid": "<div class=\"page-width\">\n<div class=\"row\">\n    <div class=\"col-md-6\">\n    <h2>Collections</h2>\n    <ul>\n    {% for c in collections %}\n    <li>\n    <a href=\"{{ c.url }}\">{{ c.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n    </div>\n    <div class=\"col-md-6\">\n    <h2>Products</h2>\n    <ul>\n{% assign products_per_page = 500 %}\n{% paginate collections.all.products by products_per_page %}\n    {% for product in collections.all.products %}\n{% if product.vendor == 'Evenflo' or product.vendor == 'Evenflo Gold' or product.vendor == 'Exersaucer' %}\n    <li>\n    <a href=\"{{ product.url }}\">{{ product.title }}</a>\n    </li>\n{% endif %}\n    {% endfor %}\n{% endpaginate %}\n    </ul>\n    </div>\n    </div>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
@@ -67,7 +67,7 @@
       "custom_css": [],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<div class=\"page-width\"><h2>Pages</h2>\n<ul>\n  {% for link in linklists.pages-menu.links %}\n    <li>\n      <a href=\"{{ link.url }}\">{{ link.title|capitalize }}</a>\n    </li>\n  {% endfor %}\n</ul>\n</div>",
+        "custom_liquid": "<div class=\"page-width\">\n<div class=\"row\">\n<div class=\"col-md-6\">\n<h2>Product Support</h2>\n    <ul>\n    {% for product in collections.product-support.products %}\n    <li>\n    <a href=\"{{ product.url }}\">{{ product.title }}</a>\n    </li>\n    {% endfor %}\n    </ul>\n</div>\n\n<div class=\"col-md-6\">\n<h2>Pages</h2>\n<ul>\n  {% for link in linklists.pages-menu.links %}\n    <li>\n      <a href=\"{{ link.url }}\">{{ link.title|capitalize }}</a>\n    </li>\n  {% endfor %}\n</ul>\n</div>\n</div>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
