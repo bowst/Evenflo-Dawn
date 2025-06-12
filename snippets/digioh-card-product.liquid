@@ -24,6 +24,13 @@
   .button {
   background: #2996c5 !important;
   }
+  .select .icon-caret, .customer select+svg {
+    height: .6rem;
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - .2rem);
+    right: calc(var(--inputs-border-width) + 1.5rem);
+}
 </style>
 
 {%- if card_product and card_product != empty -%}
