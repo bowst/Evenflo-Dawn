@@ -31,6 +31,18 @@
     top: calc(50% - .2rem);
     right: calc(var(--inputs-border-width) + 1.5rem);
 }
+  .field:before, .select:before, .customer .field:before, .customer select:before, .localization-form__select:before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: var(--inputs-radius-outset);
+    box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius) rgba(var(--color-base-text), var(--inputs-shadow-opacity));
+    z-index: -1;
+}
 </style>
 
 {%- if card_product and card_product != empty -%}
