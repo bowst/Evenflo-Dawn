@@ -1,0 +1,31 @@
+.evenflo-multicolumn-variant-cards h2.title::after {
+	display: none;
+}
+
+.evenflo-multicolumn-variant-cards .page-width{
+	max-width: 100rem;
+}
+
+.evenflo-multicolumn-variant-cards .multicolumn-card.content-container {
+	background-color: #ffffff;
+	padding: 16px;
+}
+.evenflo-multicolumn-variant-cards.background-none .multicolumn-card.content-container {
+	background-color: #ffffff;
+	padding: 16px;	
+}
+.evenflo-multicolumn-variant-cards.background-none .multicolumn-card__image-wrapper{
+	margin-inline: 0;
+}
+
+/* Variant specific */
+@media screen and (min-width: 990px) {
+    .evenflo-multicolumn-variant-cards .grid--2-col-desktop {
+      gap: 30px;
+      padding-top: 16px;
+      
+      .grid__item {
+        flex: 1 1 calc( 50% - 15px );
+      }
+    }
+  }
