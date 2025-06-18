@@ -1,13 +1,12 @@
 .join .background-image {
-  min-height: 300px;
-  padding: 20px;
+  padding: 15px;
   background: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/bg_join-the-clug.jpg?v=1688739716) center right
     no-repeat;
   background-size: cover;
 }
 
 .join .content {
-  padding: 46px 30px;
+  padding: 15px;
   background: rgba(0, 0, 0, 0.3);
 }
 
@@ -20,12 +19,21 @@
   margin-top: 20px;
 }
 
+@media screen and (min-width: 750px) {
+	.join .background-image,
+	.join .content {
+		padding: 30px;
+	}
+}
+
 @media screen and (min-width: 990px) {
   .join .background-image {
-    padding: 60px;
+	min-height: 300px;
+	padding: 60px;
   }
 
   .join .content {
+	padding: 46px 30px;
     max-width: 525px;
   }
 
