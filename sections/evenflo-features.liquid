@@ -1,4 +1,4 @@
-{{ 'section-features.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-features.css' | asset_url | stylesheet_tag }}
 
 {%- assign display_section = true -%}
 {%- if section.settings.product_handles != blank -%}
@@ -24,7 +24,7 @@
   {% assign feature_text_3 = product.metafields.custom.feature_text_3 %}
   {% assign feature_text_4 = product.metafields.custom.feature_text_4 %}
 
-  <section class="features">
+  <section class="evenflo-features features">
     <div class="content-container page-width rich-text--full-width content-container--full-width">
       <h2 class="h1 heading-underline">Features</h2>
 

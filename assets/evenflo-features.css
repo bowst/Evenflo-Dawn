@@ -1,0 +1,56 @@
+.evenflo-features .flex-row {
+  flex-direction: row !important;
+}
+
+.evenflo-features img {
+  max-width: 100%;
+  height: auto;
+}
+
+.evenflo-features .content-container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.evenflo-features .flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.evenflo-features .content-container > .flex-row + .flex-row {
+	margin-top: 30px;
+}
+
+.evenflo-features .flex-item {
+	flex-basis: 100%;
+	padding: 0;
+  }
+
+
+.evenflo-features .content-container > .flex-row > .flex-item {
+	padding: 0;
+}
+
+@media screen and (min-width: 560px) {
+  .evenflo-features .content-container > .flex-row > .flex-item > .flex-row > .flex-item {
+    flex: 1 1 calc(50% - 15px);
+  }
+
+}
+
+@media screen and (min-width: 990px) {
+  .evenflo-features .content-container > .flex-row > .flex-item {
+    flex: 1 1 calc(50% - 15px);
+  }
+
+  .evenflo-features .flex-row.reverse {
+    flex-direction: row-reverse !important;
+  }
+}
+
+.evenflo-features p {
+  margin-top: 0;
+}
+
+

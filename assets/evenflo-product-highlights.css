@@ -20,30 +20,33 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 30px -1.5rem;
+  margin: 30px 0;
+  gap: 15px;
 }
 
 .product-highlights .flex-item {
-  padding: 0 30px;
-  flex-shrink: 0;
-  width: 100%;
+  flex: 0 1 100%;
+  /*width: 100%;*/
   max-width: 100%;
-  margin-top: 15px;
-  margin-bottom: 15px;
 }
 
 @media screen and (min-width: 560px) {
   .product-highlights .flex-item {
-    width: 50%;
-    flex: 0 0 auto;
+    /*width: auto;*/
+    flex-basis: calc(50% - 15px);
+
   }
 }
 
 @media screen and (min-width: 990px) {
+  .product-highlights .flex-row {
+    gap: 30px;
+  }
+
   .product-highlights .flex-item {
-    width: 25%;
-    margin-top: 0;
-    margin-bottom: 0;
+   /* flex-basis: calc(25% - 22.5px);*/
+   flex-grow: 1;
+   flex-basis: auto;
   }
 }
 
