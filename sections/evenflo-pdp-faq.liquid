@@ -1,6 +1,6 @@
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 {{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
-{{ 'section-product-faq.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-product-faq.css' | asset_url | stylesheet_tag }}
 {% assign faqs = product.metafields.custom.pdp_faq.value %}
 
 {% if faqs.first %}
@@ -25,7 +25,7 @@
 {% endif %}
 
 {% if faqs %}
-  <section class="product-faq">
+  <section class="evenflo-pdp-faq evenflo-product-faq product-faq page-width">
     <div class="content-container page-width content-container--full-width flex-container">
       <div class="column column-1">
         <h2 class="h1 heading-underline">All your Questions Answered</h2>

@@ -1,0 +1,78 @@
+.evenflo-product-faq {
+  display: flex;
+  justify-content: center;
+  /* Centers the content horizontally */
+  align-items: center;
+  /* Centers the content vertically if needed */
+  height: 100%;
+  /* Adjust as necessary */
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.evenflo-product-faq .content-container {
+  /* Set a max-width to control the width of the content */
+  width: 100%;
+  /* Ensures the container takes full width up to max-width */
+  padding: 0 20px;
+  /* Optional: Add padding for spacing */
+  box-sizing: border-box;
+  /* Ensures padding is included in the width */
+}
+
+.evenflo-product-faq .flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.evenflo-product-faq .column {
+  width: 100%;
+  max-width: 100%;
+  flex: 1 0 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.evenflo-product-faq .column-1 {
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 990px) {
+  .evenflo-product-faq .column {
+    flex: 1 1 calc(50% - 15px);
+  }
+
+  .evenflo-product-faq .column-1 {
+    padding-right: 100px;
+    margin-bottom: 0;
+  }
+}
+
+.evenflo-product-faq .column-1 p {
+  font-size: 24px;
+}
+
+.evenflo-product-faq .accordion {
+  border-top: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+}
+
+.evenflo-product-faq .accordion summary {
+  padding-left: 1.5rem;
+  background-color: #2996c5;
+  color: #fff;
+}
+
+.evenflo-product-faq .accordion summary .accordion__title {
+  color: #fff;
+}
+
+.evenflo-product-faq .accordion summary:hover {
+  background-color: #2996c533;
+  color: #000;
+}
+
+.evenflo-product-faq .accordion summary:hover .accordion__title {
+  color: #000;
+}
