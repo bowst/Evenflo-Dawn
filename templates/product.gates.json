@@ -205,7 +205,7 @@
         "pixlee_turnto_social_ugc_product_block_G8QhgU": {
           "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
           "settings": {
-            "widget_id": ""
+            "widget_id": "{{ product.metafields.custom.pixlee_gallery.value }}"
           }
         }
       },
@@ -219,6 +219,7 @@
     },
     "173e15b8-f167-47a7-b731-7520b0da4709": {
       "type": "evenflo-pixlee",
+      "disabled": true,
       "settings": {
         "pixlee_id": "Pixlee ID"
       }
