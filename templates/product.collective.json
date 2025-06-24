@@ -10,7 +10,7 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "collective-main-product",
       "blocks": {
         "vendor": {
           "type": "text",
@@ -19,12 +19,9 @@
             "text_style": "uppercase"
           }
         },
-        "text_UX6HjL": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.title }}",
-            "text_style": "subtitle"
-          }
+        "title_Q6bwFc": {
+          "type": "title",
+          "settings": {}
         },
         "caption": {
           "type": "text",
@@ -71,7 +68,7 @@
       },
       "block_order": [
         "vendor",
-        "text_UX6HjL",
+        "title_Q6bwFc",
         "caption",
         "price",
         "variant_picker",
@@ -87,10 +84,10 @@
         "constrain_to_viewport": true,
         "media_fit": "cover",
         "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
         "media_position": "left",
         "image_zoom": "lightbox",
-        "mobile_thumbnails": "hide",
-        "hide_variants": true,
+        "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12

@@ -24,6 +24,39 @@
   .button {
   background: #2996c5 !important;
   }
+  .select .icon-caret, .customer select+svg {
+    height: .6rem;
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - .2rem);
+    right: calc(var(--inputs-border-width) + 1.5rem);
+}
+  .field:before, .select:before, .customer .field:before, .customer select:before, .localization-form__select:before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: var(--inputs-radius-outset);
+    box-shadow: var(--inputs-shadow-horizontal-offset) var(--inputs-shadow-vertical-offset) var(--inputs-shadow-blur-radius) rgba(var(--color-base-text), var(--inputs-shadow-opacity));
+    z-index: -1;
+}
+  .field:after, .select:after, .customer .field:after, .customer select:after, .localization-form__select:after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: var(--inputs-border-width);
+    right: var(--inputs-border-width);
+    bottom: var(--inputs-border-width);
+    left: var(--inputs-border-width);
+    border: .1rem solid transparent;
+    border-radius: var(--inputs-radius);
+    box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+    transition: box-shadow var(--duration-short) ease;
+    z-index: 1;
+}
 </style>
 
 {%- if card_product and card_product != empty -%}
@@ -313,7 +346,7 @@
                   {%- if horizontal_quick_add -%}
                     <span class="icon-wrap">{% render 'icon-plus' %}</span>
                   {%- endif -%}
-                  <div class="loading-overlay__spinner hidden">
+                  <div class="loading-overlay__spinner loading__spinner hidden">
                     <svg
                       aria-hidden="true"
                       focusable="false"

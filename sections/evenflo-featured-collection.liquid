@@ -107,13 +107,15 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            {% render 'card-product',
+            {% render 'evenflo-card-product',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
               image_shape: section.settings.image_shape,
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
+              show_collection_features: section.settings.show_collection_features,
+              show_swatches: section.settings.show_swatches,
               skip_styles: skip_card_product_styles,
               section_id: section.id,
               quick_add: section.settings.quick_add
@@ -426,6 +428,20 @@
       "default": false,
       "label": "t:sections.featured-collection.settings.show_rating.label",
       "info": "t:sections.featured-collection.settings.show_rating.info"
+    },
+	{
+      "type": "checkbox",
+      "id": "show_collection_features",
+      "default": false,
+      "label": "Show collection features",
+      "info": "Display Collection Features content on products in this section (if available)"
+    },
+	{
+      "type": "checkbox",
+      "id": "show_swatches",
+      "default": false,
+      "label": "Show swatches",
+      "info": "Display swatches on products in this section (if available)"
     },
     {
       "type": "select",

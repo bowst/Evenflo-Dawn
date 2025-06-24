@@ -11,13 +11,74 @@
   "sections": {
     "evenflo_loyalty_banner_nijkJM": {
       "type": "evenflo-loyalty-banner",
+      "disabled": true,
       "name": "Evenflo Loyalty Banner",
       "settings": {
-        "bronze_and_silver": "https://www.evenflo.com/products/revolve360-extend-gold-green-gentle",
-        "gold": "https://www.evenflo.com/products/revolve360-extend-gold-green-gentle",
-        "non_member": "https://www.evenflo.com/products/revolve360-extend-gold-green-gentle",
-        "desktop_video_non_member": "",
+        "bronze_and_silver": "https://www.evenflo.com/collections/shop-all",
+        "gold": "https://www.evenflo.com/collections/shop-all",
+        "non_member": "https://www.evenflo.com/collections/shop-all",
+        "desktop_video_non_member": "shopify://collections",
         "mobile_video_non_member": ""
+      }
+    },
+    "evenflo_image_video_banner_kyXfyU": {
+      "type": "evenflo-image-video-banner",
+      "blocks": {
+        "text_nJWBwj": {
+          "type": "text",
+          "settings": {
+            "text": "Introducing first-of-its-kind",
+            "text_style": "body",
+            "text_color": "white"
+          }
+        },
+        "heading_HBckKX": {
+          "type": "heading",
+          "settings": {
+            "heading": "SensorySoothe™ Technology",
+            "heading_size": "h1",
+            "heading_color": "white"
+          }
+        },
+        "buttons_iX9ztr": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Learn More",
+            "button_link_1": "https://www.evenflo.com/pages/sensorysoothe",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_nJWBwj",
+        "heading_HBckKX",
+        "buttons_iX9ztr"
+      ],
+      "custom_css": [
+        "h1 {font-weight: 300;}",
+        "h2 {color: white; font-weight: 300;}",
+        ".button {background: white; color: black; box-shadow: none; border: none;}"
+      ],
+      "name": "Evenflo Img & Vid Banner",
+      "settings": {
+        "video": "shopify://files/videos/SensorySoothe_Homepage Header_1920x450_2_no text.mp4",
+        "video_mobile": "shopify://files/videos/SensorySoothe_Homepage Header_400x500_2_no text.mp4",
+        "video_enable": true,
+        "enable_video_looping": true,
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "small",
+        "desktop_content_position": "middle-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
     "evenflo_featured_collection_XHFN7m": {
@@ -134,7 +195,7 @@
             "title": "Best rotating carseat for you?",
             "text": "<p>We’ll help you find the right seat based on your child and your car</p>",
             "link_label": "Find my seat",
-            "link": "https://www.evenflo.com/pages/stroller-car-seat-finder-quiz"
+            "link": "https://www.evenflo.com/pages/revolve360-quiz"
           }
         }
       },
@@ -261,6 +322,7 @@
   },
   "order": [
     "evenflo_loyalty_banner_nijkJM",
+    "evenflo_image_video_banner_kyXfyU",
     "evenflo_featured_collection_XHFN7m",
     "evenflo_image_text_ALMbqz",
     "evenflo_multicolumn_variant_cards_rHdeqt",
