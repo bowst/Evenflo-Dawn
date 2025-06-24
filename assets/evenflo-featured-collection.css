@@ -1,11 +1,23 @@
-.collection__title.title-wrapper {
+.evenflo-featured-collection .collection__title.title-wrapper {
     text-align: center;
 }
-.collection__title.title-wrapper h2{
+.evenflo-featured-collection .collection__title.title-wrapper h2{
     text-transform: uppercase;
     font-weight: 700;
 }
-.card__heading.h5{
+.evenflo-featured-collection .card__heading.h5{
   font-size: 18px;
   font-weight: 700;
+}
+
+.evenflo-featured-collection .color-swatches{
+	margin-top: 12px;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+	gap: 8px; 
+	flex-wrap: wrap;
+}
+.evenflo-featured-collection .color-swatches .swatch{
+	--swatch--size: var(--swatch-input--size, 3.3rem);
 }
