@@ -210,7 +210,16 @@ Determine if the product is from support product collection
 		  	<div class="color-swatches" style="display: flex; justify-content: center; align-items: stretch; gap: 8px; flex-wrap: wrap;">
 			{%- for product_option in card_product.options_with_values -%}
 				{%- for product_option_value in product_option.values -%}
-				
+
+                {{
+                            product_option_value.swatch.image
+                            | image_url: width: 100
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '50, 75, 100',
+                              sizes: sizes,
+                              class: 'variant-img'
+                          }}
 				<span class="swatch"  style="--swatch--background: url(/cdn/shop/{{ product_option_value.swatch.image }}); --swatch-focal-point: 50.0% 50.0%; aspect-ratio: 1;"></span>
 			{%- endfor -%}
 			{%- endfor -%}
