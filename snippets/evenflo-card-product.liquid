@@ -208,20 +208,11 @@ Determine if the product is from support product collection
 		  {% endif %}
 		  {% if show_swatches %}
 		  	<div class="color-swatches" style="display: flex; justify-content: center; align-items: stretch; gap: 8px; flex-wrap: wrap;">
-			{% for variant in card_product.variants %}
-				{% if variant.metafields.custom.new_swatch_image %}
-				<span
-					data-image="{{ variant.metafields.image.swatch | product_img_url: '400x' }}"
-					style="background-image:  url('{{ variant.metafields.custom.new_swatch_image | image_url }}'); background-color: {{ value | split: ' ' | last | handle }};"
-				>
-				</span>
-				{% else %}
-				<span
-					data-image="{{ variant.metafields.image.swatch | product_img_url: '400x' }}"
-					style="background-image:  url('{{variant.metafields.image.swatch}}'); background-color: {{ value | split: ' ' | last | handle }};" class="swatch"
-				>
-				</span>
-				{% endif %}
+			{%- for product_option in card_product.options_with_values -%}
+				{%- for product_option_value in product_option.values -%}
+				
+				<span class="swatch"  style="--swatch--background: url(/cdn/shop/{{ product_option_value.swatch.image }}); --swatch-focal-point: 50.0% 50.0%; aspect-ratio: 1;"></span>
+			{%- endfor -%}
 			{%- endfor -%}
 			</div>
 		  {% endif %}
