@@ -48,6 +48,16 @@ h5,
 .heading-underline-center {
   text-align: center;
 }
+@media screen and (max-width: 1100px) {
+    sticky-header .header {
+        padding-bottom: 0;
+    }
+}
+@media screen and (min-width: 1101px) {
+    sticky-header .header {
+        padding-bottom: 12px;
+    }
+}
 .header__menu-item {
   font-weight: 700;
   font-size: 1.6rem;
@@ -199,6 +209,7 @@ details[open] > .header__menu-item::after {
   position: absolute;
   bottom: 12px;
 }
+
 .header .mega-menu__link {
   padding-top: 0;
 }
