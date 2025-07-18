@@ -48,6 +48,27 @@ h5,
 .heading-underline-center {
   text-align: center;
 }
+sticky-header .header {
+	padding: 12px 1.5em 0;
+}
+@media screen and (min-width: 750px) {
+    .header.page-width, .utility-bar__grid.page-width  {
+		padding-left: 5rem;
+		padding-right: 5rem;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+    sticky-header .header {
+        padding-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 1101px) {
+    sticky-header .header {
+        padding-bottom: 12px;
+    }
+}
 .header__menu-item {
   font-weight: 700;
   font-size: 1.6rem;
@@ -125,6 +146,16 @@ predictive-search.search-modal__form {
 .search-modal__form[data-upgraded='true'] .field__button {
   height: 4rem;
 }
+@media screen and (max-width: 750px) {
+	.search-modal__form[data-upgraded='true'] {
+		padding: 0 1.5rem 1rem;
+	}
+}
+@media screen and (min-width: 751px) and (max-width: 1100px) {
+	.search-modal__form[data-upgraded='true'] {
+		padding: 0 5rem 1rem;
+	}
+}
 @media (max-width: 1100px) {
   .shopify-section.section-header {
     margin-bottom: 54px !important;
@@ -134,7 +165,6 @@ predictive-search.search-modal__form {
     top: 100%;
     left: 0;
     width: 100%;
-    padding: 0 3rem 1rem;
     background-color: #fff;
   }
   .search-modal__form[data-upgraded='true'],
@@ -199,6 +229,7 @@ details[open] > .header__menu-item::after {
   position: absolute;
   bottom: 12px;
 }
+
 .header .mega-menu__link {
   padding-top: 0;
 }
@@ -215,31 +246,7 @@ details[open] > .header__menu-item::after {
 #shopify-section-template--15779855106204__c381a814-fe0f-472f-aa35-34ec00dc633b .gradient {
   background: #e3f2f3;
 }
-.product-form__input input[type='radio'] + .color-swatch {
-  border: 3px solid #f4f5ff;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-}
-.product-form__input input[type='radio']:checked + .color-swatch,
-.product-form__input input[type='radio']:hover + .color-swatch {
-  border: 3px solid #ccd1d1;
-}
-.product-form__input input[type='radio'] + .swatch {
-  border: 3px solid #f4f5ff;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  color: #000;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-.product-form__input input[type='radio']:checked + .swatch,
-.product-form__input input[type='radio']:hover + .swatch {
-  border: 3px solid #ccd1d1;
-  background: none;
-}
+
 .shopify-policy__container {
   padding-top: 28px;
   padding-bottom: 28px;

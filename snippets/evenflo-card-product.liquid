@@ -207,7 +207,7 @@ Determine if the product is from support product collection
 			</div>
 		  {% endif %}
 		  {% if show_swatches %}
-		  	<div class="color-swatches" style="display: flex; justify-content: center; align-items: stretch; gap: 8px; flex-wrap: wrap;">
+		  	<div class="color-swatches">
 			{%- for product_option in card_product.options_with_values -%}
 				{%- for product_option_value in product_option.values -%}
 

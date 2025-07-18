@@ -66,6 +66,19 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": false
           }
+        },
+        "complementary_zCxhNt": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "You might also like",
+            "make_collapsible_row": true,
+            "icon": "none",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "dots",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
         }
       },
       "block_order": [
@@ -76,7 +89,8 @@
         "d8033ec6-6109-4faa-b2a1-f7cc3ea80e32",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "complementary_zCxhNt"
       ],
       "settings": {
         "enable_sticky_info": false,
@@ -177,7 +191,6 @@
     },
     "related-products": {
       "type": "related-products",
-      "disabled": true,
       "settings": {
         "heading": "You May Also Like",
         "heading_size": "h2",
@@ -196,6 +209,7 @@
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
       "type": "evenflo-pdp-faq",
+      "disabled": true,
       "settings": {}
     },
     "45849377-4cee-48de-b8f8-52fd115e29b4": {
