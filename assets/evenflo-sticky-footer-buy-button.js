@@ -20,7 +20,6 @@ function stickyFooterBuyButton_Content(stickyFooter){
 	const ratingsContainer = stickyFooter.querySelector('.product-rating');
 
 	ratingsContainer.appendChild(ratings);
-	console.log(ratingsContainer);
 }
 document.addEventListener('DOMContentLoaded', function(){
 	const stickyFooter = document.getElementById('product-sticky-footer-buy-button');

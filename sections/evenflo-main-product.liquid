@@ -33,32 +33,13 @@
         padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
       }
       .product__title h1 .platform-light {
-    font-weight: 300 !important;
-
-      @media screen and (min-width: 750px) {
-        .section-{{ section.id }}-padding {
-          padding-top: {{ section.settings.padding_top }}px;
-          padding-bottom: {{ section.settings.padding_bottom }}px;
-
-		  .product  {
-	display: grid; 
-	grid-template-columns: 1fr 1fr; 
-	grid-template-rows: 0.6fr 1.4fr; 
-	gap: 2em 8em; 
-	grid-template-areas: 
-		"product-media product-title"
-		"product-media product-info"; 
-	justify-content: start; 
-	align-content: start; 
-	justify-items: stretch; 
-	align-items: start; 
-	}
-	.product-title { grid-area: product-title; }
-	.product-info { grid-area: product-info; }
-	.product-media { grid-area: product-media; }
-        }
+        font-weight: 300 !important;
       }
   {%- endstyle -%}
+
+ {% comment %}#34576628 Move titles & rating above media on mobile{% endcomment %}
+  {{ 'evenflo-mobile-product-shuffle.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'evenflo-mobile-content-shuffle.js' | asset_url }}" defer="defer"></script>
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -95,7 +76,7 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div id="evenflo-product-container" class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
 
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
@@ -168,6 +149,7 @@
                     </div>
                   {% endif %}
                 {% endif %}
+                
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}  heading-underline"
