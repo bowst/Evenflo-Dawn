@@ -39,6 +39,23 @@
         .section-{{ section.id }}-padding {
           padding-top: {{ section.settings.padding_top }}px;
           padding-bottom: {{ section.settings.padding_bottom }}px;
+
+		  .product  {
+	display: grid; 
+	grid-template-columns: 1fr 1fr; 
+	grid-template-rows: 0.6fr 1.4fr; 
+	gap: 2em 8em; 
+	grid-template-areas: 
+		"product-media product-title"
+		"product-media product-info"; 
+	justify-content: start; 
+	align-content: start; 
+	justify-items: stretch; 
+	align-items: start; 
+	}
+	.product-title { grid-area: product-title; }
+	.product-info { grid-area: product-info; }
+	.product-media { grid-area: product-media; }
         }
       }
   {%- endstyle -%}
@@ -79,10 +96,13 @@
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
-      <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      
+	 
+	  <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
           id="ProductInfo-{{ section.id }}"
           class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
@@ -608,6 +628,7 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                 
                 {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
                   <div class="product__tax caption rte">
                     {%- if cart.duties_included and cart.taxes_included -%}
@@ -883,8 +904,16 @@
       {{ product | structured_data }}
     </script>
   </div>
+  
 </product-info>
 
+{%- render 'evenflo-sticky-footer-buy-button',
+  block: block,
+  product: product,
+  product_form_id: product_form_id,
+  section_id: section.id,
+  show_pickup_availability: true
+-%}
 {% schema %}
 {
   "name": "Evenflo Product Info",
