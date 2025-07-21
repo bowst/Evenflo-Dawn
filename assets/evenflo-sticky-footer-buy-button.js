@@ -8,7 +8,7 @@ function stickyFootBuyButton_Stick(stickyFooter){
 		const scrollPercent = scrollTop / (docHeight - winHeight);
 		const isScrollingDown = scrollTop > lastScrollTop;
 
-		if (scrollPercent >= 0.5 && isScrollingDown) {
+		if (scrollPercent >= 0.3 && isScrollingDown) {
 			stickyFooter.classList.add("stick");
 		} else {
 			stickyFooter.classList.remove("stick");
