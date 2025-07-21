@@ -11,21 +11,30 @@
 >
   <div style="position: relative;">
     <div class="desktop">
-      {% if customer.tags contains 'swell_vip_bronze'
-        or customer.tags contains 'swell_vip_silver'
-        or customer.tags contains 'swell_vip_gold'
-      %}
+      {% if customer.tags contains 'swell_vip_bronze' %}
+		<img
+			src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_Labor-Day_2025_HPH_Bronze-Desktop_1440x450_a98e7d87-8f76-49fb-9098-b2d566b254eb.jpg?v=1752008432"
+			alt="Loyalty Banner"
+			style="width: 100%;"
+		  >
+	  {% elsif customer.tags contains 'swell_vip_silver' %}
+		<img
+			src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_Labor-Day_2025_HPH_Silver-Desktop_1440x450_7e34c854-c193-4cb2-a2a9-045a1e63ed1b.jpg?v=1753110465"
+			alt="Loyalty Banner"
+			style="width: 100%;"
+		  >
+      {% elsif customer.tags contains 'swell_vip_gold' %}
         <img
-          src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Reo_Desktop_2x_V2.jpg?v=1752008432"
-          alt="Loyalty Banner"
-          style="width: 100%;"
-        >
+			src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_Labor-Day_2025_HPH_Gold-Desktop_1440x450_648be062-7dce-4287-a3c0-aaa588581ee7.jpg?v=1753110465"
+			alt="Loyalty Banner"
+			style="width: 100%;"
+		  >
       {% else %}
         <img
-          src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Reo_Desktop_2x_V2.jpg?v=1752008432"
-          alt="Loyalty Banner"
-          style="width: 100%;"
-        >
+			src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_Labor-Day_2025_HPH_Join-Now_Desktop_1440x450_7209627f-d842-4158-8339-ae9d02e08f5f.jpg?v=1753110465"
+			alt="Loyalty Banner"
+			style="width: 100%;"
+		  >
         <!-- <video autoplay muted loop playsinline class="desktop">
           <source src="{{ section.settings.desktop_video_non_member }}" type="video/mp4">
         </video> -->
@@ -33,21 +42,30 @@
     </div>
 
     <div class="mobile">
-      {% if customer.tags contains 'swell_vip_bronze'
-        or customer.tags contains 'swell_vip_silver'
-        or customer.tags contains 'swell_vip_gold'
-      %}
-        <img
-          src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Reo_Mobile_2x_V2.jpg?v=1752008433"
-          alt="Loyalty Banner"
-          style="width: 100%;"
-        >
+      {% if customer.tags contains 'swell_vip_bronze' %}
+		<img
+			src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_Labor-Day_2025_HPH_Bronze-Mobile_375x500_55b29b2e-c60c-45cf-847d-5f31dd866000.jpg?v=1753110465"
+			alt="Loyalty Banner"
+			style="width: 100%;"
+		  >
+	  {% elsif customer.tags contains 'swell_vip_silver' %}
+		<img
+			src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_Labor-Day_2025_HPH_Silver-Mobile_375x500_copy.jpg?v=1753110465"
+			alt="Loyalty Banner"
+			style="width: 100%;"
+		  >      
+	  {% elsif customer.tags contains 'swell_vip_gold' %}
+		<img
+			src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_Labor-Day_2025_HPH_Gold-Mobile_375x500_05404ccc-797e-4511-82bd-882090c915cb.jpg?v=1753110465"
+			alt="Loyalty Banner"
+			style="width: 100%;"
+		  >
       {% else %}
-        <img
-          src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Reo_Mobile_2x_V2.jpg?v=1752008433"
-          alt="Loyalty Banner"
-          style="width: 100%;"
-        >
+		<img
+			src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_Labor-Day_2025_HPH_Join-Now_Mobile_375x500_a21bf7f6-1645-43ee-b3ae-8406b61db71c.jpg?v=1753110465"
+			alt="Loyalty Banner"
+			style="width: 100%;"
+		  >
         <!-- https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Revolve_G_G_HPH_Mobile_1.jpg?v=1729009316
         <video autoplay muted loop playsinline class="mobile">
           <source src="{{ section.settings.mobile_video_non_member }}" type="video/mp4">
