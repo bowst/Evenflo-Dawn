@@ -74,7 +74,7 @@
           {%- case block.type -%}
             {%- when 'related_products' -%}
               {% if product.metafields.product_info.related_products %}
-                {% assign relatedProducts = product.metafields.product_info.related_products.value %}
+                {% assign related_products = product.metafields.product_info.related_products.value %}
                 <!-- check at least one recommended product is available -->
 
                 <p class="product__text inline-richtext subtitle heading-underline">
@@ -82,7 +82,7 @@
                 </p>
 
                 <div class="related-products">
-                  {% for prod in relatedProducts %}
+                  {% for prod in related_products %}
                     {% if prod.available == true %}
                       <a
                         href="{{ prod.url }}"
@@ -149,7 +149,6 @@
                 -%}
               </div>
 
-            
             {%- when 'description' -%}
               {%- if product.description != blank -%}
                 <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
@@ -420,6 +419,7 @@
                       </div>
                       {%- if block.settings.make_collapsible_row -%}
                         {% render 'icon-caret' %}
+                        </summary>
                       {%- endif -%}
                       <slideshow-component class="slider-mobile-gutter">
                         {%- assign number_of_slides = recommendations.products_count
@@ -447,10 +447,7 @@
                               {% endif %}
                             >
                               <ul class="list-unstyled" role="list">
-                                {%- for product in recommendations.products
-                                  limit: block.settings.products_per_page
-                                  offset: continue
-                                -%}
+                                {%- for product in recommendations.products limit: block.settings.products_per_page -%}
                                   <li>
                                     {% render 'card-product',
                                       card_product: product,
