@@ -1,17 +1,20 @@
 function stickyFootBuyButton_Stick(stickyFooter){
-	let lastScrollTop = 0; // Initialize a variable to store the last scroll position.
+	let lastScrollTop = 0;
 
 	window.addEventListener('scroll', function() {
-		let currentScroll = window.scrollY || document.documentElement.scrollTop; // Get current scroll position.
+		const scrollTop = window.scrollY || document.documentElement.scrollTop;
+		const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight);
+		const winHeight = window.innerHeight || document.documentElement.clientHeight;
+		const scrollPercent = scrollTop / (docHeight - winHeight);
+		const isScrollingDown = scrollTop > lastScrollTop;
 
-		if (currentScroll > lastScrollTop) {
-			// Scrolling down.
+		if (scrollPercent >= 0.5 && isScrollingDown) {
 			stickyFooter.classList.add("stick");
 		} else {
-		// Scrolling up.
-		stickyFooter.classList.remove("stick");
+			stickyFooter.classList.remove("stick");
 		}
-		lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Update the lastScrollTop.
+
+		lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 	}, false);
 }
 
