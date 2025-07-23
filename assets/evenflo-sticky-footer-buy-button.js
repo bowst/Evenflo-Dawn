@@ -1,14 +1,21 @@
+function isElementOutOfViewport(el) {
+	const rect = el.getBoundingClientRect();
+	return (
+		rect.bottom < 120
+	);
+}
+
 function stickyFootBuyButton_Stick(stickyFooter){
 	let lastScrollTop = 0;
 
 	window.addEventListener('scroll', function() {
 		const scrollTop = window.scrollY || document.documentElement.scrollTop;
-		const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight);
-		const winHeight = window.innerHeight || document.documentElement.clientHeight;
-		const scrollPercent = scrollTop / (docHeight - winHeight);
+		const inlineButtons = document.querySelector('.product__info-wrapper .product-form__buttons .product-form__submit');		
 		const isScrollingDown = scrollTop > lastScrollTop;
+		//const isScrollingDownRect = inlineButtons.getBoundingClientRect();
 
-		if (scrollPercent >= 0.5 && isScrollingDown) {
+		//if (isElementOutOfViewport(inlineButtons) && isScrollingDown) {
+		if (isElementOutOfViewport(inlineButtons)) {
 			stickyFooter.classList.add("stick");
 		} else {
 			stickyFooter.classList.remove("stick");
@@ -24,9 +31,21 @@ function stickyFooterBuyButton_Content(stickyFooter){
 
 	ratingsContainer.appendChild(ratings);
 }
+
+function removeOnAddToCart() {
+	const addToCart = document.querySelectorAll('button.product-form__submit')
+  
+	addToCart.forEach( (btn) => {
+		btn.addEventListener('click', function(e){
+			const stickyFooter = document.getElementById('product-sticky-footer-buy-button').classList.add('hidden');
+		});
+	})
+  }
+
 document.addEventListener('DOMContentLoaded', function(){
 	const stickyFooter = document.getElementById('product-sticky-footer-buy-button');
 
 	stickyFootBuyButton_Stick(stickyFooter);
 	stickyFooterBuyButton_Content(stickyFooter);
+	removeOnAddToCart();
 });
