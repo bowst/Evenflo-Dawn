@@ -1,0 +1,1155 @@
+ {{ 'evenflo-product-slider.css' | asset_url | stylesheet_tag }}
+
+<style>
+/* Smooth sliding step transitions */
+.product-stepper {
+  position: relative;
+  {% comment %} min-height: 400px; {% endcomment %}
+  overflow: hidden;
+}
+
+.product-stepper__item {
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.product-stepper.transitioning .product-stepper__item {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+
+/* Smooth alternative message fade-in */
+.alternative-message {
+  animation: fadeInMessage 0.4s ease-out;
+}
+
+@keyframes fadeInMessage {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle card entrance animation */
+.product-stepper-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.product-stepper-card:nth-child(1) { animation-delay: 0.1s; }
+.product-stepper-card:nth-child(2) { animation-delay: 0.2s; }
+.product-stepper-card:nth-child(3) { animation-delay: 0.3s; }
+.product-stepper-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<div class="product-filter-wrapper">
+  <div class="product-sidebar"></div>
+  <div class="product-stepper-wrapper">
+    <div class="product-stepper"></div>
+    <div class="product-stepper-btn">
+      <button class="previous-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="12"
+          viewBox="0 0 14 12"
+          fill="none"
+        >
+          <path
+            d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z"
+            fill="#121212"
+          />
+        </svg>
+        Previous
+      </button>
+      <button class="next-btn">
+        Next
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="12"
+          viewBox="0 0 14 12"
+          fill="none"
+        >
+          <path
+            d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z"
+            fill="#DADADA"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="product-stepper-btn-wrapper">
+      <div class="product-stepper-btn product-stepper-btn-wrapper">
+        <button class="start-over" onclick="productClear()">start over</button>
+        <button class="buy-now" onclick="buyNow()">buy now</button>
+        <button class="add-to-cart" onclick="addToCart()">add to cart</button>
+      </div>
+    </div>
+  </div>
+  <div class="product-listing-wrapper product-stepper-card-wrapper">
+    <h2 style="margin: auto;">Select any combination of features to view compatible products</h2>
+  </div>
+</div>
+
+
+
+<script>
+
+const byoVariants = [
+  {% for product in collections.byo.products %}
+    {% assign in_stock = false %}
+    {% capture variants %}
+      [
+      {% assign first = true %}
+      {% for variant in product.variants %}
+        {% if variant.inventory_quantity > 0 %}
+          {% assign in_stock = true %}
+          {% unless first %},{% endunless %}
+          {
+            "variantTitle": {{ variant.title | json }},
+            "variantId": {{ variant.id }},
+            "color": {{ variant.option1 | json }},
+            "colorImage": {{ variant.metafields.custom.new_swatch_image.value | json }},
+            "sku": {{ variant.sku | json }},
+            "inventory": {{ variant.inventory_quantity }},
+            "inStock": true
+          }
+          {% assign first = false %}
+        {% endif %}
+      {% endfor %}
+      ]
+    {% endcapture %}
+
+    {% if in_stock %}
+      {
+        "productId": {{ product.id }},
+        "productTitle": {{ product.title | json }},
+        "productType": {{ product.type | json }},
+        "fabric": {{ product.metafields.custom.green_gentle_fabric.value | json }},
+        "rotation": {{ product.metafields.custom.degrees_of_rotation.value | json }},
+        "sensorysoothe": {{ product.metafields.custom.sensorysoothe.value | json }},
+        "variants": {{ variants }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+];
+
+const normalizedVariants = byoVariants.map(p => ({
+  ...p,
+  stroller: p.productTitle.includes("Intuiti+")
+    ? "intuiti+"
+    : p.productTitle.includes("Intuiti")
+    ? "intuiti"
+    : null,
+  fabric: p.fabric ? 1 : 0,
+  rotation: p.rotation ? 1 : 0,
+  sensorysoothe: p.sensorysoothe ? 1 : 0
+}));
+
+const strollers = normalizedVariants.filter(p => p.productType === "Stroller");
+const travelSystemsInfantCarSeat = normalizedVariants.filter(p => p.productType === "Travel System" || p.productType ==="Infant Car Seat");
+
+const saveSelectedData={};
+
+const steps = [
+  {
+    category: "Car Seat",
+    items: [
+      { step: 0, label: "Car Seat Base" },
+      { step: 1, label: "Car Seat Handle" },
+      { step: 2, label: "Car Seat Fabric" },
+      { step: 3, label: "Car Seat Color" },
+    ],
+  },
+  {
+    category: "Stroller",
+    items: [
+      { step: 4, label: "Stroller Frame" },
+      { step: 5, label: "Stroller Color" },
+      { step: 6, label: "Accessories" },
+    ],
+  },
+  {
+    category: "Travel System",
+    items: [{ step: 7, label: "Review" }],
+  },
+];
+
+const stepperSteps = [
+  {
+    title: "Choose Your Car Seat Base",
+    item: [
+      {
+        rotation: 0,
+        label: "Traditional",
+        description:
+          "Secure and ready to roll with a LockStrong™ belt tensioning system for solid installation in no time. The LiteMax™ NXT Infant Car Seat offers innovation and style with built-in SensorSafe® technology, which gives parents real-time alerts about 4 potentially unsafe conditions from your child’s car seat.",
+        image: "{{ section.settings.traditional_image | image_url }}",
+      },
+      {
+        rotation: 1,
+        label: "Rotational",
+        description:
+          "Enjoy the hallmark features of the LiteMax™ NXT with added 180º rotation for easy in and out. Complete with SensorSafe® technology, which gives parents real-time alerts about 4 potentially unsafe conditions from your child’s car seat, the Revolve180™ LiteMax™ Infant Car Seat offers smoother transitions for on-the-go parents with peace of mind to spare.",
+        image: "{{ section.settings.rotational_image | image_url }}",
+      },
+    ],
+  },
+  {
+    title: "Choose Your Car Seat Handle",
+    item: [
+      {
+        sensorysoothe: 0,
+        label: "Traditional",
+        description:
+          "Streamlined, powerful and comfortable to the touch - perfect for parents who value premium function and ease of use.",
+        image: "{{ section.settings.traditional_handle_image | image_url}}",
+      },
+      {
+        sensorysoothe: 1,
+        label: "SensorySoothe",
+        description:
+          "Activated by a button or through the Evenflo app, soothing lights and sounds help calm your baby right from the car seat handle - no accessories needed.",
+        image: "{{ section.settings.sensorysooth_handle_image | image_url }}",
+      },
+    ],
+  },
+  {
+    title: "Choose Your Car Seat Fabric",
+    item: [
+      {
+        fabric: 0,
+        label: "Classic",
+        description:
+          "Opt for our classic fabric that’s soft, durable and designed for everyday comfort.",
+        image: "{{ section.settings.classic_image | image_url }}",
+      },
+      {
+        fabric: 1,
+        label: "Green & Gentle™",
+        description:
+          "Eco-friendly, made from recycled bottles and free of added chemicals - gentle on your baby and the planet.",
+        image: "{{ section.settings.green-gentle_image | image_url }}",
+      },
+    ],
+  },
+  {
+    title: "Choose Your Car Seat Color",
+    alternativeMessage: null,
+    item: [
+      {
+        selected: false,
+        label: "Travertine1",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/traditional-img.png?v=1753445078",
+      },
+      {
+        selected: false,
+        label: "Travertine2",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/rotational-img.png?v=1753445103",
+      },
+      {
+        selected: false,
+        label: "Travertine3",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/traditional-img.png?v=1753445078",
+      },
+      {
+        selected: false,
+        label: "Travertine4",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/rotational-img.png?v=1753445103",
+      },
+    ],
+  },
+  {
+    title: "Choose Your Stroller Frame",
+    item: [
+      {
+        selected: false,
+        label: "Shyft™ Intuiti™",
+        description:
+          "The Shyft™ Intuiti™ stroller makes every ride comfortable with all-wheel suspension, premium tires, and a parent- or forward-facing seat.",
+        image: "{{ section.settings.stroller1_image | image_url }}",
+      },
+      {
+        selected: false,
+        label: "Shyft™ Intuiti+™",
+        description:
+          "For parents who like to match innovation with style, the Shyft™ Intuiti+ features elevated details like a deluxe snack tray, hidden basket pocket and premium color accents.",
+        image: "{{ section.settings.stroller2_image | image_url }}",
+      },
+    ],
+  },
+  {
+    title: "Choose Your Stroller Color",
+    item: [
+      {
+        selected: false,
+        label: "Shyft™ Intuiti+™1",
+        description: "with Green & Gentle™ Fabric",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/traditional-img.png?v=1753445078",
+      },
+      {
+        selected: false,
+        label: "Shyft™ Intuiti+™2",
+        description: "with Green & Gentle™ Fabric",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/rotational-img.png?v=1753445103",
+      },
+      {
+        selected: false,
+        label: "Shyft™ Intuiti+™3",
+        description: "with Green & Gentle™ Fabric",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/traditional-img.png?v=1753445078",
+      },
+    ],
+  },
+  {
+    title: "Add Accessories (Optional)",
+    item: [
+      {
+        selected: false,
+        label: "Rotational Base",
+        description:
+          "Add 180° rotation to a second vehicle. This extra base makes it easy to transfer your Revolve180™ Litemax™ NXT car seat and Litemax™ NXT car seat while keeping the the rotational functionality you love.",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/traditional-img.png?v=1753445078",
+      },
+      {
+        selected: false,
+        label: "Non-Rotational Base",
+        description:
+          "Easily transfer your car seat between vehicles. Lightweight and secure with quick-install features for added convenience, it’s perfect for busy families and extra caregivers.",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/rotational-img.png?v=1753445103",
+      },
+      {
+        selected: false,
+        label: "Load Leg",
+        description:
+          "Enhanced safety meets everyday ease. The Load Leg base adds extra stability for peace of mind, while easy installation makes switching cars simple and secure. The Load Leg base is compatible with the Revolve180™ Litemax™ NXT car seat and Litemax™ NXT car seat.",
+        image:
+          "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/traditional-img.png?v=1753445078",
+      },
+    ],
+  },
+  {
+    title: "Review Your Selection",
+    item: [],
+  },
+];
+
+const stepperNextBtn = document.querySelector(".next-btn");
+const stepperPreviousBtn = document.querySelector(".previous-btn");
+
+const startOverBtn = document.querySelector(".start-over");
+
+const buttonWrapper = document.querySelector(".product-stepper-btn-wrapper");
+
+const productSidebar = document.querySelector(".product-sidebar");
+const productStepper = document.querySelector(".product-stepper");
+
+const cart = []
+
+let currentStep = 0;
+
+let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || {};
+
+function renderStepSidebar() {
+  const productSidebarContent = steps.map((step) => {
+    return `
+    <div class="sidebar-content">
+      <div class="filter-title">${step.category}</div>
+      <div class="filter-options">
+        <ul>
+          ${step.items
+            .map((item) => {
+              const className =
+                item.step === currentStep
+                  ? "step active"
+                  : item.step < currentStep
+                  ? "step completed"
+                  : "step";
+
+              const pencilIcon =
+                item.step < currentStep
+                  ? `<span style="margin-left: auto; cursor: pointer;" onclick="stepperEdit(${item.step})">
+                        <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/pencil.svg?v=1753445128" alt="Edit" />
+                     </span>`
+                  : "";
+
+              return `
+                <li class="${className}">
+                  <span class="filter-count">${item.step + 1}</span>
+                  <span class="filter-label">${item.label}</span>
+                  ${pencilIcon}
+                </li>
+              `;
+            })
+            .join("")}
+        </ul>
+      </div>
+    </div>
+  `;
+  });
+
+  productSidebar.innerHTML = productSidebarContent.join("");
+}
+
+function startOver() {
+  startOverBtn.addEventListener("click", () => {
+    smoothStepTransition(() => {
+      currentStep = 0;
+      selectedItems = {};
+      cart.length = 0; // Clear the cart array
+      localStorage.removeItem("selectedItems");
+
+      // Reset step content to original state
+      stepperSteps[3].alternativeMessage = null;
+      stepperSteps[5].alternativeMessage = null;
+      stepperSteps[5].title = "Choose Your Stroller Color";
+
+      render();
+      updateStepperButtons();
+    });
+  });
+}
+
+function hideShowButtons() {
+  updateStepperButtons();
+}
+
+function updateStepperButtons() {
+  const isFirstStep = currentStep === 0;
+  const isLastStep = currentStep === stepperSteps.length - 1;
+
+  stepperPreviousBtn.classList.toggle("hidden-btn", isFirstStep || isLastStep);
+  stepperNextBtn.classList.toggle("hidden-btn", isLastStep);
+  buttonWrapper.classList.toggle("hidden-btn", !isLastStep);
+}
+
+function renderStepContent() {
+  let stepContent;
+  if (currentStep === 7) {
+    // Show cart contents for review
+    const cartReviewItems = cart.map(cartItem => ({
+      label: cartItem.productTitle,
+      description: `Type: ${cartItem.productType} | Color: ${cartItem.variant?.color || 'N/A'}`,
+      image: cartItem.variant?.colorImage || "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/default-product.png",
+      productType: cartItem.productType,
+      variant: cartItem.variant
+    }));
+
+    stepContent = {
+      title: "Review Your Selection",
+      item: cartReviewItems,
+    };
+  } else if (currentStep === 5 && selectedItems.selectedStrollerType) {
+    // Check if stepperSteps[5] already has alternative content set by setActiveCard
+    if (stepperSteps[5].alternativeMessage) {
+      // Use the content that was already set by setActiveCard
+      stepContent = stepperSteps[5];
+    } else {
+      // Dynamically populate stroller color options based on selected stroller type
+      stepContent = { ...stepperSteps[currentStep] };
+      const selectedStrollerType = selectedItems.selectedStrollerType;
+    
+    // Find matching stroller products based on the selected frame
+    const matchingStrollers = strollers.filter(stroller => 
+      stroller.stroller === selectedStrollerType
+    );
+    
+    if (matchingStrollers.length > 0) {
+      // Selected stroller type is available
+      const strollerColorVariants = [];
+      matchingStrollers.forEach(stroller => {
+        stroller.variants.forEach(variant => {
+          const exists = strollerColorVariants.some(item => item.color === variant.color);
+          if (!exists) {
+            strollerColorVariants.push({
+              ...variant,
+              label: variant.color,
+              image: variant.colorImage,
+              productData: stroller
+            });
+          }
+        });
+      });
+      
+      // Update step content with the filtered colors
+      stepContent.item = strollerColorVariants;
+      stepContent.title = "Choose Your Stroller Color";
+      stepContent.alternativeMessage = null;
+    } else {
+      // Selected stroller type is not available, check for alternatives
+      const alternativeType = selectedStrollerType === "intuiti+" ? "intuiti" : "intuiti+";
+      const alternativeStrollers = strollers.filter(stroller => 
+        stroller.stroller === alternativeType
+      );
+      
+      if (alternativeStrollers.length > 0) {
+        // Alternative stroller type is available
+        const alternativeColorVariants = [];
+        alternativeStrollers.forEach(stroller => {
+          stroller.variants.forEach(variant => {
+            const exists = alternativeColorVariants.some(item => item.color === variant.color);
+            if (!exists) {
+              alternativeColorVariants.push({
+                ...variant,
+                label: variant.color,
+                image: variant.colorImage,
+                productData: stroller
+              });
+            }
+          });
+        });
+        
+        // Update step content with alternative message and colors
+        const selectedTypeName = selectedStrollerType === "intuiti+" ? "Intuiti+" : "Intuiti";
+        const alternativeTypeName = alternativeType === "intuiti+" ? "Intuiti+" : "Intuiti";
+        
+        stepContent.title = "Choose Your Stroller Color";
+        stepContent.alternativeMessage = `Sorry, there are no ${selectedTypeName} strollers available. Would you like to buy a ${alternativeTypeName} stroller instead?`;
+        stepContent.item = alternativeColorVariants;
+      } else {
+        // No strollers available at all - skip to review
+        stepContent.item = [];
+        stepContent.alternativeMessage = "Sorry, no strollers are available at this time.";
+      }
+    }
+    }
+  } else {
+    stepContent = stepperSteps[currentStep];
+  }
+
+  const selected = selectedItems[currentStep]?.label;
+  const isSelected = typeof selected !== "undefined";
+  
+  // Special case: if no stroller items are available, allow next button
+  const noItemsAvailable = stepContent.item.length === 0 && stepContent.alternativeMessage;
+  const shouldEnableNext = isSelected || noItemsAvailable;
+
+  stepperNextBtn.disabled = !shouldEnableNext;
+  stepperNextBtn.classList.toggle("button-disabled", !shouldEnableNext);
+
+  updateStepperButtons();
+
+  const wrapperClass =
+    currentStep === 7
+      ? "product-stepper-card-wrapper selected-stepper-card-wrapper"
+      : "product-stepper-card-wrapper";
+
+  const productCardsHTML = stepContent.item.length > 0 
+    ? stepContent.item
+        .map((item, index) => {
+          const isCardSelected = selected === item.label;
+
+          return `
+          <div class="product-stepper-card ${stepperSteps[currentStep].title === "Choose Your Car Seat Color" && "variant-color"} ${
+            isCardSelected ? "selected" : ""
+          }" onclick="setActiveCard(${index})">
+            <img src="${item.image}" alt="${item.label}" />
+            <div class="product-stepper-card-content">
+              <h3>${item.label}</h3>
+              <p>${item.description || ""}</p>
+            </div>
+          </div>
+        `;
+        })
+        .join("")
+    : stepContent.alternativeMessage && stepContent.alternativeMessage.includes("no strollers are available")
+        ? `<div class="no-products-message" style="text-align: center; padding: 40px; color: #666;">
+             <p>No strollers are currently available.</p>
+             <p>Click "Next" to proceed to the review.</p>
+           </div>`
+        : "";
+
+  const alternativeMessageHTML = stepContent.alternativeMessage 
+    ? `<div class="alternative-message" style="background: #f9f9f9; padding: 15px; margin: 15px 0; border-radius: 8px; border-left: 4px solid #00aea9;">
+         <p style="margin: 0; color: #333; font-weight: 500;">${stepContent.alternativeMessage}</p>
+       </div>`
+    : '';
+
+  productStepper.innerHTML = `
+    <div class="product-stepper__item">
+      <h2>${stepContent.title}</h2>
+      ${alternativeMessageHTML}
+      <div class="${wrapperClass}">
+        ${productCardsHTML}
+      </div>
+    </div>
+  `;
+}
+
+function smoothStepTransition(callback) {
+  // Add transitioning class for smooth effect
+  productStepper.classList.add('transitioning');
+  
+  // Wait for transition out, then update content
+  setTimeout(() => {
+    // Update content
+    callback();
+    
+    // Remove transitioning class to fade in new content
+    setTimeout(() => {
+      productStepper.classList.remove('transitioning');
+    }, 50);
+  }, 300);
+  
+  // Smooth scroll to top of stepper section after transition starts
+  setTimeout(() => {
+    const stepperSection = document.querySelector('.product-stepper');
+    if (stepperSection) {
+      stepperSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }, 100);
+}
+
+function render() {
+  renderStepContent();
+  renderStepSidebar();
+}
+
+
+function checkIfShowStroller(cart){
+  const hasTravelSystem = cart.some(item => item.productType === 'Travel System');
+  const hasInfantCarSeat = cart.some(item => item.productType === 'Infant Car Seat');
+
+  // If Travel System is selected, we should skip stroller steps
+  if (hasTravelSystem) {
+    return { skipStrollerSteps: true, reason: 'Travel System selected' };
+  }
+
+  // If only Infant Car Seat is selected, continue with stroller steps
+  if (hasInfantCarSeat) {
+    return { skipStrollerSteps: false, reason: 'Infant Car Seat selected - show stroller options' };
+  }
+
+  return { skipStrollerSteps: false, reason: 'No relevant products in cart' };
+};
+
+function setActiveCard(passedItemIndex) {
+  const stepContent = stepperSteps[currentStep];
+  const selectedItem = stepContent.item[passedItemIndex];
+
+  // Update selectedItems with current step and item
+  selectedItems[currentStep] = {
+    ...selectedItem
+  };
+
+  if (stepperSteps[currentStep].title === "Choose Your Car Seat Color") {
+    const selectedColor = selectedItem.label;
+
+    const selectedProduct = normalizedVariants.find(product =>
+      Array.isArray(product.variants) &&
+      product.variants.some(variant => variant.color === selectedColor)
+    );
+
+    if (selectedProduct) {
+      const matchedVariant = selectedProduct.variants.find(
+        variant => variant.color === selectedColor
+      );
+
+      const existingCartItemIndex = cart.findIndex(
+        item => item.productId === selectedProduct.productId
+      );
+
+      if (existingCartItemIndex > -1) {
+        cart[existingCartItemIndex].variant = matchedVariant;
+      } else {
+        cart.push({
+          ...selectedProduct,
+          variant: matchedVariant
+        });
+      }
+      
+      // Check if we should skip stroller steps
+      const strollerCheck = checkIfShowStroller(cart);
+      selectedItems.skipStrollerSteps = strollerCheck.skipStrollerSteps;
+    }
+  }
+
+
+  if (stepperSteps[currentStep].title === "Choose Your Stroller Frame") {
+    const selectedStrollerFrame = selectedItem.label;
+    const selectedStrollerType = selectedStrollerFrame.includes("Intuiti+") ? "intuiti+" : "intuiti";
+    
+    // Store the selected stroller type for the next step
+    selectedItems.selectedStrollerType = selectedStrollerType;
+    
+    // Find matching stroller products based on the selected frame
+    const matchingStrollers = strollers.filter(stroller => 
+      stroller.stroller === selectedStrollerType
+    );
+    
+    if (matchingStrollers.length > 0) {
+      // Selected stroller type is available
+      const strollerColorVariants = [];
+      matchingStrollers.forEach(stroller => {
+        stroller.variants.forEach(variant => {
+          const exists = strollerColorVariants.some(item => item.color === variant.color);
+          if (!exists) {
+            strollerColorVariants.push({
+              ...variant,
+              label: variant.color,
+              image: variant.colorImage,
+              productData: stroller
+            });
+          }
+        });
+      });
+      
+              // Update the next step's items with the filtered colors
+        stepperSteps[5].item = strollerColorVariants;
+        stepperSteps[5].title = "Choose Your Stroller Color";
+        stepperSteps[5].alternativeMessage = null;
+    } else {
+      // Selected stroller type is not available, check for alternatives
+      const alternativeType = selectedStrollerType === "intuiti+" ? "intuiti" : "intuiti+";
+              const alternativeStrollers = strollers.filter(stroller => 
+          stroller.stroller === alternativeType
+        );
+      
+      if (alternativeStrollers.length > 0) {
+        // Alternative stroller type is available
+        const alternativeColorVariants = [];
+        alternativeStrollers.forEach(stroller => {
+          stroller.variants.forEach(variant => {
+            const exists = alternativeColorVariants.some(item => item.color === variant.color);
+            if (!exists) {
+              alternativeColorVariants.push({
+                ...variant,
+                label: variant.color,
+                image: variant.colorImage,
+                productData: stroller
+              });
+            }
+          });
+        });
+        
+        // Update the next step with alternative message and colors
+        const selectedTypeName = selectedStrollerType === "intuiti+" ? "Intuiti+" : "Intuiti";
+        const alternativeTypeName = alternativeType === "intuiti+" ? "Intuiti+" : "Intuiti";
+        
+        stepperSteps[5].title = "Choose Your Stroller Color";
+        stepperSteps[5].alternativeMessage = `Sorry, there are no ${selectedTypeName} strollers available. Would you like to buy a ${alternativeTypeName} stroller instead?`;
+        stepperSteps[5].item = alternativeColorVariants;
+        
+                  // Update selected items to reflect the alternative
+          selectedItems.selectedStrollerType = alternativeType;
+              } else {
+          // No strollers available at all - skip to review
+          selectedItems.skipToReview = true;
+          stepperSteps[5].item = [];
+          stepperSteps[5].alternativeMessage = "Sorry, no strollers are available at this time.";
+        }
+    }
+  }
+
+  if (stepperSteps[currentStep].title === "Choose Your Stroller Color") {
+    const selectedStrollerColor = selectedItem.label;
+    const selectedStrollerProduct = selectedItem.productData;
+    
+    if (selectedStrollerProduct) {
+      const matchedStrollerVariant = selectedStrollerProduct.variants.find(
+        variant => variant.color === selectedStrollerColor
+      );
+
+      const existingStrollerIndex = cart.findIndex(
+        item => item.productId === selectedStrollerProduct.productId
+      );
+
+      if (existingStrollerIndex > -1) {
+        cart[existingStrollerIndex].variant = matchedStrollerVariant;
+      } else {
+        cart.push({
+          ...selectedStrollerProduct,
+          variant: matchedStrollerVariant
+        });
+      }
+    }
+  }
+
+  // Save to localStorage
+  localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+  // Update UI
+
+  const cards = document.querySelectorAll(".product-stepper-card");
+  cards.forEach((card, index) => {
+    if (index === passedItemIndex) {
+      card.classList.add("selected");
+      stepperNextBtn.disabled = true;
+      stepperNextBtn.classList.add("button-disabled");
+    } else {
+      card.classList.remove("selected");
+      stepperNextBtn.disabled = false;
+      stepperNextBtn.classList.remove("button-disabled");
+    }
+  });
+
+  stepperNextBtn.disabled = false;
+  stepperNextBtn.classList.remove("button-disabled");
+}
+
+function matchProductData() {
+  const selectedItemsObject = JSON.parse(localStorage.getItem("selectedItems")) || {};
+  const selectedItemsArray = Object.values(selectedItemsObject);
+
+  // Combine selected properties into a single object
+  const selected = {
+    rotation: selectedItemsArray.find(item => item.hasOwnProperty('rotation'))?.rotation,
+    fabric: selectedItemsArray.find(item => item.hasOwnProperty('fabric'))?.fabric,
+    sensorysoothe: selectedItemsArray.find(item => item.hasOwnProperty('sensorysoothe'))?.sensorysoothe
+  };
+
+  const getVariants = (matchProducts)=> {
+    const variants = [];
+    matchProducts.forEach((product)=>{
+    product.variants.forEach((variant)=>{
+      const exists = variants.some(item => item.color === variant.color);
+      if(!exists){
+        variants.push({...variant,label:variant.color, image:variant.colorImage})
+      }
+    })
+
+    })
+    return variants;
+  } 
+
+  // Filter products that match all three selected values (exact match)
+  const exactMatchProducts = travelSystemsInfantCarSeat.filter(productData => {
+    return (
+      productData.rotation === selected.rotation &&
+      productData.fabric === selected.fabric &&
+      productData.sensorysoothe === selected.sensorysoothe
+    );
+  });
+
+  if (exactMatchProducts.length > 0) {
+    // Exact match found - show those products
+    stepperSteps[3].item = getVariants(exactMatchProducts);
+    stepperSteps[3].alternativeMessage = null;
+  } else {
+    // No exact match - find alternatives
+    
+    // Priority 1: Match rotation + fabric (most important features)
+    let alternativeProducts = travelSystemsInfantCarSeat.filter(productData => {
+      return (
+        productData.rotation === selected.rotation &&
+        productData.fabric === selected.fabric
+      );
+    });
+    
+    let alternativeMessage = '';
+    
+    if (alternativeProducts.length > 0) {
+      const handleType = selected.sensorysoothe === 1 ? 'SensorySoothe' : 'Traditional';
+      const availableHandleType = selected.sensorysoothe === 1 ? 'Traditional' : 'SensorySoothe';
+      alternativeMessage = `Your selected combination with ${handleType} handle is not available. Here are similar options with ${availableHandleType} handle:`;
+    } else {
+      // Priority 2: Match rotation + sensorysoothe
+      alternativeProducts = travelSystemsInfantCarSeat.filter(productData => {
+        return (
+          productData.rotation === selected.rotation &&
+          productData.sensorysoothe === selected.sensorysoothe
+        );
+      });
+      
+      if (alternativeProducts.length > 0) {
+        const fabricType = selected.fabric === 1 ? 'Green & Gentle™' : 'Classic';
+        const availableFabricType = selected.fabric === 1 ? 'Classic' : 'Green & Gentle™';
+        alternativeMessage = `Your selected combination with ${fabricType} fabric is not available. Here are similar options with ${availableFabricType} fabric:`;
+      } else {
+        // Priority 3: Match fabric + sensorysoothe
+        alternativeProducts = travelSystemsInfantCarSeat.filter(productData => {
+          return (
+            productData.fabric === selected.fabric &&
+            productData.sensorysoothe === selected.sensorysoothe
+          );
+        });
+        
+        if (alternativeProducts.length > 0) {
+          const baseType = selected.rotation === 1 ? 'Rotational' : 'Traditional';
+          const availableBaseType = selected.rotation === 1 ? 'Traditional' : 'Rotational';
+          alternativeMessage = `Your selected combination with ${baseType} base is not available. Here are similar options with ${availableBaseType} base:`;
+        } else {
+          // Priority 4: Match rotation only (most important single feature)
+          alternativeProducts = travelSystemsInfantCarSeat.filter(productData => {
+            return productData.rotation === selected.rotation;
+          });
+          
+          if (alternativeProducts.length > 0) {
+            alternativeMessage = `Your exact combination is not available. Here are available options with the same car seat base:`;
+          } else {
+            // Last resort: Show any available products
+            alternativeProducts = travelSystemsInfantCarSeat.filter(product => 
+              product.variants && product.variants.length > 0
+            );
+            alternativeMessage = `Your selected combination is not available. Here are other available options:`;
+          }
+        }
+      }
+    }
+    
+    stepperSteps[3].item = getVariants(alternativeProducts);
+    stepperSteps[3].alternativeMessage = alternativeMessage;
+  }
+
+  // Products matched - ready for cart functionality
+}
+
+function productCartFunction(){
+  // Prepare final cart for Shopify
+  const finalCartItems = cart.map(item => ({
+    variantId: item.variant?.variantId,
+    quantity: 1,
+    productTitle: item.productTitle,
+    productType: item.productType,
+    color: item.variant?.color
+  }));
+  
+  return finalCartItems;
+}
+
+
+
+function addToCart() {
+  const finalCartItems = productCartFunction();
+  
+  if (finalCartItems.length === 0) {
+    alert('No items to add to cart');
+    return;
+  }
+  
+  // Prepare items for Shopify cart API
+  const cartData = {
+    items: finalCartItems.filter(item => item.variantId).map(item => ({
+      id: item.variantId,
+      quantity: item.quantity
+    }))
+  };
+  
+      fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Clear localStorage and reset stepper after successful cart addition
+      selectedItems = {};
+      localStorage.removeItem("selectedItems");
+      alert(`Successfully added ${finalCartItems.length} item(s) to cart!`);
+      // Redirect to cart page
+      window.location.href = '/cart';
+    })
+  .catch(error => {
+    console.error('Error adding to cart:', error);
+    alert('Error adding items to cart. Please try again.');
+  });
+}
+
+function buyNow() {
+  const finalCartItems = productCartFunction();
+  
+  if (finalCartItems.length === 0) {
+    alert('No items to buy');
+    return;
+  }
+  
+  // Prepare items for Shopify cart API
+  const cartData = {
+    items: finalCartItems.filter(item => item.variantId).map(item => ({
+      id: item.variantId,
+      quantity: item.quantity
+    }))
+  };
+  
+      fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Clear localStorage and reset stepper after successful cart addition
+      selectedItems = {};
+      localStorage.removeItem("selectedItems");
+      // Redirect directly to checkout
+      window.location.href = '/checkout';
+    })
+  .catch(error => {
+    console.error('Error during buy now:', error);
+    alert('Error processing your order. Please try again.');
+  });
+}
+
+function productClear(){
+  smoothStepTransition(() => {
+    currentStep = 0;
+    selectedItems = {};
+    cart.length = 0; // Clear the cart array
+    localStorage.removeItem("selectedItems");
+    
+    // Reset step content to original state
+    stepperSteps[3].alternativeMessage = null;
+    stepperSteps[5].alternativeMessage = null;
+    stepperSteps[5].title = "Choose Your Stroller Color";
+    
+      render();
+  updateStepperButtons();
+  document.querySelector(".product-listing-wrapper").innerHTML = `<h2 style="margin: auto;">Select any combination of features to view compatible products.</h2>`;
+  });
+}
+
+// matchProductData(); // Uncomment if you want to show initial product matches
+render();
+startOver();
+
+stepperNextBtn.addEventListener("click", () => {
+  if (currentStep < stepperSteps.length - 1) {
+    smoothStepTransition(() => {
+      currentStep++;
+      
+              // Skip stroller steps (4-5) if Travel System was selected
+        if (selectedItems.skipStrollerSteps && currentStep === 4) {
+          currentStep = 7; // Jump to Review step
+        }
+        
+        // Skip to review if no strollers are available after selecting stroller frame
+        if (selectedItems.skipToReview && currentStep === 5) {
+          currentStep = 7; // Jump to Review step
+        }
+        
+        // Skip accessories step (6) for everyone
+        if (currentStep === 6) {
+          currentStep = 7; // Jump to Review step
+        }
+      render();
+      
+      // Handle Car Seat Color step
+      if(stepperSteps[currentStep]?.title === "Choose Your Car Seat Color"){
+        matchProductData();
+        render();
+      }
+    });
+  }
+});
+
+stepperPreviousBtn.addEventListener("click", () => {
+  if (currentStep > 0) {
+    smoothStepTransition(() => {
+      currentStep--;
+      render();
+    });
+  }
+});
+
+function stepperEdit(step) {
+  smoothStepTransition(() => {
+    currentStep = step;
+    render();
+  });
+}
+
+
+    </script>
+
+
+{% schema %}
+{
+  "name": "Evenflo Byo Stepper",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Car Seat Base Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "traditional_image",
+      "label": "Traditional Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "rotational_image",
+      "label": "Rotational Image"
+    },
+    {
+      "type": "header",
+      "content": "Car Seat Handle Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "traditional_handle_image",
+      "label": "Traditional Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sensorysooth_handle_image",
+      "label": "Sensorysooth Image"
+    },
+    {
+      "type": "header",
+      "content": "Car Seat Fabric Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "classic_image",
+      "label": "Classic Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "green-gentle_image",
+      "label": "Green & Gentle Image"
+    },
+    {
+      "type": "header",
+      "content": "Stroller Frame Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "stroller1_image",
+      "label": "Shyft™ Intuiti™ Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "stroller2_image",
+      "label": "Shyft™ Intuiti+™ Image"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Byo Stepper"
+    }
+  ]
+}
+{% endschema %}
