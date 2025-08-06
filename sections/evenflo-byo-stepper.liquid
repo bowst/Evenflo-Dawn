@@ -58,8 +58,19 @@
   }
 }
 </style>
-
-<div class="product-filter-wrapper">
+<div class="product-filter-wrapper" style="position: relative;">
+  {% if section.settings.loading_video %}
+    <div id="loading-video" style="display: none; position: absolute; inset: 0; background: black; z-index: 1; align-items: center; justify-content: center;">
+      <video autoplay muted playsinline style="max-width: 1432px; max-height: 613px; width: 100%; height: 100%; object-fit: cover;">
+        {% for source in section.settings.loading_video.sources %}
+          {% if source.mime_type == "video/mp4" %}
+            <source src="{{ source.url }}" type="video/mp4">
+          {% endif %}
+        {% endfor %}
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  {% endif %}
   <div class="product-sidebar"></div>
   <div class="product-stepper-wrapper">
     <div class="product-stepper"></div>
@@ -103,9 +114,6 @@
       </div>
     </div>
   </div>
-  <div class="product-listing-wrapper product-stepper-card-wrapper">
-    <h2 style="margin: auto;">Select any combination of features to view compatible products</h2>
-  </div>
 </div>
 
 
@@ -127,6 +135,7 @@ const byoVariants = [
             "variantId": {{ variant.id }},
             "color": {{ variant.option1 | json }},
             "colorImage": {{ variant.metafields.custom.new_swatch_image.value | json }},
+            "byoColorImage": {{ variant.metafields.custom.byo_color.value | json }},
             "sku": {{ variant.sku | json }},
             "inventory": {{ variant.inventory_quantity }},
             "inStock": true
@@ -163,6 +172,8 @@ const normalizedVariants = byoVariants.map(p => ({
   sensorysoothe: p.sensorysoothe ? 1 : 0
 }));
 
+console.log("BYO Products",normalizedVariants)
+
 const strollers = normalizedVariants.filter(p => p.productType === "Stroller");
 const travelSystemsInfantCarSeat = normalizedVariants.filter(p => p.productType === "Travel System" || p.productType ==="Infant Car Seat");
 
@@ -197,18 +208,18 @@ const stepperSteps = [
     title: "Choose Your Car Seat Base",
     item: [
       {
-        rotation: 0,
-        label: "Traditional",
-        description:
-          "Secure and ready to roll with a LockStrong™ belt tensioning system for solid installation in no time. The LiteMax™ NXT Infant Car Seat offers innovation and style with built-in SensorSafe® technology, which gives parents real-time alerts about 4 potentially unsafe conditions from your child’s car seat.",
-        image: "{{ section.settings.traditional_image | image_url }}",
-      },
-      {
         rotation: 1,
         label: "Rotational",
         description:
           "Enjoy the hallmark features of the LiteMax™ NXT with added 180º rotation for easy in and out. Complete with SensorSafe® technology, which gives parents real-time alerts about 4 potentially unsafe conditions from your child’s car seat, the Revolve180™ LiteMax™ Infant Car Seat offers smoother transitions for on-the-go parents with peace of mind to spare.",
         image: "{{ section.settings.rotational_image | image_url }}",
+      },
+      {
+        rotation: 0,
+        label: "Traditional",
+        description:
+          "Secure and ready to roll with a LockStrong™ belt tensioning system for solid installation in no time. The LiteMax™ NXT Infant Car Seat offers innovation and style with built-in SensorSafe® technology, which gives parents real-time alerts about 4 potentially unsafe conditions from your child’s car seat.",
+        image: "{{ section.settings.traditional_image | image_url }}",
       },
     ],
   },
@@ -216,18 +227,18 @@ const stepperSteps = [
     title: "Choose Your Car Seat Handle",
     item: [
       {
-        sensorysoothe: 0,
-        label: "Traditional",
-        description:
-          "Streamlined, powerful and comfortable to the touch - perfect for parents who value premium function and ease of use.",
-        image: "{{ section.settings.traditional_handle_image | image_url}}",
-      },
-      {
         sensorysoothe: 1,
         label: "SensorySoothe",
         description:
           "Activated by a button or through the Evenflo app, soothing lights and sounds help calm your baby right from the car seat handle - no accessories needed.",
         image: "{{ section.settings.sensorysooth_handle_image | image_url }}",
+      },
+      {
+        sensorysoothe: 0,
+        label: "Traditional",
+        description:
+          "Streamlined, powerful and comfortable to the touch - perfect for parents who value premium function and ease of use.",
+        image: "{{ section.settings.traditional_handle_image | image_url}}",
       },
     ],
   },
@@ -235,18 +246,18 @@ const stepperSteps = [
     title: "Choose Your Car Seat Fabric",
     item: [
       {
-        fabric: 0,
-        label: "Classic",
-        description:
-          "Opt for our classic fabric that’s soft, durable and designed for everyday comfort.",
-        image: "{{ section.settings.classic_image | image_url }}",
-      },
-      {
         fabric: 1,
         label: "Green & Gentle™",
         description:
           "Eco-friendly, made from recycled bottles and free of added chemicals - gentle on your baby and the planet.",
         image: "{{ section.settings.green-gentle_image | image_url }}",
+      },
+      {
+        fabric: 0,
+        label: "Classic",
+        description:
+          "Opt for our classic fabric that’s soft, durable and designed for everyday comfort.",
+        image: "{{ section.settings.classic_image | image_url }}",
       },
     ],
   },
@@ -285,18 +296,18 @@ const stepperSteps = [
     item: [
       {
         selected: false,
-        label: "Shyft™ Intuiti™",
-        description:
-          "The Shyft™ Intuiti™ stroller makes every ride comfortable with all-wheel suspension, premium tires, and a parent- or forward-facing seat.",
-        image: "{{ section.settings.stroller1_image | image_url }}",
-      },
-      {
-        selected: false,
         label: "Shyft™ Intuiti+™",
         description:
           "For parents who like to match innovation with style, the Shyft™ Intuiti+ features elevated details like a deluxe snack tray, hidden basket pocket and premium color accents.",
         image: "{{ section.settings.stroller2_image | image_url }}",
       },
+      {
+        selected: false,
+        label: "Shyft™ Intuiti™",
+        description:
+          "The Shyft™ Intuiti™ stroller makes every ride comfortable with all-wheel suspension, premium tires, and a parent- or forward-facing seat.",
+        image: "{{ section.settings.stroller1_image | image_url }}",
+      }, 
     ],
   },
   {
@@ -490,7 +501,7 @@ function renderStepContent() {
             strollerColorVariants.push({
               ...variant,
               label: variant.color,
-              image: variant.colorImage,
+              image: variant.byoColorImage ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg",
               productData: stroller
             });
           }
@@ -518,7 +529,7 @@ function renderStepContent() {
               alternativeColorVariants.push({
                 ...variant,
                 label: variant.color,
-                image: variant.colorImage,
+                image: variant.byoColorImage ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg",
                 productData: stroller
               });
             }
@@ -716,13 +727,12 @@ function setActiveCard(passedItemIndex) {
             strollerColorVariants.push({
               ...variant,
               label: variant.color,
-              image: variant.colorImage,
+              image: variant.byoColorImage,
               productData: stroller
             });
           }
         });
       });
-      
               // Update the next step's items with the filtered colors
         stepperSteps[5].item = strollerColorVariants;
         stepperSteps[5].title = "Choose Your Stroller Color";
@@ -733,7 +743,6 @@ function setActiveCard(passedItemIndex) {
               const alternativeStrollers = strollers.filter(stroller => 
           stroller.stroller === alternativeType
         );
-      
       if (alternativeStrollers.length > 0) {
         // Alternative stroller type is available
         const alternativeColorVariants = [];
@@ -744,7 +753,7 @@ function setActiveCard(passedItemIndex) {
               alternativeColorVariants.push({
                 ...variant,
                 label: variant.color,
-                image: variant.colorImage,
+                image: variant.byoColorImage,
                 productData: stroller
               });
             }
@@ -754,7 +763,6 @@ function setActiveCard(passedItemIndex) {
         // Update the next step with alternative message and colors
         const selectedTypeName = selectedStrollerType === "intuiti+" ? "Intuiti+" : "Intuiti";
         const alternativeTypeName = alternativeType === "intuiti+" ? "Intuiti+" : "Intuiti";
-        
         stepperSteps[5].title = "Choose Your Stroller Color";
         stepperSteps[5].alternativeMessage = `Sorry, there are no ${selectedTypeName} strollers available. Would you like to buy a ${alternativeTypeName} stroller instead?`;
         stepperSteps[5].item = alternativeColorVariants;
@@ -1030,6 +1038,14 @@ function productClear(){
   });
 }
 
+window.addEventListener("load", function(){
+currentStep = 0;
+    selectedItems = {};
+    cart.length = 0; // Clear the cart array
+    localStorage.removeItem("selectedItems");
+    render();
+})
+
 // matchProductData(); // Uncomment if you want to show initial product matches
 render();
 startOver();
@@ -1048,11 +1064,20 @@ stepperNextBtn.addEventListener("click", () => {
         if (selectedItems.skipToReview && currentStep === 5) {
           currentStep = 7; // Jump to Review step
         }
-        
-        // Skip accessories step (6) for everyone
+
         if (currentStep === 6) {
-          currentStep = 7; // Jump to Review step
-        }
+          const videoContainer = document.getElementById("loading-video");
+          videoContainer.style.display = "flex";
+
+          setTimeout(() => {
+            videoContainer.style.display = "none";
+            currentStep = 7;
+            render();
+          }, 4000);
+          return;
+        } 
+
+
       render();
       
       // Handle Car Seat Color step
@@ -1089,6 +1114,15 @@ function stepperEdit(step) {
   "name": "Evenflo Byo Stepper",
   "tag": "section",
   "settings": [
+     {
+      "type": "header",
+      "content": "Car Seat Base Images"
+    },
+    {
+      "type": "video",
+      "id": "loading_video",
+      "label": "Loading Video",
+    },
     {
       "type": "header",
       "content": "Car Seat Base Images"
