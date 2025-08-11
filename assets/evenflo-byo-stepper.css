@@ -360,6 +360,10 @@ span.filter-label {
   overflow: unset;
   flex-wrap: nowrap;
 }
+/* Swiper probably shouldnt' be initalizing here, but adding this as a temp fix */
+.product-stepper-card.accessory-card{
+	max-width: calc(33.333% - 10.667px);
+}
 .product-stepper-card.variant-color {
     padding: 0;
     border: none;
@@ -471,6 +475,7 @@ span.filter-label {
 .product-stepper-card.stroller-card.swiper-slide {
   flex: none;
   text-align: left;
+  
 }
 .product-stepper__item .swiper:has(.selected-stepper-card-wrapper.swiper-wrapper),
 .product-stepper__item .swiper:has(.product-stepper-card-review-wrapper.swiper-wrapper),
