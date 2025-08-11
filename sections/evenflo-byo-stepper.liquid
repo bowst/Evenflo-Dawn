@@ -639,7 +639,7 @@ function renderStepContent() {
     if (title === "Choose Your Car Seat Color") return "variant-color swiper-slide";
     if (title === "Choose Your Stroller Color") return "stroller-card swiper-slide";
     if (title === "Add Accessories (Optional)") return "accessory-card swiper-slide";
-    if (title === "Review Your Selection") return "review-card swiper-slide";
+    if (title === "Revieww Your Selection") return "review-card swiper-slide";
     return "";
   };
 
@@ -649,7 +649,7 @@ function renderStepContent() {
     const cartReviewItems = cart.map(ci => ({
       label: ci.productTitle,
       description: `Type: ${ci.productType} | Color: ${ci.variant?.color || "N/A"}`,
-      image: ci.variant?.colorImage || "https://cdn.shopify.com/s/files/1/0512/2359/3116/files/default-product.png",
+      image: ci.variant?.colorImage || "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg",
       productType: ci.productType,
       variant: ci.variant
     }));
