@@ -649,7 +649,7 @@ function renderStepContent() {
     const cartReviewItems = cart.map(ci => ({
       label: ci.productTitle,
       description: `Type: ${ci.productType} | Color: ${ci.variant?.color || "N/A"}`,
-      image: ci.variant?.byoColorImage || "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg",
+      image: v.byoColorImage ?? v.colorImage ?? "shopify://shop_images/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg",
       productType: ci.productType,
       variant: ci.variant
     }));
