@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
+    <link rel="alternate" hreflang="en-ca" href="https://www.evenflo.ca/">
+    <link rel="alternate" hreflang="fr-ca" href="https://www.evenflo.ca/fr">
+    <link rel="alternate" hreflang="en-us" href="https://www.evenflo.com/">
+    <link rel="alternate" hreflang="es-us" href="https://www.evenflo.com/es">
+    <link rel="alternate" hreflang="en-gb" href="https://www.evenflo.co.uk/">
+    <link rel="alternate" hreflang="fr-gb" href="https://www.evenflo.co.uk/fr">
+    <link rel="alternate" hreflang="en-au" href="https://www.evenflo.com.au/">
+    <link rel="alternate" hreflang="fr-au" href="https://www.evenflo.com.au/fr">
 
     <!-- Google Tag Manager -->
    <script>
@@ -34,7 +42,7 @@
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
     {% if page_description %}
@@ -76,8 +84,9 @@
     <!-- Live Font -->
         <link rel="preconnect" href="https://use.typekit.net">
     <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css" media="print" onload="this.media='all'">
-<!-- End Live Font -->
+	<link rel="alternate" hreflang="x-default" href="https://www.evenflo.com/">
     
+    <!-- End Live Font -->
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
       assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
