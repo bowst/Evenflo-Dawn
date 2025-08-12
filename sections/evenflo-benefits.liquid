@@ -1,60 +1,162 @@
-{{ 'section-benefits.css' | asset_url | stylesheet_tag }}
+{{ 'section-evenflo-benefits.css' | asset_url | stylesheet_tag }}
 
-<section class="benefits anchor-gradient">
-  <div class="content-container page-width color-accent-4 rich-text--full-width content-container--full-width">
-    <h2 class="h1 heading-underline">{{ section.settings.section_title }}</h2>
+<div
+  class="evenflo-benefits page-width"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="evenflo-benefits__container">
+    {% if section.settings.heading != blank %}
+      <div class="evenflo-benefits__header">
+        <h2 class="evenflo-benefits__title">{{ section.settings.heading }}</h2>
+        <div class="evenflo-benefits__divider"></div>
+      </div>
+    {% endif %}
 
-    <div class="flex-row">
-      {%- for block in section.blocks -%}
-        <div class="flex-item">
-          {%- case block.type -%}
+    <div class="evenflo-benefits__grid">
+      {% for block in section.blocks %}
+        <div class="evenflo-benefits__tile" {{ block.shopify_attributes }}>
+          {% if block.settings.icon != blank %}
+            <div class="evenflo-benefits__icon">
+              <img
+                src="{{ block.settings.icon | image_url: width: 64 }}"
+                alt=""
+                loading="lazy"
+                width="64"
+                height="64"
+              >
+            </div>
+          {% endif %}
 
-            {%- when 'benefit' -%}
-            <h3>{{ block.settings.benefit_name }}</h3>
-            <p>{{ block.settings.benefit_description }}</p>
+          <div class="evenflo-benefits__content">
+            {% if block.settings.title != blank %}
+              <h3 class="evenflo-benefits__tile-title">{{ block.settings.title }}</h3>
+            {% endif %}
 
-          {%- endcase -%}
+            {% if block.settings.description != blank %}
+              <p class="evenflo-benefits__description">{{ block.settings.description }}</p>
+            {% endif %}
+          </div>
+
+          {% if block.settings.background_image != blank %}
+            <div class="evenflo-benefits__bg-image">
+              <img
+                src="{{ block.settings.background_image | image_url: width: 200 }}"
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+              >
+            </div>
+          {% endif %}
         </div>
-      {%- endfor -%}
+      {% endfor %}
     </div>
   </div>
-</section>
+</div>
 
 {% schema %}
-  {
-    "name": "Benefits",
-    "class": "text",
-    "max_blocks": 4,
-    "tag": "section",
-    "settings": [
-      {
-        "type": "text",
-        "id": "section_title",
-        "label": "Section Title",
-        "default": "Why Evenflo"
-      }
-    ],
-    "blocks": [
-      {
-        "name": "Benefit",
-        "type": "benefit",
-        "settings": [
-          {
-            "type": "text",
-            "id": "benefit_name",
-            "label": "Benefit Name"
-          }, {
-            "type": "textarea",
-            "id": "benefit_description",
-            "label": "Benefit Description"
+{
+  "name": "Benefits",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "default": "Benefits of Shopping Evenflo.com",
+      "label": "Heading Label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Give $20, Get $20",
+          "label": "Label"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "default": "Refer a friend and earn points for each successful referral.",
+          "label": "Description Label"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral."
           }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Benefits"
-      }
-    ]
-  }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Pay With Affirm",
+            "description": "Spread out your payments over a period of time."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Community Heroes Discount",
+            "description": "Our exclusive discount program for community heroes."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Give $20, Get $20",
+            "description": "The day your child comes into the world, all the stakes are raised. Little things matter more."
+          }
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
