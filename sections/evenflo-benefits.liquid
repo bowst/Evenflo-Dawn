@@ -15,6 +15,10 @@
     <div class="evenflo-benefits__grid">
       {% for block in section.blocks %}
         <div class="evenflo-benefits__tile" {{ block.shopify_attributes }}>
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="evenflo-benefits__link">
+          {% endif %}
+          
           {% if block.settings.icon != blank %}
             <div class="evenflo-benefits__icon">
               <img
@@ -36,6 +40,10 @@
               <p class="evenflo-benefits__description">{{ block.settings.description }}</p>
             {% endif %}
           </div>
+
+          {% if block.settings.link != blank %}
+            </a>
+          {% endif %}
 
           {% if block.settings.background_image != blank %}
             <div class="evenflo-benefits__bg-image">
@@ -114,6 +122,11 @@
           "id": "description",
           "default": "Refer a friend and earn points for each successful referral.",
           "label": "Description Label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
         },
         {
           "type": "image_picker",
