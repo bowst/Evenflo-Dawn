@@ -99,7 +99,6 @@
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   width: 32px;
@@ -339,27 +338,24 @@
                   <div class="byo-modal-video__container">
                     <div class="byo-modal-video__wrapper">
                       <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
-                        <video 
-                          id="byo-video-{{ block.id }}" 
-                          class="byo-video-element"
-                          autoplay
-                          {% if block.settings.enable_modal_video_looping %}loop{% endif %}
-                          muted
-                          playsinline
-                          preload="auto"
-                          webkit-playsinline
-                          x5-playsinline
-                          x5-video-player-type="h5"
-                          x5-video-player-fullscreen="true"
-                        >
-                          {%- for source in block.settings.modal_video.sources -%}
-                            <source src="{{ source.url }}" type="{{ source.mime_type }}">
-                          {%- endfor -%}
-                        </video>
+                        {%- if block.settings.modal_video != blank -%}
+                          <video 
+                            id="byo-video-{{ block.id }}" 
+                            class="byo-video-element"
+                            autoplay 
+                            muted 
+                            playsinline
+                            {% if block.settings.enable_modal_video_looping %}loop{% endif %}
+                            preload="auto"
+                          >
+                            <source src="{{ block.settings.modal_video.sources.first.url }}" type="{{ block.settings.modal_video.sources.first.mime_type }}">
+                            Your browser does not support the video tag.
+                          </video>
+                        {%- endif -%}
                       </div>
                       <button
                         class="byo-modal-video__maximize"
-                        onclick="toggleFullscreen('BYOVideoPlayer-{{ block.id }}')"
+                        onclick="toggleFullscreen('byo-video-{{ block.id }}')"
                         aria-label="Toggle Fullscreen"
                       >
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -400,40 +396,64 @@
   }
 
   // Function to toggle fullscreen for video
-  function toggleFullscreen(playerId) {
-    const playerElement = document.getElementById(playerId);
-    const video = playerElement ? playerElement.querySelector('video') : null;
+  function toggleFullscreen(videoId) {
+    const video = document.getElementById(videoId);
     
-    if (!video) return;
+    console.log('Fullscreen function called for:', videoId);
+    console.log('Video element found:', video);
+    
+    if (!video) {
+      console.log('Video element not found!');
+      return;
+    }
+    
+    // Log video properties
+    console.log('Video src:', video.src);
+    console.log('Video readyState:', video.readyState);
+    console.log('Video videoWidth:', video.videoWidth);
+    console.log('Video videoHeight:', video.videoHeight);
     
     if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
       // Enter fullscreen - target the video element specifically
+      console.log('Attempting to enter fullscreen...');
+      
       const requestFullscreen = video.requestFullscreen || 
                                video.webkitRequestFullscreen || 
                                video.mozRequestFullScreen || 
                                video.msRequestFullscreen;
       
       if (requestFullscreen) {
-        requestFullscreen.call(video).then(() => {
-          // Successfully entered fullscreen
-          console.log('Video entered fullscreen');
-        }).catch(error => {
-          console.log('Fullscreen request failed:', error);
-        });
+        const fullscreenPromise = requestFullscreen.call(video);
+        
+        if (fullscreenPromise) {
+          fullscreenPromise.then(() => {
+            console.log('Video successfully entered fullscreen');
+          }).catch(error => {
+            console.log('Fullscreen request failed:', error);
+          });
+        } else {
+          console.log('Fullscreen requested (no promise returned)');
+        }
+      } else {
+        console.log('Fullscreen not supported');
       }
     } else {
       // Exit fullscreen
+      console.log('Attempting to exit fullscreen...');
       const exitFullscreen = document.exitFullscreen || 
                              document.webkitExitFullscreen || 
                              document.mozCancelFullScreen || 
                              document.msExitFullscreen;
       
       if (exitFullscreen) {
-        exitFullscreen.call(document).then(() => {
-          console.log('Exited fullscreen');
-        }).catch(error => {
-          console.log('Exit fullscreen failed:', error);
-        });
+        const exitPromise = exitFullscreen.call(document);
+        if (exitPromise) {
+          exitPromise.then(() => {
+            console.log('Successfully exited fullscreen');
+          }).catch(error => {
+            console.log('Exit fullscreen failed:', error);
+          });
+        }
       }
     }
   }
