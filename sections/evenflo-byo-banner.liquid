@@ -148,6 +148,32 @@
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
+/* Button icon styling */
+.icon-wrap--left {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+}
+
+.icon-wrap--left svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block;
+}
+
+/* Ensure buttons with left icons are properly aligned */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .icon-wrap--left {
+  order: -1;
+}
+
 /* Fullscreen video styling */
 .byo-video-element:fullscreen,
 .byo-video-element:-webkit-full-screen,
@@ -324,8 +350,8 @@
                       type="button"
                       aria-haspopup="dialog"
                       class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+                      <span class="icon-wrap icon-wrap--left">{{- 'icon-play.svg' | inline_asset_content -}}</span>
                       {{- block.settings.button_label_2 | escape -}}
-                      <span class="icon-wrap">&nbsp;{{- 'icon-play.svg' | inline_asset_content -}}</span>
                     </button>
                   </modal-opener>
                 {%- else -%}
@@ -337,8 +363,8 @@
                     href="{{ block.settings.button_link_2 }}"
                     {% endif %}
                     class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+                    <span class="icon-wrap icon-wrap--left">{{- 'icon-play.svg' | inline_asset_content -}}</span>
                     {{- block.settings.button_label_2 | escape -}}
-                    <span class="icon-wrap">&nbsp;{{- 'icon-play.svg' | inline_asset_content -}}</span>
                   </a>
                 {%- endif -%}
               {%- endif -%}
