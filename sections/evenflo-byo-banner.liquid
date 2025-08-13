@@ -315,7 +315,6 @@
                   onclick="scrollToBYOStepper()"
                   class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">
                   {{- block.settings.button_label_1 | escape -}}
-                  <span class="icon-wrap">&nbsp;{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
                 </button>
               {%- endif -%}
               {%- if block.settings.button_label_2 != blank -%}
@@ -326,7 +325,7 @@
                       aria-haspopup="dialog"
                       class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
                       {{- block.settings.button_label_2 | escape -}}
-                      <span class="icon-wrap">&nbsp;{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                      <span class="icon-wrap">&nbsp;{{- 'icon-play.svg' | inline_asset_content -}}</span>
                     </button>
                   </modal-opener>
                 {%- else -%}
@@ -339,7 +338,7 @@
                     {% endif %}
                     class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
                     {{- block.settings.button_label_2 | escape -}}
-                    <span class="icon-wrap">&nbsp;{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                    <span class="icon-wrap">&nbsp;{{- 'icon-play.svg' | inline_asset_content -}}</span>
                   </a>
                 {%- endif -%}
               {%- endif -%}
@@ -440,6 +439,8 @@
   // Simple fullscreen function based on Stack Overflow example
   function goFullscreen(id) {
     var element = document.getElementById(id);
+    console.log('Fullscreen requested for:', id);
+    console.log('Element found:', element);
     
     if (!element) {
       console.log('Element not found!');
@@ -598,6 +599,7 @@
                   const playPromise = video.play();
                   if (playPromise !== undefined) {
                     playPromise.then(() => {
+                      console.log('Video autoplay started');
                       playButton.classList.remove('show'); // Hide play button since video is playing
                     }).catch(error => {
                       console.log('Autoplay prevented:', error);
