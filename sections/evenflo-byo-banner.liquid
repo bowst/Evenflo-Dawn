@@ -371,7 +371,7 @@
                     <div class="byo-modal-video__wrapper">
                       <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
                         {%- if block.settings.modal_video != blank -%}
-                          <div class="byo-video-container">
+                          <div class="byo-video-container deferred-media">
                             <video 
                               id="byo-player-{{ block.id }}" 
                               class="byo-video-element" 
@@ -386,7 +386,7 @@
                               {%- endfor -%}
                               Your browser does not support the HTML5 video tag.
                             </video>
-                            <button class="byo-video-play-button" id="play-btn-{{ block.id }}" onclick="toggleVideoPlay('byo-player-{{ block.id }}', 'play-btn-{{ block.id }}')">
+                            <button class="byo-video-play-button" id="play-btn-{{ block.id }}" onclick="toggleVideoPlay('byo-player-{{ block.id }}', 'play-btn-{{ block.id }}', event)">
                               <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="30" cy="30" r="30" fill="rgba(0, 0, 0, 0.7)" stroke="rgba(255, 255, 255, 0.8)" stroke-width="2"/>
                                 <path d="M22 18L42 30L22 42V18Z" fill="white"/>
@@ -397,7 +397,7 @@
                       </div>
                       <button
                         class="byo-modal-video__maximize"
-                        onclick="goFullscreen('byo-player-{{ block.id }}'); return false;"
+                        onclick="event.stopPropagation(); goFullscreen('byo-player-{{ block.id }}'); return false;"
                         aria-label="Toggle Fullscreen"
                       >
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -460,7 +460,12 @@
   }
 
   // Toggle video play/pause and show/hide play button
-  function toggleVideoPlay(videoId, buttonId) {
+  function toggleVideoPlay(videoId, buttonId, event) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+    
     const video = document.getElementById(videoId);
     const playButton = document.getElementById(buttonId);
     
