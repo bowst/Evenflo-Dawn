@@ -116,6 +116,38 @@
   background: rgba(0, 0, 0, 0.9);
 }
 
+/* Video container and play button */
+.byo-video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.byo-video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+}
+
+.byo-video-play-button.show {
+  opacity: 1;
+}
+
+.byo-video-play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.byo-video-play-button svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
 /* Fullscreen video styling */
 .byo-video-element:fullscreen,
 .byo-video-element:-webkit-full-screen,
@@ -339,20 +371,28 @@
                     <div class="byo-modal-video__wrapper">
                       <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
                         {%- if block.settings.modal_video != blank -%}
-                          <video 
-                            id="byo-player-{{ block.id }}" 
-                            class="byo-video-element" 
-                            width="100%" 
-                            autoplay 
-                            muted 
-                            playsinline
-                            {% if block.settings.enable_modal_video_looping %}loop{% endif %}
-                          >
-                            {%- for source in block.settings.modal_video.sources -%}
-                              <source src="{{ source.url }}" type="{{ source.mime_type }}">
-                            {%- endfor -%}
-                            Your browser does not support the HTML5 video tag.
-                          </video>
+                          <div class="byo-video-container">
+                            <video 
+                              id="byo-player-{{ block.id }}" 
+                              class="byo-video-element" 
+                              width="100%" 
+                              autoplay 
+                              muted 
+                              playsinline
+                              {% if block.settings.enable_modal_video_looping %}loop{% endif %}
+                            >
+                              {%- for source in block.settings.modal_video.sources -%}
+                                <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                              {%- endfor -%}
+                              Your browser does not support the HTML5 video tag.
+                            </video>
+                            <button class="byo-video-play-button" id="play-btn-{{ block.id }}" onclick="toggleVideoPlay('byo-player-{{ block.id }}', 'play-btn-{{ block.id }}')">
+                              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="30" fill="rgba(0, 0, 0, 0.7)" stroke="rgba(255, 255, 255, 0.8)" stroke-width="2"/>
+                                <path d="M22 18L42 30L22 42V18Z" fill="white"/>
+                              </svg>
+                            </button>
+                          </div>
                         {%- endif -%}
                       </div>
                       <button
@@ -419,6 +459,48 @@
     }
   }
 
+  // Toggle video play/pause and show/hide play button
+  function toggleVideoPlay(videoId, buttonId) {
+    const video = document.getElementById(videoId);
+    const playButton = document.getElementById(buttonId);
+    
+    if (!video || !playButton) return;
+    
+    if (video.paused) {
+      video.play();
+      playButton.classList.remove('show');
+    } else {
+      video.pause();
+      playButton.classList.add('show');
+    }
+  }
+
+  // Show play button when video is paused, hide when playing
+  function setupVideoPlayButton(videoId, buttonId) {
+    const video = document.getElementById(videoId);
+    const playButton = document.getElementById(buttonId);
+    
+    if (!video || !playButton) return;
+    
+    // Show play button initially if video is paused
+    if (video.paused) {
+      playButton.classList.add('show');
+    }
+    
+    // Listen for video events
+    video.addEventListener('play', function() {
+      playButton.classList.remove('show');
+    });
+    
+    video.addEventListener('pause', function() {
+      playButton.classList.add('show');
+    });
+    
+    video.addEventListener('ended', function() {
+      playButton.classList.add('show');
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var section = document.querySelector('#Banner-{{ section.id }}');
 
@@ -471,10 +553,15 @@
         mutations.forEach(function(mutation) {
           if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
             if (modal.hasAttribute('open')) {
-              // Modal opened - play video
+              // Modal opened - play video and setup play button
               setTimeout(() => {
                 const video = modal.querySelector('video');
-                if (video) {
+                const playButton = modal.querySelector('.byo-video-play-button');
+                
+                if (video && playButton) {
+                  // Setup play button functionality
+                  setupVideoPlayButton(video.id, playButton.id);
+                  
                   video.muted = true;
                   video.currentTime = 0; // Start from beginning
                   
@@ -482,18 +569,26 @@
                   if (playPromise !== undefined) {
                     playPromise.then(() => {
                       console.log('Video autoplay started');
+                      playButton.classList.remove('show'); // Hide play button since video is playing
                     }).catch(error => {
                       console.log('Autoplay prevented:', error);
+                      playButton.classList.add('show'); // Show play button since autoplay failed
                     });
                   }
                 }
               }, 100);
             } else {
-              // Modal closed - pause video
+              // Modal closed - pause video and reset play button
               const video = modal.querySelector('video');
+              const playButton = modal.querySelector('.byo-video-play-button');
+              
               if (video) {
                 video.pause();
                 video.currentTime = 0;
+              }
+              
+              if (playButton) {
+                playButton.classList.remove('show');
               }
             }
           }
