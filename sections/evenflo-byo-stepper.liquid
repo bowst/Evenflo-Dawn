@@ -511,7 +511,6 @@ function handlePreviousStep(){
 }
 
 function handleContentLoaded(){
-  {% comment %} debugger {% endcomment %}
   if(isMobile) {
       swiperSliderActive = true;
       render();
@@ -574,22 +573,20 @@ function renderStepSidebar() {
   productSidebar.innerHTML = productSidebarContent.join("");
 }
 
-function hideShowButtons() {
-  updateStepperButtons();
-}
-
 function updateStepperButtons() {
   const isFirst = currentStep === 0;
   const isLast = currentStep === stepperSteps.length - 1;
   stepperPreviousBtn.classList.toggle("hidden-btn", isFirst || isLast);
   stepperNextBtn.classList.toggle("hidden-btn", isLast);
   buttonWrapper.classList.toggle("hidden-btn", !isLast);
+  updateNoExtraButton()
+
 }
 
 function renderStepContent() {
   const titleOf = stepperSteps[currentStep]?.title || "";
   const isTitle = (t) => titleOf === t;
-
+console.log("ABC CART",cart)
   const uniqueColorVariants = (products) => {
     const seen = new Set();
     const out = [];
@@ -693,12 +690,13 @@ function renderStepContent() {
     : (selected && selected.label ? [selected.label] : []);
   const isSelected = selectedLabels.length > 0;
 
+
   const noItemsAvailable = (stepContent.item?.length === 0) && !!stepContent.alternativeMessage;
   const shouldEnableNext = isSelected || noItemsAvailable;
 
   stepperNextBtn.disabled = !shouldEnableNext;
   stepperNextBtn.classList.toggle("button-disabled", !shouldEnableNext);
-  updateStepperButtons();
+
 
   const count = stepContent.item?.length || 0;
   const needsSwiper = needSwiperFor(stepContent.title, count, currentStep);
@@ -769,6 +767,8 @@ function renderStepContent() {
   if (document.querySelector(".mySwiper")) {
     customSwiperSlider();
   }
+
+  updateStepperButtons();
 }
 
 function accessoryNotSelected(){
@@ -865,12 +865,17 @@ function setActiveCard(passedItemIndex) {
   // ---- Helpers (scoped to this function) ----
   const isTitle = (t) => title === t;
 
-  const upsertCartBy = (predicate, payload) => {
-    const idx = cart.findIndex(predicate);
-    if (idx > -1) cart[idx] = { ...cart[idx], ...payload };
-    else cart.push(payload);
-  };
 
+  const upsertCartBy = (predicate, payload, { replace = false } = {}) => {
+    debugger
+    const idx = cart.findIndex(predicate);
+    if (idx > -1) {
+      cart[idx] = replace ? payload : { ...cart[idx], ...payload };
+    } else {
+      cart.push(payload);
+    }
+  };
+  
   const uniqueColorVariants = (products, imageKey = "byoColorImage") => {
     const seen = new Set();
     const out = [];
@@ -911,8 +916,18 @@ function setActiveCard(passedItemIndex) {
     cards.forEach((card, i) => {
       if (i === passedItemIndex) card.classList.toggle("selected");
     });
-    stepperNextBtn.disabled = false;
+
+    const selectedCards = document.querySelectorAll(".product-stepper-card.accessory-card.swiper-slide.selected");
+    if(selectedCards.length > 0){
+          stepperNextBtn.disabled = false;
     stepperNextBtn.classList.remove("button-disabled");
+    }
+    else {
+        stepperNextBtn.disabled = true;
+    stepperNextBtn.classList.add("button-disabled");
+  }
+
+
     updateNoExtraButton?.();
   };
 
@@ -992,20 +1007,29 @@ function setActiveCard(passedItemIndex) {
     return;
   }
 
-  if (isTitle("Choose Your Stroller Color")) {
-    const selectedStrollerProduct = item.productData;
-    if (selectedStrollerProduct) {
-      const matched = selectedStrollerProduct.variants.find(v => v.color === item.label);
-      upsertCartBy(
-        c => c.productId === selectedStrollerProduct.productId,
-        { ...selectedStrollerProduct, variant: matched }
-      );
+if (isTitle("Choose Your Stroller Color")) {
+  const selectedStrollerProduct = item.productData;
+  if (selectedStrollerProduct) {
+    const matched = selectedStrollerProduct.variants.find(v => v.color === item.label);
+    if(matched.byoColorImage === null){
+      matched.colorImage = "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"
     }
+    // Normalize type check just in case
+    const isStroller =
+      (selectedStrollerProduct.productType || "").toLowerCase() === "stroller";
 
-    setSingleSelectCardUI();
-    saveSelectedItems();
-    return;
+    // Always REPLACE the existing stroller slot (if any)
+    upsertCartBy(
+      c => (c.productType || "").toLowerCase() === "stroller",
+      { ...selectedStrollerProduct, variant: matched },
+      { replace: isStroller } // replace when it's a stroller
+    );
   }
+
+  setSingleSelectCardUI();
+  saveSelectedItems();
+  return;
+}
 
   if (currentStep === 6 && isTitle("Add Accessories (Optional)")) {
     const label = item.label;
@@ -1098,8 +1122,7 @@ function renderAccessory() {
     (step) => step.title === "Add Accessories (Optional)"
   );
   const currentStepObj = stepperSteps[accessoryStepIndex];
-  console.log("cart for assor", cart, accessoryStepIndex)
-debugger
+  console.log("cart for assor", cart, accessoryStepIndex);
   // Check if cart exists and has items
   if (cart?.length) {
     const hasAccessories = checkIfAccessoriesAvailable(cart)
@@ -1335,6 +1358,14 @@ function customSwiperSlider() {
 function stepperEdit(step) {
   smoothStepTransition(() => {
     currentStep = step;
+    if(stepperSteps[currentStep]?.title === "Add Accessories (Optional)"){
+      const noExtraBtn = document.querySelector(".no-extra-needed");
+      const accessorySelectedCards = document.querySelectorAll(".product-stepper-card.accessory-card.selected");
+      console.log("noExtraBtn", noExtraBtn, accessorySelectedCards);
+      
+      {% comment %} updateNoExtraButton?.(); {% endcomment %}
+      {% comment %} console.log("Accessories step click", stepperSteps[currentStep]?.title, updateNoExtraButton()) {% endcomment %}
+    }
     render();
   });
 }
