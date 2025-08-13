@@ -371,7 +371,7 @@
                     <div class="byo-modal-video__wrapper">
                       <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
                         {%- if block.settings.modal_video != blank -%}
-                          <div class="byo-video-container deferred-media">
+                          <div class="byo-video-container deferred-media" onclick="event.stopPropagation();">
                             <video 
                               id="byo-player-{{ block.id }}" 
                               class="byo-video-element" 
@@ -380,13 +380,14 @@
                               muted 
                               playsinline
                               {% if block.settings.enable_modal_video_looping %}loop{% endif %}
+                              onclick="event.stopPropagation();"
                             >
                               {%- for source in block.settings.modal_video.sources -%}
                                 <source src="{{ source.url }}" type="{{ source.mime_type }}">
                               {%- endfor -%}
                               Your browser does not support the HTML5 video tag.
                             </video>
-                            <button class="byo-video-play-button" id="play-btn-{{ block.id }}" onclick="toggleVideoPlay('byo-player-{{ block.id }}', 'play-btn-{{ block.id }}', event)">
+                            <button class="byo-video-play-button" id="play-btn-{{ block.id }}">
                               <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="30" cy="30" r="30" fill="rgba(0, 0, 0, 0.7)" stroke="rgba(255, 255, 255, 0.8)" stroke-width="2"/>
                                 <path d="M22 18L42 30L22 42V18Z" fill="white"/>
@@ -397,7 +398,7 @@
                       </div>
                       <button
                         class="byo-modal-video__maximize"
-                        onclick="event.stopPropagation(); goFullscreen('byo-player-{{ block.id }}'); return false;"
+                        id="maximize-btn-{{ block.id }}"
                         aria-label="Toggle Fullscreen"
                       >
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -460,12 +461,7 @@
   }
 
   // Toggle video play/pause and show/hide play button
-  function toggleVideoPlay(videoId, buttonId, event) {
-    if (event) {
-      event.stopPropagation();
-      event.preventDefault();
-    }
-    
+  function toggleVideoPlay(videoId, buttonId) {
     const video = document.getElementById(videoId);
     const playButton = document.getElementById(buttonId);
     
@@ -487,6 +483,13 @@
     
     if (!video || !playButton) return;
     
+    // Add click handler to play button
+    playButton.addEventListener('click', function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      toggleVideoPlay(videoId, buttonId);
+    });
+    
     // Show play button initially if video is paused
     if (video.paused) {
       playButton.classList.add('show');
@@ -503,6 +506,25 @@
     
     video.addEventListener('ended', function() {
       playButton.classList.add('show');
+    });
+    
+    // Add click handler to video itself for play/pause
+    video.addEventListener('click', function(event) {
+      event.stopPropagation();
+      toggleVideoPlay(videoId, buttonId);
+    });
+  }
+
+  // Setup maximize button functionality
+  function setupMaximizeButton(videoId, buttonId) {
+    const maximizeButton = document.getElementById(buttonId);
+    
+    if (!maximizeButton) return;
+    
+    maximizeButton.addEventListener('click', function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      goFullscreen(videoId);
     });
   }
 
@@ -566,6 +588,12 @@
                 if (video && playButton) {
                   // Setup play button functionality
                   setupVideoPlayButton(video.id, playButton.id);
+                  
+                  // Setup maximize button functionality
+                  const maximizeButton = modal.querySelector('.byo-modal-video__maximize');
+                  if (maximizeButton) {
+                    setupMaximizeButton(video.id, maximizeButton.id);
+                  }
                   
                   video.muted = true;
                   video.currentTime = 0; // Start from beginning
