@@ -63,11 +63,69 @@
         "show_text_below": false
       }
     },
+    "evenflo_byo_banner_fWmUXj": {
+      "type": "evenflo-byo-banner",
+      "blocks": {
+        "heading_QXwix3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "heading_color": "black"
+          }
+        },
+        "text_CBNWUM": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body",
+            "text_color": "black"
+          }
+        },
+        "buttons_XAHVY9": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_QXwix3",
+        "text_CBNWUM",
+        "buttons_XAHVY9"
+      ],
+      "custom_css": [
+        "h1 {font-weight: 300;}",
+        "h2 {color: white; font-weight: 300;}",
+        ".button {background: white; color: black; box-shadow: none; border: none;}"
+      ],
+      "name": "Evenflo BYO Banner",
+      "settings": {
+        "video": "shopify://files/videos/BYOTS_Landing-Page-Video-Header.mp4",
+        "video_enable": true,
+        "enable_video_looping": true,
+        "image_overlay_opacity": 20,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "evenflo_byo_stepper_7hE34x": {
       "type": "evenflo-byo-stepper",
       "name": "Evenflo Byo Stepper",
       "settings": {
-        "loading_video": "shopify://files/videos/BYOTS_Landing-Page-Load.mp4",
         "traditional_image": "shopify://shop_images/traditional-img.png",
         "rotational_image": "shopify://shop_images/rotational-img.png",
         "traditional_handle_image": "shopify://shop_images/traditional-handle.png",
@@ -82,6 +140,7 @@
   "order": [
     "main",
     "evenflo_image_video_banner_rEWrtq",
+    "evenflo_byo_banner_fWmUXj",
     "evenflo_byo_stepper_7hE34x"
   ]
 }
