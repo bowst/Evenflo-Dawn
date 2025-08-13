@@ -344,17 +344,13 @@
                             | video_tag:
                                 autoplay: true,
                                 muted: true,
-                                loop: block.settings.enable_modal_video_looping,
-                                controls: false,
-                                playsinline: true,
-                                id: 'byo-video-' | append: block.id,
-                                class: 'byo-video-element'
+                                loop: block.settings.enable_modal_video_looping
                           }}
                         {%- endif -%}
                       </div>
                       <button
                         class="byo-modal-video__maximize"
-                        onclick="toggleFullscreen('byo-video-{{ block.id }}')"
+                        onclick="toggleFullscreen()"
                         aria-label="Toggle Fullscreen"
                       >
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -395,77 +391,36 @@
   }
 
   // Function to toggle fullscreen for video
-  function toggleFullscreen(videoId) {
-    let video = document.getElementById(videoId);
+  function toggleFullscreen() {
+    // Find the video in the modal that's currently open
+    const modal = document.querySelector('.byo-modal-video[open]');
+    const video = modal ? modal.querySelector('video') : null;
     
-    // If direct ID doesn't work, try finding by class within the player
-    if (!video) {
-      const playerContainer = document.getElementById('BYOVideoPlayer-' + videoId.split('-').pop());
-      video = playerContainer ? playerContainer.querySelector('video') : null;
-    }
-    
-    // If still not found, try finding any video in the modal
-    if (!video) {
-      const modal = document.querySelector('.byo-modal-video[open]');
-      video = modal ? modal.querySelector('video') : null;
-    }
-    
-    console.log('Fullscreen function called for:', videoId);
-    console.log('Video element found:', video);
+    console.log('Modal found:', modal);
+    console.log('Video found:', video);
     
     if (!video) {
-      console.log('Video element not found!');
-      console.log('Available videos:', document.querySelectorAll('video'));
+      console.log('No video found in open modal');
       return;
     }
     
-    // Log video properties
-    console.log('Video src:', video.src);
-    console.log('Video readyState:', video.readyState);
-    console.log('Video videoWidth:', video.videoWidth);
-    console.log('Video videoHeight:', video.videoHeight);
-    
-    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
-      // Enter fullscreen - target the video element specifically
-      console.log('Attempting to enter fullscreen...');
-      
-      const requestFullscreen = video.requestFullscreen || 
-                               video.webkitRequestFullscreen || 
-                               video.mozRequestFullScreen || 
-                               video.msRequestFullscreen;
-      
-      if (requestFullscreen) {
-        const fullscreenPromise = requestFullscreen.call(video);
-        
-        if (fullscreenPromise) {
-          fullscreenPromise.then(() => {
-            console.log('Video successfully entered fullscreen');
-          }).catch(error => {
-            console.log('Fullscreen request failed:', error);
-          });
-        } else {
-          console.log('Fullscreen requested (no promise returned)');
-        }
-      } else {
-        console.log('Fullscreen not supported');
+    if (!document.fullscreenElement) {
+      // Enter fullscreen
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.mozRequestFullScreen) {
+        video.mozRequestFullScreen();
       }
     } else {
       // Exit fullscreen
-      console.log('Attempting to exit fullscreen...');
-      const exitFullscreen = document.exitFullscreen || 
-                             document.webkitExitFullscreen || 
-                             document.mozCancelFullScreen || 
-                             document.msExitFullscreen;
-      
-      if (exitFullscreen) {
-        const exitPromise = exitFullscreen.call(document);
-        if (exitPromise) {
-          exitPromise.then(() => {
-            console.log('Successfully exited fullscreen');
-          }).catch(error => {
-            console.log('Exit fullscreen failed:', error);
-          });
-        }
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
       }
     }
   }
@@ -523,7 +478,7 @@
           if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
             if (modal.hasAttribute('open')) {
               // Modal opened - play video
-              const video = modal.querySelector('.byo-video-element');
+              const video = modal.querySelector('video');
               if (video) {
                 video.muted = true;
                 video.currentTime = 0; // Start from beginning
@@ -539,7 +494,7 @@
               }
             } else {
               // Modal closed - pause video
-              const video = modal.querySelector('.byo-video-element');
+              const video = modal.querySelector('video');
               if (video) {
                 video.pause();
                 video.currentTime = 0;
