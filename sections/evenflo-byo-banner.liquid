@@ -99,6 +99,7 @@
   position: absolute;
   bottom: 12px;
   right: 12px;
+  background: rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   width: 32px;
@@ -114,6 +115,17 @@
 
 .byo-modal-video__maximize:hover {
   background: rgba(0, 0, 0, 0.9);
+}
+
+/* Fullscreen video styling */
+.byo-video-element:fullscreen,
+.byo-video-element:-webkit-full-screen,
+.byo-video-element:-moz-full-screen,
+.byo-video-element:-ms-fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: contain;
+  background: black;
 }
 
 @media screen and (max-width: 768px) {
@@ -335,6 +347,10 @@
                           muted
                           playsinline
                           preload="auto"
+                          webkit-playsinline
+                          x5-playsinline
+                          x5-video-player-type="h5"
+                          x5-video-player-fullscreen="true"
                         >
                           {%- for source in block.settings.modal_video.sources -%}
                             <source src="{{ source.url }}" type="{{ source.mime_type }}">
@@ -390,23 +406,34 @@
     
     if (!video) return;
     
-    if (!document.fullscreenElement) {
-      // Enter fullscreen
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
+    if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+      // Enter fullscreen - target the video element specifically
+      const requestFullscreen = video.requestFullscreen || 
+                               video.webkitRequestFullscreen || 
+                               video.mozRequestFullScreen || 
+                               video.msRequestFullscreen;
+      
+      if (requestFullscreen) {
+        requestFullscreen.call(video).then(() => {
+          // Successfully entered fullscreen
+          console.log('Video entered fullscreen');
+        }).catch(error => {
+          console.log('Fullscreen request failed:', error);
+        });
       }
     } else {
       // Exit fullscreen
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
+      const exitFullscreen = document.exitFullscreen || 
+                             document.webkitExitFullscreen || 
+                             document.mozCancelFullScreen || 
+                             document.msExitFullscreen;
+      
+      if (exitFullscreen) {
+        exitFullscreen.call(document).then(() => {
+          console.log('Exited fullscreen');
+        }).catch(error => {
+          console.log('Exit fullscreen failed:', error);
+        });
       }
     }
   }
