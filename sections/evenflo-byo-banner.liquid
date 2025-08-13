@@ -328,19 +328,19 @@
                   <div class="byo-modal-video__container">
                     <div class="byo-modal-video__wrapper">
                       <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
-                        {{
-                          block.settings.modal_video
-                          | video_tag:
-                              image_size: '1100x',
-                              autoplay: true,
-                              loop: block.settings.enable_modal_video_looping,
-                              controls: false,
-                              muted: true,
-                              playsinline: true,
-                              preload: 'auto',
-                              id: 'byo-video-' | append: block.id,
-                              class: 'byo-video-element'
-                        }}
+                        <video 
+                          id="byo-video-{{ block.id }}" 
+                          class="byo-video-element"
+                          autoplay
+                          {% if block.settings.enable_modal_video_looping %}loop{% endif %}
+                          muted
+                          playsinline
+                          preload="auto"
+                        >
+                          {%- for source in block.settings.modal_video.sources -%}
+                            <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                          {%- endfor -%}
+                        </video>
                       </div>
                       <button
                         class="byo-modal-video__maximize"
