@@ -339,18 +339,17 @@
                     <div class="byo-modal-video__wrapper">
                       <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
                         {%- if block.settings.modal_video != blank -%}
-                          <video 
-                            id="byo-video-{{ block.id }}" 
-                            class="byo-video-element"
-                            autoplay 
-                            muted 
-                            playsinline
-                            {% if block.settings.enable_modal_video_looping %}loop{% endif %}
-                            preload="auto"
-                          >
-                            <source src="{{ block.settings.modal_video.sources.first.url }}" type="{{ block.settings.modal_video.sources.first.mime_type }}">
-                            Your browser does not support the video tag.
-                          </video>
+                          {{
+                            block.settings.modal_video
+                            | video_tag:
+                                autoplay: true,
+                                muted: true,
+                                loop: block.settings.enable_modal_video_looping,
+                                controls: false,
+                                playsinline: true,
+                                id: 'byo-video-' | append: block.id,
+                                class: 'byo-video-element'
+                          }}
                         {%- endif -%}
                       </div>
                       <button
@@ -397,13 +396,26 @@
 
   // Function to toggle fullscreen for video
   function toggleFullscreen(videoId) {
-    const video = document.getElementById(videoId);
+    let video = document.getElementById(videoId);
+    
+    // If direct ID doesn't work, try finding by class within the player
+    if (!video) {
+      const playerContainer = document.getElementById('BYOVideoPlayer-' + videoId.split('-').pop());
+      video = playerContainer ? playerContainer.querySelector('video') : null;
+    }
+    
+    // If still not found, try finding any video in the modal
+    if (!video) {
+      const modal = document.querySelector('.byo-modal-video[open]');
+      video = modal ? modal.querySelector('video') : null;
+    }
     
     console.log('Fullscreen function called for:', videoId);
     console.log('Video element found:', video);
     
     if (!video) {
       console.log('Video element not found!');
+      console.log('Available videos:', document.querySelectorAll('video'));
       return;
     }
     
