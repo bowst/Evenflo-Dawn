@@ -4,6 +4,141 @@
 {{ 'evenflo-component-image-with-text.css' | asset_url | stylesheet_tag }}
 {{ 'component-modal-video.css' | asset_url | stylesheet_tag }}
 
+<style>
+/* BYO Modal Video Custom Styling */
+.byo-modal-video {
+  background: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  height: 100%;
+  left: 0;
+  margin: 0 auto;
+  opacity: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.byo-modal-video[open] {
+  opacity: 1;
+  visibility: visible;
+  z-index: 101;
+}
+
+.byo-modal-video__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.byo-modal-video__container {
+  position: relative;
+  max-width: 80vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+}
+
+.byo-modal-video__wrapper {
+  position: relative;
+  border: 4px solid white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.byo-modal-video__player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.byo-modal-video__player video {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
+.byo-modal-video__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.byo-modal-video__close:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.byo-modal-video__close svg {
+  width: 20px;
+  height: 20px;
+  color: #333;
+}
+
+.byo-modal-video__maximize {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.byo-modal-video__maximize:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+@media screen and (max-width: 768px) {
+  .byo-modal-video__container {
+    max-width: 90vw;
+    max-height: 70vh;
+  }
+  
+  .byo-modal-video__close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .byo-modal-video__maximize {
+    bottom: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+  }
+}
+</style>
+
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
@@ -171,10 +306,10 @@
             {%- if block.settings.button_label_2 != blank and block.settings.modal_video != blank -%}
               <modal-dialog
                 id="BYOVideoModal-{{ block.id }}"
-                class="modal-video media-modal color-{{ settings.color_schemes | first }}"
+                class="byo-modal-video media-modal color-{{ settings.color_schemes | first }}"
               >
                 <div
-                  class="modal-video__content"
+                  class="byo-modal-video__content"
                   role="dialog"
                   aria-label="BYO Video Modal"
                   aria-modal="true"
@@ -183,25 +318,37 @@
                   <button
                     id="ModalClose-{{ block.id }}"
                     type="button"
-                    class="modal-video__toggle"
+                    class="byo-modal-video__close"
                     aria-label="{{ 'accessibility.close' | t }}"
                   >
                     <span class="svg-wrapper">
                       {{- 'icon-close.svg' | inline_asset_content -}}
                     </span>
                   </button>
-                  <div class="modal-video__content-info">
-                    <div class="modal-video__video">
-                      {{
-                        block.settings.modal_video
-                        | video_tag:
-                            image_size: '1100x',
-                            autoplay: true,
-                            loop: block.settings.enable_modal_video_looping,
-                            controls: true,
-                            muted: false,
-                            playsinline: true
-                      }}
+                  <div class="byo-modal-video__container">
+                    <div class="byo-modal-video__wrapper">
+                      <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
+                        {{
+                          block.settings.modal_video
+                          | video_tag:
+                              image_size: '1100x',
+                              autoplay: true,
+                              loop: block.settings.enable_modal_video_looping,
+                              controls: false,
+                              muted: true,
+                              playsinline: true,
+                              id: 'byo-video-' | append: block.id
+                        }}
+                      </div>
+                      <button
+                        class="byo-modal-video__maximize"
+                        onclick="toggleFullscreen('BYOVideoPlayer-{{ block.id }}')"
+                        aria-label="Toggle Fullscreen"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 5V1H5M15 5V1H11M15 11V15H11M1 11V15H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -231,6 +378,34 @@
           behavior: 'smooth',
           block: 'start'
         });
+      }
+    }
+  }
+
+  // Function to toggle fullscreen for video
+  function toggleFullscreen(playerId) {
+    const playerElement = document.getElementById(playerId);
+    const video = playerElement ? playerElement.querySelector('video') : null;
+    
+    if (!video) return;
+    
+    if (!document.fullscreenElement) {
+      // Enter fullscreen
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    } else {
+      // Exit fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
       }
     }
   }
