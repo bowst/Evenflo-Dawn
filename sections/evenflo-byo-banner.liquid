@@ -337,7 +337,9 @@
                               controls: false,
                               muted: true,
                               playsinline: true,
-                              id: 'byo-video-' | append: block.id
+                              preload: 'auto',
+                              id: 'byo-video-' | append: block.id,
+                              class: 'byo-video-element'
                         }}
                       </div>
                       <button
@@ -453,6 +455,48 @@
 
     checkWidth(); // Initial check
     window.addEventListener('resize', checkWidth); // Recheck on window resize
+
+    // Handle BYO Video Modal autoplay
+    const byoModals = document.querySelectorAll('.byo-modal-video');
+    byoModals.forEach(modal => {
+      // Create observer to watch for modal opening
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
+            if (modal.hasAttribute('open')) {
+              // Modal opened - play video
+              const video = modal.querySelector('.byo-video-element');
+              if (video) {
+                video.muted = true;
+                video.currentTime = 0; // Start from beginning
+                
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                  playPromise.then(() => {
+                    console.log('Video autoplay started');
+                  }).catch(error => {
+                    console.log('Autoplay prevented:', error);
+                  });
+                }
+              }
+            } else {
+              // Modal closed - pause video
+              const video = modal.querySelector('.byo-video-element');
+              if (video) {
+                video.pause();
+                video.currentTime = 0;
+              }
+            }
+          }
+        });
+      });
+      
+      // Start observing
+      observer.observe(modal, {
+        attributes: true,
+        attributeFilter: ['open']
+      });
+    });
   });
 </script>
 
