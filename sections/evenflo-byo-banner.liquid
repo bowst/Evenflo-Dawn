@@ -2,6 +2,7 @@
 {{ 'evenflo-video-section.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-component-deferred-media.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-component-image-with-text.css' | asset_url | stylesheet_tag }}
+{{ 'component-modal-video.css' | asset_url | stylesheet_tag }}
 
 {%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
   {%- style -%}
@@ -133,38 +134,107 @@
           {%- when 'buttons' -%}
             <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
               {%- if block.settings.button_label_1 != blank -%}
-                <a
-                  {% if block.settings.button_link_1 == blank %}
-                  role="link"
-                  aria-disabled="true"
-                  {% else %}
-                  href="{{ block.settings.button_link_1 }}"
-                  {% endif %}
+                <button
+                  onclick="scrollToBYOStepper()"
                   class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">
                   {{- block.settings.button_label_1 | escape -}}
                   <span class="icon-wrap">&nbsp;{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
-                </a>
+                </button>
               {%- endif -%}
               {%- if block.settings.button_label_2 != blank -%}
-                <a
-                  {% if block.settings.button_link_2 == blank %}
-                  role="link"
-                  aria-disabled="true"
-                  {% else %}
-                  href="{{ block.settings.button_link_2 }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
-                  {{- block.settings.button_label_2 | escape -}}
-                  <span class="icon-wrap">&nbsp;{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
-                </a>
+                {%- if block.settings.modal_video != blank -%}
+                  <modal-opener data-modal="#BYOVideoModal-{{ block.id }}">
+                    <button
+                      type="button"
+                      aria-haspopup="dialog"
+                      class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+                      {{- block.settings.button_label_2 | escape -}}
+                      <span class="icon-wrap">&nbsp;{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                    </button>
+                  </modal-opener>
+                {%- else -%}
+                  <a
+                    {% if block.settings.button_link_2 == blank %}
+                    role="link"
+                    aria-disabled="true"
+                    {% else %}
+                    href="{{ block.settings.button_link_2 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+                    {{- block.settings.button_label_2 | escape -}}
+                    <span class="icon-wrap">&nbsp;{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+                  </a>
+                {%- endif -%}
               {%- endif -%}
             </div>
+            
+            {%- if block.settings.button_label_2 != blank and block.settings.modal_video != blank -%}
+              <modal-dialog
+                id="BYOVideoModal-{{ block.id }}"
+                class="modal-video media-modal color-{{ settings.color_schemes | first }}"
+              >
+                <div
+                  class="modal-video__content"
+                  role="dialog"
+                  aria-label="BYO Video Modal"
+                  aria-modal="true"
+                  tabindex="-1"
+                >
+                  <button
+                    id="ModalClose-{{ block.id }}"
+                    type="button"
+                    class="modal-video__toggle"
+                    aria-label="{{ 'accessibility.close' | t }}"
+                  >
+                    <span class="svg-wrapper">
+                      {{- 'icon-close.svg' | inline_asset_content -}}
+                    </span>
+                  </button>
+                  <div class="modal-video__content-info">
+                    <div class="modal-video__video">
+                      {{
+                        block.settings.modal_video
+                        | video_tag:
+                            image_size: '1100x',
+                            autoplay: true,
+                            loop: block.settings.enable_modal_video_looping,
+                            controls: true,
+                            muted: false,
+                            playsinline: true
+                      }}
+                    </div>
+                  </div>
+                </div>
+              </modal-dialog>
+            {%- endif -%}
         {%- endcase -%}
       {%- endfor -%}
     </div>
   </div>
 </div>
 <script>
+  // Function to scroll to BYO stepper section
+  function scrollToBYOStepper() {
+    // Look for evenflo-byo-stepper section
+    const byoStepperSection = document.querySelector('[data-section-type="evenflo-byo-stepper"], .shopify-section[id*="byo-stepper"], [class*="byo-stepper"]');
+    
+    if (byoStepperSection) {
+      byoStepperSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Fallback: look for any section with "stepper" in its ID or class
+      const stepperSection = document.querySelector('[id*="stepper"], [class*="stepper"]');
+      if (stepperSection) {
+        stepperSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var section = document.querySelector('#Banner-{{ section.id }}');
 
@@ -535,6 +605,15 @@
             "id": "button_style_secondary_2",
             "default": false,
             "label": "Use outline button style"
+          }, {
+            "type": "video",
+            "id": "modal_video",
+            "label": "Modal Video"
+          }, {
+            "type": "checkbox",
+            "id": "enable_modal_video_looping",
+            "default": true,
+            "label": "Enable modal video looping"
           }
         ]
       }
