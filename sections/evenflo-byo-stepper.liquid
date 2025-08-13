@@ -120,7 +120,7 @@
     <div class="product-stepper-btn-wrapper">
       <div class="product-stepper-btn product-stepper-btn-wrapper">
         <button class="start-over" onclick="productClear()">start over</button>
-        {% comment %} <button class="buy-now" onclick="buyNow()">buy now</button> {% endcomment %}
+        <button class="buy-now" onclick="buyNow()">Buy now for $</button>
         <button class="add-to-cart" onclick="addToCart()">add to cart</button>
       </div>
     </div>
@@ -144,6 +144,10 @@ const byoVariants = [
           {
             "variantTitle": {{ variant.title | json }},
             "variantId": {{ variant.id }},
+            "price": {{ variant.price | divided_by: 100.0 }},
+            "byoTitle": {{ variant.metafields.custom.byo_title.value | json }},
+            "byoSubTitle": {{ variant.metafields.custom.byo_subtitle.value | json }},
+            "featureImage": {{ variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ variant.option1 | json }},
             "colorImage": {{ variant.metafields.custom.new_swatch_image.value | json }},
             "byoColorImage": {{ variant.metafields.custom.byo_color.value | json }},
@@ -171,6 +175,10 @@ const byoVariants = [
             "accessoryProductImage": {{ accessory_product.featured_image | image_url: width: 600 | json }},
             "accessoryProductId": {{ accessory_product.id }},
             "accessoryVariantId": {{ accessory_variant.id }},
+            "price": {{ accessory_variant.price | divided_by: 100.0 }},
+            "byoTitle": {{ accessory_variant.metafields.custom.byo_title.value | json }},
+            "byoSubTitle": {{ accessory_variant.metafields.custom.byo_subtitle.value | json }},
+            "featureImage": {{ accessory_variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ accessory_variant.option1 | json }},
             "colorImage": {{ accessory_variant.metafields.custom.new_swatch_image.value | json }},
             "byoColorImage": {{ accessory_variant.metafields.custom.byo_color.value | json }},
@@ -405,6 +413,7 @@ const startOverBtn = document.querySelector(".start-over");
 const buttonWrapper = document.querySelector(".product-stepper-btn-wrapper");
 const productSidebar = document.querySelector(".product-sidebar");
 const productStepper = document.querySelector(".product-stepper");
+let totalAmount = 0;
 
 let isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
@@ -667,10 +676,17 @@ console.log("ABC CART",cart)
   let stepContent;
 
   if (currentStep === 7) {
+    const reducedAmount = cart.reduce((acc, curr) => {
+      debugger; // pauses here on each iteration in DevTools
+      return acc + (curr?.variant?.price ?? 0);
+    }, 0);
+    totalAmount = reducedAmount;
+    document.querySelector(".buy-now").innerText += reducedAmount
+
     const cartReviewItems = cart.map(ci => ({
-      label: ci.productTitle,
-      description: `Type: ${ci.productType} | Color: ${ci.variant?.color || "N/A"}`,
-      image: ci.productType === "Accessory" ? ci.image : (ci.variant?.byoColorImage  ||  ci.variant?.colorImage || "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg"),
+      label: ci?.variant?.byoTitle ?? "Byo Title N/A",
+      description: ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A",
+      image: ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg",
       productType: ci.productType,
       variant: ci.variant
     }));
@@ -867,7 +883,6 @@ function setActiveCard(passedItemIndex) {
 
 
   const upsertCartBy = (predicate, payload, { replace = false } = {}) => {
-    debugger
     const idx = cart.findIndex(predicate);
     if (idx > -1) {
       cart[idx] = replace ? payload : { ...cart[idx], ...payload };
@@ -1056,7 +1071,6 @@ if (isTitle("Choose Your Stroller Color")) {
       const existingIdx = cart.findIndex(
         c => c.productId === matchedAccessory.accessoryProductId
       );
-
       const isSelectedNow = selectedItems.accessories.some(a => a.label === label);
 
       if (existingIdx > -1 && !isSelectedNow) {
@@ -1081,7 +1095,11 @@ if (isTitle("Choose Your Stroller Color")) {
             colorImage: matchedAccessory.colorImage,
             sku: matchedAccessory.sku,
             inventory: matchedAccessory.inventory,
-            inStock: matchedAccessory.inStock
+            inStock: matchedAccessory.inStock,
+            byoTitle: matchedAccessory.byoTitle,
+            byoSubTitle:matchedAccessory.byoSubTitle,
+            featureImage:matchedAccessory.featureImage,
+            price: matchedAccessory.price
           },
           description: matchedAccessory.accessoryProductDescription,
           image: matchedAccessory.accessoryProductImage
