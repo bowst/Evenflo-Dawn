@@ -120,7 +120,7 @@
     <div class="product-stepper-btn-wrapper">
       <div class="product-stepper-btn product-stepper-btn-wrapper">
         <button class="start-over" onclick="productClear()">start over</button>
-        <button class="buy-now" onclick="buyNow()">Buy now for $</button>
+        <p class="buy-now">Buy now for $</p>
         <button class="add-to-cart" onclick="addToCart()">add to cart</button>
       </div>
     </div>
@@ -441,11 +441,23 @@ function handleResize(){
   }
 }
 
+// Helper function to update URL hash based on current step
+function updateURLHash() {
+  const stepNumber = currentStep + 1; // Convert 0-based to 1-based for marketing
+  const newHash = `#step${stepNumber}`;
+  
+  // Update URL without triggering page reload
+  if (window.location.hash !== newHash) {
+    history.replaceState(null, null, newHash);
+  }
+}
+
 function resetStepper(){
   currentStep = 0;
   selectedItems = {};
   cart.length = 0; // Clear the cart array
   localStorage.removeItem("selectedItems");
+  updateURLHash(); // Add hash update
   render();
   document.querySelector(".stepperLoader").classList.add("stepperLoader-show");
 }
@@ -462,6 +474,7 @@ function startOver(){
     stepperSteps[5].alternativeMessage = null;
     stepperSteps[5].title = "Choose Your Stroller Color";
 
+    updateURLHash(); // Add hash update
     render();
     updateStepperButtons();
   });
@@ -501,6 +514,7 @@ function handleNextStep(){
         renderAccessory();
       }
 
+      updateURLHash(); // Add hash update
       render();
       if (stepperSteps[currentStep]?.title === "Choose Your Car Seat Color") {
         matchProductData();
@@ -514,6 +528,7 @@ function handlePreviousStep(){
   if (currentStep > 0) {
     smoothStepTransition(() => {
       currentStep--;
+      updateURLHash(); // Add hash update
       render();
     });
   }
@@ -790,6 +805,7 @@ console.log("ABC CART",cart)
 function accessoryNotSelected(){
   if (currentStep === 6) {
     currentStep++;
+    updateURLHash(); // Add hash update
     render();
   }
 }
@@ -1149,6 +1165,7 @@ function renderAccessory() {
     if (!hasAccessories) {
       currentStep = 7;
       hideStepSixEditPencil = true;
+      updateURLHash(); // Add hash update
       console.log("No accessories available, skipping to step 7");
       return;
     }
@@ -1177,6 +1194,7 @@ function renderAccessory() {
   } else {
     // If cart is empty, also skip to step 7
     currentStep = 7;
+    updateURLHash(); // Add hash update
     console.log("Cart is empty, skipping to step 7");
   }
 }
@@ -1334,6 +1352,7 @@ function productClear() {
     stepperSteps[5].alternativeMessage = null;
     stepperSteps[5].title = "Choose Your Stroller Color";
 
+    updateURLHash(); // Add hash update
     render();
     updateStepperButtons();
     document.querySelector(
@@ -1344,6 +1363,7 @@ function productClear() {
 
 // matchProductData(); // Uncomment if you want to show initial product matches
 render();
+updateURLHash(); // Add initial hash update
 
 function customSwiperSlider() {
   var swiper = new Swiper('.mySwiper', {
@@ -1376,6 +1396,7 @@ function customSwiperSlider() {
 function stepperEdit(step) {
   smoothStepTransition(() => {
     currentStep = step;
+    updateURLHash(); // Add hash update
     if(stepperSteps[currentStep]?.title === "Add Accessories (Optional)"){
       const noExtraBtn = document.querySelector(".no-extra-needed");
       const accessorySelectedCards = document.querySelectorAll(".product-stepper-card.accessory-card.selected");
