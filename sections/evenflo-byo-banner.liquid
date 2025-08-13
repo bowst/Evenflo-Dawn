@@ -348,7 +348,7 @@
             {%- if block.settings.button_label_2 != blank and block.settings.modal_video != blank -%}
               <modal-dialog
                 id="BYOVideoModal-{{ block.id }}"
-                class="byo-modal-video media-modal color-{{ settings.color_schemes | first }}"
+                class="byo-modal-video color-{{ settings.color_schemes | first }}"
               >
                 <div
                   class="byo-modal-video__content"
@@ -371,7 +371,7 @@
                     <div class="byo-modal-video__wrapper">
                       <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
                         {%- if block.settings.modal_video != blank -%}
-                          <div class="byo-video-container deferred-media" onclick="event.stopPropagation();">
+                          <div class="byo-video-container">
                             <video 
                               id="byo-player-{{ block.id }}" 
                               class="byo-video-element" 
@@ -380,7 +380,6 @@
                               muted 
                               playsinline
                               {% if block.settings.enable_modal_video_looping %}loop{% endif %}
-                              onclick="event.stopPropagation();"
                             >
                               {%- for source in block.settings.modal_video.sources -%}
                                 <source src="{{ source.url }}" type="{{ source.mime_type }}">
