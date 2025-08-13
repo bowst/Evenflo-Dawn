@@ -616,7 +616,23 @@ span.filter-label {
   padding: 40px;
   background: #fff;
 }
+.product-stepper__item .product-stepper-card-variant-wrapper {
+  border: 2px solid #00aea933;
+  border-radius: 8px;
+  padding: 40px;
+  width: auto;
+}
+.product-stepper__item:has(.swiper) .product-stepper-card-variant-wrapper {
+    border: none;
+    padding: 0;
+    width: 100%;
+}
 @media screen and (max-width: 767px){
+  .product-stepper__item .product-stepper-card-variant-wrapper {
+    border: none;
+    padding: 0;
+    width: 100%;
+  }
   .product-stepper-card.variant-color {
     padding: 15px;
     border: 2px solid #00aea933;
