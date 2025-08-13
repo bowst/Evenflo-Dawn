@@ -440,8 +440,6 @@
   // Simple fullscreen function based on Stack Overflow example
   function goFullscreen(id) {
     var element = document.getElementById(id);
-    console.log('Fullscreen requested for:', id);
-    console.log('Element found:', element);
     
     if (!element) {
       console.log('Element not found!');
@@ -600,7 +598,6 @@
                   const playPromise = video.play();
                   if (playPromise !== undefined) {
                     playPromise.then(() => {
-                      console.log('Video autoplay started');
                       playButton.classList.remove('show'); // Hide play button since video is playing
                     }).catch(error => {
                       console.log('Autoplay prevented:', error);
