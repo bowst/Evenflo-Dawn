@@ -699,7 +699,6 @@ console.log("ABC CART",cart)
 
   if (currentStep === 7) {
     const reducedAmount = cart.reduce((acc, curr) => {
-      debugger; // pauses here on each iteration in DevTools
       return acc + (curr?.variant?.price ?? 0);
     }, 0);
     totalAmount = reducedAmount;
