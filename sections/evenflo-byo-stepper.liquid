@@ -457,6 +457,10 @@ function resetStepper(){
   selectedItems = {};
   cart.length = 0; // Clear the cart array
   localStorage.removeItem("selectedItems");
+  
+  // Reset pricing text
+  document.querySelector(".buy-now").innerText = "Buy now for $";
+  
   updateURLHash(); // Add hash update
   render();
   document.querySelector(".stepperLoader").classList.add("stepperLoader-show");
@@ -473,6 +477,9 @@ function startOver(){
     stepperSteps[3].alternativeMessage = null;
     stepperSteps[5].alternativeMessage = null;
     stepperSteps[5].title = "Choose Your Stroller Color";
+
+    // Reset pricing text
+    document.querySelector(".buy-now").innerText = "Buy now for $";
 
     updateURLHash(); // Add hash update
     render();
@@ -696,7 +703,7 @@ console.log("ABC CART",cart)
       return acc + (curr?.variant?.price ?? 0);
     }, 0);
     totalAmount = reducedAmount;
-    document.querySelector(".buy-now").innerText += reducedAmount
+    document.querySelector(".buy-now").innerText = "Buy now for $" + reducedAmount
 
     const cartReviewItems = cart.map(ci => ({
       label: ci?.variant?.byoTitle ?? "Byo Title N/A",
@@ -1351,6 +1358,9 @@ function productClear() {
     stepperSteps[3].alternativeMessage = null;
     stepperSteps[5].alternativeMessage = null;
     stepperSteps[5].title = "Choose Your Stroller Color";
+
+    // Reset pricing text
+    document.querySelector(".buy-now").innerText = "Buy now for $";
 
     updateURLHash(); // Add hash update
     render();
