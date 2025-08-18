@@ -444,7 +444,7 @@
   function scrollToBYOStepper() {
     // Look for evenflo-byo-stepper section
     const byoStepperSection = document.querySelector('[data-section-type="evenflo-byo-stepper"], .shopify-section[id*="byo-stepper"], [class*="byo-stepper"]');
-    
+    console.log(byoStepperSection)
     if (byoStepperSection) {
       byoStepperSection.scrollIntoView({
         behavior: 'smooth',
