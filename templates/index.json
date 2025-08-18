@@ -9,13 +9,75 @@
  */
 {
   "sections": {
+    "evenflo_image_banner_qe8hKC": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_KWpQwU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Buy One Revolve  Get One at 40% Off",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_kGtYpF": {
+          "type": "text",
+          "settings": {
+            "text": "Use Code<strong> REVOLVE40 <</strong>",
+            "text_style": "body"
+          }
+        },
+        "buttons_9DRAVL": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_KWpQwU",
+        "text_kGtYpF",
+        "buttons_9DRAVL"
+      ],
+      "disabled": true,
+      "name": "Evenflo Image Banner",
+      "settings": {
+        "image": "shopify://shop_images/Group_2401.png",
+        "image_2": "shopify://shop_images/Revolve360_Rotational_All-in-One_Convertible_Car_Seat_1.jpg",
+        "background_show": true,
+        "banner_color": "#000000",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#00aea9",
+        "button_text_color": "#ffffff",
+        "mobile_button_color": "#ffffff",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#ffffff",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 20,
+        "image_height": "small",
+        "desktop_content_position": "bottom-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "evenflo_loyalty_banner_nijkJM": {
       "type": "evenflo-loyalty-banner",
       "name": "Evenflo Loyalty Banner",
       "settings": {
-        "bronze_and_silver": "https://www.evenflo.com/collections/shop-all",
-        "gold": "https://www.evenflo.com/collections/shop-all",
-        "non_member": "https://www.evenflo.com/pages/rewards",
+        "bronze_and_silver": "https://www.evenflo.com/pages/evenflo-promotions",
+        "gold": "https://www.evenflo.com/pages/evenflo-promotions",
+        "non_member": "https://www.evenflo.com/pages/evenflo-promotions",
         "desktop_video_non_member": "shopify://collections",
         "mobile_video_non_member": ""
       }
@@ -323,6 +385,7 @@
     }
   },
   "order": [
+    "evenflo_image_banner_qe8hKC",
     "evenflo_loyalty_banner_nijkJM",
     "evenflo_image_video_banner_kyXfyU",
     "evenflo_featured_collection_XHFN7m",

@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
+	
+	<meta name="template" content="{{ template }}">
+	<link rel="alternate" hreflang="en-us" href="https://www.evenflo.com{{ request.path }}">	
+	<link rel="alternate" hreflang="x-default" href="https://www.evenflo.com{{ request.path }}">
 
+	
+    
     <!-- Google Tag Manager -->
    <script>
       (function (w, d, s, l, i) {
@@ -76,8 +82,9 @@
     <!-- Live Font -->
         <link rel="preconnect" href="https://use.typekit.net">
     <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css" media="print" onload="this.media='all'">
-<!-- End Live Font -->
+	<link rel="alternate" hreflang="x-default" href="https://www.evenflo.com/">
     
+    <!-- End Live Font -->
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
       assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'

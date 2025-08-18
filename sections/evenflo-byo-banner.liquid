@@ -1,0 +1,1024 @@
+{{ 'evenflo-image-video.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-video-section.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-component-image-with-text.css' | asset_url | stylesheet_tag }}
+{{ 'component-modal-video.css' | asset_url | stylesheet_tag }}
+
+<style>
+/* BYO Modal Video Custom Styling */
+.byo-modal-video {
+  background: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  height: 100%;
+  left: 0;
+  margin: 0 auto;
+  opacity: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.byo-modal-video[open] {
+  opacity: 1;
+  visibility: visible;
+  z-index: 101;
+}
+
+.byo-modal-video__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.byo-modal-video__container {
+  position: relative;
+  max-width: 80vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+}
+
+.byo-modal-video__wrapper {
+  position: relative;
+  border: 8px solid white;
+  border-radius: 0px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.byo-modal-video__player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.byo-modal-video__player video {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+}
+
+.byo-modal-video__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.byo-modal-video__close:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.byo-modal-video__close svg {
+  width: 20px;
+  height: 20px;
+  color: #333;
+}
+
+.byo-modal-video__maximize {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.byo-modal-video__maximize:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Video container and play button */
+.byo-video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.byo-video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+}
+
+.byo-video-play-button.show {
+  opacity: 1;
+}
+
+.byo-video-play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.byo-video-play-button svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Button icon styling */
+.icon-wrap--left {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+}
+
+.icon-wrap--left svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block;
+}
+
+/* Ensure buttons with left icons are properly aligned */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .icon-wrap--left {
+  order: -1;
+}
+
+/* Fullscreen video styling */
+.byo-video-element:fullscreen,
+.byo-video-element:-webkit-full-screen,
+.byo-video-element:-moz-full-screen,
+.byo-video-element:-ms-fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: contain;
+  background: black;
+}
+
+@media screen and (max-width: 768px) {
+  .byo-modal-video__container {
+    max-width: 90vw;
+    max-height: 70vh;
+  }
+  
+  .byo-modal-video__close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .byo-modal-video__maximize {
+    bottom: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+  }
+}
+</style>
+
+{%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
+  {%- style -%}
+    @media screen and (max-width: 749px) {
+      #Banner-{{ section.id }}::before,
+      #Banner-{{ section.id }}.banner__media::before,
+      #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
+        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        content: '';
+        display: block;
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      #Banner-{{ section.id }}: : before
+      , #Banner-{{ section.id }}
+      .banner__media::before {
+        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        content: '';
+        display: block;
+      }
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+{%- style -%}
+  #Banner-{{ section.id }}::after {
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+  }
+  .video-section .desktop-video video,
+  .video-section .mobile-video video {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+  }
+{%- endstyle -%}
+{%- liquid
+  assign full_width = '100vw'
+  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+
+  if section.settings.image_behavior == 'ambient'
+    assign half_width = '60vw'
+    assign full_width = '120vw'
+    assign stacked_sizes = '(min-width: 750px) 60vw, 120vw'
+    assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+  elsif section.settings.image_behavior == 'fixed' or section.settings.image_behavior == 'zoom-in'
+    assign half_width = '100vw'
+    assign stacked_sizes = '100vw'
+  else
+    assign half_width = '50vw'
+    assign stacked_sizes = '(min-width: 750px) 50vw, 100vw'
+  endif
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+<div id="Banner-{{ section.id }}" class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
+  {%- if section.settings.video_enable -%}
+    <div class="banner-video-content">
+      <div class="shopify-video-wrapper"></div>
+    </div>
+  {%- else -%}
+    {%- if section.settings.image != blank -%}
+      <div class="
+          banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+        {%- liquid
+          assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+          if section.settings.image_2 != blank
+            assign image_class = 'banner__media-image-half'
+          endif
+          if section.settings.image_2 != blank and section.settings.stack_images_on_mobile
+            assign sizes = stacked_sizes
+          elsif section.settings.image_2 != blank
+            assign sizes = half_width
+          else
+            assign sizes = full_width
+          endif
+        -%}
+        {{
+          section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', width: section.settings.image.width, height: image_height, class: image_class, sizes: sizes, widths: widths, fetchpriority: fetch_priority
+        }}
+      </div>
+    {%- elsif section.settings.image_2 == blank -%}
+      <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+    {%- if section.settings.image_2 != blank -%}
+      <div class="{% if section.settings.hide_image_on_mobile %}hide_image_on_mobile {% endif %}banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+        {%- liquid
+          assign image_height_2 = section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio
+          if section.settings.image != blank
+            assign image_class_2 = 'banner__media-image-half'
+          endif
+          if section.settings.image != blank and section.settings.stack_images_on_mobile
+            assign sizes = stacked_sizes
+          elsif section.settings.image_2 != blank
+            assign sizes = half_width
+          else
+            assign sizes = full_width
+          endif
+        -%}
+        {{
+          section.settings.image_2 | image_url: width: 3840 | image_tag: loading: 'lazy', width: section.settings.image_2.width, height: image_height_2, class: image_class_2, sizes: sizes, widths: widths
+        }}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+  <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width">
+    <div class="banner__box content-container content-container--full-width-mobile">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <h1 class="{% if section.settings.underline %} heading-underline {% endif %} banner__heading inline-richtext {{ block.settings.heading_size }} {{ block.settings.heading_color }}" {{ block.shopify_attributes }}>
+              {{ block.settings.heading }}
+            </h1>
+          {%- when 'text' -%}
+            <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+              <h2 class="{{ block.settings.text_color }}">{{ block.settings.text }}</h2>
+            </div>
+          {%- when 'buttons' -%}
+            <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
+              {%- if block.settings.button_label_1 != blank -%}
+                <button
+                  onclick="scrollToBYOStepper()"
+                  class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">
+                  {{- block.settings.button_label_1 | escape -}}
+                </button>
+              {%- endif -%}
+              {%- if block.settings.button_label_2 != blank -%}
+                {%- if block.settings.modal_video != blank -%}
+                  <modal-opener data-modal="#BYOVideoModal-{{ block.id }}">
+                    <button
+                      type="button"
+                      aria-haspopup="dialog"
+                      class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+                      <span class="icon-wrap icon-wrap--left">{{- 'icon-play.svg' | inline_asset_content -}}</span>
+                      {{- block.settings.button_label_2 | escape -}}
+                    </button>
+                  </modal-opener>
+                {%- else -%}
+                  <a
+                    {% if block.settings.button_link_2 == blank %}
+                    role="link"
+                    aria-disabled="true"
+                    {% else %}
+                    href="{{ block.settings.button_link_2 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+                    <span class="icon-wrap icon-wrap--left">{{- 'icon-play.svg' | inline_asset_content -}}</span>
+                    {{- block.settings.button_label_2 | escape -}}
+                  </a>
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+            
+            {%- if block.settings.button_label_2 != blank and block.settings.modal_video != blank -%}
+              <modal-dialog
+                id="BYOVideoModal-{{ block.id }}"
+                class="byo-modal-video color-{{ settings.color_schemes | first }}"
+              >
+                <div
+                  class="byo-modal-video__content"
+                  role="dialog"
+                  aria-label="BYO Video Modal"
+                  aria-modal="true"
+                  tabindex="-1"
+                >
+                  <button
+                      id="ModalClose-{{ block.id }}"
+                      type="button"
+                      class="byo-modal-video__close"
+                      aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                    <span class="svg-wrapper">
+                      {{- 'icon-close.svg' | inline_asset_content -}}
+                    </span>
+                  </button>
+                  <div class="byo-modal-video__container">
+                    <div class="byo-modal-video__wrapper">
+                      <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
+                        {%- if block.settings.modal_video != blank -%}
+                          <div class="byo-video-container">
+                            <video 
+                              id="byo-player-{{ block.id }}" 
+                              class="byo-video-element" 
+                              width="100%" 
+                              autoplay 
+                              muted 
+                              playsinline
+                              {% if block.settings.enable_modal_video_looping %}loop{% endif %}
+                            >
+                              {%- for source in block.settings.modal_video.sources -%}
+                                <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                              {%- endfor -%}
+                              Your browser does not support the HTML5 video tag.
+                            </video>
+                            <button class="byo-video-play-button" id="play-btn-{{ block.id }}">
+                              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="30" fill="rgba(0, 0, 0, 0.7)" stroke="rgba(255, 255, 255, 0.8)" stroke-width="2"/>
+                                <path d="M22 18L42 30L22 42V18Z" fill="white"/>
+                              </svg>
+                            </button>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                      <button
+                        class="byo-modal-video__maximize"
+                        id="maximize-btn-{{ block.id }}"
+                        aria-label="Toggle Fullscreen"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 5V1H5M15 5V1H11M15 11V15H11M1 11V15H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </modal-dialog>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+<script>
+  // Function to scroll to BYO stepper section
+  function scrollToBYOStepper() {
+    // Look for evenflo-byo-stepper section
+    const byoStepperSection = document.querySelector('[data-section-type="evenflo-byo-stepper"], .shopify-section[id*="byo-stepper"], [class*="byo-stepper"]');
+    console.log("scrollToBYOStepper clicked", byoStepperSection)
+
+    document.querySelector(".product-filter-wrapper").style.display="flex";
+
+    if (byoStepperSection) {
+      byoStepperSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Fallback: look for any section with "stepper" in its ID or class
+      const stepperSection = document.querySelector('[id*="stepper"], [class*="stepper"]');
+      if (stepperSection) {
+        stepperSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  }
+
+  // Simple fullscreen function based on Stack Overflow example
+  function goFullscreen(id) {
+    var element = document.getElementById(id);
+    console.log('Fullscreen requested for:', id);
+    console.log('Element found:', element);
+    
+    if (!element) {
+      console.log('Element not found!');
+      return;
+    }
+    
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullScreen) {
+      element.webkitRequestFullScreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+  }
+
+  // Toggle video play/pause and show/hide play button
+  function toggleVideoPlay(videoId, buttonId) {
+    const video = document.getElementById(videoId);
+    const playButton = document.getElementById(buttonId);
+    
+    if (!video || !playButton) return;
+    
+    if (video.paused) {
+      video.play();
+      playButton.classList.remove('show');
+    } else {
+      video.pause();
+      playButton.classList.add('show');
+    }
+  }
+
+  // Show play button when video is paused, hide when playing
+  function setupVideoPlayButton(videoId, buttonId) {
+    const video = document.getElementById(videoId);
+    const playButton = document.getElementById(buttonId);
+    
+    if (!video || !playButton) return;
+    
+    // Add click handler to play button
+    playButton.addEventListener('click', function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      toggleVideoPlay(videoId, buttonId);
+    });
+    
+    // Show play button initially if video is paused
+    if (video.paused) {
+      playButton.classList.add('show');
+    }
+    
+    // Listen for video events
+    video.addEventListener('play', function() {
+      playButton.classList.remove('show');
+    });
+    
+    video.addEventListener('pause', function() {
+      playButton.classList.add('show');
+    });
+    
+    video.addEventListener('ended', function() {
+      playButton.classList.add('show');
+    });
+    
+    // Add click handler to video itself for play/pause
+    video.addEventListener('click', function(event) {
+      event.stopPropagation();
+      toggleVideoPlay(videoId, buttonId);
+    });
+  }
+
+  // Setup maximize button functionality
+  function setupMaximizeButton(videoId, buttonId) {
+    const maximizeButton = document.getElementById(buttonId);
+    
+    if (!maximizeButton) return;
+    
+    maximizeButton.addEventListener('click', function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      goFullscreen(videoId);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var section = document.querySelector('#Banner-{{ section.id }}');
+
+    var desktopVideo = `<div class="desktop-video">
+        {{
+            section.settings.video
+            | video_tag:
+                image_size: '1100x',
+                autoplay: 'autoplay',
+                loop: section.settings.enable_video_looping,
+                controls: false,
+                muted: true,
+                playsinline: 'playsinline'
+        }}
+    </div>`;
+
+    var mobileVideo = `<div class="mobile-video">
+        {{
+            section.settings.video_mobile
+            | video_tag:
+                image_size: '1100x',
+                autoplay: 'autoplay',
+                loop: section.settings.enable_video_looping,
+                controls: false,
+                muted: true,
+                playsinline: 'playsinline'
+        }}
+    </div>`;
+
+    function checkWidth() {
+        if (window.innerWidth >= 750) {
+            section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;
+        } else {
+            {% if section.settings.video_mobile == null %}
+                section.querySelector('.shopify-video-wrapper').innerHTML = desktopVideo;
+            {% else %}
+                section.querySelector('.shopify-video-wrapper').innerHTML = mobileVideo;
+            {% endif %}
+        }
+    }
+
+    checkWidth(); // Initial check
+    window.addEventListener('resize', checkWidth); // Recheck on window resize
+
+    // Handle BYO Video Modal autoplay
+    const byoModals = document.querySelectorAll('.byo-modal-video');
+    byoModals.forEach(modal => {
+      // Create observer to watch for modal opening
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
+            if (modal.hasAttribute('open')) {
+              // Modal opened - play video and setup play button
+              setTimeout(() => {
+                const video = modal.querySelector('video');
+                const playButton = modal.querySelector('.byo-video-play-button');
+                
+                if (video && playButton) {
+                  // Setup play button functionality
+                  setupVideoPlayButton(video.id, playButton.id);
+                  
+                  // Setup maximize button functionality
+                  const maximizeButton = modal.querySelector('.byo-modal-video__maximize');
+                  if (maximizeButton) {
+                    setupMaximizeButton(video.id, maximizeButton.id);
+                  }
+                  
+                  video.muted = true;
+                  video.currentTime = 0; // Start from beginning
+                  
+                  const playPromise = video.play();
+                  if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                      console.log('Video autoplay started');
+                      playButton.classList.remove('show'); // Hide play button since video is playing
+                    }).catch(error => {
+                      console.log('Autoplay prevented:', error);
+                      playButton.classList.add('show'); // Show play button since autoplay failed
+                    });
+                  }
+                }
+              }, 100);
+            } else {
+              // Modal closed - pause video and reset play button
+              const video = modal.querySelector('video');
+              const playButton = modal.querySelector('.byo-video-play-button');
+              
+              if (video) {
+                video.pause();
+                video.currentTime = 0;
+              }
+              
+              if (playButton) {
+                playButton.classList.remove('show');
+              }
+
+               // ✅ Recall checkWidth() when modal closes
+              if (typeof checkWidth === "function") {
+                checkWidth();
+              }
+            }
+          }
+        });
+      });
+      
+      // Start observing
+      observer.observe(modal, {
+        attributes: true,
+        attributeFilter: ['open']
+      });
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Evenflo BYO Banner",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "First image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Second image"
+      },
+      {
+        "type": "header",
+        "content": "Shopify-hosted video"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video"
+      }, {
+        "type": "header",
+        "content": "Shopify-hosted mobile video"
+      }, {
+        "type": "video",
+        "id": "video_mobile",
+        "label": "Mobile Video"
+      }, {
+        "type": "checkbox",
+        "id": "video_enable",
+        "default": false,
+        "label": "Show video instead of images"
+      }, {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "default": true,
+        "label": "Enable video looping"
+      }, {
+        "type": "range",
+        "id": "image_overlay_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "unit": "%",
+        "label": "Image overlay opacity",
+        "default": 0
+      }, {
+        "type": "checkbox",
+        "id": "underline",
+        "default": false,
+        "label": "Underline"
+      }, {
+        "type": "checkbox",
+        "id": "hide_image_on_mobile",
+        "default": false,
+        "label": "Hide image on mobile"
+      }, {
+        "type": "select",
+        "id": "image_height",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "Adapt to first image"
+          }, {
+            "value": "small",
+            "label": "Small"
+          }, {
+            "value": "medium",
+            "label": "Medium"
+          }, {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium",
+        "label": "Banner height",
+        "info": "For best results, use an image with a 3:2 aspect ratio. Learn more"
+      }, {
+        "type": "select",
+        "id": "desktop_content_position",
+        "options": [
+          {
+            "value": "top-left",
+            "label": "Top Left"
+          },
+          {
+            "value": "top-center",
+            "label": "Top Center"
+          },
+          {
+            "value": "top-right",
+            "label": "Top Right"
+          },
+          {
+            "value": "middle-left",
+            "label": "Middle Left"
+          }, {
+            "value": "middle-center",
+            "label": "Middle Center"
+          }, {
+            "value": "middle-right",
+            "label": "Middle Right"
+          }, {
+            "value": "bottom-left",
+            "label": "Bottom Left"
+          }, {
+            "value": "bottom-center",
+            "label": "Bottom Center"
+          }, {
+            "value": "bottom-right",
+            "label": "Bottom Right"
+          }
+        ],
+        "default": "middle-center",
+        "label": "Desktop content position"
+      }, {
+        "type": "checkbox",
+        "id": "show_text_box",
+        "default": true,
+        "label": "Show container on desktop"
+      }, {
+        "type": "select",
+        "id": "desktop_content_alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center",
+        "label": "Desktop content alignment"
+      }, {
+        "type": "header",
+        "content": "Animations"
+      }, {
+        "type": "select",
+        "id": "image_behavior",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          }, {
+            "value": "ambient",
+            "label": "Ambient movement"
+          }, {
+            "value": "fixed",
+            "label": "Fixed background position"
+          }, {
+            "value": "zoom-in",
+            "label": "Zoom in on scroll"
+          }
+        ],
+        "default": "none",
+        "label": "Image behavior"
+      }, {
+        "type": "header",
+        "content": "Mobile Layout"
+      }, {
+        "type": "select",
+        "id": "mobile_content_alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center",
+        "label": "Mobile content alignment"
+      }, {
+        "type": "checkbox",
+        "id": "stack_images_on_mobile",
+        "default": true,
+        "label": "Stack images on mobile"
+      }, {
+        "type": "checkbox",
+        "id": "show_text_below",
+        "default": true,
+        "label": "Show container on mobile"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "Heading",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "heading",
+            "default": "Image banner",
+            "label": "Heading"
+          }, {
+            "type": "select",
+            "id": "heading_size",
+            "options": [
+              {
+                "value": "h2",
+                "label": "Small"
+              }, {
+                "value": "h1",
+                "label": "medium"
+              }, {
+                "value": "h0",
+                "label": "Large"
+              }
+            ],
+            "default": "h1",
+            "label": "Heading size"
+          }, {
+            "type": "select",
+            "id": "heading_color",
+            "options": [
+              {
+                "value": "black",
+                "label": "Black"
+              }, {
+                "value": "white",
+                "label": "White"
+              }
+            ],
+            "default": "black",
+            "label": "Heading Color"
+          }
+        ]
+      }, {
+        "type": "text",
+        "name": "Text",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "text",
+            "default": "Give customers details about the banner image(s) or content on the template.",
+            "label": "Description"
+          }, {
+            "type": "select",
+            "id": "text_style",
+            "options": [
+              {
+                "value": "body",
+                "label": "Body"
+              }, {
+                "value": "subtitle",
+                "label": "Subtitle"
+              }, {
+                "value": "caption-with-letter-spacing",
+                "label": "Uppercase"
+              }
+            ],
+            "default": "body",
+            "label": "Text style"
+          }, {
+            "type": "select",
+            "id": "text_color",
+            "options": [
+              {
+                "value": "black",
+                "label": "Black"
+              }, {
+                "value": "white",
+                "label": "White"
+              }
+            ],
+            "default": "black",
+            "label": "Text Color"
+          }
+        ]
+      }, {
+        "type": "buttons",
+        "name": "Buttons",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label_1",
+            "default": "Button label",
+            "label": "First button label",
+            "info": "Leave the label blank to hide the button "
+          },
+          {
+            "type": "url",
+            "id": "button_link_1",
+            "label": "First button link"
+          },
+          {
+            "type": "checkbox",
+            "id": "button_style_secondary_1",
+            "default": false,
+            "label": "Use outline button style"
+          },
+          {
+            "type": "text",
+            "id": "button_label_2",
+            "default": "Button label",
+            "label": "Second button label",
+            "info": "Leave the label blank to hide the button"
+          }, {
+            "type": "url",
+            "id": "button_link_2",
+            "label": "Second button link"
+          }, {
+            "type": "checkbox",
+            "id": "button_style_secondary_2",
+            "default": false,
+            "label": "Use outline button style"
+          }, {
+            "type": "video",
+            "id": "modal_video",
+            "label": "Modal Video"
+          }, {
+            "type": "checkbox",
+            "id": "enable_modal_video_looping",
+            "default": true,
+            "label": "Enable modal video looping"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Evenflo BYO Banner",
+        "blocks": [
+          {
+            "type": "heading"
+          }, {
+            "type": "text"
+          }, {
+            "type": "buttons"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -11,6 +11,9 @@
   "sections": {
     "cart-items": {
       "type": "main-cart-items",
+      "custom_css": [
+        "cart-items:not(.is-empty) .cart__warnings{display: none;}"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "padding_top": 36,
@@ -22,13 +25,11 @@
       "blocks": {
         "subtotal": {
           "type": "subtotal",
-          "settings": {
-          }
+          "settings": {}
         },
         "buttons": {
           "type": "buttons",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
