@@ -383,11 +383,11 @@
                   tabindex="-1"
                 >
                   <button
-                    id="ModalClose-{{ block.id }}"
-                    type="button"
-                    class="byo-modal-video__close"
-                    aria-label="{{ 'accessibility.close' | t }}"
-                  >
+                      id="ModalClose-{{ block.id }}"
+                      type="button"
+                      class="byo-modal-video__close"
+                      aria-label="{{ 'accessibility.close' | t }}"
+                    >
                     <span class="svg-wrapper">
                       {{- 'icon-close.svg' | inline_asset_content -}}
                     </span>
@@ -646,6 +646,11 @@
               
               if (playButton) {
                 playButton.classList.remove('show');
+              }
+
+               // ✅ Recall checkWidth() when modal closes
+              if (typeof checkWidth === "function") {
+                checkWidth();
               }
             }
           }
