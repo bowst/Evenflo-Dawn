@@ -143,8 +143,10 @@
     .evenflo-benefits__grid {
         grid-template-columns: repeat(2, minmax(240px, 1fr));
         gap: 25px;
-        min-height: 160px;
+    }
 
+    .evenflo-benefits__tile {
+        min-height: 160px;
     }
 }
 
