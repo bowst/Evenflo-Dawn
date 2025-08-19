@@ -24,6 +24,13 @@ a.button.button--primary--alt {
   background-color: #2996C5;
   transition: all .3s ease-in-out;
 }
+
+a.button.button--primary--alt {
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+      rgba(var(--color-button-text), var(--border-opacity)),
+    0 0 0 var(--buttons-border-width)
+      rgba(var(--color-button), #2996C5);
+}
 a.button.button--primary--alt:hover::before,
 a.button.button--primary--alt:hover::after{
   --border-offset: 1.3px;
