@@ -21,12 +21,11 @@
 
 .button.button--primary--alt {
   border-color: #2996C5;
-  background-color: #2996C5;
+  background-color: transparent;
   transition: all .3s ease-in-out;
 }
-
-.button.button--primary--alt:before,
-.button.button--primary--alt:after {
+.button.button--primary--alt::before,
+.button.button--primary--alt::after{
   display: none;
 }
 
@@ -34,7 +33,6 @@
   border-color: #2996C5;
   background-color: #2996C5;
   --border-offset: 0px;
-  transform: scale(1.05);
 }
 
 .join .content .button + .button {
