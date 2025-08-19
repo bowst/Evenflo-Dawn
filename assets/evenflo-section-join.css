@@ -52,9 +52,7 @@ a.button.button--primary--alt:hover::after{
 	.join .content {
 		padding: 30px;
 	}
-  .join .button.button--primary{
-    width: auto;
-  }
+  
 }
 
 @media screen and (min-width: 990px) {
@@ -72,8 +70,11 @@ a.button.button--primary--alt:hover::after{
     max-width: 90%;
   }
 
+  .join .button.button--primary{
+    width: auto;
+  }
   .join .content .button + .button {
     margin-top: 0;
-    margin-left: 50px;
+    margin-left: 20px;
   }
 }
