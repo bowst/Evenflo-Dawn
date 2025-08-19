@@ -33,7 +33,6 @@ a.button.button--primary--alt {
     0 0 0 var(--buttons-border-width)
       rgba(41, 150, 197, var(--alpha-button-background));
 }
-a.button.button--primary--alt:hover::before,
 a.button.button--primary--alt:hover::after{
   box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
       rgba(var(--color-button-text), var(--border-opacity)),
