@@ -17,6 +17,7 @@
 
 .join a.button--primary {
   gap: .5em;
+  width: 100%;
 }
 
 a.button.button--primary--alt {
@@ -51,6 +52,9 @@ a.button.button--primary--alt:hover::after{
 	.join .content {
 		padding: 30px;
 	}
+  .join .button.button--primary{
+    width: auto;
+  }
 }
 
 @media screen and (min-width: 990px) {
