@@ -15,21 +15,21 @@
   color: #fff;
 }
 
-.join .button--primary {
+a.join .button--primary {
   gap: .5em;
 }
 
-.button.button--primary--alt {
+a.button.button--primary--alt {
   border:1px solid transparent;
   background-color: #2996C5;
   transition: all .3s ease-in-out;
 }
-.button.button--primary--alt::before,
-.button.button--primary--alt::after{
+a.button.button--primary--alt::before,
+a.button.button--primary--alt::after{
   display: none;
 }
 
-.button.button--primary--alt:hover {
+a.button.button--primary--alt:hover {
   border-color: #2996C5;
   background-color: #2996C5;
   --border-offset: 0px;
