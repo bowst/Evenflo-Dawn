@@ -15,9 +15,19 @@
   color: #fff;
 }
 
+.join .button-primary {
+  gap: .5em;
+}
+
 .join .button--primary--alt {
   background-color: #2996C5;
 }
+
+.join .button--primary--alt:hover {
+  border-color: #2996C5;
+  background-color: #2996C5;
+}
+
 .join .content .button + .button {
   margin-top: 20px;
 }
