@@ -26,14 +26,14 @@ a.button.button--primary--alt {
 }
 a.button.button--primary--alt::before,
 a.button.button--primary--alt::after{
-  display: none;
+  --border-offset: 1.3px;
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+      rgba(var(--color-button-text), var(--border-opacity)),
+    0 0 0 calc(var(--buttons-border-width) + 1px)
+      rgba(var(--color-button), #2996C5);
 }
 
-a.button.button--primary--alt:hover {
-  border-color: #2996C5;
-  background-color: #2996C5;
-  --border-offset: initial;
-}
+
 
 .join .content .button + .button {
   margin-top: 20px;
