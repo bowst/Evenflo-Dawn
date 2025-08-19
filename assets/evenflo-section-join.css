@@ -21,7 +21,7 @@
 
 a.button.button--primary--alt {
   border: 1px solid transparent;
-  background-color: #2996C5;
+  background-color:rgb(41, 150, 197);
   transition: all .3s ease-in-out;
 }
 
@@ -29,7 +29,7 @@ a.button.button--primary--alt {
   box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
       rgba(var(--color-button-text), var(--border-opacity)),
     0 0 0 var(--buttons-border-width)
-      rgba(var(--color-button), #2996C5);
+      rgba(41, 150, 197, var(--alpha-button-background));
 }
 a.button.button--primary--alt:hover::before,
 a.button.button--primary--alt:hover::after{
@@ -37,7 +37,7 @@ a.button.button--primary--alt:hover::after{
   box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
       rgba(var(--color-button-text), var(--border-opacity)),
     0 0 0 calc(var(--buttons-border-width) + 1px)
-      rgba(var(--color-button), #2996C5);
+      rgba(41, 150, 197, var(--alpha-button-background));
 }
 
 
