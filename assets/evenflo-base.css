@@ -36,7 +36,8 @@ h5,
 .heading-underline {
   position: relative;
 }
-.heading-underline::after {
+.heading-underline::after,
+.heading-underline-center::after {
   content: '';
   position: absolute;
   bottom: -10px;
