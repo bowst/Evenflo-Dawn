@@ -49,6 +49,10 @@ h5,
 .heading-underline-center {
   text-align: center;
 }
+.heading-underline-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
 sticky-header .header {
 	padding: 12px 1.5em 0;
 }
@@ -112,10 +116,6 @@ a {
   /* background-attachment: fixed; */
 }
 
-.heading-underline-center::after {
-  left: 50%;
-  transform: translateX(-50%);
-}
 .header__icons {
   /* width: 100%; */
   max-width: 600px;
