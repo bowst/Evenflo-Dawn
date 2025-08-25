@@ -36,7 +36,8 @@ h5,
 .heading-underline {
   position: relative;
 }
-.heading-underline::after {
+.heading-underline::after,
+.heading-underline-center::after {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -47,6 +48,11 @@ h5,
 }
 .heading-underline-center {
   text-align: center;
+  position: relative;
+}
+.heading-underline-center::after {
+  left: 50%;
+  transform: translateX(-50%);
 }
 sticky-header .header {
 	padding: 12px 1.5em 0;
@@ -111,10 +117,6 @@ a {
   /* background-attachment: fixed; */
 }
 
-.heading-underline-center::after {
-  left: 50%;
-  transform: translateX(-50%);
-}
 .header__icons {
   /* width: 100%; */
   max-width: 600px;
@@ -287,4 +289,25 @@ img {
 
 .cart__ctas {
 	margin: 8px 0;
+}
+/* New alt primary button styles */
+a.button.button--primary--alt {
+background-color:rgb(41, 150, 197);
+transition: all .3s ease-in-out;
+}
+
+a.button.button--primary--alt:hover {
+	background-color:rgb(41, 150, 197)!important;
+}
+a.button.button--primary--alt::after {
+box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+	rgba(var(--color-button-text), var(--border-opacity)),
+	0 0 0 var(--buttons-border-width)
+	rgba(41, 150, 197, var(--alpha-button-background));
+}
+a.button.button--primary--alt:hover::after{
+box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+	rgba(var(--color-button-text), var(--border-opacity)),
+	0 0 0 calc(var(--buttons-border-width) + 1px)
+	rgba(41, 150, 197, var(--alpha-button-background));
 }
