@@ -106,45 +106,43 @@
   
 					  <div class="related-products">
 						{% for prod in relatedProducts %}
-						  {% if prod.available == true %}
-							<div class="product-card {% if product.title == prod.title %} active {% endif %}">
-							  {% if product.title != prod.title %}
-								<a
-								  class="product-card-wrapper-link"
-								  href="{{ prod.url }}"
-								  href="{{ prod.url }}"
-  
-								  href="{{ prod.url }}"
-  
-								  aria-label="{{prod.title}}"
-								  title="{{ prod.title }}"
-								>
-								</a>
-							  {% endif %}
-  
-							  <div class="product-header">
-								<div class="product-name ">
-								  {% if prod.metafields.product_info.related_product_title %}
-									{{ prod.metafields.product_info.related_product_title }}
-								  {% else %}
-									{{ prod.title }}
-								  {% endif %}
-								</div>
-								{% if prod.metafields.product_info.related_sub_title %}
-								  <div class="product-type">
-									{{ prod.metafields.product_info.related_sub_title }}
-								  </div>
+						<div class="product-card {% if product.title == prod.title %} active {% endif %}">
+							{% if product.title != prod.title %}
+							<a
+								class="product-card-wrapper-link"
+								href="{{ prod.url }}"
+								href="{{ prod.url }}"
+
+								href="{{ prod.url }}"
+
+								aria-label="{{prod.title}}"
+								title="{{ prod.title }}"
+							>
+							</a>
+							{% endif %}
+
+							<div class="product-header">
+							<div class="product-name ">
+								{% if prod.metafields.product_info.related_product_title %}
+								{{ prod.metafields.product_info.related_product_title }}
+								{% else %}
+								{{ prod.title }}
 								{% endif %}
-							  </div>
-							  <div class="product-footer">
-								{% if prod.price %}
-								  <div class="product-price">
-									{{- prod.price | money -}}
-								  </div>
-								{% endif %}
-							  </div>
 							</div>
-						  {% endif %}
+							{% if prod.metafields.product_info.related_sub_title %}
+								<div class="product-type">
+								{{ prod.metafields.product_info.related_sub_title }}
+								</div>
+							{% endif %}
+							</div>
+							<div class="product-footer">
+							{% if prod.price %}
+								<div class="product-price">
+								{{- prod.price | money -}}
+								</div>
+							{% endif %}
+							</div>
+						</div>
 						{% endfor %}
 					  </div>
 					{% endif %}
