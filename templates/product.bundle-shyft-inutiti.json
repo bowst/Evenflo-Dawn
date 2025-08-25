@@ -613,54 +613,56 @@
       "type": "evenflo-join",
       "settings": {}
     },
-    "evenflo_shopping_benefits_MVExtY": {
-      "type": "evenflo-shopping-benefits",
+    "evenflo_benefits_3PpxVD": {
+      "type": "evenflo-benefits",
       "blocks": {
-        "benefit_list_9aVXBk": {
-          "type": "benefit_list",
+        "benefit_HxtETL": {
+          "type": "benefit",
           "settings": {
-            "description": "<h3>Give $20,<br> Get $20</h3>\nRefer a friend and earn points.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
-            "icon_image": "shopify://shop_images/icon-give20.png",
-            "link": "shopify://pages/about-evenflo"
+            "icon": "shopify://shop_images/icon-dollar-sign.svg",
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral.",
+            "link": "shopify://pages/refer"
           }
         },
-        "benefit_list_VGk9cr": {
-          "type": "benefit_list",
+        "benefit_NnQCMH": {
+          "type": "benefit",
           "settings": {
-            "description": "<h3>Pay With Affirm</h3>\nPay over time.",
-            "background_image": "shopify://shop_images/pay-with-affirm.jpg",
-            "icon_image": "shopify://shop_images/icon-pay.png",
-            "link": ""
+            "icon": "shopify://shop_images/icon-pay-affirm-benefit.svg",
+            "title": "Pay With Affirm",
+            "description": "Spread out your payments over a period of time.",
+            "link": "shopify://pages/affirm-overview"
           }
         },
-        "benefit_list_Ttgccn": {
-          "type": "benefit_list",
+        "benefit_V3KmtB": {
+          "type": "benefit",
           "settings": {
-            "description": "<h3>Community Heroes Discount</h3>\nSave on baby gear.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
-            "icon_image": "shopify://shop_images/icon-heroes.png",
-            "link": ""
+            "icon": "shopify://shop_images/icon-community-benefit.svg",
+            "title": "Community Heroes Discount",
+            "description": "Our exclusive discount program for community heroes.",
+            "link": "shopify://pages/new-promotions"
           }
         },
-        "benefit_list_YiYFMk": {
-          "type": "benefit_list",
+        "benefit_p7kzKh": {
+          "type": "benefit",
           "settings": {
-            "description": "<h3>Evenflo Blog</h3>\nCheck out the latest.",
-            "background_image": "shopify://shop_images/infant-car-seats.jpg",
-            "icon_image": "shopify://shop_images/icon-blog.png",
-            "link": ""
+            "title": "Evenflo Blog",
+            "description": "The day your child comes into the world, all the stakes are raised. Little things matter more.",
+            "link": "shopify://blogs/evenflo-blog"
           }
         }
       },
       "block_order": [
-        "benefit_list_9aVXBk",
-        "benefit_list_VGk9cr",
-        "benefit_list_Ttgccn",
-        "benefit_list_YiYFMk"
+        "benefit_HxtETL",
+        "benefit_NnQCMH",
+        "benefit_V3KmtB",
+        "benefit_p7kzKh"
       ],
+      "name": "Benefits",
       "settings": {
-        "heading": "Benefits of shopping evenflo.com"
+        "heading": "Benefits of Shopping Evenflo.com",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -683,6 +685,6 @@
     "evenflo_quote_Q6Q7qn",
     "1728651794c071ea89",
     "evenflo_join_aYHW79",
-    "evenflo_shopping_benefits_MVExtY"
+    "evenflo_benefits_3PpxVD"
   ]
 }
