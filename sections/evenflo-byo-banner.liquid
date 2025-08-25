@@ -622,7 +622,7 @@
                     setupMaximizeButton(video.id, maximizeButton.id);
                   }
                   
-                  video.muted = true;
+                  video.muted = false;
                   video.currentTime = 0; // Start from beginning
                   
                   const playPromise = video.play();
@@ -645,6 +645,7 @@
               if (video) {
                 video.pause();
                 video.currentTime = 0;
+                video.muted = true;
               }
               
               if (playButton) {

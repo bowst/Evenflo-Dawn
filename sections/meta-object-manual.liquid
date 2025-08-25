@@ -1,0 +1,298 @@
+<style>
+  html:has(.metaobject-tags) {
+    scroll-behavior: smooth;
+  }
+  .metaobject-tags {
+    background: #ffffff;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.11);
+    padding: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .metaobject-tags a {
+    text-decoration: none;
+    color: #232426;
+    font-weight: 600;
+  }
+
+  .metaobject-list-group {
+    display: grid;
+    row-gap: 32px;
+    padding: 24px 0 32px;
+  }
+
+  .metaobject-list-group * {
+    margin: 0;
+  }
+  .metaobject-list-group h2 {
+    color: #000;
+    margin-bottom: 24px;
+  }
+  .metaobject-list-group:not(:last-child) {
+    border-bottom: 1px solid #e9dcc6;
+  }
+  .metaobject-list-group ul {
+    padding-left: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    column-gap: 24px;
+    row-gap: 24px;
+  }
+
+  .manual-card {
+    border: 1px solid #e9dcc6;
+    border-radius: 8px;
+    padding: 16px;
+    background: #fff;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .manual-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .manual-card-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .manual-card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .manual-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #232426;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .manual-card-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .manual-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid #232426;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #232426;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .manual-card-link:hover {
+    background: #232426;
+    color: #fff;
+  }
+
+  .manual-card-link.download {
+    background: #fff;
+    color: #232426;
+    border: 1px solid #232426;
+  }
+
+  .manual-card-link.download:hover {
+    background: #232426;
+    color: #fff;
+  }
+
+  .manual-card-link.view-product {
+    background: #232426;
+    color: #fff;
+  }
+
+  .manual-card-link.view-product:hover {
+    background: #000;
+  }
+
+  @media screen and (min-width: 990px) {
+    .page-width:has(.metaobject-list) {
+      max-width: 100rem;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .metaobject-tags {
+      justify-content: flex-start;
+      overflow: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .metaobject-tags::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .metaobject-list-group ul {
+      grid-template-columns: 1fr;
+    }
+    .manual-card {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: center;
+    }
+    .manual-card-image {
+      width: 100%;
+      max-width: 200px;
+      height: 150px;
+      align-self: center;
+    }
+    .manual-card-content {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .manual-card-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    .manual-card-link {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<div class="metaobject-tags">
+  {% assign alphabet = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ',' %}
+  {% for letter in alphabet %}
+    <a href="#metaobject-list-group-{{ letter }}">{{ letter }}</a>
+  {% endfor %}
+</div>
+
+<div class="page-width">
+  <div class="metaobject-list">
+    {% paginate shop.metaobjects.instruction_manuals.values by 200 %}
+      {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values | sort: 'product_title.value' %}
+      {% assign current_letter = '' %}
+      {% for metaobject in grouped_metaobjects %}
+        {% assign product_title = metaobject.product_title.value | default: metaobject.name %}
+        {% assign first_letter = product_title | slice: 0, 1 | upcase %}
+        {% if first_letter != current_letter %}
+          {% if current_letter != '' %}
+            </ul>
+            </div>
+          {% endif %}
+          <div class="metaobject-list-group" id="metaobject-list-group-{{ first_letter }}">
+            <h2>{{ first_letter }}</h2>
+            <ul>
+              {% assign current_letter = first_letter %}
+        {% endif %}
+        <li>
+          <div class="manual-card">
+            {% if metaobject.product_image.value %}
+              <img
+                src="{{ metaobject.product_image.value | image_url: width: 240 }}"
+                alt="{{ product_title }}"
+                class="manual-card-image"
+                loading="lazy"
+              >
+            {% endif %}
+
+            <div class="manual-card-content">
+              <h3 class="manual-card-title">{{ product_title }}</h3>
+
+              <div class="manual-card-actions">
+                {% if metaobject.linked_product.value %}
+                  <a href="{{ metaobject.linked_product.value.url }}" class="manual-card-link view-product">
+                    View Product
+                  </a>
+                {% endif %}
+
+                {% if metaobject.english_manual.value %}
+                  <a
+                    href="{{ metaobject.english_manual.value.url }}"
+                    class="manual-card-link download"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    English
+                  </a>
+                {% endif %}
+
+                {% if metaobject.spanish_manual.value %}
+                  <a
+                    href="{{ metaobject.spanish_manual.value.url }}"
+                    class="manual-card-link download"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Spanish
+                  </a>
+                {% endif %}
+
+                {% if metaobject.french_manual.value %}
+                  <a
+                    href="{{ metaobject.french_manual.value.url }}"
+                    class="manual-card-link download"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    French
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+      {% if current_letter != '' %}
+        </ul>
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.metaobject-tags a').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 72, // Offset 100px
+          behavior: 'smooth',
+        });
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Instruction Manuals List",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Instruction Manuals List"
+    }
+  ]
+}
+{% endschema %}
