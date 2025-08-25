@@ -549,8 +549,22 @@ span.filter-label {
   max-height: 700px;
   overflow: hidden;
 }
+.video-loader{
+  display: none;
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  z-index: 9;
+}
+
+.video-loader video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .show-loading-video{
-  display: flex!important;
+  display: block;
 }
 @media (max-width: 767px){
   .product-stepper-card:hover{
