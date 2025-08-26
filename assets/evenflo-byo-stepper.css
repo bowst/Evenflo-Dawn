@@ -246,7 +246,7 @@ span.filter-label {
 
 .product-stepper-card-wrapper.selected-stepper-card-wrapper
   .product-stepper-card {
-  width: 30%;
+  width: calc( 33.333% - 16px);
   flex: none;
 }
 @media (max-width: 1024px) {
