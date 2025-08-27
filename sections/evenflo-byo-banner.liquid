@@ -70,13 +70,13 @@
 
 .byo-modal-video__close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 12px;
+  right: 12px;
   background: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,8 +90,8 @@
 }
 
 .byo-modal-video__close svg {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   color: #333;
 }
 
@@ -382,18 +382,19 @@
                   aria-modal="true"
                   tabindex="-1"
                 >
-                  <button
-                      id="ModalClose-{{ block.id }}"
-                      type="button"
-                      class="byo-modal-video__close"
-                      aria-label="{{ 'accessibility.close' | t }}"
-                    >
-                    <span class="svg-wrapper">
-                      {{- 'icon-close.svg' | inline_asset_content -}}
-                    </span>
-                  </button>
+                  
                   <div class="byo-modal-video__container">
                     <div class="byo-modal-video__wrapper">
+						<button
+							id="ModalClose-{{ block.id }}"
+							type="button"
+							class="byo-modal-video__close"
+							aria-label="{{ 'accessibility.close' | t }}"
+							>
+							<span class="svg-wrapper">
+							{{- 'icon-close.svg' | inline_asset_content -}}
+							</span>
+						</button>
                       <div class="byo-modal-video__player" id="BYOVideoPlayer-{{ block.id }}">
                         {%- if block.settings.modal_video != blank -%}
                           <div class="byo-video-container">
