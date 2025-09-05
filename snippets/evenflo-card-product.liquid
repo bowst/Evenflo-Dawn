@@ -23,10 +23,7 @@
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
 {% endcomment %}
 
-{% if show_swatches %}
-	{{ 'component-swatch.css' | asset_url | stylesheet_tag }}
-	{{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
-{% endif %}
+{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag  }}
 
 {% comment %}
 Determine if the product is from support product collection
@@ -69,7 +66,7 @@ Determine if the product is from support product collection
       assign ratio = 1
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="evenflo-card-product card-wrapper product-card-wrapper underline-links-hover">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -206,11 +203,15 @@ Determine if the product is from support product collection
 			{{ card_product.metafields.custom.collection_features | metafield_tag }}
 			</div>
 		  {% endif %}
-		  {% if show_swatches %}
+		  {% if show_swatches == true %}
+        
 		  	<div class="color-swatches">
 			{%- for product_option in card_product.options_with_values -%}
+        {{ product_option.variant }}
 				{%- for product_option_value in product_option.values -%}
 
+          
+              <a href="{{  product_option_value.variant.url }}">
                 {{
                   product_option_value.swatch.image
                   | image_url: width: 100
@@ -220,6 +221,7 @@ Determine if the product is from support product collection
                     sizes: sizes,
                     class: 'swatch'
                 }}
+                </a>
 				
 			{%- endfor -%}
 			{%- endfor -%}
@@ -232,9 +234,10 @@ Determine if the product is from support product collection
             {%- endif -%}
 
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
-
             
-
+            {% if is_product_support == false %}
+              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {% endif %}
            
             {%- if show_rating -%}
               <div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
@@ -275,10 +278,6 @@ Determine if the product is from support product collection
               </p>
              {% endcomment %}
             {%- endif -%}
-
-            {% if is_product_support == false %}
-              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
-            {% endif %}
             
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
