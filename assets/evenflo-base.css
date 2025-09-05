@@ -194,7 +194,7 @@ predictive-search.search-modal__form {
   .header__icon--menu[aria-expanded='true']:before {
     z-index: 1;
   }
-}
+
 @media (min-width: 1101px) and (max-width: 1300px) {
   .header--middle-left {
     grid-template-columns: auto 1fr 1fr;
@@ -289,4 +289,25 @@ img {
 
 .cart__ctas {
 	margin: 8px 0;
+}
+/* New alt primary button styles */
+a.button.button--primary--alt {
+background-color:rgb(41, 150, 197);
+transition: all .3s ease-in-out;
+}
+
+a.button.button--primary--alt:hover {
+	background-color:rgb(41, 150, 197)!important;
+}
+a.button.button--primary--alt::after {
+box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+	rgba(var(--color-button-text), var(--border-opacity)),
+	0 0 0 var(--buttons-border-width)
+	rgba(41, 150, 197, var(--alpha-button-background));
+}
+a.button.button--primary--alt:hover::after{
+box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+	rgba(var(--color-button-text), var(--border-opacity)),
+	0 0 0 calc(var(--buttons-border-width) + 1px)
+	rgba(41, 150, 197, var(--alpha-button-background));
 }

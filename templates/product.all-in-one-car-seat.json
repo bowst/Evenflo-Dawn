@@ -281,6 +281,7 @@
         "d8f4df94-c11c-4d5d-b7a8-440dbfaef239",
         "09af9779-83cf-4821-bb96-4341c4f3063b"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Benefits of shopping evenflo.com"
       }
@@ -292,6 +293,58 @@
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "evenflo_benefits_REDxHQ": {
+      "type": "evenflo-benefits",
+      "blocks": {
+        "benefit_JQkLgz": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-dollar-sign.svg",
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral.",
+            "link": "shopify://pages/refer"
+          }
+        },
+        "benefit_iGTiHC": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-pay-affirm-benefit.svg",
+            "title": "Pay With Affirm",
+            "description": "Spread out your payments over a period of time.",
+            "link": "shopify://pages/affirm-overview"
+          }
+        },
+        "benefit_RYqmyN": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-community-benefit.svg",
+            "title": "Community Heroes Discount",
+            "description": "Our exclusive discount program for community heroes.",
+            "link": "shopify://pages/new-promotions"
+          }
+        },
+        "benefit_4cVFwJ": {
+          "type": "benefit",
+          "settings": {
+            "title": "Evenflo Blog",
+            "description": "The day your child comes into the world, all the stakes are raised. Little things matter more.",
+            "link": "shopify://blogs/evenflo-blog"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_JQkLgz",
+        "benefit_iGTiHC",
+        "benefit_RYqmyN",
+        "benefit_4cVFwJ"
+      ],
+      "name": "Benefits",
+      "settings": {
+        "heading": "Benefits of Shopping Evenflo.com",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -310,6 +363,7 @@
     "169218754254c1e87b",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
     "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
-    "custom_liquid_htUdqA"
+    "custom_liquid_htUdqA",
+    "evenflo_benefits_REDxHQ"
   ]
 }

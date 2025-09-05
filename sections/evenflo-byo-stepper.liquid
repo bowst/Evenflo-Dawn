@@ -80,6 +80,19 @@
 </style>
 <div class="page-width">
 <div class="product-filter-wrapper" style="position: relative;">
+  <div class="video-loader">
+    {{
+      section.settings.video_loader
+      | video_tag:
+        image_size: '1100x',
+        autoplay: 'autoplay',
+        loop: true,
+        controls: false,
+        muted: true,
+        playsinline: 'playsinline',
+		preload: 'auto'
+    }}
+  </div>
   <div class="stepperLoader">
     <div class="loader"></div>
   </div>
@@ -398,6 +411,8 @@ const stepperSteps = [
   },
 ];
 
+const videoLoaderContent = document.querySelector(".product-filter-wrapper .video-loader");
+
 let selectedItems = JSON.parse(localStorage.getItem("selectedItems")) || {};
 let currentStep = 0;
 let swiperSliderActive = false;
@@ -413,6 +428,7 @@ const stepperPreviousBtn = document.querySelector(".previous-btn");
 const startOverBtn = document.querySelector(".start-over");
 const buttonWrapper = document.querySelector(".product-stepper-btn-wrapper");
 const productSidebar = document.querySelector(".product-sidebar");
+const productStepperWrapper = document.querySelector(".product-stepper-wrapper");
 const productStepper = document.querySelector(".product-stepper");
 let totalAmount = 0;
 
@@ -427,6 +443,16 @@ startOverBtn.addEventListener("click", startOver);
 stepperNextBtn.addEventListener("click", handleNextStep);
 stepperPreviousBtn.addEventListener("click", handlePreviousStep);
 document.addEventListener("DOMContentLoaded", handleContentLoaded);
+
+function videoLoader() {
+  videoLoaderContent.classList.add("show-loading-video");
+  productStepperWrapper.classList.add("showing-loading-video");
+  setTimeout(() => {
+    videoLoaderContent.classList.remove("show-loading-video"); 
+	productStepperWrapper.classList.remove("showing-loading-video");
+  }, 4000);
+
+}
 
 function handleResize(){
   console.log('Window resized to: ', window.innerWidth);
@@ -521,7 +547,9 @@ function handleNextStep(){
       if (currentStep === 6) {
         renderAccessory();
       }
-
+      if (currentStep === 7) {
+        videoLoader();
+      }
       updateURLHash(); // Add hash update
       render();
       if (stepperSteps[currentStep]?.title === "Choose Your Car Seat Color") {
@@ -813,6 +841,7 @@ function accessoryNotSelected(){
     currentStep++;
     updateURLHash(); // Add hash update
     render();
+    videoLoader();
   }
 }
 function toggleReadMore(event, index) {
@@ -1428,6 +1457,15 @@ function stepperEdit(step) {
   "name": "Evenflo Byo Stepper",
   "tag": "section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Video Loader"
+    },
+    {
+      "type": "video",
+      "id": "video_loader",
+      "label": "Video Loader"
+    },
     {
       "type": "header",
       "content": "Car Seat Base Images"

@@ -479,9 +479,11 @@
     justify-content: flex-end;
   }
 
-  .banner--content-align-mobile-center .banner__buttons--multiple > * {
+  .banner--content-align-mobile-center .banner__buttons--multiple > *,
+  .banner--content-align-mobile-center .banner__buttons--multiple .button  {
     flex-grow: 1;
     min-width: 22rem;
+	width: 100%;
   }
 }
 

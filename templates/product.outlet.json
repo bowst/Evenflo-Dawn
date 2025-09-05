@@ -186,22 +186,25 @@
         "9ee7f0e3-827c-4c7e-8e83-7b16af4f5926": {
           "type": "benefit",
           "settings": {
-            "benefit_name": "HERITAGE",
-            "benefit_description": "Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.  Lorem dolorius ibid droti."
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral.",
+            "link": ""
           }
         },
         "579d1423-1bef-45d3-a0a6-477e6f46c802": {
           "type": "benefit",
           "settings": {
-            "benefit_name": "Consumer Led",
-            "benefit_description": "Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.  Lorem dolorius ibid droti."
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral.",
+            "link": ""
           }
         },
         "053ee43d-5a53-4978-9e66-5f150e099cd3": {
           "type": "benefit",
           "settings": {
-            "benefit_name": "Safety",
-            "benefit_description": "Lorem ipsum dolor selectus ibid druit. Insetius lector dritis lorem ipsum dolor.  Lorem dolorius ibid droti."
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral.",
+            "link": ""
           }
         }
       },
@@ -212,7 +215,9 @@
       ],
       "disabled": true,
       "settings": {
-        "section_title": "Why Evenflo"
+        "heading": "Benefits of Shopping Evenflo.com",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
@@ -243,56 +248,6 @@
       "type": "evenflo-join",
       "settings": {}
     },
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1": {
-      "type": "evenflo-shopping-benefits",
-      "blocks": {
-        "b076e55c-e236-4a35-a75a-85cf3402446b": {
-          "type": "benefit_list",
-          "settings": {
-            "description": "<h3>Give 20,<br> Get 20</h3>\nRefer a friendand earn points.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
-            "icon_image": "shopify://shop_images/icon-give20.png",
-            "link": "shopify://pages/about-evenflo"
-          }
-        },
-        "d2ac9250-ec80-4eca-93cb-a5886833aa00": {
-          "type": "benefit_list",
-          "settings": {
-            "description": "<h3>Pay With Affirm</h3>\nPay over time.",
-            "background_image": "shopify://shop_images/pay-with-affirm.jpg",
-            "icon_image": "shopify://shop_images/icon-pay.png",
-            "link": ""
-          }
-        },
-        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239": {
-          "type": "benefit_list",
-          "settings": {
-            "description": "<h3>Community Heroes Discount</h3>\nSave on baby gear.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
-            "icon_image": "shopify://shop_images/icon-heroes.png",
-            "link": ""
-          }
-        },
-        "09af9779-83cf-4821-bb96-4341c4f3063b": {
-          "type": "benefit_list",
-          "settings": {
-            "description": "<h3>Evenflo Blog</h3>\nCheck out the latest.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
-            "icon_image": "shopify://shop_images/icon-blog.png",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "b076e55c-e236-4a35-a75a-85cf3402446b",
-        "d2ac9250-ec80-4eca-93cb-a5886833aa00",
-        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239",
-        "09af9779-83cf-4821-bb96-4341c4f3063b"
-      ],
-      "settings": {
-        "heading": "Benefits of shopping evenflo.com"
-      }
-    },
     "custom_liquid_rtVXet": {
       "type": "custom-liquid",
       "disabled": true,
@@ -301,6 +256,58 @@
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "evenflo_benefits_K4hCH9": {
+      "type": "evenflo-benefits",
+      "blocks": {
+        "benefit_bejHge": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-dollar-sign.svg",
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral.",
+            "link": "shopify://pages/refer"
+          }
+        },
+        "benefit_Bz3Dnn": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-pay-affirm-benefit.svg",
+            "title": "Pay With Affirm",
+            "description": "Spread out your payments over a period of time.",
+            "link": "shopify://pages/affirm-overview"
+          }
+        },
+        "benefit_yWpNXN": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-community-benefit.svg",
+            "title": "Community Heroes Discount",
+            "description": "Our exclusive discount program for community heroes.",
+            "link": "shopify://pages/new-promotions"
+          }
+        },
+        "benefit_tMKzep": {
+          "type": "benefit",
+          "settings": {
+            "title": "Evenflo Blog",
+            "description": "The day your child comes into the world, all the stakes are raised. Little things matter more.",
+            "link": "shopify://blogs/evenflo-blog"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_bejHge",
+        "benefit_Bz3Dnn",
+        "benefit_yWpNXN",
+        "benefit_tMKzep"
+      ],
+      "name": "Benefits",
+      "settings": {
+        "heading": "Benefits of Shopping Evenflo.com",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -320,7 +327,7 @@
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
     "1692190242c5b9c662",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
-    "custom_liquid_rtVXet"
+    "custom_liquid_rtVXet",
+    "evenflo_benefits_K4hCH9"
   ]
 }

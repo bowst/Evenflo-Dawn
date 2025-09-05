@@ -81,6 +81,7 @@
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
+              show_swatches: section.settings.show_swatches,
               show_quick_add: section.settings.enable_quick_add,
               section_id: section.id
             %}
@@ -335,6 +336,13 @@
       "default": false,
       "label": "t:sections.featured-collection.settings.show_rating.label",
       "info": "t:sections.featured-collection.settings.show_rating.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatches",
+      "default": false,
+      "label": "Show swatches",
+      "info": "Display swatches on products in this section (if available)"
     },
     {
       "type": "checkbox",
