@@ -8,6 +8,8 @@
   - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
   - show_vendor: {Boolean} Show the product vendor. Default: false
   - show_rating: {Boolean} Show the product rating. Default: false
+  - show_swatches: {Boolean} Show the product swatches (if available). Default: false
+  - show_collection_features: {Boolean} Show features added for display in collection pages. Default: false
   - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
   - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
   - skip_styles: {Boolean} Don't include component styles. Useful when rendering multiple product cards in a loop. Default: false (optional)
@@ -43,6 +45,9 @@ Determine if the product is from support product collection
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+
+  {{ 'evenflo-card-product.css' | asset_url | stylesheet_tag  }}
+
 {%- endunless -%}
 
 {%- liquid
@@ -194,14 +199,47 @@ Determine if the product is from support product collection
             </a>
           </h3>
           <div class="card-information">
+            {% if show_collection_features %}
+            <div class="features">
+            {{ card_product.metafields.custom.collection_features | metafield_tag }}
+            </div>
+            {% endif %}
+
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
             {%- endif -%}
+            {%- if show_swatches -%}
+              swatches
+              <div class="color-swatches">
+            {%- for product_option in card_product.options_with_values -%}
+              {%- for product_option_value in product_option.values -%}
+
+                      {{
+                        product_option_value.swatch.image
+                        | image_url: width: 100
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '50, 75, 100',
+                          sizes: sizes,
+                          class: 'swatch'
+                      }}
+              
+            {%- endfor -%}
+            {%- endfor -%}
+            </div>
+            {% endif %}
 
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
+            
+            {% if is_product_support == false %}
+              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {% endif %}
+           
+            {%- if show_rating == false -%}
+              <div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
 
-            {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
+               {% comment %}
               {% liquid
                 assign rating_decimal = 0
                 assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
@@ -235,10 +273,8 @@ Determine if the product is from support product collection
                   {{ 'accessibility.total_reviews' | t -}}
                 </span>
               </p>
+             {% endcomment %}
             {%- endif -%}
-            {% if is_product_support == false %}
-              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
-            {% endif %}
             
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
