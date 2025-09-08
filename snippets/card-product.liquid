@@ -198,29 +198,7 @@ Determine if the product is from support product collection
             </a>
           </h3>
           <div class="card-information">
-            {% if show_swatches == true %}
-            <div class="color-swatches">
-            {%- for product_option in card_product.options_with_values -%}
-              {{ product_option.variant }}
-              {%- for product_option_value in product_option.values -%}
-
-                
-                    <a href="{{  product_option_value.variant.url }}">
-                      {{
-                        product_option_value.swatch.image
-                        | image_url: width: 100
-                        | image_tag:
-                          loading: 'lazy',
-                          widths: '50, 75, 100',
-                          sizes: sizes,
-                          class: 'swatch'
-                      }}
-                      </a>
-              
-              {%- endfor -%}
-            {%- endfor -%}
-            </div>
-            {% endif %}
+            
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
