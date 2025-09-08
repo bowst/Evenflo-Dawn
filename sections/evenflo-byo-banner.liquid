@@ -620,6 +620,11 @@
                   // Setup maximize button functionality
                   const maximizeButton = modal.querySelector('.byo-modal-video__maximize');
                   if (maximizeButton) {
+                    if (document.fullscreenEnabled) {
+                      setupMaximizeButton(video.id, maximizeButton.id);
+                    } else {
+                      maximizeButton.remove();
+                    }
                     setupMaximizeButton(video.id, maximizeButton.id);
                   }
                   
