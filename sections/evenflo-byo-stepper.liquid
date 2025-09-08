@@ -133,9 +133,9 @@
     </div>
     <div class="product-stepper-btn-wrapper">
       <div class="product-stepper-btn product-stepper-btn-wrapper">
-        <button class="start-over" onclick="productClear()">start over</button>
+        <button class="start-over" onclick="productClear()">Start Over</button>
         <p class="buy-now">Buy now for $</p>
-        <button class="add-to-cart" onclick="addToCart()">add to cart</button>
+        <button class="add-to-cart" onclick="addToCart()">Proceed with selection</button>
       </div>
     </div>
   </div>
@@ -276,14 +276,14 @@ const stepperSteps = [
         rotation: 1,
         label: "Rotational",
         description:
-          "The first of its kind. SensorySoothe™ technology: Soothing lights and sounds help calm your baby right from the car seat handle. Calm your baby with a touch on the handle or in the Evenflo app.",
+          "Our most advanced infant car seat offers 180° rotation for effortless ins and outs without bending and twisting by parents.",
         image: "{{ section.settings.rotational_image | image_url }}",
       },
       {
         rotation: 0,
         label: "Traditional",
         description:
-          "Streamlined, ergonomic and comfortable to handle - perfect for parents who value premium function and ease of use.",
+          "Secure and ready to roll with a LockStrong™ belt tensioning system for easy installation in no time.",
         image: "{{ section.settings.traditional_image | image_url }}",
       },
     ],
@@ -295,14 +295,14 @@ const stepperSteps = [
         sensorysoothe: 1,
         label: "SensorySoothe",
         description:
-          "Activated by a button or through the Evenflo app, soothing lights and sounds help calm your baby right from the car seat handle - no accessories needed.",
+          "The first of its kind. SensorySoothe™ technology: Soothing lights and sounds help calm your baby right from the car seat handle. Calm your baby with a touch on the handle or in the Evenflo app.",
         image: "{{ section.settings.sensorysooth_handle_image | image_url }}",
       },
       {
         sensorysoothe: 0,
         label: "Traditional",
         description:
-          "Streamlined, powerful and comfortable to the touch - perfect for parents who value premium function and ease of use.",
+          "Streamlined, ergonomic and comfortable to handle - perfect for parents who value premium function and ease of use.",
         image: "{{ section.settings.traditional_handle_image | image_url}}",
       },
     ],
@@ -314,7 +314,7 @@ const stepperSteps = [
         fabric: 1,
         label: "Green & Gentle™",
         description:
-          "Eco-friendly, made from recycled bottles and free of added chemicals - gentle on your baby and the planet.",
+          "Eco-friendly, made from recycled materials and free of added chemicals - gentle on your baby and the planet.",
         image: "{{ section.settings.green-gentle_image | image_url }}",
       },
       {
@@ -363,14 +363,14 @@ const stepperSteps = [
         selected: false,
         label: "Shyft™ Intuiti+™",
         description:
-          "For parents who like to match innovation with style, the Shyft™ Intuiti+ features elevated details like a deluxe snack tray, hidden basket pocket and premium color accents.",
+          "For the ultimate, smoothest ride experience, the Shyft™ Intuiti+™ features all-wheel suspension, premium tires, and 6 modes of use. Plus, it combines comfort and style with elevated details like a deluxe snack tray, hidden basket pocket, and thoughtful color accents.",
         image: "{{ section.settings.stroller2_image | image_url }}",
       },
       {
         selected: false,
         label: "Shyft™ Intuiti™",
         description:
-          "The Shyft™ Intuiti™ stroller makes every ride comfortable with all-wheel suspension, premium tires, and a parent- or forward-facing seat.",
+          "The Shyft™ Intuiti™ stroller makes every ride comfortable with all-wheel suspension, premium tires, and 6 modes of use.",
         image: "{{ section.settings.stroller1_image | image_url }}",
       },
     ],
