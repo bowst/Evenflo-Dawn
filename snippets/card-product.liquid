@@ -197,7 +197,7 @@ Determine if the product is from support product collection
               {{ card_product.title | escape }}
             </a>
           </h3>
-          
+          <div class="card-information">
             {% if show_swatches == true %}
             <div class="color-swatches">
             {%- for product_option in card_product.options_with_values -%}
