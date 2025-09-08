@@ -281,34 +281,62 @@
                     {%- assign option_index = forloop.index0 -%}
                     {%- assign values = '' -%}
                     <div class="product-form__input">
-                      <p class="product__text inline-richtext left subtitle heading-underline">Color</p>
-                      <div class="select">
-                        <select
-                          name="id"
-                          class="select__select"
-                        >
-                          {% for variant in card_product.variants %}
-                            {%- assign value = variant.options[option_index] -%}
+                      <legend class="product__text inline-richtext left subtitle heading-underline">Color</legend>
 
-                            {% unless values contains value %}
-                              {%- assign values = values | join: ',' -%}
-                              {%- assign values = values | append: ',' | append: value -%}
-                              {%- assign values = values | split: ',' -%}
-                              <option
-                                {% unless variant.available %}
-                                  disabled
-                                {% endunless %}
-                                value="{{ variant.id }}"
-                              >
-                                {{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}
-                              </option>
-                            {% endunless %}
-                          {% endfor %}
-                        </select>
-                        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-                        </svg>
-                      </div>
+                      <fieldset class="variant-radios" role="radiogroup" aria-label="Choose a color">
+                        {%- assign values = '' -%}
+                        {%- assign first_checked = false -%}
+
+                        {%- for variant in card_product.variants -%}
+                          {%- assign value = variant.options[option_index] -%}
+
+                          {% unless values contains value %}
+                            {%- assign values = values | append: ',' | append: value -%}
+                            {%- assign input_id = 'Color-' | append: card_product.id | append: '-' | append: forloop.index -%}
+                            {%- liquid
+                              assign swatch_focal_point = null
+                              if value.swatch.image
+                                assign image_url = value.swatch.image | image_url: width: 50
+                                assign swatch_value = 'url(' | append: image_url | append: ')'
+                                assign swatch_focal_point = value.swatch.image.presentation.focal_point
+                              elsif value.swatch.color
+                                assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+                              else
+                                assign swatch_value = null
+                              endif
+
+                              assign option_disabled = true
+                              if value.available
+                                assign option_disabled = false
+                              endif
+                            -%}
+                            <input
+                              type="radio"
+                              id="{{ input_id }}"
+                              name="id"
+                              class="color-swatch__radio visually-hidden"
+                              value="{{ variant.id }}"
+                              data-option-value="{{ value | escape }}"
+                              {% unless variant.available %}disabled{% endunless %}
+                              {% if first_checked == false and variant.available %}{% assign first_checked = true %}checked{% endif %}
+                            >
+
+                            <label
+                              for="{{ input_id }}"
+                              class="color-swatch__label"
+                              aria-label="{{ value }}"
+                              {% unless variant.available %}aria-disabled="true"{% endunless %}
+                            >
+                              <span
+                                class="color-swatch__swatch"
+                                style="background-image: {{ swatch_value | downcase | replace: ' ', '' }};"
+                                title="{{ value }}"
+                              ></span>
+                              <span class="color-swatch__text">{{ value }}</span>
+                            </label>
+                          {% endunless %}
+                        {%- endfor -%}
+                      </fieldset>
                     </div>
                   {% endif %}
                 {% endfor %}
