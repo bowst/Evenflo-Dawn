@@ -156,7 +156,7 @@ const byoVariants = [
           {% assign in_stock = true %}
           {% unless first %},{% endunless %}
           {
-            "variantTitle": {{ variant.title | json }},
+            "variantTitle": {{ variant.metafields.custom.byo_title.value | json }},
             "variantId": {{ variant.id }},
             "price": {{ variant.price | divided_by: 100.0 }},
             "byoTitle": {{ variant.metafields.custom.byo_title.value | json }},
