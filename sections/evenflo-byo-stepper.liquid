@@ -772,8 +772,8 @@ function renderStepContent() {
     ? stepContent.item.map((it, idx) => {
         const isCardSelected = selectedLabels.includes(it.label);
         const fullDesc = it.description || "";
-        const shortDesc = fullDesc.slice(0, 170);
-        const isLong = fullDesc.length > 170;
+        const shortDesc = fullDesc.slice(0, 200);
+        const isLong = fullDesc.length > 200;
         return `
           <div class="product-stepper-card ${perCardClass} ${isCardSelected ? "selected" : ""}" onclick="setActiveCard(${idx})">
             <img src="${it.image ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"}" alt="${it.label}" />
@@ -852,7 +852,7 @@ function toggleReadMore(event, index) {
 
   const fullText = stepperSteps[currentStep]?.item[index]?.description;
   console.log(fullText);
-  const shortText = fullText.substring(0, 170) + "...";
+  const shortText = fullText.substring(0, 200) + "...";
 
   const isExpanded = btn.innerText === "Read Less";
 
