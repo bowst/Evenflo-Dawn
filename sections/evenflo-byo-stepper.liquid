@@ -772,7 +772,7 @@ function renderStepContent() {
     ? stepContent.item.map((it, idx) => {
         const isCardSelected = selectedLabels.includes(it.label);
         const fullDesc = it.description || "";
-        const shortDesc = fullDesc.slice(0, 170);
+        const shortDesc = fullDesc.slice(0, 100);
         const isLong = fullDesc.length > 170;
         return `
           <div class="product-stepper-card ${perCardClass} ${isCardSelected ? "selected" : ""}" onclick="setActiveCard(${idx})">
