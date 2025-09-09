@@ -193,7 +193,7 @@ const byoVariants = [
             "byoTitle": {{ accessory_variant.metafields.custom.byo_title.value | json }},
             "byoSubTitle": {{ accessory_variant.metafields.custom.byo_subtitle.value | json }},
             "featureImage": {{ accessory_variant.featured_image.src | image_url: width: 600 | json }},
-            {% comment %} "color": {{ accessory_variant.option1 | json }}, {% endcomment %}
+            "color": {{ accessory_variant.option1 | json }},
             "colorImage": {{ accessory_variant.metafields.custom.new_swatch_image.value | json }},
             "byoColorImage": {{ accessory_variant.metafields.custom.byo_color.value | json }},
             "sku": {{ accessory_variant.sku | json }},
