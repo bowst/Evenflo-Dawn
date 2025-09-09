@@ -338,17 +338,101 @@
 </div>
 <script>
 (function () {
-  function getColorText(input, scope) {
-    if (input.dataset && input.dataset.optionValue) return input.dataset.optionValue;
-    const lbl = scope.querySelector(`label[for="${input.id}"] .color-swatch__text`)
-             || scope.querySelector(`label[for="${input.id}"]`);
-    return (lbl && lbl.textContent.trim()) || '';
+  // Widths you want in srcset (match your theme’s pattern)
+  const WIDTHS = [165, 360, 533, 720, 940, 1066, 2200];
+  const DEFAULT_SRC_WIDTH = 533; // fallback src width
+
+  // -------- URL helpers --------
+  function ensureAbsolute(url) {
+    if (!url) return '';
+    // Protocol-relative (//cdn...) → https://
+    if (url.startsWith('//')) return 'https:' + url;
+    return url;
   }
 
+  function stripWidthParam(url) {
+    // Remove any "?width=N" or "&width=N"
+    return url
+      .replace(/([?&])width=\d+(&?)/i, (m, a, b) => (b ? a : ''))
+      .replace(/[?&]$/, ''); // clean trailing ? or &
+  }
+
+  function withWidth(url, w) {
+    const hasQuery = url.includes('?');
+    return url + (hasQuery ? '&' : '?') + 'width=' + w;
+  }
+
+  function buildSrcset(baseUrl, widths = WIDTHS) {
+    const clean = stripWidthParam(ensureAbsolute(baseUrl));
+    const last = widths[widths.length - 1];
+    return widths
+      .map((w) => (w === last ? `${clean} ${w}w` : `${withWidth(clean, w)} ${w}w`))
+      .join(',');
+  }
+
+  function setImgSources(img, baseUrl) {
+    const clean = stripWidthParam(ensureAbsolute(baseUrl));
+    const srcset = buildSrcset(clean, WIDTHS);
+    const src = withWidth(clean, DEFAULT_SRC_WIDTH);
+
+    // If inside a <picture>, disable <source> so <img> wins (optional but safer)
+    const picture = img.closest('picture');
+    if (picture) {
+      picture.querySelectorAll('source').forEach((s) => {
+        // Keep original in case you want to restore later
+        if (!s.hasAttribute('data-orig-srcset')) {
+          s.setAttribute('data-orig-srcset', s.getAttribute('srcset') || '');
+        }
+        s.setAttribute('srcset', '');
+      });
+    }
+
+    // Update the image (support lazy attrs too)
+    img.setAttribute('srcset', srcset);
+    img.setAttribute('src', src);
+    if (img.hasAttribute('data-srcset')) img.setAttribute('data-srcset', srcset);
+    if (img.hasAttribute('data-src')) img.setAttribute('data-src', src);
+
+    // Nudge browser to repaint if same URLs were set
+    img.loading = 'eager';
+    img.decoding = 'async';
+  }
+
+  // -------- DOM helpers --------
+  function findSwatchForInput(input, scope) {
+    const label = scope.querySelector(`label[for="${input.id}"]`);
+    return label ? label.querySelector('.color-swatch__swatch') : null;
+  }
+
+  function getSelectedImageUrl(scope) {
+    const checked = scope.querySelector('input[type="radio"]:checked');
+    if (!checked) return '';
+    const swatch = findSwatchForInput(checked, scope);
+    return swatch?.dataset?.image || '';
+  }
+
+  function updateCardImageFromSelection(scope) {
+    const card = scope.closest('.product-card-wrapper');
+    if (!card) return;
+
+    const img = card.querySelector('.card__media img');
+    if (!img) return;
+
+    const url = getSelectedImageUrl(scope);
+    if (!url) return; // nothing to do if no data-image provided
+
+    setImgSources(img, url);
+  }
+
+  // (Optional) Keep the "Color: X" text after the legend if you’re using it
   function updateLegendValue(scope) {
     const legend = scope.querySelector('legend.product__text');
     const checked = scope.querySelector('input[type="radio"]:checked');
     if (!legend || !checked) return;
+
+    const label = scope.querySelector(`label[for="${checked.id}"] .color-swatch__text`)
+               || scope.querySelector(`label[for="${checked.id}"]`);
+    const val = (label && label.textContent.trim()) || '';
 
     let chip = legend.querySelector('.product-option-value');
     if (!chip) {
@@ -356,28 +440,29 @@
       chip.className = 'product-option-value';
       legend.appendChild(chip);
     }
-    chip.textContent = `: ${getColorText(checked, scope)}`;
+    chip.textContent = `: ${val}`;
+  }
+
+  function onChange(scope) {
+    updateLegendValue(scope);          // optional
+    updateCardImageFromSelection(scope);
   }
 
   function initOne(scope) {
     const legend = scope.querySelector('legend.product__text');
     const radiosWrap = scope.querySelector('fieldset[role="radiogroup"]');
     if (!legend || !radiosWrap) return;
+    if (!/^color\b/i.test(legend.textContent.trim())) return;
 
-    // Tolerate “Color” or “Color: …”
-    const isColorLegend = /^color\b/i.test(legend.textContent.trim());
-    if (!isColorLegend) return;
+    // Initial render
+    onChange(scope);
 
-    updateLegendValue(scope);
-
+    // Listen for changes
     radiosWrap.addEventListener('change', (e) => {
-      if (e.target && e.target.matches('input[type="radio"]')) {
-        updateLegendValue(scope);
-      }
+      if (e.target && e.target.matches('input[type="radio"]')) onChange(scope);
     });
   }
 
-  // Harden context handling so events don't break it
   function initAll(context) {
     const root =
       context && context.querySelectorAll
@@ -385,14 +470,10 @@
         : context && context.target && context.target.querySelectorAll
         ? context.target
         : document;
-
     root.querySelectorAll('.product-form__input').forEach(initOne);
   }
 
-  // ✅ Pass a node, not the event
   document.addEventListener('DOMContentLoaded', () => initAll(document));
-
-  // Shopify Theme Editor hot-reloads sections; pass the section element
   document.addEventListener('shopify:section:load', (e) => initAll(e.target));
   document.addEventListener('shopify:section:select', (e) => initAll(e.target));
 })();
