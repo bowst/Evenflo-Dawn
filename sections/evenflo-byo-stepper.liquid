@@ -740,10 +740,14 @@ function renderStepContent() {
       label: ci?.variant?.byoTitle ?? "Byo Title N/A",
       description: ci.productType === "Stroller" 
         ? `<p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>${ci?.variant?.byoDescription ? `<p>${ci.variant.byoDescription}</p>` : ""}`
-        : (ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"),
+        : (["Travel System", "Infant Car Seat"].includes(ci.productType)
+          ? `<p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>${ci?.variant?.byoDescription ? `<p>${ci.variant.byoDescription}</p>` : ""}`
+          : (ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A")),
       image: ci.productType === "Stroller" 
         ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
-        : (ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg"),
+        : (["Travel System", "Infant Car Seat"].includes(ci.productType)
+          ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
+          : (ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")),
       productType: ci.productType,
       variant: ci.variant
     }));
