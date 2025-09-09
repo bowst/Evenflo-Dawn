@@ -161,6 +161,7 @@ const byoVariants = [
             "price": {{ variant.price | divided_by: 100.0 }},
             "byoTitle": {{ variant.metafields.custom.byo_title.value | json }},
             "byoSubTitle": {{ variant.metafields.custom.byo_subtitle.value | json }},
+            "byoDescription": {{ variant.metafields.custom.byo_description.value | json }},
             "featureImage": {{ variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ variant.option1 | json }},
             "colorImage": {{ variant.metafields.custom.new_swatch_image.value | json }},
@@ -192,6 +193,7 @@ const byoVariants = [
             "price": {{ accessory_variant.price | divided_by: 100.0 }},
             "byoTitle": {{ accessory_variant.metafields.custom.byo_title.value | json }},
             "byoSubTitle": {{ accessory_variant.metafields.custom.byo_subtitle.value | json }},
+            "byoDescription": {{ accessory_variant.metafields.custom.byo_description.value | json }},
             "featureImage": {{ accessory_variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ accessory_variant.option1 | json }},
             "colorImage": {{ accessory_variant.metafields.custom.new_swatch_image.value | json }},
@@ -657,6 +659,7 @@ function renderStepContent() {
             ...v,
             label: v.byoTitle ?? v.color,
             description: v.byoSubTitle ?? "",
+            byoDescription: v.byoDescription ?? "",
             image: v.byoColorImage ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg",
             productData: p
           });
@@ -735,7 +738,9 @@ function renderStepContent() {
 
     const cartReviewItems = cart.map(ci => ({
       label: ci?.variant?.byoTitle ?? "Byo Title N/A",
-      description: ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A",
+      description: ci.productType === "Stroller" 
+        ? `${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}${ci?.variant?.byoDescription ? ` ${ci.variant.byoDescription}` : ""}`
+        : (ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"),
       image: ci.productType === "Stroller" 
         ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
         : (ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg"),
@@ -956,6 +961,7 @@ function setActiveCard(passedItemIndex) {
             ...v,
             label: v.byoTitle ?? v.color,
             description: v.byoSubTitle ?? "",
+            byoDescription: v.byoDescription ?? "",
             image: v[imageKey] ?? v.colorImage,
             productData: p,
           });
@@ -1153,6 +1159,7 @@ if (isTitle("Choose Your Stroller Color")) {
             inStock: matchedAccessory.inStock,
             byoTitle: matchedAccessory.byoTitle,
             byoSubTitle:matchedAccessory.byoSubTitle,
+            byoDescription: matchedAccessory.byoDescription,
             featureImage:matchedAccessory.featureImage,
             price: matchedAccessory.price
           },
