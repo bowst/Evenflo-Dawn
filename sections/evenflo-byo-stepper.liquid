@@ -184,8 +184,8 @@ const byoVariants = [
           {% assign in_stock = true %}
           {% unless first %},{% endunless %}
           {
-            "accessoryProductTitle": {{ variant.metafields.custom.byo_title | json }},
-            "accessoryProductDescription": {{ variant.metafields.custom.byo_subtitle | strip_newlines | json }},
+            "accessoryProductTitle": {{ accessory_variant.metafields.custom.byo_title | json }},
+            "accessoryProductDescription": {{ accessory_variant.metafields.custom.byo_subtitle | strip_newlines | json }},
             "accessoryProductImage": {{ accessory_product.featured_image | image_url: width: 600 | json }},
             "accessoryProductId": {{ accessory_product.id }},
             "accessoryVariantId": {{ accessory_variant.id }},
