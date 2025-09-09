@@ -852,7 +852,7 @@ function toggleReadMore(event, index) {
 
   const fullText = stepperSteps[currentStep]?.item[index]?.description;
   console.log(fullText);
-  const shortText = fullText.substring(0, 370) + "...";
+  const shortText = fullText.substring(0, 170) + "...";
 
   const isExpanded = btn.innerText === "Read Less";
 
