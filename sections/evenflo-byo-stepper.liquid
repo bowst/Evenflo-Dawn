@@ -1078,7 +1078,7 @@ function setActiveCard(passedItemIndex) {
 if (isTitle("Choose Your Stroller Color")) {
   const selectedStrollerProduct = item.productData;
   if (selectedStrollerProduct) {
-    const matched = selectedStrollerProduct.variants.find(v => v.color === item.label);
+    const matched = selectedStrollerProduct.variants.find(v => v.color === item.color);
     if(matched.byoColorImage === null){
       matched.colorImage = "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"
     }
