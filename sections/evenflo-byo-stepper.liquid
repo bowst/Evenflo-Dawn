@@ -739,9 +739,11 @@ function renderStepContent() {
     const cartReviewItems = cart.map(ci => ({
       label: ci?.variant?.byoTitle ?? "Byo Title N/A",
       description: ci.productType === "Stroller" 
-        ? `${/* <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p> */}${ci?.variant?.byoDescription ? `<p>${ci.variant.byoDescription}</p>` : ""}`
+        ? `${ci?.variant?.byoDescription ? `<p>${ci.variant.byoDescription}</p>` : ""}`
+        // Commented subtitle for strollers: <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>
         : (["Travel System", "Infant Car Seat"].includes(ci.productType)
-          ? `${/* <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p> */}${ci?.variant?.byoDescription ? `<p>${ci.variant.byoDescription}</p>` : ""}`
+          ? `${ci?.variant?.byoDescription ? `<p>${ci.variant.byoDescription}</p>` : ""}`
+          // Commented subtitle for car seats: <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>
           : (ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A")),
       image: ci.productType === "Stroller" 
         ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
