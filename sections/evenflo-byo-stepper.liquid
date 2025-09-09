@@ -793,7 +793,7 @@ function renderStepContent() {
             <img src="${it.image ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"}" alt="${it.label}" />
             <div class="product-stepper-card-content">
               <h3>${it.label}</h3>
-              <p id="desc-${idx}">${isLong ? shortDesc + "..." : fullDesc}</p>
+              <p class="product-description" id="desc-${idx}">${isLong ? shortDesc + "..." : fullDesc}</p>
               ${isLong ? `<button class="read-more-btn" onclick="toggleReadMore(event, ${idx})">Read More</button>` : ""}
             </div>
           </div>
