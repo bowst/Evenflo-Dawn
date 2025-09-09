@@ -78,9 +78,9 @@
     }
   }
 </style>
-<div class="page-width">
+<div class="evenflo-byo-stepper page-width">
   <div class="product-filter-wrapper" style="position: relative;">
-    <div class="video-loader">
+    <div class="video-loader" style="background: tomato;">
       {{
         section.settings.video_loader
         | video_tag:
@@ -450,8 +450,14 @@ function videoLoader() {
   videoLoaderContent.classList.add("show-loading-video");
   productStepperWrapper.classList.add("showing-loading-video");
   setTimeout(() => {
+    productSidebar.classList.add('hidden-sidebar');
+    productStepperWrapper.classList.add('full-width');
+  }, 3500);
+
+  setTimeout(() => {
     videoLoaderContent.classList.remove("show-loading-video"); 
-	productStepperWrapper.classList.remove("showing-loading-video");
+	  productStepperWrapper.classList.remove("showing-loading-video");
+    
   }, 4000);
 
 }
@@ -506,6 +512,8 @@ function startOver(){
     stepperSteps[3].alternativeMessage = null;
     stepperSteps[5].alternativeMessage = null;
     stepperSteps[5].title = "Choose Your Stroller Color";
+    productStepperWrapper.classList.remove('full-width');
+    productSidebar.classList.remove('hidden-sidebar');
 
     // Reset pricing text
     document.querySelector(".buy-now").innerText = "Buy now for $";
@@ -551,6 +559,8 @@ function handleNextStep(){
       }
       if (currentStep === 7) {
         videoLoader();
+        
+        // hide sidebar
       }
       updateURLHash(); // Add hash update
       render();
@@ -825,7 +835,7 @@ function renderStepContent() {
       ? `<button class="no-extra-needed" onclick="accessoryNotSelected()">
            No Extras Needed, Let’s Roll
            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
-             <path d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z" fill="#000000"/>
+             <path d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z" fill="#000000 s"/>
            </svg>
          </button>`
       : "";
@@ -1403,6 +1413,8 @@ function productClear() {
     stepperSteps[3].alternativeMessage = null;
     stepperSteps[5].alternativeMessage = null;
     stepperSteps[5].title = "Choose Your Stroller Color";
+    productStepperWrapper.classList.remove('full-width');
+    productSidebar.classList.remove('hidden-sidebar');
 
     // Reset pricing text
     document.querySelector(".buy-now").innerText = "Buy now for $";
