@@ -772,8 +772,8 @@ function renderStepContent() {
     ? stepContent.item.map((it, idx) => {
         const isCardSelected = selectedLabels.includes(it.label);
         const fullDesc = it.description || "";
-        const shortDesc = fullDesc.slice(0, 100);
-        const isLong = fullDesc.length > 170;
+        const shortDesc = fullDesc.slice(0, 120);
+        const isLong = fullDesc.length > 370;
         return `
           <div class="product-stepper-card ${perCardClass} ${isCardSelected ? "selected" : ""}" onclick="setActiveCard(${idx})">
             <img src="${it.image ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"}" alt="${it.label}" />
