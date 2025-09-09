@@ -331,6 +331,7 @@
                                 class="color-swatch__swatch"
                                 style="background-image: {{ swatch_value | downcase | replace: ' ', '' }};"
                                 title="{{ value }}"
+                                data-image="{{ variant.image | image_url }}"
                               ></span>
                               <span class="color-swatch__text">{{ value }}</span>
                             </label>
