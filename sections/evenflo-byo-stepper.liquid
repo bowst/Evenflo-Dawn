@@ -193,7 +193,7 @@ const byoVariants = [
             "featureImage": {{ variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ variant.option1 | json }},
             "colorImage": {{ variant.metafields.custom.new_swatch_image.value | json }},
-            "byoColorImage": {{ variant.metafields.custom.byo_color.value | json }},
+            "byoColorImage": {{ variant.metafields.custom.byo_color.value | image_url: width: 600 | json }},
             "sku": {{ variant.sku | json }},
             "inventory": {{ variant.inventory_quantity }},
             "inStock": true
@@ -225,7 +225,7 @@ const byoVariants = [
             "featureImage": {{ accessory_variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ accessory_variant.option1 | json }},
             "colorImage": {{ accessory_variant.metafields.custom.new_swatch_image.value | json }},
-            "byoColorImage": {{ accessory_variant.metafields.custom.byo_color.value | json }},
+            "byoColorImage": {{ accessory_variant.metafields.custom.byo_color.value | image_url: width: 600 | json }},
             "sku": {{ accessory_variant.sku | json }},
             "inventory": {{ accessory_variant.inventory_quantity }},
             "inStock": true
@@ -633,10 +633,7 @@ function renderStepSidebar() {
         <ul>
           ${step.items
             .map((item) => {
-              console.log("PENCIL", !(
-                    (hideStepSixEditPencil && item.step === 6) ||
-                    (selectedItems.skipStrollerSteps === true && item.step > 3)
-                  ))
+              
               const className =
                 item.step === currentStep
                   ? "step active"
@@ -775,22 +772,22 @@ function renderStepContent() {
     document.querySelector(".buy-now").innerText = "Buy now for $" + reducedAmount
 
     const cartReviewItems = cart.map(ci => ({
-      label: ci?.variant?.byoTitle ?? "Byo Title N/A",
-      description: ci.productType === "Stroller" 
-        ? `${ci?.variant?.byoDescription ? ci.variant.byoDescription : ""}`
-        // Commented subtitle for strollers: <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>
-        : (["Travel System", "Infant Car Seat"].includes(ci.productType)
+        label: ci?.variant?.byoTitle ?? "Byo Title N/A",
+        description: ci.productType === "Stroller" 
           ? `${ci?.variant?.byoDescription ? ci.variant.byoDescription : ""}`
-          // Commented subtitle for car seats: <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>
-          : (ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A")),
-      image: ci.productType === "Stroller" 
-        ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
-        : (["Travel System", "Infant Car Seat"].includes(ci.productType)
+          // Commented subtitle for strollers: <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>
+          : (["Travel System", "Infant Car Seat"].includes(ci.productType)
+            ? `${ci?.variant?.byoDescription ? ci.variant.byoDescription : ""}`
+            // Commented subtitle for car seats: <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>
+            : (ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A")),
+        image: ci.productType === "Stroller" 
           ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
-          : (ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")),
-      productType: ci.productType,
-      variant: ci.variant
-    }));
+          : (["Travel System", "Infant Car Seat"].includes(ci.productType)
+            ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
+            : (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")),
+        productType: ci.productType,
+        variant: ci.variant
+      }));
     stepContent = { title: "Review Your Selection", item: cartReviewItems };
     stepperSteps[currentStep].item = cartReviewItems;
   } else if (currentStep === 5 && selectedItems.selectedStrollerType) {
@@ -1242,6 +1239,7 @@ if (isTitle("Choose Your Stroller Color")) {
             variantId: matchedAccessory.accessoryVariantId,
             color: matchedAccessory.color,
             colorImage: matchedAccessory.colorImage,
+            byoColorImage: matchedAccessory.byoColorImage,
             sku: matchedAccessory.sku,
             inventory: matchedAccessory.inventory,
             inStock: matchedAccessory.inStock,
@@ -1252,7 +1250,7 @@ if (isTitle("Choose Your Stroller Color")) {
             price: matchedAccessory.price
           },
           description: matchedAccessory.accessoryProductDescription,
-          image: matchedAccessory.accessoryProductImage
+          image: matchedAccessory.byoColorImage ?? matchedAccessory.accessoryProductImage
         });
       }
     } else {
@@ -1317,7 +1315,7 @@ function renderAccessory() {
         selected: false,
         label: accessory.accessoryProductTitle,
         description: accessory.accessoryProductDescription,
-        image: accessory.accessoryProductImage,
+        image: accessory.byoColorImage ?? accessory.accessoryProductImage,
       }));
 
       stepperSteps[accessoryStepIndex] = {
