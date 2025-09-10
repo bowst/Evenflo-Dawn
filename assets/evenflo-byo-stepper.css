@@ -750,12 +750,13 @@ button.no-extra-needed::before {
 
   .product-stepper-card:hover{
     background: none;
-	border-color: #DFDFDF;
+	border-color: 2px solid #DFDFDF;
   }
   .product-stepper-card.selected {
-    border-color:#00AEA9!important;
+    border: 2px solid #00AEA9;
   }
-  .product:2px solid #00AEA9;
+  .product-stepper-card.variant-color.selected {
+    border: 2px solid #00AEA9;
   }
   .product-stepper__item:has(.swiper) .no-extra-needed {
     margin-top: 0;
