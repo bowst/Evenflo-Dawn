@@ -76,6 +76,35 @@
       transform: translateY(0);
     }
   }
+
+  /* Product description truncation styles */
+  .product-description-wrapper {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .product-description {
+    margin: 0;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+  }
+
+  .product-description.truncated {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-description.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
 </style>
 <div class="evenflo-byo-stepper page-width">
   <div class="product-filter-wrapper" style="position: relative;">
@@ -795,15 +824,14 @@ function renderStepContent() {
     ? stepContent.item.map((it, idx) => {
         const isCardSelected = selectedLabels.includes(it.label);
         const fullDesc = it.description || "";
-        const shortDesc = fullDesc.slice(0, 200);
-        const isLong = fullDesc.length > 200;
         return `
           <div class="product-stepper-card ${perCardClass} ${isCardSelected ? "selected" : ""}" onclick="setActiveCard(${idx})">
             <img src="${it.image ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"}" alt="${it.label}" />
             <div class="product-stepper-card-content">
               <h3>${it.label}</h3>
-              <p class="product-description" id="desc-${idx}">${isLong ? shortDesc + "..." : fullDesc}</p>
-              ${isLong ? `<button class="read-more-btn" onclick="toggleReadMore(event, ${idx})">Read More</button>` : ""}
+			  <div class="product-description-wrapper">
+              	<p class="product-description truncated" id="desc-${idx}">${fullDesc}</p>
+			  </div>
             </div>
           </div>
         `;
@@ -857,6 +885,7 @@ function renderStepContent() {
   }
 
   updateStepperButtons();
+  applyEllipsisDetection();
 }
 
 function accessoryNotSelected(){
@@ -886,6 +915,50 @@ function toggleReadMore(event, index) {
     descElement.innerText = fullText;
     btn.innerText = "Read Less";
   }
+}
+
+function isEllipsisActive(element) {
+  // Check if the element's content is being truncated by ellipsis
+  return element.scrollHeight > element.clientHeight;
+}
+
+function toggleDescription(index) {
+  event.stopPropagation(); // Prevent triggering setActiveCard()
+  const descElement = document.getElementById(`desc-${index}`);
+  
+  if (descElement.classList.contains('truncated')) {
+    // Expand the description
+    descElement.classList.remove('truncated');
+    descElement.classList.add('expanded');
+  } else {
+    // Collapse the description
+    descElement.classList.remove('expanded');
+    descElement.classList.add('truncated');
+  }
+}
+
+function applyEllipsisDetection() {
+  // Wait for DOM to be ready
+  setTimeout(() => {
+    const descriptionWrappers = document.querySelectorAll('.product-description-wrapper');
+    
+    descriptionWrappers.forEach((wrapper, index) => {
+      const descElement = wrapper.querySelector('.product-description');
+      
+      if (descElement && isEllipsisActive(descElement)) {
+        // Ellipsis is hiding content, add click functionality
+        wrapper.style.cursor = 'pointer';
+        wrapper.onclick = (e) => {
+          e.stopPropagation();
+          toggleDescription(index);
+        };
+      } else {
+        // No ellipsis, remove click functionality
+        wrapper.style.cursor = 'default';
+        wrapper.onclick = null;
+      }
+    });
+  }, 100);
 }
 
 function smoothStepTransition(callback) {
