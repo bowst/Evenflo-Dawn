@@ -9,7 +9,6 @@
   - show_vendor: {Boolean} Show the product vendor. Default: false
   - show_rating: {Boolean} Show the product rating. Default: false
   - show_swatches: {Boolean} Show the product swatches (if available). Default: false
-  - show_collection_features: {Boolean} Show features added for display in collection pages. Default: false
   - extend_height: {Boolean} Card height extends to available container space. Default: true (optional)
   - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
   - skip_styles: {Boolean} Don't include component styles. Useful when rendering multiple product cards in a loop. Default: false (optional)
@@ -46,7 +45,7 @@ Determine if the product is from support product collection
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 
-  {{ 'evenflo-card-product.css' | asset_url | stylesheet_tag  }}
+{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag  }}
 
 {%- endunless -%}
 
@@ -199,21 +198,14 @@ Determine if the product is from support product collection
             </a>
           </h3>
           <div class="card-information">
-            {% if show_collection_features %}
-            <div class="features">
-            {{ card_product.metafields.custom.collection_features | metafield_tag }}
-            </div>
-            {% endif %}
-
-            {%- if show_vendor -%}
-              <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-              <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
-            {%- endif -%}
-            {%- if show_swatches -%}
-              <div class="color-swatches">
+            {% if show_swatches == true %}
+            <div class="color-swatches">
             {%- for product_option in card_product.options_with_values -%}
+              {{ product_option.variant }}
               {%- for product_option_value in product_option.values -%}
 
+                
+                    <a href="{{  product_option_value.variant.url }}">
                       {{
                         product_option_value.swatch.image
                         | image_url: width: 100
@@ -223,21 +215,23 @@ Determine if the product is from support product collection
                           sizes: sizes,
                           class: 'swatch'
                       }}
+                      </a>
               
-            {%- endfor -%}
+              {%- endfor -%}
             {%- endfor -%}
             </div>
             {% endif %}
+            {%- if show_vendor -%}
+              <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+              <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
+            {%- endif -%}
 
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
-            
+
             {% if is_product_support == false %}
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {% endif %}
-           
-            {%- if show_rating == false -%}
-              <div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
-
+            
             {%- if show_rating -%}
               <div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
 
@@ -277,10 +271,6 @@ Determine if the product is from support product collection
               </p>
              {% endcomment %}
             {%- endif -%}
-
-            {% if is_product_support == false %}
-              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
-            {% endif %}
             
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}

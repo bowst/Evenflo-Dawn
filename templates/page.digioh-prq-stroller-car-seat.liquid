@@ -29,6 +29,55 @@
       border: 1px solid;
       margin-bottom: 10px;
   }
+  .color-swatch__radio.visually-hidden { 
+  position: absolute !important; 
+  clip: rect(1px,1px,1px,1px); 
+  width: 1px; height: 1px; overflow: hidden; 
+}
+
+/* Swatch layout */
+.variant-radios {     
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  border: unset;
+  padding-top: 2rem;
+  padding-left: 0px; 
+}
+.color-swatch__label { 
+  display: inline-flex; align-items: center; gap: .5rem; 
+  border: 1px solid var(--color-foreground-20, #e5e5e5);
+  border-radius: 9999px; padding: .35rem .35rem .35rem .35rem; cursor: pointer;
+}
+.color-swatch__swatch {
+    --swatch--size: var(--swatch-input--size, 4.4rem);
+    --swatch--border-radius: var(--swatch-input--border-radius, 50%);
+    display: block;
+    width: 2.8rem;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--swatch--background);
+    background-position: var(--swatch-focal-point, initial);
+    background-size: cover;
+    background-origin: border-box;
+    border: .1rem solid rgba(var(--color-foreground), .15);
+    border-radius: var(--swatch--border-radius);
+}
+.color-swatch__text { font-size: .9rem; display: none }
+
+/* Selected + focus states */
+.color-swatch__radio:checked + .color-swatch__label {
+  border-color: var(--color-foreground, #111);
+  box-shadow: 0 0 0 2px var(--color-background, #fff), 0 0 0 4px currentColor;
+}
+.color-swatch__radio:focus-visible + .color-swatch__label {
+  outline: 2px solid currentColor; outline-offset: 2px;
+}
+
+/* Disabled state */
+.color-swatch__radio:disabled + .color-swatch__label {
+  opacity: .5; cursor: not-allowed;
+}
 </style>
 {%- comment -%}
   ************************************
@@ -287,6 +336,148 @@
 >
   <a href="/pages/stroller-car-seat-finder-quiz" style="text-decoration: none;">Retake Quiz</a>
 </div>
+<script>
+(function () {
+  // Widths you want in srcset (match your theme’s pattern)
+  const WIDTHS = [165, 360, 533, 720, 940, 1066, 2200];
+  const DEFAULT_SRC_WIDTH = 533; // fallback src width
+
+  // -------- URL helpers --------
+  function ensureAbsolute(url) {
+    if (!url) return '';
+    // Protocol-relative (//cdn...) → https://
+    if (url.startsWith('//')) return 'https:' + url;
+    return url;
+  }
+
+  function stripWidthParam(url) {
+    // Remove any "?width=N" or "&width=N"
+    return url
+      .replace(/([?&])width=\d+(&?)/i, (m, a, b) => (b ? a : ''))
+      .replace(/[?&]$/, ''); // clean trailing ? or &
+  }
+
+  function withWidth(url, w) {
+    const hasQuery = url.includes('?');
+    return url + (hasQuery ? '&' : '?') + 'width=' + w;
+  }
+
+  function buildSrcset(baseUrl, widths = WIDTHS) {
+    const clean = stripWidthParam(ensureAbsolute(baseUrl));
+    const last = widths[widths.length - 1];
+    return widths
+      .map((w) => (w === last ? `${clean} ${w}w` : `${withWidth(clean, w)} ${w}w`))
+      .join(',');
+  }
+
+  function setImgSources(img, baseUrl) {
+    const clean = stripWidthParam(ensureAbsolute(baseUrl));
+    const srcset = buildSrcset(clean, WIDTHS);
+    const src = withWidth(clean, DEFAULT_SRC_WIDTH);
+
+    // If inside a <picture>, disable <source> so <img> wins (optional but safer)
+    const picture = img.closest('picture');
+    if (picture) {
+      picture.querySelectorAll('source').forEach((s) => {
+        // Keep original in case you want to restore later
+        if (!s.hasAttribute('data-orig-srcset')) {
+          s.setAttribute('data-orig-srcset', s.getAttribute('srcset') || '');
+        }
+        s.setAttribute('srcset', '');
+      });
+    }
+
+    // Update the image (support lazy attrs too)
+    img.setAttribute('srcset', srcset);
+    img.setAttribute('src', src);
+    if (img.hasAttribute('data-srcset')) img.setAttribute('data-srcset', srcset);
+    if (img.hasAttribute('data-src')) img.setAttribute('data-src', src);
+
+    // Nudge browser to repaint if same URLs were set
+    img.loading = 'eager';
+    img.decoding = 'async';
+  }
+
+  // -------- DOM helpers --------
+  function findSwatchForInput(input, scope) {
+    const label = scope.querySelector(`label[for="${input.id}"]`);
+    return label ? label.querySelector('.color-swatch__swatch') : null;
+  }
+
+  function getSelectedImageUrl(scope) {
+    const checked = scope.querySelector('input[type="radio"]:checked');
+    if (!checked) return '';
+    const swatch = findSwatchForInput(checked, scope);
+    return swatch?.dataset?.image || '';
+  }
+
+  function updateCardImageFromSelection(scope) {
+    const card = scope.closest('.product-card-wrapper');
+    if (!card) return;
+
+    const img = card.querySelector('.card__media img');
+    if (!img) return;
+
+    const url = getSelectedImageUrl(scope);
+    if (!url) return; // nothing to do if no data-image provided
+
+    setImgSources(img, url);
+  }
+
+  // (Optional) Keep the "Color: X" text after the legend if you’re using it
+  function updateLegendValue(scope) {
+    const legend = scope.querySelector('legend.product__text');
+    const checked = scope.querySelector('input[type="radio"]:checked');
+    if (!legend || !checked) return;
+
+    const label = scope.querySelector(`label[for="${checked.id}"] .color-swatch__text`)
+               || scope.querySelector(`label[for="${checked.id}"]`);
+    const val = (label && label.textContent.trim()) || '';
+
+    let chip = legend.querySelector('.product-option-value');
+    if (!chip) {
+      chip = document.createElement('span');
+      chip.className = 'product-option-value';
+      legend.appendChild(chip);
+    }
+    chip.textContent = `: ${val}`;
+  }
+
+  function onChange(scope) {
+    updateLegendValue(scope);          // optional
+    updateCardImageFromSelection(scope);
+  }
+
+  function initOne(scope) {
+    const legend = scope.querySelector('legend.product__text');
+    const radiosWrap = scope.querySelector('fieldset[role="radiogroup"]');
+    if (!legend || !radiosWrap) return;
+    if (!/^color\b/i.test(legend.textContent.trim())) return;
+
+    // Initial render
+    onChange(scope);
+
+    // Listen for changes
+    radiosWrap.addEventListener('change', (e) => {
+      if (e.target && e.target.matches('input[type="radio"]')) onChange(scope);
+    });
+  }
+
+  function initAll(context) {
+    const root =
+      context && context.querySelectorAll
+        ? context
+        : context && context.target && context.target.querySelectorAll
+        ? context.target
+        : document;
+    root.querySelectorAll('.product-form__input').forEach(initOne);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => initAll(document));
+  document.addEventListener('shopify:section:load', (e) => initAll(e.target));
+  document.addEventListener('shopify:section:select', (e) => initAll(e.target));
+})();
+</script>
 {%- comment -%}
   ************************************
   END SECTION: Display Recommended Products

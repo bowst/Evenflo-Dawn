@@ -242,9 +242,6 @@ Determine if the product is from support product collection
             {%- if show_rating -%}
               <div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
 
-            {%- if show_rating -%}
-              <div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
-
                {% comment %}
               {% liquid
                 assign rating_decimal = 0
@@ -281,10 +278,6 @@ Determine if the product is from support product collection
               </p>
              {% endcomment %}
             {%- endif -%}
-
-            {% if is_product_support == false %}
-              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
-            {% endif %}
             
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}

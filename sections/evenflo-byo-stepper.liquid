@@ -2,144 +2,144 @@
 {{ 'swiper-style.css' | asset_url | stylesheet_tag }}
 
 <style>
-.swiper {
-      width: 100%;
-      height: 100%;
+  .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;}
+  /* Smooth sliding step transitions */
+  .product-stepper {
+    {% comment %} position: relative; {% endcomment %}
+    {% comment %} min-height: 400px; {% endcomment %}
+    {% comment %} overflow: hidden; {% endcomment %}
   }
-  
-  .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  
-  .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;}
-/* Smooth sliding step transitions */
-.product-stepper {
-  {% comment %} position: relative; {% endcomment %}
-  {% comment %} min-height: 400px; {% endcomment %}
-  {% comment %} overflow: hidden; {% endcomment %}
-}
 
-.product-stepper__item {
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.product-stepper.transitioning .product-stepper__item {
-  transform: translateY(30px);
-  opacity: 0;
-}
-
-/* Smooth alternative message fade-in */
-.alternative-message {
-  animation: fadeInMessage 0.4s ease-out;
-}
-
-@keyframes fadeInMessage {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
+  .product-stepper__item {
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform: translateY(0);
+    opacity: 1;
   }
-}
 
-/* Subtle card entrance animation */
-.product-stepper-card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
-}
+  .product-stepper.transitioning .product-stepper__item {
+    transform: translateY(30px);
+    opacity: 0;
+  }
 
-.product-stepper-card:nth-child(1) { animation-delay: 0.1s; }
-.product-stepper-card:nth-child(2) { animation-delay: 0.2s; }
-.product-stepper-card:nth-child(3) { animation-delay: 0.3s; }
-.product-stepper-card:nth-child(4) { animation-delay: 0.4s; }
+  /* Smooth alternative message fade-in */
+  .alternative-message {
+    animation: fadeInMessage 0.4s ease-out;
+  }
 
-@keyframes fadeInUp {
-  from {
+  @keyframes fadeInMessage {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Subtle card entrance animation */
+  .product-stepper-card {
     opacity: 0;
     transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .product-stepper-card:nth-child(1) { animation-delay: 0.1s; }
+  .product-stepper-card:nth-child(2) { animation-delay: 0.2s; }
+  .product-stepper-card:nth-child(3) { animation-delay: 0.3s; }
+  .product-stepper-card:nth-child(4) { animation-delay: 0.4s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-}
 </style>
-<div class="page-width">
-<div class="product-filter-wrapper" style="position: relative;">
-  <div class="video-loader">
-    {{
-      section.settings.video_loader
-      | video_tag:
-        image_size: '1100x',
-        autoplay: 'autoplay',
-        loop: true,
-        controls: false,
-        muted: true,
-        playsinline: 'playsinline',
-		preload: 'auto'
-    }}
-  </div>
-  <div class="stepperLoader">
-    <div class="loader"></div>
-  </div>
-  <div class="product-sidebar"></div>
-  <div class="product-stepper-wrapper">
-    <div class="product-stepper"></div>
-    <div class="product-stepper-btn">
-      <button class="previous-btn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="12"
-          viewBox="0 0 14 12"
-          fill="none"
-        >
-          <path
-            d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z"
-            fill="#121212"
-          />
-        </svg>
-        Previous
-      </button>
-      <button class="next-btn">
-        Next
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="12"
-          viewBox="0 0 14 12"
-          fill="none"
-        >
-          <path
-            d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z"
-            fill="#DADADA"
-          />
-        </svg>
-      </button>
+<div class="evenflo-byo-stepper page-width">
+  <div class="product-filter-wrapper" style="position: relative;">
+    <div class="video-loader">
+      {{
+        section.settings.video_loader
+        | video_tag:
+          image_size: '1100x',
+          autoplay: 'autoplay',
+          loop: true,
+          controls: false,
+          muted: true,
+          playsinline: 'playsinline',
+          preload: 'auto'
+      }}
     </div>
-    <div class="product-stepper-btn-wrapper">
-      <div class="product-stepper-btn product-stepper-btn-wrapper">
-        <button class="start-over" onclick="productClear()">start over</button>
-        <p class="buy-now">Buy now for $</p>
-        <button class="add-to-cart" onclick="addToCart()">add to cart</button>
+    <div class="stepperLoader">
+      <div class="loader"></div>
+    </div>
+    <div class="product-sidebar"></div>
+    <div class="product-stepper-wrapper">
+      <div class="product-stepper"></div>
+      <div class="product-stepper-btn">
+        <button class="previous-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="12"
+            viewBox="0 0 14 12"
+            fill="none"
+          >
+            <path
+              d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z"
+              fill="#121212"
+            />
+          </svg>
+          Previous
+        </button>
+        <button class="next-btn">
+          Next
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="12"
+            viewBox="0 0 14 12"
+            fill="none"
+          >
+            <path
+              d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z"
+              fill="#DADADA"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="product-stepper-btn-wrapper">
+        <div class="product-stepper-btn product-stepper-btn-wrapper">
+          <button class="start-over" onclick="productClear()">Start Over</button>
+          <p class="buy-now">Buy now for $</p>
+          <button class="add-to-cart" onclick="addToCart()">Proceed with selection</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <script src="{{ 'swiper-script.js' | asset_url }}" defer></script>
@@ -156,11 +156,12 @@ const byoVariants = [
           {% assign in_stock = true %}
           {% unless first %},{% endunless %}
           {
-            "variantTitle": {{ variant.title | json }},
+            "variantTitle": {{ variant.metafields.custom.byo_color.value | json }},
             "variantId": {{ variant.id }},
             "price": {{ variant.price | divided_by: 100.0 }},
             "byoTitle": {{ variant.metafields.custom.byo_title.value | json }},
             "byoSubTitle": {{ variant.metafields.custom.byo_subtitle.value | json }},
+            "byoDescription": {{ variant.metafields.custom.byo_description.value | json }},
             "featureImage": {{ variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ variant.option1 | json }},
             "colorImage": {{ variant.metafields.custom.new_swatch_image.value | json }},
@@ -184,14 +185,15 @@ const byoVariants = [
           {% assign in_stock = true %}
           {% unless first %},{% endunless %}
           {
-            "accessoryProductTitle": {{ accessory_product.title | json }},
-            "accessoryProductDescription": {{ accessory_product.description | strip_newlines | json }},
+            "accessoryProductTitle": {{ accessory_variant.metafields.custom.byo_title | json }},
+            "accessoryProductDescription": {{ accessory_variant.metafields.custom.byo_subtitle | strip_newlines | json }},
             "accessoryProductImage": {{ accessory_product.featured_image | image_url: width: 600 | json }},
             "accessoryProductId": {{ accessory_product.id }},
             "accessoryVariantId": {{ accessory_variant.id }},
             "price": {{ accessory_variant.price | divided_by: 100.0 }},
             "byoTitle": {{ accessory_variant.metafields.custom.byo_title.value | json }},
             "byoSubTitle": {{ accessory_variant.metafields.custom.byo_subtitle.value | json }},
+            "byoDescription": {{ accessory_variant.metafields.custom.byo_description.value | json }},
             "featureImage": {{ accessory_variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ accessory_variant.option1 | json }},
             "colorImage": {{ accessory_variant.metafields.custom.new_swatch_image.value | json }},
@@ -276,14 +278,14 @@ const stepperSteps = [
         rotation: 1,
         label: "Rotational",
         description:
-          "Enjoy the hallmark features of the LiteMax™ NXT with added 180º rotation for easy in and out. Complete with SensorSafe® technology, which gives parents real-time alerts about 4 potentially unsafe conditions from your child’s car seat, the Revolve180™ LiteMax™ Infant Car Seat offers smoother transitions for on-the-go parents with peace of mind to spare.",
+          "Our most advanced infant car seat offers 180° rotation for effortless ins and outs without bending and twisting by parents.",
         image: "{{ section.settings.rotational_image | image_url }}",
       },
       {
         rotation: 0,
         label: "Traditional",
         description:
-          "Secure and ready to roll with a LockStrong™ belt tensioning system for solid installation in no time. The LiteMax™ NXT Infant Car Seat offers innovation and style with built-in SensorSafe® technology, which gives parents real-time alerts about 4 potentially unsafe conditions from your child’s car seat.",
+          "Secure and ready to roll with a LockStrong™ belt tensioning system for easy installation in no time.",
         image: "{{ section.settings.traditional_image | image_url }}",
       },
     ],
@@ -295,14 +297,14 @@ const stepperSteps = [
         sensorysoothe: 1,
         label: "SensorySoothe",
         description:
-          "Activated by a button or through the Evenflo app, soothing lights and sounds help calm your baby right from the car seat handle - no accessories needed.",
+          "The first of its kind. SensorySoothe™ technology: Soothing lights and sounds help calm your baby right from the car seat handle. Calm your baby with a touch on the handle or in the Evenflo app.",
         image: "{{ section.settings.sensorysooth_handle_image | image_url }}",
       },
       {
         sensorysoothe: 0,
         label: "Traditional",
         description:
-          "Streamlined, powerful and comfortable to the touch - perfect for parents who value premium function and ease of use.",
+          "Streamlined, ergonomic and comfortable to handle - perfect for parents who value premium function and ease of use.",
         image: "{{ section.settings.traditional_handle_image | image_url}}",
       },
     ],
@@ -314,7 +316,7 @@ const stepperSteps = [
         fabric: 1,
         label: "Green & Gentle™",
         description:
-          "Eco-friendly, made from recycled bottles and free of added chemicals - gentle on your baby and the planet.",
+          "Eco-friendly, made from recycled materials and free of added chemicals - gentle on your baby and the planet.",
         image: "{{ section.settings.green-gentle_image | image_url }}",
       },
       {
@@ -363,14 +365,14 @@ const stepperSteps = [
         selected: false,
         label: "Shyft™ Intuiti+™",
         description:
-          "For parents who like to match innovation with style, the Shyft™ Intuiti+ features elevated details like a deluxe snack tray, hidden basket pocket and premium color accents.",
+          "For the ultimate, smoothest ride experience, the Shyft™ Intuiti+™ features all-wheel suspension, premium tires, and 6 modes of use. Plus, it combines comfort and style with elevated details like a deluxe snack tray, hidden basket pocket, and thoughtful color accents.",
         image: "{{ section.settings.stroller2_image | image_url }}",
       },
       {
         selected: false,
         label: "Shyft™ Intuiti™",
         description:
-          "The Shyft™ Intuiti™ stroller makes every ride comfortable with all-wheel suspension, premium tires, and a parent- or forward-facing seat.",
+          "The Shyft™ Intuiti™ stroller makes every ride comfortable with all-wheel suspension, premium tires, and 6 modes of use.",
         image: "{{ section.settings.stroller1_image | image_url }}",
       },
     ],
@@ -448,8 +450,14 @@ function videoLoader() {
   videoLoaderContent.classList.add("show-loading-video");
   productStepperWrapper.classList.add("showing-loading-video");
   setTimeout(() => {
+    productSidebar.classList.add('hidden-sidebar');
+    productStepperWrapper.classList.add('full-width');
+  }, 3500);
+
+  setTimeout(() => {
     videoLoaderContent.classList.remove("show-loading-video"); 
-	productStepperWrapper.classList.remove("showing-loading-video");
+	  productStepperWrapper.classList.remove("showing-loading-video");
+    
   }, 4000);
 
 }
@@ -504,6 +512,8 @@ function startOver(){
     stepperSteps[3].alternativeMessage = null;
     stepperSteps[5].alternativeMessage = null;
     stepperSteps[5].title = "Choose Your Stroller Color";
+    productStepperWrapper.classList.remove('full-width');
+    productSidebar.classList.remove('hidden-sidebar');
 
     // Reset pricing text
     document.querySelector(".buy-now").innerText = "Buy now for $";
@@ -549,6 +559,8 @@ function handleNextStep(){
       }
       if (currentStep === 7) {
         videoLoader();
+        
+        // hide sidebar
       }
       updateURLHash(); // Add hash update
       render();
@@ -655,7 +667,9 @@ function renderStepContent() {
           seen.add(v.color);
           out.push({
             ...v,
-            label: v.color,
+            label: v.byoTitle ?? v.color,
+            description: v.byoSubTitle ?? "",
+            byoDescription: v.byoDescription ?? "",
             image: v.byoColorImage ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg",
             productData: p
           });
@@ -734,8 +748,18 @@ function renderStepContent() {
 
     const cartReviewItems = cart.map(ci => ({
       label: ci?.variant?.byoTitle ?? "Byo Title N/A",
-      description: ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A",
-      image: ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg",
+      description: ci.productType === "Stroller" 
+        ? `${ci?.variant?.byoDescription ? ci.variant.byoDescription : ""}`
+        // Commented subtitle for strollers: <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>
+        : (["Travel System", "Infant Car Seat"].includes(ci.productType)
+          ? `${ci?.variant?.byoDescription ? ci.variant.byoDescription : ""}`
+          // Commented subtitle for car seats: <p>${ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A"}</p>
+          : (ci?.variant?.byoSubTitle ?? "Byo Subtitle N/A")),
+      image: ci.productType === "Stroller" 
+        ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
+        : (["Travel System", "Infant Car Seat"].includes(ci.productType)
+          ? (ci?.variant?.byoColorImage ?? ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")
+          : (ci?.variant?.featureImage ?? "https://www.evenflo.com/cdn/shop/files/evenflo-logo_101dc51f-b744-408d-bba4-82966df062dc.svg")),
       productType: ci.productType,
       variant: ci.variant
     }));
@@ -772,14 +796,14 @@ function renderStepContent() {
     ? stepContent.item.map((it, idx) => {
         const isCardSelected = selectedLabels.includes(it.label);
         const fullDesc = it.description || "";
-        const shortDesc = fullDesc.slice(0, 370);
-        const isLong = fullDesc.length > 370;
+        const shortDesc = fullDesc.slice(0, 200);
+        const isLong = fullDesc.length > 200;
         return `
           <div class="product-stepper-card ${perCardClass} ${isCardSelected ? "selected" : ""}" onclick="setActiveCard(${idx})">
             <img src="${it.image ?? "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"}" alt="${it.label}" />
             <div class="product-stepper-card-content">
               <h3>${it.label}</h3>
-              <p id="desc-${idx}">${isLong ? shortDesc + "..." : fullDesc}</p>
+              <p class="product-description" id="desc-${idx}">${isLong ? shortDesc + "..." : fullDesc}</p>
               ${isLong ? `<button class="read-more-btn" onclick="toggleReadMore(event, ${idx})">Read More</button>` : ""}
             </div>
           </div>
@@ -811,7 +835,7 @@ function renderStepContent() {
       ? `<button class="no-extra-needed" onclick="accessoryNotSelected()">
            No Extras Needed, Let’s Roll
            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
-             <path d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z" fill="#00AEA9"/>
+             <path d="M12.9062 6.77148L8.09375 11.3652C7.82031 11.6113 7.41016 11.6113 7.16406 11.3379C6.91797 11.0645 6.91797 10.6543 7.19141 10.4082L10.8281 6.93555H1.53125C1.14844 6.93555 0.875 6.66211 0.875 6.2793C0.875 5.92383 1.14844 5.62305 1.53125 5.62305H10.8281L7.19141 2.17773C6.91797 1.93164 6.91797 1.49414 7.16406 1.24805C7.41016 0.974609 7.84766 0.974609 8.09375 1.2207L12.9062 5.81445C13.043 5.95117 13.125 6.11523 13.125 6.2793C13.125 6.4707 13.043 6.63477 12.9062 6.77148Z" fill="#000000"/>
            </svg>
          </button>`
       : "";
@@ -852,7 +876,7 @@ function toggleReadMore(event, index) {
 
   const fullText = stepperSteps[currentStep]?.item[index]?.description;
   console.log(fullText);
-  const shortText = fullText.substring(0, 370) + "...";
+  const shortText = fullText.substring(0, 200) + "...";
 
   const isExpanded = btn.innerText === "Read Less";
 
@@ -951,7 +975,9 @@ function setActiveCard(passedItemIndex) {
           seen.add(v.color);
           out.push({
             ...v,
-            label: v.color,
+            label: v.byoTitle ?? v.color,
+            description: v.byoSubTitle ?? "",
+            byoDescription: v.byoDescription ?? "",
             image: v[imageKey] ?? v.colorImage,
             productData: p,
           });
@@ -1076,7 +1102,7 @@ function setActiveCard(passedItemIndex) {
 if (isTitle("Choose Your Stroller Color")) {
   const selectedStrollerProduct = item.productData;
   if (selectedStrollerProduct) {
-    const matched = selectedStrollerProduct.variants.find(v => v.color === item.label);
+    const matched = selectedStrollerProduct.variants.find(v => v.color === item.color);
     if(matched.byoColorImage === null){
       matched.colorImage = "https://www.svgrepo.com/show/508699/landscape-placeholder.svg"
     }
@@ -1149,6 +1175,7 @@ if (isTitle("Choose Your Stroller Color")) {
             inStock: matchedAccessory.inStock,
             byoTitle: matchedAccessory.byoTitle,
             byoSubTitle:matchedAccessory.byoSubTitle,
+            byoDescription: matchedAccessory.byoDescription,
             featureImage:matchedAccessory.featureImage,
             price: matchedAccessory.price
           },
@@ -1386,6 +1413,8 @@ function productClear() {
     stepperSteps[3].alternativeMessage = null;
     stepperSteps[5].alternativeMessage = null;
     stepperSteps[5].title = "Choose Your Stroller Color";
+    productStepperWrapper.classList.remove('full-width');
+    productSidebar.classList.remove('hidden-sidebar');
 
     // Reset pricing text
     document.querySelector(".buy-now").innerText = "Buy now for $";
@@ -1446,11 +1475,7 @@ function stepperEdit(step) {
     render();
   });
 }
-
-
-
 </script>
-
 
 {% schema %}
 {
@@ -1521,7 +1546,7 @@ function stepperEdit(step) {
       "type": "image_picker",
       "id": "stroller2_image",
       "label": "Shyft™ Intuiti+™ Image"
-    },
+    }
   ],
   "presets": [
     {
