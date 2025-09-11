@@ -331,7 +331,7 @@
                                 class="color-swatch__swatch"
                                 style="background-image: {{ swatch_value | replace: ' ', '' }};"
                                 title="{{ value }}"
-                                data-image="{% if variant.image %}{{ variant.image | image_url }}{% elsif product.featured_image %}{{ card_product.featured_image | image_url }}{% else %}{{ 'placeholder.jpg' | asset_url }}{% endif %}"
+                                data-image="{% if variant.image %}{{ variant.image | image_url }}{% elsif card_product.featured_image %}{{ card_product.featured_image | image_url }}{% else %}{{ 'placeholder.jpg' | asset_url }}{% endif %}"
                               ></span>
                               <span class="color-swatch__text">{{ value }}</span>
                             </label>
