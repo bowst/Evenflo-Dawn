@@ -86,7 +86,7 @@
 }
 
 .byo-modal-video__close:hover {
-  background: rgba(255, 255, 255, 1);
+	background: rgba(213, 213, 213, 0.9);
 }
 
 .byo-modal-video__close svg {
@@ -113,7 +113,7 @@
 }
 
 .byo-modal-video__maximize:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(213, 213, 213, 0.9);
 }
 
 /* Video container and play button */
@@ -466,26 +466,38 @@
     }
   }
 
-  // Simple fullscreen function based on Stack Overflow example
   function goFullscreen(id) {
     var element = document.getElementById(id);
-    console.log('Fullscreen requested for:', id);
-    console.log('Element found:', element);
     
     if (!element) {
       console.log('Element not found!');
       return;
     }
     
-    if (element.requestFullscreen) {
-      element.requestFullscreen();
-    } else if (element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullScreen) {
-      element.webkitRequestFullScreen();
-    } else if (element.msRequestFullscreen) {
-      element.msRequestFullscreen();
+    // Check if it's a video element and we're on iPhone/iOS
+    const isIOS = /iPhone|iPod/.test(navigator.userAgent);
+    const isVideo = element.tagName === 'VIDEO';
+    
+    if (isIOS && isVideo) {
+      // Use video element's native fullscreen for iOS
+      if (element.webkitEnterFullscreen) {
+        element.webkitEnterFullscreen();
+        return;
+      }
     }
+    
+	else{
+		// Standard fullscreen API for other browsers/elements
+		if (element.requestFullscreen) {
+		element.requestFullscreen();
+		} else if (element.mozRequestFullScreen) {
+		element.mozRequestFullScreen();
+		} else if (element.webkitRequestFullScreen) {
+		element.webkitRequestFullScreen();
+		} else if (element.msRequestFullscreen) {
+		element.msRequestFullscreen();
+		}
+	}
   }
 
   // Toggle video play/pause and show/hide play button
@@ -620,13 +632,16 @@
                   // Setup maximize button functionality
                   const maximizeButton = modal.querySelector('.byo-modal-video__maximize');
                   if (maximizeButton) {
-                  if (document.fullscreenEnabled) {
-                    setupMaximizeButton(video.id, maximizeButton.id);
-                  // You can now safely call requestFullscreen() on an element
-                  } else {
-                  maximizeButton.remove
-                  }
-                    setupMaximizeButton(video.id, maximizeButton.id);
+                    // Check if fullscreen is supported OR if it's iOS with video element
+                    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+                    const isVideo = video.tagName === 'VIDEO';
+                    const hasVideoFullscreen = isIOS && isVideo && video.webkitEnterFullscreen;
+                    
+                    if (document.fullscreenEnabled || hasVideoFullscreen) {
+                      setupMaximizeButton(video.id, maximizeButton.id);
+                    } else {
+                      maximizeButton.remove();
+                    }
                   }
                   
                   video.muted = false;

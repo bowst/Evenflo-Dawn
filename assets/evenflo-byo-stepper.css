@@ -5,7 +5,7 @@
   color: #121212;
 }
 .evenflo-byo-stepper.page-width {
-  max-width: 1440px;
+  max-width: 1600px;
 }
 ul {
   list-style: none;
@@ -412,10 +412,16 @@ span.filter-label {
 /*.product-stepper-card.review-card.swiper-slide,*/
 .product-stepper-card.accessory-card.swiper-slide{
   text-align: left;
-  max-width: 310px;
+  /*max-width: 310px;*/
 }
-.product-stepper-card.review-card.swiper-slide {
+/*.product-stepper-card.review-card.swiper-slide {
   max-width:370px;
+}*/
+.product-stepper-card.review-card.swiper-slide img{
+  object-fit: contain;
+  object-position: center;
+  aspect-ratio: 1.75;
+  background-color: #fff;
 }
 .product-stepper__item:has(.swiper) .product-stepper-card.review-card.swiper-slide,
 .product-stepper__item:has(.swiper) .product-stepper-card.accessory-card.swiper-slide,
@@ -744,6 +750,10 @@ button.no-extra-needed::before {
 
   .product-stepper-card:hover{
     background: none;
+	border-color: 2px solid #DFDFDF;
+  }
+  .product-stepper-card.selected {
+    border: 2px solid #00AEA9;
   }
   .product-stepper-card.variant-color.selected {
     border: 2px solid #00AEA9;
