@@ -329,7 +329,7 @@
                             >
                               <span
                                 class="color-swatch__swatch"
-                                style="background-image: {{ swatch_value | downcase | replace: ' ', '' }};"
+                                style="background-image: {{ swatch_value | replace: ' ', '' }};"
                                 title="{{ value }}"
                                 data-image="{{ variant.image | image_url }}"
                               ></span>
