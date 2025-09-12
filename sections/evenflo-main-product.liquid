@@ -135,6 +135,14 @@
 									{{ prod.metafields.product_info.related_sub_title }}
 								  </div>
 								{% endif %}
+							  </div>
+							  <div class="product-footer">
+								{% if prod.price %}
+								  <div class="product-price">
+									{{- prod.price | money -}}
+								  </div>
+								{% endif %}
+							  </div>
 							</div>
 						   {% comment %} {% endif %} {% endcomment %}
 						{% endfor %}
