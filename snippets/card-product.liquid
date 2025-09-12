@@ -49,6 +49,10 @@ Determine if the product is from support product collection
 
 {%- endunless -%}
 
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
 {%- liquid
 	assign amazon_id = card_product.selected_or_first_available_variant.metafields.custom.amazon_id
 	assign walmart_id = card_product.selected_or_first_available_variant.metafields.custom.walmart_id
@@ -214,7 +218,6 @@ Determine if the product is from support product collection
 
 			{% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
 			
-			{% assign quick_add = 'standard' %}
 			{% unless quick_add == 'none' %}
 				{% render 'card-product--quick-add', 
 					card_product: card_product,
