@@ -189,3 +189,46 @@
 .product__info-container .subtitle.heading-underline::after {
   bottom: 0;
 }
+
+
+.free-shipping-product {
+	display: flex;
+    gap: .6rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .25rem;
+}
+
+.free-shipping-product span {
+	color: #2996c5;
+    font-family: var(--font-body-family);
+    font-size: 1.5rem;
+    letter-spacing: 0;
+    margin-bottom: .25rem;
+}
+.price-shipping-wrapper {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+.free-shipping-product figure {
+	display: block;
+    position: relative;
+    width: 45px;
+    height: 20px;
+    margin: 0;
+}
+.free-shipping-product dotlottie-wc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-49%, -50%) scale(.5);
+	display: block;
+}
+@media( max-width: 749px ){
+	.free-shipping-product {
+		display: none;
+	}
+}

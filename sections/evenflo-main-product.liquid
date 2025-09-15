@@ -46,6 +46,7 @@
 	{%- if product.quantity_price_breaks_configured? -%}
 	  <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
 	  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+	  <script src="{{ 'show-free-shipping.js' | asset_url }}" defer="defer"></script>
 	{%- endif -%}
   
 	{% if section.settings.image_zoom == 'hover' %}
@@ -85,7 +86,7 @@
 	   
 		<div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
 		  <section
-			id="ProductInfo-{{ section.id }}"
+			id="ProductInfo-template--{{ section.id }}-"
 			class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
 		  >
 			{%- assign product_form_id = 'product-form-' | append: section.id -%}
@@ -172,13 +173,39 @@
 					</a>
 				  </div>
 				{%- when 'price' -%}
-				  <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+				  <div id="price-{{ section.id }}" class="price-shipping-wrapper" role="status" {{ block.shopify_attributes }}>
 					{%- render 'price',
 					  product: product,
 					  use_variant: true,
 					  show_badges: true,
 					  price_class: 'price--large'
 					-%}
+
+					{% assign current_price = product.price | divided_by: 100 %}
+					{% assign free_shipping_threshold = 150 %}
+
+					{% if current_price > free_shipping_threshold %}
+
+					<div class="free-shipping-product">
+						<figure>
+							<script
+							src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+							type="module"
+							></script>
+
+							<dotlottie-wc
+							src="https://lottie.host/cbf571cc-8050-4680-a7e1-278f4fbfcfbc/DOa7PEbZAo.lottie"
+							style="width: 300px;height: 300px"
+							speed="1"
+							autoplay
+							loop
+							></dotlottie-wc>
+						</figure>
+
+						<span>Enjoy free shipping with this purchase</span>
+					</div>
+					{% endif %}
+					
 				  </div>
 				  {%- if product.quantity_price_breaks_configured? -%}
 					<div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
