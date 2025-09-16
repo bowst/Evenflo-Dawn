@@ -129,6 +129,48 @@
     background: #000;
   }
 
+  .category-selector-wrapper {
+    max-width: 80%;
+    margin: auto;
+}
+
+.category-selector {
+    max-width: 270px;
+    position: relative;
+}
+
+.category-selector p {
+    margin: 0;
+    border: 1px solid #e9dcc6;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.category-selector ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-block: 10px;
+    border: 1px solid #e9dcc6;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #fff;
+    max-height: 300px;
+    overflow: auto;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.11);
+}
+
+.category-selector ul li {
+    padding: 10px;
+}
+
+.category-selector ul li:hover {
+    background: bisque;
+}
+
   @media screen and (min-width: 990px) {
     .page-width:has(.metaobject-list) {
       max-width: 100rem;
