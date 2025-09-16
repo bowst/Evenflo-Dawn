@@ -346,6 +346,7 @@
   })
   categoryFilterList.forEach((list)=>{
     list.addEventListener('click', ()=>{
+      categoryFilterList.forEach((el) => el.classList.remove('active'));
       list.classList.add("active");
       categoryFilterInput.textContent = list.textContent;
     })
