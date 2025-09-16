@@ -185,6 +185,18 @@
 
 <div class="category-selector-wrapper">
   <label>Narrow Down Your Choices, Choose A Category</label>
+  <div class="category-selector">
+    <form action="/collections" method="get" class="category-selector">
+  <label for="category">Choose a category:</label>
+  <select id="category" name="id" onchange="if(this.value) window.location.href=this.value">
+    {% for collection in collections %}
+      <option value="{{ collection.url }}">
+        {{ collection.title }}
+      </option>
+    {% endfor %}
+  </select>
+</form>
+  </div>
 </div>
 
 <div class="page-width">
