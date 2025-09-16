@@ -186,7 +186,16 @@
 <div class="category-selector-wrapper">
   <label>Narrow Down Your Choices, Choose A Category</label>
   <div class="category-selector">
-    {% for category in instruction_manuals.category %}
+
+    
+    {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values  %}
+    {% for metaobject in grouped_metaobjects %}
+      <p>{{ metaobject.category.value }}</p>
+    {% endfor %}
+
+    {% for manual in shop.metaobjects['instruction_manuals'].values %}
+      <h2>{{ manual.title }}</h2>
+      <p>Category: {{ manual.category }}</p>
     {% endfor %}
 
     <form action="/collections" method="get" class="category-selector">
@@ -209,14 +218,14 @@
       {% assign current_letter = '' %}
       {% for metaobject in grouped_metaobjects %}
         {% assign product_title = metaobject.product_title.value | default: metaobject.name %}
-        {% assign category_handle = metaobject.category.value | downcase | replace: " ", "_" %}
+        {% assign category_handle = metaobject.category.value | first | downcase | replace: " ", "_" %}
         {% assign first_letter = product_title | slice: 0, 1 | upcase %}
         {% if first_letter != current_letter %}
           {% if current_letter != '' %}
             </ul>
             </div>
           {% endif %}
-          <div class="metaobject-list-group"  {{ metaobject.category.value }} id="metaobject-list-group-{{ first_letter }}">
+          <div class="metaobject-list-group {{ category_handle }}" id="metaobject-list-group-{{ first_letter }}">
             <h2>{{ first_letter }}</h2>
             <ul>
               {% assign current_letter = first_letter %}
