@@ -216,7 +216,7 @@
             </ul>
             </div>
           {% endif %}
-          <div class="metaobject-list-group"  {{ category_handle }} id="metaobject-list-group-{{ first_letter }}">
+          <div class="metaobject-list-group"  {{ metaobject.category.value | downcase }} id="metaobject-list-group-{{ first_letter }}">
             <h2>{{ first_letter }}</h2>
             <ul>
               {% assign current_letter = first_letter %}
