@@ -186,16 +186,13 @@
 <div class="category-selector-wrapper">
   <label>Narrow Down Your Choices, Choose A Category</label>
   <div class="category-selector">
-
+{% for category in shop.metafields.instruction_manuals.category.value %}
+  <p>{{ category }}</p>
+{% endfor %}
     
     {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values  %}
     {% for metaobject in grouped_metaobjects %}
       <p>{{ metaobject.category.value }}</p>
-    {% endfor %}
-
-    {% for manual in shop.metaobjects['instruction_manuals'].values %}
-      <h2>{{ manual.title }}</h2>
-      <p>Category: {{ manual.category }}</p>
     {% endfor %}
 
     <form action="/collections" method="get" class="category-selector">
