@@ -341,7 +341,6 @@
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
 
   categoryFilterInput.addEventListener('click',()=>{
-    alert("clicked")
     categoryFilter.classList.add("category-selector-show");
   })
   categoryFilterList.forEach((list)=>{
@@ -349,6 +348,7 @@
       categoryFilterList.forEach((el) => el.classList.remove('active'));
       list.classList.add("active");
       categoryFilterInput.textContent = list.textContent;
+      categoryFilter.classList.remove("category-selector-show");
     })
   })
   
