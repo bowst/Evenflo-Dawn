@@ -190,21 +190,11 @@
   <p>{{ category }}</p>
 {% endfor %}
     
-    {% comment %} {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values  %}
+    {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values  %}
     {% for metaobject in grouped_metaobjects %}
-      <p>{{ metaobject.category.value }}</p>
-    {% endfor %} {% endcomment %}
+      <p>{{ metaobject.category }}</p>
+    {% endfor %}
 
-    <form action="/collections" method="get" class="category-selector">
-      <label for="category">Choose a category:</label>
-      <select id="category" name="id" onchange="if(this.value) window.location.href=this.value">
-        {% for collection in collections %}
-          <option value="{{ collection.url }}">
-            {{ collection.title }}
-          </option>
-        {% endfor %}
-      </select>
-    </form>
   </div>
 </div>
 
