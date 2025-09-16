@@ -352,6 +352,9 @@
     })
   })
   
+  document.addEventListener("click", ()=>{
+    categoryFilter.classList.add("category-selector-show");
+  })
 
   document.querySelectorAll('.metaobject-tags a').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
