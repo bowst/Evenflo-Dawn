@@ -343,6 +343,7 @@
   categoryFilterInput.addEventListener('click',()=>{
     categoryFilter.classList.add("category-selector-show");
   })
+  
   categoryFilterList.forEach((list)=>{
     list.addEventListener('click', ()=>{
       categoryFilterList.forEach((el) => el.classList.remove('active'));
