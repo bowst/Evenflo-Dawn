@@ -43,10 +43,10 @@
   
 	<script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'show-free-shipping.js' | asset_url }}" defer="defer"></script>
 	{%- if product.quantity_price_breaks_configured? -%}
 	  <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
 	  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
-	  <script src="{{ 'show-free-shipping.js' | asset_url }}" defer="defer"></script>
 	{%- endif -%}
   
 	{% if section.settings.image_zoom == 'hover' %}
@@ -182,11 +182,10 @@
 					-%}
 
 					{% assign current_price = product.price | divided_by: 100 %}
-					{% assign free_shipping_threshold = 150 %}
+					{% assign free_shipping_threshold = 49 %} 
 
-					{% if current_price > free_shipping_threshold %}
 
-					<div class="free-shipping-product">
+					<div class="free-shipping-product{% if current_price < free_shipping_threshold %} visually-hidden{% endif %}" id="free-shipping-notice-product">
 						<figure>
 							<script
 							src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
@@ -204,7 +203,6 @@
 
 						<span>Enjoy free shipping with this purchase</span>
 					</div>
-					{% endif %}
 					
 				  </div>
 				  {%- if product.quantity_price_breaks_configured? -%}

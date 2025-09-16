@@ -30,6 +30,8 @@ function stickyFooterContent(stickyFooter, update){
 	const stickyFooterButton = document.getElementById('sticky-footer-button');
 	
 	setTimeout( function(){
+		//shipping is handled in a separate function included on the parent page
+		/*
 		//Update shipping
 		const shippingNotice = document.getElementById('free-shipping-notice-footer');
 		let productPrice = false;
@@ -52,7 +54,7 @@ function stickyFooterContent(stickyFooter, update){
 		}else{
 			shippingNotice.classList.add('hidden');
 		}
-
+		*/
 		// Ensure the form button content is correct
 		const formBtn = document.querySelector('form .product-form__submit');
 
@@ -69,7 +71,6 @@ function stickyFooterContent(stickyFooter, update){
 		// Update variant image
 		const variantImg = document.querySelector('.product-media-container modal-opener .product__media img').cloneNode( true );
 
-		//console.log('Image:', variantImg)
 		stickyFooter.querySelector('.product-image').innerHTML = '';
 		stickyFooter.querySelector('.product-image').appendChild(variantImg);
 
@@ -81,9 +82,8 @@ function stickyFooterContent(stickyFooter, update){
 		stickyPriceContainer.innerHTML = '';
 		stickyPriceContainer.appendChild(priceContainer);
 	}, 500);
+
 	if( update === false ){
-		//console.log('PAGE LOAD UPDATE');
-		// these items need to be updated on load only
 		const ratings = document.querySelector('.product__title + .shopify-app-block').cloneNode( true );
 		const ratingsContainer = stickyFooter.querySelector('.product-rating');
 		ratingsContainer.appendChild(ratings);
@@ -105,12 +105,9 @@ function removeOnAddToCart() {
 }
 
 function updateContentVariantChange(stickyFooter){
-	//console.log('updateContentVariantChange');
 	const variantID = document.querySelector('.product__info-container .product-variant-id');
-	//console.log('variantID', variantID.value);
 
 	variantID.addEventListener('change', function(e){
-		//console.log('variantID', document.querySelector('.product__info-container .product-variant-id').value);
 		stickyFooterContent(stickyFooter, true)
 	});
 }
