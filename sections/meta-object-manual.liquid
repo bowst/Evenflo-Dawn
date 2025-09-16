@@ -187,7 +187,7 @@
   {% comment %} <label>Narrow Down Your Choices, Choose A Category</label> {% endcomment %}
   <div class="category-selector">
   {% assign categories = "Car Seat,Strollers,Stroller Wagons,Stroller Accessories,Travel Systems,Baby Carriers,Door Jumpers,Playards & Portable Beds,High Chairs,Gates,Home Gear,Baby Proofing,Accessories,Exersaucer,Rollplay" | split: "," %}
-  <label>{{ categories.first }}</label>
+  <p>{{ categories.first }}</p>
   <ul>
     {% for category in categories %}
       <li>{{ category | strip }}</li>
