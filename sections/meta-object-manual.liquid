@@ -186,6 +186,9 @@
 <div class="category-selector-wrapper">
   <label>Narrow Down Your Choices, Choose A Category</label>
   <div class="category-selector">
+    {% for category in instruction_manuals.category %}
+      {% endfor %}
+
     <form action="/collections" method="get" class="category-selector">
       <label for="category">Choose a category:</label>
       <select id="category" name="id" onchange="if(this.value) window.location.href=this.value">
