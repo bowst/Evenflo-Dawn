@@ -232,7 +232,8 @@
   {% endfor %}
 </div>
 
-<div class="category-selector-wrapper">
+<div class="page-width">
+  <div class="category-selector-wrapper">
   {% comment %} <label>Narrow Down Your Choices, Choose A Category</label> {% endcomment %}
   <div class="category-selector">
   {% assign categories = "Car Seat,Strollers,Stroller Wagons,Stroller Accessories,Travel Systems,Baby Carriers,Door Jumpers,Playards & Portable Beds,High Chairs,Gates,Home Gear,Baby Proofing,Accessories,Exersaucer,Rollplay" | split: "," %}
@@ -249,8 +250,6 @@
 
   </div>
 </div>
-
-<div class="page-width">
   <div class="metaobject-list">
     {% paginate shop.metaobjects.instruction_manuals.values by 200 %}
       {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values | sort: 'product_title.value' %}
@@ -343,7 +342,7 @@
   categoryFilterInput.addEventListener('click',()=>{
     categoryFilter.classList.add("category-selector-show");
   })
-  
+
   categoryFilterList.forEach((list)=>{
     list.addEventListener('click', ()=>{
       categoryFilterList.forEach((el) => el.classList.remove('active'));
