@@ -332,6 +332,13 @@
 </div>
 
 <script>
+  const categoryFilter = document.querySelector("category-selector");
+  const categoryFilterInput = categoryFilter.querySelector("p");
+  const categoryFilterList = categoryFilter.querySelector("ul");
+  categoryFilter.querySelector("p").addEventListener(()=>{
+  
+  })
+
   document.querySelectorAll('.metaobject-tags a').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
