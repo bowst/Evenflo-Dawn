@@ -190,6 +190,10 @@
   <p>{{ category }}</p>
 {% endfor %}
     
+        {% for category in metaobject.category.value %}
+          <p>{{ category }}</p>
+        {% endfor %}
+
     {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values  %}
     {% for metaobject in grouped_metaobjects %}
       <p>{{ metaobject.category }}</p>
