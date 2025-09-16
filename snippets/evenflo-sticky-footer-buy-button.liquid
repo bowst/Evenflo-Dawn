@@ -13,31 +13,29 @@
 {{ 'evenflo-sticky-footer-buy-button.css' | asset_url | stylesheet_tag }}
 
 <div class="product-sticky-buttons" id="product-sticky-footer-buy-button" data-upgraded="true" >
-	{% assign current_price = product.price | divided_by: 100 %}
-	{% assign free_shipping_threshold = 150 %}
-
-	{% if current_price > free_shipping_threshold %}
-		<div id="free-shipping-notice">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Pro v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2025 Fonticons, Inc.--><path fill="#ffffff" d="M96 128C78.3 128 64 142.3 64 160L64 448C64 465.7 78.3 480 96 480L96.4 480C100.4 435.1 138.1 400 184 400C229.9 400 267.6 435.1 271.6 480L368.3 480C371.1 449.2 389.7 423 415.9 409.6L416 160C416 142.3 401.7 128 384 128L96 128zM448 352L448 400.4C450.6 400.2 453.3 400 456 400C501.9 400 539.6 435.1 543.6 480L544 480C561.7 480 576 465.7 576 448L576 352L448 352zM576 320L576 291.9C576 283.4 572.6 275.3 566.6 269.3L530.7 233.4C524.7 227.4 516.6 224 508.1 224L448 224L448 320L576 320zM99.3 512L96 512C60.7 512 32 483.3 32 448L32 160C32 124.7 60.7 96 96 96L384 96C419.3 96 448 124.7 448 160L448 192L508.1 192C525.1 192 541.4 198.7 553.4 210.7L589.3 246.6C601.3 258.6 608 274.9 608 291.9L608 448C608 483.3 579.3 512 544 512L540.7 512C530.3 548.9 496.3 576 456 576C415.7 576 381.8 548.9 371.3 512L268.7 512C258.3 548.9 224.3 576 184 576C143.7 576 109.8 548.9 99.3 512zM184 544C214.9 544 240 518.9 240 488C240 457.1 214.9 432 184 432C153.1 432 128 457.1 128 488C128 518.9 153.1 544 184 544zM456 544C486.9 544 512 518.9 512 488C512 457.1 486.9 432 456 432C425.1 432 400 457.1 400 488C400 518.9 425.1 544 456 544z"></path></svg>
-			{% comment %}
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACnklEQVR4nO2ZO2sVQRSAVyVq4b1XgooPRBG7KBZ2omArosn1Ioj+AlFSCabWIk1ESGORykep2Ili7aNIFAtNjFUSjQY0KiqKr09GzuIQZ2dnZzZ7jcwHC5eds+fMl5ndmSFJEolEIpFIAEAHMAC8ohpmgHPAsrJFztMeBsoWedMmkZmyRdpGFDERRfKZBmYXusgssE2u6TyRnFwvgSvA1qpFPgG7JPd226gU7MMHYH9VIl+BfZJ3M/DCFmzrQ/KnbRNwTW5/AfbMt8gP4JjkXAOM5z3gIqIAlgAXpUn9cVYnc3Ho4HPgnUNcr+SrA8MO8c4i2lbqrjTfBBYnOjm13gM7gC5gwhJ3RnItBW65SBQVUQAbgdcS0pfoOIxGl8RtAB4ZYi5ow3/VVcJHRAEcAH4C34DdekMeb4G9ErsCuKG1XVcC0jZYRMJXRCG7Z8UUsCq96YL6WhzRps8l4Lb6LffOFpUIFOkA7kvo5SIiyHCekmcWAcvld6+PRIiIAtgCfJZ+7fT5/A6mXwzgqHx2KxeZc5Ya8l1H1ALVlAXQm9+9yZ4VB5Mc1EhI7LN/YvdbQqrv/4sIUaQMooiBKFIGUcRAkSSPgW6gJlcPMDpPIpNAS6ulFt8xay7Hmk+AhmFlbYTIZIhMAp2GWp2y280UsZ6rhW7LNqFZskjLUutwRqoJ1djvULNmSV4vWaTmUasvPV/054yMLXmjQpGGYRqe/uv8bngwPez3WGIOScydJACtVtMS0/KqBZyUB0czXvaVwFOJOe7pkOY6IXnGLC/7uFctmXYPtQJNmad1GYlUYiQ99gaIqFoPJN+UvNhprZYmMexVC1ivyZhQxdeGSGi11uXUGgmqpf7fJ9NMHfg/ynVPpkPQSLSzViQSSRYevwBxgKuIzliF6gAAAABJRU5ErkJggg==" 
-			width="18px" 
-			height="18px"
-			>
-			{%  endcomment %}
-            <span class="desktop">Qualifies for Free Shipping</span>
-            <span class="mobile">Free Shipping on this item</span>
+	
+	<div id="free-shipping-notice-footer" class="free-shipping-notice hidden">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Pro v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2025 Fonticons, Inc.--><path fill="#ffffff" d="M96 128C78.3 128 64 142.3 64 160L64 448C64 465.7 78.3 480 96 480L96.4 480C100.4 435.1 138.1 400 184 400C229.9 400 267.6 435.1 271.6 480L368.3 480C371.1 449.2 389.7 423 415.9 409.6L416 160C416 142.3 401.7 128 384 128L96 128zM448 352L448 400.4C450.6 400.2 453.3 400 456 400C501.9 400 539.6 435.1 543.6 480L544 480C561.7 480 576 465.7 576 448L576 352L448 352zM576 320L576 291.9C576 283.4 572.6 275.3 566.6 269.3L530.7 233.4C524.7 227.4 516.6 224 508.1 224L448 224L448 320L576 320zM99.3 512L96 512C60.7 512 32 483.3 32 448L32 160C32 124.7 60.7 96 96 96L384 96C419.3 96 448 124.7 448 160L448 192L508.1 192C525.1 192 541.4 198.7 553.4 210.7L589.3 246.6C601.3 258.6 608 274.9 608 291.9L608 448C608 483.3 579.3 512 544 512L540.7 512C530.3 548.9 496.3 576 456 576C415.7 576 381.8 548.9 371.3 512L268.7 512C258.3 548.9 224.3 576 184 576C143.7 576 109.8 548.9 99.3 512zM184 544C214.9 544 240 518.9 240 488C240 457.1 214.9 432 184 432C153.1 432 128 457.1 128 488C128 518.9 153.1 544 184 544zM456 544C486.9 544 512 518.9 512 488C512 457.1 486.9 432 456 432C425.1 432 400 457.1 400 488C400 518.9 425.1 544 456 544z"></path></svg>
+		{% comment %}
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACnklEQVR4nO2ZO2sVQRSAVyVq4b1XgooPRBG7KBZ2omArosn1Ioj+AlFSCabWIk1ESGORykep2Ili7aNIFAtNjFUSjQY0KiqKr09GzuIQZ2dnZzZ7jcwHC5eds+fMl5ndmSFJEolEIpFIAEAHMAC8ohpmgHPAsrJFztMeBsoWedMmkZmyRdpGFDERRfKZBmYXusgssE2u6TyRnFwvgSvA1qpFPgG7JPd226gU7MMHYH9VIl+BfZJ3M/DCFmzrQ/KnbRNwTW5/AfbMt8gP4JjkXAOM5z3gIqIAlgAXpUn9cVYnc3Ho4HPgnUNcr+SrA8MO8c4i2lbqrjTfBBYnOjm13gM7gC5gwhJ3RnItBW65SBQVUQAbgdcS0pfoOIxGl8RtAB4ZYi5ow3/VVcJHRAEcAH4C34DdekMeb4G9ErsCuKG1XVcC0jZYRMJXRCG7Z8UUsCq96YL6WhzRps8l4Lb6LffOFpUIFOkA7kvo5SIiyHCekmcWAcvld6+PRIiIAtgCfJZ+7fT5/A6mXwzgqHx2KxeZc5Ya8l1H1ALVlAXQm9+9yZ4VB5Mc1EhI7LN/YvdbQqrv/4sIUaQMooiBKFIGUcRAkSSPgW6gJlcPMDpPIpNAS6ulFt8xay7Hmk+AhmFlbYTIZIhMAp2GWp2y280UsZ6rhW7LNqFZskjLUutwRqoJ1djvULNmSV4vWaTmUasvPV/054yMLXmjQpGGYRqe/uv8bngwPez3WGIOScydJACtVtMS0/KqBZyUB0czXvaVwFOJOe7pkOY6IXnGLC/7uFctmXYPtQJNmad1GYlUYiQ99gaIqFoPJN+UvNhprZYmMexVC1ivyZhQxdeGSGi11uXUGgmqpf7fJ9NMHfg/ynVPpkPQSLSzViQSSRYevwBxgKuIzliF6gAAAABJRU5ErkJggg==" 
+		width="18px" 
+		height="18px"
+		>
+		{%  endcomment %}
+		<span class="desktop">Qualifies for Free Shipping</span>
+		<span class="mobile">Free Shipping on this item</span>
 	</div>
-	{% endif %}
+	
 	<div class="page-width">
 	{%- if product != blank -%}
 		<div class="product-details">
+			<div class="product-image">
 			{% if product.featured_image %}
-				<img src="{{ product.featured_image | img_url: 'thumbnail' }}" alt="{{ product.title }}" height="80" width="auto">
+				<img src="{{ product.featured_image | img_url: 'thumbnail' }}" alt="{{ product.title }}" height="80" width="auto" class="">
 				{% else %}
 				<img src="{{ 'placeholder-image-url' | asset_url }}" alt="No Image Available" width="80" height="80">
 			{% endif %}
-
+			</div>
 
 			<div class="product-title">
 				{% comment %} <h1>{{ product.title | escape }}</h1> {% endcomment %}
@@ -52,118 +50,21 @@
 				
 				<div class="product-rating"></div>
 
-				<div class="price" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+				<div class="price-container .price" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
 					{%- render 'price',
 					product: product,
 					use_variant: true,
 					show_badges: true,
-					price_class: 'price--large'
+					price_class: 'price--large',
+					show_shipping: true
 					-%}
 				</div>
 			</div>
 		</div>
 
-		<product-form
-		class="product-form"
-		data-hide-errors="{{ gift_card_recipient_feature_active }}"
-		data-section-id="{{ section.id }}"
-		>
-		<div class="product-form__error-message-wrapper" role="alert" hidden>
-			<span class="svg-wrapper">
-			{{- 'icon-error.svg' | inline_asset_content -}}
-			</span>
-			<span class="product-form__error-message"></span>
-		</div>
-
-		{%- form 'product',
-			product,
-			id: product_form_id,
-			class: 'form',
-			novalidate: 'novalidate',
-			data-type: 'add-to-cart-form'
-		-%}
-			<input
-			type="hidden"
-			name="id"
-			value="{{ product.selected_or_first_available_variant.id }}"
-			{% if product.selected_or_first_available_variant.available == false
-				or quantity_rule_soldout
-				or product.selected_or_first_available_variant == null
-			%}
-				disabled
-			{% endif %}
-			class="product-variant-id"
-			>
-
-			<div class="product-form__buttons">
-			{%- liquid
-				assign check_against_inventory = true
-				if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
-				assign check_against_inventory = false
-				endif
-				if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
-				assign quantity_rule_soldout = true
-				endif
-			-%}
-			{% assign walmart_id = product.selected_or_first_available_variant.metafields.custom.walmart_id %}
-			{% assign amazon_link = product.metafields.custom.amazon_link %}
-			{%- assign target_link = product.selected_or_first_available_variant.metafields.custom.target_id -%}
-
-			{%- if walmart_id -%}
-				{% comment %}Walmart exclusive buy button{% endcomment %}
-				<div style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
-				{% render 'evenflo-walmart-buy-button', walmart_id: walmart_id %}
-			{%- elsif amazon_link -%}
-				{% comment %}Amazon exclusive buy button{% endcomment %}
-				{% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
-			{%- elsif target_link -%}
-				{% comment %}Target exclusive buy button{% endcomment %}
-				{% render 'evenflo-target-buy-button', target_link: target_link %}
-			{%- else -%}
-				{% comment %}Standard Shopify buy button{% endcomment %}
-				<button
-				id="ProductSubmitButton-{{ section_id }}"
-				type="submit"
-				name="add"
-				class="product-form__submit button {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-				{% if product.selected_or_first_available_variant.available == false
-					or quantity_rule_soldout
-					or product.selected_or_first_available_variant == null
-				%}
-					disabled
-				{% endif %}
-				>
-				<span>
-					{%- if product.selected_or_first_available_variant == null -%}
-					{{ 'products.product.unavailable' | t }}
-					{%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-					{{ 'products.product.sold_out' | t }}
-					{%- else -%}
-					{{ 'products.product.add_to_cart' | t }}
-					{%- endif -%}
-				</span>
-				{%- render 'loading-spinner' -%}
-				</button>
-
-				{% comment %}Display Babylist and Shop Pay buttons horizontally{% endcomment %}
-				
-			{%- endif -%}
-			</div>
-		{%- endform -%}
-		</product-form>
+		<button class="product-form__submit button button--primary" id="sticky-footer-button">Add to Cart</button>
 	{%- else -%}
-		<div class="product-form">
-			<div class="product-form__buttons form">
-				<button
-				type="submit"
-				name="add"
-				class="product-form__submit button button--full-width button--primary"
-				disabled
-				>
-				{{ 'products.product.sold_out' | t }}
-				</button>
-			</div>
-		</div>
+		<button class="product-form__submit button button--primary" id="sticky-footer-button" disabled="disabled">Sold Out</button>
 	{%- endif -%}
 	</div>
 </div>
