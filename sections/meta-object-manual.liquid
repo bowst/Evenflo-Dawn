@@ -337,7 +337,7 @@
 <script>
   const categoryFilter = document.querySelector(".category-selector");
   const categoryFilterInput = categoryFilter.querySelector("p");
-  const categoryFilterList = categoryFilter.querySelector("ul");
+  const categoryFilterList = categoryFilter.querySelectorAll("ul li");
 
   categoryFilterInput.addEventListener('click',()=>{
     alert("clicked")
