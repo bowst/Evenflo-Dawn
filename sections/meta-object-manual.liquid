@@ -184,16 +184,15 @@
 </div>
 
 <div class="category-selector-wrapper">
-  <label>Narrow Down Your Choices, Choose A Category</label>
+  {% comment %} <label>Narrow Down Your Choices, Choose A Category</label> {% endcomment %}
   <div class="category-selector">
-{% for category in shop.metafields.instruction_manuals.category.value %}
-  <p>{{ category }}</p>
-{% endfor %}
-    
-        {% for category in metaobjects.instruction_manuals.category.value %}
-          <p>{{ category }}</p> <p> LINE </p>
-        {% endfor %}
+  {% assign categories = "Car Seat,Strollers,Stroller Wagons,Stroller Accessories,Travel Systems,Baby Carriers,Door Jumpers,Playards & Portable Beds,High Chairs,Gates,Home Gear,Baby Proofing,Accessories,Exersaucer,Rollplay" | split: "," %}
 
+  <ul>
+    {% for category in categories %}
+      <li>{{ category | strip }}</li>
+    {% endfor %}
+  </ul>
 
   </div>
 </div>
