@@ -339,7 +339,8 @@
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
 
-  categoryFilterInput.addEventListener('click',()=>{
+  categoryFilterInput.addEventListener('click',(e)=>{
+    e.stopPropagation();
     categoryFilter.classList.add("category-selector-show");
   })
 
