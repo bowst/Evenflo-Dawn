@@ -193,12 +193,6 @@
       <p>{{ metaobject.category.value }}</p>
     {% endfor %}
 
-    <ul>
-      {% for item in instruction_manuals.category %}
-        <li>is  {{ item }}</li>
-      {% endfor %}
-    </ul>
-
     <form action="/collections" method="get" class="category-selector">
       <label for="category">Choose a category:</label>
       <select id="category" name="id" onchange="if(this.value) window.location.href=this.value">
