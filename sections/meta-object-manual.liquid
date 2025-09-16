@@ -247,7 +247,7 @@
   </p>
   <ul>
     {% for category in categories %}
-      <li id="{{ category | first | downcase | replace: " ", "_" }}">{{ category | strip }}</li>
+      <li id="{{ category | downcase | replace: " ", "_" }}">{{ category | strip }}</li>
     {% endfor %}
   </ul>
 
