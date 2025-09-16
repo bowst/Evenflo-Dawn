@@ -184,7 +184,7 @@
 </div>
 
 <div class="page-width">
-  <div class="metaobject-list">
+  <div class="metaobject-list zzz">
     {% paginate shop.metaobjects.instruction_manuals.values by 200 %}
       {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values | sort: 'product_title.value' %}
       {% assign current_letter = '' %}
