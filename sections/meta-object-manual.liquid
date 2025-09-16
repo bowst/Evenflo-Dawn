@@ -187,20 +187,20 @@
   <label>Narrow Down Your Choices, Choose A Category</label>
   <div class="category-selector">
     <form action="/collections" method="get" class="category-selector">
-  <label for="category">Choose a category:</label>
-  <select id="category" name="id" onchange="if(this.value) window.location.href=this.value">
-    {% for collection in collections %}
-      <option value="{{ collection.url }}">
-        {{ collection.title }}
-      </option>
-    {% endfor %}
-  </select>
-</form>
+      <label for="category">Choose a category:</label>
+      <select id="category" name="id" onchange="if(this.value) window.location.href=this.value">
+        {% for collection in collections %}
+          <option value="{{ collection.url }}">
+            {{ collection.title }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
   </div>
 </div>
 
 <div class="page-width">
-  <div class="metaobject-list zzz">
+  <div class="metaobject-list">
     {% paginate shop.metaobjects.instruction_manuals.values by 200 %}
       {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values | sort: 'product_title.value' %}
       {% assign current_letter = '' %}
