@@ -188,7 +188,7 @@
   <div class="category-selector">
 
     
-    {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.value %}
+    {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values  %}
     {% for metaobject in grouped_metaobjects %}
       <p>{{ metaobject.category.value }}</p>
     {% endfor %}
