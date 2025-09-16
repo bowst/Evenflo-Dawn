@@ -186,6 +186,10 @@
 <div class="category-selector-wrapper">
   <label>Narrow Down Your Choices, Choose A Category</label>
   <div class="category-selector">
+
+    {% for item in instruction_manuals.category %}
+      <p>{{ item }}</p>
+    {% endfor %}
     {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.category %}
     {{ shop.metaobjects.instruction_manuals.category }}
     {% for metaobject in shop.metaobjects.instruction_manuals.category.value %}
