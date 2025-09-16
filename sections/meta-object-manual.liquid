@@ -339,7 +339,7 @@ category-selector-show ul{
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelector("ul");
 
-  categoryFilterInput.addEventListener(()=>{
+  categoryFilterInput.addEventListener('click',()=>{
     alert("clicked")
     categoryFilter.classlist.add("category-selector-show");
   })
