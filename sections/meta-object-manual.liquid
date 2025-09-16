@@ -335,8 +335,9 @@
   const categoryFilter = document.querySelector("category-selector");
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelector("ul");
-  categoryFilter.querySelector("p").addEventListener(()=>{
-  
+
+  categoryFilterInput.addEventListener(()=>{
+    categoryFilter.classlist.add("category-selector-show")
   })
 
   document.querySelectorAll('.metaobject-tags a').forEach((anchor) => {
