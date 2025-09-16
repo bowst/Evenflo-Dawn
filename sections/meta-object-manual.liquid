@@ -354,8 +354,11 @@
     })
   })
   
-  document.addEventListener("click", ()=>{
-    categoryFilter.classList.add("category-selector-show");
+  document.addEventListener("click", (event)=>{
+    // agar click categoryFilter ke andar nahi hua
+    if (!categoryFilter.contains(event.target)) {
+      categoryFilter.classList.remove("category-selector-show"); // hide
+    }
   })
 
   document.querySelectorAll('.metaobject-tags a').forEach((anchor) => {
