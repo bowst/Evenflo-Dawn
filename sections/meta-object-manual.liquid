@@ -352,6 +352,7 @@
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
   const metaobjectListGroup = document.querySelectorAll(".metaobject-list-group"); 
 
+
   categoryFilterInput.addEventListener('click',(e)=>{
     e.stopPropagation();
     categoryFilter.classList.add("category-selector-show");
@@ -365,7 +366,13 @@
       categoryFilterInput.textContent = list.textContent;
       categoryFilter.classList.remove("category-selector-show");
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
-      console.log();
+      metaobjectListGroup.querySelectorAll("ul li").forEach((class)=>{
+        if(class.contains(categoryFilterListValue)){
+          class.classList.add("list-show");
+        }else{
+          class.classList.add("list-hidden");
+        }
+      })
     })
   })
   
