@@ -406,7 +406,6 @@
       categoryFilter.classList.remove("category-selector-show");
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
       document.querySelectorAll(".metaobject-list ul li").forEach((li)=>{
-        debugger;
         if (li.classList.contains(categoryFilterListValue)) {
           li.classList.add("metaobject-list-show");
           li.classList.remove("metaobject-list-hidden");
