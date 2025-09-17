@@ -405,7 +405,7 @@
       categoryFilterInput.querySelector(".category-value").textContent = list.textContent;
       categoryFilter.classList.remove("category-selector-show");
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
-      console.log("data-->",{categoryFilterListValue}, {categoryFilterList} )
+      console.log("data-->",{categoryFilterListValue}, {categoryFilterList}, list.textContent )
       document.querySelectorAll(".metaobject-list ul li").forEach((li)=>{
         if (li.classList.contains(categoryFilterListValue)) {
           li.classList.add("metaobject-list-show");
