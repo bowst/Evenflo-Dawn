@@ -189,6 +189,9 @@
 .metaobject-list-show{
   display:block;
 }
+.metaobject-list-group:has(.not-exists) {
+    display: none;
+}
   @media screen and (min-width: 990px) {
     .page-width:has(.metaobject-list) {
       max-width: 100rem;
