@@ -350,8 +350,7 @@
   const categoryFilter = document.querySelector(".category-selector");
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
-
-
+  const metaobjectListGroup = document.querySelectorAll(".metaobject-list-group"); 
 
   categoryFilterInput.addEventListener('click',(e)=>{
     e.stopPropagation();
@@ -375,7 +374,6 @@
     }
   })
 
-  const metaobjectListGroup = document.querySelectorAll(".metaobject-list-group"); 
 
   metaobjectListGroup.forEach((group) => {
     const ul = group.querySelector("ul");
