@@ -365,6 +365,7 @@
 
   categoryFilterList.forEach((list)=>{
     list.addEventListener('click', (e)=>{
+      debugger;
       e.stopPropagation();
       categoryFilterList.forEach((el) => el.classList.remove('active'));
       list.classList.add("active");
