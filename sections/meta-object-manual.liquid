@@ -271,7 +271,7 @@
             <ul>
               {% assign current_letter = first_letter %}
         {% endif %}
-        <li class="{% if category_handle %}list-show{% else %}list-hidden{% endif %} ">
+        <li class="{% if category_handle != '' %}list-show{% else %}list-hidden{% endif %} ">
           <div class="manual-card">
             {% if metaobject.product_image.value %}
               <img
