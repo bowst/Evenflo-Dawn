@@ -374,6 +374,9 @@
 </div>
 
 <script>
+  {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values | sort: 'product_title.value' %}
+  const metaobjectArr = {{ grouped_metaobjects  }};
+  console.log(metaobjectArr)
   const categoryFilter = document.querySelector(".category-selector");
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
@@ -403,7 +406,6 @@
       categoryFilterInput.querySelector(".category-value").textContent = list.textContent;
       categoryFilter.classList.remove("category-selector-show");
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
-      console.log("data-->",{categoryFilterListValue}, {categoryFilterList}, list.textContent )
       document.querySelectorAll(".metaobject-list ul li").forEach((li)=>{
         if (li.classList.contains(categoryFilterListValue)) {
           li.classList.add("metaobject-list-show");
