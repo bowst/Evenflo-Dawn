@@ -368,11 +368,11 @@
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
       document.querySelectorAll(".metaobject-list ul li").forEach((li)=>{
         if (li.classList.contains(categoryFilterListValue)) {
-          li.classList.add("list-show");
-          li.classList.remove("list-hidden");
+          li.classList.add("metaobject-list-show");
+          li.classList.remove("metaobject-list-hidden");
         } else {
-          li.classList.add("list-hidden");
-          li.classList.remove("list-show");
+          li.classList.add("metaobject-list-hidden");
+          li.classList.remove("metaobject-list-show");
         }
       })
     })
