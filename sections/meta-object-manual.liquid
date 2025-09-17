@@ -375,6 +375,7 @@
         if (li.classList.contains(categoryFilterListValue)) {
           li.classList.add("metaobject-list-show");
           li.classList.remove("metaobject-list-hidden");
+          li.parentElement.classList.add(categoryFilterListValue);
         } else {
           li.classList.add("metaobject-list-hidden");
           li.classList.remove("metaobject-list-show");
