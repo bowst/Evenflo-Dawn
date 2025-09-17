@@ -364,7 +364,8 @@
       list.classList.add("active");
       categoryFilterInput.textContent = list.textContent;
       categoryFilter.classList.remove("category-selector-show");
-      console.log(list.textContent.toLowerCase().replace(/ /g, "_"));
+      const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
+      console.log();
     })
   })
   
