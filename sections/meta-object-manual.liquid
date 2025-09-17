@@ -416,6 +416,8 @@
           li.classList.remove("metaobject-list-show");
           if(li.parentElement.classList.contains(categoryFilterListValue)){
             li.parentElement.classList.remove("not-exists");
+          }else if(li.parentElement.classList.contains(categoryFilterListValue) !== categoryFilterListValue){
+            console.log("NOt Found Category")
           }else{
             li.parentElement.classList.add("not-exists");
           }
