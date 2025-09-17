@@ -373,6 +373,7 @@
     document.querySelectorAll(".metaobject-list ul li").forEach((li)=>{
       li.classList.remove("metaobject-list-hidden");
       li.classList.remove("metaobject-list-show");
+      li.parentElement.classList.remove("not-exists");
     }
   })
 
