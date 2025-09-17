@@ -413,7 +413,7 @@
         } else {
           li.classList.add("metaobject-list-hidden");
           li.classList.remove("metaobject-list-show");
-          if(li.parentElement.classList.includes(categoryFilterListValue)){
+          if(li.parentElement.classList.contains(categoryFilterListValue)){
             li.parentElement.classList.remove("not-exists");
           }else{
             li.parentElement.classList.add("not-exists");
