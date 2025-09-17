@@ -367,7 +367,7 @@
       categoryFilter.classList.remove("category-selector-show");
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
       metaobjectListGroup.querySelectorAll("ul li").forEach((li)=>{
-        if (liValue.includes(categoryFilterListValue)) {
+        if (li.classList.includes(categoryFilterListValue)) {
           li.classList.add("list-show");
           li.classList.remove("list-hidden");
         } else {
