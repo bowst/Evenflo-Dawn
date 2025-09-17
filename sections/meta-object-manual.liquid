@@ -351,6 +351,8 @@
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
 
+
+
   categoryFilterInput.addEventListener('click',(e)=>{
     e.stopPropagation();
     categoryFilter.classList.add("category-selector-show");
@@ -372,6 +374,16 @@
       categoryFilter.classList.remove("category-selector-show"); // hide
     }
   })
+
+  const metaobjectListGroup = document.querySelectorAll(".metaobject-list-group"); 
+
+  metaobjectListGroup.forEach((group) => {
+    const ul = group.querySelector("ul");
+
+    if (ul && ul.innerHTML.trim() === "") {
+      group.classList.add("metaobject-list-group-hidden");
+    }
+  });
 
   document.querySelectorAll('.metaobject-tags a').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
