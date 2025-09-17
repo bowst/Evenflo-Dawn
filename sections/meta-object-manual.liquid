@@ -374,7 +374,6 @@
 </div>
 
 <script>
-  {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values | sort: 'product_title.value' %}
   const metaobjectArr = {{ grouped_metaobjects  }};
   console.log(metaobjectArr)
   const categoryFilter = document.querySelector(".category-selector");
