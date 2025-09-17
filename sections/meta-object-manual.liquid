@@ -134,12 +134,14 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
   }
 
 .category-selector {
     max-width: 270px;
     width: 100%;
     position: relative;
+    flex: 1 0 270px;
 }
 
 .category-selector p {
@@ -209,6 +211,9 @@
     }
   }
   @media screen and (max-width: 767px) {
+    .category-selector {
+      max-width: 100%;
+    }
     .metaobject-list-group ul {
       grid-template-columns: 1fr;
     }
@@ -368,7 +373,6 @@
 
   categoryFilterList.forEach((list)=>{
     list.addEventListener('click', (e)=>{
-      debugger;
       e.stopPropagation();
       categoryFilterList.forEach((el) => el.classList.remove('active'));
       list.classList.add("active");
