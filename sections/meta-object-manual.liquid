@@ -376,11 +376,10 @@
           li.classList.add("metaobject-list-show");
           li.classList.remove("metaobject-list-hidden");
           li.parentElement.classList.add(categoryFilterListValue);
-          if(li.classList.contains("metaobject-list-show") != "metaobject-list-show"){
-            li.parentElement.parentElement.classList.add("metaobject-list-group-hidden");
-          }else{
-            li.parentElement.parentElement.classList.add("metaobject-list-group-hidden");
-          }
+          li.parentElement.parentElement.classList.toggle(
+            "metaobject-list-group-hidden",
+            !li.classList.contains("metaobject-list-show")
+          );
         } else {
           li.classList.add("metaobject-list-hidden");
           li.classList.remove("metaobject-list-show");
