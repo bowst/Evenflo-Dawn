@@ -377,15 +377,14 @@
           li.classList.add("metaobject-list-show");
           li.classList.remove("metaobject-list-hidden");
           li.parentElement.classList.add(categoryFilterListValue);
-          {% comment %} if (!li.classList.contains("metaobject-list-show")) {
-            li.parentElement.parentElement.classList.add("metaobject-list-group-hidden");
-          } else {
-            li.parentElement.parentElement.classList.remove("metaobject-list-group-hidden");
-          } {% endcomment %}
         } else {
           li.classList.add("metaobject-list-hidden");
           li.classList.remove("metaobject-list-show");
-          li.parentElement.classList.add("not-exists");
+          if(li.parentElement.classList.contains(categoryFilterListValue)){
+            li.parentElement.classList.remove("not-exists");
+          }else{
+            li.parentElement.classList.add("not-exists");
+          }
         }
       })
     })
