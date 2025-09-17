@@ -376,6 +376,7 @@
           li.classList.add("metaobject-list-show");
           li.classList.remove("metaobject-list-hidden");
           li.parentElement.classList.add(categoryFilterListValue);
+          li.parentElement.parentElement.classList.remove("metaobject-list-group-hidden");
         } else {
           li.classList.add("metaobject-list-hidden");
           li.classList.remove("metaobject-list-show");
