@@ -267,7 +267,7 @@
             </ul>
             </div>
           {% endif %}
-          <div class="metaobject-list-group {% if category_handle == '' %}metaobject-list-group-hidden{% endif %}" id="metaobject-list-group-{{ first_letter }}">
+          <div class="metaobject-list-group {{category_handle}} {% if category_handle == '' %}metaobject-list-group-hidden{% endif %}" id="metaobject-list-group-{{ first_letter }}">
             <h2>{{ first_letter }}</h2>
             <ul>
               {% assign current_letter = first_letter %}
