@@ -366,11 +366,13 @@
       categoryFilterInput.textContent = list.textContent;
       categoryFilter.classList.remove("category-selector-show");
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
-      metaobjectListGroup.querySelectorAll("ul li").forEach((class)=>{
-        if(class.contains(categoryFilterListValue)){
-          class.classList.add("list-show");
-        }else{
-          class.classList.add("list-hidden");
+      metaobjectListGroup.querySelectorAll("ul li").forEach((li)=>{
+        if (liValue.includes(categoryFilterListValue)) {
+          li.classList.add("list-show");
+          li.classList.remove("list-hidden");
+        } else {
+          li.classList.add("list-hidden");
+          li.classList.remove("list-show");
         }
       })
     })
