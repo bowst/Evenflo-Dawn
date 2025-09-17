@@ -305,7 +305,6 @@
             <ul>
               {% assign current_letter = first_letter %}
         {% endif %}
-        {% comment %} {% if category_handle != '' %} {% endcomment %}
           <li class="{% if category_handle != '' %}{{category_handle}} list-show{% else %}list-hidden{% endif %} ">
             <div class="manual-card">
               {% if metaobject.product_image.value %}
@@ -365,7 +364,6 @@
               </div>
             </div>
           </li>
-        {% comment %} {% endif %} {% endcomment %}
       {% endfor %}
       {% if current_letter != '' %}
         </ul>
