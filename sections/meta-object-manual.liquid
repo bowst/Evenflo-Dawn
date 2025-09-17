@@ -405,7 +405,6 @@
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
       console.log("data-->",{categoryFilterListValue}, {categoryFilterList}, list.textContent )
       document.querySelectorAll(".metaobject-list ul li").forEach((li)=>{
-        console.log("li here", li.parentElement)
         if (li.classList.contains(categoryFilterListValue)) {
           li.classList.add("metaobject-list-show");
           li.classList.remove("metaobject-list-hidden");
@@ -417,7 +416,6 @@
             li.parentElement.classList.remove("not-exists");
           }else{
             li.parentElement.classList.add("not-exists");
-            console.log("travel_systems",categoryFilterListValue, li.parentElement.classList.contains(categoryFilterListValue))
           }
         }
       })
