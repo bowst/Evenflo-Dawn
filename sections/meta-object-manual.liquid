@@ -272,63 +272,63 @@
               {% assign current_letter = first_letter %}
         {% endif %}
         {% if category_handle != '' %}
-        <li class="{% if category_handle != '' %}{{category_handle}} list-show{% else %}list-hidden{% endif %} ">
-          <div class="manual-card">
-            {% if metaobject.product_image.value %}
-              <img
-                src="{{ metaobject.product_image.value | image_url: width: 240 }}"
-                alt="{{ product_title }}"
-                class="manual-card-image"
-                loading="lazy"
-              >
-            {% endif %}
+          <li class="{% if category_handle != '' %}{{category_handle}} list-show{% else %}list-hidden{% endif %} ">
+            <div class="manual-card">
+              {% if metaobject.product_image.value %}
+                <img
+                  src="{{ metaobject.product_image.value | image_url: width: 240 }}"
+                  alt="{{ product_title }}"
+                  class="manual-card-image"
+                  loading="lazy"
+                >
+              {% endif %}
 
-            <div class="manual-card-content">
-              <h3 class="manual-card-title">{{ product_title }}</h3>
+              <div class="manual-card-content">
+                <h3 class="manual-card-title">{{ product_title }}</h3>
 
-              <div class="manual-card-actions">
-                {% if metaobject.linked_product.value %}
-                  <a href="{{ metaobject.linked_product.value.url }}" class="manual-card-link view-product">
-                    View Product
-                  </a>
-                {% endif %}
+                <div class="manual-card-actions">
+                  {% if metaobject.linked_product.value %}
+                    <a href="{{ metaobject.linked_product.value.url }}" class="manual-card-link view-product">
+                      View Product
+                    </a>
+                  {% endif %}
 
-                {% if metaobject.english_manual.value %}
-                  <a
-                    href="{{ metaobject.english_manual.value.url }}"
-                    class="manual-card-link download"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    English
-                  </a>
-                {% endif %}
+                  {% if metaobject.english_manual.value %}
+                    <a
+                      href="{{ metaobject.english_manual.value.url }}"
+                      class="manual-card-link download"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      English
+                    </a>
+                  {% endif %}
 
-                {% if metaobject.spanish_manual.value %}
-                  <a
-                    href="{{ metaobject.spanish_manual.value.url }}"
-                    class="manual-card-link download"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Spanish
-                  </a>
-                {% endif %}
+                  {% if metaobject.spanish_manual.value %}
+                    <a
+                      href="{{ metaobject.spanish_manual.value.url }}"
+                      class="manual-card-link download"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Spanish
+                    </a>
+                  {% endif %}
 
-                {% if metaobject.french_manual.value %}
-                  <a
-                    href="{{ metaobject.french_manual.value.url }}"
-                    class="manual-card-link download"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    French
-                  </a>
-                {% endif %}
+                  {% if metaobject.french_manual.value %}
+                    <a
+                      href="{{ metaobject.french_manual.value.url }}"
+                      class="manual-card-link download"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      French
+                    </a>
+                  {% endif %}
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
         {% endif %}
       {% endfor %}
       {% if current_letter != '' %}
