@@ -259,7 +259,7 @@
       {% assign current_letter = '' %}
       {% for metaobject in grouped_metaobjects %}
         {% assign product_title = metaobject.product_title.value | default: metaobject.name %}
-        {% assign category_handle = metaobject.category.value | first | downcase | replace: " ", "_" %}
+        {% assign category_handle = metaobject.category.value | downcase | replace: " ", "_" %}
         {% assign first_letter = product_title | slice: 0, 1 | upcase %}
 
         {% if first_letter != current_letter %}
