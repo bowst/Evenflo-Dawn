@@ -372,7 +372,7 @@
       e.stopPropagation();
       categoryFilterList.forEach((el) => el.classList.remove('active'));
       list.classList.add("active");
-      categoryFilterInput.textContent = list.textContent;
+      categoryFilterInput.querySelector(".category-value").textContent = list.textContent;
       categoryFilter.classList.remove("category-selector-show");
       const categoryFilterListValue = list.textContent.toLowerCase().replace(/ /g, "_");
       document.querySelectorAll(".metaobject-list ul li").forEach((li)=>{
