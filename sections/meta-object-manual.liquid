@@ -289,12 +289,9 @@
   <div class="metaobject-list">
     {% paginate shop.metaobjects.instruction_manuals.values by 400 %}
       {% assign grouped_metaobjects = shop.metaobjects.instruction_manuals.values | sort: 'product_title.value' %}
-      {% assign custom_title = '' %}
       {% assign current_letter = '' %}
       {% for metaobject in grouped_metaobjects %}
         {% assign product_title = metaobject.product_title.value | default: metaobject.name %}
-        {% assign custom_title  = product_title %}
-
         {% assign category_handle = metaobject.category.value | first | downcase | replace: " ", "_" %}
         {% assign first_letter = product_title | slice: 0, 1 | upcase %}
 
@@ -377,8 +374,6 @@
 </div>
 
 <script>
-  const metaobjectArr = {{ custom_title }};
-  console.log(metaobjectArr)
   const categoryFilter = document.querySelector(".category-selector");
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
