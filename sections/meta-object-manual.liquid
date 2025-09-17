@@ -271,7 +271,6 @@
             <ul>
               {% assign current_letter = first_letter %}
         {% endif %}
-        {% if category_handle %}
         <li>
           <div class="manual-card">
             {% if metaobject.product_image.value %}
@@ -329,7 +328,6 @@
             </div>
           </div>
         </li>
-        {% endif %}
       {% endfor %}
       {% if current_letter != '' %}
         </ul>
