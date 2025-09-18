@@ -374,6 +374,12 @@
 </div>
 
 <script>
+  {% for metaobject in grouped_metaobjects %}
+    console.log({{ metaobject }})
+  {% endfor %}
+
+
+
   const categoryFilter = document.querySelector(".category-selector");
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
