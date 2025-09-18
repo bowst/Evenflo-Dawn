@@ -374,7 +374,7 @@
 </div>
 
 <script>
-  let productArr = [
+    let productArr = [
     {% for metaobject in grouped_metaobjects %}
       {
         product_title: "{{ metaobject.product_title.value | escape }}",
@@ -384,13 +384,11 @@
         productSpanishUrl: "{{ metaobject.spanish_manual.value.url }}",
         productFrenchUrl: "{{ metaobject.french_manual.value.url }}",
         productCategory: "{{ metaobject.category.value }}"
-        
-        {% unless forloop.last %},{% endunless %}
-      
-      }
+      }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ];
-   console.log(productTitles);
+
+  console.log(productArr);
 
 
 
