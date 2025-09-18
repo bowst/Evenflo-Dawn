@@ -374,24 +374,6 @@
 </div>
 
 <script>
-    let productArr = [
-    {% for metaobject in grouped_metaobjects %}
-      {
-        product_title: "{{ metaobject.product_title.value | escape }}",
-        product_image: "{{ metaobject.product_image.value | image_url: width: 240 }}",
-        productLink: "{{ metaobject.linked_product.value.url }}",
-        productEnglishUrl: "{{ metaobject.english_manual.value.url }}",
-        productSpanishUrl: "{{ metaobject.spanish_manual.value.url }}",
-        productFrenchUrl: "{{ metaobject.french_manual.value.url }}",
-        productCategory: "{{ metaobject.category.value }}"
-      }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
-
-  console.log(productArr);
-
-
-
   const categoryFilter = document.querySelector(".category-selector");
   const categoryFilterInput = categoryFilter.querySelector("p");
   const categoryFilterList = categoryFilter.querySelectorAll("ul li");
