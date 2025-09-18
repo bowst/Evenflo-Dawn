@@ -375,7 +375,7 @@
 
 <script>
   {% for metaobject in grouped_metaobjects %}
-    console.log({{ metaobject }})
+    console.log({{ metaobject.product_title.value }})
   {% endfor %}
 
 
