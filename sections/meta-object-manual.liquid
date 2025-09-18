@@ -383,7 +383,7 @@
         productEnglishUrl: "{{ metaobject.english_manual.value.url }}",
         productSpanishUrl: "{{ metaobject.spanish_manual.value.url }}",
         productFrenchUrl: "{{ metaobject.french_manual.value.url }}",
-
+        productCategory: "{{ metaobject.category.value }}"
         
         {% unless forloop.last %},{% endunless %}
       
