@@ -374,9 +374,12 @@
 </div>
 
 <script>
-  {% for metaobject in grouped_metaobjects %}
-    console.log({{ metaobject.product_title.value }})
-  {% endfor %}
+  let productTitles = [
+    {% for metaobject in grouped_metaobjects %}
+      "{{ metaobject.product_title.value | escape }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+   console.log(productTitles);
 
 
 
