@@ -166,12 +166,13 @@
         "column_LrFFAz",
         "column_GBjFUi"
       ],
+      "disabled": true,
       "name": "Evenflo Multicolumn",
       "settings": {
         "title": "",
         "heading_size": "h0",
         "column_style": "classic",
-        "container_size": "full_width",
+        "container_size": "half",
         "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "adapt",
@@ -185,6 +186,30 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "rich_text_RjpV8x": {
+      "type": "rich-text",
+      "blocks": {
+        "text_VCMcqr": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.description }}"
+          }
+        }
+      },
+      "block_order": [
+        "text_VCMcqr"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
@@ -323,6 +348,7 @@
     "evenflo_product_video_Fx4PDU",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
     "evenflo_multicolumn_mR7tN6",
+    "rich_text_RjpV8x",
     "46391549-e9d3-4404-8c19-b08b5eab6ca7",
     "related-products",
     "45849377-4cee-48de-b8f8-52fd115e29b4",
