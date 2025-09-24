@@ -22,6 +22,8 @@
   <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+  <script src="{{ 'evenflo-product-card-variant-toggle.js' | asset_url }}" defer="defer"></script>
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -165,7 +167,7 @@
                     style="--animation-order: {{ forloop.index }};"
                   {% endif %}
                 >
-                  {% render 'card-product',
+                  {% render 'evenflo-card-product',
                     card_product: product,
                     media_aspect_ratio: section.settings.image_ratio,
                     image_shape: section.settings.image_shape,
