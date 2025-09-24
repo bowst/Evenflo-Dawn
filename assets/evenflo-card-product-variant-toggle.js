@@ -9,6 +9,8 @@ if(document.querySelectorAll('.color-swatches a')){
     
     if( ! targetSwatch.classList.contains('active') ){
       var productCard = targetSwatch.closest('.product-card-wrapper');
+      console.log(productCard);
+
       var variantImages = productCard.querySelectorAll('.variant-images .img');
       var activeSwatch = productCard.querySelector('.color-swatches a.active');
       var activeImage = productCard.querySelector( activeSwatch.getAttribute('href') );
