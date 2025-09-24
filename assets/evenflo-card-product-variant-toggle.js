@@ -14,7 +14,7 @@ if(document.querySelectorAll('.color-swatches a')){
       var activeSwatch = productCard.querySelector('.color-swatches a.active');
       var activeImage = productCard.querySelector( activeSwatch.getAttribute('href') );
       var targetImage = productCard.querySelector( targetSwatch.getAttribute('href') );
-      console.log(activeSwatch);
+      console.log(activeImage);
 
       activeImage.classList.remove('active');
       activeSwatch.classList.remove('active');
