@@ -1,9 +1,8 @@
-
 if(document.querySelectorAll('.color-swatches a')){
   var swatchLinks = document.querySelectorAll('.color-swatches a');
 
   function toggleSwatches(e){
-    console.log('toggle');
+
     e.preventDefault();
     var targetSwatch = e.currentTarget;
     
@@ -13,12 +12,15 @@ if(document.querySelectorAll('.color-swatches a')){
       var activeSwatch = productCard.querySelector('.color-swatches a.active');
       var activeImage = productCard.querySelector( activeSwatch.getAttribute('href') );
       var targetImage = productCard.querySelector( targetSwatch.getAttribute('href') );
+      var variantTitle = productCard.querySelector( '.variant-title' );
 
       activeImage.classList.remove('active');
       activeSwatch.classList.remove('active');
 
       targetImage.classList.add('active');
       targetSwatch.classList.add('active');
+
+      variantTitle.innerHTML = targetSwatch.getAttribute('title');
     }
   }
 

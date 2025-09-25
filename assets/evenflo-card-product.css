@@ -88,12 +88,22 @@
 	min-height: 2em;
 }
 
+.card-wrapper .card__content {
+	padding: 8px;
+}
+
+.card-wrapper .card__content .card__information {
+	padding: 0;
+}
+
 .card-wrapper .card-information .price {
 	font-size: 18px;
 }
 
 .card-wrapper .card-information .price__sale .price-item--regular{
 	margin-right: .25em;
+	color: #000;
+	font-size: 1.5rem;
 }
 
 .card-wrapper .card-information .price__sale .price-item--sale {
