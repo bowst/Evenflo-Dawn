@@ -1,6 +1,8 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-product-card-carousel.css' | asset_url | stylesheet_tag }}
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -38,7 +40,7 @@
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
           <li class="grid__item">
-            {% render 'card-product',
+            {% render 'evenflo-card-product',
               card_product: recommendation,
               media_aspect_ratio: section.settings.image_ratio,
               image_shape: section.settings.image_shape,
@@ -58,7 +60,7 @@
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
-
+<script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
 {% schema %}
 {
   "name": "t:sections.related-products.name",
