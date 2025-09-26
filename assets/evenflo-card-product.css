@@ -13,6 +13,28 @@
 	max-height: 32px;
 }
 
+.card-wrapper .color-swatches a {
+	position: relative;
+	display: inline-block;
+}
+
+.card-wrapper .color-swatches a.out-of-stock {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.card-wrapper .color-swatches a.out-of-stock::after {
+	content: '';
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 1px;
+    height: 109%;
+    background-color: #000;
+    transform: rotate(45deg);
+    transform-origin: top left;
+}
+
 .card-wrapper {
 	position: relative;
 }
@@ -164,4 +186,11 @@
 	left: 0;
 	right: 0;
 	line-height: 1;
+}
+
+@media (max-width: 768px) {
+	.card-wrapper sc-add-to-compare {
+		font-size: 16px;
+		bottom: -28px
+	}
 }
