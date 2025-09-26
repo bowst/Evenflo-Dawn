@@ -1,5 +1,5 @@
 function initToggleSwatches(){
-  console.log('swatches', document.querySelectorAll('.card__heading'));
+  console.log('swatches', document.querySelectorAll('.card__headingproduct-highlights'));
 
   if(document.querySelectorAll('.color-swatches a')){
     var swatchLinks = document.querySelectorAll('.color-swatches a');
