@@ -4,7 +4,6 @@ if(document.querySelectorAll('.color-swatches a')){
   function toggleSwatches(e){
     e.preventDefault();
     var targetSwatch = e.currentTarget;
-    console.log('toggleSwatches');
     
     if( ! targetSwatch.classList.contains('active') ){
       var productCard = targetSwatch.closest('.product-card-wrapper');
@@ -26,5 +25,6 @@ if(document.querySelectorAll('.color-swatches a')){
 
   swatchLinks.forEach((swatch) => {
     swatch.addEventListener('click', toggleSwatches);
+    console.log('swatchLink')
   });
 }
