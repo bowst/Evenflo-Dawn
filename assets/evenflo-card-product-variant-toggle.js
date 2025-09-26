@@ -1,15 +1,6 @@
-// Use event delegation to handle dynamically loaded swatches
-document.addEventListener('DOMContentLoaded', function() {
-  initializeSwatchToggles();
-});
-
-// Also run when the page is fully loaded (for dynamic content)
-document.addEventListener('load', function() {
-  initializeSwatchToggles();
-});
-
-function initializeSwatchToggles() {
-  // Use event delegation on the document to catch clicks on swatches
+// Initialize immediately and set up event delegation
+(function() {
+  // Set up event delegation on document - this will catch all clicks
   document.addEventListener('click', function(e) {
     // Check if the clicked element is a color swatch link
     if (e.target.closest('.color-swatches a')) {
@@ -17,7 +8,40 @@ function initializeSwatchToggles() {
       toggleSwatches(e, targetSwatch);
     }
   });
-}
+
+  // Also watch for product-recommendations component specifically
+  document.addEventListener('DOMContentLoaded', function() {
+    watchForProductRecommendations();
+  });
+
+  function watchForProductRecommendations() {
+    // Look for product-recommendations elements
+    const productRecommendations = document.querySelectorAll('product-recommendations');
+    
+    productRecommendations.forEach(function(component) {
+      // Watch for changes inside each product-recommendations component
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach(function(node) {
+              if (node.nodeType === 1) { // Element node
+                if (node.querySelector && node.querySelector('.color-swatches a')) {
+                  console.log('Product recommendations with swatches loaded');
+                }
+              }
+            });
+          }
+        });
+      });
+
+      // Start observing changes within this product-recommendations component
+      observer.observe(component, {
+        childList: true,
+        subtree: true
+      });
+    });
+  }
+})();
 
 function toggleSwatches(e, targetSwatch) {
   e.preventDefault();
