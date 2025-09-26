@@ -250,13 +250,15 @@ Determine if the product is from support product collection
 							sizes: sizes,
 							class: 'swatch'
 						}}
-					{%- elsif product_option_value.swatch.color -%}
+						{%- elsif product_option_value.swatch.color -%}
 							{%-assign swatch_value = 'rgb(' | append: product_option_value.swatch.color.rgb | append: ')' -%}
 						<span 
 							class="swatch color-swatch" 
 							style="background-color: {{swatch_value}};"
 							title="{{ product_option_value }}"
 						></span>
+						{%- else -%}
+						<span class="swatch swatch--unavailable"></span>
 						{%- endif -%}
 						</a>
 				
