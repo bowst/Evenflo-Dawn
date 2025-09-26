@@ -50,9 +50,9 @@
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
-              show_swatches: section.settings.show_swatches,
+              show_swatches: false,
               skip_styles: skip_card_product_styles
-            %}
+            %}{%  comment %} show_swatches: section.settings.show_swatches {% endcomment %}
           </li>
           {%- assign skip_card_product_styles = true -%}
         {% endfor %}
@@ -221,13 +221,6 @@
     {
       "type": "header",
       "content": "t:sections.related-products.settings.header_mobile.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_swatches",
-      "default": false,
-      "label": "Show swatches",
-      "info": "Display swatches on products in this section (if available)"
     },
     {
       "type": "select",

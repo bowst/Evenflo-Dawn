@@ -47,9 +47,9 @@
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
-              show_swatches: section.settings.show_swatches,
+              show_swatches: false,
               skip_styles: skip_card_product_styles
-            %}
+            %}{%  comment %} show_swatches: section.settings.show_swatches {% endcomment %}
           </li>
           {%- assign skip_card_product_styles = true -%}
         {% endfor %}
@@ -61,6 +61,7 @@
   {%- endif -%}
 </div>
 <script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
+
 {% schema %}
 {
   "name": "t:sections.related-products.name",
@@ -213,13 +214,6 @@
       "default": false,
       "label": "t:sections.related-products.settings.show_rating.label",
       "info": "t:sections.related-products.settings.show_rating.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_swatches",
-      "default": false,
-      "label": "Show swatches",
-      "info": "Display swatches on products in this section (if available)"
     },
     {
       "type": "header",
