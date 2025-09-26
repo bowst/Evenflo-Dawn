@@ -2,7 +2,7 @@ if(document.querySelectorAll('.color-swatches a')){
   var swatchLinks = document.querySelectorAll('.color-swatches a');
 
   function toggleSwatches(e){
-
+    console.log('clicky');
     e.preventDefault();
     var targetSwatch = e.currentTarget;
     
