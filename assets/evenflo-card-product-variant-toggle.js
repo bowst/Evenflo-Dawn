@@ -1,4 +1,4 @@
-console.log('SWATCHES: ' + document.querySelectorAll('.color-swatches a'));
+console.log('SWATCHES: ', document.querySelectorAll('.color-swatches a'));
 if(document.querySelectorAll('.color-swatches a')){
   var swatchLinks = document.querySelectorAll('.color-swatches a');
 
