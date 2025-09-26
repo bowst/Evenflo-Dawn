@@ -1,61 +1,55 @@
-// Debug version - let's see what's happening
-console.log('Evenflo swatch toggle script loaded');
-
-// Set up event delegation immediately
-document.addEventListener('click', function(e) {
-  console.log('Click detected on:', e.target);
-  
-  // Check if the clicked element is a color swatch link
-  var swatchLink = e.target.closest('.color-swatches a');
-  if (swatchLink) {
-    console.log('Swatch link clicked:', swatchLink);
-    toggleSwatches(e, swatchLink);
-  } else {
-    // Let's also check if it's any link inside color-swatches
-    var colorSwatches = e.target.closest('.color-swatches');
-    if (colorSwatches) {
-      console.log('Click inside color-swatches but not on link:', e.target);
-    }
-  }
-});
-
-// Also try a more aggressive approach - check for swatches periodically
-function checkForSwatches() {
-  var swatches = document.querySelectorAll('.color-swatches a');
-  console.log('Found swatches:', swatches.length);
-  
-  if (swatches.length > 0) {
-    swatches.forEach(function(swatch, index) {
-      console.log('Swatch', index, ':', swatch);
-    });
-  }
-}
-
-// Check immediately and then periodically
-checkForSwatches();
-setInterval(checkForSwatches, 2000);
-
-// Watch for DOM changes
-const observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    if (mutation.type === 'childList') {
-      mutation.addedNodes.forEach(function(node) {
-        if (node.nodeType === 1) { // Element node
-          if (node.querySelector && node.querySelector('.color-swatches a')) {
-            console.log('New swatches detected via MutationObserver');
-            checkForSwatches();
-          }
-        }
-      });
+// Initialize immediately and set up event delegation
+(function() {
+  // Set up event delegation on document - this will catch all clicks
+  document.addEventListener('click', function(e) {
+    // Check if the clicked element is a color swatch link
+    if (e.target.closest('.color-swatches a')) {
+      var targetSwatch = e.target.closest('.color-swatches a');
+      toggleSwatches(e, targetSwatch);
     }
   });
-});
 
-// Start observing
-observer.observe(document.body, {
-  childList: true,
-  subtree: true
-});
+  // Watch for product-recommendations components using MutationObserver
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'childList') {
+        // Check if product-recommendations elements were added
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) { // Element node
+            if (node.tagName === 'PRODUCT-RECOMMENDATIONS') {
+              // Watch for changes inside this new product-recommendations component
+              const productObserver = new MutationObserver(function(productMutations) {
+                productMutations.forEach(function(productMutation) {
+                  if (productMutation.type === 'childList') {
+                    productMutation.addedNodes.forEach(function(productNode) {
+                      if (productNode.nodeType === 1) { // Element node
+                        if (productNode.querySelector && productNode.querySelector('.color-swatches a')) {
+                          console.log('Product recommendations with swatches loaded');
+                        }
+                      }
+                    });
+                  }
+                });
+              });
+
+              // Start observing changes within this product-recommendations component
+              productObserver.observe(node, {
+                childList: true,
+                subtree: true
+              });
+            }
+          }
+        });
+      }
+    });
+  });
+
+  // Start observing the document for new product-recommendations elements
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+})();
 
 function toggleSwatches(e, targetSwatch) {
   e.preventDefault();
