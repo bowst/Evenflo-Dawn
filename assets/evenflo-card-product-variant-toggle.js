@@ -1,6 +1,6 @@
 function initToggleSwatches(){
-  console.log('swatches', document.querySelectorAll('.color-swatches a'));
-  
+  console.log('swatches', document.querySelectorAll('.color-swatches'));
+
   if(document.querySelectorAll('.color-swatches a')){
     var swatchLinks = document.querySelectorAll('.color-swatches a');
 
