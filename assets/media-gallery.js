@@ -29,13 +29,10 @@ if (!customElements.get('media-gallery')) {
       }
 
       setActiveMedia(mediaId, prepend) {
-        console.log('🔍 MEDIA-GALLERY setActiveMedia called with:', mediaId, 'prepend:', prepend);
         const activeMedia =
           this.elements.viewer.querySelector(`[data-media-id="${mediaId}"]`) ||
           this.elements.viewer.querySelector('[data-media-id]');
-        console.log('🔍 Found activeMedia:', activeMedia);
         if (!activeMedia) {
-          console.log('🔍 No activeMedia found, returning');
           return;
         }
         this.elements.viewer.querySelectorAll('[data-media-id]').forEach((element) => {
