@@ -354,7 +354,7 @@
             </h2>
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
-              <h1 class="h2 {{ block.settings.text_color }} white">{{ block.settings.text }}</h1>
+              <h1 class="h2 white">{{ block.settings.text }}</h1>
             </div>
           {%- when 'buttons' -%}
             <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
