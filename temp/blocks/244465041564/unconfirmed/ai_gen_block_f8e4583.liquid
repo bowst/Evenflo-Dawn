@@ -1,6 +1,649 @@
+{% doc %}
+  @prompt
+    I want to create an image gallery slider that users a product metafield with a list of images. 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-gallery-slider-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding }}px;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-gallery-slider-container-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    aspect-ratio: {{ block.settings.aspect_ratio }};
+  }
+
+  .ai-gallery-slider-track-{{ ai_gen_id }} {
+    display: flex;
+    transition: transform 0.3s ease;
+    height: 100%;
+  }
+
+  .ai-gallery-slider-slide-{{ ai_gen_id }} {
+    flex: 0 0 100%;
+    position: relative;
+    height: 100%;
+  }
+
+  .ai-gallery-slider-slide-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-gallery-slider-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-gallery-slider-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 200px;
+    max-height: 200px;
+    opacity: 0.5;
+  }
+
+  .ai-gallery-slider-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-gallery-slider-nav-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: {{ block.settings.nav_button_color }};
+    color: {{ block.settings.nav_button_text_color }};
+    border: none;
+    border-radius: 50%;
+    width: {{ block.settings.nav_button_size }}px;
+    height: {{ block.settings.nav_button_size }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-gallery-slider-nav-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.nav_button_hover_color }};
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .ai-gallery-slider-nav-{{ ai_gen_id }}:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+  }
+
+  .ai-gallery-slider-nav-{{ ai_gen_id }} svg {
+    width: calc({{ block.settings.nav_button_size }}px * 0.4);
+    height: calc({{ block.settings.nav_button_size }}px * 0.4);
+  }
+
+  .ai-gallery-slider-nav--prev-{{ ai_gen_id }} {
+    left: {{ block.settings.nav_button_offset }}px;
+  }
+
+  .ai-gallery-slider-nav--next-{{ ai_gen_id }} {
+    right: {{ block.settings.nav_button_offset }}px;
+  }
+
+  .ai-gallery-slider-dots-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: {{ block.settings.dots_spacing }}px;
+  }
+
+  .ai-gallery-slider-dot-{{ ai_gen_id }} {
+    width: {{ block.settings.dot_size }}px;
+    height: {{ block.settings.dot_size }}px;
+    border-radius: 50%;
+    background-color: {{ block.settings.dot_inactive_color }};
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ai-gallery-slider-dot-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.dot_active_color }};
+    transform: scale(1.2);
+  }
+
+  .ai-gallery-slider-counter-{{ ai_gen_id }} {
+    position: absolute;
+    top: {{ block.settings.counter_offset }}px;
+    right: {{ block.settings.counter_offset }}px;
+    background-color: {{ block.settings.counter_bg_color }};
+    color: {{ block.settings.counter_text_color }};
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-gallery-slider-nav-{{ ai_gen_id }} {
+      width: calc({{ block.settings.nav_button_size }}px * 0.8);
+      height: calc({{ block.settings.nav_button_size }}px * 0.8);
+    }
+
+    .ai-gallery-slider-nav--prev-{{ ai_gen_id }} {
+      left: calc({{ block.settings.nav_button_offset }}px * 0.5);
+    }
+
+    .ai-gallery-slider-nav--next-{{ ai_gen_id }} {
+      right: calc({{ block.settings.nav_button_offset }}px * 0.5);
+    }
+
+    .ai-gallery-slider-counter-{{ ai_gen_id }} {
+      top: calc({{ block.settings.counter_offset }}px * 0.5);
+      right: calc({{ block.settings.counter_offset }}px * 0.5);
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  }
+{% endstyle %}
+
+<image-gallery-slider-{{ ai_gen_id }}
+  class="ai-gallery-slider-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  {% liquid
+    assign gallery_images = product.metafields[block.settings.metafield_namespace][block.settings.metafield_key].value
+    assign has_images = false
+    if gallery_images and gallery_images.size > 0
+      assign has_images = true
+    endif
+  %}
+
+  <div class="ai-gallery-slider-container-{{ ai_gen_id }}">
+    {% if has_images %}
+      <div class="ai-gallery-slider-track-{{ ai_gen_id }}" data-track>
+        {% for image in gallery_images %}
+          <div class="ai-gallery-slider-slide-{{ ai_gen_id }}">
+            <img
+              src="{{ image | image_url: width: 1200 }}"
+              alt="{{ image.alt | escape }}"
+              loading="lazy"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+            >
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if gallery_images.size > 1 %}
+        {% if block.settings.show_navigation %}
+          <button
+            class="ai-gallery-slider-nav-{{ ai_gen_id }} ai-gallery-slider-nav--prev-{{ ai_gen_id }}"
+            data-prev
+            aria-label="Previous image"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15,18 9,12 15,6"></polyline>
+            </svg>
+          </button>
+
+          <button
+            class="ai-gallery-slider-nav-{{ ai_gen_id }} ai-gallery-slider-nav--next-{{ ai_gen_id }}"
+            data-next
+            aria-label="Next image"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9,18 15,12 9,6"></polyline>
+            </svg>
+          </button>
+        {% endif %}
+
+        {% if block.settings.show_counter %}
+          <div class="ai-gallery-slider-counter-{{ ai_gen_id }}" data-counter>
+            <span data-current>1</span> / <span data-total>{{ gallery_images.size }}</span>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% else %}
+      <div class="ai-gallery-slider-placeholder-{{ ai_gen_id }}">
+        {{ 'image' | placeholder_svg_tag }}
+        <div class="ai-gallery-slider-empty-state-{{ ai_gen_id }}">
+          Add images to the "{{ block.settings.metafield_namespace }}.{{ block.settings.metafield_key }}" metafield
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if has_images and gallery_images.size > 1 and block.settings.show_dots %}
+    <div class="ai-gallery-slider-dots-{{ ai_gen_id }}">
+      {% for image in gallery_images %}
+        <button
+          class="ai-gallery-slider-dot-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+          data-dot="{{ forloop.index0 }}"
+          aria-label="Go to image {{ forloop.index }}"
+        ></button>
+      {% endfor %}
+    </div>
+  {% endif %}
+</image-gallery-slider-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ImageGallerySlider{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.totalSlides = 0;
+        this.autoplayInterval = null;
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('[data-track]');
+        this.prevButton = this.querySelector('[data-prev]');
+        this.nextButton = this.querySelector('[data-next]');
+        this.dots = this.querySelectorAll('[data-dot]');
+        this.counter = this.querySelector('[data-counter]');
+        this.currentCounter = this.querySelector('[data-current]');
+        this.totalCounter = this.querySelector('[data-total]');
+
+        if (!this.track) return;
+
+        this.slides = this.track.querySelectorAll('.ai-gallery-slider-slide-{{ ai_gen_id }}');
+        this.totalSlides = this.slides.length;
+
+        if (this.totalSlides <= 1) return;
+
+        this.setupEventListeners();
+        this.setupAutoplay();
+        this.setupTouchEvents();
+      }
+
+      disconnectedCallback() {
+        this.clearAutoplay();
+      }
+
+      setupEventListeners() {
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => this.goToPrevSlide());
+        }
+
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => this.goToNextSlide());
+        }
+
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') this.goToPrevSlide();
+          if (e.key === 'ArrowRight') this.goToNextSlide();
+        });
+      }
+
+      setupAutoplay() {
+        const autoplayDelay = {{ block.settings.autoplay_delay | times: 1000 }};
+        const autoplayEnabled = {{ block.settings.enable_autoplay }};
+
+        if (autoplayEnabled && autoplayDelay > 0) {
+          this.startAutoplay(autoplayDelay);
+
+          this.addEventListener('mouseenter', () => this.clearAutoplay());
+          this.addEventListener('mouseleave', () => this.startAutoplay(autoplayDelay));
+        }
+      }
+
+      setupTouchEvents() {
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        this.track.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+          this.clearAutoplay();
+        });
+
+        this.track.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          currentX = e.touches[0].clientX;
+        });
+
+        this.track.addEventListener('touchend', () => {
+          if (!isDragging) return;
+          isDragging = false;
+
+          const diffX = startX - currentX;
+          const threshold = 50;
+
+          if (Math.abs(diffX) > threshold) {
+            if (diffX > 0) {
+              this.goToNextSlide();
+            } else {
+              this.goToPrevSlide();
+            }
+          }
+        });
+      }
+
+      startAutoplay(delay) {
+        this.clearAutoplay();
+        this.autoplayInterval = setInterval(() => {
+          this.goToNextSlide();
+        }, delay);
+      }
+
+      clearAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        this.updateSlider();
+      }
+
+      goToNextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateSlider();
+      }
+
+      goToPrevSlide() {
+        this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+        this.updateSlider();
+      }
+
+      updateSlider() {
+        const translateX = -this.currentSlide * 100;
+        this.track.style.transform = `translateX(${translateX}%)`;
+
+        this.dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === this.currentSlide);
+        });
+
+        if (this.currentCounter) {
+          this.currentCounter.textContent = this.currentSlide + 1;
+        }
+
+        if (this.prevButton) {
+          this.prevButton.disabled = false;
+        }
+
+        if (this.nextButton) {
+          this.nextButton.disabled = false;
+        }
+      }
+    }
+
+    customElements.define('image-gallery-slider-{{ ai_gen_id }}', ImageGallerySlider{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Image gallery slider",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Metafield settings"
+    },
+    {
+      "type": "text",
+      "id": "metafield_namespace",
+      "label": "Metafield namespace",
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Metafield key",
+      "default": "gallery_images"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "value": "1 / 1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "4 / 3",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "3 / 2",
+          "label": "Classic (3:2)"
+        },
+        {
+          "value": "16 / 9",
+          "label": "Widescreen (16:9)"
+        },
+        {
+          "value": "2 / 3",
+          "label": "Portrait (2:3)"
+        }
+      ],
+      "default": "4 / 3"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Container padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Container border radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "transparent"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "nav_button_size",
+      "min": 30,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Navigation button size",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "nav_button_offset",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Navigation button offset",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "nav_button_color",
+      "label": "Navigation button color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_text_color",
+      "label": "Navigation button icon color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "nav_button_hover_color",
+      "label": "Navigation button hover color",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "header",
+      "content": "Dots"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show dots",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "dots_spacing",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Dots spacing from slider",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "dot_size",
+      "min": 6,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "label": "Dot size",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "Active dot color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "dot_inactive_color",
+      "label": "Inactive dot color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "header",
+      "content": "Counter"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_counter",
+      "label": "Show counter",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "counter_offset",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Counter offset",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "counter_bg_color",
+      "label": "Counter background color",
+      "default": "rgba(0, 0, 0, 0.7)"
+    },
+    {
+      "type": "color",
+      "id": "counter_text_color",
+      "label": "Counter text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay delay",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image gallery slider"
+    }
+  ]
+}
 {% endschema %}
