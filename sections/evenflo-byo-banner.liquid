@@ -349,12 +349,12 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
-            <h1 class="{% if section.settings.underline %} heading-underline {% endif %} banner__heading inline-richtext {{ block.settings.heading_size }} {{ block.settings.heading_color }}" {{ block.shopify_attributes }}>
+            <h2 class="{% if section.settings.underline %} heading-underline {% endif %} banner__heading inline-richtext {{ block.settings.heading_size }} {{ block.settings.heading_color }}" {{ block.shopify_attributes }}>
               {{ block.settings.heading }}
-            </h1>
+            </h2>
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
-              <h2 class="{{ block.settings.text_color }}">{{ block.settings.text }}</h2>
+              <h1 class="{{ block.settings.text_color }}">{{ block.settings.text }}</h1>
             </div>
           {%- when 'buttons' -%}
             <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
