@@ -240,22 +240,36 @@ if (!customElements.get('product-info')) {
       }
 
       updateMedia(html, variantFeaturedMediaId) {
-        if (!variantFeaturedMediaId) return;
-
+        // For variant galleries, we need to replace the entire gallery content
         const mediaGallerySource = this.querySelector('media-gallery ul');
         const mediaGalleryDestination = html.querySelector(`media-gallery ul`);
+        const thumbnailsSource = this.querySelector('[id^="GalleryThumbnails"] ul');
+        const thumbnailsDestination = html.querySelector(`[id^="GalleryThumbnails"] ul`);
 
-        const refreshSourceData = () => {
-          if (this.hasAttribute('data-zoom-on-hover')) enableZoomOnHover(2);
-          const mediaGallerySourceItems = Array.from(mediaGallerySource.querySelectorAll('li[data-media-id]'));
-          const sourceSet = new Set(mediaGallerySourceItems.map((item) => item.dataset.mediaId));
-          const sourceMap = new Map(
-            mediaGallerySourceItems.map((item, index) => [item.dataset.mediaId, { item, index }])
-          );
-          return [mediaGallerySourceItems, sourceSet, sourceMap];
-        };
+        // Check if this is a variant gallery (has_variant="true") and variant has gallery images
+        const mediaGallery = this.querySelector('media-gallery');
+        const isVariantGallery = mediaGallery?.getAttribute('has_variant') === 'true';
 
-        if (mediaGallerySource && mediaGalleryDestination) {
+        if (isVariantGallery && mediaGallerySource && mediaGalleryDestination) {
+          // For variant galleries, completely replace the content
+          mediaGallerySource.innerHTML = mediaGalleryDestination.innerHTML;
+
+          // Also replace thumbnails if they exist
+          if (thumbnailsSource && thumbnailsDestination) {
+            thumbnailsSource.innerHTML = thumbnailsDestination.innerHTML;
+          }
+        } else if (mediaGallerySource && mediaGalleryDestination) {
+          // For standard galleries, use the original logic
+          const refreshSourceData = () => {
+            if (this.hasAttribute('data-zoom-on-hover')) enableZoomOnHover(2);
+            const mediaGallerySourceItems = Array.from(mediaGallerySource.querySelectorAll('li[data-media-id]'));
+            const sourceSet = new Set(mediaGallerySourceItems.map((item) => item.dataset.mediaId));
+            const sourceMap = new Map(
+              mediaGallerySourceItems.map((item, index) => [item.dataset.mediaId, { item, index }])
+            );
+            return [mediaGallerySourceItems, sourceSet, sourceMap];
+          };
+
           let [mediaGallerySourceItems, sourceSet, sourceMap] = refreshSourceData();
           const mediaGalleryDestinationItems = Array.from(
             mediaGalleryDestination.querySelectorAll('li[data-media-id]')
@@ -298,16 +312,63 @@ if (!customElements.get('product-info')) {
           });
         }
 
-        // set featured media as active in the media gallery
-        this.querySelector(`media-gallery`)?.setActiveMedia?.(
-          `${this.dataset.section}-${variantFeaturedMediaId}`,
-          true
-        );
+        // set featured media as active in the media gallery (with small delay to ensure DOM is updated)
+        setTimeout(() => {
+          const mediaGallery = this.querySelector('media-gallery');
+
+          if (variantFeaturedMediaId) {
+            const targetId = `${this.dataset.section}-${variantFeaturedMediaId}`;
+            mediaGallery?.setActiveMedia?.(targetId, true);
+          } else {
+            // If no featured media, activate the first slide (which could be variant gallery)
+            const firstSlide = this.querySelector('media-gallery ul')?.querySelector('li[data-media-id]');
+            if (firstSlide) {
+              mediaGallery?.setActiveMedia?.(firstSlide.dataset.mediaId, true);
+            }
+          }
+        }, 10);
 
         // update media modal
         const modalContent = this.productModal?.querySelector(`.product-media-modal__content`);
         const newModalContent = html.querySelector(`product-modal .product-media-modal__content`);
         if (modalContent && newModalContent) modalContent.innerHTML = newModalContent.innerHTML;
+
+        // Reinitialize the entire media gallery component for variant galleries
+        setTimeout(() => {
+          const mediaGallery = this.querySelector('media-gallery');
+
+          if (mediaGallery) {
+            // Refresh the elements references since DOM content was replaced
+            mediaGallery.elements = {
+              liveRegion: mediaGallery.querySelector('[id^="GalleryStatus"]'),
+              viewer: mediaGallery.querySelector('[id^="GalleryViewer"]'),
+              thumbnails: mediaGallery.querySelector('[id^="GalleryThumbnails"]'),
+            };
+
+            // Re-initialize thumbnail event listeners (similar to constructor)
+            if (mediaGallery.elements.thumbnails) {
+              const thumbnails = mediaGallery.elements.thumbnails.querySelectorAll('[data-target]');
+
+              thumbnails.forEach((mediaToSwitch) => {
+                const button = mediaToSwitch.querySelector('button');
+
+                if (button) {
+                  // Remove any existing listeners by cloning the button
+                  const newButton = button.cloneNode(true);
+                  button.parentNode.replaceChild(newButton, button);
+
+                  // Add fresh event listener
+                  newButton.addEventListener('click', mediaGallery.setActiveMedia.bind(mediaGallery, mediaToSwitch.dataset.target, false));
+                }
+              });
+
+              // Reset thumbnail slider if it exists
+              if (mediaGallery.elements.thumbnails.slider) {
+                mediaGallery.elements.thumbnails.slider.resetPages?.();
+              }
+            }
+          }
+        }, 100);
       }
 
       setQuantityBoundries() {
