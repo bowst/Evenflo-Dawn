@@ -240,42 +240,23 @@ if (!customElements.get('product-info')) {
       }
 
       updateMedia(html, variantFeaturedMediaId) {
-        // Temporary debug logging for live site
-        console.log('🔍 VARIANT DEBUG: updateMedia called');
-        console.log('🔍 variantFeaturedMediaId:', variantFeaturedMediaId);
-
         // For variant galleries, we need to replace the entire gallery content
         const mediaGallerySource = this.querySelector('media-gallery ul');
         const mediaGalleryDestination = html.querySelector(`media-gallery ul`);
         const thumbnailsSource = this.querySelector('[id^="GalleryThumbnails"] ul');
         const thumbnailsDestination = html.querySelector(`[id^="GalleryThumbnails"] ul`);
 
-        console.log('🔍 mediaGallerySource:', mediaGallerySource);
-        console.log('🔍 mediaGalleryDestination:', mediaGalleryDestination);
-
         // Check if this is a variant gallery (has_variant="true") and variant has gallery images
         const mediaGallery = this.querySelector('media-gallery');
         const isVariantGallery = mediaGallery?.getAttribute('has_variant') === 'true';
 
-        console.log('🔍 mediaGallery element:', mediaGallery);
-        console.log('🔍 has_variant attribute:', mediaGallery?.getAttribute('has_variant'));
-        console.log('🔍 isVariantGallery:', isVariantGallery);
-
         if (isVariantGallery && mediaGallerySource && mediaGalleryDestination) {
           // For variant galleries, completely replace the content
-          console.log('🔍 REPLACING variant gallery content');
-          console.log('🔍 Old gallery HTML length:', mediaGallerySource.innerHTML.length);
           mediaGallerySource.innerHTML = mediaGalleryDestination.innerHTML;
-          console.log('🔍 New gallery HTML length:', mediaGallerySource.innerHTML.length);
 
           // Also replace thumbnails if they exist
           if (thumbnailsSource && thumbnailsDestination) {
-            console.log('🔍 REPLACING thumbnail content');
-            console.log('🔍 Old thumbnails HTML length:', thumbnailsSource.innerHTML.length);
             thumbnailsSource.innerHTML = thumbnailsDestination.innerHTML;
-            console.log('🔍 New thumbnails HTML length:', thumbnailsSource.innerHTML.length);
-          } else {
-            console.log('🔍 No thumbnails to replace - thumbnailsSource:', thumbnailsSource, 'thumbnailsDestination:', thumbnailsDestination);
           }
         } else if (mediaGallerySource && mediaGalleryDestination) {
           // For standard galleries, use the original logic
@@ -354,29 +335,22 @@ if (!customElements.get('product-info')) {
 
         // Reinitialize the entire media gallery component for variant galleries
         setTimeout(() => {
-          console.log('🔍 REINITIALIZING media gallery components');
           const mediaGallery = this.querySelector('media-gallery');
-          console.log('🔍 mediaGallery found:', mediaGallery);
 
           if (mediaGallery) {
             // Refresh the elements references since DOM content was replaced
-            const oldElements = mediaGallery.elements;
             mediaGallery.elements = {
               liveRegion: mediaGallery.querySelector('[id^="GalleryStatus"]'),
               viewer: mediaGallery.querySelector('[id^="GalleryViewer"]'),
               thumbnails: mediaGallery.querySelector('[id^="GalleryThumbnails"]'),
             };
-            console.log('🔍 Old elements:', oldElements);
-            console.log('🔍 New elements:', mediaGallery.elements);
 
             // Re-initialize thumbnail event listeners (similar to constructor)
             if (mediaGallery.elements.thumbnails) {
               const thumbnails = mediaGallery.elements.thumbnails.querySelectorAll('[data-target]');
-              console.log('🔍 Found thumbnails for reinitialization:', thumbnails.length);
 
-              thumbnails.forEach((mediaToSwitch, index) => {
+              thumbnails.forEach((mediaToSwitch) => {
                 const button = mediaToSwitch.querySelector('button');
-                console.log(`🔍 Thumbnail ${index}: data-target="${mediaToSwitch.dataset.target}", button:`, button);
 
                 if (button) {
                   // Remove any existing listeners by cloning the button
@@ -384,23 +358,14 @@ if (!customElements.get('product-info')) {
                   button.parentNode.replaceChild(newButton, button);
 
                   // Add fresh event listener
-                  newButton.addEventListener('click', () => {
-                    console.log('🔍 THUMBNAIL CLICKED:', mediaToSwitch.dataset.target);
-                    mediaGallery.setActiveMedia(mediaToSwitch.dataset.target, false);
-                  });
-                  console.log(`🔍 Added click listener to thumbnail ${index}`);
-                } else {
-                  console.log(`🔍 No button found for thumbnail ${index}`);
+                  newButton.addEventListener('click', mediaGallery.setActiveMedia.bind(mediaGallery, mediaToSwitch.dataset.target, false));
                 }
               });
 
               // Reset thumbnail slider if it exists
               if (mediaGallery.elements.thumbnails.slider) {
-                console.log('🔍 Resetting thumbnail slider');
                 mediaGallery.elements.thumbnails.slider.resetPages?.();
               }
-            } else {
-              console.log('🔍 No thumbnails element found for reinitialization');
             }
           }
         }, 100);
