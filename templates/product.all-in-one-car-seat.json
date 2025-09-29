@@ -295,6 +295,78 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "evenflo_multicolumn_DfwTqi": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_PQyJVD": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "{% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}\n\t\t  {% if retail_package_contents_value %}\n<p><strong>Contents</strong></p>\n\t\t\t {{ retail_package_contents_value }}\n\n\t\t  {% endif %}\n\n\t\t  {% assign assembled_width = product.metafields.sf_products.assembled_width %}\n\t\t  {% assign assembled_height = product.metafields.sf_products.assembled_height %}\n\t\t  {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}\n\t\t  {% if assembled_width and assembled_height and assembled_depth %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Product Dimensions</strong></p>\n\t\t\t  <p>{{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\t\t  {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}\n\t\t  {% if folded_dimensions %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Folded Dimensions</strong></p>\n\t\t\t  <p>{{ folded_dimensions }}</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\t\t  {% assign package_width = product.metafields.sf_shipping.package_width %}\n\t\t  {% assign package_height = product.metafields.sf_shipping.package_height %}\n\t\t  {% assign package_depth = product.metafields.sf_shipping.package_depth %}\n\t\t  {% if package_width and package_height and package_depth %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Package Dimensions</strong></p>\n\t\t\t  <p>{{ package_width }} x {{ package_height }} x {{ package_depth }} in</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\n\t\t  {% assign assembled_weight = product.metafields.sf_products.assembled_weight %}\n\t\t  {% if assembled_weight %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Product Weight</strong></p>\n\t\t\t  <p>{{ assembled_weight }} lbs.</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\t\t  {% assign package_weight = product.metafields.sf_shipping.package_weight %}\n\t\t  {% if package_weight %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Package Weight</strong></p>\n\t\t\t  <p>{{ package_weight }} lbs.</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\n\t\t  {% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}\n\t\t  {% if carrier_weight_without_base %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Weight w/o Base</strong></p>\n\t\t\t  <p>{{ carrier_weight_without_base }} lbs.</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\n\t\t  <!-- optional section -->\n\t\t  {% assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method %}\n\t\t  {% assign harness_type = product.metafields.sf_products.harness_type %}\n\t\t  {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}\n\t\t  {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}\n\t\t  {% assign latch_install = product.metafields.sf_car_seat.latch_install %}\n\t\t  {% assign maturity = product.metafields.sf_products.maturity %}\n\n\t\t  {% if harness_rethread_method or harness_type %}\n\t\t\t{% if harness_type %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Harness Type</strong></p>\n\t\t\t\t<p>\n\t\t\t\t  {{ harness_type }}\n\t\t\t\t</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t\t{% if harness_rethread_method %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Harness Rethread</strong></p>\n\t\t\t\t<p>\n\t\t\t\t  {{ harness_rethread_method }}\n\t\t\t\t</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t  {% endif %}\n\t\t  {% if bubble_level or harness_covers or latch_install %}\n\t\t\t{% if bubble_level == 1 %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Bubble Level</strong></p>\n\t\t\t\t<p>Yes</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t\t{% if harness_covers == 1 %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Harness Covers</strong></p>\n\t\t\t\t<p>Yes</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t\t{% if latch_installs == 1 %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Latch Install</strong></p>\n\t\t\t\t<p>Yes</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t  {% endif %}\n\n\t\t  <div class=\"flex-item\">\n\t\t\t<p><strong>Assembly Required</strong></p>\n\t\t\t{% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}\n\t\t\t{% if assembly_switch_spec == 1 %}\n\t\t\t  <p>Yes</p>\n\t\t\t{% else %}\n\t\t\t  <p>No</p>\n\t\t\t{% endif %}\n\t\t  </div>\n\t\t  <div class=\"flex-item\">\n\t\t\t{% assign my_switch = product.metafields.sf_gates.hardware_included %}\n\t\t\t<p><strong>Hardware Included</strong></p>\n\t\t\t{% if my_switch == 1 %}\n\t\t\t  <p>Yes</p>\n\t\t\t{% else %}\n\t\t\t  <p>No</p>\n\t\t\t{% endif %}\n\t\t  </div>",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_3A4bML": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}\n\t  {% if care_copy %}\n<p><strong>Care</strong></p>\n\t\t<ul>\n\t\t  {% for li in care_copy %}\n\t\t\t<li>{{ li }}</li>\n\t\t  {% endfor %}\n\t\t</ul>\n\t  {% endif %}\n<br>\n\t  <p><strong>Materials</h3></strong></p>\n\t  {% assign material = product.metafields.sf_products.material %}\n\t  {% if material %}\n\t\t<p>{{ material }}</p>\n\t  {% endif %}\n<br>",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_thDT47": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "{% assign specifications_image = product.metafields.sf_products.specifications_image %}\n        {% if specifications_image %}\n          <image loading=\"lazy\" alt=\"{{ product.title }} Specifications\" src=\"{{ specifications_image }}\">\n        {% endif %}",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_PQyJVD",
+        "column_3A4bML",
+        "column_thDT47"
+      ],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "Multicolumn",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -312,6 +384,7 @@
     "169218754254c1e87b",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
     "custom_liquid_htUdqA",
-    "evenflo_benefits_REDxHQ"
+    "evenflo_benefits_REDxHQ",
+    "evenflo_multicolumn_DfwTqi"
   ]
 }
