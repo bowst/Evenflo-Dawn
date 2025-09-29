@@ -138,11 +138,15 @@ Determine if the product is from support product collection
               <div class="media media--transparent variant-images">
 				{% for variant in card_product.variants %}
 
-                  {%- comment -%} Preferred (OS 2.0): featured media, fallback to variant.image {%- endcomment -%}
+                  {%- comment -%} Multiple fallbacks: variant.featured_media, variant.image, product.featured_media, product.media[0] {%- endcomment -%}
                   {% if variant.featured_media %}
                     {% assign variant_media = variant.featured_media %}
                   {% elsif variant.image %}
                     {% assign variant_media = variant.image %}
+                  {% elsif card_product.featured_media %}
+                    {% assign variant_media = card_product.featured_media %}
+                  {% elsif card_product.media.size > 0 %}
+                    {% assign variant_media = card_product.media[0] %}
                   {% endif %}
 
                   {% if variant_media %}
