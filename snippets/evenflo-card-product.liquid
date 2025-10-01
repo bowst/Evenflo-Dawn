@@ -232,44 +232,50 @@ Determine if the product is from support product collection
 				{% endif %}
 				
 				{%- if show_rating -%}
-				<div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
+					{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' %}
+					<div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
+					{% endif %}
 				{%- endif -%}
             </div>
 			{% if show_swatches == true %}
-			<div class="color-swatches">
-			{%- for product_option in card_product.options_with_values -%}
-				{{ product_option.variant }}
-				{%- for product_option_value in product_option.values -%}
+				{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' %}
+					<div class="color-swatches">
+					{%- for product_option in card_product.options_with_values -%}
+					{{ product_option.variant }}
+					{%- for product_option_value in product_option.values -%}
 
-				{%  comment %}<a href="{{  product_option_value.variant.url }}">{%  endcomment %}
-				  
-					<a href="#vid_{{  product_option_value.variant.id }}" class="{% if forloop.first %}active {% endif %}{% unless product_option_value.variant.available %}out-of-stock{% endunless %}" title="{{  product_option_value.variant.title }}" data-variant-id="{{  product_option_value.variant.id }}">
-						{%- if product_option_value.swatch.image -%}
-						{{
-							product_option_value.swatch.image
-							| image_url: width: 100
-							| image_tag:
-							loading: 'lazy',
-							widths: '50, 75, 100',
-							sizes: sizes,
-							class: 'swatch'
-						}}
-						{%- elsif product_option_value.swatch.color -%}
-							{%-assign swatch_value = 'rgb(' | append: product_option_value.swatch.color.rgb | append: ')' -%}
-						<span 
-							class="swatch color-swatch" 
-							style="background-color: {{swatch_value}};"
-							title="{{ product_option_value }}"
-						></span>
-						{%- else -%}
-						<span class="swatch swatch--unavailable"></span>
-						{%- endif -%}
-						</a>
-				
-				{%- endfor -%}
-			{%- endfor -%}
-			</div>
-      <div class="variant-title">{{  card_product.variants[0].title }}</div>
+					{%  comment %}<a href="{{  product_option_value.variant.url }}">{%  endcomment %}
+					
+						<a href="#vid_{{  product_option_value.variant.id }}" class="{% if forloop.first %}active {% endif %}{% unless product_option_value.variant.available %}out-of-stock{% endunless %}" title="{{  product_option_value.variant.title }}" data-variant-id="{{  product_option_value.variant.id }}">
+							{%- if product_option_value.swatch.image -%}
+							{{
+								product_option_value.swatch.image
+								| image_url: width: 100
+								| image_tag:
+								loading: 'lazy',
+								widths: '50, 75, 100',
+								sizes: sizes,
+								class: 'swatch'
+							}}
+							{%- elsif product_option_value.swatch.color -%}
+								{%-assign swatch_value = 'rgb(' | append: product_option_value.swatch.color.rgb | append: ')' -%}
+							<span 
+								class="swatch color-swatch" 
+								style="background-color: {{swatch_value}};"
+								title="{{ product_option_value }}"
+							></span>
+							{%- else -%}
+							<span class="swatch swatch--unavailable"></span>
+							{%- endif -%}
+							</a>
+					
+						{%- endfor -%}
+					{%- endfor -%}
+				</div>
+				{% endif %}
+				{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' %}
+					<div class="variant-title">{{  card_product.variants[0].title }}</div>
+				{% endif %}
 			{% endif %}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
