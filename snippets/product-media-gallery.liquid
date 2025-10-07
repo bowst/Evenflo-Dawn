@@ -16,10 +16,12 @@
     assign has_variant = true
   endif
 
-  if has_variant
+  if has_variant and product.selected_or_first_available_variant.metafields.custom.variant_gallery.value.size > 0
     assign media_count = product.selected_or_first_available_variant.metafields.custom.variant_gallery.value.count
+    assign use_variant_gallery = true
   else
     assign media_count = product.media.size
+    assign use_variant_gallery = false
   endif
 
   if media_count == 0 or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
@@ -43,7 +45,7 @@
   {% endif %}
   aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
   data-desktop-layout="{{ section.settings.gallery_layout }}"
-  has_variant="{{ has_variant }}"
+  has_variant="{{ use_variant_gallery }}"
 >
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
   <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
@@ -55,7 +57,7 @@
       class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
       role="list"
     >
-      {% unless has_variant %}
+      {% unless use_variant_gallery %}
         {%- for media in product.media -%}
           {% if media_position >= limit
             or media_position >= 1
@@ -119,16 +121,23 @@
           %}
         </li>
         {% comment %} variant gallery {% endcomment %}
-        {% if product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
+        {% if use_variant_gallery %}
+          {%- liquid
+            assign desktop_columns = 1
+            assign mobile_columns = 1
+            if section.settings.gallery_layout contains 'thumbnail'
+              assign desktop_columns = 2
+            endif
+          -%}
           {%- capture sizes -%}
               (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 4rem)
             {%- endcapture -%}
           {% for gallery in product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
-            {% assign img_ratio = gallery.image.aspect_ratio %}
+            {% assign img_ratio = gallery.aspect_ratio %}
             <li
-              id="Slide-slide-{{ section.id }}-{{ forloop.index }}"
+              id="Slide-{{ section.id }}-variant-{{ forloop.index }}"
               class="product__media-item grid__item slider__slide{% if product.selected_or_first_available_variant.featured_media == nil and forloop.index == 1 %} is-active{% endif %}"
-              data-media-id="{{ section.id }}-{{ forloop.index }}"
+              data-media-id="{{ section.id }}-variant-{{ forloop.index }}"
             >
               <div
                 style="--ratio: {{ img_ratio }}; --preview-ratio: {{ img_ratio }};"
@@ -254,7 +263,7 @@
             </button>
           </li>
         {%- endif -%}
-        {% unless has_variant %}
+        {% unless use_variant_gallery %}
           {%- for media in product.media -%}
             {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
               {%- liquid
@@ -322,16 +331,29 @@
         {% comment %} variant gallery {% endcomment %}
         {% for gallery in product.selected_or_first_available_variant.metafields.custom.variant_gallery.value %}
           <li
-            id="Slide-Thumbnails-thumbnail-{{ section.id }}-{{ forloop.index }}"
+            id="Slide-Thumbnails-{{ section.id }}-variant-{{ forloop.index }}"
             class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains media.src %} thumbnail-list_item--variant{% endif %}"
-            data-target="{{ section.id }}-{{ forloop.index }}"
+            data-target="{{ section.id }}-variant-{{ forloop.index }}"
             data-media-position="{{ forloop.index | plus: 1 }}"
           >
-            <button class="thumbnail global-media-settings global-media-settings--no-shadow">
+            {%- capture thumbnail_id -%}
+              Thumbnail-{{ section.id }}-variant-{{ forloop.index }}
+            {%- endcapture -%}
+            <button
+              class="thumbnail global-media-settings global-media-settings--no-shadow"
+              aria-label="{{ 'products.product.media.load_image' | t: index: forloop.index }}"
+              aria-controls="GalleryViewer-{{ section.id }}"
+              aria-describedby="{{ thumbnail_id }}"
+            >
               {{
                 gallery
                 | image_url: width: 416
-                | image_tag: loading: 'lazy', sizes: sizes, widths: '54, 74, 104, 162, 208, 324, 416', id: thumbnail_id
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: sizes,
+                  widths: '54, 74, 104, 162, 208, 324, 416',
+                  id: thumbnail_id,
+                  alt: gallery.alt
               }}
             </button>
           </li>
