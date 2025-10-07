@@ -231,8 +231,8 @@ Determine if the product is from support product collection
 				{% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
 				{% endif %}
 				
-				{%- if show_rating -%}
-					{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' %}
+				{%- if show_rating -%}{{ card_product.vendor }}
+					{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' or card_product.vendor == 'evenflo'%}
 					<div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
 					{% endif %}
 				{%- endif -%}
