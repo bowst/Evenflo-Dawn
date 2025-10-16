@@ -187,15 +187,24 @@ Determine if the product is from support product collection
             aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
           >
           <div class="card__badge {{ settings.badge_position }}">
-            {% if amazon_id and walmart_id %}
-                <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }}">Available on Amazon and Walmart</span>
-              {% elsif walmart_id %}
-                <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }}">Walmart Exclusive</span>
-              {% elsif amazon_id %}
-                <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }}">Amazon Exclusive</span>
-              {% elsif card_product.available == false and is_product_support == false %}
-                <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }}">Out of stock</span>
-              {% endif %}
+			{% if card_product.available == false and is_product_support == false %}
+                <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} out-of-stock-badge">Out of stock</span>
+			{% else %}
+				{% if amazon_id and walmart_id %}
+					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} exclusive-badge">Available on Amazon and Walmart</span>
+				{% elsif walmart_id %}
+					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} exclusive-badge">Walmart Exclusive</span>
+				{% elsif amazon_id %}
+					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} exclusive-badge">Amazon Exclusive</span>
+				{% endif %}
+				
+				{% if card_product.tags contains 'new' %}
+					<span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} new-badge">New</span>
+				{% endif %}
+				{% if card_product.compare_at_price > card_product.price %}
+					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} on-sale-badge">Sale</span>
+				{% endif %}
+			{% endif %}
           </div>
         </a>
       </div>
