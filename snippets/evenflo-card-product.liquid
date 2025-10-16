@@ -138,28 +138,37 @@ Determine if the product is from support product collection
               <div class="media media--transparent variant-images">
 				{% for variant in card_product.variants %}
 
-                  {%- comment -%} Preferred (OS 2.0): featured media {%- endcomment -%}
+                  {%- comment -%} Multiple fallbacks: variant.featured_media, variant.image, product.featured_media, product.media[0] {%- endcomment -%}
                   {% if variant.featured_media %}
+                    {% assign variant_media = variant.featured_media %}
+                  {% elsif variant.image %}
+                    {% assign variant_media = variant.image %}
+                  {% elsif card_product.featured_media %}
+                    {% assign variant_media = card_product.featured_media %}
+                  {% elsif card_product.media.size > 0 %}
+                    {% assign variant_media = card_product.media[0] %}
+                  {% endif %}
 
+                  {% if variant_media %}
                     <img
                       srcset="
-                        {%- if variant.featured_media.width >= 165 -%}{{ variant.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 360 -%}{{ variant.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 533 -%}{{ variant.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 720 -%}{{ variant.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 940 -%}{{ variant.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
-                        {%- if variant.featured_media.width >= 1066 -%}{{ variant.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
-                        {{ variant.featured_media | image_url }} {{ variant.featured_media.width }}w
+                        {%- if variant_media.width >= 165 -%}{{ variant_media | image_url: width: 165 }} 165w,{%- endif -%}
+                        {%- if variant_media.width >= 360 -%}{{ variant_media | image_url: width: 360 }} 360w,{%- endif -%}
+                        {%- if variant_media.width >= 533 -%}{{ variant_media | image_url: width: 533 }} 533w,{%- endif -%}
+                        {%- if variant_media.width >= 720 -%}{{ variant_media | image_url: width: 720 }} 720w,{%- endif -%}
+                        {%- if variant_media.width >= 940 -%}{{ variant_media | image_url: width: 940 }} 940w,{%- endif -%}
+                        {%- if variant_media.width >= 1066 -%}{{ variant_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                        {{ variant_media | image_url }} {{ variant_media.width }}w
                       "
-                      src="{{ variant.featured_media | image_url: width: 533 }}"
+                      src="{{ variant_media | image_url: width: 533 }}"
                       sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                      alt="{{ variant.featured_media.alt | escape }}"
+                      alt="{{ variant_media.alt | escape }}"
                       class="motion-reduce{% if forloop.first %} active{% endif %}"
                       {% unless lazy_load == false %}
                         loading="lazy"
                       {% endunless %}
-                      width="{{ variant.featured_media.width }}"
-                      height="{{ variant.featured_media.height }}" 
+                      width="{{ variant_media.width }}"
+                      height="{{ variant_media.height }}" 
                       id="vid_{{ variant.id }}"
                     >
                   {% endif %}
@@ -174,19 +183,28 @@ Determine if the product is from support product collection
             href="{{ card_product.url }}" 
             title="{{ card_product.title }}" 
             id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
-            class="full-unstyled-link card__content"
+            class="full-unstyled-link card__content product-link"
             aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
           >
           <div class="card__badge {{ settings.badge_position }}">
-            {% if amazon_id and walmart_id %}
-                <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }}">Available on Amazon and Walmart</span>
-              {% elsif walmart_id %}
-                <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }}">Walmart Exclusive</span>
-              {% elsif amazon_id %}
-                <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }}">Amazon Exclusive</span>
-              {% elsif card_product.available == false and is_product_support == false %}
-                <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }}">Out of stock</span>
-              {% endif %}
+			{% if card_product.available == false and is_product_support == false %}
+                <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} out-of-stock-badge">Out of stock</span>
+			{% else %}
+				{% if amazon_id and walmart_id %}
+					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} exclusive-badge">Available on Amazon and Walmart</span>
+				{% elsif walmart_id %}
+					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} exclusive-badge">Walmart Exclusive</span>
+				{% elsif amazon_id %}
+					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} exclusive-badge">Amazon Exclusive</span>
+				{% endif %}
+				
+				{% if card_product.tags contains 'new' %}
+					<span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} new-badge">New</span>
+				{% endif %}
+				{% if card_product.compare_at_price > card_product.price %}
+					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} on-sale-badge">Sale</span>
+				{% endif %}
+			{% endif %}
           </div>
         </a>
       </div>
@@ -201,7 +219,7 @@ Determine if the product is from support product collection
             <a
               href="{{ card_product.url }}"
               id="CardLink-{{ section_id }}-{{ card_product.id }}"
-              class="full-unstyled-link"
+              class="full-unstyled-link product-link"
               aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}" 
               title="{{ card_product.title | escape }}"
             >
@@ -222,43 +240,51 @@ Determine if the product is from support product collection
 				{% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
 				{% endif %}
 				
-				{%- if show_rating -%}
-				<div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
+				{%- if show_rating -%}{{ card_product.vendor }}
+					{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' or card_product.vendor == 'evenflo'%}
+					<div class="yotpo-widget-instance" data-yotpo-instance-id="461214" data-yotpo-product-id="{{card_product.id}}" data-yotpo-cart-product-id="{{item.product.id}}" data-yotpo-section-id="{{template.name}}"></div>
+					{% endif %}
 				{%- endif -%}
             </div>
 			{% if show_swatches == true %}
-			<div class="color-swatches">
-			{%- for product_option in card_product.options_with_values -%}
-				{{ product_option.variant }}
-				{%- for product_option_value in product_option.values -%}
+				{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' %}
+					<div class="color-swatches">
+					{%- for product_option in card_product.options_with_values -%}
+					{{ product_option.variant }}
+					{%- for product_option_value in product_option.values -%}
 
-				{%  comment %}<a href="{{  product_option_value.variant.url }}">{%  endcomment %}
-				  
-					<a href="#vid_{{  product_option_value.variant.id }}" class="{% if forloop.first %}active {% endif %}{% unless product_option_value.variant.available %}out-of-stock{% endunless %}" title="{{  product_option_value.variant.title }}">
-						{%- if product_option_value.swatch.image -%}
-						{{
-							product_option_value.swatch.image
-							| image_url: width: 100
-							| image_tag:
-							loading: 'lazy',
-							widths: '50, 75, 100',
-							sizes: sizes,
-							class: 'swatch'
-						}}
-					{%- elsif product_option_value.swatch.color -%}
-							{%-assign swatch_value = 'rgb(' | append: product_option_value.swatch.color.rgb | append: ')' -%}
-						<span 
-							class="swatch color-swatch" 
-							style="background-color: {{swatch_value}};"
-							title="{{ product_option_value }}"
-						></span>
-						{%- endif -%}
-						</a>
-				
-				{%- endfor -%}
-			{%- endfor -%}
-			</div>
-      <div class="variant-title">{{  card_product.variants[0].title }}</div>
+					{%  comment %}<a href="{{  product_option_value.variant.url }}">{%  endcomment %}
+					
+						<a href="#vid_{{  product_option_value.variant.id }}" class="{% if forloop.first %}active {% endif %}{% unless product_option_value.variant.available %}out-of-stock{% endunless %}" title="{{  product_option_value.variant.title }}" data-variant-id="{{  product_option_value.variant.id }}">
+							{%- if product_option_value.swatch.image -%}
+							{{
+								product_option_value.swatch.image
+								| image_url: width: 100
+								| image_tag:
+								loading: 'lazy',
+								widths: '50, 75, 100',
+								sizes: sizes,
+								class: 'swatch'
+							}}
+							{%- elsif product_option_value.swatch.color -%}
+								{%-assign swatch_value = 'rgb(' | append: product_option_value.swatch.color.rgb | append: ')' -%}
+							<span 
+								class="swatch color-swatch" 
+								style="background-color: {{swatch_value}};"
+								title="{{ product_option_value }}"
+							></span>
+							{%- else -%}
+							<span class="swatch swatch--unavailable"></span>
+							{%- endif -%}
+							</a>
+					
+						{%- endfor -%}
+					{%- endfor -%}
+				</div>
+				{% endif %}
+				{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' %}
+					<div class="variant-title">{{  card_product.variants[0].title }}</div>
+				{% endif %}
 			{% endif %}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
@@ -557,14 +583,14 @@ Determine if the product is from support product collection
                           {% else %}
                             href="{{ card_product.url }}"
                           {% endif %}
-                          class="link product__view-details animate-arrow small-hide medium-hide"
+                          class="link product__view-details animate-arrow small-hide medium-hide product-link"
                         >
                           {{ 'products.product.view_full_details' | t -}}
                           {{- 'icon-arrow.svg' | inline_asset_content -}}
                         </a>
                       </div>
                       <div class="quick-add-modal__content-info--bulk-details large-up-hide">
-                        <a href="{{ card_product.url }}" class="full-unstyled-link">
+                        <a href="{{ card_product.url }}" class="full-unstyled-link product-link">
                           <h3>{{ card_product.title | escape }}</h3>
                         </a>
                         {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
@@ -577,7 +603,7 @@ Determine if the product is from support product collection
                     </div>
                     <div>
                       <div class="quick-add-modal__content-info--bulk-details small-hide medium-hide">
-                        <a href="{{ card_product.url }}" class="full-unstyled-link">
+                        <a href="{{ card_product.url }}" class="full-unstyled-link product-link">
                           <h3 class="h2">
                             {{ card_product.title | escape }}
                           </h3>

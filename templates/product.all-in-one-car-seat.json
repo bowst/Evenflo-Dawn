@@ -164,6 +164,79 @@
       "type": "evenflo-pdp-faq",
       "settings": {}
     },
+    "evenflo_multicolumn_DfwTqi": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_PQyJVD": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "{% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}\n\t\t  {% if retail_package_contents_value %}\n<p><strong>Contents</strong></p>\n\t\t\t {{ retail_package_contents_value }}\n\n\t\t  {% endif %}\n\n\t\t  {% assign assembled_width = product.metafields.sf_products.assembled_width %}\n\t\t  {% assign assembled_height = product.metafields.sf_products.assembled_height %}\n\t\t  {% assign assembled_depth = product.metafields.sf_products.assembled_depth %}\n\t\t  {% if assembled_width and assembled_height and assembled_depth %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Product Dimensions</strong></p>\n\t\t\t  <p>{{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\t\t  {% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}\n\t\t  {% if folded_dimensions %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Folded Dimensions</strong></p>\n\t\t\t  <p>{{ folded_dimensions }}</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\t\t  {% assign package_width = product.metafields.sf_shipping.package_width %}\n\t\t  {% assign package_height = product.metafields.sf_shipping.package_height %}\n\t\t  {% assign package_depth = product.metafields.sf_shipping.package_depth %}\n\t\t  {% if package_width and package_height and package_depth %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Package Dimensions</strong></p>\n\t\t\t  <p>{{ package_width }} x {{ package_height }} x {{ package_depth }} in</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\n\t\t  {% assign assembled_weight = product.metafields.sf_products.assembled_weight %}\n\t\t  {% if assembled_weight %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Product Weight</strong></p>\n\t\t\t  <p>{{ assembled_weight }} lbs.</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\t\t  {% assign package_weight = product.metafields.sf_shipping.package_weight %}\n\t\t  {% if package_weight %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Package Weight</strong></p>\n\t\t\t  <p>{{ package_weight }} lbs.</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\n\t\t  {% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}\n\t\t  {% if carrier_weight_without_base %}\n\t\t\t<div class=\"flex-item\">\n\t\t\t  <p><strong>Weight w/o Base</strong></p>\n\t\t\t  <p>{{ carrier_weight_without_base }} lbs.</p>\n\t\t\t</div>\n\t\t  {% endif %}\n\n\t\t  <!-- optional section -->\n\t\t  {% assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method %}\n\t\t  {% assign harness_type = product.metafields.sf_products.harness_type %}\n\t\t  {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}\n\t\t  {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}\n\t\t  {% assign latch_install = product.metafields.sf_car_seat.latch_install %}\n\t\t  {% assign maturity = product.metafields.sf_products.maturity %}\n\n\t\t  {% if harness_rethread_method or harness_type %}\n\t\t\t{% if harness_type %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Harness Type</strong></p>\n\t\t\t\t<p>\n\t\t\t\t  {{ harness_type }}\n\t\t\t\t</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t\t{% if harness_rethread_method %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Harness Rethread</strong></p>\n\t\t\t\t<p>\n\t\t\t\t  {{ harness_rethread_method }}\n\t\t\t\t</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t  {% endif %}\n\t\t  {% if bubble_level or harness_covers or latch_install %}\n\t\t\t{% if bubble_level == 1 %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Bubble Level</strong></p>\n\t\t\t\t<p>Yes</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t\t{% if harness_covers == 1 %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Harness Covers</strong></p>\n\t\t\t\t<p>Yes</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t\t{% if latch_installs == 1 %}\n\t\t\t  <div class=\"flex-item\">\n\t\t\t\t<p><strong>Latch Install</strong></p>\n\t\t\t\t<p>Yes</p>\n\t\t\t  </div>\n\t\t\t{% endif %}\n\t\t  {% endif %}\n\n\t\t  <div class=\"flex-item\">\n\t\t\t<p><strong>Assembly Required</strong></p>\n\t\t\t{% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}\n\t\t\t{% if assembly_switch_spec == 1 %}\n\t\t\t  <p>Yes</p>\n\t\t\t{% else %}\n\t\t\t  <p>No</p>\n\t\t\t{% endif %}\n\t\t  </div>\n\t\t  <div class=\"flex-item\">\n\t\t\t{% assign my_switch = product.metafields.sf_gates.hardware_included %}\n\t\t\t<p><strong>Hardware Included</strong></p>\n\t\t\t{% if my_switch == 1 %}\n\t\t\t  <p>Yes</p>\n\t\t\t{% else %}\n\t\t\t  <p>No</p>\n\t\t\t{% endif %}\n\t\t  </div>",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_3A4bML": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}\n\t  {% if care_copy %}\n<p><strong>Care</strong></p>\n\t\t<ul>\n\t\t  {% for li in care_copy %}\n\t\t\t<li>{{ li }}</li>\n\t\t  {% endfor %}\n\t\t</ul>\n\t  {% endif %}\n<br>\n\t  <p><strong>Materials</h3></strong></p>\n\t  {% assign material = product.metafields.sf_products.material %}\n\t  {% if material %}\n\t\t<p>{{ material }}</p>\n\t  {% endif %}\n<br>",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_thDT47": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "{% assign specifications_image = product.metafields.sf_products.specifications_image %}\n        {% if specifications_image %}\n          <image loading=\"lazy\" alt=\"{{ product.title }} Specifications\" src=\"{{ specifications_image }}\">\n        {% endif %}",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_PQyJVD",
+        "column_3A4bML",
+        "column_thDT47"
+      ],
+      "disabled": true,
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "What's In The Box",
+        "heading_size": "h2",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "45849377-4cee-48de-b8f8-52fd115e29b4": {
       "type": "evenflo-video-support",
       "settings": {
@@ -195,7 +268,6 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "show_swatches": false,
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 28
@@ -236,61 +308,10 @@
       "type": "evenflo-join",
       "settings": {}
     },
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1": {
-      "type": "evenflo-shopping-benefits",
-      "blocks": {
-        "b076e55c-e236-4a35-a75a-85cf3402446b": {
-          "type": "benefit_list",
-          "settings": {
-            "description": "<h3>Give 20,<br> Get 20</h3>\nRefer a friend and earn points.",
-            "background_image": "shopify://shop_images/Evenflo-Benefit-1.png",
-            "icon_image": "shopify://shop_images/icon-give20.png",
-            "link": "shopify://pages/refer"
-          }
-        },
-        "d2ac9250-ec80-4eca-93cb-a5886833aa00": {
-          "type": "benefit_list",
-          "settings": {
-            "description": "<h3>Pay With Affirm</h3>\nPay over time.",
-            "background_image": "shopify://shop_images/Benefit_2.png",
-            "icon_image": "shopify://shop_images/icon-pay.png",
-            "link": "shopify://pages/affirm-overview"
-          }
-        },
-        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239": {
-          "type": "benefit_list",
-          "settings": {
-            "description": "<h3>Community Heroes Discount</h3>\nSave on baby gear.",
-            "background_image": "shopify://shop_images/Benefit_3.png",
-            "icon_image": "shopify://shop_images/icon-heroes.png",
-            "link": "shopify://pages/evenflo-promotions"
-          }
-        },
-        "09af9779-83cf-4821-bb96-4341c4f3063b": {
-          "type": "benefit_list",
-          "settings": {
-            "description": "<h3>Evenflo Blog</h3>\nCheck out the latest.",
-            "background_image": "shopify://shop_images/Car-Seats-Square.jpg",
-            "icon_image": "shopify://shop_images/icon-blog.png",
-            "link": "shopify://blogs/evenflo-blog"
-          }
-        }
-      },
-      "block_order": [
-        "b076e55c-e236-4a35-a75a-85cf3402446b",
-        "d2ac9250-ec80-4eca-93cb-a5886833aa00",
-        "d8f4df94-c11c-4d5d-b7a8-440dbfaef239",
-        "09af9779-83cf-4821-bb96-4341c4f3063b"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "Benefits of shopping evenflo.com"
-      }
-    },
     "custom_liquid_htUdqA": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar learnq = window.learnq || [];\nfunction addedToCart() {\nfetch(`${window.location.origin}/cart.js`)\n.then(res => res.clone().json().then(data => {\nvar cart = {\ntotal_price: data.total_price/100,\n$value: data.total_price/100,\ntotal_discount: data.total_discount,\noriginal_total_price: data.original_total_price/100,\nitems: data.items\n}\nif (item !== 'undefined') {\ncart = Object.assign(cart, item)\n}\nif (klAjax) {\nlearnq.push(['track', 'Added to Cart', cart]);\nklAjax = false;\n}\n}))\n};\n(function (ns, fetch) {\nns.fetch = function() {\nconst response = fetch.apply(this, arguments);\nresponse.then(res => {\nif (`${window.location.origin}/cart/add.js`\n.includes(res.url) && res.url !== '') {\naddedToCart()\n}\n});\nreturn response\n}\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\natcButtons[i].addEventListener(\"click\", function() {\nif (klAjax) {&#xA;learnq.push(['track', 'Added to Cart', item]);\nklAjax = false;\n}\n})\n}\n});\n</script>",
+        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar learnq = window.learnq || [];\nfunction addedToCart() {\nfetch(`${window.location.origin}/cart.js`)\n.then(res => res.clone().json().then(data => {\nvar cart = {\ntotal_price: data.total_price/100,\n$value: data.total_price/100,\ntotal_discount: data.total_discount,\noriginal_total_price: data.original_total_price/100,\nitems: data.items\n}\nif (item !== 'undefined') {\ncart = Object.assign(cart, item)\n}\nif (klAjax) {\nlearnq.push(['track', 'Added to Cart', cart]);\nklAjax = false;\n}\n}))\n};\n(function (ns, fetch) {\nns.fetch = function() {\nconst response = fetch.apply(this, arguments);\nresponse.then(res => {\nif (`${window.location.origin}/cart/add.js`\n.includes(res.url) && res.url !== '') {\naddedToCart()\n}\n});\nreturn response\n}\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\natcButtons[i].addEventListener(\"click\", function() {\nif (klAjax) {\n/* this special character is causing a js error, commenting out for now: &#xA;learnq.push(['track', 'Added to Cart', item]);*/\nlearnq.push(['track', 'Added to Cart', item]);\nklAjax = false;\n}\n})\n}\n});\n</script>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
@@ -347,6 +368,29 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "evenflo_claim_source_FbkTJj": {
+      "type": "evenflo-claim-source",
+      "blocks": {
+        "text_RJFCAE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>*Source: Circana, LLC, Retail Tracking Service, Juvenile Products, Car Seats, Rotating Car Seats, Dollar & Unit Sales, Jan 2022 – May 2025</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_RJFCAE"
+      ],
+      "name": "Evenflo Claim Source",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "full_width": false,
+        "background_color": "",
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
     }
   },
   "order": [
@@ -357,14 +401,15 @@
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
     "46391549-e9d3-4404-8c19-b08b5eab6ca7",
+    "evenflo_multicolumn_DfwTqi",
     "45849377-4cee-48de-b8f8-52fd115e29b4",
     "evenflo_peace_of_mind_VDtjbi",
     "related-products",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
     "169218754254c1e87b",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
-    "e87086c3-8bc1-4ebd-af1f-5d31612858d1",
     "custom_liquid_htUdqA",
-    "evenflo_benefits_REDxHQ"
+    "evenflo_benefits_REDxHQ",
+    "evenflo_claim_source_FbkTJj"
   ]
 }

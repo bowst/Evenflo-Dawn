@@ -19,7 +19,7 @@
 }
 
 .card-wrapper .color-swatches a.out-of-stock {
-	opacity: 0.7;
+	opacity: 0.5;
 }
 
 .card-wrapper .color-swatches a.out-of-stock::after {
@@ -29,7 +29,7 @@
     right: 3px;
     width: 1px;
     height: 109%;
-    background-color: rgba(#000, 0.35);
+    background-color: #000;
     transform: rotate(45deg);
     transform-origin: top left;
 }
@@ -138,8 +138,14 @@
 	font-weight: 400;
 	letter-spacing: 0;
 	padding: .35rem .5em;
+	background-color: #000;
+	color: #fff;
 }
 
+.card-wrapper .card__badge .badge.out-of-stock-badge{
+	background-color: #fff;
+	color: #000;
+}
 .card-wrapper.out-of-stock .card__media{
 	opacity: .6;
 }
@@ -148,6 +154,9 @@
 	align-self: center;
     grid-row-start: 2;
 	justify-self: center;
+}
+.card-wrapper.out-of-stock .card__badge .badge:not(.out-of-stock-badge){
+	display: none;
 }
 
 .card--standard.card--text a:after, 
