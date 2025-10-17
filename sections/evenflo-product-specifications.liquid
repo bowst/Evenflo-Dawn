@@ -1,0 +1,243 @@
+{{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'section-evenflo-multicolumn.css' | asset_url | stylesheet_tag }}
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+
+<div class="multicolumn whats-in-the-box color-scheme-1 gradient background-none">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- unless section.settings.title == blank -%}
+      <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin text-{{ section.settings.heading_alignment }}">
+        <h2 class="title inline-richtext {{ section.settings.heading_size }} ">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+    {%- endunless -%}
+   
+	<slider-component class="slider-mobile-gutter">
+      <ul
+        class="multicolumn-list contains-content-container grid grid--1-col-tablet-down grid--3-col-desktop "
+        role="list"
+      >
+		<li id="Slide-1"
+			class="multicolumn-list__item grid__item slider__slide" >
+			<div class="multicolumn-card content-container">
+				<div class="multicolumn-card-content">
+					<dl>
+						{% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}
+						
+						{% if retail_package_contents_value %}
+						<dt class="h4">Contents</dt>
+						<dd>{{ retail_package_contents_value }}</dd>
+						{% endif %}
+
+						{% assign assembled_width = product.metafields.sf_products.assembled_width %}
+						{% assign assembled_height = product.metafields.sf_products.assembled_height %}
+						{% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
+						{% if assembled_width and assembled_height and assembled_depth %}
+						<dt class="h4">Product Dimensions</dt>
+						<dd>{{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</dd>
+						{% endif %}
+					
+						{% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
+						{% if folded_dimensions %}
+						<dt class="h4">Folded Dimensions</dt>
+						<dd>{{ folded_dimensions }}</dd>
+						{% endif %}
+
+						{% assign package_width = product.metafields.sf_shipping.package_width %}
+						{% assign package_height = product.metafields.sf_shipping.package_height %}
+						{% assign package_depth = product.metafields.sf_shipping.package_depth %}
+						{% if package_width and package_height and package_depth %}
+						<dt class="h4">Package Dimensions</dt>
+						<dd>{{ package_width }} x {{ package_height }} x {{ package_depth }} in</dd>
+						{% endif %}
+
+						{% assign assembled_weight = product.metafields.sf_products.assembled_weight %}
+						{% if assembled_weight %}
+						<dt class="h4">Product Weight</dt>
+						<dd>{{ assembled_weight }} lbs.</dd>
+						{% endif %}
+
+						{% assign package_weight = product.metafields.sf_shipping.package_weight %}
+						{% if package_weight %}
+						<dt class="h4">Package Weight</dt>
+						<dd>{{ package_weight }} lbs.</dd>
+						{% endif %}
+
+						{% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}
+						{% if carrier_weight_without_base %}
+						<dt class="h4">Weight w/o Base</dt>
+						<dd>{{ carrier_weight_without_base }} lbs.</dd>
+						{% endif %}
+
+						<!-- optional section -->
+						{% assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method %}
+						{% assign harness_type = product.metafields.sf_products.harness_type %}
+						{% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
+						{% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
+						{% assign latch_install = product.metafields.sf_car_seat.latch_install %}
+						{% assign maturity = product.metafields.sf_products.maturity %}
+
+						{% if harness_rethread_method or harness_type %}
+							{% if harness_type %}
+							<dt class="h4">Harness Type</dt>
+							<dd>{{ harness_type }}</dd>
+							{% endif %}
+						
+							{% if harness_rethread_method %}
+							<dt class="h4">Harness Rethread</dt>
+							<dd>{{ harness_rethread_method }}</dd>
+							{% endif %}
+
+						{% endif %}
+						{% if bubble_level or harness_covers or latch_install %}
+							{% if bubble_level == 1 %}
+							<dt class="h4">Bubble Level</dt>
+								<dd>Yes</dd>
+							{% endif %}
+
+							{% if harness_covers == 1 %}
+							<dt class="h4">Harness Covers</dt>
+							<dd>Yes</dd>
+							{% endif %}
+
+							{% if latch_installs == 1 %}
+							<dt class="h4">Latch Install</dt>
+							<dd>Yes</dd>
+							{% endif %}
+						{% endif %}
+
+						<dt class="h4">Assembly Required</dt>
+						<dd>
+						{% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
+						{% if assembly_switch_spec == 1 %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+						</dd>
+						<dt class="h4">Hardware Included</dt>
+						<dd>
+						{% assign my_switch = product.metafields.sf_gates.hardware_included %}
+						{% if my_switch == 1 %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+					    </dd>
+					</dl>
+				</div>
+			</div>
+		</li>  
+
+		<li id="Slide-2"
+			class="multicolumn-list__item grid__item slider__slide" >
+			<div class="multicolumn-card content-container">
+				<div class="multicolumn-card-content">
+					<dl>
+					{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}
+					{% if care_copy %}
+						<dt class="h4">Care</dt>
+						<dd>
+							<ul>
+							{% for li in care_copy %}
+								<li>{{ li }}</li>
+							{% endfor %}
+							</ul>
+						</dd>
+					{% endif %}
+					
+					{% assign material = product.metafields.sf_products.material %}
+					{% if material %}
+						<dt class="h4">Materials</dt>
+						<dd>{{ material }}</dd>
+					{% endif %}
+					</dl>
+				</div>
+			</div>
+		</li>  
+		<li id="Slide-3"
+			class="multicolumn-list__item grid__item slider__slide" >
+			<div class="multicolumn-card content-container">
+				<div class="multicolumn-card-content">
+					{% assign specifications_image = product.metafields.sf_products.specifications_image %}
+					{% if specifications_image %}
+					<img class="specifications-image" width="100%" height="auto" loading="lazy" alt="{{ product.title }} Specifications" src="{{ specifications_image }}">
+					{% endif %}
+				</div>
+			</div>
+		</li>  
+      </ul>
+    </slider-component>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Evenflo Product Specs",
+  "class": "section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "What's In The Box",
+      "label": "t:sections.multicolumn.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "h1 heading-underline",
+          "label": "t:sections.all.heading_size.options__4.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading Alignment",
+      "default": "start",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Product Specs"
+    }
+  ]
+}
+{% endschema %}
