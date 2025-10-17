@@ -311,3 +311,20 @@ box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
 	0 0 0 calc(var(--buttons-border-width) + 1px)
 	rgba(41, 150, 197, var(--alpha-button-background));
 }
+
+/* Product specifications, "What's in the box" section */
+dl dt {
+	font-weight: 700;
+}
+
+dl dd {
+  margin: 0 0 .5rem 0;
+}
+
+dl dd ul {
+	margin-bottom: 1.5rem;
+}
+
+predictive-search .predictive-search__loading-state {
+  display: none
+}
