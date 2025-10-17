@@ -201,7 +201,7 @@ Determine if the product is from support product collection
 				{% if card_product.tags contains 'new' %}
 					<span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} new-badge">New</span>
 				{% endif %}
-				{% if card_product.compare_at_price > card_product.price %}
+				{% if card_product.compare_at_price > card_product.price or card_product.tags contains 'sale' %}
 					<span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} on-sale-badge">Sale</span>
 				{% endif %}
 			{% endif %}
