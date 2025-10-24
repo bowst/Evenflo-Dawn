@@ -1,8 +1,9 @@
 {{ 'section-multicolumn.css' | asset_url | stylesheet_tag }}
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-evenflo-multicolumn.css' | asset_url | stylesheet_tag }}
 {{ 'video-section.css' | asset_url | stylesheet_tag }}
 {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-product-specifications.css' | asset_url | stylesheet_tag }}
+
 
 {% style %}
 @media screen and (min-width: 750px) {
@@ -13,7 +14,7 @@
   }
 {% endstyle %}
 
-<div class="multicolumn whats-in-the-box color-scheme-1 gradient background-none">
+<div class="multicolumn evenflo-product-specifications color-scheme-1 gradient background-none">
   <div class="page-width section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin text-{{ section.settings.heading_alignment }}">
@@ -23,162 +24,98 @@
       </div>
     {%- endunless -%}
    
-	<slider-component class="slider-mobile-gutter">
       <ul
         class="multicolumn-list contains-content-container grid grid--1-col-tablet-down grid--3-col-desktop "
         role="list"
       >
-		<li id="Slide-1"
-			class="multicolumn-list__item grid__item slider__slide" >
+		<li id="specs-column-1"
+			class="multicolumn-list__item grid__item" >
 			<div class="multicolumn-card content-container">
-				<div class="multicolumn-card-content">
-					<dl>
-						{% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}
-						
-						{% if retail_package_contents_value %}
-						<dt>Contents</dt>
-						<dd>{{ retail_package_contents_value }}</dd>
-						{% endif %}
-
-						{% assign assembled_width = product.metafields.sf_products.assembled_width %}
-						{% assign assembled_height = product.metafields.sf_products.assembled_height %}
-						{% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
-						{% if assembled_width and assembled_height and assembled_depth %}
-						<dt>Product Dimensions</dt>
-						<dd>{{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</dd>
-						{% endif %}
-					
-						{% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
-						{% if folded_dimensions %}
-						<dt>Folded Dimensions</dt>
-						<dd>{{ folded_dimensions }}</dd>
-						{% endif %}
-
-						{% assign package_width = product.metafields.sf_shipping.package_width %}
-						{% assign package_height = product.metafields.sf_shipping.package_height %}
-						{% assign package_depth = product.metafields.sf_shipping.package_depth %}
-						{% if package_width and package_height and package_depth %}
-						<dt>Package Dimensions</dt>
-						<dd>{{ package_width }} x {{ package_height }} x {{ package_depth }} in</dd>
-						{% endif %}
-
-						{% assign assembled_weight = product.metafields.sf_products.assembled_weight %}
-						{% if assembled_weight %}
-						<dt>Product Weight</dt>
-						<dd>{{ assembled_weight }} lbs.</dd>
-						{% endif %}
-
-						{% assign package_weight = product.metafields.sf_shipping.package_weight %}
-						{% if package_weight %}
-						<dt>Package Weight</dt>
-						<dd>{{ package_weight }} lbs.</dd>
-						{% endif %}
-
-						{% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}
-						{% if carrier_weight_without_base %}
-						<dt>Weight w/o Base</dt>
-						<dd>{{ carrier_weight_without_base }} lbs.</dd>
-						{% endif %}
-
-						<!-- optional section -->
-						{% assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method %}
-						{% assign harness_type = product.metafields.sf_products.harness_type %}
-						{% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
-						{% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
-						{% assign latch_install = product.metafields.sf_car_seat.latch_install %}
-						{% assign maturity = product.metafields.sf_products.maturity %}
-
-						{% if harness_rethread_method or harness_type %}
-							{% if harness_type %}
-							<dt>Harness Type</dt>
-							<dd>{{ harness_type }}</dd>
-							{% endif %}
-						
-							{% if harness_rethread_method %}
-							<dt>Harness Rethread</dt>
-							<dd>{{ harness_rethread_method }}</dd>
-							{% endif %}
-
-						{% endif %}
-						{% if bubble_level or harness_covers or latch_install %}
-							{% if bubble_level == 1 %}
-							<dt>Bubble Level</dt>
-								<dd>Yes</dd>
-							{% endif %}
-
-							{% if harness_covers == 1 %}
-							<dt>Harness Covers</dt>
-							<dd>Yes</dd>
-							{% endif %}
-
-							{% if latch_installs == 1 %}
-							<dt>Latch Install</dt>
-							<dd>Yes</dd>
-							{% endif %}
-						{% endif %}
-
-						<dt>Assembly Required</dt>
-						<dd>
-						{% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
-						{% if assembly_switch_spec == 1 %}
-							Yes
-						{% else %}
-							No
-						{% endif %}
-						</dd>
-						<dt>Hardware Included</dt>
-						<dd>
-						{% assign my_switch = product.metafields.sf_gates.hardware_included %}
-						{% if my_switch == 1 %}
-							Yes
-						{% else %}
-							No
-						{% endif %}
-					    </dd>
-					</dl>
-				</div>
+				{%  render 'evenflo-product-specs--whats-in-the-box' %}
 			</div>
 		</li>  
 
-		<li id="Slide-2"
-			class="multicolumn-list__item grid__item slider__slide" >
+		<li id="specs-column-2"
+			class="multicolumn-list__item grid__item" >
 			<div class="multicolumn-card content-container">
-				<div class="multicolumn-card-content">
-					<dl>
-					{% assign care_copy = product.metafields.sf_products.care_copy | split: '|' %}
-					{% if care_copy %}
-						<dt>Care</dt>
-						<dd>
-							<ul>
-							{% for li in care_copy %}
-								<li>{{ li }}</li>
-							{% endfor %}
-							</ul>
-						</dd>
-					{% endif %}
-					
-					{% assign material = product.metafields.sf_products.material %}
-					{% if material %}
-						<dt>Materials</dt>
-						<dd>{{ material }}</dd>
-					{% endif %}
-					</dl>
-				</div>
+			
+				{% if product.vendor == 'Rollplay' %}
+					{%  render 'evenflo-product-specs--rollplay' %}
+				{% endif %}
+
+				{%- if product.type == 'Play Yards' %}
+					{%  render 'evenflo-product-specs--play-yard' %}
+				{% endif %}
+
+				{% comment %}
+				{%- if product.type == 'Stroller Accessories' %}
+					{% render 'evenflo-product-specs--stroller-accessories' %}
+				{% endif %}
+				{% endcomment %}
+
+				{% if product.type == 'Gates' or product.type == 'Baby Gate' %}
+					{% render 'evenflo-product-specs--gates' %}
+				{% endif %}
+
+				{% if product.type == 'High Chair' %}
+					{% render 'evenflo-product-specs--high-chair' %}
+				{% endif %}
+
+				{%- if product.type == 'Stroller' or product.type == 'Travel System' %}
+					{% render 'evenflo-product-specs--stroller' %}
+				{% endif %}
+
+				{%- if product.type == 'Carrier' or product.type == 'Baby Carrier' %}
+					{%  render 'evenflo-product-specs--carrier' %}
+				{% endif %}
+
+				{% if product.type contains 'Car Seat'
+				or product.type contains 'Travel System'
+				or product.type contains 'Booster Seat'
+				%}				
+					{% render 'evenflo-product-specs--car-seat' %}
+				{% endif %}
+
+				{% if product.vendor == 'Exersaucer' %}
+					{% render 'evenflo-product-specs--exersaucer' %}
+				{% endif %}
 			</div>
 		</li>  
-		<li id="Slide-3"
-			class="multicolumn-list__item grid__item slider__slide" >
+		
+		<li id="specs-column-3"
+			class="multicolumn-list__item grid__item" >
 			<div class="multicolumn-card content-container">
-				<div class="multicolumn-card-content">
-					{% assign specifications_image = product.metafields.sf_products.specifications_image %}
-					{% if specifications_image %}
+				{% assign user_manual_value = product.metafields.sf_products.manual %}
+				{% assign user_manual_french_value = product.metafields.sf_products.manual_french %}
+				{% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}
+
+				<h3>Manuals</h3>
+				<ul class="specs-list">
+	  
+				{% if user_manual_value %}
+				  <li><a href="{{ user_manual_value }}" target="_blank" rel="noopener">Download Manual (en)</a></li>
+				{% endif %}
+	  
+				{% if user_manual_french_value %}
+				  <li><a href="{{ user_manual_french_value }}" target="_blank" rel="noopener">Download Manual (fr)</a></li>
+				{% endif %}
+	  
+				{% if user_manual_spanish_value %}
+				  <li><a href="{{ user_manual_spanish_value }}" target="_blank" rel="noopener">Download Manual (es)</a></li>
+				{% endif %}
+				</ul>
+	
+				
+				{% assign specifications_image = product.metafields.sf_products.specifications_image %}
+				{% if specifications_image %}
+				<h3>{{ product.type }} Dimensions</h3>
+				<div class="multicolumn-card-content no-bg">
 					<img class="specifications-image" width="100%" height="auto" loading="lazy" alt="{{ product.title }} Specifications" src="{{ specifications_image }}">
-					{% endif %}
 				</div>
+				{% endif %}
 			</div>
 		</li>  
       </ul>
-    </slider-component>
   </div>
 </div>
 
@@ -194,7 +131,7 @@
     {
       "type": "inline_richtext",
       "id": "title",
-      "default": "What's In The Box",
+      "default": "Product Specs & Manuals",
       "label": "t:sections.multicolumn.settings.title.label"
     },
     {
