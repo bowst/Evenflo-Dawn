@@ -1,0 +1,146 @@
+{% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
+{% assign wheel_material = product.metafields.sf_stroller.wheel_material %}
+{% assign stroller_type = product.metafields.sf_stroller.stroller_type %}
+{% assign number_of_cup_holders = product.metafields.sf_products.number_of_cup_holders %}
+{% assign self_standing_fold = product.metafields.sf_stroller.self_standing_fold %}
+{% assign upf_50_sun_protection_canopy = product.metafields.sf_stroller.upf_50__sun_protection_canopy %}
+{% assign lockable_front_wheels = product.metafields.sf_stroller.lockable_front_wheels %}
+{% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
+{% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
+{% assign compact_fold = product.metafields.sf_stroller.compact_fold %}
+{% assign lockable_front = product.metafields.sf_stroller.lockable_front_wheels %}
+{% assign single_to_double_capable = product.metafields.sf_stroller.single_to_double_capable %}
+
+{% if number_of_height_modes or wheel_material or stroller_type or number_of_cup_holders %}
+	<h3>{{ product.type }} Specifications</h3>
+
+	<ul class="specs-list">
+		{% comment %}
+		<strong>Stroller Max Age</strong>
+			{{ product.metafields.sf_stroller.max_age | strip }}
+		</div>
+		{% endcomment %}
+		<li>
+			<strong>Self Standing Fold</strong>
+			<div>
+				{% if self_standing_fold == 1 %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+			</div>
+		</li>
+		<li>
+			<strong>UPF 50+ Sun Protection Canopy</strong>
+			<div>
+				{% if upf_50_sun_protection_canopy == 1 %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+			</div>
+		</li>
+
+		<li>
+			<strong>Compact Fold</strong>
+			<div>
+				{% if compact_fold == 1 %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+			</div>
+		</li>
+
+		<li>
+			<strong>Lockable Front Wheels</strong>
+			<div>
+				{% if lockable_front == 1 %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+			</div>
+		</li>
+
+		<li>
+			<strong>Accepts Rider Board</strong>
+			<div>
+				{% if accepts_rider_board == 1 %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+			</div>
+		</li>
+
+		{% if number_of_cup_holders %}
+		<li>
+			<strong>Number of Cup Holders</strong>
+			<div>
+				{{ number_of_cup_holders }}
+			</div>
+		</li>
+		{% endif %}
+
+		<li>
+			<strong>Single to Double Capable</strong>
+			<div>
+				{% if single_to_double_capable == 1 %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+			</div>
+		</li>
+
+		<li>
+			<strong>Lockable Front Wheels</strong>
+			<div>
+				{% if lockable_front_wheels == 1 %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+			</div>
+		</li>
+
+		<li>
+			<strong>Accepts Infant Car Seat</strong>
+			<div>
+				{% if accepts_infant_car_seat == 1 %}
+					Yes
+				{% else %}
+					No
+				{% endif %}
+			</div>
+		</li>
+
+		{% if number_of_height_modes %}
+		<li>
+			<strong>Number of Height Modes</strong>
+			<div>
+				{{ number_of_height_modes }}
+			</div>
+		</li>
+		{% endif %}
+
+		{% if wheel_material %}
+		<li>
+			<strong>Wheel Material</strong>
+			<div>
+				{{ wheel_material }}
+			</div>
+		</li>
+		{% endif %}
+
+		{% if stroller_type %}
+		<li>
+			<strong>Stroller Type</strong>
+			<div>
+				{{ stroller_type }}
+			</div>
+		</li>
+		{% endif %}
+	</ul>
+{% endif %}

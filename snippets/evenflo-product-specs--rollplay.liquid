@@ -1,0 +1,64 @@
+{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+{% assign activity_batteries_required = product.metafields.sf_activity.batteries_required %}
+
+<h3>Rollplay Specifications</h3>
+
+<ul class="specs-list">
+	<li>
+		<strong>Child Weight</strong>
+		<div>
+			{% if child_weight_min_value %}
+			{{ child_weight_min_value }} -
+			{% endif %}
+			{% if child_weight_max_value %}
+			{{ child_weight_max_value }} lbs
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Run Time</strong>
+		<div>{{ product.metafields.custom.rollplay_run_time }}</div>
+	</li>
+
+	<li>
+		<strong>Max Speed</strong>
+		{{ product.metafields.custom.rollplay_max_speed }}
+		<div>
+			{{ product.metafields.custom.rollplay_max_speed }}
+		</div>
+	</li>
+
+	<li>
+		<strong>Battery</strong>
+		<div>
+			{% if activity_batteries_required == 1 %}
+			Required
+			{% else %}
+			Not Required
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Battery Cell Type</strong>
+		<div>{{ product.metafields.sf_activity.battery_cell_type -}}</div>
+	</li>
+
+	<li>
+		<strong>Battery Replaceable</strong>
+		<div>
+			{% if product.metafields.custom.battery_replaceable == true %}
+			Replaceable
+			{% else %}
+			Not replaceable
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Warranty</strong>
+		<div>{{ product_warranty }}</div>
+	</li>
+</ul>

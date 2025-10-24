@@ -1,0 +1,162 @@
+{% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
+{% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
+{% assign electronic_toys_features = product.metafields.sf_activity.electronic_toys_features | split: ',' %}
+{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+{% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
+{% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+{% assign activity_batteries_required = product.metafields.sf_activity.batteries_required %}
+{% assign batteries_included = product.metafields.sf_activity.batteries_included %}
+{% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
+{% assign type = product.metafields.sf_activity.type %}
+{% assign max_ceiling_height = product.metafields.sf_door_jumper.max_ceiling_height %}
+{% assign height_adjustable = product.metafields.product.metafields.sf_activity.height_adjustable %}
+{% assign number_of_height_modes = product.metafields.sf_activity.number_of_height_modes %}
+{% assign activity_foldable = product.metafields.sf_activity.foldable_collapsable %}
+{% assign child_age_min_value = product.metafields.sf_products.child_age_min | strip %}
+
+<h3>Exersaucer Specifications</h3>
+
+<ul class="specs-list">
+	<li>
+		<strong>Child Weight</strong>
+		<div>
+			{% if child_weight_min_value %}
+			{{ child_weight_min_value }} -
+			{% endif %}
+			{% if child_weight_max_value %}
+			{{ child_weight_max_value }} lbs
+			{% endif %}
+		</div>
+	</li>
+		
+	<li>
+		<strong>Child Height</strong>
+		<div>
+			{% if child_height_min_value %}
+			{{ child_height_min_value }} -
+			{% endif %}
+			{% if child_height_max_value %}
+			{{ child_height_max_value }} in
+			{% endif %}
+		</div>
+	</li>
+		
+	<li>
+		<strong>Minimum Age</strong>
+		<div>
+			{% if child_age_min_value %}
+			{{ child_age_min_value }}
+			{% endif %}
+		</div>
+	</li>
+		
+	<li>
+		<strong>Number of Height Modes</strong>
+		<div>
+			{% if number_of_height_modes != null and number_of_height_modes != '' %}
+			{{ number_of_height_modes }}
+			{% else %}
+			1
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Toys</strong>
+		<div>	
+			{% for tag in electronic_toys_features %}
+			{{ tag -}}
+			{%- if tag != electronic_toys_features.last %},{% endif %}
+			{% endfor %}
+		</div>
+	</li>
+		
+	{% if toys_entertainment %}
+	<li>
+		<strong>Toys</strong>
+		<div>
+			{{ toys_entertainment }}
+		</div>
+	</li>
+	{% endif %}
+		
+	<li>
+		<strong>Foldable</strong>
+		<div>
+			{% if activity_foldable == 1 %}
+			Yes
+			{% else %}
+			No
+			{% endif %}
+		</div>
+	</li>
+		
+	<li>
+		<strong>Height Adjustable</strong>
+		<div>
+			{% if height_adjustable == 1 %}
+			Yes
+			{% else %}
+			No
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Activity Type</strong>
+		<div>
+			{{ type }}
+		</div>
+	</li>
+
+	<li>
+		<strong>Max Ceiling Height</strong>
+		<div>
+			{{ max_ceiling_height }}
+		</div>
+	</li>
+
+	<li>
+		<strong>Battery Required</strong>
+		<div>
+			{% if activity_batteries_required == 1 %}
+			Yes <br>
+			{{ product.metafields.sf_activity.battery_cell_type -}}
+			{% else %}
+			No<br>
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Batteries Included</strong>
+		<div>
+			{% if batteries_included == 1 %}
+				Yes
+			{% else %}
+				No
+			{% endif %}
+		</div>
+	</li>
+
+	<!-- harness for door jumper -->
+	{% assign harness_type = product.metafields.sf_door_jumper.harness_type %}
+	{% if harness_type %}
+	<li>
+		<strong>Harness Type</strong>
+		<div>
+			{{ harness_type }}
+		</div>
+	</li>
+	{% endif %}
+
+	{% if shipping_restrictions %}
+	<li>
+		<strong>Shipping Restrictions</strong>
+		<div>
+			{{ shipping_restrictions }}
+		</div>
+	</li>
+	{% endif %}
+</ul>

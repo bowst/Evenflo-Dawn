@@ -1,0 +1,61 @@
+{% assign toy_clip = product.metafields.sf_carrier.pacifier_toy_clip %}
+{% assign machine_wash = product.metafields.sf_carrier.machine_washable %}
+
+{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+<!-- carrier positions for carrier -->
+
+<h3>Carrier Specifications</h3>
+<ul class="specs-list">
+	<li>
+		<strong>Child Weight</strong>
+		<div>
+			{% if child_weight_min_value %}
+			{{ child_weight_min_value }} -
+			{% endif %}
+			{% if child_weight_max_value %}
+			{{ child_weight_max_value }} lbs
+			{% endif %}
+		</div>
+	</li>
+	
+	<li>
+		<strong>Positions</strong>
+		<div>
+			{{ product.metafields.sf_carrier.position | split: ',' }}
+		</div>
+	</li>
+	
+	<li>
+		<strong>Machine Washable</strong>
+		<div>
+		{% if machine_wash == 1 %}
+			<p>Yes</p>
+		{% else %}
+			<p>No</p>
+		{% endif %}
+		</div>
+	</li>
+	
+	<li>
+		<strong>Toy Clip</strong>
+		<div>
+			{% if toy_clip == 1 %}
+			<p>Yes</p>
+		{% else %}
+			<p>No</p>
+		{% endif %}
+		</div>
+	</li>
+
+	{% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
+
+	{% if shipping_restrictions %}
+	<li>
+		<strong>Shipping Restrictions</strong>
+		<div>
+		{{ shipping_restrictions }}
+		</div>
+	</li>
+	{% endif %}
+</ul>

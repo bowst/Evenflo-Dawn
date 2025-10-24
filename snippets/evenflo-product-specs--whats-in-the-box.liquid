@@ -1,0 +1,134 @@
+<h3>What's in the Box</h3>
+
+<ul class="specs-list">
+	{% assign retail_package_contents_value = product.metafields.sf_products.retail_package_contents %}
+	
+	{% if retail_package_contents_value %}
+	<li>
+		<strong>Contents</strong>
+		<div>{{ retail_package_contents_value }}</div>
+	</li>
+	{% endif %}
+
+	{% assign assembled_width = product.metafields.sf_products.assembled_width %}
+	{% assign assembled_height = product.metafields.sf_products.assembled_height %}
+	{% assign assembled_depth = product.metafields.sf_products.assembled_depth %}
+	{% if assembled_width and assembled_height and assembled_depth %}
+	<li>
+		<strong>Product Dimensions</strong>
+		<div>{{ assembled_width }} x {{ assembled_height }} x {{ assembled_depth }} in</div>
+	</li>
+	{% endif %}
+
+	{% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
+	{% if folded_dimensions %}
+	<li>
+		<strong>Folded Dimensions</strong>
+		<div>{{ folded_dimensions }}</div>
+	</li>
+	{% endif %}
+
+	{% assign package_width = product.metafields.sf_shipping.package_width %}
+	{% assign package_height = product.metafields.sf_shipping.package_height %}
+	{% assign package_depth = product.metafields.sf_shipping.package_depth %}
+	{% if package_width and package_height and package_depth %}
+	<li>
+		<strong>Package Dimensions</strong>
+		<div>{{ package_width }} x {{ package_height }} x {{ package_depth }} in</div>
+	</li>
+	{% endif %}
+
+	{% assign assembled_weight = product.metafields.sf_products.assembled_weight %}
+	{% if assembled_weight %}
+	<li>
+		<strong>Product Weight</strong>
+		<div>{{ assembled_weight }} lbs.</div>
+	</li>
+	{% endif %}
+
+	{% assign package_weight = product.metafields.sf_shipping.package_weight %}
+	{% if package_weight %}
+	<li>
+		<strong>Package Weight</strong>
+		<div>{{ package_weight }} lbs.</div>
+	</li>
+	{% endif %}
+
+	{% assign carrier_weight_without_base = product.metafields.sf_car_seat.carrier_weight_without_base %}
+	{% if carrier_weight_without_base %}
+	<li>
+		<strong>Weight w/o Base</strong>
+		<div>{{ carrier_weight_without_base }} lbs.</div>
+	</li>
+	{% endif %}
+
+	<!-- optional section -->
+	{% assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method %}
+	{% assign harness_type = product.metafields.sf_products.harness_type %}
+	{% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
+	{% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
+	{% assign latch_install = product.metafields.sf_car_seat.latch_install %}
+	{% assign maturity = product.metafields.sf_products.maturity %}
+
+	{% if harness_rethread_method or harness_type %}
+		{% if harness_type %}
+		<li>
+			<strong>Harness Type</strong>
+			<div>{{ harness_type }}</div>
+		</li>
+		{% endif %}
+	
+		{% if harness_rethread_method %}	
+		<li>
+			<strong>Harness Rethread</strong>
+			<div>{{ harness_rethread_method }}</div>
+		</li>
+		{% endif %}
+
+	{% endif %}
+	{% if bubble_level or harness_covers or latch_install %}
+		{% if bubble_level == 1 %}
+		<li>
+			<strong>Bubble Level</strong>
+			<div>Yes</div>
+		</li>
+		{% endif %}
+
+		{% if harness_covers == 1 %}
+		<li>
+			<strong>Harness Covers</strong>
+			<div>Yes</div>
+		</li>
+		{% endif %}
+
+		{% if latch_installs == 1 %}
+		<li>
+			<strong>Latch Install</strong>
+			<div>Yes</div>
+			</>
+		{% endif %}
+	{% endif %}
+	<li>
+		<strong>Assembly Required</strong>
+		<div>
+		{% assign assembly_switch_spec = product.metafields.sf_products.assembly_required %}
+		{% if assembly_switch_spec == 1 %}
+			Yes
+		{% else %}
+			No
+		{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Hardware Included</strong>
+		<div>
+		{% assign my_switch = product.metafields.sf_gates.hardware_included %}
+		{% if my_switch == 1 %}
+			Yes
+		{% else %}
+			No
+		{% endif %}
+		</div>
+	</li>
+</ul>

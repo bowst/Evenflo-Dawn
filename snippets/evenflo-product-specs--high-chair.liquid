@@ -1,0 +1,66 @@
+{% assign cleaning = product.metafields.sf_high_chair.cleaning %}
+{% assign fold_flat_capable = product.metafields.sf_high_chair.fold_flat_capable %}
+{% assign hc_height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
+{% assign one_hand_tray = product.metafields.sf_high_chair.one_hand_tray %}
+{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+{% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
+
+<h3>High Chair Specifications</h3>
+<ul class="specs-list">
+	<li>
+		<strong>Child Weight</strong>
+		<div>
+			{% if child_weight_min_value %}
+				{{ child_weight_min_value }} -
+			{% endif %}
+			{% if child_weight_max_value %}
+				{{ child_weight_max_value }} lbs
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Fold Flat</strong>
+		<div>
+			{% if fold_flat_capable == 1 %}
+				Yes
+			{% else %}
+				No
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>Height Adjustable</strong>
+		<div>
+			{% if hc_height_adjustable == 1 %}
+				Yes
+			{% else %}
+				No
+			{% endif %}
+		</div>
+	</li>
+
+	<li>
+		<strong>One hand Tray</strong>
+		<div>
+			{% if one_hand_tray == 1 %}
+				Yes
+			{% else %}
+				No
+			{% endif %}
+		</div>
+	</li>
+
+	{% if shipping_restrictions %}
+	<li>
+		<strong>Shipping Restrictions</strong>
+		<div>
+		{{ shipping_restrictions }}
+		</div>
+	</li>
+	{% endif %}
+
+	{% comment %} High Chair Cleaning {{ product.metafields.sf_high_chair.cleaning }} {% endcomment %}
+</ul>
