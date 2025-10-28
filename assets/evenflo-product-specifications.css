@@ -29,6 +29,20 @@
 	margin: 0 0 1rem;
 }
 
+.evenflo-product-specifications ul.specs-list > li.checkbox-item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.evenflo-product-specifications ul.specs-list > li:not(.checkbox-item) + li.checkbox-item {
+	border-top: 2px solid #01b1b0;
+	padding-top: .75em;
+	margin-top: 1em;
+}
+.evenflo-product-specifications ul.specs-list > li.checkbox-item svg {
+	height: 1em;
+}
+
 @media screen and (min-width: 750px) {
     .evenflo-product-specifications.multicolumn:not(.whats-in-the-box) .multicolumn-list {
 		margin-left: 0;

@@ -20,45 +20,36 @@
 		</div>
 	</li>
 
-	<li>
-		<strong>Fold Flat</strong>
-		<div>
-			{% if fold_flat_capable == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
-	</li>
-
-	<li>
-		<strong>Height Adjustable</strong>
-		<div>
-			{% if hc_height_adjustable == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
-	</li>
-
-	<li>
-		<strong>One hand Tray</strong>
-		<div>
-			{% if one_hand_tray == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
-	</li>
-
 	{% if shipping_restrictions %}
 	<li>
 		<strong>Shipping Restrictions</strong>
 		<div>
 		{{ shipping_restrictions }}
 		</div>
+	</li>
+	{% endif %}
+
+	{% if fold_flat_capable == 1 %}
+	<li class="checkbox-item">
+		<strong>Fold Flat</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+
+	{% if hc_height_adjustable == 1 %}
+	<li class="checkbox-item">
+		<strong>Height Adjustable</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+
+	{% if one_hand_tray == 1 %}
+	<li class="checkbox-item">
+		<strong>One hand Tray</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
 	{% endif %}
 

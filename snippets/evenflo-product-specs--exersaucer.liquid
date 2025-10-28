@@ -82,28 +82,6 @@
 	{% endif %}
 		
 	<li>
-		<strong>Foldable</strong>
-		<div>
-			{% if activity_foldable == 1 %}
-			Yes
-			{% else %}
-			No
-			{% endif %}
-		</div>
-	</li>
-		
-	<li>
-		<strong>Height Adjustable</strong>
-		<div>
-			{% if height_adjustable == 1 %}
-			Yes
-			{% else %}
-			No
-			{% endif %}
-		</div>
-	</li>
-
-	<li>
 		<strong>Activity Type</strong>
 		<div>
 			{{ type }}
@@ -114,29 +92,6 @@
 		<strong>Max Ceiling Height</strong>
 		<div>
 			{{ max_ceiling_height }}
-		</div>
-	</li>
-
-	<li>
-		<strong>Battery Required</strong>
-		<div>
-			{% if activity_batteries_required == 1 %}
-			Yes <br>
-			{{ product.metafields.sf_activity.battery_cell_type -}}
-			{% else %}
-			No<br>
-			{% endif %}
-		</div>
-	</li>
-
-	<li>
-		<strong>Batteries Included</strong>
-		<div>
-			{% if batteries_included == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
 		</div>
 	</li>
 
@@ -157,6 +112,39 @@
 		<div>
 			{{ shipping_restrictions }}
 		</div>
+	</li>
+	{% endif %}
+	
+	{% if activity_foldable == 1 %}
+	<li class="checkbox-item">
+		<strong>Foldable</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+		
+	{% if height_adjustable == 1 %}
+	<li class="checkbox-item">
+		<strong>Height Adjustable</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+
+	{% if activity_batteries_required == 1 %}
+	<li class="checkbox-item">
+		<strong>Battery Required</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+		<div>{{ product.metafields.sf_activity.battery_cell_type }}</div>
+	</li>
+	{% endif %}
+
+	{% if batteries_included == 1 %}
+	<li class="checkbox-item">
+		<strong>Batteries Included</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
 	{% endif %}
 </ul>

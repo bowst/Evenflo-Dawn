@@ -25,28 +25,6 @@
 			{{ product.metafields.sf_carrier.position | split: ',' }}
 		</div>
 	</li>
-	
-	<li>
-		<strong>Machine Washable</strong>
-		<div>
-		{% if machine_wash == 1 %}
-			<p>Yes</p>
-		{% else %}
-			<p>No</p>
-		{% endif %}
-		</div>
-	</li>
-	
-	<li>
-		<strong>Toy Clip</strong>
-		<div>
-			{% if toy_clip == 1 %}
-			<p>Yes</p>
-		{% else %}
-			<p>No</p>
-		{% endif %}
-		</div>
-	</li>
 
 	{% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
 
@@ -56,6 +34,22 @@
 		<div>
 		{{ shipping_restrictions }}
 		</div>
+	</li>
+	{% endif %}
+
+	{% if machine_wash == 1 %}
+	<li class="checkbox-item">
+		<strong>Machine Washable</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+	
+	{% if toy_clip == 1 %}
+	<li class="checkbox-item">
+		<strong>Toy Clip</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
 	{% endif %}
 </ul>

@@ -42,14 +42,11 @@
 		</div>
 	</li>
 	
-	<li>
+	{% if my_switch == 1 %}
+	<li class="checkbox-item">
 		<strong>Walk-Thru Door</strong>
-		<div>
-			{% if my_switch == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 </ul>

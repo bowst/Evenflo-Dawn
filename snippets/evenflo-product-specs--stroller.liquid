@@ -20,59 +20,6 @@
 			{{ product.metafields.sf_stroller.max_age | strip }}
 		</div>
 		{% endcomment %}
-		<li>
-			<strong>Self Standing Fold</strong>
-			<div>
-				{% if self_standing_fold == 1 %}
-					Yes
-				{% else %}
-					No
-				{% endif %}
-			</div>
-		</li>
-		<li>
-			<strong>UPF 50+ Sun Protection Canopy</strong>
-			<div>
-				{% if upf_50_sun_protection_canopy == 1 %}
-					Yes
-				{% else %}
-					No
-				{% endif %}
-			</div>
-		</li>
-
-		<li>
-			<strong>Compact Fold</strong>
-			<div>
-				{% if compact_fold == 1 %}
-					Yes
-				{% else %}
-					No
-				{% endif %}
-			</div>
-		</li>
-
-		<li>
-			<strong>Lockable Front Wheels</strong>
-			<div>
-				{% if lockable_front == 1 %}
-					Yes
-				{% else %}
-					No
-				{% endif %}
-			</div>
-		</li>
-
-		<li>
-			<strong>Accepts Rider Board</strong>
-			<div>
-				{% if accepts_rider_board == 1 %}
-					Yes
-				{% else %}
-					No
-				{% endif %}
-			</div>
-		</li>
 
 		{% if number_of_cup_holders %}
 		<li>
@@ -82,39 +29,6 @@
 			</div>
 		</li>
 		{% endif %}
-
-		<li>
-			<strong>Single to Double Capable</strong>
-			<div>
-				{% if single_to_double_capable == 1 %}
-					Yes
-				{% else %}
-					No
-				{% endif %}
-			</div>
-		</li>
-
-		<li>
-			<strong>Lockable Front Wheels</strong>
-			<div>
-				{% if lockable_front_wheels == 1 %}
-					Yes
-				{% else %}
-					No
-				{% endif %}
-			</div>
-		</li>
-
-		<li>
-			<strong>Accepts Infant Car Seat</strong>
-			<div>
-				{% if accepts_infant_car_seat == 1 %}
-					Yes
-				{% else %}
-					No
-				{% endif %}
-			</div>
-		</li>
 
 		{% if number_of_height_modes %}
 		<li>
@@ -140,6 +54,62 @@
 			<div>
 				{{ stroller_type }}
 			</div>
+		</li>
+		{% endif %}
+		
+		{% if self_standing_fold == 1 %}
+		<li class="checkbox-item">
+			<strong>Self Standing Fold</strong>
+			<span class="screen-reader-text">Yes</span>
+			<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+		</li>
+		{% endif %}
+
+		{% if upf_50_sun_protection_canopy == 1 %}
+		<li class="checkbox-item">
+			<strong>UPF 50+ Sun Protection Canopy</strong>
+			<span class="screen-reader-text">Yes</span>
+			<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+		</li>
+		{% endif %}
+
+		{% if compact_fold == 1 %}
+		<li class="checkbox-item">
+			<strong>Compact Fold</strong>
+			<span class="screen-reader-text">Yes</span>
+			<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+		</li>
+		{% endif %}
+
+		{% if lockable_front == 1 or lockable_front_wheels == 1 %}
+		<li class="checkbox-item">
+			<strong>Lockable Front Wheels</strong>
+			<span class="screen-reader-text">Yes</span>
+			<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+		</li>
+		{% endif %}
+
+		{% if accepts_rider_board == 1 %}
+		<li class="checkbox-item">
+			<strong>Accepts Rider Board</strong>
+			<span class="screen-reader-text">Yes</span>
+			<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+		</li>
+		{% endif %}
+
+		{% if single_to_double_capable == 1 %}
+		<li class="checkbox-item">
+			<strong>Single to Double Capable</strong>
+			<span class="screen-reader-text">Yes</span>
+			<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+		</li>
+		{% endif %}
+
+		{% if accepts_infant_car_seat == 1 %}
+		<li class="checkbox-item">
+			<strong>Accepts Infant Car Seat</strong>
+			<span class="screen-reader-text">Yes</span>
+			<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 		</li>
 		{% endif %}
 	</ul>

@@ -14,148 +14,109 @@
 
 <h3>{{ product.type }} Specifications</h3>
 <ul class="specs-list">
-	<li>
+	{% if washable == 1 %}
+	<li class="checkbox-item">
 		<strong>Machine Washable Surface</strong>
-		<div>
-			{% if washable == 1 %}
-			Yes
-			{% else %}
-			No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
-	
-	<li>
+	{% endif %}
+
+	{% if steel_reinforced == 1 %}
+	<li class="checkbox-item">
 		<strong>Steel Reinforced</strong>
-		<div>
-			{% if steel_reinforced == 1 %}
-			Yes
-			{% else %}
-			No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 	
-	<li>
+	{% if bubble_level == 1 %}
+	<li class="checkbox-item">
 		<strong>Bubble Level</strong>
-		<div>
-			{% if bubble_level == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 	
-	<li>
+	{% if harness_covers == 1 %}
+	<li class="checkbox-item">
 		<strong>Harness Covers</strong>
-		<div>
-			{% if harness_covers == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 
-	<li>
+	{% if latch_install == 1 %}
+	<li class="checkbox-item">
 		<strong>Latch Install</strong>
-		<div>
-			{% if latch_install == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 
-	<li>
+	{% if lightweight == 1 %}
+	<li class="checkbox-item">
 		<strong>Lightweight</strong>
-		<div>
-			{% if lightweight == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 	
-	<li>
+	{% if no_rethread_harness == 1 %}
+	<li class="checkbox-item">
 		<strong>No Rethread Harness</strong>
-		<div>
-			{% if no_rethread_harness == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 
-	<li>
+	{% if side_impact_protection == 1 %}
+	<li class="checkbox-item">
 		<strong>Side Impact Protection</strong>
-		<div>
-			{% if side_impact_protection == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 
-	<li>
+	{% if anti_rebound_bar == 1 %}
+	<li class="checkbox-item">
 		<strong>Anti-Rebound Bar</strong>
-		<div>
-			{% if anti_rebound_bar == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 
-	<li>
+	{% if sensorsafe == 1 %}
+	<li class="checkbox-item">
 		<strong>Sensorsafe</strong>
-		<div>
-			{% if sensorsafe == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 	
-	<li>
+	{% if converts_to_no_back_booster == 1 %}
+	<li class="checkbox-item">
 		<strong>Converts to No Back Booster</strong>
-		<div>
-			{% if converts_to_no_back_booster == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 
-	<li>
+	{% if high_back == 1 %}
+	<li class="checkbox-item">
 		<strong>High Back</strong>
-		<div>
-			{% if high_back == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 
-	<li>
+	{% if has_harness_booster_mode == 1 %}
+	<li class="checkbox-item">
 		<strong>Has Harness Booster Mode</strong>
-		<div>
-			{% if has_harness_booster_mode == 1 %}
-				Yes
-			{% else %}
-				No
-			{% endif %}
-		</div>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
 	</li>
+	{% endif %}
 </ul>
 
 <!-- rear facing mode for car seat -->
@@ -225,10 +186,13 @@
 				{{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
 			</div>
 		</li>
+		<li>
+			<div class="statement">
+				{{ forward_facing_fit_statement }}
+			</div>
+		</li>
 	</ul>
-	<div class="statement">
-	{{ forward_facing_fit_statement }}
-	</div>
+	
 {% endif %}
 
 <!-- high back mode for car seat -->
