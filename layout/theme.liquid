@@ -445,43 +445,7 @@
     </script> {% endcomment %}
   </body>
 
-  <script>
-(function() {
-  const DISALLOWED_VARIANT_ID = 44800625016988;
-  debugger
-  // Check if Peridot is in cart
-  function hasPeridotInCart() {
-    return fetch('/cart.js')
-      .then(response => response.json())
-      .then(cart => {
-        return cart.items.some(item => item.variant_id === DISALLOWED_VARIANT_ID);
-      });
-  }
-  
-  // Clear discount if Peridot is in cart
-  function clearDiscountIfNeeded() {
-    hasPeridotInCart().then(hasPeridot => {
-      if (hasPeridot) {
-        // Clear any applied discount
-        fetch('/discount/CLEAR')
-          .then(() => {
-            console.log('Discount cleared due to Peridot in cart');
-          });
-      }
-    });
-  }
-  
-  // Run on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', clearDiscountIfNeeded);
-  } else {
-    clearDiscountIfNeeded();
-  }
-  
-  // Also run when cart updates
-  document.addEventListener('cart:updated', clearDiscountIfNeeded);
-})();
-</script>
+
 
 
 </html>
