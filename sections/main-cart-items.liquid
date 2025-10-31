@@ -449,6 +449,37 @@
       </p>
     </form>
   </div>
+
+  <script>
+(function() {
+  const DISALLOWED_VARIANT_ID = '44800625016988';
+  
+  // Check if Peridot variant is in cart
+  function hasPeridotInCart() {
+    const cartItems = {{ cart.items | json }};
+    return cartItems.some(item => item.variant_id.toString() === DISALLOWED_VARIANT_ID);
+  }
+  
+  // Remove discount if Peridot is in cart
+  if (hasPeridotInCart()) {
+    fetch('/discount/clear', { method: 'POST' })
+      .then(() => {
+        // Show message to customer
+        const message = document.createElement('div');
+        message.className = 'cart-discount-message';
+        message.style.cssText = 'background: #fef3cd; padding: 12px; margin: 10px 0; border-radius: 4px; color: #856404;';
+        message.textContent = 'Discount codes cannot be used with the Peridot color — it\'s already on sale.';
+        
+        const cartForm = document.querySelector('form[action="/cart"]');
+        if (cartForm) {
+          cartForm.insertBefore(message, cartForm.firstChild);
+        }
+      });
+  }
+})();
+</script>
+
+
 </cart-items>
 
 {% schema %}
