@@ -453,39 +453,7 @@
 
 </cart-items>
 
-<script defer>
-(function() {
-  const DISALLOWED_VARIANT_ID = '44800625016988';
-  debugger
-  // Check if Peridot variant is in cart
-  function hasPeridotInCart() {
-    {% if cart.items.size > 0 %}
-      const cartItems = {{ cart.items | json }};
-      return cartItems.some(item => item.variant_id.toString() === DISALLOWED_VARIANT_ID);
-    {% else %}
-      return false;
-    {% endif %}
-  }
-  
-  // Remove discount if Peridot is in cart
-  if (hasPeridotInCart()) {
-    // Clear the discount code
-    fetch(window.Shopify.routes.root + 'discount/CLEAR')
-      .then(() => window.location.reload())
-      .catch(() => {
-        // Fallback: just show message
-        const message = document.createElement('div');
-        message.style.cssText = 'background: #fef3cd; padding: 12px; margin: 16px 0; border-radius: 4px; color: #856404; text-align: center;';
-        message.textContent = 'Discount codes cannot be used with the Peridot color — it\'s already on sale.';
-        
-        const cartItems = document.querySelector('.cart-items');
-        if (cartItems && cartItems.parentNode) {
-          cartItems.parentNode.insertBefore(message, cartItems);
-        }
-      });
-  }
-})();
-</script>
+
 
 
 {% schema %}
