@@ -456,7 +456,7 @@
   
   // Check if Peridot variant is in cart
   function hasPeridotInCart() {
-    console.log(cart.items)
+    console.log("cart.items",cart.items)
     const cartItems = {{ cart.items | json }};
     return cartItems.some(item => item.variant_id.toString() === DISALLOWED_VARIANT_ID);
   }
