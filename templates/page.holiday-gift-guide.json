@@ -69,7 +69,7 @@
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.title }}",
+            "heading": "",
             "heading_size": "h1",
             "heading_color": "black"
           }
@@ -78,13 +78,12 @@
       "block_order": [
         "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
       ],
-      "disabled": true,
       "settings": {
-        "image": "{{ page.metafields.custom.header_image.value }}",
+        "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Headerimage.jpg",
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
-        "image_height": "small",
+        "image_height": "adapt",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
         "desktop_content_alignment": "center",
@@ -97,6 +96,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -111,12 +111,250 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "evenflo_multicolumn_TVyX4y": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_MgGxhW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Revolve360_Extend_with_Quick_Clean_Cover_SKU_CS360212464.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Revolve360™",
+            "link": "shopify://collections/revolve-rotating-car-seats"
+          }
+        },
+        "column_gMCdi8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Shyft_Intuiti_Travel_System_with_SensorySoothe_SKU_TS100212512.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Shyft™ Intuiti™",
+            "link": "shopify://collections/the-shyft-family"
+          }
+        },
+        "column_bUM4Pb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_GiftCard.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Gift Cards",
+            "link": "shopify://products/evenflo-gift-card"
+          }
+        }
+      },
+      "block_order": [
+        "column_MgGxhW",
+        "column_gMCdi8",
+        "column_bUM4Pb"
+      ],
+      "custom_css": [],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "evenflo_multicolumn_Tg37ra": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_wRkr6a": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Car_seats.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Car Seats",
+            "link": "shopify://collections/car-seats"
+          }
+        },
+        "column_8h9Gy8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Strollers.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Strollers",
+            "link": "shopify://collections/strollers"
+          }
+        },
+        "column_7ryCNy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Rotating_Carsears.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Rotating Car Seats",
+            "link": "shopify://collections/all-in-one-car-seats"
+          }
+        },
+        "column_e7UThJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Travel_Systems.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Travel Systems",
+            "link": "shopify://collections/travel-systems"
+          }
+        },
+        "column_cY4dFH": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Stroller_Wagons.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Stroller Wagons",
+            "link": "shopify://collections/stroller-wagons"
+          }
+        },
+        "column_U3MiJx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Home_Gear.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Home Gear",
+            "link": "shopify://collections/home-gear"
+          }
+        }
+      },
+      "block_order": [
+        "column_wRkr6a",
+        "column_8h9Gy8",
+        "column_7ryCNy",
+        "column_e7UThJ",
+        "column_cY4dFH",
+        "column_U3MiJx"
+      ],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_pY9hDr": {
+      "type": "image-banner",
+      "blocks": {
+        "buttons_6rDw6M": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "buttons_6rDw6M"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Headerimage_copy.jpg",
+        "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
     "evenflo_video_with_text_CYpJVR",
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "main",
-    "custom_liquid_FVyR8w"
+    "custom_liquid_FVyR8w",
+    "evenflo_multicolumn_TVyX4y",
+    "evenflo_multicolumn_Tg37ra",
+    "image_banner_pY9hDr"
   ]
 }
