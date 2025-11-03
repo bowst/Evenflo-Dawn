@@ -83,7 +83,7 @@
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
-        "image_height": "adapt",
+        "image_height": "large",
         "desktop_content_position": "middle-right",
         "show_text_box": false,
         "desktop_content_alignment": "center",
@@ -294,6 +294,12 @@
         "column_cY4dFH",
         "column_U3MiJx"
       ],
+      "custom_css": [
+        ".multicolumn-list {background: #8d1700; padding: 24px 36px;}",
+        ".multicolumn.background-none .multicolumn-card {padding: 24px 8px;}",
+        ".multicolumn .multicolumn-card .link {font-size: 2.5rem; text-decoration: none; color: #fff; font-weight: bold;}",
+        ".multicolumn .multicolumn-card .link .icon-wrap {display: none;}"
+      ],
       "name": "Evenflo Multicolumn",
       "settings": {
         "title": "",
@@ -305,7 +311,7 @@
         "image_ratio": "adapt",
         "columns_desktop": 3,
         "column_alignment": "center",
-        "background_style": "primary",
+        "background_style": "none",
         "button_label": "",
         "button_link": "",
         "color_scheme": "",
@@ -340,7 +346,7 @@
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
-        "image_height": "adapt",
+        "image_height": "large",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
         "desktop_content_alignment": "center",
