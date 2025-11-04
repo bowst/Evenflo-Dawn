@@ -159,8 +159,8 @@
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "evenflo_multicolumn_Tg37ra": {
@@ -288,8 +288,8 @@
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 8
       }
     },
     "image_banner_pY9hDr": {
@@ -366,7 +366,9 @@
         "buttons_j4kpbr"
       ],
       "custom_css": [
-        ".banner__heading,.banner__text {position: fixed; right: 200vw;}"
+        ".banner__heading,.banner__text {position: fixed; right: 200vw;}",
+        "@media screen and (max-width: 749px) {.banner--large.banner--mobile-bottom:not(.banner--adapt) .banner__media, .banner--large.banner--stacked:not(.banner--mobile-bottom):not(.banner--adapt) > .banner__media {height: auto; aspect-ratio: 0.82; }}",
+        "@media screen and (min-width: 750px) {.banner--large:not(.banner--adapt) {min-height: 72rem; aspect-ratio: 2.125; }}"
       ],
       "name": "Evenflo Image Banner",
       "settings": {
