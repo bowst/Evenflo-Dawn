@@ -47,7 +47,9 @@
         "buttons_zqtLrj"
       ],
       "custom_css": [
-        ".banner__heading {position: fixed; top: -200vh;}"
+        ".banner__heading,.banner__text {position: fixed; right: 200vw;}",
+        "@media screen and (max-width: 749px) {.banner--large.banner--mobile-bottom:not(.banner--adapt) .banner__media, .banner--large.banner--stacked:not(.banner--mobile-bottom):not(.banner--adapt) > .banner__media {height: auto; aspect-ratio: 0.82; aspect-ratio: 2.125; max-width: 100%; min-height: auto; }}",
+        "@media screen and (min-width: 750px) {.banner--large:not(.banner--adapt) {aspect-ratio: 2.125; aspect-ratio: 2.125; max-width: 100%; min-height: auto; }}"
       ],
       "name": "Evenflo Image Banner",
       "settings": {
