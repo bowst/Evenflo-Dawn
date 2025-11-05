@@ -30,6 +30,7 @@
       >
 		<li id="specs-column-1"
 			class="multicolumn-list__item grid__item" >
+			<h3 class="h2">What's in the Box</h3>
 			<div class="multicolumn-card content-container">
 				{%  render 'evenflo-product-specs--whats-in-the-box' %}
 			</div>
@@ -37,8 +38,9 @@
 
 		<li id="specs-column-2"
 			class="multicolumn-list__item grid__item" >
+			<h3 class="h2">{{ product.type }} Specifications</h3>
 			<div class="multicolumn-card content-container">
-			
+				
 				{% if product.vendor == 'Rollplay' %}
 					{%  render 'evenflo-product-specs--rollplay' %}
 				{% endif %}
@@ -81,39 +83,196 @@
 		</li>  
 		
 		<li id="specs-column-3"
-			class="multicolumn-list__item grid__item" >
+			class="multicolumn-list__item grid__item" >				
+			<h3 class="h2">Child Fit</h3>
 			<div class="multicolumn-card content-container">
-				{% assign user_manual_value = product.metafields.sf_products.manual %}
-				{% assign user_manual_french_value = product.metafields.sf_products.manual_french %}
-				{% assign user_manual_spanish_value = product.metafields.sf_products.manual_spanish %}
+				<!-- rear facing mode for car seat -->
+				{% assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min %}
+				{% assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max %}
+				{% assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min %}
+				{% assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max %}
+				{% assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit %}
+				{% assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement %}
+					
+				{% if rear_facing_weight_min
+					and rear_facing_weight_max
+					and rear_facing_height_min
+					and rear_facing_height_max
+					and rear_facing_fit_statement
+				%}
+				<div class="child-fit-mode">
+					<h4 class="h3">Rear-Facing Mode</h4>
+					<ul>
+						<li>
+							<strong>Weight</strong>
+							<div>
+								{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs
+							</div>
+						</li>
 
-				<h3>Manuals</h3>
-				<ul class="specs-list">
-	  
-				{% if user_manual_value %}
-				  <li><a href="{{ user_manual_value }}" target="_blank" rel="noopener">Download Manual (en)</a></li>
-				{% endif %}
-	  
-				{% if user_manual_french_value %}
-				  <li><a href="{{ user_manual_french_value }}" target="_blank" rel="noopener">Download Manual (fr)</a></li>
-				{% endif %}
-	  
-				{% if user_manual_spanish_value %}
-				  <li><a href="{{ user_manual_spanish_value }}" target="_blank" rel="noopener">Download Manual (es)</a></li>
-				{% endif %}
-				</ul>
-	
-				
-				{% assign specifications_image = product.metafields.sf_products.specifications_image %}
-				{% if specifications_image %}
-				<h3>{{ product.type }} Dimensions</h3>
-				<div class="multicolumn-card-content no-bg">
-					<img class="specifications-image" width="100%" height="auto" loading="lazy" alt="{{ product.title }} Specifications" src="{{ specifications_image }}">
+						<li>
+							<strong>Height</strong>
+							<div>
+								{{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
+							</div>
+						</li>
+					</ul>
+					<div class="statement">
+						{{ rear_facing_fit_statement }}
+					</div>
 				</div>
 				{% endif %}
+
+				<!-- forward facing mode for car seat -->
+				{% assign forward_facing_weight_min = product.metafields.sf_car_seat.forward_facing_weight_min %}
+				{% assign forward_facing_weight_max = product.metafields.sf_car_seat.forward_facing_weight_max %}
+				{% assign forward_facing_height_min = product.metafields.sf_car_seat.forward_facing_height_min %}
+				{% assign forward_facing_height_max = product.metafields.sf_car_seat.forward_facing_height_max %}
+				{% assign forward_facing_age_limit = product.metafields.sf_car_seat.forward_facing_age_limit %}
+				{% assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement %}
+				{% if forward_facing_weight_min
+					and forward_facing_weight_max
+					and forward_facing_height_min
+					and forward_facing_height_max
+					and forward_facing_fit_statement
+				%}
+				<div class="child-fit-mode">
+					<h4 class="h3">Forward-Facing Mode</h4>
+					<ul class="specs-list">
+						<li>
+							<strong>Weight</strong>
+							<div>
+								{{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
+							</div>
+						</li>
+
+						<li>
+							<strong>Height</strong>
+							<div>
+								{{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
+							</div>
+						</li>
+						<li>
+							<div class="statement">
+								{{ forward_facing_fit_statement }}
+							</div>
+						</li>
+					</ul>	
+				</div>
+				{% endif %}
+
+				<!-- high back mode for car seat -->
+				{% assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min %}
+				{% assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max %}
+				{% assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min %}
+				{% assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max %}
+				{% assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement %}
+				{% if high_back_weight_min
+					or high_back_weight_max
+					or high_back_height_min
+					or high_back_height_max
+					and high_back_fit_statement
+				%}
+				<div class="child-fit-mode">
+					<h4 class="h3">High Back Booster Mode</h4>
+					<ul>
+						{% if high_back_fit_statement %}
+						<li>
+							<strong>Weight</strong>
+							<div>
+								{{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
+							</div>
+						</li>
+						{% endif %}
+						
+						{% if high_back_fit_statement %}
+						<li>
+							<strong>Height</strong>
+							<div>
+								{{ high_back_height_min }} - {{ high_back_height_max }} in
+							</div>
+						</li>
+						{% endif %}
+					</ul>
+
+					{% if high_back_fit_statement %}
+						<div class="statement">
+						{{ high_back_fit_statement }}
+						</div>
+					{% endif %}
+				</div>
+				{% endif %}
+
+				<!-- no back mode for car seat -->
+				<!-- no back mode for car seat -->
+				{% assign no_back_weight_min = product.metafields.sf_car_seat.no_back_weight_min %}
+				{% assign no_back_weight_max = product.metafields.sf_car_seat.no_back_weight_max %}
+				{% assign no_back_height_min = product.metafields.sf_car_seat.no_back_height_min %}
+				{% assign no_back_height_max = product.metafields.sf_car_seat.no_back_height_max %}
+				{% assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement %}
+
+				{% if no_back_weight_min
+					or no_back_weight_max
+					or no_back_height_min
+					or no_back_height_max
+					and no_back_fit_statement
+				%}
+				<div class="child-fit-mode">
+					<h4 class="h3">No Back Booster Mode</h4>
+					<ul>
+						{% if no_back_weight_max %}
+						<li>
+							<strong>Weight</strong>
+							<div>
+								{{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
+							</div>
+						</li>
+						{% endif %}
+
+						{% if no_back_height_max %}
+						<li>
+							<strong>Height</strong>
+							<div>
+								{{ no_back_height_min }} - {{ no_back_height_max }} in
+							</div>
+						</li>
+						{% endif %}
+					</ul>
+					{% if no_back_fit_statement %}
+						<div class="statement">
+						{{ no_back_fit_statement }}
+						</div>
+					{% endif %}
+				</div>
+				{% endif %}
+
+				<!-- Stroller Fit -->
+				{% comment %} {% if product.metafields.sf_stroller.max_age %}
+				<strong>Stroller Max Age</strong>
+					{{ product.metafields.sf_stroller.max_age | strip }}
+				</div>
+				{% endif %} {% endcomment %}
 			</div>
 		</li>  
       </ul>
+	  <div class="specifications-image-container">
+	  {% assign specifications_image = product.metafields.sf_products.specifications_image %}
+		{% if specifications_image %}
+		<h3 class="h2">{{ product.type }} Dimensions</h3>
+		<ul
+			class="multicolumn-list contains-content-container grid grid--1-col-tablet-down grid--3-col-desktop text-start"
+			role="list"
+		  >
+			<li id="specs-column-1"
+				class="multicolumn-list__item grid__item" >
+				<div class="multicolumn-card-content no-bg">
+					<img class="specifications-image" width="100%" height="auto" loading="lazy" alt="{{ product.title }} Specifications" src="{{ specifications_image }}">
+				</div>
+			</li>  
+		</ul>
+		
+		{% endif %}
+	</div>
   </div>
 </div>
 
