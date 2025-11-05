@@ -54,14 +54,14 @@
 			{{ type }}
 		</div>
 	</li>
-
+	{% if max_ceiling_height %}
 	<li>
 		<strong>Max Ceiling Height</strong>
 		<div>
 			{{ max_ceiling_height }}
 		</div>
 	</li>
-
+	{%  endif %}
 	<!-- harness for door jumper -->
 	{% assign harness_type = product.metafields.sf_door_jumper.harness_type %}
 	{% if harness_type %}
