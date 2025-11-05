@@ -89,12 +89,27 @@
 				<!-- Weight fields -->
 				{% assign min_weight = product.metafields.sf_products.child_weight_min %}
 				{% assign max_weight = product.metafields.sf_products.child_weight_max %}
+				{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+				{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 				{% assign min_height = product.metafields.sf_products.child_height_min %}
 				{% assign max_height = product.metafields.sf_products.child_height_max %}
 				{% assign min_age = product.metafields.sf_products.child_age_min %}
 
 				<div class="child-fit-mode">
 					<ul class="specs-list">
+					{% if child_weight_min_value or child_weight_max_value %}
+						<li>
+							<strong>Child Weight</strong>
+							<div>
+								{% if child_weight_min_value %}
+									{{ child_weight_min_value }} -
+								{% endif %}
+								{% if child_weight_max_value %}
+									{{ child_weight_max_value }} lbs
+								{% endif %}
+							</div>
+						</li>
+					{% endif %}
 					{% if min_weight and max_weight %}
 						<li>
 							<strong>Weight</strong>
