@@ -332,3 +332,8 @@ predictive-search .predictive-search__loading-state {
 .background-light-blue {
   background-color: #e3f2f3;
 }
+@media only screen and (max-width: 749px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
