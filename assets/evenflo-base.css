@@ -374,7 +374,7 @@ predictive-search .predictive-search__loading-state {
   .responsive-table-container table th,
   .responsive-table-container table td {
     display: block;
-    padding: 0;
+    padding: 4px;
   }
 
   .responsive-table-container table tr {
@@ -395,9 +395,11 @@ predictive-search .predictive-search__loading-state {
     font-weight: 700;
     font-size: 1.5em;
     border-bottom: 1px solid transparent;
+    padding-bottom: 0;
   }
    .responsive-table-container table td.product-category {
     border-top: 1px solid transparent;
+    padding-top: 0;
    }
   .responsive-table-container table td:last-child {
     padding-right: 0;
