@@ -394,7 +394,11 @@ predictive-search .predictive-search__loading-state {
   .responsive-table-container table td.product-title {
     font-weight: 700;
     font-size: 1.5em;
+    border-bottom: 1px solid transparent;
   }
+   .responsive-table-container table td.product-category {
+    border-top: 1px solid transparent;
+   }
   .responsive-table-container table td:last-child {
     padding-right: 0;
     border-bottom: 2px solid #ccc;
@@ -402,9 +406,7 @@ predictive-search .predictive-search__loading-state {
   .responsive-table-container table td:empty {
     display: none;
   }
-}
 
-@media only screen and (max-width: 749px) {
   .hidden-mobile {
     display: none;
   }
