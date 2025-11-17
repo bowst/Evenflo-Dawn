@@ -34,6 +34,9 @@
   .p-4 { padding: 1rem }
   .overflow-hidden { overflow: hidden }
   .cursor-pointer { cursor: pointer }
+  .section-heading {
+	text-align: center;
+  }
 
   {{ id }} .faq-container {
     max-width: {{ section.settings.max_width }};
@@ -88,32 +91,40 @@
 
 <div class="faq-container">
   {%- for block in section.blocks -%}
-    {%- if block.settings.title != blank and block.settings.content != blank -%}
-      {%- if block.settings.checkbox_expanded == true -%}
-        {%- assign expanded = 'true' -%}
-        {%- assign hidden = '' -%}
-      {%- else -%}
-        {%- assign expanded = 'false' -%}
-        {%- assign hidden = 'hidden' -%}
+    {%- if block.type == 'section_heading' -%}
+      {%- if block.settings.heading != blank -%}
+        <div class="section-heading rte" {{ block.shopify_attributes }}>
+          {{ block.settings.heading }}
+        </div>
       {%- endif -%}
+    {%- elsif block.type == 'faq' -%}
+      {%- if block.settings.title != blank and block.settings.content != blank -%}
+        {%- if block.settings.checkbox_expanded == true -%}
+          {%- assign expanded = 'true' -%}
+          {%- assign hidden = '' -%}
+        {%- else -%}
+          {%- assign expanded = 'false' -%}
+          {%- assign hidden = 'hidden' -%}
+        {%- endif -%}
 
-      <h2 class="faq-title m-0 p-0" data-faq-trigger="{{ block.id }}" {{ block.shopify_attributes }}>
-        <button
-          class="faq-button flex items-center justify-between w-full text-left m-0 p-4 cursor-pointer"
-          data-faq-button="{{ block.id }}"
-          aria-expanded="{{ expanded }}"
-        >
-          <span>{{ block.settings.title }}</span>
-          <svg class="faq-icon" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path class="faq-icon-minus" fill="currentColor" d="M8 0v14H6V0z"></path>
-            <path fill="currentColor" d="M0 6h14v2H0z"></path>
-          </svg>
-        </button>
-      </h2>
+        <h2 class="faq-title m-0 p-0" data-faq-trigger="{{ block.id }}" {{ block.shopify_attributes }}>
+          <button
+            class="faq-button flex items-center justify-between w-full text-left m-0 p-4 cursor-pointer"
+            data-faq-button="{{ block.id }}"
+            aria-expanded="{{ expanded }}"
+          >
+            <span>{{ block.settings.title }}</span>
+            <svg class="faq-icon" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path class="faq-icon-minus" fill="currentColor" d="M8 0v14H6V0z"></path>
+              <path fill="currentColor" d="M0 6h14v2H0z"></path>
+            </svg>
+          </button>
+        </h2>
 
-      <div class="faq-panel rte overflow-hidden custom-bg" data-faq-panel="{{ block.id }}" {{ hidden }}>
-        <div class="faq-wrap p-4">{{ block.settings.content }}</div>
-      </div>
+        <div class="faq-panel rte overflow-hidden custom-bg" data-faq-panel="{{ block.id }}" {{ hidden }}>
+          <div class="faq-wrap p-4">{{ block.settings.content }}</div>
+        </div>
+      {%- endif -%}
     {%- endif -%}
   {%- endfor -%}
 </div>
@@ -127,7 +138,7 @@
       "@type": "FAQPage",
       "mainEntity": [
       {%- for block in section.blocks -%}
-      {%- if block.settings.title != blank and block.settings.content != blank  -%}
+      {%- if block.type == 'faq' and block.settings.title != blank and block.settings.content != blank  -%}
       {
         "@type": "Question",
         "name": {{ block.settings.title | strip_html | json }},
@@ -264,6 +275,18 @@
   ],
 
   "blocks": [
+    {
+      "type": "section_heading",
+      "name": "Section Heading",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "<h2>Section Heading</h2><p>Section description.</p>"
+        }
+      ]
+    },
     {
       "type": "faq",
       "name": "FAQ",
