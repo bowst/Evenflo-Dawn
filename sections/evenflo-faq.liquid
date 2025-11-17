@@ -37,7 +37,7 @@
   .section-heading {
 	text-align: center;
   }
-
+  
   {{ id }} .faq-container {
     max-width: {{ section.settings.max_width }};
     margin: {{ section.settings.margin_top }}rem auto {{ section.settings.margin_bottom }}rem
@@ -93,7 +93,7 @@
   {%- for block in section.blocks -%}
     {%- if block.type == 'section_heading' -%}
       {%- if block.settings.heading != blank -%}
-        <div class="section-heading rte" {{ block.shopify_attributes }}>
+        <div class="section-heading h1 rte" {{ block.shopify_attributes }}>
           {{ block.settings.heading }}
         </div>
       {%- endif -%}
@@ -283,7 +283,7 @@
           "type": "richtext",
           "id": "heading",
           "label": "Heading",
-          "default": "<h2>Section Heading</h2><p>Section description.</p>"
+          "default": "<h2>Section Heading</h2>"
         }
       ]
     },
