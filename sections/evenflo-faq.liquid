@@ -36,8 +36,12 @@
   .cursor-pointer { cursor: pointer }
   .section-heading {
 	text-align: center;
+	padding: 80px 0 40px 0;
   }
-  
+  .section-heading h2 {
+	font-size: inherit;
+  }
+
   {{ id }} .faq-container {
     max-width: {{ section.settings.max_width }};
     margin: {{ section.settings.margin_top }}rem auto {{ section.settings.margin_bottom }}rem
