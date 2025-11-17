@@ -182,7 +182,7 @@
 					-%}
 
 					{% assign current_price = product.price | divided_by: 100 %}
-					{% assign free_shipping_threshold = 150 %} 
+					{% assign free_shipping_threshold = 200 %} 
 
 
 					<div class="free-shipping-product{% if current_price < free_shipping_threshold %} visually-hidden{% endif %}" id="free-shipping-notice-product">

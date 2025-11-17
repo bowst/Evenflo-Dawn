@@ -9,8 +9,16 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
-  .multicolumn-card__image-wrapper{
+  .multicolumn-card__image-wrapper.image-clickable{
     cursor: pointer;
+  }
+  .multicolumn-card__image-wrapper .media[href] {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .multicolumn-card__image-wrapper .media[href] img {
+    display: block;
   }
   .image-modal-wrapper {
     position: fixed;
@@ -128,33 +136,55 @@
                       {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                         {% assign spaced_image = true %}
                       {% endif %}
-                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}">
-                        <div
-                          class="media media--transparent media--{{ section.settings.image_ratio }}"
-                          {% if section.settings.image_ratio == 'adapt' %}
-                            style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
-                          {% endif %}
-                        >
-                          {%- liquid
-                            assign number_of_columns = section.settings.columns_desktop
-                            assign number_of_columns_mobile = section.settings.columns_mobile
-                            assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
-                            assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
-                            assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
-                            if section.settings.image_width == 'half'
-                              assign image_width = 0.5
-                            elsif section.settings.image_width == 'third'
-                              assign image_width = 0.33
-                            else
-                              assign image_width = 1
-                            endif
-                          -%}
-                          {% capture sizes %}
+					  
+                      {%- liquid
+                        assign enable_modal = section.settings.enable_image_modal
+                        assign has_link = false
+                        if block.settings.link != blank and enable_modal == false
+                          assign has_link = true
+                        endif
+                        assign image_clickable = false
+                        if enable_modal or has_link
+                          assign image_clickable = true
+                        endif
+                      -%}
+                      <div class="multicolumn-card__image-wrapper multicolumn-card__image-wrapper--{{ section.settings.image_width }}-width{% if section.settings.image_width != 'full' or spaced_image %} multicolumn-card-spacing{% endif %}{% if image_clickable %} image-clickable{% endif %}"{% if enable_modal %} data-modal-enabled="true"{% endif %}>
+                        {%- liquid
+                          assign number_of_columns = section.settings.columns_desktop
+                          assign number_of_columns_mobile = section.settings.columns_mobile
+                          assign grid_space_desktop = number_of_columns | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                          assign grid_space_tablet = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | plus: 100 | append: 'px'
+                          assign grid_space_mobile = number_of_columns_mobile | minus: 1 | times: settings.spacing_grid_horizontal | divided_by: 2 | plus: 30 | append: 'px'
+                          if section.settings.image_width == 'half'
+                            assign image_width = 0.5
+                          elsif section.settings.image_width == 'third'
+                            assign image_width = 0.33
+                          else
+                            assign image_width = 1
+                          endif
+                        -%}
+                        {% capture sizes %}
                       (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width }}px - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
                       (min-width: 990px) calc((100vw - {{ grid_space_desktop }}) * {{ image_width }} / {{ number_of_columns }}),
                       (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
                       calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
                     {% endcapture %}
+                        {% if has_link %}
+                          <a
+                            href="{{ block.settings.link }}"
+                            class="media media--transparent media--{{ section.settings.image_ratio }}"
+                            {% if section.settings.image_ratio == 'adapt' %}
+                              style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
+                            {% endif %}
+                          >
+                        {% else %}
+                          <div
+                            class="media media--transparent media--{{ section.settings.image_ratio }}"
+                            {% if section.settings.image_ratio == 'adapt' %}
+                              style="padding-bottom: {{ 1 | divided_by: highest_ratio | times: 100 }}%;"
+                            {% endif %}
+                          >
+                        {% endif %}
                           {{
                               block.settings.image
                               | image_url: width: 3200
@@ -218,7 +248,12 @@
                               </div>
                             {% endif %}
                           {% endif -%}
-                        </div>
+                        {% if has_link %}
+                          </a>
+                        {% else %}
+                          </div>
+                        {% endif %}
+                        {% if enable_modal %}
                         <div class="image-modal-wrapper">
                           <div class="cross-btn">X</div>
                           {{
@@ -231,6 +266,7 @@
                               class: 'multicolumn-card__image'
                           }}
                         </div>
+                        {% endif %}
                       </div>
                     {%- endif -%}
                     <div class="multicolumn-card__info">
@@ -339,24 +375,20 @@
   </div>
 </div>
 <script>
-    // let slideImage = document.querySelectorAll(".multicolumn-card__image-wrapper");
-
-    // slideImage.forEach((item) => {
-    //     item.addEventListener("click", function() {
-    //       item.querySelector(".image-modal-wrapper").classList.add("modal-show");
-    //     });
-    //     item.querySelector(".image-modal-wrapper .cross-btn").addEventListener("click", function(){
-    //       item.querySelector(".image-modal-wrapper").classList.remove("modal-show");
-    //     })
-    // });
-
-  let slideImage = document.querySelectorAll(".multicolumn-card__image-wrapper");
+  // Only attach modal handlers if modal is enabled
+  let slideImage = document.querySelectorAll(".multicolumn-card__image-wrapper[data-modal-enabled='true']");
   slideImage.forEach((item) => {
       // Add event listener to the image wrapper for opening the modal
-      item.querySelector(".multicolumn-card__image").addEventListener("click", function() {
-          // Show the modal by adding the 'modal-show' class
-          item.querySelector(".image-modal-wrapper").classList.add("modal-show");
-      });
+      let imageElement = item.querySelector(".multicolumn-card__image");
+      if (imageElement) {
+          imageElement.addEventListener("click", function() {
+              // Show the modal by adding the 'modal-show' class
+              let modalWrapper = item.querySelector(".image-modal-wrapper");
+              if (modalWrapper) {
+                  modalWrapper.classList.add("modal-show");
+              }
+          });
+      }
 
       // Add event listener to the close button inside the modal for closing the modal
       let closeButton = item.querySelector(".image-modal-wrapper .cross-btn");
@@ -365,7 +397,10 @@
               // Stop the click from bubbling up to the parent (prevents reopening the modal)
               e.stopPropagation();
               // Hide the modal by removing the 'modal-show' class
-              item.querySelector(".image-modal-wrapper").classList.remove("modal-show");
+              let modalWrapper = item.querySelector(".image-modal-wrapper");
+              if (modalWrapper) {
+                  modalWrapper.classList.remove("modal-show");
+              }
           });
       }
   });
@@ -505,6 +540,12 @@
       ],
       "default": "adapt",
       "label": "t:sections.multicolumn.settings.image_ratio.label"
+    },
+	{
+      "type": "checkbox",
+      "id": "enable_image_modal",
+      "label": "Enable Image Modal on Click",
+      "default": true
     },
     {
       "type": "range",

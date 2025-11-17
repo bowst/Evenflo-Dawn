@@ -328,3 +328,93 @@ dl dd ul {
 predictive-search .predictive-search__loading-state {
   display: none
 }
+
+/* Responsive tables */
+/* table */
+.responsive-table-container table {
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+.responsive-table-container table tr {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.background-light-blue {
+  background-color: #e3f2f3;
+}
+
+/* media queries */
+@media screen and (max-width: 749px) {
+  .responsive-table-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .responsive-table-container table {
+    width: 100%;
+    box-shadow: none;
+  }
+  .responsive-table-container table tr.hide-mobile,
+  .responsive-table-container table th.hide-mobile,
+  .responsive-table-container table td.hide-mobile {
+    display: none;
+  }
+
+  .responsive-table-container table thead {
+    display: none;
+  }
+
+  .responsive-table-container table tbody {
+    width: 100%;
+  }
+
+  .responsive-table-container table tr,
+  .responsive-table-container table th,
+  .responsive-table-container table td {
+    display: block;
+    padding: 4px;
+  }
+
+  .responsive-table-container table tr {
+    border-bottom: none;
+    margin: 0 0 1em 0;
+    padding: 0.5em;
+  }
+  .responsive-table-container table td[data-title]:not(.product-title):before {
+    content: attr(data-title);
+    font-weight: bold;
+    display: inline-block;
+    content: attr(data-title);
+    float: left;
+    margin-right: 0.5em;
+    font-size: 0.95em;
+  }
+  .responsive-table-container table td.product-title {
+    font-weight: 700;
+    font-size: 1.5em;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 0;
+  }
+   .responsive-table-container table td.product-category {
+    border-top: 1px solid transparent;
+    padding-top: 0;
+   }
+  .responsive-table-container table td:last-child {
+    padding-right: 0;
+    border-bottom: 2px solid #ccc;
+  }
+  .responsive-table-container table td:empty {
+    display: none;
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+}
+@media only screen and (min-width: 750px) {
+  .hidden-desktop {
+    display: none;
+  }
+}

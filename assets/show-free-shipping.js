@@ -16,7 +16,7 @@ function showFreeShipping(){
 
 		productPrice = productPrice.replace("$", "");
 		
-		if(productPrice > 150.00 ){
+		if(productPrice > 200.00 ){
 			shippingNotice.classList.remove('visually-hidden');
 			shippingNoticeFooter.classList.remove('hidden');
 			//console.log('free');
