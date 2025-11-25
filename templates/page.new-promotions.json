@@ -112,12 +112,28 @@
             "link_label": "Shop Now",
             "link": "shopify://collections/baby-gear-sale"
           }
+        },
+        "column_JAFmDY": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/evenflo-promotion-outlet.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Community",
+            "text": "<p>Members of the military, first responders, teachers, students and more receive a 15% discount</p>",
+            "link_label": "Learn More",
+            "link": "shopify://collections/baby-gear-sale"
+          }
         }
       },
       "block_order": [
         "column_hFHkN6",
         "column_EYQbbE",
-        "column_CNUVVt"
+        "column_CNUVVt",
+        "column_JAFmDY"
       ],
       "custom_css": [
         "h3 {color: #00aea9;}",
@@ -133,6 +149,7 @@
         "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "square",
+        "enable_image_modal": true,
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "primary",
