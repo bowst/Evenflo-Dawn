@@ -27,6 +27,7 @@
       "block_order": [
         "buttons_haP9cb"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Community_Heros_Banner.png",
         "image_overlay_opacity": 0,
@@ -38,9 +39,70 @@
         "desktop_content_alignment": "center",
         "color_scheme": "background-1",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
+        "mobile_content_alignment": "right",
         "stack_images_on_mobile": false,
         "show_text_below": false
+      }
+    },
+    "evenflo_image_banner_7KDjNP": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_L8BmR3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Community Heroes Save More",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_BHTx8b": {
+          "type": "text",
+          "settings": {
+            "text": "We’re proud to support the everyday heroes who support our communities. Whether you’re caring for others, serving, teaching, or protecting—you deserve a little extra thanks. Verify your eligibility through ID.me and enjoy special savings on Evenflo products.",
+            "text_style": "body"
+          }
+        },
+        "buttons_mChEDF": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Verify with ID.me",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_L8BmR3",
+        "text_BHTx8b",
+        "buttons_mChEDF"
+      ],
+      "name": "Evenflo Image Banner",
+      "settings": {
+        "image": "shopify://shop_images/Community_-_Desktop.png",
+        "image_2": "shopify://shop_images/Community_-_Desktop.png",
+        "background_show": true,
+        "banner_color": "#000000",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#2996c5",
+        "button_text_color": "#ffffff",
+        "mobile_button_color": "#2996c5",
+        "mobile_button_text_color": "#ffffff",
+        "desktop_heading_color": "#ffffff",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 10,
+        "image_height": "small",
+        "desktop_content_position": "middle-right",
+        "show_text_box": true,
+        "desktop_content_alignment": "right",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": true
       }
     },
     "2a5a213b-f4e0-4d14-8492-12bda656a9dd": {
@@ -387,6 +449,7 @@
   },
   "order": [
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
+    "evenflo_image_banner_7KDjNP",
     "2a5a213b-f4e0-4d14-8492-12bda656a9dd",
     "main",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
