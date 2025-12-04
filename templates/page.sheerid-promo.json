@@ -46,13 +46,20 @@
         "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-heading-1": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.metafields.custom.page_header.value }}",
+            "heading": "Community Heroes Discount",
             "heading_size": "h1"
+          }
+        },
+        "text_YEkP9D": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Evenflo, we believe the people who care for our communities every day deserve a little extra care in return. Our Community Heroes program offers exclusive savings for the individuals and families who teach, serve, heal, protect, and support others—all verified securely through ID.me. Whether you’re a teacher juggling car seats and lesson plans, a first responder rushing from shift to school drop-off, or a military family constantly on the move—we’re here to make your everyday parenting moments a bit easier.</p>"
           }
         }
       },
       "block_order": [
-        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-heading-1"
+        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-heading-1",
+        "text_YEkP9D"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -61,6 +68,37 @@
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "image_with_text_ctHggQ": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption_nyNppD": {
+          "type": "caption",
+          "settings": {
+            "caption": "How It Works",
+            "text_style": "subtitle",
+            "text_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "caption_nyNppD"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/3._How_it_works_-_Commuity.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "main": {
@@ -138,6 +176,7 @@
         "sheerid_community_verification_verification_KirBjY",
         "column_UKdUwB"
       ],
+      "disabled": true,
       "custom_css": [
         ".multicolumn {max-width: 1200px; margin: auto; min-height: 600px;}",
         ".multicolumn-card__info {text-align: left;}",
@@ -164,13 +203,67 @@
         "padding_top": 0,
         "padding_bottom": 36
       }
+    },
+    "multicolumn_Lx6cVt": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_AHe7zr": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/pivot-xplore-dreamz-stroller-wagon__18912490Voyager_Green_H.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        },
+        "column_HdL7A9": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/pivot-xplore-dreamz-stroller-wagon__18912490Voyager_Green_H.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_AHe7zr",
+        "column_HdL7A9"
+      ],
+      "disabled": true,
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Multicolumn",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "circle",
+        "columns_desktop": 6,
+        "column_alignment": "center",
+        "background_style": "none",
+        "underline": false,
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "2a5a213b-f4e0-4d14-8492-12bda656a9dd",
+    "image_with_text_ctHggQ",
     "main",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
-    "evenflo_multicolumn_DVWYRn"
+    "evenflo_multicolumn_DVWYRn",
+    "multicolumn_Lx6cVt"
   ]
 }
