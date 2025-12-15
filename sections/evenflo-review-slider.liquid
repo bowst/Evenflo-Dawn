@@ -3,7 +3,24 @@
 <style>
   .evenflo-review-slider-block .swiper {
     width: 100%;
+    max-width: 100%;
     height: 100%;
+    overflow: hidden;
+  }
+
+  .review-slider-column {
+    width: 50%;
+    max-width: 50%;
+    min-width: 0;
+    padding: 0 60px 0 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .review-slider-column .swiper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
   }
 
   .evenflo-review-slider-block .swiper-slide {
@@ -12,11 +29,6 @@
     align-items: center;
   }
 
-  .review-slider-swiper-pagination{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-  }
 
   .evenflo-review-slider-block .loading {
     text-align: center;
@@ -32,11 +44,9 @@
 
 <div
   class="evenflo-review-slider-block"
-  {% if section.settings['full-width'] %}
-    style="background-color: {{ section.settings.background }}"
-  {% endif %}
+  style="background-color: {{ section.settings.background }}"
 >
-  <div class="{% if section.settings.full-width %} full-width-container {% else %} page-width {% endif %}">
+  <div class="{% if section.settings.full-width %} full-width-container {% else %} isolate page-width {% endif %}">
     {% if section.settings.title != blank %}
       <div class="review-slider-header" style="text-align: {{ section.settings.title_alignment }};">
         <h2 class="review-slider-title">{{ section.settings.title }}</h2>
@@ -46,14 +56,54 @@
       </div>
     {% endif %}
 
-    <div class="swiper mySwiper evenflo-review-slider">
-      <div class="swiper-wrapper evenflo-review-slider-wrapper" id="review-slider-wrapper">
-        <div class="loading">
-          <p>Loading reviews...</p>
+    <div class="review-slider-split-container">
+      <!-- Left Column: Awards -->
+      <div class="review-slider-awards-column">
+        <div class="awards-logos">
+          {% for block in section.blocks %}
+            {% if block.type == 'award_block' %}
+              <div class="award-logo-item" {{ block.shopify_attributes }}>
+                {% if block.settings.award_link != blank %}
+                  <a href="{{ block.settings.award_link }}" target="_blank" rel="noopener noreferrer" class="award-link">
+                {% endif %}
+                {% if block.settings.award_image != blank %}
+                  <div class="award-image-wrapper">
+                    <img
+                      src="{{ block.settings.award_image | image_url: width: 200 }}"
+                      alt="{{ block.settings.award_image.alt | default: 'Award' }}"
+                      width="200"
+                      height="200"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                {% if block.settings.award_link != blank %}
+                  </a>
+                {% endif %}
+                {% if block.settings.award_text != blank %}
+                  <div class="award-text">
+                    {{ block.settings.award_text }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
-      <!-- Pagination -->
-      <div class="review-slider-swiper-pagination"></div>
+
+      <!-- Right Column: Review Slider -->
+      <div class="review-slider-column">
+        <div class="swiper mySwiper evenflo-review-slider">
+          <div class="swiper-wrapper evenflo-review-slider-wrapper" id="review-slider-wrapper">
+            <div class="loading">
+              <p>Loading reviews...</p>
+            </div>
+          </div>
+          <!-- Navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -121,7 +171,7 @@
     // Function to fetch a single review by ID
     async function fetchReviewById(appKey, reviewId) {
       try {
-        const apiUrl = `https://api.yotpo.com/v1/widget/${appKey}/reviews/${reviewId}.json`;
+        const apiUrl = `https://api.yotpo.com/reviews/${reviewId}?utoken=${appKey}`;
 
         const response = await fetch(apiUrl, {
           method: 'GET',
@@ -139,6 +189,7 @@
         const data = await response.json();
 
         if (data.response && data.response.review) {
+		  console.log('data.response.review', data.response.review);
           return data.response.review;
         }
 
@@ -157,24 +208,20 @@
       reviews.forEach(review => {
         const slide = document.createElement('div');
         slide.className = 'swiper-slide evenflo-review-slider-content';
-        slide.style.backgroundColor = '{{ section.settings.background }}';
 
         const stars = generateStars(review.score);
-        const reviewDate = formatDate(review.created_at);
         const reviewText = review.content || review.review_body || '';
-        const reviewerName = review.display_name || review.name || 'Anonymous';
-        const productTitle = review.product_title || '';
+        const reviewerName = review.user.display_name || 'Anonymous';
+        const productTitle = review.products[0].Product.name || '';
 
         slide.innerHTML = `
           <div class="evenflo-review-content">
             ${productTitle ? `<div class="review-product-title">${productTitle}</div>` : ''}
-            <div class="review-rating">${stars}</div>
             <div class="review-text">${reviewText}</div>
             <div class="review-meta">
               <div class="review-author">${reviewerName}</div>
-              <div class="review-date">${reviewDate}</div>
             </div>
-            ${review.verified_buyer ? '<div class="review-verified">Verified Purchase</div>' : ''}
+			<div class="review-rating">${stars}</div>
           </div>
         `;
 
@@ -207,16 +254,6 @@
       return `<div class="review-stars">${starsHTML}</div>`;
     }
 
-    // Function to format date
-    function formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-    }
-
     // Function to initialize Swiper
     function initializeSwiper() {
       if (typeof Swiper === 'undefined') {
@@ -228,13 +265,9 @@
         loop: true,
         slidesPerView: 1,
         spaceBetween: 0,
-        pagination: {
-          el: '.review-slider-swiper-pagination',
-          clickable: true,
-        },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.evenflo-review-slider-block .swiper-button-next',
+          prevEl: '.evenflo-review-slider-block .swiper-button-prev',
         },
         autoplay: {
           delay: {{ section.settings.autoplay_delay | default: 5000 }},
@@ -304,9 +337,8 @@
     {
       "type": "text",
       "id": "yotpo_app_key",
-      "label": "Yotpo App Key",
-      "default": "JyvaKuPpFqHLrbpZwHpU6Q",
-      "info": "Your Yotpo application key"
+      "label": "Yotpo API Secret Key",
+      "info": "Your Yotpo API Secret Key"
     },
     {
       "type": "range",
@@ -350,6 +382,30 @@
           "id": "review_id",
           "label": "Review ID",
           "info": "Enter the Yotpo review ID you want to display"
+        }
+      ]
+    },
+    {
+      "type": "award_block",
+      "name": "Award Logo",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "award_image",
+          "label": "Award Logo"
+        },
+        {
+          "type": "url",
+          "id": "award_link",
+          "label": "Award Link",
+          "info": "Optional: Link to award information"
+        },
+        {
+          "type": "text",
+          "id": "award_text",
+          "label": "Award Text",
+          "info": "Text description for this award"
         }
       ]
     }
