@@ -59,15 +59,15 @@
     <div class="review-slider-split-container">
       <!-- Left Column: Awards -->
       <div class="review-slider-awards-column">
-        {% if section.settings.awards_above_text != blank %}
-          <div class="awards-above-text">
-            {{ section.settings.awards_above_text }}
-          </div>
-        {% endif %}
         <div class="awards-logos">
           {% for block in section.blocks %}
             {% if block.type == 'award_block' %}
               <div class="award-logo-item" {{ block.shopify_attributes }}>
+                {% if block.settings.award_above_text != blank %}
+                  <div class="award-above-text">
+                    {{ block.settings.award_above_text }}
+                  </div>
+                {% endif %}
                 {% if block.settings.award_link != blank %}
                   <a href="{{ block.settings.award_link }}" target="_blank" rel="noopener noreferrer" class="award-link">
                 {% endif %}
@@ -82,14 +82,14 @@
                     >
                   </div>
                 {% endif %}
+                {% if block.settings.award_link != blank %}
+                  </a>
+                {% endif %}
 				{% if block.settings.award_text != blank %}
 				  <div class="award-text">
 					  {{ block.settings.award_text }}
 				  </div>
 				{% endif %}
-                {% if block.settings.award_link != blank %}
-                  </a>
-                {% endif %}
               </div>
             {% endif %}
           {% endfor %}
@@ -346,12 +346,6 @@
       "info": "Your Yotpo API Secret Key"
     },
     {
-      "type": "richtext",
-      "id": "awards_above_text",
-      "label": "Text Above Awards",
-      "info": "Text to display above the award logos"
-    },
-    {
       "type": "range",
       "id": "autoplay_delay",
       "label": "Autoplay Delay (ms)",
@@ -401,6 +395,12 @@
       "name": "Award Logo",
       "limit": 2,
       "settings": [
+        {
+          "type": "text",
+          "id": "award_above_text",
+          "label": "Text Above Logo",
+          "info": "Text to display above this award logo"
+        },
         {
           "type": "image_picker",
           "id": "award_image",
