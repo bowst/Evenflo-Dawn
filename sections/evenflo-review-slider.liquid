@@ -46,7 +46,7 @@
   class="evenflo-review-slider-block"
   style="background-color: {{ section.settings.background }}"
 >
-  <div class="{% if section.settings.full-width %} full-width-container {% else %} isolate page-width {% endif %}">
+  <div class="{% if section.settings.full-width %} full-width-container {% else %} page-width {% endif %}">
     {% if section.settings.title != blank %}
       <div class="review-slider-header" style="text-align: {{ section.settings.title_alignment }};">
         <h2 class="review-slider-title">{{ section.settings.title }}</h2>
@@ -59,6 +59,11 @@
     <div class="review-slider-split-container">
       <!-- Left Column: Awards -->
       <div class="review-slider-awards-column">
+        {% if section.settings.awards_above_text != blank %}
+          <div class="awards-above-text">
+            {{ section.settings.awards_above_text }}
+          </div>
+        {% endif %}
         <div class="awards-logos">
           {% for block in section.blocks %}
             {% if block.type == 'award_block' %}
@@ -69,21 +74,21 @@
                 {% if block.settings.award_image != blank %}
                   <div class="award-image-wrapper">
                     <img
-                      src="{{ block.settings.award_image | image_url: width: 200 }}"
+                      src="{{ block.settings.award_image | image_url: width: 120 }}"
                       alt="{{ block.settings.award_image.alt | default: 'Award' }}"
-                      width="200"
-                      height="200"
+                      width="120"
+                      height="120"
                       loading="lazy"
                     >
                   </div>
                 {% endif %}
+				{% if block.settings.award_text != blank %}
+				  <div class="award-text">
+					  {{ block.settings.award_text }}
+				  </div>
+				{% endif %}
                 {% if block.settings.award_link != blank %}
                   </a>
-                {% endif %}
-                {% if block.settings.award_text != blank %}
-                  <div class="award-text">
-                    {{ block.settings.award_text }}
-                  </div>
                 {% endif %}
               </div>
             {% endif %}
@@ -339,6 +344,12 @@
       "id": "yotpo_app_key",
       "label": "Yotpo API Secret Key",
       "info": "Your Yotpo API Secret Key"
+    },
+    {
+      "type": "richtext",
+      "id": "awards_above_text",
+      "label": "Text Above Awards",
+      "info": "Text to display above the award logos"
     },
     {
       "type": "range",
