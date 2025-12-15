@@ -73,12 +73,11 @@
     },
     "evenflo_loyalty_banner_nijkJM": {
       "type": "evenflo-loyalty-banner",
-      "disabled": true,
       "name": "Evenflo Loyalty Banner",
       "settings": {
-        "bronze_and_silver": "https://www.evenflo.com/pages/rewards",
-        "gold": "https://www.evenflo.com/pages/rewards",
-        "non_member": "https://www.evenflo.com/pages/rewards",
+        "bronze_and_silver": "https://www.evenflo.com/collections/car-seats",
+        "gold": "https://www.evenflo.com/collections/car-seats",
+        "non_member": "https://www.evenflo.com/collections/car-seats",
         "desktop_video_non_member": "shopify://collections",
         "mobile_video_non_member": ""
       }
@@ -119,6 +118,7 @@
         "heading_HBckKX",
         "buttons_iX9ztr"
       ],
+      "disabled": true,
       "custom_css": [
         "h1 {font-weight: 300;}",
         "h2 {color: white; font-weight: 300;}",
@@ -157,7 +157,7 @@
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
+        "enable_desktop_slider": true,
         "color_scheme": "",
         "image_ratio": "adapt",
         "show_secondary_image": false,
@@ -422,6 +422,40 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "evenflo_quote_slider_cJCqx3": {
+      "type": "evenflo-quote-slider",
+      "blocks": {
+        "slider_block_3Uxjd8": {
+          "type": "slider_block",
+          "settings": {
+            "image": "shopify://shop_images/TS100912563_Studio-Transformer-SeatModeSnackTray_A21.jpg",
+            "subtitle": "REVOLVE360 SLIM",
+            "title": "Economic Swivel Car Seat",
+            "quote_id": "Economic Swivel Car Seat",
+            "name": "Economic Swivel Car Seat"
+          }
+        },
+        "slider_block_KtcaLD": {
+          "type": "slider_block",
+          "settings": {
+            "image": "shopify://shop_images/transformer-stroller-to-wagon__ST200212562Pitch_Black_G_87cd447c-ac1f-4664-a0b5-20dcbd6d010d.jpg",
+            "subtitle": "REVOLVE360 SLIM",
+            "title": "Economic Swivel Car Seat",
+            "quote_id": "Economic Swivel Car Seat",
+            "name": "Economic Swivel Car Seat"
+          }
+        }
+      },
+      "block_order": [
+        "slider_block_3Uxjd8",
+        "slider_block_KtcaLD"
+      ],
+      "name": "Evenflo Quote Slider",
+      "settings": {
+        "background": "#F5F5F5",
+        "full-width": false
+      }
     }
   },
   "order": [
@@ -429,11 +463,13 @@
     "evenflo_loyalty_banner_nijkJM",
     "evenflo_image_video_banner_kyXfyU",
     "evenflo_featured_collection_XHFN7m",
+    "featured_collection_4n4DmG",
     "evenflo_image_text_ALMbqz",
     "evenflo_multicolumn_variant_cards_rHdeqt",
     "evenflo_join_hgHPPU",
     "evenflo_benefits_jFaAne",
     "evenflo_parentlink_4YbGPw",
-    "evenflo_rich_text_prfidL"
+    "evenflo_rich_text_prfidL",
+    "evenflo_quote_slider_cJCqx3"
   ]
 }
