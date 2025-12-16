@@ -398,7 +398,7 @@ flex-grow: 0;
                   href="{{ block.settings.button_link_1 }}"
                   {% endif %}
                   class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
-                  style="{% if block.settings.button_color_1 != blank %}background-color: {{ block.settings.button_color_1 }} !important;{% endif %}{% if block.settings.button_text_color_1 != blank %}color: {{ block.settings.button_text_color_1 }} !important;{% endif %}">
+                  style="{% if section.settings.button_color_1 != blank %}background-color: {{ section.settings.button_color_1 }} !important;{% endif %}{% if section.settings.button_text_color_1 != blank %}color: {{ section.settings.button_text_color_1 }} !important;{% endif %}">
                   {{- block.settings.button_label_1 | escape -}}
                 </a>
               {%- endif -%}
@@ -411,7 +411,7 @@ flex-grow: 0;
                   href="{{ block.settings.button_link_2 }}"
                   {% endif %}
                   class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
-                  style="{% if block.settings.button_color_2 != blank %}background-color: {{ block.settings.button_color_2 }} !important;{% endif %}{% if block.settings.button_text_color_2 != blank %}color: {{ block.settings.button_text_color_2 }} !important;{% endif %}">
+                  style="{% if section.settings.button_color_2 != blank %}background-color: {{ section.settings.button_color_2 }} !important;{% endif %}{% if section.settings.button_text_color_2 != blank %}color: {{ section.settings.button_text_color_2 }} !important;{% endif %}">
                   {{- block.settings.button_label_2 | escape -}}
                 </a>
               {%- endif -%}
@@ -545,6 +545,26 @@ flex-grow: 0;
         "id": "mobile_button_text_color",
         "label": "Mobile Button text Color",
         "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "button_color_1",
+        "label": "Button 1 Background Color"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color_1",
+        "label": "Button 1 Text Color"
+      },
+      {
+        "type": "color",
+        "id": "button_color_2",
+        "label": "Button 2 Background Color"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color_2",
+        "label": "Button 2 Text Color"
       },
       {
         "type": "color",
@@ -852,16 +872,6 @@ flex-grow: 0;
             "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_1.label"
           },
           {
-            "type": "color",
-            "id": "button_color_1",
-            "label": "Button 1 Background Color"
-          },
-          {
-            "type": "color",
-            "id": "button_text_color_1",
-            "label": "Button 1 Text Color"
-          },
-          {
             "type": "text",
             "id": "button_label_2",
             "default": "Second button label",
@@ -878,16 +888,6 @@ flex-grow: 0;
             "id": "button_style_secondary_2",
             "default": false,
             "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
-          },
-          {
-            "type": "color",
-            "id": "button_color_2",
-            "label": "Button 2 Background Color"
-          },
-          {
-            "type": "color",
-            "id": "button_text_color_2",
-            "label": "Button 2 Text Color"
           }
         ]
       },
