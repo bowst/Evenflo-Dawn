@@ -12,26 +12,6 @@
     "evenflo_image_banner_qe8hKC": {
       "type": "evenflo-image-banner",
       "blocks": {
-        "hotspot_egKRpQ": {
-          "type": "hotspot",
-          "settings": {
-            "product": "aero-ultra-lightweight-stroller-support",
-            "position_x": 76,
-            "position_y": 24,
-            "mobile_position_x": 50,
-            "mobile_position_y": 50
-          }
-        },
-        "hotspot_C4b7te": {
-          "type": "hotspot",
-          "settings": {
-            "product": "all4one-all-in-one-convertible-car-seat-with-sensorsafe-support",
-            "position_x": 22,
-            "position_y": 32,
-            "mobile_position_x": 50,
-            "mobile_position_y": 50
-          }
-        },
         "heading_KWpQwU": {
           "type": "heading",
           "settings": {
@@ -60,12 +40,11 @@
         }
       },
       "block_order": [
-        "hotspot_egKRpQ",
-        "hotspot_C4b7te",
         "heading_KWpQwU",
         "text_kGtYpF",
         "buttons_9DRAVL"
       ],
+      "disabled": true,
       "name": "Evenflo Image Banner",
       "settings": {
         "image": "shopify://shop_images/Group_2401.png",
@@ -86,6 +65,66 @@
         "desktop_content_position": "bottom-left",
         "show_text_box": true,
         "desktop_content_alignment": "left",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "evenflo_image_banner_DjWjYH": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "text_3pzg4X": {
+          "type": "text",
+          "settings": {
+            "text": "Introducing Evenflo’s home Collection Featuring SensorySoothe® Technology",
+            "text_style": "body"
+          }
+        },
+        "heading_HqGtfJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "YOUR HOME REIMAGINED FOR BABY",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "buttons_zB9WhH": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Collection",
+            "button_link_1": "shopify://collections/2025-evenflo-new-products",
+            "button_style_secondary_1": false,
+            "button_label_2": "Learn More",
+            "button_link_2": "shopify://pages/booster-car-seats-faqs",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "text_3pzg4X",
+        "heading_HqGtfJ",
+        "buttons_zB9WhH"
+      ],
+      "name": "Evenflo Image Banner",
+      "settings": {
+        "image": "shopify://shop_images/9a211f98b91b54354da2cbaee4b1c0a02f190577.jpg",
+        "background_show": true,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#FFFFFF",
+        "button_text_color": "#000000",
+        "mobile_button_color": "#FFFFFF",
+        "mobile_button_text_color": "#000000",
+        "desktop_heading_color": "#FFFFFF",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 10,
+        "image_height": "adapt",
+        "desktop_content_position": "top-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
@@ -498,6 +537,7 @@
   },
   "order": [
     "evenflo_image_banner_qe8hKC",
+    "evenflo_image_banner_DjWjYH",
     "evenflo_loyalty_banner_nijkJM",
     "evenflo_image_video_banner_kyXfyU",
     "evenflo_featured_collection_XHFN7m",
