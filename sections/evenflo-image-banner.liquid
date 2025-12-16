@@ -163,6 +163,106 @@
     width: 100%;
     height: auto;
   }
+
+  /* Hotspot Styles */
+  .banner__image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .banner-hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .banner-hotspot__marker {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+  }
+
+  .banner-hotspot__marker:hover {
+    background: #fff;
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .banner-hotspot__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #2996c5;
+    display: block;
+  }
+
+  .banner-hotspot__tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .banner-hotspot__tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #fff;
+  }
+
+  .banner-hotspot:hover .banner-hotspot__tooltip,
+  .banner-hotspot.active .banner-hotspot__tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .banner-hotspot__product-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111;
+  }
+
+  @media screen and (max-width: 749px) {
+    .banner-hotspot--mobile {
+      display: block;
+    }
+
+    .banner-hotspot:not(.banner-hotspot--mobile) {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .banner-hotspot--mobile {
+      display: none;
+    }
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -190,16 +290,60 @@
 <div id="Banner-{{ section.id }}" class="evenflo-image-banner {% if section.settings.background_show %}evenflo-image-banner-bg{% endif %} text-color banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   {%- if section.settings.image != blank -%}
     <div class="desktop banner__media media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{
-        section.settings.image | image_url: width: 3840 | image_tag: width: section.settings.image.width, height: image_height, class: image_class, sizes: sizes, widths: widths, fetchpriority: fetch_priority
-      }}
+      <div class="banner__image-wrapper" id="banner-image-wrapper-{{ section.id }}-desktop">
+        {{
+          section.settings.image | image_url: width: 3840 | image_tag: width: section.settings.image.width, height: image_height, class: image_class, sizes: sizes, widths: widths, fetchpriority: fetch_priority
+        }}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'hotspot' -%}
+            {%- assign product = block.settings.product -%}
+            {%- if product != blank -%}
+              <div
+                class="banner-hotspot"
+                style="left: {{ block.settings.position_x }}%; top: {{ block.settings.position_y }}%;"
+                data-product-id="{{ product.id }}"
+                {{ block.shopify_attributes }}
+              >
+                <a href="{{ product.url }}" class="banner-hotspot__marker" aria-label="{{ product.title }}">
+                  <span class="banner-hotspot__dot"></span>
+                </a>
+                <div class="banner-hotspot__tooltip">
+                  <span class="banner-hotspot__product-name">{{ product.title }}</span>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
     </div>
   {%- endif -%}
   {%- if section.settings.image_2 != blank -%}
     <div class="mobile banner__media media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{
-        section.settings.image_2 | image_url: width: 3840 | image_tag: width: section.settings.image_2.width, height: image_height_2, class: mobile-image, sizes: sizes, widths: widths, fetchpriority: fetch_priority
-      }}
+      <div class="banner__image-wrapper" id="banner-image-wrapper-{{ section.id }}-mobile">
+        {{
+          section.settings.image_2 | image_url: width: 3840 | image_tag: width: section.settings.image_2.width, height: image_height_2, class: mobile-image, sizes: sizes, widths: widths, fetchpriority: fetch_priority
+        }}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'hotspot' -%}
+            {%- assign product = block.settings.product -%}
+            {%- if product != blank -%}
+              <div
+                class="banner-hotspot banner-hotspot--mobile"
+                style="left: {{ block.settings.mobile_position_x }}%; top: {{ block.settings.mobile_position_y }}%;"
+                data-product-id="{{ product.id }}"
+                {{ block.shopify_attributes }}
+              >
+                <a href="{{ product.url }}" class="banner-hotspot__marker" aria-label="{{ product.title }}">
+                  <span class="banner-hotspot__dot"></span>
+                </a>
+                <div class="banner-hotspot__tooltip">
+                  <span class="banner-hotspot__product-name">{{ product.title }}</span>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
     </div>
   {%- endif -%}
 
@@ -270,6 +414,40 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hotspots = document.querySelectorAll('.banner-hotspot');
+
+    hotspots.forEach(function(hotspot) {
+      const marker = hotspot.querySelector('.banner-hotspot__marker');
+      const tooltip = hotspot.querySelector('.banner-hotspot__tooltip');
+
+      // Show tooltip on hover
+      marker.addEventListener('mouseenter', function() {
+        hotspot.classList.add('active');
+      });
+
+      marker.addEventListener('mouseleave', function() {
+        hotspot.classList.remove('active');
+      });
+
+      // Touch support for mobile - show tooltip on touch
+      marker.addEventListener('touchstart', function(e) {
+        hotspot.classList.toggle('active');
+      });
+    });
+
+    // Close tooltips when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.banner-hotspot')) {
+        hotspots.forEach(function(hotspot) {
+          hotspot.classList.remove('active');
+        });
+      }
+    });
+  });
+</script>
 
 {% schema %}
   {
@@ -696,6 +874,58 @@
             ],
             "default": "medium",
             "label": "Image width"
+          }
+        ]
+      },
+      {
+        "type": "hotspot",
+        "name": "Hotspot",
+        "limit": 10,
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "range",
+            "id": "position_x",
+            "label": "Desktop X Position (%)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 50,
+            "unit": "%"
+          },
+          {
+            "type": "range",
+            "id": "position_y",
+            "label": "Desktop Y Position (%)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 50,
+            "unit": "%"
+          },
+          {
+            "type": "range",
+            "id": "mobile_position_x",
+            "label": "Mobile X Position (%)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 50,
+            "unit": "%"
+          },
+          {
+            "type": "range",
+            "id": "mobile_position_y",
+            "label": "Mobile Y Position (%)",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "default": 50,
+            "unit": "%"
           }
         ]
       }
