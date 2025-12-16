@@ -67,6 +67,10 @@
     color: {{ section.settings.button_text_color }}
      !important;
   }
+  .text-color .button--button-2 {
+    {% if section.settings.button_color_2 != blank %}background-color: {{ section.settings.button_color_2 }} !important;{% endif %}
+    {% if section.settings.button_text_color_2 != blank %}color: {{ section.settings.button_text_color_2 }} !important;{% endif %}
+  }
   /* Media query for mobile screens (adjust the max-width value as needed) */
   @media screen and (max-width: 750px) {
     .text-color {
@@ -136,6 +140,10 @@
     .text-color a {
       color: {{ section.settings.mobile_button_text_color }}
        !important;
+    }
+    .text-color .button--button-2 {
+      {% if section.settings.mobile_button_color_2 != blank %}background-color: {{ section.settings.mobile_button_color_2 }} !important;{% endif %}
+      {% if section.settings.mobile_button_text_color_2 != blank %}color: {{ section.settings.mobile_button_text_color_2 }} !important;{% endif %}
     }
   }
   .evenflo-image-banner-bg {
@@ -397,8 +405,7 @@ flex-grow: 0;
                   {% else %}
                   href="{{ block.settings.button_link_1 }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
-                  style="{% if section.settings.button_color_1 != blank %}background-color: {{ section.settings.button_color_1 }} !important;{% endif %}{% if section.settings.button_text_color_1 != blank %}color: {{ section.settings.button_text_color_1 }} !important;{% endif %}">
+                  class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">
                   {{- block.settings.button_label_1 | escape -}}
                 </a>
               {%- endif -%}
@@ -410,8 +417,7 @@ flex-grow: 0;
                   {% else %}
                   href="{{ block.settings.button_link_2 }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
-                  style="{% if section.settings.button_color_2 != blank %}background-color: {{ section.settings.button_color_2 }} !important;{% endif %}{% if section.settings.button_text_color_2 != blank %}color: {{ section.settings.button_text_color_2 }} !important;{% endif %}">
+                  class="button button--button-2{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
                   {{- block.settings.button_label_2 | escape -}}
                 </a>
               {%- endif -%}
@@ -547,24 +553,32 @@ flex-grow: 0;
         "default": "#000000"
       },
       {
-        "type": "color",
-        "id": "button_color_1",
-        "label": "Button 1 Background Color"
-      },
-      {
-        "type": "color",
-        "id": "button_text_color_1",
-        "label": "Button 1 Text Color"
+        "type": "header",
+        "content": "Button 2 Colors"
       },
       {
         "type": "color",
         "id": "button_color_2",
-        "label": "Button 2 Background Color"
+        "label": "Button 2 Color",
+        "default": "#FFFFFF"
       },
       {
         "type": "color",
         "id": "button_text_color_2",
-        "label": "Button 2 Text Color"
+        "label": "Button 2 text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "mobile_button_color_2",
+        "label": "Mobile Button 2 Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "mobile_button_text_color_2",
+        "label": "Mobile Button 2 text Color",
+        "default": "#000000"
       },
       {
         "type": "color",
