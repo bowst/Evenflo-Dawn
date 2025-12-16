@@ -171,6 +171,14 @@
     width: 100%;
   }
 
+  .banner__image-wrapper > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
   .banner-hotspot {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -180,8 +188,8 @@
 
   .banner-hotspot__marker {
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 14px;
+    height: 14px;
     border: 2px solid #fff;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.8);
@@ -193,6 +201,9 @@
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     text-decoration: none;
+
+
+
   }
 
   .banner-hotspot__marker:hover {
@@ -205,7 +216,20 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: #2996c5;
+      /* Ellipse 2 */
+
+box-sizing: border-box;
+
+width: 14px;
+height: 14px;
+
+background: #FFF;
+border: 0.5px solid #2996C5;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
     display: block;
   }
 
@@ -373,7 +397,8 @@
                   {% else %}
                   href="{{ block.settings.button_link_1 }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">
+                  class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
+                  style="{% if block.settings.button_color_1 != blank %}background-color: {{ block.settings.button_color_1 }} !important;{% endif %}{% if block.settings.button_text_color_1 != blank %}color: {{ block.settings.button_text_color_1 }} !important;{% endif %}">
                   {{- block.settings.button_label_1 | escape -}}
                 </a>
               {%- endif -%}
@@ -385,7 +410,8 @@
                   {% else %}
                   href="{{ block.settings.button_link_2 }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+                  class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
+                  style="{% if block.settings.button_color_2 != blank %}background-color: {{ block.settings.button_color_2 }} !important;{% endif %}{% if block.settings.button_text_color_2 != blank %}color: {{ block.settings.button_text_color_2 }} !important;{% endif %}">
                   {{- block.settings.button_label_2 | escape -}}
                 </a>
               {%- endif -%}
@@ -826,6 +852,16 @@
             "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_1.label"
           },
           {
+            "type": "color",
+            "id": "button_color_1",
+            "label": "Button 1 Background Color"
+          },
+          {
+            "type": "color",
+            "id": "button_text_color_1",
+            "label": "Button 1 Text Color"
+          },
+          {
             "type": "text",
             "id": "button_label_2",
             "default": "Second button label",
@@ -842,6 +878,16 @@
             "id": "button_style_secondary_2",
             "default": false,
             "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+          },
+          {
+            "type": "color",
+            "id": "button_color_2",
+            "label": "Button 2 Background Color"
+          },
+          {
+            "type": "color",
+            "id": "button_text_color_2",
+            "label": "Button 2 Text Color"
           }
         ]
       },
