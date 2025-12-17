@@ -409,6 +409,14 @@
     "evenflo_review_slider_efwgwz": {
       "type": "evenflo-review-slider",
       "blocks": {
+        "pixlee_turnto_social_ugc_simple_block_adfpQe": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/simple-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": "6563292",
+            "fallback_album_id": "",
+            "fallback_threshold": ""
+          }
+        },
         "award_block_3ECXic": {
           "type": "award_block",
           "settings": {
@@ -441,6 +449,7 @@
         }
       },
       "block_order": [
+        "pixlee_turnto_social_ugc_simple_block_adfpQe",
         "award_block_3ECXic",
         "award_block_VTVFFT",
         "review_block_difXt6",
@@ -563,25 +572,6 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
-    },
-    "176598946401d23f81": {
-      "type": "apps",
-      "blocks": {
-        "pixlee_turnto_social_ugc_simple_block_fCMWPq": {
-          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/simple-block/82674345-73c3-4c07-a116-a721866b66ca",
-          "settings": {
-            "widget_id": "6563292",
-            "fallback_album_id": "",
-            "fallback_threshold": ""
-          }
-        }
-      },
-      "block_order": [
-        "pixlee_turnto_social_ugc_simple_block_fCMWPq"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
@@ -597,7 +587,6 @@
     "evenflo_join_hgHPPU",
     "evenflo_benefits_jFaAne",
     "evenflo_parentlink_4YbGPw",
-    "evenflo_rich_text_prfidL",
-    "176598946401d23f81"
+    "evenflo_rich_text_prfidL"
   ]
 }
