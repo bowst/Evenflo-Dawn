@@ -69,6 +69,12 @@
         </div>
       </div>
     </div>
+	{% for block in section.blocks %}
+	  {% case block.type %}
+		{% when '@app' %}
+		  {% render block %}
+	  {% endcase %}
+	{% endfor %}
   </div>
 </div>
 
@@ -153,7 +159,7 @@
         const data = await response.json();
 
         if (data.response && data.response.review) {
-		  console.log('data.response.review', data.response.review);
+		  // console.log('data.response.review', data.response.review);
           return data.response.review;
         }
 
@@ -373,7 +379,10 @@
           "info": "Text description for this award"
         }
       ]
-    }
+    },
+	{
+      "type": "@app"
+	}
   ],
   "presets": [
     {
