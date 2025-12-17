@@ -181,10 +181,8 @@
 
         slide.innerHTML = `
           <div class="evenflo-review-content">
-            ${productTitle ? `<div class="review-product-title">${productTitle}</div>` : ''}
-            <div class="review-text">
-			  <a href="${productUrl}">${reviewText}</a>
-			</div>
+            ${productTitle ? `<div class="review-product-title"><a href="${productUrl}">${productTitle}</a></div>` : ''}
+            <div class="review-text">${reviewText}</div>
             <div class="review-meta">
               <div class="review-author">${reviewerName}</div>
             </div>
