@@ -41,11 +41,11 @@
                     >
                   </div>
                 {% endif %}
-				{% if block.settings.award_text != blank %}
-				  <div class="award-text">
-					  {{ block.settings.award_text }}
-				  </div>
-				  {% endif %}
+                {% if block.settings.award_text != blank %}
+                  <div class="award-text">
+                    {{ block.settings.award_text }}
+                  </div>
+                {% endif %}
                 {% if block.settings.award_link != blank %}
                   </a>
                 {% endif %}
@@ -69,12 +69,12 @@
         </div>
       </div>
     </div>
-	{% for block in section.blocks %}
-	  {% case block.type %}
-		{% when '@app' %}
-		  {% render block %}
-	  {% endcase %}
-	{% endfor %}
+    {% for block in section.blocks %}
+      {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+      {% endcase %}
+    {% endfor %}
   </div>
 </div>
 
@@ -169,7 +169,6 @@
         return null;
       }
     }
-
 
     // Function to render reviews
     function renderReviews(reviews) {
