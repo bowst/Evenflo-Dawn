@@ -9,35 +9,53 @@
  */
 {
   "sections": {
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea": {
-      "type": "image-banner",
+    "evenflo_image_banner_7KDjNP": {
+      "type": "evenflo-image-banner",
       "blocks": {
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0": {
+        "heading_L8BmR3": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.metafields.custom.page_heading.value }}",
-            "heading_size": "h1",
-            "heading_color": "white"
+            "heading": "Community Heroes Save More",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_BHTx8b": {
+          "type": "text",
+          "settings": {
+            "text": "We’re proud to support the everyday heroes who support our communities. Whether you’re caring for others, serving, teaching, or protecting—you deserve a little extra thanks. Verify your eligibility through ID.me and enjoy special savings on Evenflo products.",
+            "text_style": "body"
           }
         }
       },
       "block_order": [
-        "template--15779834593436__baf838c7-9596-49e3-b43e-c31a09aa32ea-168557937008f1da24-0"
+        "heading_L8BmR3",
+        "text_BHTx8b"
       ],
+      "name": "Evenflo Image Banner",
       "settings": {
-        "image": "{{ page.metafields.custom.header_image.value }}",
+        "image": "shopify://shop_images/Community_-_Desktop.png",
+        "image_2": "shopify://shop_images/Community_-_Desktop.png",
+        "background_show": true,
+        "banner_color": "#000000",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#2996c5",
+        "button_text_color": "#ffffff",
+        "mobile_button_color": "#2996c5",
+        "mobile_button_text_color": "#ffffff",
+        "desktop_heading_color": "#ffffff",
+        "mobile_heading_color": "#ffffff",
         "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
         "image_height": "small",
         "desktop_content_position": "middle-right",
-        "show_text_box": false,
+        "show_text_box": true,
         "desktop_content_alignment": "right",
-        "color_scheme": "background-1",
         "image_behavior": "none",
-        "mobile_content_alignment": "right",
+        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
-        "show_text_below": false
+        "show_text_below": true
       }
     },
     "2a5a213b-f4e0-4d14-8492-12bda656a9dd": {
@@ -46,13 +64,20 @@
         "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-heading-1": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.metafields.custom.page_header.value }}",
+            "heading": "Community Heroes Discount",
             "heading_size": "h1"
+          }
+        },
+        "text_YEkP9D": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Evenflo, we believe the people who care for our communities every day deserve a little extra care in return. Our Community Heroes program offers exclusive savings for the individuals and families who teach, serve, heal, protect, and support others—all verified securely through ID.me. Whether you’re a teacher juggling car seats and lesson plans, a first responder rushing from shift to school drop-off, or a military family constantly on the move—we’re here to make your everyday parenting moments a bit easier.</p>"
           }
         }
       },
       "block_order": [
-        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-heading-1"
+        "template--15832998674588__2a5a213b-f4e0-4d14-8492-12bda656a9dd-heading-1",
+        "text_YEkP9D"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -138,6 +163,7 @@
         "sheerid_community_verification_verification_KirBjY",
         "column_UKdUwB"
       ],
+      "disabled": true,
       "custom_css": [
         ".multicolumn {max-width: 1200px; margin: auto; min-height: 600px;}",
         ".multicolumn-card__info {text-align: left;}",
@@ -152,6 +178,7 @@
         "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "adapt",
+        "enable_image_modal": true,
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "none",
@@ -163,13 +190,213 @@
         "padding_top": 0,
         "padding_bottom": 36
       }
+    },
+    "rich_text_qJUFQr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3VLwyD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Who’s Eligible?",
+            "heading_size": "h1"
+          }
+        },
+        "text_8tVmPk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We offer special savings to the everyday heroes who help their communities thrive. Through ID.me, the following groups may qualify:</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3VLwyD",
+        "text_8tVmPk"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "multicolumn_Lx6cVt": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_AHe7zr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Teachers_Educators.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        },
+        "column_HdL7A9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Healthcare_Workers.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        },
+        "column_RQ4dJG": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/First_Responders.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        },
+        "column_zBiwrr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Military.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        },
+        "column_qXcYh7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Government_Employees.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        },
+        "column_AJeKfU": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Nurses_Medical_Staff.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_AHe7zr",
+        "column_HdL7A9",
+        "column_RQ4dJG",
+        "column_zBiwrr",
+        "column_qXcYh7",
+        "column_AJeKfU"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "circle",
+        "columns_desktop": 6,
+        "column_alignment": "center",
+        "background_style": "none",
+        "underline": false,
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "rich_text_dpHyJX": {
+      "type": "rich-text",
+      "blocks": {
+        "text_q3za3M": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you’re part of one of these groups, you can verify in minutes and start saving right away.</p>"
+          }
+        },
+        "heading_AqxUda": {
+          "type": "heading",
+          "settings": {
+            "heading": "How It Works",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "text_q3za3M",
+        "heading_AqxUda"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_JYEPJm": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_iYP3g9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Howitworks.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_iYP3g9"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "underline": false,
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "baf838c7-9596-49e3-b43e-c31a09aa32ea",
+    "evenflo_image_banner_7KDjNP",
     "2a5a213b-f4e0-4d14-8492-12bda656a9dd",
     "main",
     "b44c8197-4385-4350-ad0f-238c04013fa1",
-    "evenflo_multicolumn_DVWYRn"
+    "evenflo_multicolumn_DVWYRn",
+    "rich_text_qJUFQr",
+    "multicolumn_Lx6cVt",
+    "rich_text_dpHyJX",
+    "multicolumn_JYEPJm"
   ]
 }
