@@ -544,10 +544,43 @@
     },
     "evenflo_review_slider_kkG3tP": {
       "type": "evenflo-review-slider",
+      "blocks": {
+        "pixlee_turnto_social_ugc_simple_block_MDQdY6": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/simple-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": "6563292",
+            "fallback_album_id": "",
+            "fallback_threshold": ""
+          }
+        },
+        "award_block_9ja9KH": {
+          "type": "award_block",
+          "settings": {
+            "award_above_text": "Easy Convenience",
+            "award_image": "shopify://shop_images/NAPPA_seal-2025_2.png",
+            "award_link": "shopify://products/all4one-all-in-one-convertible-car-seat-with-sensorsafe-support",
+            "award_text": "Revolve180™ LiteMax™ NXT Infant Car Seat with SensorySoothe™"
+          }
+        },
+        "award_block_Q7xbk9": {
+          "type": "award_block",
+          "settings": {
+            "award_above_text": "Soothe On the Go",
+            "award_image": "shopify://shop_images/NAPPA_seal-2025_2.png",
+            "award_link": "https://www.evenflo.com/products/revolve360-extend-all-in-one-rotating-car-seat-quick-clean-cover",
+            "award_text": "Revolve180™ LiteMax™ NXT Infant Car Seat with SensorySoothe™"
+          }
+        }
+      },
+      "block_order": [
+        "pixlee_turnto_social_ugc_simple_block_MDQdY6",
+        "award_block_9ja9KH",
+        "award_block_Q7xbk9"
+      ],
       "disabled": true,
       "name": "Evenflo Review Slider",
       "settings": {
-        "title": "Customer Reviews",
+        "title": "Recognized & Featured By",
         "subtitle": "",
         "title_alignment": "center",
         "autoplay_delay": 5000,
