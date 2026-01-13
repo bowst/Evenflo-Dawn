@@ -11,37 +11,8 @@
   "sections": {
     "evenflo_image_banner_qe8hKC": {
       "type": "evenflo-image-banner",
-      "disabled": true,
-      "name": "Evenflo Image Banner",
-      "settings": {
-        "image": "shopify://shop_images/Evenflo_CyberMonday_2025_HPH_Desktop.jpg",
-        "image_2": "shopify://shop_images/Evenflo_CyberMonday_2025_HPH_Mobile.jpg",
-        "background_show": true,
-        "banner_color": "#000000",
-        "store_btn_show": false,
-        "app_store": "",
-        "play_store": "",
-        "button_color": "#00aea9",
-        "button_text_color": "#ffffff",
-        "mobile_button_color": "#ffffff",
-        "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#ffffff",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "bottom-left",
-        "show_text_box": true,
-        "desktop_content_alignment": "left",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "evenflo_image_banner_tH7q9y": {
-      "type": "evenflo-image-banner",
       "blocks": {
-        "heading_6niqAE": {
+        "heading_KWpQwU": {
           "type": "heading",
           "settings": {
             "heading": "Buy One Revolve  Get One at 40% Off",
@@ -49,14 +20,14 @@
             "heading_size": "h1"
           }
         },
-        "text_8zTpbn": {
+        "text_kGtYpF": {
           "type": "text",
           "settings": {
             "text": "Use Code<strong> REVOLVE40 <</strong>",
             "text_style": "body"
           }
         },
-        "buttons_JpLGwE": {
+        "buttons_9DRAVL": {
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
@@ -69,9 +40,9 @@
         }
       },
       "block_order": [
-        "heading_6niqAE",
-        "text_8zTpbn",
-        "buttons_JpLGwE"
+        "heading_KWpQwU",
+        "text_kGtYpF",
+        "buttons_9DRAVL"
       ],
       "disabled": true,
       "name": "Evenflo Image Banner",
@@ -194,9 +165,9 @@
       "type": "evenflo-loyalty-banner",
       "name": "Evenflo Loyalty Banner",
       "settings": {
-        "bronze_and_silver": "https://www.evenflo.com/pages/build-your-own-travel-system",
-        "gold": "https://www.evenflo.com/pages/build-your-own-travel-system",
-        "non_member": "https://www.evenflo.com/pages/build-your-own-travel-system",
+        "bronze_and_silver": "https://www.evenflo.com/collections/car-seats",
+        "gold": "https://www.evenflo.com/collections/car-seats",
+        "non_member": "https://www.evenflo.com/collections/car-seats",
         "desktop_video_non_member": "shopify://collections",
         "mobile_video_non_member": ""
       }
@@ -283,97 +254,31 @@
         "show_vendor": false,
         "show_rating": true,
         "show_swatches": true,
-        "enable_quick_add": false,
+        "enable_quick_add": true,
         "columns_mobile": "1",
         "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "evenflo_featured_collection_cCmYU7": {
-      "type": "evenflo-featured-collection",
-      "custom_css": [
-        ".collection {display: none;}"
-      ],
-      "name": "Explore Collections_Car Seats_AB Test V1",
+    "featured_collection_4n4DmG": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "",
+        "title": "Best Sellers (FC)",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "explore-collections-car-seats",
-        "products_to_show": 4,
+        "collection": "evenflo-top-items",
+        "products_to_show": 25,
         "columns_desktop": 4,
-        "full_width": false,
+        "full_width": true,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": true,
-        "show_swatches": true,
-        "enable_quick_add": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "evenflo_featured_collection_fbrnnA": {
-      "type": "evenflo-featured-collection",
-      "custom_css": [
-        ".collection {display: none;}"
-      ],
-      "name": "Explore Collections_Strollers_AB Test V1",
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "explore-collections_strollers_ab-test-v1",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": true,
-        "show_swatches": true,
-        "enable_quick_add": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "evenflo_featured_collection_aYD7TR": {
-      "type": "evenflo-featured-collection",
-      "custom_css": [
-        ".collection {display: none;}"
-      ],
-      "name": "Explore Collections_Travel Systems_AB Test V1",
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "explore-collections_travel-systems_ab-test-v1",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "show_vendor": false,
@@ -474,27 +379,11 @@
             "link_label": "Find my seat",
             "link": "https://www.evenflo.com/pages/revolve360-quiz"
           }
-        },
-        "column_BcFmR7": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_1Headerimage-Mobile.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Holiday Gifting Made Easy",
-            "text": "<p>Flip through our virtual Holiday Gift Guide Catalog to find the right baby gear for you</p>",
-            "link_label": "Unwrap Top Picks",
-            "link": "https://www.evenflo.com/pages/holiday-gift-guide"
-          }
         }
       },
       "block_order": [
         "column_M9AMMK",
-        "column_WEbi3A",
-        "column_BcFmR7"
+        "column_WEbi3A"
       ],
       "name": "EvenFlo Multicolumn Card Variant",
       "settings": {
@@ -505,7 +394,7 @@
         "heading_alignment": "center",
         "image_width": "full",
         "image_ratio": "adapt",
-        "columns_desktop": 3,
+        "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "none",
         "button_label": "",
@@ -687,13 +576,11 @@
   },
   "order": [
     "evenflo_image_banner_qe8hKC",
-    "evenflo_image_banner_tH7q9y",
+    "evenflo_image_banner_DjWjYH",
     "evenflo_loyalty_banner_nijkJM",
     "evenflo_image_video_banner_kyXfyU",
     "evenflo_featured_collection_XHFN7m",
-    "evenflo_featured_collection_cCmYU7",
-    "evenflo_featured_collection_fbrnnA",
-    "evenflo_featured_collection_aYD7TR",
+    "featured_collection_4n4DmG",
     "evenflo_image_text_ALMbqz",
     "evenflo_multicolumn_variant_cards_rHdeqt",
     "evenflo_review_slider_efwgwz",
