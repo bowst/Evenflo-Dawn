@@ -39,18 +39,31 @@
             >
               {% case block.type %}
                 {% when 'image' %}
-                  <div class="mixed-media-grid__card">
+                  <div class="mixed-media-grid__card image">
                     {%- if block.settings.image != blank -%}
                       {%- liquid
                         assign sizes_value = '(min-width: 750px) calc((100vw - 10rem) / ' | append: section.settings.columns_desktop | append: '), calc(100vw - 3rem)'
                       -%}
-                      <div class="mixed-media-grid__media media media--{{ section.settings.image_ratio }}">
+                      <div class="mixed-media-grid__media">
                         {%- if block.settings.link != blank -%}
-                          <a href="{{ block.settings.link }}">
+                          <a href="{{ block.settings.link }}" class="media media--transparent media--{{ section.settings.image_ratio }}">
+                        {%- else -%}
+                          <div class="media media--transparent media--{{ section.settings.image_ratio }}">
                         {%- endif -%}
-                          {{ block.settings.image | image_url: width: 2000 | image_tag: loading: 'lazy', widths: '375, 550, 750, 1100, 1500, 1780, 2000', sizes: sizes_value, alt: block.settings.image.alt, class: 'mixed-media-grid__image' }}
+                          {{
+                            block.settings.image
+                            | image_url: width: 2000
+                            | image_tag:
+                              loading: 'lazy',
+                              widths: '375, 550, 750, 1100, 1500, 1780, 2000',
+                              sizes: sizes_value,
+                              alt: block.settings.image.alt,
+                              class: 'mixed-media-grid__image'
+                          }}
                         {%- if block.settings.link != blank -%}
                           </a>
+                        {%- else -%}
+                          </div>
                         {%- endif -%}
                       </div>
                     {%- endif -%}
@@ -67,10 +80,10 @@
                   </div>
 
                 {% when 'video' %}
-                  <div class="mixed-media-grid__card">
+                  <div class="mixed-media-grid__card video"> 
                     {%- if block.settings.video_type == 'vimeo' and block.settings.vimeo_url != blank -%}
-                      <div class="mixed-media-grid__media media media--{{ section.settings.image_ratio }}">
-                        <div class="video-wrapper">
+                      <div class="mixed-media-grid__media video-vimeo">
+                        <div class="mixed-media-grid__video-wrapper">
                           <iframe
                             src="https://player.vimeo.com/video/{{ block.settings.vimeo_url }}"
                             width="640"
@@ -78,13 +91,12 @@
                             frameborder="0"
                             allow="autoplay; fullscreen; picture-in-picture"
                             allowfullscreen
-                            class="mixed-media-grid__video"
                           ></iframe>
                         </div>
                       </div>
                     {%- elsif block.settings.video_type == 'shopify' and block.settings.shopify_video != blank -%}
                       <div
-                        class="mixed-media-grid__media video-section__media"
+                        class="mixed-media-grid__media video-section__media video-shopify"
                         {% if block.settings.shopify_video.preview_image != blank %}
                           style="--ratio-percent: {{ 1 | divided_by: block.settings.shopify_video.aspect_ratio | times: 100 }}%;"
                         {% endif %}
@@ -136,7 +148,7 @@
                   </div>
 
                 {% when 'product' %}
-                  <div class="mixed-media-grid__card">
+                  <div class="mixed-media-grid__card product">
                     {%- if block.settings.product != blank -%}
                       {% render 'evenflo-card-product',
                         card_product: block.settings.product,
@@ -417,10 +429,10 @@
       "name": "Mixed Media Grid",
       "blocks": [
         {
-          "type": "image"
+          "type": "product"
         },
         {
-          "type": "video"
+          "type": "image"
         },
         {
           "type": "product"
