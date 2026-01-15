@@ -16,20 +16,40 @@
           "type": "hotspot",
           "settings": {
             "product": "all4stages-slim-plus-canopy-4-in-1-convertible-car-seat",
-            "position_x": 78,
-            "position_y": 57,
-            "mobile_position_x": 50,
-            "mobile_position_y": 50
+            "position_x": 33,
+            "position_y": 60,
+            "mobile_position_x": 0,
+            "mobile_position_y": 0
+          }
+        },
+        "hotspot_KkXHMM": {
+          "type": "hotspot",
+          "settings": {
+            "product": "all4stages-slim-plus-canopy-4-in-1-convertible-car-seat",
+            "position_x": 87,
+            "position_y": 53,
+            "mobile_position_x": 0,
+            "mobile_position_y": 0
+          }
+        },
+        "hotspot_crk7Vi": {
+          "type": "hotspot",
+          "settings": {
+            "product": "all4stages-slim-plus-canopy-4-in-1-convertible-car-seat",
+            "position_x": 64,
+            "position_y": 56,
+            "mobile_position_x": 0,
+            "mobile_position_y": 0
           }
         },
         "hotspot_g7JGr3": {
           "type": "hotspot",
           "settings": {
             "product": "all4one-all-in-one-convertible-car-seat-with-sensorsafe-support",
-            "position_x": 17,
+            "position_x": 16,
             "position_y": 76,
-            "mobile_position_x": 50,
-            "mobile_position_y": 50
+            "mobile_position_x": 0,
+            "mobile_position_y": 0
           }
         },
         "text_Qt8Czb": {
@@ -61,6 +81,8 @@
       },
       "block_order": [
         "hotspot_UpHx6x",
+        "hotspot_KkXHMM",
+        "hotspot_crk7Vi",
         "hotspot_g7JGr3",
         "text_Qt8Czb",
         "heading_GU9gVw",
@@ -69,6 +91,7 @@
       "name": "Evenflo Image Banner",
       "settings": {
         "image": "shopify://shop_images/9a211f98b91b54354da2cbaee4b1c0a02f190577.jpg",
+        "image_2": "shopify://shop_images/9a211f98b91b54354da2cbaee4b1c0a02f190577.jpg",
         "background_show": true,
         "banner_color": "#ffffff",
         "store_btn_show": false,
@@ -76,12 +99,16 @@
         "play_store": "",
         "button_color": "#121212",
         "button_text_color": "#ffffff",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#121212",
         "mobile_button_text_color": "#ffffff",
+        "mobile_button_border_color": "#ffffff",
         "button_color_2": "#ffffff",
         "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
         "mobile_button_color_2": "#ffffff",
         "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 10,
@@ -111,11 +138,54 @@
         "css_class": "",
         "custom_css": ""
       }
+    },
+    "evenflo_tabbed_carousel_YVLJQe": {
+      "type": "evenflo-tabbed-carousel",
+      "blocks": {
+        "tab_AwezDh": {
+          "type": "tab",
+          "settings": {
+            "heading": "Tab heading",
+            "text": "<p>Tab content text goes here.</p>"
+          }
+        },
+        "tab_wbEfNy": {
+          "type": "tab",
+          "settings": {
+            "heading": "Tab heading",
+            "text": "<p>Tab content text goes here.</p>"
+          }
+        },
+        "tab_c8qNFQ": {
+          "type": "tab",
+          "settings": {
+            "heading": "Tab heading",
+            "text": "<p>Tab content text goes here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_AwezDh",
+        "tab_wbEfNy",
+        "tab_c8qNFQ"
+      ],
+      "name": "Tabbed Carousel",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "image_ratio": "adapt",
+        "autoplay_interval": 5,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "evenflo_image_banner_n37yqd",
     "main",
-    "evenflo_divider_T7jPCW"
+    "evenflo_divider_T7jPCW",
+    "evenflo_tabbed_carousel_YVLJQe"
   ]
 }
