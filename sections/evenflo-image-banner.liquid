@@ -55,7 +55,8 @@
   .text-color h4,
   .text-color h5,
   .text-color h6,
-  .text-color button {
+  .text-color button,
+  .text-color .legal-text {
     color: inherit !important;
     /* Inherit the color from .text-color class */
   }
@@ -445,6 +446,10 @@
         </div>
       {% endif %}
     </div>
+	{% if section.settings.store_btn_show %}
+
+	<p class="legal-text">Google Play is a trademark of Google LLC. AppStore is a trademark of Apple Inc. Use of such marks by Evenflo is under license. All other marks are property of their respective owner.</p>
+	{% endif %}
   </div>
 </div>
 
@@ -541,6 +546,12 @@
         "label": "Button text Color",
         "default": "#000000"
       },
+	  {
+        "type": "color",
+        "id": "button_border_color",
+        "label": "Button Border Color",
+        "default": "#FFFFFF"
+      },
       {
         "type": "color",
         "id": "mobile_button_color",
@@ -552,6 +563,12 @@
         "id": "mobile_button_text_color",
         "label": "Mobile Button text Color",
         "default": "#000000"
+      },
+	  {
+        "type": "color",
+        "id": "mobile_button_border_color",
+        "label": "Mobile Button Border Color",
+        "default": "#FFFFFF"
       },
       {
         "type": "header",
@@ -569,6 +586,12 @@
         "label": "Button 2 text Color",
         "default": "#000000"
       },
+	  {
+        "type": "color",
+        "id": "button_border_color_2",
+        "label": "Button 2 Border Color",
+        "default": "#ffffff"
+      },
       {
         "type": "color",
         "id": "mobile_button_color_2",
@@ -580,6 +603,12 @@
         "id": "mobile_button_text_color_2",
         "label": "Mobile Button 2 text Color",
         "default": "#000000"
+      },
+	  {
+        "type": "color",
+        "id": "mobile_button_border_color_2",
+        "label": "Mobile Button 2 Border Color",
+        "default": "#ffffff"
       },
       {
         "type": "color",

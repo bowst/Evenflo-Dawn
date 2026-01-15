@@ -14,6 +14,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  gap: 16px;
 }
 
 .mixed-media-grid__item {
@@ -90,8 +91,17 @@
 .mixed-media-grid .mixed-media-grid__card.video {
 	border: 1px solid rgba(18, 18, 18, 0.1);
 	border-radius: 4px;
-	padding: 8px;
 }
+
+.mixed-media-grid .mixed-media-grid__card.image,
+.mixed-media-grid .mixed-media-grid__card.video {
+	padding: var(--image-padding, 9.6px);
+}
+
+.mixed-media-grid .mixed-media-grid__card.product .card__inner.ratio{
+	--ratio-percent: 65%!important;
+}
+
 @media screen and (max-width: 749px) {
   .mixed-media-grid__header {
     margin-bottom: 2rem;

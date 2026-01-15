@@ -53,6 +53,12 @@
   height: 100vh;
 }
 
+.banner .legal-text {
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+}
+
 @media screen and (max-width: 749px) {
   .banner--small.banner--mobile-bottom:not(.banner--adapt) .banner__media,
   .banner--small.banner--stacked:not(.banner--mobile-bottom):not(.banner--adapt) > .banner__media {
