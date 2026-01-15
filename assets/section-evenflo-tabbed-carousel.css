@@ -1,0 +1,150 @@
+.tabbed-carousel {
+  width: 100%;
+}
+
+.tabbed-carousel__header {
+  margin-bottom: 3rem;
+}
+
+.tabbed-carousel__container {
+  position: relative;
+  --active-slide: 0;
+}
+
+.tabbed-carousel__grid {
+  gap: 2rem;
+  align-items: start;
+}
+
+@media screen and (min-width: 750px) {
+  .tabbed-carousel__grid {
+    gap: 4rem;
+  }
+}
+
+.tabbed-carousel__image-wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.tabbed-carousel__slider {
+  width: 100%;
+  position: relative;
+  min-height: 300px;
+}
+
+.tabbed-carousel__slide {
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.tabbed-carousel__slide:first-child {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+.tabbed-carousel__image {
+  width: 100%;
+}
+
+.tabbed-carousel__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tabbed-carousel__tabs-wrapper {
+  width: 100%;
+}
+
+.tabbed-carousel__tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.tabbed-carousel__tab {
+  background: transparent;
+  border: 1px solid rgba(18, 18, 18, 0.1);
+  border-radius: 4px;
+  padding: 1.5rem;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tabbed-carousel__tab--active {
+  border-color: #2996c5;
+  background: rgba(41, 150, 197, 0.05);
+}
+
+.tabbed-carousel__tab--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #2996c5;
+  border-radius: 4px 0 0 4px;
+}
+
+.tabbed-carousel__tab.tabbed-carousel__tab--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #2996c5;
+  border-radius: 4px 0 0 4px;
+}
+
+.tabbed-carousel__tab-heading {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.tabbed-carousel__tab-text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.tabbed-carousel__tab-text p {
+  margin: 0;
+}
+
+.tabbed-carousel__tab-text p + p {
+  margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 749px) {
+  .tabbed-carousel__header {
+    margin-bottom: 2rem;
+  }
+
+  .tabbed-carousel__grid {
+    flex-direction: column;
+  }
+
+  .tabbed-carousel__image-wrapper {
+    order: 1;
+  }
+
+  .tabbed-carousel__tabs-wrapper {
+    order: 2;
+  }
+}
