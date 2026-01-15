@@ -56,12 +56,16 @@
         "play_store": "",
         "button_color": "#00aea9",
         "button_text_color": "#ffffff",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
+        "mobile_button_border_color": "#ffffff",
         "button_color_2": "#ffffff",
         "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
         "mobile_button_color_2": "#ffffff",
         "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 20,
@@ -142,12 +146,16 @@
         "play_store": "",
         "button_color": "#121212",
         "button_text_color": "#ffffff",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#121212",
         "mobile_button_text_color": "#ffffff",
+        "mobile_button_border_color": "#ffffff",
         "button_color_2": "#ffffff",
         "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
         "mobile_button_color_2": "#ffffff",
         "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 10,
@@ -727,12 +735,16 @@
         "play_store": "",
         "button_color": "#e3f2f3",
         "button_text_color": "#000000",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
+        "mobile_button_border_color": "#ffffff",
         "button_color_2": "#ffffff",
         "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
         "mobile_button_color_2": "#ffffff",
         "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#000000",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
@@ -744,6 +756,51 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
+      }
+    },
+    "evenflo_tabbed_carousel_7JTLxx": {
+      "type": "evenflo-tabbed-carousel",
+      "blocks": {
+        "tab_MptyaM": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/evenflo_homeCollection_lyra02_resize02.gif",
+            "heading": "Manage from your mobile device",
+            "text": "<p>Control soothing technology features through our Evenflo App</p>"
+          }
+        },
+        "tab_GWakDy": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/evenflo_homeCollection_eris02_resize02.gif",
+            "heading": "Grows with your family",
+            "text": "<p>Multiple modes and adjustable features adapt from newborn through toddler years</p>"
+          }
+        },
+        "tab_t7Bjew": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/evenflo_homeCollection_elara02_resize02.gif",
+            "heading": "Elevate your home style",
+            "text": "<p>Wood-like accents and neutral tones compliment your existing decor instead of clashing with it</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_MptyaM",
+        "tab_GWakDy",
+        "tab_t7Bjew"
+      ],
+      "name": "Tabbed Carousel",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "image_ratio": "adapt",
+        "autoplay_interval": 5,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -762,6 +819,7 @@
     "evenflo_parentlink_4YbGPw",
     "evenflo_rich_text_prfidL",
     "evenflo_mixed_media_grid_qizMYH",
-    "evenflo_image_banner_gJKLVc"
+    "evenflo_image_banner_gJKLVc",
+    "evenflo_tabbed_carousel_7JTLxx"
   ]
 }
