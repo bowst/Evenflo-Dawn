@@ -9,8 +9,95 @@
  */
 {
   "sections": {
+    "evenflo_image_banner_n37yqd": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "hotspot_UpHx6x": {
+          "type": "hotspot",
+          "settings": {
+            "product": "all4stages-slim-plus-canopy-4-in-1-convertible-car-seat",
+            "position_x": 78,
+            "position_y": 57,
+            "mobile_position_x": 50,
+            "mobile_position_y": 50
+          }
+        },
+        "hotspot_g7JGr3": {
+          "type": "hotspot",
+          "settings": {
+            "product": "all4one-all-in-one-convertible-car-seat-with-sensorsafe-support",
+            "position_x": 17,
+            "position_y": 76,
+            "mobile_position_x": 50,
+            "mobile_position_y": 50
+          }
+        },
+        "text_Qt8Czb": {
+          "type": "text",
+          "settings": {
+            "text": "Introducing Evenflo’s home Collection Featuring SensorySoothe® Technology",
+            "text_style": "body"
+          }
+        },
+        "heading_GU9gVw": {
+          "type": "heading",
+          "settings": {
+            "heading": "YOUR HOME REIMAGINED FOR BABY",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "buttons_DxicEQ": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Collection",
+            "button_link_1": "shopify://collections/2025-evenflo-new-products",
+            "button_style_secondary_1": false,
+            "button_label_2": "Learn More",
+            "button_link_2": "shopify://pages/booster-car-seats-faqs",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_UpHx6x",
+        "hotspot_g7JGr3",
+        "text_Qt8Czb",
+        "heading_GU9gVw",
+        "buttons_DxicEQ"
+      ],
+      "name": "Evenflo Image Banner",
+      "settings": {
+        "image": "shopify://shop_images/9a211f98b91b54354da2cbaee4b1c0a02f190577.jpg",
+        "background_show": true,
+        "banner_color": "#ffffff",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#121212",
+        "button_text_color": "#ffffff",
+        "mobile_button_color": "#121212",
+        "mobile_button_text_color": "#ffffff",
+        "button_color_2": "#ffffff",
+        "button_text_color_2": "#000000",
+        "mobile_button_color_2": "#ffffff",
+        "mobile_button_text_color_2": "#000000",
+        "desktop_heading_color": "#ffffff",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 10,
+        "image_height": "medium",
+        "desktop_content_position": "top-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -290,7 +377,6 @@
     },
     "html_ggg6LE": {
       "type": "HTML",
-      "disabled": true,
       "settings": {
         "html": "<span class=\"center\"><center>\n<a href=\"https://play.google.com/store/apps/details?id=com.evenflo.sensorsafe&amp;pli=1\"><img src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/google.png?v=1654260732\"><sp><sp><sp><sp><sp><sp><sp></sp></sp></sp></sp></sp></sp></sp></a>\n<a href=\"https://apps.apple.com/us/app/evenflo-sensorsafe/id1619330386\"><img src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/apple.png?v=1654260732\"></a>\n</center></span>"
       }
@@ -306,6 +392,7 @@
     }
   },
   "order": [
+    "evenflo_image_banner_n37yqd",
     "main",
     "featured_collection_febiQn",
     "image_banner_with_app_link_4a4FeJ",
