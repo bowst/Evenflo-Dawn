@@ -1,10 +1,5 @@
 {{ 'section-evenflo-tabbed-carousel.css' | asset_url | stylesheet_tag }}
 
-{%- liquid
-  assign slide_count = section.blocks.size
-  assign interval_seconds = section.settings.autoplay_interval
-  assign total_duration = slide_count | times: interval_seconds
--%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -18,116 +13,6 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
-  {%- if slide_count > 1 -%}
-    #tabbed-carousel-{{ section.id }} {
-      --interval: {{ interval_seconds }}s;
-      --total-duration: {{ total_duration }}s;
-    }
-
-    @keyframes slide-show-{{ section.id }} {
-      {%- for block in section.blocks -%}
-        {%- assign delay_start = forloop.index0 | times: interval_seconds -%}
-        {%- assign delay_end = forloop.index | times: interval_seconds -%}
-        {%- assign start_percent = delay_start | times: 100.0 | divided_by: total_duration -%}
-        {%- assign end_percent = delay_end | times: 100.0 | divided_by: total_duration -%}
-        {%- if forloop.last -%}
-          {%- assign end_percent = 100 -%}
-        {%- endif -%}
-        {{ start_percent }}% {
-          opacity: 1;
-          visibility: visible;
-        }
-        {{ end_percent | minus: 0.01 }}% {
-          opacity: 1;
-          visibility: visible;
-        }
-        {{ end_percent }}% {
-          opacity: 0;
-          visibility: hidden;
-        }
-      {%- endfor -%}
-    }
-
-    @keyframes tab-active-{{ section.id }} {
-      {%- for block in section.blocks -%}
-        {%- assign delay_start = forloop.index0 | times: interval_seconds -%}
-        {%- assign delay_end = forloop.index | times: interval_seconds -%}
-        {%- assign start_percent = delay_start | times: 100.0 | divided_by: total_duration -%}
-        {%- assign end_percent = delay_end | times: 100.0 | divided_by: total_duration -%}
-        {%- if forloop.last -%}
-          {%- assign end_percent = 100 -%}
-        {%- endif -%}
-        {{ start_percent }}% {
-          border-color: #2996c5;
-          background: rgba(41, 150, 197, 0.05);
-        }
-        {{ end_percent | minus: 0.01 }}% {
-          border-color: #2996c5;
-          background: rgba(41, 150, 197, 0.05);
-        }
-        {{ end_percent }}% {
-          border-color: rgba(18, 18, 18, 0.1);
-          background: transparent;
-        }
-      {%- endfor -%}
-    }
-
-    @keyframes tab-indicator-{{ section.id }} {
-      {%- for block in section.blocks -%}
-        {%- assign delay_start = forloop.index0 | times: interval_seconds -%}
-        {%- assign delay_end = forloop.index | times: interval_seconds -%}
-        {%- assign start_percent = delay_start | times: 100.0 | divided_by: total_duration -%}
-        {%- assign end_percent = delay_end | times: 100.0 | divided_by: total_duration -%}
-        {%- if forloop.last -%}
-          {%- assign end_percent = 100 -%}
-        {%- endif -%}
-        {{ start_percent }}% {
-          opacity: 1;
-        }
-        {{ end_percent | minus: 0.01 }}% {
-          opacity: 1;
-        }
-        {{ end_percent }}% {
-          opacity: 0;
-        }
-      {%- endfor -%}
-    }
-
-    #tabbed-carousel-{{ section.id }}.tabbed-carousel--autoplay .tabbed-carousel__slide {
-      animation: slide-show-{{ section.id }} var(--total-duration) infinite;
-    }
-
-    #tabbed-carousel-{{ section.id }}.tabbed-carousel--autoplay .tabbed-carousel__tab {
-      animation: tab-active-{{ section.id }} var(--total-duration) infinite;
-    }
-
-    #tabbed-carousel-{{ section.id }}.tabbed-carousel--autoplay .tabbed-carousel__tab::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: #2996c5;
-      border-radius: 4px 0 0 4px;
-      opacity: 0;
-      animation: tab-indicator-{{ section.id }} var(--total-duration) infinite;
-    }
-
-    {%- for block in section.blocks -%}
-      {%- assign delay = forloop.index0 | times: interval_seconds -%}
-      #tabbed-carousel-{{ section.id }}.tabbed-carousel--autoplay .tabbed-carousel__slide:nth-child({{ forloop.index }}) {
-        animation-delay: {{ delay }}s;
-      }
-      #tabbed-carousel-{{ section.id }}.tabbed-carousel--autoplay .tabbed-carousel__tab:nth-child({{ forloop.index }}) {
-        animation-delay: {{ delay }}s;
-      }
-      #tabbed-carousel-{{ section.id }}.tabbed-carousel--autoplay .tabbed-carousel__tab:nth-child({{ forloop.index }})::before {
-        animation-delay: {{ delay }}s;
-      }
-    {%- endfor -%}
-  {%- endif -%}
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} isolate gradient">
@@ -148,6 +33,7 @@
           role="region"
           aria-roledescription="carousel"
           aria-label="{{ section.settings.heading | default: 'Tabbed carousel' }}"
+          data-interval="{{ section.settings.autoplay_interval }}"
         >
           <div class="tabbed-carousel__grid grid grid--1-col grid--2-col-tablet">
             <div class="tabbed-carousel__image-wrapper grid__item">
@@ -204,6 +90,8 @@
     </div>
   </div>
 </div>
+
+<script src="{{ 'section-evenflo-tabbed-carousel.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {
