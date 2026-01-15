@@ -97,14 +97,23 @@
 .mixed-media-grid .mixed-media-grid__card.video {
 	padding: var(--image-padding, 9.6px);
 }
-
+/*
 .mixed-media-grid .mixed-media-grid__card.product .card__inner.ratio{
 	--ratio-percent: 65%!important;
 }
-
+*/
 @media screen and (max-width: 749px) {
   .mixed-media-grid__header {
     margin-bottom: 2rem;
+  }
+
+  .mixed-media-grid .mixed-media-grid__card.image .media img {
+	display: block;
+		position: relative;
+		top: 0;
+		left: 0;
+		height: auto;
+		width: 100%;
   }
 }
 
