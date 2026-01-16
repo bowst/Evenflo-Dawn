@@ -1,0 +1,90 @@
+{% assign bassinet_insert = product.metafields.sf_playard.bassinet_insert %}
+{% assign built_for_travel = product.metafields.sf_playard.built_for_travel %}
+{% assign canopy_overview = product.metafields.sf_playard.canopy | split: ',' %}
+{% assign changing_station = product.metafields.sf_playard.diaper_changing_station %}
+{% assign extra_storage = product.metafields.sf_playard.extra_storage %}
+{% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
+{% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
+{% assign child_weight_min_value = product.metafields.sf_products.child_weight_min %}
+{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
+{% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
+{% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+
+<h3>Home Collection Specifications</h3>
+
+<ul class="specs-list">
+	<li>
+		<strong>Child Weight</strong>
+		<div>
+			{% if child_weight_min_value %}
+			{{ child_weight_min_value }} -
+			{% endif %}
+			{% if child_weight_max_value %}
+			{{ child_weight_max_value }} lbs
+			{% endif %}
+		</div>
+	</li>	
+	{% if child_height_min_value %}
+	<li>
+		<strong>Child Height</strong>
+		<div>
+			{% if child_height_min_value %}
+			{{ child_height_min_value }} -
+			{% endif %}
+			{% if child_height_max_value %}
+			{{ child_height_max_value }} in
+		{% endif %}
+		</div>
+	</li>
+	{% endif %}
+	
+	{% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
+	{% if shipping_restrictions %}
+	<li>
+		<strong>Shipping Restrictions</strong>
+		<div>{{ shipping_restrictions }}</div>
+	</li>
+	{% endif %}
+
+	{% if activity_foldable == 1 %}
+	<li class="checkbox-item">
+		<strong>Foldable</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+		
+	{% if height_adjustable == 1 %}
+	<li class="checkbox-item">
+		<strong>Height Adjustable</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+
+	{% if activity_batteries_required == 1 %}
+	<li class="checkbox-item">
+		<strong>Battery Required</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+		<div>{{ product.metafields.sf_activity.battery_cell_type }}</div>
+	</li>
+	{% endif %}
+
+	{% if batteries_included == 1 %}
+	<li class="checkbox-item">
+		<strong>Batteries Included</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+
+	{% assign machine_washable = product.metafields.sf_activity.sf_products.machine_washable_seating_surfa %}
+	{% if machine_washable == 1 %}
+	<li class="checkbox-item">
+		<strong>Machine Washable Surface</strong>
+		<span class="screen-reader-text">Yes</span>
+		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+	</li>
+	{% endif %}
+</ul>
