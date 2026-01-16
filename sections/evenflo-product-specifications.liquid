@@ -93,7 +93,10 @@
 				{% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 				{% assign min_height = product.metafields.sf_products.child_height_min %}
 				{% assign max_height = product.metafields.sf_products.child_height_max %}
+				{% assign gen_fit = product.metafields.sf_products.child_gen_fit  %}
+				{% assign gen_height = product.metafields.sf_products.child_gen_height  %}
 				{% assign min_age = product.metafields.sf_products.child_age_min %}
+				{%  assign max_age = product.metafields.sf_products.child_age_max %}
 
 				<div class="child-fit-mode">
 					<ul class="specs-list">
@@ -125,11 +128,31 @@
 							</div>
 						</li>
 					{% endif %}
+					{% if gen_height %}
+						<li>
+							<strong>Height</strong>
+							<div>{{  gen_height }}</div>
+						</li>
+					{% endif %}
+					{% if gen_fit %}
+						<li>
+							<strong>General Fit</strong>
+							<div>{{  gen_fit }}</div>
+						</li>
+					{% endif %}
 					{% if min_age %}
 						<li>
 							<strong>Minimum Age</strong>
 							<div>
 								{{ min_age }}
+							</div>
+						</li>
+					{% endif %}
+					{% if max_age %}
+						<li>
+							<strong>Maximum Age</strong>
+							<div>
+								{{ max_age }}
 							</div>
 						</li>
 					{% endif %}
