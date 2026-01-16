@@ -5,6 +5,8 @@
 {% assign child_weight_max_value = product.metafields.sf_products.child_weight_max %}
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
+{% assign child_gen_height = product.metafields.sf_products.child_gen_height %}
+{% assign child_gen_fit = product.metafields.sf_products.child_gen_fit %}
 
 {% assign package_contents = product.metafields.sf_products.retail_package_contents %}
 {% assign assembled_width = product.metafields.sf_products.assembled_width %}
@@ -967,6 +969,13 @@
           {% if child_height_max_value %}
             {{ child_height_max_value }} in
           {% endif -%}
+          {%  if child_gen_height %}
+            {{  child_gen_height }}
+          {%  endif %}
+          {% if child_gen_fit %}<br>
+            <strong>General Fit</strong>
+            {{ child_gen_fit }}
+          {% endif %}
         </div>
         <div class="flex-item">
           <h3>Product Dimensions</h3>
