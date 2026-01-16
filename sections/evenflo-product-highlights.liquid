@@ -993,9 +993,14 @@
         </div>
         <div class="flex-item">
           <h3>Specs</h3>
-          <strong>Assembly Required: </strong>
-          {{ assembly_switch_spec }}
-          <br>
+          {% if assembly_switch_spec %}
+          <strong>Assembly Required:</strong>
+          {% if assembly_switch_spec == 1 %}
+            Yes <br>
+          {% else %}
+            No<br>
+          {% endif %}
+          {% endif %}
           {% if batteries_included %}
           <strong>Batteries Included:</strong> {{  batteries_included }}<br>
           {% endif %}
