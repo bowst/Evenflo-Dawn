@@ -98,6 +98,9 @@
 				{% assign min_height = product.metafields.sf_products.child_height_min %}
 				{% assign max_height = product.metafields.sf_products.child_height_max %}
 				{% assign min_age = product.metafields.sf_products.child_age_min %}
+				{% assign max_age = product.metafields.sf_products.child_age_max %}
+				{% assign age_group = product.metafields.sf_products.age_group %}
+				{% assign modes_of_use = product.metafields.custom.modes_of_use | replace: '|', '<br>' %}
 
 				<div class="child-fit-mode">
 					<ul class="specs-list">
@@ -129,11 +132,35 @@
 							</div>
 						</li>
 					{% endif %}
+					{% if age_group %}
+						<li>
+							<strong>Age Group</strong>
+							<div>
+								{{ age_group }}
+							</div>
+						</li>
+					{% endif %}
 					{% if min_age %}
 						<li>
 							<strong>Minimum Age</strong>
 							<div>
 								{{ min_age }}
+							</div>
+						</li>
+					{% endif %}
+					{% if max_age %}
+						<li>
+							<strong>Maximum Age</strong>
+							<div>
+								{{ max_age }}
+							</div>
+						</li>
+					{% endif %}
+					{% if modes_of_use and modes_of_use != '' %}
+						<li>
+							<strong>Modes of Use</strong>
+							<div>
+								{{ modes_of_use }}
 							</div>
 						</li>
 					{% endif %}

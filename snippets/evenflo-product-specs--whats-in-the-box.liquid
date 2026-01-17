@@ -19,10 +19,16 @@
 	{% endif %}
 
 	{% assign folded_dimensions = product.metafields.sf_products.folded_dimensions %}
+	{% assign folded_dims_assembled = product.metafields.custom.folded_dims_assembled %}
 	{% if folded_dimensions %}
 	<li>
 		<strong>Folded Dimensions</strong>
 		<div>{{ folded_dimensions }}</div>
+	</li>
+	{%  elsif folded_dims_assembled %}
+	<li>
+		<strong>Folded Dimensions</strong>
+		<div>{{ folded_dims_assembled }}</div>
 	</li>
 	{% endif %}
 
@@ -118,15 +124,33 @@
 		</div>
 	</li>
 
+	{% assign assembly_details = product.metafields.sf_products.assembly_details %}
+	{% if assembly_details %}
+	<li>
+		<strong>Assembly Details</strong>
+		<div>{{ assembly_details }}</div>
+	</li>
+	{% endif %}
+
+	{% assign my_switch = product.metafields.sf_gates.hardware_included %}
+	{% assign hardware_included = product.metafields.sf_products.hardware_included %}
+	{% if my_switch or hardware_included %}
 	<li>
 		<strong>Hardware Included</strong>
 		<div>
-		{% assign my_switch = product.metafields.sf_gates.hardware_included %}
-		{% if my_switch == 1 %}
+		{% if my_switch == 1 or hardware_included == 1 %}
 			Yes
 		{% else %}
 			No
 		{% endif %}
 		</div>
 	</li>
+	{% endif %}
+	{% assign harness_style = product.metafields.sf_products.harness_style %}
+	{% if harness_style %}
+	<li>
+		<strong>Harness Style</strong>
+		<div>{{ harness_style }}</div>
+	</li>
+	{% endif %}
 </ul>
