@@ -160,131 +160,88 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
       >
-        {%- if slide_link != blank -%}
-          <a href="{{ slide_link }}" style="display: block; text-decoration: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;" aria-label="Slide {{ forloop.index }} link"></a>
-        {%- endif -%}
-        <div class="slideshow__media banner__media media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
-          <div style="position: relative;">
-            <div class="desktop">
-              {%- if customer.tags contains 'swell_vip_bronze' -%}
-                {%- if block.settings.desktop_image_bronze -%}
-                  {{
-                    block.settings.desktop_image_bronze
-                    | image_url: width: 3840
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.desktop_image -%}
-                  {{
-                    block.settings.desktop_image
-                    | image_url: width: 3840
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- elsif customer.tags contains 'swell_vip_silver' -%}
-                {%- if block.settings.desktop_image_silver -%}
-                  {{
-                    block.settings.desktop_image_silver
-                    | image_url: width: 3840
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.desktop_image -%}
-                  {{
-                    block.settings.desktop_image
-                    | image_url: width: 3840
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- elsif customer.tags contains 'swell_vip_gold' -%}
-                {%- if block.settings.desktop_image_gold -%}
-                  {{
-                    block.settings.desktop_image_gold
-                    | image_url: width: 3840
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.desktop_image -%}
-                  {{
-                    block.settings.desktop_image
-                    | image_url: width: 3840
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- else -%}
-                {%- if block.settings.desktop_image_non_member -%}
-                  {{
-                    block.settings.desktop_image_non_member
-                    | image_url: width: 3840
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.desktop_image -%}
-                  {{
-                    block.settings.desktop_image
-                    | image_url: width: 3840
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- endif -%}
+        <div class="slideshow__media banner__media media{% if section.settings.slide_height == 'adapt_image' %} ratio{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+          {%- if slide_link != blank -%}
+            <a href="{{ slide_link }}" style="display: block; text-decoration: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;" aria-label="Slide {{ forloop.index }} link"></a>
+          {%- endif -%}
+          {%- liquid
+            assign desktop_img = null
+            assign mobile_img = null
+            
+            if customer.tags contains 'swell_vip_bronze'
+              if block.settings.desktop_image_bronze != blank
+                assign desktop_img = block.settings.desktop_image_bronze
+              elsif block.settings.desktop_image != blank
+                assign desktop_img = block.settings.desktop_image
+              endif
+              if block.settings.mobile_image_bronze != blank
+                assign mobile_img = block.settings.mobile_image_bronze
+              elsif block.settings.mobile_image != blank
+                assign mobile_img = block.settings.mobile_image
+              endif
+            elsif customer.tags contains 'swell_vip_silver'
+              if block.settings.desktop_image_silver != blank
+                assign desktop_img = block.settings.desktop_image_silver
+              elsif block.settings.desktop_image != blank
+                assign desktop_img = block.settings.desktop_image
+              endif
+              if block.settings.mobile_image_silver != blank
+                assign mobile_img = block.settings.mobile_image_silver
+              elsif block.settings.mobile_image != blank
+                assign mobile_img = block.settings.mobile_image
+              endif
+            elsif customer.tags contains 'swell_vip_gold'
+              if block.settings.desktop_image_gold != blank
+                assign desktop_img = block.settings.desktop_image_gold
+              elsif block.settings.desktop_image != blank
+                assign desktop_img = block.settings.desktop_image
+              endif
+              if block.settings.mobile_image_gold != blank
+                assign mobile_img = block.settings.mobile_image_gold
+              elsif block.settings.mobile_image != blank
+                assign mobile_img = block.settings.mobile_image
+              endif
+            else
+              if block.settings.desktop_image_non_member != blank
+                assign desktop_img = block.settings.desktop_image_non_member
+              elsif block.settings.desktop_image != blank
+                assign desktop_img = block.settings.desktop_image
+              endif
+              if block.settings.mobile_image_non_member != blank
+                assign mobile_img = block.settings.mobile_image_non_member
+              elsif block.settings.mobile_image != blank
+                assign mobile_img = block.settings.mobile_image
+              endif
+            endif
+            
+            if desktop_img != null
+              assign desktop_height = desktop_img.width | divided_by: desktop_img.aspect_ratio | round
+            endif
+            if mobile_img != null
+              assign mobile_height = mobile_img.width | divided_by: mobile_img.aspect_ratio | round
+            endif
+          -%}
+          {%- if desktop_img != null or mobile_img != null -%}
+            <div class="desktop" style="width: 100%;">
+              {%- if desktop_img != null -%}
+                {{
+                  desktop_img
+                  | image_url: width: 3840
+                  | image_tag: height: desktop_height, style: 'width: 100%; height: auto; display: block;'
+                }}
               {%- endif -%}
             </div>
 
-            <div class="mobile">
-              {%- if customer.tags contains 'swell_vip_bronze' -%}
-                {%- if block.settings.mobile_image_bronze -%}
-                  {{
-                    block.settings.mobile_image_bronze
-                    | image_url: width: 800
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.mobile_image -%}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 800
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- elsif customer.tags contains 'swell_vip_silver' -%}
-                {%- if block.settings.mobile_image_silver -%}
-                  {{
-                    block.settings.mobile_image_silver
-                    | image_url: width: 800
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.mobile_image -%}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 800
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- elsif customer.tags contains 'swell_vip_gold' -%}
-                {%- if block.settings.mobile_image_gold -%}
-                  {{
-                    block.settings.mobile_image_gold
-                    | image_url: width: 800
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.mobile_image -%}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 800
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- else -%}
-                {%- if block.settings.mobile_image_non_member -%}
-                  {{
-                    block.settings.mobile_image_non_member
-                    | image_url: width: 800
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.mobile_image -%}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 800
-                    | image_tag: style: 'width: 100%;'
-                  }}
-                {%- endif -%}
+            <div class="mobile" style="width: 100%;">
+              {%- if mobile_img != null -%}
+                {{
+                  mobile_img
+                  | image_url: width: 800
+                  | image_tag: height: mobile_height, style: 'width: 100%; height: auto; display: block;'
+                }}
               {%- endif -%}
             </div>
-          </div>
+          {%- endif -%}
         </div>
       </div>
     {%- endfor -%}
@@ -365,6 +322,14 @@
   .mobile,
   .desktop {
     min-width: 100%;
+    display: block;
+  }
+  
+  .mobile img,
+  .desktop img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   @media screen and (min-width: 800px) {
@@ -377,6 +342,17 @@
     .desktop {
       display: none;
     }
+  }
+  
+  #Slider-{{ section.id }} .slideshow__media.banner__media {
+    position: relative;
+    width: 100%;
+  }
+  
+  #Slider-{{ section.id }} .slideshow__media.banner__media > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 </style>
 
