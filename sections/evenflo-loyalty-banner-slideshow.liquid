@@ -5,29 +5,8 @@
 <!-- Custom Evenflo slideshow css -->
 
 {{ 'evenflo-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-loyalty-banner-slideshow.css' | asset_url | stylesheet_tag }}
 
-{%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank -%}
-  {%- style -%}
-    @media screen and (max-width: 749px) {
-      #Slider-{{ section.id }}::before,
-      #Slider-{{ section.id }} .media::before,
-      #Slider-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
-        padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
-        content: '';
-        display: block;
-      }
-    }
-
-    @media screen and (min-width: 750px) {
-      #Slider-{{ section.id }}::before,
-      #Slider-{{ section.id }} .media::before {
-        padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
-        content: '';
-        display: block;
-      }
-    }
-  {%- endstyle -%}
-{%- endif -%}
 
 <slideshow-component
   class="slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}{% if section.settings.show_text_below %} mobile-text-below{% endif %}"
@@ -102,7 +81,7 @@
   {%- endif -%}
 
   <div
-    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere evenflo-loyalty-slideshow{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
     id="Slider-{{ section.id }}"
     aria-live="polite"
     aria-atomic="true"
@@ -121,10 +100,6 @@
         endif
       -%}
       
-      {%- if slide_link != blank -%}
-        <a href="{{ slide_link }}" style="display: block; text-decoration: none;">
-      {%- endif -%}
-      
       <div
         class="evenflo-slideshow-slide slideshow__slide grid__item grid--1-col slider__slide"
         id="Slide-{{ section.id }}-{{ forloop.index }}"
@@ -135,141 +110,89 @@
         tabindex="-1"
       >
         <div class="slideshow__media banner__media media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
-          <div style="position: relative;">
-            <div class="desktop">
-              {%- if customer.tags contains 'swell_vip_bronze' -%}
-                {%- if block.settings.desktop_image_bronze -%}
-                  {{
-                    block.settings.desktop_image_bronze
-                    | image_url: width: 3840
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.desktop_image -%}
-                  {{
-                    block.settings.desktop_image
-                    | image_url: width: 3840
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- elsif customer.tags contains 'swell_vip_silver' -%}
-                {%- if block.settings.desktop_image_silver -%}
-                  {{
-                    block.settings.desktop_image_silver
-                    | image_url: width: 3840
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.desktop_image -%}
-                  {{
-                    block.settings.desktop_image
-                    | image_url: width: 3840
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- elsif customer.tags contains 'swell_vip_gold' -%}
-                {%- if block.settings.desktop_image_gold -%}
-                  {{
-                    block.settings.desktop_image_gold
-                    | image_url: width: 3840
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.desktop_image -%}
-                  {{
-                    block.settings.desktop_image
-                    | image_url: width: 3840
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- else -%}
-                {%- if block.settings.desktop_video_non_member != blank -%}
-                  <video autoplay muted loop playsinline class="desktop" style="width: 100%;">
-                    <source src="{{ block.settings.desktop_video_non_member }}" type="video/mp4">
-                  </video>
-                {%- elsif block.settings.desktop_image_non_member -%}
-                  {{
-                    block.settings.desktop_image_non_member
-                    | image_url: width: 3840
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.desktop_image -%}
-                  {{
-                    block.settings.desktop_image
-                    | image_url: width: 3840
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- endif -%}
+          {%- if slide_link != blank -%}
+            <a href="{{ slide_link }}" style="display: block; text-decoration: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;" aria-label="Slide {{ forloop.index }} link"></a>
+          {%- endif -%}
+          {%- liquid
+            assign desktop_img = null
+            assign mobile_img = null
+            
+            if customer.tags contains 'swell_vip_bronze'
+              if block.settings.desktop_image_bronze != blank
+                assign desktop_img = block.settings.desktop_image_bronze
+              elsif block.settings.desktop_image != blank
+                assign desktop_img = block.settings.desktop_image
+              endif
+              if block.settings.mobile_image_bronze != blank
+                assign mobile_img = block.settings.mobile_image_bronze
+              elsif block.settings.mobile_image != blank
+                assign mobile_img = block.settings.mobile_image
+              endif
+            elsif customer.tags contains 'swell_vip_silver'
+              if block.settings.desktop_image_silver != blank
+                assign desktop_img = block.settings.desktop_image_silver
+              elsif block.settings.desktop_image != blank
+                assign desktop_img = block.settings.desktop_image
+              endif
+              if block.settings.mobile_image_silver != blank
+                assign mobile_img = block.settings.mobile_image_silver
+              elsif block.settings.mobile_image != blank
+                assign mobile_img = block.settings.mobile_image
+              endif
+            elsif customer.tags contains 'swell_vip_gold'
+              if block.settings.desktop_image_gold != blank
+                assign desktop_img = block.settings.desktop_image_gold
+              elsif block.settings.desktop_image != blank
+                assign desktop_img = block.settings.desktop_image
+              endif
+              if block.settings.mobile_image_gold != blank
+                assign mobile_img = block.settings.mobile_image_gold
+              elsif block.settings.mobile_image != blank
+                assign mobile_img = block.settings.mobile_image
+              endif
+            else
+              if block.settings.desktop_image_non_member != blank
+                assign desktop_img = block.settings.desktop_image_non_member
+              elsif block.settings.desktop_image != blank
+                assign desktop_img = block.settings.desktop_image
+              endif
+              if block.settings.mobile_image_non_member != blank
+                assign mobile_img = block.settings.mobile_image_non_member
+              elsif block.settings.mobile_image != blank
+                assign mobile_img = block.settings.mobile_image
+              endif
+            endif
+            
+            if desktop_img != null
+              assign desktop_height = desktop_img.width | divided_by: desktop_img.aspect_ratio | round
+            endif
+            if mobile_img != null
+              assign mobile_height = mobile_img.width | divided_by: mobile_img.aspect_ratio | round
+            endif
+          -%}
+          {%- if desktop_img != null or mobile_img != null -%}
+            <div class="desktop" style="width: 100%;">
+              {%- if desktop_img != null -%}
+                {{
+                  desktop_img
+                  | image_url: width: 3840
+                  | image_tag: height: desktop_height, style: 'width: 100%; height: auto; display: block;'
+                }}
               {%- endif -%}
             </div>
 
-            <div class="mobile">
-              {%- if customer.tags contains 'swell_vip_bronze' -%}
-                {%- if block.settings.mobile_image_bronze -%}
-                  {{
-                    block.settings.mobile_image_bronze
-                    | image_url: width: 800
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.mobile_image -%}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 800
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- elsif customer.tags contains 'swell_vip_silver' -%}
-                {%- if block.settings.mobile_image_silver -%}
-                  {{
-                    block.settings.mobile_image_silver
-                    | image_url: width: 800
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.mobile_image -%}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 800
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- elsif customer.tags contains 'swell_vip_gold' -%}
-                {%- if block.settings.mobile_image_gold -%}
-                  {{
-                    block.settings.mobile_image_gold
-                    | image_url: width: 800
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.mobile_image -%}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 800
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- endif -%}
-              {%- else -%}
-                {%- if block.settings.mobile_video_non_member != blank -%}
-                  <video autoplay muted loop playsinline class="mobile" style="width: 100%;">
-                    <source src="{{ block.settings.mobile_video_non_member }}" type="video/mp4">
-                  </video>
-                {%- elsif block.settings.mobile_image_non_member -%}
-                  {{
-                    block.settings.mobile_image_non_member
-                    | image_url: width: 800
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- elsif block.settings.mobile_image -%}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 800
-                    | image_tag: loading: 'lazy', style: 'width: 100%;'
-                  }}
-                {%- endif -%}
+            <div class="mobile" style="width: 100%;">
+              {%- if mobile_img != null -%}
+                {{
+                  mobile_img
+                  | image_url: width: 800
+                  | image_tag: height: mobile_height, style: 'width: 100%; height: auto; display: block;'
+                }}
               {%- endif -%}
             </div>
-          </div>
+          {%- endif -%}
         </div>
       </div>
-      
-      {%- if slide_link != blank -%}
-        </a>
-      {%- endif -%}
     {%- endfor -%}
   </div>
 
@@ -344,24 +267,6 @@
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
-<style>
-  .mobile,
-  .desktop {
-    min-width: 100%;
-  }
-
-  @media screen and (min-width: 800px) {
-    .mobile {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 800px) {
-    .desktop {
-      display: none;
-    }
-  }
-</style>
 
 {% schema %}
 {
@@ -544,12 +449,6 @@
           "label": "Desktop Image - Non-Member"
         },
         {
-          "type": "url",
-          "id": "desktop_video_non_member",
-          "label": "Desktop Video - Non-Member",
-          "info": "MP4 format required. Takes precedence over desktop image for non-members"
-        },
-        {
           "type": "image_picker",
           "id": "mobile_image",
           "label": "Mobile Image - All Members (Fallback)",
@@ -574,12 +473,6 @@
           "type": "image_picker",
           "id": "mobile_image_non_member",
           "label": "Mobile Image - Non-Member"
-        },
-        {
-          "type": "url",
-          "id": "mobile_video_non_member",
-          "label": "Mobile Video - Non-Member",
-          "info": "MP4 format required. Takes precedence over mobile image for non-members"
         }
       ]
     }
