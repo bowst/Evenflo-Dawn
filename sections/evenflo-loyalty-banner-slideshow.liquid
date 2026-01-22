@@ -180,7 +180,16 @@
                   }}
                 {%- endif -%}
               {%- else -%}
-                {%- if block.settings.desktop_video_non_member != blank -%}
+                {%- liquid
+                  assign has_video = false
+                  if block.settings.desktop_video_non_member != blank
+                    assign video_url = block.settings.desktop_video_non_member | strip
+                    if video_url != '' and video_url.size > 0
+                      assign has_video = true
+                    endif
+                  endif
+                -%}
+                {%- if has_video -%}
                   <video autoplay muted loop playsinline class="desktop" style="width: 100%;">
                     <source src="{{ block.settings.desktop_video_non_member }}" type="video/mp4">
                   </video>
@@ -244,7 +253,16 @@
                   }}
                 {%- endif -%}
               {%- else -%}
-                {%- if block.settings.mobile_video_non_member != blank -%}
+                {%- liquid
+                  assign has_mobile_video = false
+                  if block.settings.mobile_video_non_member != blank
+                    assign mobile_video_url = block.settings.mobile_video_non_member | strip
+                    if mobile_video_url != '' and mobile_video_url.size > 0
+                      assign has_mobile_video = true
+                    endif
+                  endif
+                -%}
+                {%- if has_mobile_video -%}
                   <video autoplay muted loop playsinline class="mobile" style="width: 100%;">
                     <source src="{{ block.settings.mobile_video_non_member }}" type="video/mp4">
                   </video>
