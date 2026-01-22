@@ -7,28 +7,42 @@
 {{ 'evenflo-slideshow.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign first_image = section.blocks.first.settings.desktop_image
-  if first_image == blank
+  assign first_image = null
+  assign first_image_aspect_ratio = 1
+  
+  if section.blocks.first.settings.desktop_image != blank
+    assign first_image = section.blocks.first.settings.desktop_image
+  elsif section.blocks.first.settings.desktop_image_bronze != blank
     assign first_image = section.blocks.first.settings.desktop_image_bronze
-  endif
-  if first_image == blank
+  elsif section.blocks.first.settings.desktop_image_silver != blank
     assign first_image = section.blocks.first.settings.desktop_image_silver
-  endif
-  if first_image == blank
+  elsif section.blocks.first.settings.desktop_image_gold != blank
     assign first_image = section.blocks.first.settings.desktop_image_gold
-  endif
-  if first_image == blank
+  elsif section.blocks.first.settings.desktop_image_non_member != blank
     assign first_image = section.blocks.first.settings.desktop_image_non_member
+  elsif section.blocks.first.settings.mobile_image != blank
+    assign first_image = section.blocks.first.settings.mobile_image
+  elsif section.blocks.first.settings.mobile_image_bronze != blank
+    assign first_image = section.blocks.first.settings.mobile_image_bronze
+  elsif section.blocks.first.settings.mobile_image_silver != blank
+    assign first_image = section.blocks.first.settings.mobile_image_silver
+  elsif section.blocks.first.settings.mobile_image_gold != blank
+    assign first_image = section.blocks.first.settings.mobile_image_gold
+  elsif section.blocks.first.settings.mobile_image_non_member != blank
+    assign first_image = section.blocks.first.settings.mobile_image_non_member
+  endif
+  
+  if first_image != null and first_image.aspect_ratio != blank and first_image.aspect_ratio > 0
+    assign first_image_aspect_ratio = first_image.aspect_ratio
   endif
 -%}
-{%- if section.settings.slide_height == 'adapt_image' and first_image != blank -%}
+{%- if section.settings.slide_height == 'adapt_image' and first_image != null and first_image_aspect_ratio > 0 -%}
   {%- style -%}
-
     @media screen and (max-width: 749px) {
       #Slider-{{ section.id }}::before,
       #Slider-{{ section.id }} .media::before,
       #Slider-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
-        padding-bottom: {{ 1 | divided_by: first_image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: first_image_aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -37,7 +51,7 @@
     @media screen and (min-width: 750px) {
       #Slider-{{ section.id }}::before,
       #Slider-{{ section.id }} .media::before {
-        padding-bottom: {{ 1 | divided_by: first_image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: first_image_aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -118,7 +132,7 @@
   {%- endif -%}
 
   <div
-    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if first_image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if first_image == null %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
     id="Slider-{{ section.id }}"
     aria-live="polite"
     aria-atomic="true"
