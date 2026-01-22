@@ -180,20 +180,7 @@
                   }}
                 {%- endif -%}
               {%- else -%}
-                {%- liquid
-                  assign has_video = false
-                  if block.settings.desktop_video_non_member != blank
-                    assign video_url = block.settings.desktop_video_non_member | strip
-                    if video_url != '' and video_url.size > 0
-                      assign has_video = true
-                    endif
-                  endif
-                -%}
-                {%- if has_video -%}
-                  <video autoplay muted loop playsinline class="desktop" style="width: 100%;">
-                    <source src="{{ block.settings.desktop_video_non_member }}" type="video/mp4">
-                  </video>
-                {%- elsif block.settings.desktop_image_non_member -%}
+                {%- if block.settings.desktop_image_non_member -%}
                   {{
                     block.settings.desktop_image_non_member
                     | image_url: width: 3840
@@ -253,20 +240,7 @@
                   }}
                 {%- endif -%}
               {%- else -%}
-                {%- liquid
-                  assign has_mobile_video = false
-                  if block.settings.mobile_video_non_member != blank
-                    assign mobile_video_url = block.settings.mobile_video_non_member | strip
-                    if mobile_video_url != '' and mobile_video_url.size > 0
-                      assign has_mobile_video = true
-                    endif
-                  endif
-                -%}
-                {%- if has_mobile_video -%}
-                  <video autoplay muted loop playsinline class="mobile" style="width: 100%;">
-                    <source src="{{ block.settings.mobile_video_non_member }}" type="video/mp4">
-                  </video>
-                {%- elsif block.settings.mobile_image_non_member -%}
+                {%- if block.settings.mobile_image_non_member -%}
                   {{
                     block.settings.mobile_image_non_member
                     | image_url: width: 800
@@ -562,12 +536,6 @@
           "label": "Desktop Image - Non-Member"
         },
         {
-          "type": "url",
-          "id": "desktop_video_non_member",
-          "label": "Desktop Video - Non-Member",
-          "info": "MP4 format required. Takes precedence over desktop image for non-members"
-        },
-        {
           "type": "image_picker",
           "id": "mobile_image",
           "label": "Mobile Image - All Members (Fallback)",
@@ -592,12 +560,6 @@
           "type": "image_picker",
           "id": "mobile_image_non_member",
           "label": "Mobile Image - Non-Member"
-        },
-        {
-          "type": "url",
-          "id": "mobile_video_non_member",
-          "label": "Mobile Video - Non-Member",
-          "info": "MP4 format required. Takes precedence over mobile image for non-members"
         }
       ]
     }
