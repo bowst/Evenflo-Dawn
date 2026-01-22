@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
+ {%- render 'ecom_header' -%}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -443,7 +444,7 @@
     {% comment %} <script>
     function includeScript(e){var t=document.createElement("script"),n=document.getElementsByTagName("script")[0];t.type="text/javascript",t.src=e,t.async=!0,n.parentNode.insertBefore(t,n)}includeScript("https://bot.emplifi.io/components/Launchers/Messenger/LauncherSelector.js");
     </script> {% endcomment %}
-  </body>
+  {%- render "ecom_footer"-%}</body>
 
 
 
