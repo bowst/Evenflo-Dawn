@@ -6,13 +6,28 @@
 
 {{ 'evenflo-slideshow.css' | asset_url | stylesheet_tag }}
 
-{%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank -%}
+{%- liquid
+  assign first_image = section.blocks.first.settings.desktop_image
+  if first_image == blank
+    assign first_image = section.blocks.first.settings.desktop_image_bronze
+  endif
+  if first_image == blank
+    assign first_image = section.blocks.first.settings.desktop_image_silver
+  endif
+  if first_image == blank
+    assign first_image = section.blocks.first.settings.desktop_image_gold
+  endif
+  if first_image == blank
+    assign first_image = section.blocks.first.settings.desktop_image_non_member
+  endif
+-%}
+{%- if section.settings.slide_height == 'adapt_image' and first_image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
       #Slider-{{ section.id }}::before,
       #Slider-{{ section.id }} .media::before,
       #Slider-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
-        padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: first_image.aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -21,7 +36,7 @@
     @media screen and (min-width: 750px) {
       #Slider-{{ section.id }}::before,
       #Slider-{{ section.id }} .media::before {
-        padding-bottom: {{ 1 | divided_by: section.blocks.first.settings.image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: first_image.aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -102,7 +117,7 @@
   {%- endif -%}
 
   <div
-    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if first_image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
     id="Slider-{{ section.id }}"
     aria-live="polite"
     aria-atomic="true"
@@ -121,10 +136,6 @@
         endif
       -%}
       
-      {%- if slide_link != blank -%}
-        <a href="{{ slide_link }}" style="display: block; text-decoration: none;">
-      {%- endif -%}
-      
       <div
         class="evenflo-slideshow-slide slideshow__slide grid__item grid--1-col slider__slide"
         id="Slide-{{ section.id }}-{{ forloop.index }}"
@@ -134,6 +145,9 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
       >
+        {%- if slide_link != blank -%}
+          <a href="{{ slide_link }}" style="display: block; text-decoration: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;" aria-label="Slide {{ forloop.index }} link"></a>
+        {%- endif -%}
         <div class="slideshow__media banner__media media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
           <div style="position: relative;">
             <div class="desktop">
@@ -258,10 +272,6 @@
           </div>
         </div>
       </div>
-      
-      {%- if slide_link != blank -%}
-        </a>
-      {%- endif -%}
     {%- endfor -%}
   </div>
 
