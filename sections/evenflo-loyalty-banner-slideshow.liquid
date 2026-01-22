@@ -23,6 +23,10 @@
 -%}
 {%- if section.settings.slide_height == 'adapt_image' and first_image != blank -%}
   {%- style -%}
+  #Slider-{{  section.id }} .grid--1-col .grid__item {
+    height: 100%;
+    width: 100%;
+  }
     @media screen and (max-width: 749px) {
       #Slider-{{ section.id }}::before,
       #Slider-{{ section.id }} .media::before,
