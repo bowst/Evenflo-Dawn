@@ -40,7 +40,7 @@
   {%- style -%}
     @media screen and (max-width: 749px) {
       #Slider-{{ section.id }}::before,
-      #Slider-{{ section.id }} .media::before,
+      #Slider-{{ section.id }} .slideshow__media.banner__media::before,
       #Slider-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
         padding-bottom: {{ 1 | divided_by: first_image_aspect_ratio | times: 100 }}%;
         content: '';
@@ -50,7 +50,7 @@
 
     @media screen and (min-width: 750px) {
       #Slider-{{ section.id }}::before,
-      #Slider-{{ section.id }} .media::before {
+      #Slider-{{ section.id }} .slideshow__media.banner__media::before {
         padding-bottom: {{ 1 | divided_by: first_image_aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
