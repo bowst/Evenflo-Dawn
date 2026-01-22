@@ -1,0 +1,485 @@
+{%- comment -%}
+  ************************************
+  Digioh Product Recommendation Template
+
+  This template renders a list of products from a Digioh Product Recommendation Quiz
+
+  Possible places to edit tagged with "DIGIOH-OPTION"
+
+  URL Parameters:
+    products : comma separated list of product handles
+    show_hero : if set to 'true' will show the hero section, defaults to 'false'
+    rowlen : the number of products to show per row, defaults to 3
+    max_products : the maximum number of products to show, default to 12
+    hide_oos : hide products that are out of stock, defaults to false
+    add_to_cart : add to cart, with option selection, default to true
+
+  Required Snippets:
+    card-product.liquid (included in default theme)
+  ************************************
+{%- endcomment -%}
+
+{%- comment -%} Include Required CSS {%- endcomment -%}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+<style>
+    .product-form__input .select {
+      border: 1px solid;
+      margin-bottom: 10px;
+  }
+  .color-swatch__radio.visually-hidden { 
+  position: absolute !important; 
+  clip: rect(1px,1px,1px,1px); 
+  width: 1px; height: 1px; overflow: hidden; 
+}
+
+/* Swatch layout */
+.variant-radios {     
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  border: unset;
+  padding-top: 2rem;
+  padding-left: 0px; 
+}
+.color-swatch__label { 
+  display: inline-flex; align-items: center; gap: .5rem; 
+  border: 1px solid var(--color-foreground-20, #e5e5e5);
+  border-radius: 9999px; padding: .35rem .35rem .35rem .35rem; cursor: pointer;
+}
+.color-swatch__swatch {
+    --swatch--size: var(--swatch-input--size, 4.4rem);
+    --swatch--border-radius: var(--swatch-input--border-radius, 50%);
+    display: block;
+    width: 2.8rem;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--swatch--background);
+    background-position: var(--swatch-focal-point, initial);
+    background-size: cover;
+    background-origin: border-box;
+    border: .1rem solid rgba(var(--color-foreground), .15);
+    border-radius: var(--swatch--border-radius);
+}
+.color-swatch__text { font-size: .9rem; display: none }
+
+/* Selected + focus states */
+.color-swatch__radio:checked + .color-swatch__label {
+  border-color: var(--color-foreground, #111);
+  box-shadow: 0 0 0 2px var(--color-background, #fff), 0 0 0 4px currentColor;
+}
+.color-swatch__radio:focus-visible + .color-swatch__label {
+  outline: 2px solid currentColor; outline-offset: 2px;
+}
+
+/* Disabled state */
+.color-swatch__radio:disabled + .color-swatch__label {
+  opacity: .5; cursor: not-allowed;
+}
+</style>
+{%- comment -%}
+  ************************************
+  SECTION: Template Variables
+  ************************************
+{%- endcomment -%}
+{% assign queryString = '' %}
+{% assign product_handles = '' | split: ',' %}
+{% comment %} product_handles the products to display, in order {% endcomment %}
+{% assign show_hero = false %}
+{% comment %} show_hero Show the first recommended product on a single line {% endcomment %}
+{% assign rowlen = 3 %}
+{% comment %} rowlen sets default number of products to display per row, aliased to rowlen {% endcomment %}
+{% assign max_products = 12 %}
+{% comment %} max_products maximum  number of products to render {% endcomment %}
+{% assign hide_oos = false %}
+{% comment %} hide_oos if true will skip displaying products that are not currently available (out of stock) {% endcomment %}
+{% assign add_to_cart = true %}
+{% comment %} enable quick add on product item, defaults to true {% endcomment %}
+{% assign my_custom_param = '' %}
+{% comment %} debug used to display debug info. see SECTION: Set custom variables {% endcomment %}
+{% assign debug = false %}
+{% comment %} debug used to display debug info {% endcomment %}
+{%- comment -%}
+  ************************************
+  END SECTION:Template Variables
+  ************************************
+{%- endcomment -%}
+
+{%- comment -%}
+  ************************************
+  SECTION: Url Parsing
+  ************************************
+{%- endcomment -%}
+
+{%- comment -%} Capture the content for header containing the tracking data {%- endcomment -%}
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+
+{% comment %} Use string splitting to pull the value from content_for_header and apply some string clean up {% endcomment %}
+{%- assign pageUrl = contentForQuerystring
+  | split: '"pageurl":"'
+  | last
+  | split: '"'
+  | first
+  | split: '.myshopify.com'
+  | last
+  | replace: '\/', '/'
+  | replace: '%20', ' '
+  | replace: '\u0026', '&'
+-%}
+{% assign debug = false %}
+{%- for i in (1..1) -%}
+  {%- comment -%} If the string doesn't contain a ? then we have no querystring. Go no further {%- endcomment -%}
+  {%- unless pageUrl contains '?' -%}{% break %}{%- endunless -%}
+
+  {%- comment -%} Split the url at the ? to get all values after it {%- endcomment -%}
+  {%- assign pageQuerystring = pageUrl | split: '?' | last -%}
+  {%- assign parts = pageQuerystring | split: '&' -%}
+  {% assign queryString = parts %}
+  {%- for part in parts -%}
+    {%- assign keyAndValue = part | split: '=' -%}
+    {%- if keyAndValue.size > 1 -%}
+      {% comment %} Set Template Variables {% endcomment %}
+      {%- if keyAndValue[0] == 'show_hero' and keyAndValue[1] == 'true' -%}
+        {%- assign show_hero = true -%}
+      {%- endif -%}
+      {%- if keyAndValue[0] == 'hide_oos' and keyAndValue[1] == 'true' -%}
+        {%- assign hide_oos = true -%}
+      {%- endif -%}
+      {%- if keyAndValue[0] == 'add_to_cart' -%}
+        {%- if keyAndValue[1] == 'true' -%}
+          {%- assign add_to_cart = true -%}
+        {%- endif -%}
+        {%- if keyAndValue[1] == 'false' -%}
+          {%- assign add_to_cart = false -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if keyAndValue[0] == 'rowlen' or keyAndValue[0] == 'rowlenN' -%}
+        {%- assign rowlen = keyAndValue[1] | plus: 0 -%}
+      {%- endif -%}
+      {%- if keyAndValue[0] == 'max_products' -%}
+        {%- assign max_products = keyAndValue[1] | plus: 0 -%}
+      {%- endif -%}
+      {% if keyAndValue[0] == 'products' %}
+        {% assign product_handles = keyAndValue[1] | url_decode | split: ',' %}
+      {%- endif -%}
+      {% if keyAndValue[0] == 'debug' %}
+        {% assign debug = true %}
+      {%- endif -%}
+
+      {%- comment -%}
+        ************************************
+        SECTION: Set custom params
+        ************************************
+      {%- endcomment -%}
+
+      {%- if keyAndValue[0] == 'my_custom_param' -%}
+        {%- assign my_custom_param = keyAndValue[1] | url_decode | strip_html -%}
+      {%- endif -%}
+
+      {%- comment -%}
+        ************************************
+        END SECTION: Set custom params
+        ************************************
+      {%- endcomment -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+{%- comment -%}
+  ************************************
+  END SECTION: Url Parsing
+  ************************************
+{%- endcomment -%}
+
+{% comment %} Conditional includes {% endcomment %}
+{%- if add_to_cart -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- comment -%} Render Title {%- endcomment -%}
+<div class="isolate">
+  <div
+    class="rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--15824509272220__b44c8197-4385-4350-ad0f-238c04013fa1-padding"
+    style="margin-top: 4rem;"
+  >
+    <div class="rich-text__wrapper rich-text__wrapper--center page-width">
+      <div class="rich-text__blocks center">
+        <h2 class="rich-text__heading rte inline-richtext evenflo h1">
+          {%- comment -%}DIGIOH-OPTION: Hero Text - Edit this as desired {%- endcomment -%}
+          Here are the recommendations for you!!
+        </h2>
+        <div class="rich-text__text rte"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{%- comment -%}
+  ************************************
+  SECTION: Display Recommended Products
+  ************************************
+{%- endcomment -%}
+
+{% assign products_rendered_count = 0 %}
+{% comment %} local counter to keep track of how many products we have shown {% endcomment %}
+{% assign products_rendered_in_row = 0 %}
+{% comment %} local counter to keep track of how many products we have shown for this row {% endcomment %}
+{% assign current_row = 1 %}
+{% comment %} local counter to keep track of the current row {% endcomment %}
+
+<div class="collection page-width">
+  <div class="loading-overlay gradient"></div>
+  <ul
+    id="product-grid"
+    class="
+      grid product-grid grid--1-col-tablet-down
+      grid--4-col-desktop
+    "
+    style="justify-content: center;"
+  >
+    {% comment %} Loop over the passed in products {% endcomment %}
+    {%- for product_handle in product_handles -%}
+      {% assign product = all_products[product_handle] %}
+
+      {% comment %} Check if we should skip this product because it is out of stock {% endcomment %}
+      {% if hide_oos == true %}
+        {% if product.selected_or_first_available_variant.available == false %}
+          {% continue %}
+        {% endif %}
+        {% comment %} loop over variants to see if any have quantity > 0 {% endcomment %}
+        {% assign quantityFound = false %}
+        {% for variant in product.variants %}
+          {% if variant.available %}
+            {% assign quantityFound = true %}
+          {% endif %}
+        {% endfor %}
+        {% if quantityFound == false %}
+          {% continue %}
+        {% endif %}
+      {% endif %}
+
+      {% comment %} Render an individual product {% endcomment %}
+
+      <li class="grid__item">
+        {%- comment -%}DIGIOH-OPTION: change to a different snippet to render item if desired {%- endcomment -%}
+
+        {% comment %}    To render the hero product differently than other products uncomment this section {% endcomment %}
+        {% comment %}
+          {% if current_row == 1 and show_hero == true %}
+            {% render 'hero-product', product: product%}
+          {%  else %}
+            {% render 'card-product', card_product: product, show_quick_add: add_to_cart %}
+          {% endif %}
+        {% endcomment %}
+
+        {% render 'digioh-card-product', card_product: product, show_quick_add: add_to_cart %}
+      </li>
+
+      {%- comment -%}
+        ************************************
+        SUB SECTION: Check New Row
+        ************************************
+      {%- endcomment -%}
+
+      {% assign products_rendered_count = products_rendered_count | plus: 1 %}
+      {% comment %} Increase rendered count {% endcomment %}
+      {% assign products_rendered_in_row = products_rendered_in_row | plus: 1 %}
+      {% comment %} Increase rendered count {% endcomment %}
+
+      {% comment %} Determine if we are at the max products to display {% endcomment %}
+      {% if products_rendered_count >= max_products %}
+        {% break %}
+      {% endif %}
+
+      {% comment %} Determine if we need to start a new row {% endcomment %}
+      {% assign need_new_row = false %}
+      {% if current_row == 1 and show_hero == true %}
+        {% assign need_new_row = true %}
+      {% endif %}
+      {% if products_rendered_in_row >= rowlen %}
+        {% assign need_new_row = true %}
+      {% endif %}
+
+      {% if need_new_row == true %}
+        </ul>
+        <ul
+          id="product-grid"
+          class="
+            grid product-grid grid--1-col-tablet-down
+            grid--4-col-desktop
+          "
+          style="justify-content: center;"
+        >
+          {% assign products_rendered_in_row = 0 %}
+          {% assign current_row = current_row | plus: 1 %}
+          {% assign need_new_row = false %}
+          {% comment %} reset for new row {% endcomment %}
+      {% endif %}
+
+      {%- comment -%}
+        ************************************
+        END SUB SECTION: Check New Row
+        ************************************
+      {%- endcomment -%}
+    {%- endfor -%}
+  </ul>
+</div>
+<div
+  style="
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: center;
+  "
+>
+  <a href="/pages/home-collection-quiz" style="text-decoration: none;">Retake Quiz</a>
+</div>
+<script>
+(function () {
+  // Widths you want in srcset (match your theme’s pattern)
+  const WIDTHS = [165, 360, 533, 720, 940, 1066, 2200];
+  const DEFAULT_SRC_WIDTH = 533; // fallback src width
+
+  // -------- URL helpers --------
+  function ensureAbsolute(url) {
+    if (!url) return '';
+    // Protocol-relative (//cdn...) → https://
+    if (url.startsWith('//')) return 'https:' + url;
+    return url;
+  }
+
+  function stripWidthParam(url) {
+    // Remove any "?width=N" or "&width=N"
+    return url
+      .replace(/([?&])width=\d+(&?)/i, (m, a, b) => (b ? a : ''))
+      .replace(/[?&]$/, ''); // clean trailing ? or &
+  }
+
+  function withWidth(url, w) {
+    const hasQuery = url.includes('?');
+    return url + (hasQuery ? '&' : '?') + 'width=' + w;
+  }
+
+  function buildSrcset(baseUrl, widths = WIDTHS) {
+    const clean = stripWidthParam(ensureAbsolute(baseUrl));
+    const last = widths[widths.length - 1];
+    return widths
+      .map((w) => (w === last ? `${clean} ${w}w` : `${withWidth(clean, w)} ${w}w`))
+      .join(',');
+  }
+
+  function setImgSources(img, baseUrl) {
+    const clean = stripWidthParam(ensureAbsolute(baseUrl));
+    const srcset = buildSrcset(clean, WIDTHS);
+    const src = withWidth(clean, DEFAULT_SRC_WIDTH);
+
+    // If inside a <picture>, disable <source> so <img> wins (optional but safer)
+    const picture = img.closest('picture');
+    if (picture) {
+      picture.querySelectorAll('source').forEach((s) => {
+        // Keep original in case you want to restore later
+        if (!s.hasAttribute('data-orig-srcset')) {
+          s.setAttribute('data-orig-srcset', s.getAttribute('srcset') || '');
+        }
+        s.setAttribute('srcset', '');
+      });
+    }
+
+    // Update the image (support lazy attrs too)
+    img.setAttribute('srcset', srcset);
+    img.setAttribute('src', src);
+    if (img.hasAttribute('data-srcset')) img.setAttribute('data-srcset', srcset);
+    if (img.hasAttribute('data-src')) img.setAttribute('data-src', src);
+
+    // Nudge browser to repaint if same URLs were set
+    img.loading = 'eager';
+    img.decoding = 'async';
+  }
+
+  // -------- DOM helpers --------
+  function findSwatchForInput(input, scope) {
+    const label = scope.querySelector(`label[for="${input.id}"]`);
+    return label ? label.querySelector('.color-swatch__swatch') : null;
+  }
+
+  function getSelectedImageUrl(scope) {
+    const checked = scope.querySelector('input[type="radio"]:checked');
+    if (!checked) return '';
+    const swatch = findSwatchForInput(checked, scope);
+    return swatch?.dataset?.image || '';
+  }
+
+  function updateCardImageFromSelection(scope) {
+    const card = scope.closest('.product-card-wrapper');
+    if (!card) return;
+
+    const img = card.querySelector('.card__media img');
+    if (!img) return;
+
+    const url = getSelectedImageUrl(scope);
+    if (!url) return; // nothing to do if no data-image provided
+
+    setImgSources(img, url);
+  }
+
+  // (Optional) Keep the "Color: X" text after the legend if you’re using it
+  function updateLegendValue(scope) {
+    const legend = scope.querySelector('legend.product__text');
+    const checked = scope.querySelector('input[type="radio"]:checked');
+    if (!legend || !checked) return;
+
+    const label = scope.querySelector(`label[for="${checked.id}"] .color-swatch__text`)
+               || scope.querySelector(`label[for="${checked.id}"]`);
+    const val = (label && label.textContent.trim()) || '';
+
+    let chip = legend.querySelector('.product-option-value');
+    if (!chip) {
+      chip = document.createElement('span');
+      chip.className = 'product-option-value';
+      legend.appendChild(chip);
+    }
+    chip.textContent = `: ${val}`;
+  }
+
+  function onChange(scope) {
+    updateLegendValue(scope);          // optional
+    updateCardImageFromSelection(scope);
+  }
+
+  function initOne(scope) {
+    const legend = scope.querySelector('legend.product__text');
+    const radiosWrap = scope.querySelector('fieldset[role="radiogroup"]');
+    if (!legend || !radiosWrap) return;
+    if (!/^color\b/i.test(legend.textContent.trim())) return;
+
+    // Initial render
+    onChange(scope);
+
+    // Listen for changes
+    radiosWrap.addEventListener('change', (e) => {
+      if (e.target && e.target.matches('input[type="radio"]')) onChange(scope);
+    });
+  }
+
+  function initAll(context) {
+    const root =
+      context && context.querySelectorAll
+        ? context
+        : context && context.target && context.target.querySelectorAll
+        ? context.target
+        : document;
+    root.querySelectorAll('.product-form__input').forEach(initOne);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => initAll(document));
+  document.addEventListener('shopify:section:load', (e) => initAll(e.target));
+  document.addEventListener('shopify:section:select', (e) => initAll(e.target));
+})();
+</script>
+{%- comment -%}
+  ************************************
+  END SECTION: Display Recommended Products
+  ************************************
+{%- endcomment -%}
