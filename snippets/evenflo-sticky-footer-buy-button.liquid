@@ -31,9 +31,9 @@
 		<div class="product-details">
 			<div class="product-image">
 			{% if product.featured_image %}
-				<img src="{{ product.featured_image | img_url: 'thumbnail' }}" alt="{{ product.title }}" height="80" width="auto" class="">
+				<img src="{{ product.featured_image | image_url: 'thumbnail' }}" alt="{{ product.title }}" height="80" width="auto" class="">
 				{% else %}
-				<img src="{{ 'placeholder-image-url' | asset_url }}" alt="No Image Available" width="80" height="80">
+				<img src="{{ 'square.svg' | asset_url }}" alt="No Image Available" width="80" height="80">
 			{% endif %}
 			</div>
 
@@ -64,7 +64,12 @@
 
 		<button class="product-form__submit button button--primary" id="sticky-footer-button">Add to Cart</button>
 	{%- else -%}
-		<button class="product-form__submit button button--primary" id="sticky-footer-button" disabled="disabled">Sold Out</button>
+		{% assign coming_soon = product.selected_or_first_available_variant.metafields.custom.coming_soon_button_message %}
+		{% if coming_soon %}
+			<button class="product-form__submit button button--primary" id="sticky-footer-button" disabled="disabled">{{ coming_soon }}</button>
+		{% else %}
+			<button class="product-form__submit button button--primary" id="sticky-footer-button" disabled="disabled">{{- 'products.product.sold_out' | t -}}</button>
+		{% endif %}
 	{%- endif -%}
 	</div>
 </div>

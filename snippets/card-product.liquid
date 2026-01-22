@@ -158,7 +158,8 @@ Determine if the product is from support product collection
               {% elsif amazon_id %}
                 <span class="badge color-background-1">Amazon Exclusive</span>
               {% elsif card_product.available == false and is_product_support == false %}
-                <span class="badge color-background-1">Sold Out</span>
+                {% assign coming_soon = card_product.selected_or_first_available_variant.metafields.custom.coming_soon_button_message | default: card_product.metafields.custom.coming_soon_button_message %}
+                <span class="badge color-background-1">{% if coming_soon %}{{ coming_soon }}{% else %}{{- 'products.product.sold_out' | t -}}{% endif %}</span>
               {% endif %}
           </div>
           <!-- <div class="card__badge {{ settings.badge_position }}">
@@ -438,11 +439,13 @@ Determine if the product is from support product collection
                       {%- if card_product.selected_or_first_available_variant.available -%}
                         {{ 'products.product.add_to_cart' | t }}
                       {%- else -%}
-                        {{ 'products.product.sold_out' | t }}
+                        {% assign coming_soon = card_product.selected_or_first_available_variant.metafields.custom.coming_soon_button_message | default: card_product.metafields.custom.coming_soon_button_message %}
+                        {% if coming_soon %}{{ coming_soon }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}
                       {%- endif -%}
                     </span>
                     <span class="sold-out-message hidden">
-                      {{ 'products.product.sold_out' | t }}
+                      {% assign coming_soon = card_product.selected_or_first_available_variant.metafields.custom.coming_soon_button_message | default: card_product.metafields.custom.coming_soon_button_message %}
+                      {% if coming_soon %}{{ coming_soon }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}
                     </span>
                     {%- if horizontal_quick_add -%}
                       <span class="icon-wrap">
@@ -473,9 +476,10 @@ Determine if the product is from support product collection
                   data-sold-out-message="true"
                   disabled
                 >
-                  <span>{{ 'products.product.sold_out' | t }}</span>
+                  {% assign coming_soon = card_product.selected_or_first_available_variant.metafields.custom.coming_soon_button_message | default: card_product.metafields.custom.coming_soon_button_message %}
+                  <span>{% if coming_soon %}{{ coming_soon }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
                   <span class="sold-out-message hidden">
-                    {{ 'products.product.sold_out' | t }}
+                    {% if coming_soon %}{{ coming_soon }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}
                   </span>
                 </button>
               {% else %}
@@ -624,7 +628,8 @@ Determine if the product is from support product collection
           {% elsif amazon_id %}
             <span class="badge color-background-1">Amazon Exclusive</span>
           {% elsif card_product.available == false and card_product.available == false and is_product_support == false %}
-            <span class="badge color-background-1">Sold Out</span>
+            {% assign coming_soon = card_product.selected_or_first_available_variant.metafields.custom.coming_soon_button_message | default: card_product.metafields.custom.coming_soon_button_message %}
+            <span class="badge color-background-1">{% if coming_soon %}{{ coming_soon }}{% else %}{{- 'products.product.sold_out' | t -}}{% endif %}</span>
           {% endif %}
         </div>
         

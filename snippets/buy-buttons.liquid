@@ -81,7 +81,7 @@
               {% render 'evenflo-walmart-buy-button', walmart_id: walmart_id %}
               <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
                 {% render 'evenflo-babylist-button', product: product %}
-              </div>
+            </div></div>
           {%- elsif amazon_link -%}
             {% comment %}Amazon exclusive buy button{% endcomment %}
             {% render 'evenflo-amazon-buy-button', amazon_link: amazon_link %}
@@ -112,7 +112,8 @@
                 {%- if product.selected_or_first_available_variant == null -%}
                   {{ 'products.product.unavailable' | t }}
                 {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-                  {{ 'products.product.sold_out' | t }}
+                  {% assign coming_soon = product.selected_or_first_available_variant.metafields.custom.coming_soon_button_message | default: product.metafields.custom.coming_soon_button_message %}
+                  {% if coming_soon %}{{ coming_soon }}{% else %}{{- 'products.product.sold_out' | t -}}{% endif %}
                 {%- else -%}
                   {{ 'products.product.add_to_cart' | t }}
                 {%- endif -%}

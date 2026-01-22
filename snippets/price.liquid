@@ -163,9 +163,16 @@
           {{ 'products.product.on_sale' | t }}
         </span>
       {%- elsif available == false -%}
-        <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
-          {{ 'products.product.sold_out' | t }}
-        </span>
+		{% assign coming_soon = product.selected_or_first_available_variant.metafields.custom.coming_soon_button_message %}
+		{% if coming_soon %}
+			<span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+				{{ coming_soon }}
+			</span>
+		{% else %}	
+			<span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+				{{ 'products.product.sold_out' | t }}
+			</span>
+		{% endif %}
       {%- endif -%}
     {%- endif -%}
   </div>
