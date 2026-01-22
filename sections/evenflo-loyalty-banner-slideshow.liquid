@@ -137,14 +137,42 @@
         <div class="slideshow__media banner__media media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
           <div style="position: relative;">
             <div class="desktop">
-              {%- liquid
-                assign is_member = false
-                if customer.tags contains 'swell_vip_bronze' or customer.tags contains 'swell_vip_silver' or customer.tags contains 'swell_vip_gold'
-                  assign is_member = true
-                endif
-              -%}
-              {%- if is_member -%}
-                {%- if block.settings.desktop_image -%}
+              {%- if customer.tags contains 'swell_vip_bronze' -%}
+                {%- if block.settings.desktop_image_bronze -%}
+                  {{
+                    block.settings.desktop_image_bronze
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- elsif block.settings.desktop_image -%}
+                  {{
+                    block.settings.desktop_image
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- endif -%}
+              {%- elsif customer.tags contains 'swell_vip_silver' -%}
+                {%- if block.settings.desktop_image_silver -%}
+                  {{
+                    block.settings.desktop_image_silver
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- elsif block.settings.desktop_image -%}
+                  {{
+                    block.settings.desktop_image
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- endif -%}
+              {%- elsif customer.tags contains 'swell_vip_gold' -%}
+                {%- if block.settings.desktop_image_gold -%}
+                  {{
+                    block.settings.desktop_image_gold
+                    | image_url: width: 3840
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- elsif block.settings.desktop_image -%}
                   {{
                     block.settings.desktop_image
                     | image_url: width: 3840
@@ -173,8 +201,42 @@
             </div>
 
             <div class="mobile">
-              {%- if is_member -%}
-                {%- if block.settings.mobile_image -%}
+              {%- if customer.tags contains 'swell_vip_bronze' -%}
+                {%- if block.settings.mobile_image_bronze -%}
+                  {{
+                    block.settings.mobile_image_bronze
+                    | image_url: width: 800
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- elsif block.settings.mobile_image -%}
+                  {{
+                    block.settings.mobile_image
+                    | image_url: width: 800
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- endif -%}
+              {%- elsif customer.tags contains 'swell_vip_silver' -%}
+                {%- if block.settings.mobile_image_silver -%}
+                  {{
+                    block.settings.mobile_image_silver
+                    | image_url: width: 800
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- elsif block.settings.mobile_image -%}
+                  {{
+                    block.settings.mobile_image
+                    | image_url: width: 800
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- endif -%}
+              {%- elsif customer.tags contains 'swell_vip_gold' -%}
+                {%- if block.settings.mobile_image_gold -%}
+                  {{
+                    block.settings.mobile_image_gold
+                    | image_url: width: 800
+                    | image_tag: loading: 'lazy', style: 'width: 100%;'
+                  }}
+                {%- elsif block.settings.mobile_image -%}
                   {{
                     block.settings.mobile_image
                     | image_url: width: 800
@@ -458,38 +520,66 @@
         {
           "type": "image_picker",
           "id": "desktop_image",
-          "label": "Desktop Image - All Members",
-          "info": "Used for all loyalty tier members (Bronze, Silver, Gold)"
+          "label": "Desktop Image - All Members (Fallback)",
+          "info": "Used as fallback if tier-specific images are not set"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image_bronze",
+          "label": "Desktop Image - Bronze Tier"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image_silver",
+          "label": "Desktop Image - Silver Tier"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image_gold",
+          "label": "Desktop Image - Gold Tier"
         },
         {
           "type": "image_picker",
           "id": "desktop_image_non_member",
-          "label": "Desktop Image - Non-Member",
-          "info": "Optional: Different image for non-members. Falls back to Desktop Image - All Members if not set."
+          "label": "Desktop Image - Non-Member"
         },
         {
           "type": "url",
           "id": "desktop_video_non_member",
           "label": "Desktop Video - Non-Member",
-          "info": "Optional: MP4 format. Takes precedence over desktop image for non-members"
+          "info": "MP4 format required. Takes precedence over desktop image for non-members"
         },
         {
           "type": "image_picker",
           "id": "mobile_image",
-          "label": "Mobile Image - All Members",
-          "info": "Used for all loyalty tier members (Bronze, Silver, Gold)"
+          "label": "Mobile Image - All Members (Fallback)",
+          "info": "Used as fallback if tier-specific images are not set"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image_bronze",
+          "label": "Mobile Image - Bronze Tier"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image_silver",
+          "label": "Mobile Image - Silver Tier"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image_gold",
+          "label": "Mobile Image - Gold Tier"
         },
         {
           "type": "image_picker",
           "id": "mobile_image_non_member",
-          "label": "Mobile Image - Non-Member",
-          "info": "Optional: Different image for non-members. Falls back to Mobile Image - All Members if not set."
+          "label": "Mobile Image - Non-Member"
         },
         {
           "type": "url",
           "id": "mobile_video_non_member",
           "label": "Mobile Video - Non-Member",
-          "info": "Optional: MP4 format. Takes precedence over mobile image for non-members"
+          "info": "MP4 format required. Takes precedence over mobile image for non-members"
         }
       ]
     }
