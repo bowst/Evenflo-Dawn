@@ -296,6 +296,9 @@
                           lazy_load: lazy_load
                         %}
                       {%- when 'page' -%}
+                        {%- if item.handle == 'all4one-voluntary-recall-form' -%}
+                          {%- continue -%}
+                        {%- endif -%}
                         <div class="article-card-wrapper card-wrapper underline-links-hover">
                           <div
                             class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}"

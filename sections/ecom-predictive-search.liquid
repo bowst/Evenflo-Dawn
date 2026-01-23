@@ -188,6 +188,9 @@
           <h2 class="ecom-predictive-search__heading">Pages</h2>
           <ul class="ecom-predictive-search__results-list" role="group">
             {%- for page in predictive_search.resources.pages -%}
+              {%- if page.handle == 'all4one-voluntary-recall-form' -%}
+                {%- continue -%}
+              {%- endif -%}
               <li class="ecom-predictive-search__list-item" role="option">
                 <a href="{{ page.url }}" class="ecom-predictive-search__item" tabindex="-1">
                   <div class="ecom-predictive-search__item-content">
@@ -238,6 +241,9 @@
           <h2 class="ecom-predictive-search__heading">Pages</h2>
           <ul class="ecom-predictive-search__results-list" role="group">
             {%- for page in predictive_search.resources.pages -%}
+              {%- if page.handle == 'all4one-voluntary-recall-form' -%}
+                {%- continue -%}
+              {%- endif -%}
               <li class="ecom-predictive-search__list-item" role="option">
                 <a href="{{ page.url }}" class="ecom-predictive-search__item" tabindex="-1">
                   <div class="ecom-predictive-search__item-content">
