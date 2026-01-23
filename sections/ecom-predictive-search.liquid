@@ -188,7 +188,7 @@
           <h2 class="ecom-predictive-search__heading">Pages</h2>
           <ul class="ecom-predictive-search__results-list" role="group">
             {%- for page in predictive_search.resources.pages -%}
-              {%- if page.handle == 'all4one-voluntary-recall-form' -%}
+              {%- if page.handle == 'all4one-voluntary-recall-form' or page.handle == 'all4one-voluntary-recall-thank-you' -%}
                 {%- continue -%}
               {%- endif -%}
               <li class="ecom-predictive-search__list-item" role="option">
@@ -241,7 +241,7 @@
           <h2 class="ecom-predictive-search__heading">Pages</h2>
           <ul class="ecom-predictive-search__results-list" role="group">
             {%- for page in predictive_search.resources.pages -%}
-              {%- if page.handle == 'all4one-voluntary-recall-form' -%}
+              {%- if page.handle == 'all4one-voluntary-recall-form' or page.handle == 'all4one-voluntary-recall-thank-you' -%}
                 {%- continue -%}
               {%- endif -%}
               <li class="ecom-predictive-search__list-item" role="option">

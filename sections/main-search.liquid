@@ -296,7 +296,7 @@
                           lazy_load: lazy_load
                         %}
                       {%- when 'page' -%}
-                        {%- if item.handle == 'all4one-voluntary-recall-form' -%}
+                        {%- if item.handle == 'all4one-voluntary-recall-form' or item.handle == 'all4one-voluntary-recall-thank-you' -%}
                           {%- continue -%}
                         {%- endif -%}
                         <div class="article-card-wrapper card-wrapper underline-links-hover">

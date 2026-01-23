@@ -77,7 +77,7 @@
           aria-labelledby="predictive-search-pages-desktop"
         >
           {%- for page in predictive_search.resources.pages -%}
-            {%- if page.handle == 'all4one-voluntary-recall-form' -%}
+            {%- if page.handle == 'all4one-voluntary-recall-form' or page.handle == 'all4one-voluntary-recall-thank-you' -%}
               {%- continue -%}
             {%- endif -%}
             <li
@@ -186,7 +186,7 @@
               aria-labelledby="predictive-search-pages-mobile"
             >
               {%- for page in predictive_search.resources.pages -%}
-                {%- if page.handle == 'all4one-voluntary-recall-form' -%}
+                {%- if page.handle == 'all4one-voluntary-recall-form' or page.handle == 'all4one-voluntary-recall-thank-you' -%}
                   {%- continue -%}
                 {%- endif -%}
                 <li
