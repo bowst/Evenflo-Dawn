@@ -9,6 +9,43 @@
  */
 {
   "sections": {
+    "evenflo_image_video_banner_4QTyjy": {
+      "type": "evenflo-image-video-banner",
+      "blocks": {
+        "buttons_jifKpQ": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "buttons_jifKpQ"
+      ],
+      "name": "Refresh Header Video",
+      "settings": {
+        "video": "shopify://files/videos/SensorySoothe_Homepage Header_1920x450_2_no text.mp4",
+        "video_mobile": "shopify://files/videos/SensorySoothe_Homepage Header_400x500_2_no text.mp4",
+        "video_enable": true,
+        "enable_video_looping": false,
+        "image_overlay_opacity": 10,
+        "underline": false,
+        "hide_image_on_mobile": false,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "image_behavior": "ambient",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
     "evenflo_image_banner_XLNPxg": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -32,6 +69,7 @@
         "text_xKWyAT",
         "heading_PgUFLk"
       ],
+      "disabled": true,
       "custom_css": [
         "@media screen and (min-width: 750px) {.banner--small:not(.banner--adapt) {min-height: auto; } .banner__content {padding: 4rem; }}",
         "@media screen and (max-width: 750px) {h2 {padding-bottom: 200px !important; }}"
@@ -125,7 +163,7 @@
       ],
       "custom_css": [
         ".rich-text__text {max-width: 100% !important; margin-top: 10px;}",
-        ".rich-text__text p {font-weight: 600;}",
+        ".rich-text__text p {font-weight: 400;}",
         ".rich-text__blocks {max-width: 1421px !important;}"
       ],
       "settings": {
@@ -133,12 +171,13 @@
         "content_alignment": "center",
         "color_scheme": "background-1",
         "full_width": true,
-        "padding_top": 40,
+        "padding_top": 20,
         "padding_bottom": 52
       }
     },
     "video_RXFjxh": {
       "type": "video",
+      "disabled": true,
       "custom_css": [
         ".video-section {max-width: 1453px; padding-inline: 20px;}"
       ],
@@ -195,7 +234,7 @@
         "column_Vtj3Rp": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/CS160412545_Revolve180_LiteMaxGold_Quartz_ICS_RF_Lights_2092.jpg",
+            "image": "shopify://shop_images/Rectangle_22398.png",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -225,7 +264,7 @@
         "column_XejTfV": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/3-ways.jpg",
+            "image": "shopify://shop_images/Evenflo_Home-Collection_SensorySoothe-App.png",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -245,18 +284,18 @@
       ],
       "custom_css": [
         ".title-wrapper-with-link.title-wrapper--self-padded-mobile.title-wrapper--no-top-margin.text-center {padding-bottom: 15px;}",
-        ".multicolumn-card__info .rte p {font-weight: 600; line-height: 1.2;}",
+        ".multicolumn-card__info .rte p {font-weight: 400; line-height: 1.2;}",
         ".multicolumn-card__info {padding: 0; padding-left: 1rem; padding-right: 1rem;}"
       ],
       "settings": {
         "title": "BRILLIANCE LIES IN THE DETAILS",
-        "heading_size": "h1",
-        "column_style": "classic",
-        "container_size": "half",
+        "heading_size": "h0",
+        "column_style": "modern",
+        "container_size": "full_width",
         "heading_alignment": "center",
         "image_width": "full",
         "image_ratio": "adapt",
-        "enable_image_modal": true,
+        "enable_image_modal": false,
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
@@ -644,82 +683,10 @@
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
-    },
-    "evenflo_multicolumn_variant_cards_XN4rW8": {
-      "type": "evenflo-multicolumn-variant-cards",
-      "blocks": {
-        "column_CQ6DxY": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/TS100212547_Lifestyle_Shyft-Intuiti_Travertine_SensorySoothe_A05.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "MOOD LIGHTENER",
-            "text": "<p>Integrated into the Revolve180™ LiteMax™ NXT and LiteMax™ NXT handle, full-spectrum LED lighting sets the scene for wonderment.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_d99qiY": {
-          "type": "column",
-          "settings": {
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_Y8TCJC": {
-          "type": "column",
-          "settings": {
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_CQ6DxY",
-        "column_d99qiY",
-        "column_Y8TCJC"
-      ],
-      "name": "EvenFlo Multicolumn Card Variant",
-      "settings": {
-        "title": "Multicolumn",
-        "heading_size": "h1",
-        "column_style": "modern",
-        "container_size": "full_width",
-        "heading_alignment": "center",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
+    "evenflo_image_video_banner_4QTyjy",
     "evenflo_image_banner_XLNPxg",
     "baf838c7-9596-49e3-b43e-c31a09aa32ea",
     "rich_text_3GhWaC",
@@ -734,7 +701,6 @@
     "evenflo_multicolumn_variant_slider_NdptwK",
     "evenflo_featured_collection_pyAfYt",
     "evenflo_featured_collection_XeTzNk",
-    "evenflo_image_banner_4TBTk7",
-    "evenflo_multicolumn_variant_cards_XN4rW8"
+    "evenflo_image_banner_4TBTk7"
   ]
 }
