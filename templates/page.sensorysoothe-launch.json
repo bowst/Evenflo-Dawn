@@ -12,8 +12,25 @@
     "evenflo_image_video_banner_4QTyjy": {
       "type": "evenflo-image-video-banner",
       "blocks": {
+        "text_EKkxKe": {
+          "type": "text",
+          "settings": {
+            "text": "Introducing first-of-its-kind",
+            "text_style": "body",
+            "text_color": "white"
+          }
+        },
+        "heading_7aXkK8": {
+          "type": "heading",
+          "settings": {
+            "heading": "SensorySoothe™ Technology",
+            "heading_size": "h1",
+            "heading_color": "white"
+          }
+        },
         "buttons_jifKpQ": {
           "type": "buttons",
+          "disabled": true,
           "settings": {
             "button_label_1": "",
             "button_link_1": "",
@@ -25,6 +42,8 @@
         }
       },
       "block_order": [
+        "text_EKkxKe",
+        "heading_7aXkK8",
         "buttons_jifKpQ"
       ],
       "name": "Refresh Header Video",
@@ -37,9 +56,9 @@
         "underline": false,
         "hide_image_on_mobile": false,
         "image_height": "small",
-        "desktop_content_position": "middle-center",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "image_behavior": "ambient",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
