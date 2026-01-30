@@ -22,10 +22,27 @@ function initializeSwatchToggles() {
 				targetImage.classList.add('active');
 				targetSwatch.classList.add('active');
 
-				variantTitle.innerHTML = targetSwatch.getAttribute('title');
+			variantTitle.innerHTML = targetSwatch.getAttribute('title');
 
-				
-				productLinks.forEach((link) => {
+			// Update the product form variant ID for quick add
+			var variantInput = productCard.querySelector('.product-variant-id');
+			var addButton = productCard.querySelector('.quick-add__submit');
+			var isOutOfStock = targetSwatch.classList.contains('out-of-stock');
+			
+			if (variantInput) {
+				variantInput.value = activeVariantID;
+				variantInput.disabled = isOutOfStock;
+			}
+			
+			if (addButton) {
+				addButton.disabled = isOutOfStock;
+				var buttonText = addButton.querySelector('span:first-child');
+				if (buttonText) {
+					buttonText.textContent = isOutOfStock ? 'Sold out' : 'Add to cart';
+				}
+			}
+			
+			productLinks.forEach((link) => {
 					// Store the original URL without variant parameters if not already stored
 					if(! link.getAttribute('data-product-url')){
 						var originalUrl = link.getAttribute('href');
