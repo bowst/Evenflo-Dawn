@@ -22,11 +22,6 @@
           {% for block in section.blocks %}
             {% if block.type == 'award_block' %}
               <div class="award-logo-item" {{ block.shopify_attributes }}>
-                {% if block.settings.award_above_text != blank %}
-                  <div class="award-above-text">
-                    {{ block.settings.award_above_text }}
-                  </div>
-                {% endif %}
                 {% if block.settings.award_link != blank %}
                   <a href="{{ block.settings.award_link }}" target="_blank" rel="noopener noreferrer" class="award-link">
                 {% endif %}
@@ -37,15 +32,14 @@
                       alt="{{ block.settings.award_image.alt | default: 'Award' }}"
                       width="120"
                       height="120"
-                      loading="lazy"
+                      loading="lazy" 
+					  {% if block.settings.award_text != blank %}
+					  title="{{ block.settings.award_text }}"
+					  {% endif %}
                     >
                   </div>
                 {% endif %}
-                {% if block.settings.award_text != blank %}
-                  <div class="award-text">
-                    {{ block.settings.award_text }}
-                  </div>
-                {% endif %}
+                
                 {% if block.settings.award_link != blank %}
                   </a>
                 {% endif %}
@@ -352,14 +346,8 @@
     {
       "type": "award_block",
       "name": "Award Logo",
-      "limit": 2,
+      "limit": 12,
       "settings": [
-        {
-          "type": "text",
-          "id": "award_above_text",
-          "label": "Text Above Logo",
-          "info": "Text to display above this award logo"
-        },
         {
           "type": "image_picker",
           "id": "award_image",
@@ -371,12 +359,12 @@
           "label": "Award Link",
           "info": "Optional: Link to award information"
         },
-        {
-          "type": "text",
-          "id": "award_text",
-          "label": "Award Text",
-          "info": "Text description for this award"
-        }
+		{
+			"type": "text",
+			"id": "award_text",
+			"label": "Award Text",
+			"info": "Text description for this award, which is added to the image title attribute"
+		  }
       ]
     },
 	{
