@@ -25,7 +25,7 @@
   gap: 40px;
   align-items: center;
   width: 100%;
-  max-width: 78rem;
+  max-width: 90rem;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -92,18 +92,21 @@
 
 .awards-logos {
   display: flex;
-  gap: 30px;
-  align-items: flex-start;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .award-logo-item {
   flex: 1;
-  min-width: 150px;
-  max-width: 200px;
+  width: 100%;
+  min-width: calc( 25% - 12px );
+  max-width: 140px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0;
 }
 
 .award-link {
