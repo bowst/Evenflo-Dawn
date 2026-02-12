@@ -13,6 +13,7 @@
   - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
   - skip_styles: {Boolean} Don't include component styles. Useful when rendering multiple product cards in a loop. Default: false (optional)
   - enable_quick_add: {Boolean} Show the quick add button.
+  - quick_add: {String} The type of quick add button to show. Values are "none", "standard" and "bulk". Default: "none" (optional)
   - section_id: {String} The ID of the section that contains this card.
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
@@ -274,7 +275,7 @@ Determine if the product is from support product collection
 			{% endif %}
           </div>
         </div>
-        {%- if enable_quick_add -%}
+        {%- if enable_quick_add or quick_add == 'standard' -%}
           <div class="quick-add no-js-hidden">
             {%- assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id -%}
             <product-form>
