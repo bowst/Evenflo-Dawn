@@ -965,15 +965,17 @@
           {% if child_weight_max_value %}
             {{ child_weight_max_value }} lbs <br>
           {% endif %}
-          <strong>Height</strong>
-          {% if child_height_min_value %}
-            {{ child_height_min_value }} -
-          {% endif %}
-          {% if child_height_max_value %}
-            {{ child_height_max_value }} in
-          {% endif -%}
-          {%  if child_gen_height %}
-            {{  child_gen_height }}
+          {% if child_height_min_value or child_height_max_value or child_gen_height %}
+            <strong>Height</strong>
+            {% if child_height_min_value %}
+              {{ child_height_min_value }} -
+            {% endif %}
+            {% if child_height_max_value %}
+              {{ child_height_max_value }} in
+            {% endif -%}
+            {%  if child_gen_height %}
+              {{  child_gen_height }}
+            {%  endif %}
           {%  endif %}
           {% if child_gen_fit %}<br>
             <strong>General Fit</strong>
