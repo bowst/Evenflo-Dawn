@@ -17,6 +17,75 @@
         "padding_bottom": 28
       }
     },
+    "evenflo_image_banner_dVAnff": {
+      "type": "evenflo-image-banner",
+      "blocks": {
+        "heading_Vf3b7Q": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_underline": false,
+            "heading_size": "h1"
+          }
+        },
+        "text_VcNg7P": {
+          "type": "text",
+          "settings": {
+            "text": "Title",
+            "text_style": "body"
+          }
+        },
+        "buttons_HRb7fa": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify://collections/pivot-suite-accessories",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Vf3b7Q",
+        "text_VcNg7P",
+        "buttons_HRb7fa"
+      ],
+      "name": "Evenflo Image Banner",
+      "settings": {
+        "image": "shopify://shop_images/Header_Desktop.jpg",
+        "image_2": "shopify://shop_images/Header_Mobile_1.jpg",
+        "background_show": true,
+        "banner_color": "#FFFFFF",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
+        "button_color": "#000000",
+        "button_text_color": "#FFFFFF",
+        "button_border_color": "#121212",
+        "mobile_button_color": "#000000",
+        "mobile_button_text_color": "#ffffff",
+        "mobile_button_border_color": "#000000",
+        "button_color_2": "#121212",
+        "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
+        "mobile_button_color_2": "#000000",
+        "mobile_button_text_color_2": "#ffffff",
+        "mobile_button_border_color_2": "#000000",
+        "desktop_heading_color": "#000000",
+        "mobile_heading_color": "#000000",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "evenflo_loyalty_banner_slideshow_HNfmnr": {
       "type": "evenflo-loyalty-banner-slideshow",
       "blocks": {
@@ -33,6 +102,7 @@
       "block_order": [
         "slide_JQfxEK"
       ],
+      "disabled": true,
       "name": "Evenflo Loyalty Slideshow",
       "settings": {
         "layout": "full_bleed",
@@ -440,6 +510,7 @@
   },
   "order": [
     "main",
+    "evenflo_image_banner_dVAnff",
     "evenflo_loyalty_banner_slideshow_HNfmnr",
     "evenflo_image_with_text_xGNWdF",
     "featured_collection_febiQn",
