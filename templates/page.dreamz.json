@@ -102,7 +102,6 @@
         "text_bbYAKt",
         "buttons_nVbDXJ"
       ],
-      "disabled": true,
       "custom_css": [
         "p {color: black;}",
         "a {color: white; background-color: black;}",
@@ -111,10 +110,23 @@
       ],
       "settings": {
         "image": "shopify://shop_images/clouds.jpg",
+        "background_show": false,
+        "banner_color": "#ffffff",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
+        "mobile_button_border_color": "#ffffff",
+        "button_color_2": "#ffffff",
+        "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
+        "mobile_button_color_2": "#ffffff",
+        "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
@@ -143,7 +155,8 @@
           "type": "heading",
           "settings": {
             "heading": "> PUSH < PULL ❤ DREAM",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "decorative_heading": false
           }
         },
         "text_YD96Pd": {
@@ -172,8 +185,8 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
         "full_width": true,
+        "background_color": "",
         "padding_top": 40,
         "padding_bottom": 0
       }
@@ -202,7 +215,10 @@
         ".content-container--full-width img {width: 100%;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/dreamz-1.jpg"
+        "image": "shopify://shop_images/dreamz-1.jpg",
+        "heading": "",
+        "text": "",
+        "position": "top-left"
       }
     },
     "evenflo_rich_text_K6aRry": {
@@ -212,7 +228,8 @@
           "type": "heading",
           "settings": {
             "heading": "Cruise Then Snooze",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "decorative_heading": false
           }
         },
         "text_nUaQER": {
@@ -241,8 +258,8 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
         "full_width": false,
+        "background_color": "",
         "padding_top": 40,
         "padding_bottom": 0
       }
@@ -254,6 +271,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/bassinet-insert-hung.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "",
             "text": "",
@@ -265,6 +286,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/bassinet-insert-isolated.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "",
             "text": "",
@@ -284,9 +309,11 @@
         "title": "",
         "heading_size": "h2",
         "column_style": "classic",
+        "container_size": "full_width",
         "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "circle",
+        "enable_image_modal": true,
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "primary",
@@ -393,10 +420,23 @@
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Dreamz-18912482_JetSetter_566.jpg",
+        "background_show": false,
+        "banner_color": "#ffffff",
+        "store_btn_show": false,
+        "app_store": "",
+        "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
+        "mobile_button_border_color": "#ffffff",
+        "button_color_2": "#ffffff",
+        "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
+        "mobile_button_color_2": "#ffffff",
+        "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
@@ -470,6 +510,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/stay-organized.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "Stay Organized",
             "text": "<p>Detachable storage basket has pop-out cup holders</p>",
@@ -481,6 +525,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/keep-comfy.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "Keep Kids Comfy",
             "text": "<p>The newly extended footwell provides more legroom</p>",
@@ -502,9 +550,11 @@
         "title": "",
         "heading_size": "h1",
         "column_style": "classic",
+        "container_size": "full_width",
         "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "adapt",
+        "enable_image_modal": true,
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "none",
@@ -524,6 +574,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/black.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "Jetsetter black",
             "text": "",
@@ -535,6 +589,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/green.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "Voyager green",
             "text": "",
@@ -554,9 +612,11 @@
         "title": "",
         "heading_size": "h1",
         "column_style": "classic",
+        "container_size": "full_width",
         "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "adapt",
+        "enable_image_modal": true,
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "none",
