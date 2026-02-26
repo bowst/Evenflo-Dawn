@@ -1,0 +1,193 @@
+{{ 'slim-tab-block.css' | asset_url | stylesheet_tag }}
+
+<div class="slim-tab-block product-tab-block">
+  <div class="page-width">
+    <div class="slim-tab-wrapper">
+      <div class="heading center">
+        <h3 class="h1">{{ section.settings.title }}</h3>
+        <p>{{ section.settings.description }}</p>
+      </div>
+      <div class="slim-tab-header">
+        {% assign tab_index = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == "slim_tab_block" %}
+            {% assign tab_index = tab_index | plus: 1 %}
+            <div class="slim-tab-col" {{ block.shopify_attributes }}>
+              <div class="slim-tab-card">
+                <div class="slim-tab-card-content">
+                  {% if block.settings.image != blank %}
+                    <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings['tab-text'] | escape }}">
+                  {% endif %}
+                  <h4 class="h3">{{ block.settings['tab-text'] }}</h4>
+                </div>
+                <button>{{ block.settings['tab-btn-text'] }}</button>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="slim-tab-body">
+        {% assign tab_index = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == "slim_tab_block" %}
+            {% assign tab_index = tab_index | plus: 1 %}
+            {% assign tab_index_str = tab_index | append: "" %}
+            <div class="slim-tab-body-content">
+              <h1>{{ block.settings['tab-description'] }}</h1>
+              {% for item_block in section.blocks %}
+                {% if item_block.type == "tab_item" and item_block.settings.tab == tab_index_str %}
+                  <div class="slim-tab-col" {{ item_block.shopify_attributes }}>
+                      <div class="slim-tab-card">
+                        <div class="slim-tab-card-content">
+                          {% if item_block.settings.image != blank %}
+                            <img src="{{ item_block.settings.image | image_url }}" alt="{{ item_block.settings.title | escape }}">
+                          {% endif %}
+                          <h3>{{ item_block.settings.title }}</h3>
+                          {% if item_block.settings.description != blank %}
+                            <div class="rte">{{ item_block.settings.description }}</div>
+                          {% endif %}
+                        </div>
+                        {% if item_block.settings.button_text != blank and item_block.settings.button_link != blank %}
+                          <a href="{{ item_block.settings.button_link }}" class="button">{{ item_block.settings.button_text }}</a>
+                        {% elsif item_block.settings.button_text != blank %}
+                          <span class="button">{{ item_block.settings.button_text }}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const slimTabBlock = document.querySelector(".slim-tab-block");
+  const slimTabBodyContents = slimTabBlock.querySelectorAll(".slim-tab-body .slim-tab-body-content");
+  const slimTabButtons = slimTabBlock.querySelectorAll(".slim-tab-header .slim-tab-card button");
+
+  window.onload = function() {
+    slimTabButtons[0].classList.add("active");
+    slimTabBodyContents[0].classList.add("show");
+
+  };
+  function clearActiveStates() {
+      slimTabButtons.forEach(btn => btn.classList.remove("active"));
+      slimTabBodyContents.forEach(content => content.classList.remove("show"));
+  }
+  slimTabButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+          clearActiveStates();
+          button.classList.add("active");
+          slimTabBodyContents[index].classList.add("show");
+      });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Slim & Extend Tabs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+     {
+        "type": "text",
+        "id": "title",
+        "default": "Find your <Product>",
+        "label": "Title"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "description",
+        "default": "Description goes here",
+        "label": "Description"
+      },
+  ],
+  "blocks": [
+    {
+      "type": "slim_tab_block",
+      "name": "Tab",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Tab Image"
+        },
+        {
+          "type": "text",
+          "id": "tab-text",
+          "default": "Tab heading text (appears over tab button)",
+          "label": "Tab Text"
+        },
+        {
+          "type": "text",
+          "id": "tab-btn-text",
+          "default": "Just 16.7 in. across. Fit more into your backseat!",
+          "label": "Tab Button Text"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "tab-description",
+          "default": "Tab description text (appears in tab content area)",
+          "label": "Tab Description"
+        }
+      ]
+    },
+    {
+      "type": "tab_item",
+      "name": "Tab Item",
+      "limit": 16,
+      "settings": [
+        {
+          "type": "select",
+          "id": "tab",
+          "label": "Tab",
+          "options": [
+            { "value": "1", "label": "Tab 1" },
+            { "value": "2", "label": "Tab 2" },
+            { "value": "3", "label": "Tab 3" },
+            { "value": "4", "label": "Tab 4" }
+          ],
+          "default": "1",
+          "info": "Select which tab this item belongs to"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "Slim & Extend Tabs",
+    "category": "Custom Sections"
+  }
+]
+}
+{% endschema %}
