@@ -1,14 +1,60 @@
-
-
-.product-tab-block .slim-tab-card button {
-	padding: 8px 20px;
+.slim-tab-block .heading {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
+
+.slim-tab-block .heading * {
+	margin: 0;
+}
+
+.slim-tab-block .heading h1:after {
+	content: "";
+	width: 100px;
+	height: 3px;
+	background: #2996c5;
+	display: block;
+}
+
+.slim-tab-block .heading h1 {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+}
+
+.slim-tab-card-content {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+  }
+  .slim-tab-card * {
+	margin: 0;
+  }
+  .slim-tab-card p {
+	line-height: 1;
+  }
+  .slim-tab-card button {
+	padding: 8px 40px;
+	font-size: 20px;
+	font-weight: 700;
+	background: transparent;
+	max-width: max-content;
+	margin: auto;
+	text-transform: uppercase;
+  }
+  .slim-tab-card button.active,
+  .slim-tab-card button:hover {
+	background: #000;
+	color: #ffffff;
+  }
 
 .product-tab-block .scroller-wrapper {
   display: flex;
   gap: 32px;
   justify-content: flex-start;
   align-items: stretch;
+  position: relative;
   max-width: 100%;
   margin: 0 auto;
   flex-wrap: nowrap;
@@ -19,44 +65,54 @@
   scroll-snap-type: x mandatory;
   columns: 1;
   text-align: left;
-  scroll-marker-group: after;
-  position: relative;
-  anchor-name: --my-carousel;
 }
-
-.product-tab-block .scroller-wrapper::scroll-marker-group {
-	position: absolute;
-	position-anchor: --my-carousel;
-	top: calc(anchor(bottom) - 70px);
-	justify-self: anchor-center;
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-  }
-  .product-tab-block .scroller-wrapper::column::scroll-marker {
-	content: "";
-	width: 16px;
-	height: 16px;
-	background-color: transparent;
-	border: 2px solid black;
-	border-radius: 10px;
-  }
-  .product-tab-block .scroller-wrapper::column::scroll-marker:target-before {
-	border: 2px solid gray;
-  }
-  
-  .product-tab-block .scroller-wrapper::column::scroll-marker:target-current {
-	background-color: black;
-	transition: all 0.7s;
-  }
-  
-  .product-tab-block .scroller-wrapper::column::scroll-marker:target-after {
-	border: 2px solid red;
-	background-color: red;
-  }
-  
 .product-tab-block .scroller-wrapper::-webkit-scrollbar {
     display: none;
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(*) {
+  border: 0;
+  font-size: 1rem;
+  background: none;
+  color: black;
+  opacity: 0.7;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: 140px;
+  overflow: hidden;
+  color: transparent;
+  padding: 0;
+}
+.product-tab-block .scroller-wrapper::scroll-button(*):hover,
+.product-tab-block .scroller-wrapper::scroll-button(*):focus {
+  opacity: 1;
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(*):active {
+  translate: 1px 1px;
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(*):disabled {
+  opacity: 0;
+  cursor: unset;
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(left) {
+  content: "Prev";
+  background-image: url('data:image/svg+xml,<svg width="32px" height="32px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13.891 17.418c.268.272.268.709 0 .979s-.701.271-.969 0l-7.83-7.908a.697.697 0 0 1 0-.979l7.83-7.908a.68.68 0 0 1 .969 0 .697.697 0 0 1 0 .979L6.75 10l7.141 7.418z" fill="%238800FF"/></svg>');
+  left: 0;
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(right) {
+  content: "Next";
+  right: 0;
+  background-image: url('data:image/svg+xml,<svg width="32px" height="32px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="%238800ff" d="M13.25 10L6.109 2.58a.697.697 0 0 1 0-.979.68.68 0 0 1 .969 0l7.83 7.908a.697.697 0 0 1 0 .979l-7.83 7.908a.68.68 0 0 1-.969 0 .697.697 0 0 1 0-.979L13.25 10z" /></svg>');
 }
 
 .product-tab-block .scroller-item {
