@@ -53,9 +53,9 @@
                           {% endif %}
                         </div>
                         {% if item_block.settings.button_text != blank and item_block.settings.button_link != blank %}
-                          <a href="{{ item_block.settings.button_link }}" class="button">{{ item_block.settings.button_text }}</a>
+                          <a href="{{ item_block.settings.button_link }}">{{ item_block.settings.button_text }}</a>
                         {% elsif item_block.settings.button_text != blank %}
-                          <span class="button">{{ item_block.settings.button_text }}</span>
+                          <a class="button">{{ item_block.settings.button_text }}</a>
                         {% endif %}
                       </div>
                     </div>
