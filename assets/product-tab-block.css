@@ -45,7 +45,6 @@
   color: transparent;
   padding: 0;
   z-index: 999;
-
 }
 .product-tab-block .scroller-wrapper::scroll-button(*):hover,
 .product-tab-block .scroller-wrapper::scroll-button(*):focus {
@@ -102,6 +101,11 @@
   .product-tab-block .scroller-wrapper {
     justify-content: flex-start;
   }
+
+  .product-tab-block .scroller-wrapper::scroll-button(*):disabled {
+  opacity: .25;
+  cursor: unset;
+}
 }
 @media (min-width: 1024px){
   .product-tab-block .scroller-wrapper::scroll-button(*) {
