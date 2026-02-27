@@ -1,3 +1,4 @@
+{{ '_slim-tab-block.css' | asset_url | stylesheet_tag }}
 {{ 'product-tab-block.css' | asset_url | stylesheet_tag }}
 
 <div class="slim-tab-block product-tab-block">
@@ -7,7 +8,7 @@
         <h3 class="h1">{{ section.settings.title }}</h3>
         <p>{{ section.settings.description }}</p>
       </div>
-      <div class="slim-tab-header scrolling-wrapper">
+      <div class="slim-tab-header scroller-wrapper">
         {% assign tab_index = 0 %}
         {% for block in section.blocks %}
           {% if block.type == "slim_tab_block" %}
@@ -28,7 +29,7 @@
           {% endif %}
         {% endfor %}
       </div>
-      <div class="slim-tab-body scrolling-wrapper">
+      <div class="slim-tab-body scroller-wrapper">
         {% assign tab_index = 0 %}
         {% for block in section.blocks %}
           {% if block.type == "slim_tab_block" %}

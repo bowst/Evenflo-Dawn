@@ -1,4 +1,4 @@
-.product-tab-block .scrolling-container {
+.product-tab-block .scroller-wrapper {
   display: flex;
   gap: 32px;
   justify-content: flex-start;
@@ -16,11 +16,11 @@
   columns: 1;
   text-align: left;
 }
-.product-tab-block .scrolling-container::-webkit-scrollbar {
+.product-tab-block .scroller-wrapper::-webkit-scrollbar {
     display: none;
 }
 
-.product-tab-block .scrolling-container::scroll-button(*) {
+.product-tab-block .scroller-wrapper::scroll-button(*) {
   border: 0;
   font-size: 1rem;
   background: none;
@@ -39,27 +39,27 @@
   color: transparent;
   padding: 0;
 }
-.product-tab-block .scrolling-container::scroll-button(*):hover,
-.product-tab-block .scrolling-container::scroll-button(*):focus {
+.product-tab-block .scroller-wrapper::scroll-button(*):hover,
+.product-tab-block .scroller-wrapper::scroll-button(*):focus {
   opacity: 1;
 }
 
-.product-tab-block .scrolling-container::scroll-button(*):active {
+.product-tab-block .scroller-wrapper::scroll-button(*):active {
   translate: 1px 1px;
 }
 
-.product-tab-block .scrolling-container::scroll-button(*):disabled {
+.product-tab-block .scroller-wrapper::scroll-button(*):disabled {
   opacity: 0;
   cursor: unset;
 }
 
-.product-tab-block .scrolling-container::scroll-button(left) {
+.product-tab-block .scroller-wrapper::scroll-button(left) {
   content: "Prev";
   background-image: url('data:image/svg+xml,<svg width="32px" height="32px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13.891 17.418c.268.272.268.709 0 .979s-.701.271-.969 0l-7.83-7.908a.697.697 0 0 1 0-.979l7.83-7.908a.68.68 0 0 1 .969 0 .697.697 0 0 1 0 .979L6.75 10l7.141 7.418z" fill="%238800FF"/></svg>');
   left: 0;
 }
 
-.product-tab-block .scrolling-container::scroll-button(right) {
+.product-tab-block .scroller-wrapper::scroll-button(right) {
   content: "Next";
   right: 0;
   background-image: url('data:image/svg+xml,<svg width="32px" height="32px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="%238800ff" d="M13.25 10L6.109 2.58a.697.697 0 0 1 0-.979.68.68 0 0 1 .969 0l7.83 7.908a.697.697 0 0 1 0 .979l-7.83 7.908a.68.68 0 0 1-.969 0 .697.697 0 0 1 0-.979L13.25 10z" /></svg>');
@@ -85,23 +85,23 @@
 
 @media(max-width: 767px){
 
-  .product-tab-block .scrolling-container {
+  .product-tab-block .scroller-wrapper {
     padding: 40px 24px 60px;
     max-width: calc( 100% - 32 px );
   }
   
   .product-tab-block .scroller-item {
-    width: 100%;
+    width: calc(50% - 16px);
     max-width: 405px;
-    min-width: 260px;
+    min-width: 150px;
   }
 }
 @media (min-width: 1024px){
-  .product-tab-block .scroller-items-container {
+  .product-tab-block .scroller-items-wrapper {
     padding: 48px 80px 80px;
   }
 
-  .product-tab-block .scrolling-container::scroll-button(*) {
+  .product-tab-block .scroller-wrapper::scroll-button(*) {
     width: 50px;
     height: 50px;
   }
