@@ -48,7 +48,7 @@
 	background: #000;
 	color: #ffffff;
   }
-  
+
 .product-tab-block .scroller-wrapper {
   display: flex;
   gap: 32px;
@@ -134,11 +134,6 @@
 
 
 @media(max-width: 767px){
-
-  .product-tab-block .scroller-wrapper {
-    padding: 40px 24px 60px;
-    max-width: calc( 100% - 32 px );
-  }
   
   .product-tab-block .scroller-item {
     width: calc(50% - 16px);
@@ -147,9 +142,7 @@
   }
 }
 @media (min-width: 1024px){
-  .product-tab-block .scroller-items-wrapper {
-    padding: 48px 80px 80px;
-  }
+
 
   .product-tab-block .scroller-wrapper::scroll-button(*) {
     width: 50px;
