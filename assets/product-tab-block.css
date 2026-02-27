@@ -62,12 +62,12 @@
 .product-tab-block .scroller-wrapper::scroll-button(left) {
   content: "Prev";
   transform: rotate(-135deg);
-  left: 50%;
+  left: calc(50% - 32px);
 }
 
 .product-tab-block .scroller-wrapper::scroll-button(right) {
   content: "Next";
-  right: 50%;
+  right: calc(50% - 32px);
   transform: rotate(45deg);
 }
 .product-tab-block .slim-tab-col.scroller-item {
