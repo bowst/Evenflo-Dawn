@@ -1,3 +1,114 @@
-.product-tab-block {
-  /**/
+.product-tab-block .scrolling-wrapper {
+	width: 100vw;
+	height: 300px;
+	padding: 10px;
+
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+
+	columns: 1;
+	text-align: center;
+}
+.product-tab-block .scrolling-wrapper .scroller-item {
+	list-style-type: none;
+
+	display: inline-block;
+	height: 100%;
+	width: 200px;
+
+	background-color: #eeeeee;
+	border: 1px solid #dddddd;
+	padding: 20px;
+	margin: 0 10px;
+
+	text-align: left;
+}
+
+.product-tab-block .scrolling-wrapper::column {
+scroll-snap-align: center;
+}
+/*
+.product-tab-block .scrolling-wrapper::scroll-button(*) {
+border: 0;
+font-size: 2rem;
+background: none;
+color: black;
+opacity: 0.7;
+cursor: pointer;
+}
+
+.product-tab-block .scrolling-wrapper::scroll-button(*):hover,
+ul::scroll-button(*):focus {
+opacity: 1;
+}
+
+.product-tab-block .scrolling-wrapper::scroll-button(*):active {
+translate: 1px 1px;
+}
+
+.product-tab-block .scrolling-wrapper::scroll-button(*):disabled {
+opacity: 0.2;
+cursor: unset;
+}
+
+.product-tab-block .scrolling-wrapper::scroll-button(left) {
+content: "◄";
+}
+
+.product-tab-block .scrolling-wrapper::scroll-button(right) {
+content: "►";
+}
+
+.product-tab-block .scrolling-wrapper {
+anchor-name: --my-carousel;
+}
+
+.product-tab-block .scrolling-wrapper::scroll-button(*) {
+position: absolute;
+position-anchor: --my-carousel;
+}
+
+.product-tab-block .scrolling-wrapper::scroll-button(left) {
+right: calc(anchor(left) - 70px);
+bottom: calc(anchor(top) + 13px);
+}
+
+.product-tab-block .scrolling-wrapper::scroll-button(right) {
+left: calc(anchor(right) - 70px);
+bottom: calc(anchor(top) + 13px);
+}
+*/
+.product-tab-block .scrolling-wrapper {
+	scroll-marker-group: after;
+}
+
+.product-tab-block .scrolling-wrapper::scroll-marker-group {
+	position: absolute;
+	position-anchor: --my-carousel;
+	top: calc(anchor(bottom) - 70px);
+	justify-self: anchor-center;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+.product-tab-block .scrolling-wrapper::column::scroll-marker {
+	content: "";
+	width: 16px;
+	height: 16px;
+	background-color: transparent;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+.product-tab-block .scrolling-wrapper::column::scroll-marker:target-before {
+	border: 2px solid gray;
+}
+
+.product-tab-block .scrolling-wrapper::column::scroll-marker:target-current {
+	background-color: black;
+	transition: all 0.7s;
+}
+
+.product-tab-block .scrolling-wrapper::column::scroll-marker:target-after {
+	border: 2px solid red;
+	background-color: red;
 }

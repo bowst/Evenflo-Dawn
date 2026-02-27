@@ -8,12 +8,12 @@
         <h3 class="h1">{{ section.settings.title }}</h3>
         <p>{{ section.settings.description }}</p>
       </div>
-      <div class="slim-tab-header">
+      <div class="slim-tab-header scrolling-wrapper">
         {% assign tab_index = 0 %}
         {% for block in section.blocks %}
           {% if block.type == "slim_tab_block" %}
             {% assign tab_index = tab_index | plus: 1 %}
-            <div class="slim-tab-col" {{ block.shopify_attributes }}>
+             <div class="slim-tab-col scroller-item" {{ block.shopify_attributes }}>
               <div class="slim-tab-card">
                 <div class="slim-tab-card-content">
                   {% if block.settings.image != blank %}
@@ -29,13 +29,13 @@
           {% endif %}
         {% endfor %}
       </div>
-      <div class="slim-tab-body">
+      <div class="slim-tab-body scrolling-wrapper">
         {% assign tab_index = 0 %}
         {% for block in section.blocks %}
           {% if block.type == "slim_tab_block" %}
             {% assign tab_index = tab_index | plus: 1 %}
             {% assign tab_index_str = tab_index | append: "" %}
-            <div class="slim-tab-body-content">
+            <div class="slim-tab-body-content scroller-item">
               <h1>{{ block.settings['tab-description'] }}</h1>
               {% for item_block in section.blocks %}
                 {% if item_block.type == "tab_item" and item_block.settings.tab == tab_index_str %}
