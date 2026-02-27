@@ -1,4 +1,3 @@
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'slim-tab-block.css' | asset_url | stylesheet_tag }}
 {{ 'product-tab-block.css' | asset_url | stylesheet_tag }}
 
@@ -9,12 +8,12 @@
         <h3 class="h1">{{ section.settings.title }}</h3>
         <p>{{ section.settings.description }}</p>
       </div>
-      <div class="slim-tab-header slider slider--mobile grid--peek slider slider--desktop">
+      <div class="slim-tab-header">
         {% assign tab_index = 0 %}
         {% for block in section.blocks %}
           {% if block.type == "slim_tab_block" %}
             {% assign tab_index = tab_index | plus: 1 %}
-            <div id="Slide-{{ section.id }}-{{ tab_index }}" class="slim-tab-col grid__item{% if tab_blocks_count > 2 %} slider__slide{% endif %}" {{ block.shopify_attributes }}>
+            <div class="slim-tab-col" {{ block.shopify_attributes }}>
               <div class="slim-tab-card">
                 <div class="slim-tab-card-content">
                   {% if block.settings.image != blank %}
@@ -30,13 +29,13 @@
           {% endif %}
         {% endfor %}
       </div>
-      <div class="slim-tab-body slider slider--mobile grid--peek slider slider--desktop">
+      <div class="slim-tab-body">
         {% assign tab_index = 0 %}
         {% for block in section.blocks %}
           {% if block.type == "slim_tab_block" %}
             {% assign tab_index = tab_index | plus: 1 %}
             {% assign tab_index_str = tab_index | append: "" %}
-            <div id="Slide-{{ section.id }}-{{ tab_index }}" class="slim-tab-body-content grid__item{% if tab_blocks_count > 2 %} slider__slide{% endif %}">
+            <div class="slim-tab-body-content">
               <h1>{{ block.settings['tab-description'] }}</h1>
               {% for item_block in section.blocks %}
                 {% if item_block.type == "tab_item" and item_block.settings.tab == tab_index_str %}
