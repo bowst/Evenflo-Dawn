@@ -21,6 +21,43 @@
   text-align: left;
   padding-bottom: 48px;
 }
+
+.product-tab-block .scroller-wrapper {
+  scroll-marker-group: after;
+}
+
+.product-tab-block .scroller-wrapper::scroll-marker-group {
+  position: absolute;
+  position-anchor: --my-carousel;
+  top: calc(anchor(bottom) - 70px);
+  justify-self: anchor-center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.product-tab-block .scroller-wrapper::column::scroll-marker {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.product-tab-block .scroller-wrapper::column::scroll-marker:target-before {
+  border: 2px solid gray;
+}
+
+.product-tab-block .scroller-wrapper::column::scroll-marker:target-current {
+  background-color: black;
+  transition: all 0.7s;
+}
+
+.product-tab-block .scroller-wrapper::column::scroll-marker:target-after {
+  border: 2px solid red;
+  background-color: red;
+}
+
+
 .product-tab-block .scroller-wrapper::-webkit-scrollbar {
     display: none;
 }
