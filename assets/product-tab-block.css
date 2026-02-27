@@ -1,0 +1,115 @@
+
+.slim-tab-card button {
+	padding: 8px 20px;
+}
+
+.product-tab-block .scroller-wrapper {
+  display: flex;
+  position: relative;
+  gap: 32px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  columns: 1;
+  text-align: left;
+  padding-bottom: 48px;
+}
+
+.product-tab-block .scroller-wrapper::-webkit-scrollbar {
+    display: none;
+}
+.product-tab-block .slim-tab-header {
+  position: relative;
+}
+.product-tab-block .scroller-wrapper::scroll-button(*) {
+  border: 0;
+  font-size: 1rem;
+  background: none;
+  opacity: 1;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  text-indent: 140px;
+  overflow: hidden;
+  color: transparent;
+  padding: 0;
+  z-index: 999;
+}
+.product-tab-block .scroller-wrapper::scroll-button(*):hover,
+.product-tab-block .scroller-wrapper::scroll-button(*):focus {
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(*):active {
+  translate: 1px 1px;
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(*):disabled {
+  opacity: 0;
+  cursor: unset;
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(left) {
+  content: "Prev";
+  transform: rotate(-135deg);
+  left: calc(50% - 32px);
+}
+
+.product-tab-block .scroller-wrapper::scroll-button(right) {
+  content: "Next";
+  right: calc(50% - 32px);
+  transform: rotate(45deg);
+}
+.product-tab-block .slim-tab-col.scroller-item {
+  width: calc( 25% - 22px );
+  min-width: 100px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+}
+
+
+
+
+
+
+@media(max-width: 749px){
+  
+  .product-tab-block .slim-tab-col.scroller-item {
+    width: calc(50% - 16px)!important;
+    max-width: 405px;
+    min-width: calc(50% - 16px);
+  }
+
+  .product-tab-block .scroller-wrapper {
+    justify-content: flex-start;
+  }
+
+  .product-tab-block .scroller-wrapper::scroll-button(*):disabled {
+  opacity: .25;
+  cursor: unset;
+}
+}
+@media (min-width: 1024px){
+  .product-tab-block .scroller-wrapper::scroll-button(*) {
+    width: 50px;
+    height: 50px;
+  }
+}
