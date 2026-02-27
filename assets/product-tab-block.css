@@ -62,21 +62,17 @@
 
 .product-tab-block .scroller-wrapper::scroll-button(left) {
   content: "Prev";
-  background-image: url('data:image/svg+xml,<svg width="32px" height="32px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M13.891 17.418c.268.272.268.709 0 .979s-.701.271-.969 0l-7.83-7.908a.697.697 0 0 1 0-.979l7.83-7.908a.68.68 0 0 1 .969 0 .697.697 0 0 1 0 .979L6.75 10l7.141 7.418z" fill="%00aea8"/></svg>');
+  background-image: url('data:image/svg+xml,<svg class="icon icon-caret" viewBox="0 0 10 6"><path fill="currentColor" fill-rule="evenodd" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708" clip-rule="evenodd"></path></svg>');  
   left: 50%;
-  background-color: red;
-
 }
 
 .product-tab-block .scroller-wrapper::scroll-button(right) {
   content: "Next";
   right: 50%;
-  background-color: blue;
-
-  background-image: url('data:image/svg+xml,<svg width="32px" height="32px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="%00aea8" d="M13.25 10L6.109 2.58a.697.697 0 0 1 0-.979.68.68 0 0 1 .969 0l7.83 7.908a.697.697 0 0 1 0 .979l-7.83 7.908a.68.68 0 0 1-.969 0 .697.697 0 0 1 0-.979L13.25 10z" /></svg>');
+  transform: rotate(90deg);
+  background-image: url('data:image/svg+xml,<svg class="icon icon-caret" viewBox="0 0 10 6"><path fill="currentColor" fill-rule="evenodd" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708" clip-rule="evenodd"></path></svg>');
 }
-
-  .product-tab-block .slim-tab-col.scroller-item {
+.product-tab-block .slim-tab-col.scroller-item {
   width: calc( 25% - 22px );
   max-width: 405px;
   min-width: 100px;
