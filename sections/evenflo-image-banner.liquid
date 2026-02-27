@@ -13,8 +13,9 @@
     }
 
     @media screen and (min-width: 750px) {
-      #Banner-{{ section.id }}::before,
-      #Banner-{{ section.id }} .banner__media::before {
+      #Banner-{{ section.id }}: : before
+      , #Banner-{{ section.id }}
+      .banner__media::before {
         padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
@@ -44,8 +45,9 @@
   #Banner-{{ section.id }}::after {
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
   }
-  #Banner-{{ section.id }}.text-color {
-    color: {{ section.settings.desktop_heading_color }}!important;
+  .text-color {
+    color: {{ section.settings.desktop_heading_color }}
+     !important;
   }
   .text-color h1,
   .text-color h2,
@@ -58,22 +60,23 @@
     color: inherit !important;
     /* Inherit the color from .text-color class */
   }
-  #Banner-{{ section.id }} .text-color .button {
+  .text-color .button {
     background-color: {{ section.settings.button_color }}
      !important;
   }
-  #Banner-{{ section.id }} .text-color a {
+  .text-color a {
     color: {{ section.settings.button_text_color }}
      !important;
   }
-  #Banner-{{ section.id }} .text-color .button--button-2 {
+  .text-color .button--button-2 {
     {% if section.settings.button_color_2 != blank %}background-color: {{ section.settings.button_color_2 }} !important;{% endif %}
     {% if section.settings.button_text_color_2 != blank %}color: {{ section.settings.button_text_color_2 }} !important;{% endif %}
   }
   /* Media query for mobile screens (adjust the max-width value as needed) */
   @media screen and (max-width: 750px) {
-    #Banner-{{ section.id }}.text-color {
-      color: {{ section.settings.mobile_heading_color }}!important;
+    .text-color {
+      color: {{ section.settings.mobile_heading_color }}
+       !important;
     }
     .text-color h1,
     .text-color h2,
@@ -81,8 +84,7 @@
     .text-color h4,
     .text-color h5,
     .text-color h6,
-    .text-color button,
-	.text-color .legal-text {
+    .text-color button {
       color: inherit !important;
       /* Inherit the color from .text-color class */
     }
@@ -131,25 +133,25 @@
     .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media::before {
       display: none !important;
     }
-    #Banner-{{ section.id }} .text-color .button {
+    .text-color .button {
       background-color: {{ section.settings.mobile_button_color }}
        !important;
       border: 1px solid #000;
     }
-    #Banner-{{ section.id }} .text-color a {
+    .text-color a {
       color: {{ section.settings.mobile_button_text_color }}
        !important;
     }
-    #Banner-{{ section.id }} .text-color .button--button-2 {
+    .text-color .button--button-2 {
       {% if section.settings.mobile_button_color_2 != blank %}background-color: {{ section.settings.mobile_button_color_2 }} !important;{% endif %}
       {% if section.settings.mobile_button_text_color_2 != blank %}color: {{ section.settings.mobile_button_text_color_2 }} !important;{% endif %}
     }
   }
-  #Banner-{{ section.id }} .evenflo-image-banner-bg {
+  .evenflo-image-banner-bg {
     background: {{ section.settings.banner_color }};
     color: #ffffff !important;
   }
-  #Banner-{{ section.id }} .evenflo-image-banner-bg .banner__box {
+  .evenflo-image-banner-bg .banner__box {
     max-width: 60rem !important;
     background: transparent !important;
   }
@@ -298,10 +300,20 @@
 {%- endstyle -%}
 
 {%- liquid
+  assign full_width = '100vw'
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
 
   if section.settings.image_behavior == 'ambient'
+    assign half_width = '60vw'
+    assign full_width = '120vw'
+    assign stacked_sizes = '(min-width: 750px) 60vw, 120vw'
     assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+  elsif section.settings.image_behavior == 'fixed' or section.settings.image_behavior == 'zoom-in'
+    assign half_width = '100vw'
+    assign stacked_sizes = '100vw'
+  else
+    assign half_width = '50vw'
+    assign stacked_sizes = '(min-width: 750px) 50vw, 100vw'
   endif
   assign fetch_priority = 'auto'
   if section.index == 1
@@ -426,10 +438,10 @@
       {% if section.settings.store_btn_show %}
         <div class="app-btn">
           <a href="{{ section.settings.app_store }}">
-            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/playstore-logo_1.svg?v=1737463606" alt="" width="" height="">
+            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/playstore-logo_1.svg?v=1737463606" alt="">
           </a>
           <a href="{{ section.settings.play_store }}">
-            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/app-store-logo_1.svg?v=1737463606" alt="" width="" height="">
+            <img src="https://cdn.shopify.com/s/files/1/0512/2359/3116/files/app-store-logo_1.svg?v=1737463606" alt="">
           </a>
         </div>
       {% endif %}
