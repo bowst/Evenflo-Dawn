@@ -8,26 +8,28 @@
         <h3 class="h1">{{ section.settings.title }}</h3>
         <p>{{ section.settings.description }}</p>
       </div>
-      <div class="slim-tab-header scroller-wrapper">
-        {% assign tab_index = 0 %}
-        {% for block in section.blocks %}
-          {% if block.type == "slim_tab_block" %}
-            {% assign tab_index = tab_index | plus: 1 %}
-             <div class="slim-tab-col scroller-item" {{ block.shopify_attributes }}>
-              <div class="slim-tab-card">
-                <div class="slim-tab-card-content">
-                  {% if block.settings.image != blank %}
-                    <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings['tab-text'] | escape }}" height="{{ block.settings.image.height }}" width="{{ block.settings.image.width }}">
-                  {% endif %}
-                  {% if block.settings['tab-text'] != blank %}
-                    <h4 class="h3">{{ block.settings['tab-text'] }}</h4>
-                  {% endif %}
+      <div class="slim-tab-header">
+        <div class="scroller-wrapper">
+          {% assign tab_index = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == "slim_tab_block" %}
+              {% assign tab_index = tab_index | plus: 1 %}
+              <div class="slim-tab-col scroller-item" {{ block.shopify_attributes }}>
+                <div class="slim-tab-card">
+                  <div class="slim-tab-card-content">
+                    {% if block.settings.image != blank %}
+                      <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings['tab-text'] | escape }}" height="{{ block.settings.image.height }}" width="{{ block.settings.image.width }}">
+                    {% endif %}
+                    {% if block.settings['tab-text'] != blank %}
+                      <h4 class="h3">{{ block.settings['tab-text'] }}</h4>
+                    {% endif %}
+                  </div>
+                  <button>{{ block.settings['tab-btn-text'] }}</button>
                 </div>
-                <button>{{ block.settings['tab-btn-text'] }}</button>
               </div>
-            </div>
-          {% endif %}
-        {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
       <div class="slim-tab-body _scroller-wrapper">
         {% assign tab_index = 0 %}
