@@ -1,53 +1,7 @@
-.slim-tab-block .heading {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-}
 
-.slim-tab-block .heading * {
-	margin: 0;
+.slim-tab-card button {
+	padding: 8px 20px;
 }
-
-.slim-tab-block .heading h1:after {
-	content: "";
-	width: 100px;
-	height: 3px;
-	background: #2996c5;
-	display: block;
-}
-
-.slim-tab-block .heading h1 {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	align-items: center;
-}
-
-.slim-tab-card-content {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-  }
-  .slim-tab-card * {
-	margin: 0;
-  }
-  .slim-tab-card p {
-	line-height: 1;
-  }
-  .slim-tab-card button {
-	padding: 8px 40px;
-	font-size: 20px;
-	font-weight: 700;
-	background: transparent;
-	max-width: max-content;
-	margin: auto;
-	text-transform: uppercase;
-  }
-  .slim-tab-card button.active,
-  .slim-tab-card button:hover {
-	background: #000;
-	color: #ffffff;
-  }
 
 .product-tab-block .scroller-wrapper {
   display: flex;
