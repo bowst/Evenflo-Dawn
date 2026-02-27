@@ -19,7 +19,7 @@
           {% for block in section.blocks %}
             {% if block.type == "slim_tab_block" %}
               {% assign tab_index = tab_index | plus: 1 %}
-              <div class="slim-tab-col grid__item{% if tab_blocks_count > 2 %} slider__slide{% endif %}" {{ block.shopify_attributes }} role="listitem">
+              <div id="Slide-{{ section.id }}-{{ tab_index }}" class="slim-tab-col grid__item{% if tab_blocks_count > 2 %} slider__slide{% endif %}" {{ block.shopify_attributes }} role="listitem">
                 <div class="slim-tab-card">
                   <div class="slim-tab-card-content">
                     {% if block.settings.image != blank %}
@@ -66,7 +66,7 @@
                       <div class="slim-tab-card">
                         <div class="slim-tab-card-content">
                           {% if item_block.settings.image != blank %}
-                            <img src="{{ item_block.settings.image | image_url }}" alt="{{ item_block.settings.title | escape }}">
+                            <img src="{{ item_block.settings.image | image_url }}" alt="{{ item_block.settings.title | escape }}" height="{{ item_block.settings.image.height }}" width="{{ item_block.settings.image.width }}">
                           {% endif %}
                           <h3>{{ item_block.settings.title }}</h3>
                           {% if item_block.settings.description != blank %}
