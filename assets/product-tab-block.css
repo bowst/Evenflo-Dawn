@@ -48,7 +48,9 @@
 }
 .product-tab-block .scroller-wrapper::scroll-button(*):hover,
 .product-tab-block .scroller-wrapper::scroll-button(*):focus {
-  opacity: .8;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  
 }
 
 .product-tab-block .scroller-wrapper::scroll-button(*):active {
