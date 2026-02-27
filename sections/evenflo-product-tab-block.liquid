@@ -1,4 +1,6 @@
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'slim-tab-block.css' | asset_url | stylesheet_tag }}
+{{ 'product-tab-block.css' | asset_url | stylesheet_tag }}
 
 <div class="slim-tab-block product-tab-block">
   <div class="page-width">
@@ -7,25 +9,49 @@
         <h3 class="h1">{{ section.settings.title }}</h3>
         <p>{{ section.settings.description }}</p>
       </div>
-      <div class="slim-tab-header">
-        {% assign tab_index = 0 %}
-        {% for block in section.blocks %}
-          {% if block.type == "slim_tab_block" %}
-            {% assign tab_index = tab_index | plus: 1 %}
-            <div class="slim-tab-col" {{ block.shopify_attributes }}>
-              <div class="slim-tab-card">
-                <div class="slim-tab-card-content">
-                  {% if block.settings.image != blank %}
-                    <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings['tab-text'] | escape }}">
-                  {% endif %}
-                  <h4 class="h3">{{ block.settings['tab-text'] }}</h4>
+      {% assign tab_blocks_count = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == "slim_tab_block" %}{% assign tab_blocks_count = tab_blocks_count | plus: 1 %}{% endif %}
+      {% endfor %}
+      <slider-component class="slim-tab-header-wrapper{% if tab_blocks_count > 2 %} slider-mobile-gutter{% endif %}">
+        <div id="Slider-tabs-{{ section.id }}" class="slim-tab-header grid grid--2-col-tablet-down grid--4-col-desktop contains-content-container{% if tab_blocks_count > 2 %} slider slider--mobile grid--peek{% endif %}" role="list" aria-label="Tabs">
+          {% assign tab_index = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == "slim_tab_block" %}
+              {% assign tab_index = tab_index | plus: 1 %}
+              <div class="slim-tab-col grid__item{% if tab_blocks_count > 2 %} slider__slide{% endif %}" {{ block.shopify_attributes }} role="listitem">
+                <div class="slim-tab-card">
+                  <div class="slim-tab-card-content">
+                    {% if block.settings.image != blank %}
+                      <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings['tab-text'] | escape }}" height="{{ block.settings.image.height }}" width="{{ block.settings.image.width }}">
+                    {% endif %}
+					{% if block.settings['tab-text'] != blank %}
+                    <h4 class="h3">{{ block.settings['tab-text'] }}</h4>
+                    {% endif %}
+                  </div>
+                  <button>{{ block.settings['tab-btn-text'] }}</button>
                 </div>
-                <button>{{ block.settings['tab-btn-text'] }}</button>
               </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if tab_blocks_count > 2 %}
+          <div class="slider-buttons no-js-hidden medium-hide">
+            <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="Previous slide" aria-controls="Slider-tabs-{{ section.id }}">
+              {% render 'icon-caret' %}
+            </button>
+            <div class="slider-counter caption">
+              <span class="slider-counter--current">1</span>
+              <span aria-hidden="true"> / </span>
+              <span class="visually-hidden">of</span>
+              <span class="slider-counter--total">{{ tab_blocks_count }}</span>
             </div>
-          {% endif %}
-        {% endfor %}
-      </div>
+            <button type="button" class="slider-button slider-button--next" name="next" aria-label="Next slide" aria-controls="Slider-tabs-{{ section.id }}">
+              {% render 'icon-caret' %}
+            </button>
+          </div>
+        {% endif %}
+      </slider-component>
       <div class="slim-tab-body">
         {% assign tab_index = 0 %}
         {% for block in section.blocks %}
