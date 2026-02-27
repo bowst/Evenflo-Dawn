@@ -68,13 +68,13 @@
     color: {{ section.settings.button_text_color }}
      !important;
   }
-  #Banner-{{ section.id }} .text-color .button--button-2 {
+  .text-color .button--button-2 {
     {% if section.settings.button_color_2 != blank %}background-color: {{ section.settings.button_color_2 }} !important;{% endif %}
     {% if section.settings.button_text_color_2 != blank %}color: {{ section.settings.button_text_color_2 }} !important;{% endif %}
   }
   /* Media query for mobile screens (adjust the max-width value as needed) */
   @media screen and (max-width: 750px) {
-    #Banner-{{ section.id }} .text-color {
+    .text-color {
       color: {{ section.settings.mobile_heading_color }}
        !important;
     }
@@ -133,21 +133,21 @@
     .evenflo-image-banner:has(.banner__content .banner__box:empty) .mobile.banner__media.media::before {
       display: none !important;
     }
-    #Banner-{{ section.id }} .text-color .button {
+    .text-color .button {
       background-color: {{ section.settings.mobile_button_color }}
        !important;
       border: 1px solid #000;
     }
-    #Banner-{{ section.id }} .text-color a {
+    .text-color a {
       color: {{ section.settings.mobile_button_text_color }}
        !important;
     }
-    #Banner-{{ section.id }} .text-color .button--button-2 {
+    .text-color .button--button-2 {
       {% if section.settings.mobile_button_color_2 != blank %}background-color: {{ section.settings.mobile_button_color_2 }} !important;{% endif %}
       {% if section.settings.mobile_button_text_color_2 != blank %}color: {{ section.settings.mobile_button_text_color_2 }} !important;{% endif %}
     }
   }
-  #Banner-{{ section.id }} .evenflo-image-banner-bg {
+  .evenflo-image-banner-bg {
     background: {{ section.settings.banner_color }};
     color: #ffffff !important;
   }
