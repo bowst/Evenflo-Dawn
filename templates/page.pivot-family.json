@@ -45,7 +45,8 @@
         "buttons_HRb7fa"
       ],
       "custom_css": [
-        ".button--primary {background: black; color: white;}"
+        ".button--primary {background: black; color: white;}",
+        "@media screen and (min-width: 1024px) {.banner--medium:not(.banner--adapt) {min-height: 20rem; aspect-ratio: 3; }}"
       ],
       "name": "Evenflo Image Banner",
       "settings": {
