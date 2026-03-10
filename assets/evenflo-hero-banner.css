@@ -1,0 +1,177 @@
+.evenflo-hero-banner {
+	position: relative;
+	overflow: hidden;
+}
+
+.evenflo-hero-banner .container {
+	padding: 24px 0;
+	color: var(--color-evenflo-dark-blue);
+}
+
+.evenflo-hero-banner .container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
+	text-align: center;
+	gap: 24px;
+}
+
+.evenflo-hero-banner h1,
+.evenflo-hero-banner .h1,
+.evenflo-hero-banner p{
+	color: inherit;
+	text-transform: none;
+	text-align: inherit;
+	margin: 0;
+}
+
+.evenflo-hero-banner .eyebrow-text {
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.evenflo-hero-banner .primary-heading {
+	font-weight: 700;
+	font-size: 42px;
+}
+
+.evenflo-hero-banner .short-description {
+	font-weight: 400;
+	font-size: 22px;
+}
+
+.evenflo-hero-banner .hero-banner-buttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: inherit;
+	align-items: inherit;	
+	gap: 12px;
+}
+
+.evenflo-hero-banner .button {
+	background-color: var(--color-evenflo-dark-blue);
+	border-color: var(--color-evenflo-dark-blue);
+	outline-color: var(--color-evenflo-dark-blue);
+	transition: all 0.3s ease;
+}
+
+.evenflo-hero-banner .button:hover {
+	background-color: var(--color-evenflo-brand-blue);
+	border-color: var(--color-evenflo-brand-blue);
+}
+
+.evenflo-hero-banner .button::after,
+.evenflo-hero-banner .button:hover::after {
+	box-shadow: none;
+}
+
+.evenflo-hero-banner .text-link {
+	color: var(--color-evenflo-dark-blue);
+	font-size: 14px;
+}
+
+.evenflo-hero-banner .text-link:hover {
+	color: var(--color-evenflo-brand-blue);
+}
+
+.evenflo-hero-banner .mobile-image {
+	margin: 0 auto;
+	display: block;
+	width: auto;
+	min-width: calc(100% - 48px);
+}
+
+.evenflo-hero-banner .desktop-image {
+	display: none;
+}
+
+@media (min-width: 768px){
+	.evenflo-hero-banner {
+		max-width: 1440px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 40px 5%;
+		min-height: 360px;
+		overflow: hidden;
+	}
+
+	.evenflo-hero-banner .eyebrow-text {
+		font-size: 16px;
+	}
+	
+	.evenflo-hero-banner .primary-heading {
+		font-size: 56px;
+	}
+	
+	.evenflo-hero-banner .short-description {
+		font-size: 48px;
+	}
+
+	.evenflo-hero-banner .mobile-image {
+		display: none;
+	}
+	
+	.evenflo-hero-banner .desktop-image {
+		display: block;
+		position: absolute;
+		aspect-ratio: calc(1440 / 480);
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		z-index: 0;
+	}
+	.evenflo-hero-banner .container {
+		width: 100%;
+	}
+	.evenflo-hero-banner .hero-banner-content {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		aspect-ratio: calc(1440 / 480);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.evenflo-hero-banner.text-light .container {
+		color: #fff;
+	}
+
+	.evenflo-hero-banner.text-light .button {
+		background-color: #fff;
+		border-color: #fff;
+		color: var(--color-evenflo-dark-blue);
+	}
+
+	.evenflo-hero-banner.text-light .button:hover {
+		background-color: var(--color-evenflo-brand-blue);
+		border-color: var(--color-evenflo-brand-blue);
+		color: #fff;
+	}
+	.evenflo-hero-banner.text-light .button::after {
+		box-shadow: none;
+	}
+
+	.evenflo-hero-banner.text-light .text-link {
+		color: #fff;
+	}
+
+	.evenflo-hero-banner.align-left .container,
+	.evenflo-hero-banner.align-left .hero-banner-content{
+		text-align: left;
+		align-items: flex-start;
+	}
+
+	.evenflo-hero-banner.align-right .container{
+		text-align: right;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+}

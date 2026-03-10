@@ -1,9 +1,14 @@
 {% comment %} Evenflo Hero Banner - 2026, to replace existing Evenflo Image Banners */{%  endcomment %}
 {{ 'evenflo-hero-banner.css' | asset_url | stylesheet_tag }}
+{% style %}
+	.hero-banner {
+		background-color: {{ section.settings.background_color }};
+	}
+{% endstyle %}
 
-<div class="hero-banner {{ section.settings.content_alignment }} {{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }}">
+<div class="evenflo-hero-banner {{ section.settings.content_alignment }} {{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }}">
 	<div class="hero-banner-content">
-	  <div class="container">
+	  <div class="container page-width">
 		{% if section.settings.eyebrow_text != blank %}
 			<p class="eyebrow-text">{{ section.settings.eyebrow_text }}</p>
 		{% endif %}
@@ -23,7 +28,7 @@
 			{% endif %}
 			
 			{% if section.settings.secondary_cta_text != blank and section.settings.secondary_cta_link != blank %}
-				<a href="{{ section.settings.secondary_cta_link }}" class="button button-secondary">{{ section.settings.secondary_cta_text }}</a>
+				<a href="{{ section.settings.secondary_cta_link }}" class="text-link">{{ section.settings.secondary_cta_text }}</a>
 			{% endif %}
 		</div>
 		{% endif %}
@@ -65,7 +70,7 @@
 		"label": "Eyebrow text"
 	},
 	{
-		"type": "text",
+		"type": "richtext",
 		"id": "primary_heading",
 		"label": "Primary heading"
 	},
@@ -117,7 +122,7 @@
 		{ "value": "text-light", "label": "Light text" },
 		{ "value": "text-dark", "label": "Dark text" }
 		],
-		"default": "text-light"
+		"default": "text-dark"
 	},
 	{
 		"type": "range",
