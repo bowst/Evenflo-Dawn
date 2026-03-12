@@ -2,19 +2,19 @@
 
 {% style %}
   {% if section.settings.media_position == 'right' %}
-    #shopify-section-{{ section.id }} .evenflo-split-features {
+    #shopify-section-{{ section.id }} .split-features-content {
       flex-direction: row-reverse;
     }
   {% endif %}
 {% endstyle %}
 
 <div id="split-features-{{ section.id }}" class="evenflo-split-features evenflo-split-features--media-{{ section.settings.media_position }}">
-  <div class="page-width">
-	{% if section.settings.heading != blank %}
-		<h2>{{ section.settings.heading }}</h2>
+  <div class="container page-width">
+	{% if section.settings.section_heading != blank %}
+		<h2 class="h1">{{ section.settings.section_heading }}</h2>
 	{% endif %}
-	{% if section.settings.subheading != blank %}
-		<p class="subheading">{{ section.settings.subheading }}</p>
+	{% if section.settings.section_subheading != blank %}
+		<p class="subheading">{{ section.settings.section_subheading }}</p>
 	{% endif %}
 
 	<div class="split-features-content">
@@ -23,7 +23,7 @@
 				<img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt }}" width="1000" height="1000" loading="lazy">
 			{% endif %}
 			{% if section.settings.video != blank %}
-				<video src="{{ section.settings.video }}"></video>
+				<video src="{{ section.settings.video }}" {% if section.settings.video_autoplay %}autoplay muted playsinline loop{% endif %}></video>
 			{% endif %}
 		</div>
 
@@ -65,7 +65,7 @@
   "settings": [
     {
       "type": "header",
-      "content": "Content"
+      "content": "Section Headings"
     },
     {
       "type": "text",
@@ -77,18 +77,27 @@
       "id": "section_subheading",
       "label": "Section subheading"
     },
+	{
+		"type": "header",
+		"content": "Section Content"
+	  },
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
     },
     {
-      "type": "video_url",
+      "type": "video",
       "id": "video",
-      "label": "Video",
-      "accept": ["youtube", "vimeo"]
+      "label": "Video"
     },
-	{
+    {
+      "type": "checkbox",
+      "id": "video_autoplay",
+      "label": "Auto play",
+      "default": false
+    },
+    {
 		"type": "text",
 		"id": "content_heading",
 		"label": "Content heading"
