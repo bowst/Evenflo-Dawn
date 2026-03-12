@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
     "evenflo_hero_banner_kxJtqM": {
       "type": "evenflo-hero-banner",
       "name": "Evenflo Hero Banner",
@@ -27,182 +35,289 @@
         "desktop_overlay_opacity": 0
       }
     },
-    "evenflo_image_banner_n37yqd": {
+    "evenflo_info_strip_VgMhwy": {
+      "type": "evenflo-info-strip",
+      "blocks": {
+        "info_tXCVAW": {
+          "type": "info",
+          "settings": {
+            "info_text": "SensorySooth Technology",
+            "info_icon": "shopify://shop_images/1770221712_0.png",
+            "info_url": ""
+          }
+        },
+        "info_iVz7dV": {
+          "type": "info",
+          "settings": {
+            "info_text": "9 Modes of Use",
+            "info_url": "shopify://blogs/evenflo-blog"
+          }
+        },
+        "info_CGXCMc": {
+          "type": "info",
+          "settings": {
+            "info_text": "UPF 50+ Canopy",
+            "info_url": ""
+          }
+        },
+        "info_RqwqbD": {
+          "type": "info",
+          "settings": {
+            "info_text": "Convertible Child Snack Tray",
+            "info_url": ""
+          }
+        },
+        "info_4qeEEP": {
+          "type": "info",
+          "settings": {
+            "info_text": "All-Terrain Wheels + Suspension",
+            "info_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "info_tXCVAW",
+        "info_iVz7dV",
+        "info_CGXCMc",
+        "info_RqwqbD",
+        "info_4qeEEP"
+      ],
+      "name": "Evenflo Info Strip",
+      "settings": {
+        "background_color": "#eee6d9",
+        "text_color": "#0f3c5a"
+      }
+    },
+    "evenflo_split_features_3MzizF": {
+      "type": "evenflo-split-features",
+      "blocks": {
+        "list_item_TVNzxF": {
+          "type": "list_item",
+          "settings": {
+            "text": "Transforms in Seconds",
+            "icon": "shopify://shop_images/icon-transforms-in-seconds.png",
+            "url": ""
+          }
+        },
+        "list_item_hxHMmR": {
+          "type": "list_item",
+          "settings": {
+            "text": "Offers Ultimate Versatility",
+            "icon": "shopify://shop_images/icon-versatility.png",
+            "url": "#apples"
+          }
+        },
+        "list_item_8mPntw": {
+          "type": "list_item",
+          "settings": {
+            "text": "Grows with Your Family",
+            "icon": "shopify://shop_images/icon-grows-with-your-family.png",
+            "url": ""
+          }
+        },
+        "list_item_FnPFkr": {
+          "type": "list_item",
+          "settings": {
+            "text": "Features that Convert",
+            "icon": "shopify://shop_images/icon-features-that-convert.png",
+            "url": ""
+          }
+        },
+        "list_item_DGBcFt": {
+          "type": "list_item",
+          "settings": {
+            "text": "Offers Comfort & Convenience",
+            "icon": "shopify://shop_images/icon-comfort-and-convenience.png",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "list_item_TVNzxF",
+        "list_item_hxHMmR",
+        "list_item_8mPntw",
+        "list_item_FnPFkr",
+        "list_item_DGBcFt"
+      ],
+      "name": "Split Features & Media",
+      "settings": {
+        "section_heading": "Endless Possibilities",
+        "section_subheading": "",
+        "image": "shopify://shop_images/TS101412572_LatteTan_Toddle_FF_Storagebasket.jpg",
+        "content_heading": "",
+        "body_copy": "",
+        "cta_text": "",
+        "cta_url": "",
+        "media_position": "left"
+      }
+    },
+    "evenflo_multicolumn_YVk8BN": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_MkWnhW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_D.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Infant Car Seat Mode",
+            "text": "<p>Ready when baby arrives. Start with infant car seat mode for easy first rides. Features SensorySoothe® technology, which uses lights, sounds and music to engage and calm your baby.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Df6DQ9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_D.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Toddler Seat Mode",
+            "text": "<p>As your child grows, the Transformer™ transitions seamlessly into toddler seat mode for everyday outings.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_3CdDD3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_E.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Pull Wagon Mode",
+            "text": "<p>For bigger adventures, switch to pull-wagon mode. Perfect for parks, trails, and family outings that give you more freedom to roam.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_a4Qrqg": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_C.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Wagon with Infant Car Seat Mode",
+            "text": "<p>When you’ve got more than one in tow, wagon mode with the infant car seat attached keeps everyone close. Baby stays secure while big kids ride along comfortably.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_MkWnhW",
+        "column_Df6DQ9",
+        "column_3CdDD3",
+        "column_a4Qrqg"
+      ],
+      "custom_css": [
+        "h2,h3,p {text-transform: none; color: var(--evenflo-dark-blue, #0f3c5a);}"
+      ],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "enable_image_modal": true,
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 32
+      }
+    },
+    "evenflo_image_banner_kEm4Pn": {
       "type": "evenflo-image-banner",
       "blocks": {
-        "hotspot_UpHx6x": {
-          "type": "hotspot",
-          "settings": {
-            "product": "eris-playard-with-bassinet",
-            "position_x": 33,
-            "position_y": 60,
-            "mobile_position_x": 0,
-            "mobile_position_y": 0
-          }
-        },
-        "hotspot_KkXHMM": {
-          "type": "hotspot",
-          "settings": {
-            "product": "elara-smart-swing-soothing-nest",
-            "position_x": 87,
-            "position_y": 53,
-            "mobile_position_x": 0,
-            "mobile_position_y": 0
-          }
-        },
-        "hotspot_eXCAHH": {
-          "type": "hotspot",
-          "settings": {
-            "product": "",
-            "position_x": 50,
-            "position_y": 50,
-            "mobile_position_x": 50,
-            "mobile_position_y": 50
-          }
-        },
-        "hotspot_crk7Vi": {
-          "type": "hotspot",
-          "settings": {
-            "product": "cora-adjustable-bassinet",
-            "position_x": 64,
-            "position_y": 56,
-            "mobile_position_x": 0,
-            "mobile_position_y": 0
-          }
-        },
-        "hotspot_g7JGr3": {
-          "type": "hotspot",
-          "settings": {
-            "product": "lyra-infant-toddler-rocker",
-            "position_x": 16,
-            "position_y": 76,
-            "mobile_position_x": 0,
-            "mobile_position_y": 0
-          }
-        },
-        "text_Qt8Czb": {
-          "type": "text",
-          "settings": {
-            "text": "Introducing Evenflo’s home Collection Featuring SensorySoothe® Technology",
-            "text_style": "body"
-          }
-        },
-        "heading_GU9gVw": {
+        "heading_t8h4U4": {
           "type": "heading",
           "settings": {
-            "heading": "YOUR HOME REIMAGINED FOR BABY",
+            "heading": "One Product. Nine Modes.",
             "heading_underline": false,
             "heading_size": "h1"
           }
         },
-        "buttons_DxicEQ": {
-          "type": "buttons",
+        "text_wtbEgR": {
+          "type": "text",
           "settings": {
-            "button_label_1": "Shop Collection",
-            "button_link_1": "shopify://collections/home-collection",
+            "text": "One Product. Nine Modes.",
+            "text_style": "body"
+          }
+        },
+        "buttons_jwmEVD": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Take the Quiz",
+            "button_link_1": "shopify://pages/home-collection-quiz",
             "button_style_secondary_1": false,
-            "button_label_2": "Learn More",
-            "button_link_2": "https://www.evenflo.com/blogs/evenflo-blog/the-complete-guide-to-evenflos-home-collection",
+            "button_label_2": "",
+            "button_link_2": "",
             "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "hotspot_UpHx6x",
-        "hotspot_KkXHMM",
-        "hotspot_eXCAHH",
-        "hotspot_crk7Vi",
-        "hotspot_g7JGr3",
-        "text_Qt8Czb",
-        "heading_GU9gVw",
-        "buttons_DxicEQ"
+        "heading_t8h4U4",
+        "text_wtbEgR",
+        "buttons_jwmEVD"
       ],
-      "disabled": true,
+      "custom_css": [
+        ".banner__content .banner__text {font-size: 22px;}",
+        ".banner__content .h1 {text-transform: none;}"
+      ],
       "name": "Evenflo Image Banner",
       "settings": {
-        "image": "shopify://shop_images/9a211f98b91b54354da2cbaee4b1c0a02f190577.jpg",
-        "image_2": "shopify://shop_images/1200X628_2x-100.png",
+        "image": "shopify://shop_images/Transformer_HPH_static_studio_Desktopjpg.jpg",
+        "image_2": "shopify://shop_images/Transformer_HPH_static_studio_Mobile.jpg",
         "background_show": true,
-        "banner_color": "#ffffff",
+        "banner_color": "#eee6d9",
         "store_btn_show": false,
         "app_store": "",
         "play_store": "",
-        "button_color": "#121212",
-        "button_text_color": "#ffffff",
+        "button_color": "#ffffff",
+        "button_text_color": "#000000",
         "button_border_color": "#ffffff",
-        "mobile_button_color": "#121212",
-        "mobile_button_text_color": "#ffffff",
+        "mobile_button_color": "#ffffff",
+        "mobile_button_text_color": "#000000",
         "mobile_button_border_color": "#ffffff",
         "button_color_2": "#ffffff",
         "button_text_color_2": "#000000",
         "button_border_color_2": "#ffffff",
         "mobile_button_color_2": "#ffffff",
         "mobile_button_text_color_2": "#000000",
-        "mobile_button_border_color_2": "#ffffff",
-        "desktop_heading_color": "#ffffff",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 10,
-        "image_height": "medium",
+        "mobile_button_border_color_2": "#0f3c5a",
+        "desktop_heading_color": "#0f3c5a",
+        "mobile_heading_color": "#0f3c5a",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
         "desktop_content_position": "top-center",
         "show_text_box": true,
         "desktop_content_alignment": "center",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
+        "stack_images_on_mobile": false,
         "show_text_below": false
-      }
-    },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "evenflo_tabbed_carousel_ippmXr": {
-      "type": "evenflo-tabbed-carousel",
-      "blocks": {
-        "tab_n4tDWi": {
-          "type": "tab",
-          "settings": {
-            "image": "shopify://shop_images/evenflo_collectionLP_subheadVideoComp01.gif",
-            "heading": "Manage from your mobile device",
-            "text": "<p>Control soothing technology features through our Evenflo App</p>"
-          }
-        },
-        "tab_V3CeNf": {
-          "type": "tab",
-          "settings": {
-            "image": "shopify://shop_images/evenflo_collectionLP_subheadVideoComp02.gif",
-            "heading": "Grows with your family",
-            "text": "<p>Multiple modes and adjustable features adapt from newborn through toddler years</p>"
-          }
-        },
-        "tab_UR9Thy": {
-          "type": "tab",
-          "settings": {
-            "image": "shopify://shop_images/evenflo_collectionLP_subheadVideoComp03.gif",
-            "heading": "Elevate your home style",
-            "text": "<p>Wood-like accents and neutral tones compliment your existing decor instead of clashing with it</p>"
-          }
-        }
-      },
-      "block_order": [
-        "tab_n4tDWi",
-        "tab_V3CeNf",
-        "tab_UR9Thy"
-      ],
-      "name": "Tabbed Carousel",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "image_ratio": "adapt",
-        "autoplay_interval": 5,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "evenflo_mixed_media_grid_fXghtw": {
@@ -214,6 +329,12 @@
             "product": "elara-smart-swing-soothing-nest"
           }
         },
+        "product_6N3hYr": {
+          "type": "product",
+          "settings": {
+            "product": "eris-playard-with-bassinet"
+          }
+        },
         "image_xt3jrN": {
           "type": "image",
           "settings": {
@@ -221,12 +342,6 @@
             "title": "",
             "text": "",
             "link": ""
-          }
-        },
-        "product_6N3hYr": {
-          "type": "product",
-          "settings": {
-            "product": "eris-playard-with-bassinet"
           }
         },
         "image_aG6Y34": {
@@ -238,34 +353,10 @@
             "link": ""
           }
         },
-        "product_P3Br4b": {
-          "type": "product",
-          "settings": {
-            "product": "cora-adjustable-bassinet"
-          }
-        },
-        "image_wfDrAi": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/sensory-soothe.jpg",
-            "title": "",
-            "text": "",
-            "link": ""
-          }
-        },
         "product_dken4N": {
           "type": "product",
           "settings": {
             "product": "lyra-infant-toddler-rocker"
-          }
-        },
-        "image_KxmqcV": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/eris-sensory-soothe.jpg",
-            "title": "",
-            "text": "",
-            "link": ""
           }
         },
         "product_Ym3aJN": {
@@ -277,13 +368,10 @@
       },
       "block_order": [
         "product_4LAxCN",
-        "image_xt3jrN",
         "product_6N3hYr",
+        "image_xt3jrN",
         "image_aG6Y34",
-        "product_P3Br4b",
-        "image_wfDrAi",
         "product_dken4N",
-        "image_KxmqcV",
         "product_Ym3aJN"
       ],
       "custom_css": [
@@ -304,69 +392,6 @@
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "evenflo_image_banner_kEm4Pn": {
-      "type": "evenflo-image-banner",
-      "blocks": {
-        "text_wtbEgR": {
-          "type": "text",
-          "settings": {
-            "text": "Which smart home gear fits your family best?",
-            "text_style": "body"
-          }
-        },
-        "buttons_jwmEVD": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Take the Quiz",
-            "button_link_1": "shopify://pages/home-collection-quiz",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "text_wtbEgR",
-        "buttons_jwmEVD"
-      ],
-      "custom_css": [
-        ".banner__content .banner__text {font-size: 36px;}"
-      ],
-      "name": "Evenflo Image Banner",
-      "settings": {
-        "image": "shopify://shop_images/Home-Collection_Landing-Page_Quiz-Image_1275x386_2x_dcdc1b2c-e04e-487e-a879-5206919697a5.jpg",
-        "image_2": "shopify://shop_images/Interactive_quiz.png",
-        "background_show": true,
-        "banner_color": "#ffffff",
-        "store_btn_show": false,
-        "app_store": "",
-        "play_store": "",
-        "button_color": "#ffffff",
-        "button_text_color": "#000000",
-        "button_border_color": "#ffffff",
-        "mobile_button_color": "#ffffff",
-        "mobile_button_text_color": "#000000",
-        "mobile_button_border_color": "#ffffff",
-        "button_color_2": "#ffffff",
-        "button_text_color_2": "#000000",
-        "button_border_color_2": "#ffffff",
-        "mobile_button_color_2": "#ffffff",
-        "mobile_button_text_color_2": "#000000",
-        "mobile_button_border_color_2": "#ffffff",
-        "desktop_heading_color": "#ffffff",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
       }
     },
     "evenflo_image_banner_8EenDU": {
@@ -459,12 +484,13 @@
     }
   },
   "order": [
-    "evenflo_hero_banner_kxJtqM",
-    "evenflo_image_banner_n37yqd",
     "main",
-    "evenflo_tabbed_carousel_ippmXr",
-    "evenflo_mixed_media_grid_fXghtw",
+    "evenflo_hero_banner_kxJtqM",
+    "evenflo_info_strip_VgMhwy",
+    "evenflo_split_features_3MzizF",
+    "evenflo_multicolumn_YVk8BN",
     "evenflo_image_banner_kEm4Pn",
+    "evenflo_mixed_media_grid_fXghtw",
     "evenflo_image_banner_8EenDU",
     "evenflo_divider_T7jPCW"
   ]
