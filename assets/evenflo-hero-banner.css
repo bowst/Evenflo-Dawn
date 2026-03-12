@@ -66,10 +66,11 @@
 .evenflo-hero-banner .text-link {
 	color: var(--color-evenflo-dark-blue);
 	font-size: 14px;
+	text-decoration: none;
 }
 
 .evenflo-hero-banner .text-link:hover {
-	color: var(--color-evenflo-brand-blue);
+	text-decoration: underline;
 }
 
 .evenflo-hero-banner .mobile-image {
@@ -160,14 +161,15 @@
 
 	.evenflo-hero-banner .container {
 		width: 100%;
-		max-width: 1440px;
+		max-width: var(--content-max-width);
 		margin: 0 auto;
 	}
 	.evenflo-hero-banner .hero-banner-content {
 		position: relative;
 		z-index: 1;
 		width: 100%;
-		aspect-ratio: calc(1440 / 480);
+		/* aspect-ratio: calc(1440 / 480); */
+		min-height: 400px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

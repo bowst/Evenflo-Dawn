@@ -1,0 +1,47 @@
+.evenflo-info-strip {
+	
+}
+.evenflo-info-strip .container {
+	padding: 8px 24px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+	gap: 32px;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+}
+
+.evenflo-info-strip .container::-webkit-scrollbar {
+	display: none;
+}
+
+.evenflo-info-strip .container > * {
+	flex-shrink: 0;
+}
+
+.evenflo-info-strip .container .info-item {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 16px;
+	font-size: 18px;
+}
+
+.evenflo-info-strip .container .info-item img {
+	width: 24px;
+	height: 24px;
+	object-fit: contain;
+	object-position: center;
+}
+
+@media (min-width: 1024px) {
+	.evenflo-info-strip .container {
+		padding: 8px 80px;
+	}
+}
