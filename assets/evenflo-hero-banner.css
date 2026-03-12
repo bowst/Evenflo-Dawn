@@ -4,7 +4,7 @@
 }
 
 .evenflo-hero-banner .container {
-	padding: 24px 0;
+	padding: 24px;
 	color: var(--color-evenflo-dark-blue);
 	display: flex;
 	flex-direction: column;
@@ -12,6 +12,7 @@
 	align-items: center;	
 	text-align: center;
 	gap: 24px;
+	max-width: var(--content-max-width);
 }
 
 .evenflo-hero-banner h1,
@@ -163,6 +164,7 @@
 		width: 100%;
 		max-width: var(--content-max-width);
 		margin: 0 auto;
+		padding: 24px 80px;
 	}
 	.evenflo-hero-banner .hero-banner-content {
 		position: relative;
