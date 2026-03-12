@@ -1,14 +1,18 @@
 {% comment %} Evenflo Hero Banner - 2026, to replace existing Evenflo Image Banners */{%  endcomment %}
 {{ 'evenflo-hero-banner.css' | asset_url | stylesheet_tag }}
 {% style %}
-	.hero-banner {
-		background-color: {{ section.settings.background_color }};
-	}
+
+	{% if section.settings.desktop_overlay_opacity > 0 %}
+		{% assign overlay_opacity = 100 | minus: section.settings.desktop_overlay_opacity | times: 0.01 %}
+		#hero-banner-{{ section.id }} .desktop-image {
+			opacity: {{ overlay_opacity }};
+		}
+	{% endif %}
 {% endstyle %}
 
-<div class="evenflo-hero-banner {{ section.settings.content_alignment }} {{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }}">
+<div id="hero-banner-{{ section.id }}" class="evenflo-hero-banner {{ section.settings.content_alignment }} {{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }}">
 	<div class="hero-banner-content">
-	  <div class="container page-width">
+	  <div class="container page-width">{{ section.settings.desktop_overlay_opacity }}
 		{% if section.settings.eyebrow_text != blank %}
 			<p class="eyebrow-text">{{ section.settings.eyebrow_text }}</p>
 		{% endif %}
