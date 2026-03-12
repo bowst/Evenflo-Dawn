@@ -1,0 +1,168 @@
+{{ 'evenflo-split-features.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  {% if section.settings.media_position == 'right' %}
+    #shopify-section-{{ section.id }} .split-features-content {
+      flex-direction: row-reverse;
+    }
+  {% endif %}
+{% endstyle %}
+
+<div id="split-features-{{ section.id }}" class="evenflo-split-features evenflo-split-features--media-{{ section.settings.media_position }}">
+  <div class="container page-width">
+	{% if section.settings.section_heading != blank %}
+		<h2 class="h1">{{ section.settings.section_heading }}</h2>
+	{% endif %}
+	{% if section.settings.section_subheading != blank %}
+		<p class="subheading">{{ section.settings.section_subheading }}</p>
+	{% endif %}
+
+	<div class="split-features-content">
+		<div class="media-container">
+			{% if section.settings.image != blank %}
+				<img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt }}" width="1000" height="1000" loading="lazy">
+			{% endif %}
+			{% if section.settings.video != blank %}
+				<video src="{{ section.settings.video }}" {% if section.settings.video_autoplay %}autoplay muted playsinline loop{% endif %}></video>
+			{% endif %}
+		</div>
+
+		<div class="content-container">
+			{% if section.settings.body_copy != blank %}
+				<div class="body-copy">{{ section.settings.body_copy }}</div>
+			{% endif %}
+			{% if section.blocks.size > 0 %}
+				<ul class="list">
+					{% for block in section.blocks %}
+						<li class="list-item" {{ block.shopify_attributes }}>
+							{% if block.settings.icon != blank %}
+								<img src="{{ block.settings.icon | image_url: width: 32 }}" alt="" class="evenflo-split-features__icon" width="32" height="32" loading="lazy">
+							{% endif %}
+							{% if block.settings.url != blank %} 
+								<a href="{{ block.settings.url }}">{{ block.settings.text }}</a>
+							{% else %}
+								<span>{{ block.settings.text }}</span>
+							{% endif %}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			{% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
+				<a href="{{ section.settings.cta_url }}" class="button button-outline">{{ section.settings.cta_text }}</a>
+			{% endif %}
+		</div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Split Features & Media",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Headings"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "section_subheading",
+      "label": "Section subheading"
+    },
+	{
+		"type": "header",
+		"content": "Section Content"
+	  },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_autoplay",
+      "label": "Auto play",
+      "default": false
+    },
+    {
+		"type": "text",
+		"id": "content_heading",
+		"label": "Content heading"
+	  },
+    {
+      "type": "richtext",
+      "id": "body_copy",
+      "label": "Body copy"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "header",
+      "content": "Styles"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "label": "Media position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "List item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split Features & Media",
+      "blocks": [
+        { "type": "list_item", "settings": { "text": "List item 1" } },
+        { "type": "list_item", "settings": { "text": "List item 2" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

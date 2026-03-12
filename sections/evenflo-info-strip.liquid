@@ -1,0 +1,96 @@
+{% comment %} Evenflo Hero Banner - 2026, to replace existing Evenflo Image Banners */{%  endcomment %}
+{{ 'evenflo-info-strip.css' | asset_url | stylesheet_tag }}
+{% style %}
+
+	{% if section.settings.background_color != blank %}
+		#info-strip-{{ section.id }} {
+			background-color: {{ section.settings.background_color }};
+		}
+	{% endif %}
+
+	{% if section.settings.text_color != blank %}
+		#info-strip-{{ section.id }} {
+			color: {{ section.settings.text_color }};
+		}
+	{% endif %}
+{% endstyle %}
+
+<div id="info-strip-{{ section.id }}" class="evenflo-info-strip">
+	<div class="container page-width">
+		{% for block in section.blocks %}
+			<div class="info-item">
+				{% if block.settings.info_icon != blank	 %}
+					<img src="{{ block.settings.info_icon | image_url: width: 24 }}" alt="{{ block.settings.info_text }}" width="24" height="24">
+				{% endif %}
+				{% if block.settings.info_url != blank %}
+					<a href="{{ block.settings.info_url }}">{{ block.settings.info_text }}</a>
+				{% else %}
+					<span>{{ block.settings.info_text }}</span>
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% schema %}
+{
+	"name": "Evenflo Info Strip",
+	"tag": "section",
+	"class": "section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "color",
+			"id": "background_color",
+			"label": "Background Color",
+			"default": "#FFFFFF"
+		},
+		{
+			"type": "color",
+			"id": "text_color",
+			"label": "Text Color",
+			"default": "#000000"
+		}
+	],
+	"blocks": [
+		{
+			"type": "info",
+			"name": "Info Item",
+			"limit": 5,
+			"settings": [
+				{
+					"type": "text",
+					"id": "info_text",
+					"label": "Text"
+				},
+				{
+					"type": "image_picker",
+					"id": "info_icon",
+					"label": "Icon"
+				},
+				{
+					"type": "url",
+					"id": "info_url",
+					"label": "URL"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Evenflo Info Strip",
+			"category": "Custom Sections",
+			"settings": {
+				"background_color": "#FFFFFF",
+				"text_color": "#000000"
+			},
+			"blocks": [
+				{ "type": "info", "settings": {} },
+				{ "type": "info", "settings": {} },
+				{ "type": "info", "settings": {} }
+			]
+		}
+	]
+}
+{% endschema %}

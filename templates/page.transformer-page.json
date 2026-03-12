@@ -7,504 +7,492 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
-  "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "evenflo_image_banner_dVAnff": {
-      "type": "evenflo-image-banner",
-      "blocks": {
-        "heading_Vf3b7Q": {
-          "type": "heading",
-          "settings": {
-            "heading": "America's #1 selling travel system* just got an upgrade!",
-            "heading_underline": false,
-            "heading_size": "h1"
-          }
-        },
-        "buttons_HRb7fa": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/the-pivot-family",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_Vf3b7Q",
-        "buttons_HRb7fa"
-      ],
-      "custom_css": [
-        ".button--primary {background: black; color: white;}",
-        "@media screen and (min-width: 1024px) {.banner--medium:not(.banner--adapt) {min-height: 20rem; aspect-ratio: 3; }}"
-      ],
-      "name": "Evenflo Image Banner",
-      "settings": {
-        "image": "shopify://shop_images/Pivot-LP_HeaderIMG-Desktop.jpg",
-        "image_2": "shopify://shop_images/Pivot-LP_HeaderIMG-Mobile.jpg",
-        "background_show": true,
-        "banner_color": "#121212",
-        "store_btn_show": false,
-        "app_store": "",
-        "play_store": "",
-        "button_color": "#000000",
-        "button_text_color": "#ffffff",
-        "button_border_color": "#000000",
-        "mobile_button_color": "#000000",
-        "mobile_button_text_color": "#ffffff",
-        "mobile_button_border_color": "#000000",
-        "button_color_2": "#000000",
-        "button_text_color_2": "#000000",
-        "button_border_color_2": "#ffffff",
-        "mobile_button_color_2": "#000000",
-        "mobile_button_text_color_2": "#ffffff",
-        "mobile_button_border_color_2": "#000000",
-        "desktop_heading_color": "#000000",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "desktop_content_position": "middle-left",
-        "show_text_box": true,
-        "desktop_content_alignment": "left",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "evenflo_image_with_text_xGNWdF": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "heading_xbrcHj": {
-          "type": "heading",
-          "settings": {
-            "heading": "6 Modes, Upgraded Wheels, one flawless Travel System.",
-            "heading_size": "h2",
-            "heading_underline_color": "#2996c5"
-          }
-        },
-        "text_knR3TL": {
-          "type": "text",
-          "settings": {
-            "text": "<p>The refreshed Pivot NXT Travel System features a modern, lightweight design that grows with your family.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_HdLbE4": {
-          "type": "button",
-          "settings": {
-            "button_label": "Shop Pivot NXT",
-            "button_link": "shopify://products/pivot-nxt-travel-system-with-litemax-nxt",
-            "button_color": "#000000",
-            "button_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "heading_xbrcHj",
-        "text_knR3TL",
-        "button_HdLbE4"
-      ],
-      "custom_css": [
-        ".caption-with-letter-spacing {color: #000000; font-weight: 600;}",
-        "h2:after {display: none;}",
-        ".image-with-text__text.rte.body {color: #000000;}",
-        ".banner__buttons a {background: #000000 !important; opacity: 1; outline: none;}"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/TS101412572_LatteTan_Pramette_6297.jpg",
-        "height": "adapt",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 60,
-        "padding_bottom": 56
-      }
-    },
-    "slim_extend_tab_block_BDMdRL": {
-      "type": "slim-extend-tab-block",
-      "blocks": {
-        "slim_tab_block_fBV9Vi": {
-          "type": "slim_tab_block",
-          "settings": {
-            "image": "shopify://shop_images/pivot-nxt-travel-system-with-litemax-nxt__TS101412572Latte_Tan_B.jpg",
-            "tab-text": "",
-            "tab-description": "",
-            "tab-btn-text": "Shop Pivot NXT",
-            "product_list": [
-              "pivot-nxt-travel-system-with-litemax-nxt",
-              "pivot-nxt-travel-system-revolve180-rotating-car-seat"
-            ]
-          }
-        },
-        "slim_tab_block_T6DtPM": {
-          "type": "slim_tab_block",
-          "settings": {
-            "image": "shopify://shop_images/pivot-xpand-nxt-second-seat__SA100412581Canyon_Beige_D.jpg",
-            "tab-text": "",
-            "tab-description": "",
-            "tab-btn-text": "Shop Pivot NXT Expand",
-            "product_list": [
-              "pivot-xpand-modular-single-double-strollers",
-              "pivot-xpand-travel-system-litemax-infant-car-seat",
-              "pivot-xpand-modular-travel-system-with-litemax-infant-car-seat-support",
-              "pivot-xpand-nxt-stroller"
-            ]
-          }
-        }
-      },
-      "block_order": [
-        "slim_tab_block_fBV9Vi",
-        "slim_tab_block_T6DtPM"
-      ],
-      "disabled": true,
-      "name": "Slim & Extend Tabs",
-      "settings": {
-        "title": "Find your Pivot",
-        "description": "Look no further! These innovative strollers and travel systems are designed to meet the needs of your family:"
-      }
-    },
-    "evenflo_product_tab_block_WwMMan": {
-      "type": "evenflo-product-tab-block",
-      "blocks": {
-        "slim_tab_block_tQMpCr": {
-          "type": "slim_tab_block",
-          "settings": {
-            "image": "shopify://shop_images/TS101412572_HERO_1.jpg",
-            "tab-text": "",
-            "tab-btn-text": "Pivot NXT",
-            "tab-description": ""
-          }
-        },
-        "tab_item_hgdYYx": {
-          "type": "tab_item",
-          "settings": {
-            "tab": "1",
-            "image": "shopify://shop_images/TS101412572_HERO_1.jpg",
-            "title": "Latte Tan",
-            "description": "",
-            "button_text": "Shop Now",
-            "button_link": "shopify://products/pivot-nxt-travel-system-with-litemax-nxt"
-          }
-        },
-        "tab_item_dFViYU": {
-          "type": "tab_item",
-          "settings": {
-            "tab": "1",
-            "image": "shopify://shop_images/TS101412574_HERO_1.jpg",
-            "title": "Silverado Grey",
-            "description": "",
-            "button_text": "Shop Now",
-            "button_link": "https://www.evenflo.com/products/pivot-nxt-travel-system-with-litemax-nxt?variant=45604357046428"
-          }
-        },
-        "tab_item_UwRMPL": {
-          "type": "tab_item",
-          "settings": {
-            "tab": "1",
-            "image": "shopify://shop_images/TS101412583TGT_HERO_1.jpg",
-            "title": "Ebony Black",
-            "description": "",
-            "button_text": "Shop Now",
-            "button_link": "https://www.evenflo.com/products/pivot-nxt-travel-system-with-litemax-nxt?variant=45604356980892"
-          }
-        },
-        "tab_item_TXx7Xc": {
-          "type": "tab_item",
-          "settings": {
-            "tab": "1",
-            "image": "shopify://shop_images/TS101412573_HERO_1.jpg",
-            "title": "Lilas Pink",
-            "description": "",
-            "button_text": "Shop Now",
-            "button_link": "https://www.evenflo.com/products/pivot-nxt-travel-system-with-litemax-nxt?variant=45604357013660"
-          }
-        },
-        "slim_tab_block_WBaXMA": {
-          "type": "slim_tab_block",
-          "settings": {
-            "image": "shopify://shop_images/evenflo-omni-ultra-travel-system-with-revolve180-litemax-nxt-rotational-infant-car-seat__TS160112514-Pacific_Green_A.jpg",
-            "tab-text": "",
-            "tab-btn-text": "Pivot NXT with Revolve180",
-            "tab-description": ""
-          }
-        },
-        "tab_item_aEEMJH": {
-          "type": "tab_item",
-          "settings": {
-            "tab": "2",
-            "image": "shopify://shop_images/TS101512514AZ_HERO_1.jpg",
-            "title": "Pacific Green",
-            "description": "",
-            "button_text": "Shop Now",
-            "button_link": "https://www.evenflo.com/products/pivot-nxt-travel-system-revolve180-rotating-car-seat?variant=45604379984028"
-          }
-        },
-        "tab_item_t4baYX": {
-          "type": "tab_item",
-          "settings": {
-            "tab": "2",
-            "image": "shopify://shop_images/TS101512588AZ_HERO_1.jpg",
-            "title": "Driftwood",
-            "description": "",
-            "button_text": "Shop Now",
-            "button_link": "https://www.evenflo.com/products/pivot-nxt-travel-system-revolve180-rotating-car-seat?variant=45604380016796"
-          }
-        },
-        "slim_tab_block_CEtqkN": {
-          "type": "slim_tab_block",
-          "settings": {
-            "image": "shopify://shop_images/pivot-xpand-nxt-second-seat__SA100412581Canyon_Beige_D.jpg",
-            "tab-text": "",
-            "tab-btn-text": "Pivot Xpand NXT",
-            "tab-description": ""
-          }
-        },
-        "tab_item_Twrgxr": {
-          "type": "tab_item",
-          "settings": {
-            "tab": "3",
-            "image": "shopify://shop_images/TS101112579_HERO_1.jpg",
-            "title": "Coal Black",
-            "description": "",
-            "button_text": "Shop Now",
-            "button_link": "https://www.evenflo.com/products/pivot-xpand-nxt-travel-system?variant=45850806091932"
-          }
-        },
-        "tab_item_D89bAY": {
-          "type": "tab_item",
-          "settings": {
-            "tab": "3",
-            "image": "shopify://shop_images/TS101112581_HERO_1.jpg",
-            "title": "Canyon Beige",
-            "description": "",
-            "button_text": "Shop Now",
-            "button_link": "https://www.evenflo.com/products/pivot-xpand-nxt-travel-system?variant=45850806124700"
-          }
-        }
-      },
-      "block_order": [
-        "slim_tab_block_tQMpCr",
-        "tab_item_hgdYYx",
-        "tab_item_dFViYU",
-        "tab_item_UwRMPL",
-        "tab_item_TXx7Xc",
-        "slim_tab_block_WBaXMA",
-        "tab_item_aEEMJH",
-        "tab_item_t4baYX",
-        "slim_tab_block_CEtqkN",
-        "tab_item_Twrgxr",
-        "tab_item_D89bAY"
-      ],
-      "name": "Product Tab Block",
-      "settings": {
-        "title": "Find your Pivot NXT Travel System",
-        "description": "Look no further! These elevated strollers and travel systems are designed to meet the needs of your family:"
-      }
-    },
-    "evenflo_image_banner_y8k7rW": {
-      "type": "evenflo-image-banner",
-      "custom_css": [
-        ".evenflo-image-banner {margin-top: 1rem; aspect-ratio: 0.9756097561;}",
-        "@media screen and (min-width: 750px) {.evenflo-image-banner {aspect-ratio: 4.05369127517; }}"
-      ],
-      "name": "Evenflo Image Banner",
-      "settings": {
-        "image": "shopify://shop_images/mid-image.jpg",
-        "image_2": "shopify://shop_images/mid-image-mobile.jpg",
-        "background_show": true,
-        "banner_color": "#ffffff",
-        "store_btn_show": false,
-        "app_store": "",
-        "play_store": "",
-        "button_color": "#ffffff",
-        "button_text_color": "#000000",
-        "button_border_color": "#ffffff",
-        "mobile_button_color": "#ffffff",
-        "mobile_button_text_color": "#000000",
-        "mobile_button_border_color": "#ffffff",
-        "button_color_2": "#ffffff",
-        "button_text_color_2": "#000000",
-        "button_border_color_2": "#ffffff",
-        "mobile_button_color_2": "#ffffff",
-        "mobile_button_text_color_2": "#000000",
-        "mobile_button_border_color_2": "#ffffff",
-        "desktop_heading_color": "#ffffff",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "evenflo_multicolumn_6bmcCg": {
-      "type": "evenflo-multicolumn",
-      "blocks": {
-        "column_UHrqxt": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/TS101412572_LatteTan_Toddler_FF_Wheel_8445.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Upgraded Wheels",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_VLBKcW": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/TS101412572_LatteTan_Toddler_PF_LeatheretteHandle_8152.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Leatherette Handle",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_a6BT3M": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/TS101412572_LatteTan_Toddle_FF_SnackTray_7686_be4edcd7-300e-4e4e-b1ee-25e496522a52.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "BPA-Free Snack Tray",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_yaVMgV": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/TS101412572_LatteTan_Toddle_FF_Storagebasket.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Storage Basket",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_CCTTRD": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/TS101412572_LatteTan_Toddle_FF_Canopy_7466_6b8982ff-74fc-482e-a30d-97d2d477b042.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Large 3-Panel UPF 50+Canopy",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_pNUAfN": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/TS101412572_LatteTan_Toddle_FF_Peekaboo_7448.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Peek-a-boo Window",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_UHrqxt",
-        "column_VLBKcW",
-        "column_a6BT3M",
-        "column_yaVMgV",
-        "column_CCTTRD",
-        "column_pNUAfN"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "column_style": "classic",
-        "container_size": "full_width",
-        "heading_alignment": "end",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "enable_image_modal": true,
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 32,
-        "padding_bottom": 4
-      }
-    },
-    "evenflo_html_WXqxei": {
-      "type": "evenflo-html",
-      "name": "Evenflo HTML",
-      "settings": {
-        "html": "<p class=\"center\"><small>*Source: Circana, LLC, Retail Tracking Service, Juvenile Products, Strollers by Item, Dollar Sales, Jan 2021 - Dec 2024</small></p>"
-      }
-    },
-    "evenflo_divider_T7jPCW": {
-      "type": "evenflo-divider",
-      "settings": {
-        "divider_spacing": 40,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    }
-  },
-  "order": [
-    "main",
-    "evenflo_image_banner_dVAnff",
-    "evenflo_image_with_text_xGNWdF",
-    "slim_extend_tab_block_BDMdRL",
-    "evenflo_product_tab_block_WwMMan",
-    "evenflo_image_banner_y8k7rW",
-    "evenflo_multicolumn_6bmcCg",
-    "evenflo_html_WXqxei",
-    "evenflo_divider_T7jPCW"
-  ]
-}
+ {
+	"sections": {
+	  "main": {
+		"type": "main-page",
+		"disabled": true,
+		"settings": {
+		  "padding_top": 28,
+		  "padding_bottom": 28
+		}
+	  },
+	  "evenflo_hero_banner_kxJtqM": {
+		"type": "evenflo-hero-banner",
+		"name": "Evenflo Hero Banner",
+		"settings": {
+		  "desktop_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Desktop.jpg",
+		  "mobile_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Mobile.jpg",
+		  "eyebrow_text": "Transformer™ adapts to your journey",
+		  "primary_heading": "<p>Stroller-to-Wagon Innovation</p>",
+		  "short_description": "",
+		  "primary_cta_text": "Shop Collection",
+		  "primary_cta_link": "shopify://collections",
+		  "secondary_cta_text": "View Features",
+		  "secondary_cta_link": "#features",
+		  "content_alignment": "align-left",
+		  "text_color": "text-light",
+		  "desktop_overlay_opacity": 0
+		}
+	  },
+	  "evenflo_info_strip_VgMhwy": {
+		"type": "evenflo-info-strip",
+		"blocks": {
+		  "info_tXCVAW": {
+			"type": "info",
+			"settings": {
+			  "info_text": "SensorySooth Technology",
+			  "info_icon": "shopify://shop_images/1770221712_0.png",
+			  "info_url": ""
+			}
+		  },
+		  "info_iVz7dV": {
+			"type": "info",
+			"settings": {
+			  "info_text": "9 Modes of Use",
+			  "info_url": "shopify://blogs/evenflo-blog"
+			}
+		  },
+		  "info_CGXCMc": {
+			"type": "info",
+			"settings": {
+			  "info_text": "UPF 50+ Canopy",
+			  "info_url": ""
+			}
+		  },
+		  "info_RqwqbD": {
+			"type": "info",
+			"settings": {
+			  "info_text": "Convertible Child Snack Tray",
+			  "info_url": ""
+			}
+		  },
+		  "info_4qeEEP": {
+			"type": "info",
+			"settings": {
+			  "info_text": "All-Terrain Wheels + Suspension",
+			  "info_url": ""
+			}
+		  }
+		},
+		"block_order": [
+		  "info_tXCVAW",
+		  "info_iVz7dV",
+		  "info_CGXCMc",
+		  "info_RqwqbD",
+		  "info_4qeEEP"
+		],
+		"name": "Evenflo Info Strip",
+		"settings": {
+		  "background_color": "#eee6d9",
+		  "text_color": "#0f3c5a"
+		}
+	  },
+	  "evenflo_split_features_3MzizF": {
+		"type": "evenflo-split-features",
+		"blocks": {
+		  "list_item_TVNzxF": {
+			"type": "list_item",
+			"settings": {
+			  "text": "Transforms in Seconds",
+			  "icon": "shopify://shop_images/icon-transforms-in-seconds.png",
+			  "url": ""
+			}
+		  },
+		  "list_item_hxHMmR": {
+			"type": "list_item",
+			"settings": {
+			  "text": "Offers Ultimate Versatility",
+			  "icon": "shopify://shop_images/icon-versatility.png",
+			  "url": "#apples"
+			}
+		  },
+		  "list_item_8mPntw": {
+			"type": "list_item",
+			"settings": {
+			  "text": "Grows with Your Family",
+			  "icon": "shopify://shop_images/icon-grows-with-your-family.png",
+			  "url": ""
+			}
+		  },
+		  "list_item_FnPFkr": {
+			"type": "list_item",
+			"settings": {
+			  "text": "Features that Convert",
+			  "icon": "shopify://shop_images/icon-features-that-convert.png",
+			  "url": ""
+			}
+		  },
+		  "list_item_DGBcFt": {
+			"type": "list_item",
+			"settings": {
+			  "text": "Offers Comfort & Convenience",
+			  "icon": "shopify://shop_images/icon-comfort-and-convenience.png",
+			  "url": ""
+			}
+		  }
+		},
+		"block_order": [
+		  "list_item_TVNzxF",
+		  "list_item_hxHMmR",
+		  "list_item_8mPntw",
+		  "list_item_FnPFkr",
+		  "list_item_DGBcFt"
+		],
+		"name": "Split Features & Media",
+		"settings": {
+		  "section_heading": "Endless Possibilities",
+		  "section_subheading": "",
+		  "image": "shopify://shop_images/TS101412572_LatteTan_Toddle_FF_Storagebasket.jpg",
+		  "content_heading": "",
+		  "body_copy": "",
+		  "cta_text": "",
+		  "cta_url": "",
+		  "media_position": "left"
+		}
+	  },
+	  "evenflo_multicolumn_YVk8BN": {
+		"type": "evenflo-multicolumn",
+		"blocks": {
+		  "column_MkWnhW": {
+			"type": "column",
+			"settings": {
+			  "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_D.jpg",
+			  "enable_video": false,
+			  "video_type": "vimeo",
+			  "vimeo_url": "123456789",
+			  "enable_video_looping": false,
+			  "liquid_content": "",
+			  "title": "Infant Car Seat Mode",
+			  "text": "<p>Ready when baby arrives. Start with infant car seat mode for easy first rides. Features SensorySoothe® technology, which uses lights, sounds and music to engage and calm your baby.</p>",
+			  "link_label": "",
+			  "link": ""
+			}
+		  },
+		  "column_Df6DQ9": {
+			"type": "column",
+			"settings": {
+			  "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_D.jpg",
+			  "enable_video": false,
+			  "video_type": "vimeo",
+			  "vimeo_url": "123456789",
+			  "enable_video_looping": false,
+			  "liquid_content": "",
+			  "title": "Toddler Seat Mode",
+			  "text": "<p>As your child grows, the Transformer™ transitions seamlessly into toddler seat mode for everyday outings.</p>",
+			  "link_label": "",
+			  "link": ""
+			}
+		  },
+		  "column_3CdDD3": {
+			"type": "column",
+			"settings": {
+			  "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_E.jpg",
+			  "enable_video": false,
+			  "video_type": "vimeo",
+			  "vimeo_url": "123456789",
+			  "enable_video_looping": false,
+			  "liquid_content": "",
+			  "title": "Pull Wagon Mode",
+			  "text": "<p>For bigger adventures, switch to pull-wagon mode. Perfect for parks, trails, and family outings that give you more freedom to roam.</p>",
+			  "link_label": "",
+			  "link": ""
+			}
+		  },
+		  "column_a4Qrqg": {
+			"type": "column",
+			"settings": {
+			  "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_C.jpg",
+			  "enable_video": false,
+			  "video_type": "vimeo",
+			  "vimeo_url": "123456789",
+			  "enable_video_looping": false,
+			  "liquid_content": "",
+			  "title": "Wagon with Infant Car Seat Mode",
+			  "text": "<p>When you’ve got more than one in tow, wagon mode with the infant car seat attached keeps everyone close. Baby stays secure while big kids ride along comfortably.</p>",
+			  "link_label": "",
+			  "link": ""
+			}
+		  }
+		},
+		"block_order": [
+		  "column_MkWnhW",
+		  "column_Df6DQ9",
+		  "column_3CdDD3",
+		  "column_a4Qrqg"
+		],
+		"custom_css": [
+		  "h2,h3,p {text-transform: none; color: var(--evenflo-dark-blue, #0f3c5a);}"
+		],
+		"name": "Evenflo Multicolumn",
+		"settings": {
+		  "title": "",
+		  "heading_size": "h1",
+		  "column_style": "classic",
+		  "container_size": "full_width",
+		  "heading_alignment": "start",
+		  "image_width": "full",
+		  "image_ratio": "adapt",
+		  "enable_image_modal": true,
+		  "columns_desktop": 4,
+		  "column_alignment": "left",
+		  "background_style": "none",
+		  "button_label": "",
+		  "button_link": "",
+		  "color_scheme": "",
+		  "columns_mobile": "1",
+		  "swipe_on_mobile": false,
+		  "padding_top": 0,
+		  "padding_bottom": 32
+		}
+	  },
+	  "evenflo_image_banner_kEm4Pn": {
+		"type": "evenflo-image-banner",
+		"blocks": {
+		  "heading_t8h4U4": {
+			"type": "heading",
+			"settings": {
+			  "heading": "One Product. Nine Modes.",
+			  "heading_underline": false,
+			  "heading_size": "h1"
+			}
+		  },
+		  "text_wtbEgR": {
+			"type": "text",
+			"settings": {
+			  "text": "One Product. Nine Modes.",
+			  "text_style": "body"
+			}
+		  },
+		  "buttons_jwmEVD": {
+			"type": "buttons",
+			"disabled": true,
+			"settings": {
+			  "button_label_1": "Take the Quiz",
+			  "button_link_1": "shopify://pages/home-collection-quiz",
+			  "button_style_secondary_1": false,
+			  "button_label_2": "",
+			  "button_link_2": "",
+			  "button_style_secondary_2": false
+			}
+		  }
+		},
+		"block_order": [
+		  "heading_t8h4U4",
+		  "text_wtbEgR",
+		  "buttons_jwmEVD"
+		],
+		"custom_css": [
+		  ".banner__content .banner__text {font-size: 22px;}",
+		  ".banner__content .h1 {text-transform: none;}"
+		],
+		"name": "Evenflo Image Banner",
+		"settings": {
+		  "image": "shopify://shop_images/Transformer_HPH_static_studio_Desktopjpg.jpg",
+		  "image_2": "shopify://shop_images/Transformer_HPH_static_studio_Mobile.jpg",
+		  "background_show": true,
+		  "banner_color": "#eee6d9",
+		  "store_btn_show": false,
+		  "app_store": "",
+		  "play_store": "",
+		  "button_color": "#ffffff",
+		  "button_text_color": "#000000",
+		  "button_border_color": "#ffffff",
+		  "mobile_button_color": "#ffffff",
+		  "mobile_button_text_color": "#000000",
+		  "mobile_button_border_color": "#ffffff",
+		  "button_color_2": "#ffffff",
+		  "button_text_color_2": "#000000",
+		  "button_border_color_2": "#ffffff",
+		  "mobile_button_color_2": "#ffffff",
+		  "mobile_button_text_color_2": "#000000",
+		  "mobile_button_border_color_2": "#0f3c5a",
+		  "desktop_heading_color": "#0f3c5a",
+		  "mobile_heading_color": "#0f3c5a",
+		  "image_overlay_opacity": 0,
+		  "image_height": "large",
+		  "desktop_content_position": "top-center",
+		  "show_text_box": true,
+		  "desktop_content_alignment": "center",
+		  "image_behavior": "none",
+		  "mobile_content_alignment": "center",
+		  "stack_images_on_mobile": false,
+		  "show_text_below": false
+		}
+	  },
+	  "evenflo_mixed_media_grid_fXghtw": {
+		"type": "evenflo-mixed-media-grid",
+		"blocks": {
+		  "product_4LAxCN": {
+			"type": "product",
+			"settings": {
+			  "product": "elara-smart-swing-soothing-nest"
+			}
+		  },
+		  "product_6N3hYr": {
+			"type": "product",
+			"settings": {
+			  "product": "eris-playard-with-bassinet"
+			}
+		  },
+		  "image_xt3jrN": {
+			"type": "image",
+			"settings": {
+			  "image": "shopify://shop_images/cora-fabric.jpg",
+			  "title": "",
+			  "text": "",
+			  "link": ""
+			}
+		  },
+		  "image_aG6Y34": {
+			"type": "image",
+			"settings": {
+			  "image": "shopify://shop_images/buttons-cry-detection.jpg",
+			  "title": "",
+			  "text": "",
+			  "link": ""
+			}
+		  },
+		  "product_dken4N": {
+			"type": "product",
+			"settings": {
+			  "product": "lyra-infant-toddler-rocker"
+			}
+		  },
+		  "product_Ym3aJN": {
+			"type": "product",
+			"settings": {
+			  "product": "rightseat-multistage-high-chair"
+			}
+		  }
+		},
+		"block_order": [
+		  "product_4LAxCN",
+		  "product_6N3hYr",
+		  "image_xt3jrN",
+		  "image_aG6Y34",
+		  "product_dken4N",
+		  "product_Ym3aJN"
+		],
+		"custom_css": [
+		  ".yotpo-sr-bottom-line-right-panelll {display: none !important;}"
+		],
+		"name": "Mixed Media Grid",
+		"settings": {
+		  "heading": "Explore the Evenflo Home Collection",
+		  "heading_size": "h1",
+		  "heading_alignment": "center",
+		  "columns_desktop": "3",
+		  "image_ratio": "adapt",
+		  "show_secondary_image": false,
+		  "show_vendor": false,
+		  "show_rating": false,
+		  "show_swatches": true,
+		  "enable_quick_add": true,
+		  "color_scheme": "",
+		  "padding_top": 36,
+		  "padding_bottom": 36
+		}
+	  },
+	  "evenflo_image_banner_8EenDU": {
+		"type": "evenflo-image-banner",
+		"blocks": {
+		  "heading_DrKJGE": {
+			"type": "heading",
+			"settings": {
+			  "heading": "EVENFLO APP CONVENIENCE",
+			  "heading_underline": false,
+			  "heading_size": "h1"
+			}
+		  },
+		  "text_aVdpkb": {
+			"type": "text",
+			"settings": {
+			  "text": "",
+			  "text_style": "body"
+			}
+		  },
+		  "text_9M3fLz": {
+			"type": "text",
+			"settings": {
+			  "text": "Look how much you can do with our app: Customize sound and lighting scenes so you can call up your baby’s faves. Sync lights to sounds. Switch on a calming amber Parent Light — and more!",
+			  "text_style": "body"
+			}
+		  },
+		  "buttons_6YgBNh": {
+			"type": "buttons",
+			"settings": {
+			  "button_label_1": "LEARN ABOUT THE APP",
+			  "button_link_1": "https://www.evenflo.com/pages/evenflo-app",
+			  "button_style_secondary_1": false,
+			  "button_label_2": "",
+			  "button_link_2": "",
+			  "button_style_secondary_2": false
+			}
+		  }
+		},
+		"block_order": [
+		  "heading_DrKJGE",
+		  "text_aVdpkb",
+		  "text_9M3fLz",
+		  "buttons_6YgBNh"
+		],
+		"custom_css": [
+		  "@media only screen and (min-width: 750px) {.banner--content-align-left.banner--desktop-transparent .banner__box, .banner--content-align-right.banner--desktop-transparent .banner__box, .banner--medium.banner--desktop-transparent .banner__box {width: 60vw; }}"
+		],
+		"settings": {
+		  "image": "shopify://shop_images/Evenfol_App_3-Phone-Mockup_1280x427_2x_2x_9bf6601f-fbe2-4c17-a2b4-fdee3e21e383.jpg",
+		  "image_2": "shopify://shop_images/Evenfol_App_3-Phone-Mockup_1280x427_2x_2x_Mobile.jpg",
+		  "background_show": false,
+		  "banner_color": "#000000",
+		  "store_btn_show": true,
+		  "app_store": "",
+		  "play_store": "",
+		  "button_color": "#e3f2f3",
+		  "button_text_color": "#000000",
+		  "button_border_color": "#ffffff",
+		  "mobile_button_color": "#ffffff",
+		  "mobile_button_text_color": "#000000",
+		  "mobile_button_border_color": "#ffffff",
+		  "button_color_2": "#ffffff",
+		  "button_text_color_2": "#000000",
+		  "button_border_color_2": "#ffffff",
+		  "mobile_button_color_2": "#ffffff",
+		  "mobile_button_text_color_2": "#000000",
+		  "mobile_button_border_color_2": "#ffffff",
+		  "desktop_heading_color": "#000000",
+		  "mobile_heading_color": "#000000",
+		  "image_overlay_opacity": 0,
+		  "image_height": "small",
+		  "desktop_content_position": "middle-left",
+		  "show_text_box": false,
+		  "desktop_content_alignment": "left",
+		  "image_behavior": "none",
+		  "mobile_content_alignment": "center",
+		  "stack_images_on_mobile": true,
+		  "show_text_below": true
+		}
+	  },
+	  "evenflo_divider_T7jPCW": {
+		"type": "evenflo-divider",
+		"settings": {
+		  "divider_spacing": 40,
+		  "divider_border": false,
+		  "css_class": "",
+		  "custom_css": ""
+		}
+	  }
+	},
+	"order": [
+	  "main",
+	  "evenflo_hero_banner_kxJtqM",
+	  "evenflo_info_strip_VgMhwy",
+	  "evenflo_split_features_3MzizF",
+	  "evenflo_multicolumn_YVk8BN",
+	  "evenflo_image_banner_kEm4Pn",
+	  "evenflo_mixed_media_grid_fXghtw",
+	  "evenflo_image_banner_8EenDU",
+	  "evenflo_divider_T7jPCW"
+	]
+  }
+  
