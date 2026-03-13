@@ -144,6 +144,7 @@
         "section_heading": "Endless Possibilities",
         "section_subheading": "",
         "image": "shopify://shop_images/TS101412572_LatteTan_Toddle_FF_Storagebasket.jpg",
+        "video_autoplay": false,
         "content_heading": "",
         "body_copy": "",
         "cta_text": "",
@@ -222,7 +223,9 @@
         "column_a4Qrqg"
       ],
       "custom_css": [
-        "h2,h3,p {text-transform: none; color: var(--evenflo-dark-blue, #0f3c5a);}"
+        "h2,h3,p {text-transform: none; color: var(--evenflo-dark-blue, #0f3c5a);}",
+        "h3 {margin-bottom: 1em;}",
+        ".slider-mobile-gutter {max-width: 1280px; margin: 0 auto;}"
       ],
       "name": "Evenflo Multicolumn",
       "settings": {
@@ -284,7 +287,8 @@
       ],
       "custom_css": [
         ".banner__content .banner__text {font-size: 22px;}",
-        ".banner__content .h1 {text-transform: none;}"
+        ".banner__content .h1 {text-transform: none;}",
+        "@media screen and (max-width: 749px) {.banner--small:not(.banner--mobile-bottom):not(.banner--adapt) .banner__content {min-height: 42rem; }}"
       ],
       "name": "Evenflo Image Banner",
       "settings": {
