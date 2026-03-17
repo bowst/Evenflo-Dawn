@@ -21,7 +21,7 @@
 		<div class="media-container">
 			
 			{% if section.settings.video != blank and section.settings.video.sources.size > 0 %}
-				<video {% if section.settings.video_autoplay %}autoplay muted playsinline loop{% endif %}>
+				<video controls playsinline {% if section.settings.video_autoplay %}autoplay muted loop{% endif %}>
 					{% for source in section.settings.video.sources %}
 						<source src="{{ source.url }}" type="{{ source.mime_type }}">
 					{% endfor %}
