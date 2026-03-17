@@ -19,11 +19,15 @@
 
 	<div class="split-features-content">
 		<div class="media-container">
-			{% if section.settings.image != blank %}
+			
+			{% if section.settings.video != blank and section.settings.video.sources.size > 0 %}
+				<video controls playsinline {% if section.settings.video_autoplay %}autoplay muted loop{% endif %}>
+					{% for source in section.settings.video.sources %}
+						<source src="{{ source.url }}" type="{{ source.mime_type }}">
+					{% endfor %}
+				</video>
+			{% elsif section.settings.image != blank %}
 				<img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt }}" width="1000" height="1000" loading="lazy">
-			{% endif %}
-			{% if section.settings.video != blank %}
-				<video src="{{ section.settings.video }}" {% if section.settings.video_autoplay %}autoplay muted playsinline loop{% endif %}></video>
 			{% endif %}
 		</div>
 
