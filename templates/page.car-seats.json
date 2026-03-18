@@ -9,6 +9,25 @@
  */
 {
   "sections": {
+    "evenflo_hero_banner_xFaF64": {
+      "type": "evenflo-hero-banner",
+      "disabled": true,
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Google_DemandGen_Revolve360-Class_lifestyle_logo_1200x628_1.jpg",
+        "mobile_image": "shopify://shop_images/Google_DemandGen_Revolve360-Class_lifestyle_logo_960x1200_1.jpg",
+        "eyebrow_text": "EXPLORE EVENFLO",
+        "primary_heading": "<p>Car Seats</p>",
+        "short_description": "",
+        "primary_cta_text": "",
+        "primary_cta_link": "",
+        "secondary_cta_text": "",
+        "secondary_cta_link": "",
+        "content_alignment": "align-left",
+        "text_color": "text-light",
+        "desktop_overlay_opacity": 15
+      }
+    },
     "image_banner_ephrqd": {
       "type": "image-banner",
       "blocks": {
@@ -64,40 +83,6 @@
         "show_text_below": false
       }
     },
-    "evenflo_image_banner_A4Pz9a": {
-      "type": "evenflo-image-banner",
-      "blocks": {
-        "heading_h1_fMNkQh": {
-          "type": "heading-h1",
-          "settings": {
-            "heading-h1": "{{ page.title }}",
-            "heading_underline": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_h1_fMNkQh"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "{{ page.metafields.custom.header_image.value }}",
-        "button_color": "#ffffff",
-        "button_text_color": "#000000",
-        "mobile_button_color": "#ffffff",
-        "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#ffffff",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -143,7 +128,8 @@
           "type": "heading",
           "settings": {
             "heading": "Infant Car Seat",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_fXT4rV": {
@@ -161,12 +147,10 @@
       "settings": {
         "image": "shopify://shop_images/infant-car-seats.jpg",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -194,6 +178,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -217,7 +202,8 @@
           "type": "heading",
           "settings": {
             "heading": "CAR SEAT STROLLER COMBO",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_YDqR7g": {
@@ -235,12 +221,10 @@
       "settings": {
         "image": "shopify://shop_images/CAR_SEAT_STROLLER_COMBO.jpg",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -268,6 +252,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
@@ -291,7 +276,8 @@
           "type": "heading",
           "settings": {
             "heading": "Convertible Car Seat",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_7Mbb8Q": {
@@ -306,7 +292,8 @@
           "settings": {
             "button_label": "",
             "button_link": "",
-            "button_style_secondary": false
+            "button_color": "",
+            "button_text_color": ""
           }
         }
       },
@@ -318,12 +305,10 @@
       "settings": {
         "image": "shopify://shop_images/convertible-car-seaats.jpg",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -352,6 +337,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -375,7 +361,8 @@
           "type": "heading",
           "settings": {
             "heading": "Booster Seat",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_TbYjV8": {
@@ -390,7 +377,8 @@
           "settings": {
             "button_label": "",
             "button_link": "",
-            "button_style_secondary": false
+            "button_color": "",
+            "button_text_color": ""
           }
         }
       },
@@ -402,12 +390,10 @@
       "settings": {
         "image": "shopify://shop_images/booster.jpg",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "text_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -435,6 +421,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -458,7 +445,8 @@
           "type": "heading",
           "settings": {
             "heading": "Evenflo Car Seat Accessories",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_underline_color": "#2996c5"
           }
         },
         "text_GUxQAc": {
@@ -473,7 +461,8 @@
           "settings": {
             "button_label": "",
             "button_link": "",
-            "button_style_secondary": false
+            "button_color": "",
+            "button_text_color": ""
           }
         }
       },
@@ -485,12 +474,10 @@
       "settings": {
         "image": "shopify://shop_images/car-seat-accessories.jpg",
         "height": "adapt",
-        "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
@@ -518,6 +505,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -536,8 +524,8 @@
     }
   },
   "order": [
+    "evenflo_hero_banner_xFaF64",
     "image_banner_ephrqd",
-    "evenflo_image_banner_A4Pz9a",
     "main",
     "rich_text_aDEq8A",
     "evenflo_image_text_pWEwVH",
