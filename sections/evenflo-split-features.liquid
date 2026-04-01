@@ -19,7 +19,6 @@
 
 	<div class="split-features-content">
 		<div class="media-container">
-			
 			{% if section.settings.video != blank and section.settings.video.sources.size > 0 %}
 				<video controls playsinline {% if section.settings.video_autoplay %}autoplay muted loop{% endif %}>
 					{% for source in section.settings.video.sources %}
@@ -32,6 +31,9 @@
 		</div>
 
 		<div class="content-container">
+			{% if section.settings.content_heading != blank %}
+				<h3 class="h3">{{ section.settings.content_heading }}</h3>
+			{% endif %}
 			{% if section.settings.body_copy != blank %}
 				<div class="body-copy">{{ section.settings.body_copy }}</div>
 			{% endif %}
@@ -52,7 +54,7 @@
 				</ul>
 			{% endif %}
 			{% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
-				<a href="{{ section.settings.cta_url }}" class="button button-outline">{{ section.settings.cta_text }}</a>
+				<a href="{{ section.settings.cta_url }}" class="button button--outline">{{ section.settings.cta_text }}</a>
 			{% endif %}
 		</div>
   </div>
