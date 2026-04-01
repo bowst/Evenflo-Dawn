@@ -15,61 +15,38 @@
 	  <div class="container page-width">
 		{% if customer.tags contains "swell_vip_bronze" %}
 			<p class="eyebrow-text">{{ section.settings.bronze_eyebrow_text }}</p>
-			<h1 class="primary-heading">{{ section.settings.bronze_discount_amount }}</h1>
-			<p class="short-description">{{ section.settings.bronze_discount_description }}</p>
-			<p class="promo-code">{{ section.settings.bronze_promo_code }}</p>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.bronze_discount_amount }}</em> {{ section.settings.discount_description }}</h1>
+			<div class="promo-details">
+				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
+				<span class="promo-code">{{ section.settings.bronze_promo_code }}</span>
+			</div>
 		{% elsif customer.tags contains "swell_vip_silver" %}
 			<p class="eyebrow-text">{{ section.settings.silver_eyebrow_text }}</p>
-			<h1 class="primary-heading">{{ section.settings.silver_discount_amount }}</h1>
-			<p class="short-description">{{ section.settings.silver_discount_description }}</p>
-			<p class="promo-code">{{ section.settings.silver_promo_code }}</p>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.silver_discount_amount }}</em> {{ section.settings.discount_description }}</h1>
+			<div class="promo-details">
+				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
+				<span class="promo-code">{{ section.settings.silver_promo_code }}</span>
+			</div>
 		{% elsif customer.tags contains "swell_vip_gold" %}
 			<p class="eyebrow-text">{{ section.settings.gold_eyebrow_text }}</p>
-			<h1 class="primary-heading">{{ section.settings.gold_discount_amount }}</h1>
-			<p class="promo-code">{{ section.settings.gold_promo_code }}</p>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.gold_discount_amount }}</em> {{ section.settings.discount_description }}</h1>
+			<div class="promo-details">
+				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
+				<span class="promo-code">{{ section.settings.gold_promo_code }}</span>
+			</div>
 		{% else %}
 			<p class="eyebrow-text">{{ section.settings.eyebrow_text }}</p>
-		{% endif %}
-
-		{% if section.settings.promo_code != blank %}
-			<h1 class="primary-heading">
-				<em class="discount-amount">
-				{% if customer.tags contains "swell_vip_bronze" %}
-					{{ section.settings.bronze_discount_amount }}
-				{% elsif customer.tags contains "swell_vip_silver" %}
-					{{ section.settings.silver_discount_amount }}
-				{% elsif customer.tags contains "swell_vip_gold" %}
-					{{ section.settings.gold_discount_amount }}
-				{% else %}
-					{{ section.settings.discount_amount }}
-				{% endif %}
-				</em>
-				{%  if section.settings.discount_description != blank %}
-					<span class="discount-description">{{ section.settings.discount_description }}</span>
-				{% endif %}
-			</h1>
-		{% endif %}
-
-		<div class="discount-details">
-		
-			{% if section.settings.promo_duration != blank %}
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.discount_amount }}</em> {{ section.settings.discount_description }}</h1>
+			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
-			{% endif %}
-
-			{% if customer.tags contains "swell_vip_bronze" %}
-				<span class="promo-code">{{ section.settings.bronze_promo_code }}</span>
-			{% elsif customer.tags contains "swell_vip_silver" %}
-				<span class="promo-code">{{ section.settings.silver_promo_code }}</span>
-			{% elsif customer.tags contains "swell_vip_gold" %}
-				<span class="promo-code">{{ section.settings.gold_promo_code }}</span>
-			{% else %}
 				<span class="promo-code">{{ section.settings.promo_code }}</span>
-			{% endif %}
-		</div>
-		{%  if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+			</div>
+		{% endif %}
+
+		{% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
 			<a href="{{ section.settings.cta_link }}" class="button button-primary">{{ section.settings.cta_text }}</a>
 		{% endif %}
-	  </div>
+		</div>
 	</div>
 
 	<div class="promo-banner-image">
@@ -152,11 +129,6 @@
 	},
 	{
 		"type": "text",
-		"id": "bronze_discount_description",
-		"label": "Discount description"
-	},
-	{
-		"type": "text",
 		"id": "bronze_promo_code",
 		"label": "Promo code"
 	},
@@ -173,11 +145,6 @@
 		"type": "text",
 		"id": "silver_discount_amount",
 		"label": "Discount amount"
-	},
-	{
-		"type": "text",
-		"id": "silver_discount_description",
-		"label": "Discount description"
 	},
 	{
 		"type": "text",
