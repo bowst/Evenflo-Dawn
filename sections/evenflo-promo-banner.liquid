@@ -13,24 +13,31 @@
 <div id="promo-banner-{{ section.id }}" class="evenflo-promo-banner {{ section.settings.content_alignment }} {{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }}">
 	<div class="promo-banner-content">
 	  <div class="container page-width">
-		{% if customer.tags contains "swell_vip_bronze" or customer.tags contains "swell_vip_silver" %}
-			<p class="eyebrow-text">{{ section.settings.bronze_and_silver_eyebrow_text }}</p>
-			<h1 class="primary-heading">{{ section.settings.bronze_and_silver_discount_amount }}</h1>
-			<p class="short-description">{{ section.settings.bronze_and_silver_discount_description }}</p>
-			<p class="promo-code">{{ section.settings.bronze_and_silver_promo_code }}</p>
+		{% if customer.tags contains "swell_vip_bronze" %}
+			<p class="eyebrow-text">{{ section.settings.bronze_eyebrow_text }}</p>
+			<h1 class="primary-heading">{{ section.settings.bronze_discount_amount }}</h1>
+			<p class="short-description">{{ section.settings.bronze_discount_description }}</p>
+			<p class="promo-code">{{ section.settings.bronze_promo_code }}</p>
+		{% elsif customer.tags contains "swell_vip_silver" %}
+			<p class="eyebrow-text">{{ section.settings.silver_eyebrow_text }}</p>
+			<h1 class="primary-heading">{{ section.settings.silver_discount_amount }}</h1>
+			<p class="short-description">{{ section.settings.silver_discount_description }}</p>
+			<p class="promo-code">{{ section.settings.silver_promo_code }}</p>
 		{% elsif customer.tags contains "swell_vip_gold" %}
 			<p class="eyebrow-text">{{ section.settings.gold_eyebrow_text }}</p>
 			<h1 class="primary-heading">{{ section.settings.gold_discount_amount }}</h1>
 			<p class="promo-code">{{ section.settings.gold_promo_code }}</p>
-		{% else  %}
+		{% else %}
 			<p class="eyebrow-text">{{ section.settings.eyebrow_text }}</p>
 		{% endif %}
 
 		{% if section.settings.promo_code != blank %}
 			<h1 class="primary-heading">
 				<em class="discount-amount">
-				{% if customer.tags contains "swell_vip_bronze" or customer.tags contains "swell_vip_silver" %}
-					{{ section.settings.bronze_and_silver_discount_amount }}
+				{% if customer.tags contains "swell_vip_bronze" %}
+					{{ section.settings.bronze_discount_amount }}
+				{% elsif customer.tags contains "swell_vip_silver" %}
+					{{ section.settings.silver_discount_amount }}
 				{% elsif customer.tags contains "swell_vip_gold" %}
 					{{ section.settings.gold_discount_amount }}
 				{% else %}
@@ -49,12 +56,14 @@
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 			{% endif %}
 
-			{% if customer.tags contains "swell_vip_bronze" or customer.tags contains "swell_vip_silver" %}
-				<span class="promo-code">{{ section.settings.bronze_and_silver_promo_code }}</span>
+			{% if customer.tags contains "swell_vip_bronze" %}
+				<span class="promo-code">{{ section.settings.bronze_promo_code }}</span>
+			{% elsif customer.tags contains "swell_vip_silver" %}
+				<span class="promo-code">{{ section.settings.silver_promo_code }}</span>
 			{% elsif customer.tags contains "swell_vip_gold" %}
 				<span class="promo-code">{{ section.settings.gold_promo_code }}</span>
 			{% else %}
-				<span class="promo-code">{{ section.settings.promo_code }}</span>	
+				<span class="promo-code">{{ section.settings.promo_code }}</span>
 			{% endif %}
 		</div>
 		{%  if section.settings.cta_text != blank and section.settings.cta_link != blank %}
@@ -129,21 +138,50 @@
 	},
 	{
 		"type": "header",
-		"content": "Bronze and Silver Content"
+		"content": "Bronze Content"
 	},
 	{
 		"type": "text",
-		"id": "bronze_and_silver_eyebrow_text",
+		"id": "bronze_eyebrow_text",
 		"label": "Eyebrow text"
 	},
 	{
 		"type": "text",
-		"id": "bronze_and_silver_discount_amount",
+		"id": "bronze_discount_amount",
 		"label": "Discount amount"
 	},
 	{
 		"type": "text",
-		"id": "bronze_and_silver_promo_code",
+		"id": "bronze_discount_description",
+		"label": "Discount description"
+	},
+	{
+		"type": "text",
+		"id": "bronze_promo_code",
+		"label": "Promo code"
+	},
+	{
+		"type": "header",
+		"content": "Silver Content"
+	},
+	{
+		"type": "text",
+		"id": "silver_eyebrow_text",
+		"label": "Eyebrow text"
+	},
+	{
+		"type": "text",
+		"id": "silver_discount_amount",
+		"label": "Discount amount"
+	},
+	{
+		"type": "text",
+		"id": "silver_discount_description",
+		"label": "Discount description"
+	},
+	{
+		"type": "text",
+		"id": "silver_promo_code",
 		"label": "Promo code"
 	},
 	{
