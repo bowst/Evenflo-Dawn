@@ -1,0 +1,192 @@
+.evenflo-promo-banner {
+	position: relative;
+	overflow: hidden;
+}
+
+.evenflo-promo-banner .container {
+	padding: 24px;
+	/* color: var(--color-evenflo-blue-900); */
+	color: var(--color-evenflo-neutral-900);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
+	text-align: center;
+	gap: 24px;
+	max-width: var(--content-max-width);
+}
+
+.evenflo-promo-banner h1,
+.evenflo-promo-banner .h1,
+.evenflo-promo-banner p{
+	color: inherit;
+	text-transform: none;
+	text-align: inherit;
+	margin: 0;
+}
+
+.evenflo-promo-banner .eyebrow-text {
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.evenflo-promo-banner .primary-heading {
+	font-weight: 700;
+	font-size: 42px;
+}
+
+.evenflo-promo-banner .short-description {
+	font-weight: 400;
+	font-size: 22px;
+}
+
+.evenflo-promo-banner .promo-banner-buttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: inherit;
+	align-items: inherit;	
+	gap: 16px;
+}
+
+.evenflo-promo-banner .button {
+	background-color: var(--color-evenflo-blue-900);
+	border-color: var(--color-evenflo-blue-900);
+	outline-color: var(--color-evenflo-blue-900);
+	transition: all 0.3s ease;
+}
+
+.evenflo-promo-banner .button:hover {
+	background-color: var(--color-evenflo-blue-500);
+	border-color: var(--color-evenflo-blue-500);
+}
+
+.evenflo-promo-banner .button::after,
+.evenflo-promo-banner .button:hover::after {
+	box-shadow: none;
+}
+
+.evenflo-promo-banner .text-link {
+	color: var(--color-evenflo-blue-900);
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.evenflo-promo-banner .text-link:hover {
+	text-decoration: underline;
+}
+
+.evenflo-promo-banner .mobile-image {
+	margin: 0 auto;
+	display: block;
+	width: 100%;
+}
+
+.evenflo-promo-banner .desktop-image {
+	display: none;
+}
+
+.evenflo-promo-banner.text-light .container {
+	color: #fff;
+}
+
+.evenflo-promo-banner.text-light .button {
+	background-color: #fff;
+	border-color: #fff;
+	color: var(--color-evenflo-blue-900);
+}
+
+.evenflo-promo-banner.text-light .button:hover {
+	background-color: var(--color-evenflo-blue-500);
+	border-color: var(--color-evenflo-blue-500);
+	color: #fff;
+}
+.evenflo-promo-banner.text-light .button::after {
+	box-shadow: none;
+}
+
+.evenflo-promo-banner.text-light .text-link {
+	color: #fff;
+}
+@media (max-width: 767px){
+	.evenflo-promo-banner.text-light .container {
+		background-color: var(--color-evenflo-blue-900);
+	}
+}
+
+@media (min-width: 768px){
+	.evenflo-promo-banner {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-height: 360px;
+		overflow: hidden;
+	}
+
+	.evenflo-promo-banner .container {
+		width: 100%;
+		max-width: var(--content-max-width);
+		margin: 0 auto;
+		padding: 60px 80px;
+	}
+	.evenflo-promo-banner .promo-banner-content {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		/* aspect-ratio: calc(1440 / 480); */
+		min-height: 400px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+
+	.evenflo-promo-banner .eyebrow-text {
+		font-size: 16px;
+	}
+	
+	.evenflo-promo-banner .primary-heading {
+		font-size: 56px;
+	}
+	
+	.evenflo-promo-banner .short-description {
+		font-size: 48px;
+	}
+
+	.evenflo-promo-banner .mobile-image {
+		display: none;
+	}
+	
+	.evenflo-promo-banner .desktop-image {
+		display: block;
+		position: absolute;
+		aspect-ratio: calc(1440 / 480);
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		z-index: 0;
+	}
+
+	.evenflo-promo-banner.text-light  {
+		background: var(--color-evenflo-blue-900);
+	}
+
+	.evenflo-promo-banner.text-dark {
+		background: #ffffff;
+	}
+
+	.evenflo-promo-banner.align-left .container,
+	.evenflo-promo-banner.align-left .promo-banner-content{
+		text-align: left;
+		align-items: flex-start;
+	}
+
+	.evenflo-promo-banner.align-right .container{
+		text-align: right;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+}
