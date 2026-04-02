@@ -17,8 +17,36 @@
         "padding_bottom": 28
       }
     },
+    "evenflo_promo_banner_MHGn6G": {
+      "type": "evenflo-promo-banner",
+      "name": "Evenflo Promo Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Desktop.jpg",
+        "mobile_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Mobile.jpg",
+        "eyebrow_text": "Optional Eyebrow Text",
+        "discount_amount": "15%",
+        "discount_description": "Description Text",
+        "promo_duration": "promo duration text",
+        "promo_code": "Promo Code Block",
+        "cta_text": "Shop Now",
+        "cta_link": "#apples",
+        "bronze_eyebrow_text": "Bronze Eyebrow",
+        "bronze_discount_amount": "20%",
+        "bronze_promo_code": "Bronze Code",
+        "silver_eyebrow_text": "Silver Eyebrow",
+        "silver_discount_amount": "25%",
+        "silver_promo_code": "Silver Code",
+        "gold_eyebrow_text": "Gold Eyebrow",
+        "gold_discount_amount": "30%",
+        "gold_promo_code": "Gold Code",
+        "content_alignment": "align-left",
+        "text_color": "text-light",
+        "desktop_overlay_opacity": 0
+      }
+    },
     "evenflo_hero_banner_kxJtqM": {
       "type": "evenflo-hero-banner",
+      "disabled": true,
       "name": "Evenflo Hero Banner",
       "settings": {
         "desktop_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Desktop.jpg",
@@ -405,44 +433,17 @@
         "css_class": "",
         "custom_css": ""
       }
-    },
-    "evenflo_promo_banner_MHGn6G": {
-      "type": "evenflo-promo-banner",
-      "name": "Evenflo Promo Banner",
-      "settings": {
-        "desktop_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Desktop.jpg",
-        "mobile_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Mobile.jpg",
-        "eyebrow_text": "Optional Eyebrow Text",
-        "discount_amount": "15%",
-        "discount_description": "Description Text",
-        "promo_duration": "promo duration text",
-        "promo_code": "Promo Code Block",
-        "cta_text": "Shop Now",
-        "cta_link": "#apples",
-        "bronze_eyebrow_text": "Bronze Eyebrow",
-        "bronze_discount_amount": "20%",
-        "bronze_promo_code": "Bronze Code",
-        "silver_eyebrow_text": "Silver Eyebrow",
-        "silver_discount_amount": "25%",
-        "silver_promo_code": "Silver Code",
-        "gold_eyebrow_text": "Gold Eyebrow",
-        "gold_discount_amount": "30%",
-        "gold_promo_code": "Gold Code",
-        "content_alignment": "align-left",
-        "text_color": "text-light",
-        "desktop_overlay_opacity": 0
-      }
     }
   },
   "order": [
     "main",
+    "evenflo_promo_banner_MHGn6G",
     "evenflo_hero_banner_kxJtqM",
     "evenflo_info_strip_VgMhwy",
     "evenflo_split_features_3MzizF",
     "evenflo_multicolumn_YVk8BN",
     "evenflo_image_banner_kEm4Pn",
     "evenflo_mixed_media_grid_fXghtw",
-    "evenflo_divider_T7jPCW",
-    "evenflo_promo_banner_MHGn6G"
+    "evenflo_divider_T7jPCW"
   ]
 }
