@@ -15,28 +15,28 @@
 	  <div class="container page-width">
 		{% if customer.tags contains "swell_vip_bronze" %}
 			<p class="eyebrow-text">{{ section.settings.bronze_eyebrow_text }}</p>
-			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.bronze_discount_amount }}</em> {{ section.settings.discount_description }}</h1>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.bronze_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
 			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 				<span class="promo-code">{{ section.settings.bronze_promo_code }}</span>
 			</div>
 		{% elsif customer.tags contains "swell_vip_silver" %}
 			<p class="eyebrow-text">{{ section.settings.silver_eyebrow_text }}</p>
-			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.silver_discount_amount }}</em> {{ section.settings.discount_description }}</h1>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.silver_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
 			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 				<span class="promo-code">{{ section.settings.silver_promo_code }}</span>
 			</div>
 		{% elsif customer.tags contains "swell_vip_gold" %}
 			<p class="eyebrow-text">{{ section.settings.gold_eyebrow_text }}</p>
-			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.gold_discount_amount }}</em> {{ section.settings.discount_description }}</h1>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.gold_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
 			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 				<span class="promo-code">{{ section.settings.gold_promo_code }}</span>
 			</div>
 		{% else %}
 			<p class="eyebrow-text">{{ section.settings.eyebrow_text }}</p>
-			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.discount_amount }}</em> {{ section.settings.discount_description }}</h1>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
 			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 				<span class="promo-code">{{ section.settings.promo_code }}</span>

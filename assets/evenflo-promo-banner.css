@@ -16,8 +16,7 @@
 	max-width: var(--content-max-width);
 }
 
-.evenflo-promo-banner h1,
-.evenflo-promo-banner .h1,
+.evenflo-promo-banner .primary-heading,
 .evenflo-promo-banner p{
 	color: inherit;
 	text-transform: none;
@@ -33,11 +32,34 @@
 .evenflo-promo-banner .primary-heading {
 	font-weight: 700;
 	font-size: 42px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 16px;
 }
 
-.evenflo-promo-banner .short-description {
+.evenflo-promo-banner .primary-heading .description-text {
 	font-weight: 400;
-	font-size: 22px;
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+
+.evenflo-promo-banner .promo-details {
+	font-weight: 400;
+	font-size: 2rem;
+	text-transform: uppercase;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 16px;
+}
+
+.evenflo-promo-banner .promo-details .promo-code {
+	font-weight: 600;
+	padding: 1rem 1.25rem;
+	background-color: rgb(from var(--color-evenflo-blue-900) r g b / 0.2);
 }
 
 .evenflo-promo-banner .promo-banner-buttons {
@@ -49,20 +71,21 @@
 }
 
 .evenflo-promo-banner .button {
-	background-color: var(--color-evenflo-blue-900);
-	border-color: var(--color-evenflo-blue-900);
-	outline-color: var(--color-evenflo-blue-900);
+	background-color: var(--color-evenflo-neutral-900);
+	border-color: var(--color-evenflo-neutral-900);
+	outline-color: var(--color-evenflo-neutral-900);
+	color: var(--color-evenflo-neutral-50);
 	transition: all 0.3s ease;
 }
 
 .evenflo-promo-banner .button:hover {
-	background-color: var(--color-evenflo-blue-500);
-	border-color: var(--color-evenflo-blue-500);
+	background-color: var(--color-evenflo-neutral-50);
+	color: var(--color-evenflo-neutral-900);
 }
 
 .evenflo-promo-banner .button::after,
 .evenflo-promo-banner .button:hover::after {
-	box-shadow: none;
+	display: none;
 }
 
 .evenflo-promo-banner .text-link {
@@ -86,19 +109,22 @@
 }
 
 .evenflo-promo-banner.text-light .container {
-	color: #fff;
+	color: var(--color-evenflo-neutral-50);
+}
+
+.evenflo-promo-banner.text-light .promo-details .promo-code {
+	background-color: rgb(from var(--color-evenflo-neutral-50) r g b / 0.4);
 }
 
 .evenflo-promo-banner.text-light .button {
-	background-color: #fff;
-	border-color: #fff;
-	color: var(--color-evenflo-blue-900);
+	background-color: var(--color-evenflo-neutral-50);
+	border-color: var(--color-evenflo-neutral-50);
+	color: var(--color-evenflo-neutral-900);
 }
 
 .evenflo-promo-banner.text-light .button:hover {
-	background-color: var(--color-evenflo-blue-500);
-	border-color: var(--color-evenflo-blue-500);
-	color: #fff;
+	background-color: var(--color-evenflo-neutral-900);
+	color: var(--color-evenflo-neutral-50);
 }
 .evenflo-promo-banner.text-light .button::after {
 	box-shadow: none;
@@ -109,7 +135,19 @@
 }
 @media (max-width: 767px){
 	.evenflo-promo-banner.text-light .container {
-		background-color: var(--color-evenflo-blue-900);
+		background-color: var(--color-evenflo-neutral-900);
+		gap: 32px;
+		padding-top: 32px;
+		padding-bottom: 32px;
+	}
+
+	.evenflo-promo-banner .primary-heading,
+	.evenflo-promo-banner .promo-details{
+		flex-direction: column;
+		gap: 8px;
+	}
+	.evenflo-promo-banner .promo-details{
+		flex-direction: column-reverse;
 	}
 }
 
