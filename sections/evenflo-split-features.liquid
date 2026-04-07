@@ -26,7 +26,7 @@
 					{% endfor %}
 				</video>
 			{% elsif section.settings.image != blank %}
-				<img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt }}" width="1000" height="1000" loading="lazy">
+				<img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt }}" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}" loading="lazy">
 			{% endif %}
 		</div>
 

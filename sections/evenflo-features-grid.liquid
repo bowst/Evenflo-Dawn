@@ -1,0 +1,191 @@
+{{ 'evenflo-features-grid.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+{%- liquid
+  assign block_count = section.blocks.size
+  assign media_type = section.settings.media_type
+  assign desktop_carousel_threshold = 4
+  
+  assign show_desktop_carousel = false
+  if block_count > desktop_carousel_threshold
+    assign show_desktop_carousel = true
+  endif
+  
+  assign show_mobile_carousel = false
+  if block_count > 1
+    assign show_mobile_carousel = true
+  endif
+-%}
+
+{% style %}
+  #features-grid-{{ section.id }} .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: var(--color-foreground);
+    opacity: 0.3;
+  }
+  #features-grid-{{ section.id }} .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+{% endstyle %}
+
+<div id="features-grid-{{ section.id }}" class="evenflo-features-grid" data-media-type="{{ media_type }}" data-block-count="{{ block_count }}" data-desktop-threshold="{{ desktop_carousel_threshold }}">
+  <div class="container page-width">
+    {% if section.settings.section_heading != blank %}
+      <h2 class="h1">{{ section.settings.section_heading }}</h2>
+    {% endif %}
+    {% if section.settings.section_subheading != blank %}
+      <p class="subheading">{{ section.settings.section_subheading }}</p>
+    {% endif %}
+
+    <div class="features-grid-content evenflo-features-grid--media-{{ media_type }}{% if show_mobile_carousel %} features-grid--mobile-carousel{% endif %}{% if show_desktop_carousel %} features-grid--desktop-carousel{% endif %}">
+      <div class="swiper features-grid-swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide feature-item" {{ block.shopify_attributes }}>
+              <div class="feature-item-content">
+                {% if block.settings.image_icon != blank %}
+                  <img src="{{ block.settings.image_icon | image_url: width: 600 }}" alt="{{ block.settings.image_icon.alt }}" width="{{ block.settings.image_icon.width }}" height="{{ block.settings.image_icon.height }}" loading="lazy">
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <h3 class="h3">{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.description != blank %}
+                  <p class="body-copy">{{ block.settings.description }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script defer>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.getElementById('features-grid-{{ section.id }}');
+    if (!section) return;
+    
+    const mediaType = section.dataset.mediaType;
+    const blockCount = parseInt(section.dataset.blockCount, 10);
+    const desktopThreshold = parseInt(section.dataset.desktopThreshold, 10);
+    
+    const swiperEl = section.querySelector('.features-grid-swiper');
+    if (!swiperEl) return;
+    
+    let swiper = null;
+    
+    function initSwiper() {
+      const isMobile = window.innerWidth < 768;
+      const shouldEnableCarousel = isMobile ? blockCount > 1 : blockCount > desktopThreshold;
+      
+      if (shouldEnableCarousel) {
+        if (!swiper) {
+          swiper = new Swiper(swiperEl, {
+            slidesPerView: 1.2,
+            spaceBetween: 16,
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+            breakpoints: {
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+                enabled: blockCount > desktopThreshold
+              }
+            }
+          });
+        } else {
+          swiper.enable();
+        }
+      } else if (swiper) {
+        swiper.disable();
+      }
+    }
+    
+    initSwiper();
+    
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(initSwiper, 250);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Evenflo Features Grid",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Headings"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "section_subheading",
+      "label": "Section subheading"
+    },
+    {
+      "type": "header",
+      "content": "Styles"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Media Type",
+      "options": [
+        { "value": "icon", "label": "Icon" },
+        { "value": "image", "label": "Image" }
+      ],
+      "default": "icon"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_icon",
+          "label": "Image / Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Features Grid",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Feature 1" } },
+        { "type": "feature", "settings": { "title": "Feature 2" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
