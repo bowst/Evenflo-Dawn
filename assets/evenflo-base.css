@@ -182,28 +182,27 @@ a {
   background-color: gray;
 }
 
-/* Gradient & color scheme overrides */
-
-.gradient.color-accent-1 {
-  background-attachment: unset;
-}
-
-.gradient .color-light-green {
-  background: #e3f2f3;
-  /* background-attachment: fixed; */
-}
-
-.gradient .color-accent-3 {
-  background: #e3f2f3;
-  /* background-attachment: fixed; */
+/* 2026 UX Refresh - Button Styles 
+This is all to override some weird hover styles */
+.button {
+	transition: all 0.3s ease;
 }
 
 .button--outline::before,
 .button--ghost::before,
+.button--primary.dark::before,
+.button--primary.light::before,
+.button--secondary.dark::before,
+.button--secondary.light::before,
 .button--outline:after,
-.button--ghost:after {
+.button--ghost:after,
+.button--primary.dark::after,
+.button--primary.light::after,
+.button--secondary.dark::after,
+.button--secondary.light::after {
 	display: none;
 }
+
 .button--outline,
 .button--ghost {
 	border: 2px solid var(--color-evenflo-blue-900);
@@ -220,6 +219,49 @@ a {
 	border-color: var(--color-evenflo-blue-900);
 	color: var(--color-evenflo-neutral-50);
 }
+
+.button--secondary.light {
+	background-color: var(--color-evenflo-neutral-50);
+	border-color: var(--color-evenflo-neutral-50);
+	color: var(--color-evenflo-neutral-900);
+	opacity: 1;
+}
+
+.button--secondary.light:hover,
+.button--secondary.light:focus {
+	background-color: var(--color-evenflo-neutral-900);
+	border-color: var(--color-evenflo-neutral-50);
+	color: var(--color-evenflo-neutral-50);
+}
+
+.button--secondary.dark {
+	background-color: var(--color-evenflo-neutral-900);
+	border-color: var(--color-evenflo-neutral-900);
+	color: var(--color-evenflo-neutral-50);
+}
+
+.button--secondary.dark:hover,
+.button--secondary.dark:focus {
+	background-color: var(--color-evenflo-neutral-50);
+	border-color: var(--color-evenflo-neutral-900);
+	color: var(--color-evenflo-neutral-50);
+}
+/* Gradient & color scheme overrides */
+
+.gradient.color-accent-1 {
+  background-attachment: unset;
+}
+
+.gradient .color-light-green {
+  background: #e3f2f3;
+  /* background-attachment: fixed; */
+}
+
+.gradient .color-accent-3 {
+  background: #e3f2f3;
+  /* background-attachment: fixed; */
+}
+
 
 /* ==========================================================================
    5. Header Icons & Search

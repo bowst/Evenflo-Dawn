@@ -1,4 +1,4 @@
-{% comment %} Evenflo Hero Banner - 2026, to replace existing Evenflo Image Banners */{%  endcomment %}
+{% comment %} Evenflo Promo Banner - 2026, to replace existing Evenflo Loyalty Banners {%  endcomment %}
 {{ 'evenflo-promo-banner.css' | asset_url | stylesheet_tag }}
 {% style %}
 
@@ -44,7 +44,7 @@
 		{% endif %}
 
 		{% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
-			<a href="{{ section.settings.cta_link }}" class="button button-primary">{{ section.settings.cta_text }}</a>
+			<a href="{{ section.settings.cta_link }}" class="button button--secondary {{ section.settings.text_color }}">{{ section.settings.cta_text }}</a>
 		{% endif %}
 		</div>
 	</div>
