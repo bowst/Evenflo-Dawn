@@ -1,0 +1,559 @@
+{% layout none %}
+{%- comment -%}
+  Cancel Order Page — /pages/cancel-order
+  ----------------------------------------
+  Setup:
+    1. In Shopify Admin → Online Store → Pages → Add page
+    2. Set the template to "page.cancel-order"
+    3. Ensure cancel_order.signing_secret and cancel_order.app_url shop metafields are set
+
+  Usage:
+    /pages/cancel-order              → lists all cancellable orders
+    /pages/cancel-order?order_id=X   → same page, highlights order X
+{%- endcomment -%}
+
+{%- unless customer -%}
+  <script>
+    window.location.href = '/account/login?return_url=' + encodeURIComponent(window.location.pathname + window.location.search);
+  </script>
+  <noscript>
+    <p>Please <a href="/account/login">log in</a> to manage your orders.</p>
+  </noscript>
+  {%- break -%}
+{%- endunless -%}
+
+{%- comment -%} Generate HMAC token in Liquid (server-side, cannot be forged) {%- endcomment -%}
+{%- assign _ts  = 'now' | date: '%s' -%}
+{%- assign _msg = _ts | append: ':' | append: customer.id -%}
+{%- assign _sig = _msg | hmac_sha256: shop.metafields.cancel_order.signing_secret.value -%}
+{%- assign _page_token = _ts | append: '.' | append: _sig -%}
+
+{%- assign _app_url = shop.metafields.cancel_order.app_url.value -%}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cancel Order — {{ shop.name }}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f6f6f7;
+      color: #202223;
+      min-height: 100vh;
+    }
+
+    .page-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      color: #6d7175;
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+
+    /* States */
+    #state-loading, #state-empty, #state-error { text-align: center; padding: 60px 20px; }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid #e1e3e5;
+      border-top-color: #008060;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .state-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .state-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .state-body { color: #6d7175; font-size: 0.9rem; line-height: 1.5; }
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #008060;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    /* Order cards */
+    .order-card {
+      background: #fff;
+      border: 1px solid #e1e3e5;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+
+    .order-name { font-size: 1.05rem; font-weight: 700; }
+
+    .countdown {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      background: #008060;
+      padding: 3px 10px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .countdown.urgent { background: #d72c0d; }
+
+    .line-items { border-top: 1px solid #f1f2f3; margin-bottom: 16px; }
+
+    .line-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f2f3;
+    }
+
+    .line-item-img {
+      width: 52px; height: 52px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #f1f2f3;
+      flex-shrink: 0;
+    }
+
+    .line-item-img-placeholder {
+      width: 52px; height: 52px;
+      border-radius: 6px;
+      background: #f1f2f3;
+      flex-shrink: 0;
+    }
+
+    .line-item-details { flex: 1; min-width: 0; }
+    .line-item-name { font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .line-item-variant { font-size: 0.8rem; color: #6d7175; margin-top: 2px; }
+    .line-item-qty { font-size: 0.8rem; color: #6d7175; margin-top: 2px; }
+    .line-item-price { font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
+
+    .order-totals { margin-bottom: 18px; }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      padding: 4px 0;
+      color: #6d7175;
+    }
+    .total-row.grand {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #202223;
+      border-top: 1px solid #e1e3e5;
+      margin-top: 8px;
+      padding-top: 10px;
+    }
+
+    .cancel-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #d72c0d;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .cancel-btn:hover:not(:disabled) { background: #bc2200; }
+    .cancel-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .order-success {
+      text-align: center;
+      padding: 24px;
+      color: #008060;
+      font-weight: 600;
+    }
+
+    .order-error {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fff4f4;
+      border: 1px solid #fead9a;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      color: #d72c0d;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px 24px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+    }
+    .modal h2 { font-size: 1.1rem; margin-bottom: 10px; }
+    .modal p { font-size: 0.9rem; color: #6d7175; line-height: 1.5; margin-bottom: 20px; }
+    .modal-actions { display: flex; gap: 10px; }
+    .btn-secondary {
+      flex: 1; padding: 10px;
+      background: #fff;
+      border: 1px solid #c9cccf;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: #f6f6f7; }
+    .btn-danger {
+      flex: 1; padding: 10px;
+      background: #d72c0d;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-danger:hover:not(:disabled) { background: #bc2200; }
+    .btn-danger:disabled { opacity: 0.6; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper"
+    data-shop-domain="{{ shop.permanent_domain }}"
+    data-customer-id="{{ customer.id }}"
+    data-customer-email="{{ customer.email | downcase }}"
+    data-app-url="{{ _app_url }}"
+    data-page-token="{{ _page_token }}"
+    data-highlight-order="{{ request.query | url_decode | split: 'order_id=' | last | split: '&' | first }}"
+  >
+    <h1>Cancel an Order</h1>
+    <p class="page-subtitle">Orders can be cancelled within 90 minutes of placement while unfulfilled.</p>
+
+    <div id="state-loading">
+      <div class="spinner"></div>
+      <p style="color:#6d7175;font-size:0.9rem;">Loading your orders…</p>
+    </div>
+
+    <div id="state-empty" style="display:none;">
+      <div class="state-icon">✅</div>
+      <div class="state-title">No cancellable orders</div>
+      <div class="state-body">You have no orders that can currently be cancelled.<br>Orders can be cancelled within 90 minutes of placement while unfulfilled.</div>
+      <a href="/account/orders" class="back-link">← View all orders</a>
+    </div>
+
+    <div id="state-error" style="display:none;">
+      <div class="state-icon">⚠️</div>
+      <div class="state-title">Something went wrong</div>
+      <div class="state-body" id="global-error-msg">We couldn't load your orders. Please try again.</div>
+      <a href="/account/orders" class="back-link">← View all orders</a>
+    </div>
+
+    <div id="orders-list" style="display:none;"></div>
+  </div>
+
+  <!-- Confirmation modal -->
+  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <h2 id="modal-title">Cancel this order?</h2>
+      <p id="modal-body">
+        Are you sure you want to cancel order <strong id="modal-order-name"></strong>?
+        A full refund will be issued immediately. This action cannot be undone.
+      </p>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="modal-cancel-btn">Keep Order</button>
+        <button class="btn-danger" id="modal-confirm-btn">Yes, Cancel Order</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    const wrapper   = document.querySelector('.page-wrapper');
+    const appUrl    = wrapper.dataset.appUrl;
+    const shopDomain = wrapper.dataset.shopDomain;
+    const customerId = wrapper.dataset.customerId;
+    const customerEmail = wrapper.dataset.customerEmail;
+    const pageToken  = wrapper.dataset.pageToken;
+    const highlightOrderId = wrapper.dataset.highlightOrder;
+
+    const $loading  = document.getElementById('state-loading');
+    const $empty    = document.getElementById('state-empty');
+    const $error    = document.getElementById('state-error');
+    const $errMsg   = document.getElementById('global-error-msg');
+    const $list     = document.getElementById('orders-list');
+
+    // ── Modal state ──────────────────────────────────────────────────────────
+    const modal         = document.getElementById('modal');
+    const modalName     = document.getElementById('modal-order-name');
+    const modalConfirm  = document.getElementById('modal-confirm-btn');
+    const modalCancelBtn = document.getElementById('modal-cancel-btn');
+    let pendingOrderId  = null;
+    let pendingCardId   = null;
+
+    modalCancelBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    function openModal(orderId, orderName, cardId) {
+      pendingOrderId = orderId;
+      pendingCardId  = cardId;
+      modalName.textContent = orderName;
+      modal.classList.add('open');
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      pendingOrderId = null;
+      pendingCardId  = null;
+    }
+
+    modalConfirm.addEventListener('click', async () => {
+      if (!pendingOrderId) return;
+      modalConfirm.disabled = true;
+      modalConfirm.textContent = 'Cancelling…';
+      await confirmCancel(pendingOrderId, pendingCardId);
+      closeModal();
+      modalConfirm.disabled = false;
+      modalConfirm.textContent = 'Yes, Cancel Order';
+    });
+
+    // ── API call helper ──────────────────────────────────────────────────────
+    function apiHeaders() {
+      return {
+        'Content-Type': 'application/json',
+        'X-Shopify-Shop-Domain': shopDomain,
+        'X-Shopify-Customer-Id': customerId,
+        'X-Shopify-Customer-Email': customerEmail,
+        'X-Shopify-Storefront-HMAC': pageToken,
+      };
+    }
+
+    // ── Countdown timers ─────────────────────────────────────────────────────
+    const countdownEls = new Map(); // cardId → { el, createdAt }
+
+    function startCountdowns() {
+      setInterval(() => {
+        const now = Date.now();
+        for (const [, { el, createdAt }] of countdownEls) {
+          const remaining = 90 * 60 * 1000 - (now - createdAt);
+          if (remaining <= 0) {
+            el.textContent = 'Window closed';
+            el.classList.add('urgent');
+            // Disable cancel button for this card
+            const card = el.closest('.order-card');
+            const btn  = card?.querySelector('.cancel-btn');
+            if (btn) { btn.disabled = true; btn.textContent = 'Cancellation period expired'; }
+          } else {
+            const mins = Math.floor(remaining / 60000);
+            const secs = Math.floor((remaining % 60000) / 1000);
+            el.textContent = `${mins}m ${secs}s remaining`;
+            el.classList.toggle('urgent', mins < 10);
+          }
+        }
+      }, 1000);
+    }
+
+    // ── Format currency ──────────────────────────────────────────────────────
+    function formatMoney(amount, currencyCode) {
+      return new Intl.NumberFormat(undefined, {
+        style: 'currency',
+        currency: currencyCode,
+      }).format(parseFloat(amount));
+    }
+
+    // ── Render orders ────────────────────────────────────────────────────────
+    function renderOrders(orders) {
+      if (!orders.length) {
+        $loading.style.display = 'none';
+        $empty.style.display   = 'block';
+        return;
+      }
+
+      $loading.style.display = 'none';
+      $list.style.display    = 'block';
+      $list.innerHTML        = '';
+
+      orders.forEach((order, idx) => {
+        const cardId   = `order-card-${idx}`;
+        const numericId = order.id.split('/').pop();
+        const isHighlighted = highlightOrderId && (
+          numericId === highlightOrderId ||
+          order.id === highlightOrderId
+        );
+
+        const lineItemsHtml = order.lineItems.map(li => {
+          const imgHtml = li.image
+            ? `<img class="line-item-img" src="${escHtml(li.image)}" alt="${escHtml(li.name)}" loading="lazy">`
+            : `<div class="line-item-img-placeholder"></div>`;
+          const variantHtml = li.variantTitle
+            ? `<div class="line-item-variant">${escHtml(li.variantTitle)}</div>` : '';
+          const unitPrice   = formatMoney(li.price, li.currencyCode);
+          const totalItem   = formatMoney(parseFloat(li.price) * li.quantity, li.currencyCode);
+
+          return `
+            <div class="line-item">
+              ${imgHtml}
+              <div class="line-item-details">
+                <div class="line-item-name">${escHtml(li.name)}</div>
+                ${variantHtml}
+                <div class="line-item-qty">Qty: ${li.quantity} × ${unitPrice}</div>
+              </div>
+              <div class="line-item-price">${totalItem}</div>
+            </div>`;
+        }).join('');
+
+        const subtotal  = formatMoney(order.subtotalPrice.amount, order.subtotalPrice.currencyCode);
+        const shipping  = formatMoney(order.totalShippingPrice.amount, order.totalShippingPrice.currencyCode);
+        const total     = formatMoney(order.totalPrice.amount, order.totalPrice.currencyCode);
+
+        const card = document.createElement('div');
+        card.className  = 'order-card';
+        card.id         = cardId;
+        if (isHighlighted) card.style.borderColor = '#008060';
+
+        card.innerHTML = `
+          <div class="order-header">
+            <div class="order-name">${escHtml(order.name)}</div>
+            <div class="countdown" data-card="${cardId}">…</div>
+          </div>
+          <div class="line-items">${lineItemsHtml}</div>
+          <div class="order-totals">
+            <div class="total-row"><span>Subtotal</span><span>${subtotal}</span></div>
+            <div class="total-row"><span>Shipping</span><span>${shipping}</span></div>
+            <div class="total-row grand"><span>Total</span><span>${total}</span></div>
+          </div>
+          <button class="cancel-btn"
+            data-order-id="${escHtml(order.id)}"
+            data-order-name="${escHtml(order.name)}"
+            data-card-id="${cardId}">
+            Cancel This Order
+          </button>
+          <div class="order-error" style="display:none;"></div>
+        `;
+
+        $list.appendChild(card);
+
+        // Register countdown
+        const countdownEl = card.querySelector(`.countdown[data-card="${cardId}"]`);
+        countdownEls.set(cardId, { el: countdownEl, createdAt: new Date(order.createdAt).getTime() });
+
+        // Cancel button listener
+        const btn = card.querySelector('.cancel-btn');
+        btn.addEventListener('click', () => {
+          clearCardError(cardId);
+          openModal(order.id, order.name, cardId);
+        });
+
+        if (isHighlighted) {
+          setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+        }
+      });
+
+      startCountdowns();
+    }
+
+    // ── Cancel confirm ───────────────────────────────────────────────────────
+    async function confirmCancel(orderId, cardId) {
+      const card = document.getElementById(cardId);
+      const btn  = card?.querySelector('.cancel-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Cancelling…'; }
+      clearCardError(cardId);
+
+      try {
+        const res = await fetch(`${appUrl}/api/cancel-order`, {
+          method: 'POST',
+          headers: apiHeaders(),
+          body: JSON.stringify({ intent: 'confirm', orderId }),
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          if (card) {
+            card.innerHTML = `
+              <div class="order-success">
+                ✅ Order cancelled successfully.<br>
+                <span style="font-weight:400;font-size:0.875rem;color:#6d7175">${data.message}</span>
+              </div>`;
+          }
+        } else {
+          const msg = data.error || 'Something went wrong. Please try again or contact support.';
+          showCardError(cardId, msg);
+          if (btn) { btn.disabled = false; btn.textContent = 'Cancel This Order'; }
+        }
+      } catch {
+        showCardError(cardId, 'Something went wrong on our end. Please try again or contact support.');
+        if (btn) { btn.disabled = false; btn.textContent = 'Cancel This Order'; }
+      }
+    }
+
+    function showCardError(cardId, msg) {
+      const card = document.getElementById(cardId);
+      const errEl = card?.querySelector('.order-error');
+      if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
+    }
+
+    function clearCardError(cardId) {
+      const card = document.getElementById(cardId);
+      const errEl = card?.querySelector('.order-error');
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    }
+
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // ── Initial load ─────────────────────────────────────────────────────────
+    (async function init() {
+      try {
+        const res = await fetch(`${appUrl}/api/cancel-order`, {
+          method: 'POST',
+          headers: apiHeaders(),
+          body: JSON.stringify({ intent: 'list' }),
+        });
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+          $loading.style.display = 'none';
+          $errMsg.textContent    = data.error || 'We couldn\'t load your orders. Please refresh and try again.';
+          $error.style.display   = 'block';
+          return;
+        }
+
+        renderOrders(data.orders ?? []);
+      } catch {
+        $loading.style.display = 'none';
+        $errMsg.textContent    = 'Something went wrong on our end. Please refresh and try again.';
+        $error.style.display   = 'block';
+      }
+    })();
+  </script>
+</body>
+</html>
