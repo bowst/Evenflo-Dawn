@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Evenflo Scroll Carousel
+   A reusable, accessible horizontal scroll carousel with snap points and dot pagination.
+   Carousel behavior triggers automatically based on content overflow.
+   Slide sizing is controlled by the section CSS using --slide-width custom property.
+   ========================================================================== */
+
+.evenflo-scroll-carousel {
+  position: relative;
+}
+
+.evenflo-scroll-carousel__track {
+  display: flex;
+  align-items: flex-start;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: var(--carousel-gap, 16px);
+}
+
+.evenflo-scroll-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Focus styles for keyboard navigation */
+.evenflo-scroll-carousel__track:focus {
+  outline: 2px solid var(--color-evenflo-blue-500, #2996c5);
+  outline-offset: 4px;
+}
+
+.evenflo-scroll-carousel__track:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.evenflo-scroll-carousel__track:focus-visible {
+  outline: 2px solid var(--color-evenflo-blue-500, #2996c5);
+  outline-offset: 4px;
+}
+
+.evenflo-scroll-carousel__slide {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: var(--slide-width, 25%);
+}
+
+/* Pagination dots - hidden by default, shown via JS when overflow detected */
+.evenflo-scroll-carousel__pagination {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.evenflo-scroll-carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-evenflo-neutral-600, #666);
+  opacity: 0.3;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.evenflo-scroll-carousel__dot:hover {
+  opacity: 0.6;
+  transform: scale(1.2);
+}
+
+.evenflo-scroll-carousel__dot:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-evenflo-blue-500, #2996c5);
+  opacity: 0.8;
+}
+
+.evenflo-scroll-carousel__dot:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.evenflo-scroll-carousel__dot:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-evenflo-blue-500, #2996c5);
+  opacity: 0.8;
+}
+
+.evenflo-scroll-carousel__dot.active {
+  opacity: 1;
+  background-color: var(--color-evenflo-blue-900, #0F3C5A);
+}
+
+/* Visually hidden class for screen reader announcements */
+.evenflo-scroll-carousel .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* When carousel is inactive (no overflow), disable scroll snap */
+.evenflo-scroll-carousel--inactive .evenflo-scroll-carousel__track {
+  scroll-snap-type: none;
+  overflow-x: visible;
+}
+
+/* Mobile default gap */
+@media screen and (max-width: 767px) {
+  .evenflo-scroll-carousel__track {
+    gap: var(--carousel-gap-mobile, 12px);
+  }
+}

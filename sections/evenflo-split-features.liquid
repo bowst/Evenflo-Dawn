@@ -10,11 +10,15 @@
 
 <div id="split-features-{{ section.id }}" class="evenflo-split-features evenflo-split-features--media-{{ section.settings.media_position }}">
   <div class="container page-width">
-	{% if section.settings.section_heading != blank %}
-		<h2 class="h1">{{ section.settings.section_heading }}</h2>
-	{% endif %}
-	{% if section.settings.section_subheading != blank %}
-		<p class="subheading">{{ section.settings.section_subheading }}</p>
+	{% if section.settings.section_heading != blank or section.settings.section_subheading != blank %}
+	  <div class="section-header">
+		{% if section.settings.section_heading != blank %}
+		  <h2 class="h1">{{ section.settings.section_heading }}</h2>
+		{% endif %}
+		{% if section.settings.section_subheading != blank %}
+		  <p class="subheading">{{ section.settings.section_subheading }}</p>
+		{% endif %}
+	  </div>
 	{% endif %}
 
 	<div class="split-features-content">
@@ -57,6 +61,7 @@
 				<a href="{{ section.settings.cta_url }}" class="button button--outline">{{ section.settings.cta_text }}</a>
 			{% endif %}
 		</div>
+	</div>
   </div>
 </div>
 

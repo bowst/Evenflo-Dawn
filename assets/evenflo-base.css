@@ -118,7 +118,29 @@ h3, .h3 {
 }
 
 /* ==========================================================================
-   3. Header & Sticky Navigation
+   3. Section Headers
+   ========================================================================== */
+
+.section-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.section-header h2,
+.section-header .h1 {
+  text-transform: none;
+  text-align: center;
+  margin: 0 0 12px 0;
+}
+
+.section-header .subheading {
+  text-align: center;
+  margin: 0;
+  color: var(--color-evenflo-neutral-600);
+}
+
+/* ==========================================================================
+   4. Header & Sticky Navigation
    ========================================================================== */
 
 sticky-header .header {
@@ -154,7 +176,7 @@ sticky-header .header {
 }
 
 /* ==========================================================================
-   4. Links, Buttons & Global Styles
+   5. Links, Buttons & Global Styles
    ========================================================================== */
 
 a {
@@ -264,7 +286,7 @@ This is all to override some weird hover styles */
 
 
 /* ==========================================================================
-   5. Header Icons & Search
+   6. Header Icons & Search
    ========================================================================== */
 
 .header__icons {
@@ -356,7 +378,7 @@ predictive-search.search-modal__form {
   }
 
 /* ==========================================================================
-   6. Header Menu & Mega Menu
+   7. Header Menu & Mega Menu
    ========================================================================== */
 
 @media (min-width: 1101px) and (max-width: 1300px) {
@@ -414,7 +436,7 @@ details[open] > .header__menu-item::after {
 }
 
 /* ==========================================================================
-   7. Section-Specific Overrides
+   8. Section-Specific Overrides
    ========================================================================== */
 
 #shopify-section-template--15779855106204__369648eb-eb5b-42a1-b24e-d1fa01d0d60b .gradient,
@@ -436,7 +458,7 @@ img {
 }
 
 /* ==========================================================================
-   8. Product Form & Cart
+   9. Product Form & Cart
    ========================================================================== */
 
 .shopify-payment-button {
@@ -502,7 +524,7 @@ a.button.button--primary--alt:hover::after {
 }
 
 /* ==========================================================================
-   9. Product Specifications (Definition Lists)
+  10. Product Specifications (Definition Lists)
    ========================================================================== */
 
 dl dt {
@@ -522,7 +544,7 @@ predictive-search .predictive-search__loading-state {
 }
 
 /* ==========================================================================
-   10. Responsive Tables
+  11. Responsive Tables
    ========================================================================== */
 
 .responsive-table-container table {
