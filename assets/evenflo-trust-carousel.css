@@ -3,6 +3,12 @@
   padding-bottom: 40px;
 }
 
+.evenflo-trust-carousel .container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 .evenflo-trust-carousel .evenflo-scroll-carousel {
   --carousel-gap: 24px;
   --carousel-gap-mobile: 16px;
@@ -45,19 +51,21 @@
 }
 
 .star--filled {
-  color: #f5a623;
+  color: var(--color-evenflo-teal-500, #00aea9);
 }
 
 .testimonial-product {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 700;
-  color: var(--color-evenflo-blue-900, #0F3C5A);
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
+}
+
+.testimonial-heading {
+  font-style: italic;
+  color: var(--color-evenflo-neutral-700, #444);
+  margin: 0;
 }
 
 .testimonial-body {
-  font-size: 1rem;
+  font-style: italic;
   color: var(--color-evenflo-neutral-700, #444);
   margin: 0 0 16px 0;
 }
@@ -65,7 +73,6 @@
 .testimonial-author {
   display: block;
   font-weight: 700;
-  font-style: italic;
   color: var(--color-evenflo-blue-900, #0F3C5A);
   margin-bottom: 8px;
 }
