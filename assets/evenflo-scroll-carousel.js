@@ -80,8 +80,25 @@ class EvenfloScrollCarousel {
       return 1;
     }
     
-    // Calculate number of pages: ceil of (scrollWidth / viewportWidth)
-    return Math.ceil(scrollWidth / viewportWidth);
+    // Get the first slide width to use as our "page" unit
+    const firstSlide = this.slides[0];
+    if (!firstSlide) return 1;
+    
+    const slideWidth = firstSlide.offsetWidth;
+    const gap = parseInt(getComputedStyle(this.track).gap) || 0;
+    const slideWithGap = slideWidth + gap;
+    
+    // Calculate how many slides fit in viewport
+    const slidesPerView = Math.floor((viewportWidth + gap) / slideWithGap);
+    
+    // If all slides fit, no pagination needed
+    if (slidesPerView >= this.slides.length) {
+      return 1;
+    }
+    
+    // Pages = total slides - slides per view + 1
+    // This gives us the number of distinct "first visible slide" positions
+    return this.slides.length - slidesPerView + 1;
   }
   
   checkOverflow() {
@@ -236,8 +253,16 @@ class EvenfloScrollCarousel {
     const viewportWidth = this.track.clientWidth;
     const maxScroll = this.track.scrollWidth - viewportWidth;
     
-    // Calculate scroll position for this page
-    let scrollLeft = pageIndex * viewportWidth;
+    // Get slide width + gap to calculate scroll position
+    const firstSlide = this.slides[0];
+    if (!firstSlide) return;
+    
+    const slideWidth = firstSlide.offsetWidth;
+    const gap = parseInt(getComputedStyle(this.track).gap) || 0;
+    const slideWithGap = slideWidth + gap;
+    
+    // Each page scrolls by one slide width
+    let scrollLeft = pageIndex * slideWithGap;
     
     // Don't scroll past the maximum
     scrollLeft = Math.min(scrollLeft, maxScroll);
@@ -261,9 +286,17 @@ class EvenfloScrollCarousel {
   updateActiveDot() {
     if (this.dots.length === 0 || !this.isOverflowing) return;
     
-    const viewportWidth = this.track.clientWidth;
     const scrollLeft = this.track.scrollLeft;
+    const viewportWidth = this.track.clientWidth;
     const maxScroll = this.track.scrollWidth - viewportWidth;
+    
+    // Get slide width + gap
+    const firstSlide = this.slides[0];
+    if (!firstSlide) return;
+    
+    const slideWidth = firstSlide.offsetWidth;
+    const gap = parseInt(getComputedStyle(this.track).gap) || 0;
+    const slideWithGap = slideWidth + gap;
     
     // Calculate current page based on scroll position
     let currentPage;
@@ -271,7 +304,7 @@ class EvenfloScrollCarousel {
       // At the end, select last dot
       currentPage = this.totalPages - 1;
     } else {
-      currentPage = Math.round(scrollLeft / viewportWidth);
+      currentPage = Math.round(scrollLeft / slideWithGap);
     }
     
     currentPage = Math.max(0, Math.min(currentPage, this.totalPages - 1));
