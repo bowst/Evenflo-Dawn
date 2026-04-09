@@ -24,13 +24,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 16px;
 }
 
 @media screen and (max-width: 767px) {
   .evenflo-confidence-cta__buttons {
     flex-direction: column;
     width: 100%;
+    gap: 8px;
   }
 
   .evenflo-confidence-cta__buttons .button {
