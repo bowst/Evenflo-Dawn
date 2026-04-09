@@ -1,9 +1,9 @@
 /**
- * Evenflo Scroll Carousel
+ * Evenflo Scroll Carousel - 2026
  * A reusable, accessible horizontal scroll carousel with snap points and dot pagination.
  * Carousel mode triggers automatically based on content overflow.
  * Slide sizing is controlled via CSS - this JS only handles overflow detection and navigation.
- * Pagination is viewport-based: one dot per "page" of content, not per slide.
+ * Pagination is slide-based for accurate navigation.
  */
 
 class EvenfloScrollCarousel {
