@@ -313,8 +313,8 @@
         "buttons_jwmEVD"
       ],
       "custom_css": [
-        ".banner__content .banner__text {font-size: 22px;}",
-        ".banner__content .h1 {text-transform: none;}",
+        ".banner__content .banner__text {font-size: var(--h2-font-size, 22px);}",
+        ".banner__content .h1 {text-transform: none; font-size: var(--h2-font-size, 42px); font-weight: normal;}",
         "@media screen and (max-width: 749px) {.banner--small:not(.banner--mobile-bottom):not(.banner--adapt) .banner__content {min-height: 43rem; }}"
       ],
       "name": "Evenflo Image Banner",
@@ -337,9 +337,9 @@
         "button_border_color_2": "#ffffff",
         "mobile_button_color_2": "#ffffff",
         "mobile_button_text_color_2": "#000000",
-        "mobile_button_border_color_2": "#0f3c5a",
-        "desktop_heading_color": "#0f3c5a",
-        "mobile_heading_color": "#0f3c5a",
+        "mobile_button_border_color_2": "#111111",
+        "desktop_heading_color": "#111111",
+        "mobile_heading_color": "#111111",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "top-center",
