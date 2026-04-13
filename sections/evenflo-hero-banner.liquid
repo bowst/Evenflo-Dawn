@@ -10,15 +10,15 @@
 	{% endif %}
 {% endstyle %}
 
-<div id="hero-banner-{{ section.id }}" class="evenflo-hero-banner {{ section.settings.content_alignment }} text-{{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }}">
+<div id="hero-banner-{{ section.id }}" class="evenflo-hero-banner {{ section.settings.content_alignment }} text-{{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }} new-2026">
 	<div class="hero-banner-content">
 	  <div class="container page-width">
 		{% if section.settings.eyebrow_text != blank %}
-			<p class="eyebrow-text">{{ section.settings.eyebrow_text }}</p>
+			<p class="eyebrow-text h6">{{ section.settings.eyebrow_text }}</p>
 		{% endif %}
 
 		{% if section.settings.primary_heading != blank %}
-			<h1 class="primary-heading">{{ section.settings.primary_heading }}</h1>
+			<h1 class="primary-heading h1">{{ section.settings.primary_heading }}</h1>
 		{% endif %}
 
 		{% if section.settings.short_description != blank %}

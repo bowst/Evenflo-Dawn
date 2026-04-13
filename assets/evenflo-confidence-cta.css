@@ -4,8 +4,8 @@
    ========================================================================== */
 
 .evenflo-confidence-cta {
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .evenflo-confidence-cta__inner {
@@ -28,6 +28,11 @@
 }
 
 @media screen and (max-width: 767px) {
+	.evenflo-confidence-cta {
+		padding-top: 24px;
+		padding-bottom: 24px;
+	}
+
   .evenflo-confidence-cta__buttons {
     flex-direction: column;
     width: 100%;

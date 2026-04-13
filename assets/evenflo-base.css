@@ -29,8 +29,57 @@
 	/* Sizing & Layout */
 	--content-max-width: 1440px;
 	--content-inner-max-width: 1280px;
+	--content-container-gap: 32px;
+
+	--h1-font-size: 3.5rem; /* 42px */
+	--h1-color: var(--color-evenflo-neutral-900);
+	--h2-font-size: 2.6666666667rem; /* 32px */
+	--h2-color: var(--color-evenflo-neutral-900);
+	--h3-font-size: 2.6666666667rem; /* 32px */
+	--h3-color: var(--color-evenflo-blue-900);
+	--h4-font-size: 1.83333rem; /* 22px */
+	--h4-color: var(--color-evenflo-blue-900);
+	--h5-font-size: 1.5rem;	/* 18px */
+	--h5-color: var(--color-evenflo-neutral-900);
+	--h6-font-size: 1.1666666667rem;	/* 14px */
+	--h6-color: var(--color-evenflo-neutral-900);
+
+	--body-font-size: 1.33333rem; /* 16px */
+	--body-font-size-sm: 1.1666666667rem; /* 14px */
+	--body-font-size-lg: 1.33333rem; /* 16px */
+
+	--button-font-size: 1.33333rem; /* 16px */
 }
 
+@media screen and (min-width: 750px) {
+	:root {
+		--h1-font-size: 4rem; /* 48px */
+		--h2-font-size: 3rem; /* 36px */
+		--h3-font-size: 3rem; /* 36px */
+		--h4-font-size: 2.33333rem; /* 28px */
+		--h5-font-size: 1.6666666667rem; /* 20px */
+		--h6-font-size: 1.25rem; /* 15px */
+
+		--body-font-size-lg: 1.5rem; /* 20px */
+
+		--button-font-size: 1.33333rem; /* 18px */
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	:root {
+		--h1-font-size: 4.6rem; /* 56px */
+		--h2-font-size: 4rem; /* 48px */
+		--h3-font-size: 3.5rem; /* 42px */
+		--h4-font-size: 3.16667rem; /* 38px */
+		--h5-font-size: 2rem;	/* 24px */
+		--h6-font-size: 1.33333rem;	/* 16px */
+		
+		--body-font-size-lg: 1.83333rem; /* 22px */
+
+		--button-font-size: 1.6666666667rem; /* 20px */
+	}
+}
 /* ==========================================================================
    2. Base Elements & Typography
    ========================================================================== */
@@ -90,6 +139,56 @@ h3, .h3 {
   }
 }
 
+/* Evenflo 2026 Typography styles */
+.new-2026 .h1 {
+	font-size: var(--h1-font-size);
+	color: var(--h1-color);
+}
+
+.new-2026 .h2-lg {
+	font-size: var(--h2-font-size-lg);
+	color: var(--h2-lg-color);
+}
+
+.new-2026 .h2 {
+	font-size: var(--h2-font-size);
+	color: var(--h2-color);
+}
+
+.new-2026 .h3 {
+	font-size: var(--h3-font-size);
+	color: var(--h3-color);
+}
+
+.new-2026 .h4 {
+	font-size: var(--h4-font-size);
+	color: var(--h4-color);
+}
+
+.new-2026 .h5 {
+	font-size: var(--h5-font-size);
+	color: var(--h5-color);
+}
+
+.new-2026 .h6,
+.new-2026 .eyebrow {
+	font-size: var(--h6-font-size);
+	color: var(--h6-color);
+	text-transform: uppercase;
+}
+
+.new-2026 .body-text-sm {
+	font-size: var(--body-font-size-sm);
+}
+
+.new-2026 .body-text {
+	font-size: var(--body-font-size);
+}
+
+.new-2026 .body-text-lg {
+	font-size: var(--body-font-size-lg);
+}
+
 /* Heading underline decorations */
 
 .heading-underline {
@@ -121,22 +220,25 @@ h3, .h3 {
    3. Section Headers
    ========================================================================== */
 
-.section-header {
+.new-2026 .section-header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: var(--content-container-gap);
 }
 
-.section-header h2,
-.section-header .h1 {
+.new-2026 .section-header h2,
+.new-2026 .section-header .h2 {
   text-transform: none;
   text-align: center;
   margin: 0 0 12px 0;
+  /*font-size: var(--h2-font-size);
+  color: var(--h2-color);*/
 }
 
-.section-header .subheading {
+.new-2026 .section-header .subheading {
   text-align: center;
   margin: 0;
-  color: var(--color-evenflo-neutral-600);
+  /*color: var(--color-evenflo-neutral-600);
+  font-size: var(body-font-size-lg);*/
 }
 
 /* ==========================================================================

@@ -2,15 +2,15 @@
 {{ 'evenflo-scroll-carousel.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-trust-carousel.css' | asset_url | stylesheet_tag }}
 
-<div id="trust-carousel-{{ section.id }}" class="evenflo-trust-carousel" style="{% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}">
+<div id="trust-carousel-{{ section.id }}" class="evenflo-trust-carousel new-2026" style="{% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}">
   <div class="container page-width">
     {% if section.settings.section_heading != blank or section.settings.section_subheading != blank %}
       <div class="section-header">
         {% if section.settings.section_heading != blank %}
-          <h2 class="h1">{{ section.settings.section_heading }}</h2>
+          <h2 class="h3">{{ section.settings.section_heading }}</h2>
         {% endif %}
         {% if section.settings.section_subheading != blank %}
-          <p class="subheading">{{ section.settings.section_subheading }}</p>
+          <p class="body-text-lg subheading">{{ section.settings.section_subheading }}</p>
         {% endif %}
       </div>
     {% endif %}
@@ -25,7 +25,7 @@
             <div class="evenflo-scroll-carousel__slide testimonial-item" {{ block.shopify_attributes }}>
               <div class="testimonial-content">
                 {% if block.settings.product_name != blank %}
-                  <h3 class="h3 testimonial-product">{{ block.settings.product_name }}</h3>
+                  <h3 class="h5 testimonial-product">{{ block.settings.product_name }}</h3>
                 {% endif %}
                 {% if block.settings.testimonial_heading != blank %}
                   <p class="testimonial-heading">{{ block.settings.testimonial_heading }}</p>
