@@ -36,10 +36,10 @@
 
 		<div class="content-container">
 			{% if section.settings.content_heading != blank %}
-				<h3 class="h3">{{ section.settings.content_heading }}</h3>
+				<h3 class="h4">{{ section.settings.content_heading }}</h3>
 			{% endif %}
 			{% if section.settings.body_copy != blank %}
-				<div class="body-copy">{{ section.settings.body_copy }}</div>
+				<div class="body-copy body-text-lg">{{ section.settings.body_copy }}</div>
 			{% endif %}
 			{% if section.blocks.size > 0 %}
 				<ul class="list">
