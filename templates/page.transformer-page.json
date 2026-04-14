@@ -17,33 +17,6 @@
         "padding_bottom": 28
       }
     },
-    "evenflo_promo_banner_MHGn6G": {
-      "type": "evenflo-promo-banner",
-      "name": "Evenflo Promo Banner",
-      "settings": {
-        "desktop_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Desktop.jpg",
-        "mobile_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Mobile.jpg",
-        "eyebrow_text": "Optional Eyebrow Text",
-        "discount_amount": "15%",
-        "discount_description": "Description Text",
-        "promo_duration": "promo duration text",
-        "promo_code": "Promo Code Block",
-        "cta_text": "Shop Now",
-        "cta_link": "#apples",
-        "bronze_eyebrow_text": "Bronze Eyebrow",
-        "bronze_discount_amount": "20%",
-        "bronze_promo_code": "Bronze Code",
-        "silver_eyebrow_text": "Silver Eyebrow",
-        "silver_discount_amount": "25%",
-        "silver_promo_code": "Silver Code",
-        "gold_eyebrow_text": "Gold Eyebrow",
-        "gold_discount_amount": "30%",
-        "gold_promo_code": "Gold Code",
-        "content_alignment": "align-left",
-        "text_color": "text-dark",
-        "desktop_overlay_opacity": 62
-      }
-    },
     "evenflo_hero_banner_kxJtqM": {
       "type": "evenflo-hero-banner",
       "name": "Evenflo Hero Banner",
@@ -52,14 +25,14 @@
         "mobile_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Mobile.jpg",
         "eyebrow_text": "Transformer™ adapts to your journey",
         "primary_heading": "<p>Stroller-to-Wagon Innovation</p>",
-        "short_description": "Short Description",
+        "short_description": "",
         "primary_cta_text": "Shop Collection",
-        "primary_cta_link": "shopify://collections",
-        "secondary_cta_text": "View Features",
+        "primary_cta_link": "https://www.evenflo.com/products/transformer-stroller-to-wagon-with-sensorysoothe?_pos=1&_psq=trans&_ss=e&_v=1.0",
+        "secondary_cta_text": "",
         "secondary_cta_link": "#features",
         "content_alignment": "align-left",
-        "text_color": "dark",
-        "desktop_overlay_opacity": 91
+        "text_color": "text-light",
+        "desktop_overlay_opacity": 0
       }
     },
     "evenflo_info_strip_VgMhwy": {
@@ -68,7 +41,7 @@
         "info_tXCVAW": {
           "type": "info",
           "settings": {
-            "info_text": "SensorySooth Technology",
+            "info_text": "SensorySoothe Technology",
             "info_url": ""
           }
         },
@@ -111,7 +84,7 @@
       "name": "Evenflo Info Strip",
       "settings": {
         "background_color": "#eee6d9",
-        "text_color": "#0f3c5a"
+        "text_color": "#111111"
       }
     },
     "evenflo_split_features_3MzizF": {
@@ -171,10 +144,10 @@
         "section_subheading": "",
         "video": "shopify://files/videos/Transformer_BrandVideo_30s (1).mp4",
         "video_autoplay": false,
-        "content_heading": "Content Heading",
-        "body_copy": "<p>Content body copy</p>",
-        "cta_text": "CTA Text",
-        "cta_url": "#apples",
+        "content_heading": "",
+        "body_copy": "",
+        "cta_text": "",
+        "cta_url": "",
         "media_position": "left"
       }
     },
@@ -184,7 +157,7 @@
         "column_MkWnhW": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_D.jpg",
+            "image": "shopify://shop_images/TS100912547_Studio-Transformer-ICSMode3_A12.jpg",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -199,7 +172,7 @@
         "column_Df6DQ9": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/transformer-stroller-to-wagon-with-sensorysoothe__TS100912547Travertine_D.jpg",
+            "image": "shopify://shop_images/TS100912547_Studio-Transformer-ToddlerModeFF_A25.jpg",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -251,7 +224,6 @@
       "custom_css": [
         "h2,h3,p {text-transform: none; color: var(--evenflo-dark-blue, #0f3c5a);}",
         "h2,h3 {margin-bottom: 1em;}",
-        "h3 {font-size: var(--h4-font-size, 22px);}",
         ".slider-mobile-gutter {max-width: 1280px; margin: 0 auto;}"
       ],
       "name": "Evenflo Multicolumn",
@@ -290,7 +262,7 @@
         "text_wtbEgR": {
           "type": "text",
           "settings": {
-            "text": "One Product. Nine Modes.",
+            "text": "From day one to toddlerhood versatility - without extra parts",
             "text_style": "body"
           }
         },
@@ -313,14 +285,14 @@
         "buttons_jwmEVD"
       ],
       "custom_css": [
-        ".banner__content .banner__text {font-size: var(--body-text-lg, 22px);}",
-        ".banner__content .h1 {text-transform: none; font-size: var(--h2-font-size, 42px); font-weight: normal;}",
+        ".banner__content .banner__text {font-size: 22px;}",
+        ".banner__content .h1 {text-transform: none;}",
         "@media screen and (max-width: 749px) {.banner--small:not(.banner--mobile-bottom):not(.banner--adapt) .banner__content {min-height: 43rem; }}"
       ],
       "name": "Evenflo Image Banner",
       "settings": {
-        "image": "shopify://shop_images/Transformer_HPH_static_studio_Desktopjpg.jpg",
-        "image_2": "shopify://shop_images/Transformer_HPH_static_studio_Mobile.jpg",
+        "image": "shopify://shop_images/Transformer_DTC_Modes-Banner--Desktop.jpg",
+        "image_2": "shopify://shop_images/Modes_mobile.png",
         "background_show": true,
         "banner_color": "#eee6d9",
         "store_btn_show": false,
@@ -337,9 +309,9 @@
         "button_border_color_2": "#ffffff",
         "mobile_button_color_2": "#ffffff",
         "mobile_button_text_color_2": "#000000",
-        "mobile_button_border_color_2": "#111111",
-        "desktop_heading_color": "#111111",
-        "mobile_heading_color": "#111111",
+        "mobile_button_border_color_2": "#0f3c5a",
+        "desktop_heading_color": "#0f3c5a",
+        "mobile_heading_color": "#0f3c5a",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "top-center",
@@ -348,7 +320,7 @@
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
-        "show_text_below": false
+        "show_text_below": true
       }
     },
     "evenflo_mixed_media_grid_fXghtw": {
@@ -411,7 +383,6 @@
       "name": "Mixed Media Grid",
       "settings": {
         "heading": "Explore Collection",
-        "subheading": "",
         "columns_desktop": "3",
         "image_ratio": "adapt",
         "show_secondary_image": false,
@@ -432,231 +403,16 @@
         "css_class": "",
         "custom_css": ""
       }
-    },
-    "evenflo_features_grid_yeX8yT": {
-      "type": "evenflo-features-grid",
-      "blocks": {
-        "feature_n83bKR": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/icon-features-that-convert.png",
-            "title": "Feature 1",
-            "description": "Subcopy"
-          }
-        },
-        "feature_d4fyCx": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/icon-grows-with-your-family.png",
-            "title": "Feature 2",
-            "description": "Subcopy"
-          }
-        },
-        "feature_E8rphV": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/icon-transforms-in-seconds.png",
-            "title": "Feature 3",
-            "description": "Subcopy"
-          }
-        },
-        "feature_D3VNgE": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/icon-versatility.png",
-            "title": "Feature 4",
-            "description": "Subcopy"
-          }
-        },
-        "feature_me8zJA": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/icon-comfort-and-convenience.png",
-            "title": "Feature 5",
-            "description": "Subcopy"
-          }
-        }
-      },
-      "block_order": [
-        "feature_n83bKR",
-        "feature_d4fyCx",
-        "feature_E8rphV",
-        "feature_D3VNgE",
-        "feature_me8zJA"
-      ],
-      "name": "Evenflo Features Grid",
-      "settings": {
-        "section_heading": "Features Grid",
-        "section_subheading": "Media Type: Icons",
-        "media_type": "icon"
-      }
-    },
-    "evenflo_features_grid_abj3Fi": {
-      "type": "evenflo-features-grid",
-      "blocks": {
-        "feature_XBk66n": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/everyfit-3-in-1-convertible-car-seat__CS300212376Olympus_Black_F.jpg",
-            "title": "Feature 1",
-            "description": "Subcopy"
-          }
-        },
-        "feature_paBdTy": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/revolve360-slim-rotational-car-seat-core-plus__CS260112467Salem_Black_E.jpg",
-            "title": "Feature 2",
-            "description": "Subcopy"
-          }
-        },
-        "feature_DfGEiL": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/gold-revolve360-extend__CS360212337-Opal_G_f459511b-8c0a-4dbc-90b8-9afd8bb276a1.jpg",
-            "title": "Feature 3",
-            "description": "Subcopy"
-          }
-        },
-        "feature_tttXwP": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/evenflo-omni-ultra-travel-system-with-revolve180-litemax-nxt-rotational-infant-car-seat__TS160112511-Caviar_Black_A.jpg",
-            "title": "Feature 4",
-            "description": "Subcopy"
-          }
-        },
-        "feature_qn4kYa": {
-          "type": "feature",
-          "settings": {
-            "image_icon": "shopify://shop_images/cttqcsx1d9vguffju2bc.jpg",
-            "title": "Feature 5",
-            "description": "Subcopy"
-          }
-        }
-      },
-      "block_order": [
-        "feature_XBk66n",
-        "feature_paBdTy",
-        "feature_DfGEiL",
-        "feature_tttXwP",
-        "feature_qn4kYa"
-      ],
-      "name": "Evenflo Features Grid",
-      "settings": {
-        "section_heading": "Features Grid",
-        "section_subheading": "Media Type: Images",
-        "media_type": "image"
-      }
-    },
-    "evenflo_trust_carousel_3QELYE": {
-      "type": "evenflo-trust-carousel",
-      "blocks": {
-        "testimonial_FmPzMU": {
-          "type": "testimonial",
-          "settings": {
-            "product_name": "Product Name",
-            "testimonial_heading": "Excellent Car Seat",
-            "testimonial_content": "It fits perfectly in my husband's very slim car with the passanger seat all the way forward! Our little one is two months. He fits comfortably and loves this seat! I love knowing he is safe and can keep using it as he grows!",
-            "testimonial_author": "-Racneal M.",
-            "star_rating": 5
-          }
-        },
-        "testimonial_yC6jy3": {
-          "type": "testimonial",
-          "settings": {
-            "product_name": "Product Name",
-            "testimonial_heading": "Excellent Car Seat",
-            "testimonial_content": "It fits perfectly in my husband's very slim car with the passanger seat all the way forward! Our little one is two months. He fits comfortably and loves this seat! I love knowing he is safe and can keep using it as he grows!",
-            "testimonial_author": "-Racneal M.",
-            "star_rating": 5
-          }
-        },
-        "testimonial_RgVqzx": {
-          "type": "testimonial",
-          "settings": {
-            "product_name": "Product Name",
-            "testimonial_heading": "Excellent Car Seat",
-            "testimonial_content": "It fits perfectly in my husband's very slim car with the passanger seat all the way forward! Our little one is two months. He fits comfortably and loves this seat! I love knowing he is safe and can keep using it as he grows!",
-            "testimonial_author": "-Racneal M.",
-            "star_rating": 5
-          }
-        },
-        "testimonial_iELiUU": {
-          "type": "testimonial",
-          "settings": {
-            "product_name": "Product Name",
-            "testimonial_heading": "",
-            "testimonial_content": "Excellent Car Seat\nIt fits perfectly in my husband's very slim car with the passanger seat all the way forward! Our little one is two months. He fits comfortably and loves this seat! I love knowing he is safe and can keep using it as he grows!",
-            "testimonial_author": "-Racneal M.",
-            "star_rating": 5
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_FmPzMU",
-        "testimonial_yC6jy3",
-        "testimonial_RgVqzx",
-        "testimonial_iELiUU"
-      ],
-      "name": "Trust Carousel",
-      "settings": {
-        "section_heading": "Section Heading",
-        "section_subheading": "Section subcopy",
-        "background_color": "#faf8f6"
-      }
-    },
-    "evenflo_confidence_cta_nt6Akw": {
-      "type": "evenflo-confidence-cta",
-      "blocks": {
-        "button_Cp8F7N": {
-          "type": "button",
-          "settings": {
-            "button_text": "Revolve",
-            "button_url": "#revolve"
-          }
-        },
-        "button_8xqqwe": {
-          "type": "button",
-          "settings": {
-            "button_text": "Shyft",
-            "button_url": "#shyft"
-          }
-        },
-        "button_RJaH4Q": {
-          "type": "button",
-          "settings": {
-            "button_text": "Pivot",
-            "button_url": "#pivot"
-          }
-        }
-      },
-      "block_order": [
-        "button_Cp8F7N",
-        "button_8xqqwe",
-        "button_RJaH4Q"
-      ],
-      "name": "Confidence CTA",
-      "settings": {
-        "heading": "Confidence CTA",
-        "subheading": "",
-        "background_color": "#fcfcfd"
-      }
     }
   },
   "order": [
     "main",
-    "evenflo_promo_banner_MHGn6G",
     "evenflo_hero_banner_kxJtqM",
     "evenflo_info_strip_VgMhwy",
     "evenflo_split_features_3MzizF",
     "evenflo_multicolumn_YVk8BN",
     "evenflo_image_banner_kEm4Pn",
     "evenflo_mixed_media_grid_fXghtw",
-    "evenflo_divider_T7jPCW",
-    "evenflo_features_grid_yeX8yT",
-    "evenflo_features_grid_abj3Fi",
-    "evenflo_trust_carousel_3QELYE",
-    "evenflo_confidence_cta_nt6Akw"
+    "evenflo_divider_T7jPCW"
   ]
 }
