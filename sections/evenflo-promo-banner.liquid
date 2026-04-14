@@ -1,0 +1,216 @@
+{% comment %} Evenflo Promo Banner - 2026, to replace existing Evenflo Loyalty Banners {%  endcomment %}
+{{ 'evenflo-promo-banner.css' | asset_url | stylesheet_tag }}
+{% style %}
+
+	{% if section.settings.desktop_overlay_opacity > 0 %}
+		{% assign overlay_opacity = 100 | minus: section.settings.desktop_overlay_opacity | times: 0.01 %}
+		#promo-banner-{{ section.id }} .desktop-image {
+			opacity: {{ overlay_opacity }};
+		}
+	{% endif %}
+{% endstyle %}
+
+<div id="promo-banner-{{ section.id }}" class="evenflo-promo-banner {{ section.settings.content_alignment }} {{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }} new-2026">
+	<div class="promo-banner-content">
+	  <div class="container page-width">
+		{% if customer.tags contains "swell_vip_bronze" %}
+			<p class="eyebrow-text">{{ section.settings.bronze_eyebrow_text }}</p>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.bronze_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
+			<div class="promo-details">
+				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
+				<span class="promo-code">{{ section.settings.bronze_promo_code }}</span>
+			</div>
+		{% elsif customer.tags contains "swell_vip_silver" %}
+			<p class="eyebrow-text">{{ section.settings.silver_eyebrow_text }}</p>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.silver_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
+			<div class="promo-details">
+				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
+				<span class="promo-code">{{ section.settings.silver_promo_code }}</span>
+			</div>
+		{% elsif customer.tags contains "swell_vip_gold" %}
+			<p class="eyebrow-text">{{ section.settings.gold_eyebrow_text }}</p>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.gold_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
+			<div class="promo-details">
+				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
+				<span class="promo-code">{{ section.settings.gold_promo_code }}</span>
+			</div>
+		{% else %}
+			<p class="eyebrow-text">{{ section.settings.eyebrow_text }}</p>
+			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
+			<div class="promo-details">
+				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
+				<span class="promo-code">{{ section.settings.promo_code }}</span>
+			</div>
+		{% endif %}
+
+		{% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+			<a href="{{ section.settings.cta_link }}" class="button button--secondary {{ section.settings.text_color }}">{{ section.settings.cta_text }}</a>
+		{% endif %}
+		</div>
+	</div>
+
+	<div class="promo-banner-image">
+		<img src="{{ section.settings.desktop_image | image_url: width: 1920 }}" alt="{{ section.settings.primary_heading }}" width="{{ section.settings.desktop_image.width }}" height="{{ section.settings.desktop_image.height }}" class="desktop-image">
+		
+		<img src="{{ section.settings.mobile_image | image_url: width: 768 }}" alt="{{ section.settings.primary_heading }}" width="{{ section.settings.mobile_image.width }}" height="{{ section.settings.mobile_image.height }}" class="mobile-image">
+	</div>
+</div>
+{% schema %}
+{
+	"name": "Evenflo Promo Banner",
+	"tag": "section",
+	"class": "section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+	{
+		"type": "image_picker",
+		"id": "desktop_image",
+		"label": "Desktop image"
+	},
+	{
+		"type": "image_picker",
+		"id": "mobile_image",
+		"label": "Mobile image"
+	},
+	{
+		"type": "header",
+		"content": "Default Content"
+	},
+	{
+		"type": "text",
+		"id": "eyebrow_text",
+		"label": "Eyebrow text"
+	},
+	{
+		"type": "text",
+		"id": "discount_amount",
+		"label": "Discount amount"
+	},
+	{
+		"type": "text",
+		"id": "discount_description",
+		"label": "Discount description"
+	},
+	{
+		"type": "text",
+		"id": "promo_duration",
+		"label": "Promo duration"
+	},
+	{
+		"type": "text",
+		"id": "promo_code",
+		"label": "Promo code"
+	},
+	{
+		"type": "text",
+		"id": "cta_text",
+		"label": "CTA text"
+	},
+	{
+		"type": "url",
+		"id": "cta_link",
+		"label": "CTA link"
+	},
+	{
+		"type": "header",
+		"content": "Bronze Content"
+	},
+	{
+		"type": "text",
+		"id": "bronze_eyebrow_text",
+		"label": "Eyebrow text"
+	},
+	{
+		"type": "text",
+		"id": "bronze_discount_amount",
+		"label": "Discount amount"
+	},
+	{
+		"type": "text",
+		"id": "bronze_promo_code",
+		"label": "Promo code"
+	},
+	{
+		"type": "header",
+		"content": "Silver Content"
+	},
+	{
+		"type": "text",
+		"id": "silver_eyebrow_text",
+		"label": "Eyebrow text"
+	},
+	{
+		"type": "text",
+		"id": "silver_discount_amount",
+		"label": "Discount amount"
+	},
+	{
+		"type": "text",
+		"id": "silver_promo_code",
+		"label": "Promo code"
+	},
+	{
+		"type": "header",
+		"content": "Gold Content"
+	},
+	{
+		"type": "text",
+		"id": "gold_eyebrow_text",
+		"label": "Eyebrow text"
+	},
+	{
+		"type": "text",
+		"id": "gold_discount_amount",
+		"label": "Discount amount"
+	},
+	{
+		"type": "text",
+		"id": "gold_promo_code",
+		"label": "Promo code"
+	},
+	{
+		"type": "header",
+		"content": "Styles"
+	},
+	{
+		"type": "select",
+		"id": "content_alignment",
+		"label": "Content alignment",
+		"options": [
+		{ "value": "align-left", "label": "Left" },
+		{ "value": "align-center", "label": "Center" },
+		{ "value": "align-right", "label": "Right" }
+		],
+		"default": "align-left"
+	},
+	{
+		"type": "select",
+		"id": "text_color",
+		"label": "Text color",
+		"options": [
+		{ "value": "text-light", "label": "Light text" },
+		{ "value": "text-dark", "label": "Dark text" }
+		],
+		"default": "text-dark"
+	},
+	{
+		"type": "range",
+		"id": "desktop_overlay_opacity",
+		"min": 0,
+		"max": 100,
+		"step": 1,
+		"default": 0,
+		"unit": "%",
+		"label": "Desktop image overlay",
+		"info": "Opacity from 0% (light) to 100% (dark)"
+	}
+	],
+	"presets": [
+		{
+			"name": "Evenflo Promo Banner"
+		}
+	]
+}
+{% endschema %}

@@ -8,18 +8,21 @@
   {% endif %}
 {% endstyle %}
 
-<div id="split-features-{{ section.id }}" class="evenflo-split-features evenflo-split-features--media-{{ section.settings.media_position }}">
+<div id="split-features-{{ section.id }}" class="evenflo-split-features evenflo-split-features--media-{{ section.settings.media_position }} new-2026">
   <div class="container page-width">
-	{% if section.settings.section_heading != blank %}
-		<h2 class="h1">{{ section.settings.section_heading }}</h2>
-	{% endif %}
-	{% if section.settings.section_subheading != blank %}
-		<p class="subheading">{{ section.settings.section_subheading }}</p>
+	{% if section.settings.section_heading != blank or section.settings.section_subheading != blank %}
+	  <div class="section-header">
+		{% if section.settings.section_heading != blank %}
+		  <h2 class="h3">{{ section.settings.section_heading }}</h2>
+		{% endif %}
+		{% if section.settings.section_subheading != blank %}
+		  <p class="subheading">{{ section.settings.section_subheading }}</p>
+		{% endif %}
+	  </div>
 	{% endif %}
 
 	<div class="split-features-content">
 		<div class="media-container">
-			
 			{% if section.settings.video != blank and section.settings.video.sources.size > 0 %}
 				<video controls playsinline {% if section.settings.video_autoplay %}autoplay muted loop{% endif %}>
 					{% for source in section.settings.video.sources %}
@@ -27,13 +30,16 @@
 					{% endfor %}
 				</video>
 			{% elsif section.settings.image != blank %}
-				<img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt }}" width="1000" height="1000" loading="lazy">
+				<img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.image.alt }}" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}" loading="lazy">
 			{% endif %}
 		</div>
 
 		<div class="content-container">
+			{% if section.settings.content_heading != blank %}
+				<h3 class="h4">{{ section.settings.content_heading }}</h3>
+			{% endif %}
 			{% if section.settings.body_copy != blank %}
-				<div class="body-copy">{{ section.settings.body_copy }}</div>
+				<div class="body-copy body-text-lg">{{ section.settings.body_copy }}</div>
 			{% endif %}
 			{% if section.blocks.size > 0 %}
 				<ul class="list">
@@ -52,15 +58,16 @@
 				</ul>
 			{% endif %}
 			{% if section.settings.cta_text != blank and section.settings.cta_url != blank %}
-				<a href="{{ section.settings.cta_url }}" class="button button-outline">{{ section.settings.cta_text }}</a>
+				<a href="{{ section.settings.cta_url }}" class="button button--outline">{{ section.settings.cta_text }}</a>
 			{% endif %}
 		</div>
+	</div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Split Features & Media",
+  "name": "Evenflo Split Features",
   "tag": "section",
   "class": "section",
   "disabled_on": {
@@ -161,7 +168,7 @@
   ],
   "presets": [
     {
-      "name": "Split Features & Media",
+      "name": "Evenflo Split Features",
       "blocks": [
         { "type": "list_item", "settings": { "text": "List item 1" } },
         { "type": "list_item", "settings": { "text": "List item 2" } }

@@ -1,20 +1,12 @@
-.evenflo-split-features {
-	color: var(--color-evenflo-dark-blue);
-}
-
 .evenflo-split-features .container {
 	max-width: var(--content-max-width);
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
 	padding: 24px;
 }
 
-.evenflo-split-features h2,
-.evenflo-split-features .h2,
-.evenflo-split-features .h1,
 .evenflo-split-features p,
-.evenflo-split-features a {
+.evenflo-split-features a:not(.button) {
 	color: inherit;
 }
 
@@ -44,10 +36,18 @@
 	text-align: center;
 }
 
-.evenflo-split-features h2,
-.evenflo-split-features .subheading {
-	text-transform: none;
-	text-align: center;
+.evenflo-split-features .content-container p {
+	margin: 0;
+}
+.evenflo-split-features .content-container .body-copy {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.evenflo-split-features h3 {
+	text-align: left;
+	font-size: 3.16rem;
 	margin: 0;
 }
 

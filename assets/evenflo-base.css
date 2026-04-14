@@ -1,12 +1,94 @@
-:root {
-	--color-evenflo-dark-blue: #0F3C5A;
-	--color-evenflo-brand-blue: #2996c5;
+/* ==========================================================================
+   1. Design Tokens
+   ========================================================================== */
+
+   :root {
+	/* Colors */
+	--color-evenflo-blue-900: #0F3C5A;
+	--color-evenflo-blue-800: #175b89;
+	--color-evenflo-blue-700: #1f6fa0;
+	--color-evenflo-blue-500: #2996c5;
+	--color-evenflo-teal-900: #005957;
+	--color-evenflo-teal-800: #006f6b;
+	--color-evenflo-teal-700: #007e79;
+	--color-evenflo-teal-500: #00aea9;
+	--color-evenflo-neutral-900: #111111;
+	--color-evenflo-neutral-800: #222222;
+	--color-evenflo-neutral-700: #444444;
+	--color-evenflo-neutral-600: #666666;
+	--color-evenflo-neutral-100: #f2f4f7;
+	--color-evenflo-neutral-50: #fcfcfd;
+	--color-evenfo-soft-sand: #faf8f6;
+	--color-evenflo-aqua-mist: #e3f2f3;
+
+	/* Sizing & Layout */
 	--content-max-width: 1440px;
 	--content-inner-max-width: 1280px;
+	--content-container-gap: 32px;
+
+	--h1-font-size: 3.5rem; /* 42px */
+	--h1-color: var(--color-evenflo-neutral-900);
+	--h2-font-size: 2.6666666667rem; /* 32px */
+	--h2-color: var(--color-evenflo-neutral-900);
+	--h3-font-size: 2.6666666667rem; /* 32px */
+	--h3-color: var(--color-evenflo-blue-900);
+	--h4-font-size: 1.83333rem; /* 22px */
+	--h4-color: var(--color-evenflo-blue-900);
+	--h5-font-size: 1.5rem;	/* 18px */
+	--h5-color: var(--color-evenflo-neutral-900);
+	--h6-font-size: 1.1666666667rem;	/* 14px */
+	--h6-color: var(--color-evenflo-neutral-900);
+
+	--body-font-size: 1.33333rem; /* 16px */
+	--body-font-size-sm: 1.1666666667rem; /* 14px */
+	--body-font-size-lg: 1.33333rem; /* 16px */
+
+	--button-font-size: 1.33333rem; /* 16px */
 }
+
+.new-2026 {
+/* Color Assignments */
+	--color-evenflo-headings: var(--color-evenflo-neutral-900);
+	--color-evenflo-subheadings: var(--color-evenflo-blue-900);
+	--color-evenflo-text: var(--color-evenflo-neutral-800);
+}
+
+@media screen and (min-width: 750px) {
+	:root {
+		--h1-font-size: 4rem; /* 48px */
+		--h2-font-size: 3rem; /* 36px */
+		--h3-font-size: 3rem; /* 36px */
+		--h4-font-size: 2.33333rem; /* 28px */
+		--h5-font-size: 1.6666666667rem; /* 20px */
+		--h6-font-size: 1.25rem; /* 15px */
+
+		--body-font-size-lg: 1.5rem; /* 20px */
+
+		--button-font-size: 1.33333rem; /* 18px */
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	:root {
+		--h1-font-size: 4.6rem; /* 56px */
+		--h2-font-size: 4rem; /* 48px */
+		--h3-font-size: 3.5rem; /* 42px */
+		--h4-font-size: 3.16667rem; /* 38px */
+		--h5-font-size: 2rem;	/* 24px */
+		--h6-font-size: 1.33333rem;	/* 16px */
+		
+		--body-font-size-lg: 1.83333rem; /* 22px */
+
+		--button-font-size: 1.6666666667rem; /* 20px */
+	}
+}
+/* ==========================================================================
+   2. Base Elements & Typography
+   ========================================================================== */
 
 body {
   line-height: calc(1 + 0.4 / var(--font-body-scale));
+  color: var(--color-evenflo-text);
 }
 
 h1,
@@ -30,9 +112,28 @@ h5,
 .h4,
 .h5 {
   font-weight: 700;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   line-height: calc(1 / max(1, var(--font-heading-scale)));
 }
+
+h1,
+.h1,
+h2,
+.h2{
+	color: var(--color-evenflo-headings);
+}
+
+h3,
+.h3,
+h4,
+.h4 {
+	color: var(--color-evenflo-subheadings);
+}
+
+h3, .h3 {
+	font-size: 3.17rem;
+}
+
 @media only screen and (min-width: 750px) {
   h1,
   .h1 {
@@ -40,9 +141,62 @@ h5,
   }
 }
 
+/* Evenflo 2026 Typography styles */
+.new-2026 .h1 {
+	font-size: var(--h1-font-size);
+	color: var(--h1-color);
+}
+
+.new-2026 .h2-lg {
+	font-size: var(--h2-font-size-lg);
+	color: var(--h2-lg-color);
+}
+
+.new-2026 .h2 {
+	font-size: var(--h2-font-size);
+	color: var(--h2-color);
+}
+
+.new-2026 .h3 {
+	font-size: var(--h3-font-size);
+	color: var(--h3-color);
+}
+
+.new-2026 .h4 {
+	font-size: var(--h4-font-size);
+	color: var(--h4-color);
+}
+
+.new-2026 .h5 {
+	font-size: var(--h5-font-size);
+	color: var(--h5-color);
+}
+
+.new-2026 .h6,
+.new-2026 .eyebrow {
+	font-size: var(--h6-font-size);
+	color: var(--h6-color);
+	text-transform: uppercase;
+}
+
+.new-2026 .body-text-sm {
+	font-size: var(--body-font-size-sm);
+}
+
+.new-2026 .body-text {
+	font-size: var(--body-font-size);
+}
+
+.new-2026 .body-text-lg {
+	font-size: var(--body-font-size-lg);
+}
+
+/* Heading underline decorations */
+
 .heading-underline {
   position: relative;
 }
+
 .heading-underline::after,
 .heading-underline-center::after {
   content: '';
@@ -51,19 +205,52 @@ h5,
   left: 0;
   width: 50px;
   height: 4px;
-  background-color: #2996c5;
+  background-color: var(--color-evenflo-blue-500);
 }
+
 .heading-underline-center {
   text-align: center;
   position: relative;
 }
+
 .heading-underline-center::after {
   left: 50%;
   transform: translateX(-50%);
 }
+
+/* ==========================================================================
+   3. Section Headers
+   ========================================================================== */
+
+.new-2026 .section-header {
+  text-align: center;
+  margin-bottom: var(--content-container-gap);
+}
+
+.new-2026 .section-header h2,
+.new-2026 .section-header .h2 {
+  text-transform: none;
+  text-align: center;
+  margin: 0 0 12px 0;
+  /*font-size: var(--h2-font-size);
+  color: var(--h2-color);*/
+}
+
+.new-2026 .section-header .subheading {
+  text-align: center;
+  margin: 0;
+  /*color: var(--color-evenflo-neutral-600);
+  font-size: var(body-font-size-lg);*/
+}
+
+/* ==========================================================================
+   4. Header & Sticky Navigation
+   ========================================================================== */
+
 sticky-header .header {
 	padding: 12px 1.5em 0;
 }
+
 @media screen and (min-width: 750px) {
     .header.page-width, .utility-bar__grid.page-width  {
 		padding-left: 5rem;
@@ -82,6 +269,7 @@ sticky-header .header {
         padding-bottom: 12px;
     }
 }
+
 .header__menu-item {
   font-weight: 700;
   font-size: 1.6rem;
@@ -90,19 +278,26 @@ sticky-header .header {
 .header__menu-item span {
   text-decoration: none !important;
 }
-/* Evenflo */
+
+/* ==========================================================================
+   5. Links, Buttons & Global Styles
+   ========================================================================== */
+
 a {
-  color: #2996c5;
+  color: var(--color-evenflo-blue-500);
 }
+
 .strong {
   font-weight: bold;
 }
+
 .button,
 .shopify-challenge__button,
 .customer button {
   font-size: 20px;
   text-transform: uppercase;
 }
+
 .button:disabled,
 .button[aria-disabled='true'],
 .button.disabled,
@@ -112,17 +307,91 @@ a {
 .quantity__button.disabled {
   background-color: gray;
 }
+
+/* 2026 UX Refresh - Button Styles 
+This is all to override some weird hover styles */
+.button {
+	transition: all 0.3s ease;
+}
+
+.button--outline::before,
+.button--ghost::before,
+.button--primary.dark::before,
+.button--primary.light::before,
+.button--secondary.dark::before,
+.button--secondary.light::before,
+.button--outline:after,
+.button--ghost:after,
+.button--primary.dark::after,
+.button--primary.light::after,
+.button--secondary.dark::after,
+.button--secondary.light::after {
+	display: none;
+}
+
+.button--outline,
+.button--ghost {
+	border: 2px solid var(--color-evenflo-neutral-900);
+	background-color: var(--color-evenflo-neutral-50);
+	color: var(--color-evenflo-blue-900);
+	transition: all 0.3s ease;
+}
+
+.button--outline:hover,
+.button--ghost:hover,
+.button--outline:focus,
+.button--ghost:focus {
+	background-color: var(--color-evenflo-neutral-900);
+	border-color: var(--color-evenflo-neutral-900);
+	color: var(--color-evenflo-neutral-50);
+}
+
+.button--secondary.light {
+	background-color: var(--color-evenflo-neutral-50);
+	border-color: var(--color-evenflo-neutral-50);
+	color: var(--color-evenflo-neutral-900);
+	opacity: 1;
+}
+
+.button--secondary.light:hover,
+.button--secondary.light:focus {
+	background-color: var(--color-evenflo-neutral-900);
+	border-color: var(--color-evenflo-neutral-50);
+	color: var(--color-evenflo-neutral-50);
+}
+
+.button--secondary.dark {
+	background-color: var(--color-evenflo-neutral-900);
+	border-color: var(--color-evenflo-neutral-900);
+	color: var(--color-evenflo-neutral-50);
+}
+
+.button--secondary.dark:hover,
+.button--secondary.dark:focus {
+	background-color: var(--color-evenflo-neutral-50);
+	border-color: var(--color-evenflo-neutral-900);
+	color: var(--color-evenflo-neutral-50);
+}
+/* Gradient & color scheme overrides */
+
 .gradient.color-accent-1 {
   background-attachment: unset;
 }
+
 .gradient .color-light-green {
   background: #e3f2f3;
   /* background-attachment: fixed; */
 }
+
 .gradient .color-accent-3 {
   background: #e3f2f3;
   /* background-attachment: fixed; */
 }
+
+
+/* ==========================================================================
+   6. Header Icons & Search
+   ========================================================================== */
 
 .header__icons {
   /* width: 100%; */
@@ -130,41 +399,51 @@ a {
   justify-self: none;
   justify-content: flex-end;
 }
+
 predictive-search.search-modal__form {
   width: 60%;
 }
+
 .search-modal__form[data-upgraded='true'] {
   padding: 0.5rem 0;
 }
+
 .search-modal__form[data-upgraded='true'] input {
   padding: 1rem 1.5rem;
   padding-right: 8.5rem;
   height: 4rem;
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground), var(--popup-border-opacity));
 }
+
 .search-modal__form[data-upgraded='true'] input:focus,
 .search-modal__form[data-upgraded='true'] input:hover {
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground), var(--popup-border-opacity));
 }
+
 .search-modal__form[data-upgraded='true'] .field__label {
   top: calc(0.75rem + var(--inputs-border-width));
 }
+
 .search-modal__form[data-upgraded='true'] .field__input:focus ~ .field__label {
   top: calc(var(--inputs-border-width) + 0.125rem);
 }
+
 .search-modal__form[data-upgraded='true'] .field__button {
   height: 4rem;
 }
+
 @media screen and (max-width: 750px) {
 	.search-modal__form[data-upgraded='true'] {
 		padding: 0 1.5rem 1rem;
 	}
 }
+
 @media screen and (min-width: 751px) and (max-width: 1100px) {
 	.search-modal__form[data-upgraded='true'] {
 		padding: 0 5rem 1rem;
 	}
 }
+
 @media (max-width: 1100px) {
   .shopify-section.section-header {
     margin-bottom: 54px !important;
@@ -202,11 +481,16 @@ predictive-search.search-modal__form {
     z-index: 1;
   }
 
+/* ==========================================================================
+   7. Header Menu & Mega Menu
+   ========================================================================== */
+
 @media (min-width: 1101px) and (max-width: 1300px) {
   .header--middle-left {
     grid-template-columns: auto 1fr 1fr;
   }
 }
+
 @media (min-width: 1101px) {
   predictive-search[open] .predictive-search {
     width: 100vw;
@@ -217,18 +501,22 @@ predictive-search.search-modal__form {
     border-top: 1px solid rgba(var(--color-foreground), var(--popup-border-opacity)) !important;
   }
 }
+
 .header__menu-item {
   padding-left: 2rem;
   font-weight: 700;
   font-size: 1.6rem;
 }
+
 .header__menu-item:hover span,
 .header__active-menu-item {
   text-decoration: none;
 }
+
 details[open] > .header__menu-item {
   text-decoration: none;
 }
+
 details[open] > .header__menu-item::after {
   content: '';
   display: block;
@@ -242,12 +530,19 @@ details[open] > .header__menu-item::after {
 .header .mega-menu__link {
   padding-top: 0;
 }
+
 .header .mega-menu__link--level-2 {
   font-weight: 700;
 }
+
 .header .mega-menu__link--level-2:not(:only-child) {
   margin-bottom: 0;
 }
+
+/* ==========================================================================
+   8. Section-Specific Overrides
+   ========================================================================== */
+
 #shopify-section-template--15779855106204__369648eb-eb5b-42a1-b24e-d1fa01d0d60b .gradient,
 #shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb,
 #shopify-section-template--15779855106204__c6a57786-5a7e-4b06-b2ad-3a33aa7694bb .gradient,
@@ -260,16 +555,22 @@ details[open] > .header__menu-item::after {
   padding-top: 28px;
   padding-bottom: 28px;
 }
+
 img {
   max-width: 100%;
   height: auto;
 }
+
+/* ==========================================================================
+   9. Product Form & Cart
+   ========================================================================== */
 
 .shopify-payment-button {
   height: inherit;
   flex: 1 0 calc(50% - 3px);
   max-width: 100% !important;
 }
+
 .baby-list-button {
   max-width: 100% !important;
   flex: 1 0 calc(50% - 3px);
@@ -283,13 +584,16 @@ img {
   color: #ffffff;
   --border-offset: 0;
 }
+
 .product-form__submit:not([disabled]):hover::after {
   box-shadow: 0 0 0 3px #00aea9;
 }
+
 .babylist-button:not([disabled]):hover::after {
   box-shadow: 0 0 0 3px #000000;
 }
-.select .svg-wrapper, 
+
+.select .svg-wrapper,
 .customer select+.svg-wrapper {
 	right: .6rem;
 }
@@ -297,29 +601,36 @@ img {
 .cart__ctas {
 	margin: 8px 0;
 }
-/* New alt primary button styles */
+
+/* Alt primary button variant */
+
 a.button.button--primary--alt {
-background-color:rgb(41, 150, 197);
-transition: all .3s ease-in-out;
+  background-color: rgb(41, 150, 197);
+  transition: all .3s ease-in-out;
 }
 
 a.button.button--primary--alt:hover {
-	background-color:rgb(41, 150, 197)!important;
+	background-color: rgb(41, 150, 197) !important;
 }
+
 a.button.button--primary--alt::after {
-box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
 	rgba(var(--color-button-text), var(--border-opacity)),
 	0 0 0 var(--buttons-border-width)
 	rgba(41, 150, 197, var(--alpha-button-background));
 }
-a.button.button--primary--alt:hover::after{
-box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
+
+a.button.button--primary--alt:hover::after {
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
 	rgba(var(--color-button-text), var(--border-opacity)),
 	0 0 0 calc(var(--buttons-border-width) + 1px)
 	rgba(41, 150, 197, var(--alpha-button-background));
 }
 
-/* Product specifications, "What's in the box" section */
+/* ==========================================================================
+  10. Product Specifications (Definition Lists)
+   ========================================================================== */
+
 dl dt {
 	font-weight: 700;
 }
@@ -336,12 +647,15 @@ predictive-search .predictive-search__loading-state {
   display: none
 }
 
-/* Responsive tables */
-/* table */
+/* ==========================================================================
+  11. Responsive Tables
+   ========================================================================== */
+
 .responsive-table-container table {
   width: 100%;
   margin-bottom: 0.5em;
 }
+
 .responsive-table-container table tr {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -353,7 +667,6 @@ predictive-search .predictive-search__loading-state {
   background-color: #e3f2f3;
 }
 
-/* media queries */
 @media screen and (max-width: 749px) {
   .responsive-table-container {
     max-width: 100%;
@@ -420,6 +733,7 @@ predictive-search .predictive-search__loading-state {
     display: none;
   }
 }
+
 @media only screen and (min-width: 750px) {
   .hidden-desktop {
     display: none;

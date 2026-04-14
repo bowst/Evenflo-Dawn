@@ -1,0 +1,138 @@
+{% comment %} Evenflo Trust Carousel - 2026, displays curated testimonials in a carousel {% endcomment %}
+{{ 'evenflo-scroll-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-trust-carousel.css' | asset_url | stylesheet_tag }}
+
+<div id="trust-carousel-{{ section.id }}" class="evenflo-trust-carousel new-2026" style="{% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}">
+  <div class="container page-width">
+    {% if section.settings.section_heading != blank or section.settings.section_subheading != blank %}
+      <div class="section-header">
+        {% if section.settings.section_heading != blank %}
+          <h2 class="h3">{{ section.settings.section_heading }}</h2>
+        {% endif %}
+        {% if section.settings.section_subheading != blank %}
+          <p class="body-text-lg subheading">{{ section.settings.section_subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div
+        class="evenflo-scroll-carousel"
+        data-carousel-label="{{ section.settings.section_heading | default: 'Testimonials' | escape }}"
+      >
+        <div class="evenflo-scroll-carousel__track">
+          {% for block in section.blocks %}
+            <div class="evenflo-scroll-carousel__slide testimonial-item" {{ block.shopify_attributes }}>
+              <div class="testimonial-content">
+                {% if block.settings.product_name != blank %}
+                  <h3 class="h5 testimonial-product">{{ block.settings.product_name }}</h3>
+                {% endif %}
+                {% if block.settings.testimonial_heading != blank %}
+                  <p class="testimonial-heading">{{ block.settings.testimonial_heading }}</p>
+                {% endif %}
+                {% if block.settings.testimonial_content != blank %}
+                  <p class="testimonial-body">{{ block.settings.testimonial_content }}</p>
+                {% endif %}
+                {% if block.settings.testimonial_author != blank %}
+                  <span class="testimonial-author">{{ block.settings.testimonial_author }}</span>
+                {% endif %}
+                {% if block.settings.star_rating > 0 %}
+                  <div class="testimonial-stars" aria-label="{{ block.settings.star_rating }} out of 5 stars">
+                    {% for i in (1..5) %}
+                      <span class="star {% if i <= block.settings.star_rating %}star--filled{% endif %}">&#9733;</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="evenflo-scroll-carousel__pagination"></div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script src="{{ 'evenflo-scroll-carousel.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Trust Carousel",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Headings"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "section_subheading",
+      "label": "Section subheading"
+    },
+    {
+      "type": "header",
+      "content": "Styles"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FAF8F6"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product name"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_heading",
+          "label": "Testimonial heading"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_content",
+          "label": "Testimonial content"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_author",
+          "label": "Testimonial author"
+        },
+        {
+          "type": "range",
+          "id": "star_rating",
+          "label": "Star rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Carousel",
+      "blocks": [
+        { "type": "testimonial", "settings": { "testimonial_content": "Great product!", "testimonial_author": "Customer" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

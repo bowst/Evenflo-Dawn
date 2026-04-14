@@ -15,10 +15,10 @@
 	{% endif %}
 {% endstyle %}
 
-<div id="info-strip-{{ section.id }}" class="evenflo-info-strip">
+<div id="info-strip-{{ section.id }}" class="evenflo-info-strip new-2026">
 	<div class="container page-width">
 		{% for block in section.blocks %}
-			<div class="info-item">
+			<div class="info-item body-text">
 				{% if block.settings.info_icon != blank	 %}
 					<img src="{{ block.settings.info_icon | image_url: width: 24 }}" alt="{{ block.settings.info_text }}" width="24" height="24">
 				{% endif %}

@@ -1,0 +1,119 @@
+{% comment %} Evenflo Features Grid - 2026, displays features in a responsive carousel grid {% endcomment %}
+{{ 'evenflo-features-grid.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-scroll-carousel.css' | asset_url | stylesheet_tag }}
+
+{%- assign media_type = section.settings.media_type -%}
+
+<div id="features-grid-{{ section.id }}" class="evenflo-features-grid evenflo-features-grid--media-{{ media_type }} new-2026">
+  <div class="container page-width">
+    {% if section.settings.section_heading != blank or section.settings.section_subheading != blank %}
+      <div class="section-header">
+        {% if section.settings.section_heading != blank %}
+          <h2 class="h3">{{ section.settings.section_heading }}</h2>
+        {% endif %}
+        {% if section.settings.section_subheading != blank %}
+          <p class="body-text-lg subheading">{{ section.settings.section_subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div 
+      class="evenflo-scroll-carousel"
+      data-carousel-label="{{ section.settings.section_heading | default: 'Features' | escape }}"
+    >
+      <div class="evenflo-scroll-carousel__track">
+        {% for block in section.blocks %}
+          <div class="evenflo-scroll-carousel__slide feature-item" {{ block.shopify_attributes }}>
+            <div class="feature-item-content">
+              {% if block.settings.image_icon != blank %}
+                <img src="{{ block.settings.image_icon | image_url: width: 600 }}" alt="{{ block.settings.image_icon.alt }}" width="{{ block.settings.image_icon.width }}" height="{{ block.settings.image_icon.height }}" loading="lazy">
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <h3 class="h4">{{ block.settings.title }}</h3>
+              {% endif %}
+              {% if block.settings.description != blank %}
+                <p class="body-text">{{ block.settings.description }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="evenflo-scroll-carousel__pagination"></div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'evenflo-scroll-carousel.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Evenflo Features Grid",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Headings"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "section_subheading",
+      "label": "Section subheading"
+    },
+    {
+      "type": "header",
+      "content": "Styles"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Media Type",
+      "options": [
+        { "value": "icon", "label": "Icon" },
+        { "value": "image", "label": "Image" }
+      ],
+      "default": "icon"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_icon",
+          "label": "Image / Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Features Grid",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Feature 1" } },
+        { "type": "feature", "settings": { "title": "Feature 2" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

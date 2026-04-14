@@ -1,11 +1,17 @@
-.evenflo-hero-banner {
+/* ==========================================================================
+   Evenflo Hero Banner - 2026
+   Hero banner component for prominent page headers
+   ========================================================================== */
+
+   .evenflo-hero-banner {
 	position: relative;
 	overflow: hidden;
 }
 
 .evenflo-hero-banner .container {
 	padding: 24px;
-	color: var(--color-evenflo-dark-blue);
+	/* color: var(--color-evenflo-nea); */
+	color: var(--color-evenflo-neutral-900);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -46,26 +52,26 @@
 	align-items: inherit;	
 	gap: 16px;
 }
-
+/*
 .evenflo-hero-banner .button {
-	background-color: var(--color-evenflo-dark-blue);
-	border-color: var(--color-evenflo-dark-blue);
-	outline-color: var(--color-evenflo-dark-blue);
+	background-color: var(--color-evenflo-nea);
+	border-color: var(--color-evenflo-nea);
+	outline-color: var(--color-evenflo-nea);
 	transition: all 0.3s ease;
 }
 
 .evenflo-hero-banner .button:hover {
-	background-color: var(--color-evenflo-brand-blue);
-	border-color: var(--color-evenflo-brand-blue);
+	background-color: var(--color-evenflo-blue-500);
+	border-color: var(--color-evenflo-blue-500);
 }
 
 .evenflo-hero-banner .button::after,
 .evenflo-hero-banner .button:hover::after {
 	box-shadow: none;
 }
-
+*/
 .evenflo-hero-banner .text-link {
-	color: var(--color-evenflo-dark-blue);
+	color: var(--color-evenflo-neutral-900);
 	font-size: 14px;
 	text-decoration: none;
 }
@@ -85,30 +91,15 @@
 }
 
 .evenflo-hero-banner.text-light .container {
-	color: #fff;
-}
-
-.evenflo-hero-banner.text-light .button {
-	background-color: #fff;
-	border-color: #fff;
-	color: var(--color-evenflo-dark-blue);
-}
-
-.evenflo-hero-banner.text-light .button:hover {
-	background-color: var(--color-evenflo-brand-blue);
-	border-color: var(--color-evenflo-brand-blue);
-	color: #fff;
-}
-.evenflo-hero-banner.text-light .button::after {
-	box-shadow: none;
+	color: var(--color-evenflo-neutral-50);
 }
 
 .evenflo-hero-banner.text-light .text-link {
-	color: #fff;
+	color: var(--color-evenflo-neutral-50);
 }
 @media (max-width: 767px){
 	.evenflo-hero-banner.text-light .container {
-		background-color: var(--color-evenflo-dark-blue);
+		background-color: var(--color-evenflo-nea);
 	}
 }
 
@@ -118,13 +109,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		/*min-height: 360px;
-		overflow: hidden;*/
-
-		width: 100%;
-		aspect-ratio: 3 / 1;
-		min-height: 320px;
-		max-height: 600px;
+		min-height: 360px;
 		overflow: hidden;
 	}
 
@@ -176,11 +161,11 @@
 	}
 
 	.evenflo-hero-banner.text-light  {
-		background: var(--color-evenflo-dark-blue);
+		background: var(--color-evenflo-nea);
 	}
 
 	.evenflo-hero-banner.text-dark {
-		background: #ffffff;
+		background: varfff;
 	}
 
 	.evenflo-hero-banner.align-left .container,
