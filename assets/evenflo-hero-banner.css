@@ -10,7 +10,7 @@
 
 .evenflo-hero-banner .container {
 	padding: 24px;
-	/* color: var(--color-evenflo-blue-900); */
+	/* color: var(--color-evenflo-nea); */
 	color: var(--color-evenflo-neutral-900);
 	display: flex;
 	flex-direction: column;
@@ -54,9 +54,9 @@
 }
 /*
 .evenflo-hero-banner .button {
-	background-color: var(--color-evenflo-blue-900);
-	border-color: var(--color-evenflo-blue-900);
-	outline-color: var(--color-evenflo-blue-900);
+	background-color: var(--color-evenflo-nea);
+	border-color: var(--color-evenflo-nea);
+	outline-color: var(--color-evenflo-nea);
 	transition: all 0.3s ease;
 }
 
@@ -71,7 +71,7 @@
 }
 */
 .evenflo-hero-banner .text-link {
-	color: var(--color-evenflo-blue-900);
+	color: var(--color-evenflo-neutral-900);
 	font-size: 14px;
 	text-decoration: none;
 }
@@ -91,30 +91,15 @@
 }
 
 .evenflo-hero-banner.text-light .container {
-	color: #fff;
-}
-/*
-.evenflo-hero-banner.text-light .button {
-	background-color: #fff;
-	border-color: #fff;
-	color: var(--color-evenflo-blue-900);
+	color: var(--color-evenflo-neutral-50);
 }
 
-.evenflo-hero-banner.text-light .button:hover {
-	background-color: var(--color-evenflo-blue-500);
-	border-color: var(--color-evenflo-blue-500);
-	color: #fff;
-}
-.evenflo-hero-banner.text-light .button::after {
-	box-shadow: none;
-}
-*/
 .evenflo-hero-banner.text-light .text-link {
-	color: #fff;
+	color: var(--color-evenflo-neutral-50);
 }
 @media (max-width: 767px){
 	.evenflo-hero-banner.text-light .container {
-		background-color: var(--color-evenflo-blue-900);
+		background-color: var(--color-evenflo-nea);
 	}
 }
 
@@ -176,11 +161,11 @@
 	}
 
 	.evenflo-hero-banner.text-light  {
-		background: var(--color-evenflo-blue-900);
+		background: var(--color-evenflo-nea);
 	}
 
 	.evenflo-hero-banner.text-dark {
-		background: #ffffff;
+		background: varfff;
 	}
 
 	.evenflo-hero-banner.align-left .container,
