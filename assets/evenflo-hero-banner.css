@@ -90,7 +90,13 @@
 	display: none;
 }
 
+.evenflo-hero-banner.text-light .container {
+	color: var(--color-evenflo-neutral-50);
+}
 
+.evenflo-hero-banner.text-light .text-link {
+	color: var(--color-evenflo-neutral-50);
+}
 @media (max-width: 767px){
 	.evenflo-hero-banner.text-light .container {
 		background-color: var(--color-evenflo-nea);
@@ -155,18 +161,11 @@
 	}
 
 	.evenflo-hero-banner.text-light  {
-		background: var(--color-evenflo-neutral-50);
+		background: var(--color-evenflo-neutral-900);
 	}
 
 	.evenflo-hero-banner.text-dark {
-		background: var(--color-evenflo-neutral-900);
-	}
-	.evenflo-hero-banner.text-light .container {
-		color: var(--color-evenflo-neutral-50);
-	}
-
-	.evenflo-hero-banner.text-light .text-link {
-		color: var(--color-evenflo-neutral-50);
+		background: var(--color-evenflo-neutral-50);
 	}
 
 	.evenflo-hero-banner.align-left .container,
