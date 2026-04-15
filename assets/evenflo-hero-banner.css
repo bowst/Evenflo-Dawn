@@ -3,9 +3,17 @@
    Hero banner component for prominent page headers
    ========================================================================== */
 
-   .evenflo-hero-banner {
+.evenflo-hero-banner {
 	position: relative;
 	overflow: hidden;
+}
+
+.evenflo-hero-banner.text-light  {
+	background: var(--color-evenflo-neutral-900);
+}
+
+.evenflo-hero-banner.text-dark {
+	background: var(--color-evenflo-neutral-50);
 }
 
 .evenflo-hero-banner .container {
@@ -158,14 +166,6 @@
 		object-fit: cover;
 		object-position: center;
 		z-index: 0;
-	}
-
-	.evenflo-hero-banner.text-light  {
-		background: var(--color-evenflo-neutral-900);
-	}
-
-	.evenflo-hero-banner.text-dark {
-		background: var(--color-evenflo-neutral-50);
 	}
 
 	.evenflo-hero-banner.align-left .container,
