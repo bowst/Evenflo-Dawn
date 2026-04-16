@@ -43,6 +43,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1em;
+	text-align: center;
 }
 
 .evenflo-split-features h3 {
@@ -102,6 +103,10 @@
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: center;
+	}
+
+	.evenflo-split-features .content-container .body-copy {
+		text-align: left;
 	}
 
 	.evenflo-split-features ul li {
