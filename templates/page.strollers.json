@@ -9,6 +9,25 @@
  */
 {
   "sections": {
+    "evenflo_hero_banner_XTaKy3": {
+      "type": "evenflo-hero-banner",
+      "disabled": true,
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Google_DemandGen_Evenflo_Hummingbird_Q3-Q4_1200x628_OP4.jpg",
+        "mobile_image": "shopify://shop_images/Google_DemandGen_Evenflo_Hummingbird_Q3-Q4960x1200_OP4.jpg",
+        "eyebrow_text": "EXPLORE EVENFLO",
+        "primary_heading": "<p>Strollers</p>",
+        "short_description": "",
+        "primary_cta_text": "",
+        "primary_cta_link": "",
+        "secondary_cta_text": "",
+        "secondary_cta_link": "",
+        "content_alignment": "align-left",
+        "text_color": "text-dark",
+        "desktop_overlay_opacity": 15
+      }
+    },
     "evenflo_image_banner_8tNDkM": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -23,9 +42,9 @@
       "block_order": [
         "heading_h1_qQHAjx"
       ],
-      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Evenflo_Hummingbird_GoogleResponsive-Ad_1200x628_5.jpg",
+        "image_2": "shopify://shop_images/Google_DemandGen_Evenflo_Hummingbird_Q3-Q4_1200x1200_OP7.jpg",
         "background_show": false,
         "banner_color": "#ffffff",
         "store_btn_show": false,
@@ -33,70 +52,26 @@
         "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
+        "mobile_button_border_color": "#ffffff",
+        "button_color_2": "#ffffff",
+        "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
+        "mobile_button_color_2": "#ffffff",
+        "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#ffffff",
         "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-right",
+        "image_height": "medium",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
-        "show_text_below": false
-      }
-    },
-    "image_banner_AYQgLk": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_QJXjLY": {
-          "type": "heading",
-          "settings": {
-            "heading": "{{ page.title }}",
-            "heading_size": "h1",
-            "heading_color": "white"
-          }
-        },
-        "text_XMrGtp": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "text_style": "body"
-          }
-        },
-        "buttons_qN9cta": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_QJXjLY",
-        "text_XMrGtp",
-        "buttons_qN9cta"
-      ],
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/Evenflo_Hummingbird_GoogleResponsive-Ad_1200x628_5.jpg",
-        "image_overlay_opacity": 10,
-        "underline": false,
-        "hide_image_on_mobile": false,
-        "image_height": "medium",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "image_behavior": "ambient",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
@@ -195,6 +170,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
@@ -268,6 +244,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -341,6 +318,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
@@ -406,6 +384,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -479,6 +458,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -497,8 +477,8 @@
     }
   },
   "order": [
+    "evenflo_hero_banner_XTaKy3",
     "evenflo_image_banner_8tNDkM",
-    "image_banner_AYQgLk",
     "main",
     "rich_text_7GmKQL",
     "evenflo_image_text_dtzKpN",

@@ -2,7 +2,7 @@
    1. Design Tokens
    ========================================================================== */
 
-:root {
+   :root {
 	/* Colors */
 	--color-evenflo-blue-900: #0F3C5A;
 	--color-evenflo-blue-800: #175b89;
@@ -20,11 +20,6 @@
 	--color-evenflo-neutral-50: #fcfcfd;
 	--color-evenfo-soft-sand: #faf8f6;
 	--color-evenflo-aqua-mist: #e3f2f3;
-
-	/* Color Assignments */
-	--color-evenflo-headings: var(--color-evenflo-neutral-900);
-	--color-evenflo-subheadings: var(--color-evenflo-blue-900);
-	--color-evenflo-text: var(--color-evenflo-neutral-800);
 
 	/* Sizing & Layout */
 	--content-max-width: 1440px;
@@ -49,6 +44,13 @@
 	--body-font-size-lg: 1.33333rem; /* 16px */
 
 	--button-font-size: 1.33333rem; /* 16px */
+}
+
+.new-2026 {
+/* Color Assignments */
+	--color-evenflo-headings: var(--color-evenflo-neutral-900);
+	--color-evenflo-subheadings: var(--color-evenflo-blue-900);
+	--color-evenflo-text: var(--color-evenflo-neutral-800);
 }
 
 @media screen and (min-width: 750px) {
@@ -329,7 +331,7 @@ This is all to override some weird hover styles */
 
 .button--outline,
 .button--ghost {
-	border: 2px solid var(--color-evenflo-blue-900);
+	border: 2px solid var(--color-evenflo-neutral-900);
 	background-color: var(--color-evenflo-neutral-50);
 	color: var(--color-evenflo-blue-900);
 	transition: all 0.3s ease;
@@ -339,8 +341,8 @@ This is all to override some weird hover styles */
 .button--ghost:hover,
 .button--outline:focus,
 .button--ghost:focus {
-	background-color: var(--color-evenflo-blue-900);
-	border-color: var(--color-evenflo-blue-900);
+	background-color: var(--color-evenflo-neutral-900);
+	border-color: var(--color-evenflo-neutral-900);
 	color: var(--color-evenflo-neutral-50);
 }
 

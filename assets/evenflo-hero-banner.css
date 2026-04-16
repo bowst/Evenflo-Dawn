@@ -8,8 +8,16 @@
 	overflow: hidden;
 }
 
+.evenflo-hero-banner.text-light  {
+	background: var(--color-evenflo-neutral-900);
+}
+
+.evenflo-hero-banner.text-dark {
+	background: var(--color-evenflo-neutral-50);
+}
+
 .evenflo-hero-banner .container {
-	padding: 24px;
+	padding: 32px;
 	/* color: var(--color-evenflo-nea); */
 	color: var(--color-evenflo-neutral-900);
 	display: flex;
@@ -17,21 +25,21 @@
 	justify-content: center;
 	align-items: center;	
 	text-align: center;
-	gap: 24px;
+	gap: 32px;
 	max-width: var(--content-max-width);
 }
 
 .evenflo-hero-banner h1,
 .evenflo-hero-banner .h1,
-.evenflo-hero-banner p{
+.evenflo-hero-banner p,
+.evenflo-hero-banner .h6{
 	color: inherit;
 	text-transform: none;
 	text-align: inherit;
 	margin: 0;
 }
 
-.evenflo-hero-banner .eyebrow-text {
-	font-size: 14px;
+.evenflo-hero-banner .h6 {
 	text-transform: uppercase;
 }
 
@@ -158,14 +166,6 @@
 		object-fit: cover;
 		object-position: center;
 		z-index: 0;
-	}
-
-	.evenflo-hero-banner.text-light  {
-		background: var(--color-evenflo-nea);
-	}
-
-	.evenflo-hero-banner.text-dark {
-		background: varfff;
 	}
 
 	.evenflo-hero-banner.align-left .container,

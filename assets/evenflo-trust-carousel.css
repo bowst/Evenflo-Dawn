@@ -1,87 +1,94 @@
 .evenflo-trust-carousel {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-.evenflo-trust-carousel .container {
-  display: flex;
-  flex-direction: column;
-}
-
-.evenflo-trust-carousel .evenflo-scroll-carousel {
-  --carousel-gap: 24px;
-  --carousel-gap-mobile: 16px;
-}
-
-.evenflo-trust-carousel .evenflo-scroll-carousel__track {
-  align-items: stretch;
-}
-
-.evenflo-trust-carousel .evenflo-scroll-carousel__slide {
-  width: calc((100% - (2 * var(--carousel-gap))) / 3);
-  display: flex;
-}
-
-.testimonial-item {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.testimonial-content {
-  padding: 32px;
-  background-color: #fff;
-  border-radius: 8px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.testimonial-stars {
-  margin-bottom: 12px;
-}
-
-.star {
-  color: var(--color-evenflo-neutral-600, #666);
-  font-size: 1.25rem;
-}
-
-.star--filled {
-  color: var(--color-evenflo-teal-500, #00aea9);
-}
-
-.testimonial-product {
-  margin: 0 0 12px 0;
-}
-
-.testimonial-heading {
-  font-style: italic;
-  color: var(--color-evenflo-neutral-700, #444);
-  margin: 0;
-}
-
-.testimonial-body {
-  font-style: italic;
-  color: var(--color-evenflo-neutral-700, #444);
-  margin: 0 0 16px 0;
-}
-
-.testimonial-author {
-  display: block;
-  font-weight: 700;
-  color: var(--color-evenflo-blue-900, #0F3C5A);
-  margin-bottom: 8px;
-}
-
-@media screen and (max-width: 767px) {
+	padding-top: 40px;
+	padding-bottom: 40px;
+  }
+  
+  .evenflo-trust-carousel .container {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .evenflo-trust-carousel .evenflo-scroll-carousel {
+	--carousel-gap: 24px;
+	--carousel-gap-mobile: 16px;
+  }
+  
+  .evenflo-trust-carousel .evenflo-scroll-carousel__track {
+	/* Base carousel uses align-items: flex-start; stretch each slide so row height matches tallest card */
+	align-items: stretch;
+  }
+  
   .evenflo-trust-carousel .evenflo-scroll-carousel__slide {
-    width: 100%;
+	/* Keep base carousel flex-basis; do not use flex-grow here (same element as .testimonial-item) */
+	flex: 0 0 auto;
+	width: calc((100% - (2 * var(--carousel-gap))) / 3);
+	display: flex;
+	flex-direction: column;
+	/* Overrides parent flex-start so slides share one row height (equal-height cards) */
+	align-self: stretch;
   }
-
+  
+  .testimonial-item {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+  }
+  
   .testimonial-content {
-    padding: 16px;
+	padding: 32px;
+	background-color: var(--color-evenflo-neutral-50);
+	border-radius: 8px;
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
   }
-}
+  
+  .testimonial-stars {
+	margin-bottom: 12px;
+  }
+  
+  .star {
+	color: var(--color-evenflo-neutral-600, #666);
+	font-size: 1.25rem;
+  }
+  
+  .star--filled {
+	color: var(--color-evenflo-teal-500, #00aea9);
+  }
+  
+  .testimonial-product {
+	margin: 0 0 12px 0;
+  }
+  
+  .testimonial-heading {
+	font-style: italic;
+	color: var(--color-evenflo-neutral-700, #444);
+	margin: 0;
+  }
+  
+  .testimonial-body {
+	font-style: italic;
+	color: var(--color-evenflo-neutral-700, #444);
+	margin: 0 0 16px 0;
+  }
+  
+  .testimonial-author {
+	display: block;
+	font-weight: 700;
+	color: var(--color-evenflo-blue-900, #0F3C5A);
+	margin-bottom: 8px;
+  }
+  
+  @media screen and (max-width: 767px) {
+	.evenflo-trust-carousel .evenflo-scroll-carousel__slide {
+	  width: 100%;
+	}
+  
+	.testimonial-content {
+	  padding: 16px;
+	}
+  }
+  
