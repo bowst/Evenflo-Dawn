@@ -1,0 +1,133 @@
+{% comment %} 2026 - Evenflo - PDP Tabs {% endcomment %}
+{{ 'evenflo-pdp-tabs.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-pdp-tabs.js' | asset_url | script_tag }}
+
+{% assign overview_content = product.description %}
+{% assign specs_content = product.metafields.custom.specs_content.value %}
+{% assign whats_included_content = product.metafields.sf_products.retail_package_contents %}
+{% assign dimensions_fit_content = product.metafields.custom.dimensions_fit_content.value %}
+{% assign specifications_content = product.metafields.custom.specifications_content.value %}
+
+{% assign tab_count = 0 %}
+{% if overview_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
+{% if specs_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
+{% if whats_included_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
+{% if dimensions_fit_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
+{% if specifications_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
+{% assign tab_count = tab_count | plus: 2 %}
+
+{% if tab_count > 0 %}
+  <div id="evenflo-pdp-tabs-{{ section.id }}" class="evenflo-pdp-tabs" {{ section.shopify_attributes }}>
+    <div class="page-width">
+      <div class="tabs-container">
+        <div class="tabs-nav" role="tablist" aria-label="Product content tabs">
+          {% assign tab_index = 0 %}
+          {% if overview_content != blank %}
+            <button class="tab-button active" type="button" role="tab" data-tab="overview-{{ section.id }}" aria-selected="true">Overview</button>
+            {% assign tab_index = tab_index | plus: 1 %}
+          {% endif %}
+          {% if specs_content != blank %}
+            <button class="tab-button{% if tab_index == 0 %} active{% endif %}" type="button" role="tab" data-tab="specs-{{ section.id }}" aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}">Specs</button>
+            {% assign tab_index = tab_index | plus: 1 %}
+          {% endif %}
+          {% if whats_included_content != blank %}
+            <button class="tab-button{% if tab_index == 0 %} active{% endif %}" type="button" role="tab" data-tab="included-{{ section.id }}" aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}">What's Included</button>
+            {% assign tab_index = tab_index | plus: 1 %}
+          {% endif %}
+          {% if dimensions_fit_content != blank %}
+            <button class="tab-button{% if tab_index == 0 %} active{% endif %}" type="button" role="tab" data-tab="dimensions-{{ section.id }}" aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}">Dimensions &amp; Fit</button>
+            {% assign tab_index = tab_index | plus: 1 %}
+          {% endif %}
+          {% if specifications_content != blank %}
+            <button class="tab-button{% if tab_index == 0 %} active{% endif %}" type="button" role="tab" data-tab="specifications-{{ section.id }}" aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}">Specifications</button>
+            {% assign tab_index = tab_index | plus: 1 %}
+          {% endif %}
+          <button class="evenflo-pdp-tab-button{% if tab_index == 0 %} active{% endif %}" type="button" role="tab" data-tab="reviews-{{ section.id }}" aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}">Reviews</button>
+          {% assign tab_index = tab_index | plus: 1 %}
+          <button class="evenflo-pdp-tab-button{% if tab_index == 0 %} active{% endif %}" type="button" role="tab" data-tab="faqs-{{ section.id }}" aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}">FAQs</button>
+        </div>
+
+        <div class="tabs-content-container">
+          {% assign panel_index = 0 %}
+          {% if overview_content != blank %}
+            <section class="tab-content active mobile-open" data-panel="overview-{{ section.id }}" role="tabpanel">
+              <h3 class="h4 content-heading" role="button" tabindex="0" aria-expanded="true">Overview</h3>
+              <div class="content-body">
+                {{ overview_content }}
+              </div>
+            </section>
+            {% assign panel_index = panel_index | plus: 1 %}
+          {% endif %}
+          {% if specs_content != blank %}
+            <section class="tab-content{% if panel_index == 0 %} active{% endif %}" data-panel="specs-{{ section.id }}" role="tabpanel">
+              <h3 class="h4 content-heading" role="button" tabindex="0" aria-expanded="false">Specs</h3>
+              <div class="content-body">
+                {{ specs_content }}
+              </div>
+            </section>
+            {% assign panel_index = panel_index | plus: 1 %}
+          {% endif %}
+          {% if whats_included_content != blank %}
+            <section class="tab-content{% if panel_index == 0 %} active{% endif %}" data-panel="included-{{ section.id }}" role="tabpanel">
+              <h3 class="h4 content-heading" role="button" tabindex="0" aria-expanded="false">What's Included</h3>
+              <div class="content-body">
+                {{ whats_included_content }}
+              </div>
+            </section>
+            {% assign panel_index = panel_index | plus: 1 %}
+          {% endif %}
+          {% if dimensions_fit_content != blank %}
+            <section class="tab-content{% if panel_index == 0 %} active{% endif %}" data-panel="dimensions-{{ section.id }}" role="tabpanel">
+              <h3 class="h4 content-heading" role="button" tabindex="0" aria-expanded="false">Dimensions & Fit</h3>
+              <div class="content-body">
+                {{ dimensions_fit_content }}
+              </div>
+            </section>
+            {% assign panel_index = panel_index | plus: 1 %}
+          {% endif %}
+          {% if specifications_content != blank %}
+            <section class="tab-content{% if panel_index == 0 %} active{% endif %}" data-panel="specifications-{{ section.id }}" role="tabpanel">
+              <h3 class="h4 content-heading" role="button" tabindex="0" aria-expanded="false">Specifications</h3>
+              <div class="content-body">
+                {{ specifications_content }}
+              </div>
+            </section>
+            {% assign panel_index = panel_index | plus: 1 %}
+          {% endif %}
+          <section class="tab-content{% if panel_index == 0 %} active{% endif %}" data-panel="reviews-{{ section.id }}" role="tabpanel">
+            <h3 class="h4 content-heading" role="button" tabindex="0" aria-expanded="false">Reviews</h3>
+            <div class="content-body">
+				<div class="yotpo-widget-instance" data-yotpo-instance-id="498559" data-yotpo-product-id="{{product.id}}" data-yotpo-name="{{ product.title | escape }}" data-yotpo-url="{{ shop.url }}{{ product.url }}" data-yotpo-image-url="{{ product.featured_image | product_img_url: "large" | prepend: "https:" | replace: '?', '%3F' | replace: '&','%26'}}" data-yotpo-price="{{ product.price | divided_by: 100.00 }}" data-yotpo-currency="{{ shop.currency }}" data-yotpo-description="{{ product.description | escape }}"></div>
+            </div>
+          </section>
+          {% assign panel_index = panel_index | plus: 1 %}
+          <section class="tab-content{% if panel_index == 0 %} active{% endif %}" data-panel="faqs-{{ section.id }}" role="tabpanel">
+            <h3 class="h4 content-heading" role="button" tabindex="0" aria-expanded="false">FAQs</h3>
+            <div class="content-body">
+				<div class="yotpo-widget-instance" data-yotpo-instance-id="511091" data-yotpo-product-id="{{product.id}}" data-yotpo-name="{{ product.title | escape }}" data-yotpo-url="{{ shop.url }}{{ product.url }}" data-yotpo-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-yotpo-description="{{ product.description | escape }}"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+
+<script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/B0qJeONB1n5uLg0RiKMrl58AdoGwnftUWBiOC4S6" async></script>
+
+
+{% schema %}
+{
+  "name": "PDP Tabs",
+  "limit": 1,
+  "class": "section evenflo-pdp-tabs-section",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "PDP Tabs"
+    }
+  ]
+}
+{% endschema %}
