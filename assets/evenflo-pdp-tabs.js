@@ -27,10 +27,13 @@
           item.setAttribute('aria-selected', active ? 'true' : 'false');
         });
 
+        const isDesktop = window.matchMedia('(min-width: 750px)').matches;
         panels.forEach((panel) => {
           const isActive = panel.getAttribute('data-panel') === tabId;
           panel.classList.toggle('active', isActive);
-          panel.classList.toggle('mobile-open', isActive);
+          if (isDesktop) {
+            panel.classList.toggle('mobile-open', isActive);
+          }
         });
         syncMobileAria();
       });
@@ -41,16 +44,8 @@
       if (!panel) return;
 
       const togglePanel = () => {
-        if (window.matchMedia('(min-width: 750px)').matches) return;
-        const willOpen = !panel.classList.contains('mobile-open');
-
-        if (willOpen) {
-          panels.forEach((item) => item.classList.remove('mobile-open'));
-          panel.classList.add('mobile-open');
-        } else {
-          panel.classList.remove('mobile-open');
-        }
-
+        if (window.matchMedia('(min-width: 768px)').matches) return;
+        panel.classList.toggle('mobile-open');
         syncMobileAria();
       };
 

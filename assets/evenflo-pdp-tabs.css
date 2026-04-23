@@ -1,9 +1,9 @@
 .evenflo-pdp-tabs .tabs-nav {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 0.5rem;
-  border-bottom: 1px solid #d9d9d9;
-  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-evenflo-neutral-200);
 }
 
 .evenflo-pdp-tabs .tab-button {
@@ -11,18 +11,21 @@
   border: 0;
   border-bottom: 2px solid transparent;
   cursor: pointer;
-  font: inherit;
-  font-weight: 600;
-  margin: 0;
-  padding: 0.75rem 0.25rem;
+  margin: 0 0 -2px;
+  padding: 1.333rem 2.66667rem;
+  font-size: 2rem;
+  font-family: inherit;
+  font-weight: 400;
 }
 
 .evenflo-pdp-tabs .tab-button.active {
-  border-bottom-color: currentColor;
+  border-bottom-color: var(--color-evenflo-blue-500);
 }
 
 .evenflo-pdp-tabs .tab-content {
   display: none;
+  padding: 32px 16px;
+  background-color: var(--color-evenfo-soft-sand);
 }
 
 .evenflo-pdp-tabs .tab-content.active {
@@ -37,28 +40,65 @@
   cursor: pointer;
   font-weight: 600;
   margin: 0;
+  display: none;
 }
 
 .evenflo-pdp-tabs .content-body {
-  margin-top: 0.75rem;
+	padding: 0 1.333rem 1.333rem;
+
 }
 
-@media screen and (max-width: 749px) {
+.evenflo-pdp-tabs .tab-block {
+  margin-bottom: 2rem;
+}
+
+.evenflo-pdp-tabs .tab-block:last-child {
+  margin-bottom: 0;
+}
+
+.evenflo-pdp-tabs .tab-subheading {
+  margin: 0 0 0.75rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.evenflo-pdp-tabs .tab-list {
+  margin: 0;
+}
+
+.evenflo-pdp-tabs .tab-diagram img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+@media screen and (max-width: 767px) {
   .evenflo-pdp-tabs .tabs-nav {
     display: none;
   }
 
-  .evenflo-pdp-tabs .tab-content {
+  .evenflo-pdp-tabs .evenflo-pdp-accordion .content-heading {
     display: block;
-    border-top: 1px solid #d9d9d9;
-    padding: 0.75rem 0;
+    padding: 1rem;
+	transition: all 0.3s ease;
+	background-color: var(--color-evenflo-neutral-50);
   }
 
-  .evenflo-pdp-tabs .tab-content .content-body {
+  /* Mobile: panel stack is the accordion (headings toggle bodies). */
+  .evenflo-pdp-tabs .evenflo-pdp-accordion .tab-content {
+    display: block;
+    border-top: 1px solid #d9d9d9;
+	padding: 0;
+  }
+
+
+  .evenflo-pdp-tabs .evenflo-pdp-accordion .tab-content .content-body {
     display: none;
   }
 
-  .evenflo-pdp-tabs .tab-content.mobile-open .content-body {
+  .evenflo-pdp-tabs .evenflo-pdp-accordion .tab-content.mobile-open .content-body {
     display: block;
+	padding: 0 1rem 1rem;
+
   }
 }

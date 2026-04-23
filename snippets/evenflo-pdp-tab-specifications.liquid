@@ -1,0 +1,138 @@
+{% comment %}
+  Specifications tab: Product measurements, certifications, warranty, key features
+  (aligned with evenflo-product-specifications / evenflo-product-highlights patterns).
+{% endcomment %}
+{%- liquid
+  assign assembled_width = product.metafields.sf_products.assembled_width
+  assign assembled_height = product.metafields.sf_products.assembled_height
+  assign assembled_depth = product.metafields.sf_products.assembled_depth
+  assign folded_dimensions = product.metafields.sf_products.folded_dimensions
+  assign folded_dims_assembled = product.metafields.custom.folded_dims_assembled
+  assign package_width = product.metafields.sf_shipping.package_width
+  assign package_height = product.metafields.sf_shipping.package_height
+  assign package_depth = product.metafields.sf_shipping.package_depth
+  assign assembled_weight = product.metafields.sf_products.assembled_weight
+  assign package_weight = product.metafields.sf_shipping.package_weight
+
+  assign certifications = product.metafields.sf_stroller.certifications
+  assign warranty_code = product.metafields.sf_products.warranty
+  assign product_warranty_link = product.metafields.custom.product_warranty_link
+  assign warranty_type_custom = product.metafields.custom.warranty_type
+  assign key_features = product.metafields.product.features
+
+  assign show_measurements = false
+  if assembled_width and assembled_height and assembled_depth
+    assign show_measurements = true
+  elsif package_width and package_height and package_depth
+    assign show_measurements = true
+  elsif folded_dimensions != blank or folded_dims_assembled != blank
+    assign show_measurements = true
+  elsif assembled_weight != blank or package_weight != blank
+    assign show_measurements = true
+  endif
+
+  assign show_certifications = false
+  if certifications != blank
+    assign show_certifications = true
+  endif
+
+  assign show_warranty = false
+  if warranty_type_custom != blank
+    assign show_warranty = true
+  elsif warranty_code == 'lifetime-limited' or warranty_code == '1 Year, Limited'
+    assign show_warranty = true
+  elsif product_warranty_link != blank and warranty_code == '1 Year, 6 Month Battery'
+    assign show_warranty = true
+  elsif product_warranty_link != blank and warranty_code == '90-day-limited'
+    assign show_warranty = true
+  endif
+
+  assign show_features = false
+  if key_features != blank
+    assign show_features = true
+  endif
+-%}
+
+{%- if show_measurements or show_certifications or show_warranty or show_features -%}
+  <div class="specifications">
+    {%- if show_measurements -%}
+      <div class="info-block">
+        <h4 class="h3">Product Measurements</h4>
+        <ul class="specs-list info-list">
+          {%- if assembled_width and assembled_height and assembled_depth -%}
+            <li>
+              <strong>Assembled</strong>
+              <div>{{ assembled_width }}" W × {{ assembled_height }}" H × {{ assembled_depth }}" D</div>
+            </li>
+          {%- endif -%}
+          {%- if package_width and package_height and package_depth -%}
+            <li>
+              <strong>Package</strong>
+              <div>{{ package_width }}" W × {{ package_height }}" H × {{ package_depth }}" D</div>
+            </li>
+          {%- endif -%}
+          {%- if folded_dimensions != blank -%}
+            <li>
+              <strong>Folded dimensions</strong>
+              <div>{{ folded_dimensions }}</div>
+            </li>
+          {%- elsif folded_dims_assembled != blank -%}
+            <li>
+              <strong>Folded dimensions</strong>
+              <div>{{ folded_dims_assembled }}</div>
+            </li>
+          {%- endif -%}
+          {%- if assembled_weight != blank -%}
+            <li>
+              <strong>Product weight</strong>
+              <div>{{ assembled_weight }} lbs</div>
+            </li>
+          {%- endif -%}
+          {%- if package_weight != blank -%}
+            <li>
+              <strong>Package weight</strong>
+              <div>{{ package_weight }} lbs</div>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    {%- if show_certifications -%}
+      <div class="info-block">
+        <h4 class="h3">Certifications</h4>
+        <div class="info-body rte">{{ certifications }}</div>
+      </div>
+    {%- endif -%}
+
+    {%- if show_warranty -%}
+      <div class="info-block">
+        <h4 class="h3">Warranty</h4>
+        <div class="info-body rte">
+          {%- if warranty_type_custom != blank -%}
+            <p>{{ warranty_type_custom }}</p>
+          {%- endif -%}
+          {%- if product_warranty_link and warranty_code == '1 Year, 6 Month Battery' -%}
+            <p><a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a></p>
+          {%- endif -%}
+          {%- if warranty_code == 'lifetime-limited' -%}
+            <p><a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a></p>
+          {%- endif -%}
+          {%- if warranty_code == '1 Year, Limited' -%}
+            <p><a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a></p>
+          {%- endif -%}
+          {%- if product_warranty_link and warranty_code == '90-day-limited' -%}
+            <p><a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a></p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if show_features -%}
+      <div class="info-block">
+        <h4 class="h3">Key Features</h4>
+        <div class="info-body rte">{{ key_features }}</div>
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

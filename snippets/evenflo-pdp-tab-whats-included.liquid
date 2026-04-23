@@ -1,0 +1,129 @@
+{% comment %}
+  PDP "What's Included" tab — Box Content, Assembly, Materials/Fabric, Use & Care.
+  Field sources aligned with evenflo-product-specifications / evenflo-product-highlights + evenflo-product-specs--whats-in-the-box.
+{% endcomment %}
+{%- liquid
+  assign box_content = product.metafields.sf_products.retail_package_contents
+
+  assign assembly_required = product.metafields.sf_products.assembly_required
+  assign assembly_details = product.metafields.sf_products.assembly_details
+  assign hardware_gates = product.metafields.sf_gates.hardware_included
+  assign hardware_products = product.metafields.sf_products.hardware_included
+
+  assign material = product.metafields.sf_products.material
+  assign wheel_material = product.metafields.sf_stroller.wheel_material
+
+  assign machine_wash_seating = product.metafields.sf_products.machine_washable_seating_surface
+  assign machine_wash_seating_alt = product.metafields.sf_products.machine_washable_seating_surfa
+  assign carrier_machine_washable = product.metafields.sf_carrier.machine_washable
+  assign high_chair_cleaning = product.metafields.sf_high_chair.cleaning
+
+  assign show_box = false
+  if box_content != blank
+    assign show_box = true
+  endif
+
+  assign show_assembly = false
+  if assembly_details != blank or assembly_required != blank or hardware_gates != blank or hardware_products != blank
+    assign show_assembly = true
+  endif
+
+  assign show_materials = false
+  if material != blank or wheel_material != blank
+    assign show_materials = true
+  endif
+
+  assign show_care = false
+  if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 or high_chair_cleaning != blank
+    assign show_care = true
+  endif
+-%}
+
+{%- if show_box or show_assembly or show_materials or show_care -%}
+  <div class="whats-included">
+    {%- if show_box -%}
+      <div class="info-block">
+        <h4 class="h3">Box Content</h4>
+        <div class="info-body rte">{{ box_content }}</div>
+      </div>
+    {%- endif -%}
+
+    {%- if show_assembly -%}
+      <div class="info-block">
+        <h4 class="h3">Assembly Details</h4>
+        <ul class="specs-list info-list">
+          {%- if assembly_required != blank -%}
+            <li>
+              <strong>Assembly required</strong>
+              <div>
+                {%- if assembly_required == 1 -%}
+                  Yes
+                {%- else -%}
+                  No
+                {%- endif -%}
+              </div>
+            </li>
+          {%- endif -%}
+          {%- if assembly_details != blank -%}
+            <li>
+              <strong>Details</strong>
+              <div class="rte">{{ assembly_details }}</div>
+            </li>
+          {%- endif -%}
+          {%- if hardware_gates != blank or hardware_products != blank -%}
+            <li>
+              <strong>Hardware included</strong>
+              <div>
+                {%- if hardware_gates == 1 or hardware_products == 1 -%}
+                  Yes
+                {%- elsif hardware_gates == 0 or hardware_products == 0 -%}
+                  No
+                {%- endif -%}
+              </div>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    {%- if show_materials -%}
+      <div class="info-block">
+        <h4 class="h3">Materials / Fabric</h4>
+        <ul class="specs-list info-list">
+          {%- if material != blank -%}
+            <li>
+              <strong>Material</strong>
+              <div>{{ material }}</div>
+            </li>
+          {%- endif -%}
+          {%- if wheel_material != blank -%}
+            <li>
+              <strong>Wheel material</strong>
+              <div>{{ wheel_material }}</div>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    {%- if show_care -%}
+      <div class="info-block">
+        <h4 class="h3">Use &amp; Care Instructions</h4>
+        <ul class="specs-list info-list">
+          {%- if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 -%}
+            <li>
+              <strong>Machine washable</strong>
+              <div>Yes</div>
+            </li>
+          {%- endif -%}
+          {%- if high_chair_cleaning != blank -%}
+            <li>
+              <strong>Cleaning</strong>
+              <div class="rte">{{ high_chair_cleaning }}</div>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}
