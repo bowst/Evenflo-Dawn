@@ -11,20 +11,19 @@
   "sections": {
     "evenflo_hero_banner_HMHNmW": {
       "type": "evenflo-hero-banner",
-      "disabled": true,
       "name": "Evenflo Hero Banner",
       "settings": {
         "desktop_image": "shopify://shop_images/Home_Desktop_2d5559ca-61a6-4927-ac9c-d4ea9b8c9bfa.jpg",
-        "mobile_image": "shopify://shop_images/Home_Mobile_673bea8a-f713-42fa-94ba-37305f8f723c.jpg",
-        "eyebrow_text": "Introducing Evenflo’s Home Collection Featuring SensorySoothe® Technology",
+        "mobile_image": "shopify://shop_images/Home_Mobile_e25a000d-ef16-4fce-b92c-dad610529424.jpg",
+        "eyebrow_text": "",
         "primary_heading": "<p>Your Home </p><p>Reimagined for Baby</p>",
-        "short_description": "",
+        "short_description": "Introducing Evenflo’s Home Collection Featuring SensorySoothe® Technology",
         "primary_cta_text": "Shop Collection",
         "primary_cta_link": "shopify://collections/home-collection",
         "secondary_cta_text": "Learn more",
         "secondary_cta_link": "https://www.evenflo.com/blogs/evenflo-blog/the-complete-guide-to-evenflos-home-collection",
         "content_alignment": "align-left",
-        "text_color": "dark",
+        "text_color": "light",
         "desktop_overlay_opacity": 0
       }
     },
@@ -118,6 +117,7 @@
         "heading_GU9gVw",
         "buttons_DxicEQ"
       ],
+      "disabled": true,
       "name": "Evenflo Image Banner",
       "settings": {
         "image": "shopify://shop_images/9a211f98b91b54354da2cbaee4b1c0a02f190577.jpg",
@@ -160,6 +160,46 @@
         "padding_bottom": 28
       }
     },
+    "evenflo_features_grid_MtzCQw": {
+      "type": "evenflo-features-grid",
+      "blocks": {
+        "feature_J7hWjX": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/evenflo_collectionLP_subheadVideoComp01.gif",
+            "title": "Manage from your mobile device",
+            "description": "Control soothing technology features through our Evenflo App"
+          }
+        },
+        "feature_Fxe9FH": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/evenflo_collectionLP_subheadVideoComp02.gif",
+            "title": "Grows with your family",
+            "description": "Multiple modes and adjustable features adapt from newborn through toddler years"
+          }
+        },
+        "feature_biL9e7": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/evenflo_collectionLP_subheadVideoComp03.gif",
+            "title": "Elevate your home style",
+            "description": "Wood-like accents and neutral tones compliment your existing decor instead of clashing with it"
+          }
+        }
+      },
+      "block_order": [
+        "feature_J7hWjX",
+        "feature_Fxe9FH",
+        "feature_biL9e7"
+      ],
+      "name": "Evenflo Features Grid",
+      "settings": {
+        "section_heading": "",
+        "section_subheading": "",
+        "media_type": "image"
+      }
+    },
     "evenflo_tabbed_carousel_ippmXr": {
       "type": "evenflo-tabbed-carousel",
       "blocks": {
@@ -193,6 +233,7 @@
         "tab_V3CeNf",
         "tab_UR9Thy"
       ],
+      "disabled": true,
       "name": "Tabbed Carousel",
       "settings": {
         "heading": "",
@@ -456,52 +497,17 @@
         "css_class": "",
         "custom_css": ""
       }
-    },
-    "evenflo_split_features_w4GYh6": {
-      "type": "evenflo-split-features",
-      "blocks": {
-        "list_item_EWAWH3": {
-          "type": "list_item",
-          "settings": {
-            "text": "List item 1",
-            "url": ""
-          }
-        },
-        "list_item_wXzwMt": {
-          "type": "list_item",
-          "settings": {
-            "text": "List item 2",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "list_item_EWAWH3",
-        "list_item_wXzwMt"
-      ],
-      "disabled": true,
-      "name": "Evenflo Split Features",
-      "settings": {
-        "section_heading": "",
-        "section_subheading": "",
-        "video_autoplay": false,
-        "content_heading": "",
-        "body_copy": "",
-        "cta_text": "",
-        "cta_url": "",
-        "media_position": "left"
-      }
     }
   },
   "order": [
     "evenflo_hero_banner_HMHNmW",
     "evenflo_image_banner_n37yqd",
     "main",
+    "evenflo_features_grid_MtzCQw",
     "evenflo_tabbed_carousel_ippmXr",
     "evenflo_mixed_media_grid_fXghtw",
     "evenflo_image_banner_kEm4Pn",
     "evenflo_image_banner_8EenDU",
-    "evenflo_divider_T7jPCW",
-    "evenflo_split_features_w4GYh6"
+    "evenflo_divider_T7jPCW"
   ]
 }
