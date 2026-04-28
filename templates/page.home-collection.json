@@ -9,6 +9,25 @@
  */
 {
   "sections": {
+    "evenflo_hero_banner_HMHNmW": {
+      "type": "evenflo-hero-banner",
+      "disabled": true,
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Home_Desktop_2d5559ca-61a6-4927-ac9c-d4ea9b8c9bfa.jpg",
+        "mobile_image": "shopify://shop_images/Home_Mobile_673bea8a-f713-42fa-94ba-37305f8f723c.jpg",
+        "eyebrow_text": "Introducing Evenflo’s Home Collection Featuring SensorySoothe® Technology",
+        "primary_heading": "<p>Your Home </p><p>Reimagined for Baby</p>",
+        "short_description": "",
+        "primary_cta_text": "Shop Collection",
+        "primary_cta_link": "shopify://collections/home-collection",
+        "secondary_cta_text": "Learn more",
+        "secondary_cta_link": "https://www.evenflo.com/blogs/evenflo-blog/the-complete-guide-to-evenflos-home-collection",
+        "content_alignment": "align-left",
+        "text_color": "dark",
+        "desktop_overlay_opacity": 0
+      }
+    },
     "evenflo_image_banner_n37yqd": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -65,7 +84,7 @@
         "text_Qt8Czb": {
           "type": "text",
           "settings": {
-            "text": "Introducing Evenflo’s home Collection Featuring SensorySoothe® Technology",
+            "text": "Introducing Evenflo’s Home Collection Featuring SensorySoothe® Technology",
             "text_style": "body"
           }
         },
@@ -273,8 +292,7 @@
       "name": "Mixed Media Grid",
       "settings": {
         "heading": "Explore the Evenflo Home Collection",
-        "heading_size": "h1",
-        "heading_alignment": "center",
+        "subheading": "",
         "columns_desktop": "3",
         "image_ratio": "adapt",
         "show_secondary_image": false,
@@ -431,21 +449,59 @@
     },
     "evenflo_divider_T7jPCW": {
       "type": "evenflo-divider",
+      "disabled": true,
       "settings": {
         "divider_spacing": 40,
         "divider_border": false,
         "css_class": "",
         "custom_css": ""
       }
+    },
+    "evenflo_split_features_w4GYh6": {
+      "type": "evenflo-split-features",
+      "blocks": {
+        "list_item_EWAWH3": {
+          "type": "list_item",
+          "settings": {
+            "text": "List item 1",
+            "url": ""
+          }
+        },
+        "list_item_wXzwMt": {
+          "type": "list_item",
+          "settings": {
+            "text": "List item 2",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "list_item_EWAWH3",
+        "list_item_wXzwMt"
+      ],
+      "disabled": true,
+      "name": "Evenflo Split Features",
+      "settings": {
+        "section_heading": "",
+        "section_subheading": "",
+        "video_autoplay": false,
+        "content_heading": "",
+        "body_copy": "",
+        "cta_text": "",
+        "cta_url": "",
+        "media_position": "left"
+      }
     }
   },
   "order": [
+    "evenflo_hero_banner_HMHNmW",
     "evenflo_image_banner_n37yqd",
     "main",
     "evenflo_tabbed_carousel_ippmXr",
     "evenflo_mixed_media_grid_fXghtw",
     "evenflo_image_banner_kEm4Pn",
     "evenflo_image_banner_8EenDU",
-    "evenflo_divider_T7jPCW"
+    "evenflo_divider_T7jPCW",
+    "evenflo_split_features_w4GYh6"
   ]
 }
