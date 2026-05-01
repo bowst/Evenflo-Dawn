@@ -64,7 +64,10 @@
             domain: '{{shop.secure_url}}',
             root_url: '{{ routes.root_url }}',
             collections_url: '{{ routes.collections_url }}',
+			{% comment %}  Updated 2026 for Evenflo
             all_products_collection_url: '{{ routes.all_products_collection_url }}',
+			{% endcomment %}
+            all_products_collection_url: 'https://www.evenflo.com/collections/shop-all',
             cart_url:'{{ routes.cart_url }}',
             cart_add_url:'{{ routes.cart_add_url }}',
             cart_change_url:'{{ routes.cart_change_url }}',
