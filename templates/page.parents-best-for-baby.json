@@ -11,21 +11,20 @@
   "sections": {
     "evenflo_hero_banner_xFaF64": {
       "type": "evenflo-hero-banner",
-      "disabled": true,
       "name": "Evenflo Hero Banner",
       "settings": {
-        "desktop_image": "shopify://shop_images/Google_DemandGen_Revolve360-Class_lifestyle_logo_1200x628_1.jpg",
-        "mobile_image": "shopify://shop_images/Google_DemandGen_Revolve360-Class_lifestyle_logo_960x1200_1.jpg",
-        "eyebrow_text": "EXPLORE EVENFLO",
-        "primary_heading": "<p>Car Seats</p>",
+        "desktop_image": "shopify://shop_images/ParentsAwards_BANNER_DESKTOP_1440x480_c2362740-b7db-4b57-8f84-4e88008c0089.jpg",
+        "mobile_image": "shopify://shop_images/ParentsAwards_BANNER_MOBILE_375x500_68cc837a-2c40-4442-8612-3d004b5edb1c.jpg",
+        "eyebrow_text": "Big News",
+        "primary_heading": "<p>Evenflo wins 5 categories </p><p>in the 2026 Parents </p><p>Best for Baby Awards</p>",
         "short_description": "",
         "primary_cta_text": "",
         "primary_cta_link": "",
         "secondary_cta_text": "",
         "secondary_cta_link": "",
-        "content_alignment": "align-left",
+        "content_alignment": "align-right",
         "text_color": "text-light",
-        "desktop_overlay_opacity": 15
+        "desktop_overlay_opacity": 20
       }
     },
     "image_banner_ephrqd": {
@@ -63,12 +62,14 @@
         "text_REzqML",
         "buttons_hNtEza"
       ],
+      "disabled": true,
       "custom_css": [
         "h2 {font-size: 45px;}",
         "@media screen and (max-width: 767px) {h2 {font-size: 30px; }}"
       ],
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
+        "image_2": "shopify://shop_images/ParentsAwards_BANNER_DESKTOP_1440x480_c2362740-b7db-4b57-8f84-4e88008c0089.jpg",
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
