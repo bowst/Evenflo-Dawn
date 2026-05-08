@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
-	
+
 	<meta name="template" content="{{ template }}">
-	<link rel="alternate" hreflang="en-us" href="https://www.evenflo.com{{ request.path }}">	
+	<link rel="alternate" hreflang="en-us" href="https://www.evenflo.com{{ request.path }}">
 	<link rel="alternate" hreflang="x-default" href="https://www.evenflo.com{{ request.path }}">
 
     <!-- Google Tag Manager -->
@@ -23,7 +23,7 @@
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-THSHFKC');
-    </script> 
+    </script>
     <!-- End Google Tag Manager -->
     <link rel="canonical" href="{{ canonical_url }}">
 
@@ -87,7 +87,7 @@
         <link rel="preconnect" href="https://use.typekit.net">
     <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css" media="print" onload="this.media='all'">
 
-    
+
     <!-- End Live Font -->
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
@@ -347,6 +347,25 @@
       }
     </script>
 
+    <!-- Hotjar Tracking Code for https://www.evenflo.com -->
+    <script>
+      (function(h,o,t,j,a,r){
+
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||\[]).push(arguments)};
+
+          h.\_hjSettings={hjid:723380,hjsv:6};
+
+          a=o.getElementsByTagName('head')\[0];
+
+          r=o.createElement('script');r.async=1;
+
+          r.src=t+h.\_hjSettings.hjid+j+h.\_hjSettings.hjsv;
+
+          a.appendChild(r);
+
+      })(window,document,'[https://static.hotjar.com/c/hotjar-','.js?sv=](https://static.hotjar.com/c/hotjar-','.js?sv=)');
+    </script>
+
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -426,7 +445,7 @@
     window.astuteBotMessengerSettings = {
         channelId: "Sf4WR-kw16xpqy-KU4lYdg"
     };
-    </script> 
+    </script>
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
