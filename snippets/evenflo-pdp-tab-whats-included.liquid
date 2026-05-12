@@ -1,14 +1,15 @@
 {% comment %}
   PDP "What's Included" tab — Box Content, Assembly, Materials/Fabric, Use & Care.
   Field sources aligned with evenflo-product-specifications / evenflo-product-highlights + evenflo-product-specs--whats-in-the-box.
+  Layout: evenflo-pdp-tab-layout*; cards use .info-block (scoped in evenflo-pdp-tabs.css).
 {% endcomment %}
 {%- liquid
   assign box_content = product.metafields.sf_products.retail_package_contents
 
   assign assembly_required = product.metafields.sf_products.assembly_required
   assign assembly_details = product.metafields.sf_products.assembly_details
-  assign hardware_gates = product.metafields.sf_gates.hardware_included
-  assign hardware_products = product.metafields.sf_products.hardware_included
+  assign my_switch = product.metafields.sf_gates.hardware_included
+  assign hardware_included = product.metafields.sf_products.hardware_included
 
   assign material = product.metafields.sf_products.material
   assign wheel_material = product.metafields.sf_stroller.wheel_material
@@ -23,10 +24,7 @@
     assign show_box = true
   endif
 
-  assign show_assembly = false
-  if assembly_details != blank or assembly_required != blank or hardware_gates != blank or hardware_products != blank
-    assign show_assembly = true
-  endif
+  assign show_assembly = true
 
   assign show_materials = false
   if material != blank or wheel_material != blank
@@ -40,90 +38,103 @@
 -%}
 
 {%- if show_box or show_assembly or show_materials or show_care -%}
-  <div class="whats-included">
-    {%- if show_box -%}
-      <div class="info-block">
-        <h4 class="h3">Box Content</h4>
-        <div class="info-body rte">{{ box_content }}</div>
-      </div>
-    {%- endif -%}
+  <div class="evenflo-pdp-tab-layout whats-included">
+    <div class="evenflo-pdp-tab-layout__grid{% if show_care %} evenflo-pdp-tab-layout__grid--split{% endif %}">
+      <div class="evenflo-pdp-tab-layout__main">
+        {% comment %} {%- if show_box -%} {% endcomment %}
+        <div class="info-block">
+          <h4 class="h3">Box Contents</h4>
+          <div class="info-body rte">{{ box_content }}</div>
+        </div>
+        {% comment %} {%- endif -%} {% endcomment %}
 
-    {%- if show_assembly -%}
-      <div class="info-block">
-        <h4 class="h3">Assembly Details</h4>
-        <ul class="specs-list info-list">
-          {%- if assembly_required != blank -%}
-            <li>
-              <strong>Assembly required</strong>
-              <div>
-                {%- if assembly_required == 1 -%}
-                  Yes
-                {%- else -%}
-                  No
+        {%- if show_assembly -%}
+          <div class="info-block">
+            <h4 class="h3">Assembly Details</h4>
+            <div class="info-body">
+              
+              {%- if assembly_required == 1 -%}
+                {%- if assembly_details -%}
+                  <div>
+                    <h5>Assembly Details</h5>
+                    <div>{{ assembly_details }}</div>
+                  </div>
                 {%- endif -%}
-              </div>
-            </li>
-          {%- endif -%}
-          {%- if assembly_details != blank -%}
-            <li>
-              <strong>Details</strong>
-              <div class="rte">{{ assembly_details }}</div>
-            </li>
-          {%- endif -%}
-          {%- if hardware_gates != blank or hardware_products != blank -%}
-            <li>
-              <strong>Hardware included</strong>
-              <div>
-                {%- if hardware_gates == 1 or hardware_products == 1 -%}
-                  Yes
-                {%- elsif hardware_gates == 0 or hardware_products == 0 -%}
-                  No
+                {%- if my_switch or hardware_included -%}
+                  <p>
+                    <h5>Hardware Included</h5>
+                      {%- if my_switch == 1 or hardware_included == 1 -%}
+                        Yes
+                      {%- else -%}
+                        No
+                      {%- endif -%}
+				</p>
                 {%- endif -%}
-              </div>
-            </li>
-          {%- endif -%}
-        </ul>
-      </div>
-    {%- endif -%}
+			{% else %}
+				<p>No assembly required.</p>
+                {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
 
-    {%- if show_materials -%}
-      <div class="info-block">
-        <h4 class="h3">Materials / Fabric</h4>
-        <ul class="specs-list info-list">
-          {%- if material != blank -%}
-            <li>
-              <strong>Material</strong>
-              <div>{{ material }}</div>
-            </li>
-          {%- endif -%}
-          {%- if wheel_material != blank -%}
-            <li>
-              <strong>Wheel material</strong>
-              <div>{{ wheel_material }}</div>
-            </li>
-          {%- endif -%}
-        </ul>
+        {%- if show_materials -%}
+          <div class="info-block">
+            <h4 class="h3">Materials / Fabric</h4>
+            <div class="info-body">
+              {%- if material != blank -%}
+                <div>
+                  <strong>Material</strong>
+                  <div>
+                    {%- assign material_parts = material | split: ',' -%}
+                    {%- for part in material_parts -%}
+                      {%- assign piece = part | strip -%}
+                      {%- if piece != blank -%}
+                        <div>{{ piece }}</div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endif -%}
+              {%- if wheel_material != blank -%}
+                <div>
+                  <strong>Wheel material</strong>
+                  <div>
+                    {%- assign wheel_material_parts = wheel_material | split: ',' -%}
+                    {%- for part in wheel_material_parts -%}
+                      {%- assign piece = part | strip -%}
+                      {%- if piece != blank -%}
+                        <div>{{ piece }}</div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
       </div>
-    {%- endif -%}
 
-    {%- if show_care -%}
-      <div class="info-block">
-        <h4 class="h3">Use &amp; Care Instructions</h4>
-        <ul class="specs-list info-list">
-          {%- if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 -%}
-            <li>
-              <strong>Machine washable</strong>
-              <div>Yes</div>
-            </li>
-          {%- endif -%}
-          {%- if high_chair_cleaning != blank -%}
-            <li>
-              <strong>Cleaning</strong>
-              <div class="rte">{{ high_chair_cleaning }}</div>
-            </li>
-          {%- endif -%}
-        </ul>
-      </div>
-    {%- endif -%}
+      {%- if show_care -%}
+        <div class="evenflo-pdp-tab-layout__aside">
+          <div class="info-block">
+            <h4 class="h3">Use &amp; Care Instructions</h4>
+            <div class="info-body">
+              {%- if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 -%}
+                <div>
+                  <strong>Machine washable</strong>
+                  <div>Yes</div>
+                </div>
+              {%- endif -%}
+              {%- if high_chair_cleaning != blank -%}
+                <div>
+                  <strong>Cleaning</strong>
+                  <div class="rte">{{ high_chair_cleaning }}</div>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
   </div>
 {%- endif -%}

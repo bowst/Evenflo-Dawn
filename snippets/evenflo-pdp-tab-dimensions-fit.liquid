@@ -1,5 +1,6 @@
 {% comment %}
   Dimensions & Fit tab: Modes of Use, Dimensions diagram, Child fit (evenflo-product-specifications).
+  Layout: evenflo-pdp-tab-layout* (same two-column pattern as What's Included when left + child both exist).
 {% endcomment %}
 {%- liquid
   assign modes_raw = product.metafields.custom.modes_of_use
@@ -27,38 +28,61 @@
   if child_fit_markup != blank
     assign show_child = true
   endif
+
+  assign show_left_column = false
+  if show_modes or show_diagram
+    assign show_left_column = true
+  endif
+
+  assign layout_split = false
+  if show_child and show_left_column
+    assign layout_split = true
+  endif
 -%}
 
 {%- if show_modes or show_diagram or show_child -%}
-  <div class="dimensions-fit">
-    {%- if show_modes -%}
-      <div class="info-block">
-        <h4 class="h3">Modes of Use</h4>
-        <div class="info-body rte">{{ modes_of_use }}</div>
-      </div>
-    {%- endif -%}
+  <div class="evenflo-pdp-tab-layout dimensions-fit">
+    <div class="evenflo-pdp-tab-layout__grid{% if layout_split %} evenflo-pdp-tab-layout__grid--split{% endif %}">
+      <div class="evenflo-pdp-tab-layout__main">
+        {%- if show_modes -%}
+          <div class="info-block">
+            <h4 class="h3">Modes of Use</h4>
+            <div class="info-body rte">{{ modes_of_use }}</div>
+          </div>
+        {%- endif -%}
 
-    {%- if show_diagram -%}
-      <div class="info-block">
-        <h4 class="h3">Dimensions Diagram</h4>
-        <div class="info-diagram">
-          <img
-            class="specifications-image"
-            src="{{ specifications_image }}"
-            width="100%"
-            height="auto"
-            loading="lazy"
-            alt="{{ product.title | escape }} dimensions diagram"
-          >
+        {%- if show_diagram -%}
+          <div class="info-block">
+            <h4 class="h3">Dimensions Diagram</h4>
+            <div class="info-diagram">
+              <img
+                class="specifications-image"
+                src="{{ specifications_image }}"
+                width="100%"
+                height="auto"
+                loading="lazy"
+                alt="{{ product.title | escape }} dimensions diagram"
+              >
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if show_child and layout_split == false -%}
+          <div class="info-block">
+            <h4 class="h3">Child Fit Requirements</h4>
+            {{ child_fit_markup }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if show_child and layout_split -%}
+        <div class="evenflo-pdp-tab-layout__aside">
+          <div class="info-block">
+            <h4 class="h3">Child Fit Requirements</h4>
+            {{ child_fit_markup }}
+          </div>
         </div>
-      </div>
-    {%- endif -%}
-
-    {%- if show_child -%}
-      <div class="info-block">
-        <h4 class="h3">Child Fit Requirements</h4>
-        {{ child_fit_markup }}
-      </div>
-    {%- endif -%}
+      {%- endif -%}
+    </div>
   </div>
 {%- endif -%}

@@ -80,48 +80,40 @@
   <div class="child-fit">
     {%- if show_shared -%}
       <div class="info-block">
-        <h4 class="h3">Child Fit</h4>
-        <ul class="specs-list">
+        <ul class="specs-list no-bullets">
           {%- if child_weight_min_value or child_weight_max_value -%}
             <li>
-              <strong>Child Weight</strong>
-              <div>
+              Child Weight: 
                 {%- if child_weight_min_value -%}
                   {{ child_weight_min_value }} -
                 {%- endif -%}
                 {%- if child_weight_max_value -%}
                   {{ child_weight_max_value }} lbs
                 {%- endif -%}
-              </div>
             </li>
           {%- elsif min_weight and max_weight -%}
             <li>
-              <strong>Weight</strong>
-              <div>{{ min_weight }} - {{ max_weight }} lbs</div>
+              Weight: {{ min_weight }} - {{ max_weight }} lbs
             </li>
           {%- endif -%}
           {%- if min_height and max_height -%}
             <li>
-              <strong>Height</strong>
-              <div>{{ min_height }} - {{ max_height }} inches</div>
+              Height: {{ min_height }} - {{ max_height }} inches
             </li>
           {%- endif -%}
           {%- if age_group -%}
             <li>
-              <strong>Age Group</strong>
-              <div>{{ age_group }}</div>
+              Age Group: {{ age_group }}
             </li>
           {%- endif -%}
           {%- if min_age -%}
             <li>
-              <strong>Minimum Age</strong>
-              <div>{{ min_age }}</div>
+              Minimum Age: {{ min_age }}
             </li>
           {%- endif -%}
           {%- if max_age -%}
             <li>
-              <strong>Maximum Age</strong>
-              <div>{{ max_age }}</div>
+              Maximum Age: {{ max_age }}
             </li>
           {%- endif -%}
         </ul>
@@ -130,15 +122,13 @@
 
     {%- if show_rear -%}
       <div class="info-block">
-        <h4 class="h4">Rear-Facing Mode</h4>
-        <ul class="specs-list">
+        <h4 class="h5">Rear-Facing Mode</h4>
+        <ul class="specs-list no-bullets">
           <li>
-            <strong>Weight</strong>
-            <div>{{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs</div>
+            Weight: {{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs
           </li>
           <li>
-            <strong>Height</strong>
-            <div>{{ rear_facing_height_min }} - {{ rear_facing_height_max }} in</div>
+            Height: {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
           </li>
         </ul>
         {%- if rear_facing_fit_statement -%}
@@ -149,15 +139,13 @@
 
     {%- if show_forward -%}
       <div class="info-block">
-        <h4 class="h4">Forward-Facing Mode</h4>
+        <h4 class="h5">Forward-Facing Mode</h4>
         <ul class="specs-list">
           <li>
-            <strong>Weight</strong>
-            <div>{{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs</div>
+            Weight: {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
           </li>
           <li>
-            <strong>Height</strong>
-            <div>{{ forward_facing_height_min }} - {{ forward_facing_height_max }} in</div>
+            Height: {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
           </li>
           {%- if forward_facing_fit_statement -%}
             <li>
@@ -170,16 +158,14 @@
 
     {%- if show_high_back -%}
       <div class="info-block">
-        <h4 class="h4">High Back Booster Mode</h4>
+        <h4 class="h5">High Back Booster Mode</h4>
         <ul class="specs-list">
           {%- if high_back_fit_statement -%}
             <li>
-              <strong>Weight</strong>
-              <div>{{ high_back_weight_min }} - {{ high_back_weight_max }} lbs</div>
+              Weight: {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
             </li>
             <li>
-              <strong>Height</strong>
-              <div>{{ high_back_height_min }} - {{ high_back_height_max }} in</div>
+              Height: {{ high_back_height_min }} - {{ high_back_height_max }} in
             </li>
           {%- endif -%}
         </ul>
@@ -191,18 +177,16 @@
 
     {%- if show_no_back -%}
       <div class="info-block">
-        <h4 class="h4">No Back Booster Mode</h4>
+        <h4 class="h5">No Back Booster Mode</h4>
         <ul class="specs-list">
           {%- if no_back_weight_max -%}
             <li>
-              <strong>Weight</strong>
-              <div>{{ no_back_weight_min }} - {{ no_back_weight_max }} lbs</div>
+              Weight: {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
             </li>
           {%- endif -%}
           {%- if no_back_height_max -%}
             <li>
-              <strong>Height</strong>
-              <div>{{ no_back_height_min }} - {{ no_back_height_max }} in</div>
+              Height: {{ no_back_height_min }} - {{ no_back_height_max }} in
             </li>
           {%- endif -%}
         </ul>

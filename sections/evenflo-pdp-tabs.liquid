@@ -77,7 +77,11 @@
             <section class="tab-content{% if first_panel == panel_overview %} active mobile-open{% endif %}" data-panel="{{ panel_overview }}" role="tabpanel">
               <h3 class="content-heading" role="button" tabindex="0" aria-expanded="{% if first_panel == panel_overview %}true{% else %}false{% endif %}">Overview</h3>
               <div class="content-body">
-                {{ overview_content }}
+                <div class="evenflo-pdp-tab-layout">
+                  <div class="evenflo-pdp-tab-layout__full-width rte">
+                    {{ overview_content }}
+                  </div>
+                </div>
               </div>
             </section>
           {% endif %}

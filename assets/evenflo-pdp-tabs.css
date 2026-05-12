@@ -102,3 +102,116 @@
 
   }
 }
+
+/* --------------------------------------------------------------------------
+   Shared PDP tab layout + .info-block cards (scoped under .evenflo-pdp-tabs).
+   evenflo-pdp-tab-layout__full-width: single full-width inner (e.g. Overview).
+   -------------------------------------------------------------------------- */
+
+.evenflo-pdp-tabs .info-block {
+  background-color: var(--color-evenflo-white);
+  padding: 16px;
+}
+
+.evenflo-pdp-tabs .evenflo-pdp-tab-layout__full-width {
+  background-color: var(--color-evenflo-white);
+  padding: 16px;
+}
+
+.evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.evenflo-pdp-tabs .evenflo-pdp-tab-layout__main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.evenflo-pdp-tabs .info-block .h3 {
+  margin: 0 0 1rem;
+}
+
+.evenflo-pdp-tabs .specs-list.no-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+/* Key Features (Specifications tab): pipe-delimited items, hyphen instead of bullet */
+.evenflo-pdp-tabs ul.evenflo-pdp-tab-key-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.evenflo-pdp-tabs ul.evenflo-pdp-tab-key-features-list li {
+  position: relative;
+  padding-left: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+.evenflo-pdp-tabs ul.evenflo-pdp-tab-key-features-list li:last-child {
+  margin-bottom: 0;
+}
+
+.evenflo-pdp-tabs ul.evenflo-pdp-tab-key-features-list li::before {
+  content: '- ';
+  position: absolute;
+  left: 0;
+  white-space: pre;
+}
+
+.evenflo-pdp-tabs .h5{
+	font-weight: normal;
+	font-size: 1.6rem;
+	margin: 0 0 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid--split .evenflo-pdp-tab-layout__main {
+    grid-column: 1;
+  }
+
+  .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid--split .evenflo-pdp-tab-layout__aside {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 100%;
+  }
+
+  .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid--split .evenflo-pdp-tab-layout__aside > .info-block {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid--split .evenflo-pdp-tab-layout__aside .info-body {
+    flex: 1 1 auto;
+  }
+}
+
+/* Reviews */
+.evenflo-pdp-tabs .yotpo-base-layout {
+	width: 100%!important;
+}
+
+/* FAQs */
+.evenflo-pdp-tabs .yotpo-main-layout {
+	width: 100%!important;
+	box-sizing: border-box;
+	background-color: var(--color-evenflo-white)!important;
+	padding: 0 16px;
