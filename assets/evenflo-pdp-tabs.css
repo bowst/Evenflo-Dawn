@@ -179,6 +179,10 @@
     gap: 16px;
   }
 
+  .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid--split > div > *:last-child {
+	flex-grow: 1;
+  }
+  
   .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid--split .evenflo-pdp-tab-layout__main {
     grid-column: 1;
   }

@@ -4,7 +4,7 @@
   Layout: evenflo-pdp-tab-layout*; cards use .info-block (scoped in evenflo-pdp-tabs.css).
 {% endcomment %}
 {%- liquid
-  assign box_content = product.metafields.sf_products.retail_package_contents
+  assign box_content = product.metafields.custom.retail_package_contents
 
   assign assembly_required = product.metafields.sf_products.assembly_required
   assign assembly_details = product.metafields.sf_products.assembly_details
@@ -82,32 +82,30 @@
             <h4 class="h3">Materials / Fabric</h4>
             <div class="info-body">
               {%- if material != blank -%}
-                <div>
-                  <strong>Material</strong>
-                  <div>
-                    {%- assign material_parts = material | split: ',' -%}
-                    {%- for part in material_parts -%}
-                      {%- assign piece = part | strip -%}
-                      {%- if piece != blank -%}
-                        <div>{{ piece }}</div>
-                      {%- endif -%}
-                    {%- endfor -%}
-                  </div>
-                </div>
+                {%- assign material_parts = material | split: ',' -%}
+                <p>Material: 
+                  {%- assign material_sep = false -%}
+                  {%- for part in material_parts -%}
+                    {%- assign piece = part | strip -%}
+                    {%- if piece != blank -%}
+                      {%- if material_sep -%}<br>{%- endif -%}{{ piece }}
+                      {%- assign material_sep = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </p>
               {%- endif -%}
               {%- if wheel_material != blank -%}
-                <div>
-                  <strong>Wheel material</strong>
-                  <div>
-                    {%- assign wheel_material_parts = wheel_material | split: ',' -%}
-                    {%- for part in wheel_material_parts -%}
-                      {%- assign piece = part | strip -%}
-                      {%- if piece != blank -%}
-                        <div>{{ piece }}</div>
-                      {%- endif -%}
-                    {%- endfor -%}
-                  </div>
-                </div>
+                {%- assign wheel_material_parts = wheel_material | split: ',' -%}
+                <p>Wheel material: 
+                  {%- assign wheel_sep = false -%}
+                  {%- for part in wheel_material_parts -%}
+                    {%- assign piece = part | strip -%}
+                    {%- if piece != blank -%}
+                      {%- if wheel_sep -%}<br>{%- endif -%}{{ piece }}
+                      {%- assign wheel_sep = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </p>
               {%- endif -%}
             </div>
           </div>
@@ -120,15 +118,11 @@
             <h4 class="h3">Use &amp; Care Instructions</h4>
             <div class="info-body">
               {%- if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 -%}
-                <div>
-                  <strong>Machine washable</strong>
-                  <div>Yes</div>
-                </div>
+                <p>Machine washable: Yes</p>
               {%- endif -%}
               {%- if high_chair_cleaning != blank -%}
-                <div>
-                  <strong>Cleaning</strong>
-                  <div class="rte">{{ high_chair_cleaning }}</div>
+                <div class="rte">
+                  <p>Cleaning: {{ high_chair_cleaning }}</p>
                 </div>
               {%- endif -%}
             </div>

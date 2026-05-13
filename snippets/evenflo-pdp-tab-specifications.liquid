@@ -14,8 +14,10 @@
   assign package_depth = product.metafields.sf_shipping.package_depth
   assign assembled_weight = product.metafields.sf_products.assembled_weight
   assign package_weight = product.metafields.sf_shipping.package_weight
-
-  assign certifications = product.metafields.sf_stroller.certifications
+  assign certifications = product.metafields.sf_products.certifications
+  if certifications == blank
+    assign certifications = product.metafields.custom.certifications
+  endif
   assign warranty_code = product.metafields.sf_products.warranty
   assign product_warranty_link = product.metafields.custom.product_warranty_link
   assign warranty_type_custom = product.metafields.custom.warranty_type
@@ -77,7 +79,7 @@
         {%- endfor -%}
       </ul>
     </div>
-	
+
   {%- endcapture -%}
 {%- endif -%}
 
@@ -88,40 +90,34 @@
         {%- if show_measurements -%}
           <div class="info-block">
             <h4 class="h3">Product Measurements</h4>
-            <ul class="specs-list info-list">
+            <ul class="specs-list no-bullets">
               {%- if assembled_width and assembled_height and assembled_depth -%}
                 <li>
-                  <strong>Assembled</strong>
-                  <div>{{ assembled_width }}" W × {{ assembled_height }}" H × {{ assembled_depth }}" D</div>
+                  Assembled: {{ assembled_width }}" W × {{ assembled_height }}" H × {{ assembled_depth }}" D
                 </li>
               {%- endif -%}
               {%- if package_width and package_height and package_depth -%}
                 <li>
-                  <strong>Package</strong>
-                  <div>{{ package_width }}" W × {{ package_height }}" H × {{ package_depth }}" D</div>
+                  Package: {{ package_width }}" W × {{ package_height }}" H × {{ package_depth }}" D
                 </li>
               {%- endif -%}
               {%- if folded_dimensions != blank -%}
                 <li>
-                  <strong>Folded dimensions</strong>
-                  <div>{{ folded_dimensions }}</div>
+                  Folded dimensions: {{ folded_dimensions }}
                 </li>
               {%- elsif folded_dims_assembled != blank -%}
                 <li>
-                  <strong>Folded dimensions</strong>
-                  <div>{{ folded_dims_assembled }}</div>
+                  Folded dimensions: {{ folded_dims_assembled }}
                 </li>
               {%- endif -%}
               {%- if assembled_weight != blank -%}
                 <li>
-                  <strong>Product weight</strong>
-                  <div>{{ assembled_weight }} lbs</div>
+                  Product weight: {{ assembled_weight }} lbs
                 </li>
               {%- endif -%}
               {%- if package_weight != blank -%}
                 <li>
-                  <strong>Package weight</strong>
-                  <div>{{ package_weight }} lbs</div>
+                  Package weight: {{ package_weight }} lbs
                 </li>
               {%- endif -%}
             </ul>
