@@ -26,6 +26,51 @@
         "overlay_opacity": 0.1
       }
     },
+    "177680075730d4427b": {
+      "type": "apps",
+      "blocks": {
+        "specs_compare_comparison_table_TpMfpx": {
+          "type": "shopify://apps/specs-compare/blocks/comparison-table/a9d09772-f36d-4539-a4c4-7bd785bc12c0",
+          "disabled": true,
+          "settings": {
+            "product": "shyft-dualride-car-seat-stroller-combo-sensorsafe-green",
+            "product_list": [
+              "shyft-dualride-infant-car-seat-stroller-combo-green-and-gentle",
+              "shyft-dualride-infant-car-seat-stroller-combo",
+              "shyft-dualride-car-seat-stroller-combo-carryall-storage",
+              "shyft-dualride-car-seat-stroller-combo-core"
+            ],
+            "fallback_to_related_products": false,
+            "exclude_sold_out_products": true,
+            "enable_show_differences_switch": true,
+            "differences_switch_mode": "highlight_differences",
+            "show_variant_selector": false,
+            "show_group_names": true,
+            "maximum_rows": 30,
+            "maximum_visible_products": 5,
+            "show_in_modal": true,
+            "modal_trigger_button_text": "COMPARE SHYFT",
+            "app_block_margin": 16,
+            "app_block_max_width": "full_width",
+            "app_block_custom_max_width": 1200,
+            "show_product_image": true,
+            "show_product_vendor": false,
+            "show_product_price": true,
+            "show_product_rating": true,
+            "show_view_details_button": true,
+            "enable_ai_analysis": true,
+            "append_parent_target_selector": ""
+          }
+        }
+      },
+      "block_order": [
+        "specs_compare_comparison_table_TpMfpx"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
     "evenflo_scrolling_text_chRUA6": {
       "type": "evenflo-scrolling-text",
       "settings": {
@@ -412,54 +457,12 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
-    },
-    "177680075730d4427b": {
-      "type": "apps",
-      "blocks": {
-        "specs_compare_comparison_table_TpMfpx": {
-          "type": "shopify://apps/specs-compare/blocks/comparison-table/a9d09772-f36d-4539-a4c4-7bd785bc12c0",
-          "settings": {
-            "product": "shyft-dualride-car-seat-stroller-combo-sensorsafe-green",
-            "product_list": [
-              "shyft-dualride-infant-car-seat-stroller-combo-green-and-gentle",
-              "shyft-dualride-infant-car-seat-stroller-combo",
-              "shyft-dualride-car-seat-stroller-combo-carryall-storage",
-              "shyft-dualride-car-seat-stroller-combo-core"
-            ],
-            "fallback_to_related_products": false,
-            "exclude_sold_out_products": true,
-            "enable_show_differences_switch": true,
-            "differences_switch_mode": "highlight_differences",
-            "show_variant_selector": false,
-            "show_group_names": true,
-            "maximum_rows": 30,
-            "maximum_visible_products": 5,
-            "show_in_modal": false,
-            "modal_trigger_button_text": "",
-            "app_block_margin": 16,
-            "app_block_max_width": "full_width",
-            "app_block_custom_max_width": 1200,
-            "show_product_image": true,
-            "show_product_vendor": false,
-            "show_product_price": true,
-            "show_product_rating": true,
-            "show_view_details_button": true,
-            "enable_ai_analysis": true,
-            "append_parent_target_selector": ""
-          }
-        }
-      },
-      "block_order": [
-        "specs_compare_comparison_table_TpMfpx"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "main",
     "evenflo_banner_ffcbry",
+    "177680075730d4427b",
     "evenflo_scrolling_text_chRUA6",
     "evenflo_image_text_MxEcUp",
     "evenflo_featured_banner_3wb8HW",
@@ -472,7 +475,6 @@
     "evenflo_featured_collection_p6XV4y",
     "rich_text_chPmNT",
     "custom_liquid_8T96Bn",
-    "rich_text_bat7UN",
-    "177680075730d4427b"
+    "rich_text_bat7UN"
   ]
 }
