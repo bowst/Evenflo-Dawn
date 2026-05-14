@@ -115,9 +115,58 @@
         "padding_bottom": 12
       }
     },
+    "177878811244a96d9b": {
+      "type": "apps",
+      "blocks": {
+        "specs_compare_comparison_table_AEhBcP": {
+          "type": "shopify://apps/specs-compare/blocks/comparison-table/a9d09772-f36d-4539-a4c4-7bd785bc12c0",
+          "settings": {
+            "product": "{{product}}",
+            "product_list": [
+              "shyft-intuiti-plus-travel-system-revolve180-litemax-nxt-with-sensory-soothe",
+              "shyft-intuiti-travel-system"
+            ],
+            "fallback_to_related_products": false,
+            "exclude_sold_out_products": false,
+            "enable_show_differences_switch": false,
+            "differences_switch_mode": "highlight_differences",
+            "show_variant_selector": false,
+            "show_group_names": true,
+            "maximum_rows": 3,
+            "maximum_visible_products": 3,
+            "show_in_modal": false,
+            "modal_trigger_button_text": "",
+            "app_block_margin": 0,
+            "app_block_max_width": "full_width",
+            "app_block_custom_max_width": 800,
+            "show_product_image": true,
+            "show_product_vendor": false,
+            "show_product_price": true,
+            "show_product_rating": true,
+            "show_view_details_button": true,
+            "enable_ai_analysis": false,
+            "append_parent_target_selector": ""
+          }
+        }
+      },
+      "block_order": [
+        "specs_compare_comparison_table_AEhBcP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
       "settings": {}
+    },
+    "evenflo_product_video_exHBAf": {
+      "type": "evenflo-product-video",
+      "name": "Evenflo Product Video",
+      "settings": {
+        "heading": "",
+        "description": ""
+      }
     },
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
@@ -360,19 +409,12 @@
         "ai_gen_block_d2c4344_dxFxXm"
       ],
       "settings": {}
-    },
-    "evenflo_product_video_exHBAf": {
-      "type": "evenflo-product-video",
-      "name": "Evenflo Product Video",
-      "settings": {
-        "heading": "",
-        "description": ""
-      }
     }
   },
   "order": [
     "e68cf9ef-b94a-4b19-af52-0811aa439c7f",
     "main",
+    "177878811244a96d9b",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_product_video_exHBAf",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
