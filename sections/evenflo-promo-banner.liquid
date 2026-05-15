@@ -43,8 +43,19 @@
 			</div>
 		{% endif %}
 
-		{% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
-			<a href="{{ section.settings.cta_link }}" class="button button--secondary {{ section.settings.text_color }}">{{ section.settings.cta_text }}</a>
+		{%- liquid
+			assign promo_cta_link = section.settings.cta_link
+			if customer.tags contains 'swell_vip_bronze' and section.settings.bronze_cta_link != blank
+				assign promo_cta_link = section.settings.bronze_cta_link
+			elsif customer.tags contains 'swell_vip_silver' and section.settings.silver_cta_link != blank
+				assign promo_cta_link = section.settings.silver_cta_link
+			elsif customer.tags contains 'swell_vip_gold' and section.settings.gold_cta_link != blank
+				assign promo_cta_link = section.settings.gold_cta_link
+			endif
+		-%}
+
+		{% if section.settings.cta_text != blank and promo_cta_link != blank %}
+			<a href="{{ promo_cta_link }}" class="button button--secondary {{ section.settings.text_color }}">{{ section.settings.cta_text }}</a>
 		{% endif %}
 		</div>
 	</div>
@@ -133,6 +144,12 @@
 		"label": "Promo code"
 	},
 	{
+		"type": "url",
+		"id": "bronze_cta_link",
+		"label": "CTA link",
+		"info": "Optional. Uses default CTA link when empty."
+	},
+	{
 		"type": "header",
 		"content": "Silver Content"
 	},
@@ -152,6 +169,12 @@
 		"label": "Promo code"
 	},
 	{
+		"type": "url",
+		"id": "silver_cta_link",
+		"label": "CTA link",
+		"info": "Optional. Uses default CTA link when empty."
+	},
+	{
 		"type": "header",
 		"content": "Gold Content"
 	},
@@ -169,6 +192,12 @@
 		"type": "text",
 		"id": "gold_promo_code",
 		"label": "Promo code"
+	},
+	{
+		"type": "url",
+		"id": "gold_cta_link",
+		"label": "CTA link",
+		"info": "Optional. Uses default CTA link when empty."
 	},
 	{
 		"type": "header",
