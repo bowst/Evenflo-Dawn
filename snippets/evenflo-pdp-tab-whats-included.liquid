@@ -52,7 +52,6 @@
           <div class="info-block">
             <h4 class="h3">Assembly Details</h4>
             <div class="info-body">
-              
               {%- if assembly_required == 1 -%}
                 {%- if assembly_details -%}
                   <div>
@@ -63,16 +62,16 @@
                 {%- if my_switch or hardware_included -%}
                   <p>
                     <h5>Hardware Included</h5>
-                      {%- if my_switch == 1 or hardware_included == 1 -%}
-                        Yes
-                      {%- else -%}
-                        No
-                      {%- endif -%}
-				</p>
+                    {%- if my_switch == 1 or hardware_included == 1 -%}
+                      Yes
+                    {%- else -%}
+                      No
+                    {%- endif -%}
+                  </p>
                 {%- endif -%}
-			{% else %}
-				<p>No assembly required.</p>
-                {%- endif -%}
+              {% else %}
+                <p>No assembly required.</p>
+              {%- endif -%}
             </div>
           </div>
         {%- endif -%}
@@ -83,12 +82,14 @@
             <div class="info-body">
               {%- if material != blank -%}
                 {%- assign material_parts = material | split: ',' -%}
-                <p>Material: 
+                <p>
+                  Material:
                   {%- assign material_sep = false -%}
                   {%- for part in material_parts -%}
                     {%- assign piece = part | strip -%}
                     {%- if piece != blank -%}
-                      {%- if material_sep -%}<br>{%- endif -%}{{ piece }}
+                      {%- if material_sep -%}<br>{%- endif -%}
+                      {{ piece }}
                       {%- assign material_sep = true -%}
                     {%- endif -%}
                   {%- endfor -%}
@@ -96,12 +97,14 @@
               {%- endif -%}
               {%- if wheel_material != blank -%}
                 {%- assign wheel_material_parts = wheel_material | split: ',' -%}
-                <p>Wheel material: 
+                <p>
+                  Wheel material:
                   {%- assign wheel_sep = false -%}
                   {%- for part in wheel_material_parts -%}
                     {%- assign piece = part | strip -%}
                     {%- if piece != blank -%}
-                      {%- if wheel_sep -%}<br>{%- endif -%}{{ piece }}
+                      {%- if wheel_sep -%}<br>{%- endif -%}
+                      {{ piece }}
                       {%- assign wheel_sep = true -%}
                     {%- endif -%}
                   {%- endfor -%}
@@ -117,6 +120,7 @@
           <div class="info-block">
             <h4 class="h3">Use &amp; Care Instructions</h4>
             <div class="info-body">
+              {{ product.metafields.sf_products.use_copy }}
               {%- if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 -%}
                 <p>Machine washable: Yes</p>
               {%- endif -%}
