@@ -44,18 +44,34 @@
 		{% endif %}
 
 		{%- liquid
+			assign promo_cta_text = section.settings.cta_text
 			assign promo_cta_link = section.settings.cta_link
-			if customer.tags contains 'swell_vip_bronze' and section.settings.bronze_cta_link != blank
-				assign promo_cta_link = section.settings.bronze_cta_link
-			elsif customer.tags contains 'swell_vip_silver' and section.settings.silver_cta_link != blank
-				assign promo_cta_link = section.settings.silver_cta_link
-			elsif customer.tags contains 'swell_vip_gold' and section.settings.gold_cta_link != blank
-				assign promo_cta_link = section.settings.gold_cta_link
+			if customer.tags contains 'swell_vip_bronze'
+				if section.settings.bronze_cta_text != blank
+					assign promo_cta_text = section.settings.bronze_cta_text
+				endif
+				if section.settings.bronze_cta_link != blank
+					assign promo_cta_link = section.settings.bronze_cta_link
+				endif
+			elsif customer.tags contains 'swell_vip_silver'
+				if section.settings.silver_cta_text != blank
+					assign promo_cta_text = section.settings.silver_cta_text
+				endif
+				if section.settings.silver_cta_link != blank
+					assign promo_cta_link = section.settings.silver_cta_link
+				endif
+			elsif customer.tags contains 'swell_vip_gold'
+				if section.settings.gold_cta_text != blank
+					assign promo_cta_text = section.settings.gold_cta_text
+				endif
+				if section.settings.gold_cta_link != blank
+					assign promo_cta_link = section.settings.gold_cta_link
+				endif
 			endif
 		-%}
 
-		{% if section.settings.cta_text != blank and promo_cta_link != blank %}
-			<a href="{{ promo_cta_link }}" class="button button--secondary {{ section.settings.text_color }}">{{ section.settings.cta_text }}</a>
+		{% if promo_cta_text != blank and promo_cta_link != blank %}
+			<a href="{{ promo_cta_link }}" class="button button--secondary {{ section.settings.text_color }}">{{ promo_cta_text }}</a>
 		{% endif %}
 		</div>
 	</div>
@@ -144,6 +160,12 @@
 		"label": "Promo code"
 	},
 	{
+		"type": "text",
+		"id": "bronze_cta_text",
+		"label": "CTA text",
+		"info": "Optional. Uses default CTA text when empty."
+	},
+	{
 		"type": "url",
 		"id": "bronze_cta_link",
 		"label": "CTA link",
@@ -169,6 +191,12 @@
 		"label": "Promo code"
 	},
 	{
+		"type": "text",
+		"id": "silver_cta_text",
+		"label": "CTA text",
+		"info": "Optional. Uses default CTA text when empty."
+	},
+	{
 		"type": "url",
 		"id": "silver_cta_link",
 		"label": "CTA link",
@@ -192,6 +220,12 @@
 		"type": "text",
 		"id": "gold_promo_code",
 		"label": "Promo code"
+	},
+	{
+		"type": "text",
+		"id": "gold_cta_text",
+		"label": "CTA text",
+		"info": "Optional. Uses default CTA text when empty."
 	},
 	{
 		"type": "url",
