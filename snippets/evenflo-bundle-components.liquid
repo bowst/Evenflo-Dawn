@@ -1,0 +1,15 @@
+{% comment %}
+  Resolves bundle component products from metafields (same sources as evenflo-dtc-bundle-items).
+  Sets: evenflo_bundle_components
+{% endcomment %}
+{%- liquid
+  assign evenflo_bundle_components = product.metafields.custom.bundle_products.value
+
+  if evenflo_bundle_components == blank
+    assign evenflo_bundle_components = product.metafields.custom.dtc_bundle_products.value
+  endif
+
+  if evenflo_bundle_components == blank
+    assign evenflo_bundle_components = product.metafields.product_info.bundle_products.value
+  endif
+-%}

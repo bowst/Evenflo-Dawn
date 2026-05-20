@@ -1,0 +1,197 @@
+{% comment %}
+  Resolves swatch media for a product option value.
+  Order: native value.swatch → variant swatch media → bundle components → related products → collection catalog.
+
+  Accepts:
+  - product: {Object}
+  - option: {Object}
+  - value: {Object}
+  - bundle_components: {Array}
+
+  Outputs plain text token: native | image|<url> | color|<rgb> | empty
+{% endcomment %}
+{%- liquid
+  assign value_name = value.name | default: value | strip
+  assign value_name_down = value_name | downcase
+  assign resolved = ''
+
+  if value.swatch.image != blank or value.swatch.color != blank
+    assign resolved = 'native'
+  endif
+
+  if resolved == ''
+    assign target_variant = value.variant
+    if target_variant == blank
+      case option.position
+        when 1
+          for variant in product.variants
+            if variant.option1 == value_name and variant.available
+              assign target_variant = variant
+              break
+            endif
+          endfor
+          if target_variant == blank
+            for variant in product.variants
+              if variant.option1 == value_name
+                assign target_variant = variant
+                break
+              endif
+            endfor
+          endif
+        when 2
+          for variant in product.variants
+            if variant.option2 == value_name
+              assign target_variant = variant
+              break
+            endif
+          endfor
+        when 3
+          for variant in product.variants
+            if variant.option3 == value_name
+              assign target_variant = variant
+              break
+            endif
+          endfor
+      endcase
+    endif
+
+    if target_variant != blank and target_variant.media.size > 0
+      for media in target_variant.media
+        assign media_src = media.preview_image.src | default: media.src | downcase
+        assign media_alt = media.alt | default: '' | downcase
+        if media_src contains '_50x' or media_src contains '50x_' or media_alt contains 'swatch'
+          assign image_url = media.preview_image | image_url: width: 50
+          assign resolved = 'image|' | append: image_url
+          break
+        endif
+      endfor
+
+      if resolved == '' and target_variant.media.size > 1
+        assign swatch_media = target_variant.media.last
+        assign image_url = swatch_media.preview_image | image_url: width: 50
+        assign resolved = 'image|' | append: image_url
+      endif
+    endif
+  endif
+
+  if resolved == '' and bundle_components != blank
+    for component_product in bundle_components
+      if resolved != ''
+        break
+      endif
+      if component_product == blank
+        continue
+      endif
+
+      for component_option in component_product.options_with_values
+        assign component_option_name_down = component_option.name | downcase
+        unless component_option_name_down contains 'color' or component_option_name_down contains 'colour'
+          continue
+        endunless
+
+        for component_value in component_option.values
+          assign component_value_name = component_value.name | default: component_value | strip
+          assign component_value_name_down = component_value_name | downcase
+          assign names_match = false
+
+          if component_value_name_down == value_name_down
+            assign names_match = true
+          elsif value_name_down contains component_value_name_down and component_value_name_down != ''
+            assign names_match = true
+          elsif component_value_name_down contains value_name_down and value_name_down != ''
+            assign names_match = true
+          endif
+
+          unless names_match
+            continue
+          endunless
+
+          if component_value.swatch.image != blank
+            assign image_url = component_value.swatch.image | image_url: width: 50
+            assign resolved = 'image|' | append: image_url
+            break
+          elsif component_value.swatch.color != blank
+            assign resolved = 'color|' | append: component_value.swatch.color.rgb
+            break
+          endif
+        endfor
+      endfor
+    endfor
+  endif
+
+  if resolved == ''
+    assign related_products = product.metafields.product_info.related_products.value
+    if related_products != blank
+      for related_product in related_products
+        if resolved != ''
+          break
+        endif
+        if related_product == blank
+          continue
+        endif
+
+        for related_option in related_product.options_with_values
+          assign related_option_name_down = related_option.name | downcase
+          unless related_option_name_down contains 'color' or related_option_name_down contains 'colour'
+            continue
+          endunless
+
+          for related_value in related_option.values
+            assign related_value_name = related_value.name | default: related_value | strip
+            assign related_value_name_down = related_value_name | downcase
+
+            if related_value_name_down == value_name_down or value_name_down contains related_value_name_down or related_value_name_down contains value_name_down
+              if related_value.swatch.image != blank
+                assign image_url = related_value.swatch.image | image_url: width: 50
+                assign resolved = 'image|' | append: image_url
+                break
+              elsif related_value.swatch.color != blank
+                assign resolved = 'color|' | append: related_value.swatch.color.rgb
+                break
+              endif
+            endif
+          endfor
+        endfor
+      endfor
+    endif
+  endif
+
+  if resolved == ''
+    for product_collection in product.collections limit: 3
+      if resolved != ''
+        break
+      endif
+      for catalog_product in product_collection.products limit: 40
+        if resolved != ''
+          break
+        endif
+        if catalog_product.id == product.id
+          continue
+        endif
+
+        for catalog_option in catalog_product.options_with_values
+          assign catalog_option_name_down = catalog_option.name | downcase
+          unless catalog_option_name_down contains 'color' or catalog_option_name_down contains 'colour'
+            continue
+          endunless
+
+          for catalog_value in catalog_option.values
+            assign catalog_value_name = catalog_value.name | default: catalog_value | strip
+            assign catalog_value_name_down = catalog_value_name | downcase
+
+            if catalog_value_name_down == value_name_down or value_name_down contains catalog_value_name_down or catalog_value_name_down contains value_name_down
+              if catalog_value.swatch.image != blank
+                assign image_url = catalog_value.swatch.image | image_url: width: 50
+                assign resolved = 'image|' | append: image_url
+                break
+              elsif catalog_value.swatch.color != blank
+                assign resolved = 'color|' | append: catalog_value.swatch.color.rgb
+                break
+              endif
+            endif
+          endfor
+        endfor
+      endfor
+    endfor
+  endif
+-%}{{- resolved -}}

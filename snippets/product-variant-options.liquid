@@ -6,7 +6,7 @@
   - option: {Object} current product_option object.
   - block: {Object} block object.
   - picker_type: {String} type of picker to dispay
-
+  - bundle_components: {Array} optional bundle component products for swatch resolution
 
   Usage:
   {% render 'product-variant-options',
@@ -21,16 +21,34 @@
 -%}
 
 {%- for value in option.values -%}
+  {%- capture evenflo_swatch_token -%}
+    {%- render 'evenflo-option-value-swatch',
+      product: product,
+      option: option,
+      value: value,
+      bundle_components: bundle_components
+    -%}
+  {%- endcapture -%}
+  {%- assign evenflo_swatch_token = evenflo_swatch_token | strip -%}
+
   {%- liquid
     assign swatch_focal_point = null
-    if value.swatch.image
-      assign image_url = value.swatch.image | image_url: width: 50
-      assign swatch_value = 'url(' | append: image_url | append: ')'
-      assign swatch_focal_point = value.swatch.image.presentation.focal_point
-    elsif value.swatch.color
-      assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
-    else
-      assign swatch_value = null
+    assign swatch_value = null
+
+    if evenflo_swatch_token == 'native'
+      if value.swatch.image != blank
+        assign image_url = value.swatch.image | image_url: width: 50
+        assign swatch_value = 'url(' | append: image_url | append: ')'
+        assign swatch_focal_point = value.swatch.image.presentation.focal_point
+      elsif value.swatch.color != blank
+        assign swatch_value = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+      endif
+    elsif evenflo_swatch_token contains 'image|'
+      assign evenflo_swatch_parts = evenflo_swatch_token | split: '|'
+      assign swatch_value = 'url(' | append: evenflo_swatch_parts[1] | append: ')'
+    elsif evenflo_swatch_token contains 'color|'
+      assign evenflo_swatch_parts = evenflo_swatch_token | split: '|'
+      assign swatch_value = 'rgb(' | append: evenflo_swatch_parts[1] | append: ')'
     endif
 
     assign option_disabled = true
@@ -69,6 +87,8 @@
       name: input_name,
       value: value | escape,
       swatch: value.swatch,
+      swatch_value: swatch_value,
+      swatch_focal_point: swatch_focal_point,
       product_form_id: product_form_id,
       checked: value.selected,
       visually_disabled: option_disabled,

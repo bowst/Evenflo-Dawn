@@ -9,13 +9,70 @@
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
 {%- unless product.has_only_default_variant -%}
+  {%- render 'evenflo-bundle-components', product: product -%}
+
+  {%- if block.settings.debug_swatch_data -%}
+    <details class="evenflo-swatch-debug" style="margin:1rem 0;padding:1rem;background:#f5f5f5;font-size:12px;line-height:1.4;">
+      <summary>Variant swatch debug (disable in Variant picker block settings)</summary>
+      <p><strong>Product:</strong> {{ product.title | escape }} ({{ product.handle }})</p>
+      <p><strong>Bundle components:</strong> {% if evenflo_bundle_components != blank %}{{ evenflo_bundle_components.size }}{% else %}none{% endif %}</p>
+      {%- for option in product.options_with_values -%}
+        <p><strong>{{ option.name }}</strong> (position {{ option.position }})</p>
+        <ul>
+          {%- for value in option.values -%}
+            {%- capture evenflo_swatch_token -%}
+              {%- render 'evenflo-option-value-swatch',
+                product: product,
+                option: option,
+                value: value,
+                bundle_components: evenflo_bundle_components
+              -%}
+            {%- endcapture -%}
+            {%- assign evenflo_swatch_token = evenflo_swatch_token | strip -%}
+            <li>
+              {{ value | escape }} —
+              {% if evenflo_swatch_token == 'native' %}
+                native swatch
+              {% elsif evenflo_swatch_token contains 'image|' %}
+                resolved image ({{ evenflo_swatch_token | split: '|' | last | split: '/' | last | truncate: 40 }})
+              {% elsif evenflo_swatch_token contains 'color|' %}
+                resolved color
+              {% else %}
+                no swatch resolved
+              {% endif %}
+              {% if value.variant.media.size > 0 %}
+                (variant media: {{ value.variant.media.size }})
+              {% endif %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endfor -%}
+    </details>
+  {%- endif -%}
+
   <variant-selects
     id="variant-selects-{{ section.id }}"
     data-section="{{ section.id }}"
-    {{ block.shopify_attributes }}>
+    {{ block.shopify_attributes }}
+  >
     {%- for option in product.options_with_values -%}
+      {%- assign swatch_count = 0 -%}
+      {%- for value in option.values -%}
+        {%- capture evenflo_swatch_token -%}
+          {%- render 'evenflo-option-value-swatch',
+            product: product,
+            option: option,
+            value: value,
+            bundle_components: evenflo_bundle_components
+          -%}
+        {%- endcapture -%}
+        {%- assign evenflo_swatch_token = evenflo_swatch_token | strip -%}
+        {%- if evenflo_swatch_token != blank -%}
+          {%- assign swatch_count = swatch_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+
       {%- liquid
-        assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
 
         if swatch_count > 0 and block.settings.swatch_shape != 'none'
@@ -35,21 +92,23 @@
               (#{{- product.selected_or_first_available_variant.sku -}})
             </span>
           </legend>
-          {% render 'product-variant-options'
-            , product: product
-            , option: option
-            , block: block
-            , picker_type: picker_type
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type,
+            bundle_components: evenflo_bundle_components
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">{{ option.name }}</legend>
-          {% render 'product-variant-options'
-            , product: product
-            , option: option
-            , block: block
-            , picker_type: picker_type
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type,
+            bundle_components: evenflo_bundle_components
           %}
         </fieldset>
       {%- else -%}
@@ -60,21 +119,24 @@
           <div class="select">
             {%- if picker_type == 'swatch_dropdown' -%}
               <span data-selected-value class="dropdown-swatch">
-                {% render 'swatch'
-                  , swatch: option.selected_value.swatch
-                  , shape: block.settings.swatch_shape %}
+                {% render 'swatch',
+                  swatch: option.selected_value.swatch,
+                  shape: block.settings.swatch_shape
+                %}
               </span>
             {%- endif -%}
             <select
               id="Option-{{ section.id }}-{{ forloop.index0 }}"
               class="select__select"
               name="options[{{ option.name | escape }}]"
-              form="{{ product_form_id }}">
-              {% render 'product-variant-options'
-                , product: product
-                , option: option
-                , block: block
-                , picker_type: picker_type
+              form="{{ product_form_id }}"
+            >
+              {% render 'product-variant-options',
+                product: product,
+                option: option,
+                block: block,
+                picker_type: picker_type,
+                bundle_components: evenflo_bundle_components
               %}
             </select>
             <span class="svg-wrapper">
