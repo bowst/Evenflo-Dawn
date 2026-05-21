@@ -25,6 +25,24 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .evenflo-dtc-bundle-items .evenflo-dtc-bundle-items__header {
+    text-align: left;
+  }
+
+  .evenflo-dtc-bundle-items .evenflo-dtc-bundle-items__header .title {
+    text-align: left;
+  }
+
+  .evenflo-dtc-bundle-items .evenflo-dtc-bundle-items__header .title::after {
+    left: 0;
+    transform: none;
+  }
+
+  .evenflo-dtc-bundle-items__subtitle {
+    margin: 0.8rem 0 0;
+    text-align: left;
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -54,14 +72,32 @@
   if section.settings.swipe_on_mobile and items_count > columns_mobile_int
     assign show_mobile_slider = true
   endif
+
+  assign bundle_item_titles = ''
+  for bundle_variant in bundle_variants
+    if bundle_variant != blank and bundle_variant.product != blank
+      assign component_product = bundle_variant.product
+      assign item_title = component_product.title
+      if component_product.metafields.custom.platform_name != blank
+        assign item_title = component_product.metafields.custom.platform_name.value | default: component_product.metafields.custom.platform_name
+      endif
+      if bundle_item_titles != blank
+        assign bundle_item_titles = bundle_item_titles | append: ', '
+      endif
+      assign bundle_item_titles = bundle_item_titles | append: item_title
+    endif
+  endfor
 -%}
 
 {%- if bundle_variants != blank -%}
-  <div class="color-{{ section.settings.color_scheme }} isolate gradient">
+  <div class="color-{{ section.settings.color_scheme }} isolate gradient evenflo-dtc-bundle-items">
     <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
-      <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider slider--desktop{% endif %}">
+      <div class="collection__title evenflo-dtc-bundle-items__header title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider slider--desktop{% endif %}">
         {%- if section.settings.heading != blank -%}
           <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if bundle_item_titles != blank -%}
+          <p class="evenflo-dtc-bundle-items__subtitle">{{ bundle_item_titles | escape }}</p>
         {%- endif -%}
       </div>
       <div class="page-width">
