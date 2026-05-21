@@ -67,6 +67,19 @@
     {{ block.shopify_attributes }}
   >
     {%- for option in product.options_with_values -%}
+      {%- liquid
+        assign option_label = option.name | strip
+        if block.settings.option_label_override != blank and product.options.size == 1
+          assign option_label = block.settings.option_label_override | strip
+        endif
+        assign option_label_display = option_label
+        if option_label.size > 0
+          assign option_label_end = option_label | slice: -1, 1
+          unless option_label_end == ':'
+            assign option_label_display = option_label | append: ':'
+          endunless
+        endif
+      -%}
       {%- assign swatch_count = 0 -%}
       {%- for value in option.values -%}
         {%- capture evenflo_swatch_token -%}
@@ -97,7 +110,7 @@
       {%- if picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
-            {{ option.name }}:
+            {{ option_label_display }}
             <span data-selected-value>
               <span>{{- option.selected_value -}}</span>
               (#{{- product.selected_or_first_available_variant.sku -}})
