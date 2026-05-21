@@ -62,7 +62,9 @@
 	margin-right: auto;
   }
   
-  a.button.button--primary:hover {
+  /* Carousel content CTAs only — product cards use <button> or inherit base .button hover */
+  .card-carousel-card__info a.button.button--primary:hover,
+  .card-carousel-card__info a.button.button--primary:focus {
 	background-color: #00aea9;
 	border-color: #00aea9;
   }

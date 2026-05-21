@@ -18,6 +18,13 @@
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - link_url: {String} Override URL for card title and media links (optional)
+  - card_heading: {String} Override product title text (optional)
+  - highlight_variant_id: {Number} Variant id to show as active image/swatch (optional)
+  - price_variant: {Object} Variant used for price display instead of product range (optional)
+  - card_button_label: {String} Custom button label. Shows a link CTA instead of quick add (optional)
+  - card_button_url: {String} URL for the custom button. Defaults to the product URL (optional)
+  - card_wrapper_class: {String} Extra class on the card wrapper (optional)
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -60,8 +67,11 @@ Determine if the product is from support product collection
     if ratio == 0 or ratio == null
       assign ratio = 1.3333
     endif
+
+    assign card_link_url = link_url | default: card_product.url
+    assign card_title_text = card_heading | default: card_product.title
   -%}
-  <div class="card-wrapper product-card-wrapper --underline-links-hover{% if card_product.available == false and is_product_support == false %} out-of-stock{% endif %}">
+  <div class="card-wrapper product-card-wrapper --underline-links-hover{% if card_wrapper_class != blank %} {{ card_wrapper_class }}{% endif %}{% if card_product.available == false and is_product_support == false %} out-of-stock{% endif %}">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -158,7 +168,7 @@ Determine if the product is from support product collection
                       src="{{ variant_media | image_url: width: 533 }}"
                       sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                       alt="{{ variant_media.alt | escape }}"
-                      class="motion-reduce{% if forloop.first %} active{% endif %}"
+                      class="motion-reduce{% if highlight_variant_id != blank and variant.id == highlight_variant_id %} active{% elsif highlight_variant_id == blank and forloop.first %} active{% endif %}"
                       {% unless lazy_load == false %}
                         loading="lazy"
                       {% endunless %}
@@ -175,8 +185,8 @@ Determine if the product is from support product collection
         {%- endif -%}
         
         <a
-            href="{{ card_product.url }}" 
-            title="{{ card_product.title }}" 
+            href="{{ card_link_url }}"
+            title="{{ card_title_text | escape }}"
             id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
             class="full-unstyled-link card__content product-link"
             aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
@@ -204,13 +214,13 @@ Determine if the product is from support product collection
             {% endif %}
           >
             <a
-              href="{{ card_product.url }}"
+              href="{{ card_link_url }}"
               id="CardLink-{{ section_id }}-{{ card_product.id }}"
               class="full-unstyled-link product-link"
-              aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}" 
-              title="{{ card_product.title | escape }}"
+              aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
+              title="{{ card_title_text | escape }}"
             >
-              {{ card_product.title | escape }}
+              {{ card_title_text | escape }}
             </a>
           </h3>
           <div class="card-information">
@@ -224,7 +234,17 @@ Determine if the product is from support product collection
 
 			<div class="price-rating-container">
 				{% if is_product_support == false %}
-				{% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+				  {%- if price_variant != blank -%}
+				    <div class="price">
+				      {%- if settings.currency_code_enabled -%}
+				        {{ price_variant.price | money_with_currency }}
+				      {%- else -%}
+				        {{ price_variant.price | money }}
+				      {%- endif -%}
+				    </div>
+				  {%- else -%}
+				    {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+				  {%- endif -%}
 				{% endif %}
 				
 				{%- if show_rating -%}
@@ -242,7 +262,7 @@ Determine if the product is from support product collection
 
 					{%  comment %}<a href="{{  product_option_value.variant.url }}">{%  endcomment %}
 					
-						<a href="#vid_{{  product_option_value.variant.id }}" class="{% if forloop.first %}active {% endif %}{% unless product_option_value.variant.available %}out-of-stock{% endunless %}" title="{{  product_option_value.variant.title }}" data-variant-id="{{  product_option_value.variant.id }}">
+						<a href="#vid_{{  product_option_value.variant.id }}" class="{% if highlight_variant_id != blank and product_option_value.variant.id == highlight_variant_id %}active {% elsif highlight_variant_id == blank and forloop.first %}active {% endif %}{% unless product_option_value.variant.available %}out-of-stock{% endunless %}" title="{{  product_option_value.variant.title }}" data-variant-id="{{  product_option_value.variant.id }}">
 							{%- if product_option_value.swatch.image -%}
 							{{
 								product_option_value.swatch.image
@@ -270,12 +290,33 @@ Determine if the product is from support product collection
 				</div>
 				{% endif %}
 				{% if card_product.vendor == 'Evenflo' or card_product.vendor == 'Evenflo Gold' %}
-					<div class="variant-title">{{  card_product.variants[0].title }}</div>
+					{%- liquid
+					  assign variant_title_label = card_product.variants[0].title
+					  if highlight_variant_id != blank
+					    for highlighted_variant in card_product.variants
+					      if highlighted_variant.id == highlight_variant_id
+					        assign variant_title_label = highlighted_variant.title
+					        break
+					      endif
+					    endfor
+					  endif
+					-%}
+					<div class="variant-title">{{ variant_title_label }}</div>
 				{% endif %}
 			{% endif %}
           </div>
         </div>
-        {%- if enable_quick_add or quick_add == 'standard' -%}
+        {%- if card_button_label != blank -%}
+          {%- assign card_cta_url = card_button_url | default: card_link_url -%}
+          <div class="quick-add no-js-hidden">
+            <a
+              href="{{ card_cta_url }}"
+              class="quick-add__submit button button--full-width button--primary"
+            >
+              {{ card_button_label | escape }}
+            </a>
+          </div>
+        {%- elsif enable_quick_add or quick_add == 'standard' -%}
           <div class="quick-add no-js-hidden">
             {%- assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id -%}
             <product-form>

@@ -1102,6 +1102,32 @@
 			"default": "circle"
 		  },
 		  {
+			"type": "text",
+			"id": "bundle_metafield_namespace",
+			"label": "Bundle variants metafield namespace",
+			"default": "custom"
+		  },
+		  {
+			"type": "text",
+			"id": "bundle_metafield_key",
+			"label": "Bundle variants metafield key",
+			"default": "bundle_products",
+			"info": "List of variant references (custom.bundle_products). Metafield definition must allow Storefront access."
+		  },
+		  {
+			"type": "checkbox",
+			"id": "show_bundle_included_colors",
+			"label": "Show fixed-color bundle variants above picker",
+			"info": "Shows a line per bundle_products variant whose color is fixed on this PDP. Hides the line when the bundle variant picker lets the customer choose that component's color.",
+			"default": true
+		  },
+		  {
+			"type": "text",
+			"id": "bundle_included_colors_heading",
+			"label": "Included colors heading",
+			"info": "Optional line above the list (e.g. “Also included”). Leave blank to hide."
+		  },
+		  {
 			"type": "checkbox",
 			"id": "debug_swatch_data",
 			"label": "Debug swatch data on storefront",

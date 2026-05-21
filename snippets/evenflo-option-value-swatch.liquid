@@ -6,7 +6,7 @@
   - product: {Object}
   - option: {Object}
   - value: {Object}
-  - bundle_components: {Array}
+  - bundle_variants: {Array} list.variant_reference from custom.bundle_products
 
   Outputs plain text token: native | image|<url> | color|<rgb> | empty
 {% endcomment %}
@@ -74,14 +74,15 @@
     endif
   endif
 
-  if resolved == '' and bundle_components != blank
-    for component_product in bundle_components
+  if resolved == '' and bundle_variants != blank
+    for bundle_variant in bundle_variants
       if resolved != ''
         break
       endif
-      if component_product == blank
+      if bundle_variant == blank or bundle_variant.product == blank
         continue
       endif
+      assign component_product = bundle_variant.product
 
       for component_option in component_product.options_with_values
         assign component_option_name_down = component_option.name | downcase

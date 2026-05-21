@@ -6,7 +6,7 @@
   - option: {Object} current product_option object.
   - block: {Object} block object.
   - picker_type: {String} type of picker to dispay
-  - bundle_components: {Array} optional bundle component products for swatch resolution
+  - bundle_variants: {Array} optional bundle component variants (custom.bundle_products)
 
   Usage:
   {% render 'product-variant-options',
@@ -26,7 +26,7 @@
       product: product,
       option: option,
       value: value,
-      bundle_components: bundle_components
+      bundle_variants: bundle_variants
     -%}
   {%- endcapture -%}
   {%- assign evenflo_swatch_token = evenflo_swatch_token | strip -%}

@@ -1,0 +1,25 @@
+{% comment %}
+  Fixed-color lines above the bundle variant picker.
+  Accepts: bundle_product, bundle_variants (list.variant_reference), heading
+{% endcomment %}
+{%- if bundle_variants != blank -%}
+  {%- capture included_color_lines -%}
+    {%- for bundle_variant in bundle_variants -%}
+      {%- if bundle_variant != blank -%}
+        {% render 'evenflo-bundle-included-color-line', bundle_variant: bundle_variant, bundle_product: bundle_product %}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+
+  {%- assign included_color_lines = included_color_lines | strip -%}
+  {%- if included_color_lines != blank -%}
+    <div class="evenflo-bundle-included-colors">
+      {%- if heading != blank -%}
+        <p class="evenflo-bundle-included-colors__heading">{{ heading | escape }}</p>
+      {%- endif -%}
+      <ul class="evenflo-bundle-included-colors__list" role="list">
+        {{ included_color_lines }}
+      </ul>
+    </div>
+  {%- endif -%}
+{%- endif -%}
