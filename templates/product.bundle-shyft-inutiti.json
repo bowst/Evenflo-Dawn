@@ -60,7 +60,12 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "circle",
+            "bundle_metafield_namespace": "custom",
+            "bundle_metafield_key": "bundle_products",
+            "show_bundle_included_colors": true,
+            "bundle_included_colors_heading": "",
+            "debug_swatch_data": false
           }
         },
         "custom_liquid_XFWBx4": {
@@ -117,6 +122,30 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "evenflo_dtc_bundle_items_wgVR8b": {
+      "type": "evenflo-dtc-bundle-items",
+      "name": "DTC Bundle Items",
+      "settings": {
+        "heading": "What's included",
+        "heading_size": "h1",
+        "metafield_namespace": "custom",
+        "metafield_key": "bundle_products",
+        "columns_desktop": 4,
+        "full_width": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_swatches": true,
+        "enable_quick_add": true,
+        "card_button_label": "Go to Product Page",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "qq_split_screen_MFjTgT": {
@@ -411,7 +440,12 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "circle",
+            "bundle_metafield_namespace": "custom",
+            "bundle_metafield_key": "bundle_products",
+            "show_bundle_included_colors": true,
+            "bundle_included_colors_heading": "",
+            "debug_swatch_data": false
           }
         },
         "buy_buttons": {
@@ -669,6 +703,7 @@
   "order": [
     "custom_liquid_EzUHxi",
     "evenflo_main_product_4BJMnB",
+    "evenflo_dtc_bundle_items_wgVR8b",
     "qq_split_screen_MFjTgT",
     "qq_split_screen_4DDLhK",
     "main",
