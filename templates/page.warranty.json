@@ -22,7 +22,7 @@
         "template--15779834593436__b44c8197-4385-4350-ad0f-238c04013fa1-1685579636a334e038-1": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}<\/p>"
+            "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}</p>"
           }
         }
       },
@@ -64,27 +64,30 @@
           "type": "column",
           "settings": {
             "title": "",
-            "text": "<p>90-DAY LIMITED WARRANTY<\/p>",
+            "text": "<p>90-DAY LIMITED WARRANTY</p>",
             "link_label": "Download",
-            "link": "https:\/\/images.salsify.com\/image\/upload\/s--pYSPI-g5--\/ltvh6sll1twxbxq6bxky"
+            "link": "https://images.salsify.com/image/upload/s--pYSPI-g5--/ltvh6sll1twxbxq6bxky",
+            "discount_verification": ""
           }
         },
         "059a2fe2-f5df-4474-afe3-26b0f9ae0315": {
           "type": "column",
           "settings": {
             "title": "",
-            "text": "<p>1-YEAR LIMITED WARRANTY<\/p>",
+            "text": "<p>1-YEAR LIMITED WARRANTY</p>",
             "link_label": "Download",
-            "link": "https:\/\/images.salsify.com\/image\/upload\/s--24AR5Iv0--\/hc0dzp7ziganotbhz67x"
+            "link": "https://images.salsify.com/image/upload/s--24AR5Iv0--/hc0dzp7ziganotbhz67x",
+            "discount_verification": ""
           }
         },
         "template--15815875395740__579de304-418d-4fab-84d2-01a07776c09f-1689608490fa4dc65c-1": {
           "type": "column",
           "settings": {
             "title": "",
-            "text": "<p>LIFETIME LIMITED WARRANTY<\/p>",
+            "text": "<p>LIFETIME LIMITED WARRANTY</p>",
             "link_label": "Download",
-            "link": "https:\/\/images.salsify.com\/image\/upload\/s--qpvVxkkS--\/znjpdofdywpxqpqs2fvw"
+            "link": "https://images.salsify.com/image/upload/s--qpvVxkkS--/znjpdofdywpxqpqs2fvw",
+            "discount_verification": ""
           }
         }
       },
@@ -101,6 +104,7 @@
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "primary",
+        "underline": false,
         "button_label": "",
         "button_link": "",
         "color_scheme": "background-1",
@@ -117,18 +121,20 @@
           "type": "column",
           "settings": {
             "title": "",
-            "text": "<p>1-YEAR LIMITED WARRANTY<\/p><p>6-MONTH BATTERY WARRANTY<\/p>",
+            "text": "<p>1-YEAR LIMITED WARRANTY</p><p>6-MONTH BATTERY WARRANTY</p>",
             "link_label": "Download",
-            "link": "https:\/\/images.salsify.com\/image\/upload\/s--zbjvVbkR--\/jlhrk8qk5klswpgu3gtd"
+            "link": "https://images.salsify.com/image/upload/s--zbjvVbkR--/jlhrk8qk5klswpgu3gtd",
+            "discount_verification": ""
           }
         },
         "template--15815875395740__0675162b-caa2-4a17-9d73-b7eae470c8eb-column-2": {
           "type": "column",
           "settings": {
             "title": "",
-            "text": "<p>1-YEAR LIMITED WARRANTY<\/p>",
+            "text": "<p>1-YEAR LIMITED WARRANTY</p>",
             "link_label": "Download",
-            "link": "https:\/\/images.salsify.com\/image\/upload\/s--X1vr_PvA--\/rzq23g2bz7ocegqvyb45"
+            "link": "https://images.salsify.com/image/upload/s--X1vr_PvA--/rzq23g2bz7ocegqvyb45",
+            "discount_verification": ""
           }
         }
       },
@@ -144,6 +150,7 @@
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "primary",
+        "underline": false,
         "button_label": "",
         "button_link": "",
         "color_scheme": "background-1",
@@ -184,7 +191,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Register",
-            "button_link_1": "shopify:\/\/pages\/product-registration",
+            "button_link_1": "shopify://pages/product-registration",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -198,8 +205,10 @@
         "template--15815875395740__5e3cb184-2e78-4a9d-b28b-ecfe8e60bcb7-168960878379c10534-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/subcategory-header-sale.jpg",
+        "image": "shopify://shop_images/subcategory-header-sale.jpg",
         "image_overlay_opacity": 0,
+        "underline": false,
+        "hide_image_on_mobile": false,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
