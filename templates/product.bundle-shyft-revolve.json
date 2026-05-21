@@ -61,6 +61,10 @@
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle",
+            "bundle_metafield_namespace": "custom",
+            "bundle_metafield_key": "bundle_products",
+            "show_bundle_included_colors": true,
+            "bundle_included_colors_heading": "",
             "debug_swatch_data": false
           }
         },
@@ -125,8 +129,21 @@
       "name": "DTC Bundle Items",
       "settings": {
         "heading": "What's included",
+        "heading_size": "h1",
         "metafield_namespace": "custom",
         "metafield_key": "bundle_products",
+        "columns_desktop": 4,
+        "full_width": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_swatches": true,
+        "enable_quick_add": false,
+        "card_button_label": "Go to Product Page",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -453,6 +470,10 @@
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle",
+            "bundle_metafield_namespace": "custom",
+            "bundle_metafield_key": "bundle_products",
+            "show_bundle_included_colors": true,
+            "bundle_included_colors_heading": "",
             "debug_swatch_data": false
           }
         },
