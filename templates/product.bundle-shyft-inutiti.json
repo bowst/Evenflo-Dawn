@@ -65,6 +65,7 @@
             "bundle_metafield_key": "bundle_products",
             "show_bundle_included_colors": true,
             "bundle_included_colors_heading": "",
+            "option_label_override": "",
             "debug_swatch_data": false
           }
         },
@@ -76,6 +77,7 @@
         },
         "custom_liquid_kAJdqB": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by late November\n{% endif %}"
           }
@@ -89,6 +91,7 @@
         },
         "evenflo_at_a_glance_fTFgB8": {
           "type": "evenflo-at-a-glance",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -445,6 +448,7 @@
             "bundle_metafield_key": "bundle_products",
             "show_bundle_included_colors": true,
             "bundle_included_colors_heading": "",
+            "option_label_override": "",
             "debug_swatch_data": false
           }
         },
