@@ -45,6 +45,7 @@
         },
         "custom_liquid_LCdpH4": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by early November\n{% endif %}"
           }
@@ -65,6 +66,7 @@
             "bundle_metafield_key": "bundle_products",
             "show_bundle_included_colors": true,
             "bundle_included_colors_heading": "",
+            "option_label_override": "",
             "debug_swatch_data": false
           }
         },
@@ -474,6 +476,7 @@
             "bundle_metafield_key": "bundle_products",
             "show_bundle_included_colors": true,
             "bundle_included_colors_heading": "",
+            "option_label_override": "",
             "debug_swatch_data": false
           }
         },
