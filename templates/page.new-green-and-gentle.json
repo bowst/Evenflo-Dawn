@@ -53,8 +53,16 @@
         "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
+        "mobile_button_border_color": "#ffffff",
+        "button_color_2": "#ffffff",
+        "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
+        "mobile_button_color_2": "#ffffff",
+        "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
@@ -310,6 +318,74 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "evenflo_hero_banner_3HJjCQ": {
+      "type": "evenflo-hero-banner",
+      "disabled": true,
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Green-_-Gentle_LP_HERO_STATIC_DESKTOP_1440x480_copy_2x_02d83962-a7a7-4542-b47b-dee7e5aafa5c.jpg",
+        "mobile_image": "shopify://shop_images/Green-_-Gentle_LP_HERO_STATIC_Mobile_750x1000_7953742d-9703-403a-91c1-aefbf88f2b08.jpg",
+        "eyebrow_text": "",
+        "primary_heading": "<p>Better for the planet</p>",
+        "short_description": "Soft and sustainable <br> Green&Gentle™ fabric",
+        "primary_cta_text": "",
+        "primary_cta_link": "",
+        "secondary_cta_text": "",
+        "secondary_cta_link": "",
+        "content_alignment": "align-right",
+        "text_color": "dark",
+        "desktop_overlay_opacity": 16
+      }
+    },
+    "evenflo_info_strip_XyJAyg": {
+      "type": "evenflo-info-strip",
+      "blocks": {
+        "info_aa8cXM": {
+          "type": "info",
+          "settings": {
+            "info_text": "Keeps plastic out of landfills",
+            "info_icon": "shopify://shop_images/Evenflo_Icon_2026_K.png",
+            "info_url": ""
+          }
+        },
+        "info_Vj9QPL": {
+          "type": "info",
+          "settings": {
+            "info_text": "GreenGuard Gold Certified",
+            "info_icon": "shopify://shop_images/Evenflo_Icon_2026_K.png",
+            "info_url": ""
+          }
+        },
+        "info_9CnApX": {
+          "type": "info",
+          "settings": {
+            "info_text": "Soft-to-the-touch",
+            "info_icon": "shopify://shop_images/Evenflo_Icon_2026_K.png",
+            "info_url": ""
+          }
+        },
+        "info_LLAiQB": {
+          "type": "info",
+          "settings": {
+            "info_text": "Sustainable",
+            "info_icon": "shopify://shop_images/Evenflo_Icon_2026_K.png",
+            "info_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "info_aa8cXM",
+        "info_Vj9QPL",
+        "info_9CnApX",
+        "info_LLAiQB"
+      ],
+      "disabled": true,
+      "name": "Evenflo Info Strip",
+      "settings": {
+        "background_color": "#ffffff",
+        "text_color": "#000000"
+      }
     }
   },
   "order": [
@@ -320,6 +396,8 @@
     "evenflo_image_text_kCUyMa",
     "evenflo_image_text_fLqVxj",
     "evenflo_image_text_Yy6MEp",
-    "evenflo_image_text_qwXEWK"
+    "evenflo_image_text_qwXEWK",
+    "evenflo_hero_banner_3HJjCQ",
+    "evenflo_info_strip_XyJAyg"
   ]
 }
