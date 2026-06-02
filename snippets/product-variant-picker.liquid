@@ -9,58 +9,6 @@
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
 {%- unless product.has_only_default_variant -%}
-  {%- liquid
-    assign mf_namespace = block.settings.bundle_metafield_namespace | default: 'custom' | strip
-    assign mf_key = block.settings.bundle_metafield_key | default: 'bundle_products' | strip
-    assign bundle_variants = blank
-    assign mf_drop = product.metafields[mf_namespace][mf_key]
-    if mf_drop != blank and mf_drop.value != blank
-      assign bundle_variants = mf_drop.value
-    endif
-  -%}
-
-  {%- liquid
-    assign evenflo_bundle_debug = false
-    if block.settings.debug_swatch_data
-      assign evenflo_bundle_debug = true
-    endif
-    if request.query_parameters.evenflo_bundle_debug == '1'
-      assign evenflo_bundle_debug = true
-    endif
-  -%}
-
-  {%- assign evenflo_mf_drop = product.metafields.custom.bundle_products -%}
-  <!-- evenflo-bundle: variants={{ bundle_variants.size | default: 0 }} type={{ evenflo_mf_drop.type }} -->
-
-  {%- if evenflo_bundle_debug -%}
-    <details class="evenflo-swatch-debug" style="margin:1rem 0;padding:1rem;background:#f5f5f5;font-size:12px;line-height:1.4;">
-      <summary>Variant swatch debug (disable in Variant picker block settings)</summary>
-      <p><strong>Product:</strong> {{ product.title | escape }} ({{ product.handle }})</p>
-      <p><strong>Bundle metafield:</strong> {{ mf_namespace }}.{{ mf_key }} ({{ evenflo_mf_drop.type }})</p>
-      <p><strong>Variants in bundle_products:</strong> {{ bundle_variants.size | default: 0 }}</p>
-      {%- for bundle_variant in bundle_variants -%}
-        {%- capture variant_color -%}
-          {%- render 'evenflo-bundle-variant-color', bundle_variant: bundle_variant -%}
-        {%- endcapture -%}
-        <p>{{ bundle_variant.product.title | escape }} — {{ variant_color | strip }}</p>
-      {%- endfor -%}
-    </details>
-  {%- endif -%}
-
-  {%- if block.settings.show_bundle_included_colors != false -%}
-    {%- if evenflo_bundle_debug and bundle_variants == blank -%}
-      <p class="evenflo-bundle-included-colors__notice" style="margin:0 0 1.2rem;padding:1rem;background:#fff3cd;font-size:1.4rem;line-height:1.45;border:1px solid #e6c200;">
-        <strong>Bundle variants not readable.</strong> Set <strong>custom.bundle_products</strong> to
-        <strong>List of variants</strong> with Storefront access, then save the bundle product.
-      </p>
-    {%- endif -%}
-    {% render 'evenflo-bundle-included-colors',
-      bundle_product: product,
-      bundle_variants: bundle_variants,
-      heading: block.settings.bundle_included_colors_heading
-    %}
-  {%- endif -%}
-
   <variant-selects
     id="variant-selects-{{ section.id }}"
     data-section="{{ section.id }}"
@@ -68,35 +16,7 @@
   >
     {%- for option in product.options_with_values -%}
       {%- liquid
-        assign option_label = option.name | strip
-        if block.settings.option_label_override != blank and product.options.size == 1
-          assign option_label = block.settings.option_label_override | strip
-        endif
-        assign option_label_display = option_label
-        if option_label.size > 0
-          assign option_label_end = option_label | slice: -1, 1
-          unless option_label_end == ':'
-            assign option_label_display = option_label | append: ':'
-          endunless
-        endif
-      -%}
-      {%- assign swatch_count = 0 -%}
-      {%- for value in option.values -%}
-        {%- capture evenflo_swatch_token -%}
-          {%- render 'evenflo-option-value-swatch',
-            product: product,
-            option: option,
-            value: value,
-            bundle_variants: bundle_variants
-          -%}
-        {%- endcapture -%}
-        {%- assign evenflo_swatch_token = evenflo_swatch_token | strip -%}
-        {%- if evenflo_swatch_token != blank -%}
-          {%- assign swatch_count = swatch_count | plus: 1 -%}
-        {%- endif -%}
-      {%- endfor -%}
-
-      {%- liquid
+        assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
 
         if swatch_count > 0 and block.settings.swatch_shape != 'none'
@@ -110,7 +30,7 @@
       {%- if picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
-            {{ option_label_display }}
+            {{ option.name }}:
             <span data-selected-value>
               <span>{{- option.selected_value -}}</span>
               (#{{- product.selected_or_first_available_variant.sku -}})
@@ -120,8 +40,7 @@
             product: product,
             option: option,
             block: block,
-            picker_type: picker_type,
-            bundle_variants: bundle_variants
+            picker_type: picker_type
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}
@@ -131,8 +50,7 @@
             product: product,
             option: option,
             block: block,
-            picker_type: picker_type,
-            bundle_variants: bundle_variants
+            picker_type: picker_type
           %}
         </fieldset>
       {%- else -%}
@@ -159,8 +77,7 @@
                 product: product,
                 option: option,
                 block: block,
-                picker_type: picker_type,
-                bundle_variants: bundle_variants
+                picker_type: picker_type
               %}
             </select>
             <span class="svg-wrapper">
