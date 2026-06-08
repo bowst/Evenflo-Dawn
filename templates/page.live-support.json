@@ -11,6 +11,9 @@
   "sections": {
     "evenflo_page_title_WEdbBV": {
       "type": "evenflo-page-title",
+      "custom_css": [
+        "select.field__input {height: 4.5rem; padding-top: 0; padding-bottom: 0;}"
+      ],
       "settings": {
         "page_title": "{{ page.title }}"
       }
