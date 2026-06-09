@@ -41,7 +41,7 @@
     .header-search-expandable.is-open {
       display: block !important;
       position: fixed;
-      top: var(--header-height, 0px);
+      top: var(--evenflo-header-search-top, var(--header-height, 0px));
       left: 0;
       right: 0;
       z-index: 999;
@@ -61,7 +61,7 @@
       pointer-events: auto !important;
       overflow: visible !important;
       transform: none;
-      padding: 0.8rem 1.6rem 1.2rem;
+      padding: 0 1.6rem 1.2rem;
     }
 
     .header-search-expandable.is-open .header-search-form-wrapper .search,
@@ -233,6 +233,12 @@
       );
     }
 
+    function updateMobileSearchTop() {
+      var headerEl = document.querySelector('.section-header');
+      var top = headerEl ? headerEl.getBoundingClientRect().bottom : 0;
+      document.documentElement.style.setProperty('--evenflo-header-search-top', top + 'px');
+    }
+
     function createController(container) {
       var toggle = container.querySelector('.header-search-toggle');
       var input = container.querySelector('.search__input');
@@ -252,9 +258,7 @@
 
       function openSearch() {
         if (isMobileSearch()) {
-          var headerEl = document.querySelector('.section-header');
-          var headerHeight = headerEl ? headerEl.offsetHeight : 0;
-          document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+          updateMobileSearchTop();
         }
 
         container.classList.add('is-open');
@@ -344,6 +348,13 @@
             if (controller.isOpen()) controller.close();
           });
         }
+      });
+
+      window.addEventListener('resize', function () {
+        if (!isMobileSearch()) return;
+        controllers.forEach(function (controller) {
+          if (controller.isOpen()) updateMobileSearchTop();
+        });
       });
     }
 
