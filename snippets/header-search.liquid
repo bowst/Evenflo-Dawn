@@ -44,7 +44,7 @@
       top: var(--evenflo-header-search-top, var(--header-height, 0px));
       left: 0;
       right: 0;
-      z-index: 999;
+      z-index: 10050;
       background-color: rgb(var(--color-background));
       box-shadow: 0 0.2rem 0.6rem rgba(var(--color-foreground), 0.08);
     }
@@ -76,6 +76,15 @@
 
     body.evenflo-header-search-open {
       overflow: hidden;
+    }
+
+    body.evenflo-header-search-open .gm-menu-mobile-footer,
+    body.evenflo-header-search-open .gm-menu-bottom {
+      pointer-events: none;
+    }
+
+    body.evenflo-header-search-open a.gm-bb-item-box[href="gm-open:Search"] {
+      pointer-events: auto;
     }
   }
 
@@ -215,28 +224,47 @@
   </div>
 </div>
 
+{%- if is_primary -%}
 <script>
   (function () {
     var MOBILE_MAX_WIDTH = 1100;
     var controllers = [];
     var primaryController = null;
+    var searchWasOpenOnPointerDown = false;
 
     function isMobileSearch() {
       return window.matchMedia('(max-width: ' + MOBILE_MAX_WIDTH + 'px)').matches;
-    }
-
-    function getPrimaryContainer() {
-      return (
-        document.querySelector('.header-search-expandable--primary[data-evenflo-search]') ||
-        document.querySelector('.header__icons .header-search-expandable[data-evenflo-search]') ||
-        document.querySelector('.header-search-expandable[data-evenflo-search]')
-      );
     }
 
     function updateMobileSearchTop() {
       var headerEl = document.querySelector('.section-header');
       var top = headerEl ? headerEl.getBoundingClientRect().bottom : 0;
       document.documentElement.style.setProperty('--evenflo-header-search-top', top + 'px');
+    }
+
+    function isGloboSearchTrigger(target) {
+      var link = target && target.closest ? target.closest('a[href="gm-open:Search"]') : null;
+      return !!link;
+    }
+
+    function closeGloboSearchPanels() {
+      document.querySelectorAll('.gm-bb-panel, [id^="gm-bb-panel-"]').forEach(function (panel) {
+        panel.classList.remove('gm-active', 'is-open', 'active');
+        panel.setAttribute('hidden', '');
+        panel.style.display = 'none';
+      });
+      document.querySelectorAll('a.gm-bb-item-box[aria-expanded="true"]').forEach(function (item) {
+        item.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    function handleGloboSearchTrigger(event) {
+      if (!isGloboSearchTrigger(event.target) || !primaryController) return;
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      closeGloboSearchPanels();
+      primaryController.toggle();
     }
 
     function createController(container) {
@@ -294,13 +322,18 @@
         },
         handleOutsideClick: function (event) {
           if (!container.classList.contains('is-open')) return;
+          if (!searchWasOpenOnPointerDown) return;
           if (container.contains(event.target)) return;
+          if (isGloboSearchTrigger(event.target)) return;
           closeSearch();
         },
       };
     }
 
     function initEvenfloHeaderSearch() {
+      if (window.__evenfloHeaderSearchInitialized) return;
+      window.__evenfloHeaderSearchInitialized = true;
+
       document.querySelectorAll('.header-search-expandable[data-evenflo-search]').forEach(function (container) {
         if (container.dataset.evenfloInit === 'true') return;
         container.dataset.evenfloInit = 'true';
@@ -321,20 +354,11 @@
         }) || controllers[0];
       }
 
-      window.evenfloHeaderSearch = {
-        open: function () {
-          if (primaryController) primaryController.open();
-        },
-        close: function () {
-          if (primaryController) primaryController.close();
-        },
-        toggle: function () {
-          if (primaryController) primaryController.toggle();
-        },
-        isOpen: function () {
-          return primaryController ? primaryController.isOpen() : false;
-        },
-      };
+      document.addEventListener('pointerdown', function () {
+        searchWasOpenOnPointerDown = primaryController ? primaryController.isOpen() : false;
+      }, true);
+
+      document.addEventListener('click', handleGloboSearchTrigger, true);
 
       document.addEventListener('click', function (event) {
         controllers.forEach(function (controller) {
@@ -365,3 +389,4 @@
     }
   })();
 </script>
+{%- endif -%}
