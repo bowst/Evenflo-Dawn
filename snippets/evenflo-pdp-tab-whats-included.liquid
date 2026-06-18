@@ -4,7 +4,7 @@
   Layout: evenflo-pdp-tab-layout*; cards use .info-block (scoped in evenflo-pdp-tabs.css).
 {% endcomment %}
 {%- liquid
-  assign box_content = product.metafields.custom.retail_package_contents
+  assign box_content = product.metafields.sf_products.retail_package_contents
 
   assign assembly_required = product.metafields.sf_products.assembly_required
   assign assembly_details = product.metafields.sf_products.assembly_details
@@ -18,6 +18,9 @@
   assign machine_wash_seating_alt = product.metafields.sf_products.machine_washable_seating_surfa
   assign carrier_machine_washable = product.metafields.sf_carrier.machine_washable
   assign high_chair_cleaning = product.metafields.sf_high_chair.cleaning
+
+  assign batteries_included = product.metafields.custom.batteries_included.value
+  assign batteries_required = product.metafields.custom.batteries_required.value
 
   assign show_box = false
   if box_content != blank
@@ -72,6 +75,26 @@
               {% else %}
                 <p>No assembly required.</p>
               {%- endif -%}
+              {%- if product.metafields.custom.batteries_included != blank -%}
+                <p>
+                  <h5>Batteries Included</h5>
+                  {%- if batteries_included == true -%}
+                    Yes
+                  {%- else -%}
+                    No
+                  {%- endif -%}
+                </p>
+              {%- endif -%}
+              {%- if product.metafields.custom.batteries_required != blank -%}
+                <p>
+                  <h5>Batteries Required</h5>
+                  {%- if batteries_required == true -%}
+                    Yes
+                  {%- else -%}
+                    No
+                  {%- endif -%}
+                </p>
+              {%- endif -%}
             </div>
           </div>
         {%- endif -%}
@@ -83,7 +106,6 @@
               {%- if material != blank -%}
                 {%- assign material_parts = material | split: ',' -%}
                 <p>
-                  Material:
                   {%- assign material_sep = false -%}
                   {%- for part in material_parts -%}
                     {%- assign piece = part | strip -%}
