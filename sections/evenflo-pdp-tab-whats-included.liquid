@@ -1,0 +1,138 @@
+{% comment %}
+  PDP "What's Included" tab — Box Content, Assembly, Materials/Fabric, Use & Care.
+  Field sources aligned with evenflo-product-specifications / evenflo-product-highlights + evenflo-product-specs--whats-in-the-box.
+  Layout: evenflo-pdp-tab-layout*; cards use .info-block (scoped in evenflo-pdp-tabs.css).
+{% endcomment %}
+{%- liquid
+  assign box_content = product.metafields.custom.retail_package_contents
+
+  assign assembly_required = product.metafields.sf_products.assembly_required
+  assign assembly_details = product.metafields.sf_products.assembly_details
+  assign my_switch = product.metafields.sf_gates.hardware_included
+  assign hardware_included = product.metafields.sf_products.hardware_included
+
+  assign material = product.metafields.sf_products.material
+  assign wheel_material = product.metafields.sf_stroller.wheel_material
+
+  assign machine_wash_seating = product.metafields.sf_products.machine_washable_seating_surface
+  assign machine_wash_seating_alt = product.metafields.sf_products.machine_washable_seating_surfa
+  assign carrier_machine_washable = product.metafields.sf_carrier.machine_washable
+  assign high_chair_cleaning = product.metafields.sf_high_chair.cleaning
+
+  assign show_box = false
+  if box_content != blank
+    assign show_box = true
+  endif
+
+  assign show_assembly = true
+
+  assign show_materials = false
+  if material != blank or wheel_material != blank
+    assign show_materials = true
+  endif
+
+  assign show_care = false
+  if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 or high_chair_cleaning != blank
+    assign show_care = true
+  endif
+-%}
+
+{%- if show_box or show_assembly or show_materials or show_care -%}
+  <div class="evenflo-pdp-tab-layout whats-included">
+    <div class="evenflo-pdp-tab-layout__grid{% if show_care %} evenflo-pdp-tab-layout__grid--split{% endif %}">
+      <div class="evenflo-pdp-tab-layout__main">
+        {% comment %} {%- if show_box -%} {% endcomment %}
+        <div class="info-block">
+          <h4 class="h3">Box Contents</h4>
+          <div class="info-body rte">{{ box_content }}</div>
+        </div>
+        {% comment %} {%- endif -%} {% endcomment %}
+
+        {%- if show_assembly -%}
+          <div class="info-block">
+            <h4 class="h3">Assembly Details</h4>
+            <div class="info-body">
+              {%- if assembly_required == 1 -%}
+                {%- if assembly_details -%}
+                  <div>
+                    <h5>Assembly Details</h5>
+                    <div>{{ assembly_details }}</div>
+                  </div>
+                {%- endif -%}
+                {%- if my_switch or hardware_included -%}
+                  <p>
+                    <h5>Hardware Included</h5>
+                    {%- if my_switch == 1 or hardware_included == 1 -%}
+                      Yes
+                    {%- else -%}
+                      No
+                    {%- endif -%}
+                  </p>
+                {%- endif -%}
+              {% else %}
+                <p>No assembly required.</p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if show_materials -%}
+          <div class="info-block">
+            <h4 class="h3">Materials / Fabric</h4>
+            <div class="info-body">
+              {%- if material != blank -%}
+                {%- assign material_parts = material | split: ',' -%}
+                <p>
+                  Material:
+                  {%- assign material_sep = false -%}
+                  {%- for part in material_parts -%}
+                    {%- assign piece = part | strip -%}
+                    {%- if piece != blank -%}
+                      {%- if material_sep -%}<br>{%- endif -%}
+                      {{ piece }}
+                      {%- assign material_sep = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </p>
+              {%- endif -%}
+              {%- if wheel_material != blank -%}
+                {%- assign wheel_material_parts = wheel_material | split: ',' -%}
+                <p>
+                  Wheel material:
+                  {%- assign wheel_sep = false -%}
+                  {%- for part in wheel_material_parts -%}
+                    {%- assign piece = part | strip -%}
+                    {%- if piece != blank -%}
+                      {%- if wheel_sep -%}<br>{%- endif -%}
+                      {{ piece }}
+                      {%- assign wheel_sep = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if show_care -%}
+        <div class="evenflo-pdp-tab-layout__aside">
+          <div class="info-block">
+            <h4 class="h3">Use &amp; Care Instructions</h4>
+            <div class="info-body">
+              {{ product.metafields.sf_products.use_copy }}
+              {%- if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 -%}
+                <p>Machine washable: Yes</p>
+              {%- endif -%}
+              {%- if high_chair_cleaning != blank -%}
+                <div class="rte">
+                  <p>Cleaning: {{ high_chair_cleaning }}</p>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
