@@ -132,13 +132,12 @@
 	</li>
 	{% endif %}
 
-	{% assign my_switch = product.metafields.sf_gates.hardware_included %}
 	{% assign hardware_included = product.metafields.sf_products.hardware_included %}
-	{% if my_switch or hardware_included %}
+	{% if hardware_included %}
 	<li>
 		<strong>Hardware Included</strong>
 		<div>
-		{% if my_switch == 1 or hardware_included == 1 %}
+		{% if hardware_included == 1 %}
 			Yes
 		{% else %}
 			No

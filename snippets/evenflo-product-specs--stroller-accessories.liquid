@@ -3,115 +3,90 @@
 {% assign child_height_min_value = product.metafields.sf_products.child_height_min %}
 {% assign child_height_max_value = product.metafields.sf_products.child_height_max %}
 {% assign bassinet_insert = product.metafields.sf_playard.bassinet_insert %}
-{% assign built_for_travel = product.metafields.sf_playard.built_for_travel %}
+
 {% assign canopy_overview = product.metafields.sf_playard.canopy | split: ',' %}
-{% assign changing_station = product.metafields.sf_playard.diaper_changing_station %}
 {% assign extra_storage = product.metafields.sf_playard.extra_storage %}
-{% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
+
 {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
 {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
 
 <h3>{{ product.type }} Specifications</h3>
 
 <ul class="specs-list">
-	<li>
-		<strong>Child Weight</strong>
-		<div>
-			{% if child_weight_min_value %}
-				{{ child_weight_min_value }} -
-			{% endif %}
-			{% if child_weight_max_value %}
-				{{ child_weight_max_value }} lbs
-			{% endif %}
-		</div>
-	</li>
-	
-	<li>
-		<strong>Child Height</strong>
-		<div>
-			{% if child_height_min_value %}
-				{{ child_height_min_value }} -
-			{% endif %}
-			{% if child_height_max_value %}
-				{{ child_height_max_value }} in
-			{% endif %}
-		</div>
-	</li>
-	
-	<li>
-		<strong>Canopy</strong>
-		<div>
-			{% for tag in canopy_overview %}
-				{{ tag -}}
-				{%- if tag != canopy_overview.last %},{% endif %}
-			{% endfor %}
-		</div>
-	</li>
-	{%  comment %}
-	<li>
-		<strong>Canopy</strong>
-		<div>
-			{{ product.metafields.sf_playard.canopy }}
-		</div>
-	</li>
-	{%  endcomment %}
+  <li>
+    <strong>Child Weight</strong>
+    <div>
+      {% if child_weight_min_value %}
+        {{ child_weight_min_value }} -
+      {% endif %}
+      {% if child_weight_max_value %}
+        {{ child_weight_max_value }} lbs
+      {% endif %}
+    </div>
+  </li>
 
-	<li>
-		<strong>Toys/Entertainment</strong>
-		<div>
-			{% for tag in toys_entertainment %}
-				{{ tag -}}
-				{%- if tag != toys_entertainment.last %},{% endif %}
-			{% endfor %}
-		</div>
-	</li>
-	
-	{% if shipping_restrictions %}
-	<li>
-		<strong>Shipping Restrictions</strong>
-		<div>
-			{{ shipping_restrictions }}
-		</div>
-	</li>
-	{% endif %}
+  <li>
+    <strong>Child Height</strong>
+    <div>
+      {% if child_height_min_value %}
+        {{ child_height_min_value }} -
+      {% endif %}
+      {% if child_height_max_value %}
+        {{ child_height_max_value }} in
+      {% endif %}
+    </div>
+  </li>
 
-	{% if bassinet_insert == 1 %}
-	<li class="checkbox-item">
-		<strong>Bassinet Insert</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
-	
-	{% if built_for_travel == 1 %}
-	<li class="checkbox-item">
-		<strong>Built for Travel</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
-	
-	{% if changing_station == 1 %}
-	<li class="checkbox-item">
-		<strong>Diaper Changing Station</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
-	
-	{% if extra_storage == 1 %}
-	<li class="checkbox-item">
-		<strong>Extra Storage</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
-	
-	{% if tablet_holder == 1 %}
-	<li class="checkbox-item">
-		<strong>Tablet Holder</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  <li>
+    <strong>Canopy</strong>
+    <div>
+      {% for tag in canopy_overview %}
+        {{ tag -}}
+        {%- if tag != canopy_overview.last %},{% endif %}
+      {% endfor %}
+    </div>
+  </li>
+  {% comment %}
+    <li>
+    	<strong>Canopy</strong>
+    	<div>
+    		{{ product.metafields.sf_playard.canopy }}
+    	</div>
+    </li>
+  {% endcomment %}
+
+  <li>
+    <strong>Toys/Entertainment</strong>
+    <div>
+      {% for tag in toys_entertainment %}
+        {{ tag -}}
+        {%- if tag != toys_entertainment.last %},{% endif %}
+      {% endfor %}
+    </div>
+  </li>
+
+  {% if shipping_restrictions %}
+    <li>
+      <strong>Shipping Restrictions</strong>
+      <div>
+        {{ shipping_restrictions }}
+      </div>
+    </li>
+  {% endif %}
+
+  {% if bassinet_insert == 1 %}
+    <li class="checkbox-item">
+      <strong>Bassinet Insert</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
+
+  {% if extra_storage == 1 %}
+    <li class="checkbox-item">
+      <strong>Extra Storage</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 </ul>

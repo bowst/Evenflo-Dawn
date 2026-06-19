@@ -8,7 +8,6 @@
 
   assign assembly_required = product.metafields.sf_products.assembly_required
   assign assembly_details = product.metafields.sf_products.assembly_details
-  assign my_switch = product.metafields.sf_gates.hardware_included
   assign hardware_included = product.metafields.sf_products.hardware_included
 
   assign material = product.metafields.sf_products.material
@@ -62,10 +61,10 @@
                     <div>{{ assembly_details }}</div>
                   </div>
                 {%- endif -%}
-                {%- if my_switch or hardware_included -%}
+                {%- if hardware_included -%}
                   <p>
                     <h5>Hardware Included</h5>
-                    {%- if my_switch == 1 or hardware_included == 1 -%}
+                    {%- if hardware_included == 1 -%}
                       Yes
                     {%- else -%}
                       No
