@@ -32,16 +32,11 @@
   if material != blank or wheel_material != blank
     assign show_materials = true
   endif
-
-  assign show_care = false
-  if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 or high_chair_cleaning != blank
-    assign show_care = true
-  endif
 -%}
 
-{%- if show_box or show_assembly or show_materials or show_care -%}
+{%- if show_box or show_assembly or show_materials -%}
   <div class="evenflo-pdp-tab-layout whats-included">
-    <div class="evenflo-pdp-tab-layout__grid{% if show_care %} evenflo-pdp-tab-layout__grid--split{% endif %}">
+    <div class="evenflo-pdp-tab-layout__grid evenflo-pdp-tab-layout__grid--split">
       <div class="evenflo-pdp-tab-layout__main">
         {% comment %} {%- if show_box -%} {% endcomment %}
         <div class="info-block">
@@ -75,18 +70,18 @@
                 <p>No assembly required.</p>
               {%- endif -%}
               {%- if product.metafields.custom.batteries_included != blank -%}
-                <p>
-                  <h5>Batteries Included</h5>
+                <div>
+                  <h4 class="h3">Batteries Included</h4>
                   {%- if batteries_included == true -%}
                     Yes
                   {%- else -%}
                     No
                   {%- endif -%}
-                </p>
+                </div>
               {%- endif -%}
               {%- if product.metafields.custom.batteries_required != blank -%}
                 <p>
-                  <h5>Batteries Required</h5>
+                  <h4 class="h3">Batteries Required</h4>
                   {%- if batteries_required == true -%}
                     Yes
                   {%- else -%}
@@ -136,24 +131,22 @@
         {%- endif -%}
       </div>
 
-      {%- if show_care -%}
-        <div class="evenflo-pdp-tab-layout__aside">
-          <div class="info-block">
-            <h4 class="h3">Use &amp; Care Instructions</h4>
-            <div class="info-body">
-              {{ product.metafields.sf_products.use_copy }}
-              {%- if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 -%}
-                <p>Machine washable: Yes</p>
-              {%- endif -%}
-              {%- if high_chair_cleaning != blank -%}
-                <div class="rte">
-                  <p>Cleaning: {{ high_chair_cleaning }}</p>
-                </div>
-              {%- endif -%}
-            </div>
+      <div class="evenflo-pdp-tab-layout__aside">
+        <div class="info-block">
+          <h4 class="h3">Use &amp; Care Instructions</h4>
+          <div class="info-body">
+            {{ product.metafields.sf_products.care_copy }}
+            {%- if machine_wash_seating == 1 or machine_wash_seating_alt == 1 or carrier_machine_washable == 1 -%}
+              <p>Machine washable: Yes</p>
+            {%- endif -%}
+            {%- if high_chair_cleaning != blank -%}
+              <div class="rte">
+                <p>Cleaning: {{ high_chair_cleaning }}</p>
+              </div>
+            {%- endif -%}
           </div>
         </div>
-      {%- endif -%}
+      </div>
     </div>
   </div>
 {%- endif -%}
