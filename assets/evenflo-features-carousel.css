@@ -1,0 +1,120 @@
+/* Evenflo Features Carousel — Figma 2560-3458 */
+
+.evenflo-features-carousel {
+  padding: 32px 0;
+}
+
+.evenflo-features-carousel__heading {
+  margin: 0 0 32px;
+  font-family: "mr-eaves-modern", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: normal;
+  color: #0f3c5a;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+@media (min-width: 750px) {
+  .evenflo-features-carousel__heading {
+    font-size: 42px;
+  }
+}
+
+/* Swiper element is hidden until initialized to avoid an unstyled flash. */
+.evenflo-features-carousel__slider {
+  display: block;
+  width: 100%;
+}
+
+.evenflo-features-carousel__slide {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: auto;
+  text-align: left;
+}
+
+.evenflo-features-carousel__media {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.evenflo-features-carousel__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Rich-text content: first heading/strong is navy 24px, body 16px (#222). */
+.evenflo-features-carousel__content {
+  font-family: "mr-eaves-modern", sans-serif;
+  font-size: 16px;
+  line-height: normal;
+  color: #222;
+}
+
+.evenflo-features-carousel__content > :first-child {
+  margin-top: 0;
+}
+
+.evenflo-features-carousel__content > :last-child {
+  margin-bottom: 0;
+}
+
+.evenflo-features-carousel__content h1,
+.evenflo-features-carousel__content h2,
+.evenflo-features-carousel__content h3,
+.evenflo-features-carousel__content h4,
+.evenflo-features-carousel__content h5,
+.evenflo-features-carousel__content h6 {
+  margin: 0 0 12px;
+  font-family: "mr-eaves-modern", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: normal;
+  color: #0f3c5a;
+  text-transform: capitalize;
+}
+
+.evenflo-features-carousel__content p {
+  margin: 0 0 12px;
+}
+
+/* Navigation — circular arrows centered below the cards (Figma). */
+.evenflo-features-carousel__nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.evenflo-features-carousel__arrow {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #0f3c5a;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.evenflo-features-carousel__arrow svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.evenflo-features-carousel__arrow:hover {
+  opacity: 0.7;
+}
+
+/* Swiper sets this attribute on disabled custom nav targets. */
+.evenflo-features-carousel__arrow.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: default;
+}
