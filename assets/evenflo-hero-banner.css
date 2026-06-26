@@ -117,7 +117,8 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		min-height: 360px;
+/*		min-height: 360px;
+		aspect-ratio: 3; */
 		overflow: hidden;
 	}
 
@@ -131,8 +132,9 @@
 		position: relative;
 		z-index: 1;
 		width: 100%;
+		aspect-ratio: 3;
 		/* aspect-ratio: calc(1440 / 480); */
-		min-height: 400px;
+/*		min-height: 400px; */
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
