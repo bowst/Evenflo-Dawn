@@ -31,7 +31,7 @@
 		<div class="product-details">
 			<div class="product-image">
 			{% if product.featured_image %}
-				<img src="{{ product.featured_image | image_url: 'thumbnail' }}" alt="{{ product.title }}" height="80" width="auto" class="">
+				<img src="{{ product.featured_image | image_url: width: 200 }}" alt="{{ product.title }}" height="80" width="auto" class="">
 				{% else %}
 				<img src="{{ 'square.svg' | asset_url }}" alt="No Image Available" width="80" height="80">
 			{% endif %}

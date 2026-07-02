@@ -1,0 +1,101 @@
+{% comment %}
+  Renders banner background images with optional video overlay.
+  Images always render as fallback/placeholder; video plays on top when set.
+
+  Accepts:
+  - wrapper_class: {String} Wrapper class (e.g. hero-banner-image)
+  - desktop_image: {Image}
+  - mobile_image: {Image}
+  - desktop_video: {Video}
+  - mobile_video: {Video}
+  - enable_video_looping: {Boolean}
+  - alt_text: {String}
+{% endcomment %}
+
+{{ 'evenflo-banner-background-media.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign has_desktop_video = false
+  if desktop_video != blank
+    assign has_desktop_video = true
+  endif
+
+  assign image_alt = alt_text | default: ''
+-%}
+
+<div class="{{ wrapper_class }}{% if has_desktop_video %} has-video-background{% endif %}">
+  {%- if desktop_image != blank -%}
+    <img
+      src="{{ desktop_image | image_url: width: 1920 }}"
+      alt="{{ image_alt | escape }}"
+      width="{{ desktop_image.width }}"
+      height="{{ desktop_image.height }}"
+      class="desktop-image banner-background__image"
+      loading="lazy"
+    >
+  {%- endif -%}
+
+  {%- if mobile_image != blank -%}
+    <img
+      src="{{ mobile_image | image_url: width: 768 }}"
+      alt="{{ image_alt | escape }}"
+      width="{{ mobile_image.width }}"
+      height="{{ mobile_image.height }}"
+      class="mobile-image banner-background__image"
+      loading="lazy"
+    >
+  {%- elsif desktop_image != blank -%}
+    <img
+      src="{{ desktop_image | image_url: width: 768 }}"
+      alt="{{ image_alt | escape }}"
+      width="{{ desktop_image.width }}"
+      height="{{ desktop_image.height }}"
+      class="mobile-image banner-background__image"
+      loading="lazy"
+    >
+  {%- endif -%}
+
+  {%- if has_desktop_video -%}
+    <div class="banner-background__video banner-background__video--desktop">
+      {{
+        desktop_video
+        | video_tag:
+          image_size: '1920x',
+          autoplay: true,
+          loop: enable_video_looping,
+          controls: false,
+          muted: true,
+          playsinline: true,
+          preload: 'auto'
+      }}
+    </div>
+
+    <div class="banner-background__video banner-background__video--mobile">
+      {%- if mobile_video != blank -%}
+        {{
+          mobile_video
+          | video_tag:
+            image_size: '768x',
+            autoplay: true,
+            loop: enable_video_looping,
+            controls: false,
+            muted: true,
+            playsinline: true,
+            preload: 'auto'
+        }}
+      {%- else -%}
+        {{
+          desktop_video
+          | video_tag:
+            image_size: '768x',
+            autoplay: true,
+            loop: enable_video_looping,
+            controls: false,
+            muted: true,
+            playsinline: true,
+            preload: 'auto'
+        }}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
