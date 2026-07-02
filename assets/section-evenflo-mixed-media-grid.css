@@ -48,7 +48,7 @@
   
   .mixed-media-grid__video-wrapper {
 	position: relative;
-	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	padding-bottom: 56.25%;
 	height: 0;
 	overflow: hidden;
 	width: 100%;
@@ -95,9 +95,116 @@
 	  border-radius: 4px;
   }
   
+  .mixed-media-grid .mixed-media-grid__card.video {
+	  padding: 0;
+  }
+
   .mixed-media-grid .mixed-media-grid__card.image,
   .mixed-media-grid .mixed-media-grid__card.video {
-	  padding: var(--image-padding, 9.6px);
+	  position: relative;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: flex-end;
+	  overflow: hidden;
+	  padding: 0;
+	  min-height: 20rem;
+  }
+
+  .mixed-media-grid__card.image.mixed-media-grid__card--square,
+  .mixed-media-grid__card.video.mixed-media-grid__card--square {
+	  aspect-ratio: 1;
+	  min-height: 0;
+  }
+
+  .mixed-media-grid__card.image.mixed-media-grid__card--portrait,
+  .mixed-media-grid__card.video.mixed-media-grid__card--portrait {
+	  aspect-ratio: 4 / 5;
+	  min-height: 0;
+  }
+
+  .mixed-media-grid__card.image.mixed-media-grid__card--adapt,
+  .mixed-media-grid__card.video.mixed-media-grid__card--adapt {
+	  aspect-ratio: var(--adapt-ratio, 1);
+	  min-height: 0;
+  }
+
+  .mixed-media-grid__card.image.text-light,
+  .mixed-media-grid__card.video.text-light {
+	  background: var(--color-evenflo-neutral-900);
+  }
+
+  .mixed-media-grid__card.image.text-dark,
+  .mixed-media-grid__card.video.text-dark {
+	  background: var(--color-evenflo-neutral-50);
+  }
+
+  .mixed-media-grid__card.image .mixed-media-grid__media--background,
+  .mixed-media-grid__card.video .mixed-media-grid__media--background {
+	  position: absolute;
+	  inset: 0;
+	  z-index: 0;
+	  width: 100%;
+	  height: 100%;
+  }
+
+  .mixed-media-grid__card.image .mixed-media-grid__image,
+  .mixed-media-grid__card.video .mixed-media-grid__image {
+	  position: absolute;
+	  inset: 0;
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	  object-position: center;
+  }
+
+  .mixed-media-grid__card.video .mixed-media-grid__video-wrapper {
+	  position: absolute;
+	  inset: 0;
+	  padding-bottom: 0;
+	  height: 100%;
+	  width: 100%;
+  }
+
+  .mixed-media-grid__card.video .mixed-media-grid__video,
+  .mixed-media-grid__card.video .mixed-media-grid__media--background video {
+	  position: absolute;
+	  inset: 0;
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	  object-position: center;
+  }
+
+  .mixed-media-grid__card.image .mixed-media-grid__content,
+  .mixed-media-grid__card.video .mixed-media-grid__content {
+	  position: relative;
+	  z-index: 2;
+	  padding: 1.5rem;
+	  flex-grow: 0;
+  }
+
+  .mixed-media-grid__card.image.text-light .mixed-media-grid__content,
+  .mixed-media-grid__card.image.text-light .mixed-media-grid__title,
+  .mixed-media-grid__card.image.text-light .mixed-media-grid__content .rte,
+  .mixed-media-grid__card.video.text-light .mixed-media-grid__content,
+  .mixed-media-grid__card.video.text-light .mixed-media-grid__title,
+  .mixed-media-grid__card.video.text-light .mixed-media-grid__content .rte {
+	  color: var(--color-evenflo-neutral-50);
+  }
+
+  .mixed-media-grid__card.image.text-dark .mixed-media-grid__content,
+  .mixed-media-grid__card.image.text-dark .mixed-media-grid__title,
+  .mixed-media-grid__card.image.text-dark .mixed-media-grid__content .rte,
+  .mixed-media-grid__card.video.text-dark .mixed-media-grid__content,
+  .mixed-media-grid__card.video.text-dark .mixed-media-grid__title,
+  .mixed-media-grid__card.video.text-dark .mixed-media-grid__content .rte {
+	  color: var(--color-evenflo-neutral-900);
+  }
+
+  .mixed-media-grid__card-link {
+	  position: absolute;
+	  inset: 0;
+	  z-index: 3;
   }
   /*
   .mixed-media-grid .mixed-media-grid__card.product .card__inner.ratio{
@@ -108,13 +215,14 @@
 	.mixed-media-grid__header {
 	  margin-bottom: 2rem;
 	}
-  
-	.mixed-media-grid .mixed-media-grid__card.image .media img {
-	  display: block;
-		  position: relative;
-		  top: 0;
-		  left: 0;
-		  height: auto;
-		  width: 100%;
+
+	.mixed-media-grid__card.image .mixed-media-grid__content,
+	.mixed-media-grid__card.video .mixed-media-grid__content {
+	  padding: 1rem;
+	}
+
+	.mixed-media-grid__card.image .mixed-media-grid__title,
+	.mixed-media-grid__card.video .mixed-media-grid__title {
+	  font-size: 1.125rem;
 	}
   }
