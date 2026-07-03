@@ -209,7 +209,6 @@
           <h3>Specs</h3>
           <strong>{{ package_contents }}</strong><br>
           {% comment %} <strong>Tested To {{ product.metafields.custom.tested_to }} lbs</strong><br> {% endcomment %}
-          <strong>{{ product.metafields.custom.mount_type }}</strong><br>
         </div>
       </div>
       <div>
@@ -973,11 +972,12 @@
             {% if child_height_max_value %}
               {{ child_height_max_value }} in
             {% endif -%}
-            {%  if child_gen_height %}
-              {{  child_gen_height }}
-            {%  endif %}
-          {%  endif %}
-          {% if child_gen_fit %}<br>
+            {% if child_gen_height %}
+              {{ child_gen_height }}
+            {% endif %}
+          {% endif %}
+          {% if child_gen_fit -%}
+            <br>
             <strong>General Fit</strong>
             {{ child_gen_fit }}
           {% endif %}
@@ -996,31 +996,35 @@
         <div class="flex-item">
           <h3>Specs</h3>
           {% if assembly_switch_spec %}
-          <strong>Assembly Required:</strong>
-          {% if assembly_switch_spec == 1 %}
-            Yes <br>
-          {% else %}
-            No<br>
-          {% endif %}
+            <strong>Assembly Required:</strong>
+            {% if assembly_switch_spec == 1 %}
+              Yes <br>
+            {% else %}
+              No<br>
+            {% endif %}
           {% endif %}
           {% if batteries_included %}
-          <strong>Batteries Included: </strong> {{  batteries_included }}<br>
+            <strong>Batteries Included: </strong> {{ batteries_included -}}
+            <br>
           {% endif %}
-          
-          {%  if battery_cell_type %}
-            <strong>Battery Cell Type: </strong>{{ battery_cell_type }}<br>
+
+          {% if battery_cell_type %}
+            <strong>Battery Cell Type: </strong>{{ battery_cell_type -}}
+            <br>
           {% endif %}
-          {%  assign number_of_batteries = product.metafields.sf_products.number_of_batteries %}
+          {% assign number_of_batteries = product.metafields.sf_products.number_of_batteries %}
           {% if number_of_batteries %}
-            <strong>Number of Batteries: </strong> {{ number_of_batteries }}<br>
+            <strong>Number of Batteries: </strong> {{ number_of_batteries -}}
+            <br>
           {% endif %}
-          {%  if battery_type %}
-            <strong>Battery Type:</strong>{{ battery_cell_type }}<br>
+          {% if battery_type %}
+            <strong>Battery Type:</strong>{{ battery_cell_type -}}
+            <br>
           {% endif %}
           {% assign warranty_type = product.metafields.custom.warranty_type %}
-          {%  if warranty_type %}
-          <strong>Warranty</strong>
-          {{ warranty_type }}
+          {% if warranty_type %}
+            <strong>Warranty</strong>
+            {{ warranty_type }}
           {% endif %}
           <br>
         </div>
