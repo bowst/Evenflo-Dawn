@@ -32,7 +32,7 @@
 
       <div class="mixed-media-grid__container">
         <ul
-          class="mixed-media-grid__list grid grid--1-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
+          class="mixed-media-grid__list grid grid--2-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
           role="list"
         >
           {%- for block in section.blocks -%}
@@ -42,34 +42,39 @@
             >
               {% case block.type %}
                 {% when 'image' %}
-                  <div class="mixed-media-grid__card image">
+                  <div
+                    id="mixed-media-image-{{ block.id }}"
+                    class="mixed-media-grid__card image text-{{ block.settings.text_color }} mixed-media-grid__card--{{ section.settings.image_ratio }}"
+                    {% if section.settings.image_ratio == 'adapt' and block.settings.image != blank %}
+                      style="--adapt-ratio: {{ block.settings.image.aspect_ratio }};"
+                    {% endif %}
+                  >
+                    {%- if block.settings.image_overlay_opacity > 0 -%}
+                      {%- style -%}
+                        #mixed-media-image-{{ block.id }} .mixed-media-grid__image {
+                          opacity: {{ 100 | minus: block.settings.image_overlay_opacity | times: 0.01 }};
+                        }
+                      {%- endstyle -%}
+                    {%- endif -%}
+
                     {%- if block.settings.image != blank -%}
                       {%- liquid
-                        assign sizes_value = '(min-width: 750px) calc((100vw - 10rem) / ' | append: section.settings.columns_desktop | append: '), calc(100vw - 3rem)'
+                        assign sizes_value = '(min-width: 750px) calc((100vw - 10rem) / ' | append: section.settings.columns_desktop | append: '), calc((100vw - 3rem) / 2)'
                       -%}
-                      <div class="mixed-media-grid__media">
-                        {%- if block.settings.link != blank -%}
-                          <a href="{{ block.settings.link }}" class="media media--transparent media--{{ section.settings.image_ratio }}">
-                        {%- else -%}
-                          <div class="media media--transparent media--{{ section.settings.image_ratio }}">
-                        {%- endif -%}
-                          {{
-                            block.settings.image
-                            | image_url: width: 2000
-                            | image_tag:
-                              loading: 'lazy',
-                              widths: '375, 550, 750, 1100, 1500, 1780, 2000',
-                              sizes: sizes_value,
-                              alt: block.settings.image.alt,
-                              class: 'mixed-media-grid__image'
-                          }}
-                        {%- if block.settings.link != blank -%}
-                          </a>
-                        {%- else -%}
-                          </div>
-                        {%- endif -%}
+                      <div class="mixed-media-grid__media mixed-media-grid__media--background">
+                        {{
+                          block.settings.image
+                          | image_url: width: 2000
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '375, 550, 750, 1100, 1500, 1780, 2000',
+                            sizes: sizes_value,
+                            alt: block.settings.image.alt,
+                            class: 'mixed-media-grid__image'
+                        }}
                       </div>
                     {%- endif -%}
+
                     {%- if block.settings.title != blank or block.settings.text != blank -%}
                       <div class="mixed-media-grid__content">
                         {%- if block.settings.title != blank -%}
@@ -80,64 +85,88 @@
                         {%- endif -%}
                       </div>
                     {%- endif -%}
+
+                    {%- if block.settings.link != blank -%}
+                      <a href="{{ block.settings.link }}" class="mixed-media-grid__card-link">
+                        <span class="visually-hidden">{{ block.settings.title | default: block.settings.image.alt }}</span>
+                      </a>
+                    {%- endif -%}
                   </div>
 
                 {% when 'video' %}
-                  <div class="mixed-media-grid__card video"> 
-                    {%- if block.settings.video_type == 'vimeo' and block.settings.vimeo_url != blank -%}
-                      <div class="mixed-media-grid__media video-vimeo">
-                        <div class="mixed-media-grid__video-wrapper">
+                  {%- liquid
+                    assign video_adapt_ratio = 1.777
+                    if block.settings.shopify_video != blank
+                      assign video_adapt_ratio = block.settings.shopify_video.aspect_ratio
+                    elsif block.settings.fallback_image != blank
+                      assign video_adapt_ratio = block.settings.fallback_image.aspect_ratio
+                    endif
+
+                    assign video_fallback_image = block.settings.fallback_image
+                    if video_fallback_image == blank and block.settings.shopify_video.preview_image != blank
+                      assign video_fallback_image = block.settings.shopify_video.preview_image
+                    endif
+                  -%}
+                  <div
+                    id="mixed-media-video-{{ block.id }}"
+                    class="mixed-media-grid__card video text-{{ block.settings.text_color }} mixed-media-grid__card--{{ section.settings.image_ratio }}"
+                    {% if section.settings.image_ratio == 'adapt' %}
+                      style="--adapt-ratio: {{ video_adapt_ratio }};"
+                    {% endif %}
+                  >
+                    {%- if block.settings.image_overlay_opacity > 0 -%}
+                      {%- style -%}
+                        #mixed-media-video-{{ block.id }} .mixed-media-grid__media--background {
+                          opacity: {{ 100 | minus: block.settings.image_overlay_opacity | times: 0.01 }};
+                        }
+                      {%- endstyle -%}
+                    {%- endif -%}
+
+                    <div class="mixed-media-grid__media mixed-media-grid__media--background">
+                      {%- if video_fallback_image != blank -%}
+                        {%- liquid
+                          assign sizes_value = '(min-width: 750px) calc((100vw - 10rem) / ' | append: section.settings.columns_desktop | append: '), calc((100vw - 3rem) / 2)'
+                        -%}
+                        {{
+                          video_fallback_image
+                          | image_url: width: 2000
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '375, 550, 750, 1100, 1500, 1780, 2000',
+                            sizes: sizes_value,
+                            alt: block.settings.title,
+                            class: 'mixed-media-grid__image'
+                        }}
+                      {%- endif -%}
+
+                      {%- if block.settings.video_type == 'vimeo' and block.settings.vimeo_url != blank -%}
+                        <div class="mixed-media-grid__video-wrapper video-vimeo">
                           <iframe
-                            src="https://player.vimeo.com/video/{{ block.settings.vimeo_url }}"
+                            src="https://player.vimeo.com/video/{{ block.settings.vimeo_url }}?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
                             width="640"
                             height="360"
                             frameborder="0"
                             allow="autoplay; fullscreen; picture-in-picture"
                             allowfullscreen
+                            title="{{ block.settings.title | escape }}"
                           ></iframe>
                         </div>
-                      </div>
-                    {%- elsif block.settings.video_type == 'shopify' and block.settings.shopify_video != blank -%}
-                      <div
-                        class="mixed-media-grid__media video-section__media video-shopify"
-                        {% if block.settings.shopify_video.preview_image != blank %}
-                          style="--ratio-percent: {{ 1 | divided_by: block.settings.shopify_video.aspect_ratio | times: 100 }}%;"
-                        {% endif %}
-                      >
-                        <deferred-media
-                          class="deferred-media no-js-hidden"
-                          data-media-id="{{ block.settings.shopify_video.id }}"
-                        >
-                          <button
-                            id="Deferred-Poster-Modal-{{ block.settings.shopify_video.id }}"
-                            class="video-section__poster media deferred-media__poster media--landscape"
-                            type="button"
-                          >
-                            {% if block.settings.shopify_video.preview_image != blank %}
-                              {{
-                                block.settings.shopify_video.preview_image
-                                | image_url: width: 1100
-                                | image_tag
-                              }}
-                            {% else %}
-                              {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
-                            {% endif %}
-                            <span class="deferred-media__poster-button motion-reduce">
-                              {%- render 'icon-play' -%}
-                            </span>
-                          </button>
-                          <template>
-                            {{
-                              block.settings.shopify_video
-                              | video_tag:
-                                controls: true,
-                                autoplay: true,
-                                loop: block.settings.enable_video_looping
-                            }}
-                          </template>
-                        </deferred-media>
-                      </div>
-                    {%- endif -%}
+                      {%- elsif block.settings.video_type == 'shopify' and block.settings.shopify_video != blank -%}
+                        {{
+                          block.settings.shopify_video
+                          | video_tag:
+                            image_size: '1100x',
+                            autoplay: true,
+                            loop: block.settings.enable_video_looping,
+                            controls: false,
+                            muted: true,
+                            playsinline: true,
+                            preload: 'auto',
+                            class: 'mixed-media-grid__video'
+                        }}
+                      {%- endif -%}
+                    </div>
+
                     {%- if block.settings.title != blank or block.settings.text != blank -%}
                       <div class="mixed-media-grid__content">
                         {%- if block.settings.title != blank -%}
@@ -336,6 +365,31 @@
           "type": "url",
           "id": "link",
           "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Styles"
+        },
+        {
+          "type": "select",
+          "id": "text_color",
+          "label": "Text color",
+          "options": [
+            { "value": "light", "label": "Light text" },
+            { "value": "dark", "label": "Dark text" }
+          ],
+          "default": "light"
+        },
+        {
+          "type": "range",
+          "id": "image_overlay_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0,
+          "unit": "%",
+          "label": "Image overlay",
+          "info": "Opacity from 0% (light) to 100% (dark)"
         }
       ]
     },
@@ -385,6 +439,37 @@
           "type": "richtext",
           "id": "text",
           "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Styles"
+        },
+        {
+          "type": "image_picker",
+          "id": "fallback_image",
+          "label": "Fallback image",
+          "info": "Shown as placeholder behind the video. Shopify video preview image is used when empty."
+        },
+        {
+          "type": "select",
+          "id": "text_color",
+          "label": "Text color",
+          "options": [
+            { "value": "light", "label": "Light text" },
+            { "value": "dark", "label": "Dark text" }
+          ],
+          "default": "light"
+        },
+        {
+          "type": "range",
+          "id": "image_overlay_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0,
+          "unit": "%",
+          "label": "Image overlay",
+          "info": "Opacity from 0% (light) to 100% (dark)"
         }
       ]
     },
