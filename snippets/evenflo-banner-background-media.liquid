@@ -20,16 +20,39 @@
     assign has_desktop_video = true
   endif
 
+  assign mobile_video_source = desktop_video
+  if mobile_video != blank
+    assign mobile_video_source = mobile_video
+  endif
+
+  assign has_fallback_image = false
+  if desktop_image != blank or mobile_image != blank
+    assign has_fallback_image = true
+  elsif mobile_video_source.preview_image != blank
+    assign has_fallback_image = true
+  elsif desktop_video.preview_image != blank
+    assign has_fallback_image = true
+  endif
+
   assign image_alt = alt_text | default: ''
 -%}
 
-<div class="{{ wrapper_class }}{% if has_desktop_video %} has-video-background{% endif %}">
+<div class="{{ wrapper_class }}{% if has_desktop_video %} has-video-background{% unless has_fallback_image %} has-video-background--no-image{% endunless %}{% endif %}">
   {%- if desktop_image != blank -%}
     <img
       src="{{ desktop_image | image_url: width: 1920 }}"
       alt="{{ image_alt | escape }}"
       width="{{ desktop_image.width }}"
       height="{{ desktop_image.height }}"
+      class="desktop-image banner-background__image"
+      loading="lazy"
+    >
+  {%- elsif desktop_video.preview_image != blank -%}
+    <img
+      src="{{ desktop_video.preview_image | image_url: width: 1920 }}"
+      alt="{{ image_alt | escape }}"
+      width="{{ desktop_video.preview_image.width }}"
+      height="{{ desktop_video.preview_image.height }}"
       class="desktop-image banner-background__image"
       loading="lazy"
     >
@@ -50,6 +73,24 @@
       alt="{{ image_alt | escape }}"
       width="{{ desktop_image.width }}"
       height="{{ desktop_image.height }}"
+      class="mobile-image banner-background__image"
+      loading="lazy"
+    >
+  {%- elsif mobile_video_source.preview_image != blank -%}
+    <img
+      src="{{ mobile_video_source.preview_image | image_url: width: 768 }}"
+      alt="{{ image_alt | escape }}"
+      width="{{ mobile_video_source.preview_image.width }}"
+      height="{{ mobile_video_source.preview_image.height }}"
+      class="mobile-image banner-background__image"
+      loading="lazy"
+    >
+  {%- elsif desktop_video.preview_image != blank -%}
+    <img
+      src="{{ desktop_video.preview_image | image_url: width: 768 }}"
+      alt="{{ image_alt | escape }}"
+      width="{{ desktop_video.preview_image.width }}"
+      height="{{ desktop_video.preview_image.height }}"
       class="mobile-image banner-background__image"
       loading="lazy"
     >
