@@ -83,6 +83,7 @@
         },
         "evenflo_at_a_glance_DiTRnU": {
           "type": "evenflo-at-a-glance",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -114,6 +115,16 @@
         "padding_bottom": 12
       }
     },
+    "evenflo_at_a_glance_yGmmwj": {
+      "type": "evenflo-at-a-glance",
+      "name": "At a Glance",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#faf8f6",
+        "sensorsafe_url": "",
+        "sensorysoothe_url": ""
+      }
+    },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
       "settings": {}
@@ -127,6 +138,7 @@
     },
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
+      "disabled": true,
       "settings": {
         "product_handles": ""
       }
@@ -341,11 +353,23 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "evenflo_features_carousel_faM47C": {
+      "type": "evenflo-features-carousel",
+      "name": "Evenflo Features Carousel",
+      "settings": {
+        "heading": "Features",
+        "background_color": "#fcfcfd",
+        "columns_desktop": 3,
+        "product_handles": ""
+      }
     }
   },
   "order": [
     "custom_liquid_TenaUX",
     "main",
+    "evenflo_at_a_glance_yGmmwj",
+    "evenflo_features_carousel_faM47C",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_product_video_HwJ8Yd",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
