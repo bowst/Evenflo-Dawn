@@ -74,6 +74,7 @@
         },
         "evenflo_at_a_glance_gpJRRi": {
           "type": "evenflo-at-a-glance",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -102,6 +103,16 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "evenflo_at_a_glance_dec4wj": {
+      "type": "evenflo-at-a-glance",
+      "name": "At a Glance",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#FFFFFF",
+        "sensorsafe_url": "",
+        "sensorysoothe_url": ""
       }
     },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
@@ -186,6 +197,7 @@
         "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "adapt",
+        "enable_image_modal": true,
         "columns_desktop": 3,
         "column_alignment": "left",
         "background_style": "none",
@@ -330,6 +342,7 @@
   "order": [
     "64dcd414-d0d5-4417-a3eb-394190ab46b3",
     "main",
+    "evenflo_at_a_glance_dec4wj",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_product_video_mdzfaW",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
