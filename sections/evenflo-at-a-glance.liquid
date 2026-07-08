@@ -60,7 +60,8 @@
               {%- for mode in modes -%}
                 {%- assign mode_clean = mode | strip -%}
                 {%- if mode_clean != blank -%}
-                  {%- if rendered > 0 %}<br>{% endif -%}{{ mode_clean }}
+                  {%- if rendered > 0 %}<br>{% endif -%}
+                  {{ mode_clean }}
                   {%- assign rendered = rendered | plus: 1 -%}
                 {%- endif -%}
               {%- endfor -%}
