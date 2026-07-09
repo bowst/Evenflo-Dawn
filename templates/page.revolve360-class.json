@@ -322,7 +322,6 @@
     },
     "evenflo_html_rcDMF9": {
       "type": "evenflo-html",
-      "disabled": true,
       "settings": {
         "html": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:7947727});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>"
       }
@@ -404,46 +403,83 @@
     "evenflo_mixed_media_grid_LCf4Fd": {
       "type": "evenflo-mixed-media-grid",
       "blocks": {
+        "product_jUt7cU": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-slim-rotational-car-seat-core"
+          }
+        },
+        "product_CxLYdd": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-slim-green-and-gentle-rotational-car-seat"
+          }
+        },
         "product_Gg7YRb": {
           "type": "product",
           "settings": {
-            "product": ""
-          }
-        },
-        "image_VqpAwG": {
-          "type": "image",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link": "",
-            "text_color": "light",
-            "image_overlay_opacity": 0
+            "product": "revolve360-extend-gold-green-gentle"
           }
         },
         "product_9Gt9NG": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "revolve360-extend-all-in-one-rotating-car-seat-quick-clean-cover"
+          }
+        },
+        "product_7EQkCp": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-extend-swivel-convertible-car-seat-sensorsafe-green-gentle"
+          }
+        },
+        "product_7bP7rt": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-slim-rotational-car-seat-core-plus"
+          }
+        },
+        "product_f3BEnL": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-slim-rotational-car-seat-gold"
+          }
+        },
+        "product_4jgNh4": {
+          "type": "product",
+          "settings": {
+            "product": "gold-revolve360-extend"
+          }
+        },
+        "product_zVfdT3": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-rotational-all-in-one-car-seat-2025"
           }
         }
       },
       "block_order": [
+        "product_jUt7cU",
+        "product_CxLYdd",
         "product_Gg7YRb",
-        "image_VqpAwG",
-        "product_9Gt9NG"
+        "product_9Gt9NG",
+        "product_7EQkCp",
+        "product_7bP7rt",
+        "product_f3BEnL",
+        "product_4jgNh4",
+        "product_zVfdT3"
       ],
-      "disabled": true,
       "name": "Mixed Media Grid",
       "settings": {
-        "heading": "Mixed Media Grid",
+        "heading": "Explore the Collection",
         "subheading": "",
-        "columns_desktop": "3",
+        "columns_desktop": "4",
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "show_vendor": false,
-        "show_rating": false,
-        "show_swatches": false,
-        "enable_quick_add": false,
+        "show_rating": true,
+        "show_swatches": true,
+        "enable_quick_add": true,
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
@@ -455,22 +491,22 @@
         "button_jWDeWr": {
           "type": "button",
           "settings": {
-            "button_text": "",
-            "button_url": ""
+            "button_text": "SHYFT DUALRIDE",
+            "button_url": "https://www.evenflo.com/pages/shyft-dualride-infant-car-seat-stroller-combo"
           }
         },
         "button_FEdHcm": {
           "type": "button",
           "settings": {
-            "button_text": "",
-            "button_url": ""
+            "button_text": "HOME COLLECTION",
+            "button_url": "https://www.evenflo.com/pages/home-collection"
           }
         },
         "button_YNrMCn": {
           "type": "button",
           "settings": {
-            "button_text": "Learn More",
-            "button_url": ""
+            "button_text": "PIVOT NXT",
+            "button_url": "https://www.evenflo.com/pages/pivot-family"
           }
         }
       },
@@ -479,10 +515,9 @@
         "button_FEdHcm",
         "button_YNrMCn"
       ],
-      "disabled": true,
       "name": "Confidence CTA",
       "settings": {
-        "heading": "",
+        "heading": "Shop More Collections",
         "subheading": "",
         "background_color": "#fcfcfd"
       }
