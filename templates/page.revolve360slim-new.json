@@ -60,6 +60,7 @@
         "text_bTGrK8",
         "buttons_rdjLGw"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Evenflo_Revolve_G_G_GoogleResponsive-Ad_1200x628_crop.jpg",
         "image_2": "shopify://shop_images/36812504_Gold_Revolve360_Slim_Green_and_Gentle_Forward_Facing_Rotation_0015_c38952ac-2c3f-4764-8d58-e68217f7c4a5.png",
@@ -116,6 +117,7 @@
         "heading_T7XgBr",
         "text_zyjiYL"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "video-content-right": true,
@@ -192,6 +194,7 @@
         "column_HHXbXB",
         "column_9KRhy3"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -328,6 +331,7 @@
     },
     "evenflo_featured_collection_r9Wcct": {
       "type": "evenflo-featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Choose Your Problem Solver",
         "heading_size": "h1",
@@ -371,6 +375,7 @@
       "block_order": [
         "slider_block_UMhHGD"
       ],
+      "disabled": true,
       "settings": {
         "background": "#ffffff",
         "full-width": false
@@ -422,6 +427,7 @@
         "tooltip_Xca7cp",
         "tooltip_hGrgkj"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/revolve-slim-tooltip.png",
         "tooltip_color": "#000000",
@@ -446,6 +452,7 @@
     },
     "product_img_slider_block_TwExFK": {
       "type": "product-img-slider-block",
+      "disabled": true,
       "name": "Product Image Slider",
       "settings": {
         "title": "TURNING HEADS",
@@ -460,6 +467,25 @@
           "revolve360-slim-rotational-car-seat-core",
           "revolve360-slim-2-in-1-rotational-convertible-car-seat-support"
         ]
+      }
+    },
+    "evenflo_hero_banner_hFKByW": {
+      "type": "evenflo-hero-banner",
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Landing_Page_Header_Banner_-_Desktop_2.jpg",
+        "mobile_image": "shopify://shop_images/Landing_Page_Header_Banner_-_Mobile_2.jpg",
+        "enable_video_looping": true,
+        "eyebrow_text": "REVOLVE360™ SLIM",
+        "primary_heading": "<p>Our slimmest </p><p>Rotating Car Seat</p>",
+        "short_description": "",
+        "primary_cta_text": "SHOP NOW",
+        "primary_cta_link": "",
+        "secondary_cta_text": "",
+        "secondary_cta_link": "",
+        "content_alignment": "align-left",
+        "text_color": "light",
+        "desktop_overlay_opacity": 30
       }
     },
     "evenflo_features_grid_i3rTBE": {
@@ -495,7 +521,6 @@
         "feature_6CAbem",
         "feature_jUzcbG"
       ],
-      "disabled": true,
       "name": "Evenflo Features Grid",
       "settings": {
         "section_heading": "Grows with your family",
@@ -536,7 +561,6 @@
         "feature_tmNhca",
         "feature_Hp7p44"
       ],
-      "disabled": true,
       "name": "Evenflo Features Grid",
       "settings": {
         "section_heading": "Advanced Safety Features",
@@ -544,24 +568,78 @@
         "media_type": "image"
       }
     },
-    "evenflo_hero_banner_hFKByW": {
-      "type": "evenflo-hero-banner",
-      "disabled": true,
-      "name": "Evenflo Hero Banner",
+    "evenflo_mixed_media_grid_cnKkyW": {
+      "type": "evenflo-mixed-media-grid",
+      "blocks": {
+        "product_hxX34G": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-slim-rotational-car-seat-core"
+          }
+        },
+        "image_4w4wfz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Product-Detail_Feature-Shot---Version-3----Explore-Collections-Grid-Format-G_G-extend-mobile.gif",
+            "title": "Green & Gentle™ Fabric",
+            "text": "<p>Soft-to-the touch, eco-friendly fabric is free of added chemicals and flame retardants</p>",
+            "link": "",
+            "text_color": "light",
+            "image_overlay_opacity": 30
+          }
+        },
+        "product_jjwg8t": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-slim-green-and-gentle-rotational-car-seat"
+          }
+        },
+        "product_pYFiXW": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-slim-rotational-car-seat-core-plus"
+          }
+        },
+        "image_hVzfjH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Product_Detail_Feature_Shot_-_Version_3_-_Explore_Collections_Grid_Format_-_Mobile_1.jpg",
+            "title": "One-Time Install",
+            "text": "<p>Engineered to give parents confidence</p>",
+            "link": "",
+            "text_color": "light",
+            "image_overlay_opacity": 30
+          }
+        },
+        "product_rezLN4": {
+          "type": "product",
+          "settings": {
+            "product": "revolve360-slim-rotational-car-seat-gold"
+          }
+        }
+      },
+      "block_order": [
+        "product_hxX34G",
+        "image_4w4wfz",
+        "product_jjwg8t",
+        "product_pYFiXW",
+        "image_hVzfjH",
+        "product_rezLN4"
+      ],
+      "name": "Mixed Media Grid",
       "settings": {
-        "desktop_image": "shopify://shop_images/Landing_Page_Header_Banner_-_Desktop_2.jpg",
-        "mobile_image": "shopify://shop_images/Landing_Page_Header_Banner_-_Mobile_2.jpg",
-        "enable_video_looping": true,
-        "eyebrow_text": "REVOLVE360™ SLIM",
-        "primary_heading": "",
-        "short_description": "",
-        "primary_cta_text": "",
-        "primary_cta_link": "",
-        "secondary_cta_text": "",
-        "secondary_cta_link": "",
-        "content_alignment": "align-left",
-        "text_color": "light",
-        "desktop_overlay_opacity": 30
+        "heading": "Explore the Collection",
+        "subheading": "",
+        "columns_desktop": "4",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_swatches": false,
+        "enable_quick_add": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -576,8 +654,9 @@
     "evenflo_tooltips_MitmFC",
     "product_img_slider_block_KVJGR9",
     "product_img_slider_block_TwExFK",
+    "evenflo_hero_banner_hFKByW",
     "evenflo_features_grid_i3rTBE",
     "evenflo_features_grid_BjBkat",
-    "evenflo_hero_banner_hFKByW"
+    "evenflo_mixed_media_grid_cnKkyW"
   ]
 }
