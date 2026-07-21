@@ -56,8 +56,8 @@
             "heading": "Styles. Which is best for you?"
           }
         },
-        "variant_picker_QwXGc8": {
-          "type": "variant_picker",
+        "bundle_variant_picker_kNdfGb": {
+          "type": "bundle_variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle",
@@ -65,8 +65,15 @@
             "bundle_metafield_key": "bundle_products",
             "show_bundle_included_colors": true,
             "bundle_included_colors_heading": "",
-            "option_label_override": "",
             "debug_swatch_data": false
+          }
+        },
+        "variant_picker_QwXGc8": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "custom_liquid_XFWBx4": {
@@ -100,6 +107,7 @@
         "price_8WtYp8",
         "custom_liquid_LCdpH4",
         "related_products_bW3NFr",
+        "bundle_variant_picker_kNdfGb",
         "variant_picker_QwXGc8",
         "custom_liquid_XFWBx4",
         "custom_liquid_kAJdqB",
@@ -123,6 +131,30 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "evenflo_dtc_bundle_items_fmCkqi": {
+      "type": "evenflo-dtc-bundle-items",
+      "name": "DTC Bundle Items",
+      "settings": {
+        "heading": "What's included",
+        "heading_size": "h1",
+        "metafield_namespace": "custom",
+        "metafield_key": "bundle_products",
+        "columns_desktop": 4,
+        "full_width": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_swatches": false,
+        "enable_quick_add": false,
+        "card_button_label": "Go to Product Page",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "qq_split_screen_MFjTgT": {
@@ -417,13 +449,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle",
-            "bundle_metafield_namespace": "custom",
-            "bundle_metafield_key": "bundle_products",
-            "show_bundle_included_colors": true,
-            "bundle_included_colors_heading": "",
-            "option_label_override": "",
-            "debug_swatch_data": false
+            "swatch_shape": "circle"
           }
         },
         "buy_buttons": {
@@ -673,30 +699,6 @@
       "name": "Benefits",
       "settings": {
         "heading": "Benefits of Shopping Evenflo.com",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "evenflo_dtc_bundle_items_fmCkqi": {
-      "type": "evenflo-dtc-bundle-items",
-      "name": "DTC Bundle Items",
-      "settings": {
-        "heading": "What's included",
-        "heading_size": "h1",
-        "metafield_namespace": "custom",
-        "metafield_key": "bundle_products",
-        "columns_desktop": 4,
-        "full_width": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "show_swatches": false,
-        "enable_quick_add": false,
-        "card_button_label": "Go to Product Page",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
