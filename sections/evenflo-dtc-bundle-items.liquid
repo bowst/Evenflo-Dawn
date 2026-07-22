@@ -1,0 +1,357 @@
+{% comment %}
+  DTC bundle PDP — component cards from custom.bundle_products (list.variant_reference).
+  Same cards and carousel as evenflo-featured-collection (carousel when more than 4 items).
+{% endcomment %}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-product-card-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.enable_quick_add -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .evenflo-dtc-bundle-items .evenflo-dtc-bundle-items__header {
+    text-align: left;
+  }
+
+  .evenflo-dtc-bundle-items .evenflo-dtc-bundle-items__header .title {
+    text-align: left;
+  }
+
+  .evenflo-dtc-bundle-items .evenflo-dtc-bundle-items__header .title::after {
+    left: 0;
+    transform: none;
+  }
+
+  .evenflo-dtc-bundle-items__subtitle {
+    margin: 0.8rem 0 0;
+    text-align: left;
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign mf_namespace = section.settings.metafield_namespace | default: 'custom' | strip
+  assign mf_key = section.settings.metafield_key | default: 'bundle_products' | strip
+  assign bundle_variants = blank
+  assign mf_drop = product.metafields[mf_namespace][mf_key]
+
+  if mf_drop != blank and mf_drop.value != blank
+    assign bundle_variants = mf_drop.value
+  endif
+
+  assign items_count = 0
+  if bundle_variants != blank
+    assign items_count = bundle_variants.size
+  endif
+
+  assign columns_desktop_int = section.settings.columns_desktop | plus: 0
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+
+  assign show_desktop_slider = false
+  if items_count > columns_desktop_int
+    assign show_desktop_slider = true
+  endif
+
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile and items_count > columns_mobile_int
+    assign show_mobile_slider = true
+  endif
+
+  assign bundle_item_titles = ''
+  for bundle_variant in bundle_variants
+    if bundle_variant != blank and bundle_variant.product != blank
+      assign component_product = bundle_variant.product
+      assign item_title = component_product.title
+      if component_product.metafields.custom.platform_name != blank
+        assign item_title = component_product.metafields.custom.platform_name.value | default: component_product.metafields.custom.platform_name
+      endif
+      if bundle_item_titles != blank
+        assign bundle_item_titles = bundle_item_titles | append: ', '
+      endif
+      assign bundle_item_titles = bundle_item_titles | append: item_title
+    endif
+  endfor
+-%}
+
+{%- if bundle_variants != blank -%}
+  <div class="color-{{ section.settings.color_scheme }} isolate gradient evenflo-dtc-bundle-items">
+    <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
+      <div class="collection__title evenflo-dtc-bundle-items__header title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider slider--desktop{% endif %}">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if bundle_item_titles != blank -%}
+          <p class="evenflo-dtc-bundle-items__subtitle">{{ bundle_item_titles | escape }}</p>
+        {%- endif -%}
+      </div>
+      <div class="page-width">
+        <slider-component class="slider-mobile-gutter">
+          <ul
+            class="card-carousel-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}{% if show_desktop_slider %} slider slider--desktop{% endif %}"
+            id="Slider-{{ section.id }}"
+            role="list"
+            aria-label="{{ 'general.slider.name' | t }}"
+          >
+            {%- for bundle_variant in bundle_variants -%}
+              {%- if bundle_variant != blank and bundle_variant.product != blank -%}
+                {%- liquid
+                  assign component_product = bundle_variant.product
+                  assign card_heading = component_product.title
+                  if component_product.metafields.custom.platform_name != blank
+                    assign card_heading = component_product.metafields.custom.platform_name.value | default: component_product.metafields.custom.platform_name
+                  endif
+                -%}
+                <li
+                  id="Slide-{{ section.id }}-{{ forloop.index }}"
+                  class="card-carousel-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}"
+                >
+                  <div class="card-carousel-card content-container">
+                    {% render 'evenflo-card-product',
+                      card_product: component_product,
+                      card_heading: card_heading,
+                      highlight_variant_id: bundle_variant.id,
+                      price_variant: bundle_variant,
+                      link_url: bundle_variant.url,
+                      media_aspect_ratio: section.settings.image_ratio,
+                      show_secondary_image: section.settings.show_secondary_image,
+                      show_vendor: section.settings.show_vendor,
+                      show_rating: section.settings.show_rating,
+                      show_swatches: section.settings.show_swatches,
+                      enable_quick_add: section.settings.enable_quick_add,
+                      card_button_label: section.settings.card_button_label,
+                      card_button_url: bundle_variant.url,
+                      section_id: section.id
+                    %}
+                  </div>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          {%- if show_mobile_slider -%}
+            <div class="slider-buttons no-js-hidden medium-hide">
+              <button
+                type="button"
+                class="slider-button slider-button--prev"
+                name="previous"
+                aria-label="{{ 'general.slider.previous_slide' | t }}"
+                aria-controls="Slider-{{ section.id }}"
+              >
+                {% render 'icon-caret' %}
+              </button>
+              <div class="slider-counter caption">
+                <span class="slider-counter--current">1</span>
+                <span aria-hidden="true"> / </span>
+                <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                <span class="slider-counter--total">{{ items_count }}</span>
+              </div>
+              <button
+                type="button"
+                class="slider-button slider-button--next"
+                name="next"
+                aria-label="{{ 'general.slider.next_slide' | t }}"
+                aria-controls="Slider-{{ section.id }}"
+              >
+                {% render 'icon-caret' %}
+              </button>
+            </div>
+          {%- endif -%}
+        </slider-component>
+      </div>
+    </div>
+  </div>
+  <script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "DTC Bundle Items",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What's included"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "header",
+      "content": "Product data"
+    },
+    {
+      "type": "text",
+      "id": "metafield_namespace",
+      "label": "Metafield namespace",
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Metafield key",
+      "default": "bundle_products",
+      "info": "List of variant references (custom.bundle_products). Enable Storefront access on the metafield definition."
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Columns on desktop",
+      "info": "Carousel activates when bundle items exceed this number."
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "accent-1", "label": "Accent 1" },
+        { "value": "accent-2", "label": "Accent 2" },
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" },
+        { "value": "inverse", "label": "Inverse" }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "header",
+      "content": "Product card"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "adapt",
+      "label": "Image ratio"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "Show second image on hover"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "Show vendor"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "Show product rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatches",
+      "default": false,
+      "label": "Show swatches"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_add",
+      "default": false,
+      "label": "Enable quick add",
+      "info": "Ignored when a custom button label is set."
+    },
+    {
+      "type": "text",
+      "id": "card_button_label",
+      "label": "Button label",
+      "default": "Go to Product Page",
+      "info": "Shows a link button on each card. Leave blank to hide the button (unless quick add is enabled)."
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "Columns on mobile",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": false,
+      "label": "Enable swipe on mobile"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "DTC Bundle Items"
+    }
+  ]
+}
+{% endschema %}

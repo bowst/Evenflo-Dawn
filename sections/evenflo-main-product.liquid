@@ -193,7 +193,7 @@
 							></script>
 
 							<dotlottie-wc
-							src="{{ 'icon-free-shipping.lottie' | asset_url }}"
+							src="https://lottie.host/cbf571cc-8050-4680-a7e1-278f4fbfcfbc/DOa7PEbZAo.lottie"
 							style="width: 300px;height: 300px"
 							speed="1"
 							autoplay
@@ -627,6 +627,8 @@
   
 				{%- when 'variant_picker' -%}
 				  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+				{%- when 'bundle_variant_picker' -%}
+				  {% render 'evenflo-bundle-product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 				{%- when 'buy_buttons' -%}
 				  {%- render 'buy-buttons',
 					block: block,
@@ -1100,6 +1102,83 @@
 			  }
 			],
 			"default": "circle"
+		  }
+		]
+	  },
+	  {
+		"type": "bundle_variant_picker",
+		"name": "Bundle Variant Picker",
+		"limit": 1,
+		"settings": [
+		  {
+			"type": "select",
+			"id": "picker_type",
+			"options": [
+			  {
+				"value": "dropdown",
+				"label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__1.label"
+			  },
+			  {
+				"value": "button",
+				"label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
+			  }
+			],
+			"default": "button",
+			"label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
+		  },
+		  {
+			"id": "swatch_shape",
+			"label": "t:sections.main-product.blocks.variant_picker.settings.swatch_shape.label",
+			"type": "select",
+			"info": "t:sections.main-product.blocks.variant_picker.settings.swatch_shape.info",
+			"options": [
+			  {
+				"value": "circle",
+				"label": "t:sections.main-product.blocks.variant_picker.settings.swatch_shape.options__1.label"
+			  },
+			  {
+				"value": "square",
+				"label": "t:sections.main-product.blocks.variant_picker.settings.swatch_shape.options__2.label"
+			  },
+			  {
+				"value": "none",
+				"label": "t:sections.main-product.blocks.variant_picker.settings.swatch_shape.options__3.label"
+			  }
+			],
+			"default": "circle"
+		  },
+		  {
+			"type": "text",
+			"id": "bundle_metafield_namespace",
+			"label": "Bundle variants metafield namespace",
+			"default": "custom"
+		  },
+		  {
+			"type": "text",
+			"id": "bundle_metafield_key",
+			"label": "Bundle variants metafield key",
+			"default": "bundle_products",
+			"info": "List of variant references (custom.bundle_products). Metafield definition must allow Storefront access."
+		  },
+		  {
+			"type": "checkbox",
+			"id": "show_bundle_included_colors",
+			"label": "Show fixed-color bundle variants above picker",
+			"info": "Shows a line per bundle_products variant whose color is fixed on this PDP. Hides the line when the bundle variant picker lets the customer choose that component's color.",
+			"default": true
+		  },
+		  {
+			"type": "text",
+			"id": "bundle_included_colors_heading",
+			"label": "Included colors heading",
+			"info": "Optional line above the list (e.g. “Also included”). Leave blank to hide."
+		  },
+		  {
+			"type": "checkbox",
+			"id": "debug_swatch_data",
+			"label": "Debug swatch data on storefront",
+			"info": "Shows native vs bundle-component swatch resolution per option value. Disable after testing.",
+			"default": false
 		  }
 		]
 	  },

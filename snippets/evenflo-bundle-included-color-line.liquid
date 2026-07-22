@@ -1,0 +1,100 @@
+{% comment %}
+  One line for a fixed-color bundle variant (not chosen on the bundle picker).
+  Hides the line when the customer can select this component's color on the bundle PDP.
+  Accepts: bundle_variant, bundle_product
+{% endcomment %}
+{%- liquid
+  assign component_product = bundle_variant.product
+  assign product_label = component_product.title
+  assign skip_line = false
+
+  if component_product.metafields.custom.platform_name != blank
+    assign product_label = component_product.metafields.custom.platform_name.value | default: component_product.metafields.custom.platform_name
+  endif
+-%}
+{%- capture included_color -%}
+  {%- render 'evenflo-bundle-variant-color', bundle_variant: bundle_variant -%}
+{%- endcapture -%}
+{%- assign included_color = included_color | strip -%}
+
+{%- if included_color != blank and bundle_product.has_only_default_variant == false -%}
+  {%- assign included_color_down = included_color | downcase -%}
+
+  {%- for bundle_option in bundle_product.options_with_values -%}
+    {%- liquid
+      assign bundle_option_name_down = bundle_option.name | downcase
+      assign use_bundle_option = false
+      if bundle_option_name_down contains 'color' or bundle_option_name_down contains 'colour'
+        assign use_bundle_option = true
+      elsif bundle_product.options.size == 1
+        assign use_bundle_option = true
+      endif
+    -%}
+    {%- unless use_bundle_option -%}
+      {%- continue -%}
+    {%- endunless -%}
+
+    {%- assign bundle_value_count = bundle_option.values.size -%}
+    {%- assign matched_bundle_values = 0 -%}
+
+    {%- for bundle_value in bundle_option.values -%}
+      {%- liquid
+        assign bundle_value_name = bundle_value.name | default: bundle_value | strip
+        assign bundle_value_down = bundle_value_name | downcase
+        assign value_matched_on_bundle = false
+
+        if bundle_value_down == included_color_down
+          assign skip_line = true
+          assign value_matched_on_bundle = true
+        elsif bundle_value_down contains included_color_down and included_color_down.size >= 3
+          assign skip_line = true
+          assign value_matched_on_bundle = true
+        elsif included_color_down contains bundle_value_down and bundle_value_down.size >= 3
+          assign skip_line = true
+          assign value_matched_on_bundle = true
+        endif
+      -%}
+
+      {%- unless value_matched_on_bundle -%}
+        {%- for component_option in component_product.options_with_values -%}
+          {%- liquid
+            assign component_option_name_down = component_option.name | downcase
+            unless component_option_name_down contains 'color' or component_option_name_down contains 'colour'
+              continue
+            endunless
+          -%}
+          {%- for component_value in component_option.values -%}
+            {%- liquid
+              assign component_value_name = component_value.name | default: component_value | strip
+              assign component_value_down = component_value_name | downcase
+
+              if bundle_value_down == component_value_down
+                assign value_matched_on_bundle = true
+              elsif bundle_value_down contains component_value_down and component_value_down.size >= 3
+                assign value_matched_on_bundle = true
+              elsif component_value_down contains bundle_value_down and bundle_value_down.size >= 3
+                assign value_matched_on_bundle = true
+              endif
+            -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      {%- endunless -%}
+
+      {%- if value_matched_on_bundle -%}
+        {%- assign matched_bundle_values = matched_bundle_values | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if bundle_value_count > 0 and matched_bundle_values == bundle_value_count -%}
+      {%- assign skip_line = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- unless skip_line -%}
+  {%- if included_color != blank -%}
+    <li class="evenflo-bundle-included-colors__item">
+      <span class="evenflo-bundle-included-colors__product">{{ product_label | escape }}</span> - Included in {{ included_color | escape }}
+    </li>
+  {%- endif -%}
+{%- endunless -%}

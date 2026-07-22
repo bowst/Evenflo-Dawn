@@ -45,7 +45,6 @@
         },
         "custom_liquid_LCdpH4": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
             "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by early November\n{% endif %}"
           }
@@ -57,8 +56,8 @@
             "heading": "Styles. Which is best for you?"
           }
         },
-        "variant_picker_QwXGc8": {
-          "type": "variant_picker",
+        "bundle_variant_picker_kNdfGb": {
+          "type": "bundle_variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle",
@@ -66,8 +65,15 @@
             "bundle_metafield_key": "bundle_products",
             "show_bundle_included_colors": true,
             "bundle_included_colors_heading": "",
-            "option_label_override": "",
             "debug_swatch_data": false
+          }
+        },
+        "variant_picker_QwXGc8": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "custom_liquid_XFWBx4": {
@@ -78,7 +84,6 @@
         },
         "custom_liquid_kAJdqB": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
             "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by late November\n{% endif %}"
           }
@@ -92,7 +97,6 @@
         },
         "evenflo_at_a_glance_fTFgB8": {
           "type": "evenflo-at-a-glance",
-          "disabled": true,
           "settings": {}
         }
       },
@@ -103,6 +107,7 @@
         "price_8WtYp8",
         "custom_liquid_LCdpH4",
         "related_products_bW3NFr",
+        "bundle_variant_picker_kNdfGb",
         "variant_picker_QwXGc8",
         "custom_liquid_XFWBx4",
         "custom_liquid_kAJdqB",
@@ -128,7 +133,7 @@
         "padding_bottom": 12
       }
     },
-    "evenflo_dtc_bundle_items_4U3BCQ": {
+    "evenflo_dtc_bundle_items_fmCkqi": {
       "type": "evenflo-dtc-bundle-items",
       "name": "DTC Bundle Items",
       "settings": {
@@ -142,39 +147,10 @@
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "show_vendor": false,
-        "show_rating": true,
-        "show_swatches": true,
+        "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "card_button_label": "Go to Product Page",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "evenflo_featured_collection_myxLND": {
-      "type": "evenflo-featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "title": "Evenflo Featured Collection",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "2026-evenflo-new-products",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": true,
-        "show_swatches": true,
-        "enable_quick_add": true,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -208,7 +184,7 @@
         "textblock_CBC3qN": {
           "type": "textblock",
           "settings": {
-            "textblock": "<p>Introducing parenting on the go raised to a higher standard: The Evenflo®Shyft<strong>™ </strong>Intuiti+ Stroller. With maneuverability that feels intuitive, this luxe stroller boasts all-wheel suspension and premium rubber tires to cushion the bumps along the way.</p>",
+            "textblock": "<p>Introducing parenting on the go raised to a higher standard: The Evenflo® Shyft<strong>™ </strong>Intuiti+ Stroller. With maneuverability that feels intuitive, this luxe stroller boasts all-wheel suspension and premium rubber tires to cushion the bumps along the way.</p>",
             "textblock_custom_font": false,
             "textblock_font": "mono",
             "textblock_font_name": "",
@@ -226,7 +202,7 @@
           "type": "media",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/shyft-intuiti-plus-stroller-green-and-gentle__ST200112547Travertine_P_09bd6a23-57aa-4469-b116-c483213546c9.jpg",
+            "image": "shopify://shop_images/shyft-intuiti-plus-stroller__ST200112512_N.jpg",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_autoplay": false,
             "video_loop": false,
@@ -237,7 +213,7 @@
           "type": "media",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/shyft-intuiti-plus-stroller-green-and-gentle__ST200112547Travertine_V_ffa500aa-a4de-4a3d-b3c2-b1514fe6c79d.jpg",
+            "image": "shopify://shop_images/shyft-intuiti-plus-stroller__ST200112512_Q.jpg",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_autoplay": false,
             "video_loop": false,
@@ -248,7 +224,7 @@
           "type": "media",
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/shyft-intuiti-plus-stroller-green-and-gentle__ST200112547Travertine_U_243583cf-e05a-4dc0-883c-9b62117177ae.jpg",
+            "image": "shopify://shop_images/shyft-intuiti-plus-stroller__ST200112512_R.jpg",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "video_autoplay": true,
             "video_loop": true,
@@ -340,7 +316,7 @@
         "textblock_NM4rtx": {
           "type": "textblock",
           "settings": {
-            "textblock": "<p><strong>This changes everything</strong></p><p>The Evenflo®Revolve180<strong>™ </strong>LiteMaxTMNXT Rotational Infant Car Seat with SensorySoothe<strong>™ </strong>technology has it all. For infants weighing 3-30 lb (15.7-32 in.), this car seat offers one-hand, 180° rotation for easy in and out. SensorySoothetechnology engages and calms your baby with lights, music and sounds integrated into the infant car seat handle.</p>",
+            "textblock": "<p><strong>This changes everything</strong></p><p>The Evenflo®Revolve180<strong>™</strong>LiteMax<strong>™ </strong>NXT Rotational Infant Car Seat with SensorySootheTMtechnology has it all. For infants weighing 3-30 lb (15.7-32 in.), this car seat offers one-hand, 180° rotation for easy in and out. SensorySoothetechnology engages and calms your baby with lights, music and sounds integrated into the infant car seat handle.</p>",
             "textblock_custom_font": false,
             "textblock_font": "mono",
             "textblock_font_name": "",
@@ -473,13 +449,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle",
-            "bundle_metafield_namespace": "custom",
-            "bundle_metafield_key": "bundle_products",
-            "show_bundle_included_colors": true,
-            "bundle_included_colors_heading": "",
-            "option_label_override": "",
-            "debug_swatch_data": false
+            "swatch_shape": "circle"
           }
         },
         "buy_buttons": {
@@ -681,10 +651,10 @@
       "type": "evenflo-join",
       "settings": {}
     },
-    "evenflo_benefits_YYR6wB": {
+    "evenflo_benefits_3PpxVD": {
       "type": "evenflo-benefits",
       "blocks": {
-        "benefit_NeJTX7": {
+        "benefit_HxtETL": {
           "type": "benefit",
           "settings": {
             "icon": "shopify://shop_images/icon-dollar-sign.svg",
@@ -693,7 +663,7 @@
             "link": "shopify://pages/refer"
           }
         },
-        "benefit_DgB7ht": {
+        "benefit_NnQCMH": {
           "type": "benefit",
           "settings": {
             "icon": "shopify://shop_images/icon-pay-affirm-benefit.svg",
@@ -702,7 +672,7 @@
             "link": "shopify://pages/affirm-overview"
           }
         },
-        "benefit_4xMMrH": {
+        "benefit_V3KmtB": {
           "type": "benefit",
           "settings": {
             "icon": "shopify://shop_images/icon-community-benefit.svg",
@@ -711,7 +681,7 @@
             "link": "shopify://pages/new-promotions"
           }
         },
-        "benefit_tP7RhD": {
+        "benefit_p7kzKh": {
           "type": "benefit",
           "settings": {
             "title": "Evenflo Blog",
@@ -721,10 +691,10 @@
         }
       },
       "block_order": [
-        "benefit_NeJTX7",
-        "benefit_DgB7ht",
-        "benefit_4xMMrH",
-        "benefit_tP7RhD"
+        "benefit_HxtETL",
+        "benefit_NnQCMH",
+        "benefit_V3KmtB",
+        "benefit_p7kzKh"
       ],
       "name": "Benefits",
       "settings": {
@@ -737,8 +707,7 @@
   "order": [
     "custom_liquid_EzUHxi",
     "evenflo_main_product_4BJMnB",
-    "evenflo_dtc_bundle_items_4U3BCQ",
-    "evenflo_featured_collection_myxLND",
+    "evenflo_dtc_bundle_items_fmCkqi",
     "qq_split_screen_MFjTgT",
     "qq_split_screen_4DDLhK",
     "main",
@@ -755,6 +724,6 @@
     "evenflo_quote_Q6Q7qn",
     "1728651794c071ea89",
     "evenflo_join_aYHW79",
-    "evenflo_benefits_YYR6wB"
+    "evenflo_benefits_3PpxVD"
   ]
 }

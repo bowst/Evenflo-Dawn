@@ -1,0 +1,30 @@
+{% comment %}
+  Outputs the color option value for a variant (plain text, no markup).
+  Accepts: bundle_variant
+{% endcomment %}
+{%- liquid
+  assign color_value = blank
+  assign component_product = bundle_variant.product
+
+  if component_product != blank
+    for component_option in component_product.options_with_values
+      assign option_name_down = component_option.name | downcase
+      unless option_name_down contains 'color' or option_name_down contains 'colour'
+        continue
+      endunless
+      case component_option.position
+        when 1
+          assign color_value = bundle_variant.option1
+        when 2
+          assign color_value = bundle_variant.option2
+        when 3
+          assign color_value = bundle_variant.option3
+      endcase
+      break
+    endfor
+  endif
+
+  if color_value == blank
+    assign color_value = bundle_variant.option1
+  endif
+-%}{{- color_value -}}
