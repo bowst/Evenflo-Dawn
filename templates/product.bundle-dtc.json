@@ -1,0 +1,356 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_EzUHxi": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "evenflo_main_product_4BJMnB": {
+      "type": "evenflo-main-product",
+      "blocks": {
+        "text_bX8f78": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_9xtMrd": {
+          "type": "title",
+          "settings": {}
+        },
+        "yotpo_product_reviews_ugc_star_rating_3bREKm": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price_8WtYp8": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_LCdpH4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by early November\n{% endif %}"
+          }
+        },
+        "bundle_variant_picker_TcDYk6": {
+          "type": "bundle_variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle",
+            "bundle_metafield_namespace": "custom",
+            "bundle_metafield_key": "bundle_products",
+            "show_bundle_included_colors": true,
+            "bundle_included_colors_heading": "",
+            "debug_swatch_data": false
+          }
+        },
+        "variant_picker_QwXGc8": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "custom_liquid_XFWBx4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
+          }
+        },
+        "custom_liquid_kAJdqB": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by late November\n{% endif %}"
+          }
+        },
+        "buy_buttons_7cXcW4": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "evenflo_at_a_glance_fTFgB8": {
+          "type": "evenflo-at-a-glance",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "text_bX8f78",
+        "title_9xtMrd",
+        "yotpo_product_reviews_ugc_star_rating_3bREKm",
+        "price_8WtYp8",
+        "custom_liquid_LCdpH4",
+        "bundle_variant_picker_TcDYk6",
+        "variant_picker_QwXGc8",
+        "custom_liquid_XFWBx4",
+        "custom_liquid_kAJdqB",
+        "buy_buttons_7cXcW4",
+        "evenflo_at_a_glance_fTFgB8"
+      ],
+      "custom_css": [
+        ".price--on-sale .price-item.price-item--regular {color: #db222a;}"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "color_scheme": "",
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "evenflo_dtc_bundle_items_8YyT7E": {
+      "type": "evenflo-dtc-bundle-items",
+      "name": "DTC Bundle Items",
+      "settings": {
+        "heading": "What's included",
+        "heading_size": "h1",
+        "metafield_namespace": "custom",
+        "metafield_key": "bundle_products",
+        "columns_desktop": 4,
+        "full_width": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_swatches": true,
+        "enable_quick_add": true,
+        "card_button_label": "Go to Product Page",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "evenflo-main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "yotpo_product_reviews_ugc_star_rating_dKxww7": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "complementary_gheQ9U": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "yotpo_product_reviews_ugc_star_rating_dKxww7",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "description",
+        "complementary_gheQ9U"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "More bundles like these",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "evenflo_contact_parentlink_KAtMr7": {
+      "type": "evenflo-contact-parentlink",
+      "settings": {
+        "heading": "Peace Of Mind",
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>\n<a href=\"#\"><strong>30 DAYS FOR RETURNS</strong></a><br>\n<a href=\"#\"><strong>LIMITED 90 DAY WARRANTY</strong></a>",
+        "support_content": ""
+      }
+    },
+    "evenflo_quote_Q6Q7qn": {
+      "type": "evenflo-quote",
+      "settings": {
+        "quote": "{{ product.metafields.custom.customer_quote.value }}",
+        "name": "{{ product.metafields.custom.customer_quote_name.value }}"
+      }
+    },
+    "1728651794c071ea89": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_ugc_reviews_nnaqeW": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_ugc_reviews_nnaqeW"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "evenflo_join_aYHW79": {
+      "type": "evenflo-join",
+      "settings": {}
+    },
+    "evenflo_benefits_3PpxVD": {
+      "type": "evenflo-benefits",
+      "blocks": {
+        "benefit_HxtETL": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-dollar-sign.svg",
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral.",
+            "link": "shopify://pages/refer"
+          }
+        },
+        "benefit_NnQCMH": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-pay-affirm-benefit.svg",
+            "title": "Pay With Affirm",
+            "description": "Spread out your payments over a period of time.",
+            "link": "shopify://pages/affirm-overview"
+          }
+        },
+        "benefit_V3KmtB": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-community-benefit.svg",
+            "title": "Community Heroes Discount",
+            "description": "Our exclusive discount program for community heroes.",
+            "link": "shopify://pages/new-promotions"
+          }
+        },
+        "benefit_p7kzKh": {
+          "type": "benefit",
+          "settings": {
+            "title": "Evenflo Blog",
+            "description": "The day your child comes into the world, all the stakes are raised. Little things matter more.",
+            "link": "shopify://blogs/evenflo-blog"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_HxtETL",
+        "benefit_NnQCMH",
+        "benefit_V3KmtB",
+        "benefit_p7kzKh"
+      ],
+      "name": "Benefits",
+      "settings": {
+        "heading": "Benefits of Shopping Evenflo.com",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_EzUHxi",
+    "evenflo_main_product_4BJMnB",
+    "evenflo_dtc_bundle_items_8YyT7E",
+    "main",
+    "related-products",
+    "evenflo_contact_parentlink_KAtMr7",
+    "evenflo_quote_Q6Q7qn",
+    "1728651794c071ea89",
+    "evenflo_join_aYHW79",
+    "evenflo_benefits_3PpxVD"
+  ]
+}
