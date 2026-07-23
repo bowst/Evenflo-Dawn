@@ -1,0 +1,690 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_EzUHxi": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "evenflo_main_product_4BJMnB": {
+      "type": "evenflo-main-product",
+      "blocks": {
+        "text_bX8f78": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_9xtMrd": {
+          "type": "title",
+          "settings": {}
+        },
+        "yotpo_product_reviews_ugc_star_rating_3bREKm": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price_8WtYp8": {
+          "type": "price",
+          "settings": {}
+        },
+        "custom_liquid_LCdpH4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by early November\n{% endif %}"
+          }
+        },
+        "related_products_bW3NFr": {
+          "type": "related_products",
+          "disabled": true,
+          "settings": {
+            "heading": "Styles. Which is best for you?"
+          }
+        },
+        "variant_picker_QwXGc8": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "custom_liquid_XFWBx4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
+          }
+        },
+        "custom_liquid_kAJdqB": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%- liquid assign collection_handles = product.collections | map: 'handle' -%}\n{% if collection_handles contains 'pre-order' %}\nEstimated to ship by late November\n{% endif %}"
+          }
+        },
+        "buy_buttons_7cXcW4": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "evenflo_at_a_glance_fTFgB8": {
+          "type": "evenflo-at-a-glance",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "text_bX8f78",
+        "title_9xtMrd",
+        "yotpo_product_reviews_ugc_star_rating_3bREKm",
+        "price_8WtYp8",
+        "custom_liquid_LCdpH4",
+        "related_products_bW3NFr",
+        "variant_picker_QwXGc8",
+        "custom_liquid_XFWBx4",
+        "custom_liquid_kAJdqB",
+        "buy_buttons_7cXcW4",
+        "evenflo_at_a_glance_fTFgB8"
+      ],
+      "custom_css": [
+        ".price--on-sale .price-item.price-item--regular {color: #db222a;}"
+      ],
+      "settings": {
+        "enable_sticky_info": false,
+        "color_scheme": "",
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "qq_split_screen_MFjTgT": {
+      "type": "QQ-Split-screen",
+      "blocks": {
+        "title_qzzKmB": {
+          "type": "title",
+          "settings": {
+            "title": "<h2>Have it all and more</h2>",
+            "title_custom_font": false,
+            "title_font": "mono",
+            "title_font_name": "",
+            "title_font_weight": "default",
+            "title_color": "",
+            "title_font_size": 0,
+            "title_line_height": 0,
+            "title_letter_spacing": 0,
+            "title_font_size_mobile": 0,
+            "title_line_height_mobile": 0,
+            "title_letter_spacing_mobile": 0,
+            "title_margin_top": 10,
+            "title_margin_bottom": 10,
+            "title_margin_top_mobile": 10,
+            "title_margin_bottom_mobile": 10
+          }
+        },
+        "textblock_CBC3qN": {
+          "type": "textblock",
+          "settings": {
+            "textblock": "<p>Introducing parenting on the go raised to a higher standard: The Evenflo® Shyft<strong>™ </strong>Intuiti+ Stroller. With maneuverability that feels intuitive, this luxe stroller boasts all-wheel suspension and premium rubber tires to cushion the bumps along the way.</p>",
+            "textblock_custom_font": false,
+            "textblock_font": "mono",
+            "textblock_font_name": "",
+            "textblock_font_weight": "default",
+            "textblock_color": "",
+            "textblock_font_size": 0,
+            "textblock_line_height": 0,
+            "textblock_letter_spacing": 0,
+            "textblock_font_size_mobile": 0,
+            "textblock_line_height_mobile": 0,
+            "textblock_letter_spacing_mobile": 0
+          }
+        },
+        "media_tWXRbW": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/shyft-intuiti-plus-stroller__ST200112512_N.jpg",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_autoplay": false,
+            "video_loop": false,
+            "video_controls": false
+          }
+        },
+        "media_LE3Bxa": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/shyft-intuiti-plus-stroller__ST200112512_Q.jpg",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_autoplay": false,
+            "video_loop": false,
+            "video_controls": false
+          }
+        },
+        "media_DJcwpL": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/shyft-intuiti-plus-stroller__ST200112512_R.jpg",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_controls": false
+          }
+        }
+      },
+      "block_order": [
+        "title_qzzKmB",
+        "textblock_CBC3qN",
+        "media_tWXRbW",
+        "media_LE3Bxa",
+        "media_DJcwpL"
+      ],
+      "name": "QQ - Split Screen with Vertical Scroll",
+      "settings": {
+        "section_class": "",
+        "section_width": "regular",
+        "content_max_width": 1280,
+        "content_fullwidth": false,
+        "background_color": "",
+        "section_margin_top": 20,
+        "section_margin_bottom": 20,
+        "section_padding_horizontal": 0,
+        "section_padding_top": 0,
+        "section_padding_bottom": 0,
+        "section_margin_top_mobile": 20,
+        "section_margin_bottom_mobile": 20,
+        "section_padding_horizontal_mobile": 0,
+        "section_padding_top_mobile": 20,
+        "section_padding_bottom_mobile": 20,
+        "media_width": 50,
+        "media_position": "right",
+        "media_margin": 20,
+        "media_size": "original",
+        "media_border_radius": 0,
+        "media_gap": 0,
+        "media_width_mobile": 100,
+        "media_border_radius_mobile": 0,
+        "media_position_mobile": "top",
+        "media_margin_mobile": 20,
+        "media_gap_mobile": 10,
+        "text_area_vertical_position": "center",
+        "text_alignment": "left",
+        "text_area_padding_top": 20,
+        "text_area_padding_bottom": 20,
+        "text_area_padding_left": 20,
+        "text_area_padding_right": 20,
+        "text_alignment_mobile": "center",
+        "text_area_padding_top_mobile": 20,
+        "text_area_padding_bottom_mobile": 20,
+        "text_area_padding_horizontal_mobile": 20,
+        "carousel_enabled": true,
+        "carousel_autoplay": false,
+        "carousel_speed": 4,
+        "carousel_animation": "fade",
+        "carousel_navigation": "arrows",
+        "carousel_arrows_color_line": "",
+        "carousel_arrows_color_bg": "#ffffff",
+        "carousel_dots_size": "medium",
+        "carousel_dots_color": "#000000",
+        "carousel_dots_position_mobile": -20
+      }
+    },
+    "qq_split_screen_4DDLhK": {
+      "type": "QQ-Split-screen",
+      "blocks": {
+        "title_w73eVi": {
+          "type": "title",
+          "settings": {
+            "title": "<h2>The Revolve180 Litemax NXT </h2>",
+            "title_custom_font": false,
+            "title_font": "mono",
+            "title_font_name": "",
+            "title_font_weight": "default",
+            "title_color": "",
+            "title_font_size": 0,
+            "title_line_height": 0,
+            "title_letter_spacing": 0,
+            "title_font_size_mobile": 0,
+            "title_line_height_mobile": 0,
+            "title_letter_spacing_mobile": 0,
+            "title_margin_top": 10,
+            "title_margin_bottom": 10,
+            "title_margin_top_mobile": 10,
+            "title_margin_bottom_mobile": 10
+          }
+        },
+        "textblock_NM4rtx": {
+          "type": "textblock",
+          "settings": {
+            "textblock": "<p><strong>This changes everything</strong></p><p>The Evenflo®Revolve180<strong>™</strong>LiteMax<strong>™ </strong>NXT Rotational Infant Car Seat with SensorySootheTMtechnology has it all. For infants weighing 3-30 lb (15.7-32 in.), this car seat offers one-hand, 180° rotation for easy in and out. SensorySoothetechnology engages and calms your baby with lights, music and sounds integrated into the infant car seat handle.</p>",
+            "textblock_custom_font": false,
+            "textblock_font": "mono",
+            "textblock_font_name": "",
+            "textblock_font_weight": "default",
+            "textblock_color": "",
+            "textblock_font_size": 0,
+            "textblock_line_height": 0,
+            "textblock_letter_spacing": 0,
+            "textblock_font_size_mobile": 0,
+            "textblock_line_height_mobile": 0,
+            "textblock_letter_spacing_mobile": 0
+          }
+        },
+        "media_aXdynK": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/revolve180-litemax-nxt-gold__CS160412534Jasper_Black_M.jpg",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_controls": false
+          }
+        },
+        "media_Hj68bz": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/revolve180-litemax-nxt-gold__CS160412534Jasper_Black_O.jpg",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_controls": false
+          }
+        },
+        "media_btUJkC": {
+          "type": "media",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/revolve180-litemax-nxt-gold__CS160412534Jasper_Black_P.jpg",
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_controls": false
+          }
+        }
+      },
+      "block_order": [
+        "title_w73eVi",
+        "textblock_NM4rtx",
+        "media_aXdynK",
+        "media_Hj68bz",
+        "media_btUJkC"
+      ],
+      "name": "QQ - Split Screen with Vertical Scroll",
+      "settings": {
+        "section_class": "",
+        "section_width": "regular",
+        "content_max_width": 1280,
+        "content_fullwidth": false,
+        "background_color": "",
+        "section_margin_top": 20,
+        "section_margin_bottom": 20,
+        "section_padding_horizontal": 0,
+        "section_padding_top": 0,
+        "section_padding_bottom": 0,
+        "section_margin_top_mobile": 20,
+        "section_margin_bottom_mobile": 20,
+        "section_padding_horizontal_mobile": 0,
+        "section_padding_top_mobile": 20,
+        "section_padding_bottom_mobile": 20,
+        "media_width": 50,
+        "media_position": "left",
+        "media_margin": 20,
+        "media_size": "original",
+        "media_border_radius": 0,
+        "media_gap": 0,
+        "media_width_mobile": 100,
+        "media_border_radius_mobile": 0,
+        "media_position_mobile": "top",
+        "media_margin_mobile": 20,
+        "media_gap_mobile": 10,
+        "text_area_vertical_position": "center",
+        "text_alignment": "left",
+        "text_area_padding_top": 20,
+        "text_area_padding_bottom": 20,
+        "text_area_padding_left": 20,
+        "text_area_padding_right": 20,
+        "text_alignment_mobile": "center",
+        "text_area_padding_top_mobile": 20,
+        "text_area_padding_bottom_mobile": 20,
+        "text_area_padding_horizontal_mobile": 20,
+        "carousel_enabled": true,
+        "carousel_autoplay": false,
+        "carousel_speed": 4,
+        "carousel_animation": "fade",
+        "carousel_navigation": "arrows",
+        "carousel_arrows_color_line": "",
+        "carousel_arrows_color_bg": "#ffffff",
+        "carousel_dots_size": "medium",
+        "carousel_dots_color": "#000000",
+        "carousel_dots_position_mobile": -20
+      }
+    },
+    "main": {
+      "type": "evenflo-main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "yotpo_product_reviews_ugc_star_rating_dKxww7": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "complementary_gheQ9U": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "yotpo_product_reviews_ugc_star_rating_dKxww7",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "description",
+        "complementary_gheQ9U"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "evenflo_product_highlights_yGptpT": {
+      "type": "evenflo-product-highlights",
+      "disabled": true,
+      "settings": {}
+    },
+    "evenflo_parentlink_QJ7UGE": {
+      "type": "evenflo-parentlink",
+      "disabled": true,
+      "settings": {
+        "heading": "Supported By",
+        "left_content": "Phone",
+        "right_content": "Email"
+      }
+    },
+    "evenflo_full_width_An6GrY": {
+      "type": "evenflo-full-width",
+      "disabled": true,
+      "settings": {
+        "heading": "evenflo",
+        "content": "<p>Default Content</p>"
+      }
+    },
+    "evenflo_product_video_KEFXhc": {
+      "type": "evenflo-product-video",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "description": ""
+      }
+    },
+    "evenflo_full_width_ngaV99": {
+      "type": "evenflo-full-width",
+      "disabled": true,
+      "settings": {
+        "heading": "Evenflo",
+        "content": "<p>Default Content</p>"
+      }
+    },
+    "evenflo_video_cbQmLm": {
+      "type": "evenflo-video",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "evenflo_features_f9tF3G": {
+      "type": "evenflo-features",
+      "disabled": true,
+      "settings": {
+        "product_handles": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_BXQwKw": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3YW6mh": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.title }}",
+            "heading_size": "h1"
+          }
+        },
+        "text_T7jF4q": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.sf_products.short_description | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3YW6mh",
+        "text_T7jF4q"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "evenflo_contact_parentlink_KAtMr7": {
+      "type": "evenflo-contact-parentlink",
+      "settings": {
+        "heading": "Peace Of Mind",
+        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>\n<a href=\"#\"><strong>30 DAYS FOR RETURNS</strong></a><br>\n<a href=\"#\"><strong>LIMITED 90 DAY WARRANTY</strong></a>",
+        "support_content": ""
+      }
+    },
+    "evenflo_quote_Q6Q7qn": {
+      "type": "evenflo-quote",
+      "settings": {
+        "quote": "{{ product.metafields.custom.customer_quote.value }}",
+        "name": "{{ product.metafields.custom.customer_quote_name.value }}"
+      }
+    },
+    "1728651794c071ea89": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_reviews_ugc_reviews_nnaqeW": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_reviews_ugc_reviews_nnaqeW"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "evenflo_join_aYHW79": {
+      "type": "evenflo-join",
+      "settings": {}
+    },
+    "evenflo_benefits_3PpxVD": {
+      "type": "evenflo-benefits",
+      "blocks": {
+        "benefit_HxtETL": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-dollar-sign.svg",
+            "title": "Give $20, Get $20",
+            "description": "Refer a friend and earn points for each successful referral.",
+            "link": "shopify://pages/refer"
+          }
+        },
+        "benefit_NnQCMH": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-pay-affirm-benefit.svg",
+            "title": "Pay With Affirm",
+            "description": "Spread out your payments over a period of time.",
+            "link": "shopify://pages/affirm-overview"
+          }
+        },
+        "benefit_V3KmtB": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/icon-community-benefit.svg",
+            "title": "Community Heroes Discount",
+            "description": "Our exclusive discount program for community heroes.",
+            "link": "shopify://pages/new-promotions"
+          }
+        },
+        "benefit_p7kzKh": {
+          "type": "benefit",
+          "settings": {
+            "title": "Evenflo Blog",
+            "description": "The day your child comes into the world, all the stakes are raised. Little things matter more.",
+            "link": "shopify://blogs/evenflo-blog"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_HxtETL",
+        "benefit_NnQCMH",
+        "benefit_V3KmtB",
+        "benefit_p7kzKh"
+      ],
+      "name": "Benefits",
+      "settings": {
+        "heading": "Benefits of Shopping Evenflo.com",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_EzUHxi",
+    "evenflo_main_product_4BJMnB",
+    "qq_split_screen_MFjTgT",
+    "qq_split_screen_4DDLhK",
+    "main",
+    "evenflo_product_highlights_yGptpT",
+    "evenflo_parentlink_QJ7UGE",
+    "evenflo_full_width_An6GrY",
+    "evenflo_product_video_KEFXhc",
+    "evenflo_full_width_ngaV99",
+    "evenflo_video_cbQmLm",
+    "evenflo_features_f9tF3G",
+    "related-products",
+    "rich_text_BXQwKw",
+    "evenflo_contact_parentlink_KAtMr7",
+    "evenflo_quote_Q6Q7qn",
+    "1728651794c071ea89",
+    "evenflo_join_aYHW79",
+    "evenflo_benefits_3PpxVD"
+  ]
+}
