@@ -2191,6 +2191,8 @@ input[type="checkbox"] {
   flex-wrap: wrap;
   align-content: center;
   grid-area: announcements;
+  min-height: 3.8rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .announcement-bar .slider--everywhere {
@@ -2285,7 +2287,7 @@ input[type="checkbox"] {
   padding: 1rem 0;
   margin: 0;
   letter-spacing: 0.1rem;
-  min-height: 3.8rem;
+  /*min-height: 3.8rem;*/
 }
 
 .announcement-bar-slider--fade-in-next .announcement-bar__message,
