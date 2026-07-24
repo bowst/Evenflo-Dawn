@@ -160,10 +160,22 @@
 
 {%- comment -%} ---------------- THE CONFIG ---------------- {%- endcomment -%}
 
+{%- capture faq_block_ids -%}
+[
+{%- assign faq_id_sep = '' -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'faq' and block.settings.title != blank and block.settings.content != blank -%}
+    {{- faq_id_sep -}}{{- block.id | json -}}
+    {%- assign faq_id_sep = ',' -%}
+  {%- endif -%}
+{%- endfor -%}
+]
+{%- endcapture -%}
+
 <script type="application/json" data-faq-config="{{ section.id }}">
   {
     "sectionId": {{ section.id | json }},
-    "blockIds": {{ section.blocks | map: 'id' | json }}
+    "blockIds": {{ faq_block_ids | strip_newlines }}
   }
 </script>
 
