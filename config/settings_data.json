@@ -291,25 +291,30 @@
           "enable_ai_analysis": false
         }
       },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
       "2640576625794464016": {
         "type": "shopify://apps/yotpo-loyalty-rewards/blocks/spotlight-drawer-app-embed/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
         "disabled": false,
         "settings": {
           "loyalty_name": "My Loyalty Program",
-          "greeting_text": "<p>Hey ##name##,<br>Check out your perks ✨</p>",
+          "greeting_text": "<p>Hey ##name##,<br/>Check out your perks ✨</p>",
           "points_section_label": "You Earned",
           "rewards_section_title": "Your Rewards",
           "apply_reward_button_text": "Apply to cart",
           "apply_reward_success_message": "Reward applied. Refresh page to see it.",
           "remove_reward_button_text": "Remove from cart",
-          "background_color": "#ffffff",
-          "points_bg_color": "#D6D6D6",
-          "button_bg_color": "#262626",
+          "background_color": "#FAF8F6",
+          "points_bg_color": "#F2F4F7",
+          "button_bg_color": "#007E79",
           "button_text_color": "#ffffff",
-          "heading_font": "inter_n6",
-          "heading_color": "#262626",
-          "body_font": "inter_n4",
-          "body_color": "#4D4D4D",
+          "heading_font": "system_ui_n4",
+          "heading_color": "#111111",
+          "body_font": "system_ui_n4",
+          "body_color": "#222222",
           "show_points_expiry": true,
           "expiry_date_format": "long",
           "expiry_label": "exp.",
@@ -319,7 +324,7 @@
           "tier_suffix": "Member",
           "direct_rewards_label": "Free",
           "days_left_text": "##days## day(s) left",
-          "reward_expiry_color": "#C93400",
+          "reward_expiry_color": "#c93400",
           "cart_empty_message": "Add items to cart first",
           "collection_requirement_text": "Collection items only",
           "missing_collection_item_error_message": "No collection items in your cart.",
@@ -333,11 +338,6 @@
           "signup_button_text": "Join",
           "signup_success_message": "You're in! Start exploring your rewards."
         }
-      },
-      "2567389343055140935": {
-        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
-        "disabled": false,
-        "settings": {}
       }
     },
     "color_schemes": {
