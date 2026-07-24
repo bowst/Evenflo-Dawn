@@ -56,8 +56,8 @@
             "logged_out_cta_text": "JOIN REWARDS",
             "non_loyalty_member_text": "Unlock Evenflo Rewards",
             "custom_login_url": "",
-            "background_color": "#E3F2F3",
-            "text_color": "#007E79",
+            "background_color": "#e3f2f3",
+            "text_color": "#007e79",
             "font": "system_ui_n4",
             "text_size": "medium",
             "exclude_pages": ""
@@ -67,9 +67,11 @@
       "block_order": [
         "yotpo_loyalty_rewards_spotlight_cta_app_block_64jGyp"
       ],
-      "disabled": true,
+      "custom_css": [
+        ".yotpo-spotlight-drawer {border-radius: 0 !important;}"
+      ],
       "settings": {
-        "include_margins": true
+        "include_margins": false
       }
     },
     "evenflo_loyalty_banner_slideshow_UfF7dQ": {
