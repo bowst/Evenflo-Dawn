@@ -43,24 +43,35 @@
         "desktop_overlay_opacity": 20
       }
     },
-    "evenflo_hero_banner_gzKhHL": {
-      "type": "evenflo-hero-banner",
-      "disabled": true,
-      "name": "Evenflo Hero Banner",
+    "17848313318cca4c4c": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_loyalty_rewards_spotlight_cta_app_block_64jGyp": {
+          "type": "shopify://apps/yotpo-loyalty-rewards/blocks/spotlight-cta-app-block/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
+          "settings": {
+            "preview_as": "logged_in",
+            "signed_in_text": "<p>You have ##points_balance## points</p>",
+            "signed_in_cta_text": "SEE MY REWARDS",
+            "logged_out_text": "<p>Join Evenflo Rewards & earn points</p>",
+            "logged_out_cta_text": "JOIN REWARDS",
+            "non_loyalty_member_text": "Unlock Evenflo Rewards",
+            "custom_login_url": "",
+            "background_color": "#e3f2f3",
+            "text_color": "#007e79",
+            "font": "system_ui_n4",
+            "text_size": "medium",
+            "exclude_pages": ""
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_loyalty_rewards_spotlight_cta_app_block_64jGyp"
+      ],
+      "custom_css": [
+        ".yotpo-spotlight-drawer {border-radius: 0 !important;}"
+      ],
       "settings": {
-        "desktop_image": "shopify://shop_images/ParentsAwards_BANNER_DESKTOP_1440x480_d6268995-4903-4607-a8aa-ccd04df43056.jpg",
-        "mobile_image": "shopify://shop_images/ParentsAwards_BANNER_MOBILE_375x500_68cc837a-2c40-4442-8612-3d004b5edb1c.jpg",
-        "enable_video_looping": true,
-        "eyebrow_text": "Big News",
-        "primary_heading": "<p>Evenflo wins 5 categories <br/>in the 2026 Parents <br/>Best for Baby Awards</p>",
-        "short_description": "",
-        "primary_cta_text": "EXPLORE COLLECTION",
-        "primary_cta_link": "https://www.evenflo.com/pages/parents-best-for-baby-2026?_pos=61&_sid=fde52919f&_ss=r",
-        "secondary_cta_text": "",
-        "secondary_cta_link": "",
-        "content_alignment": "align-right",
-        "text_color": "dark",
-        "desktop_overlay_opacity": 5
+        "include_margins": false
       }
     },
     "evenflo_loyalty_banner_slideshow_UfF7dQ": {
@@ -107,6 +118,26 @@
         "image_behavior": "none",
         "show_text_below": true,
         "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "evenflo_hero_banner_gzKhHL": {
+      "type": "evenflo-hero-banner",
+      "disabled": true,
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/ParentsAwards_BANNER_DESKTOP_1440x480_d6268995-4903-4607-a8aa-ccd04df43056.jpg",
+        "mobile_image": "shopify://shop_images/ParentsAwards_BANNER_MOBILE_375x500_68cc837a-2c40-4442-8612-3d004b5edb1c.jpg",
+        "enable_video_looping": true,
+        "eyebrow_text": "Big News",
+        "primary_heading": "<p>Evenflo wins 5 categories <br/>in the 2026 Parents <br/>Best for Baby Awards</p>",
+        "short_description": "",
+        "primary_cta_text": "EXPLORE COLLECTION",
+        "primary_cta_link": "https://www.evenflo.com/pages/parents-best-for-baby-2026?_pos=61&_sid=fde52919f&_ss=r",
+        "secondary_cta_text": "",
+        "secondary_cta_link": "",
+        "content_alignment": "align-right",
+        "text_color": "dark",
+        "desktop_overlay_opacity": 5
       }
     },
     "evenflo_featured_collection_XHFN7m": {
@@ -550,8 +581,9 @@
   },
   "order": [
     "evenflo_promo_banner_MaitNM",
-    "evenflo_hero_banner_gzKhHL",
+    "17848313318cca4c4c",
     "evenflo_loyalty_banner_slideshow_UfF7dQ",
+    "evenflo_hero_banner_gzKhHL",
     "evenflo_featured_collection_XHFN7m",
     "evenflo_featured_collection_cCmYU7",
     "evenflo_featured_collection_fbrnnA",
