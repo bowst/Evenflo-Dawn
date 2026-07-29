@@ -160,23 +160,8 @@
             {%- if warranty_type != blank -%}
               <p>{{ warranty_type }}</p>
             {%- endif -%}
-            {%- if warranty_code != blank -%}
-              <p>{{ warranty_code }}</p>
-            {%- endif -%}
             {%- if product_warranty_link != blank -%}
               <p><a href="{{ product_warranty_link }}">{{ product_warranty_link }}</a></p>
-            {%- endif -%}
-            {%- if product_warranty_link and warranty_code == '1 Year, 6 Month Battery' -%}
-              <p><a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a></p>
-            {%- endif -%}
-            {%- if warranty_code == 'lifetime-limited' -%}
-              <p><a href="https://www.evenflo.com/pages/warranty">Limited Lifetime Warranty</a></p>
-            {%- endif -%}
-            {%- if warranty_code == '1 Year, Limited' -%}
-              <p><a href="https://www.evenflo.com/pages/warranty">Limited 1 Year Warranty</a></p>
-            {%- endif -%}
-            {%- if product_warranty_link and warranty_code == '90-day-limited' -%}
-              <p><a href="{{ product_warranty_link }}">Limited 90-Day Warranty</a></p>
             {%- endif -%}
           </div>
         </div>

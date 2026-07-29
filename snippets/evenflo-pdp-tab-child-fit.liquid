@@ -16,23 +16,19 @@
   assign rear_facing_height_limit = product.metafields.custom.rear_facing_mode_height_limit
   assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit
   assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement
-  assign rear_facing = product.metafields.custom.rear_facing.value
 
   assign forward_facing_weight_limit = product.metafields.sf_products.forward_facing_weight_limit
   assign forward_facing_height_limit = product.metafields.sf_products.forward_facing_height_limit
   assign forward_facing_age_limit = product.metafields.sf_products.forward_facing_age_limit
   assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement
-  assign forward_facing = product.metafields.custom.forward_facing.value
 
   assign high_back_weight_limit = product.metafields.custom.high_back_booster_mode_weight_limit
   assign high_back_height_limit = product.metafields.custom.high_back_booster_mode_height_limit
   assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement
-  assign high_back_booster = product.metafields.custom.high_back_booster.value
 
   assign no_back_weight_limit = product.metafields.custom.no_back_booster_mode_weight_limit
   assign no_back_height_limit = product.metafields.custom.no_back_booster_mode_height_limit
   assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement
-  assign no_back_booster = product.metafields.custom.no_back_booster.value
 
   assign harness_weight_limit = product.metafields.custom.harness_booster_mode_weight_limit
   assign harness_height_limit = product.metafields.custom.harness_booster_mode_height_limit
@@ -51,22 +47,22 @@
   endif
 
   assign show_rear = false
-  if product.metafields.custom.rear_facing != blank and rear_facing == true
+  if rear_facing_weight_limit != blank or rear_facing_height_limit != blank or rear_facing_age_limit != blank or rear_facing_fit_statement != blank
     assign show_rear = true
   endif
 
   assign show_forward = false
-  if product.metafields.custom.forward_facing != blank and forward_facing == true
+  if forward_facing_weight_limit != blank or forward_facing_height_limit != blank or forward_facing_age_limit != blank or forward_facing_fit_statement != blank
     assign show_forward = true
   endif
 
   assign show_high_back = false
-  if product.metafields.custom.high_back_booster != blank and high_back_booster == true
+  if high_back_weight_limit != blank or high_back_height_limit != blank or high_back_fit_statement != blank
     assign show_high_back = true
   endif
 
   assign show_no_back = false
-  if product.metafields.custom.no_back_booster != blank and no_back_booster == true
+  if no_back_weight_limit != blank or no_back_height_limit != blank or no_back_fit_statement != blank
     assign show_no_back = true
   endif
 
