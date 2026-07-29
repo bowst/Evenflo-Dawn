@@ -13,10 +13,6 @@
   assign max_age = product.metafields.sf_products.child_age_max
   assign age_group = product.metafields.sf_products.age_group
 
-  assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min
-  assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max
-  assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min
-  assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max
   assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement
   assign rear_facing = product.metafields.custom.rear_facing.value
 
@@ -29,16 +25,8 @@
   assign forward_facing = product.metafields.custom.forward_facing.value
   assign high_back_booster = product.metafields.custom.high_back_booster.value
 
-  assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min
-  assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max
-  assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min
-  assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max
   assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement
 
-  assign no_back_weight_min = product.metafields.sf_car_seat.no_back_weight_min
-  assign no_back_weight_max = product.metafields.sf_car_seat.no_back_weight_max
-  assign no_back_height_min = product.metafields.sf_car_seat.no_back_height_min
-  assign no_back_height_max = product.metafields.sf_car_seat.no_back_height_max
   assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement
   assign no_back_booster = product.metafields.custom.no_back_booster.value
 
@@ -97,15 +85,6 @@
       <div>
         <ul class="specs-list no-bullets">
           {%- if child_weight_min_value or child_weight_max_value -%}
-            <li>
-              Child Weight:;
-              {%- if child_weight_min_value -%}
-                {{ child_weight_min_value }} -
-              {%- endif -%}
-              {%- if child_weight_max_value -%}
-                {{ child_weight_max_value }} lbs
-              {%- endif -%}
-            </li>
           {%- elsif min_weight and max_weight -%}
             <li>Weight: {{ min_weight }} - {{ max_weight }} lbs</li>
           {%- endif -%}
@@ -174,10 +153,6 @@
       <div>
         <h4 class="h5">High Back Booster Mode</h4>
         <ul class="specs-list">
-          {%- if high_back_fit_statement -%}
-            <li>Weight: {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs</li>
-            <li>Height: {{ high_back_height_min }} - {{ high_back_height_max }} in</li>
-          {%- endif -%}
           {%- if product.metafields.custom.high_back_booster_mode_height_limit != blank -%}
             <li>
               <strong>Height Limitation:</strong> {{ product.metafields.custom.high_back_booster_mode_height_limit }}
@@ -199,12 +174,6 @@
       <div>
         <h4 class="h5">No Back Booster Mode</h4>
         <ul class="specs-list">
-          {%- if no_back_weight_max -%}
-            <li>Weight: {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs</li>
-          {%- endif -%}
-          {%- if no_back_height_max -%}
-            <li>Height: {{ no_back_height_min }} - {{ no_back_height_max }} in</li>
-          {%- endif -%}
           {%- if product.metafields.custom.no_back_booster_mode_height_limit != blank -%}
             <li>
               <strong>Height Limitation:</strong> {{ product.metafields.custom.no_back_booster_mode_height_limit }}

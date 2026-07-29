@@ -7,114 +7,114 @@
 {% assign lightweight = product.metafields.sf_car_seat.lightweight %}
 {% assign no_rethread_harness = product.metafields.sf_car_seat.no_rethread_harness %}
 {% assign side_impact_protection = product.metafields.sf_car_seat.side_impact_protection %}
-{% assign anti_rebound_bar = product.metafields.sf_car_seat.anti_rebound_bar %}
+{% assign anti_rebound_bar = product.metafields.custom.anti_rebound_bar %}
 {% assign converts_to_no_back_booster = product.metafields.sf_car_seat.converts_to_no_back_booster %}
 {% assign high_back = product.metafields.sf_car_seat.high_back %}
 {% assign has_harness_booster_mode = product.metafields.sf_car_seat.has_harness_booster_mode %}
 {% assign modes_of_use = product.metafields.custom.modes_of_use | replace: '|', '<br>' %}
 
 <ul class="specs-list">
-	{% if washable == 1 %}
-	<li class="checkbox-item">
-		<strong>Machine Washable Surface</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if washable == 1 %}
+    <li class="checkbox-item">
+      <strong>Machine Washable Surface</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 
-	{% if steel_reinforced == 1 %}
-	<li class="checkbox-item">
-		<strong>Steel Reinforced</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
-	
-	{% if bubble_level == 1 %}
-	<li class="checkbox-item">
-		<strong>Bubble Level</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
-	
-	{% if harness_covers == 1 %}
-	<li class="checkbox-item">
-		<strong>Harness Covers</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if steel_reinforced == 1 %}
+    <li class="checkbox-item">
+      <strong>Steel Reinforced</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 
-	{% if latch_install == 1 %}
-	<li class="checkbox-item">
-		<strong>Latch Install</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if bubble_level == 1 %}
+    <li class="checkbox-item">
+      <strong>Bubble Level</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 
-	{% if lightweight == 1 %}
-	<li class="checkbox-item">
-		<strong>Lightweight</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
-	
-	{% if no_rethread_harness == 1 %}
-	<li class="checkbox-item">
-		<strong>No Rethread Harness</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if harness_covers == 1 %}
+    <li class="checkbox-item">
+      <strong>Harness Covers</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 
-	{% if side_impact_protection == 1 %}
-	<li class="checkbox-item">
-		<strong>Side Impact Protection</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if latch_install == 1 %}
+    <li class="checkbox-item">
+      <strong>Latch Install</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 
-	{% if anti_rebound_bar == 1 %}
-	<li class="checkbox-item">
-		<strong>Anti-Rebound Bar</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if lightweight == 1 %}
+    <li class="checkbox-item">
+      <strong>Lightweight</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 
-	{% if sensorsafe == 1 %}
-	<li class="checkbox-item">
-		<strong>Sensorsafe</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
-	
-	{% if converts_to_no_back_booster == 1 %}
-	<li class="checkbox-item">
-		<strong>Converts to No Back Booster</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if no_rethread_harness == 1 %}
+    <li class="checkbox-item">
+      <strong>No Rethread Harness</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 
-	{% if high_back == 1 %}
-	<li class="checkbox-item">
-		<strong>High Back</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if side_impact_protection == 1 %}
+    <li class="checkbox-item">
+      <strong>Side Impact Protection</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 
-	{% if has_harness_booster_mode == 1 %}
-	<li class="checkbox-item">
-		<strong>Has Harness Booster Mode</strong>
-		<span class="screen-reader-text">Yes</span>
-		<span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
-	</li>
-	{% endif %}
+  {% if anti_rebound_bar == 1 %}
+    <li class="checkbox-item">
+      <strong>Anti-Rebound Bar</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
+
+  {% if sensorsafe == 1 %}
+    <li class="checkbox-item">
+      <strong>Sensorsafe</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
+
+  {% if converts_to_no_back_booster == 1 %}
+    <li class="checkbox-item">
+      <strong>Converts to No Back Booster</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
+
+  {% if high_back == 1 %}
+    <li class="checkbox-item">
+      <strong>High Back</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
+
+  {% if has_harness_booster_mode == 1 %}
+    <li class="checkbox-item">
+      <strong>Has Harness Booster Mode</strong>
+      <span class="screen-reader-text">Yes</span>
+      <span class="checkmark">{{- 'icon-checkmark.svg' | inline_asset_content -}}</span>
+    </li>
+  {% endif %}
 </ul>
