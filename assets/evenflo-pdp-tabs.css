@@ -109,13 +109,25 @@
    -------------------------------------------------------------------------- */
 
 .evenflo-pdp-tabs .info-block {
-  background-color: var(--color-evenflo-white);
+  background-color: var(--color-evenflo-white, #fff);
   padding: 16px;
 }
 
 .evenflo-pdp-tabs .evenflo-pdp-tab-layout__full-width {
-  background-color: var(--color-evenflo-white);
+  background-color: var(--color-evenflo-white, #fff);
   padding: 16px;
+}
+
+/* Panel headings: Overview (short_description_header) + info-block card titles */
+.evenflo-pdp-tabs .evenflo-pdp-tab-layout__full-width > h3,
+.evenflo-pdp-tabs .info-block > .h3 {
+  color: var(--color-evenflo-blue-900, #0f3c5a);
+  font-family: var(--font-heading-family);
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
 }
 
 .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid {
@@ -163,6 +175,43 @@
   position: absolute;
   left: 0;
   white-space: pre;
+}
+
+/* Child Fit Requirements card — Figma 2554:2605.
+   Mode label + disc bullets at body size; blue rule between mode groups. */
+.evenflo-pdp-tabs .child-fit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.evenflo-pdp-tabs .child-fit__group + .child-fit__group {
+  border-top: 2px solid var(--color-evenflo-blue-500, #2996c5);
+  padding-top: 16px;
+}
+
+.evenflo-pdp-tabs .child-fit__mode {
+  color: var(--color-evenflo-text, #222);
+  font-size: 16px;
+  line-height: 18px;
+  margin: 0 0 16px;
+}
+
+.evenflo-pdp-tabs .child-fit__list {
+  list-style: disc;
+  margin: 0;
+  padding-left: 24px;
+  color: var(--color-evenflo-text, #222);
+  font-size: 16px;
+  line-height: normal;
+}
+
+.evenflo-pdp-tabs .child-fit__list li {
+  margin: 0 0 16px;
+}
+
+.evenflo-pdp-tabs .child-fit__list li:last-child {
+  margin-bottom: 0;
 }
 
 .evenflo-pdp-tabs .h5{
@@ -217,5 +266,6 @@
 .evenflo-pdp-tabs .yotpo-main-layout {
 	width: 100%!important;
 	box-sizing: border-box;
-	background-color: var(--color-evenflo-white)!important;
+	background-color: var(--color-evenflo-white, #fff)!important;
 	padding: 0 16px;
+}

@@ -14,7 +14,7 @@
   assign certifications = product.metafields.custom.certifications
   assign warranty_code = product.metafields.sf_products.warranty
   assign product_warranty_link = product.metafields.custom.product_warranty_link
-  assign warranty_type_custom = product.metafields.custom.warranty_type
+  assign warranty_type = product.metafields.sf_products.warranty_type
   assign key_features = product.metafields.product.features
 
   assign product_dims_assembled = product.metafields.custom.product_dims_assembled
@@ -23,6 +23,8 @@
   assign frame_material = product.metafields.custom.frame_material.value
   assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board
   assign upf_50_sun_protection = product.metafields.custom.upf_50_sun_protection.value
+  assign pramette = product.metafields.custom.pramette.value
+  assign travel_system_compatible = product.metafields.custom.travel_system_compatible.value
   assign stroller_age_limitation = product.metafields.custom.stroller_age_limitation.value
   assign stroller_height_limitation = product.metafields.custom.stroller_height_limitation.value
   assign stroller_weight_limitation = product.metafields.custom.stroller_weight_limitation.value
@@ -50,13 +52,7 @@
   endif
 
   assign show_warranty = false
-  if warranty_type_custom != blank
-    assign show_warranty = true
-  elsif warranty_code == 'lifetime-limited' or warranty_code == '1 Year, Limited'
-    assign show_warranty = true
-  elsif product_warranty_link != blank and warranty_code == '1 Year, 6 Month Battery'
-    assign show_warranty = true
-  elsif product_warranty_link != blank and warranty_code == '90-day-limited'
+  if warranty_type != blank or warranty_code != blank or product_warranty_link != blank
     assign show_warranty = true
   endif
 
@@ -75,15 +71,8 @@
   <div class="info-body">
     <ul class="specs-list info-list evenflo-pdp-tab-key-features-list">
 
-      {%- if product.metafields.custom.stroller_accepts_infant_car_seat != blank -%}
-        <li>
-          Stroller accepts infant car seat:
-          {%- if stroller_accepts_infant_car_seat == true -%}
-            Yes
-          {%- else -%}
-            No
-          {%- endif -%}
-        </li>
+      {%- if stroller_accepts_infant_car_seat == true -%}
+        <li>Stroller accepts infant car seat</li>
       {%- endif -%}
       {%- if product.metafields.custom.number_of_wheels != blank -%}
         <li>Number of wheels: {{ number_of_wheels }}</li>
@@ -91,25 +80,17 @@
       {%- if product.metafields.custom.frame_material != blank -%}
         <li>Frame material: {{ frame_material }}</li>
       {%- endif -%}
-      {%- if product.metafields.sf_stroller.accepts_rider_board != blank -%}
-        <li>
-          Stroller accepts rider board:
-          {%- if accepts_rider_board == 1 -%}
-            Yes
-          {%- else -%}
-            No
-          {%- endif -%}
-        </li>
+      {%- if accepts_rider_board == 1 -%}
+        <li>Stroller accepts rider board</li>
       {%- endif -%}
-      {%- if product.metafields.custom.upf_50_sun_protection != blank -%}
-        <li>
-          UPF Canopy:
-          {%- if upf_50_sun_protection == true -%}
-            Yes
-          {%- else -%}
-            No
-          {%- endif -%}
-        </li>
+      {%- if upf_50_sun_protection == true -%}
+        <li>UPF Canopy</li>
+      {%- endif -%}
+      {%- if pramette == true -%}
+        <li>Pramette Mode</li>
+      {%- endif -%}
+      {%- if travel_system_compatible == true -%}
+        <li>Travel System Compatible</li>
       {%- endif -%}
       {%- if product.metafields.custom.stroller_age_limitation != blank -%}
         <li>Stroller age limitation: {{ stroller_age_limitation }}</li>
@@ -123,25 +104,11 @@
       {%- if product.metafields.custom.suspension != blank -%}
         <li>Suspension Type: {{ suspension }}</li>
       {%- endif -%}
-      {%- if product.metafields.sf_car_seat.side_impact_protection != blank -%}
-        <li>
-          Side Impact Protection:
-          {%- if side_impact_protection == 1 -%}
-            Yes
-          {%- else -%}
-            No
-          {%- endif -%}
-        </li>
+      {%- if side_impact_protection == 1 -%}
+        <li>Side Impact Protection</li>
       {%- endif -%}
-      {%- if product.metafields.custom.green_gentle_fabric != blank -%}
-        <li>
-          Green &amp; Gentle Fabric:
-          {%- if green_gentle_fabric == true -%}
-            Yes
-          {%- else -%}
-            No
-          {%- endif -%}
-        </li>
+      {%- if green_gentle_fabric == true -%}
+        <li>Green &amp; Gentle Fabric</li>
       {%- endif -%}
       {%- if harness_rethread_method != blank -%}
         <li>Rethread Harness: {{ harness_rethread_method }}</li>
@@ -158,7 +125,7 @@
           <h4 class="h3">Product Measurements</h4>
           <ul class="specs-list no-bullets">
             {%- if product_dims_assembled != blank -%}
-              <p>Product Dimensions: {{ product_dims_assembled }}</p>
+              <li>Assembled: {{ product_dims_assembled }}</li>
             {%- endif -%}
 
             {%- if package_width and package_height and package_depth -%}
@@ -190,8 +157,14 @@
         <div class="info-block">
           <h4 class="h3">Warranty</h4>
           <div class="info-body rte">
-            {%- if warranty_type_custom != blank -%}
-              <p>{{ warranty_type_custom }}</p>
+            {%- if warranty_type != blank -%}
+              <p>{{ warranty_type }}</p>
+            {%- endif -%}
+            {%- if warranty_code != blank -%}
+              <p>{{ warranty_code }}</p>
+            {%- endif -%}
+            {%- if product_warranty_link != blank -%}
+              <p><a href="{{ product_warranty_link }}">{{ product_warranty_link }}</a></p>
             {%- endif -%}
             {%- if product_warranty_link and warranty_code == '1 Year, 6 Month Battery' -%}
               <p><a href="{{ product_warranty_link }}">Limited 1 Year, 6-Month Battery Warranty</a></p>

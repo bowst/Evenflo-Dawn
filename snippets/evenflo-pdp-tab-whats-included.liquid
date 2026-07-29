@@ -40,8 +40,13 @@
       <div class="evenflo-pdp-tab-layout__main">
         {% comment %} {%- if show_box -%} {% endcomment %}
         <div class="info-block">
-          <h4 class="h3">Box Contents</h4>
-          <div class="info-body rte">{{ box_content }}</div>
+          <h3 class="h3">Box Contents</h3>
+          <div class="info-body rte">
+            {{ box_content }}
+            {%- if batteries_included == true -%}
+              <p>Batteries included</p>
+            {%- endif -%}
+          </div>
         </div>
         {% comment %} {%- endif -%} {% endcomment %}
 
@@ -68,16 +73,6 @@
                 {%- endif -%}
               {% else %}
                 <p>No assembly required.</p>
-              {%- endif -%}
-              {%- if product.metafields.custom.batteries_included != blank -%}
-                <div>
-                  <h4 class="h3">Batteries Included</h4>
-                  {%- if batteries_included == true -%}
-                    Yes
-                  {%- else -%}
-                    No
-                  {%- endif -%}
-                </div>
               {%- endif -%}
               {%- if product.metafields.custom.batteries_required != blank -%}
                 <p>

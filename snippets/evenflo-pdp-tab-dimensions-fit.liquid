@@ -33,52 +33,42 @@
   if show_modes or show_diagram
     assign show_left_column = true
   endif
-
-  assign layout_split = false
-  if show_child and show_left_column
-    assign layout_split = true
-  endif
 -%}
 
-{%- if show_modes or show_diagram or show_child -%}
+{%- if show_left_column or show_child -%}
   <div class="evenflo-pdp-tab-layout dimensions-fit">
-    <div class="evenflo-pdp-tab-layout__grid{% if layout_split %} evenflo-pdp-tab-layout__grid--split{% endif %}">
-      <div class="evenflo-pdp-tab-layout__main">
-        {%- if show_modes -%}
-          <div class="info-block">
-            <h4 class="h2">Modes of Use</h4>
-            <div class="info-body rte">{{ modes_of_use }}</div>
-          </div>
-        {%- endif -%}
-
-        {%- if show_diagram -%}
-          <div class="info-block">
-            <h4 class="h3">Dimensions Diagram</h4>
-            <div class="info-diagram">
-              <img
-                class="specifications-image"
-                src="{{ specifications_image }}"
-                width="100%"
-                height="auto"
-                loading="lazy"
-                alt="{{ product.title | escape }} dimensions diagram"
-              >
+    <div class="evenflo-pdp-tab-layout__grid{% if show_left_column and show_child %} evenflo-pdp-tab-layout__grid--split{% endif %}">
+      {%- if show_left_column -%}
+        <div class="evenflo-pdp-tab-layout__main">
+          {%- if show_modes -%}
+            <div class="info-block">
+              <h4 class="h3">Modes of Use</h4>
+              <div class="info-body rte">{{ modes_of_use }}</div>
             </div>
-          </div>
-        {%- endif -%}
+          {%- endif -%}
 
-        {%- if show_child and layout_split == false -%}
-          <div class="info-block">
-            <h4 class="h2">Child Fit Requirements</h4>
-            {{ child_fit_markup }}
-          </div>
-        {%- endif -%}
-      </div>
+          {%- if show_diagram -%}
+            <div class="info-block">
+              <h4 class="h3">Dimensions Diagram</h4>
+              <div class="info-diagram">
+                <img
+                  class="specifications-image"
+                  src="{{ specifications_image }}"
+                  width="100%"
+                  height="auto"
+                  loading="lazy"
+                  alt="{{ product.title | escape }} dimensions diagram"
+                >
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
 
-      {%- if show_child and layout_split -%}
+      {%- if show_child -%}
         <div class="evenflo-pdp-tab-layout__aside">
           <div class="info-block">
-            <h4 class="h2">Child Fit Requirements</h4>
+            <h4 class="h3">Child Fit Requirements</h4>
             {{ child_fit_markup }}
           </div>
         </div>
