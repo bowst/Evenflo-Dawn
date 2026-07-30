@@ -12,6 +12,10 @@
   assign max_age = product.metafields.sf_products.child_age_max
   assign age_group = product.metafields.sf_products.age_group
 
+  assign stroller_age_limitation = product.metafields.custom.stroller_age_limitation.value
+  assign stroller_height_limitation = product.metafields.custom.stroller_height_limitation.value
+  assign stroller_weight_limitation = product.metafields.custom.stroller_weight_limitation.value
+
   assign rear_facing_weight_limit = product.metafields.custom.rear_facing_mode_weight_limit
   assign rear_facing_height_limit = product.metafields.custom.rear_facing_mode_height_limit
   assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit
@@ -43,6 +47,8 @@
   elsif age_group != blank
     assign show_shared = true
   elsif min_age != blank or max_age != blank
+    assign show_shared = true
+  elsif stroller_weight_limitation != blank or stroller_height_limitation != blank or stroller_age_limitation != blank
     assign show_shared = true
   endif
 
@@ -96,6 +102,15 @@
           {%- endif -%}
           {%- if max_age != blank -%}
             <li>Maximum Age: {{ max_age }}</li>
+          {%- endif -%}
+          {%- if stroller_weight_limitation != blank -%}
+            <li>Stroller Weight Limitation: {{ stroller_weight_limitation }}</li>
+          {%- endif -%}
+          {%- if stroller_height_limitation != blank -%}
+            <li>Stroller Height Limitation: {{ stroller_height_limitation }}</li>
+          {%- endif -%}
+          {%- if stroller_age_limitation != blank -%}
+            <li>Stroller Age Limitation: {{ stroller_age_limitation }}</li>
           {%- endif -%}
         </ul>
       </div>

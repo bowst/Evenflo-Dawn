@@ -23,9 +23,6 @@
   assign upf_50_sun_protection = product.metafields.custom.upf_50_sun_protection.value
   assign pramette = product.metafields.custom.pramette.value
   assign travel_system_compatible = product.metafields.custom.travel_system_compatible.value
-  assign stroller_age_limitation = product.metafields.custom.stroller_age_limitation.value
-  assign stroller_height_limitation = product.metafields.custom.stroller_height_limitation.value
-  assign stroller_weight_limitation = product.metafields.custom.stroller_weight_limitation.value
   assign suspension = product.metafields.custom.suspension.value
   assign side_impact_protection = product.metafields.sf_car_seat.side_impact_protection
   assign green_gentle_fabric = product.metafields.custom.green_gentle_fabric.value
@@ -89,15 +86,6 @@
       {%- endif -%}
       {%- if travel_system_compatible == true -%}
         <li>Travel System Compatible</li>
-      {%- endif -%}
-      {%- if product.metafields.custom.stroller_age_limitation != blank -%}
-        <li>Stroller age limitation: {{ stroller_age_limitation }}</li>
-      {%- endif -%}
-      {%- if product.metafields.custom.stroller_height_limitation != blank -%}
-        <li>Stroller height limitation: {{ stroller_height_limitation }}</li>
-      {%- endif -%}
-      {%- if product.metafields.custom.stroller_weight_limitation != blank -%}
-        <li>Stroller weight limitation: {{ stroller_weight_limitation }}</li>
       {%- endif -%}
       {%- if product.metafields.custom.suspension != blank -%}
         <li>Suspension Type: {{ suspension }}</li>
