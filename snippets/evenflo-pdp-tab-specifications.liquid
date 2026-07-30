@@ -12,8 +12,6 @@
   assign assembled_weight = product.metafields.sf_products.assembled_weight
   assign package_weight = product.metafields.custom.package_weight
   assign certifications = product.metafields.custom.certifications
-  assign warranty_code = product.metafields.sf_products.warranty
-  assign product_warranty_link = product.metafields.custom.product_warranty_link
   assign warranty_type = product.metafields.sf_products.warranty_type
   assign key_features = product.metafields.product.features
 
@@ -52,7 +50,7 @@
   endif
 
   assign show_warranty = false
-  if warranty_type != blank or warranty_code != blank or product_warranty_link != blank
+  if warranty_type != blank
     assign show_warranty = true
   endif
 
@@ -159,9 +157,6 @@
           <div class="info-body rte">
             {%- if warranty_type != blank -%}
               <p>{{ warranty_type }}</p>
-            {%- endif -%}
-            {%- if product_warranty_link != blank -%}
-              <p><a href="{{ product_warranty_link }}">{{ product_warranty_link }}</a></p>
             {%- endif -%}
           </div>
         </div>
