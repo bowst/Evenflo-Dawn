@@ -147,7 +147,7 @@
                 <div class="evenflo-pdp-tab-layout">
                   <div class="evenflo-pdp-tab-layout__full-width rte">
                     <h3>
-                      {{ product.metafields.sf_products.short_description_header.value }}
+                      {{ product.title | escape -}}
                     </h3>
                     {{ overview_content }}
                   </div>

@@ -130,6 +130,14 @@
   text-transform: capitalize;
 }
 
+/* Panel headings step down from 38px on mobile. */
+@media screen and (max-width: 767px) {
+  .evenflo-pdp-tabs .evenflo-pdp-tab-layout__full-width > h3,
+  .evenflo-pdp-tabs .info-block > .h3 {
+    font-size: 22px;
+  }
+}
+
 .evenflo-pdp-tabs .evenflo-pdp-tab-layout__grid {
   display: flex;
   flex-direction: column;
