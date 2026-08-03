@@ -3,11 +3,11 @@
 
 {% if vimeo_product_video_value != blank %}
   <section class="evenflo-product-video evenflo-video">
-    <div class="content-container-video page-width color-accent-3 rich-text--full-width content-container--full-width">
+    <div class="content-container-video page-width rich-text--full-width content-container--full-width">
       <div class="flex-row">
         <div class="flex-item video-content-section">
-          <h2 class="h1 heading-underline">{{ product.metafields.sf_products.short_description_header }}</h2>
-          {{ product.metafields.sf_products.short_description }}
+          <h3 class="h3">{{ product.metafields.sf_products.short_description_header }}</h3>
+          {% comment %} {{ product.metafields.sf_products.short_description }} {% endcomment %}
         </div>
         <div class="flex-item video-section">
           <div style="padding:56.25% 0 0 0;position:relative;">
@@ -25,6 +25,7 @@
     </div>
   </section>
 {% endif %}
+
 
 {% schema %}
 {
