@@ -44,37 +44,6 @@
         "desktop_overlay_opacity": 20
       }
     },
-    "17848313318cca4c4c": {
-      "type": "apps",
-      "blocks": {
-        "yotpo_loyalty_rewards_spotlight_cta_app_block_64jGyp": {
-          "type": "shopify://apps/yotpo-loyalty-rewards/blocks/spotlight-cta-app-block/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
-          "settings": {
-            "preview_as": "logged_in",
-            "signed_in_text": "<p>You have ##points_balance## points</p>",
-            "signed_in_cta_text": "SEE MY REWARDS",
-            "logged_out_text": "<p>Join Evenflo Rewards & earn points</p>",
-            "logged_out_cta_text": "JOIN REWARDS",
-            "non_loyalty_member_text": "Unlock Evenflo Rewards",
-            "custom_login_url": "",
-            "background_color": "#e3f2f3",
-            "text_color": "#007e79",
-            "font": "system_ui_n4",
-            "text_size": "medium",
-            "exclude_pages": ""
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_loyalty_rewards_spotlight_cta_app_block_64jGyp"
-      ],
-      "custom_css": [
-        ".yotpo-spotlight-drawer {border-radius: 0 !important;}"
-      ],
-      "settings": {
-        "include_margins": false
-      }
-    },
     "evenflo_loyalty_banner_slideshow_UfF7dQ": {
       "type": "evenflo-loyalty-banner-slideshow",
       "blocks": {
@@ -138,6 +107,37 @@
         "content_alignment": "align-right",
         "text_color": "dark",
         "desktop_overlay_opacity": 5
+      }
+    },
+    "17848313318cca4c4c": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_loyalty_rewards_spotlight_cta_app_block_64jGyp": {
+          "type": "shopify://apps/yotpo-loyalty-rewards/blocks/spotlight-cta-app-block/2f9660df-5018-4e02-9868-ee1fb88d6ccd",
+          "settings": {
+            "preview_as": "logged_in",
+            "signed_in_text": "<p>You have ##points_balance## points</p>",
+            "signed_in_cta_text": "SEE MY REWARDS",
+            "logged_out_text": "<p>Join Evenflo Rewards & earn points</p>",
+            "logged_out_cta_text": "JOIN REWARDS",
+            "non_loyalty_member_text": "Unlock Evenflo Rewards",
+            "custom_login_url": "",
+            "background_color": "#e3f2f3",
+            "text_color": "#007e79",
+            "font": "system_ui_n4",
+            "text_size": "medium",
+            "exclude_pages": ""
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_loyalty_rewards_spotlight_cta_app_block_64jGyp"
+      ],
+      "custom_css": [
+        ".yotpo-spotlight-drawer {border-radius: 0 !important;}"
+      ],
+      "settings": {
+        "include_margins": false
       }
     },
     "evenflo_featured_collection_XHFN7m": {
@@ -581,9 +581,9 @@
   },
   "order": [
     "evenflo_promo_banner_MaitNM",
-    "17848313318cca4c4c",
     "evenflo_loyalty_banner_slideshow_UfF7dQ",
     "evenflo_hero_banner_gzKhHL",
+    "17848313318cca4c4c",
     "evenflo_featured_collection_XHFN7m",
     "evenflo_featured_collection_cCmYU7",
     "evenflo_featured_collection_fbrnnA",
