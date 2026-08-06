@@ -51,13 +51,13 @@
 }
 
 .evenflo-product-video.evenflo-video {
+    background-color: #e3f2f3 !important;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 .evenflo-product-video.evenflo-video .flex-row {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     gap: 30px;
     margin-left: 0;
     margin-right: 0;
@@ -67,50 +67,14 @@
     padding: 0;
 }
 
-.evenflo-product-video.evenflo-video .video-content-section {
-    text-align: center;
-}
-
-/* Matches the PDP tab panel headings (.info-block > .h3). */
-.evenflo-product-video.evenflo-video .video-content-section .h3 {
-    color: var(--color-evenflo-blue-900, #0f3c5a);
-    font-family: var(--font-heading-family);
-    font-size: 38px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: capitalize;
-    margin: 0;
-}
-
-/* Below the two-column breakpoint the flex items have no basis, so they try to
-   sit side by side and the video wrapper (sized only by percentage padding)
-   collapses to nothing. Force a full-width stack, video first. */
-@media screen and (max-width: 999px) {
-  .evenflo-product-video.evenflo-video .flex-item {
-      flex: 0 0 100%;
-      width: 100%;
-  }
-
-  .evenflo-product-video.evenflo-video .video-section {
-      order: 1;
-  }
-
-  .evenflo-product-video.evenflo-video .video-content-section {
-      order: 2;
-  }
-
-  .evenflo-product-video.evenflo-video .video-content-section .h3 {
-      font-size: 22px;
-  }
-}
-
 
 @media screen and (min-width: 1000px) {
-  .evenflo-product-video.evenflo-video .video-content-section,
-  .evenflo-product-video.evenflo-video .video-section {
-        flex: 1;
-        min-width: 0;
+  .evenflo-product-video.evenflo-video .video-content-section {
+        flex: 3;
         width: auto;
+  }
+    .evenflo-product-video.evenflo-video .video-section {
+        flex: 7;
+		width: auto;
     }
 }
