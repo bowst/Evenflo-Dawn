@@ -21,6 +21,7 @@
 	--color-evenflo-neutral-50: #fcfcfd;
 	--color-evenfo-soft-sand: #faf8f6;
 	--color-evenflo-aqua-mist: #e3f2f3;
+	--color-evenflo-white: var(--color-evenflo-neutral-50);
 
 	/* Sizing & Layout */
 	--content-max-width: 1440px;
@@ -38,7 +39,7 @@
 	--h5-font-size: 1.5rem;	/* 18px */
 	--h5-color: var(--color-evenflo-neutral-900);
 	--h6-font-size: 1.1666666667rem;	/* 14px */
-	--h6-color: var(--color-evenflo-neutral-900);
+	--h6-color: #ffffff;
 
 	--body-font-size: 1.33333rem; /* 16px */
 	--body-font-size-sm: 1.1666666667rem; /* 14px */
@@ -52,6 +53,8 @@
 	--color-evenflo-headings: var(--color-evenflo-neutral-900);
 	--color-evenflo-subheadings: var(--color-evenflo-blue-900);
 	--color-evenflo-text: var(--color-evenflo-neutral-800);
+	/*--color-evenflo-white: var(--color-evenflo-neutral-50);*/
+
 }
 
 @media screen and (min-width: 750px) {
