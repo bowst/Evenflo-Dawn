@@ -2,8 +2,14 @@
 {{ 'evenflo-pdp-tabs.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-pdp-tabs.js' | asset_url | script_tag }}
 
+{% assign short_description_header = product.metafields.sf_products.short_description_header.value | default: product.metafields.sf_products.short_description_header | escape %}
 {% assign overview_content = product.metafields.sf_products.short_description.value %}
+{% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 {% assign specs_content = product.metafields.custom.specs_content.value %}
+{% comment %} this field doesn't exist yet, adding for future update {% endcomment %}
+{% assign overview_features = product.metafields.sf_products.overview_features.value %}
+{% assign overview_features = overview_features | split: '|' %}
+{% comment %} end of future update {% endcomment %}
 {% capture whats_included_content %}
   {% render 'evenflo-pdp-tab-whats-included' %}
 {% endcapture %}
@@ -131,7 +137,7 @@
         <div class="tabs-content-container evenflo-pdp-accordion" role="region" aria-label="Product information">
           {% if overview_content != blank %}
             <section
-              class="tab-content{% if first_panel == panel_overview %} active mobile-open{% endif %}"
+              class="tab-content{% if first_panel == panel_overview %} active mobile-open{% endif %} tab-content--overview"
               data-panel="{{ panel_overview }}"
               role="tabpanel"
             >
@@ -146,19 +152,44 @@
               <div class="content-body">
                 <div class="evenflo-pdp-tab-layout">
                   <div class="evenflo-pdp-tab-layout__full-width rte">
-                    <h3>
-                      {{ product.title | escape -}}
+                    <h3>{{ short_description_header }}
                     </h3>
                     {{ overview_content }}
-                  </div>
-                </div>
-              </div>
-            </section>
+
+					{% if vimeo_product_video_value != blank %}
+					<div class="video-section" >
+						<div class="video-section__inner">
+							<iframe
+							src="https://player.vimeo.com/video/{{ vimeo_product_video_value }}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+							frameborder="0"
+							allow="autoplay; fullscreen; picture-in-picture"
+							allowfullscreen
+							style="position:absolute;top:0;left:0;width:100%;height:100%;"
+							title="Evenflo Shyft DualRide Infant Car Seat Stroller Combo"
+							></iframe>
+						</div>
+					</div>
+					{% endif %}
+					{% comment %} this field doesn't exist yet, adding for future update {% endcomment %}
+					{% if overview_features != blank %}
+					<div class="overview-features-list">
+						<ul>
+							{% for feature in overview_features %}
+							<li>{{ feature }}</li>
+							{% endfor %}
+						</ul>
+                	</div>
+					{% endif %}
+					{% comment %} end of future update {% endcomment %}
+				</div>
+			</div>
+		</div>
+		</section>
           {% endif %}
 
           {% if specs_content != blank %}
             <section
-              class="tab-content{% if first_panel == panel_specs %} active mobile-open{% endif %}"
+              class="tab-content{% if first_panel == panel_specs %} active mobile-open{% endif %} tab-content--specs"
               data-panel="{{ panel_specs }}"
               role="tabpanel"
             >
@@ -178,7 +209,7 @@
 
           {% if whats_included_content != blank %}
             <section
-              class="tab-content{% if first_panel == panel_included %} active mobile-open{% endif %}"
+              class="tab-content{% if first_panel == panel_included %} active mobile-open{% endif %} tab-content--whats-included"
               data-panel="{{ panel_included }}"
               role="tabpanel"
             >
@@ -198,7 +229,7 @@
 
           {% if dimensions_fit_content != blank %}
             <section
-              class="tab-content{% if first_panel == panel_dimensions %} active mobile-open{% endif %}"
+              class="tab-content{% if first_panel == panel_dimensions %} active mobile-open{% endif %} tab-content--dimensions-fit"
               data-panel="{{ panel_dimensions }}"
               role="tabpanel"
             >
@@ -218,7 +249,7 @@
 
           {% if specifications_content != blank %}
             <section
-              class="tab-content{% if first_panel == panel_specifications %} active mobile-open{% endif %}"
+              class="tab-content{% if first_panel == panel_specifications %} active mobile-open{% endif %} tab-content--specifications"
               data-panel="{{ panel_specifications }}"
               role="tabpanel"
             >
@@ -237,7 +268,7 @@
           {% endif %}
 
           <section
-            class="tab-content{% if first_panel == panel_reviews %} active mobile-open{% endif %}"
+            class="tab-content{% if first_panel == panel_reviews %} active mobile-open{% endif %} tab-content--reviews"
             data-panel="{{ panel_reviews }}"
             role="tabpanel"
           >
@@ -265,7 +296,7 @@
           </section>
 
           <section
-            class="tab-content{% if first_panel == panel_faqs %} active mobile-open{% endif %}"
+            class="tab-content{% if first_panel == panel_faqs %} active mobile-open{% endif %} tab-content--faqs"
             data-panel="{{ panel_faqs }}"
             role="tabpanel"
           >
