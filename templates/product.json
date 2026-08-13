@@ -522,12 +522,30 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "a0fd873ebd8caa413d72": {
+      "type": "apps",
+      "blocks": {
+        "e12a5bd9-3ed3-40e7-bba7-34e1ce727619": {
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "e12a5bd9-3ed3-40e7-bba7-34e1ce727619"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "custom_liquid_EzUHxi",
     "evenflo_main_product_4BJMnB",
     "main",
+    "a0fd873ebd8caa413d72",
     "da871414eec5ac5f5665",
     "0dad26d1b55f3c48c0ea",
     "525ce4d64caf979cb2ac",
