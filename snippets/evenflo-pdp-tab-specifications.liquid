@@ -16,8 +16,19 @@
   assign key_features = product.metafields.product.features
 
   assign product_dims_assembled = product.metafields.custom.product_dims_assembled
+  assign slim_design = product.metafields.custom.slim_design.value
+  assign side_impact = product.metafields.custom.side_impact.value
+  assign easy_install = product.metafields.custom.easy_install.value
+  assign rotation = product.metafields.custom.rotation.value
+  assign rear_facing = product.metafields.custom.rear_facing.value
+  assign forward_facing = product.metafields.custom.forward_facing.value
+  assign high_back_booster = product.metafields.custom.high_back_booster.value
+  assign no_back_booster = product.metafields.custom.no_back_booster.value
+  assign stroller_accepts_rider_board = product.metafields.custom.stroller_accepts_rider_board.value
+  assign compatible_infant_car_seats = product.metafields.custom.compatible_infant_car_seats.value
+  assign modes_of_use = product.metafields.custom.modes_of_use.value
+  assign batteries_included = product.metafields.custom.batteries_included.value
   assign stroller_accepts_infant_car_seat = product.metafields.custom.stroller_accepts_infant_car_seat.value
-  assign number_of_wheels = product.metafields.custom.number_of_wheels.value
   assign frame_material = product.metafields.custom.frame_material.value
   assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board
   assign upf_50_sun_protection = product.metafields.custom.upf_50_sun_protection.value
@@ -26,7 +37,6 @@
   assign suspension = product.metafields.custom.suspension.value
   assign side_impact_protection = product.metafields.sf_car_seat.side_impact_protection
   assign green_gentle_fabric = product.metafields.custom.green_gentle_fabric.value
-  assign harness_rethread_method = product.metafields.sf_products.harness_rethread_method
 
   assign show_measurements = false
   if assembled_width and assembled_height and assembled_depth
@@ -66,38 +76,62 @@
   <div class="info-body">
     <ul class="specs-list info-list evenflo-pdp-tab-key-features-list">
 
-      {%- if stroller_accepts_infant_car_seat == true -%}
-        <li>Stroller accepts infant car seat</li>
-      {%- endif -%}
-      {%- if product.metafields.custom.number_of_wheels != blank -%}
-        <li>Number of wheels: {{ number_of_wheels }}</li>
-      {%- endif -%}
-      {%- if product.metafields.custom.frame_material != blank -%}
-        <li>Frame material: {{ frame_material }}</li>
-      {%- endif -%}
-      {%- if accepts_rider_board == 1 -%}
-        <li>Stroller accepts rider board</li>
-      {%- endif -%}
-      {%- if upf_50_sun_protection == true -%}
-        <li>UPF Canopy</li>
-      {%- endif -%}
-      {%- if pramette == true -%}
-        <li>Pramette Mode</li>
-      {%- endif -%}
-      {%- if travel_system_compatible == true -%}
-        <li>Travel System Compatible</li>
-      {%- endif -%}
-      {%- if product.metafields.custom.suspension != blank -%}
-        <li>Suspension Type: {{ suspension }}</li>
-      {%- endif -%}
-      {%- if side_impact_protection == 1 -%}
-        <li>Side Impact Protection</li>
+      {%- if slim_design == true -%}
+        <li>Slim Design</li>
       {%- endif -%}
       {%- if green_gentle_fabric == true -%}
         <li>Green &amp; Gentle Fabric</li>
       {%- endif -%}
-      {%- if harness_rethread_method != blank -%}
-        <li>Rethread Harness: {{ harness_rethread_method }}</li>
+      {%- if side_impact == true or side_impact_protection == 1 -%}
+        <li>Side Impact Protection</li>
+      {%- endif -%}
+      {%- if easy_install == true -%}
+        <li>Easy Installation</li>
+      {%- endif -%}
+      {%- if rotation == true -%}
+        <li>Rotational Seat</li>
+      {%- endif -%}
+      {%- if rear_facing == true -%}
+        <li>Rear-Facing Mode</li>
+      {%- endif -%}
+      {%- if forward_facing == true -%}
+        <li>Forward-Facing Mode</li>
+      {%- endif -%}
+      {%- if high_back_booster == true -%}
+        <li>High-Back Booster Mode</li>
+      {%- endif -%}
+      {%- if no_back_booster == true -%}
+        <li>No-Back Booster Mode</li>
+      {%- endif -%}
+      {%- if stroller_accepts_infant_car_seat == true -%}
+        <li>Infant Car Seat Compatible</li>
+      {%- endif -%}
+      {%- if travel_system_compatible == true -%}
+        <li>Travel System Compatible</li>
+      {%- endif -%}
+      {%- if upf_50_sun_protection == true -%}
+        <li>UPF Canopy</li>
+      {%- endif -%}
+      {%- if suspension != blank -%}
+        <li>Smooth-Ride Suspension</li>
+      {%- endif -%}
+      {%- if stroller_accepts_rider_board == true or accepts_rider_board == 1 -%}
+        <li>Rider Board Compatible</li>
+      {%- endif -%}
+      {%- if pramette == true -%}
+        <li>Pramette Mode</li>
+      {%- endif -%}
+      {%- if compatible_infant_car_seats != blank -%}
+        <li>Compatible Infant Car Seats: {{ compatible_infant_car_seats | replace: '|', ', ' }}</li>
+      {%- endif -%}
+      {%- if modes_of_use != blank -%}
+        <li>Multiple Modes of Use: {{ modes_of_use | replace: '|', ', ' }}</li>
+      {%- endif -%}
+      {%- if batteries_included == true -%}
+        <li>Batteries Included</li>
+      {%- endif -%}
+      {%- if product.metafields.custom.frame_material != blank -%}
+        <li>Frame material: {{ frame_material }}</li>
       {%- endif -%}
     </ul>
   </div>
