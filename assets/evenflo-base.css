@@ -392,7 +392,7 @@ This is all to override some weird hover styles */
 
 
 /* ==========================================================================
-   6. Header Icons & Search
+   6. Header Icons
    ========================================================================== */
 
 .header__icons {
@@ -402,89 +402,26 @@ This is all to override some weird hover styles */
   justify-content: flex-end;
 }
 
-predictive-search.search-modal__form {
-  width: 60%;
+.header__icon:not(.header__icon--summary) {
+  margin-left: auto;
 }
 
-.search-modal__form[data-upgraded='true'] {
-  padding: 0.5rem 0;
+.header__icon--menu[aria-expanded='true']:before {
+  z-index: 1;
 }
-
-.search-modal__form[data-upgraded='true'] input {
-  padding: 1rem 1.5rem;
-  padding-right: 8.5rem;
-  height: 4rem;
-  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground), var(--popup-border-opacity));
-}
-
-.search-modal__form[data-upgraded='true'] input:focus,
-.search-modal__form[data-upgraded='true'] input:hover {
-  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground), var(--popup-border-opacity));
-}
-
-.search-modal__form[data-upgraded='true'] .field__label {
-  top: calc(0.75rem + var(--inputs-border-width));
-}
-
-.search-modal__form[data-upgraded='true'] .field__input:focus ~ .field__label {
-  top: calc(var(--inputs-border-width) + 0.125rem);
-}
-
-.search-modal__form[data-upgraded='true'] .field__button {
-  height: 4rem;
-}
-
-@media screen and (max-width: 750px) {
-	.search-modal__form[data-upgraded='true'] {
-		padding: 0 1.5rem 1rem;
-	}
-}
-
-@media screen and (min-width: 751px) and (max-width: 1100px) {
-	.search-modal__form[data-upgraded='true'] {
-		padding: 0 5rem 1rem;
-	}
-}
-
-@media (max-width: 1100px) {
-
-  .search-modal__form[data-upgraded='true'] {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-  }
-  .search-modal__form[data-upgraded='true'],
-  .search-modal__form[data-upgraded='true'] .search-modal__form {
-    max-width: 100%;
-  }
-
-  .search-modal__form[data-upgraded='true'] .field:before,
-  .search-modal__form[data-upgraded='true'] .field:after {
-	border: none;
-	box-shadow: none;
-    border-bottom: 1px solid;
-  }
-
-  .search-modal__form[data-upgraded='true'] input,
-  .search-modal__form[data-upgraded='true'] input:focus,
-  .search-modal__form[data-upgraded='true'] input:hover {
-	box-shadow: none;
-  }
-}
-
-  .header__icon:not(.header__icon--summary) {
-    margin-left: auto;
-  }
-  .header__icon--menu[aria-expanded='true']:before {
-    z-index: 1;
-  }
 
 /* ==========================================================================
    7. Header Menu & Mega Menu
    ========================================================================== */
 
+predictive-search .field::before,
+predictive-search .field::after {
+	display: none;
+}
+
+.search__input.field__input {
+  background-color: var(--color-evenflo-aqua-mist);
+}
 @media (min-width: 1101px) and (max-width: 1300px) {
   .header--middle-left {
     grid-template-columns: auto 1fr 1fr;
@@ -501,6 +438,11 @@ predictive-search.search-modal__form {
     border-top: 1px solid rgba(var(--color-foreground), var(--popup-border-opacity)) !important;
   }
 }
+
+
+predictive-search .predictive-search__loading-state {
+	display: none
+  }
 
 .header__menu-item {
   padding-left: 2rem;
@@ -643,9 +585,6 @@ dl dd ul {
 	margin-bottom: 1.5rem;
 }
 
-predictive-search .predictive-search__loading-state {
-  display: none
-}
 
 /* ==========================================================================
   11. Responsive Tables
