@@ -135,7 +135,7 @@ predictive-search.search-modal__form {
 }
 
 .search-modal__form[data-upgraded='true'] input {
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.5rem .75rem;
   padding-right: 8.5rem;
   height: 4rem;
   box-shadow: none;
@@ -192,4 +192,8 @@ predictive-search.search-modal__form {
   .search-modal__form[data-upgraded='true'] input:hover {
     box-shadow: none;
   }
+}
+
+.search-modal__form[data-upgraded='true'] .field__input:focus~.field__label, .search-modal__form[data-upgraded='true'] .field__input:not(:placeholder-shown)~.field__label {
+	left: calc(var(--inputs-border-width) + 1.5rem);
 }
