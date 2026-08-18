@@ -154,6 +154,11 @@ predictive-search.search-modal__form {
   height: 4rem;
 }
 
+.search-modal__form[data-upgraded='true'] .field__button .svg-wrapper {
+  height: 18px;
+  width: 18px;
+}
+
 @media screen and (max-width: 750px) {
   .search-modal__form[data-upgraded='true'] {
     padding: 0 1.5rem 1rem;

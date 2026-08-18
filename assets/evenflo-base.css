@@ -402,6 +402,12 @@ This is all to override some weird hover styles */
   justify-content: flex-end;
 }
 
+.header__icon .svg-wrapper,
+.header__icon .icon {
+	height: 24px;
+	width: 24px;
+}
+
 .header__icon:not(.header__icon--summary) {
   margin-left: auto;
 }
