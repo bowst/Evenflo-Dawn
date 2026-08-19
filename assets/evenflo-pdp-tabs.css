@@ -102,6 +102,40 @@
   height: auto;
 }
 
+.evenflo-pdp-tabs .info-diagram img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.evenflo-pdp-tabs .info-diagram img + img {
+  margin-top: 16px;
+}
+
+.evenflo-pdp-tabs .info-diagram-manuals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.evenflo-pdp-tabs .info-diagram-manuals__button {
+  flex: 1 1 200px;
+  padding: 14px 20px;
+  border: 1px solid #000;
+  background-color: var(--color-evenflo-white);
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.evenflo-pdp-tabs .info-diagram-manuals__button:hover {
+  background-color: #000;
+  color: var(--color-evenflo-white);
+}
+
 .evenflo-pdp-tabs .h5 {
   font-weight: normal;
   font-size: 26px;
