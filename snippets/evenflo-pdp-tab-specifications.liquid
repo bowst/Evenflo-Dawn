@@ -38,6 +38,10 @@
   assign side_impact_protection = product.metafields.sf_car_seat.side_impact_protection
   assign green_gentle_fabric = product.metafields.custom.green_gentle_fabric.value
   assign dishwasher_safe_tray = product.metafields.custom.dishwasher_safe_tray.value
+  assign greenguard = product.metafields.custom.greenguard.value
+  assign easy_assembly = product.metafields.custom.easy_assembly.value
+  assign one_hand_fold = product.metafields.custom.one_hand_fold.value
+  assign infant_car_seat_included = product.metafields.custom.infant_car_seat_included.value
 
   assign show_measurements = false
   if assembled_width and assembled_height and assembled_depth
@@ -83,11 +87,17 @@
       {%- if green_gentle_fabric == true -%}
         <li>Green &amp; Gentle Fabric</li>
       {%- endif -%}
+      {%- if greenguard == true -%}
+        <li>GREENGUARD Gold Certified</li>
+      {%- endif -%}
       {%- if side_impact == true or side_impact_protection == 1 -%}
         <li>Side Impact Protection</li>
       {%- endif -%}
       {%- if easy_install == true -%}
         <li>Easy Installation</li>
+      {%- endif -%}
+      {%- if easy_assembly == true -%}
+        <li>Easy Assembly</li>
       {%- endif -%}
       {%- if rotation == true -%}
         <li>Rotational Seat</li>
@@ -107,8 +117,14 @@
       {%- if stroller_accepts_infant_car_seat == true -%}
         <li>Infant Car Seat Compatible</li>
       {%- endif -%}
+      {%- if infant_car_seat_included == true -%}
+        <li>Infant Car Seat Included</li>
+      {%- endif -%}
       {%- if travel_system_compatible == true -%}
         <li>Travel System Compatible</li>
+      {%- endif -%}
+      {%- if one_hand_fold == true -%}
+        <li>One Hand Fold</li>
       {%- endif -%}
       {%- if upf_50_sun_protection == true -%}
         <li>UPF Canopy</li>
