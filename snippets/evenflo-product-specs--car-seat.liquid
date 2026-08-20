@@ -1,7 +1,7 @@
 {% assign steel_reinforced = product.metafields.sf_car_seat.steel_reinforced %}
 {% assign washable = product.metafields.sf_products.machine_washable_seating_surfa %}
 {% assign bubble_level = product.metafields.sf_car_seat.bubble_level %}
-{% assign sensorsafe = product.metafields.sf_car_seat.sensorsafe %}
+{% assign sensorsafe = product.metafields.custom.sensorsafe.value %}
 {% assign harness_covers = product.metafields.sf_car_seat.harness_covers %}
 {% assign latch_install = product.metafields.sf_car_seat.latch_install %}
 {% assign lightweight = product.metafields.sf_car_seat.lightweight %}
@@ -86,7 +86,7 @@
     </li>
   {% endif %}
 
-  {% if sensorsafe == 1 %}
+  {% if sensorsafe %}
     <li class="checkbox-item">
       <strong>Sensorsafe</strong>
       <span class="screen-reader-text">Yes</span>

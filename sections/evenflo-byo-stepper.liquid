@@ -243,7 +243,7 @@ const byoVariants = [
         "productType": {{ product.type | json }},
         "fabric": {{ product.metafields.custom.green_gentle_fabric.value | json }},
         "rotation": {{ product.metafields.custom.degrees_of_rotation.value | json }},
-        "sensorysoothe": {{ product.metafields.custom.sensorysoothe.value | json }},
+        "sensorysoothe": {{ product.metafields.custom.sensorysoothe_new.value | json }},
         "accessories": {{ accessories }},
         "variants": {{ variants }}
       }{% unless forloop.last %},{% endunless %}

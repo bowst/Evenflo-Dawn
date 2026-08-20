@@ -10,7 +10,7 @@
 
 {% assign rethread_method = product.metafields.sf_products.harness_rethread_method %}
 
-{% assign sensorsafe = product.metafields.sf_car_seat.sensorsafe %}
+{% assign sensorsafe = product.metafields.custom.sensorsafe.value %}
 {% assign easy_install = product.metafields.sf_car_seat.easy_install %}
 {% assign rollover_tested = product.metafields.sf_car_seat.rollover_tested %}
 
@@ -449,7 +449,7 @@
       {% assign self_standing_fold = product.metafields.sf_stroller.self_standing_fold %}
       {% assign upf_50_sun_protection_canopy = product.metafields.sf_stroller.upf_50__sun_protection_canopy %}
       {% assign lockable_front_wheels = product.metafields.sf_stroller.lockable_front_wheels %}
-      {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
+      {% assign accepts_infant_car_seat = product.metafields.custom.stroller_accepts_infant_car_seat.value %}
       {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
       {% assign compact_fold = product.metafields.sf_stroller.compact_fold %}
 
@@ -533,7 +533,7 @@
 
             <div class="col">
               <h3>Accepts Infant Car Seat</h3>
-              {% if accepts_infant_car_seat == 1 %}
+              {% if accepts_infant_car_seat %}
                 Yes
               {% else %}
                 No
@@ -568,7 +568,6 @@
 {% endif %}
 
 {%- if product.type == 'Carrier' or product.type == 'Baby Carrier' %}
-  {% assign toy_clip = product.metafields.sf_carrier.pacifier_toy_clip %}
   {% assign machine_wash = product.metafields.sf_carrier.machine_washable %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
@@ -599,12 +598,7 @@
             {% endif %}
           </div>
           <div class="col">
-            <h4>Toy Clip</h4>
 
-            {% if toy_clip == 1 %}
-              <p>Yes</p>
-            {% endif %}
-          </div>
           <div>
             {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
 
@@ -621,7 +615,8 @@
       </div>
     </div>
   </section>
-{% endif %}
+
+{%- endif %}
 
 {% if product.type contains 'Car Seat'
   or product.type contains 'Travel System'
@@ -727,7 +722,7 @@
         </div>
         <div class="col">
           <h3>Sensorsafe</h3>
-          {% if sensorsafe == 1 %}
+          {% if sensorsafe %}
             Yes
           {% else %}
             No

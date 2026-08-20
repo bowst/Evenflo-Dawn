@@ -37,6 +37,7 @@
   assign suspension = product.metafields.custom.suspension.value
   assign side_impact_protection = product.metafields.sf_car_seat.side_impact_protection
   assign green_gentle_fabric = product.metafields.custom.green_gentle_fabric.value
+  assign dishwasher_safe_tray = product.metafields.custom.dishwasher_safe_tray.value
 
   assign show_measurements = false
   if assembled_width and assembled_height and assembled_depth
@@ -129,6 +130,9 @@
       {%- endif -%}
       {%- if batteries_included == true -%}
         <li>Batteries Included</li>
+      {%- endif -%}
+      {%- if dishwasher_safe_tray == true -%}
+        <li>Dishwasher Safe Tray</li>
       {%- endif -%}
       {%- if product.metafields.custom.frame_material != blank -%}
         <li>Frame material: {{ frame_material }}</li>

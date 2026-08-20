@@ -70,7 +70,7 @@
         </div>
       {%- endif -%}
 
-      {%- if product.metafields.sf_car_seat.sensorsafe.value == 1 -%}
+      {%- if product.metafields.custom.sensorsafe.value -%}
         <div class="aag-card">
           <div class="aag-card__icon">
             {{- 'icon-sensorsafe.svg' | inline_asset_content -}}
@@ -82,7 +82,7 @@
         </div>
       {%- endif -%}
 
-      {%- if product.metafields.custom.sensorysoothe.value == 1 -%}
+      {%- if product.metafields.custom.sensorysoothe_new.value -%}
         <div class="aag-card">
           <div class="aag-card__icon">
             {{- 'icon-sensorysoothe.svg' | inline_asset_content -}}
