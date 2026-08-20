@@ -250,7 +250,7 @@ h3, .h3 {
    ========================================================================== */
 
 sticky-header .header {
-	padding: 10px 1.5em 0;
+	padding: 0 1.5em 0;
 	/*height: 72px;*/
 }
 
@@ -259,18 +259,15 @@ sticky-header .header {
 		padding-left: 5rem;
 		padding-right: 5rem;
 	}
-}
+	sticky-header .header {
+		padding: 8px 1.5em;
+		/*height: 72px;*/
+	}
 
-@media screen and (max-width: 1100px) {
-    sticky-header .header {
-        padding-bottom: 0;
-    }
-}
-
-@media screen and (min-width: 1101px) {
-    sticky-header .header {
-        padding-bottom: 9px;
-    }
+	.header__icon, .header__icon--cart .icon {
+		width: 48px;
+		height: 48px;
+	}
 }
 
 .header__menu-item {
