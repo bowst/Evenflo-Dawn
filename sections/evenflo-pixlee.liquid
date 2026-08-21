@@ -1,21 +1,5 @@
-{%- liquid
-  assign widget_id = product.metafields.custom.pixlee_gallery.value
-  if widget_id == blank and section.settings.pixlee_id != blank and section.settings.pixlee_id != 'Pixlee ID'
-    assign widget_id = section.settings.pixlee_id
-  endif
--%}
-{%- if widget_id != blank -%}
-  <section class="join">
-    <div id="pixlee_container"></div>
-    <script type="text/javascript">
-      window.PixleeAsyncInit = function() {
-        Pixlee.init({ apiKey: 'OmAQbPzfeavzuLyyMQsJ' });
-        Pixlee.addSimpleWidget({ widgetId: {{ widget_id }}, setMetaTags: true });
-      };
-    </script>
-    <script src="https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
-  </section>
-{%- endif -%}
+<section class="join">
+  <div id="pixlee_container"></div><script type="text/javascript">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addProductWidget({accountId:1999, widgetId:19067745, skuId:"{{ product.handle }}",setMetaTags:true});};</script><script src="https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script></section>
 
 {% schema %}
 {
@@ -26,8 +10,7 @@
       "type": "text",
       "id": "pixlee_id",
       "label": "Pixlee ID",
-      "default": "Pixlee ID",
-      "info": "Fallback when product.metafields.custom.pixlee_gallery is empty."
+      "default": "Pixlee ID"
     }
   ],
   "presets": [
@@ -37,3 +20,9 @@
   ]
 }
 {% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

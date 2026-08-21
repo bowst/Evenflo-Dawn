@@ -1,0 +1,151 @@
+{{ 'evenflo-section-at-a-glance-section.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign heading = section.settings.heading | default: 'At a Glance'
+  assign sensorsafe_url = section.settings.sensorsafe_url | default: '/pages/sensorsafe'
+  assign sensorysoothe_url = section.settings.sensorysoothe_url | default: '/pages/sensorysoothe'
+-%}
+
+<div class="aag-section" style="background-color: {{ section.settings.background_color }};">
+  <div class="aag-section__inner page-width">
+    {%- if heading != blank -%}
+      <h2 class="aag-section__heading">{{ heading }}</h2>
+    {%- endif -%}
+
+    <div class="aag-section__grid">
+      {%- if product.metafields.sf_products.child_weight_max.value -%}
+        <div class="aag-card">
+          <div class="aag-card__icon">
+            {{- 'icon-child-age.svg' | inline_asset_content -}}
+          </div>
+          <div class="aag-card__content">
+            <h3 class="aag-card__title">Child Weight</h3>
+            <ul class="aag-card__list">
+              {%- if product.metafields.sf_products.child_weight_min.value -%}
+                <li>Min. {{ product.metafields.sf_products.child_weight_min.value }} lbs</li>
+              {%- endif -%}
+              <li>Max. {{ product.metafields.sf_products.child_weight_max.value }} lbs</li>
+            </ul>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.sf_products.assembled_weight.value -%}
+        <div class="aag-card">
+          <div class="aag-card__icon">
+            {{- 'icon-weight.svg' | inline_asset_content -}}
+          </div>
+          <div class="aag-card__content">
+            <h3 class="aag-card__title">Product Weight</h3>
+            <p class="aag-card__text">{{ product.metafields.sf_products.assembled_weight.value }} lbs</p>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.modes_of_use.value -%}
+        {%- assign modes = product.metafields.custom.modes_of_use.value | split: '|' -%}
+        {%- assign mode_count = 0 -%}
+        {%- for mode in modes -%}
+          {%- assign mode_clean = mode | strip -%}
+          {%- if mode_clean != blank -%}
+            {%- assign mode_count = mode_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+        <div class="aag-card">
+          <div class="aag-card__count">{{ mode_count }}</div>
+          <div class="aag-card__content">
+            <h3 class="aag-card__title">Modes of Use</h3>
+            <p class="aag-card__text">
+              {%- assign rendered = 0 -%}
+              {%- for mode in modes -%}
+                {%- assign mode_clean = mode | strip -%}
+                {%- if mode_clean != blank -%}
+                  {%- if rendered > 0 %}<br>{% endif -%}
+                  {{ mode_clean }}
+                  {%- assign rendered = rendered | plus: 1 -%}
+                {%- endif -%}
+              {%- endfor -%}
+            </p>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.sensorsafe.value -%}
+        <div class="aag-card">
+          <div class="aag-card__icon">
+            {{- 'icon-sensorsafe.svg' | inline_asset_content -}}
+          </div>
+          <div class="aag-card__content">
+            <h3 class="aag-card__title">SensorSafe</h3>
+            <a class="aag-card__cta" href="{{ sensorsafe_url }}">See Details</a>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if product.metafields.custom.sensorysoothe_new.value -%}
+        <div class="aag-card">
+          <div class="aag-card__icon">
+            {{- 'icon-sensorysoothe.svg' | inline_asset_content -}}
+          </div>
+          <div class="aag-card__content">
+            <h3 class="aag-card__title">SensorySoothe</h3>
+            <a class="aag-card__cta" href="{{ sensorysoothe_url }}">See Details</a>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "At a Glance",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Cards populate automatically from the product's metafields (Child Weight, Product Weight, Modes of Use, SensorSafe, SensorySoothe). Add this section to a product template."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "At a Glance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAF8F6"
+    },
+    {
+      "type": "header",
+      "content": "Card Links"
+    },
+    {
+      "type": "url",
+      "id": "sensorsafe_url",
+      "label": "SensorSafe \"See Details\" link (defaults to /pages/sensorsafe)"
+    },
+    {
+      "type": "url",
+      "id": "sensorysoothe_url",
+      "label": "SensorySoothe \"See Details\" link (defaults to /pages/sensorysoothe)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "At a Glance",
+      "category": "Custom Sections",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#FAF8F6"
+      }
+    }
+  ]
+}
+{% endschema %}

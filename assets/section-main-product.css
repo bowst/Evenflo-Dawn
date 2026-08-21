@@ -250,6 +250,12 @@ a.product__text {
   margin-bottom: 1.5rem;
 }
 
+.product--no-media .product__title,
+.product--no-media .product__text {
+  text-align: center;
+  margin-inline: auto;
+}
+
 .product__title > * {
   margin: 0;
 }

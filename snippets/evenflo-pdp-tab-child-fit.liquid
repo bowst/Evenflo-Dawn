@@ -1,46 +1,46 @@
 {% comment %}
   Child fit requirements (from evenflo-product-specifications column 3), without Modes of Use
   (Modes live in evenflo-pdp-tab-dimensions-fit).
+  Layout follows Figma 2554:2605 — mode label, disc bullets, blue rule between mode groups.
 {% endcomment %}
 {%- liquid
   assign min_weight = product.metafields.sf_products.child_weight_min
   assign max_weight = product.metafields.sf_products.child_weight_max
-  assign child_weight_min_value = product.metafields.sf_products.child_weight_min
-  assign child_weight_max_value = product.metafields.sf_products.child_weight_max
   assign min_height = product.metafields.sf_products.child_height_min
   assign max_height = product.metafields.sf_products.child_height_max
   assign min_age = product.metafields.sf_products.child_age_min
   assign max_age = product.metafields.sf_products.child_age_max
   assign age_group = product.metafields.sf_products.age_group
 
-  assign rear_facing_weight_min = product.metafields.sf_car_seat.rear_facing_weight_min
-  assign rear_facing_weight_max = product.metafields.sf_car_seat.rear_facing_weight_max
-  assign rear_facing_height_min = product.metafields.sf_car_seat.rear_facing_height_min
-  assign rear_facing_height_max = product.metafields.sf_car_seat.rear_facing_height_max
+  assign stroller_age_limitation = product.metafields.custom.stroller_age_limitation.value
+  assign stroller_height_limitation = product.metafields.custom.stroller_height_limitation.value
+  assign stroller_weight_limitation = product.metafields.custom.stroller_weight_limitation.value
+
+  assign rear_facing_weight_limit = product.metafields.custom.rear_facing_mode_weight_limit
+  assign rear_facing_height_limit = product.metafields.custom.rear_facing_mode_height_limit
+  assign rear_facing_age_limit = product.metafields.sf_car_seat.rear_facing_age_limit
   assign rear_facing_fit_statement = product.metafields.sf_car_seat.rear_facing_fit_statement
 
-  assign forward_facing_weight_min = product.metafields.sf_car_seat.forward_facing_weight_min
-  assign forward_facing_weight_max = product.metafields.sf_car_seat.forward_facing_weight_max
-  assign forward_facing_height_min = product.metafields.sf_car_seat.forward_facing_height_min
-  assign forward_facing_height_max = product.metafields.sf_car_seat.forward_facing_height_max
+  assign forward_facing_weight_limit = product.metafields.sf_products.forward_facing_weight_limit
+  assign forward_facing_height_limit = product.metafields.sf_products.forward_facing_height_limit
+  assign forward_facing_age_limit = product.metafields.sf_products.forward_facing_age_limit
   assign forward_facing_fit_statement = product.metafields.sf_car_seat.forward_facing_fit_statement
 
-  assign high_back_weight_min = product.metafields.sf_car_seat.high_back_weight_min
-  assign high_back_weight_max = product.metafields.sf_car_seat.high_back_weight_max
-  assign high_back_height_min = product.metafields.sf_car_seat.high_back_height_min
-  assign high_back_height_max = product.metafields.sf_car_seat.high_back_height_max
+  assign high_back_weight_limit = product.metafields.custom.high_back_booster_mode_weight_limit
+  assign high_back_height_limit = product.metafields.custom.high_back_booster_mode_height_limit
   assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement
 
-  assign no_back_weight_min = product.metafields.sf_car_seat.no_back_weight_min
-  assign no_back_weight_max = product.metafields.sf_car_seat.no_back_weight_max
-  assign no_back_height_min = product.metafields.sf_car_seat.no_back_height_min
-  assign no_back_height_max = product.metafields.sf_car_seat.no_back_height_max
+  assign no_back_weight_limit = product.metafields.custom.no_back_booster_mode_weight_limit
+  assign no_back_height_limit = product.metafields.custom.no_back_booster_mode_height_limit
   assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement
 
+  assign harness_weight_limit = product.metafields.custom.harness_booster_mode_weight_limit
+  assign harness_height_limit = product.metafields.custom.harness_booster_mode_height_limit
+  assign harness_age_limit = product.metafields.sf_car_seat.harness_age_limit
+  assign harness_booster_fit_statement = product.metafields.sf_car_seat.harness_booster_fit_statement
+
   assign show_shared = false
-  if child_weight_min_value or child_weight_max_value
-    assign show_shared = true
-  elsif min_weight and max_weight
+  if min_weight or max_weight
     assign show_shared = true
   elsif min_height and max_height
     assign show_shared = true
@@ -48,30 +48,37 @@
     assign show_shared = true
   elsif min_age != blank or max_age != blank
     assign show_shared = true
+  elsif stroller_weight_limitation != blank or stroller_height_limitation != blank or stroller_age_limitation != blank
+    assign show_shared = true
   endif
 
   assign show_rear = false
-  if rear_facing_weight_min and rear_facing_weight_max and rear_facing_height_min and rear_facing_height_max
+  if rear_facing_weight_limit != blank or rear_facing_height_limit != blank or rear_facing_age_limit != blank or rear_facing_fit_statement != blank
     assign show_rear = true
   endif
 
   assign show_forward = false
-  if forward_facing_weight_min and forward_facing_weight_max and forward_facing_height_min and forward_facing_height_max
+  if forward_facing_weight_limit != blank or forward_facing_height_limit != blank or forward_facing_age_limit != blank or forward_facing_fit_statement != blank
     assign show_forward = true
   endif
 
   assign show_high_back = false
-  if high_back_weight_min or high_back_weight_max or high_back_height_min or high_back_height_max
+  if high_back_weight_limit != blank or high_back_height_limit != blank or high_back_fit_statement != blank
     assign show_high_back = true
   endif
 
   assign show_no_back = false
-  if no_back_weight_min or no_back_weight_max or no_back_height_min or no_back_height_max
+  if no_back_weight_limit != blank or no_back_height_limit != blank or no_back_fit_statement != blank
     assign show_no_back = true
   endif
 
+  assign show_harness_booster = false
+  if harness_age_limit != blank or harness_booster_fit_statement != blank or harness_height_limit != blank or harness_weight_limit != blank
+    assign show_harness_booster = true
+  endif
+
   assign show_child_fit = false
-  if show_shared or show_rear or show_forward or show_high_back or show_no_back
+  if show_shared or show_rear or show_forward or show_high_back or show_no_back or show_harness_booster
     assign show_child_fit = true
   endif
 -%}
@@ -79,120 +86,127 @@
 {%- if show_child_fit -%}
   <div class="child-fit">
     {%- if show_shared -%}
-      <div >
-        <ul class="specs-list no-bullets">
-          {%- if child_weight_min_value or child_weight_max_value -%}
-            <li>
-              Child Weight:&nbsp;
-                {%- if child_weight_min_value -%}
-                  {{ child_weight_min_value }} -
-                {%- endif -%}
-                {%- if child_weight_max_value -%}
-                  {{ child_weight_max_value }} lbs
-                {%- endif -%}
-            </li>
-          {%- elsif min_weight and max_weight -%}
-            <li>
-              Weight: {{ min_weight }} - {{ max_weight }} lbs
-            </li>
+      <div class="child-fit__group">
+        <ul class="child-fit__list">
+          {%- if min_weight and max_weight -%}
+            <li>Weight: {{ min_weight }} - {{ max_weight }} lbs</li>
           {%- endif -%}
           {%- if min_height and max_height -%}
-            <li>
-              Height: {{ min_height }} - {{ max_height }} inches
-            </li>
+            <li>Height: {{ min_height }} - {{ max_height }} inches</li>
           {%- endif -%}
-          {%- if age_group -%}
-            <li>
-              Age Group: {{ age_group }}
-            </li>
+          {%- if age_group != blank -%}
+            <li>Age Group: {{ age_group }}</li>
           {%- endif -%}
-          {%- if min_age -%}
-            <li>
-              Minimum Age: {{ min_age }}
-            </li>
+          {%- if min_age != blank -%}
+            <li>Minimum Age: {{ min_age }}</li>
           {%- endif -%}
-          {%- if max_age -%}
-            <li>
-              Maximum Age: {{ max_age }}
-            </li>
+          {%- if max_age != blank -%}
+            <li>Maximum Age: {{ max_age }}</li>
+          {%- endif -%}
+          {%- if stroller_weight_limitation != blank -%}
+            <li>Stroller Weight Limitation: {{ stroller_weight_limitation }}</li>
+          {%- endif -%}
+          {%- if stroller_height_limitation != blank -%}
+            <li>Stroller Height Limitation: {{ stroller_height_limitation }}</li>
+          {%- endif -%}
+          {%- if stroller_age_limitation != blank -%}
+            <li>Stroller Age Limitation: {{ stroller_age_limitation }}</li>
           {%- endif -%}
         </ul>
       </div>
     {%- endif -%}
 
     {%- if show_rear -%}
-      <div >
-        <h4 class="h5">Rear-Facing Mode</h4>
-        <ul class="specs-list no-bullets">
-          <li>
-            Weight: {{ rear_facing_weight_min }} - {{ rear_facing_weight_max }} lbs
-          </li>
-          <li>
-            Height: {{ rear_facing_height_min }} - {{ rear_facing_height_max }} in
-          </li>
+      <div class="child-fit__group">
+        <p class="child-fit__mode">Rear-Facing Mode</p>
+        <ul class="child-fit__list">
+          {%- if rear_facing_weight_limit != blank -%}
+            <li>Rear-Facing Mode Weight Limitation: {{ rear_facing_weight_limit }}</li>
+          {%- endif -%}
+          {%- if rear_facing_height_limit != blank -%}
+            <li>Rear-Facing Mode Height Limitation: {{ rear_facing_height_limit }}</li>
+          {%- endif -%}
+          {%- if rear_facing_fit_statement != blank -%}
+            <li>Rear-Facing Mode Fit Limitation: {{ rear_facing_fit_statement }}</li>
+          {%- endif -%}
+          {%- if rear_facing_age_limit != blank -%}
+            <li>Rear-Facing Mode Age Limitation: {{ rear_facing_age_limit }}</li>
+          {%- endif -%}
         </ul>
-        {%- if rear_facing_fit_statement -%}
-          <div class="tab-note">{{ rear_facing_fit_statement }}</div>
-        {%- endif -%}
       </div>
     {%- endif -%}
 
     {%- if show_forward -%}
-      <div >
-        <h4 class="h5">Forward-Facing Mode</h4>
-        <ul class="specs-list">
-          <li>
-            Weight: {{ forward_facing_weight_min }} - {{ forward_facing_weight_max }} lbs
-          </li>
-          <li>
-            Height: {{ forward_facing_height_min }} - {{ forward_facing_height_max }} in
-          </li>
-          {%- if forward_facing_fit_statement -%}
-            <li>
-              <div class="tab-note">{{ forward_facing_fit_statement }}</div>
-            </li>
+      <div class="child-fit__group">
+        <p class="child-fit__mode">Forward-Facing Mode</p>
+        <ul class="child-fit__list">
+          {%- if forward_facing_weight_limit != blank -%}
+            <li>Forward-Facing Mode Weight Limitation: {{ forward_facing_weight_limit }}</li>
+          {%- endif -%}
+          {%- if forward_facing_height_limit != blank -%}
+            <li>Forward-Facing Mode Height Limitation: {{ forward_facing_height_limit }}</li>
+          {%- endif -%}
+          {%- if forward_facing_fit_statement != blank -%}
+            <li>Forward-Facing Mode Fit Limitation: {{ forward_facing_fit_statement }}</li>
+          {%- endif -%}
+          {%- if forward_facing_age_limit != blank -%}
+            <li>Forward-Facing Mode Age Limitation: {{ forward_facing_age_limit }}</li>
           {%- endif -%}
         </ul>
       </div>
     {%- endif -%}
 
     {%- if show_high_back -%}
-      <div >
-        <h4 class="h5">High Back Booster Mode</h4>
-        <ul class="specs-list">
-          {%- if high_back_fit_statement -%}
-            <li>
-              Weight: {{ high_back_weight_min }} - {{ high_back_weight_max }} lbs
-            </li>
-            <li>
-              Height: {{ high_back_height_min }} - {{ high_back_height_max }} in
-            </li>
+      <div class="child-fit__group">
+        <p class="child-fit__mode">High Back Booster Mode</p>
+        <ul class="child-fit__list">
+          {%- if high_back_weight_limit != blank -%}
+            <li>High Back Booster Mode Weight Limitation: {{ high_back_weight_limit }}</li>
+          {%- endif -%}
+          {%- if high_back_height_limit != blank -%}
+            <li>High Back Booster Mode Height Limitation: {{ high_back_height_limit }}</li>
+          {%- endif -%}
+          {%- if high_back_fit_statement != blank -%}
+            <li>High Back Booster Mode Fit Limitation: {{ high_back_fit_statement }}</li>
           {%- endif -%}
         </ul>
-        {%- if high_back_fit_statement -%}
-          <div class="info-note">{{ high_back_fit_statement }}</div>
-        {%- endif -%}
       </div>
     {%- endif -%}
 
     {%- if show_no_back -%}
-      <div >
-        <h4 class="h5">No Back Booster Mode</h4>
-        <ul class="specs-list">
-          {%- if no_back_weight_max -%}
-            <li>
-              Weight: {{ no_back_weight_min }} - {{ no_back_weight_max }} lbs
-            </li>
+      <div class="child-fit__group">
+        <p class="child-fit__mode">No Back Booster Mode</p>
+        <ul class="child-fit__list">
+          {%- if no_back_weight_limit != blank -%}
+            <li>No Back Booster Mode Weight Limitation: {{ no_back_weight_limit }}</li>
           {%- endif -%}
-          {%- if no_back_height_max -%}
-            <li>
-              Height: {{ no_back_height_min }} - {{ no_back_height_max }} in
-            </li>
+          {%- if no_back_height_limit != blank -%}
+            <li>No Back Booster Mode Height Limitation: {{ no_back_height_limit }}</li>
+          {%- endif -%}
+          {%- if no_back_fit_statement != blank -%}
+            <li>No Back Booster Mode Fit Limitation: {{ no_back_fit_statement }}</li>
           {%- endif -%}
         </ul>
-        {%- if no_back_fit_statement -%}
-          <div class="info-note">{{ no_back_fit_statement }}</div>
-        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if show_harness_booster -%}
+      <div class="child-fit__group">
+        <p class="child-fit__mode">Harness Booster Mode</p>
+        <ul class="child-fit__list">
+          {%- if harness_weight_limit != blank -%}
+            <li>Harness Booster Mode Weight Limitation: {{ harness_weight_limit }}</li>
+          {%- endif -%}
+          {%- if harness_height_limit != blank -%}
+            <li>Harness Booster Mode Height Limitation: {{ harness_height_limit }}</li>
+          {%- endif -%}
+          {%- if harness_booster_fit_statement != blank -%}
+            <li>Harness Booster Mode Fit Limitation: {{ harness_booster_fit_statement }}</li>
+          {%- endif -%}
+          {%- if harness_age_limit != blank -%}
+            <li>Harness Booster Mode Age Limitation: {{ harness_age_limit }}</li>
+          {%- endif -%}
+        </ul>
       </div>
     {%- endif -%}
   </div>

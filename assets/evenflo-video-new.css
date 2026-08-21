@@ -1,0 +1,116 @@
+/* @TODO: Most of these styles are duplicated from .evenflo-video class. Once .evenflo-video is updated, these styles should be reviewed or the shared class should be removed. */
+
+.evenflo-video-new.evenflo-video .video-section__media {
+  --ratio-percent: 56.25%;
+  position: relative;
+  padding-bottom: calc(var(--ratio-percent) - var(--media-border-width));
+}
+
+.evenflo-video-new.evenflo-video .video-section__media.global-media-settings--full-width {
+  padding-bottom: var(--ratio-percent);
+}
+
+.evenflo-video-new.evenflo-video .video-section__media.deferred-media {
+  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--media-shadow-opacity));
+}
+
+.evenflo-video-new.evenflo-video .video-section__media.deferred-media:after {
+  content: none;
+}
+
+.evenflo-video-new.evenflo-video .video-section__poster.deferred-media__poster:focus {
+  outline-offset: 0.3rem;
+}
+
+.evenflo-video-new.evenflo-video .video-section__media iframe {
+  background-color: rgba(var(--color-foreground), 0.03);
+  border: 0;
+}
+
+.evenflo-video-new.evenflo-video .video-section__poster,
+.evenflo-video-new.evenflo-video .video-section__media iframe,
+.evenflo-video-new.evenflo-video .video-section__media video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.evenflo-video-new.evenflo-video .video-section__media video {
+  background: #000000;
+}
+
+.evenflo-video-new.evenflo-video .video-section__media.media-fit-cover video {
+  object-fit: cover;
+}
+
+/* Evenflo */
+
+.evenflo-video-new.evenflo-video .video-section .title {
+  text-align: center;
+}
+
+.evenflo-video-new.evenflo-video {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.evenflo-video-new.evenflo-video .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.evenflo-video-new.evenflo-video .flex-item {
+    padding: 0;
+}
+
+.evenflo-video-new.evenflo-video .video-content-section {
+    text-align: center;
+}
+
+/* Matches the PDP tab panel headings (.info-block > .h3). */
+.evenflo-video-new.evenflo-video .video-content-section .h3 {
+    color: var(--color-evenflo-blue-900, #0f3c5a);
+    font-family: var(--font-heading-family);
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+/* Below the two-column breakpoint the flex items have no basis, so they try to
+   sit side by side and the video wrapper (sized only by percentage padding)
+   collapses to nothing. Force a full-width stack, video first. */
+@media screen and (max-width: 999px) {
+  .evenflo-video-new.evenflo-video .flex-item {
+      flex: 0 0 100%;
+      width: 100%;
+  }
+
+  .evenflo-video-new.evenflo-video .video-section {
+      order: 1;
+  }
+
+  .evenflo-video-new.evenflo-video .video-content-section {
+      order: 2;
+  }
+
+  .evenflo-video-new.evenflo-video .video-content-section .h3 {
+      font-size: 22px;
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  .evenflo-video-new.evenflo-video .video-content-section,
+  .evenflo-video-new.evenflo-video .video-section {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+    }
+}

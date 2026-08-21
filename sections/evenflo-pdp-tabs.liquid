@@ -2,8 +2,14 @@
 {{ 'evenflo-pdp-tabs.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-pdp-tabs.js' | asset_url | script_tag }}
 
-{% assign overview_content = product.description %}
+{% assign short_description_header = product.metafields.sf_products.short_description_header.value | default: product.metafields.sf_products.short_description_header | escape %}
+{% assign overview_content = product.metafields.sf_products.short_description.value %}
+{% assign vimeo_product_video_value = product.metafields.sf_products.vimeo_product_video %}
 {% assign specs_content = product.metafields.custom.specs_content.value %}
+{% comment %} this field doesn't exist yet, adding for future update {% endcomment %}
+{% assign overview_features = product.metafields.sf_products.overview_features.value %}
+{% assign overview_features = overview_features | split: '|' %}
+{% comment %} end of future update {% endcomment %}
 {% capture whats_included_content %}
   {% render 'evenflo-pdp-tab-whats-included' %}
 {% endcapture %}
@@ -54,96 +60,273 @@
       <div class="tabs-container">
         <div class="tabs-nav" role="tablist" aria-label="Product content tabs">
           {% if overview_content != blank %}
-            <button class="tab-button{% if first_panel == panel_overview %} active{% endif %}" type="button" role="tab" data-tab="{{ panel_overview }}" aria-selected="{% if first_panel == panel_overview %}true{% else %}false{% endif %}">Overview</button>
+            <button
+              class="tab-button{% if first_panel == panel_overview %} active{% endif %}"
+              type="button"
+              role="tab"
+              data-tab="{{ panel_overview }}"
+              aria-selected="{% if first_panel == panel_overview %}true{% else %}false{% endif %}"
+            >
+              Overview
+            </button>
           {% endif %}
           {% if specs_content != blank %}
-            <button class="tab-button{% if first_panel == panel_specs %} active{% endif %}" type="button" role="tab" data-tab="{{ panel_specs }}" aria-selected="{% if first_panel == panel_specs %}true{% else %}false{% endif %}">Specs</button>
+            <button
+              class="tab-button{% if first_panel == panel_specs %} active{% endif %}"
+              type="button"
+              role="tab"
+              data-tab="{{ panel_specs }}"
+              aria-selected="{% if first_panel == panel_specs %}true{% else %}false{% endif %}"
+            >
+              Specs
+            </button>
           {% endif %}
           {% if whats_included_content != blank %}
-            <button class="tab-button{% if first_panel == panel_included %} active{% endif %}" type="button" role="tab" data-tab="{{ panel_included }}" aria-selected="{% if first_panel == panel_included %}true{% else %}false{% endif %}">What's Included</button>
+            <button
+              class="tab-button{% if first_panel == panel_included %} active{% endif %}"
+              type="button"
+              role="tab"
+              data-tab="{{ panel_included }}"
+              aria-selected="{% if first_panel == panel_included %}true{% else %}false{% endif %}"
+            >
+              What's Included
+            </button>
           {% endif %}
           {% if dimensions_fit_content != blank %}
-            <button class="tab-button{% if first_panel == panel_dimensions %} active{% endif %}" type="button" role="tab" data-tab="{{ panel_dimensions }}" aria-selected="{% if first_panel == panel_dimensions %}true{% else %}false{% endif %}">Dimensions &amp; Fit</button>
+            <button
+              class="tab-button{% if first_panel == panel_dimensions %} active{% endif %}"
+              type="button"
+              role="tab"
+              data-tab="{{ panel_dimensions }}"
+              aria-selected="{% if first_panel == panel_dimensions %}true{% else %}false{% endif %}"
+            >
+              Dimensions &amp; Fit
+            </button>
           {% endif %}
           {% if specifications_content != blank %}
-            <button class="tab-button{% if first_panel == panel_specifications %} active{% endif %}" type="button" role="tab" data-tab="{{ panel_specifications }}" aria-selected="{% if first_panel == panel_specifications %}true{% else %}false{% endif %}">Specifications</button>
+            <button
+              class="tab-button{% if first_panel == panel_specifications %} active{% endif %}"
+              type="button"
+              role="tab"
+              data-tab="{{ panel_specifications }}"
+              aria-selected="{% if first_panel == panel_specifications %}true{% else %}false{% endif %}"
+            >
+              Specifications
+            </button>
           {% endif %}
-          <button class="tab-button{% if first_panel == panel_reviews %} active{% endif %}" type="button" role="tab" data-tab="{{ panel_reviews }}" aria-selected="{% if first_panel == panel_reviews %}true{% else %}false{% endif %}">Reviews</button>
-          <button class="tab-button{% if first_panel == panel_faqs %} active{% endif %}" type="button" role="tab" data-tab="{{ panel_faqs }}" aria-selected="{% if first_panel == panel_faqs %}true{% else %}false{% endif %}">FAQs</button>
+          <button
+            class="tab-button{% if first_panel == panel_reviews %} active{% endif %}"
+            type="button"
+            role="tab"
+            data-tab="{{ panel_reviews }}"
+            aria-selected="{% if first_panel == panel_reviews %}true{% else %}false{% endif %}"
+          >
+            Reviews
+          </button>
+          <button
+            class="tab-button{% if first_panel == panel_faqs %} active{% endif %}"
+            type="button"
+            role="tab"
+            data-tab="{{ panel_faqs }}"
+            aria-selected="{% if first_panel == panel_faqs %}true{% else %}false{% endif %}"
+          >
+            Q&amp;A
+          </button>
         </div>
 
         <div class="tabs-content-container evenflo-pdp-accordion" role="region" aria-label="Product information">
           {% if overview_content != blank %}
-            <section class="tab-content{% if first_panel == panel_overview %} active mobile-open{% endif %}" data-panel="{{ panel_overview }}" role="tabpanel">
-              <h3 class="content-heading" role="button" tabindex="0" aria-expanded="{% if first_panel == panel_overview %}true{% else %}false{% endif %}">Overview</h3>
+            <section
+              class="tab-content{% if first_panel == panel_overview %} active mobile-open{% endif %} tab-content--overview"
+              data-panel="{{ panel_overview }}"
+              role="tabpanel"
+            >
+              <h3
+                class="content-heading"
+                role="button"
+                tabindex="0"
+                aria-expanded="{% if first_panel == panel_overview %}true{% else %}false{% endif %}"
+              >
+                Overview
+              </h3>
               <div class="content-body">
                 <div class="evenflo-pdp-tab-layout">
                   <div class="evenflo-pdp-tab-layout__full-width rte">
+                    <h3>{{ short_description_header }}
+                    </h3>
                     {{ overview_content }}
-                  </div>
-                </div>
-              </div>
-            </section>
+
+					{% if vimeo_product_video_value != blank %}
+					<div class="video-section" >
+						<div class="video-section__inner">
+							<iframe
+							src="https://player.vimeo.com/video/{{ vimeo_product_video_value }}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+							frameborder="0"
+							allow="autoplay; fullscreen; picture-in-picture"
+							allowfullscreen
+							style="position:absolute;top:0;left:0;width:100%;height:100%;"
+							title="Evenflo Shyft DualRide Infant Car Seat Stroller Combo"
+							></iframe>
+						</div>
+					</div>
+					{% endif %}
+					{% comment %} this field doesn't exist yet, adding for future update {% endcomment %}
+					{% if overview_features != blank %}
+					<div class="overview-features-list">
+						<ul>
+							{% for feature in overview_features %}
+							<li>{{ feature }}</li>
+							{% endfor %}
+						</ul>
+                	</div>
+					{% endif %}
+					{% comment %} end of future update {% endcomment %}
+				</div>
+			</div>
+		</div>
+		</section>
           {% endif %}
-          
-		  {% if specs_content != blank %}
-            <section class="tab-content{% if first_panel == panel_specs %} active mobile-open{% endif %}" data-panel="{{ panel_specs }}" role="tabpanel">
-              <h3 class="content-heading" role="button" tabindex="0" aria-expanded="{% if first_panel == panel_specs %}true{% else %}false{% endif %}">Specs</h3>
+
+          {% if specs_content != blank %}
+            <section
+              class="tab-content{% if first_panel == panel_specs %} active mobile-open{% endif %} tab-content--specs"
+              data-panel="{{ panel_specs }}"
+              role="tabpanel"
+            >
+              <h3
+                class="content-heading"
+                role="button"
+                tabindex="0"
+                aria-expanded="{% if first_panel == panel_specs %}true{% else %}false{% endif %}"
+              >
+                Specs
+              </h3>
               <div class="content-body">
                 {{ specs_content }}
               </div>
             </section>
           {% endif %}
-          
-		  {% if whats_included_content != blank %}
-            <section class="tab-content{% if first_panel == panel_included %} active mobile-open{% endif %}" data-panel="{{ panel_included }}" role="tabpanel">
-              <h3 class="content-heading" role="button" tabindex="0" aria-expanded="{% if first_panel == panel_included %}true{% else %}false{% endif %}">What's Included</h3>
+
+          {% if whats_included_content != blank %}
+            <section
+              class="tab-content{% if first_panel == panel_included %} active mobile-open{% endif %} tab-content--whats-included"
+              data-panel="{{ panel_included }}"
+              role="tabpanel"
+            >
+              <h3
+                class="content-heading"
+                role="button"
+                tabindex="0"
+                aria-expanded="{% if first_panel == panel_included %}true{% else %}false{% endif %}"
+              >
+                What's Included
+              </h3>
               <div class="content-body">
                 {{ whats_included_content }}
               </div>
             </section>
           {% endif %}
-          
-		  {% if dimensions_fit_content != blank %}
-            <section class="tab-content{% if first_panel == panel_dimensions %} active mobile-open{% endif %}" data-panel="{{ panel_dimensions }}" role="tabpanel">
-              <h3 class="content-heading" role="button" tabindex="0" aria-expanded="{% if first_panel == panel_dimensions %}true{% else %}false{% endif %}">Dimensions & Fit</h3>
+
+          {% if dimensions_fit_content != blank %}
+            <section
+              class="tab-content{% if first_panel == panel_dimensions %} active mobile-open{% endif %} tab-content--dimensions-fit"
+              data-panel="{{ panel_dimensions }}"
+              role="tabpanel"
+            >
+              <h3
+                class="content-heading"
+                role="button"
+                tabindex="0"
+                aria-expanded="{% if first_panel == panel_dimensions %}true{% else %}false{% endif %}"
+              >
+                Dimensions & Fit
+              </h3>
               <div class="content-body">
                 {{ dimensions_fit_content }}
               </div>
             </section>
           {% endif %}
-          
-		  {% if specifications_content != blank %}
-            <section class="tab-content{% if first_panel == panel_specifications %} active mobile-open{% endif %}" data-panel="{{ panel_specifications }}" role="tabpanel">
-              <h3 class="content-heading" role="button" tabindex="0" aria-expanded="{% if first_panel == panel_specifications %}true{% else %}false{% endif %}">Specifications</h3>
+
+          {% if specifications_content != blank %}
+            <section
+              class="tab-content{% if first_panel == panel_specifications %} active mobile-open{% endif %} tab-content--specifications"
+              data-panel="{{ panel_specifications }}"
+              role="tabpanel"
+            >
+              <h3
+                class="content-heading"
+                role="button"
+                tabindex="0"
+                aria-expanded="{% if first_panel == panel_specifications %}true{% else %}false{% endif %}"
+              >
+                Specifications
+              </h3>
               <div class="content-body">
                 {{ specifications_content }}
               </div>
             </section>
           {% endif %}
 
-          <section class="tab-content{% if first_panel == panel_reviews %} active mobile-open{% endif %}" data-panel="{{ panel_reviews }}" role="tabpanel">
-            <h3 class="content-heading" role="button" tabindex="0" aria-expanded="{% if first_panel == panel_reviews %}true{% else %}false{% endif %}">Reviews</h3>
+          <section
+            class="tab-content{% if first_panel == panel_reviews %} active mobile-open{% endif %} tab-content--reviews"
+            data-panel="{{ panel_reviews }}"
+            role="tabpanel"
+          >
+            <h3
+              class="content-heading"
+              role="button"
+              tabindex="0"
+              aria-expanded="{% if first_panel == panel_reviews %}true{% else %}false{% endif %}"
+            >
+              Reviews
+            </h3>
             <div class="content-body">
-				<div class="yotpo-widget-instance" data-yotpo-instance-id="498559" data-yotpo-product-id="{{product.id}}" data-yotpo-name="{{ product.title | escape }}" data-yotpo-url="{{ shop.url }}{{ product.url }}" data-yotpo-image-url="{{ product.featured_image | product_img_url: "large" | prepend: "https:" | replace: '?', '%3F' | replace: '&','%26'}}" data-yotpo-price="{{ product.price | divided_by: 100.00 }}" data-yotpo-currency="{{ shop.currency }}" data-yotpo-description="{{ product.description | escape }}"></div>
+              <div
+                class="yotpo-widget-instance"
+                data-yotpo-instance-id="498559"
+                data-yotpo-product-id="{{product.id}}"
+                data-yotpo-name="{{ product.title | escape }}"
+                data-yotpo-url="{{ shop.url }}{{ product.url }}"
+                data-yotpo-image-url="{{ product.featured_image | product_img_url: "large" | prepend: "https:" | replace: '?', '%3F' | replace: '&','%26'}}"
+                data-yotpo-price="{{ product.price | divided_by: 100.00 }}"
+                data-yotpo-currency="{{ shop.currency }}"
+                data-yotpo-description="{{ product.description | escape }}"
+              ></div>
             </div>
           </section>
 
-          <section class="tab-content{% if first_panel == panel_faqs %} active mobile-open{% endif %}" data-panel="{{ panel_faqs }}" role="tabpanel">
-            <h3 class="content-heading" role="button" tabindex="0" aria-expanded="{% if first_panel == panel_faqs %}true{% else %}false{% endif %}">FAQs</h3>
+          <section
+            class="tab-content{% if first_panel == panel_faqs %} active mobile-open{% endif %} tab-content--faqs"
+            data-panel="{{ panel_faqs }}"
+            role="tabpanel"
+          >
+            <h3
+              class="content-heading"
+              role="button"
+              tabindex="0"
+              aria-expanded="{% if first_panel == panel_faqs %}true{% else %}false{% endif %}"
+            >
+              Q&amp;A
+            </h3>
             <div class="content-body">
-				<div class="yotpo-widget-instance" data-yotpo-instance-id="511091" data-yotpo-product-id="{{product.id}}" data-yotpo-name="{{ product.title | escape }}" data-yotpo-url="{{ shop.url }}{{ product.url }}" data-yotpo-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" data-yotpo-description="{{ product.description | escape }}"></div>
+              <div
+                class="yotpo-widget-instance"
+                data-yotpo-instance-id="511091"
+                data-yotpo-product-id="{{product.id}}"
+                data-yotpo-name="{{ product.title | escape }}"
+                data-yotpo-url="{{ shop.url }}{{ product.url }}"
+                data-yotpo-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+                data-yotpo-description="{{ product.description | escape }}"
+              ></div>
             </div>
           </section>
         </div>
       </div>
     </div>
   </div>
-
 {% endif %}
 
 <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/B0qJeONB1n5uLg0RiKMrl58AdoGwnftUWBiOC4S6" async></script>
-
 
 {% schema %}
 {

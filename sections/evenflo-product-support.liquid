@@ -10,20 +10,14 @@
 
 {% assign rethread_method = product.metafields.sf_products.harness_rethread_method %}
 
-{% assign sensorsafe = product.metafields.sf_car_seat.sensorsafe %}
+{% assign sensorsafe = product.metafields.custom.sensorsafe.value %}
 {% assign easy_install = product.metafields.sf_car_seat.easy_install %}
 {% assign rollover_tested = product.metafields.sf_car_seat.rollover_tested %}
-{% assign converts_to_belt = product.metafields.sf_car_seat.converts_to_belt_position_boos %}
 
 {% assign activity_batteries_required = product.metafields.sf_activity.batteries_required %}
-{% assign activity_height_adjustable = product.metafields.sf_activity.height_adjustable %}
 {% assign batteries_included = product.metafields.sf_activity.batteries_included %}
 
-{% assign toy_battery_cell_type = product.metafields.sf_activity.battery_cell_type %}
 {% assign my_tags = product.metafields.sf_activity.battery_cell_type | split: ',' %}
-
-{% assign batteries_required_bassinet = product.metafields.sf_bassinet.batteries_required %}
-{% assign battery_cell_type_bassinet = product.metafields.sf_bassinet.battery_cell_type %}
 
 {% comment %} Bassinets & Cradles {% endcomment %}
 
@@ -111,12 +105,11 @@
 
 {%- if product.type == 'Play Yards' %}
   {% assign bassinet_insert = product.metafields.sf_playard.bassinet_insert %}
-  {% assign built_for_travel = product.metafields.sf_playard.built_for_travel %}
+
   {% assign canopy_overview = product.metafields.sf_playard.canopy | split: ',' %}
-  {% assign changing_station = product.metafields.sf_playard.diaper_changing_station %}
   {% assign extra_storage = product.metafields.sf_playard.extra_storage %}
   {% assign tablet_holder = product.metafields.sf_playard.tablet_holder %}
-  {% assign built_for_travel = product.metafields.sf_playard.built_for_travel %}
+
   {% assign toys_entertainment = product.metafields.sf_playard.toys_entertainment %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
@@ -150,14 +143,7 @@
               No
             {% endif %}
           </div>
-          <div class="col">
-            <h4>Built for Travel</h4>
-            {% if built_for_travel == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif %}
-          </div>
+
           <div class="col">
             <h4>Canopy</h4>
             {% for tag in canopy_overview %}
@@ -165,14 +151,7 @@
               {%- if tag != canopy_overview.last %},{% endif %}
             {% endfor %}
           </div>
-          <div class="col">
-            <h4>Diaper Changing Station</h4>
-            {% if changing_station == 1 %}
-              Yes
-            {% else %}
-              No
-            {% endif %}
-          </div>
+
           <div class="col">
             <h4>Extra Storage</h4>
             {% if extra_storage == 1 %}
@@ -401,7 +380,6 @@
 {% if product.type == 'High Chair' %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
-      {% assign cleaning = product.metafields.sf_high_chair.cleaning %}
       {% assign fold_flat_capable = product.metafields.sf_high_chair.fold_flat_capable %}
       {% assign hc_height_adjustable = product.metafields.sf_high_chair.height_adjustable %}
       {% assign one_hand_tray = product.metafields.sf_high_chair.one_hand_tray %}
@@ -471,10 +449,9 @@
       {% assign self_standing_fold = product.metafields.sf_stroller.self_standing_fold %}
       {% assign upf_50_sun_protection_canopy = product.metafields.sf_stroller.upf_50__sun_protection_canopy %}
       {% assign lockable_front_wheels = product.metafields.sf_stroller.lockable_front_wheels %}
-      {% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
+      {% assign accepts_infant_car_seat = product.metafields.custom.stroller_accepts_infant_car_seat.value %}
       {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
       {% assign compact_fold = product.metafields.sf_stroller.compact_fold %}
-      
 
       {% assign lockable_front = product.metafields.sf_stroller.lockable_front_wheels %}
       {% assign single_to_double_capable = product.metafields.sf_stroller.single_to_double_capable %}
@@ -556,7 +533,7 @@
 
             <div class="col">
               <h3>Accepts Infant Car Seat</h3>
-              {% if accepts_infant_car_seat == 1 %}
+              {% if accepts_infant_car_seat %}
                 Yes
               {% else %}
                 No
@@ -591,7 +568,6 @@
 {% endif %}
 
 {%- if product.type == 'Carrier' or product.type == 'Baby Carrier' %}
-  {% assign toy_clip = product.metafields.sf_carrier.pacifier_toy_clip %}
   {% assign machine_wash = product.metafields.sf_carrier.machine_washable %}
   <section class="pdp-support page-width">
     <div class="pdp-support__container pdp-support">
@@ -622,12 +598,7 @@
             {% endif %}
           </div>
           <div class="col">
-            <h4>Toy Clip</h4>
 
-            {% if toy_clip == 1 %}
-              <p>Yes</p>
-            {% endif %}
-          </div>
           <div>
             {% assign shipping_restrictions = product.metafields.sf_shipping.shipping_restrictions %}
 
@@ -644,7 +615,8 @@
       </div>
     </div>
   </section>
-{% endif %}
+
+{%- endif %}
 
 {% if product.type contains 'Car Seat'
   or product.type contains 'Travel System'
@@ -750,7 +722,7 @@
         </div>
         <div class="col">
           <h3>Sensorsafe</h3>
-          {% if sensorsafe == 1 %}
+          {% if sensorsafe %}
             Yes
           {% else %}
             No

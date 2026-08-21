@@ -35,6 +35,7 @@
    * @return {Object} Section block elements and methods.
    */
   function blockEvents(block) {
+    if (!block.trigger || !block.button || !block.panel) return block;
     if (block.trigger.hasAttribute('data-faq-init')) return block;
     
     block.trigger.setAttribute('data-faq-init', true);

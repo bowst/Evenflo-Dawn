@@ -6,6 +6,9 @@
   assign modes_raw = product.metafields.custom.modes_of_use
   assign modes_of_use = modes_raw | replace: '|', '<br>'
   assign specifications_image = product.metafields.sf_products.specifications_image
+  assign dims_images = product.metafields.custom.dims_images.value
+  assign manual_en = product.metafields.sf_products.manual
+  assign manual_es = product.metafields.sf_products.manual_spanish
 -%}
 
 {% capture child_fit_markup %}
@@ -20,7 +23,7 @@
   endif
 
   assign show_diagram = false
-  if specifications_image != blank
+  if specifications_image != blank or dims_images != blank
     assign show_diagram = true
   endif
 
@@ -33,49 +36,61 @@
   if show_modes or show_diagram
     assign show_left_column = true
   endif
-
-  assign layout_split = false
-  if show_child and show_left_column
-    assign layout_split = true
-  endif
 -%}
 
-{%- if show_modes or show_diagram or show_child -%}
+{%- if show_left_column or show_child -%}
   <div class="evenflo-pdp-tab-layout dimensions-fit">
-    <div class="evenflo-pdp-tab-layout__grid{% if layout_split %} evenflo-pdp-tab-layout__grid--split{% endif %}">
-      <div class="evenflo-pdp-tab-layout__main">
-        {%- if show_modes -%}
-          <div class="info-block">
-            <h4 class="h3">Modes of Use</h4>
-            <div class="info-body rte">{{ modes_of_use }}</div>
-          </div>
-        {%- endif -%}
-
-        {%- if show_diagram -%}
-          <div class="info-block">
-            <h4 class="h3">Dimensions Diagram</h4>
-            <div class="info-diagram">
-              <img
-                class="specifications-image"
-                src="{{ specifications_image }}"
-                width="100%"
-                height="auto"
-                loading="lazy"
-                alt="{{ product.title | escape }} dimensions diagram"
-              >
+    <div class="evenflo-pdp-tab-layout__grid{% if show_left_column and show_child %} evenflo-pdp-tab-layout__grid--split{% endif %}">
+      {%- if show_left_column -%}
+        <div class="evenflo-pdp-tab-layout__main">
+          {%- if show_modes -%}
+            <div class="info-block">
+              <h4 class="h3">Modes of Use</h4>
+              <div class="info-body rte">{{ modes_of_use }}</div>
             </div>
-          </div>
-        {%- endif -%}
+          {%- endif -%}
 
-        {%- if show_child and layout_split == false -%}
-          <div class="info-block">
-            <h4 class="h3">Child Fit Requirements</h4>
-            {{ child_fit_markup }}
-          </div>
-        {%- endif -%}
-      </div>
+          {%- if show_diagram -%}
+            <div class="info-block">
+              <h4 class="h3">Dimensions Diagram</h4>
+              <div class="info-diagram">
+                {%- if specifications_image != blank -%}
+                  <img
+                    class="specifications-image"
+                    src="{{ specifications_image }}"
+                    width="100%"
+                    height="auto"
+                    loading="lazy"
+                    alt="{{ product.title | escape }} dimensions diagram"
+                  >
+                {%- endif -%}
+                {%- for dims_image in dims_images -%}
+                  <img
+                    class="specifications-image"
+                    src="{{ dims_image | image_url: width: 1500 }}"
+                    width="100%"
+                    height="auto"
+                    loading="lazy"
+                    alt="{% if dims_image.alt != blank %}{{ dims_image.alt | escape }}{% else %}{{ product.title | escape }} dimensions diagram{% endif %}"
+                  >
+                {%- endfor -%}
+                {%- if manual_en != blank or manual_es != blank -%}
+                  <div class="info-diagram-manuals">
+                    {%- if manual_en != blank -%}
+                      <a class="info-diagram-manuals__button" href="{{ manual_en }}" target="_blank" rel="noopener">Download Manual (EN)</a>
+                    {%- endif -%}
+                    {%- if manual_es != blank -%}
+                      <a class="info-diagram-manuals__button" href="{{ manual_es }}" target="_blank" rel="noopener">Download Manual (ES)</a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
 
-      {%- if show_child and layout_split -%}
+      {%- if show_child -%}
         <div class="evenflo-pdp-tab-layout__aside">
           <div class="info-block">
             <h4 class="h3">Child Fit Requirements</h4>

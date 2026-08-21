@@ -1,0 +1,205 @@
+{{ 'evenflo-features-carousel.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-element-bundle.min.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign display_section = true
+  if section.settings.product_handles != blank
+    assign product_handle_list = section.settings.product_handles | split: ','
+    for handle in product_handle_list
+      assign handle_clean = handle | strip
+      if product.handle == handle_clean
+        assign display_section = false
+      endif
+    endfor
+  endif
+
+  assign heading = section.settings.heading | default: 'Features'
+  assign columns = section.settings.columns_desktop | default: 3
+
+  comment
+    Collect up to 8 features following the existing metafield pattern:
+    feature_text_N (richtext), featured_image_N_shopify (image), feature_image_N (url).
+  endcomment
+  assign feature_count = 0
+  for i in (1..8)
+    assign text_key = 'feature_text_' | append: i
+    assign feature_text = product.metafields.custom[text_key]
+    if feature_text != blank
+      assign feature_count = feature_count | plus: 1
+    endif
+  endfor
+-%}
+
+{%- if display_section and feature_count > 0 -%}
+  <section
+    class="evenflo-features-carousel"
+    style="background-color: {{ section.settings.background_color }};"
+  >
+    <div class="page-width">
+      {%- if heading != blank -%}
+        <h2 class="evenflo-features-carousel__heading">{{ heading }}</h2>
+      {%- endif -%}
+
+      <swiper-container
+        id="features-carousel-{{ section.id }}"
+        class="evenflo-features-carousel__slider"
+        init="false"
+      >
+        {%- for i in (1..8) -%}
+          {%- liquid
+            assign text_key = 'feature_text_' | append: i
+            assign feature_text = product.metafields.custom[text_key]
+            unless feature_text != blank
+              continue
+            endunless
+
+            assign shopify_key = 'featured_image_' | append: i | append: '_shopify'
+            assign url_key = 'feature_image_' | append: i
+            assign feature_image_shopify = product.metafields.custom[shopify_key]
+            assign feature_image_url = product.metafields.custom[url_key]
+          -%}
+          <swiper-slide class="evenflo-features-carousel__slide">
+            <div class="evenflo-features-carousel__media">
+              {%- if feature_image_shopify != blank -%}
+                <img
+                  src="{{ feature_image_shopify | img_url: 'large' }}"
+                  alt="{{ product.title }} - Feature {{ i }}"
+                  loading="lazy"
+                  width=""
+                  height=""
+                >
+              {%- elsif feature_image_url != blank -%}
+                <img
+                  src="{{ feature_image_url }}"
+                  alt="{{ product.title }} - Feature {{ i }}"
+                  loading="lazy"
+                  width=""
+                  height=""
+                >
+              {%- endif -%}
+            </div>
+            <div class="evenflo-features-carousel__content rte">
+              {{ feature_text }}
+            </div>
+          </swiper-slide>
+        {%- endfor -%}
+      </swiper-container>
+
+      <div class="evenflo-features-carousel__nav">
+        <button
+          type="button"
+          class="evenflo-features-carousel__arrow features-carousel-prev-{{ section.id }}"
+          aria-label="Previous features"
+        >
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0_3428_4374)">
+				<path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="currentColor" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M18 11L13 16L18 21" stroke="currentColor" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+				</g>
+				<defs>
+				<clipPath id="clip0_3428_4374">
+				<rect width="32" height="32" fill="currentColor"/>
+				</clipPath>
+				</defs>
+				</svg>
+        </button>
+        <button
+          type="button"
+          class="evenflo-features-carousel__arrow features-carousel-next-{{ section.id }}"
+          aria-label="Next features"
+        >
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0_3428_4378)">
+				<path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+				<path d="M14 11L19 16L14 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+				</g>
+				<defs>
+				<clipPath id="clip0_3428_4378">
+				<rect width="32" height="32" fill="white"/>
+				</clipPath>
+				</defs>
+			</svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    customElements.whenDefined('swiper-container').then(function () {
+      var el = document.getElementById('features-carousel-{{ section.id }}');
+      if (!el || el.swiper) return;
+      Object.assign(el, {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        navigation: {
+          prevEl: '.features-carousel-prev-{{ section.id }}',
+          nextEl: '.features-carousel-next-{{ section.id }}'
+        },
+        breakpoints: {
+          750: { slidesPerView: 2, spaceBetween: 32 },
+          990: { slidesPerView: {{ columns | json }}, spaceBetween: 32 }
+        }
+      });
+      el.initialize();
+    });
+  </script>
+{%- endif -%}
+
+{%- if request.design_mode -%}
+  <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Evenflo Features Carousel",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Pulls up to 8 features from the product's feature_text_1–8 and feature_image / featured_image_*_shopify metafields. Add to a product template."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Features"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FCFCFD"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Cards per view (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "textarea",
+      "id": "product_handles",
+      "label": "Exclude Product Handles",
+      "info": "Comma-separated product handles to hide this section on."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evenflo Features Carousel",
+      "category": "Custom Sections",
+      "settings": {
+        "heading": "Features",
+        "background_color": "#FCFCFD",
+        "columns_desktop": 3
+      }
+    }
+  ]
+}
+{% endschema %}

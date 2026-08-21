@@ -193,7 +193,7 @@ const byoVariants = [
             "featureImage": {{ variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ variant.option1 | json }},
             "colorImage": {{ variant.metafields.custom.new_swatch_image.value | json }},
-            "byoColorImage": {{ variant.metafields.custom.byo_color.value | image_url: width: 600 | json }},
+            "byoColorImage": {% if variant.metafields.custom.byo_color.value != blank %}{{ variant.metafields.custom.byo_color.value | image_url: width: 600 | json }}{% else %}null{% endif %},
             "sku": {{ variant.sku | json }},
             "inventory": {{ variant.inventory_quantity }},
             "inStock": true
@@ -225,7 +225,7 @@ const byoVariants = [
             "featureImage": {{ accessory_variant.featured_image.src | image_url: width: 600 | json }},
             "color": {{ accessory_variant.option1 | json }},
             "colorImage": {{ accessory_variant.metafields.custom.new_swatch_image.value | json }},
-            "byoColorImage": {{ accessory_variant.metafields.custom.byo_color.value | image_url: width: 600 | json }},
+            "byoColorImage": {% if accessory_variant.metafields.custom.byo_color.value != blank %}{{ accessory_variant.metafields.custom.byo_color.value | image_url: width: 600 | json }}{% else %}null{% endif %},
             "sku": {{ accessory_variant.sku | json }},
             "inventory": {{ accessory_variant.inventory_quantity }},
             "inStock": true
@@ -243,7 +243,7 @@ const byoVariants = [
         "productType": {{ product.type | json }},
         "fabric": {{ product.metafields.custom.green_gentle_fabric.value | json }},
         "rotation": {{ product.metafields.custom.degrees_of_rotation.value | json }},
-        "sensorysoothe": {{ product.metafields.custom.sensorysoothe.value | json }},
+        "sensorysoothe": {{ product.metafields.custom.sensorysoothe_new.value | json }},
         "accessories": {{ accessories }},
         "variants": {{ variants }}
       }{% unless forloop.last %},{% endunless %}

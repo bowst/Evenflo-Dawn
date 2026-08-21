@@ -23,11 +23,6 @@
 	else
 	  assign media_count = product.media.size
 	endif
-
-	assign variant_has_own_media = false
-	if product.selected_or_first_available_variant.featured_media != null or has_variant_gallery
-	  assign variant_has_own_media = true
-	endif
   
 	if media_count == 0 or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
 	  assign hide_mobile_slider = true
@@ -67,7 +62,6 @@
 			{% if media_position >= limit
 			  or media_position >= 1
 			  and section.settings.hide_variants
-			  and variant_has_own_media
 			  and variant_images contains media.src
 			%}
 			  {% continue %}

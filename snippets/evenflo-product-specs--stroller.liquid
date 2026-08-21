@@ -5,7 +5,7 @@
 {% assign self_standing_fold = product.metafields.sf_stroller.self_standing_fold %}
 {% assign upf_50_sun_protection_canopy = product.metafields.sf_stroller.upf_50__sun_protection_canopy %}
 {% assign lockable_front_wheels = product.metafields.sf_stroller.lockable_front_wheels %}
-{% assign accepts_infant_car_seat = product.metafields.sf_stroller.accepts_infant_car_seat %}
+{% assign accepts_infant_car_seat = product.metafields.custom.stroller_accepts_infant_car_seat.value %}
 {% assign accepts_rider_board = product.metafields.sf_stroller.accepts_rider_board %}
 {% assign compact_fold = product.metafields.sf_stroller.compact_fold %}
 {% assign lockable_front = product.metafields.sf_stroller.lockable_front_wheels %}
@@ -98,7 +98,7 @@
 		</li>
 		{% endif %}
 
-		{% if accepts_infant_car_seat == 1 %}
+		{% if accepts_infant_car_seat %}
 		<li class="checkbox-item">
 			<strong>Accepts Infant Car Seat</strong>
 			<span class="screen-reader-text">Yes</span>

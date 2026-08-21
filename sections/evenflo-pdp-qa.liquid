@@ -1,0 +1,109 @@
+{%- liquid
+  assign fields = 'air_reviews_product.review_avg,air_reviews_product.review_count,custom.amazon_link,custom.batteries_included,custom.batteries_required,custom.battery_replaceable,custom.breadcrumbs,custom.byo_accessories,custom.certifications,custom.coming_soon_button_message,custom.configuration_chart,custom.customer_quote,custom.customer_quote_name,custom.degrees_of_rotation,custom.dishwasher_safe_tray,custom.easy_assembly,custom.feature_image_1,custom.feature_image_2,custom.feature_image_3,custom.feature_image_4,custom.feature_text_1,custom.feature_text_2,custom.feature_text_3,custom.feature_text_4,custom.featured_image_1_shopify,custom.featured_image_2_shopify,custom.featured_image_3_shopify,custom.featured_image_4_shopify,custom.folded_dims_assembled,custom.green_gentle_fabric,custom.greenguard,custom.infant_car_seat_included,custom.installation,custom.lawtag,custom.link_support_page,custom.modes_of_use,custom.modes_of_use_link,custom.mount_type,custom.one_hand_fold,custom.pdp_faq,custom.pdp_page_link_from_support,custom.platform_name,custom.platform_overview_name,custom.platform_sub_name,custom.product_support_link,custom.product_warranty_link,custom.rollplay_battery_voltage,custom.rollplay_max_speed,custom.rollplay_run_time,custom.rotation,custom.sensorsafe,custom.sensorysoothe_new,custom.sf_products,custom.short_description,custom.short_description_header,custom.slim_design,custom.source_for_1_rotating_car_seat_claim,custom.specs_content,custom.stroller_accepts_infant_car_seat,custom.suction_range,custom.support_page_faq,custom.support_page_link,custom.tab_block,custom.tested_to,custom.tip_styles,custom.warranty_type,descriptors.subtitle,eggviews.reviews_average,eggviews.reviews_count,judgeme.badge,kudobuzz.review_rating,kudobuzz.reviews_count,loox.avg_rating,loox.num_reviews,okendo.RatingAndReviewAverageValue,okendo.RatingAndReviewCount,opinew.reviews_rich_snippet,orankl.rating,orankl.review_count,orankl.review_countt,product_info.related_products,product_info.show_variants_button,product.features,product.metafields,reevio.avg_rate,reevio.reviews_average,reevio.reviews_count,reviews.rating,reviews.rating_count,reviewscouk.rating,reviewscouk.total,ryviu.product_reviews_info,ryviu.reviews,scm_review_importer.reviewsData,sf_activity.batteries_included,sf_activity.batteries_required,sf_activity.battery_cell_type,sf_activity.electronic_toys_features,sf_activity.foldable_collapsable,sf_activity.number_of_height_modes,sf_activity.type,sf_bassinet.batteries_required,sf_bassinet.battery_cell_type,sf_car_seat.anti_rebound_bar,sf_car_seat.belt_pos_booster_height_max,sf_car_seat.belt_pos_booster_height_min,sf_car_seat.belt_pos_booster_weight_max,sf_car_seat.belt_pos_booster_weight_min,sf_car_seat.bubble_level,sf_car_seat.carrier_weight_without_base,sf_car_seat.converts_to_belt_position_boos,sf_car_seat.converts_to_no_back_booster,sf_car_seat.easy_install,sf_car_seat.forward_facing_age_limit,sf_car_seat.forward_facing_fit_statement,sf_car_seat.forward_facing_height_max,sf_car_seat.forward_facing_height_min,sf_car_seat.forward_facing_weight_max,sf_car_seat.forward_facing_weight_min,sf_car_seat.harness_covers,sf_car_seat.has_harness_booster_mode,sf_car_seat.high_back,sf_car_seat.high_back_fit_statement,sf_car_seat.high_back_height_max,sf_car_seat.high_back_height_min,sf_car_seat.high_back_weight_max,sf_car_seat.high_back_weight_min,sf_car_seat.latch_install,sf_car_seat.lightweight,sf_car_seat.no_back_fit_statement,sf_car_seat.no_back_height_max,sf_car_seat.no_back_height_min,sf_car_seat.no_back_weight_max,sf_car_seat.no_back_weight_min,sf_car_seat.no_rethread_harness,sf_car_seat.rear_facing_age_limit,sf_car_seat.rear_facing_fit_statement,sf_car_seat.rear_facing_height_max,sf_car_seat.rear_facing_height_min,sf_car_seat.rear_facing_weight_max,sf_car_seat.rear_facing_weight_min,sf_car_seat.rollover_tested,sf_car_seat.side_impact_protection,sf_car_seat.steel_reinforced,sf_carrier.machine_washable,sf_carrier.pacifier_toy_clip,sf_carrier.position,sf_door_jumper.harness_type,sf_door_jumper.max_ceiling_height,sf_gates.gate_type,sf_gates.max_opening_size,sf_gates.min_opening_size,sf_gates.mount_type,sf_gates.opening_type_s_,sf_gates.use_case,sf_gates.walk_thru_door,sf_high_chair.cleaning,sf_high_chair.fold_flat_capable,sf_high_chair.height_adjustable,sf_high_chair.one_hand_tray,sf_playard.bassinet_insert,sf_playard.canopy,sf_playard.extra_storage,sf_playard.toys_entertainment,sf_products.age_group,sf_products.assembled_depth,sf_products.assembled_height,sf_products.assembled_weight,sf_products.assembled_width,sf_products.assembly_details,sf_products.assembly_required,sf_products.batteries_included,sf_products.battery_type,sf_products.care_copy,sf_products.certifications,sf_products.child_age_max,sf_products.child_age_min,sf_products.child_gen_fit,sf_products.child_gen_height,sf_products.child_height_max,sf_products.child_height_min,sf_products.child_weight_max,sf_products.child_weight_min,sf_products.description_header,sf_products.eco_friendly,sf_products.folded_dimensions,sf_products.forward_facing_age_limit,sf_products.forward_facing_height_limit,sf_products.hardware_included,sf_products.harness_rethread_method,sf_products.harness_style,sf_products.harness_type,sf_products.instructional_videos,sf_products.machine_washable_seating_surfa,sf_products.machine_washable_seating_surface,sf_products.made_in_usa,sf_products.manual,sf_products.manual_french,sf_products.manual_spanish,sf_products.material,sf_products.maturity,sf_products.number_of_batteries,sf_products.number_of_cup_holders,sf_products.retail_package_contents,sf_products.short_description,sf_products.short_description_header,sf_products.specifications_image,sf_products.use_copy,sf_products.vimeo_product_video,sf_products.warranty,sf_products.warranty_type,sf_shipping.package_depth,sf_shipping.package_height,sf_shipping.package_weight,sf_shipping.package_width,sf_shipping.shipping_restrictions,sf_stroller.accepts_rider_board,sf_stroller.certifications,sf_stroller.compact_fold,sf_stroller.lockable_front_wheels,sf_stroller.max_age,sf_stroller.self_standing_fold,sf_stroller.single_to_double_capable,sf_stroller.stroller_type,sf_stroller.upf_50__sun_protection_canopy,sf_stroller.wheel_material,spr.reviews,ssw.avg_rate,ssw.count_rate,stamped.badge,stamped.reviews_average,stamped.reviews_count,vnreviews.ratingValue,vnreviews.reviewCount,yotpo.reviews_average,yotpo.reviews_count' | split: ','
+-%}
+
+<div class="pdp-qa page-width">
+  <h2 class="pdp-qa__title">PDP QA — Metafields</h2>
+  <p class="pdp-qa__meta">
+    Product: <strong>{{ product.title }}</strong> &middot; {{ fields.size }} metafields referenced in theme code
+  </p>
+
+  <table class="pdp-qa__table">
+    <thead>
+      <tr>
+        <th>Namespace</th>
+        <th>Key</th>
+        <th>Type</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for field in fields -%}
+        {%- assign parts = field | split: '.' -%}
+        {%- assign ns = parts[0] -%}
+        {%- assign key = parts[1] -%}
+        {%- assign mf = product.metafields[ns][key] -%}
+        <tr>
+          <td class="pdp-qa__ns">{{ ns }}</td>
+          <td class="pdp-qa__key">{{ key }}</td>
+          <td class="pdp-qa__type">{{ mf.type }}</td>
+          <td class="pdp-qa__value">{{ mf.value | escape }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .pdp-qa {
+    padding: 2rem 0;
+    font-size: 14px;
+  }
+  .pdp-qa__title {
+    margin: 0 0 0.5rem;
+  }
+  .pdp-qa__meta {
+    margin: 0 0 1rem;
+    color: #555;
+  }
+  .pdp-qa__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .pdp-qa__table th,
+  .pdp-qa__table td {
+    border: 1px solid #ddd;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+  .pdp-qa__table th {
+    background: #f4f4f4;
+    position: sticky;
+    top: 0;
+  }
+  .pdp-qa__table tr:nth-child(even) td {
+    background: #fafafa;
+  }
+  .pdp-qa__ns {
+    width: 18%;
+    font-family: monospace;
+  }
+  .pdp-qa__key {
+    width: 24%;
+    font-family: monospace;
+  }
+  .pdp-qa__type {
+    width: 18%;
+    color: #777;
+  }
+  .pdp-qa__value {
+    width: 40%;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "PDP QA",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "QA-only: lists every product metafield referenced in the theme code with its type and current value (blank if unset). Add to a product template, then remove before launch."
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP QA",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

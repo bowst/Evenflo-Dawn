@@ -1,0 +1,147 @@
+/* At a Glance section (standalone) — Figma 2560-3434 (desktop) / 2560-3081 (mobile) */
+
+.aag-section {
+  padding: 32px 0;
+}
+
+.aag-section__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.aag-section__heading {
+  margin: 0;
+  font-family: "mr-eaves-modern", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: normal;
+  /* color: #0f3c5a; */
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.aag-section__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* ----- Card: mobile (horizontal — icon/number left, text right) ----- */
+.aag-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  background: #e3f2f3;
+}
+
+.aag-card__icon,
+.aag-card__count {
+  flex: 0 0 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aag-card__icon svg,
+.aag-card__icon img {
+  width: auto;
+  height: 24px;
+}
+
+.aag-card__count {
+  font-family: "mr-eaves-modern", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: var(--brand, #00aea9);
+}
+
+.aag-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.aag-card__title {
+  margin: 0;
+  font-family: "mr-eaves-modern", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: normal;
+  color: #111;
+  text-transform: capitalize;
+}
+
+.aag-card__text,
+.aag-card__list {
+  margin: 0;
+  font-family: "mr-eaves-modern", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: normal;
+  color: #222;
+}
+
+.aag-card__list {
+  padding-left: 24px;
+  list-style: disc;
+  text-align: left;
+}
+
+.aag-card__list li {
+  margin: 0;
+}
+
+.aag-card__cta {
+  font-family: "mr-eaves-modern", sans-serif;
+  font-size: 16px;
+  line-height: normal;
+  color: #00aea9;
+  text-decoration: underline;
+}
+
+/* ----- Card: desktop (vertical — icon/number top, centered text) ----- */
+@media (min-width: 750px) {
+  .aag-section__heading {
+    font-size: 42px;
+  }
+
+  .aag-section__grid {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .aag-card {
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 16px 8px;
+    /* border: 1px solid #e6e6e6; */
+    text-align: center;
+  }
+
+  .aag-card__icon,
+  .aag-card__count {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .aag-card__content {
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .aag-card__title {
+    font-size: 24px;
+  }
+}

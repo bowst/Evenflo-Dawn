@@ -135,19 +135,39 @@ predictive-search.search-modal__form {
 }
 
 .search-modal__form[data-upgraded='true'] input {
-  padding: 1.25rem 1.5rem .75rem;
+  padding: 1rem 1.5rem;
   padding-right: 8.5rem;
   height: 4rem;
   box-shadow: none;
   background-color: var(--color-evenflo-aqua-mist);
 }
 
+.search-modal__form[data-upgraded='true'] .field__input:focus,
+.search-modal__form[data-upgraded='true'] .field__input:not(:placeholder-shown),
+.search-modal__form[data-upgraded='true'] .field__input:-webkit-autofill {
+  padding: 1rem 1.5rem;
+  padding-right: 8.5rem;
+}
+
 .search-modal__form[data-upgraded='true'] .field__label {
-  top: calc(0.75rem + var(--inputs-border-width));
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  transition: opacity var(--duration-short) ease;
 }
 
 .search-modal__form[data-upgraded='true'] .field__input:focus ~ .field__label {
-  top: calc(var(--inputs-border-width) + 0.125rem);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  left: calc(var(--inputs-border-width) + 1.5rem);
+}
+
+.search-modal__form[data-upgraded='true'] .field__input:not(:placeholder-shown) ~ .field__label,
+.search-modal__form[data-upgraded='true'] .field__input:-webkit-autofill ~ .field__label {
+  opacity: 0;
 }
 
 .search-modal__form[data-upgraded='true'] .field__button {
@@ -161,17 +181,21 @@ predictive-search.search-modal__form {
 
 @media screen and (max-width: 750px) {
   .search-modal__form[data-upgraded='true'] {
-    padding: 0 1.5rem 1rem;
+    padding: 0 1.5rem;
   }
 }
 
 @media screen and (min-width: 751px) and (max-width: 1100px) {
   .search-modal__form[data-upgraded='true'] {
-    padding: 0 5rem 1rem;
+    padding: 0 5rem;
   }
 }
 
 @media (max-width: 1100px) {
+	.header-search-form-wrapper,
+	.header-search-expandable.is-open .header-search-form-wrapper {
+		padding-bottom: 0;
+	  }
   .search-modal__form[data-upgraded='true'] {
     position: absolute;
     top: 100%;
@@ -197,8 +221,4 @@ predictive-search.search-modal__form {
   .search-modal__form[data-upgraded='true'] input:hover {
     box-shadow: none;
   }
-}
-
-.search-modal__form[data-upgraded='true'] .field__input:focus~.field__label, .search-modal__form[data-upgraded='true'] .field__input:not(:placeholder-shown)~.field__label {
-	left: calc(var(--inputs-border-width) + 1.5rem);
 }
