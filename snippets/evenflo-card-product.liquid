@@ -91,7 +91,7 @@ Determine if the product is from support product collection
         
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
-            {%- if show_secondary_image == true -%}
+            {%- if show_secondary_image == true and show_swatches != true -%}
             <div class="media media--transparent media--hover-effect">
                           
                 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
@@ -142,6 +142,7 @@ Determine if the product is from support product collection
 			{%- else -%}
               <div class="media media--transparent variant-images">
 				{% for variant in card_product.variants %}
+                  {% assign variant_media = nil %}
 
                   {%- comment -%} Multiple fallbacks: variant.featured_media, variant.image, product.featured_media, product.media[0] {%- endcomment -%}
                   {% if variant.featured_media %}
