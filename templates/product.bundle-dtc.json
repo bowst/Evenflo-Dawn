@@ -125,6 +125,38 @@
         "padding_bottom": 12
       }
     },
+    "rich_text_ggXwct": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_c6HheT": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_bhD4kk": {
+          "type": "text",
+          "settings": {
+            "text": "<p></p>{{ product.description }}"
+          }
+        }
+      },
+      "block_order": [
+        "heading_c6HheT",
+        "text_bhD4kk"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "evenflo_dtc_bundle_items_8YyT7E": {
       "type": "evenflo-dtc-bundle-items",
       "name": "DTC Bundle Items",
@@ -266,24 +298,6 @@
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
       }
     },
-    "1728651794c071ea89": {
-      "type": "apps",
-      "blocks": {
-        "yotpo_product_reviews_ugc_reviews_nnaqeW": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_product_reviews_ugc_reviews_nnaqeW"
-      ],
-      "disabled": true,
-      "settings": {
-        "include_margins": true
-      }
-    },
     "evenflo_join_aYHW79": {
       "type": "evenflo-join",
       "settings": {}
@@ -339,50 +353,17 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "rich_text_ggXwct": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_c6HheT": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
-          }
-        },
-        "text_bhD4kk": {
-          "type": "text",
-          "settings": {
-            "text": "<p></p>{{ product.description }}"
-          }
-        }
-      },
-      "block_order": [
-        "heading_c6HheT",
-        "text_bhD4kk"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
     "custom_liquid_EzUHxi",
     "evenflo_main_product_4BJMnB",
+    "main",
     "rich_text_ggXwct",
     "evenflo_dtc_bundle_items_8YyT7E",
-    "main",
     "related-products",
     "evenflo_contact_parentlink_KAtMr7",
     "evenflo_quote_Q6Q7qn",
-    "1728651794c071ea89",
     "evenflo_join_aYHW79",
     "evenflo_benefits_3PpxVD"
   ]
