@@ -467,66 +467,6 @@
         "padding_bottom": 12
       }
     },
-    "evenflo_product_highlights_yGptpT": {
-      "type": "evenflo-product-highlights",
-      "disabled": true,
-      "settings": {}
-    },
-    "evenflo_parentlink_QJ7UGE": {
-      "type": "evenflo-parentlink",
-      "disabled": true,
-      "settings": {
-        "heading": "Supported By",
-        "left_content": "Phone",
-        "right_content": "Email"
-      }
-    },
-    "evenflo_full_width_An6GrY": {
-      "type": "evenflo-full-width",
-      "disabled": true,
-      "settings": {
-        "heading": "evenflo",
-        "content": "<p>Default Content</p>"
-      }
-    },
-    "evenflo_product_video_KEFXhc": {
-      "type": "evenflo-product-video",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "description": ""
-      }
-    },
-    "evenflo_full_width_ngaV99": {
-      "type": "evenflo-full-width",
-      "disabled": true,
-      "settings": {
-        "heading": "Evenflo",
-        "content": "<p>Default Content</p>"
-      }
-    },
-    "evenflo_video_cbQmLm": {
-      "type": "evenflo-video",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "evenflo_features_f9tF3G": {
-      "type": "evenflo-features",
-      "disabled": true,
-      "settings": {
-        "product_handles": ""
-      }
-    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -545,37 +485,6 @@
         "padding_bottom": 28
       }
     },
-    "rich_text_BXQwKw": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_3YW6mh": {
-          "type": "heading",
-          "settings": {
-            "heading": "{{ product.title }}",
-            "heading_size": "h1"
-          }
-        },
-        "text_T7jF4q": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ product.metafields.sf_products.short_description | metafield_tag }}</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_3YW6mh",
-        "text_T7jF4q"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "evenflo_contact_parentlink_KAtMr7": {
       "type": "evenflo-contact-parentlink",
       "settings": {
@@ -589,24 +498,6 @@
       "settings": {
         "quote": "{{ product.metafields.custom.customer_quote.value }}",
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
-      }
-    },
-    "1728651794c071ea89": {
-      "type": "apps",
-      "blocks": {
-        "yotpo_product_reviews_ugc_reviews_nnaqeW": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_product_reviews_ugc_reviews_nnaqeW"
-      ],
-      "disabled": true,
-      "settings": {
-        "include_margins": true
       }
     },
     "evenflo_join_aYHW79": {
@@ -672,18 +563,9 @@
     "qq_split_screen_MFjTgT",
     "qq_split_screen_4DDLhK",
     "main",
-    "evenflo_product_highlights_yGptpT",
-    "evenflo_parentlink_QJ7UGE",
-    "evenflo_full_width_An6GrY",
-    "evenflo_product_video_KEFXhc",
-    "evenflo_full_width_ngaV99",
-    "evenflo_video_cbQmLm",
-    "evenflo_features_f9tF3G",
     "related-products",
-    "rich_text_BXQwKw",
     "evenflo_contact_parentlink_KAtMr7",
     "evenflo_quote_Q6Q7qn",
-    "1728651794c071ea89",
     "evenflo_join_aYHW79",
     "evenflo_benefits_3PpxVD"
   ]
