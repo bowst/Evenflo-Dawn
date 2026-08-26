@@ -67,67 +67,6 @@
         "show_text_below": false
       }
     },
-    "evenflo_image_banner_DUXhf8": {
-      "type": "evenflo-image-banner",
-      "blocks": {
-        "heading_DmbgQQ": {
-          "type": "heading",
-          "settings": {
-            "heading": "ADVENTURE, THEN NAP",
-            "heading_underline": false,
-            "heading_size": "h1"
-          }
-        },
-        "text_bbYAKt": {
-          "type": "text",
-          "settings": {
-            "text": "INTRODUCING PIVOT XPLORE™ DREAMZ",
-            "text_style": "subtitle"
-          }
-        },
-        "buttons_nVbDXJ": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop Now",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_DmbgQQ",
-        "text_bbYAKt",
-        "buttons_nVbDXJ"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "p {color: black;}",
-        "a {color: white; background-color: black;}",
-        ".banner__text p {margin: 0px;}",
-        "a {--border-offset: 0;}"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/clouds.jpg",
-        "button_color": "#ffffff",
-        "button_text_color": "#000000",
-        "mobile_button_color": "#ffffff",
-        "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#ffffff",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -143,7 +82,8 @@
           "type": "heading",
           "settings": {
             "heading": "> PUSH < PULL ❤ DREAM",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "decorative_heading": false
           }
         },
         "text_YD96Pd": {
@@ -173,6 +113,7 @@
         "desktop_content_position": "center",
         "content_alignment": "center",
         "full_width": true,
+        "background_color": "",
         "padding_top": 40,
         "padding_bottom": 0
       }
@@ -201,7 +142,10 @@
         ".content-container--full-width img {width: 100%;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/dreamz-1.jpg"
+        "image": "shopify://shop_images/dreamz-1.jpg",
+        "heading": "",
+        "text": "",
+        "position": "top-left"
       }
     },
     "evenflo_rich_text_K6aRry": {
@@ -211,7 +155,8 @@
           "type": "heading",
           "settings": {
             "heading": "Cruise Then Snooze",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "decorative_heading": false
           }
         },
         "text_nUaQER": {
@@ -241,6 +186,7 @@
         "desktop_content_position": "center",
         "content_alignment": "center",
         "full_width": false,
+        "background_color": "",
         "padding_top": 40,
         "padding_bottom": 0
       }
@@ -252,6 +198,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/bassinet-insert-hung.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "",
             "text": "",
@@ -263,6 +213,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/bassinet-insert-isolated.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "",
             "text": "",
@@ -282,9 +236,11 @@
         "title": "",
         "heading_size": "h2",
         "column_style": "classic",
+        "container_size": "full_width",
         "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "circle",
+        "enable_image_modal": true,
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "primary",
@@ -352,62 +308,6 @@
         "show_text_below": false
       }
     },
-    "evenflo_image_banner_ghj9AB": {
-      "type": "evenflo-image-banner",
-      "blocks": {
-        "heading_agNXwM": {
-          "type": "heading",
-          "settings": {
-            "heading": "Shade your littles",
-            "heading_underline": false,
-            "heading_size": "h1"
-          }
-        },
-        "text_VUcebm": {
-          "type": "text",
-          "settings": {
-            "text": "Larger UPF 50+ canopies expand from 2 to 3 panels",
-            "text_style": "body"
-          }
-        },
-        "buttons_4KXFTJ": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_agNXwM",
-        "text_VUcebm",
-        "buttons_4KXFTJ"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "image": "shopify://shop_images/Dreamz-18912482_JetSetter_566.jpg",
-        "button_color": "#ffffff",
-        "button_text_color": "#000000",
-        "mobile_button_color": "#ffffff",
-        "mobile_button_text_color": "#000000",
-        "desktop_heading_color": "#ffffff",
-        "mobile_heading_color": "#000000",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
     "multicolumn_FD8Ldr": {
       "type": "multicolumn",
       "blocks": {
@@ -461,60 +361,6 @@
         "padding_bottom": 36
       }
     },
-    "evenflo_multicolumn_GAA8dY": {
-      "type": "evenflo-multicolumn",
-      "blocks": {
-        "column_pkhGnM": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/stay-organized.jpg",
-            "liquid_content": "",
-            "title": "Stay Organized",
-            "text": "<p>Detachable storage basket has pop-out cup holders</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_CYRnGT": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/keep-comfy.jpg",
-            "liquid_content": "",
-            "title": "Keep Kids Comfy",
-            "text": "<p>The newly extended footwell provides more legroom</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_pkhGnM",
-        "column_CYRnGT"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".inline-richtext {font-size: 36px;}",
-        ".heading-underline::after {bottom: -5px;}"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "column_style": "classic",
-        "heading_alignment": "start",
-        "image_width": "half",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "Shop Now",
-        "button_link": "shopify://products/pivot-xplore-dreamz-stroller-wagon",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "evenflo_multicolumn_axeGpP": {
       "type": "evenflo-multicolumn",
       "blocks": {
@@ -522,6 +368,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/black.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "Jetsetter black",
             "text": "",
@@ -533,6 +383,10 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/green.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
             "liquid_content": "",
             "title": "Voyager green",
             "text": "",
@@ -552,9 +406,11 @@
         "title": "",
         "heading_size": "h1",
         "column_style": "classic",
+        "container_size": "full_width",
         "heading_alignment": "start",
         "image_width": "half",
         "image_ratio": "adapt",
+        "enable_image_modal": true,
         "columns_desktop": 2,
         "column_alignment": "center",
         "background_style": "none",
@@ -570,7 +426,6 @@
   },
   "order": [
     "image_banner_na3djE",
-    "evenflo_image_banner_DUXhf8",
     "main",
     "evenflo_rich_text_c76eWA",
     "evenflo_video_wafDKM",
@@ -578,9 +433,7 @@
     "evenflo_rich_text_K6aRry",
     "evenflo_multicolumn_Rn3qFJ",
     "image_banner_DpFjCd",
-    "evenflo_image_banner_ghj9AB",
     "multicolumn_FD8Ldr",
-    "evenflo_multicolumn_GAA8dY",
     "evenflo_multicolumn_axeGpP"
   ]
 }
