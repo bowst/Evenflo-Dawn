@@ -10,6 +10,10 @@
 {% assign overview_features = product.metafields.sf_products.overview_features.value %}
 {% assign overview_features = overview_features | split: '|' %}
 {% comment %} end of future update {% endcomment %}
+{% capture video_tab_content %}
+  {% render 'evenflo-pdp-tab-video' %}
+{% endcapture %}
+{% assign video_tab_content = video_tab_content | strip %}
 {% capture whats_included_content %}
   {% render 'evenflo-pdp-tab-whats-included' %}
 {% endcapture %}
@@ -25,6 +29,7 @@
 
 {% assign tab_count = 0 %}
 {% if overview_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
+{% if video_tab_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
 {% if specs_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
 {% if whats_included_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
 {% if dimensions_fit_content != blank %}{% assign tab_count = tab_count | plus: 1 %}{% endif %}
@@ -33,6 +38,7 @@
 
 {%- liquid
   assign panel_overview = 'overview-' | append: section.id
+  assign panel_video = 'video-' | append: section.id
   assign panel_specs = 'specs-' | append: section.id
   assign panel_included = 'included-' | append: section.id
   assign panel_dimensions = 'dimensions-' | append: section.id
@@ -43,6 +49,8 @@
   assign first_panel = panel_reviews
   if overview_content != blank
     assign first_panel = panel_overview
+  elsif video_tab_content != blank
+    assign first_panel = panel_video
   elsif specs_content != blank
     assign first_panel = panel_specs
   elsif whats_included_content != blank
@@ -68,6 +76,17 @@
               aria-selected="{% if first_panel == panel_overview %}true{% else %}false{% endif %}"
             >
               Overview
+            </button>
+          {% endif %}
+          {% if video_tab_content != blank %}
+            <button
+              class="tab-button{% if first_panel == panel_video %} active{% endif %}"
+              type="button"
+              role="tab"
+              data-tab="{{ panel_video }}"
+              aria-selected="{% if first_panel == panel_video %}true{% else %}false{% endif %}"
+            >
+              Video
             </button>
           {% endif %}
           {% if specs_content != blank %}
@@ -185,6 +204,26 @@
 			</div>
 		</div>
 		</section>
+          {% endif %}
+
+          {% if video_tab_content != blank %}
+            <section
+              class="tab-content{% if first_panel == panel_video %} active mobile-open{% endif %} tab-content--video"
+              data-panel="{{ panel_video }}"
+              role="tabpanel"
+            >
+              <h3
+                class="content-heading"
+                role="button"
+                tabindex="0"
+                aria-expanded="{% if first_panel == panel_video %}true{% else %}false{% endif %}"
+              >
+                Video
+              </h3>
+              <div class="content-body">
+                {{ video_tab_content }}
+              </div>
+            </section>
           {% endif %}
 
           {% if specs_content != blank %}
