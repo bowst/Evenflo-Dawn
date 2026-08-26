@@ -1,0 +1,35 @@
+{% comment %}
+  PDP Video tab — custom.video_embed_1 through custom.video_embed_9.
+  Each field is embed HTML. Outputs nothing if all nine are blank.
+{% endcomment %}
+{%- liquid
+  assign video_keys = 'video_embed_1,video_embed_2,video_embed_3,video_embed_4,video_embed_5,video_embed_6,video_embed_7,video_embed_8,video_embed_9' | split: ','
+  assign has_video = false
+  for key in video_keys
+    assign embed = product.metafields.custom[key]
+    assign embed_content = embed.value | default: embed
+    if embed_content != blank
+      assign has_video = true
+      break
+    endif
+  endfor
+-%}
+{%- if has_video -%}
+  <div class="evenflo-pdp-tab-videos">
+    {%- for key in video_keys -%}
+      {%- assign embed = product.metafields.custom[key] -%}
+      {%- assign embed_content = embed.value | default: embed -%}
+      {%- if embed_content != blank -%}
+        <div class="evenflo-pdp-tab-videos__item">
+          <div class="evenflo-pdp-tab-videos__inner">
+            {%- if embed.type == 'rich_text_field' -%}
+              {{ embed | metafield_tag }}
+            {%- else -%}
+              {{ embed_content }}
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
