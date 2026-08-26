@@ -232,15 +232,6 @@
       ],
       "settings": {}
     },
-    "evenflo_parentlink_QJ7UGE": {
-      "type": "evenflo-parentlink",
-      "disabled": true,
-      "settings": {
-        "heading": "Supported By",
-        "left_content": "Phone",
-        "right_content": "Email"
-      }
-    },
     "evenflo_full_width_An6GrY": {
       "type": "evenflo-full-width",
       "settings": {
@@ -253,29 +244,6 @@
       "settings": {
         "heading": "",
         "description": ""
-      }
-    },
-    "evenflo_full_width_ngaV99": {
-      "type": "evenflo-full-width",
-      "disabled": true,
-      "settings": {
-        "heading": "Evenflo",
-        "content": "<p>Default Content</p>"
-      }
-    },
-    "evenflo_video_cbQmLm": {
-      "type": "evenflo-video",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "evenflo_features_f9tF3G": {
@@ -300,37 +268,6 @@
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 28
-      }
-    },
-    "rich_text_BXQwKw": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_3YW6mh": {
-          "type": "heading",
-          "settings": {
-            "heading": "{{ product.title }}",
-            "heading_size": "h1"
-          }
-        },
-        "text_T7jF4q": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ product.metafields.sf_products.short_description | metafield_tag }}</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_3YW6mh",
-        "text_T7jF4q"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "evenflo_contact_parentlink_KAtMr7": {
@@ -420,147 +357,17 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "8903cf235281d529ae84": {
-      "type": "apps",
-      "blocks": {
-        "76e87420-26e3-490d-945a-1deeab836dac": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "76e87420-26e3-490d-945a-1deeab836dac"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "5c4b2c35197f9df77208": {
-      "type": "apps",
-      "blocks": {
-        "acf86241-804e-4989-a8d8-928f6f363f4f": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "acf86241-804e-4989-a8d8-928f6f363f4f"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "b980df24bf525cde4193": {
-      "type": "apps",
-      "blocks": {
-        "85803ba3-c845-4638-9c1c-e48009ccd720": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "85803ba3-c845-4638-9c1c-e48009ccd720"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "525ce4d64caf979cb2ac": {
-      "type": "apps",
-      "blocks": {
-        "7c15fce5-0574-478f-b7dc-1419535c7319": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "7c15fce5-0574-478f-b7dc-1419535c7319"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "0dad26d1b55f3c48c0ea": {
-      "type": "apps",
-      "blocks": {
-        "86150356-9fc2-4d38-8ce4-ec9289c5dd95": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "86150356-9fc2-4d38-8ce4-ec9289c5dd95"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "da871414eec5ac5f5665": {
-      "type": "apps",
-      "blocks": {
-        "30560dfe-9b06-40bc-857f-a17554165859": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "30560dfe-9b06-40bc-857f-a17554165859"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "a0fd873ebd8caa413d72": {
-      "type": "apps",
-      "blocks": {
-        "e12a5bd9-3ed3-40e7-bba7-34e1ce727619": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "e12a5bd9-3ed3-40e7-bba7-34e1ce727619"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "custom_liquid_EzUHxi",
     "evenflo_main_product_4BJMnB",
     "main",
-    "a0fd873ebd8caa413d72",
-    "da871414eec5ac5f5665",
-    "0dad26d1b55f3c48c0ea",
-    "525ce4d64caf979cb2ac",
-    "b980df24bf525cde4193",
-    "5c4b2c35197f9df77208",
-    "8903cf235281d529ae84",
     "evenflo_product_highlights_yGptpT",
-    "evenflo_parentlink_QJ7UGE",
     "evenflo_full_width_An6GrY",
     "evenflo_product_video_KEFXhc",
-    "evenflo_full_width_ngaV99",
-    "evenflo_video_cbQmLm",
     "evenflo_features_f9tF3G",
     "related-products",
-    "rich_text_BXQwKw",
     "evenflo_contact_parentlink_KAtMr7",
     "evenflo_quote_Q6Q7qn",
     "1728651794c071ea89",

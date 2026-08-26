@@ -29,6 +29,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "quick_add": "none",
         "enable_filtering": true,
         "filter_type": "vertical",
@@ -74,37 +75,11 @@
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
-    },
-    "evenflo_emplifi_FJhB7W": {
-      "type": "evenflo-emplifi",
-      "disabled": true,
-      "settings": {
-        "pixlee_id": "{{ collection.metafields.custom.emplifi_id.value }}"
-      }
-    },
-    "17507145101e2e6417": {
-      "type": "apps",
-      "blocks": {
-        "pixlee_turnto_social_ugc_collection_block_PepEmb": {
-          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/collection-block/82674345-73c3-4c07-a116-a721866b66ca",
-          "settings": {
-            "widget_id": "{{ collection.metafields.custom.emplifi_id.value }}"
-          }
-        }
-      },
-      "block_order": [
-        "pixlee_turnto_social_ugc_collection_block_PepEmb"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "evenflo_collection_image_banner_38dNhk",
-    "evenflo_emplifi_FJhB7W",
-    "17507145101e2e6417"
+    "evenflo_collection_image_banner_38dNhk"
   ]
 }
