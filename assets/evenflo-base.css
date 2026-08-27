@@ -402,6 +402,17 @@ This is all to override some weird hover styles */
   z-index: 1;
 }
 
+/* Hide header icon rings only when Globo bottom-bar opened menu/cart (see evenflo-globo-header-focus.js) */
+body.evenflo-globo-header-focus .header__icon--menu:focus,
+body.evenflo-globo-header-focus .header__icon--menu:focus-visible,
+body.evenflo-globo-header-focus .header__icon--menu.focused,
+body.evenflo-globo-header-focus #cart-icon-bubble:focus,
+body.evenflo-globo-header-focus #cart-icon-bubble:focus-visible,
+body.evenflo-globo-header-focus #cart-icon-bubble.focused {
+  outline: 0;
+  box-shadow: none;
+}
+
 /* ==========================================================================
    7. Header Menu & Mega Menu
    ========================================================================== */

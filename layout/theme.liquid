@@ -469,6 +469,7 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script src="{{ 'evenflo-globo-header-focus.js' | asset_url }}" defer="defer"></script>
     {% comment %} <script>
     function includeScript(e){var t=document.createElement("script"),n=document.getElementsByTagName("script")[0];t.type="text/javascript",t.src=e,t.async=!0,n.parentNode.insertBefore(t,n)}includeScript("https://bot.emplifi.io/components/Launchers/Messenger/LauncherSelector.js");
     </script> {% endcomment %}
