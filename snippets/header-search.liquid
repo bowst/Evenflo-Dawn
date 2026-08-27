@@ -10,8 +10,9 @@
 
 {% comment %}
   Evenflo custom header search.
-  Desktop: icon-only until expanded.
-  Mobile: default visible search form behavior.
+  Desktop: real field always visible (160px), expands to 240px + close on interact.
+  Mobile: overlay search form under the header (opened via Globo / JS).
+  Toggle button kept in DOM for mobile open path; hidden on desktop.
 {% endcomment %}
 
 {{ 'header-search.css' | asset_url | stylesheet_tag }}
@@ -30,9 +31,7 @@
     <span class="svg-wrapper header-search-toggle__icon-search">
       {{- 'icon-MagnifyingGlass.svg' | inline_asset_content -}}
     </span>
-    <span class="svg-wrapper header-search-toggle__icon-close">
-      {{- 'icon-X.svg' | inline_asset_content -}}
-    </span>
+    <span class="header-search-toggle__label">{{ 'general.search.search' | t }}</span>
   </button>
 
   <div class="header-search-form-wrapper">
@@ -42,41 +41,57 @@
       <search-form class="search-modal__form">
     {%- endif -%}
     <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
-      <div class="field">
-        <input
-          class="search__input field__input"
-          id="{{ input_id }}"
-          type="search"
-          name="q"
-          value="{{ search.terms | escape }}"
-          placeholder="{{ 'general.search.search' | t }}"
-          {%- if settings.predictive_search_enabled -%}
-            role="combobox"
-            aria-expanded="false"
-            aria-owns="predictive-search-results"
-            aria-controls="predictive-search-results"
-            aria-haspopup="listbox"
-            aria-autocomplete="list"
-            autocorrect="off"
-            autocomplete="off"
-            autocapitalize="off"
-            spellcheck="false"
-          {%- endif -%}
-        >
-        <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
-        <input type="hidden" name="options[prefix]" value="last">
+      <div class="header-search-field-shell">
+        <div class="field">
+          <input
+            class="search__input field__input"
+            id="{{ input_id }}"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.search' | t }}"
+            {%- if settings.predictive_search_enabled -%}
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results"
+              aria-controls="predictive-search-results"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            {%- endif -%}
+          >
+          <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
+          <input type="hidden" name="options[prefix]" value="last">
+          <button
+            type="submit"
+            class="search__button field__button"
+            aria-label="{{ 'general.search.search' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-MagnifyingGlass.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          <button
+            type="reset"
+            class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+            aria-label="{{ 'general.search.reset' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-reset.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+
         <button
-          type="reset"
-          class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
-          aria-label="{{ 'general.search.reset' | t }}"
+          type="button"
+          class="header-search-close"
+          aria-label="{{ 'accessibility.close' | t }}"
         >
           <span class="svg-wrapper">
-            {{- 'icon-reset.svg' | inline_asset_content -}}
-          </span>
-        </button>
-        <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
-          <span class="svg-wrapper">
-            {{- 'icon-MagnifyingGlass.svg' | inline_asset_content -}}
+            {{- 'icon-X.svg' | inline_asset_content -}}
           </span>
         </button>
       </div>
@@ -99,20 +114,9 @@
 {%- if is_primary -%}
 <script>
   (function () {
-    var MOBILE_MAX_WIDTH = 1100;
     var controllers = [];
     var primaryController = null;
     var searchWasOpenOnPointerDown = false;
-
-    function isMobileSearch() {
-      return window.matchMedia('(max-width: ' + MOBILE_MAX_WIDTH + 'px)').matches;
-    }
-
-    function updateMobileSearchTop() {
-      var headerEl = document.querySelector('.section-header');
-      var top = headerEl ? headerEl.getBoundingClientRect().bottom : 0;
-      document.documentElement.style.setProperty('--evenflo-header-search-top', top + 'px');
-    }
 
     function isGloboSearchTrigger(target) {
       var link = target && target.closest ? target.closest('a[href="gm-open:Search"]') : null;
@@ -141,28 +145,27 @@
 
     function createController(container) {
       var toggle = container.querySelector('.header-search-toggle');
+      var closeButton = container.querySelector('.header-search-close');
+      var shell = container.querySelector('.header-search-field-shell');
       var input = container.querySelector('.search__input');
 
-      if (!toggle || !input) return null;
+      if (!input) return null;
 
       function closeSearch() {
         container.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('evenflo-header-search-open');
         if (input) {
           input.value = '';
+          input.blur();
           input.dispatchEvent(new Event('input', { bubbles: true }));
           input.dispatchEvent(new Event('change', { bubbles: true }));
         }
       }
 
       function openSearch() {
-        if (isMobileSearch()) {
-          updateMobileSearchTop();
-        }
-
         container.classList.add('is-open');
-        toggle.setAttribute('aria-expanded', 'true');
+        if (toggle) toggle.setAttribute('aria-expanded', 'true');
         document.body.classList.add('evenflo-header-search-open');
 
         setTimeout(function () {
@@ -178,11 +181,33 @@
         }
       }
 
-      toggle.addEventListener('click', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        toggleSearch();
+      if (toggle) {
+        toggle.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          toggleSearch();
+        });
+      }
+
+      if (shell) {
+        shell.addEventListener('click', function (event) {
+          if (event.target.closest('.header-search-close')) return;
+          if (container.classList.contains('is-open')) return;
+          openSearch();
+        });
+      }
+
+      input.addEventListener('focus', function () {
+        if (!container.classList.contains('is-open')) openSearch();
       });
+
+      if (closeButton) {
+        closeButton.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          closeSearch();
+        });
+      }
 
       return {
         container: container,
@@ -244,13 +269,6 @@
             if (controller.isOpen()) controller.close();
           });
         }
-      });
-
-      window.addEventListener('resize', function () {
-        if (!isMobileSearch()) return;
-        controllers.forEach(function (controller) {
-          if (controller.isOpen()) updateMobileSearchTop();
-        });
       });
     }
 

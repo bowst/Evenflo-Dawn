@@ -4,16 +4,41 @@
   position: relative;
 }
 
-.header-search-toggle .header-search-toggle__icon-close {
+.header-search-toggle__label {
   display: none;
 }
 
-.header-search-expandable.is-open .header-search-toggle .header-search-toggle__icon-search {
-  display: none;
+.header-search-field-shell {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--color-evenflo-aqua-mist);
 }
 
-.header-search-expandable.is-open .header-search-toggle .header-search-toggle__icon-close {
-  display: inline-flex;
+.header-search-field-shell .field {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.header-search-close {
+  display: none;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4rem;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header-search-close .svg-wrapper,
+.header-search-close .icon {
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 @media screen and (max-width: 1100px) {
@@ -23,17 +48,23 @@
 
   .header-search-expandable.is-open {
     display: block !important;
-    position: fixed;
-    top: var(--evenflo-header-search-top, var(--header-height, 0px));
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
+    width: 100%;
     z-index: 10050;
     background-color: rgb(var(--color-background));
     box-shadow: 0 0.2rem 0.6rem rgba(var(--color-foreground), 0.08);
+    padding: 0.8rem 1.2rem;
   }
 
   .header-search-expandable.is-open .header-search-toggle {
     display: none;
+  }
+
+  .header-search-expandable.is-open .header-search-close {
+    display: inline-flex;
   }
 
   .header-search-expandable.is-open .header-search-form-wrapper {
@@ -44,7 +75,7 @@
     pointer-events: auto !important;
     overflow: visible !important;
     transform: none;
-    padding: 0 1.6rem 1.2rem;
+    padding: 0;
   }
 
   .header-search-expandable.is-open .header-search-form-wrapper .search,
@@ -57,10 +88,6 @@
     position: static !important;
   }
 
-  body.evenflo-header-search-open {
-    overflow: hidden;
-  }
-
   body.evenflo-header-search-open .gm-menu-mobile-footer,
   body.evenflo-header-search-open .gm-menu-bottom {
     pointer-events: none;
@@ -71,44 +98,34 @@
   }
 }
 
+/* ==========================================================================
+   Desktop expand-in-place field (160px layout; visual grows left to 240px)
+   Revert: restore previous "fake field button" desktop block if needed.
+   ========================================================================== */
 @media screen and (min-width: 1101px) {
   .header-search-toggle {
-    display: inline-flex;
-    position: relative;
-    z-index: 61;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
+    display: none !important;
+  }
+
+  .header-search-expandable {
+    width: 160px;
+    flex-shrink: 0;
   }
 
   .header-search-form-wrapper {
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    overflow: hidden !important;
-    transition: width 0.3s ease, opacity 0.2s ease;
+    position: relative;
+    width: 160px;
+    height: 4rem;
+    overflow: visible;
     z-index: 60;
-    background-color: rgb(var(--color-background));
-  }
-
-  .header-search-expandable.is-open .header-search-form-wrapper {
-    width: 240px !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    overflow: visible !important;
   }
 
   .header-search-form-wrapper .search,
   .header-search-form-wrapper .search-modal__form,
   .header-search-form-wrapper > predictive-search.search-modal__form,
   .header-search-form-wrapper > search-form.search-modal__form {
-    width: 240px;
-    min-width: 240px;
+    width: 100%;
+    min-width: 0;
     max-width: none;
     position: static !important;
     top: auto !important;
@@ -117,12 +134,44 @@
     background: transparent !important;
   }
 
+  /* Visual shell stays layout-sized when closed; expands left over the menu when open */
+  .header-search-field-shell {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 160px;
+    transition: width 0.3s ease;
+    z-index: 61;
+  }
+
+  .header-search-expandable.is-open .header-search-field-shell {
+    width: 240px;
+  }
+
+  .header-search-close {
+    display: inline-flex;
+    width: 0;
+    min-width: 0;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: width 0.3s ease, opacity 0.2s ease, min-width 0.3s ease;
+  }
+
+  .header-search-expandable.is-open .header-search-close {
+    width: 4.4rem;
+    min-width: 4.4rem;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .header-search-form-wrapper .predictive-search {
     z-index: 62;
   }
 
-  .header-search-form-wrapper .field {
-    margin: 0;
+  .search-modal__form[data-upgraded='true'] {
+    padding: 0;
   }
 }
 
@@ -134,23 +183,27 @@ predictive-search.search-modal__form {
   padding: 0.5rem 0;
 }
 
+.search-modal__form[data-upgraded='true'] .header-search-field-shell {
+  background-color: var(--color-evenflo-aqua-mist);
+}
+
 .search-modal__form[data-upgraded='true'] input {
-  padding: 1rem 1.5rem;
-  padding-right: 8.5rem;
+  padding: 1rem 1.5rem 1rem 4.8rem;
   height: 4rem;
   box-shadow: none;
-  background-color: var(--color-evenflo-aqua-mist);
+  background-color: transparent;
 }
 
 .search-modal__form[data-upgraded='true'] .field__input:focus,
 .search-modal__form[data-upgraded='true'] .field__input:not(:placeholder-shown),
 .search-modal__form[data-upgraded='true'] .field__input:-webkit-autofill {
-  padding: 1rem 1.5rem;
-  padding-right: 8.5rem;
+  padding: 1rem 1.5rem 1rem 4.8rem;
+  background-color: transparent;
 }
 
 .search-modal__form[data-upgraded='true'] .field__label {
   top: 50%;
+  left: 4.8rem;
   transform: translateY(-50%);
   font-size: 1.6rem;
   letter-spacing: 0.1rem;
@@ -159,10 +212,10 @@ predictive-search.search-modal__form {
 
 .search-modal__form[data-upgraded='true'] .field__input:focus ~ .field__label {
   top: 50%;
+  left: 4.8rem;
   transform: translateY(-50%);
   font-size: 1.6rem;
   letter-spacing: 0.1rem;
-  left: calc(var(--inputs-border-width) + 1.5rem);
 }
 
 .search-modal__form[data-upgraded='true'] .field__input:not(:placeholder-shown) ~ .field__label,
@@ -179,29 +232,46 @@ predictive-search.search-modal__form {
   width: 18px;
 }
 
+/* Search icon on the left, inside the aqua shell */
+.search-modal__form[data-upgraded='true'] .search__button {
+  left: var(--inputs-border-width);
+  right: auto;
+}
+
+.search-modal__form[data-upgraded='true'] .reset__button {
+  right: var(--inputs-border-width);
+  left: auto;
+}
+
+.search-modal__form[data-upgraded='true'] .reset__button:not(:focus-visible)::after,
+.search-modal__form[data-upgraded='true'] .reset__button:not(:focus)::after {
+  display: none;
+}
+
 @media screen and (max-width: 750px) {
   .search-modal__form[data-upgraded='true'] {
-    padding: 0 1.5rem;
+    padding: 0;
   }
 }
 
 @media screen and (min-width: 751px) and (max-width: 1100px) {
   .search-modal__form[data-upgraded='true'] {
-    padding: 0 5rem;
+    padding: 0;
   }
 }
 
 @media (max-width: 1100px) {
-	.header-search-form-wrapper,
-	.header-search-expandable.is-open .header-search-form-wrapper {
-		padding-bottom: 0;
-	  }
+  .header-search-form-wrapper,
+  .header-search-expandable.is-open .header-search-form-wrapper {
+    padding-bottom: 0;
+  }
+
   .search-modal__form[data-upgraded='true'] {
-    position: absolute;
-    top: 100%;
-    left: 0;
+    position: relative;
+    top: auto;
+    left: auto;
     width: 100%;
-    background-color: #fff;
+    background-color: transparent;
   }
 
   .search-modal__form[data-upgraded='true'],
@@ -213,12 +283,19 @@ predictive-search.search-modal__form {
   .search-modal__form[data-upgraded='true'] .field:after {
     border: none;
     box-shadow: none;
-    border-bottom: 1px solid;
   }
 
   .search-modal__form[data-upgraded='true'] input,
   .search-modal__form[data-upgraded='true'] input:focus,
   .search-modal__form[data-upgraded='true'] input:hover {
     box-shadow: none;
+  }
+
+  /* Leave room for reset inside field; close sits in the shell to the right */
+  .search-modal__form[data-upgraded='true'] input,
+  .search-modal__form[data-upgraded='true'] .field__input:focus,
+  .search-modal__form[data-upgraded='true'] .field__input:not(:placeholder-shown),
+  .search-modal__form[data-upgraded='true'] .field__input:-webkit-autofill {
+    padding-right: 4.8rem;
   }
 }
