@@ -83,6 +83,7 @@
         },
         "evenflo_at_a_glance_DiTRnU": {
           "type": "evenflo-at-a-glance",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -114,6 +115,26 @@
         "padding_bottom": 12
       }
     },
+    "evenflo_at_a_glance_yGmmwj": {
+      "type": "evenflo-at-a-glance",
+      "name": "At a Glance",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#FFFFFF",
+        "sensorsafe_url": "",
+        "sensorysoothe_url": ""
+      }
+    },
+    "evenflo_features_carousel_faM47C": {
+      "type": "evenflo-features-carousel",
+      "name": "Evenflo Features Carousel",
+      "settings": {
+        "heading": "Features",
+        "background_color": "#fcfcfd",
+        "columns_desktop": 3,
+        "product_handles": ""
+      }
+    },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
       "settings": {}
@@ -127,6 +148,7 @@
     },
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
+      "disabled": true,
       "settings": {
         "product_handles": ""
       }
@@ -241,28 +263,13 @@
           "settings": {
             "product": "{{product}}"
           }
-        },
-        "pixlee_turnto_social_ugc_product_block_pmr6Pd": {
-          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
-          "disabled": true,
-          "settings": {
-            "widget_id": ""
-          }
         }
       },
       "block_order": [
-        "ff8fbda8-275c-4b78-a626-1396af706d70",
-        "pixlee_turnto_social_ugc_product_block_pmr6Pd"
+        "ff8fbda8-275c-4b78-a626-1396af706d70"
       ],
       "settings": {
         "include_margins": true
-      }
-    },
-    "932a7bd1-78d6-41d3-895a-200e09134f47": {
-      "type": "evenflo-pixlee",
-      "disabled": true,
-      "settings": {
-        "pixlee_id": "Pixlee ID"
       }
     },
     "94dde192-35b0-4467-904b-69ef073615d6": {
@@ -342,6 +349,13 @@
         "padding_bottom": 36
       }
     },
+    "932a7bd1-78d6-41d3-895a-200e09134f47": {
+      "type": "evenflo-pixlee",
+      "disabled": true,
+      "settings": {
+        "pixlee_id": "Pixlee ID"
+      }
+    },
     "evenflo_pdp_tabs_pMQCcV": {
       "type": "evenflo-pdp-tabs",
       "name": "PDP Tabs",
@@ -351,6 +365,8 @@
   "order": [
     "custom_liquid_TenaUX",
     "main",
+    "evenflo_at_a_glance_yGmmwj",
+    "evenflo_features_carousel_faM47C",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_product_video_HwJ8Yd",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",

@@ -1,4 +1,5 @@
 {{ 'evenflo-peace-of-mind-new.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-element-bundle.min.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign user_manual = product.metafields.sf_products.manual
@@ -15,6 +16,16 @@
   if warranty != blank
     assign has_warranty = true
   endif
+
+  assign support_link = section.settings.support_link
+  if support_link == blank
+    assign support_link = 'https://www.evenflo.com/pages/parentlink-resource-center'
+  endif
+
+  assign parts_link = section.settings.parts_link
+  if parts_link == blank
+    assign parts_link = 'https://parts.evenflo.com/collections/evenflo'
+  endif
 -%}
 
 <section class="evenflo-peace-of-mind-new">
@@ -26,7 +37,13 @@
   </div>
 
   <div class="peace-of-mind-new__grid page-width">
+    <swiper-container
+      id="peace-of-mind-new-{{ section.id }}"
+      class="peace-of-mind-new__slider"
+      init="false"
+    >
     {%- if has_manuals -%}
+      <swiper-slide class="peace-of-mind-new__slide">
       <div class="peace-of-mind-new__block">
         <span class="peace-of-mind-new__icon" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,9 +61,11 @@
           {%- endif -%}
         </ul>
       </div>
+      </swiper-slide>
     {%- endif -%}
 
     {%- if has_warranty -%}
+      <swiper-slide class="peace-of-mind-new__slide">
       <div class="peace-of-mind-new__block">
         <span class="peace-of-mind-new__icon" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,8 +88,10 @@
           {%- endif -%}
         </div>
       </div>
+      </swiper-slide>
     {%- endif -%}
 
+    <swiper-slide class="peace-of-mind-new__slide">
     <div class="peace-of-mind-new__block">
       <span class="peace-of-mind-new__icon" aria-hidden="true">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,14 +100,12 @@
       </span>
       <h3 class="peace-of-mind-new__block-title">{{ section.settings.support_title }}</h3>
       <div class="peace-of-mind-new__copy">
-        {%- if section.settings.support_link != blank -%}
-          <a href="{{ section.settings.support_link }}">{{ section.settings.support_text }}</a>
-        {%- else -%}
-          {{ section.settings.support_text }}
-        {%- endif -%}
+        <a href="{{ support_link }}">{{ section.settings.support_text }}</a>
       </div>
     </div>
+    </swiper-slide>
 
+    <swiper-slide class="peace-of-mind-new__slide">
     <div class="peace-of-mind-new__block">
       <span class="peace-of-mind-new__icon" aria-hidden="true">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,15 +114,79 @@
       </span>
       <h3 class="peace-of-mind-new__block-title">{{ section.settings.parts_title }}</h3>
       <div class="peace-of-mind-new__copy">
-        {%- if section.settings.parts_link != blank -%}
-          <a href="{{ section.settings.parts_link }}">{{ section.settings.parts_text }}</a>
-        {%- else -%}
-          {{ section.settings.parts_text }}
-        {%- endif -%}
+        <a href="{{ parts_link }}">{{ section.settings.parts_text }}</a>
       </div>
+    </div>
+    </swiper-slide>
+    </swiper-container>
+
+    <div class="peace-of-mind-new__nav">
+      <button
+        type="button"
+        class="peace-of-mind-new__arrow peace-of-mind-new-prev-{{ section.id }}"
+        aria-label="Previous"
+      >
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip-pom-prev-{{ section.id }})">
+            <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="currentColor" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 11L13 16L18 21" stroke="currentColor" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <defs>
+            <clipPath id="clip-pom-prev-{{ section.id }}">
+              <rect width="32" height="32" fill="currentColor"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="peace-of-mind-new__arrow peace-of-mind-new-next-{{ section.id }}"
+        aria-label="Next"
+      >
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip-pom-next-{{ section.id }})">
+            <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 11L19 16L14 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <defs>
+            <clipPath id="clip-pom-next-{{ section.id }}">
+              <rect width="32" height="32" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
+
+<script>
+  customElements.whenDefined('swiper-container').then(function () {
+    var el = document.getElementById('peace-of-mind-new-{{ section.id }}');
+    if (!el || el.swiper) return;
+    Object.assign(el, {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      watchOverflow: true,
+      navigation: {
+        prevEl: '.peace-of-mind-new-prev-{{ section.id }}',
+        nextEl: '.peace-of-mind-new-next-{{ section.id }}'
+      },
+      breakpoints: {
+        750: {
+          slidesPerView: 2,
+          spaceBetween: 32,
+          allowTouchMove: false
+        },
+        990: {
+          slidesPerView: 4,
+          spaceBetween: 32,
+          allowTouchMove: false
+        }
+      }
+    });
+    el.initialize();
+  });
+</script>
 
 {% schema %}
 {
@@ -149,7 +232,8 @@
     {
       "type": "url",
       "id": "support_link",
-      "label": "Support link"
+      "label": "Support link",
+      "info": "Defaults to the ParentLink Resource Center if empty."
     },
     {
       "type": "text",
@@ -166,7 +250,8 @@
     {
       "type": "url",
       "id": "parts_link",
-      "label": "Replacement parts link"
+      "label": "Replacement parts link",
+      "info": "Defaults to parts.evenflo.com if empty."
     }
   ],
   "presets": [

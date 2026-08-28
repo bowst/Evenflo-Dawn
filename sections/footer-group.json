@@ -87,7 +87,7 @@
         ".footer-link-bar li {display: inline; /* Display list items inline */ margin-right: 10px; /* Add some spacing between list items */}"
       ],
       "settings": {
-        "custom_liquid": "<style>\n/* Force all announcement bar text to white */\n.announcement-bar,\n.announcement-bar *,\n.announcement-bar__content,\n.announcement-bar__message,\n.announcement-bar__text,\n.announcement-bar p,\n.announcement-bar span,\n.announcement-bar div,\n.announcement-bar a,\n.announcement-bar button {\n  color: white !important;\n}\n\n/* Target by data attributes if present */\n[data-announcement-bar] {\n  color: white !important;\n}\n\n[data-announcement-bar] * {\n  color: white !important;\n}\n\n/* Ensure links are white */\n.announcement-bar a,\n.announcement-bar a:visited,\n.announcement-bar a:hover,\n.announcement-bar a:active {\n  color: white !important;\n}\n\n/* Target any text nodes */\n.announcement-bar::before,\n.announcement-bar::after {\n  color: white !important;\n}\n</style>",
+        "custom_liquid": "<style>\n  #shopify-section-sections--19004094316700__announcement-bar {\n    height: 48px !important;\n    min-height: 48px !important;\n    max-height: 48px !important;\n    overflow: hidden;\n  }\n\n  #shopify-section-sections--19004094316700__announcement-bar .announcement-bar,\n  #shopify-section-sections--19004094316700__announcement-bar .announcement-bar__announcement {\n    min-height: 48px;\n    height: 48px;\n  }\n</style>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52

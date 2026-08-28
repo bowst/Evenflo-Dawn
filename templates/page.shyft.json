@@ -17,17 +17,9 @@
         "padding_bottom": 28
       }
     },
-    "evenflo_banner_ffcbry": {
-      "type": "evenflo-banner",
-      "settings": {
-        "banner_image": "shopify://shop_images/Dual_Ride_selects_reel.00_00_34_21.Still006-topaz-sharpen-faceai-enhance-2x_Extended.jpg",
-        "banner_text": "SHYFT™ Dualride™",
-        "text_color": "#ffffff",
-        "overlay_opacity": 0.1
-      }
-    },
     "evenflo_scrolling_text_chRUA6": {
       "type": "evenflo-scrolling-text",
+      "disabled": true,
       "settings": {
         "custom_html": "<span class=\"h2 moving-text\"> CAR SEAT <span class=\"dark-blue\">&</span> STROLLER <span class=\"dark-blue\">&</span> CARRIER <span class=\"dark-blue\">&</span> SIMPLIFIER <span class=\"dark-blue\">&</span> FUSS-BUSTER <span class=\"dark-blue\">&</span> GEAR-REDUCER <span class=\"dark-blue\">&</span> LOAD-LIGHTENER <span class=\"dark-blue\">&</span> WORRY-RELIEVER <span class=\"dark-blue\">&</span> TIME-SAVER <span class=\"dark-blue\">&</span> HEAD-TURNER <span class=\"dark-blue\">&</span> LIFE-CHANGER <span class=\"dark-blue\">&</span>\n</span>"
       }
@@ -65,6 +57,7 @@
         "text_zpLTPQ",
         "button_BtWeYV"
       ],
+      "disabled": true,
       "custom_css": [
         ".button--primary::after {box-shadow: none;}"
       ],
@@ -84,6 +77,7 @@
     },
     "evenflo_featured_banner_3wb8HW": {
       "type": "evenflo-featured-banner",
+      "disabled": true,
       "settings": {
         "banner_image_desktop": "shopify://shop_images/SDR-transition_e3f2fb6e-cac2-4d91-b21c-d80a48c47aee.png",
         "banner_title": "wheels up to weels down",
@@ -95,6 +89,7 @@
     },
     "video_QPwYWx": {
       "type": "video",
+      "disabled": true,
       "custom_css": [
         ".video-section {width: 70%;}"
       ],
@@ -137,6 +132,7 @@
         "tooltip_7dFwdR",
         "tooltip_DViYyd"
       ],
+      "disabled": true,
       "custom_css": [
         ".tooltips-section {padding-bottom: 30px;}"
       ],
@@ -174,6 +170,7 @@
         "heading_MHPnAe",
         "button_LMRDBz"
       ],
+      "disabled": true,
       "custom_css": [
         ".button--primary {background-color: black;}",
         ".button--primary:hover {background-color: #00aea9;}"
@@ -217,6 +214,7 @@
         "heading_VWMJgE",
         "button_q9XHDm"
       ],
+      "disabled": true,
       "custom_css": [
         ".button--primary {background-color: black;}",
         ".button--primary:hover {background-color: #00aea9;}"
@@ -250,7 +248,7 @@
           "type": "button",
           "settings": {
             "button_label": "See More",
-            "button_link": "shopify://products/shyft-dualride-car-seat-stroller-combo-carryall-bag-organizer-bundle",
+            "button_link": "https://www.evenflo.com/products/shyft-dualride-infant-car-seat-stroller-combo",
             "button_color": "#000000",
             "button_text_color": "#ffffff"
           }
@@ -260,6 +258,7 @@
         "heading_9e7Mn3",
         "button_9MgEiB"
       ],
+      "disabled": true,
       "custom_css": [
         ".button--primary {background-color: black;}",
         ".button--primary:hover {background-color: #00aea9;}"
@@ -312,6 +311,7 @@
     },
     "evenflo_featured_collection_p6XV4y": {
       "type": "evenflo-featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Upgrade with Evenflo Accessories",
         "heading_size": "h1",
@@ -352,6 +352,7 @@
       "block_order": [
         "heading_iprxCn"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -363,6 +364,7 @@
     },
     "custom_liquid_8T96Bn": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "<div id=\"pixlee_container\"></div><script type=\"text/javascript\">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'OmAQbPzfeavzuLyyMQsJ'});Pixlee.addSimpleWidget({widgetId:24399946,setMetaTags:true});};</script><script src=\"https://assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js\"></script>",
         "color_scheme": "",
@@ -370,53 +372,355 @@
         "padding_bottom": 52
       }
     },
-    "rich_text_bat7UN": {
-      "type": "rich-text",
+    "evenflo_hero_banner_MfTVXD": {
+      "type": "evenflo-hero-banner",
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/SDR-GOLD_LP_HERO_STATIC_DESKTOP_2880x960_2x_75f470ce-854d-4866-a732-dd0b22f257b8.jpg",
+        "mobile_image": "shopify://shop_images/SDR-GOLD_LP_HERO_STATIC_MOBILE_750x1000_2x_213603c1-372f-42fb-80f4-c2e79d0a96e8.jpg",
+        "enable_video_looping": true,
+        "eyebrow_text": "SHYFT DUALRIDE Infant carseat & stroller combo",
+        "primary_heading": "<p>Four Modes.<br/>Total Confidence.</p>",
+        "short_description": "",
+        "primary_cta_text": "SHOP NOW",
+        "primary_cta_link": "https://www.evenflo.com/collections/car-seat-stroller-combos",
+        "secondary_cta_text": "",
+        "secondary_cta_link": "",
+        "content_alignment": "align-left",
+        "text_color": "dark",
+        "desktop_overlay_opacity": 50
+      }
+    },
+    "evenflo_info_strip_tddEGp": {
+      "type": "evenflo-info-strip",
       "blocks": {
-        "heading_XwmrRp": {
-          "type": "heading",
+        "info_jHDd7N": {
+          "type": "info",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "info_text": "4 Modes",
+            "info_icon": "shopify://shop_images/Evenflo_Icon_2026_K.png",
+            "info_url": ""
           }
         },
-        "text_i4iAqJ": {
-          "type": "text",
+        "info_XRGdiU": {
+          "type": "info",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+            "info_text": "One System",
+            "info_icon": "shopify://shop_images/Evenflo_Icon_2026_K.png",
+            "info_url": ""
           }
         },
-        "button_FLJykm": {
-          "type": "button",
+        "info_VBcHh8": {
+          "type": "info",
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "info_text": "Infant Car Seat & Stroller Combo",
+            "info_icon": "shopify://shop_images/Evenflo_Icon_2026_K.png",
+            "info_url": ""
+          }
+        },
+        "info_7DymYb": {
+          "type": "info",
+          "settings": {
+            "info_text": "Move Easier with Baby",
+            "info_icon": "shopify://shop_images/Evenflo_Icon_2026_K.png",
+            "info_url": ""
           }
         }
       },
       "block_order": [
-        "heading_XwmrRp",
-        "text_i4iAqJ",
-        "button_FLJykm"
+        "info_jHDd7N",
+        "info_XRGdiU",
+        "info_VBcHh8",
+        "info_7DymYb"
       ],
-      "disabled": true,
+      "name": "Evenflo Info Strip",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
+        "background_color": "#faf8f6",
+        "text_color": "#111111"
+      }
+    },
+    "evenflo_features_grid_TywUAh": {
+      "type": "evenflo-features-grid",
+      "blocks": {
+        "feature_EWdwGw": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/SDR-GOLD_LP_PRODUCT-DETAIL-MODES_STATIC_DESKTOP_1440X960_F1_2x_ff0b48da-b70a-4cff-8030-02b95be383df.jpg",
+            "title": "Infant Car Seat",
+            "description": "For children 3-30 lb"
+          }
+        },
+        "feature_ezXXey": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/SDR-GOLD_LP_PRODUCT-DETAIL-MODES_STATIC_DESKTOP_1440X960_F2_2x_36ae54ec-49f8-44e1-a535-31b20102399e.jpg",
+            "title": "Carrier With Wheels",
+            "description": "For a quick and easy on the go"
+          }
+        },
+        "feature_PwL9dx": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/SDR-GOLD_LP_PRODUCT-DETAIL-MODES_STATIC_DESKTOP_1440X960_F3_2x_3678588c-c149-4066-96ea-6c9fd03abfb1.jpg",
+            "title": "Carrier Without Wheels",
+            "description": "Weighs only 8.3 lb"
+          }
+        },
+        "feature_dMWpXk": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/SDR-GOLD_LP_PRODUCT-DETAIL-MODES_STATIC_DESKTOP_1440X960_F4_2x_2fdac3f7-0f0f-4984-aad8-aa67e726234d.jpg",
+            "title": "Stroller",
+            "description": "A compact frame and smooth-glide wheels allow you to stroll with ease"
+          }
+        }
+      },
+      "block_order": [
+        "feature_EWdwGw",
+        "feature_ezXXey",
+        "feature_PwL9dx",
+        "feature_dMWpXk"
+      ],
+      "name": "Evenflo Features Grid",
+      "settings": {
+        "section_heading": "4-in-1 Functionality",
+        "section_subheading": "",
+        "media_type": "image"
+      }
+    },
+    "evenflo_features_grid_zRMYKV": {
+      "type": "evenflo-features-grid",
+      "blocks": {
+        "feature_tmVw9a": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/SDR-GOLD_LP_PRODUCT-DETAIL-SAFETY_STATIC_DESKTOP_1440X960_F1_2x_737842b3-6da9-4826-8d0f-df6e2cfd0880.jpg",
+            "title": "SensorSafe® Technology",
+            "description": "Alerts you in real time via the Evenflo App to 4 potentially unsafe conditions from your child’s car seat"
+          }
+        },
+        "feature_qhmigB": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/SDR-GOLD_LP_PRODUCT-DETAIL-SAFETY_STATIC_DESKTOP_1440X960_F2_2x_6062a764-4b72-4755-ad1f-97030e5b2917.jpg",
+            "title": "LockStrong™ Installation",
+            "description": "Helps ensure a solid, secure latch"
+          }
+        },
+        "feature_TJVd6n": {
+          "type": "feature",
+          "settings": {
+            "image_icon": "shopify://shop_images/SDR-GOLD_LP_PRODUCT-DETAIL-SAFETY_STATIC_DESKTOP_1440X960_F3_2x_c510d25c-1dbe-45be-bf9d-f97cbab5e192.jpg",
+            "title": "LifeGuard™",
+            "description": "Designed to the newest safety standards FMVSS 213a and 213b"
+          }
+        }
+      },
+      "block_order": [
+        "feature_tmVw9a",
+        "feature_qhmigB",
+        "feature_TJVd6n"
+      ],
+      "name": "Evenflo Features Grid",
+      "settings": {
+        "section_heading": "Safety You Can Feel Good About",
+        "section_subheading": "",
+        "media_type": "image"
+      }
+    },
+    "evenflo_split_features_B3iLrE": {
+      "type": "evenflo-split-features",
+      "name": "Evenflo Split Features",
+      "settings": {
+        "section_heading": "Included Accessories",
+        "section_subheading": "",
+        "image": "shopify://shop_images/SDR-GOLD_LP_FEATURE-ACCESSORIES_STATIC_MOBILE_375x250_2x_2268b417-3eda-4b4f-b360-89224b52726d.jpg",
+        "video_autoplay": false,
+        "content_heading": "Love the extras",
+        "body_copy": "<p>Includes a carry-all storage bag & cup holder to help keep everything organized</p>",
+        "cta_text": "",
+        "cta_url": "",
+        "media_position": "left"
+      }
+    },
+    "evenflo_mixed_media_grid_k6AaNY": {
+      "type": "evenflo-mixed-media-grid",
+      "blocks": {
+        "product_Wg8FEm": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-car-seat-stroller-combo-core"
+          }
+        },
+        "product_kXUaYR": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-car-seat-stroller-combo-carryall-storage"
+          }
+        },
+        "product_pCc8QA": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-infant-car-seat-stroller-combo"
+          }
+        },
+        "image_GBWJw7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SDR-GOLD_LP_FEATURE-TRANSITION_GIF_960X1200_85d95058-ae4a-44b7-ac37-e9598adc3b5d.gif",
+            "title": "Seamless Transition",
+            "text": "<p>Car seat to stroller in one step</p>",
+            "link": "",
+            "text_color": "dark",
+            "image_overlay_opacity": 0
+          }
+        },
+        "product_UBhxQV": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-car-seat-stroller-combo-sensorsafe-green"
+          }
+        },
+        "image_8khtXA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SDR-GOLD_LP_FEATURE-GREEN_GENTLE_GIF_960X1200_e307d6c8-f4ae-49ff-8238-9a0a28f4a937.gif",
+            "title": "Green & Gentle™ Fabric",
+            "text": "<p>Soft-to-the-touch, eco-friendly fabric made without added chemicals and flame retardants</p>",
+            "link": "",
+            "text_color": "dark",
+            "image_overlay_opacity": 0
+          }
+        },
+        "product_HX9gGH": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-infant-car-seat-stroller-combo-green-and-gentle"
+          }
+        },
+        "product_yKnQAP": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-base"
+          }
+        },
+        "product_g3jrGY": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-padded-travel-bag"
+          }
+        },
+        "product_qRNA6K": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-all-weather-cover"
+          }
+        },
+        "product_4cJtqU": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-babe-on-the-run-essentials-bag"
+          }
+        },
+        "product_jg98rD": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-stroller-organizer-crossbody-bag"
+          }
+        },
+        "product_XJTkhn": {
+          "type": "product",
+          "settings": {
+            "product": "shyft-dualride-carryall-storage-bag"
+          }
+        }
+      },
+      "block_order": [
+        "product_Wg8FEm",
+        "product_kXUaYR",
+        "product_pCc8QA",
+        "image_GBWJw7",
+        "product_UBhxQV",
+        "image_8khtXA",
+        "product_HX9gGH",
+        "product_yKnQAP",
+        "product_g3jrGY",
+        "product_qRNA6K",
+        "product_4cJtqU",
+        "product_jg98rD",
+        "product_XJTkhn"
+      ],
+      "name": "Mixed Media Grid",
+      "settings": {
+        "heading": "Explore The Collection",
+        "subheading": "",
+        "columns_desktop": "4",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_swatches": true,
+        "enable_quick_add": true,
         "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "evenflo_split_features_JUGm9F": {
+      "type": "evenflo-split-features",
+      "name": "Evenflo Split Features",
+      "settings": {
+        "section_heading": "",
+        "section_subheading": "",
+        "image": "shopify://shop_images/SDR-GOLD_LP_FEATURE-TRAVEL-SYSTEM_STATIC_MOBILE_375x250_2x_7986ca7d-d36c-46c7-9538-edb33b899432.jpg",
+        "video_autoplay": false,
+        "content_heading": "Travel System Compatible",
+        "body_copy": "<p>Attaches to select full-size stroller frames for effortless outings and even more storage</p>",
+        "cta_text": "SHOP NOW",
+        "cta_url": "https://www.evenflo.com/collections/shyft-dualride-car-seat-stroller-combo-compatible-strollers",
+        "media_position": "left"
+      }
+    },
+    "evenflo_confidence_cta_gRbJgK": {
+      "type": "evenflo-confidence-cta",
+      "blocks": {
+        "button_dUqj9K": {
+          "type": "button",
+          "settings": {
+            "button_text": "REVOLVE 360™",
+            "button_url": "https://www.evenflo.com/pages/revolve-360"
+          }
+        },
+        "button_X3xRpE": {
+          "type": "button",
+          "settings": {
+            "button_text": "PIVOT NXT",
+            "button_url": "https://www.evenflo.com/pages/pivot-family"
+          }
+        },
+        "button_cLi4bD": {
+          "type": "button",
+          "settings": {
+            "button_text": "SHYFT INTUITI",
+            "button_url": "https://www.evenflo.com/pages/shyft-intuiti-travel-system"
+          }
+        }
+      },
+      "block_order": [
+        "button_dUqj9K",
+        "button_X3xRpE",
+        "button_cLi4bD"
+      ],
+      "name": "Confidence CTA",
+      "settings": {
+        "heading": "Shop More Collections",
+        "subheading": "",
+        "background_color": "#ffffff"
       }
     }
   },
   "order": [
     "main",
-    "evenflo_banner_ffcbry",
     "evenflo_scrolling_text_chRUA6",
     "evenflo_image_text_MxEcUp",
     "evenflo_featured_banner_3wb8HW",
@@ -429,6 +733,13 @@
     "evenflo_featured_collection_p6XV4y",
     "rich_text_chPmNT",
     "custom_liquid_8T96Bn",
-    "rich_text_bat7UN"
+    "evenflo_hero_banner_MfTVXD",
+    "evenflo_info_strip_tddEGp",
+    "evenflo_features_grid_TywUAh",
+    "evenflo_features_grid_zRMYKV",
+    "evenflo_split_features_B3iLrE",
+    "evenflo_mixed_media_grid_k6AaNY",
+    "evenflo_split_features_JUGm9F",
+    "evenflo_confidence_cta_gRbJgK"
   ]
 }

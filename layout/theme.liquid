@@ -80,6 +80,40 @@
     {%- endif -%}
 
     {{ content_for_header }}
+
+    {%- comment -%}
+      TEMPORARY (local only): Globo auto-replace needs themeInfo.theme_store_id.
+      Development themes expose theme_store_id: null, so Globo marks the menu
+      "replaced" without injecting. Fake Dawn themeInfo so we can test Globo
+      + header-search on shopify theme dev. Remove before shipping.
+    {%- endcomment -%}
+    {%- if theme.role == 'development' -%}
+      <script>
+        (function () {
+          window.GloboMenuConfig = window.GloboMenuConfig || {};
+          var dawnThemeInfo = {
+            theme_store_id: 887,
+            theme_version: {{ theme.schema_version | default: '15.2.0' | json }},
+            selector: {
+              desktop: 'nav.header__inline-menu',
+              mobile: 'nav.menu-drawer__navigation',
+            },
+          };
+          var info = dawnThemeInfo;
+          Object.defineProperty(window.GloboMenuConfig, 'themeInfo', {
+            configurable: true,
+            enumerable: true,
+            get: function () {
+              return info;
+            },
+            set: function (value) {
+              info = value && value !== false ? value : dawnThemeInfo;
+            },
+          });
+        })();
+      </script>
+    {%- endif -%}
+
     <!-- New Font -->
     <!-- <link rel="stylesheet" href="https://use.typekit.net/jnf1gfc.css"> -->
     <!-- evenflo fonts -->
@@ -349,7 +383,7 @@
 
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} live-theme">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -435,6 +469,7 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script src="{{ 'evenflo-globo-header-focus.js' | asset_url }}" defer="defer"></script>
     {% comment %} <script>
     function includeScript(e){var t=document.createElement("script"),n=document.getElementsByTagName("script")[0];t.type="text/javascript",t.src=e,t.async=!0,n.parentNode.insertBefore(t,n)}includeScript("https://bot.emplifi.io/components/Launchers/Messenger/LauncherSelector.js");
     </script> {% endcomment %}

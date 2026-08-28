@@ -64,6 +64,7 @@
         },
         "evenflo_at_a_glance_H9wRrE": {
           "type": "evenflo-at-a-glance",
+          "disabled": true,
           "settings": {}
         },
         "complementary_VKePeD": {
@@ -107,12 +108,39 @@
         "padding_bottom": 12
       }
     },
+    "evenflo_at_a_glance_VgtUiC": {
+      "type": "evenflo-at-a-glance",
+      "name": "At a Glance",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#ffffff",
+        "sensorsafe_url": "",
+        "sensorysoothe_url": ""
+      }
+    },
+    "evenflo_pdp_tabs_gGf9fV": {
+      "type": "evenflo-pdp-tabs",
+      "name": "PDP Tabs",
+      "settings": {}
+    },
+    "evenflo_features_carousel_6BMwyG": {
+      "type": "evenflo-features-carousel",
+      "name": "Evenflo Features Carousel",
+      "settings": {
+        "heading": "Features",
+        "background_color": "#fcfcfd",
+        "columns_desktop": 3,
+        "product_handles": ""
+      }
+    },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
+      "disabled": true,
       "settings": {}
     },
     "evenflo_product_video_xhmRdz": {
       "type": "evenflo-product-video",
+      "disabled": true,
       "settings": {
         "heading": "",
         "description": ""
@@ -190,12 +218,14 @@
     },
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
+      "disabled": true,
       "settings": {
         "product_handles": "pivot-xplore-stroller-wagon"
       }
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
       "type": "evenflo-pdp-faq",
+      "disabled": true,
       "settings": {}
     },
     "related-products": {
@@ -219,18 +249,12 @@
     },
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c": {
       "type": "evenflo-peace-of-mind",
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "heading": "Peace Of Mind",
         "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
         "support_content": ""
-      }
-    },
-    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
-      "type": "evenflo-quote",
-      "settings": {
-        "quote": "{{ product.metafields.custom.customer_quote.value }}",
-        "name": "{{ product.metafields.custom.customer_quote_name.value }}"
       }
     },
     "16915424702f51b61e": {
@@ -243,7 +267,7 @@
           }
         },
         "pixlee_turnto_social_ugc_product_block_hPDQmD": {
-          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "type": "shopify://apps/emplifi-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
           "disabled": true,
           "settings": {
             "widget_id": ""
@@ -254,6 +278,7 @@
         "0351fa36-f0a8-4ce4-b847-66f4891de96c",
         "pixlee_turnto_social_ugc_product_block_hPDQmD"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
@@ -262,7 +287,7 @@
       "type": "evenflo-pixlee",
       "disabled": true,
       "settings": {
-        "pixlee_id": "Pixlee ID"
+        "pixlee_id": ""
       }
     },
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
@@ -333,6 +358,7 @@
     },
     "evenflo_product_specifications_3T7Kep": {
       "type": "evenflo-product-specifications",
+      "disabled": true,
       "name": "Evenflo Product Specs",
       "settings": {
         "title": "Product Specs & Manuals",
@@ -342,30 +368,35 @@
         "padding_bottom": 36
       }
     },
-    "evenflo_pdp_tabs_UKegtA": {
-      "type": "evenflo-pdp-tabs",
-      "name": "PDP Tabs",
-      "settings": {}
+    "evenflo_video_new_BVKUmt": {
+      "type": "evenflo-video-new",
+      "name": "Video New",
+      "settings": {
+        "heading": "",
+        "description": ""
+      }
     }
   },
   "order": [
     "ade0198e-e493-4715-af0e-d37aecc64ddd",
     "main",
+    "evenflo_at_a_glance_VgtUiC",
+    "evenflo_pdp_tabs_gGf9fV",
+    "evenflo_features_carousel_6BMwyG",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_product_video_xhmRdz",
+    "evenflo_video_new_BVKUmt",
     "4600ac99-da69-454a-a56c-0fae1b682f2e",
     "tooltips_Ae39yK",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
     "46391549-e9d3-4404-8c19-b08b5eab6ca7",
     "related-products",
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
-    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
     "16915424702f51b61e",
     "6614d21a-2920-408d-9aeb-b82c3014dad3",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
     "custom_liquid_DWJrPD",
     "evenflo_benefits_V8NDdN",
-    "evenflo_product_specifications_3T7Kep",
-    "evenflo_pdp_tabs_UKegtA"
+    "evenflo_product_specifications_3T7Kep"
   ]
 }

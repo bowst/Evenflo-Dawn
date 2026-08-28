@@ -70,6 +70,26 @@
         "show_text_below": true
       }
     },
+    "evenflo_hero_banner_rKcpCp": {
+      "type": "evenflo-hero-banner",
+      "disabled": true,
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/EvenfloRewards_Desktop.jpg",
+        "mobile_image": "shopify://shop_images/EvenfloRewards_Mobile.jpg",
+        "enable_video_looping": true,
+        "eyebrow_text": "WELCOME TO THE CLUB",
+        "primary_heading": "",
+        "short_description": "As a member you'll earn points & exclusive rewards every time you shop.",
+        "primary_cta_text": "JOIN NOW",
+        "primary_cta_link": "https://account.evenflo.com/authentication/login?client_id=fb44e08e-11f1-4b22-b65b-c7951b53d31d&locale=en-US&redirect_uri=%2Fauthentication%2Foauth%2Fauthorize%3F_cs%3D3amp.S_USMA_t_t_V2pWsZRYT5-BWbIjyITeyw%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJldmVuZmxvYmFieS5teXNob3BpZnkuY29tIiwiZmxhZ3MiOltdLCJleHAiOjE3Nzc2NDgzMjcsIm5iZiI6MTc3NzA0MzUyN30.rZCwuVTwrVRfSa64yAtk2IvOeXKDI5iSx8nS_9RZmdk%26client_id%3Dfb44e08e-11f1-4b22-b65b-c7951b53d31d%26locale%3Den-US%26nonce%3Db7061f72-ca60-4dcc-9fab-37bebea56374%26redirect_uri%3Dhttps%253A%252F%252Faccount.evenflo.com%252Fcallback%26region_country%3DUS%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNBOjnfjACEFhaiRFkx69SM&region_country=US",
+        "secondary_cta_text": "LOGIN",
+        "secondary_cta_link": "https://account.evenflo.com/authentication/login?client_id=fb44e08e-11f1-4b22-b65b-c7951b53d31d&locale=en-US&redirect_uri=%2Fauthentication%2Foauth%2Fauthorize%3F_cs%3D3amp.S_USMA_t_t_V2pWsZRYT5-BWbIjyITeyw%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJldmVuZmxvYmFieS5teXNob3BpZnkuY29tIiwiZmxhZ3MiOltdLCJleHAiOjE3Nzc2NDgzNjEsIm5iZiI6MTc3NzA0MzU2MX0.0rE_dgB3AbGJiDu52VlHG6mHlw593ST569RVy0hc4J4%26client_id%3Dfb44e08e-11f1-4b22-b65b-c7951b53d31d%26locale%3Den-US%26nonce%3D069e0597-677b-4359-b349-884f9532f45a%26redirect_uri%3Dhttps%253A%252F%252Faccount.evenflo.com%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNBOjrAiHHjTeasvClbXuTq",
+        "content_alignment": "align-left",
+        "text_color": "dark",
+        "desktop_overlay_opacity": 40
+      }
+    },
     "evenflo_image_banner_6K8DRt": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -117,8 +137,16 @@
         "play_store": "",
         "button_color": "#000000",
         "button_text_color": "#ffffff",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
+        "mobile_button_border_color": "#ffffff",
+        "button_color_2": "#ffffff",
+        "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
+        "mobile_button_color_2": "#ffffff",
+        "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#000000",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
@@ -132,8 +160,19 @@
         "show_text_below": true
       }
     },
+    "custom_liquid_JRr7P7": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<script src=\"https://cdn-widgetsrepository.yotpo.com/v1/loader/JyvaKuPpFqHLrbpZwHpU6Q\" async></script>\n<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"1321831\"></div>",
+        "color_scheme": "",
+        "padding_top": 12,
+        "padding_bottom": 52
+      }
+    },
     "custom_liquid_mqEypQ": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "<script src=\"https://cdn-widgetsrepository.yotpo.com/v1/loader/JyvaKuPpFqHLrbpZwHpU6Q\" async></script>\n<div class=\"yotpo-widget-instance\" data-yotpo-instance-id=\"251507\"></div>",
         "color_scheme": "",
@@ -149,13 +188,54 @@
         "css_class": "",
         "custom_css": ""
       }
+    },
+    "evenflo_features_grid_jc9k6i": {
+      "type": "evenflo-features-grid",
+      "blocks": {
+        "feature_BdWgmM": {
+          "type": "feature",
+          "settings": {
+            "title": "Sign Up",
+            "description": "Create an account and get 25 points."
+          }
+        },
+        "feature_dLHVwR": {
+          "type": "feature",
+          "settings": {
+            "title": "Earn Points",
+            "description": "Earn points every time you shop."
+          }
+        },
+        "feature_iwfFMV": {
+          "type": "feature",
+          "settings": {
+            "title": "Redeem Points",
+            "description": "Redeem points forexclusive discounts."
+          }
+        }
+      },
+      "block_order": [
+        "feature_BdWgmM",
+        "feature_dLHVwR",
+        "feature_iwfFMV"
+      ],
+      "disabled": true,
+      "name": "Evenflo Features Grid",
+      "settings": {
+        "section_heading": "How it works",
+        "section_subheading": "",
+        "media_type": "image"
+      }
     }
   },
   "order": [
     "main",
     "image_banner_WnzJQX",
+    "evenflo_hero_banner_rKcpCp",
     "evenflo_image_banner_6K8DRt",
+    "custom_liquid_JRr7P7",
     "custom_liquid_mqEypQ",
-    "evenflo_divider_NJtxpx"
+    "evenflo_divider_NJtxpx",
+    "evenflo_features_grid_jc9k6i"
   ]
 }

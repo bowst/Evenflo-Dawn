@@ -73,10 +73,6 @@
             "show_gift_card_recipient": false
           }
         },
-        "evenflo_at_a_glance_V4VzMP": {
-          "type": "evenflo-at-a-glance",
-          "settings": {}
-        },
         "complementary_8MELjA": {
           "type": "complementary",
           "settings": {
@@ -101,7 +97,6 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "evenflo_at_a_glance_V4VzMP",
         "complementary_8MELjA"
       ],
       "custom_css": [
@@ -123,6 +118,43 @@
         "padding_bottom": 12
       }
     },
+    "evenflo_at_a_glance_WMzLRT": {
+      "type": "evenflo-at-a-glance",
+      "name": "At a Glance",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#FFFFFF",
+        "sensorsafe_url": "",
+        "sensorysoothe_url": ""
+      }
+    },
+    "evenflo_features_carousel_kagLqi": {
+      "type": "evenflo-features-carousel",
+      "name": "Evenflo Features Carousel",
+      "settings": {
+        "heading": "Features",
+        "background_color": "#FFFFFF",
+        "columns_desktop": 3,
+        "product_handles": ""
+      }
+    },
+    "evenflo_at_a_glance_HV3NAE": {
+      "type": "evenflo-at-a-glance",
+      "disabled": true,
+      "name": "At a Glance",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#faf8f6",
+        "sensorsafe_url": "",
+        "sensorysoothe_url": ""
+      }
+    },
+    "evenflo_pdp_tabs_rLXgFk": {
+      "type": "evenflo-pdp-tabs",
+      "disabled": true,
+      "name": "PDP Tabs",
+      "settings": {}
+    },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
       "settings": {}
@@ -136,6 +168,7 @@
     },
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
       "type": "evenflo-features",
+      "disabled": true,
       "settings": {
         "product_handles": ""
       }
@@ -214,6 +247,12 @@
     "1691542364be6ead55": {
       "type": "apps",
       "blocks": {
+        "pixlee_turnto_social_ugc_product_block_aMMVyD": {
+          "type": "shopify://apps/pixlee-turnto-social-ugc/blocks/product-block/82674345-73c3-4c07-a116-a721866b66ca",
+          "settings": {
+            "widget_id": ""
+          }
+        },
         "64d5012e-22dc-4dbb-8c03-84ceeda2d45b": {
           "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
@@ -222,16 +261,11 @@
         }
       },
       "block_order": [
+        "pixlee_turnto_social_ugc_product_block_aMMVyD",
         "64d5012e-22dc-4dbb-8c03-84ceeda2d45b"
       ],
       "settings": {
         "include_margins": true
-      }
-    },
-    "evenflo_pixlee_infant_car_seats": {
-      "type": "evenflo-pixlee",
-      "settings": {
-        "pixlee_id": "Pixlee ID"
       }
     },
     "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
@@ -323,16 +357,15 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "evenflo_pdp_tabs_nWKqm6": {
-      "type": "evenflo-pdp-tabs",
-      "name": "PDP Tabs",
-      "settings": {}
     }
   },
   "order": [
     "ecd14614-cffe-4c1d-99ef-38249843ae00",
     "main",
+    "evenflo_at_a_glance_WMzLRT",
+    "evenflo_features_carousel_kagLqi",
+    "evenflo_at_a_glance_HV3NAE",
+    "evenflo_pdp_tabs_rLXgFk",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_product_video_yEnkXh",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
@@ -343,11 +376,9 @@
     "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
     "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
     "1691542364be6ead55",
-    "evenflo_pixlee_infant_car_seats",
     "a40977eb-46b5-4322-81f4-bb36dab6bfff",
     "evenflo_benefits_pJVHhi",
     "evenflo_claim_source_cAbxrH",
-    "evenflo_product_specifications_K3PrDT",
-    "evenflo_pdp_tabs_nWKqm6"
+    "evenflo_product_specifications_K3PrDT"
   ]
 }

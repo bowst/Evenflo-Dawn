@@ -232,6 +232,11 @@ h5,
    4. Header & Sticky Navigation
    ========================================================================== */
 
+/* Sit above .product-sticky-buttons (z-index 99) so mega menu, search, and the mobile drawer cover it */
+.section-header.shopify-section-group-header-group {
+  z-index: 100;
+}
+
 sticky-header .header {
 	padding: 0 1.5em 0;
 	/*height: 72px;*/
@@ -397,6 +402,17 @@ This is all to override some weird hover styles */
   z-index: 1;
 }
 
+/* Hide header icon rings only when Globo bottom-bar opened menu/cart (see evenflo-globo-header-focus.js) */
+body.evenflo-globo-header-focus .header__icon--menu:focus,
+body.evenflo-globo-header-focus .header__icon--menu:focus-visible,
+body.evenflo-globo-header-focus .header__icon--menu.focused,
+body.evenflo-globo-header-focus #cart-icon-bubble:focus,
+body.evenflo-globo-header-focus #cart-icon-bubble:focus-visible,
+body.evenflo-globo-header-focus #cart-icon-bubble.focused {
+  outline: 0;
+  box-shadow: none;
+}
+
 /* ==========================================================================
    7. Header Menu & Mega Menu
    ========================================================================== */
@@ -560,6 +576,10 @@ img {
 
 .cart__ctas {
 	margin: 8px 0;
+}
+
+cart-drawer.drawer {
+  z-index: 999999999;
 }
 
 /* Alt primary button variant */

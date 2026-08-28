@@ -74,6 +74,7 @@
         },
         "evenflo_at_a_glance_BCKt78": {
           "type": "evenflo-at-a-glance",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -104,6 +105,26 @@
         "padding_bottom": 12
       }
     },
+    "evenflo_at_a_glance_m9hm8D": {
+      "type": "evenflo-at-a-glance",
+      "name": "At a Glance",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#ffffff",
+        "sensorsafe_url": "",
+        "sensorysoothe_url": ""
+      }
+    },
+    "evenflo_features_carousel_TKAQmH": {
+      "type": "evenflo-features-carousel",
+      "name": "Evenflo Features Carousel",
+      "settings": {
+        "heading": "Features",
+        "background_color": "#ffffff",
+        "columns_desktop": 3,
+        "product_handles": ""
+      }
+    },
     "de262cc2-cd7a-45ad-abd0-474f06e53224": {
       "type": "evenflo-product-highlights",
       "settings": {}
@@ -113,12 +134,6 @@
       "settings": {
         "heading": "",
         "description": ""
-      }
-    },
-    "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
-      "type": "evenflo-features",
-      "settings": {
-        "product_handles": ""
       }
     },
     "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
@@ -131,13 +146,6 @@
         "heading": "Peace Of Mind",
         "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
         "support_content": "<h3 class=\"h1\">Supported by <strong>ParentLink Consumer Care</strong> via phone, email, chat and video</h3>\n\n<div class=\"peace-of-mind__container\">\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">Phone</h4>\n<a href=\"tel:1-800-233-5921\">1-800-233-5921 (US)</a><br>\n<a href=\"tel:1-937-773-3971\">1-937-773-3971 (Canada)</a>\n</div>\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">EMAIL</h4>\nNo time to chat?<br>\n<a href=\"mailto:\">Email us</a> your inquiry\n</div>\n</div>"
-      }
-    },
-    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
-      "type": "evenflo-quote",
-      "settings": {
-        "quote": "{{ product.metafields.custom.customer_quote.value }}",
-        "name": "{{ product.metafields.custom.customer_quote_name.value }}"
       }
     },
     "related-products": {
@@ -230,16 +238,6 @@
         "heading": "Benefits of shopping evenflo.com"
       }
     },
-    "custom_liquid_UkGFwT": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "evenflo_product_specifications_pP48xn": {
       "type": "evenflo-product-specifications",
       "name": "Evenflo Product Specs",
@@ -251,6 +249,29 @@
         "padding_bottom": 36
       }
     },
+    "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
+      "type": "evenflo-features",
+      "settings": {
+        "product_handles": ""
+      }
+    },
+    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
+      "type": "evenflo-quote",
+      "settings": {
+        "quote": "{{ product.metafields.custom.customer_quote.value }}",
+        "name": "{{ product.metafields.custom.customer_quote_name.value }}"
+      }
+    },
+    "custom_liquid_UkGFwT": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "evenflo_pdp_tabs_UiPFtE": {
       "type": "evenflo-pdp-tabs",
       "name": "PDP Tabs",
@@ -260,6 +281,8 @@
   "order": [
     "6aa3a58f-5246-44e3-94bc-f82838b853ac",
     "main",
+    "evenflo_at_a_glance_m9hm8D",
+    "evenflo_features_carousel_TKAQmH",
     "de262cc2-cd7a-45ad-abd0-474f06e53224",
     "evenflo_product_video_DfA4Wq",
     "4523e587-868b-4f60-a0fc-9fd2ccbe284a",

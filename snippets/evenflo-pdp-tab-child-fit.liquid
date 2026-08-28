@@ -29,10 +29,12 @@
   assign high_back_weight_limit = product.metafields.custom.high_back_booster_mode_weight_limit
   assign high_back_height_limit = product.metafields.custom.high_back_booster_mode_height_limit
   assign high_back_fit_statement = product.metafields.sf_car_seat.high_back_fit_statement
+  assign high_back_age_limit = product.metafields.sf_car_seat.high_back_age_limit
 
   assign no_back_weight_limit = product.metafields.custom.no_back_booster_mode_weight_limit
   assign no_back_height_limit = product.metafields.custom.no_back_booster_mode_height_limit
-  assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement
+  assign no_back_fit_statement = product.metafields.sf_car_seat.no_back_fit_statement 
+  assign no_back_age_limit = product.metafields.custom.no_back_booster_mode_age_limit
 
   assign harness_weight_limit = product.metafields.custom.harness_booster_mode_weight_limit
   assign harness_height_limit = product.metafields.custom.harness_booster_mode_height_limit
@@ -169,6 +171,9 @@
           {%- if high_back_fit_statement != blank -%}
             <li>High Back Booster Mode Fit Limitation: {{ high_back_fit_statement }}</li>
           {%- endif -%}
+		  {%- if high_back_age_limit != blank -%}
+            <li>High Back Booster Mode Age Limitation: {{ high_back_age_limit }}</li>
+          {%- endif -%}
         </ul>
       </div>
     {%- endif -%}
@@ -185,6 +190,9 @@
           {%- endif -%}
           {%- if no_back_fit_statement != blank -%}
             <li>No Back Booster Mode Fit Limitation: {{ no_back_fit_statement }}</li>
+          {%- endif -%}
+		  {%- if no_back_age_limit != blank -%}
+            <li>No Back Booster Mode Age Limitation: {{ no_back_age_limit }}</li>
           {%- endif -%}
         </ul>
       </div>

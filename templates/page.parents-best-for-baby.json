@@ -9,31 +9,67 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
+    "evenflo_hero_banner_xFaF64": {
+      "type": "evenflo-hero-banner",
+      "name": "Evenflo Hero Banner",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "desktop_image": "shopify://shop_images/ParentsAwards_BANNER_DESKTOP_1440x480_c2362740-b7db-4b57-8f84-4e88008c0089.jpg",
+        "mobile_image": "shopify://shop_images/ParentsAwards_BANNER_MOBILE_375x500_68cc837a-2c40-4442-8612-3d004b5edb1c.jpg",
+        "eyebrow_text": "Big News",
+        "primary_heading": "<p>Evenflo wins 5 categories <br/>in the 2026 Parents <br/>Best for Baby Awards</p>",
+        "short_description": "",
+        "primary_cta_text": "",
+        "primary_cta_link": "",
+        "secondary_cta_text": "",
+        "secondary_cta_link": "",
+        "content_alignment": "align-right",
+        "text_color": "dark",
+        "desktop_overlay_opacity": 20
       }
     },
-    "image_banner_yLiUNd": {
+    "image_banner_ephrqd": {
       "type": "image-banner",
       "blocks": {
-        "heading_hfFUWA": {
+        "heading_gXQkTw": {
           "type": "heading",
           "settings": {
-            "heading": "{{ page.title }}",
+            "heading": "",
             "heading_size": "h1",
             "heading_color": "black"
+          }
+        },
+        "text_REzqML": {
+          "type": "text",
+          "settings": {
+            "text": "{{ page.title }}",
+            "text_style": "body"
+          }
+        },
+        "buttons_hNtEza": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "heading_hfFUWA"
+        "heading_gXQkTw",
+        "text_REzqML",
+        "buttons_hNtEza"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-size: 45px;}",
+        "@media screen and (max-width: 767px) {h2 {font-size: 30px; }}"
       ],
       "settings": {
         "image": "{{ page.metafields.custom.header_image.value }}",
+        "image_2": "shopify://shop_images/ParentsAwards_BANNER_DESKTOP_1440x480_c2362740-b7db-4b57-8f84-4e88008c0089.jpg",
         "image_overlay_opacity": 0,
         "underline": false,
         "hide_image_on_mobile": false,
@@ -43,22 +79,30 @@
         "desktop_content_alignment": "center",
         "color_scheme": "background-1",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
-    "rich_text_WyfEen": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_aDEq8A": {
       "type": "rich-text",
       "blocks": {
-        "heading_naUwPW": {
+        "heading_RxVzbX": {
           "type": "heading",
           "settings": {
             "heading": "{{ page.metafields.custom.page_heading.value }}",
             "heading_size": "h1"
           }
         },
-        "text_ELkCkP": {
+        "text_qAEn36": {
           "type": "text",
           "settings": {
             "text": "<p>{{ page.metafields.custom.page_intro_content | metafield_tag }}</p>"
@@ -66,8 +110,8 @@
         }
       },
       "block_order": [
-        "heading_naUwPW",
-        "text_ELkCkP"
+        "heading_RxVzbX",
+        "text_qAEn36"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -78,52 +122,7 @@
         "padding_bottom": 52
       }
     },
-    "evenflo_divider_UtznEK": {
-      "type": "evenflo-divider",
-      "settings": {
-        "divider_spacing": 20,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "evenflo_image_text_eGmYmf": {
-      "type": "evenflo-image-text",
-      "blocks": {
-        "heading_fmi8ga": {
-          "type": "heading",
-          "settings": {
-            "heading": "Contain your Curious Rambler",
-            "heading_size": "h1"
-          }
-        },
-        "text_cwCMK9": {
-          "type": "text",
-          "settings": {
-            "text": "<p>From stairs to kitchen, there will be parts of your home you’ll want to make off-limits for your little one. We have the level of protection you need for your child or pet— combined with the look you’ll love. </p><ul><li>Pressure-mounted and hardware-mounted (for safety) </li><li>Easy installation </li><li>Styles to suit your décor </li></ul>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "heading_fmi8ga",
-        "text_cwCMK9"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/image-1.jpg",
-        "height": "adapt",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection_76nHKb": {
+    "featured_collection_gUUwrE": {
       "type": "featured-collection",
       "settings": {
         "title": "",
@@ -131,9 +130,9 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "baby-gates",
-        "products_to_show": 4,
-        "columns_desktop": 4,
+        "collection": "parents-2026-best-for-baby-awards",
+        "products_to_show": 5,
+        "columns_desktop": 3,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
@@ -143,14 +142,15 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": true,
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "evenflo_divider_4ME49m": {
+    "evenflo_divider_9z8Bfy": {
       "type": "evenflo-divider",
       "settings": {
         "divider_spacing": 20,
@@ -161,12 +161,11 @@
     }
   },
   "order": [
+    "evenflo_hero_banner_xFaF64",
+    "image_banner_ephrqd",
     "main",
-    "image_banner_yLiUNd",
-    "rich_text_WyfEen",
-    "evenflo_divider_UtznEK",
-    "evenflo_image_text_eGmYmf",
-    "featured_collection_76nHKb",
-    "evenflo_divider_4ME49m"
+    "rich_text_aDEq8A",
+    "featured_collection_gUUwrE",
+    "evenflo_divider_9z8Bfy"
   ]
 }
