@@ -23,6 +23,7 @@
       "settings": {
         "desktop_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Desktop.jpg",
         "mobile_image": "shopify://shop_images/Evenflo_Transformer_LandingPage_Header_Mobile.jpg",
+        "enable_video_looping": true,
         "eyebrow_text": "Transformer™ adapts to your journey",
         "primary_heading": "<p>Stroller-to-Wagon Innovation</p>",
         "short_description": "",
@@ -33,6 +34,57 @@
         "content_alignment": "align-left",
         "text_color": "text-light",
         "desktop_overlay_opacity": 0
+      }
+    },
+    "evenflo_fit_guide_eaEgWK": {
+      "type": "evenflo-fit-guide",
+      "blocks": {
+        "category_GzVcHB": {
+          "type": "category",
+          "settings": {
+            "label": "Infant Car Seats",
+            "collection": "infant-car-seats"
+          }
+        },
+        "category_mXQN3c": {
+          "type": "category",
+          "settings": {
+            "label": "All-in-one Car Seats",
+            "collection": "all-in-one-car-seats"
+          }
+        },
+        "category_Q7cmEL": {
+          "type": "category",
+          "settings": {
+            "label": "Category",
+            "collection": "booster-car-seats"
+          }
+        },
+        "category_meM7pV": {
+          "type": "category",
+          "settings": {
+            "label": "",
+            "collection": "convertible-car-seats"
+          }
+        }
+      },
+      "block_order": [
+        "category_GzVcHB",
+        "category_mXQN3c",
+        "category_Q7cmEL",
+        "category_meM7pV"
+      ],
+      "disabled": true,
+      "name": "Fit Guide",
+      "settings": {
+        "heading": "Car Seat Fit Guide",
+        "subheading": "<p>Use this guide to review car seat height, weight, and use mode information.</p>",
+        "filters_heading": "Find car seat fit details",
+        "filters_subheading": "Choose a car seat category and product, or enter your child's height and weight to narrow matching options.",
+        "detail_disclaimer": "Review the available height and weight requirements for this product. Always follow product labels and the manual for complete requirements and instructions.",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "evenflo_info_strip_VgMhwy": {
@@ -346,7 +398,9 @@
             "image": "shopify://shop_images/cora-fabric.jpg",
             "title": "",
             "text": "",
-            "link": ""
+            "link": "",
+            "text_color": "light",
+            "image_overlay_opacity": 0
           }
         },
         "image_aG6Y34": {
@@ -355,7 +409,9 @@
             "image": "shopify://shop_images/buttons-cry-detection.jpg",
             "title": "",
             "text": "",
-            "link": ""
+            "link": "",
+            "text_color": "light",
+            "image_overlay_opacity": 0
           }
         },
         "product_dken4N": {
@@ -385,8 +441,7 @@
       "name": "Mixed Media Grid",
       "settings": {
         "heading": "Explore the Evenflo Home Collection",
-        "heading_size": "h1",
-        "heading_alignment": "center",
+        "subheading": "",
         "columns_desktop": "3",
         "image_ratio": "adapt",
         "show_secondary_image": false,
@@ -491,6 +546,7 @@
   "order": [
     "main",
     "evenflo_hero_banner_kxJtqM",
+    "evenflo_fit_guide_eaEgWK",
     "evenflo_info_strip_VgMhwy",
     "evenflo_split_features_3MzizF",
     "evenflo_multicolumn_YVk8BN",
