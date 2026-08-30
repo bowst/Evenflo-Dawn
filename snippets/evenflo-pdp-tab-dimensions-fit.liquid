@@ -12,7 +12,7 @@
 -%}
 
 {% capture child_fit_markup %}
-  {% render 'evenflo-pdp-tab-child-fit' %}
+  {% render 'evenflo-pdp-tab-child-fit', product: product %}
 {% endcapture %}
 {% assign child_fit_markup = child_fit_markup | strip %}
 

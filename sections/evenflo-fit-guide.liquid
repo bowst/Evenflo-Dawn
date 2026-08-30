@@ -1,0 +1,314 @@
+{% comment %}
+  Fit Guide section — SEO/AI-crawlable "stepped" product finder.
+
+  All content (filters, full matching-products grid, full fit-detail cards for
+  every product) is rendered server-side so crawlers and AI agents see
+  everything. JS only toggles visibility/scroll for human visitors — it never
+  fetches or swaps content, so the section still works with JS disabled
+  (every product and every fit-detail card is simply visible at once).
+
+  Data model: each "Category" block points at one Collection. That collection
+  is the single source of truth for which products belong to that category —
+  an automated (smart) collection ruled on the product's Shopify Category
+  field is recommended so membership can't drift out of sync, but the section
+  itself works with any collection, curated or automated.
+
+  Requires (per product, all optional — a product simply omits what it
+  doesn't have):
+    product.metafields.sf_products.child_weight_min / child_weight_max
+    product.metafields.sf_products.child_height_min / child_height_max
+  Fit-detail content (step 3) reuses the existing PDP snippets:
+    'evenflo-pdp-tab-child-fit', 'evenflo-pdp-tab-dimensions-fit'
+{% endcomment %}
+
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-fit-guide.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'evenflo-fit-guide.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign category_blocks = section.blocks | where: 'type', 'category'
+-%}
+
+<fit-guide
+  class="color-{{ section.settings.color_scheme }} gradient fit-guide section-{{ section.id }}-padding"
+  data-section-id="{{ section.id }}"
+>
+  <div class="page-width fit-guide__intro">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="fit-guide__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <div class="fit-guide__subheading rte">{{ section.settings.subheading }}</div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ===================== STEP 1: FILTERS ===================== {%- endcomment -%}
+  <div class="page-width fit-guide__step fit-guide__step--filters" data-fit-guide-step="filters">
+    {%- if section.settings.filters_heading != blank -%}
+      <h3 class="fit-guide__step-heading">{{ section.settings.filters_heading }}</h3>
+    {%- endif -%}
+    {%- if section.settings.filters_subheading != blank -%}
+      <p class="fit-guide__step-subheading">{{ section.settings.filters_subheading }}</p>
+    {%- endif -%}
+
+    <div class="fit-guide__filters">
+      <label class="fit-guide__field">
+        <span class="fit-guide__field-label">Category</span>
+        <select data-fit-guide-category class="select__select">
+          <option value="">Select a category</option>
+          {%- for block in category_blocks -%}
+            {%- if block.settings.collection != blank and block.settings.label != blank -%}
+              <option value="{{ block.id }}">{{ block.settings.label }}</option>
+            {%- endif -%}
+          {%- endfor -%}
+        </select>
+      </label>
+
+      <label class="fit-guide__field">
+        <span class="fit-guide__field-label">Product</span>
+        <select data-fit-guide-product class="select__select" disabled>
+          <option value="">Select a category first</option>
+        </select>
+      </label>
+
+      <label class="fit-guide__field">
+        <span class="fit-guide__field-label">Child Weight</span>
+        <span class="fit-guide__field-input">
+          <input type="number" inputmode="decimal" min="0" step="0.1" data-fit-guide-weight placeholder="Enter weight in lb">
+          <span class="fit-guide__field-suffix">lb</span>
+        </span>
+        <span class="fit-guide__field-hint">Optional</span>
+      </label>
+
+      <label class="fit-guide__field">
+        <span class="fit-guide__field-label">Child Height</span>
+        <span class="fit-guide__field-input">
+          <input type="number" inputmode="decimal" min="0" step="0.1" data-fit-guide-height placeholder="Enter height in in">
+          <span class="fit-guide__field-suffix">in</span>
+        </span>
+        <span class="fit-guide__field-hint">Optional</span>
+      </label>
+    </div>
+
+    <button type="button" class="link fit-guide__start-over" data-fit-guide-reset hidden>Start Over</button>
+  </div>
+
+  {%- comment -%} ===================== STEP 2: MATCHING PRODUCTS (always rendered; hidden until a filter is set) ===================== {%- endcomment -%}
+  <div class="page-width fit-guide__step fit-guide__step--results" data-fit-guide-step="results" hidden>
+    <h3 class="fit-guide__step-heading">Matching products</h3>
+
+    <ul class="grid product-grid grid--4-col-desktop grid--2-col-tablet-down" data-fit-guide-grid role="list">
+      {%- assign card_index = 0 -%}
+      {%- for block in category_blocks -%}
+        {%- if block.settings.collection != blank -%}
+          {%- for card_product in block.settings.collection.products -%}
+            {%- liquid
+              assign weight_min = card_product.metafields.sf_products.child_weight_min
+              assign weight_max = card_product.metafields.sf_products.child_weight_max
+              assign height_min = card_product.metafields.sf_products.child_height_min
+              assign height_max = card_product.metafields.sf_products.child_height_max
+              assign skip_card_styles = false
+              if card_index > 0
+                assign skip_card_styles = true
+              endif
+              assign card_index = card_index | plus: 1
+            -%}
+            <li
+              class="grid__item fit-guide__item"
+              data-fit-guide-item
+              data-category="{{ block.id }}"
+              data-product-id="{{ card_product.id }}"
+              data-product-title="{{ card_product.title | escape }}"
+              {%- if weight_min != blank and weight_max != blank %} data-weight-min="{{ weight_min }}" data-weight-max="{{ weight_max }}"{% endif -%}
+              {%- if height_min != blank and height_max != blank %} data-height-min="{{ height_min }}" data-height-max="{{ height_max }}"{% endif -%}
+              hidden
+            >
+              {%- render 'evenflo-card-product',
+                card_product: card_product,
+                media_aspect_ratio: 'square',
+                show_rating: false,
+                skip_styles: skip_card_styles
+              -%}
+              <div class="fit-guide__item-meta">
+                <span class="fit-guide__item-category">{{ block.settings.label }}</span>
+                {%- if weight_min != blank and weight_max != blank -%}
+                  <span class="fit-guide__item-spec">Child Weight<br><strong>{{ weight_min }}&ndash;{{ weight_max }} lb</strong></span>
+                {%- endif -%}
+                {%- if height_min != blank and height_max != blank -%}
+                  <span class="fit-guide__item-spec">Child Height<br><strong>{{ height_min }}&ndash;{{ height_max }} in</strong></span>
+                {%- endif -%}
+              </div>
+              <button
+                type="button"
+                class="button button--secondary fit-guide__view-details"
+                data-fit-guide-view-details
+                data-product-id="{{ card_product.id }}"
+              >
+                View Fit Details
+              </button>
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+
+    <p class="fit-guide__no-results" data-fit-guide-no-results hidden>No products match those filters. Try adjusting your selections.</p>
+  </div>
+
+  {%- comment -%} ===================== STEP 3: FIT DETAIL CARDS (one per unique product, always rendered; hidden until a card is opened) ===================== {%- endcomment -%}
+  <div class="page-width fit-guide__step fit-guide__step--detail" data-fit-guide-step="detail" hidden>
+    {%- assign rendered_product_ids = '' -%}
+    {%- for block in category_blocks -%}
+      {%- if block.settings.collection != blank -%}
+        {%- for card_product in block.settings.collection.products -%}
+          {%- assign id_token = card_product.id | append: ',' -%}
+          {%- unless rendered_product_ids contains id_token -%}
+            {%- assign rendered_product_ids = rendered_product_ids | append: id_token -%}
+            <article class="fit-guide__detail-card" data-fit-guide-detail data-product-id="{{ card_product.id }}" hidden>
+              <div class="fit-guide__detail-header">
+                <a class="link fit-guide__detail-change" data-fit-guide-detail-change href="#">Change Product</a>
+                <span class="fit-guide__detail-sep">&middot;</span>
+                <button type="button" class="link fit-guide__start-over" data-fit-guide-reset>Start Over</button>
+              </div>
+              <h3 class="fit-guide__detail-title">Fit Details For {{ card_product.title }}</h3>
+              {%- if section.settings.detail_disclaimer != blank -%}
+                <p class="fit-guide__detail-disclaimer">{{ section.settings.detail_disclaimer }}</p>
+              {%- endif -%}
+              <div class="fit-guide__detail-body">
+                <div class="fit-guide__detail-media">
+                  {%- if card_product.featured_media -%}
+                    {{ card_product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', alt: card_product.title }}
+                  {%- endif -%}
+                </div>
+                <div class="fit-guide__detail-info">
+                  <p class="fit-guide__detail-product-title">{{ card_product.title }}</p>
+                  <a class="link" href="{{ card_product.url }}">View Product</a>
+                  {%- render 'evenflo-pdp-tab-dimensions-fit', product: card_product -%}
+                </div>
+              </div>
+            </article>
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</fit-guide>
+
+{% schema %}
+{
+  "name": "Fit Guide",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Add one Category block per product category (e.g. Infant Car Seats, Convertible & All-in-One Car Seats). Each block's Collection is the source of truth for which products appear in that category — an automated collection ruled on the product's Shopify Category field is recommended so it can't fall out of sync, but any collection works."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Car Seat Fit Guide"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Use this guide to review car seat height, weight, and use mode information.</p>"
+    },
+    {
+      "type": "text",
+      "id": "filters_heading",
+      "label": "Filters step heading",
+      "default": "Find car seat fit details"
+    },
+    {
+      "type": "text",
+      "id": "filters_subheading",
+      "label": "Filters step subheading",
+      "default": "Choose a car seat category and product, or enter your child's height and weight to narrow matching options."
+    },
+    {
+      "type": "textarea",
+      "id": "detail_disclaimer",
+      "label": "Fit details disclaimer",
+      "default": "Review the available height and weight requirements for this product. Always follow product labels and the manual for complete requirements and instructions."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Category label",
+          "info": "e.g. Infant Car Seats",
+          "default": "Category"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection",
+          "info": "Products in this collection populate this category. An automated collection keyed to the product's Shopify Category field is recommended."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fit Guide",
+      "category": "Custom Sections",
+      "blocks": [
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" }
+      ]
+    }
+  ]
+}
+{% endschema %}
