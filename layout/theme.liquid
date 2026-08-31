@@ -1,12 +1,31 @@
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}">
+<html class="js" lang="{{ request.locale.iso_code }}">
   <head>
+    {%- render 'ecom_header' -%}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
+
+    <meta name="template" content="{{ template }}">
+    <link rel="alternate" hreflang="en-us" href="https://www.evenflo.com{{ request.path }}">
+    <link rel="alternate" hreflang="x-default" href="https://www.evenflo.com{{ request.path }}">
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-THSHFKC');
+    </script>
+    <!-- End Google Tag Manager -->
     <link rel="canonical" href="{{ canonical_url }}">
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -17,10 +36,10 @@
     {%- endunless -%}
 
     <title>
-      {{ page_title }}
+      {{- page_title -}}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- unless page_title contains 'Evenflo' %} &ndash; Evenflo{% endunless -%}
     </title>
 
     {% if page_description %}
@@ -32,12 +51,72 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
+    <!-- Conditionally include JavaScript file on specific JSON template pages -->
+    {% if (template contains 'evenflo-faq') or (template contains 'evenflo-collection') %}
+      <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
+      {{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    <!-- End Google Tag Manager -->
+    {% if template contains 'product' %}
+      <script type="text/javascript">
+        window._bl = { partner: 'evenflo.com' };
+      </script>
+      <script
+        async
+        type="text/javascript"
+        src="https://www.babylist.com/add.js"
+      ></script>
+    {% endif %}
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
     {{ content_for_header }}
 
+    {%- comment -%}
+      TEMPORARY (local only): Globo auto-replace needs themeInfo.theme_store_id.
+      Development themes expose theme_store_id: null, so Globo marks the menu
+      "replaced" without injecting. Fake Dawn themeInfo so we can test Globo
+      + header-search on shopify theme dev. Remove before shipping.
+    {%- endcomment -%}
+    {%- if theme.role == 'development' -%}
+      <script>
+        (function () {
+          window.GloboMenuConfig = window.GloboMenuConfig || {};
+          var dawnThemeInfo = {
+            theme_store_id: 887,
+            theme_version: {{ theme.schema_version | default: '15.2.0' | json }},
+            selector: {
+              desktop: 'nav.header__inline-menu',
+              mobile: 'nav.menu-drawer__navigation',
+            },
+          };
+          var info = dawnThemeInfo;
+          Object.defineProperty(window.GloboMenuConfig, 'themeInfo', {
+            configurable: true,
+            enumerable: true,
+            get: function () {
+              return info;
+            },
+            set: function (value) {
+              info = value && value !== false ? value : dawnThemeInfo;
+            },
+          });
+        })();
+      </script>
+    {%- endif -%}
+
+    <!-- New Font -->
+    <!-- <link rel="stylesheet" href="https://use.typekit.net/jnf1gfc.css"> -->
+    <!-- evenflo fonts -->
+    <!-- Live Font -->
+    <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css" media="print" onload="this.media='all'">
+
+    <!-- End Live Font -->
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
       assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
@@ -63,7 +142,21 @@
         {% else %}
           --gradient-background: {{ scheme.settings.background }};
         {% endif %}
+
+        {% liquid
+          assign background_color = scheme.settings.background
+          assign background_color_brightness = background_color | color_brightness
+          if background_color_brightness <= 26
+            assign background_color_contrast = background_color | color_lighten: 50
+          elsif background_color_brightness <= 65
+            assign background_color_contrast = background_color | color_lighten: 5
+          else
+            assign background_color_contrast = background_color | color_darken: 25
+          endif
+        %}
+
         --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+        --color-background-contrast: {{ background_color_contrast.red }},{{ background_color_contrast.green }},{{ background_color_contrast.blue }};
         --color-shadow: {{ scheme.settings.shadow.red }},{{ scheme.settings.shadow.green }},{{ scheme.settings.shadow.blue }};
         --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
         --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
@@ -83,12 +176,12 @@
       }
 
       :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-body-family: "mr-eaves-modern", sans-serif, {{ settings.type_body_font.fallback_families }} !important;
         --font-body-style: {{ settings.type_body_font.style }};
         --font-body-weight: {{ settings.type_body_font.weight }};
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
 
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-heading-family:  "mr-eaves-modern", sans-serif, {{ settings.type_header_font.fallback_families }};
         --font-heading-style: {{ settings.type_header_font.style }};
         --font-heading-weight: {{ settings.type_header_font.weight }};
 
@@ -239,13 +332,33 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'evenflo-base.css' | asset_url | stylesheet_tag }}
+    {% comment %} {{ 'evenflo.css' | asset_url | stylesheet_tag }} {% endcomment %}
+    <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
+
+    {%- if settings.cart_type == 'drawer' -%}
+      {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
+      {{ 'component-cart.css' | asset_url | stylesheet_tag }}
+      {{ 'component-totals.css' | asset_url | stylesheet_tag }}
+      {{ 'component-price.css' | asset_url | stylesheet_tag }}
+      {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
 
     {%- unless settings.type_body_font.system? -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
     {%- endunless -%}
     {%- unless settings.type_header_font.system? -%}
+      {% comment %}theme-check-disable AssetPreload{% endcomment %}
       <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+      {% comment %}theme-check-enable AssetPreload{% endcomment %}
     {%- endunless -%}
+
+    {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
+      {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
+      <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
 
     {%- if settings.predictive_search_enabled -%}
       <link
@@ -257,14 +370,13 @@
     {%- endif -%}
 
     <script>
-      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} live-theme">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -308,16 +420,56 @@
         unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
       };
 
+      window.quickOrderListStrings = {
+        itemsAdded: `{{ 'sections.quick_order_list.items_added.other' | t: quantity: '[quantity]' }}`,
+        itemAdded: `{{ 'sections.quick_order_list.items_added.one' | t: quantity: '[quantity]' }}`,
+        itemsRemoved: `{{ 'sections.quick_order_list.items_removed.other' | t: quantity: '[quantity]' }}`,
+        itemRemoved: `{{ 'sections.quick_order_list.items_removed.one' | t: quantity: '[quantity]' }}`,
+        viewCart: `{{- 'sections.quick_order_list.view_cart' | t -}}`,
+        each: `{{- 'sections.quick_order_list.each' | t: money: '[money]' }}`,
+        min_error: `{{- 'sections.quick_order_list.min_error' | t: min: '[min]' }}`,
+        max_error: `{{- 'sections.quick_order_list.max_error' | t: max: '[max]' }}`,
+        step_error: `{{- 'sections.quick_order_list.step_error' | t: step: '[step]' }}`,
+      };
+
       window.accessibilityStrings = {
         imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+        recipientFormExpanded: `{{ 'recipient.form.expanded' | t }}`,
+        recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
+        countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
+      };
+    </script>
+
+    {% comment %}
+      <!-- Live Advisor  -->
+      <script src="//gis.GoInstore.com/gis/script/69497f3e-2f30-462b-99be-4413000147bf" defer></script>
+      <!-- Chatbot -->
+    {% endcomment %}
+
+    <script type="text/javascript" src="https://www.astutebot.com/chat/script/AstuteBotLauncher.min.js"></script>
+
+    <script>
+      window.astuteBotMessengerSettings = {
+        channelId: 'Sf4WR-kw16xpqy-KU4lYdg',
       };
     </script>
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    {%- if settings.cart_type == 'drawer' -%}
+      <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script src="{{ 'evenflo-globo-header-focus.js' | asset_url }}" defer="defer"></script>
+    {% comment %}
+      <script>
+      function includeScript(e){var t=document.createElement("script"),n=document.getElementsByTagName("script")[0];t.type="text/javascript",t.src=e,t.async=!0,n.parentNode.insertBefore(t,n)}includeScript("https://bot.emplifi.io/components/Launchers/Messenger/LauncherSelector.js");
+      </script>
+    {% endcomment %}
+    {%- render 'ecom_footer' -%}
   </body>
 </html>
