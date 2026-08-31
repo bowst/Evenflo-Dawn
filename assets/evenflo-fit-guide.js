@@ -27,7 +27,9 @@ class FitGuide extends HTMLElement {
     });
     this.productSelect.addEventListener('change', () => this.applyFilters());
     this.weightInput.addEventListener('input', () => this.applyFilters());
+    this.weightInput.addEventListener('change', () => this.applyFilters());
     this.heightInput.addEventListener('input', () => this.applyFilters());
+    this.heightInput.addEventListener('change', () => this.applyFilters());
 
     this.resetButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
@@ -139,6 +141,7 @@ class FitGuide extends HTMLElement {
       if (matches) visibleCount += 1;
     });
 
+    this.detailStep.hidden = true;
     this.resultsStep.hidden = false;
     this.noResults.hidden = visibleCount > 0;
     this.grid.hidden = visibleCount === 0;
