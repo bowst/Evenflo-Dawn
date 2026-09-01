@@ -1,5 +1,9 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+{{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag }}
 {{ 'section-evenflo-mixed-media-grid.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -190,7 +194,8 @@
                         show_rating: section.settings.show_rating,
                         show_swatches: section.settings.show_swatches,
                         enable_quick_add: section.settings.enable_quick_add,
-                        section_id: section.id
+                        section_id: section.id,
+                        skip_styles: true
                       %}
                     {%- endif -%}
                   </div>
@@ -209,7 +214,9 @@
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
-<script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
+{% if section.settings.show_swatches %}
+	<script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
+{% endif %}
 
 {% schema %}
 {
