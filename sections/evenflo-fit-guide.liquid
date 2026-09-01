@@ -68,24 +68,29 @@
     {%- endif -%}
 
     <div class="fit-guide__filters">
-      <label class="fit-guide__field">
-        <span class="fit-guide__field-label">Category</span>
-        <select data-fit-guide-category class="select__select">
-          <option value="">Select a category</option>
-          {%- for block in category_blocks -%}
-            {%- if block.settings.collection != blank and block.settings.label != blank -%}
-              <option value="{{ block.id }}">{{ block.settings.label }}</option>
-            {%- endif -%}
-          {%- endfor -%}
-        </select>
-      </label>
+      <div class="fit-guide__field">
+        <span class="fit-guide__field-label" id="FitGuide-{{ section.id }}-category-label">Category</span>
+        <div class="fit-guide__select">
+          <select data-fit-guide-category>
+            <option value="">Select a category</option>
+            {%- for block in category_blocks -%}
+              {%- if block.settings.collection != blank and block.settings.label != blank -%}
+                <option value="{{ block.id }}">{{ block.settings.label }}</option>
+              {%- endif -%}
+            {%- endfor -%}
+          </select>
+        </div>
+      </div>
 
-      <label class="fit-guide__field">
-        <span class="fit-guide__field-label">Product</span>
-        <select data-fit-guide-product class="select__select" disabled>
-          <option value="">Select a category first</option>
-        </select>
-      </label>
+      <div class="fit-guide__field">
+        <span class="fit-guide__field-label" id="FitGuide-{{ section.id }}-product-label">Product</span>
+        <div class="fit-guide__select">
+          <select data-fit-guide-product disabled>
+            <option value="">Product</option>
+          </select>
+        </div>
+        <span class="fit-guide__field-hint" data-fit-guide-product-hint>Select a category first</span>
+      </div>
 
       <label class="fit-guide__field">
         <span class="fit-guide__field-label">Child Weight</span>
@@ -156,7 +161,7 @@
               </div>
               <button
                 type="button"
-                class="button button--secondary fit-guide__view-details"
+                class="button button--primary fit-guide__view-details"
                 data-fit-guide-view-details
                 data-product-id="{{ card_product.id }}"
               >

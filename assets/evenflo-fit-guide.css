@@ -1,5 +1,10 @@
 .fit-guide {
   --fit-guide-gap: 1.5rem;
+  --fit-guide-control-padding: 16px;
+  --fit-guide-control-radius: 10px;
+  --fit-guide-control-size: 16px;
+  --fit-guide-control-border: var(--color-evenflo-neutral-100, #f2f4f7);
+  --fit-guide-control-color: var(--color-evenflo-neutral-800, #222222);
 }
 
 .fit-guide__intro {
@@ -18,6 +23,7 @@
 
 .fit-guide__step {
   margin-bottom: 4rem;
+  scroll-margin-top: calc(var(--header-height, 7.2rem) + 1.6rem);
 }
 
 .fit-guide__step-heading {
@@ -35,20 +41,20 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--fit-guide-gap);
-  max-width: 90rem;
+  /*max-width: 90rem;*/
   margin: 0 auto;
 }
 
 @media screen and (min-width: 990px) {
   .fit-guide__filters {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
-
 .fit-guide__field {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  position: relative;
 }
 
 .fit-guide__field-label {
@@ -57,27 +63,175 @@
 }
 
 .fit-guide__field-input {
-  position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
+  padding-right: var(--fit-guide-control-padding);
+  border: 1px solid var(--fit-guide-control-border);
+  border-radius: var(--fit-guide-control-radius);
+  background-color: #fff;
+  box-sizing: border-box;
+  gap: 0.4rem;
 }
 
-.fit-guide__field-input input {
-  width: 100%;
-  padding-right: 3.5rem;
+.fit-guide__field-input:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-evenflo-blue-500, #2996c5);
 }
 
 .fit-guide__field-suffix {
-  position: absolute;
-  right: 1.2rem;
-  color: rgba(var(--color-foreground), 0.6);
+  flex-shrink: 0;
+  color: var(--color-evenflo-neutral-600, #666666);
   font-size: 1.3rem;
   pointer-events: none;
 }
 
+.fit-guide__field select,
+.fit-guide__field input,
+.fit-guide__select-trigger {
+  width: 100%;
+  padding: var(--fit-guide-control-padding);
+  border: 1px solid var(--fit-guide-control-border);
+  border-radius: var(--fit-guide-control-radius);
+  font-size: var(--fit-guide-control-size);
+  line-height: 1.3;
+  color: var(--fit-guide-control-color);
+  font-family: var(--font-family-base, var(--font-body-family));
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.fit-guide__field-input input {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  border: 0;
+  padding-right: 0.4rem;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fit-guide__field-input input:focus,
+.fit-guide__field-input input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.fit-guide__field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%23666666' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--fit-guide-control-padding) center;
+  background-size: 12px 8px;
+  padding-right: calc(var(--fit-guide-control-padding) * 2 + 12px);
+  cursor: pointer;
+}
+
+.fit-guide__select {
+  position: relative;
+}
+
+.fit-guide__select.is-open {
+  z-index: 4;
+}
+
+.fit-guide__select--enhanced select.fit-guide__select-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.fit-guide__select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  font-weight: 400;
+}
+
+.fit-guide__select-trigger:focus-visible {
+  outline: 2px solid var(--color-evenflo-blue-500, #2996c5);
+  outline-offset: 2px;
+}
+
+.fit-guide__select-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fit-guide__select-caret {
+  flex-shrink: 0;
+  width: 12px;
+  height: 8px;
+  color: var(--color-evenflo-neutral-600, #666666);
+  transition: transform 0.15s ease;
+}
+
+.fit-guide__select.is-open .fit-guide__select-caret {
+  transform: rotate(180deg);
+}
+
+.fit-guide__select.is-disabled .fit-guide__select-trigger,
+.fit-guide__field select:disabled {
+  background-color: var(--color-evenflo-neutral-100, #f2f4f7);
+  color: var(--color-evenflo-neutral-600, #666666);
+  border-color: var(--color-evenflo-neutral-100, #f2f4f7);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.fit-guide__select.is-disabled .fit-guide__select-caret {
+  color: var(--color-evenflo-neutral-600, #666666);
+}
+
+.fit-guide__select-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #fff;
+  border-radius: var(--fit-guide-control-radius);
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.1);
+  max-height: 32rem;
+  overflow-y: auto;
+}
+
+.fit-guide__select-option {
+  padding: var(--fit-guide-control-padding);
+  font-size: var(--fit-guide-control-size);
+  line-height: 1.3;
+  color: var(--fit-guide-control-color);
+  font-family: var(--font-family-base, var(--font-body-family));
+  cursor: pointer;
+}
+
+.fit-guide__select-option:hover,
+.fit-guide__select-option.is-active {
+  background-color: var(--color-evenflo-neutral-100, #f2f4f7);
+}
+
+.fit-guide__select-option[aria-selected='true'] {
+  font-weight: 600;
+}
+
 .fit-guide__field-hint {
   font-size: 1.1rem;
-  color: rgba(var(--color-foreground), 0.6);
+  color: var(--color-evenflo-neutral-600, #666666);
 }
 
 .fit-guide__start-over {
@@ -90,10 +244,46 @@
   display: none !important;
 }
 
+.fit-guide [data-fit-guide-grid] {
+  --grid-mobile-horizontal-spacing: 16px;
+  --grid-mobile-vertical-spacing: 16px;
+  --grid-desktop-horizontal-spacing: 16px;
+  --grid-desktop-vertical-spacing: 16px;
+}
+
+@media screen and (min-width: 990px) {
+  .fit-guide [data-fit-guide-grid] {
+    --grid-desktop-horizontal-spacing: 32px;
+    --grid-desktop-vertical-spacing: 32px;
+  }
+}
+
 .fit-guide__item {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  padding: 8px;
+  border: 1px solid var(--color-evenflo-neutral-100, #f2f4f7);
+  border-radius: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.fit-guide__item .card--card,
+.fit-guide__item .card--standard .card__inner {
+  border: 0;
+  border-radius: 0;
+}
+
+.fit-guide__item .card--card:after,
+.fit-guide__item .card--standard .card__inner:after {
+  content: none;
+}
+
+.fit-guide__item .card__inner,
+.fit-guide__item .card__media,
+.fit-guide__item .card__media img {
+  border-radius: 0;
 }
 
 .fit-guide__item-meta {
