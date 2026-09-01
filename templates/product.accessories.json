@@ -9,7 +9,7 @@
  */
 {
   "sections": {
-    "64dcd414-d0d5-4417-a3eb-394190ab46b3": {
+    "49d45c57-3bd0-4d56-be3d-0b6d61252c88": {
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "{% render 'breadcrumbs' %}",
@@ -42,6 +42,12 @@
           "type": "price",
           "settings": {}
         },
+        "d8033ec6-6109-4faa-b2a1-f7cc3ea80e32": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"affirm-info-container\"></div>"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -61,21 +67,18 @@
             "show_gift_card_recipient": false
           }
         },
-        "affirm_pay_over_time_messaging_product_block_haeWgT": {
-          "type": "shopify://apps/affirm-pay-over-time-messaging/blocks/product-block/6dce54be-130d-4d13-9636-1e8f611b3071",
+        "complementary_zCxhNt": {
+          "type": "complementary",
           "settings": {
-            "logo_align": "left",
-            "font_size": 16,
-            "logo_color": "blue",
-            "logo_type": "logo",
-            "public_api_key": "",
-            "price_selector": ""
+            "block_heading": "You might also like",
+            "make_collapsible_row": true,
+            "icon": "none",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "dots",
+            "image_ratio": "square",
+            "enable_quick_add": false
           }
-        },
-        "evenflo_at_a_glance_gpJRRi": {
-          "type": "evenflo-at-a-glance",
-          "disabled": true,
-          "settings": {}
         }
       },
       "block_order": [
@@ -83,11 +86,11 @@
         "title",
         "58a13a44-6b34-475b-b044-5bc4ab42f7c1",
         "price",
+        "d8033ec6-6109-4faa-b2a1-f7cc3ea80e32",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "affirm_pay_over_time_messaging_product_block_haeWgT",
-        "evenflo_at_a_glance_gpJRRi"
+        "complementary_zCxhNt"
       ],
       "settings": {
         "enable_sticky_info": false,
@@ -98,39 +101,24 @@
         "gallery_layout": "thumbnail_slider",
         "media_position": "left",
         "image_zoom": "lightbox",
-        "mobile_thumbnails": "show",
+        "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
       }
     },
-    "evenflo_at_a_glance_dec4wj": {
+    "evenflo_at_a_glance_EVMPVR": {
       "type": "evenflo-at-a-glance",
       "name": "At a Glance",
       "settings": {
         "heading": "At a Glance",
-        "background_color": "#ffffff",
+        "background_color": "#faf8f6",
         "sensorsafe_url": "",
         "sensorysoothe_url": ""
       }
     },
-    "evenflo_features_carousel_7PAaAM": {
-      "type": "evenflo-features-carousel",
-      "name": "Evenflo Features Carousel",
-      "settings": {
-        "heading": "Features",
-        "background_color": "#ffffff",
-        "columns_desktop": 3,
-        "product_handles": ""
-      }
-    },
-    "de262cc2-cd7a-45ad-abd0-474f06e53224": {
-      "type": "evenflo-product-highlights",
-      "disabled": true,
-      "settings": {}
-    },
-    "evenflo_product_video_mdzfaW": {
+    "evenflo_product_video_xD4eXM": {
       "type": "evenflo-product-video",
       "disabled": true,
       "settings": {
@@ -138,16 +126,65 @@
         "description": ""
       }
     },
-    "4523e587-868b-4f60-a0fc-9fd2ccbe284a": {
-      "type": "evenflo-features",
-      "disabled": true,
-      "settings": {
-        "product_handles": ""
-      }
-    },
-    "46391549-e9d3-4404-8c19-b08b5eab6ca7": {
-      "type": "evenflo-pdp-faq",
+    "evenflo_pdp_tabs_WYK4W3": {
+      "type": "evenflo-pdp-tabs",
+      "name": "PDP Tabs",
       "settings": {}
+    },
+    "tooltips_G4Hrmi": {
+      "type": "tooltips",
+      "blocks": {
+        "tooltip_ky4Gfj": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "ADD 360°, 3-IN-1 WEATHER PROTECTION:",
+            "content": "Premium, all-in-one protection includes a durable, waterproof vinyl rain cover with clear window and ventilation for breathability, plus a lower rain cover that unzips for access to your child, and an extended shade with mesh panel to keep insects out",
+            "top": 21,
+            "left": 50
+          }
+        },
+        "tooltip_VtjQYH": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "ROLL WITH STYLE AND VISIBILITY:",
+            "content": "Coordinates with your Shyft DualRide and features a stylish raindrop design on the sides; reflective trim helps to add visibility in high traffic or low light",
+            "top": 66,
+            "left": 72
+          }
+        },
+        "tooltip_F9EgkP": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "TAKE ON AND OFF, EFFORTLESSLY:",
+            "content": "Smart design integrates with your DualRide in seconds for perfectly fitted, all-weather coverage, with elastic at front and back plus elastic loops to hold cover secure",
+            "top": 57,
+            "left": 45
+          }
+        },
+        "tooltip_JY6CWd": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "STASH IT ’TIL YOU NEED IT:",
+            "content": "Cover comes with a stylish, round polyester storage bag that snaps onto the handle when not in use; thoughtful design collapses bag flat to just 12 in. across x 2 in. deep",
+            "top": 50,
+            "left": 71
+          }
+        }
+      },
+      "block_order": [
+        "tooltip_ky4Gfj",
+        "tooltip_VtjQYH",
+        "tooltip_F9EgkP",
+        "tooltip_JY6CWd"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/6451001_Dual_Ride_Lifestyle_shoot1841-scale.jpg",
+        "tooltip_color": "#ffffff",
+        "tooltip_background_color": "#64cbdf",
+        "tooltip_focus_color": "#2996c5",
+        "product_handles": "shyft-dualride-all-weather-cover",
+        "breakpoint": "768"
+      }
     },
     "related-products": {
       "type": "related-products",
@@ -167,7 +204,7 @@
         "padding_bottom": 28
       }
     },
-    "evenflo_peace_of_mind_new_9J4U6z": {
+    "evenflo_peace_of_mind_new_jEAHTU": {
       "type": "evenflo-peace-of-mind-new",
       "name": "Peace Of Mind New",
       "settings": {
@@ -183,27 +220,10 @@
         "parts_link": ""
       }
     },
-    "3b0269b9-b8c1-48e0-927e-0b85cd0c441c": {
-      "type": "evenflo-peace-of-mind",
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "heading": "Peace Of Mind",
-        "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>",
-        "support_content": "<h3 class=\"h1\">Supported by <strong>ParentLink Consumer Care</strong> via phone, email, chat and video</h3>\n\n<div class=\"peace-of-mind__container\">\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">Phone</h4>\n<a href=\"tel:1-800-233-5921\">1-800-233-5921 (US)</a><br>\n<a href=\"tel:1-937-773-3971\">1-937-773-3971 (Canada)</a>\n</div>\n<div class=\"peace-of-mind__column\">\n<h4 class=\"h3\">EMAIL</h4>\nNo time to chat?<br>\n<a href=\"mailto:\">Email us</a> your inquiry\n</div>\n</div>"
-      }
-    },
-    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78": {
-      "type": "evenflo-quote",
-      "settings": {
-        "quote": "{{ product.metafields.custom.customer_quote.value }}",
-        "name": "{{ product.metafields.custom.customer_quote_name.value }}"
-      }
-    },
-    "1691542342953a5e61": {
+    "16915421559b4c20e6": {
       "type": "apps",
       "blocks": {
-        "32083d0e-d1ed-4506-9300-4f838cf76062": {
+        "bb929286-bcc8-4922-907f-025c5b17ddd9": {
           "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
@@ -211,30 +231,16 @@
         }
       },
       "block_order": [
-        "32083d0e-d1ed-4506-9300-4f838cf76062"
+        "bb929286-bcc8-4922-907f-025c5b17ddd9"
       ],
       "settings": {
         "include_margins": true
       }
     },
-    "a40977eb-46b5-4322-81f4-bb36dab6bfff": {
-      "type": "evenflo-join",
-      "settings": {}
-    },
-    "custom_liquid_adwLRk": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<script>\nwindow.addEventListener('load', function() {\nvar _learnq = window._learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price/100,\n      $value: data.total_price/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', cart]);\n        klAjax = false;\n      }\n  }))\n};\n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}/cart/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch));\nvar klAjax = true;\nvar atcButtons = document.querySelectorAll(\"form[action*='/cart/add'] button[type='submit']\");\nfor (var i = 0; i < atcButtons.length; i++) {\n    atcButtons[i].addEventListener(\"click\", function() {\n      if (klAjax) {\n        _learnq.push(['track', 'Added to Cart', item]);\n        klAjax = false;\n      }\n    })\n}\n});\n</script>",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "evenflo_benefits_JdqM3P": {
+    "evenflo_benefits_wDLcfn": {
       "type": "evenflo-benefits",
       "blocks": {
-        "benefit_cNxn9d": {
+        "benefit_H96kn3": {
           "type": "benefit",
           "settings": {
             "icon": "shopify://shop_images/icon-dollar-sign.svg",
@@ -243,7 +249,7 @@
             "link": "shopify://pages/refer"
           }
         },
-        "benefit_4AngMc": {
+        "benefit_LcJBRN": {
           "type": "benefit",
           "settings": {
             "icon": "shopify://shop_images/icon-pay-affirm-benefit.svg",
@@ -252,7 +258,7 @@
             "link": "shopify://pages/affirm-overview"
           }
         },
-        "benefit_aECRUp": {
+        "benefit_fLWmmh": {
           "type": "benefit",
           "settings": {
             "icon": "shopify://shop_images/icon-community-benefit.svg",
@@ -261,7 +267,7 @@
             "link": "shopify://pages/new-promotions"
           }
         },
-        "benefit_KynHyq": {
+        "benefit_Qk9QDa": {
           "type": "benefit",
           "settings": {
             "title": "Evenflo Blog",
@@ -271,10 +277,10 @@
         }
       },
       "block_order": [
-        "benefit_cNxn9d",
-        "benefit_4AngMc",
-        "benefit_aECRUp",
-        "benefit_KynHyq"
+        "benefit_H96kn3",
+        "benefit_LcJBRN",
+        "benefit_fLWmmh",
+        "benefit_Qk9QDa"
       ],
       "name": "Benefits",
       "settings": {
@@ -283,29 +289,28 @@
         "padding_bottom": 36
       }
     },
-    "evenflo_pdp_tabs_jQbV4L": {
-      "type": "evenflo-pdp-tabs",
-      "name": "PDP Tabs",
-      "settings": {}
+    "evenflo_features_carousel_DMBrQK": {
+      "type": "evenflo-features-carousel",
+      "name": "Evenflo Features Carousel",
+      "settings": {
+        "heading": "Features",
+        "background_color": "#fcfcfd",
+        "columns_desktop": 3,
+        "product_handles": ""
+      }
     }
   },
   "order": [
-    "64dcd414-d0d5-4417-a3eb-394190ab46b3",
+    "49d45c57-3bd0-4d56-be3d-0b6d61252c88",
     "main",
-    "evenflo_at_a_glance_dec4wj",
-    "evenflo_features_carousel_7PAaAM",
-    "evenflo_pdp_tabs_jQbV4L",
-    "de262cc2-cd7a-45ad-abd0-474f06e53224",
-    "evenflo_product_video_mdzfaW",
-    "4523e587-868b-4f60-a0fc-9fd2ccbe284a",
-    "46391549-e9d3-4404-8c19-b08b5eab6ca7",
+    "evenflo_at_a_glance_EVMPVR",
+    "evenflo_features_carousel_DMBrQK",
+    "evenflo_product_video_xD4eXM",
+    "evenflo_pdp_tabs_WYK4W3",
+    "tooltips_G4Hrmi",
     "related-products",
-    "evenflo_peace_of_mind_new_9J4U6z",
-    "3b0269b9-b8c1-48e0-927e-0b85cd0c441c",
-    "3c68ec0d-00b1-49f9-9e80-5d14e3152e78",
-    "1691542342953a5e61",
-    "a40977eb-46b5-4322-81f4-bb36dab6bfff",
-    "custom_liquid_adwLRk",
-    "evenflo_benefits_JdqM3P"
+    "evenflo_peace_of_mind_new_jEAHTU",
+    "16915421559b4c20e6",
+    "evenflo_benefits_wDLcfn"
   ]
 }

@@ -1,18 +1,18 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
- {%- render 'ecom_header' -%}
+    {%- render 'ecom_header' -%}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
 
-	<meta name="template" content="{{ template }}">
-	<link rel="alternate" hreflang="en-us" href="https://www.evenflo.com{{ request.path }}">
-	<link rel="alternate" hreflang="x-default" href="https://www.evenflo.com{{ request.path }}">
+    <meta name="template" content="{{ template }}">
+    <link rel="alternate" hreflang="en-us" href="https://www.evenflo.com{{ request.path }}">
+    <link rel="alternate" hreflang="x-default" href="https://www.evenflo.com{{ request.path }}">
 
     <!-- Google Tag Manager -->
-   <script>
+    <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
@@ -35,17 +35,12 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-<title>
-  {%- if template contains 'product' -%}
-    {{ product.vendor }} {{ page_title }}
-  {%- else -%}
-    {{ page_title }}
-  {%- endif -%}
-
-  {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-  {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-</title>
+    <title>
+      {{- page_title -}}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains 'Evenflo' %} &ndash; Evenflo{% endunless -%}
+    </title>
 
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
@@ -118,9 +113,8 @@
     <!-- <link rel="stylesheet" href="https://use.typekit.net/jnf1gfc.css"> -->
     <!-- evenflo fonts -->
     <!-- Live Font -->
-        <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="preconnect" href="https://use.typekit.net">
     <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css" media="print" onload="this.media='all'">
-
 
     <!-- End Live Font -->
     {%- liquid
@@ -380,7 +374,6 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} live-theme">
@@ -450,16 +443,18 @@
       };
     </script>
 
-    {% comment %} <!-- Live Advisor  -->
-    <script src="//gis.GoInstore.com/gis/script/69497f3e-2f30-462b-99be-4413000147bf" defer></script>
-    <!-- Chatbot --> {% endcomment %}
+    {% comment %}
+      <!-- Live Advisor  -->
+      <script src="//gis.GoInstore.com/gis/script/69497f3e-2f30-462b-99be-4413000147bf" defer></script>
+      <!-- Chatbot -->
+    {% endcomment %}
 
     <script type="text/javascript" src="https://www.astutebot.com/chat/script/AstuteBotLauncher.min.js"></script>
 
     <script>
-    window.astuteBotMessengerSettings = {
-        channelId: "Sf4WR-kw16xpqy-KU4lYdg"
-    };
+      window.astuteBotMessengerSettings = {
+        channelId: 'Sf4WR-kw16xpqy-KU4lYdg',
+      };
     </script>
 
     {%- if settings.predictive_search_enabled -%}
@@ -470,12 +465,11 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
     <script src="{{ 'evenflo-globo-header-focus.js' | asset_url }}" defer="defer"></script>
-    {% comment %} <script>
-    function includeScript(e){var t=document.createElement("script"),n=document.getElementsByTagName("script")[0];t.type="text/javascript",t.src=e,t.async=!0,n.parentNode.insertBefore(t,n)}includeScript("https://bot.emplifi.io/components/Launchers/Messenger/LauncherSelector.js");
-    </script> {% endcomment %}
-  {%- render "ecom_footer"-%}</body>
-
-
-
-
+    {% comment %}
+      <script>
+      function includeScript(e){var t=document.createElement("script"),n=document.getElementsByTagName("script")[0];t.type="text/javascript",t.src=e,t.async=!0,n.parentNode.insertBefore(t,n)}includeScript("https://bot.emplifi.io/components/Launchers/Messenger/LauncherSelector.js");
+      </script>
+    {% endcomment %}
+    {%- render 'ecom_footer' -%}
+  </body>
 </html>
