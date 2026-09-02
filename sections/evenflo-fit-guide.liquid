@@ -17,13 +17,11 @@
   doesn't have):
     product.metafields.sf_products.child_weight_min / child_weight_max
     product.metafields.sf_products.child_height_min / child_height_max
-  Fit-detail content (step 3) reuses the existing PDP snippets:
-    'evenflo-pdp-tab-child-fit', 'evenflo-pdp-tab-dimensions-fit'
+  Fit-detail content (step 3) is rendered in evenflo-fit-guide-detail and
+  uses per-mode car-seat metafields (sf_car_seat.*) plus product-level
+  child weight/height, SKU, manual, and LATCH fields.
 {% endcomment %}
 
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-fit-guide.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'evenflo-fit-guide.js' | asset_url }}" defer="defer"></script>
 
@@ -46,7 +44,7 @@
 -%}
 
 <fit-guide
-  class="color-{{ section.settings.color_scheme }} gradient fit-guide section-{{ section.id }}-padding"
+  class="color-{{ section.settings.color_scheme }} gradient fit-guide new-2026 section-{{ section.id }}-padding"
   data-section-id="{{ section.id }}"
 >
   <div class="page-width fit-guide__intro">
@@ -60,13 +58,6 @@
 
   {%- comment -%} ===================== STEP 1: FILTERS ===================== {%- endcomment -%}
   <div class="page-width fit-guide__step fit-guide__step--filters" data-fit-guide-step="filters">
-    {%- if section.settings.filters_heading != blank -%}
-      <h3 class="fit-guide__step-heading">{{ section.settings.filters_heading }}</h3>
-    {%- endif -%}
-    {%- if section.settings.filters_subheading != blank -%}
-      <p class="fit-guide__step-subheading">{{ section.settings.filters_subheading }}</p>
-    {%- endif -%}
-
     <div class="fit-guide__filters">
       <div class="fit-guide__field">
         <span class="fit-guide__field-label" id="FitGuide-{{ section.id }}-category-label">Category</span>
@@ -119,7 +110,6 @@
     <h3 class="fit-guide__step-heading">Matching products</h3>
 
     <ul class="grid product-grid grid--4-col-desktop grid--2-col-tablet-down" data-fit-guide-grid role="list">
-      {%- assign card_index = 0 -%}
       {%- for block in category_blocks -%}
         {%- if block.settings.collection != blank -%}
           {%- for card_product in block.settings.collection.products -%}
@@ -128,11 +118,6 @@
               assign weight_max = card_product.metafields.sf_products.child_weight_max
               assign height_min = card_product.metafields.sf_products.child_height_min
               assign height_max = card_product.metafields.sf_products.child_height_max
-              assign skip_card_styles = false
-              if card_index > 0
-                assign skip_card_styles = true
-              endif
-              assign card_index = card_index | plus: 1
             -%}
             <li
               class="grid__item fit-guide__item"
@@ -144,29 +129,10 @@
               {%- if height_min != blank and height_max != blank %} data-height-min="{{ height_min }}" data-height-max="{{ height_max }}"{% endif -%}
               hidden
             >
-              {%- render 'evenflo-card-product',
-                card_product: card_product,
-                media_aspect_ratio: 'square',
-                show_rating: false,
-                skip_styles: skip_card_styles
+              {%- render 'evenflo-fit-guide-card',
+                product: card_product,
+                category_label: block.settings.label
               -%}
-              <div class="fit-guide__item-meta">
-                <span class="fit-guide__item-category">{{ block.settings.label }}</span>
-                {%- if weight_min != blank and weight_max != blank -%}
-                  <span class="fit-guide__item-spec">Child Weight<br><strong>{{ weight_min }}&ndash;{{ weight_max }} lb</strong></span>
-                {%- endif -%}
-                {%- if height_min != blank and height_max != blank -%}
-                  <span class="fit-guide__item-spec">Child Height<br><strong>{{ height_min }}&ndash;{{ height_max }} in</strong></span>
-                {%- endif -%}
-              </div>
-              <button
-                type="button"
-                class="button button--primary fit-guide__view-details"
-                data-fit-guide-view-details
-                data-product-id="{{ card_product.id }}"
-              >
-                View Fit Details
-              </button>
             </li>
           {%- endfor -%}
         {%- endif -%}
@@ -185,29 +151,13 @@
           {%- assign id_token = card_product.id | append: ',' -%}
           {%- unless rendered_product_ids contains id_token -%}
             {%- assign rendered_product_ids = rendered_product_ids | append: id_token -%}
-            <article class="fit-guide__detail-card" data-fit-guide-detail data-product-id="{{ card_product.id }}" hidden>
-              <div class="fit-guide__detail-header">
-                <a class="link fit-guide__detail-change" data-fit-guide-detail-change href="#">Change Product</a>
-                <span class="fit-guide__detail-sep">&middot;</span>
-                <button type="button" class="link fit-guide__start-over" data-fit-guide-reset>Start Over</button>
-              </div>
-              <h3 class="fit-guide__detail-title">Fit Details For {{ card_product.title }}</h3>
-              {%- if section.settings.detail_disclaimer != blank -%}
-                <p class="fit-guide__detail-disclaimer">{{ section.settings.detail_disclaimer }}</p>
-              {%- endif -%}
-              <div class="fit-guide__detail-body">
-                <div class="fit-guide__detail-media">
-                  {%- if card_product.featured_media -%}
-                    {{ card_product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', alt: card_product.title }}
-                  {%- endif -%}
-                </div>
-                <div class="fit-guide__detail-info">
-                  <p class="fit-guide__detail-product-title">{{ card_product.title }}</p>
-                  <a class="link" href="{{ card_product.url }}">View Product</a>
-                  {%- render 'evenflo-pdp-tab-dimensions-fit', product: card_product -%}
-                </div>
-              </div>
-            </article>
+            {%- render 'evenflo-fit-guide-detail',
+              product: card_product,
+              category_label: block.settings.label,
+              disclaimer: section.settings.detail_disclaimer,
+              manuals_link: section.settings.manuals_link,
+              faqs_link: section.settings.faqs_link
+            -%}
           {%- endunless -%}
         {%- endfor -%}
       {%- endif -%}
@@ -238,22 +188,22 @@
       "default": "<p>Use this guide to review car seat height, weight, and use mode information.</p>"
     },
     {
-      "type": "text",
-      "id": "filters_heading",
-      "label": "Filters step heading",
-      "default": "Find car seat fit details"
-    },
-    {
-      "type": "text",
-      "id": "filters_subheading",
-      "label": "Filters step subheading",
-      "default": "Choose a car seat category and product, or enter your child's height and weight to narrow matching options."
-    },
-    {
       "type": "textarea",
       "id": "detail_disclaimer",
       "label": "Fit details disclaimer",
       "default": "Review the available height and weight requirements for this product. Always follow product labels and the manual for complete requirements and instructions."
+    },
+    {
+      "type": "url",
+      "id": "manuals_link",
+      "label": "Find Manuals button",
+      "info": "Shown on each product’s fit details. Leave empty to hide the button."
+    },
+    {
+      "type": "url",
+      "id": "faqs_link",
+      "label": "View FAQs button",
+      "info": "Shown on each product’s fit details. Leave empty to hide the button."
     },
     {
       "type": "color_scheme",

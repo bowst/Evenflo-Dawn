@@ -60,6 +60,14 @@ class FitGuide extends HTMLElement {
         this.showResults();
       });
     });
+
+    this.querySelectorAll('[data-fit-guide-tab]').forEach((tab) => {
+      tab.addEventListener('click', () => this.selectDetailTab(tab));
+    });
+
+    this.querySelectorAll('[data-fit-guide-specs-toggle]').forEach((button) => {
+      button.addEventListener('click', () => this.toggleDetailSpecs(button));
+    });
   }
 
   populateProductOptions() {
@@ -166,11 +174,44 @@ class FitGuide extends HTMLElement {
 
   showDetail(productId) {
     this.detailCards.forEach((card) => {
-      card.hidden = card.dataset.productId !== productId;
+      const isMatch = card.dataset.productId === productId;
+      card.hidden = !isMatch;
+      if (!isMatch) return;
+      this.closeDetailSpecs(card);
+      const firstTab = card.querySelector('[data-fit-guide-tab]');
+      if (firstTab) this.selectDetailTab(firstTab);
     });
     this.resultsStep.hidden = true;
     this.detailStep.hidden = false;
     this.detailStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  toggleDetailSpecs(button) {
+    const card = button.closest('[data-fit-guide-detail]');
+    const specs = card?.querySelector('.fit-guide__detail-specs');
+    if (!specs) return;
+    const open = specs.hidden;
+    specs.hidden = !open;
+    button.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  closeDetailSpecs(card) {
+    const specs = card.querySelector('.fit-guide__detail-specs');
+    const toggle = card.querySelector('[data-fit-guide-specs-toggle]');
+    if (specs) specs.hidden = true;
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  selectDetailTab(tab) {
+    const card = tab.closest('[data-fit-guide-detail]');
+    if (!card) return;
+    const modeId = tab.dataset.fitGuideTab;
+    card.querySelectorAll('[data-fit-guide-tab]').forEach((button) => {
+      button.setAttribute('aria-selected', button === tab ? 'true' : 'false');
+    });
+    card.querySelectorAll('[data-fit-guide-tab-panel]').forEach((panel) => {
+      panel.hidden = panel.dataset.fitGuideTabPanel !== modeId;
+    });
   }
 
   showResults() {

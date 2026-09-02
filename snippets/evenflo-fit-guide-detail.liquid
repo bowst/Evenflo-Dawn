@@ -1,0 +1,457 @@
+{% comment %}
+  Fit Guide step-3 detail card for one product.
+  Accepts: product, category_label, disclaimer, manuals_link, faqs_link
+{% endcomment %}
+{%- liquid
+  assign modes_raw = product.metafields.custom.modes_of_use.value | default: product.metafields.custom.modes_of_use
+  assign modes_down = modes_raw | downcase
+
+  assign rear_w_min = product.metafields.sf_car_seat.rear_facing_weight_min
+  assign rear_w_max = product.metafields.sf_car_seat.rear_facing_weight_max
+  assign rear_h_min = product.metafields.sf_car_seat.rear_facing_height_min
+  assign rear_h_max = product.metafields.sf_car_seat.rear_facing_height_max
+  assign rear_position = product.metafields.sf_car_seat.rear_facing_fit_statement
+  assign rear_age = product.metafields.sf_car_seat.rear_facing_age_limit
+
+  assign fwd_w_min = product.metafields.sf_car_seat.forward_facing_weight_min
+  assign fwd_w_max = product.metafields.sf_car_seat.forward_facing_weight_max
+  assign fwd_h_min = product.metafields.sf_car_seat.forward_facing_height_min
+  assign fwd_h_max = product.metafields.sf_car_seat.forward_facing_height_max
+  assign fwd_position = product.metafields.sf_car_seat.forward_facing_fit_statement
+  assign fwd_age = product.metafields.sf_car_seat.forward_facing_age_limit | default: product.metafields.sf_products.forward_facing_age_limit
+
+  assign hb_w_min = product.metafields.sf_car_seat.high_back_weight_min
+  assign hb_w_max = product.metafields.sf_car_seat.high_back_weight_max
+  assign hb_h_min = product.metafields.sf_car_seat.high_back_height_min
+  assign hb_h_max = product.metafields.sf_car_seat.high_back_height_max
+  assign hb_position = product.metafields.sf_car_seat.high_back_fit_statement
+  assign hb_age = product.metafields.sf_car_seat.high_back_age_limit
+
+  assign nb_w_min = product.metafields.sf_car_seat.no_back_weight_min
+  assign nb_w_max = product.metafields.sf_car_seat.no_back_weight_max
+  assign nb_h_min = product.metafields.sf_car_seat.no_back_height_min
+  assign nb_h_max = product.metafields.sf_car_seat.no_back_height_max
+  assign nb_position = product.metafields.sf_car_seat.no_back_fit_statement
+  assign nb_age = product.metafields.custom.no_back_booster_mode_age_limit
+
+  assign belt_w_min = product.metafields.sf_car_seat.belt_pos_booster_weight_min
+  assign belt_w_max = product.metafields.sf_car_seat.belt_pos_booster_weight_max
+  assign belt_h_min = product.metafields.sf_car_seat.belt_pos_booster_height_min
+  assign belt_h_max = product.metafields.sf_car_seat.belt_pos_booster_height_max
+
+  assign child_w_min = product.metafields.sf_products.child_weight_min
+  assign child_w_max = product.metafields.sf_products.child_weight_max
+  assign child_h_min = product.metafields.sf_products.child_height_min
+  assign child_h_max = product.metafields.sf_products.child_height_max
+  assign age_group = product.metafields.sf_products.age_group
+  assign child_age_min = product.metafields.sf_products.child_age_min
+  assign child_age_max = product.metafields.sf_products.child_age_max
+
+  assign has_rear_data = false
+  if rear_w_min != blank or rear_w_max != blank or rear_h_min != blank or rear_h_max != blank or rear_position != blank
+    assign has_rear_data = true
+  endif
+  assign has_fwd_data = false
+  if fwd_w_min != blank or fwd_w_max != blank or fwd_h_min != blank or fwd_h_max != blank or fwd_position != blank
+    assign has_fwd_data = true
+  endif
+  assign has_hb_data = false
+  if hb_w_min != blank or hb_w_max != blank or hb_h_min != blank or hb_h_max != blank or hb_position != blank
+    assign has_hb_data = true
+  endif
+  assign has_nb_data = false
+  if nb_w_min != blank or nb_w_max != blank or nb_h_min != blank or nb_h_max != blank or nb_position != blank
+    assign has_nb_data = true
+  endif
+  assign has_belt_data = false
+  if belt_w_min != blank or belt_w_max != blank or belt_h_min != blank or belt_h_max != blank
+    assign has_belt_data = true
+  endif
+
+  assign uses_backrest_labels = false
+  if modes_down contains 'backrest'
+    assign uses_backrest_labels = true
+  endif
+
+  assign show_infant = false
+  if modes_down contains 'infant'
+    assign show_infant = true
+  elsif product.type contains 'Infant'
+    assign show_infant = true
+  endif
+
+  assign show_rear = false
+  if has_rear_data or modes_down contains 'rear-facing' or modes_down contains 'rear facing'
+    if show_infant == false
+      assign show_rear = true
+    elsif modes_down contains 'rear-facing' or modes_down contains 'rear facing'
+      assign show_rear = true
+    endif
+  endif
+
+  assign show_forward = false
+  if has_fwd_data or modes_down contains 'forward-facing' or modes_down contains 'forward facing'
+    assign show_forward = true
+  endif
+
+  assign show_high_back = false
+  assign show_no_back = false
+  assign show_with_backrest = false
+  assign show_without_backrest = false
+  if uses_backrest_labels
+    if modes_down contains 'with backrest' or has_hb_data
+      assign show_with_backrest = true
+    endif
+    if modes_down contains 'without backrest' or has_nb_data
+      assign show_without_backrest = true
+    endif
+  else
+    if has_hb_data or modes_down contains 'high-back' or modes_down contains 'high back' or modes_down contains 'high-backed'
+      assign show_high_back = true
+    endif
+    if has_nb_data or modes_down contains 'no-back' or modes_down contains 'no back'
+      assign show_no_back = true
+    endif
+  endif
+
+  assign show_booster = false
+  assign skip_generic_booster = false
+  if show_high_back or show_no_back or show_with_backrest or show_without_backrest
+    assign skip_generic_booster = true
+  endif
+  if has_belt_data and skip_generic_booster == false
+    assign show_booster = true
+  endif
+  if modes_down contains 'belt-position' or modes_down contains 'belt position'
+    assign show_booster = true
+  endif
+  if modes_down contains 'booster' and skip_generic_booster == false
+    assign show_booster = true
+  endif
+
+  assign mode_count = 0
+  if show_infant
+    assign mode_count = mode_count | plus: 1
+  endif
+  if show_rear
+    assign mode_count = mode_count | plus: 1
+  endif
+  if show_forward
+    assign mode_count = mode_count | plus: 1
+  endif
+  if show_booster
+    assign mode_count = mode_count | plus: 1
+  endif
+  if show_high_back
+    assign mode_count = mode_count | plus: 1
+  endif
+  if show_no_back
+    assign mode_count = mode_count | plus: 1
+  endif
+  if show_with_backrest
+    assign mode_count = mode_count | plus: 1
+  endif
+  if show_without_backrest
+    assign mode_count = mode_count | plus: 1
+  endif
+
+  assign first_mode = ''
+  if show_infant
+    assign first_mode = 'infant'
+  elsif show_rear
+    assign first_mode = 'rear'
+  elsif show_forward
+    assign first_mode = 'forward'
+  elsif show_booster
+    assign first_mode = 'booster'
+  elsif show_high_back
+    assign first_mode = 'high-back'
+  elsif show_no_back
+    assign first_mode = 'no-back'
+  elsif show_with_backrest
+    assign first_mode = 'with-backrest'
+  elsif show_without_backrest
+    assign first_mode = 'without-backrest'
+  else
+    assign first_mode = 'default'
+    assign mode_count = 1
+  endif
+
+  assign infant_w_min = rear_w_min | default: child_w_min
+  assign infant_w_max = rear_w_max | default: child_w_max
+  assign infant_h_min = rear_h_min | default: child_h_min
+  assign infant_h_max = rear_h_max | default: child_h_max
+  assign rear_w_min_display = rear_w_min | default: child_w_min
+  assign rear_w_max_display = rear_w_max | default: child_w_max
+  assign rear_h_min_display = rear_h_min | default: child_h_min
+  assign rear_h_max_display = rear_h_max | default: child_h_max
+  assign fwd_w_min_display = fwd_w_min | default: child_w_min
+  assign fwd_w_max_display = fwd_w_max | default: child_w_max
+  assign fwd_h_min_display = fwd_h_min | default: child_h_min
+  assign fwd_h_max_display = fwd_h_max | default: child_h_max
+  assign belt_w_min_display = belt_w_min | default: child_w_min
+  assign belt_w_max_display = belt_w_max | default: child_w_max
+  assign belt_h_min_display = belt_h_min | default: child_h_min
+  assign belt_h_max_display = belt_h_max | default: child_h_max
+  assign hb_w_min_display = hb_w_min | default: child_w_min
+  assign hb_w_max_display = hb_w_max | default: child_w_max
+  assign hb_h_min_display = hb_h_min | default: child_h_min
+  assign hb_h_max_display = hb_h_max | default: child_h_max
+  assign nb_w_min_display = nb_w_min | default: child_w_min
+  assign nb_w_max_display = nb_w_max | default: child_w_max
+  assign nb_h_min_display = nb_h_min | default: child_h_min
+  assign nb_h_max_display = nb_h_max | default: child_h_max
+
+  assign sku = product.selected_or_first_available_variant.sku
+  assign made_usa = product.metafields.sf_products.made_in_usa
+  assign weight_statement = product.metafields.sf_products.child_gen_fit
+  assign height_statement = product.metafields.sf_products.child_gen_height
+  assign latch_install = product.metafields.sf_car_seat.latch_install
+  assign harness_height = product.metafields.custom.harness_booster_mode_height_limit | default: product.metafields.sf_products.harness_style
+  assign assembled_weight = product.metafields.sf_products.assembled_weight
+  assign carrier_weight = product.metafields.sf_car_seat.carrier_weight_without_base
+  assign manual_en = product.metafields.sf_products.manual
+-%}
+
+<div class="fit-guide__detail" data-fit-guide-detail data-product-id="{{ product.id }}" hidden>
+  <header class="fit-guide__detail-intro">
+    <h3 class="h4 fit-guide__detail-title">Fit Details For {{ product.title }}</h3>
+    {%- if disclaimer != blank -%}
+      <p class="fit-guide__detail-disclaimer">{{ disclaimer }}</p>
+    {%- endif -%}
+  </header>
+
+  <article class="fit-guide__detail-card">
+    <div class="fit-guide__detail-body">
+      <div class="fit-guide__detail-media">
+        {%- if product.featured_media -%}
+          {{ product.featured_media | image_url: width: 800 | image_tag: loading: 'lazy', alt: product.title }}
+        {%- endif -%}
+      </div>
+
+      <div class="fit-guide__detail-info">
+        <p class="fit-guide__detail-product-title">{{ product.title }}</p>
+        {%- if category_label != blank -%}
+          <p class="fit-guide__detail-category">{{ category_label }}</p>
+        {%- endif -%}
+
+        <div class="fit-guide__detail-links">
+          <a class="link fit-guide__detail-change" data-fit-guide-detail-change href="#">Change Product</a>
+          <button type="button" class="link fit-guide__start-over" data-fit-guide-reset>Start Over</button>
+        </div>
+
+        {%- if mode_count > 1 -%}
+          <div class="fit-guide__detail-tabs" role="tablist" aria-label="Use mode">
+            {%- if show_infant -%}
+              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="infant" aria-selected="{% if first_mode == 'infant' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-infant" id="FitGuide-{{ product.id }}-tab-infant">Infant Seat</button>
+            {%- endif -%}
+            {%- if show_rear -%}
+              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="rear" aria-selected="{% if first_mode == 'rear' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-rear" id="FitGuide-{{ product.id }}-tab-rear">Rear-Facing</button>
+            {%- endif -%}
+            {%- if show_forward -%}
+              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="forward" aria-selected="{% if first_mode == 'forward' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-forward" id="FitGuide-{{ product.id }}-tab-forward">Forward-Facing</button>
+            {%- endif -%}
+            {%- if show_booster -%}
+              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="booster" aria-selected="{% if first_mode == 'booster' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-booster" id="FitGuide-{{ product.id }}-tab-booster">Booster</button>
+            {%- endif -%}
+            {%- if show_high_back -%}
+              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="high-back" aria-selected="{% if first_mode == 'high-back' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-high-back" id="FitGuide-{{ product.id }}-tab-high-back">High-Backed Booster</button>
+            {%- endif -%}
+            {%- if show_no_back -%}
+              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="no-back" aria-selected="{% if first_mode == 'no-back' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-no-back" id="FitGuide-{{ product.id }}-tab-no-back">No-Back Booster</button>
+            {%- endif -%}
+            {%- if show_with_backrest -%}
+              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="with-backrest" aria-selected="{% if first_mode == 'with-backrest' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-with-backrest" id="FitGuide-{{ product.id }}-tab-with-backrest">With Backrest</button>
+            {%- endif -%}
+            {%- if show_without_backrest -%}
+              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="without-backrest" aria-selected="{% if first_mode == 'without-backrest' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-without-backrest" id="FitGuide-{{ product.id }}-tab-without-backrest">Without Backrest</button>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if show_infant -%}
+          {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'infant', selected: true, weight_min: infant_w_min, weight_max: infant_w_max, height_min: infant_h_min, height_max: infant_h_max, position: rear_position, age: rear_age -%}
+        {%- endif -%}
+        {%- if show_rear -%}
+          {%- if first_mode == 'rear' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'rear', selected: true, weight_min: rear_w_min_display, weight_max: rear_w_max_display, height_min: rear_h_min_display, height_max: rear_h_max_display, position: rear_position, age: rear_age -%}
+          {%- else -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'rear', selected: false, weight_min: rear_w_min_display, weight_max: rear_w_max_display, height_min: rear_h_min_display, height_max: rear_h_max_display, position: rear_position, age: rear_age -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if show_forward -%}
+          {%- if first_mode == 'forward' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'forward', selected: true, weight_min: fwd_w_min_display, weight_max: fwd_w_max_display, height_min: fwd_h_min_display, height_max: fwd_h_max_display, position: fwd_position, age: fwd_age -%}
+          {%- else -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'forward', selected: false, weight_min: fwd_w_min_display, weight_max: fwd_w_max_display, height_min: fwd_h_min_display, height_max: fwd_h_max_display, position: fwd_position, age: fwd_age -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if show_booster -%}
+          {%- if first_mode == 'booster' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'booster', selected: true, weight_min: belt_w_min_display, weight_max: belt_w_max_display, height_min: belt_h_min_display, height_max: belt_h_max_display, position: '', age: '' -%}
+          {%- else -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'booster', selected: false, weight_min: belt_w_min_display, weight_max: belt_w_max_display, height_min: belt_h_min_display, height_max: belt_h_max_display, position: '', age: '' -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if show_high_back -%}
+          {%- if first_mode == 'high-back' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'high-back', selected: true, weight_min: hb_w_min_display, weight_max: hb_w_max_display, height_min: hb_h_min_display, height_max: hb_h_max_display, position: hb_position, age: hb_age -%}
+          {%- else -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'high-back', selected: false, weight_min: hb_w_min_display, weight_max: hb_w_max_display, height_min: hb_h_min_display, height_max: hb_h_max_display, position: hb_position, age: hb_age -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if show_no_back -%}
+          {%- if first_mode == 'no-back' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'no-back', selected: true, weight_min: nb_w_min_display, weight_max: nb_w_max_display, height_min: nb_h_min_display, height_max: nb_h_max_display, position: nb_position, age: nb_age -%}
+          {%- else -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'no-back', selected: false, weight_min: nb_w_min_display, weight_max: nb_w_max_display, height_min: nb_h_min_display, height_max: nb_h_max_display, position: nb_position, age: nb_age -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if show_with_backrest -%}
+          {%- if first_mode == 'with-backrest' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'with-backrest', selected: true, weight_min: hb_w_min_display, weight_max: hb_w_max_display, height_min: hb_h_min_display, height_max: hb_h_max_display, position: hb_position, age: hb_age -%}
+          {%- else -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'with-backrest', selected: false, weight_min: hb_w_min_display, weight_max: hb_w_max_display, height_min: hb_h_min_display, height_max: hb_h_max_display, position: hb_position, age: hb_age -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if show_without_backrest -%}
+          {%- if first_mode == 'without-backrest' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'without-backrest', selected: true, weight_min: nb_w_min_display, weight_max: nb_w_max_display, height_min: nb_h_min_display, height_max: nb_h_max_display, position: nb_position, age: nb_age -%}
+          {%- else -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'without-backrest', selected: false, weight_min: nb_w_min_display, weight_max: nb_w_max_display, height_min: nb_h_min_display, height_max: nb_h_max_display, position: nb_position, age: nb_age -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if first_mode == 'default' -%}
+          {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'default', selected: true, weight_min: child_w_min, weight_max: child_w_max, height_min: child_h_min, height_max: child_h_max, position: '', age: age_group -%}
+        {%- endif -%}
+        <button
+          type="button"
+          class="link fit-guide__detail-specs-toggle"
+          data-fit-guide-specs-toggle
+          aria-expanded="false"
+          aria-controls="FitGuide-{{ product.id }}-specs"
+        >
+          View all specifications
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <div class="fit-guide__detail-specs" id="FitGuide-{{ product.id }}-specs" hidden>
+    <dl class="fit-guide__detail-spec-list">
+            {%- if sku != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>SKU</dt>
+                <dd>{{ sku }}</dd>
+              </div>
+            {%- endif -%}
+            {%- if made_usa == 1 or made_usa == true -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Country</dt>
+                <dd>USA</dd>
+              </div>
+            {%- endif -%}
+            {%- if weight_statement != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Full Weight Statement</dt>
+                <dd>{{ weight_statement }}</dd>
+              </div>
+            {%- elsif child_w_min != blank or child_w_max != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Full Weight Statement</dt>
+                <dd>
+                  {%- if child_w_min != blank and child_w_max != blank -%}
+                    {{ child_w_min }}–{{ child_w_max }} lb
+                  {%- elsif child_w_max != blank -%}
+                    {{ child_w_max }} lb
+                  {%- else -%}
+                    {{ child_w_min }} lb
+                  {%- endif -%}
+                </dd>
+              </div>
+            {%- endif -%}
+            {%- if height_statement != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Full Height Statement</dt>
+                <dd>{{ height_statement }}</dd>
+              </div>
+            {%- elsif child_h_min != blank or child_h_max != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Full Height Statement</dt>
+                <dd>
+                  {%- if child_h_min != blank and child_h_max != blank -%}
+                    {{ child_h_min }}–{{ child_h_max }} in
+                  {%- elsif child_h_max != blank -%}
+                    {{ child_h_max }} in
+                  {%- else -%}
+                    {{ child_h_min }} in
+                  {%- endif -%}
+                </dd>
+              </div>
+            {%- endif -%}
+            {%- if latch_install == 1 or latch_install == true -%}
+              <div class="fit-guide__detail-spec">
+                <dt>LATCH Statement</dt>
+                <dd>LATCH installation compatible</dd>
+              </div>
+            {%- elsif latch_install == 0 or latch_install == false -%}
+              <div class="fit-guide__detail-spec">
+                <dt>LATCH Statement</dt>
+                <dd>LATCH installation not available</dd>
+              </div>
+            {%- endif -%}
+            {%- if harness_height != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Harness Height Range</dt>
+                <dd>{{ harness_height }}</dd>
+              </div>
+            {%- endif -%}
+            {%- if assembled_weight != blank or carrier_weight != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Seat/Base/Assembly Weight</dt>
+                <dd>
+                  {%- if assembled_weight != blank -%}
+                    {{ assembled_weight }} lb
+                  {%- endif -%}
+                  {%- if assembled_weight != blank and carrier_weight != blank %}; {% endif -%}
+                  {%- if carrier_weight != blank -%}
+                    Carrier without base: {{ carrier_weight }} lb
+                  {%- endif -%}
+                </dd>
+              </div>
+            {%- endif -%}
+            {%- if age_group != blank or child_age_min != blank or child_age_max != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Age Guidance</dt>
+                <dd>
+                  {%- if age_group != blank -%}
+                    {{ age_group }}
+                  {%- elsif child_age_min != blank and child_age_max != blank -%}
+                    {{ child_age_min }}–{{ child_age_max }}
+                  {%- elsif child_age_min != blank -%}
+                    {{ child_age_min }}
+                  {%- else -%}
+                    {{ child_age_max }}
+                  {%- endif -%}
+                </dd>
+              </div>
+            {%- endif -%}
+            {%- if manual_en != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Manual</dt>
+                <dd><a class="link" href="{{ manual_en }}" target="_blank" rel="noopener">Download manual (EN)</a></dd>
+              </div>
+            {%- endif -%}
+    </dl>
+  </div>
+
+  <div class="fit-guide__detail-actions">
+    <a class="button button--secondary" href="{{ product.url }}">View Product</a>
+    {%- if manuals_link != blank -%}
+      <a class="button button--secondary" href="{{ manuals_link }}">Find Manuals</a>
+    {%- endif -%}
+    {%- if faqs_link != blank -%}
+      <a class="button button--secondary" href="{{ faqs_link }}">View FAQs</a>
+    {%- endif -%}
+  </div>
+</div>

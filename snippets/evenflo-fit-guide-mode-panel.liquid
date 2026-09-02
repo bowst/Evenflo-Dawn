@@ -1,0 +1,62 @@
+{% comment %}
+  One use-mode panel for the Fit Guide detail card.
+  Accepts: product_id, mode_id, selected, weight_min, weight_max, height_min, height_max, position, age
+{% endcomment %}
+{%- liquid
+  assign is_selected = false
+  if selected == true or selected == 'true'
+    assign is_selected = true
+  endif
+-%}
+<div
+  class="fit-guide__detail-panel"
+  data-fit-guide-tab-panel="{{ mode_id }}"
+  id="FitGuide-{{ product_id }}-panel-{{ mode_id }}"
+  role="tabpanel"
+  {% unless is_selected %}hidden{% endunless %}
+>
+  <div class="fit-guide__detail-stats">
+    <div class="fit-guide__detail-stat">
+      <span class="fit-guide__detail-stat-label">Child Weight</span>
+      <span class="fit-guide__detail-stat-value">
+        {%- if weight_min != blank and weight_max != blank -%}
+          {{ weight_min }}–{{ weight_max }} Lb
+        {%- elsif weight_max != blank -%}
+          {{ weight_max }} Lb
+        {%- elsif weight_min != blank -%}
+          {{ weight_min }} Lb
+        {%- else -%}
+          —
+        {%- endif -%}
+      </span>
+    </div>
+    <div class="fit-guide__detail-stat">
+      <span class="fit-guide__detail-stat-label">Child Height</span>
+      <span class="fit-guide__detail-stat-value">
+        {%- if height_min != blank and height_max != blank -%}
+          {{ height_min }}–{{ height_max }} In
+        {%- elsif height_max != blank -%}
+          {{ height_max }} In
+        {%- elsif height_min != blank -%}
+          {{ height_min }} In
+        {%- else -%}
+          —
+        {%- endif -%}
+      </span>
+    </div>
+  </div>
+
+  {%- if position != blank -%}
+    <div class="fit-guide__detail-callout">
+      <p class="fit-guide__detail-callout-label">Position Guidance</p>
+      <p class="fit-guide__detail-callout-text">{{ position }}</p>
+    </div>
+  {%- endif -%}
+
+  {%- if age != blank -%}
+    <div class="fit-guide__detail-callout">
+      <p class="fit-guide__detail-callout-label">Age Guidance</p>
+      <p class="fit-guide__detail-callout-text">{{ age }}</p>
+    </div>
+  {%- endif -%}
+</div>

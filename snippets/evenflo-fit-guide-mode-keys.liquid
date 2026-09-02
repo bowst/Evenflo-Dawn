@@ -1,0 +1,148 @@
+{% comment %}
+  Comma-separated Fit Guide mode keys for a product.
+  Keys: infant, rear, forward, booster, high-back, no-back, with-backrest, without-backrest
+  Keep in sync with evenflo-fit-guide-detail tab visibility.
+{% endcomment %}
+{%- liquid
+  assign modes_raw = product.metafields.custom.modes_of_use.value | default: product.metafields.custom.modes_of_use
+  assign modes_down = modes_raw | downcase
+
+  assign rear_w_min = product.metafields.sf_car_seat.rear_facing_weight_min
+  assign rear_w_max = product.metafields.sf_car_seat.rear_facing_weight_max
+  assign rear_h_min = product.metafields.sf_car_seat.rear_facing_height_min
+  assign rear_h_max = product.metafields.sf_car_seat.rear_facing_height_max
+  assign rear_position = product.metafields.sf_car_seat.rear_facing_fit_statement
+
+  assign fwd_w_min = product.metafields.sf_car_seat.forward_facing_weight_min
+  assign fwd_w_max = product.metafields.sf_car_seat.forward_facing_weight_max
+  assign fwd_h_min = product.metafields.sf_car_seat.forward_facing_height_min
+  assign fwd_h_max = product.metafields.sf_car_seat.forward_facing_height_max
+  assign fwd_position = product.metafields.sf_car_seat.forward_facing_fit_statement
+
+  assign hb_w_min = product.metafields.sf_car_seat.high_back_weight_min
+  assign hb_w_max = product.metafields.sf_car_seat.high_back_weight_max
+  assign hb_h_min = product.metafields.sf_car_seat.high_back_height_min
+  assign hb_h_max = product.metafields.sf_car_seat.high_back_height_max
+  assign hb_position = product.metafields.sf_car_seat.high_back_fit_statement
+
+  assign nb_w_min = product.metafields.sf_car_seat.no_back_weight_min
+  assign nb_w_max = product.metafields.sf_car_seat.no_back_weight_max
+  assign nb_h_min = product.metafields.sf_car_seat.no_back_height_min
+  assign nb_h_max = product.metafields.sf_car_seat.no_back_height_max
+  assign nb_position = product.metafields.sf_car_seat.no_back_fit_statement
+
+  assign belt_w_min = product.metafields.sf_car_seat.belt_pos_booster_weight_min
+  assign belt_w_max = product.metafields.sf_car_seat.belt_pos_booster_weight_max
+  assign belt_h_min = product.metafields.sf_car_seat.belt_pos_booster_height_min
+  assign belt_h_max = product.metafields.sf_car_seat.belt_pos_booster_height_max
+
+  assign has_rear_data = false
+  if rear_w_min != blank or rear_w_max != blank or rear_h_min != blank or rear_h_max != blank or rear_position != blank
+    assign has_rear_data = true
+  endif
+  assign has_fwd_data = false
+  if fwd_w_min != blank or fwd_w_max != blank or fwd_h_min != blank or fwd_h_max != blank or fwd_position != blank
+    assign has_fwd_data = true
+  endif
+  assign has_hb_data = false
+  if hb_w_min != blank or hb_w_max != blank or hb_h_min != blank or hb_h_max != blank or hb_position != blank
+    assign has_hb_data = true
+  endif
+  assign has_nb_data = false
+  if nb_w_min != blank or nb_w_max != blank or nb_h_min != blank or nb_h_max != blank or nb_position != blank
+    assign has_nb_data = true
+  endif
+  assign has_belt_data = false
+  if belt_w_min != blank or belt_w_max != blank or belt_h_min != blank or belt_h_max != blank
+    assign has_belt_data = true
+  endif
+
+  assign uses_backrest_labels = false
+  if modes_down contains 'backrest'
+    assign uses_backrest_labels = true
+  endif
+
+  assign show_infant = false
+  if modes_down contains 'infant'
+    assign show_infant = true
+  elsif product.type contains 'Infant'
+    assign show_infant = true
+  endif
+
+  assign show_rear = false
+  if has_rear_data or modes_down contains 'rear-facing' or modes_down contains 'rear facing'
+    if show_infant == false
+      assign show_rear = true
+    elsif modes_down contains 'rear-facing' or modes_down contains 'rear facing'
+      assign show_rear = true
+    endif
+  endif
+
+  assign show_forward = false
+  if has_fwd_data or modes_down contains 'forward-facing' or modes_down contains 'forward facing'
+    assign show_forward = true
+  endif
+
+  assign show_high_back = false
+  assign show_no_back = false
+  assign show_with_backrest = false
+  assign show_without_backrest = false
+  if uses_backrest_labels
+    if modes_down contains 'with backrest' or has_hb_data
+      assign show_with_backrest = true
+    endif
+    if modes_down contains 'without backrest' or has_nb_data
+      assign show_without_backrest = true
+    endif
+  else
+    if has_hb_data or modes_down contains 'high-back' or modes_down contains 'high back' or modes_down contains 'high-backed'
+      assign show_high_back = true
+    endif
+    if has_nb_data or modes_down contains 'no-back' or modes_down contains 'no back'
+      assign show_no_back = true
+    endif
+  endif
+
+  assign show_booster = false
+  assign skip_generic_booster = false
+  if show_high_back or show_no_back or show_with_backrest or show_without_backrest
+    assign skip_generic_booster = true
+  endif
+  if has_belt_data and skip_generic_booster == false
+    assign show_booster = true
+  endif
+  if modes_down contains 'belt-position' or modes_down contains 'belt position'
+    assign show_booster = true
+  endif
+  if modes_down contains 'booster' and skip_generic_booster == false
+    assign show_booster = true
+  endif
+
+  assign keys = ''
+  if show_infant
+    assign keys = keys | append: 'infant,'
+  endif
+  if show_rear
+    assign keys = keys | append: 'rear,'
+  endif
+  if show_forward
+    assign keys = keys | append: 'forward,'
+  endif
+  if show_booster
+    assign keys = keys | append: 'booster,'
+  endif
+  if show_high_back
+    assign keys = keys | append: 'high-back,'
+  endif
+  if show_no_back
+    assign keys = keys | append: 'no-back,'
+  endif
+  if show_with_backrest
+    assign keys = keys | append: 'with-backrest,'
+  endif
+  if show_without_backrest
+    assign keys = keys | append: 'without-backrest,'
+  endif
+  assign keys = keys | split: ',' | compact | join: ','
+-%}
+{{- keys -}}

@@ -19,6 +19,7 @@
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
   - link_url: {String} Override URL for card title and media links (optional)
+  - link_media: {Boolean} Wrap media in a product URL. Default: true (optional)
   - card_heading: {String} Override product title text (optional)
   - highlight_variant_id: {Number} Variant id to show as active image/swatch (optional)
   - price_variant: {Object} Variant used for price display instead of product range (optional)
@@ -185,26 +186,43 @@ Determine if the product is from support product collection
         </div>
         {%- endif -%}
         
-        <a
+        {%- if link_media == false -%}
+          <div class="card__content">
+            <div class="card__badge {{ settings.badge_position }}">
+              {% if card_product.available == false and is_product_support == false %}
+                <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} out-of-stock-badge">Out of stock</span>
+              {% else %}
+                {% if card_product.tags contains 'new' %}
+                  <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} new-badge">New</span>
+                {% endif %}
+                {% if card_product.compare_at_price > card_product.price or card_product.tags contains 'sale' %}
+                  <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} on-sale-badge">Sale</span>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        {%- else -%}
+          <a
             href="{{ card_link_url }}"
             title="{{ card_title_text | escape }}"
             id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
             class="full-unstyled-link card__content product-link"
             aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
           >
-          <div class="card__badge {{ settings.badge_position }}">
-            {% if card_product.available == false and is_product_support == false %}
-              <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} out-of-stock-badge">Out of stock</span>
-            {% else %}
-              {% if card_product.tags contains 'new' %}
-                <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} new-badge">New</span>
+            <div class="card__badge {{ settings.badge_position }}">
+              {% if card_product.available == false and is_product_support == false %}
+                <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} out-of-stock-badge">Out of stock</span>
+              {% else %}
+                {% if card_product.tags contains 'new' %}
+                  <span class="badge {{ settings.sold_out_badge_color_scheme }} {{ settings.badge_corner_radius }} new-badge">New</span>
+                {% endif %}
+                {% if card_product.compare_at_price > card_product.price or card_product.tags contains 'sale' %}
+                  <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} on-sale-badge">Sale</span>
+                {% endif %}
               {% endif %}
-              {% if card_product.compare_at_price > card_product.price or card_product.tags contains 'sale' %}
-                <span class="badge {{ settings.sale_badge_color_scheme }} {{ settings.badge_corner_radius }} on-sale-badge">Sale</span>
-              {% endif %}
-            {% endif %}
-          </div>
-        </a>
+            </div>
+          </a>
+        {%- endif -%}
       </div>
       <div class="card__content">
         <div class="card__information">
