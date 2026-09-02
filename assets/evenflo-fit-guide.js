@@ -314,7 +314,7 @@ class FitGuide extends HTMLElement {
     list.addEventListener('click', (event) => {
       const option = event.target.closest('[role="option"]');
       if (!option) return;
-      this.chooseOption(select, option.dataset.value);
+      this.chooseOption(select, option.dataset.value, { restoreFocus: false });
     });
 
     this.syncCustomSelect(select);
@@ -372,13 +372,13 @@ class FitGuide extends HTMLElement {
     [this.categorySelect, this.productSelect].forEach((select) => this.closeSelect(select));
   }
 
-  chooseOption(select, value) {
+  chooseOption(select, value, { restoreFocus = true } = {}) {
     const changed = select.value !== value;
     select.value = value;
     this.syncCustomSelect(select);
     if (changed) select.dispatchEvent(new Event('change', { bubbles: true }));
     this.closeSelect(select);
-    select._custom.trigger.focus();
+    if (restoreFocus) select._custom.trigger.focus();
   }
 
   setActiveOption(select, option) {

@@ -33,10 +33,16 @@
 
 .fit-guide__filters {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--fit-guide-gap);
   /*max-width: 90rem;*/
   margin: 0 auto;
+}
+
+@media screen and (min-width: 750px) {
+  .fit-guide__filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media screen and (min-width: 990px) {
@@ -49,6 +55,7 @@
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
+  min-width: 0;
 }
 
 .fit-guide__field-label {
@@ -91,7 +98,22 @@
   line-height: 1.3;
   font-family: var(--font-family-base, var(--font-body-family));
   background-color: #fff;
+  color: var(--color-evenflo-neutral-900, #111111);
   box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fit-guide__field select:focus,
+.fit-guide__field select:focus-visible,
+.fit-guide__select-trigger:focus,
+.fit-guide__select-trigger:focus-visible,
+.fit-guide__select-trigger:active {
+  background-color: #fff;
+  color: var(--color-evenflo-neutral-900, #111111);
+  outline: none;
+  box-shadow: none;
 }
 
 .fit-guide__field-input input {
@@ -119,10 +141,17 @@
   background-size: 12px 8px;
   padding-right: calc(var(--fit-guide-control-padding) * 2 + 12px);
   cursor: pointer;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .fit-guide__select {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .fit-guide__select.is-open {
@@ -146,15 +175,20 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
   text-align: left;
   cursor: pointer;
   appearance: none;
   font-weight: 400;
+  color: var(--color-evenflo-neutral-900, #111111);
 }
 
 .fit-guide__select-trigger:focus-visible {
   outline: 2px solid var(--color-evenflo-blue-500, #2996c5);
   outline-offset: 2px;
+  box-shadow: none;
 }
 
 .fit-guide__select-value {
@@ -201,6 +235,7 @@
   border-radius: var(--fit-guide-control-radius);
   box-shadow: 0 8px 24px rgba(17, 17, 17, 0.1);
   max-height: 32rem;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -210,6 +245,8 @@
   line-height: 1.3;
   font-family: var(--font-family-base, var(--font-body-family));
   cursor: pointer;
+  overflow-wrap: anywhere;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .fit-guide__select-option:hover,
