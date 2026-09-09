@@ -112,7 +112,13 @@
     <ul class="grid product-grid grid--4-col-desktop grid--2-col-tablet-down" data-fit-guide-grid role="list">
       {%- for block in category_blocks -%}
         {%- if block.settings.collection != blank -%}
-          {%- for card_product in block.settings.collection.products -%}
+          {%- liquid
+            assign fit_collection = collections[block.settings.collection.handle]
+            if fit_collection == blank
+              assign fit_collection = block.settings.collection
+            endif
+          -%}
+          {%- for card_product in fit_collection.products -%}
             {%- liquid
               assign weight_min = card_product.metafields.sf_products.child_weight_min
               assign weight_max = card_product.metafields.sf_products.child_weight_max
@@ -147,7 +153,13 @@
     {%- assign rendered_product_ids = '' -%}
     {%- for block in category_blocks -%}
       {%- if block.settings.collection != blank -%}
-        {%- for card_product in block.settings.collection.products -%}
+        {%- liquid
+          assign fit_collection = collections[block.settings.collection.handle]
+          if fit_collection == blank
+            assign fit_collection = block.settings.collection
+          endif
+        -%}
+        {%- for card_product in fit_collection.products -%}
           {%- assign id_token = card_product.id | append: ',' -%}
           {%- unless rendered_product_ids contains id_token -%}
             {%- assign rendered_product_ids = rendered_product_ids | append: id_token -%}
