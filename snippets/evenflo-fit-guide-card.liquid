@@ -1,0 +1,88 @@
+{% comment %}
+  Matching-product card for the Fit Guide results grid.
+  Accepts: product, category_label
+{% endcomment %}
+{%- liquid
+  assign weight_min = product.metafields.sf_products.child_weight_min
+  assign weight_max = product.metafields.sf_products.child_weight_max
+  assign height_min = product.metafields.sf_products.child_height_min
+  assign height_max = product.metafields.sf_products.child_height_max
+-%}
+{%- capture mode_keys -%}
+  {%- render 'evenflo-fit-guide-mode-keys', product: product -%}
+{%- endcapture -%}
+{%- assign mode_keys = mode_keys | strip -%}
+{%- assign modes = mode_keys | split: ',' -%}
+
+<div class="fit-guide__item-media">
+  {%- if product.featured_media -%}
+    {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 450, 600', sizes: '(min-width: 990px) 25vw, 50vw', alt: product.title }}
+  {%- endif -%}
+</div>
+
+<p class="fit-guide__item-title">{{ product.title }}</p>
+
+{%- if category_label != blank -%}
+  <p class="fit-guide__item-category">{{ category_label }}</p>
+{%- endif -%}
+
+{%- if mode_keys != blank -%}
+  <ul class="fit-guide__item-tags" role="list">
+    {%- for mode in modes -%}
+      {%- if mode != blank -%}
+        <li class="fit-guide__item-tag">
+          {%- case mode -%}
+            {%- when 'infant' -%}Infant Seat
+            {%- when 'rear' -%}Rear-Facing
+            {%- when 'forward' -%}Forward-Facing
+            {%- when 'booster' -%}Booster
+            {%- when 'high-back' -%}High-Backed Booster
+            {%- when 'no-back' -%}No-Back Booster
+            {%- when 'with-backrest' -%}With Backrest
+            {%- when 'without-backrest' -%}Without Backrest
+          {%- endcase -%}
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+
+{%- if weight_min != blank or weight_max != blank -%}
+  <div class="fit-guide__item-stat">
+    <span class="fit-guide__item-stat-label">Child Weight</span>
+    <span class="fit-guide__item-stat-value">
+      {%- if weight_min != blank and weight_max != blank -%}
+        {{ weight_min }}–{{ weight_max }} lb
+      {%- elsif weight_max != blank -%}
+        {{ weight_max }} lb
+      {%- else -%}
+        {{ weight_min }} lb
+      {%- endif -%}
+    </span>
+  </div>
+{%- endif -%}
+
+{%- if height_min != blank or height_max != blank -%}
+  <div class="fit-guide__item-stat">
+    <span class="fit-guide__item-stat-label">Child Height</span>
+    <span class="fit-guide__item-stat-value">
+      {%- if height_min != blank and height_max != blank -%}
+        {{ height_min }}–{{ height_max }} in
+      {%- elsif height_max != blank -%}
+        {{ height_max }} in
+      {%- else -%}
+        {{ height_min }} in
+      {%- endif -%}
+    </span>
+  </div>
+{%- endif -%}
+
+<button
+  type="button"
+  class="button button--primary fit-guide__view-details"
+  data-fit-guide-view-details
+  data-product-id="{{ product.id }}"
+>
+  View Fit Details
+</button>
+<a class="link fit-guide__item-product-link" href="{{ product.url }}">View product</a>
