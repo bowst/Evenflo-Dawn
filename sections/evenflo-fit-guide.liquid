@@ -124,13 +124,14 @@
               assign weight_max = card_product.metafields.sf_products.child_weight_max
               assign height_min = card_product.metafields.sf_products.child_height_min
               assign height_max = card_product.metafields.sf_products.child_height_max
+              assign platform_name = card_product.metafields.custom.platform_name.value | default: card_product.metafields.custom.platform_name | default: card_product.title | strip
             -%}
             <li
               class="grid__item fit-guide__item"
               data-fit-guide-item
               data-category="{{ block.id }}"
               data-product-id="{{ card_product.id }}"
-              data-product-title="{{ card_product.title | escape }}"
+              data-platform-name="{{ platform_name | escape }}"
               {%- if weight_min != blank and weight_max != blank %} data-weight-min="{{ weight_min }}" data-weight-max="{{ weight_max }}"{% endif -%}
               {%- if height_min != blank and height_max != blank %} data-height-min="{{ height_min }}" data-height-max="{{ height_max }}"{% endif -%}
               hidden

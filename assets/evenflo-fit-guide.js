@@ -93,18 +93,24 @@ class FitGuide extends HTMLElement {
     placeholder.textContent = 'All products in this category';
     this.productSelect.appendChild(placeholder);
 
+    const names = [];
     const seen = new Set();
     this.items
       .filter((item) => item.dataset.category === categoryId)
       .forEach((item) => {
-        const id = item.dataset.productId;
-        if (seen.has(id)) return;
-        seen.add(id);
-        const option = document.createElement('option');
-        option.value = id;
-        option.textContent = item.dataset.productTitle;
-        this.productSelect.appendChild(option);
+        const name = (item.dataset.platformName || '').trim();
+        if (!name || seen.has(name)) return;
+        seen.add(name);
+        names.push(name);
       });
+
+    names.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+    names.forEach((name) => {
+      const option = document.createElement('option');
+      option.value = name;
+      option.textContent = name;
+      this.productSelect.appendChild(option);
+    });
 
     if (seen.has(currentValue)) {
       this.productSelect.value = currentValue;
@@ -124,7 +130,7 @@ class FitGuide extends HTMLElement {
 
   itemMatches(item, filters) {
     if (filters.category && item.dataset.category !== filters.category) return false;
-    if (filters.product && item.dataset.productId !== filters.product) return false;
+    if (filters.product && (item.dataset.platformName || '').trim() !== filters.product) return false;
 
     if (filters.weight !== null) {
       const min = parseFloat(item.dataset.weightMin);

@@ -1,6 +1,7 @@
 {% comment %}
   One use-mode panel for the Fit Guide detail card.
-  Accepts: product_id, mode_id, selected, weight_min, weight_max, height_min, height_max, position, age
+  Accepts: product_id, mode_id, selected, weight_min, weight_max, height_min, height_max,
+  weight_text, height_text, position, age
 {% endcomment %}
 {%- liquid
   assign is_selected = false
@@ -21,6 +22,8 @@
       <span class="fit-guide__detail-stat-value">
         {%- if weight_min != blank and weight_max != blank -%}
           {{ weight_min }}–{{ weight_max }} Lb
+        {%- elsif weight_text != blank -%}
+          {{ weight_text }}
         {%- elsif weight_max != blank -%}
           {{ weight_max }} Lb
         {%- elsif weight_min != blank -%}
@@ -35,6 +38,8 @@
       <span class="fit-guide__detail-stat-value">
         {%- if height_min != blank and height_max != blank -%}
           {{ height_min }}–{{ height_max }} In
+        {%- elsif height_text != blank -%}
+          {{ height_text }}
         {%- elsif height_max != blank -%}
           {{ height_max }} In
         {%- elsif height_min != blank -%}
