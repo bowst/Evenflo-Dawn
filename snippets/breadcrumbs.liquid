@@ -1,7 +1,6 @@
 {{ 'evenflo-breadcrumbs.css' | asset_url | stylesheet_tag }}
 
-<div class="content-container page-width content-container--full-width">
-  <div class="breadcrumbs" aria-label="breadcrumbs">
+{%- capture breadcrumb_trail -%}
     {%- unless template == 'index' or template == 'cart' -%}
       <a href="/" title="Home">Home</a>
       {%- case template.name -%}
@@ -216,8 +215,44 @@
           {%- endfor -%}
       {%- endcase -%}
     {%- endunless -%}
+{%- endcapture -%}
+
+<div class="content-container page-width content-container--full-width">
+  <div class="breadcrumbs" aria-label="breadcrumbs">
+    {{- breadcrumb_trail -}}
   </div>
 </div>
+
+{%- comment -%}
+  BreadcrumbList JSON-LD, derived from the visible trail above so the two can
+  never drift apart. Parses the anchors the trail already emitted rather than
+  re-walking the menu.
+{%- endcomment -%}
+{%- assign crumb_parts = breadcrumb_trail | split: '<a ' -%}
+{%- if crumb_parts.size > 1 -%}
+  {%- capture crumb_items -%}
+    {%- assign pos = 0 -%}
+    {%- for part in crumb_parts offset: 1 -%}
+      {%- assign crumb_href = part | split: 'href="' | last | split: '"' | first -%}
+      {%- assign crumb_name = part | split: '</a>' | first | split: '>' | last | strip_html | strip -%}
+      {%- if crumb_name != blank and crumb_href != blank -%}
+        {%- if crumb_href contains '://' -%}
+          {%- assign crumb_url = crumb_href -%}
+        {%- else -%}
+          {%- assign crumb_url = shop.url | append: crumb_href -%}
+        {%- endif -%}
+        {%- assign pos = pos | plus: 1 -%}
+        {%- if pos > 1 -%},{%- endif -%}
+        {"@type":"ListItem","position":{{ pos }},"name":{{ crumb_name | json }},"item":{{ crumb_url | json }}}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- if pos > 1 -%}
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{ crumb_items }}]}
+    </script>
+  {%- endif -%}
+{%- endif -%}
 <script defer>
   const breadCrumbLinks = document.querySelectorAll('.breadcrumbs a');
   const lastLink = breadCrumbLinks[breadCrumbLinks.length - 1];
