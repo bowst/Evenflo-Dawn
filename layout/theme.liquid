@@ -42,8 +42,39 @@
       {%- unless page_title contains 'Evenflo' %} &ndash; Evenflo{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {%- comment -%}
+      Meta description. Falls back for templates where Shopify provides no
+      description field at all (policy pages) or where one was never authored,
+      so every page ships a usable sentence for search and AI answer engines.
+    {%- endcomment -%}
+    {%- liquid
+      assign meta_desc = page_description
+
+      comment
+        Policy pages render with no template object at all - name, suffix and
+        directory are all blank - so they are matched on path instead.
+      endcomment
+      if meta_desc == blank and request.path contains '/policies/'
+        assign meta_desc = page_title | append: ' for Evenflo. Read the full terms covering our car seats, strollers, travel systems and baby gear.'
+      endif
+
+      if meta_desc == blank
+        case template.name
+          when 'page'
+            assign meta_desc = page.content | strip_html | strip | truncate: 155
+          when 'collection'
+            assign meta_desc = collection.description | strip_html | strip | truncate: 155
+          when 'article'
+            assign meta_desc = article.excerpt_or_content | strip_html | strip | truncate: 155
+        endcase
+      endif
+
+      if meta_desc == blank and template.name == 'page'
+        assign meta_desc = page.title | append: ' from Evenflo.'
+      endif
+    -%}
+    {% if meta_desc != blank %}
+      <meta name="description" content="{{ meta_desc | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
