@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "custom_liquid_widAJy": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "evenflo_main_product_4BJMnB": {
       "type": "evenflo-main-product",
       "blocks": {
@@ -364,6 +374,7 @@
     }
   },
   "order": [
+    "custom_liquid_widAJy",
     "evenflo_main_product_4BJMnB",
     "main",
     "evenflo_product_highlights_yGptpT",
