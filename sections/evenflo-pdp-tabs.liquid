@@ -1,6 +1,6 @@
 {% comment %} 2026 - Evenflo - PDP Tabs {% endcomment %}
 {{ 'evenflo-pdp-tabs.css' | asset_url | stylesheet_tag }}
-{{ 'evenflo-pdp-tabs.js' | asset_url | script_tag }}
+<script src="{{ 'evenflo-pdp-tabs.js' | asset_url }}" defer></script>
 
 {% assign short_description_header = product.metafields.sf_products.short_description_header.value | default: product.metafields.sf_products.short_description_header | escape %}
 {% assign overview_content = product.metafields.sf_products.short_description.value %}
