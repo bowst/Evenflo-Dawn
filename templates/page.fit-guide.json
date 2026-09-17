@@ -92,12 +92,105 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "evenflo_multicolumn_QyiT4Q": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_hWjCfQ": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Child Height & Weight",
+            "text": "<p>Height and weight ranges help show when a car seat or mode may be appropriate for a child’s current size.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_U9fn7K": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Car Seat Modes",
+            "text": "<p>Some car seats support more than one mode, such as rear-facing, forward-facing, or booster. Each mode may have its own requirements.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_c3tBFr": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Position Requirements",
+            "text": "<p>Some products include head, ear, or harness position guidance. Always review the product manual for complete fit requirements.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_79fg7R": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Always Check the Manual",
+            "text": "<p>The product manual includes complete requirements, warnings, and instructions for your specific car seat.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_hWjCfQ",
+        "column_U9fn7K",
+        "column_c3tBFr",
+        "column_79fg7R"
+      ],
+      "custom_css": [
+        ".multicolumn {background: #fff;}",
+        ".button--primary {background: #fff; color: var(--evenflo-black, #020202); margin-top: 32px;}"
+      ],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "What the numbers mean",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "enable_image_modal": false,
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Find a manual",
+        "button_link": "shopify://pages/manuals",
+        "color_scheme": "scheme-649118d5-b34f-4022-b91c-a42805f2e3c3",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "evenflo_hero_banner_etB7te",
     "evenflo_divider_T7jPCW",
-    "evenflo_fit_guide_XCNL4H"
+    "evenflo_fit_guide_XCNL4H",
+    "evenflo_multicolumn_QyiT4Q"
   ]
 }
