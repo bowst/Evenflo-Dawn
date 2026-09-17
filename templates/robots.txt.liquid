@@ -2,7 +2,9 @@
 {% for group in robots.default_groups %}
   {{- group.user_agent -}}
   {% for rule in group.rules %}
-    {{- rule -}}
+    {%- unless group.user_agent.value == '*' and rule.directive == 'Disallow' and rule.value contains '/policies/' -%}
+      {{- rule -}}
+    {%- endunless -%}
   {% endfor %}
 
   {%- if group.user_agent.value == '*' -%}
@@ -34,9 +36,7 @@
     Disallow: /collections/*/*page=*
     Disallow: /comments/feed
     Disallow: /community/
-    Disallow: /pages/contact*
     Disallow: /pages/search*
-    Disallow: /policies/
     Disallow: /search
     Disallow: /wishlist
   {% endif %}

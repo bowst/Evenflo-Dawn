@@ -16,6 +16,16 @@
         "page_subtitle": "{{ collection.metafields.custom.collection_h2.value }}"
       }
     },
+    "custom_liquid_EegcM8": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -52,6 +62,7 @@
     }
   },
   "order": [
+    "custom_liquid_EegcM8",
     "evenflo_collection_page_text_hyDwab",
     "banner",
     "product-grid",

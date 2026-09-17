@@ -192,6 +192,33 @@
         {%- endif -%}
       </div>
     </div>
+
+    {%- comment -%}
+      ItemList for the products shown on this page of the collection. Positions
+      are absolute across pagination via paginate.current_offset, so page 2
+      continues where page 1 ended rather than restarting at 1.
+    {%- endcomment -%}
+    {%- if collection.products.size > 0 -%}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": {{ collection.title | json }},
+          "numberOfItems": {{ paginate.items }},
+          "itemListElement": [
+            {%- for product in collection.products -%}
+              {%- unless forloop.first -%},{%- endunless -%}
+              {
+                "@type": "ListItem",
+                "position": {{ paginate.current_offset | plus: forloop.index }},
+                "name": {{ product.title | json }},
+                "url": {{ product.url | prepend: shop.url | json }}
+              }
+            {%- endfor -%}
+          ]
+        }
+      </script>
+    {%- endif -%}
   {%- endpaginate -%}
   {% if section.settings.image_shape == 'arch' %}
     {{ 'mask-arch.svg' | inline_asset_content }}
