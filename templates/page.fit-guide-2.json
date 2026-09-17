@@ -366,20 +366,16 @@
         "heading_diDxxn",
         "text_YD8GAD"
       ],
+      "custom_css": [
+        "h2 {margin-bottom: 16px; font-weight: 500;}"
+      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "html_ggg6LE": {
-      "type": "HTML",
-      "disabled": true,
-      "settings": {
-        "html": "<span class=\"center\"><center>\n<a href=\"https://play.google.com/store/apps/details?id=com.evenflo.sensorsafe&amp;pli=1\"><img src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/google.png?v=1654260732\"><sp><sp><sp><sp><sp><sp><sp></sp></sp></sp></sp></sp></sp></sp></a>\n<a href=\"https://apps.apple.com/us/app/evenflo-sensorsafe/id1619330386\"><img src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/apple.png?v=1654260732\"></a>\n</center></span>"
+        "padding_bottom": 0
       }
     },
     "evenflo_divider_T7jPCW": {
@@ -391,17 +387,109 @@
         "custom_css": ""
       }
     },
-    "rich_text_cXahGj": {
+    "evenflo_multicolumn_qCcwQK": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_gF3Gmx": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Child Height & Weight",
+            "text": "<p>Height and weight ranges help show when a car seat or mode may be appropriate for a child’s current size.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_MFnEhw": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Car Seat Modes",
+            "text": "<p>Some car seats support more than one mode, such as rear-facing, forward-facing, or booster. Each mode may have its own requirements.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_qrVG8R": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Position Requirements",
+            "text": "<p>Some products include head, ear, or harness position guidance. Always review the product manual for complete fit requirements.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_JfgnQh": {
+          "type": "column",
+          "settings": {
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Always Check the Manual",
+            "text": "<p>The product manual includes complete requirements, warnings, and instructions for your specific car seat.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_gF3Gmx",
+        "column_MFnEhw",
+        "column_qrVG8R",
+        "column_JfgnQh"
+      ],
+      "custom_css": [
+        ".multicolumn {background: #fff;}",
+        ".button--primary {background: #fff; color: var(--evenflo-black, #020202); margin-top: 32px;}"
+      ],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "enable_image_modal": false,
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_NctqN6": {
       "type": "rich-text",
       "blocks": {
-        "heading_dd4xEH": {
+        "heading_UqaUgJ": {
           "type": "heading",
           "settings": {
             "heading": "Frequently asked questions",
             "heading_size": "h1"
           }
         },
-        "text_8MBiQJ": {
+        "text_Hh8cAm": {
           "type": "text",
           "settings": {
             "text": "<p>Common questions about fit, modes, and product guidance.</p>"
@@ -409,8 +497,8 @@
         }
       },
       "block_order": [
-        "heading_dd4xEH",
-        "text_8MBiQJ"
+        "heading_UqaUgJ",
+        "text_Hh8cAm"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -451,64 +539,6 @@
         "q_color": "",
         "a_color": ""
       }
-    },
-    "evenflo_multicolumn_qCcwQK": {
-      "type": "evenflo-multicolumn",
-      "blocks": {
-        "column_gF3Gmx": {
-          "type": "column",
-          "settings": {
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Child Height & Weight",
-            "text": "<p>Height and weight ranges help show when a car seat or mode may be appropriate for a child’s current size.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_MFnEhw": {
-          "type": "column",
-          "settings": {
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "Car Seat Modes",
-            "text": "<p>Some car seats support more than one mode, such as rear-facing, forward-facing, or booster. Each mode may have its own requirements.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_gF3Gmx",
-        "column_MFnEhw"
-      ],
-      "name": "Evenflo Multicolumn",
-      "settings": {
-        "title": "Multicolumn",
-        "heading_size": "h1",
-        "column_style": "classic",
-        "container_size": "full_width",
-        "heading_alignment": "start",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "enable_image_modal": true,
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "Button label",
-        "button_link": "",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
@@ -522,10 +552,9 @@
     "image_banner_Y7wMTj",
     "evenflo_image_with_text_qNK3QF",
     "rich_text_kwAKTU",
-    "html_ggg6LE",
     "evenflo_divider_T7jPCW",
-    "rich_text_cXahGj",
-    "faq_jpYX6B",
-    "evenflo_multicolumn_qCcwQK"
+    "evenflo_multicolumn_qCcwQK",
+    "rich_text_NctqN6",
+    "faq_jpYX6B"
   ]
 }
