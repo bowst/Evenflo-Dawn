@@ -36,6 +36,9 @@
 			{% endif %}
 		</div>
 		{% endif %}
+		{% if section.settings.footnote != blank %}
+			<p class="footnote">{{ section.settings.footnote }}</p>
+		{% endif %}
 	  </div>
 	</div>
 
@@ -128,6 +131,11 @@
 		"type": "url",
 		"id": "secondary_cta_link",
 		"label": "Secondary CTA link"
+	},
+	{
+		"type": "text",
+		"id": "footnote",
+		"label": "Footnote"
 	},
 	{
 		"type": "header",
