@@ -34,15 +34,6 @@
         "desktop_overlay_opacity": 0
       }
     },
-    "evenflo_divider_T7jPCW": {
-      "type": "evenflo-divider",
-      "settings": {
-        "divider_spacing": 40,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
     "evenflo_fit_guide_XCNL4H": {
       "type": "evenflo-fit-guide",
       "blocks": {
@@ -128,7 +119,7 @@
         "button_NUTye8"
       ],
       "custom_css": [
-        "h2{margin-bottom: 16px; font-weight: 500;}"
+        "h2 {margin-bottom: 16px; font-weight: 500;}"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -231,14 +222,108 @@
         "padding_top": 16,
         "padding_bottom": 36
       }
+    },
+    "faq_at7eAq": {
+      "type": "faq",
+      "blocks": {
+        "faq_XJKPnn": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "How do I know which car seat mode to use?",
+            "content": "<p>FAQ content</p>"
+          }
+        },
+        "faq_94zYVh": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "What is the difference between child weight and seat weight?",
+            "content": "<p>FAQ content</p>"
+          }
+        },
+        "faq_YdYXaC": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "How do I check if my child fits their current seat?",
+            "content": "<p>FAQ content</p>"
+          }
+        },
+        "faq_fyEpPn": {
+          "type": "faq",
+          "settings": {
+            "checkbox_expanded": false,
+            "title": "Where can I find the product manual?",
+            "content": "<p>FAQ content</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_XJKPnn",
+        "faq_94zYVh",
+        "faq_YdYXaC",
+        "faq_fyEpPn"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "enable_rich_schema": true,
+        "max_width": "64rem",
+        "margin_top": 1,
+        "margin_bottom": 1,
+        "background_color": "#ffffff",
+        "border_color": "#eeeeee",
+        "panel_color": "#fdfdfd",
+        "q_size_small": 1,
+        "q_size_large": 1.4,
+        "q_color": "",
+        "a_color": ""
+      }
+    },
+    "rich_text_jnwGVC": {
+      "type": "rich-text",
+      "blocks": {
+        "text_bFdGzz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Fit details are provided to help compare products. Always follow the product labels and manual for complete requirements, instructions, and warnings. If you need more help, contact Evenflo ParentLink or visit the Help Center.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_bFdGzz"
+      ],
+      "custom_css": [
+        "p {font-size: 14px;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 32
+      }
+    },
+    "evenflo_divider_T7jPCW": {
+      "type": "evenflo-divider",
+      "settings": {
+        "divider_spacing": 40,
+        "divider_border": false,
+        "css_class": "",
+        "custom_css": ""
+      }
     }
   },
   "order": [
     "main",
     "evenflo_hero_banner_etB7te",
-    "evenflo_divider_T7jPCW",
     "evenflo_fit_guide_XCNL4H",
     "rich_text_PHjntf",
-    "evenflo_multicolumn_QyiT4Q"
+    "evenflo_multicolumn_QyiT4Q",
+    "faq_at7eAq",
+    "rich_text_jnwGVC",
+    "evenflo_divider_T7jPCW"
   ]
 }
