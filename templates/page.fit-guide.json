@@ -42,11 +42,62 @@
         "css_class": "",
         "custom_css": ""
       }
+    },
+    "evenflo_fit_guide_XCNL4H": {
+      "type": "evenflo-fit-guide",
+      "blocks": {
+        "category_XJFEAP": {
+          "type": "category",
+          "settings": {
+            "label": "Infant Car Seats",
+            "collection": "infant-car-seats"
+          }
+        },
+        "category_Pw8cMH": {
+          "type": "category",
+          "settings": {
+            "label": "Convertible Car Seats",
+            "collection": "convertible-car-seats"
+          }
+        },
+        "category_7bhBQb": {
+          "type": "category",
+          "settings": {
+            "label": "All-in-One",
+            "collection": "all-in-one-car-seats"
+          }
+        },
+        "category_ThTDh3": {
+          "type": "category",
+          "settings": {
+            "label": "Booster Seats",
+            "collection": "booster-car-seats"
+          }
+        }
+      },
+      "block_order": [
+        "category_XJFEAP",
+        "category_Pw8cMH",
+        "category_7bhBQb",
+        "category_ThTDh3"
+      ],
+      "name": "Fit Guide",
+      "settings": {
+        "heading": "Car Seat Fit Guide",
+        "subheading": "<p>Use this guide to review car seat height, weight, and use mode information.</p>",
+        "detail_disclaimer": "Review the available height and weight requirements for this product. Always follow product labels and the manual for complete requirements and instructions.",
+        "manuals_link": "",
+        "faqs_link": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
     "evenflo_hero_banner_etB7te",
-    "evenflo_divider_T7jPCW"
+    "evenflo_divider_T7jPCW",
+    "evenflo_fit_guide_XCNL4H"
   ]
 }
