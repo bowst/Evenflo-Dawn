@@ -2,7 +2,6 @@ class SearchForm extends HTMLElement {
   constructor() {
     super();
     this.input = this.querySelector('input[type="search"]');
-    this.resetButton = this.querySelector('button[type="reset"]');
 
     if (this.input) {
       this.input.form.addEventListener('reset', this.onFormReset.bind(this));
@@ -15,18 +14,7 @@ class SearchForm extends HTMLElement {
     }
   }
 
-  toggleResetButton() {
-    const resetIsHidden = this.resetButton.classList.contains('hidden');
-    if (this.input.value.length > 0 && resetIsHidden) {
-      this.resetButton.classList.remove('hidden');
-    } else if (this.input.value.length === 0 && !resetIsHidden) {
-      this.resetButton.classList.add('hidden');
-    }
-  }
-
-  onChange() {
-    this.toggleResetButton();
-  }
+  onChange() {}
 
   shouldResetForm() {
     return !document.querySelector('[aria-selected="true"] a');
@@ -39,7 +27,6 @@ class SearchForm extends HTMLElement {
     if (this.shouldResetForm()) {
       this.input.value = '';
       this.input.focus();
-      this.toggleResetButton();
     }
   }
 }
