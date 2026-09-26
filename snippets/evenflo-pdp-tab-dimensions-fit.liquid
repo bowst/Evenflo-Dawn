@@ -5,7 +5,6 @@
 {%- liquid
   assign modes_raw = product.metafields.custom.modes_of_use
   assign modes_of_use = modes_raw | replace: '|', '<br>'
-  assign specifications_image = product.metafields.sf_products.specifications_image
   assign dims_images = product.metafields.custom.dims_images.value
   assign manual_en = product.metafields.sf_products.manual
   assign manual_es = product.metafields.sf_products.manual_spanish
@@ -23,8 +22,13 @@
   endif
 
   assign show_diagram = false
-  if specifications_image != blank or dims_images != blank
+  if dims_images != blank
     assign show_diagram = true
+  endif
+
+  assign show_manuals = false
+  if manual_en != blank or manual_es != blank
+    assign show_manuals = true
   endif
 
   assign show_child = false
@@ -33,7 +37,7 @@
   endif
 
   assign show_left_column = false
-  if show_modes or show_diagram
+  if show_modes or show_diagram or show_manuals
     assign show_left_column = true
   endif
 -%}
@@ -50,20 +54,12 @@
             </div>
           {%- endif -%}
 
-          {%- if show_diagram -%}
+          {%- if show_diagram or show_manuals -%}
             <div class="info-block">
-              <h4 class="h3">Dimensions Diagram</h4>
+              {%- if show_diagram -%}
+                <h4 class="h3">Dimensions Diagram</h4>
+              {%- endif -%}
               <div class="info-diagram">
-                {%- if specifications_image != blank -%}
-                  <img
-                    class="specifications-image"
-                    src="{{ specifications_image }}"
-                    width="100%"
-                    height="auto"
-                    loading="lazy"
-                    alt="{{ product.title | escape }} dimensions diagram"
-                  >
-                {%- endif -%}
                 {%- for dims_image in dims_images -%}
                   <img
                     class="specifications-image"
@@ -74,7 +70,7 @@
                     alt="{% if dims_image.alt != blank %}{{ dims_image.alt | escape }}{% else %}{{ product.title | escape }} dimensions diagram{% endif %}"
                   >
                 {%- endfor -%}
-                {%- if manual_en != blank or manual_es != blank -%}
+                {%- if show_manuals -%}
                   <div class="info-diagram-manuals">
                     {%- if manual_en != blank -%}
                       <a class="info-diagram-manuals__button" href="{{ manual_en }}" target="_blank" rel="noopener">Download Manual (EN)</a>

@@ -1,5 +1,9 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+{{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
+{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag }}
 
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-product-card-carousel.css' | asset_url | stylesheet_tag }}
@@ -85,7 +89,8 @@
 					show_rating: section.settings.show_rating,
 					show_swatches: section.settings.show_swatches,
 					enable_quick_add: section.settings.enable_quick_add,
-					section_id: section.id
+					section_id: section.id,
+					skip_styles: true
 				%}
 				</div>
 			</li>
@@ -140,8 +145,9 @@
     {%- endif -%}
   </div>
 </div>
-<script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
+{% if section.settings.show_swatches %}
+	<script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
+{% endif %}
 
 {% schema %}
 {

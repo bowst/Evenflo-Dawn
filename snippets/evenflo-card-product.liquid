@@ -49,12 +49,9 @@ Determine if the product is from support product collection
 {%- unless skip_styles -%}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
-
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
-
-{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag  }}
-
+  {{ 'evenflo-card-product.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 
 {%- if card_product and card_product != empty -%}
@@ -92,6 +89,7 @@ Determine if the product is from support product collection
         
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
+            {%- comment -%} Swatches need per-variant images; when swatches are on, ignore secondary hover. {%- endcomment -%}
             {%- if show_secondary_image == true and show_swatches != true -%}
             <div class="media media--transparent media--hover-effect">
                           

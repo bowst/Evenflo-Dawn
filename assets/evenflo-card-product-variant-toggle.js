@@ -1,4 +1,7 @@
 function initializeSwatchToggles() {
+	if (window.__evenfloSwatchTogglesBound) return;
+	window.__evenfloSwatchTogglesBound = true;
+
 	var swatchLinks = document.querySelectorAll('.color-swatches a');
 	if (!swatchLinks.length) return;
 
@@ -70,6 +73,8 @@ function initializeSwatchToggles() {
 	});
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', initializeSwatchToggles);
+} else {
 	initializeSwatchToggles();
-});
+}

@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "breadcrumbs": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'breadcrumbs' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "6d693240-4367-4eac-b84b-3172c35c46bc": {
       "type": "evenflo-full-width",
       "settings": {
@@ -48,6 +58,7 @@
     }
   },
   "order": [
+    "breadcrumbs",
     "6d693240-4367-4eac-b84b-3172c35c46bc",
     "banner",
     "product-grid"

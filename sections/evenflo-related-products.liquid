@@ -1,7 +1,10 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+{{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-card-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
 {{ 'evenflo-product-card-carousel.css' | asset_url | stylesheet_tag }}
 {% comment %} Evenflo Related Proucts{% endcomment %}
 
@@ -40,7 +43,6 @@
         class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
         role="list"
       >
-        {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
           <li class="grid__item">
             {% render 'evenflo-card-product',
@@ -51,10 +53,9 @@
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
               show_swatches: false,
-              skip_styles: skip_card_product_styles
+              skip_styles: true
             %}{%  comment %} show_swatches: section.settings.show_swatches {% endcomment %}
           </li>
-          {%- assign skip_card_product_styles = true -%}
         {% endfor %}
       </ul>
     {% endif %}
@@ -63,7 +64,9 @@
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
-<script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
+{% if section.settings.show_swatches %}
+	<script src="{{ 'evenflo-card-product-variant-toggle.js' | asset_url }}" defer="defer"></script>
+{% endif %}
 
 {% schema %}
 {

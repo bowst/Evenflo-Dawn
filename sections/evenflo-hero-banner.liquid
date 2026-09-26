@@ -36,6 +36,9 @@
 			{% endif %}
 		</div>
 		{% endif %}
+		{% if section.settings.footnote != blank %}
+			<p class="footnote">{{ section.settings.footnote }}</p>
+		{% endif %}
 	  </div>
 	</div>
 
@@ -46,7 +49,8 @@
 		desktop_video: section.settings.desktop_video,
 		mobile_video: section.settings.mobile_video,
 		enable_video_looping: section.settings.enable_video_looping,
-		alt_text: section.settings.primary_heading | strip_html
+		alt_text: section.settings.primary_heading | strip_html,
+		eager: true
 	%}
 </div>
 {% schema %}
@@ -127,6 +131,11 @@
 		"type": "url",
 		"id": "secondary_cta_link",
 		"label": "Secondary CTA link"
+	},
+	{
+		"type": "text",
+		"id": "footnote",
+		"label": "Footnote"
 	},
 	{
 		"type": "header",

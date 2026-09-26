@@ -10,11 +10,18 @@
   - mobile_video: {Video}
   - enable_video_looping: {Boolean}
   - alt_text: {String}
+  - eager: {Boolean} LCP image: loading="eager" + fetchpriority="high". Default lazy.
 {% endcomment %}
 
 {{ 'evenflo-banner-background-media.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
+  if eager
+    assign image_loading = 'eager'
+  else
+    assign image_loading = 'lazy'
+  endif
+
   assign has_desktop_video = false
   if desktop_video != blank
     assign has_desktop_video = true
@@ -45,7 +52,8 @@
       width="{{ desktop_image.width }}"
       height="{{ desktop_image.height }}"
       class="desktop-image banner-background__image"
-      loading="lazy"
+      loading="{{ image_loading }}"
+      {% if eager %}fetchpriority="high"{% endif %}
     >
   {%- elsif desktop_video.preview_image != blank -%}
     <img
@@ -54,7 +62,8 @@
       width="{{ desktop_video.preview_image.width }}"
       height="{{ desktop_video.preview_image.height }}"
       class="desktop-image banner-background__image"
-      loading="lazy"
+      loading="{{ image_loading }}"
+      {% if eager %}fetchpriority="high"{% endif %}
     >
   {%- endif -%}
 
@@ -65,7 +74,8 @@
       width="{{ mobile_image.width }}"
       height="{{ mobile_image.height }}"
       class="mobile-image banner-background__image"
-      loading="lazy"
+      loading="{{ image_loading }}"
+      {% if eager %}fetchpriority="high"{% endif %}
     >
   {%- elsif desktop_image != blank -%}
     <img
@@ -74,7 +84,8 @@
       width="{{ desktop_image.width }}"
       height="{{ desktop_image.height }}"
       class="mobile-image banner-background__image"
-      loading="lazy"
+      loading="{{ image_loading }}"
+      {% if eager %}fetchpriority="high"{% endif %}
     >
   {%- elsif mobile_video_source.preview_image != blank -%}
     <img
@@ -83,7 +94,8 @@
       width="{{ mobile_video_source.preview_image.width }}"
       height="{{ mobile_video_source.preview_image.height }}"
       class="mobile-image banner-background__image"
-      loading="lazy"
+      loading="{{ image_loading }}"
+      {% if eager %}fetchpriority="high"{% endif %}
     >
   {%- elsif desktop_video.preview_image != blank -%}
     <img
@@ -92,7 +104,8 @@
       width="{{ desktop_video.preview_image.width }}"
       height="{{ desktop_video.preview_image.height }}"
       class="mobile-image banner-background__image"
-      loading="lazy"
+      loading="{{ image_loading }}"
+      {% if eager %}fetchpriority="high"{% endif %}
     >
   {%- endif -%}
 
