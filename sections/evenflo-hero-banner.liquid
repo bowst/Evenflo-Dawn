@@ -18,7 +18,14 @@
 		{% endif %}
 
 		{% if section.settings.primary_heading != blank %}
-			<h1 class="primary-heading h1">{{ section.settings.primary_heading }}</h1>
+			{%- liquid
+				assign heading_tag = section.settings.heading_tag | default: 'h1'
+				unless heading_tag == 'h1' or heading_tag == 'h2' or heading_tag == 'div'
+					assign heading_tag = 'h1'
+				endunless
+				assign heading_html = section.settings.primary_heading | replace: '</p>', '' | replace: '<p>', ''
+			-%}
+			<{{ heading_tag }} class="primary-heading h1">{{ heading_html }}</{{ heading_tag }}>
 		{% endif %}
 
 		{% if section.settings.short_description != blank %}
@@ -106,6 +113,18 @@
 		"type": "richtext",
 		"id": "primary_heading",
 		"label": "Primary heading"
+	},
+	{
+		"type": "select",
+		"id": "heading_tag",
+		"label": "Heading element",
+		"info": "Homepage logo is the only H1. Set this to H2 or Div on the homepage so the banner does not add another one.",
+		"options": [
+			{ "value": "h1", "label": "H1" },
+			{ "value": "h2", "label": "H2" },
+			{ "value": "div", "label": "Div" }
+		],
+		"default": "h1"
 	},
 	{
 		"type": "text",
