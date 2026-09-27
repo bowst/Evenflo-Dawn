@@ -11,32 +11,38 @@
 {% endstyle %}
 
 <div id="promo-banner-{{ section.id }}" class="evenflo-promo-banner {{ section.settings.content_alignment }} {{ section.settings.text_color }} {{ section.settings.desktop_overlay_opacity }} new-2026">
+	{%- liquid
+		assign heading_tag = section.settings.heading_tag | default: 'h1'
+		unless heading_tag == 'h1' or heading_tag == 'h2' or heading_tag == 'div'
+			assign heading_tag = 'h1'
+		endunless
+	-%}
 	<div class="promo-banner-content">
 	  <div class="container page-width">
 		{% if customer.tags contains "swell_vip_bronze" %}
 			<p class="eyebrow-text">{{ section.settings.bronze_eyebrow_text }}</p>
-			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.bronze_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
+			<{{ heading_tag }} class="primary-heading h1"><em class="discount-amount">{{ section.settings.bronze_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></{{ heading_tag }}>
 			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 				<span class="promo-code">{{ section.settings.bronze_promo_code }}</span>
 			</div>
 		{% elsif customer.tags contains "swell_vip_silver" %}
 			<p class="eyebrow-text">{{ section.settings.silver_eyebrow_text }}</p>
-			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.silver_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
+			<{{ heading_tag }} class="primary-heading h1"><em class="discount-amount">{{ section.settings.silver_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></{{ heading_tag }}>
 			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 				<span class="promo-code">{{ section.settings.silver_promo_code }}</span>
 			</div>
 		{% elsif customer.tags contains "swell_vip_gold" %}
 			<p class="eyebrow-text">{{ section.settings.gold_eyebrow_text }}</p>
-			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.gold_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
+			<{{ heading_tag }} class="primary-heading h1"><em class="discount-amount">{{ section.settings.gold_discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></{{ heading_tag }}>
 			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 				<span class="promo-code">{{ section.settings.gold_promo_code }}</span>
 			</div>
 		{% else %}
 			<p class="eyebrow-text">{{ section.settings.eyebrow_text }}</p>
-			<h1 class="primary-heading"><em class="discount-amount">{{ section.settings.discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></h1>
+			<{{ heading_tag }} class="primary-heading h1"><em class="discount-amount">{{ section.settings.discount_amount }}</em> <span class="description-text">{{ section.settings.discount_description }}</span></{{ heading_tag }}>
 			<div class="promo-details">
 				<span class="promo-duration">{{ section.settings.promo_duration }}</span>
 				<span class="promo-code">{{ section.settings.promo_code }}</span>
@@ -145,6 +151,18 @@
 		"type": "text",
 		"id": "discount_description",
 		"label": "Discount description"
+	},
+	{
+		"type": "select",
+		"id": "heading_tag",
+		"label": "Heading element",
+		"info": "Homepage logo is the only H1. Set this to H2 or Div on the homepage so the banner does not add another one.",
+		"options": [
+			{ "value": "h1", "label": "H1" },
+			{ "value": "h2", "label": "H2" },
+			{ "value": "div", "label": "Div" }
+		],
+		"default": "h1"
 	},
 	{
 		"type": "text",
