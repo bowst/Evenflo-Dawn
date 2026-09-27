@@ -1,0 +1,138 @@
+{% comment %}
+  Comma-separated schema.org PropertyValue objects.
+  Field sources match evenflo-pdp-tab-child-fit and the certifications block
+  in evenflo-pdp-tab-specifications. Omitted when blank.
+{% endcomment %}
+{%- liquid
+  assign child_w_min = product.metafields.sf_products.child_weight_min.value
+  assign child_w_max = product.metafields.sf_products.child_weight_max.value
+  assign child_h_min = product.metafields.sf_products.child_height_min.value
+  assign child_h_max = product.metafields.sf_products.child_height_max.value
+  assign child_age_min = product.metafields.sf_products.child_age_min.value
+  assign child_age_max = product.metafields.sf_products.child_age_max.value
+  assign age_group = product.metafields.sf_products.age_group.value
+
+  assign stroller_weight = product.metafields.custom.stroller_weight_limitation.value
+  assign stroller_height = product.metafields.custom.stroller_height_limitation.value
+  assign stroller_age = product.metafields.custom.stroller_age_limitation.value
+
+  assign rear_weight = product.metafields.custom.rear_facing_mode_weight_limit.value
+  assign rear_height = product.metafields.custom.rear_facing_mode_height_limit.value
+  assign rear_age = product.metafields.sf_car_seat.rear_facing_age_limit.value
+  assign rear_fit = product.metafields.sf_car_seat.rear_facing_fit_statement.value
+
+  assign fwd_weight = product.metafields.sf_products.forward_facing_weight_limit.value
+  assign fwd_height = product.metafields.sf_products.forward_facing_height_limit.value
+  assign fwd_age = product.metafields.sf_products.forward_facing_age_limit.value
+  assign fwd_fit = product.metafields.sf_car_seat.forward_facing_fit_statement.value
+
+  assign hb_weight = product.metafields.custom.high_back_booster_mode_weight_limit.value
+  assign hb_height = product.metafields.custom.high_back_booster_mode_height_limit.value
+  assign hb_age = product.metafields.sf_car_seat.high_back_age_limit.value
+  assign hb_fit = product.metafields.sf_car_seat.high_back_fit_statement.value
+
+  assign nb_weight = product.metafields.custom.no_back_booster_mode_weight_limit.value
+  assign nb_height = product.metafields.custom.no_back_booster_mode_height_limit.value
+  assign nb_age = product.metafields.custom.no_back_booster_mode_age_limit.value
+  assign nb_fit = product.metafields.sf_car_seat.no_back_fit_statement.value
+
+  assign harness_weight = product.metafields.custom.harness_booster_mode_weight_limit.value
+  assign harness_height = product.metafields.custom.harness_booster_mode_height_limit.value
+  assign harness_age = product.metafields.sf_car_seat.harness_age_limit.value
+  assign harness_fit = product.metafields.sf_car_seat.harness_booster_fit_statement.value
+
+  assign certifications = product.metafields.custom.certifications.value | default: product.metafields.custom.certifications
+-%}
+{%- capture props -%}
+  {%- if child_w_min != blank and child_w_max != blank -%}
+    ,{"@type":"PropertyValue","name":"Child weight limit","minValue":{{ child_w_min | times: 1 }},"maxValue":{{ child_w_max | times: 1 }},"unitCode":"LBR","unitText":"lb"}
+  {%- endif -%}
+  {%- if child_h_min != blank and child_h_max != blank -%}
+    ,{"@type":"PropertyValue","name":"Child height limit","minValue":{{ child_h_min | times: 1 }},"maxValue":{{ child_h_max | times: 1 }},"unitCode":"INH","unitText":"in"}
+  {%- endif -%}
+  {%- if age_group != blank -%}
+    ,{"@type":"PropertyValue","name":"Age group","value":{{ age_group | strip_html | json }}}
+  {%- endif -%}
+  {%- if child_age_min != blank -%}
+    ,{"@type":"PropertyValue","name":"Minimum age","value":{{ child_age_min | strip_html | json }}}
+  {%- endif -%}
+  {%- if child_age_max != blank -%}
+    ,{"@type":"PropertyValue","name":"Maximum age","value":{{ child_age_max | strip_html | json }}}
+  {%- endif -%}
+  {%- if stroller_weight != blank -%}
+    ,{"@type":"PropertyValue","name":"Stroller weight limitation","value":{{ stroller_weight | strip_html | json }}}
+  {%- endif -%}
+  {%- if stroller_height != blank -%}
+    ,{"@type":"PropertyValue","name":"Stroller height limitation","value":{{ stroller_height | strip_html | json }}}
+  {%- endif -%}
+  {%- if stroller_age != blank -%}
+    ,{"@type":"PropertyValue","name":"Stroller age limitation","value":{{ stroller_age | strip_html | json }}}
+  {%- endif -%}
+  {%- if rear_weight != blank -%}
+    ,{"@type":"PropertyValue","name":"Rear-facing weight limit","value":{{ rear_weight | strip_html | json }}}
+  {%- endif -%}
+  {%- if rear_height != blank -%}
+    ,{"@type":"PropertyValue","name":"Rear-facing height limit","value":{{ rear_height | strip_html | json }}}
+  {%- endif -%}
+  {%- if rear_fit != blank -%}
+    ,{"@type":"PropertyValue","name":"Rear-facing fit limitation","value":{{ rear_fit | strip_html | json }}}
+  {%- endif -%}
+  {%- if rear_age != blank -%}
+    ,{"@type":"PropertyValue","name":"Rear-facing age limit","value":{{ rear_age | strip_html | json }}}
+  {%- endif -%}
+  {%- if fwd_weight != blank -%}
+    ,{"@type":"PropertyValue","name":"Forward-facing weight limit","value":{{ fwd_weight | strip_html | json }}}
+  {%- endif -%}
+  {%- if fwd_height != blank -%}
+    ,{"@type":"PropertyValue","name":"Forward-facing height limit","value":{{ fwd_height | strip_html | json }}}
+  {%- endif -%}
+  {%- if fwd_fit != blank -%}
+    ,{"@type":"PropertyValue","name":"Forward-facing fit limitation","value":{{ fwd_fit | strip_html | json }}}
+  {%- endif -%}
+  {%- if fwd_age != blank -%}
+    ,{"@type":"PropertyValue","name":"Forward-facing age limit","value":{{ fwd_age | strip_html | json }}}
+  {%- endif -%}
+  {%- if hb_weight != blank -%}
+    ,{"@type":"PropertyValue","name":"High-back booster weight limit","value":{{ hb_weight | strip_html | json }}}
+  {%- endif -%}
+  {%- if hb_height != blank -%}
+    ,{"@type":"PropertyValue","name":"High-back booster height limit","value":{{ hb_height | strip_html | json }}}
+  {%- endif -%}
+  {%- if hb_fit != blank -%}
+    ,{"@type":"PropertyValue","name":"High-back booster fit limitation","value":{{ hb_fit | strip_html | json }}}
+  {%- endif -%}
+  {%- if hb_age != blank -%}
+    ,{"@type":"PropertyValue","name":"High-back booster age limit","value":{{ hb_age | strip_html | json }}}
+  {%- endif -%}
+  {%- if nb_weight != blank -%}
+    ,{"@type":"PropertyValue","name":"No-back booster weight limit","value":{{ nb_weight | strip_html | json }}}
+  {%- endif -%}
+  {%- if nb_height != blank -%}
+    ,{"@type":"PropertyValue","name":"No-back booster height limit","value":{{ nb_height | strip_html | json }}}
+  {%- endif -%}
+  {%- if nb_fit != blank -%}
+    ,{"@type":"PropertyValue","name":"No-back booster fit limitation","value":{{ nb_fit | strip_html | json }}}
+  {%- endif -%}
+  {%- if nb_age != blank -%}
+    ,{"@type":"PropertyValue","name":"No-back booster age limit","value":{{ nb_age | strip_html | json }}}
+  {%- endif -%}
+  {%- if harness_weight != blank -%}
+    ,{"@type":"PropertyValue","name":"Harness booster weight limit","value":{{ harness_weight | strip_html | json }}}
+  {%- endif -%}
+  {%- if harness_height != blank -%}
+    ,{"@type":"PropertyValue","name":"Harness booster height limit","value":{{ harness_height | strip_html | json }}}
+  {%- endif -%}
+  {%- if harness_fit != blank -%}
+    ,{"@type":"PropertyValue","name":"Harness booster fit limitation","value":{{ harness_fit | strip_html | json }}}
+  {%- endif -%}
+  {%- if harness_age != blank -%}
+    ,{"@type":"PropertyValue","name":"Harness booster age limit","value":{{ harness_age | strip_html | json }}}
+  {%- endif -%}
+  {%- if certifications != blank -%}
+    ,{"@type":"PropertyValue","name":"Certifications","value":{{ certifications | strip_html | json }}}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign props = props | strip | remove_first: ',' -%}
+{%- if props != blank -%}
+  {{- props -}}
+{%- endif -%}

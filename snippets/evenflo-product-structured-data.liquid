@@ -1,0 +1,118 @@
+{% comment %}
+  Shopify product structured data, plus variant color and fit additionalProperty.
+{% endcomment %}
+{%- capture product_sd -%}{{ product | structured_data }}{%- endcapture -%}
+{%- assign product_sd = product_sd | strip -%}
+{%- liquid
+  assign color_position = 0
+  assign size_position = 0
+  assign material_position = 0
+  assign varies_by_urls = ''
+
+  for option in product.options_with_values
+    assign option_name = option.name | downcase | strip
+    if option_name == 'color' or option_name == 'colour'
+      assign color_position = option.position
+      assign varies_by_urls = varies_by_urls | append: 'https://schema.org/color,'
+    elsif option_name == 'size'
+      assign size_position = option.position
+      assign varies_by_urls = varies_by_urls | append: 'https://schema.org/size,'
+    elsif option_name == 'material'
+      assign material_position = option.position
+      assign varies_by_urls = varies_by_urls | append: 'https://schema.org/material,'
+    endif
+  endfor
+
+  if product.variants.size > 1 and varies_by_urls != blank
+    for variant in product.variants
+      assign variant_extra = ''
+      if color_position == 1
+        assign color_value = variant.option1
+      elsif color_position == 2
+        assign color_value = variant.option2
+      elsif color_position == 3
+        assign color_value = variant.option3
+      else
+        assign color_value = ''
+      endif
+      if size_position == 1
+        assign size_value = variant.option1
+      elsif size_position == 2
+        assign size_value = variant.option2
+      elsif size_position == 3
+        assign size_value = variant.option3
+      else
+        assign size_value = ''
+      endif
+      if material_position == 1
+        assign material_value = variant.option1
+      elsif material_position == 2
+        assign material_value = variant.option2
+      elsif material_position == 3
+        assign material_value = variant.option3
+      else
+        assign material_value = ''
+      endif
+
+      if color_value != blank
+        assign color_json = color_value | json
+        assign variant_extra = variant_extra | append: ',"color":' | append: color_json
+      endif
+      if size_value != blank
+        assign size_json = size_value | json
+        assign variant_extra = variant_extra | append: ',"size":' | append: size_json
+      endif
+      if material_value != blank
+        assign material_json = material_value | json
+        assign variant_extra = variant_extra | append: ',"material":' | append: material_json
+      endif
+
+      if variant_extra != blank
+        assign variant_marker = variant.id | append: '#variant","@type":"Product"'
+        assign variant_replacement = variant_marker | append: variant_extra
+        assign product_sd = product_sd | replace: variant_marker, variant_replacement
+      endif
+    endfor
+  endif
+-%}
+{%- capture additional_properties -%}
+  {%- render 'evenflo-product-additional-properties', product: product -%}
+{%- endcapture -%}
+{%- assign additional_properties = additional_properties | strip -%}
+{%- liquid
+  assign varies_by_json = ''
+  if product.variants.size > 1 and varies_by_urls != blank
+    assign varies_by_list = varies_by_urls | split: ','
+    assign varies_count = 0
+    assign varies_by_json = ''
+    for url in varies_by_list
+      if url != blank
+        assign varies_count = varies_count | plus: 1
+        assign url_json = url | json
+        if varies_by_json == blank
+          assign varies_by_json = url_json
+        else
+          assign varies_by_json = varies_by_json | append: ',' | append: url_json
+        endif
+      endif
+    endfor
+    if varies_count > 1
+      assign varies_by_json = '[' | append: varies_by_json | append: ']'
+    endif
+  endif
+-%}
+<script type="application/ld+json">
+  {%- if additional_properties != blank or varies_by_json != blank -%}
+    {%- assign sd_len = product_sd.size | minus: 1 -%}
+    {{- product_sd | slice: 0, sd_len -}}
+    {%- if varies_by_json != blank -%}
+      ,"variesBy":{{ varies_by_json -}}
+    {%- endif -%}
+    {%- if additional_properties != blank -%}
+      ,"additionalProperty":[{{ additional_properties }}]
+    {%- endif -%}
+    }
+  {%- else -%}
+    {{- product_sd -}}
+  {%- endif -%}
+</script>
