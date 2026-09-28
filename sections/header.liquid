@@ -419,18 +419,19 @@
         "https://www.wikidata.org/wiki/Q507141"
       ],
     "sameAs": [
-  "https://g.co/kgs/cPfSoC",
-            "https://www.wikidata.org/wiki/Q5416580",
-            "https://en.wikipedia.org/wiki/Evenflo",
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
+      "https://g.co/kgs/cPfSoC",
+      "https://www.wikidata.org/wiki/Q5416580",
+      "https://en.wikipedia.org/wiki/Evenflo",
+      "https://www.linkedin.com/company/evenflo"
+      {%- if settings.social_twitter_link != blank -%},{{ settings.social_twitter_link | json }}{%- endif -%}
+      {%- if settings.social_facebook_link != blank -%},{{ settings.social_facebook_link | json }}{%- endif -%}
+      {%- if settings.social_pinterest_link != blank -%},{{ settings.social_pinterest_link | json }}{%- endif -%}
+      {%- if settings.social_instagram_link != blank -%},{{ settings.social_instagram_link | json }}{%- endif -%}
+      {%- if settings.social_tiktok_link != blank -%},{{ settings.social_tiktok_link | json }}{%- endif -%}
+      {%- if settings.social_tumblr_link != blank -%},{{ settings.social_tumblr_link | json }}{%- endif -%}
+      {%- if settings.social_snapchat_link != blank -%},{{ settings.social_snapchat_link | json }}{%- endif -%}
+      {%- if settings.social_youtube_link != blank -%},{{ settings.social_youtube_link | json }}{%- endif -%}
+      {%- if settings.social_vimeo_link != blank -%},{{ settings.social_vimeo_link | json }}{%- endif -%}
     ],
     "url": {{ request.origin | append: page.url | json }},
     "hasOfferCatalog": [ "https://www.evenflo.com/collections/car-seats", "https://www.evenflo.com/collections/strollers"],
@@ -478,7 +479,7 @@
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      "name": {{ shop.name | json }},
+      "name": "Evenflo",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {{ potential_action_target | json }},
