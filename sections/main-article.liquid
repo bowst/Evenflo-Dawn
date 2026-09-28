@@ -289,7 +289,11 @@
 </article>
 
 <script type="application/ld+json">
-  {{ article | structured_data }}
+  {%- capture article_sd -%}{{ article | structured_data }}{%- endcapture -%}
+  {%- assign article_sd = article_sd | strip -%}
+  {%- assign article_sd_len = article_sd.size | minus: 1 -%}
+  {{- article_sd | slice: 0, article_sd_len -}}
+  ,"publisher":{"@id":"https://www.evenflo.com/#organization"}}
 </script>
 
 {% schema %}

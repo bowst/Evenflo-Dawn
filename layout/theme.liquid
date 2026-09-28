@@ -26,6 +26,22 @@
     </script>
     <!-- End Google Tag Manager -->
     <link rel="canonical" href="{{ canonical_url }}">
+    {%- if blogs['evenflo-blog'] != blank -%}
+      <link
+        rel="alternate"
+        type="application/atom+xml"
+        title="{{ blogs['evenflo-blog'].title | escape }}"
+        href="{{ shop.url }}{{ blogs['evenflo-blog'].url }}.atom"
+      >
+    {%- endif -%}
+    {%- if blogs['evenflo-news'] != blank -%}
+      <link
+        rel="alternate"
+        type="application/atom+xml"
+        title="{{ blogs['evenflo-news'].title | escape }}"
+        href="{{ shop.url }}{{ blogs['evenflo-news'].url }}.atom"
+      >
+    {%- endif -%}
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
