@@ -402,6 +402,7 @@
   {
     "@context": "http://schema.org",
     "@type": "Organization",
+    "@id": "https://www.evenflo.com/#organization",
     "name": {{ shop.name | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
@@ -434,35 +435,33 @@
       {%- if settings.social_vimeo_link != blank -%},{{ settings.social_vimeo_link | json }}{%- endif -%}
     ],
     "url": {{ request.origin | append: page.url | json }},
-    "hasOfferCatalog": [ "https://www.evenflo.com/collections/car-seats", "https://www.evenflo.com/collections/strollers"],
+    "hasOfferCatalog": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Car Seats",
+        "url": "https://www.evenflo.com/collections/car-seats"
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Strollers",
+        "url": "https://www.evenflo.com/collections/strollers"
+      }
+    ],
       "alternateName": "Evenflo",
       "areaServed": "http://www.wikidata.org/entity/Q30",
-      "hasMerchantReturnPolicy": [ 
-      {
+      "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
+        "@id": "https://www.evenflo.com/#return-policy",
         "name": "Standard Return Policy",
-        "merchantReturnDays": "30",
+        "merchantReturnDays": 30,
         "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "returnMethod": "ReturnByMail",
+        "returnMethod": "https://schema.org/ReturnByMail",
         "description": "You have 30 days from receipt to return unused Evenflo item(s) purchased from Evenflo.com for a full refund of the merchandise value. Please contact Evenflo prior to your return.",
         "merchantReturnLink": "https://www.evenflo.com/policies/refund-policy",
         "applicableCountry": "US",
         "returnPolicyCountry": "US"
-        },
-        {
-        "@type": "MerchantReturnPolicy",
-        "name": "Evenflo Gold Return Policy",
-        "merchantReturnDays": "100",
-        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "returnMethod": "ReturnByMail",
-        "description": "For Evenflo Gold products, you have 100 days from receipt to return unused Evenflo Gold items, purchased from Evenflo.com for a full refund of the merchandise value. Please contact Evenflo prior to your return.",
-        "merchantReturnLink": "https://www.evenflo.com/policies/refund-policy",
-        "applicableCountry": "US",
-        "returnPolicyCountry": "US"
-        }
-        ],
+      },
       "parentOrganization": {
         "@type": "Organization",
         "sameAs": "https://en.wikipedia.org/wiki/Goodbaby_International",
@@ -474,18 +473,16 @@
 </script>
 
 {%- if request.page_type == 'index' -%}
-  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "WebSite",
+      "@id": "https://www.evenflo.com/#website",
       "name": "Evenflo",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {{ potential_action_target | json }},
-        "query-input": "required name=search_term_string"
-      },
-      "url": {{ request.origin | append: page.url | json }}
+      "url": {{ request.origin | append: page.url | json }},
+      "publisher": {
+        "@id": "https://www.evenflo.com/#organization"
+      }
     }
   </script>
 {%- endif -%}

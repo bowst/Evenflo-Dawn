@@ -1,0 +1,38 @@
+{% comment %}
+  Shopify product structured data plus dateModified from product.updated_at.
+{% endcomment %}
+{%- capture product_sd -%}{{ product | structured_data }}{%- endcapture -%}
+{%- assign product_sd = product_sd | strip -%}
+{%- liquid
+  if product.updated_at != blank
+    assign product_modified = product.updated_at
+  else
+    assign product_modified = product.published_at
+  endif
+  assign is_evenflo_gold = false
+  if product.vendor == 'Evenflo Gold'
+    assign is_evenflo_gold = true
+  endif
+  if is_evenflo_gold
+    assign offer_marker = '"@type":"Offer"'
+    assign offer_replacement = '"@type":"Offer","hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","@id":"https://www.evenflo.com/#return-policy-gold","name":"Evenflo Gold Return Policy","merchantReturnDays":100,"returnFees":"https://schema.org/ReturnFeesCustomerResponsibility","returnPolicyCategory":"https://schema.org/MerchantReturnFiniteReturnWindow","returnMethod":"https://schema.org/ReturnByMail","merchantReturnLink":"https://www.evenflo.com/policies/refund-policy","applicableCountry":"US","returnPolicyCountry":"US"}'
+    assign product_sd = product_sd | replace: offer_marker, offer_replacement
+  endif
+  assign sd_len = product_sd.size | minus: 1
+-%}
+{%- capture additional_properties -%}
+  {%- render 'evenflo-product-additional-properties', product: product -%}
+{%- endcapture -%}
+{%- assign additional_properties = additional_properties | strip -%}
+<script type="application/ld+json">
+  {{- product_sd | slice: 0, sd_len -}}
+  ,"manufacturer":{"@id":"https://www.evenflo.com/#organization"}
+  {%- if product_modified != blank -%}
+    ,"dateModified":{{ product_modified | date: '%Y-%m-%dT%H:%M:%S%z' | json }}
+  {%- endif -%}
+  {%- if additional_properties != blank -%}
+    ,"additionalProperty":[{{ additional_properties }}]
+  {%- endif -%}
+}
+</script>
+
