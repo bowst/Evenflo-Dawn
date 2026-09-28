@@ -1465,5 +1465,21 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Oversize package fee",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The oversize fee itself (on/off, carton size threshold, amount, test mode) is controlled in the Evenflo Custom Functions app, not here. This setting only decides when the notice also says free standard shipping is included."
+      },
+      {
+        "type": "number",
+        "id": "oversize_free_shipping_threshold",
+        "label": "Free shipping threshold (USD)",
+        "default": 200,
+        "info": "Oversize items priced at or above this also show \"Free Standard Shipping Included\". Real free shipping is based on the whole cart total, not this single item."
+      }
+    ]
   }
 ]
