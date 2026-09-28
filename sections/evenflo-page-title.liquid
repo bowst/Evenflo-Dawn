@@ -13,13 +13,25 @@
     }
   }
 {%- endstyle -%}
-<div class="isolate">
-<div class="rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--15815875330204__94000f54-3969-4ee6-a915-e78863cb7546-padding">
-  <div class="rich-text__wrapper rich-text__wrapper--center page-width">
-    <div class="rich-text__blocks center"><h1 class="rich-text__heading rte inline-richtext evenflo h1" >{{ section.settings.page_title }} </h1></div>
+{%- liquid
+  assign title_alignment = section.settings.alignment | default: 'center'
+  if title_alignment != 'left'
+    assign title_alignment = 'center'
+  endif
+-%}
+{%- if section.settings.hidden_h1 -%}
+  <h1 class="visually-hidden">{{ section.settings.page_title }}</h1>
+{%- else -%}
+  <div class="isolate">
+    <div class="rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--15815875330204__94000f54-3969-4ee6-a915-e78863cb7546-padding">
+      <div class="rich-text__wrapper rich-text__wrapper--{{ title_alignment }} page-width">
+        <div class="rich-text__blocks {{ title_alignment }}">
+          <h1 class="rich-text__heading rte inline-richtext evenflo h1">{{ section.settings.page_title }}</h1>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
+{%- endif -%}
   
   {% schema %}
     {
@@ -32,6 +44,23 @@
         "label": "Page Title",
         "default": "Page Title",
         "placeholder": "Page Title"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Alignment",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "checkbox",
+        "id": "hidden_h1",
+        "label": "Hidden H1",
+        "info": "Check this to include an H1 on the page for SEO, GEO, and AI, but keep it visually hidden.",
+        "default": false
       }
     ],
     "presets": [

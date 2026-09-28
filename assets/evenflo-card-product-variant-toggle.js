@@ -14,19 +14,23 @@ function initializeSwatchToggles() {
 		var productCard = targetSwatch.closest('.product-card-wrapper');
 		if (!productCard) return;
 
-		var productLinks = productCard.querySelectorAll('.product-link');
 		var activeSwatch = productCard.querySelector('.color-swatches a.active');
-		var activeVariantID = targetSwatch.getAttribute('data-variant-id');
-		var targetImage = productCard.querySelector(targetSwatch.getAttribute('href'));
+		var targetHref = targetSwatch.getAttribute('href');
+		var targetImage = targetHref ? productCard.querySelector(targetHref) : null;
+		var activeImage = activeSwatch && activeSwatch.getAttribute('href')
+			? productCard.querySelector(activeSwatch.getAttribute('href'))
+			: null;
 		var variantTitle = productCard.querySelector('.variant-title');
+		var activeVariantID = targetSwatch.getAttribute('data-variant-id');
+		var productLinks = productCard.querySelectorAll('.product-link');
 
-		if (activeSwatch) {
-			var activeImage = productCard.querySelector(activeSwatch.getAttribute('href'));
-			if (activeImage) activeImage.classList.remove('active');
-			activeSwatch.classList.remove('active');
-		}
+		// Swatches expect imgs with id="vid_{variant.id}". Bail if markup is missing.
+		if (!targetImage) return;
 
-		if (targetImage) targetImage.classList.add('active');
+		if (activeImage) activeImage.classList.remove('active');
+		if (activeSwatch) activeSwatch.classList.remove('active');
+
+		targetImage.classList.add('active');
 		targetSwatch.classList.add('active');
 
 		if (variantTitle) {
