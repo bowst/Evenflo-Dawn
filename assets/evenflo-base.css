@@ -2,90 +2,117 @@
    1. Design Tokens
    ========================================================================== */
 
-   :root {
-	/* Colors */
-	--color-evenflo-blue-900: #0F3C5A;
-	--color-evenflo-blue-800: #175b89;
-	--color-evenflo-blue-700: #1f6fa0;
-	--color-evenflo-blue-500: #2996c5;
-	--color-evenflo-teal-900: #005957;
-	--color-evenflo-teal-800: #006f6b;
-	--color-evenflo-teal-700: #007e79;
-	--color-evenflo-teal-500: #00aea9;
-	--color-evenflo-neutral-900: #111111;
-	--color-evenflo-neutral-800: #222222;
-	--color-evenflo-neutral-700: #444444;
-	--color-evenflo-neutral-600: #666666;
-	--color-evenflo-neutral-200: #e6e6e6;
-	--color-evenflo-neutral-100: #f2f4f7;
-	--color-evenflo-neutral-50: #fcfcfd;
-	--color-evenfo-soft-sand: #faf8f6;
-	--color-evenflo-aqua-mist: #e3f2f3;
-	--color-evenflo-white: #ffffff;
+:root {
+  /* Colors */
+  --color-evenflo-blue-900: #0F3C5A;
+  --color-evenflo-blue-800: #175b89;
+  --color-evenflo-blue-700: #1f6fa0;
+  --color-evenflo-blue-500: #2996c5;
+  --color-evenflo-teal-900: #005957;
+  --color-evenflo-teal-800: #006f6b;
+  --color-evenflo-teal-700: #007e79;
+  --color-evenflo-teal-500: #00aea9;
+  --color-evenflo-neutral-900: #111111;
+  --color-evenflo-neutral-800: #222222;
+  --color-evenflo-neutral-700: #444444;
+  --color-evenflo-neutral-600: #666666;
+  --color-evenflo-neutral-200: #e6e6e6;
+  --color-evenflo-neutral-100: #f2f4f7;
+  --color-evenflo-neutral-50: #fcfcfd;
+  --color-evenfo-soft-sand: #faf8f6;
+  --color-evenflo-aqua-mist: #e3f2f3;
+  --color-evenflo-white: #ffffff;
 
-	/* Sizing & Layout */
-	--content-max-width: 1440px;
-	--content-inner-max-width: 1280px;
-	--content-container-gap: 32px;
+  /* Sizing & Layout */
+  --content-max-width: 1440px;
+  --content-inner-max-width: 1280px;
+  --content-container-gap: 32px;
 
-	--h1-font-size: 3.5rem; /* 42px */
-	--h1-color: var(--color-evenflo-neutral-900);
-	--h2-font-size: 2.6666666667rem; /* 32px */
-	--h2-color: var(--color-evenflo-neutral-900);
-	--h3-font-size: 2.6666666667rem; /* 32px */
-	--h3-color: var(--color-evenflo-blue-900);
-	--h4-font-size: 1.83333rem; /* 22px */
-	--h4-color: var(--color-evenflo-blue-900);
-	--h5-font-size: 1.5rem;	/* 18px */
-	--h5-color: var(--color-evenflo-neutral-900);
-	--h6-font-size: 1.1666666667rem;	/* 14px */
-	--h6-color: #ffffff;
+  --h1-font-size: 3.5rem;
+  /* 42px */
+  --h1-color: var(--color-evenflo-neutral-900);
+  --h2-font-size: 2.6666666667rem;
+  /* 32px */
+  --h2-color: var(--color-evenflo-neutral-900);
+  --h3-font-size: 2.6666666667rem;
+  /* 32px */
+  --h3-color: var(--color-evenflo-blue-900);
+  --h4-font-size: 1.83333rem;
+  /* 22px */
+  --h4-color: var(--color-evenflo-blue-900);
+  --h5-font-size: 1.5rem;
+  /* 18px */
+  --h5-color: var(--color-evenflo-neutral-900);
+  --h6-font-size: 1.1666666667rem;
+  /* 14px */
+  --h6-color: #ffffff;
 
-	--body-font-size: 1.33333rem; /* 16px */
-	--body-font-size-sm: 1.1666666667rem; /* 14px */
-	--body-font-size-lg: 1.33333rem; /* 16px */
+  --body-font-size: 1.33333rem;
+  /* 16px */
+  --body-font-size-sm: 1.1666666667rem;
+  /* 14px */
+  --body-font-size-lg: 1.33333rem;
+  /* 16px */
 
-	--button-font-size: 1.33333rem; /* 16px */
+  --button-font-size: 1.33333rem;
+  /* 16px */
 }
 
 .new-2026 {
-/* Color Assignments */
-	--color-evenflo-headings: var(--color-evenflo-neutral-900);
-	--color-evenflo-subheadings: var(--color-evenflo-blue-900);
-	--color-evenflo-text: var(--color-evenflo-neutral-800);
-	/*--color-evenflo-white: var(--color-evenflo-neutral-50);*/
+  /* Color Assignments */
+  --color-evenflo-headings: var(--color-evenflo-neutral-900);
+  --color-evenflo-subheadings: var(--color-evenflo-blue-900);
+  --color-evenflo-text: var(--color-evenflo-neutral-800);
+  /*--color-evenflo-white: var(--color-evenflo-neutral-50);*/
 
 }
 
 @media screen and (min-width: 750px) {
-	:root {
-		--h1-font-size: 4rem; /* 48px */
-		--h2-font-size: 3rem; /* 36px */
-		--h3-font-size: 3rem; /* 36px */
-		--h4-font-size: 2.33333rem; /* 28px */
-		--h5-font-size: 1.6666666667rem; /* 20px */
-		--h6-font-size: 1.25rem; /* 15px */
+  :root {
+    --h1-font-size: 4rem;
+    /* 48px */
+    --h2-font-size: 3rem;
+    /* 36px */
+    --h3-font-size: 3rem;
+    /* 36px */
+    --h4-font-size: 2.33333rem;
+    /* 28px */
+    --h5-font-size: 1.6666666667rem;
+    /* 20px */
+    --h6-font-size: 1.25rem;
+    /* 15px */
 
-		--body-font-size-lg: 1.5rem; /* 20px */
+    --body-font-size-lg: 1.5rem;
+    /* 20px */
 
-		--button-font-size: 1.33333rem; /* 18px */
-	}
+    --button-font-size: 1.33333rem;
+    /* 18px */
+  }
 }
 
 @media screen and (min-width: 1024px) {
-	:root {
-		--h1-font-size: 4.6rem; /* 56px */
-		--h2-font-size: 4rem; /* 48px */
-		--h3-font-size: 3.5rem; /* 42px */
-		--h4-font-size: 3.16667rem; /* 38px */
-		--h5-font-size: 2rem;	/* 24px */
-		--h6-font-size: 1.33333rem;	/* 16px */
-		
-		--body-font-size-lg: 1.83333rem; /* 22px */
+  :root {
+    --h1-font-size: 4.6rem;
+    /* 56px */
+    --h2-font-size: 4rem;
+    /* 48px */
+    --h3-font-size: 3.5rem;
+    /* 42px */
+    --h4-font-size: 3.16667rem;
+    /* 38px */
+    --h5-font-size: 2rem;
+    /* 24px */
+    --h6-font-size: 1.33333rem;
+    /* 16px */
 
-		--button-font-size: 1.6666666667rem; /* 20px */
-	}
+    --body-font-size-lg: 1.83333rem;
+    /* 22px */
+
+    --button-font-size: 1.6666666667rem;
+    /* 20px */
+  }
 }
+
 /* ==========================================================================
    2. Base Elements & Typography
    ========================================================================== */
@@ -120,6 +147,7 @@ h5,
 }
 
 @media only screen and (min-width: 750px) {
+
   h1,
   .h1 {
     font-size: calc(var(--font-heading-scale) * 4.5rem);
@@ -128,53 +156,53 @@ h5,
 
 /* Evenflo 2026 Typography styles */
 .new-2026 .h1 {
-	font-size: var(--h1-font-size);
-	color: var(--h1-color);
+  font-size: var(--h1-font-size);
+  color: var(--h1-color);
 }
 
 .new-2026 .h2-lg {
-	font-size: var(--h2-font-size-lg);
-	color: var(--h2-lg-color);
+  font-size: var(--h2-font-size-lg);
+  color: var(--h2-lg-color);
 }
 
 .new-2026 .h2 {
-	font-size: var(--h2-font-size);
-	color: var(--h2-color);
+  font-size: var(--h2-font-size);
+  color: var(--h2-color);
 }
 
 .new-2026 .h3 {
-	font-size: var(--h3-font-size);
-	color: var(--h3-color);
+  font-size: var(--h3-font-size);
+  color: var(--h3-color);
 }
 
 .new-2026 .h4 {
-	font-size: var(--h4-font-size);
-	color: var(--h4-color);
-	font-weight: 400;
+  font-size: var(--h4-font-size);
+  color: var(--h4-color);
+  font-weight: 400;
 }
 
 .new-2026 .h5 {
-	font-size: var(--h5-font-size);
-	color: var(--h5-color);
+  font-size: var(--h5-font-size);
+  color: var(--h5-color);
 }
 
 .new-2026 .h6,
 .new-2026 .eyebrow {
-	font-size: var(--h6-font-size);
-	color: var(--h6-color);
-	text-transform: uppercase;
+  font-size: var(--h6-font-size);
+  color: var(--h6-color);
+  text-transform: uppercase;
 }
 
 .new-2026 .body-text-sm {
-	font-size: var(--body-font-size-sm);
+  font-size: var(--body-font-size-sm);
 }
 
 .new-2026 .body-text {
-	font-size: var(--body-font-size);
+  font-size: var(--body-font-size);
 }
 
 .new-2026 .body-text-lg {
-	font-size: var(--body-font-size-lg);
+  font-size: var(--body-font-size-lg);
 }
 
 /* Heading underline decorations */
@@ -183,7 +211,7 @@ h5,
   position: relative;
 }
 
-.heading-underline::after,
+/* .heading-underline::after,
 .heading-underline-center::after {
   content: '';
   position: absolute;
@@ -202,7 +230,7 @@ h5,
 .heading-underline-center::after {
   left: 50%;
   transform: translateX(-50%);
-}
+} */
 
 /* ==========================================================================
    3. Section Headers
@@ -240,24 +268,28 @@ h5,
 }
 
 sticky-header .header {
-	padding: 0 1.5em 0;
-	/*height: 72px;*/
+  padding: 0 1.5em 0;
+  /*height: 72px;*/
 }
 
 @media screen and (min-width: 990px) {
-    .header.page-width, .utility-bar__grid.page-width  {
-		padding-left: 5rem;
-		padding-right: 5rem;
-	}
-	sticky-header .header {
-		padding: 8px 1.5em;
-		/*height: 72px;*/
-	}
 
-	.header__icon, .header__icon--cart .icon {
-		width: 48px;
-		height: 48px;
-	}
+  .header.page-width,
+  .utility-bar__grid.page-width {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  sticky-header .header {
+    padding: 8px 1.5em;
+    /*height: 72px;*/
+  }
+
+  .header__icon,
+  .header__icon--cart .icon {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 .header__menu-item {
@@ -301,7 +333,7 @@ a {
 /* 2026 UX Refresh - Button Styles 
 This is all to override some weird hover styles */
 .button {
-	transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .button--outline::before,
@@ -316,52 +348,53 @@ This is all to override some weird hover styles */
 .button--primary.light::after,
 .button--secondary.dark::after,
 .button--secondary.light::after {
-	display: none;
+  display: none;
 }
 
 .button--outline,
 .button--ghost {
-	border: 2px solid var(--color-evenflo-neutral-900);
-	background-color: var(--color-evenflo-neutral-50);
-	color: var(--color-evenflo-blue-900);
-	transition: all 0.3s ease;
+  border: 2px solid var(--color-evenflo-neutral-900);
+  background-color: var(--color-evenflo-neutral-50);
+  color: var(--color-evenflo-blue-900);
+  transition: all 0.3s ease;
 }
 
 .button--outline:hover,
 .button--ghost:hover,
 .button--outline:focus,
 .button--ghost:focus {
-	background-color: var(--color-evenflo-neutral-900);
-	border-color: var(--color-evenflo-neutral-900);
-	color: var(--color-evenflo-neutral-50);
+  background-color: var(--color-evenflo-neutral-900);
+  border-color: var(--color-evenflo-neutral-900);
+  color: var(--color-evenflo-neutral-50);
 }
 
 .button--secondary.light {
-	background-color: var(--color-evenflo-neutral-50);
-	border-color: var(--color-evenflo-neutral-50);
-	color: var(--color-evenflo-neutral-900);
-	opacity: 1;
+  background-color: var(--color-evenflo-neutral-50);
+  border-color: var(--color-evenflo-neutral-50);
+  color: var(--color-evenflo-neutral-900);
+  opacity: 1;
 }
 
 .button--secondary.light:hover,
 .button--secondary.light:focus {
-	background-color: var(--color-evenflo-neutral-900);
-	border-color: var(--color-evenflo-neutral-50);
-	color: var(--color-evenflo-neutral-50);
+  background-color: var(--color-evenflo-neutral-900);
+  border-color: var(--color-evenflo-neutral-50);
+  color: var(--color-evenflo-neutral-50);
 }
 
 .button--secondary.dark {
-	background-color: var(--color-evenflo-neutral-900);
-	border-color: var(--color-evenflo-neutral-900);
-	color: var(--color-evenflo-neutral-50);
+  background-color: var(--color-evenflo-neutral-900);
+  border-color: var(--color-evenflo-neutral-900);
+  color: var(--color-evenflo-neutral-50);
 }
 
 .button--secondary.dark:hover,
 .button--secondary.dark:focus {
-	background-color: var(--color-evenflo-neutral-50);
-	border-color: var(--color-evenflo-neutral-900);
-	color: var(--color-evenflo-neutral-50);
+  background-color: var(--color-evenflo-neutral-50);
+  border-color: var(--color-evenflo-neutral-900);
+  color: var(--color-evenflo-neutral-50);
 }
+
 /* Gradient & color scheme overrides */
 
 .gradient.color-accent-1 {
@@ -392,8 +425,8 @@ This is all to override some weird hover styles */
 
 .header__icon .svg-wrapper,
 .header__icon .icon {
-	height: 24px;
-	width: 24px;
+  height: 24px;
+  width: 24px;
 }
 
 .header__icon:not(.header__icon--summary) {
@@ -421,7 +454,7 @@ body.evenflo-globo-header-focus #cart-icon-bubble.focused {
 
 predictive-search .field::before,
 predictive-search .field::after {
-	display: none;
+  display: none;
 }
 
 .search__input.field__input {
@@ -435,7 +468,7 @@ predictive-search .field::after {
   padding-bottom: 1.5rem;
 }
 
-.search__input.field__input ~ .field__label {
+.search__input.field__input~.field__label {
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.6rem;
@@ -443,7 +476,7 @@ predictive-search .field::after {
   transition: opacity var(--duration-short) ease;
 }
 
-.search__input.field__input:focus ~ .field__label {
+.search__input.field__input:focus~.field__label {
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.6rem;
@@ -451,14 +484,12 @@ predictive-search .field::after {
   left: calc(var(--inputs-border-width) + 2rem);
 }
 
-.search__input.field__input:not(:placeholder-shown) ~ .field__label,
-.search__input.field__input:-webkit-autofill ~ .field__label {
+.search__input.field__input:not(:placeholder-shown)~.field__label,
+.search__input.field__input:-webkit-autofill~.field__label {
   opacity: 0;
 }
 
-@media (min-width: 1101px) and (max-width: 1300px) {
-  
-}
+@media (min-width: 1101px) and (max-width: 1300px) {}
 
 @media (min-width: 1101px) {
   predictive-search[open] .predictive-search {
@@ -469,16 +500,17 @@ predictive-search .field::after {
     top: 55px;
     border-top: 1px solid rgba(var(--color-foreground), var(--popup-border-opacity)) !important;
   }
+
   .header--middle-left {
     /* grid-template-columns: auto 1fr 1fr; */
-	grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
   }
 }
 
 
 predictive-search .predictive-search__loading-state {
-	display: none
-  }
+  display: none
+}
 
 .header__menu-item {
   padding-left: 2rem;
@@ -491,11 +523,11 @@ predictive-search .predictive-search__loading-state {
   text-decoration: none;
 }
 
-details[open] > .header__menu-item {
+details[open]>.header__menu-item {
   text-decoration: none;
 }
 
-details[open] > .header__menu-item::after {
+details[open]>.header__menu-item::after {
   content: '';
   display: block;
   width: calc(100% - 2.7rem);
@@ -573,11 +605,11 @@ img {
 
 .select .svg-wrapper,
 .customer select+.svg-wrapper {
-	right: .6rem;
+  right: .6rem;
 }
 
 .cart__ctas {
-	margin: 8px 0;
+  margin: 8px 0;
 }
 
 cart-drawer.drawer {
@@ -592,21 +624,17 @@ a.button.button--primary--alt {
 }
 
 a.button.button--primary--alt:hover {
-	background-color: rgb(41, 150, 197) !important;
+  background-color: rgb(41, 150, 197) !important;
 }
 
 a.button.button--primary--alt::after {
-  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-	rgba(var(--color-button-text), var(--border-opacity)),
-	0 0 0 var(--buttons-border-width)
-	rgba(41, 150, 197, var(--alpha-button-background));
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba(var(--color-button-text), var(--border-opacity)),
+    0 0 0 var(--buttons-border-width) rgba(41, 150, 197, var(--alpha-button-background));
 }
 
 a.button.button--primary--alt:hover::after {
-  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-	rgba(var(--color-button-text), var(--border-opacity)),
-	0 0 0 calc(var(--buttons-border-width) + 1px)
-	rgba(41, 150, 197, var(--alpha-button-background));
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) rgba(var(--color-button-text), var(--border-opacity)),
+    0 0 0 calc(var(--buttons-border-width) + 1px) rgba(41, 150, 197, var(--alpha-button-background));
 }
 
 /* ==========================================================================
@@ -614,7 +642,7 @@ a.button.button--primary--alt:hover::after {
    ========================================================================== */
 
 dl dt {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 dl dd {
@@ -622,7 +650,7 @@ dl dd {
 }
 
 dl dd ul {
-	margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ==========================================================================
@@ -650,10 +678,12 @@ dl dd ul {
     max-width: 100%;
     margin: 0 auto;
   }
+
   .responsive-table-container table {
     width: 100%;
     box-shadow: none;
   }
+
   .responsive-table-container table tr.hide-mobile,
   .responsive-table-container table th.hide-mobile,
   .responsive-table-container table td.hide-mobile {
@@ -680,6 +710,7 @@ dl dd ul {
     margin: 0 0 1em 0;
     padding: 0.5em;
   }
+
   .responsive-table-container table td[data-title]:not(.product-title):before {
     content: attr(data-title);
     font-weight: bold;
@@ -689,20 +720,24 @@ dl dd ul {
     margin-right: 0.5em;
     font-size: 0.95em;
   }
+
   .responsive-table-container table td.product-title {
     font-weight: 700;
     font-size: 1.5em;
     border-bottom: 1px solid transparent;
     padding-bottom: 0;
   }
-   .responsive-table-container table td.product-category {
+
+  .responsive-table-container table td.product-category {
     border-top: 1px solid transparent;
     padding-top: 0;
-   }
+  }
+
   .responsive-table-container table td:last-child {
     padding-right: 0;
     border-bottom: 2px solid #ccc;
   }
+
   .responsive-table-container table td:empty {
     display: none;
   }
@@ -726,24 +761,24 @@ dl dd ul {
  * kit rather than hardcoding a family name.
  */
 .evenflo-oversize-notice {
-	display: flex;
-	flex-direction: column;
-	gap: 0.4rem;
-	margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
 }
 
 .evenflo-oversize-notice__row {
-	display: flex;
-	align-items: center;
-	gap: 0.8rem;
-	font-family: var(--font-body-family);
-	font-weight: 700;
-	font-size: 1.4rem;
-	line-height: 2rem;
-	color: #222222;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-body-family);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #222222;
 }
 
 /* The inlined SVGs already carry width/height; stop them shrinking in flex. */
 .evenflo-oversize-notice__row svg {
-	flex: 0 0 auto;
+  flex: 0 0 auto;
 }
