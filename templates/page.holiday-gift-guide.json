@@ -9,11 +9,21 @@
  */
 {
   "sections": {
+    "evenflo_page_title_arWhKd": {
+      "type": "evenflo-page-title",
+      "name": "Evenflo Page Title",
+      "settings": {
+        "page_title": "The Ultimate Holiday Gift Guide",
+        "alignment": "center",
+        "hidden_h1": true
+      }
+    },
     "evenflo_image_banner_a8XxaN": {
       "type": "evenflo-image-banner",
       "blocks": {
         "heading_FDjjiX": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "heading": "The Ultimate Gift Guide",
             "heading_underline": false,
@@ -380,6 +390,7 @@
     }
   },
   "order": [
+    "evenflo_page_title_arWhKd",
     "evenflo_image_banner_a8XxaN",
     "main",
     "evenflo_multicolumn_TVyX4y",
