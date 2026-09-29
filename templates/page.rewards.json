@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "evenflo_page_title_8TLydP": {
+      "type": "evenflo-page-title",
+      "name": "Evenflo Page Title",
+      "settings": {
+        "page_title": "Rewards",
+        "alignment": "center",
+        "hidden_h1": true
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -80,11 +89,13 @@
         "enable_video_looping": true,
         "eyebrow_text": "WELCOME TO THE CLUB",
         "primary_heading": "",
+        "heading_tag": "h1",
         "short_description": "As a member you'll earn points & exclusive rewards every time you shop.",
         "primary_cta_text": "JOIN NOW",
         "primary_cta_link": "https://account.evenflo.com/authentication/login?client_id=fb44e08e-11f1-4b22-b65b-c7951b53d31d&locale=en-US&redirect_uri=%2Fauthentication%2Foauth%2Fauthorize%3F_cs%3D3amp.S_USMA_t_t_V2pWsZRYT5-BWbIjyITeyw%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJldmVuZmxvYmFieS5teXNob3BpZnkuY29tIiwiZmxhZ3MiOltdLCJleHAiOjE3Nzc2NDgzMjcsIm5iZiI6MTc3NzA0MzUyN30.rZCwuVTwrVRfSa64yAtk2IvOeXKDI5iSx8nS_9RZmdk%26client_id%3Dfb44e08e-11f1-4b22-b65b-c7951b53d31d%26locale%3Den-US%26nonce%3Db7061f72-ca60-4dcc-9fab-37bebea56374%26redirect_uri%3Dhttps%253A%252F%252Faccount.evenflo.com%252Fcallback%26region_country%3DUS%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNBOjnfjACEFhaiRFkx69SM&region_country=US",
         "secondary_cta_text": "LOGIN",
         "secondary_cta_link": "https://account.evenflo.com/authentication/login?client_id=fb44e08e-11f1-4b22-b65b-c7951b53d31d&locale=en-US&redirect_uri=%2Fauthentication%2Foauth%2Fauthorize%3F_cs%3D3amp.S_USMA_t_t_V2pWsZRYT5-BWbIjyITeyw%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJldmVuZmxvYmFieS5teXNob3BpZnkuY29tIiwiZmxhZ3MiOltdLCJleHAiOjE3Nzc2NDgzNjEsIm5iZiI6MTc3NzA0MzU2MX0.0rE_dgB3AbGJiDu52VlHG6mHlw593ST569RVy0hc4J4%26client_id%3Dfb44e08e-11f1-4b22-b65b-c7951b53d31d%26locale%3Den-US%26nonce%3D069e0597-677b-4359-b349-884f9532f45a%26redirect_uri%3Dhttps%253A%252F%252Faccount.evenflo.com%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNBOjrAiHHjTeasvClbXuTq",
+        "footnote": "",
         "content_alignment": "align-left",
         "text_color": "dark",
         "desktop_overlay_opacity": 40
@@ -229,6 +240,7 @@
     }
   },
   "order": [
+    "evenflo_page_title_8TLydP",
     "main",
     "image_banner_WnzJQX",
     "evenflo_hero_banner_rKcpCp",
