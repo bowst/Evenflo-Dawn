@@ -717,3 +717,33 @@ dl dd ul {
     display: none;
   }
 }
+
+/*
+ * Oversize package fee notice - two icon rows.
+ * Used on the PDP (inside .product__tax) and per line item in the cart drawer.
+ * Type spec from the client: mr-eaves-modern 700 / 14px / 20px line-height /
+ * #222222. Uses the theme's own body-family variable so it tracks the Typekit
+ * kit rather than hardcoding a family name.
+ */
+.evenflo-oversize-notice {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	margin-top: 0.8rem;
+}
+
+.evenflo-oversize-notice__row {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	font-family: var(--font-body-family);
+	font-weight: 700;
+	font-size: 1.4rem;
+	line-height: 2rem;
+	color: #222222;
+}
+
+/* The inlined SVGs already carry width/height; stop them shrinking in flex. */
+.evenflo-oversize-notice__row svg {
+	flex: 0 0 auto;
+}

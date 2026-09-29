@@ -44,6 +44,14 @@
 	<script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'show-free-shipping.js' | asset_url }}" defer="defer"></script>
+	{%- comment -%}
+	  Gated on the SHOP metafield, not a theme setting - same switch the app
+	  charges on. With a theme setting here the script could be withheld while
+	  the fee was live, leaving the notice stale on variant change.
+	{%- endcomment -%}
+	{%- if shop.metafields.custom.oversize_fee_enabled.value == true -%}
+	  <script src="{{ 'evenflo-oversize-notice.js' | asset_url }}" defer="defer"></script>
+	{%- endif -%}
 	{%- if product.quantity_price_breaks_configured? -%}
 	  <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
 	  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -650,6 +658,17 @@
 					  {%- if shop.shipping_policy.body != blank -%}
 						{{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
 					  {%- endif -%}
+					  {%- comment -%}
+						Oversize package fee notice. Reads the per-variant metafield
+						custom.carton_size and renders two icon rows beneath the
+						shipping line. Kept current on variant change by
+						evenflo-oversize-notice.js.
+					  {%- endcomment -%}
+					  {%- render 'evenflo-oversize-notice',
+						variant: product.selected_or_first_available_variant,
+						product: product,
+						section_id: section.id
+					  -%}
 					</div>
 				  {%- endif -%}
 				  <!-- Yotpo Points Display -->
