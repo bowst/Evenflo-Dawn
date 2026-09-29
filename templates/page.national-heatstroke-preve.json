@@ -9,10 +9,22 @@
  */
 {
   "sections": {
+    "evenflo_page_title_e8PRep": {
+      "type": "evenflo-page-title",
+      "name": "Evenflo Page Title",
+      "settings": {
+        "page_title": "National Heatstroke Prevention Month",
+        "alignment": "center",
+        "hidden_h1": true
+      }
+    },
     "evenflo_full_width_image_bzn3RE": {
       "type": "evenflo-full-width-image",
       "settings": {
-        "image": "shopify://shop_images/Landing_Page_Header.png"
+        "image": "shopify://shop_images/Landing_Page_Header.png",
+        "heading": "",
+        "text": "",
+        "position": "top-left"
       }
     },
     "evenflo_image_text_HQYMMc": {
@@ -218,6 +230,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "show_swatches": false,
         "enable_quick_add": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -270,6 +283,7 @@
     }
   },
   "order": [
+    "evenflo_page_title_e8PRep",
     "evenflo_full_width_image_bzn3RE",
     "evenflo_image_text_HQYMMc",
     "evenflo_divider_4UDxrV",
