@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "evenflo_page_title_NptMPa": {
+      "type": "evenflo-page-title",
+      "name": "Evenflo Page Title",
+      "settings": {
+        "page_title": "Closeout",
+        "alignment": "center",
+        "hidden_h1": true
+      }
+    },
     "breadcrumbs": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
@@ -23,7 +32,7 @@
       "type": "evenflo-full-width",
       "settings": {
         "heading": "Sometimes we make too much of a good thing",
-        "content": "<p><strong>NOTE: On these deals, you pay the shipping.  We'll keep the cost as reasonable as we can, no mark ups for you.  We update our selection regularly  so, check back whenever you like and, by all means, tell others.</strong></p>"
+        "content": "<p><strong>NOTE: On these deals, you pay the shipping. &nbsp;We'll keep the cost as reasonable as we can, no mark ups for you. &nbsp;We update our selection regularly  so, check back whenever you like and, by all means, tell others.</strong></p>"
       }
     },
     "banner": {
@@ -58,6 +67,7 @@
     }
   },
   "order": [
+    "evenflo_page_title_NptMPa",
     "breadcrumbs",
     "6d693240-4367-4eac-b84b-3172c35c46bc",
     "banner",
