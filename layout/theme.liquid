@@ -102,7 +102,7 @@
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
     <!-- Conditionally include JavaScript file on specific JSON template pages -->
-    {% if (template contains 'evenflo-faq') or (template contains 'evenflo-collection') %}
+    {% if template.name contains 'evenflo-faq' or template.name contains 'evenflo-collection' %}
       <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
       {{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
     {% endif %}
@@ -177,6 +177,7 @@
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
       {{ settings.type_header_font | font_face: font_display: 'swap' }}
 
+      {% assign scheme_classes = '' %}
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
         {% if forloop.index == 1 -%}
@@ -496,7 +497,7 @@
       <!-- Chatbot -->
     {% endcomment %}
 
-    <script type="text/javascript" src="https://www.astutebot.com/chat/script/AstuteBotLauncher.min.js"></script>
+    <script type="text/javascript" src="https://www.astutebot.com/chat/script/AstuteBotLauncher.min.js" defer></script>
 
     <script>
       window.astuteBotMessengerSettings = {
