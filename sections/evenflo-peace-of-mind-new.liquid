@@ -1,5 +1,5 @@
 {{ 'evenflo-peace-of-mind-new.css' | asset_url | stylesheet_tag }}
-{% render 'swiper' %}
+{% render 'swiper-bundle' %}
 
 {%- liquid
   assign user_manual = product.metafields.sf_products.manual
@@ -37,13 +37,13 @@
   </div>
 
   <div class="peace-of-mind-new__grid page-width">
-    <swiper-container
+    <div
       id="peace-of-mind-new-{{ section.id }}"
-      class="peace-of-mind-new__slider"
-      init="false"
+      class="swiper peace-of-mind-new__slider"
     >
+    <div class="swiper-wrapper">
     {%- if has_manuals -%}
-      <swiper-slide class="peace-of-mind-new__slide">
+      <div class="swiper-slide peace-of-mind-new__slide">
       <div class="peace-of-mind-new__block">
         <span class="peace-of-mind-new__icon" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,11 +61,11 @@
           {%- endif -%}
         </ul>
       </div>
-      </swiper-slide>
+      </div>
     {%- endif -%}
 
     {%- if has_warranty -%}
-      <swiper-slide class="peace-of-mind-new__slide">
+      <div class="swiper-slide peace-of-mind-new__slide">
       <div class="peace-of-mind-new__block">
         <span class="peace-of-mind-new__icon" aria-hidden="true">
           <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,10 +88,10 @@
           {%- endif -%}
         </div>
       </div>
-      </swiper-slide>
+      </div>
     {%- endif -%}
 
-    <swiper-slide class="peace-of-mind-new__slide">
+    <div class="swiper-slide peace-of-mind-new__slide">
     <div class="peace-of-mind-new__block">
       <span class="peace-of-mind-new__icon" aria-hidden="true">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,9 +103,9 @@
         <a href="{{ support_link }}">{{ section.settings.support_text }}</a>
       </div>
     </div>
-    </swiper-slide>
+    </div>
 
-    <swiper-slide class="peace-of-mind-new__slide">
+    <div class="swiper-slide peace-of-mind-new__slide">
     <div class="peace-of-mind-new__block">
       <span class="peace-of-mind-new__icon" aria-hidden="true">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -117,8 +117,9 @@
         <a href="{{ parts_link }}">{{ section.settings.parts_text }}</a>
       </div>
     </div>
-    </swiper-slide>
-    </swiper-container>
+    </div>
+    </div>
+    </div>
 
     <div class="peace-of-mind-new__nav">
       <button
@@ -160,10 +161,10 @@
 </section>
 
 <script>
-  customElements.whenDefined('swiper-container').then(function () {
+  (window.evenfloSwiperBundleReady || Promise.resolve()).then(function () {
     var el = document.getElementById('peace-of-mind-new-{{ section.id }}');
     if (!el || el.swiper) return;
-    Object.assign(el, {
+    new Swiper(el, {
       slidesPerView: 1,
       spaceBetween: 24,
       watchOverflow: true,
@@ -185,7 +186,6 @@
         }
       }
     });
-    el.initialize();
   });
 </script>
 

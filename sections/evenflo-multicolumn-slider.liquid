@@ -1,5 +1,5 @@
 {{ 'section-multicolumn-slider.css' | asset_url | stylesheet_tag }}
-{% render 'swiper' %}
+{% render 'swiper-bundle' %}
 
 
 <section class="evenflo-multicolumn-slider color-background-1">
@@ -11,30 +11,50 @@
       {% for block in section.blocks %}
         {% assign blockClass = "swiper-{{ forloop.index }}" %}
         <div class="one-third column alpha">
-          <swiper-container class="{{ blockClass }}" navigation="true">
+          <div class="swiper {{ blockClass }}">
+            <div class="swiper-wrapper">
             {% if block.settings.image_0 %}
               {% assign image = block.settings.image_0 %}
-              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+              <div class="swiper-slide">{{ image.src | img_url: '350x' | img_tag }}</div>
             {% endif %}
             {% if block.settings.image_1 %}
               {% assign image = block.settings.image_1 %}
-              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+              <div class="swiper-slide">{{ image.src | img_url: '350x' | img_tag }}</div>
             {% endif %}
             {% if block.settings.image_2 %}
               {% assign image = block.settings.image_2 %}
-              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+              <div class="swiper-slide">{{ image.src | img_url: '350x' | img_tag }}</div>
             {% endif %}
             {% if block.settings.image_3 %}
               {% assign image = block.settings.image_3 %}
-              <swiper-slide>{{ image.src | img_url: '350x' | img_tag }}</swiper-slide>
+              <div class="swiper-slide">{{ image.src | img_url: '350x' | img_tag }}</div>
             {% endif %}
-          </swiper-container>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
           <a class="button button--primary" href="{{ block.settings.product.url }}">SHOP NOW</a>
         </div>
       {% endfor %}
     </div>
   </div>
 </section>
+
+<script>
+  (window.evenfloSwiperBundleReady || Promise.resolve()).then(function () {
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if (!root) return;
+    root.querySelectorAll('.swiper').forEach(function (el) {
+      if (el.swiper) return;
+      new Swiper(el, {
+        navigation: {
+          prevEl: el.querySelector('.swiper-button-prev'),
+          nextEl: el.querySelector('.swiper-button-next')
+        }
+      });
+    });
+  });
+</script>
 
 {%- if request.design_mode -%}
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
