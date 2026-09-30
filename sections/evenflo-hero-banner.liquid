@@ -49,6 +49,7 @@
 	  </div>
 	</div>
 
+	{% assign hero_alt_text = section.settings.primary_heading | strip_html %}
 	{% render 'evenflo-banner-background-media',
 		wrapper_class: 'hero-banner-image',
 		desktop_image: section.settings.desktop_image,
@@ -56,7 +57,7 @@
 		desktop_video: section.settings.desktop_video,
 		mobile_video: section.settings.mobile_video,
 		enable_video_looping: section.settings.enable_video_looping,
-		alt_text: section.settings.primary_heading | strip_html,
+		alt_text: hero_alt_text,
 		eager: true
 	%}
 </div>

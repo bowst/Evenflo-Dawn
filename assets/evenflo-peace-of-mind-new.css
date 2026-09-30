@@ -137,13 +137,13 @@
   cursor: default;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 750px) and (max-width: 989px) {
   .peace-of-mind-new__nav {
     gap: 12px;
   }
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 989px) {
   .peace-of-mind-new__nav {
     display: flex;
   }

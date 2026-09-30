@@ -1,5 +1,5 @@
 {{ 'evenflo-features-carousel.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'swiper-element-bundle.min.js' | asset_url }}" defer="defer"></script>
+{% render 'swiper' %}
 
 {%- liquid
   assign display_section = true

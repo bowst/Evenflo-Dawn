@@ -1,5 +1,5 @@
 {{ 'evenflo-peace-of-mind-new.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'swiper-element-bundle.min.js' | asset_url }}" defer="defer"></script>
+{% render 'swiper' %}
 
 {%- liquid
   assign user_manual = product.metafields.sf_products.manual
@@ -167,6 +167,7 @@
       slidesPerView: 1,
       spaceBetween: 24,
       watchOverflow: true,
+      allowTouchMove: true,
       navigation: {
         prevEl: '.peace-of-mind-new-prev-{{ section.id }}',
         nextEl: '.peace-of-mind-new-next-{{ section.id }}'
@@ -175,7 +176,7 @@
         750: {
           slidesPerView: 2,
           spaceBetween: 32,
-          allowTouchMove: false
+          allowTouchMove: true
         },
         990: {
           slidesPerView: 4,

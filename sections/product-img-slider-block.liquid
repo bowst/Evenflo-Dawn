@@ -1,5 +1,5 @@
 {{ 'product-img-slider-block.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+{% render 'swiper-bundle' %}
 <div class="product-img-slider-block">
   <div class="page-width">
     <!-- Conditionally Render the Heading if it exists -->
@@ -23,10 +23,9 @@
     </div>
   </div>
 </div>
-<script src="{{ 'swiper-element-bundle.min.js' | asset_url }}" defer="defer"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    (window.evenfloSwiperBundleReady || Promise.resolve()).then(function () {
     var swiper = new Swiper(".product-img-slider-block .mySwiper", {
       loop: true,
       slidesPerView: 5,
@@ -59,6 +58,7 @@
               slidesPerView: 5,
           },
     	},
+    });
     });
   });
 </script>
