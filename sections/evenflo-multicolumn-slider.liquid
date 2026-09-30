@@ -9,25 +9,25 @@
     {% endif %}
     <div class="row cc-three-columns">
       {% for block in section.blocks %}
-        {% assign blockClass = "swiper-{{ forloop.index }}" %}
+        {% assign block_class = "swiper-{{ forloop.index }}" %}
         <div class="one-third column alpha">
-          <div class="swiper {{ blockClass }}">
+          <div class="swiper {{ block_class }}">
             <div class="swiper-wrapper">
             {% if block.settings.image_0 %}
               {% assign image = block.settings.image_0 %}
-              <div class="swiper-slide">{{ image.src | img_url: '350x' | img_tag }}</div>
+              <div class="swiper-slide">{{ image | image_url: width: 350 | image_tag }}</div>
             {% endif %}
             {% if block.settings.image_1 %}
               {% assign image = block.settings.image_1 %}
-              <div class="swiper-slide">{{ image.src | img_url: '350x' | img_tag }}</div>
+              <div class="swiper-slide">{{ image | image_url: width: 350 | image_tag }}</div>
             {% endif %}
             {% if block.settings.image_2 %}
               {% assign image = block.settings.image_2 %}
-              <div class="swiper-slide">{{ image.src | img_url: '350x' | img_tag }}</div>
+              <div class="swiper-slide">{{ image | image_url: width: 350 | image_tag }}</div>
             {% endif %}
             {% if block.settings.image_3 %}
               {% assign image = block.settings.image_3 %}
-              <div class="swiper-slide">{{ image.src | img_url: '350x' | img_tag }}</div>
+              <div class="swiper-slide">{{ image | image_url: width: 350 | image_tag }}</div>
             {% endif %}
             </div>
             <div class="swiper-button-prev"></div>

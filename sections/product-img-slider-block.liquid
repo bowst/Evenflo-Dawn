@@ -13,7 +13,7 @@
             {% if variant.image.src %}
               <div class="swiper-slide product-img-card">
                 <a href="{{ product.url }}">
-                  <img src="{{ variant.image.src | image_url }}" alt="{{ product.title }} - {{ variant.title }}">
+                  <img src="{{ variant.image.src | image_url: width: 1000 }}" alt="{{ product.title }} - {{ variant.title }}" width="" height="" loading="lazy">
                 </a>
               </div>
             {% endif %}

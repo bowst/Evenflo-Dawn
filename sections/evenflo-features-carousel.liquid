@@ -62,7 +62,7 @@
             <div class="evenflo-features-carousel__media">
               {%- if feature_image_shopify != blank -%}
                 <img
-                  src="{{ feature_image_shopify | img_url: 'large' }}"
+                  src="{{ feature_image_shopify | image_url: width: 1000 | image_tag }}"
                   alt="{{ product.title }} - Feature {{ i }}"
                   loading="lazy"
                   width=""
