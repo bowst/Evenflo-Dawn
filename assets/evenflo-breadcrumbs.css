@@ -1,6 +1,8 @@
     
 .breadcrumbs {
         /* padding: 1rem 5rem; */
+		margin-top: 32px;
+		margin-bottom: 32px;
     }
 
     .breadcrumbs li {
@@ -10,18 +12,22 @@
     .breadcrumbs a {
         text-decoration: none;
         /*Will put liquid customization here*/
-        font-size: 15px;
+        font-size: 16px;
         color: inherit;
     }
 
-    .breadcrumb-delimeter:not(:last-child):after {  
-            content: "|";
-            font-size: 18px;
-
+    .breadcrumb-delimeter:not(:last-child):after {
+        content: "";
         display: inline-block;
-        margin-left: .75rem;
-        margin-right: 0.50rem;
-        speak: none;
+        box-sizing: border-box;
+        width: 9px;
+        height: 9px;
+        margin-left: 16px;
+        margin-right: 16px;
+        border-right: 1px solid #444444;
+        border-bottom: 1px solid #444444;
+        transform: rotate(-45deg);
+        vertical-align: middle;
     }
 
     .breadcrumbs [aria-current="page"] {
@@ -31,7 +37,19 @@
     }
 
     @media screen and (max-width: 749px) {
-        .breadcrumbs {
-            display: none;
-        }
+		.breadcrumbs {
+			margin-top: 16px;
+			margin-bottom: 16px;
+		}
+
+		.breadcrumbs a {
+			font-size: 14px;
+		}
+
+		.breadcrumb-delimeter:not(:last-child):after {
+			width: 8px;
+			height: 8px;
+			margin-left: 8px;
+			margin-right: 8px;
+		}
     }
