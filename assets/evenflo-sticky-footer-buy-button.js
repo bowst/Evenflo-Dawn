@@ -30,31 +30,7 @@ function stickyFooterContent(stickyFooter, update){
 	const stickyFooterButton = document.getElementById('sticky-footer-button');
 	
 	setTimeout( function(){
-		//shipping is handled in a separate function included on the parent page
-		/*
-		//Update shipping
-		const shippingNotice = document.getElementById('free-shipping-notice-footer');
-		let productPrice = false;
-
-		if(document.querySelector('.product__info-container .price--on-sale')){
-			//console.log('sale price');
-			productPrice = document.querySelector('.product__info-container .price-item--sale').innerHTML;
-		}else{
-			//console.log('reg price');
-			productPrice =  document.querySelector('.product__info-container .price-item--regular').innerHTML;
-		}
-
-		productPrice = productPrice.replace("$", "");
 		
-		//console.log(productPrice, productPrice > 150.00);
-		if(productPrice > 150.00 ){
-			shippingNotice.classList.remove('hidden');
-			//console.log('free');
-
-		}else{
-			shippingNotice.classList.add('hidden');
-		}
-		*/
 		// Ensure the form button content is correct
 		const formBtn = document.querySelector('form .product-form__submit');
 

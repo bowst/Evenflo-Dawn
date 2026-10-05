@@ -122,39 +122,3 @@
 		}
 	}
 }
-.product-sticky-buttons .free-shipping-notice {
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5em;
-    padding: .25em;
-	margin-top: -1rem;
-    margin-bottom: 1rem;
-	color: #fff;	
-    font-style: normal;
-	font-weight: 400;
-    font-family: var(--font-body-family);
-    letter-spacing: 0;
-    line-height: 1;
-	background: #000;
-}
-
-.product-sticky-buttons .free-shipping-notice img{
-	width: 18px;
-	height: 18px;
-}
-.product-sticky-buttons .free-shipping-notice svg{
-	width: 20px;
-	height: 20px;
-}
-.product-sticky-buttons .free-shipping-notice .mobile {
-	display: none;
-}
-@media (max-width: 1024px){
-	.product-sticky-buttons .free-shipping-notice .mobile {
-		display: inline;
-	}
-	.product-sticky-buttons .free-shipping-notice .desktop {
-		display: none;
-	}
-}
