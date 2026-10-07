@@ -271,9 +271,9 @@
             "vimeo_url": "123456789",
             "enable_video_looping": false,
             "liquid_content": "",
-            "title": "",
+            "title": "Car Seats",
             "text": "",
-            "link_label": "Car Seats",
+            "link_label": "",
             "link": "shopify://collections/car-seats"
           }
         },
@@ -286,9 +286,9 @@
             "vimeo_url": "123456789",
             "enable_video_looping": false,
             "liquid_content": "",
-            "title": "",
+            "title": "Strollers",
             "text": "",
-            "link_label": "Strollers",
+            "link_label": "",
             "link": "shopify://collections/strollers"
           }
         },
@@ -301,9 +301,9 @@
             "vimeo_url": "123456789",
             "enable_video_looping": false,
             "liquid_content": "",
-            "title": "",
+            "title": "Home Collection",
             "text": "",
-            "link_label": "Home Collection",
+            "link_label": "",
             "link": "shopify://pages/home-collection"
           }
         },
@@ -316,9 +316,9 @@
             "vimeo_url": "123456789",
             "enable_video_looping": false,
             "liquid_content": "",
-            "title": "",
+            "title": "Rotating Car Seats",
             "text": "",
-            "link_label": "Rotating Car Seats",
+            "link_label": "",
             "link": "shopify://collections/revolve-rotating-car-seats"
           }
         },
@@ -331,9 +331,9 @@
             "vimeo_url": "123456789",
             "enable_video_looping": false,
             "liquid_content": "",
-            "title": "",
+            "title": "Travel Systems",
             "text": "",
-            "link_label": "Travel Systems",
+            "link_label": "",
             "link": "shopify://collections/travel-systems"
           }
         },
@@ -346,9 +346,9 @@
             "vimeo_url": "123456789",
             "enable_video_looping": false,
             "liquid_content": "",
-            "title": "",
+            "title": "Stroller Wagons",
             "text": "",
-            "link_label": "Stroller Wagons",
+            "link_label": "",
             "link": "shopify://collections/stroller-wagons"
           }
         }
@@ -362,11 +362,10 @@
         "column_U3MiJx"
       ],
       "custom_css": [
-        ".page-width {max-width: var(--content-max-width, 1440px);}",
-        ".multicolumn {background-color: #003e26; }",
-        ".multicolumn-list {padding: 24px 36px;}",
-        ".multicolumn.background-none .multicolumn-card {padding: 24px 8px;}",
-        ".multicolumn .multicolumn-card .link {font-size: 2.5rem; text-decoration: none; color: #fff; font-weight: bold;}",
+        ".page-width {max-width: var(--content-max-width);}",
+        ".multicolumn {background-image: url(\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday-Gift-Guide_LP_Collection-Block-Background_Desktop_2206x1119_dc0579c0-3a6e-4dcf-9204-729f9e1a336b.jpg?v=1791405638\"); background-size: cover; background-attachment: scroll;}",
+        "@media(max-width: 749px){}",
+        ".multicolumn-card {padding: 24px 8px;}",
         ".multicolumn .multicolumn-card .link .icon-wrap {display: none;}"
       ],
       "name": "Evenflo Multicolumn",
@@ -384,7 +383,7 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "",
+        "color_scheme": "scheme-fc0240b3-8860-46ea-a417-f33600739ba3",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 0,
@@ -430,6 +429,7 @@
         "column_97HxKq"
       ],
       "custom_css": [
+        ".page-width {max-width: var(--content-max-width);}",
         "ul.grid {justify-content: center;}",
         ".multicolumn.background-none .multicolumn-card {padding: 8px;}",
         ".multicolumn .multicolumn-card .link {font-size: 2.5rem; text-decoration: none;}",
@@ -455,6 +455,109 @@
         "swipe_on_mobile": false,
         "padding_top": 32,
         "padding_bottom": 32
+      }
+    },
+    "evenflo_multicolumn_NgQYTb": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_rkT6JF": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Car-Seats_STATIC_DESKTOP_1440x960_ce5c2acc-90a0-496a-af63-8132b6c00567.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Car Seats",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/car-seats"
+          }
+        },
+        "column_ekaTUK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Stroller_STATIC_DESKTOP_1440x960_670bca5e-4302-47c9-8cae-8d4d30563044.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Strollers",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://collections/strollers"
+          }
+        },
+        "column_g4TaGW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Home-Collection_STATIC_DESKTOP_1440x960_dc097aff-9fd3-4ef1-a655-514298efdcbc.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Home Collection",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/home-collection"
+          }
+        }
+      },
+      "block_order": [
+        "column_rkT6JF",
+        "column_ekaTUK",
+        "column_g4TaGW"
+      ],
+      "custom_css": [
+        ".page-width {max-width: var(--content-max-width);}",
+        ".multicolumn {background-image: url(\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Holiday-Gift-Guide_LP_Background_Desktop_2206x1119_57513bdd-0e34-4119-a191-4a30908e1f1d.jpg\"); background-size: cover; background-attachment: scroll; padding: 80px 0;}",
+        ".multicolumn-card {padding: 24px 8px;}",
+        ".multicolumn .multicolumn-card .link .icon-wrap {display: none;}"
+      ],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "Find the Perfect Gift",
+        "heading_size": "h0",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "enable_image_modal": false,
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-fc0240b3-8860-46ea-a417-f33600739ba3",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "evenflo_hero_banner_RY8VkT": {
+      "type": "evenflo-hero-banner",
+      "name": "Evenflo Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Holiday-Gift-Guide_LP_Outlet-Collection_STATIC_desktop_2880x960_Image.jpg",
+        "mobile_image": "shopify://shop_images/Holiday-Gift-Guide_LP_Outlet-Block_STATIC_MOBILE_750x1000_2d696207-8bf6-4c81-8f7c-f41c240d84fc.jpg",
+        "enable_video_looping": true,
+        "eyebrow_text": "Shop the Outlet Collection",
+        "primary_heading": "<p>Holiday Gifts at Low Prices</p>",
+        "heading_tag": "h2",
+        "short_description": "",
+        "primary_cta_text": "Shop the Outlet",
+        "primary_cta_link": "shopify://collections/baby-gear-sale",
+        "secondary_cta_text": "",
+        "secondary_cta_link": "",
+        "footnote": "",
+        "content_alignment": "align-left",
+        "text_color": "light",
+        "desktop_overlay_opacity": 0
       }
     },
     "evenflo_image_banner_6PP3nW": {
@@ -530,27 +633,6 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
-      }
-    },
-    "evenflo_hero_banner_RY8VkT": {
-      "type": "evenflo-hero-banner",
-      "name": "Evenflo Hero Banner",
-      "settings": {
-        "desktop_image": "shopify://shop_images/Holiday-Gift-Guide_LP_Outlet-Collection_STATIC_desktop_2880x960_Image.jpg",
-        "mobile_image": "shopify://shop_images/Holiday-Gift-Guide_LP_Outlet-Block_STATIC_MOBILE_750x1000_2d696207-8bf6-4c81-8f7c-f41c240d84fc.jpg",
-        "enable_video_looping": true,
-        "eyebrow_text": "Shop the Outlet Collection",
-        "primary_heading": "<p>Holiday Gifts at Low Prices</p>",
-        "heading_tag": "h2",
-        "short_description": "",
-        "primary_cta_text": "Shop the Outlet",
-        "primary_cta_link": "shopify://collections/baby-gear-sale",
-        "secondary_cta_text": "",
-        "secondary_cta_link": "",
-        "footnote": "",
-        "content_alignment": "align-left",
-        "text_color": "light",
-        "desktop_overlay_opacity": 0
       }
     },
     "evenflo_features_grid_mTrzyj": {
@@ -758,8 +840,9 @@
     "evenflo_multicolumn_TVyX4y",
     "evenflo_multicolumn_Tg37ra",
     "evenflo_multicolumn_zFDxjM",
-    "evenflo_image_banner_6PP3nW",
+    "evenflo_multicolumn_NgQYTb",
     "evenflo_hero_banner_RY8VkT",
+    "evenflo_image_banner_6PP3nW",
     "evenflo_features_grid_mTrzyj",
     "evenflo_features_grid_9rzrzD",
     "evenflo_features_grid_6YGz6M",
