@@ -9,6 +9,14 @@
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
+  {% if section.settings.mobile_background_image != blank %}
+    #shopify-section-{{ section.id }} .multicolumn {
+      background-image: url('{{ section.settings.mobile_background_image | image_url: width: 750 }}');
+      background-size: cover;
+      background-position: center;
+    }
+  {% endif %}
+
   .multicolumn-card__image-wrapper.image-clickable{
     cursor: pointer;
   }
@@ -62,6 +70,13 @@
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+    {% if section.settings.desktop_background_image != blank %}
+      #shopify-section-{{ section.id }} .multicolumn {
+        background-image: url('{{ section.settings.desktop_background_image | image_url: width: 1920 }}');
+        background-size: cover;
+        background-position: center;
+      }
+    {% endif %}
   }
   .multicolumn-card__image-wrapper .video-section__media video {
     left: 0;
@@ -606,6 +621,11 @@
       "info": "t:sections.all.colors.has_cards_info",
       "default": "scheme-1"
     },
+	{
+		"type": "image_picker",
+		"id": "desktop_background_image",
+		"label": "Background Image"
+    },
     {
       "type": "header",
       "content": "t:sections.multicolumn.settings.header_mobile.content"
@@ -632,6 +652,11 @@
       "default": false,
       "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
     },
+	{
+		"type": "image_picker",
+		"id": "mobile_background_image",
+		"label": "Mobile Background Image"
+	},
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
