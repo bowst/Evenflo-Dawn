@@ -20,6 +20,10 @@
     },
     "evenflo_hero_banner_m7meWh": {
       "type": "evenflo-hero-banner",
+      "custom_css": [
+        ".h1 {max-width: 10em;}",
+        ".short-description {max-width: 15em;}"
+      ],
       "name": "Evenflo Hero Banner",
       "settings": {
         "desktop_image": "shopify://shop_images/Holiday-Gift-Guide_LP_HERO_STATIC_DESKTOP_2880x960_Image_c3daf115-3f33-482a-adb6-53d7ea9b0ab0.jpg",
@@ -228,6 +232,7 @@
         "column_k9ARm3"
       ],
       "custom_css": [
+        ".page-width {max-width: var(--content-max-width, 1440px);}",
         ".multicolumn.background-none .multicolumn-card {padding: 8px;}",
         ".multicolumn .multicolumn-card .link {font-size: 2.5rem; text-decoration: none;}",
         ".multicolumn .multicolumn-card .link .icon-wrap {display: none;}"
@@ -357,7 +362,9 @@
         "column_U3MiJx"
       ],
       "custom_css": [
-        ".multicolumn-list {background: #8d1700; padding: 24px 36px;}",
+        ".page-width {max-width: var(--content-max-width, 1440px);}",
+        ".multicolumn {background-color: #003e26;}",
+        ".multicolumn-list {padding: 24px 36px;}",
         ".multicolumn.background-none .multicolumn-card {padding: 24px 8px;}",
         ".multicolumn .multicolumn-card .link {font-size: 2.5rem; text-decoration: none; color: #fff; font-weight: bold;}",
         ".multicolumn .multicolumn-card .link .icon-wrap {display: none;}"
@@ -493,8 +500,8 @@
       ],
       "name": "Evenflo Image Banner",
       "settings": {
-        "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Headerimage_copy.jpg",
-        "image_2": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_1Headerimage-Mobile_outlets.jpg",
+        "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Outlet-Collection_STATIC_desktop_2880x960_Text.jpg",
+        "image_2": "shopify://shop_images/Holiday-Gift-Guide_LP_Outlet-Block_STATIC_MOBILE_750x1000_2d696207-8bf6-4c81-8f7c-f41c240d84fc.jpg",
         "background_show": true,
         "banner_color": "#ffffff",
         "store_btn_show": false,
