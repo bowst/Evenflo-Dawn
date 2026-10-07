@@ -260,7 +260,7 @@
         "column_wRkr6a": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Car_seats.jpg",
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Car-Seats_STATIC_DESKTOP_1440x960_ce5c2acc-90a0-496a-af63-8132b6c00567.png",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -275,7 +275,7 @@
         "column_8h9Gy8": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Strollers.jpg",
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Stroller_STATIC_DESKTOP_1440x960_670bca5e-4302-47c9-8cae-8d4d30563044.png",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -290,7 +290,22 @@
         "column_7ryCNy": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Rotating_Carsears.jpg",
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Home-Collection_STATIC_DESKTOP_1440x960_dc097aff-9fd3-4ef1-a655-514298efdcbc.png",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "Home Collection",
+            "link": "shopify://pages/home-collection"
+          }
+        },
+        "column_e7UThJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Rotationg-Car-Seat_STATIC_DESKTOP_1440x960_cc2757d4-2e76-481c-91a3-9bcab263b358.png",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -302,10 +317,10 @@
             "link": "shopify://collections/revolve-rotating-car-seats"
           }
         },
-        "column_e7UThJ": {
+        "column_cY4dFH": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Travel_Systems.jpg",
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Travel-Systems_STATIC_DESKTOP_1440x960_5695b083-99c2-4c43-aa66-d1b8bf2715a5.png",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -317,10 +332,10 @@
             "link": "shopify://collections/travel-systems"
           }
         },
-        "column_cY4dFH": {
+        "column_U3MiJx": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Stroller_Wagons.jpg",
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Stroller-Wagon_STATIC_DESKTOP_1440x960_6ba98854-5371-4548-ae3e-cc8b04c1dfff.png",
             "enable_video": false,
             "video_type": "vimeo",
             "vimeo_url": "123456789",
@@ -330,21 +345,6 @@
             "text": "",
             "link_label": "Stroller Wagons",
             "link": "shopify://collections/stroller-wagons"
-          }
-        },
-        "column_U3MiJx": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Evenflo_DTC_Holdiay_Landing-Page_Home_Gear.jpg",
-            "enable_video": false,
-            "video_type": "vimeo",
-            "vimeo_url": "123456789",
-            "enable_video_looping": false,
-            "liquid_content": "",
-            "title": "",
-            "text": "",
-            "link_label": "Home Gear",
-            "link": "shopify://collections/home-gear"
           }
         }
       },
@@ -382,6 +382,72 @@
         "swipe_on_mobile": false,
         "padding_top": 0,
         "padding_bottom": 8
+      }
+    },
+    "evenflo_multicolumn_zFDxjM": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_VkntJh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Technology-Blocks-SensorySoothe_STATIC_DESKTOP_1440x960_0d232087-6da5-4a29-aace-d245e46516e6.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "SensorySoothe",
+            "link": "shopify://collections/sensorysoothe"
+          }
+        },
+        "column_97HxKq": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Technology-Blocks-SensorSafe_STATIC_DESKTOP_1440x960_6f729292-3b8f-4718-b3b3-c25b34219548.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "",
+            "text": "",
+            "link_label": "SensorySafe FPO",
+            "link": "#fpo"
+          }
+        }
+      },
+      "block_order": [
+        "column_VkntJh",
+        "column_97HxKq"
+      ],
+      "custom_css": [
+        "ul.grid {justify-content: center;}",
+        ".multicolumn.background-none .multicolumn-card {padding: 8px;}",
+        ".multicolumn .multicolumn-card .link {font-size: 2.5rem; text-decoration: none;}",
+        ".multicolumn .multicolumn-card .link .icon-wrap {display: none;}"
+      ],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "container_size": "half",
+        "heading_alignment": "center",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "enable_image_modal": false,
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "evenflo_image_banner_6PP3nW": {
@@ -684,6 +750,7 @@
     "main",
     "evenflo_multicolumn_TVyX4y",
     "evenflo_multicolumn_Tg37ra",
+    "evenflo_multicolumn_zFDxjM",
     "evenflo_image_banner_6PP3nW",
     "evenflo_hero_banner_RY8VkT",
     "evenflo_features_grid_mTrzyj",
