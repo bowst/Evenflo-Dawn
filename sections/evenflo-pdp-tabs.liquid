@@ -173,6 +173,9 @@
                   <div class="evenflo-pdp-tab-layout__full-width rte">
                     <h3>{{ short_description_header }}
                     </h3>
+					reviews.ratings: {{ product.metafields.reviews.rating_count }}<br>
+					reviews.rating_count: {{ product.metafields.reviews.rating_count }}<br>
+					yotpo.reviews_count: {{ product.metafields.yotpo.reviews_count }}<br>
                     {{ overview_content }}
 
 					{% if vimeo_product_video_value != blank %}
