@@ -82,11 +82,12 @@
       <span class="visually-hidden">{{ value | escape }}</span>
       {{ label_unavailable }}
     {%- endcapture -%}
-    {%
-      render 'swatch-input',
+    {%- assign escaped_value = value | escape -%}
+
+    {% render 'swatch-input',
       id: input_id,
       name: input_name,
-      value: value | escape,
+      value: escaped_value,
       swatch: value.swatch,
       swatch_value: swatch_value,
       swatch_focal_point: swatch_focal_point,

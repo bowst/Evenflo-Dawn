@@ -121,29 +121,33 @@
               <a href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
             </li>
           
-          {%- when 'product' and product.handle -%}
-            {% for parentCollection in product.metafields.custom.breadcrumbs.value %}
-              <li>
-                <a href="{{ parentCollection.url }}">{{ parentCollection.title }}</a>
-              </li>
-            {% endfor %}
-            {% unless section.settings.hide_title %}
-              <li>
-                <a href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
-              </li>
-            {% endunless %}
+          {%- when 'product' -%}
+			{% if product.handle %}
+				{% for parentCollection in product.metafields.custom.breadcrumbs.value %}
+				<li>
+					<a href="{{ parentCollection.url }}">{{ parentCollection.title }}</a>
+				</li>
+				{% endfor %}
+				{% unless section.settings.hide_title %}
+				<li>
+					<a href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+				</li>
+				{% endunless %}
+			{% endif %}
         
-          {%- when 'collection' and collection.handle -%}
-            {% for parentCollection in collection.metafields.custom.breadcrumbs.value %}
-              <li>
-                <a href="{{ parentCollection.url }}">{{ parentCollection.title }}</a>
-              </li>
-            {% endfor %}
-            <li>
-              <a href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
-            </li>
-        
-          {%- when 'blog' -%}
+          {%- when 'collection' -%}
+			{% if collection.handle %}
+				{% for parentCollection in collection.metafields.custom.breadcrumbs.value %}
+				<li>
+					<a href="{{ parentCollection.url }}">{{ parentCollection.title }}</a>
+				</li>
+				{% endfor %}
+				<li>
+				<a href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+				</li>
+			{% endif %}
+          
+		{%- when 'blog' -%}
             <li>
               <a href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
             </li>
@@ -170,7 +174,7 @@
   {% assign t = template | split: '.' | first %}
   {% case t %}
     {% when 'page' %}
-      {% capture schemaList %}
+      {% capture schema_list %}
         {
           "@type": "ListItem",
           "position": 2,
@@ -178,46 +182,50 @@
           "item": "{{ shop.url }}{{ page.url }}"
         }
       {% endcapture %}
-    {% when 'product' and product.handle %}
-      {% capture schemaList %}
-        {% assign position = 0 %}
-        {% for parentCollection in product.metafields.custom.breadcrumbs.value %}
-          {% assign position = forloop.index %}
-          {
-            "@type": "ListItem",
-            "position": {{ forloop.index | plus: 1 }},
-            "name": "{{ parentCollection.title }}",
-            "item": "{{ shop.url }}{{ parentCollection.url }}"
-          },
-        {% endfor %}
-        {
-          "@type": "ListItem",
-          "position": {{ position | plus: 2 }},
-          "name": "{{ product.title }}",
-          "item": "{{ shop.url }}{{ product.url }}"
-        }
-      {% endcapture %}
-    {% when 'collection' and collection.handle %}
-      {% capture schemaList %}
-        {% assign position = 0 %}
-        {% for parentCollection in collection.metafields.custom.breadcrumbs.value %}
-          {% assign position = forloop.index %}
-          {
-            "@type": "ListItem",
-            "position": {{ forloop.index | plus: 1 }},
-            "name": "{{ parentCollection.title }}",
-            "item": "{{ shop.url }}{{ parentCollection.url }}"
-          },
-        {% endfor %}
-        {
-          "@type": "ListItem",
-          "position": {{ position | plus: 2 }},
-          "name": "{{ collection.title }}",
-          "item": "{{ shop.url }}{{ collection.url }}"
-        }
-      {% endcapture %}
+    {% when 'product' %}
+      {% if product.handle %}
+		{% capture schema_list %}
+			{% assign position = 0 %}
+			{% for parentCollection in product.metafields.custom.breadcrumbs.value %}
+			{% assign position = forloop.index %}
+			{
+				"@type": "ListItem",
+				"position": {{ forloop.index | plus: 1 }},
+				"name": "{{ parentCollection.title }}",
+				"item": "{{ shop.url }}{{ parentCollection.url }}"
+			},
+			{% endfor %}
+			{
+			"@type": "ListItem",
+			"position": {{ position | plus: 2 }},
+			"name": "{{ product.title }}",
+			"item": "{{ shop.url }}{{ product.url }}"
+			}
+		{% endcapture %}
+	  {% endif %}
+    {% when 'collection' %}
+      {% if collection.handle %}
+		{% capture schema_list %}
+			{% assign position = 0 %}
+			{% for parentCollection in collection.metafields.custom.breadcrumbs.value %}
+			{% assign position = forloop.index %}
+			{
+				"@type": "ListItem",
+				"position": {{ forloop.index | plus: 1 }},
+				"name": "{{ parentCollection.title }}",
+				"item": "{{ shop.url }}{{ parentCollection.url }}"
+			},
+			{% endfor %}
+			{
+			"@type": "ListItem",
+			"position": {{ position | plus: 2 }},
+			"name": "{{ collection.title }}",
+			"item": "{{ shop.url }}{{ collection.url }}"
+			}
+		{% endcapture %}
+	  {% endif %}
     {% when 'blog' %}
-      {% capture schemaList %}
+      {% capture schema_list %}
         {
           "@type": "ListItem",
           "position": 2,
@@ -226,7 +234,7 @@
         }
       {% endcapture %}
     {% when 'article' %}
-      {% capture schemaList %}
+      {% capture schema_list %}
         {
           "@type": "ListItem",
           "position": 2,
@@ -241,7 +249,7 @@
         }
       {% endcapture %}
     {% else %}
-      {% capture schemaList %}
+      {% capture schema_list %}
         {
           "@type": "ListItem",
           "position": 2,
@@ -262,8 +270,8 @@
       "name": "Home",
       "item": "{{ shop.url }}"
     }
-    {%- if schemaList -%}
-      ,{{ schemaList }}
+    {%- if schema_list -%}
+      ,{{ schema_list }}
     {%- endif -%}
     ]
   }
