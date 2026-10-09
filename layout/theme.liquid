@@ -20,7 +20,7 @@
     </script>
 
     <!-- Conditionally include JavaScript file on specific JSON template pages -->
-    {% if (template contains 'evenflo-faq') or (template contains 'evenflo-collection') %}
+    {% if template contains 'evenflo-faq' or template contains 'evenflo-collection' %}
       <script src="{{ 'evenflo-faq-common-script.js' | asset_url }}" defer></script>
       {{ 'section-evenflo-faq-hero.css' | asset_url | stylesheet_tag }}
     {% endif %}
@@ -581,3 +581,15 @@
     </script>
   </body>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if (template contains 'evenflo-faq') or (template contains 'evenflo-collection')
+    %}"
+  to: "{% if template contains 'evenflo-faq' or template contains 'evenflo-collection'
+    %}"
+  position: 906..988
+{% endcomment %}
