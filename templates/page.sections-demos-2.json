@@ -11,77 +11,266 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
     },
-    "17854929284bd2ac3b": {
-      "type": "apps",
+    "evenflo_contact_form_e4qkdA": {
+      "type": "evenflo-contact-form",
+      "name": "Evenflo Custom Form",
+      "settings": {
+        "title": "Evenflo Customer Form"
+      }
+    },
+    "evenflo_featured_banner_6UTfLt": {
+      "type": "evenflo-featured-banner",
+      "name": "Evenflo Featured Banner",
+      "settings": {
+        "banner_image_desktop": "shopify://shop_images/MothersDay-2026_Pomo_Banner_Desktop_1440x480-Sale_NoCopy.jpg",
+        "banner_title": "Evenflo Featured Banner",
+        "title_color": "#121212",
+        "banner_text": "Moving from car to sidewalk? Lift the carrier off the base, release the wheels and you’re rolling in no time. Maneuvering stairs? Simply retract the wheels, carry up or down steps, drop the wheels back down and stroll on.",
+        "text_color": "#121212",
+        "image_orientation": "left"
+      }
+    },
+    "evenflo_loyalty_banner_slideshow_L34UVh": {
+      "type": "evenflo-loyalty-banner-slideshow",
       "blocks": {
-        "klaviyo_email_marketing_sms_form_embed_block_HFYiqa": {
-          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+        "slide_GUjkyh": {
+          "type": "slide",
           "settings": {
-            "formId": "SnL5pc"
+            "bronze_and_silver": "Add url here",
+            "gold": "Add url here",
+            "non_member": "#fpo",
+            "desktop_image": "shopify://shop_images/Holiday-Gift-Guide_LP_HERO_STATIC_DESKTOP_2880x960_Text_a659b2f4-fc60-487c-a507-4f001f81f579.jpg",
+            "mobile_image": "shopify://shop_images/Holiday-Gift-Guide_LP_HERO_STATIC_MOBILE_750x1000_47fc1227-c3df-4483-9abe-868be0dda1e4.jpg"
+          }
+        },
+        "slide_Kjdnxz": {
+          "type": "slide",
+          "settings": {
+            "bronze_and_silver": "Add url here",
+            "gold": "Add url here",
+            "non_member": "#fpo",
+            "desktop_image": "shopify://shop_images/Holiday-Gift-Guide_LP_Outlet-Collection_STATIC_desktop_2880x960_Text.jpg",
+            "mobile_image": "shopify://shop_images/Holiday-Gift-Guide_LP_Outlet-Block_STATIC_MOBILE_750x1000_2d696207-8bf6-4c81-8f7c-f41c240d84fc.jpg"
           }
         }
       },
       "block_order": [
-        "klaviyo_email_marketing_sms_form_embed_block_HFYiqa"
+        "slide_GUjkyh",
+        "slide_Kjdnxz"
       ],
-      "disabled": true,
+      "name": "Evenflo Loyalty Slideshow",
       "settings": {
-        "include_margins": true
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
       }
     },
-    "featured_collection_febiQn": {
-      "type": "featured-collection",
-      "disabled": true,
+    "evenflo_scrolling_text_KnPJD7": {
+      "type": "evenflo-scrolling-text",
+      "name": "Evenflo Scrolling Text",
       "settings": {
-        "title": "",
+        "custom_html": "<h2 class=\"moving-text\">Evenflo scrolling text section.</h2>"
+      }
+    },
+    "evenflo_tabbed_carousel_7Bzxrt": {
+      "type": "evenflo-tabbed-carousel",
+      "blocks": {
+        "tab_rKrhNq": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Quiz-Blocks-Rotating-Car-Seat_STATIC_DESKTOP_1440x960_fbe7acd8-388e-4c1e-8bed-a030f29adf95.png",
+            "heading": "Tab heading 1",
+            "text": "<p>Tab content text goes here.</p>"
+          }
+        },
+        "tab_8Kf3qN": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Quiz-Blocks-Home-Collection_STATIC_DESKTOP_1440x960_141b082d-b50b-4909-9f8a-41a87ac28f9f.png",
+            "heading": "Tab heading 2",
+            "text": "<p>Tab content text goes here.</p>"
+          }
+        },
+        "tab_XcDJrA": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Quiz-Blocks-CS-Stroller_STATIC_DESKTOP_1440x960_f9d799b6-5719-4ee2-bfc0-435e133e679b.png",
+            "heading": "Tab heading 3",
+            "text": "<p>Tab content text goes here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_rKrhNq",
+        "tab_8Kf3qN",
+        "tab_XcDJrA"
+      ],
+      "name": "Tabbed Carousel",
+      "settings": {
+        "heading": "Tabbed Carousel",
         "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "parents-2026-best-for-baby-awards",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
+        "heading_alignment": "center",
         "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "show_swatches": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "autoplay_interval": 5,
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "image_banner_with_app_link_4a4FeJ": {
-      "type": "image-banner-with-app-link",
+    "evenflo_tooltips_PUGN7g": {
+      "type": "evenflo-tooltips",
       "blocks": {
-        "heading_nJT769": {
+        "tooltip_aDQqap": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "Tooltip  2",
+            "content": "I am a tooltip, I provide additional explanatory content and showcase product features.",
+            "top": 50,
+            "left": 90
+          }
+        },
+        "tooltip_JYyCjj": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "Evenflo Tooltips 1",
+            "content": "I am a tooltip, I provide additional explanatory content and showcase product features.",
+            "top": 70,
+            "left": 50
+          }
+        }
+      },
+      "block_order": [
+        "tooltip_aDQqap",
+        "tooltip_JYyCjj"
+      ],
+      "name": "Evenflo Tooltips",
+      "settings": {
+        "image": "shopify://shop_images/Home_Desktop_2d5559ca-61a6-4927-ac9c-d4ea9b8c9bfa.jpg",
+        "tooltip_color": "#ffffff",
+        "tooltip_background_color": "#64cbdf",
+        "tooltip_focus_color": "#ff0000",
+        "product_handles": "Evenflo Home?",
+        "breakpoint": "768"
+      }
+    },
+    "featured_blog_FrJBfN": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "heading": "Featured Blogs",
+        "heading_size": "h1",
+        "blog": "evenflo-blog",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_TjiUrD": {
+      "type": "featured-product",
+      "blocks": {
+        "text_qkPCKd": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_kNzFrN": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_gJdHjg": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_G7eTyx": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_mqFqLR": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_VxkpDT": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_fmeTBV": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_qkPCKd",
+        "title_kNzFrN",
+        "price_gJdHjg",
+        "variant_picker_G7eTyx",
+        "quantity_selector_mqFqLR",
+        "buy_buttons_VxkpDT",
+        "share_fmeTBV"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "symphony-extend-breeze-convertible-car-seat",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "evenflo_collection_image_banner_qjWhyU": {
+      "type": "evenflo-collection-image-banner",
+      "blocks": {
+        "heading_d3tNrz": {
           "type": "heading",
           "settings": {
-            "heading": "One App. Total Peace of Mind.",
+            "heading": "Collection Banner",
             "heading_size": "h1",
             "heading_color": "black"
           }
         },
-        "text_ANkgaz": {
+        "text_q77QVU": {
           "type": "text",
           "settings": {
-            "text": "Download the Evenflo app",
+            "text": "Give customers details about the banner image(s) or content on the template.",
             "text_style": "body"
           }
         },
-        "buttons_YUy9H8": {
+        "buttons_ABFTDk": {
           "type": "buttons",
           "settings": {
             "button_label_1": "Button label",
@@ -94,133 +283,19 @@
         }
       },
       "block_order": [
-        "heading_nJT769",
-        "text_ANkgaz",
-        "buttons_YUy9H8"
+        "heading_d3tNrz",
+        "text_q77QVU",
+        "buttons_ABFTDk"
       ],
-      "disabled": true,
-      "custom_css": [
-        ".banner__box.content-container {background: none;}",
-        ".banner__box.content-container img {height: 60px;}",
-        ".banner__text.rte.body h2 {color: #000000;}",
-        "@media (max-width: 991px) {.banner__box.content-container {background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(2px); background-image: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/Evenflo_APP_LP_Mobile_2025_Header.png?v=1740411138); background-repeat: no-repeat; background-size: cover; background-position-x: right; padding-inline: 18px; }}"
-      ],
+      "name": "Evenflo Collection Banner",
       "settings": {
-        "image": "shopify://shop_images/Evenflo_APP_LP_Desktop_header.jpg",
+        "image": "shopify://shop_images/shyft-dualride-car-seat-stroller-combo-carryall-storage__CS150112474Sylva_Pink_I.jpg",
+        "image_2": "shopify://shop_images/CS15112535DI_Lifestyle_ICS-No-Wheels_A03_Extended.jpg",
         "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": true,
-        "image_height": "small",
-        "desktop_content_position": "middle-left",
-        "show_text_box": true,
-        "desktop_content_alignment": "left",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "evenflo_image_with_text_xGNWdF": {
-      "type": "evenflo-image-with-text",
-      "blocks": {
-        "caption_VXrPjP": {
-          "type": "caption",
-          "settings": {
-            "caption": "Sensorysoothe™ technology",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "medium"
-          }
-        },
-        "heading_xbrcHj": {
-          "type": "heading",
-          "settings": {
-            "heading": "Calm at your Fingertips",
-            "heading_size": "h1",
-            "heading_underline_color": "#2996c5"
-          }
-        },
-        "text_knR3TL": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Accessible through the Evenflo® app, SensorySoothe™ technology calms and mesmerizes your little one at a moment’s notice. Right from your phone, you can cue a captivating light show, create a calming space with nature sounds or play a favorite lullaby.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_HdLbE4": {
-          "type": "button",
-          "settings": {
-            "button_label": "Learn More",
-            "button_link": "shopify://pages/sensorysoothe",
-            "button_color": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "caption_VXrPjP",
-        "heading_xbrcHj",
-        "text_knR3TL",
-        "button_HdLbE4"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".caption-with-letter-spacing {color: #000000; font-weight: 600;}",
-        "h2:after {display: none;}",
-        ".image-with-text__text.rte.body {color: #000000;}",
-        ".banner__buttons a {background: #000000 !important; opacity: 1; outline: none;}"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/CS160412545_Revolve180_LiteMaxGold_Quartz_App_1786_5145da5c-8a67-42a1-9f36-f6cbacfb599d.jpg",
-        "height": "adapt",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 60,
-        "padding_bottom": 56
-      }
-    },
-    "image_banner_Y7wMTj": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_LNfdhq": {
-          "type": "heading",
-          "settings": {
-            "heading": "Customized for Your Child",
-            "heading_size": "h1",
-            "heading_color": "black"
-          }
-        },
-        "text_KFPMx7": {
-          "type": "text",
-          "settings": {
-            "text": "As your family grows, the Evenflo app makes it easy to manage multiple children and their gear. Activate SensorySoothe, monitor SensorSafe alerts, and keep track of all their connected products in one place.",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "heading_LNfdhq",
-        "text_KFPMx7"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "@media screen and (min-width: 1300px) {.banner--content-align-left .banner__box {width: 50%; }}",
-        ".banner--content-align-left .banner__box {background: url(https://cdn.shopify.com/s/files/1/0512/2359/3116/files/background-card.jpg?v=1739979350); background-repeat: no-repeat; background-size: cover; background-position: bottom;}"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/Travertine-Collection_Lifestyle_3Across_A01_1.jpg",
-        "image_overlay_opacity": 0,
-        "underline": false,
-        "hide_image_on_mobile": false,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
-        "desktop_content_alignment": "left",
+        "desktop_content_alignment": "center",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
@@ -228,111 +303,456 @@
         "show_text_below": true
       }
     },
-    "evenflo_image_with_text_qNK3QF": {
-      "type": "evenflo-image-with-text",
+    "product_img_slider_block_7Thina": {
+      "type": "product-img-slider-block",
+      "name": "Product Image Slider",
+      "settings": {
+        "title": "Product Image Slider",
+        "product_list": [
+          "aero-ultra-lightweight-stroller-support",
+          "all4one-all-in-one-convertible-car-seat-with-sensorsafe-support",
+          "all4stages-slim-4-in-1-convertible-car-seat",
+          "all4stages-slim-plus-canopy-4-in-1-convertible-car-seat",
+          "barn-door-walk-thru-gate-support",
+          "stroller-snack-tray",
+          "breathable-baby-carrier",
+          "travertine-car-seat-stroller-bundle"
+        ]
+      }
+    },
+    "slideshow_PawxaL": {
+      "type": "slideshow",
       "blocks": {
-        "heading_qhxXPj": {
-          "type": "heading",
+        "slide_w7bemY": {
+          "type": "slide",
           "settings": {
-            "heading": "Evenflo Image with text",
+            "heading": "Image slide",
             "heading_size": "h1",
-            "heading_underline_color": "#2996c5"
-          }
-        },
-        "text_TGD9NF": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_78FdkC": {
-          "type": "button",
-          "settings": {
+            "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
-            "button_link": "",
-            "button_color": "",
-            "button_text_color": ""
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_efjP69": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
           }
         }
       },
       "block_order": [
-        "heading_qhxXPj",
-        "text_TGD9NF",
-        "button_78FdkC"
+        "slide_w7bemY",
+        "slide_efjP69"
       ],
-      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
       "settings": {
-        "height": "adapt",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "background-1",
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
         "image_behavior": "none",
-        "mobile_content_alignment": "left",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "slim_extend_tab_block_3Vy9fL": {
+      "type": "slim-extend-tab-block",
+      "blocks": {
+        "slim_tab_block_jyznHw": {
+          "type": "slim_tab_block",
+          "settings": {
+            "image": "shopify://shop_images/aagroejgn1l7mzltmran.jpg",
+            "tab-text": "Just 16.7 in. across. Fit more into your backseat!",
+            "tab-description": "2-in-1, for children from 4-65 lb. Slim",
+            "tab-btn-text": "Just 16.7 in. across. Fit more into your backseat!",
+            "product_list": []
+          }
+        },
+        "slim_tab_block_aNCtAX": {
+          "type": "slim_tab_block",
+          "settings": {
+            "image": "shopify://shop_images/0d0a7aee86f01d839afddee2c64fd12f71900eeb.jpg",
+            "tab-text": "Just 16.7 in. across. Fit more into your backseat!",
+            "tab-description": "2-in-1, for children from 4-65 lb. Slim",
+            "tab-btn-text": "Just 16.7 in. across. Fit more into your backseat!",
+            "product_list": []
+          }
+        }
+      },
+      "block_order": [
+        "slim_tab_block_jyznHw",
+        "slim_tab_block_aNCtAX"
+      ],
+      "name": "Slim & Extend Tabs",
+      "settings": {
+        "title": "Slim & Extend Tabs",
+        "description": "Revolutionize your backseat with these innovative options with the rotating car seat that’s best for you:"
+      }
+    },
+    "twelve_days_zjCPE6": {
+      "type": "twelve-days",
+      "name": "Twelve Days",
+      "settings": {}
+    },
+    "qq_gallery_NBTGK4": {
+      "type": "QQ-gallery",
+      "blocks": {
+        "image_ffzFGd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Quiz-Blocks-CS-Stroller_STATIC_DESKTOP_1440x960_f9d799b6-5719-4ee2-bfc0-435e133e679b.png",
+            "image_link": "",
+            "image_link_tab": true,
+            "title": "<h4>Image Title</h4>",
+            "image_subtitle": "<p>Image Subtitle</p>"
+          }
+        },
+        "image_JpnwNt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Quiz-Blocks-Home-Collection_STATIC_DESKTOP_1440x960_141b082d-b50b-4909-9f8a-41a87ac28f9f.png",
+            "image_link": "",
+            "image_link_tab": true,
+            "title": "<h4>Image Title</h4>",
+            "image_subtitle": "<p>Image Subtitle</p>"
+          }
+        },
+        "image_3hhq8c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Quiz-Blocks-Rotating-Car-Seat_STATIC_DESKTOP_1440x960_fbe7acd8-388e-4c1e-8bed-a030f29adf95.png",
+            "image_link": "",
+            "image_link_tab": true,
+            "title": "<h4>Image Title</h4>",
+            "image_subtitle": "<p>Image Subtitle</p>"
+          }
+        },
+        "image_W9d6nf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Stroller-Wagon_STATIC_DESKTOP_1440x960_6ba98854-5371-4548-ae3e-cc8b04c1dfff.png",
+            "image_link": "",
+            "image_link_tab": true,
+            "title": "<h4>Image Title</h4>",
+            "image_subtitle": "<p>Image Subtitle</p>"
+          }
+        },
+        "image_9MVW4i": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Holiday-Gift-Guide_LP_Collection-Blocks-Car-Seats_STATIC_DESKTOP_1440x960_ce5c2acc-90a0-496a-af63-8132b6c00567.png",
+            "image_link": "",
+            "image_link_tab": true,
+            "title": "<h4>Image Title</h4>",
+            "image_subtitle": "<p>Image Subtitle</p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_ffzFGd",
+        "image_JpnwNt",
+        "image_3hhq8c",
+        "image_W9d6nf",
+        "image_9MVW4i"
+      ],
+      "name": "QQ - Image Gallery",
+      "settings": {
+        "section_class": "",
+        "section_title": "<h2>QQ image Gallery</h2>",
+        "section_textblock": "",
+        "carousel_slides_to_show": 4,
+        "carousel_slide_all": false,
+        "carousel_autoplay": false,
+        "carousel_autoplay_mobile": false,
+        "carousel_overflow": true,
+        "carousel_infinite": true,
+        "carousel_speed": 4,
+        "carousel_slide_padding": 20,
+        "carousel_slide_padding_mobile": 20,
+        "carousel_arrows_color_line": "",
+        "carousel_arrows_color_bg": "#ffffff",
+        "carousel_arrows_edge_distance": 20,
+        "carousel_arrows_position": "inside",
+        "carousel_default": "carousel",
+        "carousel_expand": "Expand Images",
+        "carousel_collapse": "Minimize Images",
+        "grid_columns": "3",
+        "grid_horizontal_gap": 40,
+        "grid_vertical_gap": 40,
+        "grid_columns_mobile": "1",
+        "grid_horizontal_gap_mobile": 20,
+        "grid_vertical_gap_mobile": 20,
+        "section_width": "regular",
+        "content_max_width": 1280,
+        "content_fullwidth": false,
+        "section_background_color": "",
+        "header_position": "inside",
+        "section_margin_top": 20,
+        "section_margin_bottom": 20,
+        "section_padding_top": 20,
+        "section_padding_bottom": 20,
+        "section_padding_horizontal": 20,
+        "section_margin_top_mobile": 20,
+        "section_margin_bottom_mobile": 20,
+        "section_padding_top_mobile": 20,
+        "section_padding_bottom_mobile": 20,
+        "section_padding_horizontal_mobile": 20,
+        "section_header_max_width": 100,
+        "section_title_text_alignment": "center",
+        "section_title_color": "",
+        "section_title_custom_font": false,
+        "section_title_font": "mono",
+        "section_title_font_name": "",
+        "section_title_font_weight": "default",
+        "section_title_margin_top": 10,
+        "section_title_margin_bottom": 30,
+        "section_title_font_size": 0,
+        "section_title_line_height": 0,
+        "section_title_letter_spacing": 0,
+        "section_title_text_alignment_mobile": "center",
+        "section_title_margin_top_mobile": 10,
+        "section_title_margin_bottom_mobile": 20,
+        "section_title_font_size_mobile": 0,
+        "section_title_line_height_mobile": 0,
+        "section_title_letter_spacing_mobile": 0,
+        "section_textblock_text_alignment": "center",
+        "section_textblock_color": "",
+        "section_textblock_custom_font": false,
+        "section_textblock_font": "mono",
+        "section_textblock_font_name": "",
+        "section_textblock_font_weight": "default",
+        "section_textblock_margin_top": 10,
+        "section_textblock_margin_bottom": 30,
+        "section_textblock_font_size": 0,
+        "section_textblock_line_height": 0,
+        "section_textblock_letter_spacing": 0,
+        "section_textblock_text_alignment_mobile": "center",
+        "section_textblock_margin_top_mobile": 10,
+        "section_textblock_margin_bottom_mobile": 20,
+        "section_textblock_font_size_mobile": 0,
+        "section_textblock_line_height_mobile": 0,
+        "section_textblock_letter_spacing_mobile": 0,
+        "image_dimensions": "square",
+        "image_custom_height": false,
+        "image_height": 260,
+        "image_height_mobile": 230,
+        "image_radius": 0,
+        "image_hover": false,
+        "carousel_toggle_color": "",
+        "carousel_toggle_color_hover": "",
+        "carousel_toggle_underline": true,
+        "carousel_toggle_custom_font": false,
+        "carousel_toggle_font": "mono",
+        "carousel_toggle_font_name": "",
+        "carousel_toggle_font_weight": "default",
+        "carousel_toggle_text_alignment": "right",
+        "carousel_toggle_font_size": 0,
+        "carousel_toggle_line_height": 0,
+        "carousel_toggle_letter_spacing": 0,
+        "carousel_toggle_margin_top": 20,
+        "carousel_toggle_margin_bottom": 10,
+        "carousel_toggle_margin_horizontal": 0,
+        "carousel_toggle_text_alignment_mobile": "center",
+        "carousel_toggle_font_size_mobile": 0,
+        "carousel_toggle_line_height_mobile": 0,
+        "carousel_toggle_letter_spacing_mobile": 0,
+        "carousel_toggle_margin_top_mobile": 20,
+        "image_text_display": true,
+        "image_subtitle_text_display": true,
+        "image_text_alignment": "center",
+        "image_text_alignment_mobile": "center",
+        "image_title_color": "",
+        "image_title_custom_font": false,
+        "image_title_font": "mono",
+        "image_title_font_name": "",
+        "image_title_font_weight": "default",
+        "image_title_margin_top": 10,
+        "image_title_font_size": 0,
+        "image_title_line_height": 0,
+        "image_title_letter_spacing": 0,
+        "image_title_margin_top_mobile": 10,
+        "image_title_font_size_mobile": 0,
+        "image_title_line_height_mobile": 0,
+        "image_title_letter_spacing_mobile": 0,
+        "image_subtitle_color": "",
+        "image_subtitle_custom_font": false,
+        "image_subtitle_font": "mono",
+        "image_subtitle_font_name": "",
+        "image_subtitle_font_weight": "default",
+        "image_subtitle_margin_top": 10,
+        "image_subtitle_font_size": 0,
+        "image_subtitle_line_height": 0,
+        "image_subtitle_letter_spacing": 0,
+        "image_subtitle_margin_top_mobile": 10,
+        "image_subtitle_font_size_mobile": 0,
+        "image_subtitle_line_height_mobile": 0,
+        "image_subtitle_letter_spacing_mobile": 0,
+        "popup_enabled": true,
+        "popup_preview": false,
+        "popup_background_color": "#000000",
+        "popup_background_opacity": 65,
+        "popup_close_color": "#ffffff",
+        "popup_show_arrows": true,
+        "popup_holder_max_width": 75,
+        "popup_holder_max_width_mobile": 75,
+        "popup_holder_background_color": "#000000",
+        "popup_holder_border_color": "#ffffff",
+        "popup_holder_border_width": 4,
+        "popup_holder_border_radius": 4,
+        "popup_image_text_display": true,
+        "popup_holder_padding": 20,
+        "popup_holder_padding_mobile": 20,
+        "popup_image_text_alignment": "center",
+        "popup_image_text_alignment_mobile": "center",
+        "popup_image_title_type": "h3",
+        "popup_image_title_color": "",
+        "popup_image_title_custom_font": false,
+        "popup_image_title_font": "mono",
+        "popup_image_title_font_name": "",
+        "popup_image_title_font_weight": "default",
+        "popup_image_title_margin_top": 0,
+        "popup_image_title_font_size": 0,
+        "popup_image_title_line_height": 0,
+        "popup_image_title_letter_spacing": 0,
+        "popup_image_title_margin_top_mobile": 0,
+        "popup_image_title_font_size_mobile": 0,
+        "popup_image_title_line_height_mobile": 0,
+        "popup_image_title_letter_spacing_mobile": 0,
+        "popup_image_subtitle_type": "p",
+        "popup_image_subtitle_color": "",
+        "popup_image_subtitle_custom_font": false,
+        "popup_image_subtitle_font": "mono",
+        "popup_image_subtitle_font_name": "",
+        "popup_image_subtitle_font_weight": "default",
+        "popup_image_subtitle_margin_top": 10,
+        "popup_image_subtitle_font_size": 0,
+        "popup_image_subtitle_line_height": 0,
+        "popup_image_subtitle_letter_spacing": 0,
+        "popup_image_subtitle_margin_top_mobile": 10,
+        "popup_image_subtitle_font_size_mobile": 0,
+        "popup_image_subtitle_line_height_mobile": 0,
+        "popup_image_subtitle_letter_spacing_mobile": 0
+      }
+    },
+    "category_anchors_6GQCTr": {
+      "type": "category_anchors",
+      "name": "Category Anchors",
+      "settings": {
+        "category_anchor": "Category Anchors",
+        "html": "&lt; html &gt;",
+        "liquid": "< liquid >"
+      }
+    },
+    "collapsible_content_dB6cik": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_VWexYF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_9xKjNG": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_DYAa4E": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_QkCt8L": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_VWexYF",
+        "collapsible_row_9xKjNG",
+        "collapsible_row_DYAa4E",
+        "collapsible_row_QkCt8L"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Collapsible content",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "rich_text_kwAKTU": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_diDxxn": {
-          "type": "heading",
-          "settings": {
-            "heading": "Download the Evenflo app",
-            "heading_size": "h1"
-          }
-        },
-        "text_YD8GAD": {
-          "type": "text",
-          "settings": {
-            "text": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_diDxxn",
-        "text_YD8GAD"
-      ],
-      "disabled": true,
+    "evenflo_banner_yEWq7R": {
+      "type": "evenflo-banner",
+      "name": "Evenflo Banner",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "html_ggg6LE": {
-      "type": "HTML",
-      "disabled": true,
-      "settings": {
-        "html": "<span class=\"center\"><center>\n<a href=\"https://play.google.com/store/apps/details?id=com.evenflo.sensorsafe&amp;pli=1\"><img src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/google.png?v=1654260732\"><sp><sp><sp><sp><sp><sp><sp></sp></sp></sp></sp></sp></sp></sp></a>\n<a href=\"https://apps.apple.com/us/app/evenflo-sensorsafe/id1619330386\"><img src=\"https://cdn.shopify.com/s/files/1/0512/2359/3116/files/apple.png?v=1654260732\"></a>\n</center></span>"
-      }
-    },
-    "evenflo_divider_T7jPCW": {
-      "type": "evenflo-divider",
-      "settings": {
-        "divider_spacing": 40,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
+        "banner_image": "shopify://shop_images/Landing_Page_Header_Banner_-_Desktop_2.jpg",
+        "banner_text": "CHOOSE YOUR GREEN",
+        "text_color": "#fff",
+        "overlay_opacity": 0.5
       }
     }
   },
   "order": [
     "main",
-    "17854929284bd2ac3b",
-    "featured_collection_febiQn",
-    "image_banner_with_app_link_4a4FeJ",
-    "evenflo_image_with_text_xGNWdF",
-    "image_banner_Y7wMTj",
-    "evenflo_image_with_text_qNK3QF",
-    "rich_text_kwAKTU",
-    "html_ggg6LE",
-    "evenflo_divider_T7jPCW"
+    "evenflo_contact_form_e4qkdA",
+    "evenflo_featured_banner_6UTfLt",
+    "evenflo_loyalty_banner_slideshow_L34UVh",
+    "evenflo_scrolling_text_KnPJD7",
+    "evenflo_tabbed_carousel_7Bzxrt",
+    "evenflo_tooltips_PUGN7g",
+    "featured_blog_FrJBfN",
+    "featured_product_TjiUrD",
+    "evenflo_collection_image_banner_qjWhyU",
+    "product_img_slider_block_7Thina",
+    "slideshow_PawxaL",
+    "slim_extend_tab_block_3Vy9fL",
+    "twelve_days_zjCPE6",
+    "qq_gallery_NBTGK4",
+    "category_anchors_6GQCTr",
+    "collapsible_content_dB6cik",
+    "evenflo_banner_yEWq7R"
   ]
 }
