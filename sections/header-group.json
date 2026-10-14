@@ -13,7 +13,18 @@
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
-      "disabled": true,
+      "blocks": {
+        "announcement_BfhwxL": {
+          "type": "announcement",
+          "settings": {
+            "text": "Dawn announcement bar",
+            "link": "#fpo"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_BfhwxL"
+      ],
       "settings": {
         "color_scheme": "scheme-fc0240b3-8860-46ea-a417-f33600739ba3",
         "show_line_separator": false,
