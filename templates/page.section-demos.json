@@ -17,15 +17,6 @@
         "padding_bottom": 28
       }
     },
-    "evenflo_divider_T7jPCW": {
-      "type": "evenflo-divider",
-      "settings": {
-        "divider_spacing": 40,
-        "divider_border": false,
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
     "featured_collection_fWw3hd": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
@@ -164,49 +155,6 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "rich_text_yfadTm": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_QRFp9W": {
-          "type": "heading",
-          "settings": {
-            "heading": "Rich text",
-            "heading_size": "h1"
-          }
-        },
-        "text_VJQVJg": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
-          }
-        },
-        "button_pfGFFq": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_QRFp9W",
-        "text_VJQVJg",
-        "button_pfGFFq"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "image_with_text_idh7eF": {
@@ -413,6 +361,7 @@
         "column_3fpyNk": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/vtj4fhu7ft1hymvsbgfm.jpg",
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
@@ -423,6 +372,7 @@
         "column_tNMYk7": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/shyft-dualride-car-seat-stroller-combo-carryall-storage__CS150112474Sylva_Pink_I.jpg",
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
@@ -433,6 +383,7 @@
         "column_tY37WR": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/shyft-dualride-infant-car-seat-stroller-combo__CS150112310Onyx_A.jpg",
             "title": "Column",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
@@ -459,6 +410,157 @@
         "button_label": "Button label",
         "button_link": "",
         "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "evenflo_multicolumn_DqhizR": {
+      "type": "evenflo-multicolumn",
+      "blocks": {
+        "column_xUXc6D": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/vtj4fhu7ft1hymvsbgfm.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_7YfyFp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shyft-dualride-car-seat-stroller-combo-carryall-storage__CS150112474Sylva_Pink_I.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Giij8a": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shyft-dualride-infant-car-seat-stroller-combo__CS150112310Onyx_A.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_xUXc6D",
+        "column_7YfyFp",
+        "column_Giij8a"
+      ],
+      "name": "Evenflo Multicolumn",
+      "settings": {
+        "title": "Evenflo Multicolumn",
+        "heading_size": "h1",
+        "column_style": "modern",
+        "container_size": "half",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "enable_image_modal": true,
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "evenflo_multicolumn_variant_cards_DKqwKH": {
+      "type": "evenflo-multicolumn-variant-cards",
+      "blocks": {
+        "column_eaikx8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/vtj4fhu7ft1hymvsbgfm.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_keWhJK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shyft-dualride-car-seat-stroller-combo-carryall-storage__CS150112474Sylva_Pink_I.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_G88r6F": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/shyft-dualride-infant-car-seat-stroller-combo__CS150112310Onyx_A.jpg",
+            "enable_video": false,
+            "video_type": "vimeo",
+            "vimeo_url": "123456789",
+            "enable_video_looping": false,
+            "liquid_content": "",
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_eaikx8",
+        "column_keWhJK",
+        "column_G88r6F"
+      ],
+      "name": "EvenFlo Multicolumn Card Variant",
+      "settings": {
+        "title": "Evenflo Multicolumn Card Variant",
+        "heading_size": "h1",
+        "column_style": "classic",
+        "container_size": "full_width",
+        "heading_alignment": "start",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -804,20 +906,123 @@
         "subheading": "Subheading lorem ipsum dolores.",
         "background_color": "#fcfcfd"
       }
+    },
+    "custom_rideshare_Db9g3x": {
+      "type": "custom-rideshare",
+      "name": "Custom Rideshare",
+      "settings": {}
+    },
+    "evenflo_custom_quote_WctnWj": {
+      "type": "evenflo-custom-quote",
+      "name": "Custom Section Quote",
+      "settings": {
+        "quote": "Custom Section Quote",
+        "name": "Name Field"
+      }
+    },
+    "evenflo_dtc_bundle_items_LLXtp9": {
+      "type": "evenflo-dtc-bundle-items",
+      "name": "DTC Bundle Items",
+      "settings": {
+        "heading": "DTC Bundle Items (used in DTC bundles only)",
+        "heading_size": "h1",
+        "metafield_namespace": "custom",
+        "metafield_key": "bundle_products",
+        "columns_desktop": 4,
+        "full_width": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_swatches": false,
+        "enable_quick_add": false,
+        "card_button_label": "Go to Product Page",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "evenflo_multicolumn_variant_slider_8d4knC": {
+      "type": "evenflo-multicolumn-variant-slider",
+      "blocks": {
+        "column_LgPGhA": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "sub_title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "price_text": "Price",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        },
+        "column_GtzCzn": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "sub_title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "price_text": "Price",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        },
+        "column_XUdxhM": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "sub_title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "price_text": "Price",
+            "link_label": "",
+            "link": "",
+            "discount_verification": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_LgPGhA",
+        "column_GtzCzn",
+        "column_XUdxhM"
+      ],
+      "name": "Multicolumn Variant Slider",
+      "settings": {
+        "title": "Multicolumn",
+        "heading_underline": false,
+        "heading_alignment": "left",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "underline": false,
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "evenflo_divider_T7jPCW",
     "featured_collection_fWw3hd",
     "featured_product_VWthJF",
     "collection_list_N3MHMi",
-    "rich_text_yfadTm",
     "image_with_text_idh7eF",
     "image_banner_YXpe4b",
     "slideshow_LGgYQy",
     "collage_zH3Ut6",
     "multicolumn_gtUhYh",
+    "evenflo_multicolumn_DqhizR",
+    "evenflo_multicolumn_variant_cards_DKqwKH",
     "multirow_fFrpHP",
     "collapsible_content_HTkwK7",
     "newsletter_7pTPBD",
@@ -827,6 +1032,10 @@
     "evenflo_benefits_9aJVm9",
     "evenflo_shopping_benefits_jKk4Vq",
     "category_anchors_pQaBej",
-    "evenflo_confidence_cta_zzU46D"
+    "evenflo_confidence_cta_zzU46D",
+    "custom_rideshare_Db9g3x",
+    "evenflo_custom_quote_WctnWj",
+    "evenflo_dtc_bundle_items_LLXtp9",
+    "evenflo_multicolumn_variant_slider_8d4knC"
   ]
 }
