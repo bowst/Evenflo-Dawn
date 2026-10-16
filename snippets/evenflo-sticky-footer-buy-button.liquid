@@ -7,7 +7,7 @@
 {%- liquid
   assign sticky_variant = product.selected_or_first_available_variant
   assign sticky_color_option = nil
-  assign variant_picker_href = '#variant-selects-' | append: section.id
+  assign sticky_jump_href = '#ProductInfo-template--' | append: section.id | append: '-'
   for option in product.options_with_values
     assign option_name_down = option.name | downcase
     if option_name_down == 'color' or option_name_down == 'colour'
@@ -23,7 +23,7 @@
   <div class="page-width product-sticky-buttons__inner">
     {%- if product != blank -%}
       <div class="product-details">
-        <a class="product-details__main" href="{{ variant_picker_href }}">
+        <a class="product-details__main" href="{{ sticky_jump_href }}">
           <div class="product-image">
             {% if sticky_variant.featured_image %}
               {{
@@ -65,7 +65,7 @@
 
       <div class="sticky-buy">
         {%- if sticky_color_option -%}
-          <a class="sticky-variant" href="{{ variant_picker_href }}">
+          <a class="sticky-variant" href="{{ sticky_jump_href }}">
             <span
               class="sticky-variant__swatch"
               data-sticky-swatch
@@ -88,7 +88,7 @@
             </div>
           </a>
         {%- else -%}
-          <a class="sticky-variant__price price-container" href="{{ variant_picker_href }}" id="sticky-price-{{ section.id }}">
+          <a class="sticky-variant__price price-container" href="{{ sticky_jump_href }}" id="sticky-price-{{ section.id }}">
             {%- render 'price',
               product: product,
               use_variant: true,

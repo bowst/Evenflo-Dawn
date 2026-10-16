@@ -1,3 +1,13 @@
+html:has(.product-sticky-buttons) {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.product-sticky-buttons) {
+    scroll-behavior: auto;
+  }
+}
+
 .aag-band {
   background: #faf8f6;
 }
@@ -106,7 +116,7 @@
   width: 100%;
 }
 
-variant-selects[id^='variant-selects-'] {
+.product__info-container {
   scroll-margin-top: 12rem;
 }
 
