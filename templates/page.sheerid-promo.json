@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "evenflo_page_title_reegrq": {
+      "type": "evenflo-page-title",
+      "name": "Evenflo Page Title",
+      "settings": {
+        "page_title": "Community Heroes Save More",
+        "alignment": "center",
+        "hidden_h1": true
+      }
+    },
     "evenflo_image_banner_7KDjNP": {
       "type": "evenflo-image-banner",
       "blocks": {
@@ -43,8 +52,16 @@
         "play_store": "",
         "button_color": "#2996c5",
         "button_text_color": "#ffffff",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#2996c5",
         "mobile_button_text_color": "#ffffff",
+        "mobile_button_border_color": "#ffffff",
+        "button_color_2": "#ffffff",
+        "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
+        "mobile_button_color_2": "#ffffff",
+        "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#ffffff",
         "image_overlay_opacity": 0,
@@ -389,6 +406,7 @@
     }
   },
   "order": [
+    "evenflo_page_title_reegrq",
     "evenflo_image_banner_7KDjNP",
     "2a5a213b-f4e0-4d14-8492-12bda656a9dd",
     "main",

@@ -23,10 +23,13 @@
         assign show_dynamic_checkout = true
       endif
       assign collection_handles = product.collections | map: 'handle'
+      if pdp_checkout_stack != true
+        assign pdp_checkout_stack = false
+      endif
     -%}
 
     <product-form
-      class="product-form"
+      class="product-form{% if pdp_checkout_stack %} product-form--pdp-stack{% endif %}"
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
       data-section-id="{{ section.id }}"
     >
@@ -121,9 +124,32 @@
               {%- render 'loading-spinner' -%}
             </button>
 
-            {% comment %}Display Babylist and Shop Pay buttons horizontally{% endcomment %}
-            <div style="display: flex; flex-direction: row; gap: 10px; margin-top: 10px;">
-              {% comment %}Only show Shop Pay if product is available{% endcomment %}
+            {%- if pdp_checkout_stack -%}
+              <div class="product-form__post-atc">
+                <div class="product-form__shipping-notices">
+                  {%- render 'evenflo-oversize-notice',
+                    variant: product.selected_or_first_available_variant,
+                    product: product,
+                    section_id: section_id
+                  -%}
+                  {%- if cart.duties_included or cart.taxes_included -%}
+                    <div class="product__tax caption rte">
+                      {%- if cart.duties_included and cart.taxes_included -%}
+                        {{ 'products.product.duties_and_taxes_included' | t }}
+                      {%- elsif cart.taxes_included -%}
+                        {{ 'products.product.taxes_included' | t }}
+                      {%- elsif cart.duties_included -%}
+                        {{ 'products.product.duties_included' | t }}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+                {% render 'Yotpo-points-display' %}
+              </div>
+            {%- endif -%}
+
+            {% comment %}Shop Pay must stay in this form. PDP stack places it under shipping/rewards.{% endcomment %}
+            <div class="product-form__alt-payments">
               {%- if show_dynamic_checkout
                 and product.selected_or_first_available_variant.available
                 and quantity_rule_soldout != true

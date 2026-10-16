@@ -509,6 +509,13 @@ function getProductsByCategory(category_id, category_name = '', fromCategoryDeta
 }
 
 function customSlider() {
+  if (typeof Swiper === 'undefined') {
+    if (window.evenfloSwiperBundleReady) {
+      window.evenfloSwiperBundleReady.then(customSlider);
+    }
+    return;
+  }
+
   var swiper = new Swiper('.mySwiper', {
     loop: true,
     slidesPerView: 4,

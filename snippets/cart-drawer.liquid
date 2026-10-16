@@ -213,6 +213,19 @@
                             <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
                           {%- endif -%}
 
+                          {%- comment -%}
+                            Oversize package fee notice, per line item. Evaluated
+                            against THIS line's variant, so a cart mixing oversize
+                            and standard items only flags the oversize ones.
+                            context: 'cart' suppresses the element id, which would
+                            otherwise repeat across line items.
+                          {%- endcomment -%}
+                          {%- render 'evenflo-oversize-notice',
+                            variant: item.variant,
+                            product: item.product,
+                            context: 'cart'
+                          -%}
+
                           <ul
                             class="discounts list-unstyled"
                             role="list"

@@ -96,50 +96,24 @@
                     {% assign relatedProducts = product.metafields.product_info.related_products.value %}
                     <!-- check at least one recommended product is available -->
 
-                    <p class="product__text inline-richtext subtitle heading-underline">
-                      {{ block.settings.heading }}
-                    </p>
+                    <div class="related-products-block" {{ block.shopify_attributes }}>
+                      {%- liquid
+                        assign starting_price = product.price
+                        for related_prod in relatedProducts
+                          if related_prod.price < starting_price
+                            assign starting_price = related_prod.price
+                          endif
+                        endfor
+                        assign starting_price_money = starting_price | money
+                      -%}
+                      <p class="related-products-heading">
+                        {{ 'products.product.starting_at_choose_style' | t: price: starting_price_money }}
+                      </p>
 
-                    <div class="related-products">
-                      {% for prod in relatedProducts %}
-                        <div class="product-card {% if product.title == prod.title %} active {% endif %}">
-                          {% if product.title != prod.title %}
-                            <a
-                              class="product-card-wrapper-link"
-                              href="{{ prod.url }}"
-                              href="{{ prod.url }}"
-
-                              href="{{ prod.url }}"
-
-                              aria-label="{{prod.title}}"
-                              title="{{ prod.title }}"
-                            >
-                            </a>
-                          {% endif %}
-
-                          <div class="product-header">
-                            <div class="product-name ">
-                              {% if prod.metafields.product_info.related_product_title %}
-                                {{ prod.metafields.product_info.related_product_title }}
-                              {% else %}
-                                {{ prod.title }}
-                              {% endif %}
-                            </div>
-                            {% if prod.metafields.product_info.related_sub_title %}
-                              <div class="product-type">
-                                {{ prod.metafields.product_info.related_sub_title }}
-                              </div>
-                            {% endif %}
-                          </div>
-                          <div class="product-footer">
-                            {% if prod.price %}
-                              <div class="product-price">
-                                {{- prod.price | money -}}
-                              </div>
-                            {% endif %}
-                          </div>
-                        </div>
-                      {% endfor %}
+                      {% render 'evenflo-pdp-related-product-cards',
+                        related_products: relatedProducts,
+                        current_product: product
+                      %}
                     </div>
                   {% endif %}
                 {% endif %}
@@ -509,25 +483,9 @@
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
-                  show_pickup_availability: true
+                  show_pickup_availability: true,
+                  pdp_checkout_stack: true
                 -%}
-               {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                  <div class="product__tax caption rte">
-                    {%- if cart.duties_included and cart.taxes_included -%}
-                      {{ 'products.product.duties_and_taxes_included' | t }}
-                    {%- elsif cart.taxes_included -%}
-                      {{ 'products.product.taxes_included' | t }}
-                    {%- elsif cart.duties_included -%}
-                      {{ 'products.product.duties_included' | t }}
-                    {%- endif -%}
-                    {%- if shop.shipping_policy.body != blank -%}
-                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
-                <!-- Yotpo Points Display -->
-                {% render 'Yotpo-points-display' %}
-                <!-- End Yotpo Points Display -->
                 <div {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}

@@ -90,7 +90,8 @@
   assign varies_by_json = ''
   if product.variants.size > 1 and varies_by_urls != blank
     assign varies_count = 0
-    for url in varies_by_urls | split: ','
+    assign varies_by_list = varies_by_urls | split: ','
+    for url in varies_by_list
       if url != blank
         assign varies_count = varies_count | plus: 1
         assign url_json = url | json

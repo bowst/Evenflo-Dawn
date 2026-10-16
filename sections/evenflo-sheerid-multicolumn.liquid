@@ -2,7 +2,7 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.css" type="text/css">
-  <script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@sheerid/jslib@1/sheerid.js" async="async"></script>
 
 <script>
   function getCustomerId() {
@@ -77,10 +77,10 @@
             {{- section.settings.button_label | escape -}}
           </a>
         {%- endif -%}
-        {%- if block.settings.discount_verification != blank -%}
+        {%- if section.settings.discount_verification != blank -%}
           <a
             class="link animate-arrow"
-            onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
+            onclick="displayVerification('{{ section.settings.discount_verification | escape }}')"
             style="cursor: pointer;"
           >
             Verify Status
@@ -236,10 +236,10 @@
           {{ section.settings.button_label | escape }}
         </a>
       {%- endif -%}
-      {%- if block.settings.discount_verification != blank -%}
+      {%- if section.settings.discount_verification != blank -%}
         <a
           class="link animate-arrow"
-          onclick="displayVerification('{{ block.settings.discount_verification | escape }}')"
+          onclick="displayVerification('{{ section.settings.discount_verification | escape }}')"
           style="cursor: pointer;"
         >
           Verify Status

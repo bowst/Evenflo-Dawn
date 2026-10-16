@@ -1,0 +1,115 @@
+{% comment %}
+  Renders the oversize package fee notice as icon rows.
+
+  SOURCE OF TRUTH
+  ---------------
+  Every value comes from SHOP METAFIELDS in the `custom` namespace - the same
+  values the Evenflo Custom Functions cart transform charges on. They are
+  edited in that app, not in theme settings.
+
+  This matters: the theme previously read its own `settings.oversize_*`
+  values, which were a separate switch from the app's. Theme on + app off
+  meant the page advertised a fee that was never charged. Do not reintroduce
+  a theme setting for these - if the theme and the app disagree, the customer
+  is misled.
+
+    shop.metafields.custom.oversize_fee_enabled    boolean  master on/off
+    shop.metafields.custom.oversize_fee_threshold  integer  carton size cutoff
+    shop.metafields.custom.oversize_fee_amount     decimal  fee in USD
+    shop.metafields.custom.oversize_fee_test_mode  boolean  tagged products only
+    variant.metafields.custom.carton_size          integer  ON THE VARIANT
+
+  Carton size is per VARIANT and populated on only a subset of them, so this
+  is evaluated per variant, not once per product. A variant with no carton
+  size is treated as NOT oversize. On the PDP, evenflo-oversize-notice.js
+  keeps it current when the customer switches variant.
+
+  Deliberately NOT gated on oversize_fee_per_item or oversize_fee_variant.
+  per_item is a placeholder for an unresolved per-order/per-item decision - if
+  it flips to false the fee is still charged, so gating display on it would
+  hide a live charge. oversize_fee_variant is dead: the fee is no longer a
+  separate fee product.
+
+  WORDING: the Function now folds the fee into the cart line's own price
+  (lineUpdate), rather than adding a separate "Oversize Handling Fee" line.
+  Nothing itemises the $15 anywhere in cart or checkout, so this notice is the
+  main place a customer learns about it before paying. The copy must say the
+  price INCLUDES the fee - never imply a separate line item.
+
+  Two rows:
+    [truck]   Free Standard Shipping Included   <- only at/above the threshold
+    [package] Includes $15 oversize handling    <- whenever the variant is oversize
+
+  Accepts:
+    - variant: {Object} the variant to test (required)
+    - product: {Object} required while test mode is on, to check the QA tag
+    - section_id: {String} used only to build a unique element id
+    - context: {String} optional, 'cart' omits the element id so the markup
+      can repeat per line item without duplicating ids
+
+  Usage:
+    {% render 'evenflo-oversize-notice', variant: product.selected_or_first_available_variant, product: product, section_id: section.id %}
+{% endcomment %}
+
+{%- liquid
+  assign fee_enabled = shop.metafields.custom.oversize_fee_enabled.value
+  assign threshold = shop.metafields.custom.oversize_fee_threshold.value
+  assign fee_amount = shop.metafields.custom.oversize_fee_amount.value
+  assign test_mode = shop.metafields.custom.oversize_fee_test_mode.value
+
+  # Test mode restricts the real charge to products tagged oversize-qa, so an
+  # untagged product must not advertise a fee it will never be billed.
+  assign passes_test_mode = true
+  if test_mode == true
+    assign passes_test_mode = false
+    if product != blank and product.tags contains 'oversize-qa'
+      assign passes_test_mode = true
+    endif
+  endif
+
+  if fee_enabled == true and passes_test_mode and variant != blank
+    assign carton_size = variant.metafields.custom.carton_size.value
+
+    # nil (unpopulated metafield) must not compare as oversize; only a real
+    # number counts. A nil threshold would make every variant qualify, so
+    # require that too.
+    if carton_size != blank and threshold != blank and carton_size >= threshold
+      assign is_oversize = true
+
+      # The locale string supplies the "$", so pass a bare number. The
+      # decimal metafield reads back as "15.0"; trim a trailing ".0" so it
+      # renders "$15" rather than "$15.0". A genuine "15.5" is left intact.
+      assign fee_display = fee_amount | round: 2
+      assign fee_whole = fee_amount | round: 0
+      if fee_display == fee_whole
+        assign fee_display = fee_whole
+      endif
+
+      # Compare in dollars against the free shipping threshold; variant.price
+      # is in cents. This threshold stays a theme setting: it reflects the
+      # store's shipping policy, not the fee the app charges.
+      assign variant_price = variant.price | divided_by: 100.0
+      if variant_price >= settings.oversize_free_shipping_threshold
+        assign ships_free = true
+      endif
+    endif
+  endif
+-%}
+
+{%- if is_oversize -%}
+  <div
+    class="evenflo-oversize-notice"
+    {% unless context == 'cart' %}id="OversizeNotice-{{ section_id }}"{% endunless %}
+  >
+    {%- if ships_free -%}
+      <span class="evenflo-oversize-notice__row">
+        {{- 'evenflo-icon-truck.svg' | inline_asset_content -}}
+        <span>{{ 'products.product.oversize_free_shipping' | t }}</span>
+      </span>
+    {%- endif -%}
+    <span class="evenflo-oversize-notice__row">
+      {{- 'evenflo-icon-package.svg' | inline_asset_content -}}
+      <span>{{ 'products.product.oversize_handling_fee' | t: fee: fee_display }}</span>
+    </span>
+  </div>
+{%- endif -%}

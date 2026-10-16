@@ -12,88 +12,11 @@
       <h2 class="aag-section__heading">{{ heading }}</h2>
     {%- endif -%}
 
-    <div class="aag-section__grid">
-      {%- if product.metafields.sf_products.child_weight_max.value -%}
-        <div class="aag-card">
-          <div class="aag-card__icon">
-            {{- 'icon-child-age.svg' | inline_asset_content -}}
-          </div>
-          <div class="aag-card__content">
-            <h3 class="aag-card__title">Child Weight</h3>
-            <ul class="aag-card__list">
-              {%- if product.metafields.sf_products.child_weight_min.value -%}
-                <li>Min. {{ product.metafields.sf_products.child_weight_min.value }} lbs</li>
-              {%- endif -%}
-              <li>Max. {{ product.metafields.sf_products.child_weight_max.value }} lbs</li>
-            </ul>
-          </div>
-        </div>
-      {%- endif -%}
-
-      {%- if product.metafields.sf_products.assembled_weight.value -%}
-        <div class="aag-card">
-          <div class="aag-card__icon">
-            {{- 'icon-weight.svg' | inline_asset_content -}}
-          </div>
-          <div class="aag-card__content">
-            <h3 class="aag-card__title">Product Weight</h3>
-            <p class="aag-card__text">{{ product.metafields.sf_products.assembled_weight.value }} lbs</p>
-          </div>
-        </div>
-      {%- endif -%}
-
-      {%- if product.metafields.custom.modes_of_use.value -%}
-        {%- assign modes = product.metafields.custom.modes_of_use.value | split: '|' -%}
-        {%- assign mode_count = 0 -%}
-        {%- for mode in modes -%}
-          {%- assign mode_clean = mode | strip -%}
-          {%- if mode_clean != blank -%}
-            {%- assign mode_count = mode_count | plus: 1 -%}
-          {%- endif -%}
-        {%- endfor -%}
-        <div class="aag-card">
-          <div class="aag-card__count">{{ mode_count }}</div>
-          <div class="aag-card__content">
-            <h3 class="aag-card__title">Modes of Use</h3>
-            <p class="aag-card__text">
-              {%- assign rendered = 0 -%}
-              {%- for mode in modes -%}
-                {%- assign mode_clean = mode | strip -%}
-                {%- if mode_clean != blank -%}
-                  {%- if rendered > 0 %}<br>{% endif -%}
-                  {{ mode_clean }}
-                  {%- assign rendered = rendered | plus: 1 -%}
-                {%- endif -%}
-              {%- endfor -%}
-            </p>
-          </div>
-        </div>
-      {%- endif -%}
-
-      {%- if product.metafields.custom.sensorsafe.value -%}
-        <div class="aag-card">
-          <div class="aag-card__icon">
-            {{- 'icon-sensorsafe.svg' | inline_asset_content -}}
-          </div>
-          <div class="aag-card__content">
-            <h3 class="aag-card__title">SensorSafe</h3>
-            <a class="aag-card__cta" href="{{ sensorsafe_url }}">See Details</a>
-          </div>
-        </div>
-      {%- endif -%}
-
-      {%- if product.metafields.custom.sensorysoothe_new.value -%}
-        <div class="aag-card">
-          <div class="aag-card__icon">
-            {{- 'icon-sensorysoothe.svg' | inline_asset_content -}}
-          </div>
-          <div class="aag-card__content">
-            <h3 class="aag-card__title">SensorySoothe</h3>
-            <a class="aag-card__cta" href="{{ sensorysoothe_url }}">See Details</a>
-          </div>
-        </div>
-      {%- endif -%}
-    </div>
+    {% render 'evenflo-at-a-glance-cards',
+      product: product,
+      sensorsafe_url: sensorsafe_url,
+      sensorysoothe_url: sensorysoothe_url
+    %}
   </div>
 </div>
 

@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "evenflo_page_title_qb9fcW": {
+      "type": "evenflo-page-title",
+      "name": "Evenflo Page Title",
+      "settings": {
+        "page_title": "Pivot Troop",
+        "alignment": "center",
+        "hidden_h1": true
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -190,14 +199,22 @@
       "settings": {
         "image": "shopify://shop_images/57412487_Troop_ICS_FF_CanopyDown_3666_2.jpg",
         "background_show": false,
-        "banner_color": "#FFFFFF",
+        "banner_color": "#ffffff",
         "store_btn_show": false,
         "app_store": "",
         "play_store": "",
         "button_color": "#ffffff",
         "button_text_color": "#000000",
+        "button_border_color": "#ffffff",
         "mobile_button_color": "#ffffff",
         "mobile_button_text_color": "#000000",
+        "mobile_button_border_color": "#ffffff",
+        "button_color_2": "#ffffff",
+        "button_text_color_2": "#000000",
+        "button_border_color_2": "#ffffff",
+        "mobile_button_color_2": "#ffffff",
+        "mobile_button_text_color_2": "#000000",
+        "mobile_button_border_color_2": "#ffffff",
         "desktop_heading_color": "#ffffff",
         "mobile_heading_color": "#000000",
         "image_overlay_opacity": 0,
@@ -277,6 +294,7 @@
         "heading_alignment": "start",
         "image_width": "full",
         "image_ratio": "square",
+        "enable_image_modal": true,
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
@@ -291,6 +309,7 @@
     }
   },
   "order": [
+    "evenflo_page_title_qb9fcW",
     "main",
     "evenflo_image_text_ajRx7F",
     "evenflo_divider_JyRdzM",

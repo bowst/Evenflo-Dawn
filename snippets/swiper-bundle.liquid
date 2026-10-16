@@ -1,0 +1,17 @@
+<script>
+  if (!window.evenfloSwiperBundleReady) {
+    window.evenfloSwiperBundleReady = new Promise(function (resolve) {
+      var evenfloSwiperStyle = document.createElement('link');
+      evenfloSwiperStyle.rel = 'stylesheet';
+      evenfloSwiperStyle.href = {{ 'swiper-style.css' | asset_url | json }};
+      document.head.appendChild(evenfloSwiperStyle);
+
+      var evenfloSwiperBundleScript = document.createElement('script');
+      evenfloSwiperBundleScript.src = {{ 'swiper-script.js' | asset_url | json }};
+      evenfloSwiperBundleScript.onload = function () {
+        resolve();
+      };
+      document.head.appendChild(evenfloSwiperBundleScript);
+    });
+  }
+</script>

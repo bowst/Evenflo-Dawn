@@ -104,6 +104,7 @@
         },
         "evenflo_at_a_glance_fTFgB8": {
           "type": "evenflo-at-a-glance",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -225,8 +226,34 @@
         "padding_bottom": 12
       }
     },
+    "evenflo_at_a_glance_WPGJND": {
+      "type": "evenflo-at-a-glance",
+      "name": "At a Glance",
+      "settings": {
+        "heading": "At a Glance",
+        "background_color": "#faf8f6",
+        "sensorsafe_url": "",
+        "sensorysoothe_url": ""
+      }
+    },
+    "evenflo_features_carousel_FD7nUL": {
+      "type": "evenflo-features-carousel",
+      "name": "Evenflo Features Carousel",
+      "settings": {
+        "heading": "Features",
+        "background_color": "#fcfcfd",
+        "columns_desktop": 3,
+        "product_handles": ""
+      }
+    },
+    "evenflo_pdp_tabs_kxVVNL": {
+      "type": "evenflo-pdp-tabs",
+      "name": "PDP Tabs",
+      "settings": {}
+    },
     "evenflo_product_highlights_yGptpT": {
       "type": "evenflo-product-highlights",
+      "disabled": true,
       "custom_css": [
         "/**/"
       ],
@@ -234,6 +261,7 @@
     },
     "evenflo_full_width_An6GrY": {
       "type": "evenflo-full-width",
+      "disabled": true,
       "settings": {
         "heading": "evenflo",
         "content": "<p>Default Content</p>"
@@ -241,6 +269,7 @@
     },
     "evenflo_product_video_KEFXhc": {
       "type": "evenflo-product-video",
+      "disabled": true,
       "settings": {
         "heading": "",
         "description": ""
@@ -248,6 +277,7 @@
     },
     "evenflo_features_f9tF3G": {
       "type": "evenflo-features",
+      "disabled": true,
       "settings": {
         "product_handles": ""
       }
@@ -255,8 +285,8 @@
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
-        "heading_size": "h2",
+        "heading": "Frequently Brought Together",
+        "heading_size": "h1",
         "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
@@ -270,8 +300,25 @@
         "padding_bottom": 28
       }
     },
+    "evenflo_peace_of_mind_new_NtxE4B": {
+      "type": "evenflo-peace-of-mind-new",
+      "name": "Peace Of Mind New",
+      "settings": {
+        "heading": "Peace of Mind",
+        "subheading": "Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.",
+        "manuals_title": "Manuals",
+        "warranty_title": "Warranty",
+        "support_title": "Support",
+        "support_text": "<p>Supported by ParentLink Consumer Care via chat and email</p>",
+        "support_link": "",
+        "parts_title": "Replacement Parts",
+        "parts_text": "Spare parts for all your Evenflo products",
+        "parts_link": ""
+      }
+    },
     "evenflo_contact_parentlink_KAtMr7": {
       "type": "evenflo-contact-parentlink",
+      "disabled": true,
       "settings": {
         "heading": "Peace Of Mind",
         "message": "<p>Being a parent has enough stress as it is, that's why we can assure you that we can give you as much time as you need.</p>\n<a href=\"#\"><strong>30 DAYS FOR RETURNS</strong></a><br>\n<a href=\"#\"><strong>LIMITED 90 DAY WARRANTY</strong></a>",
@@ -280,6 +327,7 @@
     },
     "evenflo_quote_Q6Q7qn": {
       "type": "evenflo-quote",
+      "disabled": true,
       "settings": {
         "quote": "{{ product.metafields.custom.customer_quote.value }}",
         "name": "{{ product.metafields.custom.customer_quote_name.value }}"
@@ -298,6 +346,7 @@
       "block_order": [
         "yotpo_product_reviews_ugc_reviews_nnaqeW"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
@@ -363,11 +412,15 @@
     "custom_liquid_EzUHxi",
     "evenflo_main_product_4BJMnB",
     "main",
+    "evenflo_at_a_glance_WPGJND",
+    "evenflo_features_carousel_FD7nUL",
+    "evenflo_pdp_tabs_kxVVNL",
     "evenflo_product_highlights_yGptpT",
     "evenflo_full_width_An6GrY",
     "evenflo_product_video_KEFXhc",
     "evenflo_features_f9tF3G",
     "related-products",
+    "evenflo_peace_of_mind_new_NtxE4B",
     "evenflo_contact_parentlink_KAtMr7",
     "evenflo_quote_Q6Q7qn",
     "1728651794c071ea89",

@@ -44,6 +44,14 @@
 	<script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'show-free-shipping.js' | asset_url }}" defer="defer"></script>
+	{%- comment -%}
+	  Gated on the SHOP metafield, not a theme setting - same switch the app
+	  charges on. With a theme setting here the script could be withheld while
+	  the fee was live, leaving the notice stale on variant change.
+	{%- endcomment -%}
+	{%- if shop.metafields.custom.oversize_fee_enabled.value == true -%}
+	  <script src="{{ 'evenflo-oversize-notice.js' | asset_url }}" defer="defer"></script>
+	{%- endif -%}
 	{%- if product.quantity_price_breaks_configured? -%}
 	  <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
 	  <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -101,52 +109,24 @@
 					  {% assign relatedProducts = product.metafields.product_info.related_products.value %}
 					  <!-- check at least one recommended product is available -->
   
-					  <p class="product__text inline-richtext subtitle heading-underline">
-						{{ block.settings.heading }}
-					  </p>
-  
-					  <div class="related-products">
-						{% for prod in relatedProducts %}
-						   {% comment %} {% if prod.available == true %} {% endcomment %}
-							<div class="product-card {% if product.title == prod.title %} active {% endif %}">
-							  {% if product.title != prod.title %}
-								<a
-								  class="product-card-wrapper-link"
-								  href="{{ prod.url }}"
-								  href="{{ prod.url }}"
-  
-								  href="{{ prod.url }}"
-  
-								  aria-label="{{prod.title}}"
-								  title="{{ prod.title }}"
-								>
-								</a>
-							  {% endif %}
-  
-							  <div class="product-header">
-								<div class="product-name ">
-								  {% if prod.metafields.product_info.related_product_title %}
-									{{ prod.metafields.product_info.related_product_title }}
-								  {% else %}
-									{{ prod.title }}
-								  {% endif %}
-								</div>
-								{% if prod.metafields.product_info.related_sub_title %}
-								  <div class="product-type">
-									{{ prod.metafields.product_info.related_sub_title }}
-								  </div>
-								{% endif %}
-							  </div>
-							  <div class="product-footer">
-								{% if prod.price %}
-								  <div class="product-price">
-									{{- prod.price | money -}}
-								  </div>
-								{% endif %}
-							  </div>
-							</div>
-						   {% comment %} {% endif %} {% endcomment %}
-						{% endfor %}
+					  <div class="related-products-block" {{ block.shopify_attributes }}>
+						{%- liquid
+						  assign starting_price = product.price
+						  for related_prod in relatedProducts
+							if related_prod.price < starting_price
+							  assign starting_price = related_prod.price
+							endif
+						  endfor
+						  assign starting_price_money = starting_price | money
+						-%}
+						<p class="related-products-heading">
+						  {{ 'products.product.starting_at_choose_style' | t: price: starting_price_money }}
+						</p>
+
+						{% render 'evenflo-pdp-related-product-cards',
+						  related_products: relatedProducts,
+						  current_product: product
+						%}
 					  </div>
 					{% endif %}
 				  {% endif %}
@@ -180,30 +160,6 @@
 					  show_badges: true,
 					  price_class: 'price--large'
 					-%}
-
-					{% assign current_price = product.price | divided_by: 100 %}
-					{% assign free_shipping_threshold = 200 %} 
-
-
-					<div class="free-shipping-product{% if current_price < free_shipping_threshold %} visually-hidden{% endif %}" id="free-shipping-notice-product">
-						<figure>
-							<script
-							src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
-							type="module"
-							></script>
-
-							<dotlottie-wc
-							src="//www.evenflo.com/cdn/shop/t/198/assets/icon-free-shipping.lottie"
-							style="width: 300px;height: 300px"
-							speed="1"
-							autoplay
-							loop
-							></dotlottie-wc>
-						</figure>
-
-						<span>Enjoy free shipping with this purchase</span>
-					</div>
-					
 				  </div>
 				  {%- if product.quantity_price_breaks_configured? -%}
 					<div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -298,99 +254,7 @@
 					</details>
 				  </div>
 				{%- when 'evenflo-at-a-glance' -%}
-				  {{ 'evenflo-section-at-a-glance.css' | asset_url | stylesheet_tag }}
-  
-				  <div class="at-a-glance">
-					<div class="font-body-bold">At a glance</div>
-					<div class="at-a-glance-wrapper">
-					  {% comment %}
-						{%- if product.metafields.sf_products.forward_facing_age_limit.value -%}
-						  <div class="at-a-glance-card">
-							<div class="at-a-glance-card__image">
-							  {{- 'icon-child-age.svg' | inline_asset_content -}}
-							</div>
-							<div class="at-a-glance-card__content">
-							  <h3 class="at-a-glance-card__title">Child Age</h3>
-							  <p class="at-a-glance-card__description">
-								{{ product.metafields.sf_products.forward_facing_age_limit.value }}
-							  </p>
-							</div>
-						  </div>
-						{%- endif -%}
-					  {% endcomment %}
-					  {%- if product.metafields.sf_products.child_weight_max.value -%}
-						<div class="at-a-glance-card">
-						  <div class="at-a-glance-card__image">
-							{{- 'icon-weight.svg' | inline_asset_content -}}
-						  </div>
-						  <div class="at-a-glance-card__content">
-							<h3 class="at-a-glance-card__title">Child Weight</h3>
-							<p class="at-a-glance-card__description">
-							  Min. {{ product.metafields.sf_products.child_weight_min.value }} lbs
-							</p>
-							<p class="at-a-glance-card__description">
-							  Max. {{ product.metafields.sf_products.child_weight_max.value }} lbs
-							</p>
-						  </div>
-						</div>
-					  {%- endif -%}
-					  {%- if product.metafields.sf_products.assembled_weight.value -%}
-						<div class="at-a-glance-card">
-						  <div class="at-a-glance-card__image">
-							{{- 'icon-weight.svg' | inline_asset_content -}}
-						  </div>
-						  <div class="at-a-glance-card__content">
-							<h3 class="at-a-glance-card__title">Product Weight</h3>
-							<p class="at-a-glance-card__description">
-							  {{ product.metafields.sf_products.assembled_weight.value }} lbs
-							</p>
-						  </div>
-						</div>
-					  {%- endif -%}
-					  {%- if product.metafields.custom.modes_of_use.value -%}
-						<div class="at-a-glance-card">
-						  <div class="at-a-glance-card__image">
-							{{- 'icon-sensorysoothe.svg' | inline_asset_content -}}
-						  </div>
-						  <div class="at-a-glance-card__content">
-							<h3 class="at-a-glance-card__title">Modes of Use</h3>
-							{% assign items = product.metafields.custom.modes_of_use.value
-							  | newline_to_br
-							  | split: '<br />'
-							%}
-							<p class="at-a-glance-card__description">
-							  {% for item in items %}
-								{{ item -}}
-								<br>
-							  {% endfor %}
-							</p>
-						  </div>
-						</div>
-					  {%- endif -%}
-					  {%- if product.metafields.custom.sensorsafe.value -%}
-						<div class="at-a-glance-card">
-						  <div class="at-a-glance-card__image">
-							{{- 'icon-sensorsafe.svg' | inline_asset_content -}}
-						  </div>
-						  <div class="at-a-glance-card__content">
-							<h3 class="at-a-glance-card__title">SensorSafe</h3>
-							<a href="/pages/sensorsafe" class="at-a-glance-card__cta">See Details</a>
-						  </div>
-						</div>
-					  {%- endif -%}
-					  {%- if product.metafields.custom.sensorysoothe_new.value -%}
-						<div class="at-a-glance-card">
-						  <div class="at-a-glance-card__image">
-							{{- 'icon-sensorysoothe.svg' | inline_asset_content -}}
-						  </div>
-						  <div class="at-a-glance-card__content">
-							<h3 class="at-a-glance-card__title">SensorySoothe</h3>
-							<a href="/pages/sensorysoothe" class="at-a-glance-card__cta">See Details</a>
-						  </div>
-						</div>
-					  {%- endif -%}
-					</div>
-				  </div>
+				  {%- comment -%} Full-width At a Glance lives in evenflo-at-a-glance.liquid. {%- endcomment -%}
 				{%- when 'quantity_selector' -%}
 				  <div
 					id="Quantity-Form-{{ section.id }}"
@@ -635,26 +499,9 @@
 					product: product,
 					product_form_id: product_form_id,
 					section_id: section.id,
-					show_pickup_availability: true
+					show_pickup_availability: true,
+					pdp_checkout_stack: true
 				  -%}
-				   
-				  {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-					<div class="product__tax caption rte">
-					  {%- if cart.duties_included and cart.taxes_included -%}
-						{{ 'products.product.duties_and_taxes_included' | t }}
-					  {%- elsif cart.taxes_included -%}
-						{{ 'products.product.taxes_included' | t }}
-					  {%- elsif cart.duties_included -%}
-						{{ 'products.product.duties_included' | t }}
-					  {%- endif -%}
-					  {%- if shop.shipping_policy.body != blank -%}
-						{{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-					  {%- endif -%}
-					</div>
-				  {%- endif -%}
-				  <!-- Yotpo Points Display -->
-				  {% render 'Yotpo-points-display' %}
-				  <!-- End Yotpo Points Display -->
 				  <div {{ block.shopify_attributes }}>
 					{%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
 					{%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
@@ -913,7 +760,7 @@
 	</div>
 	
   </product-info>
-  
+
   {%- render 'evenflo-sticky-footer-buy-button',
 	block: block,
 	product: product,

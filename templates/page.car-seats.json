@@ -24,6 +24,7 @@
         "primary_cta_link": "",
         "secondary_cta_text": "",
         "secondary_cta_link": "",
+        "footnote": "",
         "content_alignment": "align-left",
         "text_color": "text-light",
         "desktop_overlay_opacity": 15
@@ -35,13 +36,14 @@
         "heading_gXQkTw": {
           "type": "heading",
           "settings": {
-            "heading": "",
+            "heading": "{{ page.title }}",
             "heading_size": "h1",
-            "heading_color": "black"
+            "heading_color": "white"
           }
         },
         "text_REzqML": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ page.title }}",
             "text_style": "body"

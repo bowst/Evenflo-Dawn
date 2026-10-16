@@ -3,7 +3,6 @@ function showFreeShipping(){
 	setTimeout( function(){
 		//Update shipping
 		const shippingNotice = document.getElementById('free-shipping-notice-product');
-		const shippingNoticeFooter = document.getElementById('free-shipping-notice-footer');
 		let productPrice = false;
 
 		if(document.querySelector('.product__info-container .price--on-sale')){
@@ -18,12 +17,10 @@ function showFreeShipping(){
 		
 		if(productPrice > 200.00 ){
 			shippingNotice.classList.remove('visually-hidden');
-			shippingNoticeFooter.classList.remove('hidden');
 			//console.log('free');
 
 		}else{
 			shippingNotice.classList.add('visually-hidden');
-			shippingNoticeFooter.classList.add('hidden');
 		}
 	}, 1);
 }

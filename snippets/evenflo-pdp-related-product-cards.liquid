@@ -1,0 +1,102 @@
+{% comment %}
+  PDP related-product cards: thumbnail, product line, product name, price.
+
+  Accepts:
+  - related_products: {Array} product list from product_info.related_products
+  - current_product: {Object} the product on this PDP
+{% endcomment %}
+<div class="related-products-wrap">
+  <div class="related-products" data-related-scroller>
+    {% for prod in related_products %}
+      {%- liquid
+        assign is_current = false
+        if current_product.id == prod.id
+          assign is_current = true
+        endif
+
+        assign card_line = prod.title
+        if prod.metafields.custom.platform_name != blank
+          assign card_line = prod.metafields.custom.platform_name
+        elsif prod.metafields.product_info.related_product_title != blank
+          assign card_line = prod.metafields.product_info.related_product_title
+        endif
+
+        assign card_name = ''
+        if prod.metafields.custom.platform_overview_name != blank
+          assign card_name = prod.metafields.custom.platform_overview_name
+        elsif prod.metafields.product_info.related_sub_title != blank
+          assign card_name = prod.metafields.product_info.related_sub_title
+        endif
+
+        assign card_image = prod.featured_image
+        if card_image == blank and prod.featured_media.preview_image != blank
+          assign card_image = prod.featured_media.preview_image
+        endif
+      -%}
+      {%- capture card_inner -%}
+        <div class="product-card__image">
+          {% if card_image != blank %}
+            {{
+              card_image
+              | image_url: width: 400
+              | image_tag:
+                loading: 'lazy',
+                widths: '160, 240, 320, 400',
+                sizes: '(min-width: 750px) 160px, 42vw',
+                alt: prod.title,
+                class: 'product-card__img'
+            }}
+          {% endif %}
+        </div>
+        <div class="product-card__body">
+          <div class="product-name">{{ card_line }}</div>
+          {% if card_name != blank %}
+            <div class="product-type">{{ card_name }}</div>
+          {% endif %}
+          {% if prod.price %}
+            <div class="product-price">{{ prod.price | money }}</div>
+          {% endif %}
+        </div>
+      {%- endcapture -%}
+      {% if is_current %}
+        <div class="product-card active">{{ card_inner }}</div>
+      {% else %}
+        <a
+          class="product-card"
+          href="{{ prod.url }}"
+          aria-label="{{ prod.title | escape }}"
+          title="{{ prod.title | escape }}"
+        >
+          {{ card_inner }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <button type="button" class="related-products__next" aria-label="Show more related products" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M5.2 2.2a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5A.75.75 0 0 1 5.2 12.2L9.44 8 5.2 3.76a.75.75 0 0 1 0-1.56z"/>
+    </svg>
+  </button>
+  <script>
+    (function () {
+      var wraps = document.querySelectorAll('.related-products-wrap');
+      wraps.forEach(function (wrap) {
+        var scroller = wrap.querySelector('[data-related-scroller]');
+        var btn = wrap.querySelector('.related-products__next');
+        if (!scroller || !btn || wrap.dataset.relatedBound) return;
+        wrap.dataset.relatedBound = 'true';
+        var update = function () {
+          var canScroll = scroller.scrollWidth > scroller.clientWidth + 4;
+          var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 4;
+          btn.hidden = !canScroll || atEnd;
+        };
+        btn.addEventListener('click', function () {
+          scroller.scrollBy({ left: Math.max(scroller.clientWidth * 0.7, 160), behavior: 'smooth' });
+        });
+        scroller.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      });
+    })();
+  </script>
+</div>

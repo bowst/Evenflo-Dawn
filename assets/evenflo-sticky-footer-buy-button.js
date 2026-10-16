@@ -1,122 +1,170 @@
-function isElementOutOfViewport(el) {
-	const rect = el.getBoundingClientRect();
-	return (
-		rect.bottom < 120
-	);
+function stickyFooterAtcOutOfView() {
+  const inlineButtons = document.querySelector(
+    '.product__info-wrapper .product-form__buttons .product-form__submit'
+  );
+  if (!inlineButtons) return true;
+  return inlineButtons.getBoundingClientRect().bottom < 120;
 }
 
-function stickyFootBuyButton_Stick(stickyFooter){
-	let lastScrollTop = 0;
-
-	window.addEventListener('scroll', function() {
-		const scrollTop = window.scrollY || document.documentElement.scrollTop;
-		const inlineButtons = document.querySelector('.product__info-wrapper .product-form__buttons .product-form__submit');		
-		const isScrollingDown = scrollTop > lastScrollTop;
-		//const isScrollingDownRect = inlineButtons.getBoundingClientRect();
-
-		//if (isElementOutOfViewport(inlineButtons) && isScrollingDown) {
-		if (isElementOutOfViewport(inlineButtons)) {
-			stickyFooter.classList.add("stick");
-		} else {
-			stickyFooter.classList.remove("stick");
-		}
-
-		lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-	}, false);
+function stickyFooterSentinelVisible(slot) {
+  if (!slot) return false;
+  const rect = slot.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
 }
 
-function stickyFooterContent(stickyFooter, update){
-	// these items are updated on load AND on variant change
-	const stickyFooterButton = document.getElementById('sticky-footer-button');
-	
-	setTimeout( function(){
-		//shipping is handled in a separate function included on the parent page
-		/*
-		//Update shipping
-		const shippingNotice = document.getElementById('free-shipping-notice-footer');
-		let productPrice = false;
+function stickyFootBuyButton_Stick(stickyFooter) {
+  const slot = stickyFooter.closest('.product-sticky-slot');
+  const isMobile = function () {
+    return window.matchMedia('(max-width: 749px)').matches;
+  };
 
-		if(document.querySelector('.product__info-container .price--on-sale')){
-			//console.log('sale price');
-			productPrice = document.querySelector('.product__info-container .price-item--sale').innerHTML;
-		}else{
-			//console.log('reg price');
-			productPrice =  document.querySelector('.product__info-container .price-item--regular').innerHTML;
-		}
+  var update = function () {
+    if (stickyFooter.classList.contains('hidden')) return;
 
-		productPrice = productPrice.replace("$", "");
-		
-		//console.log(productPrice, productPrice > 150.00);
-		if(productPrice > 150.00 ){
-			shippingNotice.classList.remove('hidden');
-			//console.log('free');
+    const sentinelVisible = stickyFooterSentinelVisible(slot);
+    const atcOut = stickyFooterAtcOutOfView();
+    const shouldStick = sentinelVisible || isMobile() || atcOut;
 
-		}else{
-			shippingNotice.classList.add('hidden');
-		}
-		*/
-		// Ensure the form button content is correct
-		const formBtn = document.querySelector('form .product-form__submit');
+    if (shouldStick) {
+      if (slot && !stickyFooter.classList.contains('is-stuck')) {
+        slot.style.minHeight = stickyFooter.offsetHeight + 'px';
+      }
+      stickyFooter.classList.add('is-stuck');
+    } else {
+      stickyFooter.classList.remove('is-stuck');
+      if (slot) slot.style.minHeight = '';
+    }
+  };
 
-		//console.log('form button:', formBtn.disabled);
-		if(formBtn.disabled){
-			stickyFooterButton.disabled = true;
-		}else{
-			stickyFooterButton.disabled = false;
-		}
-		stickyFooterButton.innerHTML = formBtn.innerHTML;
-		
-		// these should really only need to be updated on change, but I've found a few place where, if you link to the variant, it shows the default product image etc. instead so updating on load for good measure
-		
-		// Update variant image
-		const variantImg = document.querySelector('.product-media-container modal-opener .product__media img').cloneNode( true );
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+}
 
-		stickyFooter.querySelector('.product-image').innerHTML = '';
-		stickyFooter.querySelector('.product-image').appendChild(variantImg);
+function updateStickyVariant(stickyFooter) {
+  const nameEl = stickyFooter.querySelector('[data-sticky-color-name]');
+  const swatchEl = stickyFooter.querySelector('[data-sticky-swatch]');
+  const selected = document.querySelector(
+    '.product__info-container .product-form__input--swatch [data-selected-value] span'
+  );
+  if (nameEl && selected && selected.textContent) {
+    nameEl.textContent = selected.textContent.trim();
+  }
 
-		//Update variant price
-		const priceContainer = document.querySelector('.product__info-container .price-shipping-wrapper > .price').cloneNode(true);
-		//console.log(priceContainer);
-		const stickyPriceContainer =document.querySelector('#product-sticky-footer-buy-button .price-container');
+  const checked = document.querySelector(
+    '.product__info-container .product-form__input--swatch input:checked'
+  );
+  if (checked && swatchEl) {
+    const label = document.querySelector('label[for="' + checked.id + '"]');
+    const source = label ? label.querySelector('.swatch') || label : null;
+    if (source) {
+      const styles = getComputedStyle(source);
+      const token = styles.getPropertyValue('--swatch--background').trim();
+      const image = styles.backgroundImage;
+      const color = styles.backgroundColor;
+      if (token) swatchEl.style.setProperty('--swatch--background', token);
+      else if (image && image !== 'none') swatchEl.style.setProperty('--swatch--background', image);
+      else if (color) swatchEl.style.setProperty('--swatch--background', color);
+    }
+  }
+}
 
-		stickyPriceContainer.innerHTML = '';
-		stickyPriceContainer.appendChild(priceContainer);
-	}, 500);
+function stickyFooterContent(stickyFooter, update) {
+  const stickyFooterButton = document.getElementById('sticky-footer-button');
+  if (!stickyFooterButton) return;
 
-	if( update === false ){
-		const ratings = document.querySelector('.product__title + .shopify-app-block').cloneNode( true );
-		const ratingsContainer = stickyFooter.querySelector('.product-rating');
-		ratingsContainer.appendChild(ratings);
+  setTimeout(function () {
+    const formBtn = document.querySelector('form .product-form__submit');
+    if (formBtn) {
+      stickyFooterButton.disabled = !!formBtn.disabled;
+      stickyFooterButton.innerHTML = formBtn.innerHTML;
+    }
 
-		stickyFooterButton.addEventListener('click', function(e){
-			document.querySelector('form .product-form__buttons .product-form__submit').click();
-		});
-	}
+    const mediaImg = document.querySelector(
+      '.product-media-container modal-opener .product__media img'
+    );
+    const imageWrap = stickyFooter.querySelector('.product-image');
+    if (mediaImg && imageWrap) {
+      imageWrap.innerHTML = '';
+      imageWrap.appendChild(mediaImg.cloneNode(true));
+    }
+
+    const priceContainer = document.querySelector(
+      '.product__info-container .price-shipping-wrapper > .price'
+    );
+    const stickyPriceContainer = stickyFooter.querySelector(
+      '#product-sticky-footer-buy-button .price-container, .price-container'
+    );
+    if (priceContainer && stickyPriceContainer) {
+      stickyPriceContainer.innerHTML = '';
+      stickyPriceContainer.appendChild(priceContainer.cloneNode(true));
+    }
+
+    updateStickyVariant(stickyFooter);
+  }, 500);
+
+  if (update === false) {
+    const ratingsBlock = document.querySelector('.product__title + .shopify-app-block');
+    const ratingsContainer = stickyFooter.querySelector('.product-rating');
+    if (ratingsBlock && ratingsContainer && !ratingsContainer.childElementCount) {
+      ratingsContainer.appendChild(ratingsBlock.cloneNode(true));
+    }
+
+    stickyFooterButton.addEventListener('click', function () {
+      const submit = document.querySelector(
+        'form .product-form__buttons .product-form__submit'
+      );
+      if (submit) submit.click();
+    });
+  }
 }
 
 function removeOnAddToCart() {
-	const addToCart = document.querySelectorAll('button.product-form__submit')
-  
-	addToCart.forEach( (btn) => {
-		btn.addEventListener('click', function(e){
-			document.getElementById('product-sticky-footer-buy-button').classList.add('hidden');
-		});
-	})
+  document.querySelectorAll('button.product-form__submit').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const bar = document.getElementById('product-sticky-footer-buy-button');
+      if (bar) bar.classList.add('hidden');
+    });
+  });
 }
 
-function updateContentVariantChange(stickyFooter){
-	const variantID = document.querySelector('.product__info-container .product-variant-id');
-
-	variantID.addEventListener('change', function(e){
-		stickyFooterContent(stickyFooter, true)
-	});
+function updateContentVariantChange(stickyFooter) {
+  const variantID = document.querySelector('.product__info-container .product-variant-id');
+  if (variantID) {
+    variantID.addEventListener('change', function () {
+      stickyFooterContent(stickyFooter, true);
+    });
+  }
+  if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+    subscribe(PUB_SUB_EVENTS.variantChange, function () {
+      stickyFooterContent(stickyFooter, true);
+    });
+  }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-	const stickyFooter = document.getElementById('product-sticky-footer-buy-button');
-	updateContentVariantChange(stickyFooter);
+function dockStickyFooterInAtAGlance(stickyFooter) {
+  const aag = document.querySelector('.aag-section');
+  if (!aag || !stickyFooter) return;
 
-	stickyFootBuyButton_Stick(stickyFooter);
-	stickyFooterContent(stickyFooter, false);
-	removeOnAddToCart();
+  const band = document.createElement('div');
+  band.className = 'aag-band';
+  const slot = document.createElement('div');
+  slot.className = 'product-sticky-slot';
+
+  aag.parentNode.insertBefore(band, aag);
+  band.appendChild(slot);
+  slot.appendChild(stickyFooter);
+  band.appendChild(aag);
+  band.style.backgroundColor = getComputedStyle(aag).backgroundColor || '#faf8f6';
+  stickyFooter.classList.add('product-sticky-buttons--in-band');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const stickyFooter = document.getElementById('product-sticky-footer-buy-button');
+  if (!stickyFooter) return;
+  dockStickyFooterInAtAGlance(stickyFooter);
+  updateContentVariantChange(stickyFooter);
+  stickyFootBuyButton_Stick(stickyFooter);
+  stickyFooterContent(stickyFooter, false);
+  removeOnAddToCart();
 });
