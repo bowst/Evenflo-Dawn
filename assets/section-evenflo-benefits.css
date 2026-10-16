@@ -1,200 +1,109 @@
 /* Benefits Section */
 .evenflo-benefits {
-    padding-top: var(--section-padding-top, 36px);
-    padding-bottom: var(--section-padding-bottom, 36px);
+  padding-top: var(--section-padding-top, 36px);
+  padding-bottom: var(--section-padding-bottom, 36px);
+  background-color: var(--color-evenfo-soft-sand);
 }
 
 .evenflo-benefits__container {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
-/* Header */
 .evenflo-benefits__header {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
 }
 
 .evenflo-benefits__title {
-    font-family: var(--font-heading-family, inherit);
-    /*font-weight: var(--font-heading-weight, 600);
-    font-weight: 600;*/
-    font-size: clamp(2.8rem, 5vw, 3.8rem);
-    line-height: 1.15;
-    color: rgba(var(--color-foreground), 1);
-    margin: 0;
+  font-family: var(--font-heading-family, inherit);
+  font-size: clamp(2.8rem, 5vw, 3.8rem);
+  line-height: 1.15;
+  color: rgba(var(--color-foreground), 1);
+  margin: 0;
 }
 
 .evenflo-benefits__divider {
-    width: 50px;
-    height: 4px;
-    background-color: rgb(41, 150, 197);
-    border-radius: 2px;
+  width: 50px;
+  height: 4px;
+  background-color: rgb(41, 150, 197);
+  border-radius: 2px;
 }
 
-/* Grid */
 .evenflo-benefits__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 35px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
 }
 
-/* Tile */
-.evenflo-benefits__tile {
-    position: relative;
-    background-color: rgb(227, 242, 243);
-    border: 1px solid rgb(0, 174, 169);
-    border-radius: 16px;
-    padding: 24px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    overflow: hidden;
-    min-height: 200px;
-    width: 100%;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.evenflo-benefits__tile:last-child {
-    background-image: url("data:image/svg+xml,%3Csvg width='130' height='151' viewBox='0 0 130 151' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.5855 150.568C51.8878 168.77 102.7 151.644 135.092 112.296C139.223 107.29 142.808 102.182 145.959 97.012C141.213 95.3196 136.468 93.1917 131.804 90.6652C128.948 95.415 125.619 100.149 121.807 104.765C94.6202 137.796 53.8476 153.336 30.7587 139.454C7.66976 125.572 10.9743 87.5688 38.1615 54.5374C54.0948 35.1984 74.6592 21.8668 93.6146 16.9201C104.918 13.9729 115.668 13.9978 124.506 17.5212C126.156 18.1888 127.727 18.948 129.239 19.8525C146.157 29.9962 148.905 53.0892 138.501 77.6905C143.171 80.4741 147.92 82.7307 152.563 84.4855C162.261 62.7322 163.172 41.2557 155.053 25.4292C151.44 18.3861 146.078 12.4553 138.893 8.13927C135.793 6.26824 132.432 4.79624 128.941 3.66474C98.3361 -6.27606 54.4376 11.1304 25.4155 46.4153C-6.94237 85.7419 -8.62996 132.379 21.6723 150.581L21.5855 150.568Z' fill='%2300AEA9' fill-opacity='0.2'/%3E%3C/svg%3E");
-    background-position: bottom right;
-    background-repeat: no-repeat;
+.evenflo-benefits__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 56px;
+  padding: 16px 20px;
+  background-color: #fff;
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 4px;
+  color: rgb(34, 34, 34);
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-.evenflo-benefits__tile:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 174, 169, 0.15);
+.evenflo-benefits__button:hover {
+  background-color: rgb(250, 250, 250);
+  color: rgb(34, 34, 34);
 }
 
-.evenflo-benefits__link {
-    text-decoration: none;
+.evenflo-benefits__button:focus-visible {
+  outline: 2px solid rgb(41, 150, 197);
+  outline-offset: 2px;
 }
 
 .evenflo-benefits__icon {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
-.evenflo-benefits__icon svg {
-    width: 100%;
-    height: 100%;
-    fill: rgba(var(--color-foreground), 1);
+.evenflo-benefits__label {
+  font-family: var(--font-body-family, inherit);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  color: inherit;
 }
 
-.evenflo-benefits__content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    z-index: 2;
-    position: relative;
-}
+@media screen and (min-width: 750px) {
+  .evenflo-benefits__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
 
-.evenflo-benefits__tile-title {
-    font-family: var(--font-heading-family, inherit);
-    font-weight: 700;
-    text-transform: none;
-    font-size: clamp(2rem, 4vw, 2.4rem);
-    line-height: 1.3;
-    color: rgba(var(--color-foreground), 1);
-    margin: 0;
-}
-
-.evenflo-benefits__description {
-    font-family: var(--font-body-family, inherit);
-    font-weight: var(--font-body-weight, 400);
-    font-size: clamp(1.6rem, 2vw, 1.8rem);
-    line-height: 1.4;
-    color: rgba(var(--color-foreground), 0.75);
-    margin: 0;
-}
-
-.evenflo-benefits__bg-image {
-    position: absolute;
-    bottom: -20px;
-    right: -40px;
-    width: 180px;
-    height: 182px;
-    z-index: 1;
-    opacity: 0.3;
-}
-
-.evenflo-benefits__bg-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
-    .evenflo-benefits__grid {
-        grid-template-columns: repeat(2, minmax(240px, 1fr));
-        gap: 25px;
-    }
-
-    .evenflo-benefits__tile {
-        min-height: 160px;
-    }
-}
-
-@media screen and (max-width: 990px) {
-
-    .evenflo-benefits__header {
-        max-width: 500px;
-    }
+  .evenflo-benefits__button {
+    padding: 14px 16px;
+  }
 }
 
 @media screen and (max-width: 749px) {
-    .evenflo-benefits__container {
-        gap: 25px;
-    }
+  .evenflo-benefits__container {
+    gap: 24px;
+  }
 
-    .evenflo-benefits__grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
-
-    .evenflo-benefits__header {
-        max-width: 100%;
-    }
-
-    .evenflo-benefits__tile {
-        padding: 20px 24px;
-        min-height: 160px;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .evenflo-benefits__grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
-
-@media screen and (max-width: 479px) {
-    .evenflo-benefits__tile {
-        padding: 16px 20px;
-        gap: 16px;
-    }
-
-    .evenflo-benefits__bg-image {
-        bottom: -15px;
-        right: -30px;
-        width: 140px;
-        height: 142px;
-    }
+  .evenflo-benefits__header {
+    max-width: 100%;
+  }
 }

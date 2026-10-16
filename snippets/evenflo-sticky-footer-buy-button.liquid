@@ -7,6 +7,7 @@
 {%- liquid
   assign sticky_variant = product.selected_or_first_available_variant
   assign sticky_color_option = nil
+  assign variant_picker_href = '#variant-selects-' | append: section.id
   for option in product.options_with_values
     assign option_name_down = option.name | downcase
     if option_name_down == 'color' or option_name_down == 'colour'
@@ -22,55 +23,57 @@
   <div class="page-width product-sticky-buttons__inner">
     {%- if product != blank -%}
       <div class="product-details">
-        <div class="product-image">
-          {% if sticky_variant.featured_image %}
-            {{
-              sticky_variant.featured_image
-              | image_url: width: 160
-              | image_tag:
-                loading: 'lazy',
-                widths: '80, 120, 160',
-                sizes: '64px',
-                alt: product.title,
-                height: 64,
-                width: 64
-            }}
-          {% elsif product.featured_image %}
-            {{
-              product.featured_image
-              | image_url: width: 160
-              | image_tag:
-                loading: 'lazy',
-                widths: '80, 120, 160',
-                sizes: '64px',
-                alt: product.title,
-                height: 64,
-                width: 64
-            }}
-          {% endif %}
-        </div>
+        <a class="product-details__main" href="{{ variant_picker_href }}">
+          <div class="product-image">
+            {% if sticky_variant.featured_image %}
+              {{
+                sticky_variant.featured_image
+                | image_url: width: 160
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '80, 120, 160',
+                  sizes: '64px',
+                  alt: product.title,
+                  height: 64,
+                  width: 64
+              }}
+            {% elsif product.featured_image %}
+              {{
+                product.featured_image
+                | image_url: width: 160
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '80, 120, 160',
+                  sizes: '64px',
+                  alt: product.title,
+                  height: 64,
+                  width: 64
+              }}
+            {% endif %}
+          </div>
 
-        <div class="product-title">
-          <span class="primary-title">
-            {{ product.metafields.custom.platform_name }}
-            <span class="platform-light">{{ product.metafields.custom.platform_sub_name }}</span>
-          </span>
-          <span class="secondary-title">{{ product.metafields.custom.platform_overview_name }}</span>
-          <div class="product-rating"></div>
-        </div>
+          <div class="product-title">
+            <span class="primary-title">
+              {{ product.metafields.custom.platform_name }}
+              <span class="platform-light">{{ product.metafields.custom.platform_sub_name }}</span>
+            </span>
+            <span class="secondary-title">{{ product.metafields.custom.platform_overview_name }}</span>
+          </div>
+        </a>
+        <div class="product-rating"></div>
       </div>
 
       <div class="sticky-buy">
         {%- if sticky_color_option -%}
-          <div class="sticky-variant">
+          <a class="sticky-variant" href="{{ variant_picker_href }}">
             <span
               class="sticky-variant__swatch"
               data-sticky-swatch
-              {%- if sticky_color_option.selected_value.swatch.image -%}
-                style="--swatch--background: url({{ sticky_color_option.selected_value.swatch.image | image_url: width: 80 }});"
-              {%- elsif sticky_color_option.selected_value.swatch.color -%}
+              {% if sticky_color_option.selected_value.swatch.image %}
+                style="--swatch--background: url('{{ sticky_color_option.selected_value.swatch.image | image_url: width: 80 }}');"
+              {% elsif sticky_color_option.selected_value.swatch.color %}
                 style="--swatch--background: rgb({{ sticky_color_option.selected_value.swatch.color.rgb }});"
-              {%- endif -%}
+              {% endif %}
             ></span>
             <div class="sticky-variant__meta">
               <div class="sticky-variant__name" data-sticky-color-name>{{ sticky_color_option.selected_value }}</div>
@@ -83,16 +86,16 @@
                 -%}
               </div>
             </div>
-          </div>
+          </a>
         {%- else -%}
-          <div class="sticky-variant__price price-container" id="sticky-price-{{ section.id }}">
+          <a class="sticky-variant__price price-container" href="{{ variant_picker_href }}" id="sticky-price-{{ section.id }}">
             {%- render 'price',
               product: product,
               use_variant: true,
               show_badges: false,
               price_class: 'price--large'
             -%}
-          </div>
+          </a>
         {%- endif -%}
 
         <button type="button" class="product-form__submit button button--primary" id="sticky-footer-button">

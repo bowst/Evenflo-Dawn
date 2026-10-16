@@ -1,10 +1,12 @@
 {{ 'section-evenflo-benefits.css' | asset_url | stylesheet_tag }}
 
+{%- assign benefits = shop.metaobjects.benefits_of_evenflo.values -%}
+
 <div
-  class="evenflo-benefits page-width"
+  class="evenflo-benefits"
   style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
-  <div class="evenflo-benefits__container">
+  <div class="evenflo-benefits__container page-width">
     {% if section.settings.heading != blank %}
       <div class="evenflo-benefits__header">
         <h2 class="h1 heading-underline-center evenflo-benefits__title">{{ section.settings.heading }}</h2>
@@ -12,54 +14,35 @@
       </div>
     {% endif %}
 
-    <div class="evenflo-benefits__grid">
-      {% for block in section.blocks %}
-        <div class="evenflo-benefits__tile" {{ block.shopify_attributes }}>
-          {% if block.settings.link != blank %}
-            <a href="{{ block.settings.link }}" class="evenflo-benefits__link">
-          {% endif %}
-          
-          {% if block.settings.icon != blank %}
-            <div class="evenflo-benefits__icon">
-              <img
-                src="{{ block.settings.icon | image_url: width: 64 }}"
-                alt=""
-                loading="lazy"
-                width="64"
-                height="64"
-              >
-            </div>
-          {% endif %}
+    {% if benefits.count > 0 %}
+      <div class="evenflo-benefits__grid">
+        {% for benefit in benefits %}
+          {%- assign benefit_url = benefit.link.value.url | default: benefit.link.value -%}
+          {%- capture button_inner -%}
+            {%- if benefit.icon.value != blank -%}
+              {{
+                benefit.icon.value
+                | image_url: width: 48
+                | image_tag: loading: 'lazy', width: 24, height: 24, alt: '', class: 'evenflo-benefits__icon'
+              }}
+            {%- endif -%}
+            {%- if benefit.text.value != blank -%}
+              <span class="evenflo-benefits__label">{{ benefit.text.value }}</span>
+            {%- endif -%}
+          {%- endcapture -%}
 
-          <div class="evenflo-benefits__content">
-            {% if block.settings.title != blank %}
-              <h3 class="evenflo-benefits__tile-title">{{ block.settings.title }}</h3>
-            {% endif %}
-
-            {% if block.settings.description != blank %}
-              <p class="evenflo-benefits__description">{{ block.settings.description }}</p>
-            {% endif %}
-          </div>
-
-          {% if block.settings.link != blank %}
+          {% if benefit_url != blank %}
+            <a class="evenflo-benefits__button" href="{{ benefit_url }}">
+              {{ button_inner }}
             </a>
-          {% endif %}
-
-          {% if block.settings.background_image != blank %}
-            <div class="evenflo-benefits__bg-image">
-              <img
-                src="{{ block.settings.background_image | image_url: width: 200 }}"
-                alt=""
-                loading="lazy"
-                aria-hidden="true" 
-                width="200" 
-                height="auto"
-              >
+          {% else %}
+            <div class="evenflo-benefits__button">
+              {{ button_inner }}
             </div>
           {% endif %}
-        </div>
-      {% endfor %}
-    </div>
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </div>
 
@@ -75,7 +58,6 @@
     {
       "type": "textarea",
       "id": "heading",
-      "default": "Benefits of Shopping Evenflo.com",
       "label": "Heading Label"
     },
     {
@@ -140,44 +122,7 @@
   ],
   "presets": [
     {
-      "name": "Benefits",
-      "blocks": [
-        {
-          "type": "benefit",
-          "settings": {
-            "icon": "shopify://shop_images/icon-dollar-sign.svg",
-            "title": "Give $20, Get $20",
-            "description": "Refer a friend and earn points for each successful referral.",
-            "link": "shopify://pages/refer"
-          }
-        },
-        {
-          "type": "benefit",
-          "settings": {
-            "icon": "shopify://shop_images/icon-pay-affirm-benefit.svg",
-            "title": "Pay With Affirm",
-            "description": "Spread out your payments over a period of time.",
-            "link": "shopify://pages/affirm-overview"
-          }
-        },
-        {
-          "type": "benefit",
-          "settings": {
-            "icon": "shopify://shop_images/icon-community-benefit.svg",
-            "title": "Community Heroes Discount",
-            "description": "Our exclusive discount program for community heroes.",
-            "link": "shopify://pages/new-promotions"
-          }
-        },
-        {
-          "type": "benefit",
-          "settings": {
-            "title": "Evenflo Blog",
-            "description": "The day your child comes into the world, all the stakes are raised. Little things matter more.",
-            "link": "shopify://blogs/evenflo-blog"
-          }
-        }
-      ]
+      "name": "Benefits"
     }
   ]
 }
