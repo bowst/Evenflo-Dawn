@@ -215,7 +215,7 @@
         "heading_c6HheT": {
           "type": "heading",
           "settings": {
-            "heading": "{{ product.title }}",
+            "heading": "{{ product.metafields.sf_products.short_description_header.value }}",
             "heading_size": "h2"
           }
         },
