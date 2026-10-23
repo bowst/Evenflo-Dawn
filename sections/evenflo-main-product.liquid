@@ -43,7 +43,6 @@
   
 	<script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-	<script src="{{ 'show-free-shipping.js' | asset_url }}" defer="defer"></script>
 	{%- comment -%}
 	  Gated on the SHOP metafield, not a theme setting - same switch the app
 	  charges on. With a theme setting here the script could be withheld while
@@ -188,30 +187,6 @@
 					  show_badges: true,
 					  price_class: 'price--large'
 					-%}
-
-					{% assign current_price = product.price | divided_by: 100 %}
-					{% assign free_shipping_threshold = 200 %} 
-
-
-					<div class="free-shipping-product{% if current_price < free_shipping_threshold %} visually-hidden{% endif %}" id="free-shipping-notice-product">
-						<figure>
-							<script
-							src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
-							type="module"
-							></script>
-
-							<dotlottie-wc
-							src="//www.evenflo.com/cdn/shop/t/198/assets/icon-free-shipping.lottie"
-							style="width: 300px;height: 300px"
-							speed="1"
-							autoplay
-							loop
-							></dotlottie-wc>
-						</figure>
-
-						<span>Enjoy free shipping with this purchase</span>
-					</div>
-					
 				  </div>
 				  {%- if product.quantity_price_breaks_configured? -%}
 					<div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -655,13 +630,10 @@
 					  {%- elsif cart.duties_included -%}
 						{{ 'products.product.duties_included' | t }}
 					  {%- endif -%}
-					  {%- if shop.shipping_policy.body != blank -%}
-						{{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-					  {%- endif -%}
 					  {%- comment -%}
 						Oversize package fee notice. Reads the per-variant metafield
-						custom.carton_size and renders two icon rows beneath the
-						shipping line. Kept current on variant change by
+						custom.carton_size and renders two icon rows above the
+						shipping policy link. Kept current on variant change by
 						evenflo-oversize-notice.js.
 					  {%- endcomment -%}
 					  {%- render 'evenflo-oversize-notice',
@@ -669,6 +641,9 @@
 						product: product,
 						section_id: section.id
 					  -%}
+					  {%- if shop.shipping_policy.body != blank -%}
+						<a class="product__shipping-policy" href="{{ shop.shipping_policy.url }}">{{ 'products.product.shipping_policy_link' | t }}</a>
+					  {%- endif -%}
 					</div>
 				  {%- endif -%}
 				  <!-- Yotpo Points Display -->

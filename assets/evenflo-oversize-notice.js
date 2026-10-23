@@ -42,11 +42,13 @@
 
       if (incoming && !current) {
         // Previous variant was not oversize but this one is - add it back,
-        // at the end of the shipping line so it continues that sentence.
+        // above the shipping policy link (or at the end if there is none).
         var shippingLine = document.querySelector(
           '#ProductInfo-' + sectionId + ' .product__tax, .product__info-container .product__tax'
         );
-        if (shippingLine) shippingLine.appendChild(incoming.cloneNode(true));
+        if (shippingLine) {
+          shippingLine.insertBefore(incoming.cloneNode(true), shippingLine.querySelector('.product__shipping-policy'));
+        }
       }
     });
   }

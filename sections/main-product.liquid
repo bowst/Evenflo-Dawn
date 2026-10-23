@@ -521,7 +521,7 @@
                       {{ 'products.product.duties_included' | t }}
                     {%- endif -%}
                     {%- if shop.shipping_policy.body != blank -%}
-                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                      <a class="product__shipping-policy" href="{{ shop.shipping_policy.url }}">{{ 'products.product.shipping_policy_link' | t }}</a>
                     {%- endif -%}
                   </div>
                 {%- endif -%}
