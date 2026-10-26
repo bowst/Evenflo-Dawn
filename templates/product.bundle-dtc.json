@@ -215,7 +215,7 @@
         "heading_c6HheT": {
           "type": "heading",
           "settings": {
-            "heading": "{{ product.title }}",
+            "heading": "{{ product.metafields.sf_products.short_description_header.value }}",
             "heading_size": "h2"
           }
         },
@@ -244,7 +244,7 @@
       "type": "evenflo-dtc-bundle-items",
       "name": "DTC Bundle Items",
       "settings": {
-        "heading": "What's included",
+        "heading": "Evenflo Bundle Deal Includes",
         "heading_size": "h1",
         "metafield_namespace": "custom",
         "metafield_key": "bundle_products",
