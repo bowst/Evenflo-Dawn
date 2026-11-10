@@ -169,7 +169,8 @@
               category_label: block.settings.label,
               disclaimer: section.settings.detail_disclaimer,
               manuals_link: section.settings.manuals_link,
-              faqs_link: section.settings.faqs_link
+              faqs_link: section.settings.faqs_link,
+              booster_age_guidance: section.settings.booster_age_guidance
             -%}
           {%- endunless -%}
         {%- endfor -%}
@@ -205,6 +206,13 @@
       "id": "detail_disclaimer",
       "label": "Fit details disclaimer",
       "default": "Review the available height and weight requirements for this product. Always follow product labels and the manual for complete requirements and instructions."
+    },
+    {
+      "type": "text",
+      "id": "booster_age_guidance",
+      "label": "Booster age guidance",
+      "default": "5+ years old",
+      "info": "Shown on high-back and no-back booster details. Other products do not show age guidance."
     },
     {
       "type": "url",
