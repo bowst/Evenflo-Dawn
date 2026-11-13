@@ -1,0 +1,42 @@
+{% comment %}
+  Comma-separated collection links for compatible infant car seat families.
+  Accepts: seats (text, comma or pipe separated)
+{% endcomment %}
+{%- liquid
+  assign seat_source = seats | replace: '&', ',' | replace: '|', ','
+  assign seat_parts = seat_source | split: ','
+  assign link_index = 0
+-%}
+{%- for part in seat_parts -%}
+  {%- liquid
+    assign seat_name = part | strip
+    assign seat_key = seat_name | downcase
+    assign seat_handle = ''
+    if seat_key == 'revolve180 litemax nxt'
+      assign seat_handle = 'revolve180-litemax-nxt'
+    elsif seat_key == 'litemax nxt'
+      assign seat_handle = 'litemax-nxt'
+    elsif seat_key == 'litemax'
+      assign seat_handle = 'litemax-infant-car-seat'
+    elsif seat_key == 'shyft dualride' or seat_key == 'dualride'
+      assign seat_handle = 'shyft-dualride'
+    endif
+  -%}
+  {%- if seat_name != blank and seat_key != 'n/a' and seat_key != 'na' and seat_key != 'none' -%}
+    {%- if link_index > 0 -%}, {% endif -%}
+    {%- if seat_handle != blank -%}
+      {%- liquid
+        assign seat_collection = collections[seat_handle]
+        if seat_collection != blank
+          assign seat_url = seat_collection.url
+        else
+          assign seat_url = '/collections/' | append: seat_handle
+        endif
+      -%}
+      <a class="link" href="{{ seat_url }}">{{ seat_name }}</a>
+    {%- else -%}
+      {{ seat_name }}
+    {%- endif -%}
+    {%- assign link_index = link_index | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}

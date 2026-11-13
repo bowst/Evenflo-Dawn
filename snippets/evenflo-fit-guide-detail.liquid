@@ -168,6 +168,11 @@
   # assign belt_position = harness_position
   # assign belt_age = harness_age
 
+  assign compatible_car_seats = product.metafields.custom.compatible_infant_car_seats.value | default: product.metafields.custom.compatible_infant_car_seats
+  assign compatible_car_seats_key = compatible_car_seats | strip | downcase
+  if compatible_car_seats_key == 'n/a' or compatible_car_seats_key == 'na' or compatible_car_seats_key == 'none' or compatible_car_seats_key == '-'
+    assign compatible_car_seats = ''
+  endif
   assign sku = product.selected_or_first_available_variant.sku
   assign made_usa = product.metafields.sf_products.made_in_usa
   assign weight_statement = product.metafields.sf_products.child_gen_fit
@@ -294,6 +299,12 @@
         {%- if first_mode == 'default' -%}
           {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'default', selected: true, weight_min: child_w_min, weight_max: child_w_max, height_min: child_h_min, height_max: child_h_max, position: '' -%}
         {%- endif -%}
+        {%- if compatible_car_seats != blank -%}
+          <div class="fit-guide__detail-callout">
+            <p class="fit-guide__detail-callout-label">Compatible Car Seats</p>
+            <p class="fit-guide__detail-callout-text">{%- render 'evenflo-fit-guide-compatible-seats', seats: compatible_car_seats -%}</p>
+          </div>
+        {%- endif -%}
         <button
           type="button"
           class="link fit-guide__detail-specs-toggle"
@@ -357,6 +368,12 @@
                     {{ child_h_min }} in
                   {%- endif -%}
                 </dd>
+              </div>
+            {%- endif -%}
+            {%- if compatible_car_seats != blank -%}
+              <div class="fit-guide__detail-spec">
+                <dt>Compatible Car Seats</dt>
+                <dd>{%- render 'evenflo-fit-guide-compatible-seats', seats: compatible_car_seats -%}</dd>
               </div>
             {%- endif -%}
             {%- if latch_install == 1 or latch_install == true -%}
