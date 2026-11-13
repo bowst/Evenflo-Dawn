@@ -42,71 +42,42 @@
   endif
 
   assign image_alt = alt_text | default: ''
+
+  assign picture_desktop = desktop_image
+  if picture_desktop == blank and desktop_video.preview_image != blank
+    assign picture_desktop = desktop_video.preview_image
+  endif
+
+  assign picture_mobile = mobile_image
+  if picture_mobile == blank and mobile_video_source.preview_image != blank
+    assign picture_mobile = mobile_video_source.preview_image
+  endif
+  if picture_mobile == blank
+    assign picture_mobile = picture_desktop
+  endif
+  if picture_desktop == blank
+    assign picture_desktop = picture_mobile
+  endif
+
+  assign picture_dimensions = picture_mobile | default: picture_desktop
 -%}
 
 <div class="{{ wrapper_class }}{% if has_desktop_video %} has-video-background{% unless has_fallback_image %} has-video-background--no-image{% endunless %}{% endif %}">
-  {%- if desktop_image != blank -%}
-    <img
-      src="{{ desktop_image | image_url: width: 1920 }}"
-      alt="{{ image_alt | escape }}"
-      width="{{ desktop_image.width }}"
-      height="{{ desktop_image.height }}"
-      class="desktop-image banner-background__image"
-      loading="{{ image_loading }}"
-      {% if eager %}fetchpriority="high"{% endif %}
-    >
-  {%- elsif desktop_video.preview_image != blank -%}
-    <img
-      src="{{ desktop_video.preview_image | image_url: width: 1920 }}"
-      alt="{{ image_alt | escape }}"
-      width="{{ desktop_video.preview_image.width }}"
-      height="{{ desktop_video.preview_image.height }}"
-      class="desktop-image banner-background__image"
-      loading="{{ image_loading }}"
-      {% if eager %}fetchpriority="high"{% endif %}
-    >
-  {%- endif -%}
-
-  {%- if mobile_image != blank -%}
-    <img
-      src="{{ mobile_image | image_url: width: 768 }}"
-      alt="{{ image_alt | escape }}"
-      width="{{ mobile_image.width }}"
-      height="{{ mobile_image.height }}"
-      class="mobile-image banner-background__image"
-      loading="{{ image_loading }}"
-      {% if eager %}fetchpriority="high"{% endif %}
-    >
-  {%- elsif desktop_image != blank -%}
-    <img
-      src="{{ desktop_image | image_url: width: 768 }}"
-      alt="{{ image_alt | escape }}"
-      width="{{ desktop_image.width }}"
-      height="{{ desktop_image.height }}"
-      class="mobile-image banner-background__image"
-      loading="{{ image_loading }}"
-      {% if eager %}fetchpriority="high"{% endif %}
-    >
-  {%- elsif mobile_video_source.preview_image != blank -%}
-    <img
-      src="{{ mobile_video_source.preview_image | image_url: width: 768 }}"
-      alt="{{ image_alt | escape }}"
-      width="{{ mobile_video_source.preview_image.width }}"
-      height="{{ mobile_video_source.preview_image.height }}"
-      class="mobile-image banner-background__image"
-      loading="{{ image_loading }}"
-      {% if eager %}fetchpriority="high"{% endif %}
-    >
-  {%- elsif desktop_video.preview_image != blank -%}
-    <img
-      src="{{ desktop_video.preview_image | image_url: width: 768 }}"
-      alt="{{ image_alt | escape }}"
-      width="{{ desktop_video.preview_image.width }}"
-      height="{{ desktop_video.preview_image.height }}"
-      class="mobile-image banner-background__image"
-      loading="{{ image_loading }}"
-      {% if eager %}fetchpriority="high"{% endif %}
-    >
+  {%- if picture_desktop != blank -%}
+    <picture class="banner-background__picture">
+      {%- if picture_mobile != blank -%}
+        <source media="(max-width: 767px)" srcset="{{ picture_mobile | image_url: width: 768 }}">
+      {%- endif -%}
+      <img
+        src="{{ picture_desktop | image_url: width: 1600 }}"
+        alt="{{ image_alt | escape }}"
+        width="{{ picture_dimensions.width }}"
+        height="{{ picture_dimensions.height }}"
+        class="desktop-image banner-background__image"
+        loading="{{ image_loading }}"
+        {% if eager %}fetchpriority="high"{% endif %}
+      >
+    </picture>
   {%- endif -%}
 
   {%- if has_desktop_video -%}
@@ -114,7 +85,7 @@
       {{
         desktop_video
         | video_tag:
-          image_size: '1920x',
+          image_size: '1600x',
           autoplay: true,
           loop: enable_video_looping,
           controls: false,

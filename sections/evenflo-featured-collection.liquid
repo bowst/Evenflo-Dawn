@@ -1,15 +1,31 @@
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'component-rating.css' | asset_url | stylesheet_tag }}
-{{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
-{{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
-{{ 'evenflo-card-product.css' | asset_url | stylesheet_tag }}
-
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'evenflo-product-card-carousel.css' | asset_url | stylesheet_tag }}
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+<script type="module">
+  (function () {
+    var files = [
+      {{ 'component-card.css' | asset_url | json }},
+      {{ 'component-price.css' | asset_url | json }},
+      {{ 'component-rating.css' | asset_url | json }},
+      {{ 'component-volume-pricing.css' | asset_url | json }},
+      {{ 'quick-order-list.css' | asset_url | json }},
+      {{ 'evenflo-card-product.css' | asset_url | json }},
+      {{ 'component-slider.css' | asset_url | json }},
+      {{ 'evenflo-product-card-carousel.css' | asset_url | json }},
+      {{ 'template-collection.css' | asset_url | json }}
+      {%- if section.settings.enable_quick_add -%}
+        ,{{ 'quick-add.css' | asset_url | json }}
+      {%- endif -%}
+    ];
+    files.forEach(function (href) {
+      if (document.querySelector('link[href="' + href + '"]')) return;
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      link.media = 'print';
+      link.onload = function () { this.media = 'all'; };
+      document.head.appendChild(link);
+    });
+  })();
+</script>
 {%- if section.settings.enable_quick_add -%}
-  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}

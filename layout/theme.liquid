@@ -47,10 +47,6 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
-    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    {%- endunless -%}
-
     <title>
       {{- page_title -}}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -126,8 +122,8 @@
     {%- comment -%}
       TEMPORARY (local only): Globo auto-replace needs themeInfo.theme_store_id.
       Development themes expose theme_store_id: null, so Globo marks the menu
-      "replaced" without injecting. Fake Dawn themeInfo so we can test Globo
-      + header-search on shopify theme dev. Remove before shipping.
+      "replaced" without injecting. Fake Dawn themeInfo, using the same menu
+      selectors as the published theme, so local matches live. Remove before shipping.
     {%- endcomment -%}
     {%- if theme.role == 'development' -%}
       <script>
@@ -135,10 +131,19 @@
           window.GloboMenuConfig = window.GloboMenuConfig || {};
           var dawnThemeInfo = {
             theme_store_id: 887,
+            theme_name: 'Dawn',
             theme_version: {{ theme.schema_version | default: '15.2.0' | json }},
             selector: {
-              desktop: 'nav.header__inline-menu',
-              mobile: 'nav.menu-drawer__navigation',
+              desktop: 'ul.list-menu.list-menu--inline',
+              mobile: 'ul.menu-drawer__menu.has-submenu.list-menu',
+            },
+            bottombar: {
+              freeTheme: true,
+              events: [
+                { function: 'openMobileMenu', href: '[href="gm-open:MobileMenu"]', selector: '' },
+                { function: 'openCart', href: '[href="gm-open:Cart"]', selector: '' },
+                { function: 'openSearch', href: '[href="gm-open:Search"]', selector: '' },
+              ],
             },
           };
           var info = dawnThemeInfo;
@@ -164,19 +169,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/dyv3vej.css" media="print" onload="this.media='all'">
 
     <!-- End Live Font -->
-    {%- liquid
-      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
-    %}
-
     {% style %}
-      {{ settings.type_body_font | font_face: font_display: 'swap' }}
-      {{ body_font_bold | font_face: font_display: 'swap' }}
-      {{ body_font_italic | font_face: font_display: 'swap' }}
-      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
-
       {% assign scheme_classes = '' %}
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -385,23 +378,12 @@
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
-      {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
-      {{ 'component-cart.css' | asset_url | stylesheet_tag }}
-      {{ 'component-totals.css' | asset_url | stylesheet_tag }}
-      {{ 'component-price.css' | asset_url | stylesheet_tag }}
-      {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+      <link rel="stylesheet" href="{{ 'component-cart-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="{{ 'component-totals.css' | asset_url }}" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="{{ 'component-discounts.css' | asset_url }}" media="print" onload="this.media='all'">
     {%- endif -%}
-
-    {%- unless settings.type_body_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
 
     {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
       {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}

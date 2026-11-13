@@ -98,14 +98,12 @@
 	text-decoration: underline;
 }
 
-.evenflo-hero-banner .mobile-image {
+.evenflo-hero-banner .mobile-image,
+.evenflo-hero-banner .desktop-image {
 	margin: 0 auto;
 	display: block;
 	width: 100%;
-}
-
-.evenflo-hero-banner .desktop-image {
-	display: none;
+	height: auto;
 }
 
 .evenflo-hero-banner.text-light .container {

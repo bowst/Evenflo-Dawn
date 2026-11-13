@@ -4,8 +4,10 @@
 
 	{% if section.settings.desktop_overlay_opacity > 0 %}
 		{% assign overlay_opacity = 100 | minus: section.settings.desktop_overlay_opacity | times: 0.01 %}
-		#hero-banner-{{ section.id }} .desktop-image {
-			opacity: {{ overlay_opacity }};
+		@media (min-width: 768px) {
+			#hero-banner-{{ section.id }} .desktop-image {
+				opacity: {{ overlay_opacity }};
+			}
 		}
 	{% endif %}
 {% endstyle %}
