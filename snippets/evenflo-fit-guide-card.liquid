@@ -32,7 +32,6 @@
       {%- if mode != blank -%}
         <li class="fit-guide__item-tag">
           {%- case mode -%}
-            {%- when 'infant' -%}Infant Seat
             {%- when 'rear' -%}Rear-Facing
             {%- when 'forward' -%}Forward-Facing
             {%- comment -%} Generic Booster tag disabled.
@@ -40,8 +39,6 @@
             {%- endcomment -%}
             {%- when 'high-back' -%}High-Backed Booster
             {%- when 'no-back' -%}No-Back Booster
-            {%- when 'with-backrest' -%}With Backrest
-            {%- when 'without-backrest' -%}Without Backrest
           {%- endcase -%}
         </li>
       {%- endif -%}

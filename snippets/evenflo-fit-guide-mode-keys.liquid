@@ -1,13 +1,10 @@
 {% comment %}
   Comma-separated Fit Guide mode keys for a product.
-  Keys: infant, rear, forward, booster, high-back, no-back, with-backrest, without-backrest
+  Keys: rear, forward, booster, high-back, no-back
   A mode shows only when its boolean metafield is true.
   Keep in sync with evenflo-fit-guide-detail tab visibility.
 {% endcomment %}
 {%- liquid
-  assign modes_raw = product.metafields.custom.modes_of_use.value | default: product.metafields.custom.modes_of_use
-  assign modes_down = modes_raw | downcase
-
   assign rear_mode = product.metafields.custom.rear_facing.value
   assign forward_mode = product.metafields.custom.forward_facing.value
   assign high_back_mode = product.metafields.custom.high_back_booster.value
@@ -15,19 +12,9 @@
   # Generic Booster tag disabled. It came from has_harness_booster_mode, separate from high-back and no-back.
   # assign harness_mode = product.metafields.sf_car_seat.has_harness_booster_mode.value
 
-  assign uses_backrest_labels = false
-  if modes_down contains 'backrest'
-    assign uses_backrest_labels = true
-  endif
-
-  assign show_infant = false
   assign show_rear = false
   if rear_mode == true
-    if modes_down contains 'infant'
-      assign show_infant = true
-    else
-      assign show_rear = true
-    endif
+    assign show_rear = true
   endif
 
   assign show_forward = false
@@ -37,22 +24,11 @@
 
   assign show_high_back = false
   assign show_no_back = false
-  assign show_with_backrest = false
-  assign show_without_backrest = false
-  if uses_backrest_labels
-    if high_back_mode == true
-      assign show_with_backrest = true
-    endif
-    if no_back_mode == true
-      assign show_without_backrest = true
-    endif
-  else
-    if high_back_mode == true
-      assign show_high_back = true
-    endif
-    if no_back_mode == true
-      assign show_no_back = true
-    endif
+  if high_back_mode == true
+    assign show_high_back = true
+  endif
+  if no_back_mode == true
+    assign show_no_back = true
   endif
 
   # assign show_booster = false
@@ -61,9 +37,6 @@
   # endif
 
   assign keys = ''
-  if show_infant
-    assign keys = keys | append: 'infant,'
-  endif
   if show_rear
     assign keys = keys | append: 'rear,'
   endif
@@ -78,12 +51,6 @@
   endif
   if show_no_back
     assign keys = keys | append: 'no-back,'
-  endif
-  if show_with_backrest
-    assign keys = keys | append: 'with-backrest,'
-  endif
-  if show_without_backrest
-    assign keys = keys | append: 'without-backrest,'
   endif
   assign keys = keys | split: ',' | compact | join: ','
 -%}

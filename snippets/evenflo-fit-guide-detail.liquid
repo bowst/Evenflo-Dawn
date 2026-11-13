@@ -3,9 +3,6 @@
   Accepts: product, category_label, disclaimer, manuals_link, faqs_link, booster_age_guidance
 {% endcomment %}
 {%- liquid
-  assign modes_raw = product.metafields.custom.modes_of_use.value | default: product.metafields.custom.modes_of_use
-  assign modes_down = modes_raw | downcase
-
   assign rear_w_min = product.metafields.sf_car_seat.rear_facing_weight_min.value
   assign rear_w_max = product.metafields.sf_car_seat.rear_facing_weight_max.value
   assign rear_h_min = product.metafields.sf_car_seat.rear_facing_height_min.value
@@ -70,19 +67,9 @@
   # Generic Booster tab disabled. It came from has_harness_booster_mode, separate from high-back and no-back.
   # assign harness_mode = product.metafields.sf_car_seat.has_harness_booster_mode.value
 
-  assign uses_backrest_labels = false
-  if modes_down contains 'backrest'
-    assign uses_backrest_labels = true
-  endif
-
-  assign show_infant = false
   assign show_rear = false
   if rear_mode == true
-    if modes_down contains 'infant'
-      assign show_infant = true
-    else
-      assign show_rear = true
-    endif
+    assign show_rear = true
   endif
 
   assign show_forward = false
@@ -92,22 +79,11 @@
 
   assign show_high_back = false
   assign show_no_back = false
-  assign show_with_backrest = false
-  assign show_without_backrest = false
-  if uses_backrest_labels
-    if high_back_mode == true
-      assign show_with_backrest = true
-    endif
-    if no_back_mode == true
-      assign show_without_backrest = true
-    endif
-  else
-    if high_back_mode == true
-      assign show_high_back = true
-    endif
-    if no_back_mode == true
-      assign show_no_back = true
-    endif
+  if high_back_mode == true
+    assign show_high_back = true
+  endif
+  if no_back_mode == true
+    assign show_no_back = true
   endif
 
   # assign show_booster = false
@@ -116,9 +92,6 @@
   # endif
 
   assign mode_count = 0
-  if show_infant
-    assign mode_count = mode_count | plus: 1
-  endif
   if show_rear
     assign mode_count = mode_count | plus: 1
   endif
@@ -134,17 +107,9 @@
   if show_no_back
     assign mode_count = mode_count | plus: 1
   endif
-  if show_with_backrest
-    assign mode_count = mode_count | plus: 1
-  endif
-  if show_without_backrest
-    assign mode_count = mode_count | plus: 1
-  endif
 
   assign first_mode = ''
-  if show_infant
-    assign first_mode = 'infant'
-  elsif show_rear
+  if show_rear
     assign first_mode = 'rear'
   elsif show_forward
     assign first_mode = 'forward'
@@ -154,10 +119,6 @@
     assign first_mode = 'high-back'
   elsif show_no_back
     assign first_mode = 'no-back'
-  elsif show_with_backrest
-    assign first_mode = 'with-backrest'
-  elsif show_without_backrest
-    assign first_mode = 'without-backrest'
   else
     assign first_mode = 'default'
     assign mode_count = 1
@@ -213,9 +174,6 @@
 
         {%- unless first_mode == 'default' -%}
           <div class="fit-guide__detail-tabs" role="tablist" aria-label="Use mode">
-            {%- if show_infant -%}
-              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="infant" aria-selected="{% if first_mode == 'infant' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-infant" id="FitGuide-{{ product.id }}-tab-infant">Infant Seat</button>
-            {%- endif -%}
             {%- if show_rear -%}
               <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="rear" aria-selected="{% if first_mode == 'rear' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-rear" id="FitGuide-{{ product.id }}-tab-rear">Rear-Facing</button>
             {%- endif -%}
@@ -233,18 +191,9 @@
             {%- if show_no_back -%}
               <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="no-back" aria-selected="{% if first_mode == 'no-back' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-no-back" id="FitGuide-{{ product.id }}-tab-no-back">No-Back Booster</button>
             {%- endif -%}
-            {%- if show_with_backrest -%}
-              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="with-backrest" aria-selected="{% if first_mode == 'with-backrest' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-with-backrest" id="FitGuide-{{ product.id }}-tab-with-backrest">With Backrest</button>
-            {%- endif -%}
-            {%- if show_without_backrest -%}
-              <button type="button" class="fit-guide__detail-tab" role="tab" data-fit-guide-tab="without-backrest" aria-selected="{% if first_mode == 'without-backrest' %}true{% else %}false{% endif %}" aria-controls="FitGuide-{{ product.id }}-panel-without-backrest" id="FitGuide-{{ product.id }}-tab-without-backrest">Without Backrest</button>
-            {%- endif -%}
           </div>
         {%- endunless -%}
 
-        {%- if show_infant -%}
-          {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'infant', selected: true, weight_min: rear_w_min, weight_max: rear_w_max, height_min: rear_h_min, height_max: rear_h_max, weight_text: rear_w_text, height_text: rear_h_text, position: rear_position -%}
-        {%- endif -%}
         {%- if show_rear -%}
           {%- if first_mode == 'rear' -%}
             {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'rear', selected: true, weight_min: rear_w_min, weight_max: rear_w_max, height_min: rear_h_min, height_max: rear_h_max, weight_text: rear_w_text, height_text: rear_h_text, position: rear_position -%}
@@ -280,20 +229,6 @@
             {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'no-back', selected: true, weight_min: nb_w_min, weight_max: nb_w_max, height_min: nb_h_min, height_max: nb_h_max, weight_text: nb_w_text, height_text: nb_h_text, position: nb_position, age: booster_age, age_label: 'Booster age guidance' -%}
           {%- else -%}
             {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'no-back', selected: false, weight_min: nb_w_min, weight_max: nb_w_max, height_min: nb_h_min, height_max: nb_h_max, weight_text: nb_w_text, height_text: nb_h_text, position: nb_position, age: booster_age, age_label: 'Booster age guidance' -%}
-          {%- endif -%}
-        {%- endif -%}
-        {%- if show_with_backrest -%}
-          {%- if first_mode == 'with-backrest' -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'with-backrest', selected: true, weight_min: hb_w_min, weight_max: hb_w_max, height_min: hb_h_min, height_max: hb_h_max, weight_text: hb_w_text, height_text: hb_h_text, position: hb_position, age: booster_age, age_label: 'Booster age guidance' -%}
-          {%- else -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'with-backrest', selected: false, weight_min: hb_w_min, weight_max: hb_w_max, height_min: hb_h_min, height_max: hb_h_max, weight_text: hb_w_text, height_text: hb_h_text, position: hb_position, age: booster_age, age_label: 'Booster age guidance' -%}
-          {%- endif -%}
-        {%- endif -%}
-        {%- if show_without_backrest -%}
-          {%- if first_mode == 'without-backrest' -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'without-backrest', selected: true, weight_min: nb_w_min, weight_max: nb_w_max, height_min: nb_h_min, height_max: nb_h_max, weight_text: nb_w_text, height_text: nb_h_text, position: nb_position, age: booster_age, age_label: 'Booster age guidance' -%}
-          {%- else -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'without-backrest', selected: false, weight_min: nb_w_min, weight_max: nb_w_max, height_min: nb_h_min, height_max: nb_h_max, weight_text: nb_w_text, height_text: nb_h_text, position: nb_position, age: booster_age, age_label: 'Booster age guidance' -%}
           {%- endif -%}
         {%- endif -%}
         {%- if first_mode == 'default' -%}
@@ -407,7 +342,7 @@
                 </dd>
               </div>
             {%- endif -%}
-            {%- if show_high_back or show_no_back or show_with_backrest or show_without_backrest -%}
+            {%- if show_high_back or show_no_back -%}
               <div class="fit-guide__detail-spec">
                 <dt>Booster age guidance</dt>
                 <dd>{{ booster_age }}</dd>
