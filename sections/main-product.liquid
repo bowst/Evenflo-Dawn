@@ -44,6 +44,7 @@
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'evenflo-sale-price-message.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -523,7 +524,16 @@
                     {%- if shop.shipping_policy.body != blank -%}
                       <a class="product__shipping-policy" href="{{ shop.shipping_policy.url }}">{{ 'products.product.shipping_policy_link' | t }}</a>
                     {%- endif -%}
+                    {%- render 'evenflo-sale-price-message',
+                      variant: product.selected_or_first_available_variant,
+                      section_id: section.id
+                    -%}
                   </div>
+                {%- else -%}
+                  {%- render 'evenflo-sale-price-message',
+                    variant: product.selected_or_first_available_variant,
+                    section_id: section.id
+                  -%}
                 {%- endif -%}
                 <!-- Yotpo Points Display -->
                 {% render 'Yotpo-points-display' %}

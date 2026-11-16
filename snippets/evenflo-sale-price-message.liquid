@@ -1,0 +1,18 @@
+{%- comment -%}
+  Shown under the Shipping Policy when the selected variant is marked down.
+  Compare the two prices. A compare-at value on a regular-priced variant
+  (equal to price, or lower) must not show this message.
+{%- endcomment -%}
+{%- liquid
+  assign sale_variant = variant | default: product.selected_or_first_available_variant
+  assign show_final_price_message = false
+  if sale_variant.compare_at_price > sale_variant.price
+    assign show_final_price_message = true
+  endif
+-%}
+<p
+  id="SalePriceMessage-{{ section_id }}"
+  class="product__final-price-message{% unless show_final_price_message %} hidden{% endunless %}"
+>
+  {{ 'products.product.final_price_no_coupon' | t }}
+</p>
