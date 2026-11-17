@@ -143,6 +143,7 @@
   assign assembled_weight = product.metafields.sf_products.assembled_weight
   assign carrier_weight = product.metafields.sf_car_seat.carrier_weight_without_base
   assign manual_en = product.metafields.sf_products.manual
+  assign basket_weight = product.metafields.custom.storage_basket_weight.value
 -%}
 
 <div class="fit-guide__detail" data-fit-guide-detail data-product-id="{{ product.id }}" hidden>
@@ -196,43 +197,43 @@
 
         {%- if show_rear -%}
           {%- if first_mode == 'rear' -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'rear', selected: true, weight_min: rear_w_min, weight_max: rear_w_max, height_min: rear_h_min, height_max: rear_h_max, weight_text: rear_w_text, height_text: rear_h_text, position: rear_position -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'rear', selected: true, weight_min: rear_w_min, weight_max: rear_w_max, height_min: rear_h_min, height_max: rear_h_max, weight_text: rear_w_text, height_text: rear_h_text, position: rear_position -%}
           {%- else -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'rear', selected: false, weight_min: rear_w_min, weight_max: rear_w_max, height_min: rear_h_min, height_max: rear_h_max, weight_text: rear_w_text, height_text: rear_h_text, position: rear_position -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'rear', selected: false, weight_min: rear_w_min, weight_max: rear_w_max, height_min: rear_h_min, height_max: rear_h_max, weight_text: rear_w_text, height_text: rear_h_text, position: rear_position -%}
           {%- endif -%}
         {%- endif -%}
         {%- if show_forward -%}
           {%- if first_mode == 'forward' -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'forward', selected: true, weight_min: fwd_w_min, weight_max: fwd_w_max, height_min: fwd_h_min, height_max: fwd_h_max, weight_text: fwd_w_text, height_text: fwd_h_text, position: fwd_position -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'forward', selected: true, weight_min: fwd_w_min, weight_max: fwd_w_max, height_min: fwd_h_min, height_max: fwd_h_max, weight_text: fwd_w_text, height_text: fwd_h_text, position: fwd_position -%}
           {%- else -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'forward', selected: false, weight_min: fwd_w_min, weight_max: fwd_w_max, height_min: fwd_h_min, height_max: fwd_h_max, weight_text: fwd_w_text, height_text: fwd_h_text, position: fwd_position -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'forward', selected: false, weight_min: fwd_w_min, weight_max: fwd_w_max, height_min: fwd_h_min, height_max: fwd_h_max, weight_text: fwd_w_text, height_text: fwd_h_text, position: fwd_position -%}
           {%- endif -%}
         {%- endif -%}
         {%- comment -%} Generic Booster panel disabled.
         {%- if show_booster -%}
           {%- if first_mode == 'booster' -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'booster', selected: true, weight_min: belt_w_min, weight_max: belt_w_max, height_min: belt_h_min, height_max: belt_h_max, weight_text: belt_w_text, height_text: belt_h_text, position: belt_position, age: belt_age -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'booster', selected: true, weight_min: belt_w_min, weight_max: belt_w_max, height_min: belt_h_min, height_max: belt_h_max, weight_text: belt_w_text, height_text: belt_h_text, position: belt_position, age: belt_age -%}
           {%- else -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'booster', selected: false, weight_min: belt_w_min, weight_max: belt_w_max, height_min: belt_h_min, height_max: belt_h_max, weight_text: belt_w_text, height_text: belt_h_text, position: belt_position, age: belt_age -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'booster', selected: false, weight_min: belt_w_min, weight_max: belt_w_max, height_min: belt_h_min, height_max: belt_h_max, weight_text: belt_w_text, height_text: belt_h_text, position: belt_position, age: belt_age -%}
           {%- endif -%}
         {%- endif -%}
         {%- endcomment -%}
         {%- if show_high_back -%}
           {%- if first_mode == 'high-back' -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'high-back', selected: true, weight_min: hb_w_min, weight_max: hb_w_max, height_min: hb_h_min, height_max: hb_h_max, weight_text: hb_w_text, height_text: hb_h_text, position: hb_position, age: booster_age, age_label: 'Booster age guidance' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'high-back', selected: true, weight_min: hb_w_min, weight_max: hb_w_max, height_min: hb_h_min, height_max: hb_h_max, weight_text: hb_w_text, height_text: hb_h_text, position: hb_position, age: booster_age, age_label: 'Booster age guidance' -%}
           {%- else -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'high-back', selected: false, weight_min: hb_w_min, weight_max: hb_w_max, height_min: hb_h_min, height_max: hb_h_max, weight_text: hb_w_text, height_text: hb_h_text, position: hb_position, age: booster_age, age_label: 'Booster age guidance' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'high-back', selected: false, weight_min: hb_w_min, weight_max: hb_w_max, height_min: hb_h_min, height_max: hb_h_max, weight_text: hb_w_text, height_text: hb_h_text, position: hb_position, age: booster_age, age_label: 'Booster age guidance' -%}
           {%- endif -%}
         {%- endif -%}
         {%- if show_no_back -%}
           {%- if first_mode == 'no-back' -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'no-back', selected: true, weight_min: nb_w_min, weight_max: nb_w_max, height_min: nb_h_min, height_max: nb_h_max, weight_text: nb_w_text, height_text: nb_h_text, position: nb_position, age: booster_age, age_label: 'Booster age guidance' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'no-back', selected: true, weight_min: nb_w_min, weight_max: nb_w_max, height_min: nb_h_min, height_max: nb_h_max, weight_text: nb_w_text, height_text: nb_h_text, position: nb_position, age: booster_age, age_label: 'Booster age guidance' -%}
           {%- else -%}
-            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'no-back', selected: false, weight_min: nb_w_min, weight_max: nb_w_max, height_min: nb_h_min, height_max: nb_h_max, weight_text: nb_w_text, height_text: nb_h_text, position: nb_position, age: booster_age, age_label: 'Booster age guidance' -%}
+            {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'no-back', selected: false, weight_min: nb_w_min, weight_max: nb_w_max, height_min: nb_h_min, height_max: nb_h_max, weight_text: nb_w_text, height_text: nb_h_text, position: nb_position, age: booster_age, age_label: 'Booster age guidance' -%}
           {%- endif -%}
         {%- endif -%}
         {%- if first_mode == 'default' -%}
-          {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, mode_id: 'default', selected: true, weight_min: child_w_min, weight_max: child_w_max, height_min: child_h_min, height_max: child_h_max, position: '' -%}
+          {%- render 'evenflo-fit-guide-mode-panel', product_id: product.id, basket_weight: basket_weight, mode_id: 'default', selected: true, weight_min: child_w_min, weight_max: child_w_max, height_min: child_h_min, height_max: child_h_max, position: '' -%}
         {%- endif -%}
         {%- if compatible_car_seats != blank -%}
           <div class="fit-guide__detail-callout">

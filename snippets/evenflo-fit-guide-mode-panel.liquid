@@ -1,7 +1,7 @@
 {% comment %}
   One use-mode panel for the Fit Guide detail card.
   Accepts: product_id, mode_id, selected, weight_min, weight_max, height_min, height_max,
-  weight_text, height_text, position, age, age_label
+  weight_text, height_text, position, age, age_label, basket_weight
 {% endcomment %}
 {%- liquid
   assign is_selected = false
@@ -16,7 +16,7 @@
   role="tabpanel"
   {% unless is_selected %}hidden{% endunless %}
 >
-  <div class="fit-guide__detail-stats">
+  <div class="fit-guide__detail-stats{% if basket_weight != blank %} fit-guide__detail-stats--3{% endif %}">
     <div class="fit-guide__detail-stat">
       <span class="fit-guide__detail-stat-label">Child Weight</span>
       <span class="fit-guide__detail-stat-value">
@@ -49,6 +49,12 @@
         {%- endif -%}
       </span>
     </div>
+    {%- if basket_weight != blank -%}
+      <div class="fit-guide__detail-stat">
+        <span class="fit-guide__detail-stat-label">Basket Capacity</span>
+        <span class="fit-guide__detail-stat-value">{{ basket_weight }} lb</span>
+      </div>
+    {%- endif -%}
   </div>
 
   {%- if position != blank -%}
