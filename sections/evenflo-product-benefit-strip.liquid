@@ -1,0 +1,202 @@
+{% comment %}
+  Evenflo Product Benefit Strip
+  Left to right: up to 5 awards from product.metafields.custom.product_benefit_awards
+  (product_awards metaobjects: icon, award_name, optional link), then up to 3 benefit blocks.
+  Scrolls horizontally on mobile.
+{% endcomment %}
+{{ 'section-evenflo-product-benefit-strip.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign awards = product.metafields.custom.product_benefit_awards.value
+  assign has_awards = false
+  if awards != blank
+    assign has_awards = true
+  endif
+-%}
+
+{%- if has_awards or section.blocks.size > 0 -%}
+  <div
+    class="evenflo-benefit-strip color-{{ section.settings.color_scheme }} gradient"
+    style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; --award-height: {{ section.settings.award_height }}px;"
+  >
+    <div class="evenflo-benefit-strip__container{% if section.settings.full_width == false %} page-width{% endif %}">
+      <ul class="evenflo-benefit-strip__list" role="list">
+        {%- if has_awards -%}
+          {%- for award in awards limit: 5 -%}
+            {%- liquid
+              assign award_name = award.award_name.value | default: award.system.handle
+              assign award_url = award.link.value.url | default: award.link.value
+            -%}
+            {%- if award.icon.value != blank -%}
+              <li class="evenflo-benefit-strip__item evenflo-benefit-strip__item--award">
+                {%- capture award_image -%}
+                  {{
+                    award.icon.value
+                    | image_url: height: 96
+                    | image_tag:
+                      loading: 'lazy',
+                      height: section.settings.award_height,
+                      alt: award_name,
+                      class: 'evenflo-benefit-strip__award'
+                  }}
+                {%- endcapture -%}
+                {%- if award_url != blank -%}
+                  <a class="evenflo-benefit-strip__link" href="{{ award_url }}">{{ award_image }}</a>
+                {%- else -%}
+                  {{ award_image }}
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+
+        {%- for block in section.blocks -%}
+          {%- capture block_inner -%}
+            {%- if block.settings.icon != blank -%}
+              {{
+                block.settings.icon
+                | image_url: width: 48
+                | image_tag: loading: 'lazy', width: 24, height: 24, alt: '', class: 'evenflo-benefit-strip__icon'
+              }}
+            {%- elsif block.settings.default_icon != 'none' -%}
+              <span class="evenflo-benefit-strip__icon" aria-hidden="true">
+                {{- block.settings.default_icon | prepend: 'icon-' | append: '.svg' | inline_asset_content -}}
+              </span>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <span class="evenflo-benefit-strip__title">{{ block.settings.title }}</span>
+            {%- endif -%}
+          {%- endcapture -%}
+          <li class="evenflo-benefit-strip__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}
+              <a class="evenflo-benefit-strip__link" href="{{ block.settings.link }}">{{ block_inner }}</a>
+            {%- else -%}
+              <span class="evenflo-benefit-strip__link">{{ block_inner }}</span>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Benefit Strip",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Awards come from the product's Product Benefit Awards metafield (custom.product_benefit_awards). Up to 5 are shown, followed by the benefit blocks."
+    },
+    {
+      "type": "range",
+      "id": "award_height",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Award height",
+      "default": 32
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon",
+          "info": "Shown at 24 × 24px. Overrides the default icon."
+        },
+        {
+          "type": "select",
+          "id": "default_icon",
+          "label": "Default icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "return", "label": "Return" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Benefit Strip",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "default_icon": "truck",
+            "title": "Free Standard Shipping $200+"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "default_icon": "return",
+            "title": "30 Day Return"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
