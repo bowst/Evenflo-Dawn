@@ -1,4 +1,6 @@
 .evenflo-benefit-strip {
+  margin-top: var(--section-margin-top, 0);
+  margin-bottom: var(--section-margin-bottom, 0);
   padding-top: var(--section-padding-top, 8px);
   padding-bottom: var(--section-padding-bottom, 8px);
 }
@@ -65,9 +67,17 @@ a.evenflo-benefit-strip__link:focus-visible {
 }
 
 @media screen and (max-width: 749px) {
+  .evenflo-benefit-strip__container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Matches .page-width mobile padding, kept on the scroller so items scroll to the screen edge */
   .evenflo-benefit-strip__list {
     justify-content: flex-start;
     gap: 24px;
+    padding: 0 1.5rem;
+    scroll-padding-inline: 1.5rem;
     overflow-x: auto;
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
